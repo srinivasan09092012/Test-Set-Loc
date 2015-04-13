@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.FolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.SaveButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,12 +42,13 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.SourceDirectoryBrowseButton);
             this.groupBox1.Controls.Add(this.SourceDirectoryTextbox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(500, 76);
+            this.groupBox1.Size = new System.Drawing.Size(695, 101);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "File Paths";
@@ -54,7 +56,7 @@
             // SourceDirectoryBrowseButton
             // 
             this.SourceDirectoryBrowseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SourceDirectoryBrowseButton.Location = new System.Drawing.Point(457, 30);
+            this.SourceDirectoryBrowseButton.Location = new System.Drawing.Point(652, 30);
             this.SourceDirectoryBrowseButton.Name = "SourceDirectoryBrowseButton";
             this.SourceDirectoryBrowseButton.Size = new System.Drawing.Size(32, 20);
             this.SourceDirectoryBrowseButton.TabIndex = 2;
@@ -70,7 +72,7 @@
             this.SourceDirectoryTextbox.Location = new System.Drawing.Point(109, 30);
             this.SourceDirectoryTextbox.Name = "SourceDirectoryTextbox";
             this.SourceDirectoryTextbox.ReadOnly = true;
-            this.SourceDirectoryTextbox.Size = new System.Drawing.Size(342, 20);
+            this.SourceDirectoryTextbox.Size = new System.Drawing.Size(537, 20);
             this.SourceDirectoryTextbox.TabIndex = 1;
             // 
             // label1
@@ -85,7 +87,7 @@
             // SaveButton
             // 
             this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveButton.Location = new System.Drawing.Point(437, 94);
+            this.SaveButton.Location = new System.Drawing.Point(632, 119);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(75, 23);
             this.SaveButton.TabIndex = 1;
@@ -93,17 +95,27 @@
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(109, 57);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(424, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "example: C:\\Projects\\HP\\USHC_AMERICAS_US_ADU_HSP_UA3\\Source";
+            // 
             // UserConfigForm
             // 
             this.AcceptButton = this.SaveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 129);
+            this.ClientSize = new System.Drawing.Size(719, 154);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(540, 167);
+            this.MinimumSize = new System.Drawing.Size(735, 192);
             this.Name = "UserConfigForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "User Configuration";
@@ -123,5 +135,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FolderBrowserDialog FolderBrowserDialog;
         private System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.Label label2;
     }
 }

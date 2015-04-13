@@ -287,8 +287,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                e.Row.Cells[1].Value = "System.String";
-                e.Row.Cells[2].Value = ConfigurationItemModel.DataFormatType.Raw;
             }
             catch (Exception ex)
             {
@@ -902,13 +900,10 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         {
             _tenantConfigs.Clear();
 
-            TenantConfigurationMockXmlDataProvider dataProvider = new TenantConfigurationMockXmlDataProvider(_moduleConfigs[module]);
-            RequestModel request = new RequestModel();
-            ResponseModel<List<TenantConfigurationModel>> response = dataProvider.GetTenantConfigurations(request);
-            foreach (TenantConfigurationModel tenantConfig in response.Data)
-            {
-                _tenantConfigs.Add(tenantConfig.Name, tenantConfig);
-            }
+            TenantConfigurationModel tenantConfig = 
+                Serializer.XmlDeserialize<TenantConfigurationModel>(File.ReadAllText(_moduleConfigs[module]), CoreConstants.Xml.NamespacePrefixCore);
+
+            _tenantConfigs.Add(tenantConfig.Name, tenantConfig);
 
             return true;
         }
@@ -933,7 +928,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
         private void InitializeDataGrids()
         {
-            ((DataGridViewComboBoxColumn)AppSettingsGridView.Columns[2]).DataSource = Enum.GetValues(typeof(ConfigurationItemModel.DataFormatType));
             ((DataGridViewComboBoxColumn)MessagesGridView.Columns[3]).DataSource = Enum.GetValues(typeof(CoreEnumerations.Messaging.MessageType));
         }
 
@@ -991,7 +985,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     OmitXmlDeclaration = true
                 };
                 string xmlConfig = Serializer.XmlSerialize<TenantConfigurationModel>(_tenantConfig, settings);
-                xmlConfig = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<Database>\r\n<TenantConfigurations>\r\n" + xmlConfig + "\r\n</TenantConfigurations>\r\n</Database>";
                 File.WriteAllText(existingFilePath, xmlConfig);
 
                 isSaved = true;
@@ -1019,7 +1012,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         private bool IsValidAppSettings()
         {
             int idx = 0;
-            foreach(ConfigurationItemModel item in _tenantConfig.ApplicationSettings)
+            foreach (ConfigurationItemModel item in _tenantConfig.Modules[0].ApplicationSettings)
             {
                 //Check for key value
                 if(string.IsNullOrEmpty(item.Key))
@@ -1032,7 +1025,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique keys
-                if(_tenantConfig.ApplicationSettings.FindAll(i => string.Compare(i.Key, item.Key, true) == 0).Count > 1)
+                if (_tenantConfig.Modules[0].ApplicationSettings.FindAll(i => string.Compare(i.Key, item.Key, true) == 0).Count > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[0];
                     AppSettingsGridView.CurrentCell = AppSettingsGridView.Rows[idx].Cells[0];
@@ -1041,32 +1034,12 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     return false;
                 }
 
-                //Check for data type
-                if (string.IsNullOrEmpty(item.DataType))
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[0];
-                    AppSettingsGridView.CurrentCell = AppSettingsGridView.Rows[idx].Cells[1];
-                    AppSettingsGridView.Rows[idx].Cells[1].Selected = true;
-                    MessageBox.Show("Data Type is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for data format
-                if (string.IsNullOrEmpty(item.DataFormat.ToString()))
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[0];
-                    AppSettingsGridView.CurrentCell = AppSettingsGridView.Rows[idx].Cells[2];
-                    AppSettingsGridView.Rows[idx].Cells[2].Selected = true;
-                    MessageBox.Show("Data Format is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
                 //Check for value
                 if (string.IsNullOrEmpty(item.Value))
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[0];
-                    AppSettingsGridView.CurrentCell = AppSettingsGridView.Rows[idx].Cells[3];
-                    AppSettingsGridView.Rows[idx].Cells[3].Selected = true;
+                    AppSettingsGridView.CurrentCell = AppSettingsGridView.Rows[idx].Cells[1];
+                    AppSettingsGridView.Rows[idx].Cells[1].Selected = true;
                     MessageBox.Show("Value is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -1091,7 +1064,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                         {
                             if (Directory.Exists(ccdi.FullName + @"\Data"))
                             {
-                                string configFile = ccdi.FullName + @"\Data\tenantConfigurations." + di.Name + ".xml";
+                                string configFile = ccdi.FullName + @"\Data\tenantConfiguration." + di.Name + ".xml";
                                 if(File.Exists(configFile))
                                 {
                                     _moduleConfigs.Add(di.Name, configFile);
@@ -1110,7 +1083,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         private bool IsValidDisplaySizes()
         {
             int idx = 0;
-            foreach (DisplaySizeConfigurationModel item in _tenantConfig.DisplayConfiguration.DisplaySizes)
+            foreach (DisplaySizeConfigurationModel item in _tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes)
             {
                 //Check for ID value
                 if (string.IsNullOrEmpty(item.Id))
@@ -1124,7 +1097,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique ID value
-                if (_tenantConfig.DisplayConfiguration.DisplaySizes.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
+                if (_tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[1];
                     DisplaySizesGridView.CurrentCell = DisplaySizesGridView.Rows[idx].Cells[0];
@@ -1145,7 +1118,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique names
-                if (_tenantConfig.DisplayConfiguration.DisplaySizes.FindAll(i => string.Compare(i.Name, item.Name, true) == 0).Count > 1)
+                if (_tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes.FindAll(i => string.Compare(i.Name, item.Name, true) == 0).Count > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[1];
                     DisplaySizesGridView.CurrentCell = DisplaySizesGridView.Rows[idx].Cells[1];
@@ -1155,7 +1128,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique default
-                int defaults = _tenantConfig.DisplayConfiguration.DisplaySizes.FindAll(i => i.IsDefault).Count;
+                int defaults = _tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes.FindAll(i => i.IsDefault).Count;
                 if (defaults == 0 || defaults > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[1];
@@ -1178,7 +1151,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         private bool IsValidLocalization()
         {
             int idx = 0;
-            foreach (LocaleConfigurationModel item in _tenantConfig.LocalizationConfiguration.Locales)
+            foreach (LocaleConfigurationModel item in _tenantConfig.Modules[0].LocalizationConfiguration.Locales)
             {
                 if (!IsValidLocalizationDataLists(item.LocaleDataLists, idx))
                 {
@@ -1229,7 +1202,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique ID value
-                if (_tenantConfig.DisplayConfiguration.DisplaySizes.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
+                if (_tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
@@ -1326,7 +1299,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique ID value
-                if (_tenantConfig.DisplayConfiguration.DisplaySizes.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
+                if (_tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
@@ -1411,7 +1384,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique ID value
-                if (_tenantConfig.DisplayConfiguration.DisplaySizes.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
+                if (_tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
@@ -1508,7 +1481,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique ID value
-                if (_tenantConfig.DisplayConfiguration.DisplaySizes.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
+                if (_tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
@@ -1593,7 +1566,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique ID value
-                if (_tenantConfig.DisplayConfiguration.DisplaySizes.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
+                if (_tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
@@ -1662,7 +1635,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         private bool IsValidModelDefinitions()
         {
             int idx = 0;
-            foreach (ModelDefinitionModel item in _tenantConfig.ModelDefinitionConfiguration)
+            foreach (ModelDefinitionModel item in _tenantConfig.Modules[0].ModelDefinitionConfiguration)
             {
                 //Check for ID value
                 if (string.IsNullOrEmpty(item.Id))
@@ -1676,7 +1649,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique ID value
-                if (_tenantConfig.ModelDefinitionConfiguration.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
+                if (_tenantConfig.Modules[0].ModelDefinitionConfiguration.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[4];
                     ModelDefinitionsGridView.CurrentCell = ModelDefinitionsGridView.Rows[idx].Cells[0];
@@ -1723,7 +1696,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         private bool IsValidMenus()
         {
             int idx = 0;
-            foreach (MenuModel item in _tenantConfig.Menus)
+            foreach (MenuModel item in _tenantConfig.Modules[0].Menus)
             {
                 //Check for ID value
                 if (string.IsNullOrEmpty(item.Id))
@@ -1737,7 +1710,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique ID value
-                if (_tenantConfig.Menus.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
+                if (_tenantConfig.Modules[0].Menus.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[5];
                     MenusGridView.CurrentCell = MenusGridView.Rows[idx].Cells[0];
@@ -1758,7 +1731,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique name value
-                if (_tenantConfig.Menus.FindAll(i => string.Compare(i.Name, item.Name, true) == 0).Count > 1)
+                if (_tenantConfig.Modules[0].Menus.FindAll(i => string.Compare(i.Name, item.Name, true) == 0).Count > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[5];
                     MenusGridView.CurrentCell = MenusGridView.Rows[idx].Cells[1];
@@ -1794,7 +1767,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         private bool IsValidServices()
         {
             int idx = 0;
-            foreach (ServiceItemModel item in _tenantConfig.Services)
+            foreach (ServiceItemModel item in _tenantConfig.Modules[0].Services)
             {
                 //Check for ID value
                 if (string.IsNullOrEmpty(item.Id))
@@ -1808,7 +1781,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique ID value
-                if (_tenantConfig.Menus.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
+                if (_tenantConfig.Modules[0].Menus.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[6];
                     ServicesGridView.CurrentCell = ServicesGridView.Rows[idx].Cells[0];
@@ -1829,7 +1802,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique name value
-                if (_tenantConfig.Menus.FindAll(i => string.Compare(i.Name, item.Name, true) == 0).Count > 1)
+                if (_tenantConfig.Modules[0].Menus.FindAll(i => string.Compare(i.Name, item.Name, true) == 0).Count > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[6];
                     ServicesGridView.CurrentCell = ServicesGridView.Rows[idx].Cells[1];
@@ -1865,7 +1838,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         private bool IsValidSecurtyRoles()
         {
             int idx = 0;
-            foreach (SecurityRoleModel item in _tenantConfig.SecurityRoles)
+            foreach (SecurityRoleModel item in _tenantConfig.Modules[0].SecurityRoles)
             {
                 //Check for ID value
                 if (string.IsNullOrEmpty(item.Id))
@@ -1879,7 +1852,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique ID value
-                if (_tenantConfig.SecurityRoles.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
+                if (_tenantConfig.Modules[0].SecurityRoles.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[7];
                     SecurityRolesGridView.CurrentCell = SecurityRolesGridView.Rows[idx].Cells[0];
@@ -1900,7 +1873,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique name value
-                if (_tenantConfig.Menus.FindAll(i => string.Compare(i.Name, item.Name, true) == 0).Count > 1)
+                if (_tenantConfig.Modules[0].Menus.FindAll(i => string.Compare(i.Name, item.Name, true) == 0).Count > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[7];
                     SecurityRolesGridView.CurrentCell = SecurityRolesGridView.Rows[idx].Cells[1];
@@ -2012,7 +1985,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             {
                 localeId = ((LocaleConfigurationModel)selectedLocaleId).LocaleId;
             }
-            LocaleConfigurationModel locale = _tenantConfig.LocalizationConfiguration.Locales.Find(i => i.LocaleId == localeId);
+            LocaleConfigurationModel locale = _tenantConfig.Modules[0].LocalizationConfiguration.Locales.Find(i => i.LocaleId == localeId);
             if (locale != null)
             {
                 dataListBindingSource.DataSource = locale.LocaleDataLists;
@@ -2029,30 +2002,30 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             SortConfigurationData();
 
             //Application settings
-            configurationItemModelBindingSource.DataSource = _tenantConfig.ApplicationSettings;
+            configurationItemModelBindingSource.DataSource = _tenantConfig.Modules[0].ApplicationSettings;
 
             //Display Sizes
-            displaySizeBindingSource.DataSource = _tenantConfig.DisplayConfiguration.DisplaySizes;
+            displaySizeBindingSource.DataSource = _tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes;
 
             //IOC Configuration
-            IocTextBox.Text = _tenantConfig.IocConfiguration;
+            IocTextBox.Text = _tenantConfig.Modules[0].IocConfiguration;
 
             //Localization
-            LocaleDropdown.DataSource = _tenantConfig.LocalizationConfiguration.Locales;
+            LocaleDropdown.DataSource = _tenantConfig.Modules[0].LocalizationConfiguration.Locales;
             LocaleDropdown.DisplayMember = "Name";
             LocaleDropdown.ValueMember = "LocaleId";
 
             //Model Definitions
-            modelDefsBindingSource.DataSource = _tenantConfig.ModelDefinitionConfiguration;
+            modelDefsBindingSource.DataSource = _tenantConfig.Modules[0].ModelDefinitionConfiguration;
 
             //Menus
-            menuBindingSource.DataSource = _tenantConfig.Menus;
+            menuBindingSource.DataSource = _tenantConfig.Modules[0].Menus;
 
             //Services
-            servicesBindingSource.DataSource = _tenantConfig.Services;
+            servicesBindingSource.DataSource = _tenantConfig.Modules[0].Services;
 
             //Security Roles
-            securityRolesBindingSource.DataSource = _tenantConfig.SecurityRoles;
+            securityRolesBindingSource.DataSource = _tenantConfig.Modules[0].SecurityRoles;
         }
 
         private void ShowDataListItems(string id)
@@ -2063,7 +2036,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             {
                 localeId = ((LocaleConfigurationModel)selectedLocaleId).LocaleId;
             }
-            LocaleConfigurationModel locale = _tenantConfig.LocalizationConfiguration.Locales.Find(i => i.LocaleId == localeId);
+            LocaleConfigurationModel locale = _tenantConfig.Modules[0].LocalizationConfiguration.Locales.Find(i => i.LocaleId == localeId);
             LocaleConfigurationDataListModel dataList = locale.LocaleDataLists.Find(i => i.Id == id);
 
             DataListItemsForm form = new DataListItemsForm()
@@ -2082,7 +2055,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
         private void ShowMenuItems(string id)
         {
-            MenuModel menu = _tenantConfig.Menus.Find(i => i.Id == id);
+            MenuModel menu = _tenantConfig.Modules[0].Menus.Find(i => i.Id == id);
 
             MenuItemsForm form = new MenuItemsForm()
             {
@@ -2101,7 +2074,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
         private void ShowModelProperties(string id)
         {
-            ModelDefinitionModel model = _tenantConfig.ModelDefinitionConfiguration.Find(i => i.Id == id);
+            ModelDefinitionModel model = _tenantConfig.Modules[0].ModelDefinitionConfiguration.Find(i => i.Id == id);
 
             ModelPropertyForm form = new ModelPropertyForm()
             {
@@ -2119,7 +2092,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
         private void ShowSecurityFunctions(string id)
         {
-            SecurityRoleModel role = _tenantConfig.SecurityRoles.Find(i => i.Id == id);
+            SecurityRoleModel role = _tenantConfig.Modules[0].SecurityRoles.Find(i => i.Id == id);
 
             SecurityFunctionsForm form = new SecurityFunctionsForm()
             {
@@ -2143,28 +2116,28 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
         private void SortConfigurationData()
         {
-            if (_tenantConfig.ApplicationSettings != null)
+            if (_tenantConfig.Modules[0].ApplicationSettings != null)
             {
-                _tenantConfig.ApplicationSettings.Sort(
+                _tenantConfig.Modules[0].ApplicationSettings.Sort(
                     delegate(ConfigurationItemModel i1, ConfigurationItemModel i2) { return string.Compare(i1.Key, i2.Key); }
                 );
             }
 
-            if (_tenantConfig.DisplayConfiguration != null)
+            if (_tenantConfig.Modules[0].DisplayConfiguration != null)
             {
-                if (_tenantConfig.DisplayConfiguration.DisplaySizes != null)
+                if (_tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes != null)
                 {
-                    _tenantConfig.DisplayConfiguration.DisplaySizes.Sort(
+                    _tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes.Sort(
                         delegate(DisplaySizeConfigurationModel i1, DisplaySizeConfigurationModel i2) { return string.Compare(i1.Name, i2.Name); }
                     );
                 }
             }
 
-            if (_tenantConfig.LocalizationConfiguration != null)
+            if (_tenantConfig.Modules[0].LocalizationConfiguration != null)
             {
-                if(_tenantConfig.LocalizationConfiguration.Locales != null)
+                if (_tenantConfig.Modules[0].LocalizationConfiguration.Locales != null)
                 {
-                    foreach (LocaleConfigurationModel locale in _tenantConfig.LocalizationConfiguration.Locales)
+                    foreach (LocaleConfigurationModel locale in _tenantConfig.Modules[0].LocalizationConfiguration.Locales)
                     {
                         locale.LocaleDataLists.Sort(
                             delegate(LocaleConfigurationDataListModel i1, LocaleConfigurationDataListModel i2) { return string.Compare(i1.ContentId, i2.ContentId); }
@@ -2195,12 +2168,12 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
             }
 
-            if (_tenantConfig.ModelDefinitionConfiguration != null)
+            if (_tenantConfig.Modules[0].ModelDefinitionConfiguration != null)
             {
-                _tenantConfig.ModelDefinitionConfiguration.Sort(
+                _tenantConfig.Modules[0].ModelDefinitionConfiguration.Sort(
                     delegate(ModelDefinitionModel i1, ModelDefinitionModel i2) { return string.Compare(i1.Type, i2.Type); }
                 );
-                foreach (ModelDefinitionModel item in _tenantConfig.ModelDefinitionConfiguration)
+                foreach (ModelDefinitionModel item in _tenantConfig.Modules[0].ModelDefinitionConfiguration)
                 {
                     item.ModelProperties.Sort(
                         delegate(ModelPropertyModel i1, ModelPropertyModel i2) { return string.Compare(i1.Name, i2.Name); }
@@ -2208,12 +2181,12 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
             }
 
-            if (_tenantConfig.Menus != null)
+            if (_tenantConfig.Modules[0].Menus != null)
             {
-                _tenantConfig.Menus.Sort(
+                _tenantConfig.Modules[0].Menus.Sort(
                     delegate(MenuModel i1, MenuModel i2) { return string.Compare(i1.Name, i2.Name); }
                 );
-                foreach (MenuModel item in _tenantConfig.Menus)
+                foreach (MenuModel item in _tenantConfig.Modules[0].Menus)
                 {
                     item.Items.Sort(
                         delegate(MenuItemModel i1, MenuItemModel i2) { return string.Compare(i1.Name, i2.Name); }
@@ -2230,19 +2203,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
             }
 
-            if (_tenantConfig.Services != null)
+            if (_tenantConfig.Modules[0].Services != null)
             {
-                _tenantConfig.Services.Sort(
+                _tenantConfig.Modules[0].Services.Sort(
                     delegate(ServiceItemModel i1, ServiceItemModel i2) { return string.Compare(i1.Name, i2.Name); }
                 );
             }
 
-            if (_tenantConfig.SecurityRoles != null)
+            if (_tenantConfig.Modules[0].SecurityRoles != null)
             {
-                _tenantConfig.SecurityRoles.Sort(
+                _tenantConfig.Modules[0].SecurityRoles.Sort(
                     delegate(SecurityRoleModel i1, SecurityRoleModel i2) { return string.Compare(i1.Name, i2.Name); }
                 );
-                foreach (SecurityRoleModel role in _tenantConfig.SecurityRoles)
+                foreach (SecurityRoleModel role in _tenantConfig.Modules[0].SecurityRoles)
                 {
                     if (role.Functions != null)
                     {
