@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard.Common
+namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Common
 {
     public class Constants
     {

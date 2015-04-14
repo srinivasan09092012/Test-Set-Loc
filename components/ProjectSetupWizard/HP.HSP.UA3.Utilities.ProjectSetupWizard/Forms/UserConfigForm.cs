@@ -1,11 +1,11 @@
 ﻿using HP.HSP.UA3.Core.UX.Common.Utilities;
-using HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard.Common;
-using HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard.Data;
+using HP.HSP.UA3.Utilities.ProjectSetupWizard.Common;
+using HP.HSP.UA3.Utilities.ProjectSetupWizard.Data;
 using System;
 using System.IO;
 using System.Windows.Forms;
 
-namespace HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard.Forms
+namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
 {
     public partial class UserConfigForm : Form
     {

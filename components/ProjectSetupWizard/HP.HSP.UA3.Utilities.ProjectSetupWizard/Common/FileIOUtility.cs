@@ -5,7 +5,7 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard.Common
+namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Common
 {
     public static class FileIOUtility
     {

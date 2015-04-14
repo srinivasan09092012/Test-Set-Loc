@@ -7,8 +7,8 @@
     <ProjectGuid>{9DFEBAF3-B515-459C-A7F4-46D867358F95}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard</RootNamespace>
-    <AssemblyName>HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard</AssemblyName>
+    <RootNamespace>HP.HSP.UA3.Utilities.ProjectSetupWizard</RootNamespace>
+    <AssemblyName>HP.HSP.UA3.Utilities.ProjectSetupWizard</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

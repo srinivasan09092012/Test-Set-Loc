@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard.Properties {
+namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

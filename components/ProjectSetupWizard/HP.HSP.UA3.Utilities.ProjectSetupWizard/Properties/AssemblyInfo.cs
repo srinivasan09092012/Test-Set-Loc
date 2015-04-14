@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard")]
+[assembly: AssemblyTitle("HP.HSP.UA3.Utilities.ProjectSetupWizard")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Hewlett-Packard Company")]
-[assembly: AssemblyProduct("HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard")]
+[assembly: AssemblyProduct("HP.HSP.UA3.Utilities.ProjectSetupWizard")]
 [assembly: AssemblyCopyright("Copyright © Hewlett-Packard Company 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

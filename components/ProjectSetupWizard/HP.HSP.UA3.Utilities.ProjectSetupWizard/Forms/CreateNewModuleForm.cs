@@ -1,9 +1,9 @@
-﻿using HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard.Common;
+﻿using HP.HSP.UA3.Utilities.ProjectSetupWizard.Common;
 using System;
 using System.IO;
 using System.Windows.Forms;
 
-namespace HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard.Forms
+namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
 {
     public partial class CreateNewModuleForm : Form
     {
@@ -105,7 +105,7 @@ namespace HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard.Forms
         {
             string moduleName = ModuleNameTextbox.Text.Trim();
             string moduleRootPath = MainForm.UserConfig.SourcePath + "\\" + moduleName;
-            string templateRootPath = MainForm.UserConfig.SourcePath + "\\_BusinessModuleProjectTemplate";
+            string templateRootPath = MainForm.UserConfig.SourcePath + "\\_ProjectTemplate";
 
             FileIOUtility.CreateBusinessModuleDirectory(templateRootPath, moduleRootPath, moduleName);
 

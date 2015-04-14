@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard
+namespace HP.HSP.UA3.Utilities.ProjectSetupWizard
 {
     static class Program
     {

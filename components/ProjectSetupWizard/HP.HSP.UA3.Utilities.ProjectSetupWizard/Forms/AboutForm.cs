@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard.Forms
+namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
 {
     public partial class AboutForm : Form
     {

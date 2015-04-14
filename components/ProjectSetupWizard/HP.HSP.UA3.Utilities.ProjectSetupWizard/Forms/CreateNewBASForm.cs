@@ -1,28 +1,27 @@
-﻿using HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard.Common;
+﻿using HP.HSP.UA3.Utilities.ProjectSetupWizard.Common;
 using System;
 using System.IO;
 using System.Windows.Forms;
 
-namespace HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard.Forms
+namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
 {
-    public partial class CreateNewBatchForm : Form
+    public partial class CreateNewBASForm : Form
     {
         public string ModuleName = string.Empty;
         public string ModulePath = string.Empty;
         public string TemplatePath = string.Empty;
         public bool WasCreated = false;
 
-        public CreateNewBatchForm()
+        public CreateNewBASForm()
         {
             InitializeComponent();
         }
 
-        private void CreateNewBatchForm_Shown(object sender, EventArgs e)
+        private void CreateNewBASForm_Shown(object sender, EventArgs e)
         {
             ServiceNameTextbox.Focus();
         }
 
-    
         private void CreateButton_Click(object sender, EventArgs e)
         {
             try

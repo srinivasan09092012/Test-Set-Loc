@@ -1,4 +1,4 @@
-﻿namespace HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard.Forms
+﻿namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
 {
     partial class AboutForm
     {

@@ -3,7 +3,7 @@ using System.CodeDom.Compiler;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard.Data
+namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Data
 {
     [Serializable()]
     [GeneratedCodeAttribute("xsd", "2.0.50727.42")]

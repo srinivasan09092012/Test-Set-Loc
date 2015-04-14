@@ -1,12 +1,12 @@
 ﻿using HP.HSP.UA3.Core.UX.Common.Utilities;
-using HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard.Common;
-using HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard.Data;
+using HP.HSP.UA3.Utilities.ProjectSetupWizard.Common;
+using HP.HSP.UA3.Utilities.ProjectSetupWizard.Data;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
-namespace HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard.Forms
+namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
 {
     public partial class MainForm : Form
     {
@@ -441,7 +441,7 @@ namespace HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard.Forms
             CreateNewBASForm form = new CreateNewBASForm();
             form.ModuleName = BusinessModuleDropdown.SelectedItem.ToString();
             form.ModulePath = _modules[form.ModuleName] + "\\Dev\\BAS";
-            form.TemplatePath = UserConfig.SourcePath + "\\_BusinessModuleProjectTemplate\\Dev\\BAS";
+            form.TemplatePath = UserConfig.SourcePath + "\\_ProjectTemplate\\Dev\\BAS";
             form.ShowDialog();
             if (form.WasCreated)
             {
@@ -456,7 +456,7 @@ namespace HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard.Forms
             CreateNewBatchForm form = new CreateNewBatchForm();
             form.ModuleName = BusinessModuleDropdown.SelectedItem.ToString();
             form.ModulePath = _modules[form.ModuleName] + "\\Dev\\Batch";
-            form.TemplatePath = UserConfig.SourcePath + "\\_BusinessModuleProjectTemplate\\Dev\\Batch";
+            form.TemplatePath = UserConfig.SourcePath + "\\_ProjectTemplate\\Dev\\Batch";
             form.ShowDialog();
             if (form.WasCreated)
             {

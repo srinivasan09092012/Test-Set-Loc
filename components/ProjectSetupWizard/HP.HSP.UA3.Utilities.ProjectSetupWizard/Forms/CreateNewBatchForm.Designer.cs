@@ -1,6 +1,6 @@
-﻿namespace HP.HSP.UA3.Utilities.BusinessModuleProjectSetupWizard.Forms
+﻿namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
 {
-    partial class CreateNewModuleForm
+    partial class CreateNewBatchForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,66 +28,66 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CreateButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.ServiceNameTextbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.ModuleNameTextbox = new System.Windows.Forms.TextBox();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.CreateButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // CreateButton
+            // ServiceNameTextbox
             // 
-            this.CreateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CreateButton.Location = new System.Drawing.Point(196, 63);
-            this.CreateButton.Name = "CreateButton";
-            this.CreateButton.Size = new System.Drawing.Size(75, 23);
-            this.CreateButton.TabIndex = 0;
-            this.CreateButton.Text = "Create";
-            this.CreateButton.UseVisualStyleBackColor = true;
-            this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
-            // 
-            // CancelButton
-            // 
-            this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelButton.Location = new System.Drawing.Point(277, 63);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 1;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.ServiceNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ServiceNameTextbox.Location = new System.Drawing.Point(96, 18);
+            this.ServiceNameTextbox.Name = "ServiceNameTextbox";
+            this.ServiceNameTextbox.Size = new System.Drawing.Size(251, 20);
+            this.ServiceNameTextbox.TabIndex = 11;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 24);
+            this.label1.Location = new System.Drawing.Point(17, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Module Name";
+            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Service Name";
             // 
-            // ModuleNameTextbox
+            // CancelButton
             // 
-            this.ModuleNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ModuleNameTextbox.Location = new System.Drawing.Point(101, 24);
-            this.ModuleNameTextbox.Name = "ModuleNameTextbox";
-            this.ModuleNameTextbox.Size = new System.Drawing.Size(251, 20);
-            this.ModuleNameTextbox.TabIndex = 3;
+            this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelButton.Location = new System.Drawing.Point(272, 57);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.TabIndex = 9;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
-            // CreateNewModuleForm
+            // CreateButton
+            // 
+            this.CreateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CreateButton.Location = new System.Drawing.Point(191, 57);
+            this.CreateButton.Name = "CreateButton";
+            this.CreateButton.Size = new System.Drawing.Size(75, 23);
+            this.CreateButton.TabIndex = 8;
+            this.CreateButton.Text = "Create";
+            this.CreateButton.UseVisualStyleBackColor = true;
+            this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
+            // 
+            // CreateNewBatchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(364, 98);
-            this.Controls.Add(this.ModuleNameTextbox);
+            this.Controls.Add(this.ServiceNameTextbox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.CreateButton);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "CreateNewModuleForm";
+            this.Name = "CreateNewBatchForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Create New Business Module";
-            this.Shown += new System.EventHandler(this.CreateNewModuleForm_Shown);
+            this.Text = "Create New Batch Service";
+            this.Shown += new System.EventHandler(this.CreateNewBatchForm_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -95,9 +95,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button CreateButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.TextBox ServiceNameTextbox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox ModuleNameTextbox;
+        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CreateButton;
     }
 }
