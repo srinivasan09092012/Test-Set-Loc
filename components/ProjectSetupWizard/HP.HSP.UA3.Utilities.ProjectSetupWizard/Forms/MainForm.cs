@@ -376,6 +376,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
         private void LoadBASServices()
         {
             BASDropdown.Items.Clear();
+            DeleteBASButton.Enabled = false;
             _basServices.Clear();
 
             string path = _modules[BusinessModuleDropdown.SelectedItem.ToString()] + "\\Dev\\BAS";
@@ -395,6 +396,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
         private void LoadBatchServices()
         {
             BatchDropdown.Items.Clear();
+            DeleteBatchButton.Enabled = false;
             _batchServices.Clear();
 
             string path = _modules[BusinessModuleDropdown.SelectedItem.ToString()] + "\\Dev\\Batch";
@@ -421,6 +423,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
         private void LoadBusinessModules()
         {
             BusinessModuleDropdown.Items.Clear();
+            DeleteButton.Enabled = false;
             _modules.Clear();
 
             DirectoryInfo di = new DirectoryInfo(UserConfig.SourcePath);
