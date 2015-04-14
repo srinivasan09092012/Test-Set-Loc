@@ -279,6 +279,23 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 Cursor = Cursors.Default;
             }
         }
+
+        private void aboutTenentConfigurationManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                ShowAbout();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
         #endregion
 
         #region AppSettings Tab Events
@@ -2026,6 +2043,12 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
             //Security Roles
             securityRolesBindingSource.DataSource = _tenantConfig.Modules[0].SecurityRoles;
+        }
+
+        private void ShowAbout()
+        {
+            AboutForm form = new AboutForm();
+            form.ShowDialog();
         }
 
         private void ShowDataListItems(string id)
