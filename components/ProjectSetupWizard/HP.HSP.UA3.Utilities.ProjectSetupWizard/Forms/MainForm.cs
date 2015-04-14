@@ -332,7 +332,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             {
                 foreach (DirectoryInfo cdi in di.GetDirectories())
                 {
-                    if (cdi.Name == "Dev")
+                    if (cdi.Name == "Main")
                     {
                         foreach (DirectoryInfo ccdi in cdi.GetDirectories())
                         {
@@ -379,7 +379,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             DeleteBASButton.Enabled = false;
             _basServices.Clear();
 
-            string path = _modules[BusinessModuleDropdown.SelectedItem.ToString()] + "\\Dev\\BAS";
+            string path = _modules[BusinessModuleDropdown.SelectedItem.ToString()] + "\\Main\\BAS";
             DirectoryInfo di = new DirectoryInfo(path);
             foreach (DirectoryInfo cdi in di.GetDirectories())
             {
@@ -399,7 +399,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             DeleteBatchButton.Enabled = false;
             _batchServices.Clear();
 
-            string path = _modules[BusinessModuleDropdown.SelectedItem.ToString()] + "\\Dev\\Batch";
+            string path = _modules[BusinessModuleDropdown.SelectedItem.ToString()] + "\\Main\\Batch";
             DirectoryInfo di = new DirectoryInfo(path);
             foreach (DirectoryInfo cdi in di.GetDirectories())
             {
@@ -443,8 +443,8 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
         {
             CreateNewBASForm form = new CreateNewBASForm();
             form.ModuleName = BusinessModuleDropdown.SelectedItem.ToString();
-            form.ModulePath = _modules[form.ModuleName] + "\\Dev\\BAS";
-            form.TemplatePath = UserConfig.SourcePath + "\\_ProjectTemplate\\Dev\\BAS";
+            form.ModulePath = _modules[form.ModuleName] + "\\Main\\BAS";
+            form.TemplatePath = UserConfig.SourcePath + "\\_ProjectTemplate\\Main\\BAS";
             form.ShowDialog();
             if (form.WasCreated)
             {
@@ -458,8 +458,8 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
         {
             CreateNewBatchForm form = new CreateNewBatchForm();
             form.ModuleName = BusinessModuleDropdown.SelectedItem.ToString();
-            form.ModulePath = _modules[form.ModuleName] + "\\Dev\\Batch";
-            form.TemplatePath = UserConfig.SourcePath + "\\_ProjectTemplate\\Dev\\Batch";
+            form.ModulePath = _modules[form.ModuleName] + "\\Main\\Batch";
+            form.TemplatePath = UserConfig.SourcePath + "\\_ProjectTemplate\\Main\\Batch";
             form.ShowDialog();
             if (form.WasCreated)
             {
