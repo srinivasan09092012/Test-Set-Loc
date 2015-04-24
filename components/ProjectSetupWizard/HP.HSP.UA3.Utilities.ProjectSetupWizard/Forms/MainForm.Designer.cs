@@ -44,21 +44,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BusinessModuleDropdown = new System.Windows.Forms.ComboBox();
             this.DetailsGroupBox = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.DeleteBASButton = new System.Windows.Forms.Button();
-            this.CreateBASButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.BASDropdown = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.DeleteBatchButton = new System.Windows.Forms.Button();
             this.BatchDropdown = new System.Windows.Forms.ComboBox();
             this.CreateBatchButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.DeleteBASButton = new System.Windows.Forms.Button();
+            this.BASDropdown = new System.Windows.Forms.ComboBox();
+            this.CreateBASButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.DetailsGroupBox.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -69,7 +69,7 @@
             this.hELPToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1008, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(541, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -151,7 +151,7 @@
             this.groupBox1.Controls.Add(this.BusinessModuleDropdown);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(984, 72);
+            this.groupBox1.Size = new System.Drawing.Size(517, 72);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Business Module";
@@ -207,74 +207,22 @@
             this.DetailsGroupBox.Enabled = false;
             this.DetailsGroupBox.Location = new System.Drawing.Point(13, 106);
             this.DetailsGroupBox.Name = "DetailsGroupBox";
-            this.DetailsGroupBox.Size = new System.Drawing.Size(983, 223);
+            this.DetailsGroupBox.Size = new System.Drawing.Size(516, 223);
             this.DetailsGroupBox.TabIndex = 3;
             this.DetailsGroupBox.TabStop = false;
             this.DetailsGroupBox.Text = "Business Module Details";
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.DeleteBASButton);
-            this.groupBox3.Controls.Add(this.BASDropdown);
-            this.groupBox3.Controls.Add(this.CreateBASButton);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Location = new System.Drawing.Point(19, 35);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(938, 83);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Business Application Services (BAS)";
-            // 
-            // DeleteBASButton
-            // 
-            this.DeleteBASButton.Enabled = false;
-            this.DeleteBASButton.Location = new System.Drawing.Point(296, 34);
-            this.DeleteBASButton.Name = "DeleteBASButton";
-            this.DeleteBASButton.Size = new System.Drawing.Size(75, 23);
-            this.DeleteBASButton.TabIndex = 6;
-            this.DeleteBASButton.Text = "Delete";
-            this.DeleteBASButton.UseVisualStyleBackColor = true;
-            this.DeleteBASButton.Click += new System.EventHandler(this.DeleteBASButton_Click);
-            // 
-            // CreateBASButton
-            // 
-            this.CreateBASButton.Location = new System.Drawing.Point(377, 34);
-            this.CreateBASButton.Name = "CreateBASButton";
-            this.CreateBASButton.Size = new System.Drawing.Size(75, 23);
-            this.CreateBASButton.TabIndex = 7;
-            this.CreateBASButton.Text = "Create New";
-            this.CreateBASButton.UseVisualStyleBackColor = true;
-            this.CreateBASButton.Click += new System.EventHandler(this.CreateBASButton_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 36);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Service";
-            // 
-            // BASDropdown
-            // 
-            this.BASDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.BASDropdown.Enabled = false;
-            this.BASDropdown.FormattingEnabled = true;
-            this.BASDropdown.Location = new System.Drawing.Point(70, 36);
-            this.BASDropdown.Name = "BASDropdown";
-            this.BASDropdown.Size = new System.Drawing.Size(220, 21);
-            this.BASDropdown.TabIndex = 5;
-            this.BASDropdown.SelectedIndexChanged += new System.EventHandler(this.BASDropdown_SelectedIndexChanged);
-            // 
             // groupBox4
             // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.DeleteBatchButton);
             this.groupBox4.Controls.Add(this.BatchDropdown);
             this.groupBox4.Controls.Add(this.CreateBatchButton);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Location = new System.Drawing.Point(19, 124);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(938, 83);
+            this.groupBox4.Size = new System.Drawing.Size(471, 83);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Batch Services (Batch)";
@@ -320,15 +268,72 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Service";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.DeleteBASButton);
+            this.groupBox3.Controls.Add(this.BASDropdown);
+            this.groupBox3.Controls.Add(this.CreateBASButton);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Location = new System.Drawing.Point(19, 35);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(471, 83);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Business Application Services (BAS)";
+            // 
+            // DeleteBASButton
+            // 
+            this.DeleteBASButton.Enabled = false;
+            this.DeleteBASButton.Location = new System.Drawing.Point(296, 34);
+            this.DeleteBASButton.Name = "DeleteBASButton";
+            this.DeleteBASButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteBASButton.TabIndex = 6;
+            this.DeleteBASButton.Text = "Delete";
+            this.DeleteBASButton.UseVisualStyleBackColor = true;
+            this.DeleteBASButton.Click += new System.EventHandler(this.DeleteBASButton_Click);
+            // 
+            // BASDropdown
+            // 
+            this.BASDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.BASDropdown.Enabled = false;
+            this.BASDropdown.FormattingEnabled = true;
+            this.BASDropdown.Location = new System.Drawing.Point(70, 36);
+            this.BASDropdown.Name = "BASDropdown";
+            this.BASDropdown.Size = new System.Drawing.Size(220, 21);
+            this.BASDropdown.TabIndex = 5;
+            this.BASDropdown.SelectedIndexChanged += new System.EventHandler(this.BASDropdown_SelectedIndexChanged);
+            // 
+            // CreateBASButton
+            // 
+            this.CreateBASButton.Location = new System.Drawing.Point(377, 34);
+            this.CreateBASButton.Name = "CreateBASButton";
+            this.CreateBASButton.Size = new System.Drawing.Size(75, 23);
+            this.CreateBASButton.TabIndex = 7;
+            this.CreateBASButton.Text = "Create New";
+            this.CreateBASButton.UseVisualStyleBackColor = true;
+            this.CreateBASButton.Click += new System.EventHandler(this.CreateBASButton_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(22, 36);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Service";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 341);
+            this.ClientSize = new System.Drawing.Size(541, 341);
             this.Controls.Add(this.DetailsGroupBox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
-            this.MinimumSize = new System.Drawing.Size(1024, 379);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MinimumSize = new System.Drawing.Size(557, 379);
             this.Name = "MainForm";
             this.Text = "Business Module Project Wizard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
@@ -339,10 +344,10 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.DetailsGroupBox.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
