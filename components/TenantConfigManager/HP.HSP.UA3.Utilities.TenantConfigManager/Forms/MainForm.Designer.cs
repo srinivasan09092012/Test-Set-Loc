@@ -611,8 +611,7 @@
             // AutoTranslateCheckBox
             // 
             this.AutoTranslateCheckBox.AutoSize = true;
-            this.AutoTranslateCheckBox.Checked = true;
-            this.AutoTranslateCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.AutoTranslateCheckBox.Enabled = false;
             this.AutoTranslateCheckBox.Location = new System.Drawing.Point(233, 23);
             this.AutoTranslateCheckBox.Name = "AutoTranslateCheckBox";
             this.AutoTranslateCheckBox.Size = new System.Drawing.Size(210, 17);
