@@ -299,6 +299,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         #endregion
 
         #region AppSettings Tab Events
+        private void AppSettingsGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == AppSettingsGridView.NewRowIndex)
+            {
+                if (AppSettingsGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
+                {
+                    AppSettingsGridView.BeginEdit(false);
+                    TextBox textBox = (TextBox)AppSettingsGridView.EditingControl;
+                    textBox.SelectionStart = textBox.Text.Length;
+                }
+            }
+        }
+
         private void AppSettingsGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             try
@@ -342,6 +355,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         #endregion
 
         #region Display Sizes Tab Events
+        private void DisplaySizesGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == DisplaySizesGridView.NewRowIndex)
+            {
+                if (DisplaySizesGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
+                {
+                    DisplaySizesGridView.BeginEdit(false);
+                    TextBox textBox = (TextBox)DisplaySizesGridView.EditingControl;
+                    textBox.SelectionStart = textBox.Text.Length;
+                }
+            }
+        }
+
         private void DisplaySizesGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             try
@@ -396,6 +422,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         #endregion
 
         #region Localization DataLists Tab Events
+        private void DataListsGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == DataListsGridView.NewRowIndex)
+            {
+                if (DataListsGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
+                {
+                    DataListsGridView.BeginEdit(false);
+                    TextBox textBox = (TextBox)DataListsGridView.EditingControl;
+                    textBox.SelectionStart = textBox.Text.Length;
+                }
+            }
+        }
+
         private void LocaleDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -480,6 +519,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         #endregion
 
         #region Localization HtmlBlocks Tab Events
+        private void HtmlBlocksGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == HtmlBlocksGridView.NewRowIndex)
+            {
+                if (HtmlBlocksGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
+                {
+                    HtmlBlocksGridView.BeginEdit(false);
+                    TextBox textBox = (TextBox)HtmlBlocksGridView.EditingControl;
+                    textBox.SelectionStart = textBox.Text.Length;
+                }
+            }
+        }
+
         private void htmlBlockBindingSource_CurrentItemChanged(object sender, EventArgs e)
         {
             if (_tenantConfigs != null && _tenantConfigs.Count > 0)
@@ -534,6 +586,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
         }
 
+        private void ImagesGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == ImagesGridView.NewRowIndex)
+            {
+                if (ImagesGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
+                {
+                    ImagesGridView.BeginEdit(false);
+                    TextBox textBox = (TextBox)ImagesGridView.EditingControl;
+                    textBox.SelectionStart = textBox.Text.Length;
+                }
+            }
+        }
+
         private void ImagesGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             try
@@ -577,6 +642,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             if (_tenantConfigs != null && _tenantConfigs.Count > 0)
             {
                 ToggleDirtyData(true);
+            }
+        }
+
+        private void LabelsGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == LabelsGridView.NewRowIndex)
+            {
+                if (LabelsGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
+                {
+                    LabelsGridView.BeginEdit(false);
+                    TextBox textBox = (TextBox)LabelsGridView.EditingControl;
+                    textBox.SelectionStart = textBox.Text.Length;
+                }
             }
         }
 
@@ -626,6 +704,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
         }
 
+        private void MessagesGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == MessagesGridView.NewRowIndex)
+            {
+                if (MessagesGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
+                {
+                    MessagesGridView.BeginEdit(false);
+                    TextBox textBox = (TextBox)MessagesGridView.EditingControl;
+                    textBox.SelectionStart = textBox.Text.Length;
+                }
+            }
+        }
+
         private void MessagesGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             try
@@ -669,6 +760,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             if (_tenantConfigs != null && _tenantConfigs.Count > 0)
             {
                 ToggleDirtyData(true);
+            }
+        }
+
+        private void ModelDefinitionsGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == ModelDefinitionsGridView.NewRowIndex)
+            {
+                if (ModelDefinitionsGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
+                {
+                    ModelDefinitionsGridView.BeginEdit(false);
+                    TextBox textBox = (TextBox)ModelDefinitionsGridView.EditingControl;
+                    textBox.SelectionStart = textBox.Text.Length;
+                }
             }
         }
 
@@ -740,6 +844,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
         }
 
+        private void MenusGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == MenusGridView.NewRowIndex)
+            {
+                if (MenusGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
+                {
+                    MenusGridView.BeginEdit(false);
+                    TextBox textBox = (TextBox)MenusGridView.EditingControl;
+                    textBox.SelectionStart = textBox.Text.Length;
+                }
+            }
+        }
+
         private void MenusGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             try
@@ -806,6 +923,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
         }
 
+        private void ServicesGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == ServicesGridView.NewRowIndex)
+            {
+                if (ServicesGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
+                {
+                    ServicesGridView.BeginEdit(false);
+                    TextBox textBox = (TextBox)ServicesGridView.EditingControl;
+                    textBox.SelectionStart = textBox.Text.Length;
+                }
+            }
+        }
+
         private void ServicesDataGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             try
@@ -850,6 +980,20 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             if (_tenantConfigs != null && _tenantConfigs.Count > 0)
             {
                 ToggleDirtyData(true);
+            }
+        }
+
+        private void SecurityRolesGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.RowIndex == SecurityRolesGridView.NewRowIndex)
+            {
+                if (SecurityRolesGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
+                {
+                    SecurityRolesGridView.BeginEdit(false);
+                    TextBox textBox = (TextBox)SecurityRolesGridView.EditingControl;
+                    textBox.SelectionStart = textBox.Text.Length;
+                }
             }
         }
 
@@ -2168,7 +2312,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                         foreach (LocaleConfigurationDataListModel item in locale.LocaleDataLists)
                         {
                             item.LocaleDataListItems.Sort(
-                                delegate(LocaleConfigurationDataListItemModel i1, LocaleConfigurationDataListItemModel i2) { return string.Compare(i1.ContentId, i2.ContentId); }
+                                delegate(LocaleConfigurationDataListItemModel i1, LocaleConfigurationDataListItemModel i2) { return i1.Order.CompareTo(i2.Order); }
                             );
                         }
 

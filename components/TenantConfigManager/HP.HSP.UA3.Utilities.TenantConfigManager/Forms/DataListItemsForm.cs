@@ -81,6 +81,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
         }
 
+        private void DataListItemsGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == DataListItemsGridView.NewRowIndex)
+            {
+                if (DataListItemsGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
+                {
+                    DataListItemsGridView.BeginEdit(false);
+                    TextBox textBox = (TextBox)DataListItemsGridView.EditingControl;
+                    textBox.SelectionStart = textBox.Text.Length;
+                }
+            }
+        }
+
         private void DataListItemsGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             try
@@ -88,7 +101,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 Cursor = Cursors.WaitCursor;
                 e.Row.Cells[0].Value = Guid.NewGuid().ToString("D").ToUpper();
                 e.Row.Cells[1].Value = this.DataList.LocaleId;
-                e.Row.Cells[2].Value = this.BusinessModule + ".DataList.";
+                e.Row.Cells[2].Value = this.DataList.ContentId + ".";
             }
             catch (Exception ex)
             {

@@ -121,6 +121,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
         }
 
+        private void SecurityFunctionsGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == SecurityFunctionsGridView.NewRowIndex)
+            {
+                if (SecurityFunctionsGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
+                {
+                    SecurityFunctionsGridView.BeginEdit(false);
+                    TextBox textBox = (TextBox)SecurityFunctionsGridView.EditingControl;
+                    textBox.SelectionStart = textBox.Text.Length;
+                }
+            }
+        }
+
         private void SecurityFunctionsGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             try

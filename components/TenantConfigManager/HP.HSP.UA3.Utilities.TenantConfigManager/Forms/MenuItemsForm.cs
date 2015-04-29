@@ -81,6 +81,18 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 Cursor = Cursors.Default;
             }
         }
+        private void MenuItemsGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == MenuItemsGridView.NewRowIndex)
+            {
+                if (MenuItemsGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
+                {
+                    MenuItemsGridView.BeginEdit(false);
+                    TextBox textBox = (TextBox)MenuItemsGridView.EditingControl;
+                    textBox.SelectionStart = textBox.Text.Length;
+                }
+            }
+        }
 
         private void MenuItemsGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {

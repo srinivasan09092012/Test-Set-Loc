@@ -82,6 +82,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
         }
 
+        private void ModelPropertiesGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == ModelPropertiesGridView.NewRowIndex)
+            {
+                if (ModelPropertiesGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
+                {
+                    ModelPropertiesGridView.BeginEdit(false);
+                    TextBox textBox = (TextBox)ModelPropertiesGridView.EditingControl;
+                    textBox.SelectionStart = textBox.Text.Length;
+                }
+            }
+        }
+
         private void ModelPropertiesGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             try
