@@ -2169,7 +2169,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             displaySizeBindingSource.DataSource = _tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes;
 
             //IOC Configuration
-            IocTextBox.Text = _tenantConfig.Modules[0].IocConfiguration;
+            IocTextBox.Text = _tenantConfig.Modules[0].IocConfigurationString;
 
             //Localization
             LocaleDropdown.DataSource = _tenantConfig.Modules[0].LocalizationConfiguration.Locales;
