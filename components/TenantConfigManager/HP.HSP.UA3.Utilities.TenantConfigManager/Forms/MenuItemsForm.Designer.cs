@@ -209,7 +209,7 @@
             this.cssClassDataGridViewTextBoxColumn.HeaderText = "Css Class";
             this.cssClassDataGridViewTextBoxColumn.MinimumWidth = 50;
             this.cssClassDataGridViewTextBoxColumn.Name = "cssClassDataGridViewTextBoxColumn";
-            this.cssClassDataGridViewTextBoxColumn.Width = 71;
+            this.cssClassDataGridViewTextBoxColumn.Width = 77;
             // 
             // securityRightIdDataGridViewTextBoxColumn
             // 
@@ -229,7 +229,7 @@
             this.iocContainerDataGridViewTextBoxColumn.HeaderText = "IOC Container";
             this.iocContainerDataGridViewTextBoxColumn.MinimumWidth = 50;
             this.iocContainerDataGridViewTextBoxColumn.Name = "iocContainerDataGridViewTextBoxColumn";
-            this.iocContainerDataGridViewTextBoxColumn.Width = 90;
+            this.iocContainerDataGridViewTextBoxColumn.Width = 98;
             // 
             // Items4
             // 

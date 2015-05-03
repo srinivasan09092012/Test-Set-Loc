@@ -51,7 +51,6 @@
             this.CancelButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.ModelPropertiesGridView = new System.Windows.Forms.DataGridView();
-            this.modelPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataTypeDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -65,6 +64,7 @@
             this.accessKeyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewRestrictionSecurityRightId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditRestrictionSecurityRightId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modelPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ModelPropertiesGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelPropertiesBindingSource)).BeginInit();
@@ -211,7 +211,7 @@
             this.ViewRestrictionSecurityRightId,
             this.EditRestrictionSecurityRightId});
             this.ModelPropertiesGridView.DataSource = this.modelPropertiesBindingSource;
-            this.ModelPropertiesGridView.Location = new System.Drawing.Point(13, 85);
+            this.ModelPropertiesGridView.Location = new System.Drawing.Point(34, 90);
             this.ModelPropertiesGridView.Name = "ModelPropertiesGridView";
             this.ModelPropertiesGridView.Size = new System.Drawing.Size(1179, 281);
             this.ModelPropertiesGridView.TabIndex = 6;
@@ -219,10 +219,6 @@
             this.ModelPropertiesGridView.CurrentCellChanged += new System.EventHandler(this.ModelPropertiesGridView_CurrentCellChanged);
             this.ModelPropertiesGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.ModelPropertiesGridView_DefaultValuesNeeded);
             this.ModelPropertiesGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.ModelPropertiesGridView_UserDeletingRow);
-            // 
-            // modelPropertiesBindingSource
-            // 
-            this.modelPropertiesBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.ModelPropertyModel);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -352,6 +348,10 @@
             this.EditRestrictionSecurityRightId.MinimumWidth = 100;
             this.EditRestrictionSecurityRightId.Name = "EditRestrictionSecurityRightId";
             this.EditRestrictionSecurityRightId.Width = 134;
+            // 
+            // modelPropertiesBindingSource
+            // 
+            this.modelPropertiesBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.ModelPropertyModel);
             // 
             // ModelPropertyForm
             // 

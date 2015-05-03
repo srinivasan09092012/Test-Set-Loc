@@ -47,6 +47,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     DisplaySizeDropdown.Items.Add(dispalySize.Name);
                 }
             }
+            ModeDropdown.SelectedIndex = 0;
+            DisplaySizeDropdown.SelectedIndex = 0;
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
