@@ -10,6 +10,7 @@ using HP.HSP.UA3.Utilities.TenantConfigManager.Data;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
@@ -18,10 +19,16 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
     {
         public static UserConfigModel UserConfig = null;
 
+        private string _currentModelDataAssemblyFile = string.Empty;
+        private string _currentModelDataBinPath = string.Empty;
+        private string _currentModelNamespace = string.Empty;
+        private List<DisplaySizeConfigurationModel> _displaySizes = null;
         private bool _isDataDrity = false;
         private Dictionary<string, List<string>> _modules = new Dictionary<string, List<string>>();
         private Dictionary<string, string> _moduleConfigs = new Dictionary<string, string>();
-        private string _currentModelPath = string.Empty;
+        private string _appTierName = string.Empty;
+        private string _businessModuleName = string.Empty;
+        private string _tenantName = string.Empty;
         private Dictionary<string, TenantConfigurationModel> _tenantConfigs = new Dictionary<string, TenantConfigurationModel>();
         private TenantConfigurationModel _tenantConfig = null;
 
@@ -96,19 +103,32 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
                 TenantDropdown.SelectedIndex = -1;
                 TenantDropdown.Enabled = false;
-                _currentModelPath = UserConfig.SourcePath + "\\" + BusinessModuleDropdown.SelectedItem.ToString() + "\\Dev\\" + AppTierDropdown.SelectedItem.ToString();
 
                 if (!string.IsNullOrEmpty(AppTierDropdown.SelectedItem.ToString()))
                 {
-                    if (AreTenantConfigsLoaded(BusinessModuleDropdown.SelectedItem.ToString()))
+                    _appTierName = AppTierDropdown.SelectedItem.ToString();
+                    _currentModelDataBinPath = UserConfig.SourcePath
+                        + "\\" + _businessModuleName
+                        + "\\Dev\\" + _appTierName
+                        + "\\" + string.Format("HP.HSP.UA3.{0}.{1}.Data", _businessModuleName, _appTierName)
+                        + "\\bin\\{0}\\";
+                    _currentModelDataAssemblyFile = string.Format("HP.HSP.UA3.{0}.{1}.Data.dll", _businessModuleName, _appTierName);
+                    _currentModelNamespace = string.Format("HP.HSP.UA3.{0}.{1}.Data.", _businessModuleName, _appTierName);
+
+                    if (AreTenantConfigsLoaded(_businessModuleName))
                     {
                         foreach (string name in _tenantConfigs.Keys)
                         {
                             TenantDropdown.Items.Add(name);
                         }
+                        LoadDisplaySizes();
                     }
                     TenantDropdown.Enabled = true;
                     TenantDropdown.Focus();
+                }
+                else
+                {
+                    _appTierName = string.Empty;
                 }
             }
             catch (Exception ex)
@@ -135,13 +155,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
                 if (!string.IsNullOrEmpty(BusinessModuleDropdown.SelectedItem.ToString()))
                 {
-                    List<string> appTiers = _modules[BusinessModuleDropdown.SelectedItem.ToString()];
+                    _businessModuleName = BusinessModuleDropdown.SelectedItem.ToString();
+
+                    List<string> appTiers = _modules[_businessModuleName];
                     foreach (string appTier in appTiers)
                     {
                         AppTierDropdown.Items.Add(appTier);
                     }
                     AppTierDropdown.Enabled = true;
                     AppTierDropdown.Focus();
+                }
+                else
+                {
+                    _businessModuleName = string.Empty;
                 }
             }
             catch (Exception ex)
@@ -245,13 +271,14 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             {
                 Cursor = Cursors.WaitCursor;
                 TenantConfigTabControl.Enabled = false;
-                _tenantConfig = _tenantConfigs[TenantDropdown.SelectedItem.ToString()];
+                _tenantName = TenantDropdown.SelectedItem.ToString();
+                _tenantConfig = _tenantConfigs[_tenantName];
                 LoadTenantConfiguration();
                 TenantConfigTabControl.Enabled = true;
                 ToggleShowIds(ShowIdsCheckBox.Checked);
                 ToggleDirtyData(false);
 
-                FileInfo fi = new FileInfo(_moduleConfigs[BusinessModuleDropdown.SelectedItem.ToString()]);
+                FileInfo fi = new FileInfo(_moduleConfigs[_businessModuleName]);
                 if (fi.IsReadOnly)
                 {
                     MessageBox.Show("The selected config file is currently set to read only.\n\nEnsure that you have the latest checked out tenant configuration file from TFS before attempting to save any changes.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -759,49 +786,12 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         #endregion
 
         #region Model Definition Tab Events
-        private void ModelFileDirectoryBrowseButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-                if(string.IsNullOrEmpty(ModelFileFileDialog.InitialDirectory))
-                {
-                    ModelFileFileDialog.InitialDirectory = _currentModelPath;
-                }
-                DialogResult result = ModelFileFileDialog.ShowDialog();
-                if (result == System.Windows.Forms.DialogResult.OK)
-                {
-                    if (ModelFileFileDialog.FileName.ToLower().StartsWith(_currentModelPath.ToLower()))
-                    {
-                        ModelFileTextbox.Text = ModelFileFileDialog.FileName;
-                    }
-                    else
-                    {
-                        MessageBox.Show(string.Format("The selected model needs to be a '{0}' file located within the '{1}' folder.", ".cs", _currentModelPath), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
-        }
-
-        private void ModelFileTextbox_TextChanged(object sender, EventArgs e)
-        {
-            AutoGenModelButton.Enabled = File.Exists(ModelFileTextbox.Text);
-        }
-
         private void AutoGenModelButton_Click(object sender, EventArgs e)
         {
             try
             {
                 Cursor = Cursors.WaitCursor;
-                AutoGenerateModelDefinition();
+                ShowAutoGenModelDefinition();
             }
             catch (Exception ex)
             {
@@ -840,7 +830,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             {
                 Cursor = Cursors.WaitCursor;
                 e.Row.Cells[0].Value = Guid.NewGuid().ToString("D").ToUpper();
-                e.Row.Cells[1].Value = "HP.HSP.UA3." + BusinessModuleDropdown.SelectedItem.ToString() + "." + AppTierDropdown.SelectedItem.ToString() + ".";
+                e.Row.Cells[1].Value = "HP.HSP.UA3." + _businessModuleName + "." + _appTierName + ".";
                 e.Row.Cells[2].Value = "*";
                 e.Row.Cells[3].Value = "*";
             }
@@ -1127,17 +1117,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             return true;
         }
 
-        private void AutoGenerateModelDefinition()
-        {
-            ModelDefinitionModel modelDef = new ModelDefinitionModel()
-            {
-                DisplaySize = "*",
-                Id = Guid.NewGuid().ToString("n"),
-                Type = "",
-                Scope = "*",
-            };
-        }
-
         private bool ConfirmDeleteRow(string name)
         {
             DialogResult result =
@@ -1185,7 +1164,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 SortConfigurationData();
 
                 //Configure file properties
-                string existingFilePath = _moduleConfigs[BusinessModuleDropdown.SelectedItem.ToString()];
+                string existingFilePath = _moduleConfigs[_businessModuleName];
                 FileInfo fi = new FileInfo(existingFilePath);
                 string backupFilePath = fi.DirectoryName + "\\backup";
                 if(!Directory.Exists(backupFilePath))
@@ -2191,6 +2170,16 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
         }
 
+        private void LoadDisplaySizes()
+        {
+            _displaySizes = new List<DisplaySizeConfigurationModel>();
+
+            foreach (string name in _tenantConfigs.Keys)
+            {
+                _displaySizes.AddRange(_tenantConfigs[name].Modules[0].DisplayConfiguration.DisplaySizes);
+            }
+        }
+
         private void LoadLocaleConfiguration(object selectedLocaleId)
         {
             dataListBindingSource.DataSource = typeof(LocaleConfigurationDataListModel);
@@ -2252,6 +2241,30 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             form.ShowDialog();
         }
 
+        private void ShowAutoGenModelDefinition()
+        {
+            AutoGenModelDefForm form = new AutoGenModelDefForm()
+            {
+                BusinessModelName = _businessModuleName,
+                CurrentModelDataAssembly = _currentModelDataAssemblyFile,
+                CurrentModelDataBinPath = _currentModelDataBinPath,
+                CurrentModelNamespace = _currentModelNamespace,
+                DisplaySizes = _displaySizes,
+                LocalConfig = _tenantConfig.Modules[0].LocalizationConfiguration,
+                ModelDefinitions = _tenantConfig.Modules[0].ModelDefinitionConfiguration
+            };
+            form.ShowDialog();
+            if (!_isDataDrity && form.HasDataChanged)
+            {
+                SortConfigurationData();
+                labelBindingSource.ResetBindings(false);
+                modelDefsBindingSource.ResetBindings(false);
+                ToggleDirtyData(true);
+                MessageBox.Show("Model definition successfully generated.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            form.Dispose();
+        }
+
         private void ShowDataListItems(string id)
         {
             object selectedLocaleId = LocaleDropdown.SelectedValue;
@@ -2265,7 +2278,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
             DataListItemsForm form = new DataListItemsForm()
             {
-                BusinessModule = BusinessModuleDropdown.SelectedItem.ToString(),
+                BusinessModule = _businessModuleName,
                 DataList = dataList,
                 ShowIds = ShowIdsCheckBox.Checked
             };
@@ -2283,7 +2296,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
             MenuItemsForm form = new MenuItemsForm()
             {
-                BusinessModule = BusinessModuleDropdown.SelectedItem.ToString(),
+                BusinessModule = _businessModuleName,
                 Menu = menu,
                 MenuItem = null,
                 ShowIds = ShowIdsCheckBox.Checked
@@ -2302,7 +2315,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
             ModelPropertyForm form = new ModelPropertyForm()
             {
-                BusinessModule = BusinessModuleDropdown.SelectedItem.ToString(),
+                BusinessModule = _businessModuleName,
                 Model = model,
                 ShowIds = ShowIdsCheckBox.Checked
             };
@@ -2320,7 +2333,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
             SecurityFunctionsForm form = new SecurityFunctionsForm()
             {
-                BusinessModule = BusinessModuleDropdown.SelectedItem.ToString(),
+                BusinessModule = _businessModuleName,
                 Role = role,
                 ShowIds = ShowIdsCheckBox.Checked
             };

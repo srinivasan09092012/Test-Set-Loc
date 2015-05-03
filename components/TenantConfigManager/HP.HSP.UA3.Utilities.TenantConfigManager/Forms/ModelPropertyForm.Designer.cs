@@ -29,20 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.ModelDisplayTextBox = new System.Windows.Forms.TextBox();
@@ -55,6 +51,7 @@
             this.CancelButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.ModelPropertiesGridView = new System.Windows.Forms.DataGridView();
+            this.modelPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataTypeDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -66,11 +63,8 @@
             this.defaultTextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hintTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accessKeyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createRestrictionSecurityRightIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.readRestrictionSecurityRightIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updateRestrictionSecurityRightIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deleteRestrictionSecurityRightIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modelPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ViewRestrictionSecurityRightId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditRestrictionSecurityRightId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ModelPropertiesGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelPropertiesBindingSource)).BeginInit();
@@ -89,7 +83,7 @@
             this.groupBox1.Controls.Add(this.ModelTypeTextBox);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(983, 67);
+            this.groupBox1.Size = new System.Drawing.Size(1179, 67);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Model";
@@ -174,7 +168,7 @@
             // CancelButton
             // 
             this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelButton.Location = new System.Drawing.Point(921, 377);
+            this.CancelButton.Location = new System.Drawing.Point(1117, 377);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
             this.CancelButton.TabIndex = 8;
@@ -185,7 +179,7 @@
             // SaveButton
             // 
             this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveButton.Location = new System.Drawing.Point(840, 377);
+            this.SaveButton.Location = new System.Drawing.Point(1036, 377);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(75, 23);
             this.SaveButton.TabIndex = 7;
@@ -214,25 +208,27 @@
             this.defaultTextDataGridViewTextBoxColumn,
             this.hintTypeDataGridViewTextBoxColumn,
             this.accessKeyDataGridViewTextBoxColumn,
-            this.createRestrictionSecurityRightIdDataGridViewTextBoxColumn,
-            this.readRestrictionSecurityRightIdDataGridViewTextBoxColumn,
-            this.updateRestrictionSecurityRightIdDataGridViewTextBoxColumn,
-            this.deleteRestrictionSecurityRightIdDataGridViewTextBoxColumn});
+            this.ViewRestrictionSecurityRightId,
+            this.EditRestrictionSecurityRightId});
             this.ModelPropertiesGridView.DataSource = this.modelPropertiesBindingSource;
             this.ModelPropertiesGridView.Location = new System.Drawing.Point(13, 85);
             this.ModelPropertiesGridView.Name = "ModelPropertiesGridView";
-            this.ModelPropertiesGridView.Size = new System.Drawing.Size(983, 281);
+            this.ModelPropertiesGridView.Size = new System.Drawing.Size(1179, 281);
             this.ModelPropertiesGridView.TabIndex = 6;
             this.ModelPropertiesGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.ModelPropertiesGridView_CellEnter);
             this.ModelPropertiesGridView.CurrentCellChanged += new System.EventHandler(this.ModelPropertiesGridView_CurrentCellChanged);
             this.ModelPropertiesGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.ModelPropertiesGridView_DefaultValuesNeeded);
             this.ModelPropertiesGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.ModelPropertiesGridView_UserDeletingRow);
             // 
+            // modelPropertiesBindingSource
+            // 
+            this.modelPropertiesBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.ModelPropertyModel);
+            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.idDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.idDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.idDataGridViewTextBoxColumn.HeaderText = "ID";
             this.idDataGridViewTextBoxColumn.MinimumWidth = 225;
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
@@ -242,8 +238,8 @@
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.nameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.nameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
             this.nameDataGridViewTextBoxColumn.MinimumWidth = 200;
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
@@ -252,8 +248,8 @@
             // dataTypeDataGridViewComboBoxColumn
             // 
             this.dataTypeDataGridViewComboBoxColumn.DataPropertyName = "DataType";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.dataTypeDataGridViewComboBoxColumn.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.dataTypeDataGridViewComboBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataTypeDataGridViewComboBoxColumn.HeaderText = "Data Type";
             this.dataTypeDataGridViewComboBoxColumn.Name = "dataTypeDataGridViewComboBoxColumn";
             this.dataTypeDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -263,8 +259,8 @@
             // dataRestrictionTypeDataGridViewComboBoxColumn
             // 
             this.dataRestrictionTypeDataGridViewComboBoxColumn.DataPropertyName = "DataRestrictionType";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.dataRestrictionTypeDataGridViewComboBoxColumn.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.dataRestrictionTypeDataGridViewComboBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataRestrictionTypeDataGridViewComboBoxColumn.HeaderText = "Data Restriction Type";
             this.dataRestrictionTypeDataGridViewComboBoxColumn.Name = "dataRestrictionTypeDataGridViewComboBoxColumn";
             this.dataRestrictionTypeDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -274,8 +270,8 @@
             // displayTypeDataGridViewComboBoxColumn
             // 
             this.displayTypeDataGridViewComboBoxColumn.DataPropertyName = "DisplayType";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.displayTypeDataGridViewComboBoxColumn.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.displayTypeDataGridViewComboBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.displayTypeDataGridViewComboBoxColumn.HeaderText = "Display Type";
             this.displayTypeDataGridViewComboBoxColumn.Name = "displayTypeDataGridViewComboBoxColumn";
             this.displayTypeDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -292,10 +288,10 @@
             // maxLengthDataGridViewTextBoxColumn
             // 
             this.maxLengthDataGridViewTextBoxColumn.DataPropertyName = "MaxLength";
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle20.Format = "N0";
-            dataGridViewCellStyle20.NullValue = "-1";
-            this.maxLengthDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle6.Format = "N0";
+            dataGridViewCellStyle6.NullValue = "-1";
+            this.maxLengthDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.maxLengthDataGridViewTextBoxColumn.HeaderText = "Max Length";
             this.maxLengthDataGridViewTextBoxColumn.MinimumWidth = 50;
             this.maxLengthDataGridViewTextBoxColumn.Name = "maxLengthDataGridViewTextBoxColumn";
@@ -304,8 +300,8 @@
             // labelContentIdDataGridViewTextBoxColumn
             // 
             this.labelContentIdDataGridViewTextBoxColumn.DataPropertyName = "LabelContentId";
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.labelContentIdDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.labelContentIdDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
             this.labelContentIdDataGridViewTextBoxColumn.HeaderText = "Label Content ID";
             this.labelContentIdDataGridViewTextBoxColumn.MinimumWidth = 200;
             this.labelContentIdDataGridViewTextBoxColumn.Name = "labelContentIdDataGridViewTextBoxColumn";
@@ -314,8 +310,8 @@
             // defaultTextDataGridViewTextBoxColumn
             // 
             this.defaultTextDataGridViewTextBoxColumn.DataPropertyName = "DefaultText";
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.defaultTextDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.defaultTextDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
             this.defaultTextDataGridViewTextBoxColumn.HeaderText = "Default Text";
             this.defaultTextDataGridViewTextBoxColumn.MinimumWidth = 50;
             this.defaultTextDataGridViewTextBoxColumn.Name = "defaultTextDataGridViewTextBoxColumn";
@@ -324,8 +320,8 @@
             // hintTypeDataGridViewTextBoxColumn
             // 
             this.hintTypeDataGridViewTextBoxColumn.DataPropertyName = "HintType";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.hintTypeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.hintTypeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
             this.hintTypeDataGridViewTextBoxColumn.HeaderText = "Hint Type";
             this.hintTypeDataGridViewTextBoxColumn.MinimumWidth = 50;
             this.hintTypeDataGridViewTextBoxColumn.Name = "hintTypeDataGridViewTextBoxColumn";
@@ -334,62 +330,34 @@
             // accessKeyDataGridViewTextBoxColumn
             // 
             this.accessKeyDataGridViewTextBoxColumn.DataPropertyName = "AccessKey";
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.accessKeyDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.accessKeyDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
             this.accessKeyDataGridViewTextBoxColumn.HeaderText = "Access Key";
             this.accessKeyDataGridViewTextBoxColumn.MinimumWidth = 50;
             this.accessKeyDataGridViewTextBoxColumn.Name = "accessKeyDataGridViewTextBoxColumn";
             this.accessKeyDataGridViewTextBoxColumn.Width = 81;
             // 
-            // createRestrictionSecurityRightIdDataGridViewTextBoxColumn
+            // ViewRestrictionSecurityRightId
             // 
-            this.createRestrictionSecurityRightIdDataGridViewTextBoxColumn.DataPropertyName = "CreateRestrictionSecurityRightId";
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.createRestrictionSecurityRightIdDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle25;
-            this.createRestrictionSecurityRightIdDataGridViewTextBoxColumn.HeaderText = "Create Restriction Security Right ID";
-            this.createRestrictionSecurityRightIdDataGridViewTextBoxColumn.MinimumWidth = 100;
-            this.createRestrictionSecurityRightIdDataGridViewTextBoxColumn.Name = "createRestrictionSecurityRightIdDataGridViewTextBoxColumn";
-            this.createRestrictionSecurityRightIdDataGridViewTextBoxColumn.Width = 146;
+            this.ViewRestrictionSecurityRightId.DataPropertyName = "ViewRestrictionSecurityRightId";
+            this.ViewRestrictionSecurityRightId.HeaderText = "View Restriction Security Right ID";
+            this.ViewRestrictionSecurityRightId.MinimumWidth = 100;
+            this.ViewRestrictionSecurityRightId.Name = "ViewRestrictionSecurityRightId";
+            this.ViewRestrictionSecurityRightId.Width = 139;
             // 
-            // readRestrictionSecurityRightIdDataGridViewTextBoxColumn
+            // EditRestrictionSecurityRightId
             // 
-            this.readRestrictionSecurityRightIdDataGridViewTextBoxColumn.DataPropertyName = "ReadRestrictionSecurityRightId";
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.readRestrictionSecurityRightIdDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle26;
-            this.readRestrictionSecurityRightIdDataGridViewTextBoxColumn.HeaderText = "Read Restriction Security Right ID";
-            this.readRestrictionSecurityRightIdDataGridViewTextBoxColumn.MinimumWidth = 100;
-            this.readRestrictionSecurityRightIdDataGridViewTextBoxColumn.Name = "readRestrictionSecurityRightIdDataGridViewTextBoxColumn";
-            this.readRestrictionSecurityRightIdDataGridViewTextBoxColumn.Width = 141;
-            // 
-            // updateRestrictionSecurityRightIdDataGridViewTextBoxColumn
-            // 
-            this.updateRestrictionSecurityRightIdDataGridViewTextBoxColumn.DataPropertyName = "UpdateRestrictionSecurityRightId";
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.updateRestrictionSecurityRightIdDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle27;
-            this.updateRestrictionSecurityRightIdDataGridViewTextBoxColumn.HeaderText = "Update Restriction Security Right ID";
-            this.updateRestrictionSecurityRightIdDataGridViewTextBoxColumn.MinimumWidth = 100;
-            this.updateRestrictionSecurityRightIdDataGridViewTextBoxColumn.Name = "updateRestrictionSecurityRightIdDataGridViewTextBoxColumn";
-            this.updateRestrictionSecurityRightIdDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // deleteRestrictionSecurityRightIdDataGridViewTextBoxColumn
-            // 
-            this.deleteRestrictionSecurityRightIdDataGridViewTextBoxColumn.DataPropertyName = "DeleteRestrictionSecurityRightId";
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.deleteRestrictionSecurityRightIdDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle28;
-            this.deleteRestrictionSecurityRightIdDataGridViewTextBoxColumn.HeaderText = "Delete Restriction Security Right ID";
-            this.deleteRestrictionSecurityRightIdDataGridViewTextBoxColumn.MinimumWidth = 100;
-            this.deleteRestrictionSecurityRightIdDataGridViewTextBoxColumn.Name = "deleteRestrictionSecurityRightIdDataGridViewTextBoxColumn";
-            this.deleteRestrictionSecurityRightIdDataGridViewTextBoxColumn.Width = 146;
-            // 
-            // modelPropertiesBindingSource
-            // 
-            this.modelPropertiesBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.ModelPropertyModel);
+            this.EditRestrictionSecurityRightId.DataPropertyName = "EditRestrictionSecurityRightId";
+            this.EditRestrictionSecurityRightId.HeaderText = "Edit Restriction Security Right ID";
+            this.EditRestrictionSecurityRightId.MinimumWidth = 100;
+            this.EditRestrictionSecurityRightId.Name = "EditRestrictionSecurityRightId";
+            this.EditRestrictionSecurityRightId.Width = 134;
             // 
             // ModelPropertyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 412);
+            this.ClientSize = new System.Drawing.Size(1204, 412);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.SaveButton);
@@ -397,6 +365,7 @@
             this.Controls.Add(this.groupBox1);
             this.MinimumSize = new System.Drawing.Size(1024, 450);
             this.Name = "ModelPropertyForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Model Properties";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ModelPropertyForm_FormClosing);
             this.Load += new System.EventHandler(this.ModelPropertyForm_Load);
@@ -424,6 +393,10 @@
         private System.Windows.Forms.TextBox ModelDisplayTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox ModelScopeTextBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createRestrictionSecurityRightIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn readRestrictionSecurityRightIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn updateRestrictionSecurityRightIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deleteRestrictionSecurityRightIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataTypeDataGridViewComboBoxColumn;
@@ -435,9 +408,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn defaultTextDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hintTypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn accessKeyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createRestrictionSecurityRightIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn readRestrictionSecurityRightIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn updateRestrictionSecurityRightIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn deleteRestrictionSecurityRightIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ViewRestrictionSecurityRightId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EditRestrictionSecurityRightId;
     }
 }
