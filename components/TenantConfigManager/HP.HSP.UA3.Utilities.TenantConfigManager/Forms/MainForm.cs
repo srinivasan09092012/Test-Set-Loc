@@ -21,6 +21,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         private bool _isDataDrity = false;
         private Dictionary<string, List<string>> _modules = new Dictionary<string, List<string>>();
         private Dictionary<string, string> _moduleConfigs = new Dictionary<string, string>();
+        private string _currentModelPath = string.Empty;
         private Dictionary<string, TenantConfigurationModel> _tenantConfigs = new Dictionary<string, TenantConfigurationModel>();
         private TenantConfigurationModel _tenantConfig = null;
 
@@ -95,7 +96,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
                 TenantDropdown.SelectedIndex = -1;
                 TenantDropdown.Enabled = false;
-                ClearTenantConfigSettings();
+                _currentModelPath = UserConfig.SourcePath + "\\" + BusinessModuleDropdown.SelectedItem.ToString() + "\\Dev\\" + AppTierDropdown.SelectedItem.ToString();
 
                 if (!string.IsNullOrEmpty(AppTierDropdown.SelectedItem.ToString()))
                 {
@@ -130,7 +131,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 AppTierDropdown.Enabled = false;
                 TenantDropdown.Items.Clear();
                 TenantDropdown.Enabled = false;
-                ClearTenantConfigSettings();
                 TenantConfigTabControl.Enabled = false;
 
                 if (!string.IsNullOrEmpty(BusinessModuleDropdown.SelectedItem.ToString()))
@@ -251,7 +251,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 ToggleShowIds(ShowIdsCheckBox.Checked);
                 ToggleDirtyData(false);
 
-                MessageBox.Show("Ensure that you have the latest checked out tenant configuration file from TFS before attempting to save any changes.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FileInfo fi = new FileInfo(_moduleConfigs[BusinessModuleDropdown.SelectedItem.ToString()]);
+                if (fi.IsReadOnly)
+                {
+                    MessageBox.Show("The selected config file is currently set to read only.\n\nEnsure that you have the latest checked out tenant configuration file from TFS before attempting to save any changes.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {
@@ -755,6 +759,60 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         #endregion
 
         #region Model Definition Tab Events
+        private void ModelFileDirectoryBrowseButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                if(string.IsNullOrEmpty(ModelFileFileDialog.InitialDirectory))
+                {
+                    ModelFileFileDialog.InitialDirectory = _currentModelPath;
+                }
+                DialogResult result = ModelFileFileDialog.ShowDialog();
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+                    if (ModelFileFileDialog.FileName.ToLower().StartsWith(_currentModelPath.ToLower()))
+                    {
+                        ModelFileTextbox.Text = ModelFileFileDialog.FileName;
+                    }
+                    else
+                    {
+                        MessageBox.Show(string.Format("The selected model needs to be a '{0}' file located within the '{1}' folder.", ".cs", _currentModelPath), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+
+        private void ModelFileTextbox_TextChanged(object sender, EventArgs e)
+        {
+            AutoGenModelButton.Enabled = File.Exists(ModelFileTextbox.Text);
+        }
+
+        private void AutoGenModelButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                AutoGenerateModelDefinition();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+
         private void modelDefsBindingSource_CurrentItemChanged(object sender, EventArgs e)
         {
             if (_tenantConfigs != null && _tenantConfigs.Count > 0)
@@ -1069,15 +1127,15 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             return true;
         }
 
-        private void ClearTenantConfigSettings()
+        private void AutoGenerateModelDefinition()
         {
-            //configurationItemModelBindingSource.DataSource = typeof(ConfigurationItemModel);
-            //displaySizeBindingSource.DataSource = typeof(DisplaySizeConfigurationModel);
-            //IocTextBox.Text = string.Empty;
-            //LocaleDropdown.DataSource = typeof(LocaleConfigurationModel);
-            //modelDefsBindingSource.DataSource = typeof(ModelDefinitionModel);
-            //MenuBindingSource.DataSource = typeof(MenuItemModel);
-            //securityRolesBindingSource.DataSource = typeof(SecurityRoleModel);
+            ModelDefinitionModel modelDef = new ModelDefinitionModel()
+            {
+                DisplaySize = "*",
+                Id = Guid.NewGuid().ToString("n"),
+                Type = "",
+                Scope = "*",
+            };
         }
 
         private bool ConfirmDeleteRow(string name)
@@ -2159,7 +2217,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
         private void LoadTenantConfiguration()
         {
-            ClearTenantConfigSettings();
             SortConfigurationData();
 
             //Application settings
