@@ -348,15 +348,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     return false;
                 }
 
-                //Check for unique content id
-                if (_modelProperties.FindAll(i => string.Compare(i.LabelContentId, item.LabelContentId, true) == 0).Count > 1)
-                {
-                    ModelPropertiesGridView.CurrentCell = ModelPropertiesGridView.Rows[idx].Cells[7];
-                    ModelPropertiesGridView.Rows[idx].Cells[7].Selected = true;
-                    MessageBox.Show(string.Format("Label Content ID must be a unqiue value. There are more than 1 rows with a content ID value of '{0}'.", item.LabelContentId), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
                 //Check for unique access key
                 if (!string.IsNullOrEmpty(item.AccessKey))
                 {
