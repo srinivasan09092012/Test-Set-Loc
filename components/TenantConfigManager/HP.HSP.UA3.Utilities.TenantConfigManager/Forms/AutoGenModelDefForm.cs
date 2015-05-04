@@ -144,7 +144,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     ModelDefinitionModel modelDef = new ModelDefinitionModel()
                     {
                         DisplaySize = DisplaySizeDropdown.SelectedItem.ToString(),
-                        Id = Guid.NewGuid().ToString("D").ToUpper(),
+                        Id = Common.Utilities.GenerateNewID(),
                         Type = typeString,
                         Scope = ScopeTextbox.Text.Trim()
                     };
@@ -208,7 +208,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
                             ModelPropertyModel propertyModel = new ModelPropertyModel()
                             {
-                                Id = Guid.NewGuid().ToString("D").ToUpper(),
+                                Id = Common.Utilities.GenerateNewID(),
                                 DataRestrictionType = dataRestrictionType,
                                 DataType = dataType,
                                 DefaultText = defaultText,
@@ -229,7 +229,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                                     {
                                         LocaleConfigurationLabelModel label = new LocaleConfigurationLabelModel()
                                         {
-                                            Id = Guid.NewGuid().ToString("D").ToUpper(),
+                                            Id = Common.Utilities.GenerateNewID(),
                                             ContentId = labelContentId,
                                             LocaleId = locale.Name,
                                             Text = defaultText,

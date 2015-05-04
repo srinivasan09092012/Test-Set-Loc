@@ -99,7 +99,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                e.Row.Cells[0].Value = Guid.NewGuid().ToString("D").ToUpper();
+                e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
                 e.Row.Cells[1].Value = this.DataList.LocaleId;
                 e.Row.Cells[2].Value = this.DataList.ContentId + ".";
             }

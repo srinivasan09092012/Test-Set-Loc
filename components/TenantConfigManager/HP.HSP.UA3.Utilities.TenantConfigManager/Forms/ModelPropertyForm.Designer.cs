@@ -51,6 +51,7 @@
             this.CancelButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.ModelPropertiesGridView = new System.Windows.Forms.DataGridView();
+            this.modelPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataTypeDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -63,8 +64,9 @@
             this.hintTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accessKeyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewRestrictionSecurityRightId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddViewRestriction = new System.Windows.Forms.DataGridViewButtonColumn();
             this.EditRestrictionSecurityRightId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modelPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.AddEditRestriction = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ModelPropertiesGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelPropertiesBindingSource)).BeginInit();
@@ -83,7 +85,7 @@
             this.groupBox1.Controls.Add(this.ModelTypeTextBox);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1179, 67);
+            this.groupBox1.Size = new System.Drawing.Size(1328, 67);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Model";
@@ -168,7 +170,7 @@
             // CancelButton
             // 
             this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelButton.Location = new System.Drawing.Point(1117, 377);
+            this.CancelButton.Location = new System.Drawing.Point(1259, 377);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
             this.CancelButton.TabIndex = 8;
@@ -179,7 +181,7 @@
             // SaveButton
             // 
             this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveButton.Location = new System.Drawing.Point(1036, 377);
+            this.SaveButton.Location = new System.Drawing.Point(1178, 377);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(75, 23);
             this.SaveButton.TabIndex = 7;
@@ -209,16 +211,24 @@
             this.hintTypeDataGridViewTextBoxColumn,
             this.accessKeyDataGridViewTextBoxColumn,
             this.ViewRestrictionSecurityRightId,
-            this.EditRestrictionSecurityRightId});
+            this.AddViewRestriction,
+            this.EditRestrictionSecurityRightId,
+            this.AddEditRestriction});
             this.ModelPropertiesGridView.DataSource = this.modelPropertiesBindingSource;
-            this.ModelPropertiesGridView.Location = new System.Drawing.Point(34, 90);
+            this.ModelPropertiesGridView.Location = new System.Drawing.Point(12, 90);
             this.ModelPropertiesGridView.Name = "ModelPropertiesGridView";
-            this.ModelPropertiesGridView.Size = new System.Drawing.Size(1179, 281);
+            this.ModelPropertiesGridView.Size = new System.Drawing.Size(1328, 281);
             this.ModelPropertiesGridView.TabIndex = 6;
+            this.ModelPropertiesGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ModelPropertiesGridView_CellContentClick);
             this.ModelPropertiesGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.ModelPropertiesGridView_CellEnter);
+            this.ModelPropertiesGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ModelPropertiesGridView_CellFormatting);
             this.ModelPropertiesGridView.CurrentCellChanged += new System.EventHandler(this.ModelPropertiesGridView_CurrentCellChanged);
             this.ModelPropertiesGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.ModelPropertiesGridView_DefaultValuesNeeded);
             this.ModelPropertiesGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.ModelPropertiesGridView_UserDeletingRow);
+            // 
+            // modelPropertiesBindingSource
+            // 
+            this.modelPropertiesBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.ModelPropertyModel);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -250,7 +260,7 @@
             this.dataTypeDataGridViewComboBoxColumn.Name = "dataTypeDataGridViewComboBoxColumn";
             this.dataTypeDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataTypeDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataTypeDataGridViewComboBoxColumn.Width = 76;
+            this.dataTypeDataGridViewComboBoxColumn.Width = 82;
             // 
             // dataRestrictionTypeDataGridViewComboBoxColumn
             // 
@@ -341,6 +351,14 @@
             this.ViewRestrictionSecurityRightId.Name = "ViewRestrictionSecurityRightId";
             this.ViewRestrictionSecurityRightId.Width = 139;
             // 
+            // AddViewRestriction
+            // 
+            this.AddViewRestriction.HeaderText = "View Action";
+            this.AddViewRestriction.Name = "AddViewRestriction";
+            this.AddViewRestriction.Text = "";
+            this.AddViewRestriction.Visible = false;
+            this.AddViewRestriction.Width = 62;
+            // 
             // EditRestrictionSecurityRightId
             // 
             this.EditRestrictionSecurityRightId.DataPropertyName = "EditRestrictionSecurityRightId";
@@ -349,15 +367,19 @@
             this.EditRestrictionSecurityRightId.Name = "EditRestrictionSecurityRightId";
             this.EditRestrictionSecurityRightId.Width = 134;
             // 
-            // modelPropertiesBindingSource
+            // AddEditRestriction
             // 
-            this.modelPropertiesBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.ModelPropertyModel);
+            this.AddEditRestriction.HeaderText = "Edit Action";
+            this.AddEditRestriction.Name = "AddEditRestriction";
+            this.AddEditRestriction.Text = "";
+            this.AddEditRestriction.Visible = false;
+            this.AddEditRestriction.Width = 58;
             // 
             // ModelPropertyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1204, 412);
+            this.ClientSize = new System.Drawing.Size(1353, 412);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.SaveButton);
@@ -409,6 +431,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn hintTypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn accessKeyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ViewRestrictionSecurityRightId;
+        private System.Windows.Forms.DataGridViewButtonColumn AddViewRestriction;
         private System.Windows.Forms.DataGridViewTextBoxColumn EditRestrictionSecurityRightId;
+        private System.Windows.Forms.DataGridViewButtonColumn AddEditRestriction;
     }
 }

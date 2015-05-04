@@ -100,8 +100,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                e.Row.Cells[0].Value = Guid.NewGuid().ToString("D").ToUpper();
-                e.Row.Cells[3].Value = this.BusinessModule + ".Label.Security.Rights." + SecurityFunctionNameTextBox.Text + ".";
+                e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
+                e.Row.Cells[3].Value = this.BusinessModule + ".Label.Security.Rights.";
             }
             catch (Exception ex)
             {
@@ -258,7 +258,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for proper named label content id
-                string prefix = this.BusinessModule + ".Label.Security.Rights." + SecurityFunctionNameTextBox.Text + ".";
+                string prefix = this.BusinessModule + ".Label.Security.Rights.";
                 if (!item.ContentId.StartsWith(prefix))
                 {
                     SecurityRightsGridView.CurrentCell = SecurityRightsGridView.Rows[idx].Cells[3];

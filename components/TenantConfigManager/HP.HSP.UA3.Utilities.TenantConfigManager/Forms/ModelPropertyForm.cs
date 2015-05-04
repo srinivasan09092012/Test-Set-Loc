@@ -1,6 +1,7 @@
 ﻿using HP.HSP.UA3.Core.UX.Common;
 using HP.HSP.UA3.Core.UX.Common.Utilities;
 using HP.HSP.UA3.Core.UX.Data.Configuration;
+using HP.HSP.UA3.Core.UX.Data.Security;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -11,6 +12,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
     {
         public string BusinessModule = string.Empty;
         public ModelDefinitionModel Model = null;
+        public List<SecurityRoleModel> Roles = null;
+        public LocalizationConfigurationModel LocalizationConfig = null;
         public bool HasDataChanged = false;
         public bool ShowIds = false;
 
@@ -95,12 +98,88 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
         }
 
+        private void ModelPropertiesGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            switch (e.ColumnIndex)
+            {
+                case 12:
+                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[11].Value == null)
+                    {
+                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[12].Value = "Add";
+                    }
+                    else
+                    {
+                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[12].Value = "Delete";
+                    }
+                    break;
+
+                case 14:
+                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[13].Value == null)
+                    {
+                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[14].Value = "Add";
+                    }
+                    else
+                    {
+                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[14].Value = "Delete";
+                    }
+                    break;
+            }
+        }
+
+        private void ModelPropertiesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            switch(e.ColumnIndex)
+            {
+                case 12:
+                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[11].Value == null)
+                    {
+                        //Add view restriction
+                        SecurityRightModel securityRight = new SecurityRightModel()
+                        {
+                            Id = Common.Utilities.GenerateNewID(),
+                            Name = "Property.View." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                            ContentId = this.BusinessModule + ".Label.Securty.Rights.Property.View." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                            IsActive = true,
+                            Type = SecurityRightModel.RightType.Property
+                        };
+
+                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[11].Value = securityRight.Id;
+                    }
+                    else
+                    {
+                        //Delete view restriction
+                    }
+                    break;
+
+                case 14:
+                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[13].Value == null)
+                    {
+                        //Add edit restriction
+                        SecurityRightModel securityRight = new SecurityRightModel()
+                        {
+                            Id = Common.Utilities.GenerateNewID(),
+                            Name = "Property.Edit." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                            ContentId = this.BusinessModule + ".Label.Securty.Rights.Property.Edit." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                            IsActive = true,
+                            Type = SecurityRightModel.RightType.Property
+                        };
+
+                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[13].Value = securityRight.Id;
+                    }
+                    else
+                    {
+                        //Delete edit restriction
+                    }
+                    break;
+            }
+        }
+
         private void ModelPropertiesGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             try
             {
                 Cursor = Cursors.WaitCursor;
-                e.Row.Cells[0].Value = Guid.NewGuid().ToString("D").ToUpper();
+                e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
                 e.Row.Cells[7].Value = this.BusinessModule + ".Label.Field.";
             }
             catch (Exception ex)

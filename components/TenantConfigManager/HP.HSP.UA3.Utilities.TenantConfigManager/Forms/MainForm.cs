@@ -404,7 +404,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                e.Row.Cells[0].Value = Guid.NewGuid().ToString("D").ToUpper();
+                e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
             }
             catch (Exception ex)
             {
@@ -509,7 +509,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                e.Row.Cells[0].Value = Guid.NewGuid().ToString("D").ToUpper();
+                e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
                 e.Row.Cells[1].Value = LocaleDropdown.SelectedValue;
                 e.Row.Cells[3].Value = BusinessModuleDropdown.Text + ".DataList.";
             }
@@ -576,7 +576,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                e.Row.Cells[0].Value = Guid.NewGuid().ToString("D").ToUpper();
+                e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
                 e.Row.Cells[1].Value = LocaleDropdown.SelectedValue;
                 e.Row.Cells[2].Value = BusinessModuleDropdown.Text + ".HtmlBlock.";
             }
@@ -635,7 +635,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                e.Row.Cells[0].Value = Guid.NewGuid().ToString("D").ToUpper();
+                e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
                 e.Row.Cells[1].Value = LocaleDropdown.SelectedValue;
                 e.Row.Cells[2].Value = BusinessModuleDropdown.Text + ".Image.";
             }
@@ -694,7 +694,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                e.Row.Cells[0].Value = Guid.NewGuid().ToString("D").ToUpper();
+                e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
                 e.Row.Cells[1].Value = LocaleDropdown.SelectedValue;
                 e.Row.Cells[2].Value = BusinessModuleDropdown.Text + ".Label.";
             }
@@ -753,7 +753,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                e.Row.Cells[0].Value = Guid.NewGuid().ToString("D").ToUpper();
+                e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
                 e.Row.Cells[1].Value = LocaleDropdown.SelectedValue;
                 e.Row.Cells[2].Value = BusinessModuleDropdown.Text + ".Msg.";
             }
@@ -829,7 +829,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                e.Row.Cells[0].Value = Guid.NewGuid().ToString("D").ToUpper();
+                e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
                 e.Row.Cells[1].Value = "HP.HSP.UA3." + _businessModuleName + "." + _appTierName + ".";
                 e.Row.Cells[2].Value = "*";
                 e.Row.Cells[3].Value = "*";
@@ -910,7 +910,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                e.Row.Cells[0].Value = Guid.NewGuid().ToString("D").ToUpper();
+                e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
                 e.Row.Cells[3].Value = "*";
             }
             catch (Exception ex)
@@ -989,7 +989,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                e.Row.Cells[0].Value = Guid.NewGuid().ToString("D").ToUpper();
+                e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
                 e.Row.Cells[1].Value = BusinessModuleDropdown.Text + ".Service.";
                 e.Row.Cells[3].Value = BusinessModuleDropdown.Text + ".Label.Service.";
                 e.Row.Cells[6].Value = BusinessModuleDropdown.Text;
@@ -1050,7 +1050,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                e.Row.Cells[0].Value = Guid.NewGuid().ToString("D").ToUpper();
+                e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
                 e.Row.Cells[4].Value = 1;
                 e.Row.Cells[6].Value = true;
                 e.Row.Cells[7].Value = true;
@@ -2317,6 +2317,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             {
                 BusinessModule = _businessModuleName,
                 Model = model,
+                Roles = _tenantConfig.Modules[0].SecurityRoles,
+                LocalizationConfig = _tenantConfig.Modules[0].LocalizationConfiguration,
                 ShowIds = ShowIdsCheckBox.Checked
             };
             form.ShowDialog();

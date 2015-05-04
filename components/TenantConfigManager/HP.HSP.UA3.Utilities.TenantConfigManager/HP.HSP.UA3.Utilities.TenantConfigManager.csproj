@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Utilities.cs" />
     <Compile Include="Data\UserConfigModel.cs" />
     <Compile Include="Forms\AboutForm.cs">
       <SubType>Form</SubType>

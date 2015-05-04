@@ -99,7 +99,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                e.Row.Cells[0].Value = Guid.NewGuid().ToString("D").ToUpper();
+                e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
+                e.Row.Cells[1].Value = MenuItemNameTextBox.Text + ".";
                 e.Row.Cells[5].Value = this.BusinessModule + ".Label.Menu.";
                 e.Row.Cells[9].Value = this.BusinessModule;
             }
