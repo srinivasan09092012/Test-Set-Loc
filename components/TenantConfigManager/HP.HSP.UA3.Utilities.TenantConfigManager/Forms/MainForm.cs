@@ -88,6 +88,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.Cancel = true;
             }
             finally
             {
