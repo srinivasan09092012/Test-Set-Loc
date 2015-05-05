@@ -176,12 +176,22 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                                 childTypes.Add(propertyType);
                             }
 
+                            bool skipProperty = false;
                             switch (propertyType)
                             {
+                                case "System.Boolean":
+                                    break;
+
                                 case "System.DateTime":
                                     dataType = System.ComponentModel.DataAnnotations.DataType.Date;
                                     dataRestrictionType = Core.UX.Common.CoreEnumerations.DataAnnotations.DataRestrictionType.None;
                                     hintType = "Date";
+                                    break;
+
+                                case "System.Int32":
+                                    dataType = System.ComponentModel.DataAnnotations.DataType.Custom;
+                                    dataRestrictionType = Core.UX.Common.CoreEnumerations.DataAnnotations.DataRestrictionType.None;
+                                    hintType = "Number";
                                     break;
 
                                 case "System.Decimal":
@@ -200,42 +210,43 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                                     break;
 
                                 default:
-                                    dataType = System.ComponentModel.DataAnnotations.DataType.Custom;
-                                    dataRestrictionType = Core.UX.Common.CoreEnumerations.DataAnnotations.DataRestrictionType.None;
-                                    hintType = string.Empty;
+                                    skipProperty = true;
                                     break;
                             }
 
-                            ModelPropertyModel propertyModel = new ModelPropertyModel()
+                            if(!skipProperty)
                             {
-                                Id = Common.Utilities.GenerateNewID(),
-                                DataRestrictionType = dataRestrictionType,
-                                DataType = dataType,
-                                DefaultText = defaultText,
-                                DisplayType = Core.UX.Common.CoreEnumerations.DataAnnotations.DataDisplayType.Editable,
-                                HintType = hintType,
-                                IsRequired = true,
-                                LabelContentId = labelContentId,
-                                MaxLength = maxLength,
-                                Name = property.Name
-                            };
-                            modelDef.ModelProperties.Add(propertyModel);
-
-                            if (GenerateLabelsCheckBox.Checked)
-                            {
-                                foreach (LocaleConfigurationModel locale in this.LocalConfig.Locales)
+                                ModelPropertyModel propertyModel = new ModelPropertyModel()
                                 {
-                                    if (locale.LocaleLabels.Find(l => string.Compare(l.ContentId, labelContentId, true) == 0) == null)
+                                    Id = Common.Utilities.GenerateNewID(),
+                                    DataRestrictionType = dataRestrictionType,
+                                    DataType = dataType,
+                                    DefaultText = defaultText,
+                                    DisplayType = Core.UX.Common.CoreEnumerations.DataAnnotations.DataDisplayType.Editable,
+                                    HintType = hintType,
+                                    IsRequired = true,
+                                    LabelContentId = labelContentId,
+                                    MaxLength = maxLength,
+                                    Name = property.Name
+                                };
+                                modelDef.ModelProperties.Add(propertyModel);
+
+                                if (GenerateLabelsCheckBox.Checked)
+                                {
+                                    foreach (LocaleConfigurationModel locale in this.LocalConfig.Locales)
                                     {
-                                        LocaleConfigurationLabelModel label = new LocaleConfigurationLabelModel()
+                                        if (locale.LocaleLabels.Find(l => string.Compare(l.ContentId, labelContentId, true) == 0) == null)
                                         {
-                                            Id = Common.Utilities.GenerateNewID(),
-                                            ContentId = labelContentId,
-                                            LocaleId = locale.Name,
-                                            Text = defaultText,
-                                            Tooltip = defaultText
-                                        };
-                                        locale.LocaleLabels.Add(label);
+                                            LocaleConfigurationLabelModel label = new LocaleConfigurationLabelModel()
+                                            {
+                                                Id = Common.Utilities.GenerateNewID(),
+                                                ContentId = labelContentId,
+                                                LocaleId = locale.Name,
+                                                Text = defaultText,
+                                                Tooltip = defaultText
+                                            };
+                                            locale.LocaleLabels.Add(label);
+                                        }
                                     }
                                 }
                             }
