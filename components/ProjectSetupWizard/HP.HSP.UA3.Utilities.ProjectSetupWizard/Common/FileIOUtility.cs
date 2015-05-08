@@ -46,12 +46,15 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Common
 
         private static void ConvertFileContents(string moduleFile, string moduleName, string serviceName)
         {
+            Random rnd = new Random();
+            int servicePort = rnd.Next(40100, 40999);
             string contents = File.ReadAllText(moduleFile);
             contents = contents.Replace("[COMGuid]", Guid.NewGuid().ToString());
             contents = contents.Replace("[ModuleName]", moduleName);
             contents = contents.Replace("[ModuleGuid]", Guid.NewGuid().ToString("n"));
             contents = contents.Replace("[NewGuid]", Guid.NewGuid().ToString("n"));
             contents = contents.Replace("[ServiceName]", serviceName);
+            contents = contents.Replace("[ServicePort]", servicePort.ToString());
             File.WriteAllText(moduleFile, contents);
         }
 
