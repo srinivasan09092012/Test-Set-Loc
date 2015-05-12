@@ -247,7 +247,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                                             {
                                                 Id = Common.Utilities.GenerateNewID(),
                                                 ContentId = labelContentId,
-                                                LocaleId = locale.Name,
+                                                LocaleId = locale.Id,
                                                 Text = defaultText,
                                                 Tooltip = defaultText
                                             };

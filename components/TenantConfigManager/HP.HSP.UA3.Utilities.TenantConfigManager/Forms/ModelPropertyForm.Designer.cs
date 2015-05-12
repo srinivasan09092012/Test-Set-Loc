@@ -39,6 +39,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.ModelDisplayTextBox = new System.Windows.Forms.TextBox();
@@ -59,6 +61,8 @@
             this.displayTypeDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.isRequiredDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.maxLengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CompareTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CompareToMsgContentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelContentIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.defaultTextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hintTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -206,6 +210,8 @@
             this.displayTypeDataGridViewComboBoxColumn,
             this.isRequiredDataGridViewCheckBoxColumn,
             this.maxLengthDataGridViewTextBoxColumn,
+            this.CompareTo,
+            this.CompareToMsgContentId,
             this.labelContentIdDataGridViewTextBoxColumn,
             this.defaultTextDataGridViewTextBoxColumn,
             this.hintTypeDataGridViewTextBoxColumn,
@@ -296,18 +302,37 @@
             this.maxLengthDataGridViewTextBoxColumn.DataPropertyName = "MaxLength";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
             dataGridViewCellStyle6.Format = "N0";
-            dataGridViewCellStyle6.NullValue = "-1";
+            dataGridViewCellStyle6.NullValue = "0";
             this.maxLengthDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.maxLengthDataGridViewTextBoxColumn.HeaderText = "Max Length";
             this.maxLengthDataGridViewTextBoxColumn.MinimumWidth = 50;
             this.maxLengthDataGridViewTextBoxColumn.Name = "maxLengthDataGridViewTextBoxColumn";
             this.maxLengthDataGridViewTextBoxColumn.Width = 81;
             // 
+            // CompareTo
+            // 
+            this.CompareTo.DataPropertyName = "CompareTo";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.CompareTo.DefaultCellStyle = dataGridViewCellStyle7;
+            this.CompareTo.HeaderText = "Compare To";
+            this.CompareTo.MinimumWidth = 100;
+            this.CompareTo.Name = "CompareTo";
+            // 
+            // CompareToMsgContentId
+            // 
+            this.CompareToMsgContentId.DataPropertyName = "CompareToMsgContentId";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.CompareToMsgContentId.DefaultCellStyle = dataGridViewCellStyle8;
+            this.CompareToMsgContentId.HeaderText = "Compare To Msg Content Id";
+            this.CompareToMsgContentId.MinimumWidth = 200;
+            this.CompareToMsgContentId.Name = "CompareToMsgContentId";
+            this.CompareToMsgContentId.Width = 200;
+            // 
             // labelContentIdDataGridViewTextBoxColumn
             // 
             this.labelContentIdDataGridViewTextBoxColumn.DataPropertyName = "LabelContentId";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.labelContentIdDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.labelContentIdDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
             this.labelContentIdDataGridViewTextBoxColumn.HeaderText = "Label Content ID";
             this.labelContentIdDataGridViewTextBoxColumn.MinimumWidth = 200;
             this.labelContentIdDataGridViewTextBoxColumn.Name = "labelContentIdDataGridViewTextBoxColumn";
@@ -316,8 +341,8 @@
             // defaultTextDataGridViewTextBoxColumn
             // 
             this.defaultTextDataGridViewTextBoxColumn.DataPropertyName = "DefaultText";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.defaultTextDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.defaultTextDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
             this.defaultTextDataGridViewTextBoxColumn.HeaderText = "Default Text";
             this.defaultTextDataGridViewTextBoxColumn.MinimumWidth = 50;
             this.defaultTextDataGridViewTextBoxColumn.Name = "defaultTextDataGridViewTextBoxColumn";
@@ -326,8 +351,8 @@
             // hintTypeDataGridViewTextBoxColumn
             // 
             this.hintTypeDataGridViewTextBoxColumn.DataPropertyName = "HintType";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.hintTypeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.hintTypeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
             this.hintTypeDataGridViewTextBoxColumn.HeaderText = "Hint Type";
             this.hintTypeDataGridViewTextBoxColumn.MinimumWidth = 50;
             this.hintTypeDataGridViewTextBoxColumn.Name = "hintTypeDataGridViewTextBoxColumn";
@@ -336,8 +361,8 @@
             // accessKeyDataGridViewTextBoxColumn
             // 
             this.accessKeyDataGridViewTextBoxColumn.DataPropertyName = "AccessKey";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.accessKeyDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.accessKeyDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
             this.accessKeyDataGridViewTextBoxColumn.HeaderText = "Access Key";
             this.accessKeyDataGridViewTextBoxColumn.MinimumWidth = 50;
             this.accessKeyDataGridViewTextBoxColumn.Name = "accessKeyDataGridViewTextBoxColumn";
@@ -426,6 +451,8 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn displayTypeDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isRequiredDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn maxLengthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CompareTo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CompareToMsgContentId;
         private System.Windows.Forms.DataGridViewTextBoxColumn labelContentIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn defaultTextDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hintTypeDataGridViewTextBoxColumn;

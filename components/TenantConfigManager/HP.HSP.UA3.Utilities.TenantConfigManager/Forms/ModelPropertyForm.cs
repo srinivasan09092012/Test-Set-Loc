@@ -103,17 +103,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             switch (e.ColumnIndex)
             {
                 case 12:
-                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[11].Value == null)
-                    {
-                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[12].Value = "Add";
-                    }
-                    else
-                    {
-                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[12].Value = "Delete";
-                    }
-                    break;
-
-                case 14:
                     if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[13].Value == null)
                     {
                         ModelPropertiesGridView.Rows[e.RowIndex].Cells[14].Value = "Add";
@@ -121,6 +110,17 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     else
                     {
                         ModelPropertiesGridView.Rows[e.RowIndex].Cells[14].Value = "Delete";
+                    }
+                    break;
+
+                case 14:
+                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[15].Value == null)
+                    {
+                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[16].Value = "Add";
+                    }
+                    else
+                    {
+                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[16].Value = "Delete";
                     }
                     break;
             }
@@ -180,6 +180,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             {
                 Cursor = Cursors.WaitCursor;
                 e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
+                e.Row.Cells[6].Value = 0;
                 e.Row.Cells[7].Value = this.BusinessModule + ".Label.Field.";
             }
             catch (Exception ex)
