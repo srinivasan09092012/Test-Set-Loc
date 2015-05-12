@@ -53,7 +53,6 @@
             this.CancelButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.ModelPropertiesGridView = new System.Windows.Forms.DataGridView();
-            this.modelPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataTypeDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -71,6 +70,7 @@
             this.AddViewRestriction = new System.Windows.Forms.DataGridViewButtonColumn();
             this.EditRestrictionSecurityRightId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddEditRestriction = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.modelPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ModelPropertiesGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelPropertiesBindingSource)).BeginInit();
@@ -228,13 +228,10 @@
             this.ModelPropertiesGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ModelPropertiesGridView_CellContentClick);
             this.ModelPropertiesGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.ModelPropertiesGridView_CellEnter);
             this.ModelPropertiesGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ModelPropertiesGridView_CellFormatting);
+            this.ModelPropertiesGridView.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.ModelPropertiesGridView_CellLeave);
             this.ModelPropertiesGridView.CurrentCellChanged += new System.EventHandler(this.ModelPropertiesGridView_CurrentCellChanged);
             this.ModelPropertiesGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.ModelPropertiesGridView_DefaultValuesNeeded);
             this.ModelPropertiesGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.ModelPropertiesGridView_UserDeletingRow);
-            // 
-            // modelPropertiesBindingSource
-            // 
-            this.modelPropertiesBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.ModelPropertyModel);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -266,7 +263,7 @@
             this.dataTypeDataGridViewComboBoxColumn.Name = "dataTypeDataGridViewComboBoxColumn";
             this.dataTypeDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataTypeDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataTypeDataGridViewComboBoxColumn.Width = 82;
+            this.dataTypeDataGridViewComboBoxColumn.Width = 76;
             // 
             // dataRestrictionTypeDataGridViewComboBoxColumn
             // 
@@ -399,6 +396,10 @@
             this.AddEditRestriction.Text = "";
             this.AddEditRestriction.Visible = false;
             this.AddEditRestriction.Width = 58;
+            // 
+            // modelPropertiesBindingSource
+            // 
+            this.modelPropertiesBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.ModelPropertyModel);
             // 
             // ModelPropertyForm
             // 

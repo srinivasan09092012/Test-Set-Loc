@@ -98,6 +98,10 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
         }
 
+        private void ModelPropertiesGridView_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
         private void ModelPropertiesGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             switch (e.ColumnIndex)
@@ -369,7 +373,12 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     MessageBox.Show("Default Text is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
-                idx++;
+
+                //Set specifieds
+                item.CompareToSpecified = !string.IsNullOrEmpty(item.CompareTo);
+                item.CompareToMsgContentIdSpecified = !string.IsNullOrEmpty(item.CompareToMsgContentId);
+                item.EditRestrictionSecurityRightIdSpecified = !string.IsNullOrEmpty(item.EditRestrictionSecurityRightId);
+                item.ViewRestrictionSecurityRightIdSpecified = !string.IsNullOrEmpty(item.ViewRestrictionSecurityRightId);
             }
 
             return true;
