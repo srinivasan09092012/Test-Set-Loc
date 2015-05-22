@@ -185,7 +185,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 Cursor = Cursors.WaitCursor;
                 e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
                 e.Row.Cells[6].Value = 0;
-                e.Row.Cells[7].Value = this.BusinessModule + ".Label.Field.";
+                e.Row.Cells[9].Value = this.BusinessModule + ".Label.Field.";
             }
             catch (Exception ex)
             {
@@ -343,13 +343,22 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     return false;
                 }
                 
-                //Check for proper named content id
+                //Check for properly named label content id
                 string prefix = this.BusinessModule + ".Label.Field.";
-                if (!item.LabelContentId.StartsWith(prefix))
+                if (string.IsNullOrEmpty(item.LabelContentId) || !item.LabelContentId.StartsWith(prefix))
                 {
-                    ModelPropertiesGridView.CurrentCell = ModelPropertiesGridView.Rows[idx].Cells[7];
-                    ModelPropertiesGridView.Rows[idx].Cells[7].Selected = true;
+                    ModelPropertiesGridView.CurrentCell = ModelPropertiesGridView.Rows[idx].Cells[9];
+                    ModelPropertiesGridView.Rows[idx].Cells[9].Selected = true;
                     MessageBox.Show(string.Format("Label Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                //Check for default text
+                if (string.IsNullOrEmpty(item.DefaultText))
+                {
+                    ModelPropertiesGridView.CurrentCell = ModelPropertiesGridView.Rows[idx].Cells[10];
+                    ModelPropertiesGridView.Rows[idx].Cells[10].Selected = true;
+                    MessageBox.Show("Default Text is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
 
@@ -358,20 +367,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     if (_modelProperties.FindAll(i => string.Compare(i.AccessKey, item.AccessKey, true) == 0).Count > 1)
                     {
-                        ModelPropertiesGridView.CurrentCell = ModelPropertiesGridView.Rows[idx].Cells[10];
-                        ModelPropertiesGridView.Rows[idx].Cells[10].Selected = true;
+                        ModelPropertiesGridView.CurrentCell = ModelPropertiesGridView.Rows[idx].Cells[12];
+                        ModelPropertiesGridView.Rows[idx].Cells[12].Selected = true;
                         MessageBox.Show(string.Format("Access Key must be a unqiue value. There are more than 1 rows with an acces key value of '{0}'.", item.AccessKey), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                     }
-                }
-
-                //Check for default text
-                if (string.IsNullOrEmpty(item.DefaultText))
-                {
-                    ModelPropertiesGridView.CurrentCell = ModelPropertiesGridView.Rows[idx].Cells[8];
-                    ModelPropertiesGridView.Rows[idx].Cells[8].Selected = true;
-                    MessageBox.Show("Default Text is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
                 }
 
                 //Set specifieds

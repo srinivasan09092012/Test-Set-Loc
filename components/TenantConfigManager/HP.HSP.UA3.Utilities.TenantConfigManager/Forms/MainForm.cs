@@ -2736,9 +2736,12 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 );
                 foreach (ModelDefinitionModel item in _tenantConfig.Modules[0].ModelDefinitionConfiguration)
                 {
-                    item.ModelProperties.Sort(
-                        delegate(ModelPropertyModel i1, ModelPropertyModel i2) { return string.Compare(i1.Name, i2.Name); }
-                    );
+                    if (item.ModelProperties != null)
+                    {
+                        item.ModelProperties.Sort(
+                            delegate(ModelPropertyModel i1, ModelPropertyModel i2) { return string.Compare(i1.Name, i2.Name); }
+                        );
+                    }
                 }
             }
 
