@@ -41,6 +41,7 @@
             // SaveButton
             // 
             this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveButton.Location = new System.Drawing.Point(632, 119);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(75, 23);
@@ -77,6 +78,7 @@
             // SourceDirectoryBrowseButton
             // 
             this.SourceDirectoryBrowseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SourceDirectoryBrowseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SourceDirectoryBrowseButton.Location = new System.Drawing.Point(652, 30);
             this.SourceDirectoryBrowseButton.Name = "SourceDirectoryBrowseButton";
             this.SourceDirectoryBrowseButton.Size = new System.Drawing.Size(32, 20);

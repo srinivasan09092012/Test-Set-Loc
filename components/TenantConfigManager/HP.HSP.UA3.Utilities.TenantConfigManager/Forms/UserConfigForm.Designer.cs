@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SourceDirectoryBrowseButton = new System.Windows.Forms.Button();
             this.SourceDirectoryTextbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.FolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,9 +53,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "File Paths";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(109, 57);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(424, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "example: C:\\Projects\\HP\\USHC_AMERICAS_US_ADU_HSP_UA3\\Source";
+            // 
             // SourceDirectoryBrowseButton
             // 
             this.SourceDirectoryBrowseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SourceDirectoryBrowseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SourceDirectoryBrowseButton.Location = new System.Drawing.Point(652, 30);
             this.SourceDirectoryBrowseButton.Name = "SourceDirectoryBrowseButton";
             this.SourceDirectoryBrowseButton.Size = new System.Drawing.Size(32, 20);
@@ -87,6 +98,7 @@
             // SaveButton
             // 
             this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveButton.Location = new System.Drawing.Point(632, 119);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(75, 23);
@@ -94,16 +106,6 @@
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(109, 57);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(424, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "example: C:\\Projects\\HP\\USHC_AMERICAS_US_ADU_HSP_UA3\\Source";
             // 
             // UserConfigForm
             // 

@@ -159,6 +159,7 @@
             // DeleteButton
             // 
             this.DeleteButton.Enabled = false;
+            this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteButton.Location = new System.Drawing.Point(291, 28);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(75, 23);
@@ -169,6 +170,7 @@
             // 
             // CreateNewButton
             // 
+            this.CreateNewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateNewButton.Location = new System.Drawing.Point(372, 28);
             this.CreateNewButton.Name = "CreateNewButton";
             this.CreateNewButton.Size = new System.Drawing.Size(75, 23);
@@ -190,6 +192,7 @@
             // 
             this.BusinessModuleDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.BusinessModuleDropdown.Enabled = false;
+            this.BusinessModuleDropdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BusinessModuleDropdown.FormattingEnabled = true;
             this.BusinessModuleDropdown.Location = new System.Drawing.Point(65, 30);
             this.BusinessModuleDropdown.Name = "BusinessModuleDropdown";
@@ -230,6 +233,7 @@
             // DeleteBatchButton
             // 
             this.DeleteBatchButton.Enabled = false;
+            this.DeleteBatchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteBatchButton.Location = new System.Drawing.Point(296, 34);
             this.DeleteBatchButton.Name = "DeleteBatchButton";
             this.DeleteBatchButton.Size = new System.Drawing.Size(75, 23);
@@ -242,6 +246,7 @@
             // 
             this.BatchDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.BatchDropdown.Enabled = false;
+            this.BatchDropdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BatchDropdown.FormattingEnabled = true;
             this.BatchDropdown.Location = new System.Drawing.Point(70, 36);
             this.BatchDropdown.Name = "BatchDropdown";
@@ -251,6 +256,7 @@
             // 
             // CreateBatchButton
             // 
+            this.CreateBatchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateBatchButton.Location = new System.Drawing.Point(377, 34);
             this.CreateBatchButton.Name = "CreateBatchButton";
             this.CreateBatchButton.Size = new System.Drawing.Size(75, 23);
@@ -286,6 +292,7 @@
             // DeleteBASButton
             // 
             this.DeleteBASButton.Enabled = false;
+            this.DeleteBASButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteBASButton.Location = new System.Drawing.Point(296, 34);
             this.DeleteBASButton.Name = "DeleteBASButton";
             this.DeleteBASButton.Size = new System.Drawing.Size(75, 23);
@@ -298,6 +305,7 @@
             // 
             this.BASDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.BASDropdown.Enabled = false;
+            this.BASDropdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BASDropdown.FormattingEnabled = true;
             this.BASDropdown.Location = new System.Drawing.Point(70, 36);
             this.BASDropdown.Name = "BASDropdown";
@@ -307,6 +315,7 @@
             // 
             // CreateBASButton
             // 
+            this.CreateBASButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateBASButton.Location = new System.Drawing.Point(377, 34);
             this.CreateBASButton.Name = "CreateBASButton";
             this.CreateBASButton.Size = new System.Drawing.Size(75, 23);

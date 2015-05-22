@@ -52,6 +52,9 @@
     <Reference Include="HP.HSP.UA3.Core.UX.Providers">
       <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.UX.Providers.1.0.0\lib\net451\HP.HSP.UA3.Core.UX.Providers.dll</HintPath>
     </Reference>
+    <Reference Include="ScintillaNET">
+      <HintPath>..\..\..\..\Packages\jacobslusser.ScintillaNET.3.3.0\lib\net40\ScintillaNET.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -85,6 +88,12 @@
     </Compile>
     <Compile Include="Forms\DataListItemsForm.Designer.cs">
       <DependentUpon>DataListItemsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EmailTemplateAddressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EmailTemplateAddressForm.Designer.cs">
+      <DependentUpon>EmailTemplateAddressForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
@@ -122,6 +131,12 @@
     <Compile Include="Forms\UserConfigForm.Designer.cs">
       <DependentUpon>UserConfigForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\XmlEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\XmlEditorForm.Designer.cs">
+      <DependentUpon>XmlEditorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AppConfig.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -133,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DataListItemsForm.resx">
       <DependentUpon>DataListItemsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EmailTemplateAddressForm.resx">
+      <DependentUpon>EmailTemplateAddressForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -152,6 +170,9 @@
     <EmbeddedResource Include="Forms\UserConfigForm.resx">
       <DependentUpon>UserConfigForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\XmlEditorForm.resx">
+      <DependentUpon>XmlEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -164,11 +185,14 @@
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\HP.HSP.UA3.Core.UX.Common.CoreEnumerations+Messaging+MessageType.datasource" />
+    <None Include="Properties\DataSources\HP.HSP.UA3.Core.UX.Common.CoreEnumerations+Notifications+AddressType.datasource" />
     <None Include="Properties\DataSources\HP.HSP.UA3.Core.UX.Data.Configuration.ConfigurationItemModel+DataFormatType.datasource" />
     <None Include="Properties\DataSources\HP.HSP.UA3.Core.UX.Data.Configuration.ConfigurationItemModel.datasource" />
     <None Include="Properties\DataSources\HP.HSP.UA3.Core.UX.Data.Configuration.DisplaySizeConfigurationModel.datasource" />
     <None Include="Properties\DataSources\HP.HSP.UA3.Core.UX.Data.Configuration.LocaleConfigurationDataListItemModel.datasource" />
     <None Include="Properties\DataSources\HP.HSP.UA3.Core.UX.Data.Configuration.LocaleConfigurationDataListModel.datasource" />
+    <None Include="Properties\DataSources\HP.HSP.UA3.Core.UX.Data.Configuration.LocaleConfigurationEmailTemplateAddressModel.datasource" />
+    <None Include="Properties\DataSources\HP.HSP.UA3.Core.UX.Data.Configuration.LocaleConfigurationEmailTemplateModel.datasource" />
     <None Include="Properties\DataSources\HP.HSP.UA3.Core.UX.Data.Configuration.LocaleConfigurationHtmlBlockModel.datasource" />
     <None Include="Properties\DataSources\HP.HSP.UA3.Core.UX.Data.Configuration.LocaleConfigurationImageModel.datasource" />
     <None Include="Properties\DataSources\HP.HSP.UA3.Core.UX.Data.Configuration.LocaleConfigurationLabelModel.datasource" />

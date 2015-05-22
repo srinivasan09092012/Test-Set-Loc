@@ -7,8 +7,10 @@ using HP.HSP.UA3.Core.UX.Data.Security;
 using HP.HSP.UA3.Core.UX.Providers;
 using HP.HSP.UA3.Utilities.TenantConfigManager.Common;
 using HP.HSP.UA3.Utilities.TenantConfigManager.Data;
+using ScintillaNET;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
@@ -448,6 +450,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         {
             if (_tenantConfigs != null && _tenantConfigs.Count > 0)
             {
+                _tenantConfig.Modules[0].IocConfigurationString = IocTextBox.Text;
                 ToggleDirtyData(true);
             }
         }
@@ -550,6 +553,92 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         }
         #endregion
 
+        #region Localization EmailTemplates Tab Events
+        private void EmailTemplatesGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == EmailTemplatesGridView.NewRowIndex)
+            {
+                if (EmailTemplatesGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
+                {
+                    EmailTemplatesGridView.BeginEdit(false);
+                    TextBox textBox = (TextBox)EmailTemplatesGridView.EditingControl;
+                    textBox.SelectionStart = textBox.Text.Length;
+                }
+            }
+        }
+
+        private void emailTemplatesBindingSource_CurrentItemChanged(object sender, EventArgs e)
+        {
+            if (_tenantConfigs != null && _tenantConfigs.Count > 0)
+            {
+                ToggleDirtyData(true);
+            }
+        }
+
+        private void EmailTemplatesGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
+                e.Row.Cells[1].Value = LocaleDropdown.SelectedValue;
+                e.Row.Cells[2].Value = BusinessModuleDropdown.Text + ".EmailTemplate.";
+                e.Row.Cells[5].Value = "Normal";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+
+        private void EmailTemplatesGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                e.Cancel = !ConfirmDeleteRow(e.Row.Cells[2].Value.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+
+        private void EmailTemplatesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                if (e.ColumnIndex == 6)
+                {
+                    string id = EmailTemplatesGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    ShowEmailTemplateEditor(id);
+                }
+                else if (e.ColumnIndex == 9)
+                {
+                    string id = EmailTemplatesGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    ShowEmailTemplateAddresses(id);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+        #endregion
+
         #region Localization HtmlBlocks Tab Events
         private void HtmlBlocksGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -597,6 +686,27 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             {
                 Cursor = Cursors.WaitCursor;
                 e.Cancel = !ConfirmDeleteRow(e.Row.Cells[2].Value.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+
+        private void HtmlBlocksGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                if (e.ColumnIndex == 3)
+                {
+                    string id = HtmlBlocksGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    ShowHtmlBlockEditor(id);
+                }
             }
             catch (Exception ex)
             {
@@ -1127,11 +1237,15 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
         private void InitializeDataGrids()
         {
+            ((DataGridViewComboBoxColumn)EmailTemplatesGridView.Columns[5]).DataSource = Enum.GetValues(typeof(CoreEnumerations.Notifications.PriorityType));
             ((DataGridViewComboBoxColumn)MessagesGridView.Columns[3]).DataSource = Enum.GetValues(typeof(CoreEnumerations.Messaging.MessageType));
         }
 
         private void InitializeForm()
         {
+            //Set styles
+            TenantConfigManager.Common.Utilities.StyleXmlEditor(IocTextBox);
+
             BusinessModuleDropdown.Items.Clear();
             BusinessModuleDropdown.Enabled = false;
             AppTierDropdown.Items.Clear();
@@ -1357,6 +1471,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     return false;
                 }
 
+                if (!IsValidLocalizationEmailTemplates(item.LocaleEmailTemplates, idx))
+                {
+                    return false;
+                }
+
                 if (!IsValidLocalizationHtmlBlocks(item.LocaleHtmlBlocks, idx))
                 {
                     return false;
@@ -1401,11 +1520,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique ID value
-                if (_tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
+                if (_tenantConfig.Modules[0].LocalizationConfiguration.Locales[localeIdx].LocaleDataLists.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[0];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[0];
                     DataListsGridView.CurrentCell = DataListsGridView.Rows[idx].Cells[0];
                     DataListsGridView.Rows[idx].Cells[0].Selected = true;
                     ShowIdsCheckBox.Checked = true;
@@ -1479,6 +1598,127 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             return true;
         }
 
+        private bool IsValidLocalizationEmailTemplates(List<LocaleConfigurationEmailTemplateModel> items, int localeIdx)
+        {
+            int idx = 0;
+            foreach (LocaleConfigurationEmailTemplateModel item in items)
+            {
+                //Check for ID value
+                if (string.IsNullOrEmpty(item.Id))
+                {
+                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
+                    LocaleDropdown.SelectedIndex = localeIdx;
+                    LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[1];
+                    EmailTemplatesGridView.CurrentCell = EmailTemplatesGridView.Rows[idx].Cells[0];
+                    EmailTemplatesGridView.Rows[idx].Cells[0].Selected = true;
+                    ShowIdsCheckBox.Checked = true;
+                    MessageBox.Show("ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                //Check for unique ID value
+                if (_tenantConfig.Modules[0].LocalizationConfiguration.Locales[localeIdx].LocaleEmailTemplates.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
+                {
+                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
+                    LocaleDropdown.SelectedIndex = localeIdx;
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[1];
+                    EmailTemplatesGridView.CurrentCell = EmailTemplatesGridView.Rows[idx].Cells[0];
+                    EmailTemplatesGridView.Rows[idx].Cells[0].Selected = true;
+                    ShowIdsCheckBox.Checked = true;
+                    MessageBox.Show(string.Format("ID must be a unqiue value. There are more than 1 rows with a name value of '{0}'.", item.Id), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                //Check for content id
+                if (string.IsNullOrEmpty(item.ContentId))
+                {
+                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
+                    LocaleDropdown.SelectedIndex = localeIdx;
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[1];
+                    EmailTemplatesGridView.CurrentCell = EmailTemplatesGridView.Rows[idx].Cells[2];
+                    EmailTemplatesGridView.Rows[idx].Cells[2].Selected = true;
+                    MessageBox.Show("Content ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                //Check for proper named content id
+                string prefix = BusinessModuleDropdown.Text + ".EmailTemplate.";
+                if (!item.ContentId.StartsWith(prefix))
+                {
+                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
+                    LocaleDropdown.SelectedIndex = localeIdx;
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[1];
+                    EmailTemplatesGridView.CurrentCell = EmailTemplatesGridView.Rows[idx].Cells[2];
+                    EmailTemplatesGridView.Rows[idx].Cells[2].Selected = true;
+                    MessageBox.Show(string.Format("Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                //Check for unique content id
+                if (items.FindAll(i => string.Compare(i.ContentId, item.ContentId, true) == 0).Count > 1)
+                {
+                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
+                    LocaleDropdown.SelectedIndex = localeIdx;
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[1];
+                    EmailTemplatesGridView.CurrentCell = EmailTemplatesGridView.Rows[idx].Cells[2];
+                    EmailTemplatesGridView.Rows[idx].Cells[2].Selected = true;
+                    MessageBox.Show(string.Format("Content ID must be a unqiue value. There are more than 1 rows with a content ID value of '{0}'.", item.ContentId), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                //Check for name
+                if (string.IsNullOrEmpty(item.Name))
+                {
+                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
+                    LocaleDropdown.SelectedIndex = localeIdx;
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[1];
+                    EmailTemplatesGridView.CurrentCell = EmailTemplatesGridView.Rows[idx].Cells[3];
+                    EmailTemplatesGridView.Rows[idx].Cells[3].Selected = true;
+                    MessageBox.Show("Name is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                //Check for subject
+                if (string.IsNullOrEmpty(item.Subject))
+                {
+                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
+                    LocaleDropdown.SelectedIndex = localeIdx;
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[1];
+                    EmailTemplatesGridView.CurrentCell = EmailTemplatesGridView.Rows[idx].Cells[4];
+                    EmailTemplatesGridView.Rows[idx].Cells[4].Selected = true;
+                    MessageBox.Show("Subject is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                //Check for body
+                if (string.IsNullOrEmpty(item.BodyString))
+                {
+                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
+                    LocaleDropdown.SelectedIndex = localeIdx;
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[1];
+                    EmailTemplatesGridView.CurrentCell = EmailTemplatesGridView.Rows[idx].Cells[6];
+                    EmailTemplatesGridView.Rows[idx].Cells[6].Selected = true;
+                    MessageBox.Show("Body is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                //Check for start date less than end date
+                if(DateTime.Compare(item.StartDate, item.EndDate) > 0)
+                {
+                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
+                    LocaleDropdown.SelectedIndex = localeIdx;
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[1];
+                    EmailTemplatesGridView.CurrentCell = EmailTemplatesGridView.Rows[idx].Cells[8];
+                    EmailTemplatesGridView.Rows[idx].Cells[8].Selected = true;
+                    MessageBox.Show("Start date must be before or on end date.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                idx++;
+            }
+            return true;
+        }
+
         private bool IsValidLocalizationHtmlBlocks(List<LocaleConfigurationHtmlBlockModel> items, int localeIdx)
         {
             int idx = 0;
@@ -1489,7 +1729,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[1];
+                    LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[2];
                     HtmlBlocksGridView.CurrentCell = HtmlBlocksGridView.Rows[idx].Cells[0];
                     HtmlBlocksGridView.Rows[idx].Cells[0].Selected = true;
                     ShowIdsCheckBox.Checked = true;
@@ -1498,11 +1738,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique ID value
-                if (_tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
+                if (_tenantConfig.Modules[0].LocalizationConfiguration.Locales[localeIdx].LocaleHtmlBlocks.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[1];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[2];
                     HtmlBlocksGridView.CurrentCell = HtmlBlocksGridView.Rows[idx].Cells[0];
                     HtmlBlocksGridView.Rows[idx].Cells[0].Selected = true;
                     ShowIdsCheckBox.Checked = true;
@@ -1515,7 +1755,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[1];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[2];
                     HtmlBlocksGridView.CurrentCell = HtmlBlocksGridView.Rows[idx].Cells[2];
                     HtmlBlocksGridView.Rows[idx].Cells[2].Selected = true;
                     MessageBox.Show("Content ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1528,7 +1768,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[1];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[2];
                     HtmlBlocksGridView.CurrentCell = HtmlBlocksGridView.Rows[idx].Cells[2];
                     HtmlBlocksGridView.Rows[idx].Cells[2].Selected = true;
                     MessageBox.Show(string.Format("Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1540,7 +1780,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[1];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[2];
                     HtmlBlocksGridView.CurrentCell = HtmlBlocksGridView.Rows[idx].Cells[2];
                     HtmlBlocksGridView.Rows[idx].Cells[2].Selected = true;
                     MessageBox.Show(string.Format("Content ID must be a unqiue value. There are more than 1 rows with a content ID value of '{0}'.", item.ContentId), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1548,11 +1788,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for html
-                if (string.IsNullOrEmpty(item.Html))
+                if (string.IsNullOrEmpty(item.HtmlString))
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[1];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[2];
                     HtmlBlocksGridView.CurrentCell = HtmlBlocksGridView.Rows[idx].Cells[3];
                     HtmlBlocksGridView.Rows[idx].Cells[3].Selected = true;
                     MessageBox.Show("Html is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1574,7 +1814,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[2];
+                    LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     ImagesGridView.CurrentCell = ImagesGridView.Rows[idx].Cells[0];
                     ImagesGridView.Rows[idx].Cells[0].Selected = true;
                     ShowIdsCheckBox.Checked = true;
@@ -1583,11 +1823,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique ID value
-                if (_tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
+                if (_tenantConfig.Modules[0].LocalizationConfiguration.Locales[localeIdx].LocaleImages.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[2];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[3];
                     ImagesGridView.CurrentCell = ImagesGridView.Rows[idx].Cells[0];
                     ImagesGridView.Rows[idx].Cells[0].Selected = true;
                     ShowIdsCheckBox.Checked = true;
@@ -1600,7 +1840,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[2];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[3];
                     ImagesGridView.CurrentCell = ImagesGridView.Rows[idx].Cells[2];
                     ImagesGridView.Rows[idx].Cells[2].Selected = true;
                     MessageBox.Show("Content ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1613,7 +1853,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[2];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[3];
                     ImagesGridView.CurrentCell = ImagesGridView.Rows[idx].Cells[2];
                     ImagesGridView.Rows[idx].Cells[2].Selected = true;
                     MessageBox.Show(string.Format("Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1625,7 +1865,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[2];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[3];
                     ImagesGridView.CurrentCell = ImagesGridView.Rows[idx].Cells[2];
                     ImagesGridView.Rows[idx].Cells[2].Selected = true;
                     MessageBox.Show(string.Format("Content ID must be a unqiue value. There are more than 1 rows with a content ID value of '{0}'.", item.ContentId), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1637,7 +1877,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[2];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[3];
                     ImagesGridView.CurrentCell = ImagesGridView.Rows[idx].Cells[3];
                     ImagesGridView.Rows[idx].Cells[3].Selected = true;
                     MessageBox.Show("Source is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1649,7 +1889,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[2];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[3];
                     ImagesGridView.CurrentCell = ImagesGridView.Rows[idx].Cells[6];
                     ImagesGridView.Rows[idx].Cells[6].Selected = true;
                     MessageBox.Show("Tooltip is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1671,7 +1911,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
+                    LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[4];
                     LabelsGridView.CurrentCell = LabelsGridView.Rows[idx].Cells[0];
                     LabelsGridView.Rows[idx].Cells[0].Selected = true;
                     ShowIdsCheckBox.Checked = true;
@@ -1680,11 +1920,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique ID value
-                if (_tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
+                if (_tenantConfig.Modules[0].LocalizationConfiguration.Locales[localeIdx].LocaleLabels.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[4];
                     LabelsGridView.CurrentCell = LabelsGridView.Rows[idx].Cells[0];
                     LabelsGridView.Rows[idx].Cells[0].Selected = true;
                     ShowIdsCheckBox.Checked = true;
@@ -1697,7 +1937,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[3];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[4];
                     LabelsGridView.CurrentCell = LabelsGridView.Rows[idx].Cells[2];
                     LabelsGridView.Rows[idx].Cells[2].Selected = true;
                     MessageBox.Show("Content ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1710,7 +1950,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[3];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[4];
                     LabelsGridView.CurrentCell = LabelsGridView.Rows[idx].Cells[2];
                     LabelsGridView.Rows[idx].Cells[2].Selected = true;
                     MessageBox.Show(string.Format("Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1722,7 +1962,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[3];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[4];
                     LabelsGridView.CurrentCell = LabelsGridView.Rows[idx].Cells[2];
                     LabelsGridView.Rows[idx].Cells[2].Selected = true;
                     MessageBox.Show(string.Format("Content ID must be a unqiue value. There are more than 1 rows with a content ID value of '{0}'.", item.ContentId), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1734,7 +1974,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[3];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[4];
                     LabelsGridView.CurrentCell = LabelsGridView.Rows[idx].Cells[3];
                     LabelsGridView.Rows[idx].Cells[3].Selected = true;
                     MessageBox.Show("Text is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1756,7 +1996,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[4];
+                    LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[5];
                     MessagesGridView.CurrentCell = MessagesGridView.Rows[idx].Cells[0];
                     MessagesGridView.Rows[idx].Cells[0].Selected = true;
                     ShowIdsCheckBox.Checked = true;
@@ -1765,11 +2005,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
 
                 //Check for unique ID value
-                if (_tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
+                if (_tenantConfig.Modules[0].LocalizationConfiguration.Locales[localeIdx].LocaleMessages.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[4];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[5];
                     MessagesGridView.CurrentCell = MessagesGridView.Rows[idx].Cells[0];
                     MessagesGridView.Rows[idx].Cells[0].Selected = true;
                     ShowIdsCheckBox.Checked = true;
@@ -1782,7 +2022,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[4];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[5];
                     MessagesGridView.CurrentCell = MessagesGridView.Rows[idx].Cells[2];
                     MessagesGridView.Rows[idx].Cells[2].Selected = true;
                     MessageBox.Show("Content ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1795,7 +2035,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[4];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[5];
                     MessagesGridView.CurrentCell = MessagesGridView.Rows[idx].Cells[2];
                     MessagesGridView.Rows[idx].Cells[2].Selected = true;
                     MessageBox.Show(string.Format("Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1807,7 +2047,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[4];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[5];
                     MessagesGridView.CurrentCell = MessagesGridView.Rows[idx].Cells[2];
                     MessagesGridView.Rows[idx].Cells[2].Selected = true;
                     MessageBox.Show(string.Format("Content ID must be a unqiue value. There are more than 1 rows with a content ID value of '{0}'.", item.ContentId), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1819,7 +2059,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[4];
+                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[5];
                     MessagesGridView.CurrentCell = MessagesGridView.Rows[idx].Cells[4];
                     MessagesGridView.Rows[idx].Cells[4].Selected = true;
                     MessageBox.Show("Text is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -2184,6 +2424,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         private void LoadLocaleConfiguration(object selectedLocaleId)
         {
             dataListBindingSource.DataSource = typeof(LocaleConfigurationDataListModel);
+            emailTemplatesBindingSource.DataSource = typeof(LocaleConfigurationEmailTemplateModel);
             htmlBlockBindingSource.DataSource = typeof(LocaleConfigurationHtmlBlockModel);
             imageBindingSource.DataSource = typeof(LocaleConfigurationImageModel);
             labelBindingSource.DataSource = typeof(LocaleConfigurationLabelModel);
@@ -2198,6 +2439,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             if (locale != null)
             {
                 dataListBindingSource.DataSource = locale.LocaleDataLists;
+                emailTemplatesBindingSource.DataSource = locale.LocaleEmailTemplates;
                 htmlBlockBindingSource.DataSource = locale.LocaleHtmlBlocks;
                 imageBindingSource.DataSource = locale.LocaleImages;
                 labelBindingSource.DataSource = locale.LocaleLabels;
@@ -2286,6 +2528,81 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             form.ShowDialog();
             if (!_isDataDrity && form.HasDataChanged)
             {
+                ToggleDirtyData(true);
+            }
+            form.Dispose();
+        }
+
+        private void ShowEmailTemplateEditor(string id)
+        {
+            object selectedLocaleId = LocaleDropdown.SelectedValue;
+            string localeId = selectedLocaleId.ToString();
+            if (selectedLocaleId != null && selectedLocaleId is LocaleConfigurationModel)
+            {
+                localeId = ((LocaleConfigurationModel)selectedLocaleId).LocaleId;
+            }
+            LocaleConfigurationModel locale = _tenantConfig.Modules[0].LocalizationConfiguration.Locales.Find(i => i.LocaleId == localeId);
+            LocaleConfigurationEmailTemplateModel emailTemplate = locale.LocaleEmailTemplates.Find(i => i.Id == id);
+
+            XmlEditorForm form = new XmlEditorForm()
+            {
+                ContentId = emailTemplate.ContentId,
+                EditorText = emailTemplate.BodyString
+            };
+            form.ShowDialog();
+            if (form.HasDataChanged)
+            {
+                emailTemplate.BodyString = form.EditorText;
+                ToggleDirtyData(true);
+            }
+            form.Dispose();
+        }
+
+        private void ShowEmailTemplateAddresses(string id)
+        {
+            object selectedLocaleId = LocaleDropdown.SelectedValue;
+            string localeId = selectedLocaleId.ToString();
+            if (selectedLocaleId != null && selectedLocaleId is LocaleConfigurationModel)
+            {
+                localeId = ((LocaleConfigurationModel)selectedLocaleId).LocaleId;
+            }
+            LocaleConfigurationModel locale = _tenantConfig.Modules[0].LocalizationConfiguration.Locales.Find(i => i.LocaleId == localeId);
+            LocaleConfigurationEmailTemplateModel emailTemplate = locale.LocaleEmailTemplates.Find(i => i.Id == id);
+
+            EmailTemplateAddressForm form = new EmailTemplateAddressForm()
+            {
+                BusinessModule = _businessModuleName,
+                EmailTemplate = emailTemplate,
+                ShowIds = ShowIdsCheckBox.Checked
+            };
+            form.ShowDialog();
+            if (!_isDataDrity && form.HasDataChanged)
+            {
+                ToggleDirtyData(true);
+            }
+            form.Dispose();
+        }
+
+        private void ShowHtmlBlockEditor(string id)
+        {
+            object selectedLocaleId = LocaleDropdown.SelectedValue;
+            string localeId = selectedLocaleId.ToString();
+            if (selectedLocaleId != null && selectedLocaleId is LocaleConfigurationModel)
+            {
+                localeId = ((LocaleConfigurationModel)selectedLocaleId).LocaleId;
+            }
+            LocaleConfigurationModel locale = _tenantConfig.Modules[0].LocalizationConfiguration.Locales.Find(i => i.LocaleId == localeId);
+            LocaleConfigurationHtmlBlockModel htmlBlock = locale.LocaleHtmlBlocks.Find(i => i.Id == id);
+
+            XmlEditorForm form = new XmlEditorForm()
+            {
+                ContentId = htmlBlock.ContentId,
+                EditorText = htmlBlock.HtmlString
+            };
+            form.ShowDialog();
+            if (form.HasDataChanged)
+            {
+                htmlBlock.HtmlString = form.EditorText;
                 ToggleDirtyData(true);
             }
             form.Dispose();
@@ -2389,6 +2706,10 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                             );
                         }
 
+                        locale.LocaleEmailTemplates.Sort(
+                            delegate(LocaleConfigurationEmailTemplateModel i1, LocaleConfigurationEmailTemplateModel i2) { return string.Compare(i1.ContentId, i2.ContentId); }
+                        );
+
                         locale.LocaleHtmlBlocks.Sort(
                             delegate(LocaleConfigurationHtmlBlockModel i1, LocaleConfigurationHtmlBlockModel i2) { return string.Compare(i1.ContentId, i2.ContentId); }
                         );
@@ -2435,9 +2756,12 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     {
                         foreach (MenuItemModel childItem in item.Items)
                         {
-                            childItem.Items.Sort(
-                                delegate(MenuItemModel i1, MenuItemModel i2) { return string.Compare(i1.Name, i2.Name); }
-                            );
+                            if (childItem.Items != null)
+                            {
+                                childItem.Items.Sort(
+                                    delegate(MenuItemModel i1, MenuItemModel i2) { return string.Compare(i1.Name, i2.Name); }
+                                );
+                            }
                         }
                     }
                 }
@@ -2489,19 +2813,16 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             DisplaySizesGridView.Columns[0].Visible = showIds;
 
             DataListsGridView.Columns[0].Visible = showIds;
-            DataListsGridView.Columns[1].Visible = showIds;
+
+            EmailTemplatesGridView.Columns[0].Visible = showIds;
 
             HtmlBlocksGridView.Columns[0].Visible = showIds;
-            HtmlBlocksGridView.Columns[1].Visible = showIds;
 
             ImagesGridView.Columns[0].Visible = showIds;
-            ImagesGridView.Columns[1].Visible = showIds;
 
             LabelsGridView.Columns[0].Visible = showIds;
-            LabelsGridView.Columns[1].Visible = showIds;
 
             MessagesGridView.Columns[0].Visible = showIds;
-            MessagesGridView.Columns[1].Visible = showIds;
 
             ModelDefinitionsGridView.Columns[0].Visible = showIds;
             

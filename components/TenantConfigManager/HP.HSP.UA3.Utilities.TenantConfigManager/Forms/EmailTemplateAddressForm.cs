@@ -1,33 +1,39 @@
-﻿using HP.HSP.UA3.Core.UX.Common.Utilities;
-using HP.HSP.UA3.Core.UX.Data.Navigation;
+﻿using HP.HSP.UA3.Core.UX.Common;
+using HP.HSP.UA3.Core.UX.Common.Utilities;
+using HP.HSP.UA3.Core.UX.Data.Configuration;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 {
-    public partial class MenuItemsForm : Form
+    public partial class EmailTemplateAddressForm : Form
     {
         public string BusinessModule = string.Empty;
-        public MenuModel Menu = null;
-        public MenuItemModel MenuItem = null;
+        public LocaleConfigurationEmailTemplateModel EmailTemplate = null;
         public bool HasDataChanged = false;
         public bool ShowIds = false;
 
         private bool _isDataDrity = false;
-        private List<MenuItemModel> _menuItems = null;
+        private List<LocaleConfigurationEmailTemplateAddressModel> _addresses = null;
 
-        public MenuItemsForm()
+        public EmailTemplateAddressForm()
         {
             InitializeComponent();
         }
 
-        private void ModelPropertyForm_Load(object sender, EventArgs e)
+        private void EmailTemplateAddressFormLoad(object sender, EventArgs e)
         {
 
         }
 
-        private void ModelPropertyForm_Shown(object sender, EventArgs e)
+        private void EmailTemplateAddressForm_Shown(object sender, EventArgs e)
         {
             try
             {
@@ -44,7 +50,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
         }
 
-        private void ModelPropertyForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void EmailTemplateAddressForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             try
             {
@@ -81,28 +87,26 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 Cursor = Cursors.Default;
             }
         }
-        private void MenuItemsGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
+
+        private void AddressItemsGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex == MenuItemsGridView.NewRowIndex)
+            if (e.RowIndex == AddressItemsGridView.NewRowIndex)
             {
-                if (MenuItemsGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
+                if (AddressItemsGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
                 {
-                    MenuItemsGridView.BeginEdit(false);
-                    TextBox textBox = (TextBox)MenuItemsGridView.EditingControl;
+                    AddressItemsGridView.BeginEdit(false);
+                    TextBox textBox = (TextBox)AddressItemsGridView.EditingControl;
                     textBox.SelectionStart = textBox.Text.Length;
                 }
             }
         }
 
-        private void MenuItemsGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        private void AddressItemsGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             try
             {
                 Cursor = Cursors.WaitCursor;
                 e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
-                e.Row.Cells[1].Value = MenuItemNameTextBox.Text + ".";
-                e.Row.Cells[5].Value = this.BusinessModule + ".Label.Menu.";
-                e.Row.Cells[9].Value = this.BusinessModule;
             }
             catch (Exception ex)
             {
@@ -114,16 +118,12 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
         }
 
-        private void MenuItemsGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void AddressItemsGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             try
             {
                 Cursor = Cursors.WaitCursor;
-                if (e.ColumnIndex == 10)
-                {
-                    string id = MenuItemsGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    ShowMenuItems(id);
-                }
+                e.Cancel = !ConfirmDeleteRow(e.Row.Cells[2].Value.ToString());
             }
             catch (Exception ex)
             {
@@ -135,26 +135,9 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
         }
 
-        private void MenuItemsGridView_CurrentCellChanged(object sender, EventArgs e)
+        private void emailTemplateAddressBindingSource_CurrentItemChanged(object sender, EventArgs e)
         {
             ToggleDirtyData(true);
-        }
-
-        private void MenuItemsGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-                e.Cancel = !ConfirmDeleteRow(e.Row.Cells[1].Value.ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
         }
 
         private void ShowIdsCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -228,26 +211,25 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
         private void InitializeForm()
         {
+            InitializeDataGrid();
             ShowIdsCheckBox.Checked = this.ShowIds;
-            LoadMenuItems();
+            LoadAddressItems();
             ToggleDirtyData(false);
-            MenuItemsGridView.Focus();
+            AddressItemsGridView.Focus();
+        }
+
+        private void InitializeDataGrid()
+        {
+            ((DataGridViewComboBoxColumn)AddressItemsGridView.Columns[1]).DataSource = Enum.GetValues(typeof(CoreEnumerations.Notifications.AddressType));
         }
 
         private bool IsDataSaved()
         {
             bool isSaved = false;
 
-            if (IsValidModelPropertyItems())
+            if (IsValidTemplateAddresses())
             {
-                if (this.MenuItem != null)
-                {
-                    this.MenuItem.Items = _menuItems;
-                }
-                else
-                {
-                    this.Menu.Items = _menuItems;
-                }
+                this.EmailTemplate.Addresses = _addresses;
                 isSaved = true;
                 ToggleDirtyData(false);
                 this.HasDataChanged = true;
@@ -257,74 +239,66 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             return isSaved;
         }
 
-        private bool IsValidModelPropertyItems()
+        private bool IsValidTemplateAddresses()
         {
             int idx = 0;
-            foreach (MenuItemModel item in _menuItems)
+            foreach (LocaleConfigurationEmailTemplateAddressModel item in _addresses)
             {
                 //Check for ID value
                 if (string.IsNullOrEmpty(item.Id))
                 {
-                    MenuItemsGridView.CurrentCell = MenuItemsGridView.Rows[idx].Cells[0];
-                    MenuItemsGridView.Rows[idx].Cells[0].Selected = true;
+                    AddressItemsGridView.CurrentCell = AddressItemsGridView.Rows[idx].Cells[0];
+                    AddressItemsGridView.Rows[idx].Cells[0].Selected = true;
                     ShowIdsCheckBox.Checked = true;
                     MessageBox.Show("ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
 
                 //Check for unique ID value
-                if (_menuItems.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
+                if (_addresses.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
-                    MenuItemsGridView.CurrentCell = MenuItemsGridView.Rows[idx].Cells[0];
-                    MenuItemsGridView.Rows[idx].Cells[0].Selected = true;
+                    AddressItemsGridView.CurrentCell = AddressItemsGridView.Rows[idx].Cells[0];
+                    AddressItemsGridView.Rows[idx].Cells[0].Selected = true;
                     ShowIdsCheckBox.Checked = true;
                     MessageBox.Show(string.Format("ID must be a unqiue value. There are more than 1 rows with a name value of '{0}'.", item.Id), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
 
-                //Check for name
-                if (string.IsNullOrEmpty(item.Name))
+                //Check for no more than 1 from type
+                if (item.Type == CoreEnumerations.Notifications.AddressType.From)
                 {
-                    MenuItemsGridView.CurrentCell = MenuItemsGridView.Rows[idx].Cells[1];
-                    MenuItemsGridView.Rows[idx].Cells[1].Selected = true;
-                    MessageBox.Show("Name is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (_addresses.FindAll(i => i.Type == item.Type).Count > 1)
+                    {
+                        AddressItemsGridView.CurrentCell = AddressItemsGridView.Rows[idx].Cells[1];
+                        MessageBox.Show(string.Format("Only 1 from address is allowed."), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+
+                //Check for display name
+                if (string.IsNullOrEmpty(item.DisplayName))
+                {
+                    AddressItemsGridView.CurrentCell = AddressItemsGridView.Rows[idx].Cells[2];
+                    AddressItemsGridView.Rows[idx].Cells[2].Selected = true;
+                    MessageBox.Show("Display Name is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
 
-                //Check for unique order
-                if (_menuItems.FindAll(i => i.OrderIndex == item.OrderIndex).Count > 1)
+                //Check for email address
+                if (string.IsNullOrEmpty(item.EmailAddress))
                 {
-                    MenuItemsGridView.CurrentCell = MenuItemsGridView.Rows[idx].Cells[2];
-                    MenuItemsGridView.Rows[idx].Cells[2].Selected = true;
-                    MessageBox.Show(string.Format("Order must be a unqiue value. There are more than 1 rows with a value of '{0}'.", item.Name), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AddressItemsGridView.CurrentCell = AddressItemsGridView.Rows[idx].Cells[3];
+                    AddressItemsGridView.Rows[idx].Cells[3].Selected = true;
+                    MessageBox.Show("Email Address is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
 
-                //Check for label content id value
-                if (string.IsNullOrEmpty(item.LabelContentId))
+                //Check for valid email address
+                if (!StringValidator.IsValidEmailAddress(item.EmailAddress))
                 {
-                    MenuItemsGridView.CurrentCell = MenuItemsGridView.Rows[idx].Cells[5];
-                    MenuItemsGridView.Rows[idx].Cells[5].Selected = true;
-                    MessageBox.Show("Label Content ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for proper named label content id
-                string prefix = this.BusinessModule + ".Label.Menu.";
-                if (!item.LabelContentId.StartsWith(prefix))
-                {
-                    MenuItemsGridView.CurrentCell = MenuItemsGridView.Rows[idx].Cells[5];
-                    MenuItemsGridView.Rows[idx].Cells[5].Selected = true;
-                    MessageBox.Show(string.Format("Label Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for default text value
-                if (string.IsNullOrEmpty(item.DefaultText))
-                {
-                    MenuItemsGridView.CurrentCell = MenuItemsGridView.Rows[idx].Cells[6];
-                    MenuItemsGridView.Rows[idx].Cells[6].Selected = true;
-                    MessageBox.Show("Default Text is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AddressItemsGridView.CurrentCell = AddressItemsGridView.Rows[idx].Cells[3];
+                    AddressItemsGridView.Rows[idx].Cells[3].Selected = true;
+                    MessageBox.Show("Email Address is not in a valid format.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
                 idx++;
@@ -333,57 +307,15 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             return true;
         }
 
-        private void LoadMenuItems()
+        private void LoadAddressItems()
         {
-            if(this.MenuItem != null)
+            TemplateTextBox.Text = this.EmailTemplate.ContentId;
+            if (this.EmailTemplate.Addresses == null)
             {
-                MenuItemNameTextBox.Text = this.MenuItem.Name;
-                if (this.MenuItem.Items == null)
-                {
-                    this.MenuItem.Items = new List<MenuItemModel>();
-                }
-                _menuItems = Serializer.Clone<List<MenuItemModel>>(this.MenuItem.Items);
+                this.EmailTemplate.Addresses = new List<LocaleConfigurationEmailTemplateAddressModel>();
             }
-            else
-            {
-                MenuItemNameTextBox.Text = this.Menu.Name;
-                if (this.Menu.Items == null)
-                {
-                    this.Menu.Items = new List<MenuItemModel>();
-                }
-                _menuItems = Serializer.Clone<List<MenuItemModel>>(this.Menu.Items);
-            }
-            MenuItemDisplayTextBox.Text = this.Menu.DisplaySize;
-
-            menuItemsBindingSource.DataSource = _menuItems;
-        }
-
-        private void ShowMenuItems(string id)
-        {
-            MenuItemModel menuItem = null;
-
-            if (this.MenuItem != null)
-            {
-                menuItem = this.MenuItem.Items.Find(i => i.Id == id);
-            }
-            else
-            {
-                menuItem = this.Menu.Items.Find(i => i.Id == id);
-            }
-
-            MenuItemsForm form = new MenuItemsForm()
-            {
-                BusinessModule = this.BusinessModule,
-                Menu = this.Menu,
-                MenuItem = menuItem,
-                ShowIds = this.ShowIds
-            };
-            form.ShowDialog();
-            if (!_isDataDrity && form.HasDataChanged)
-            {
-                ToggleDirtyData(true);
-            }
-            form.Dispose();
+            _addresses = Serializer.Clone<List<LocaleConfigurationEmailTemplateAddressModel>>(this.EmailTemplate.Addresses);
+            emailTemplateAddressBindingSource.DataSource = _addresses;
         }
 
         private void ToggleDirtyData(bool enabled)
@@ -395,7 +327,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
         private void ToggleShowIds(bool showIds)
         {
-            MenuItemsGridView.Columns[0].Visible = showIds;
+            AddressItemsGridView.Columns[0].Visible = showIds;
         }
     }
 }

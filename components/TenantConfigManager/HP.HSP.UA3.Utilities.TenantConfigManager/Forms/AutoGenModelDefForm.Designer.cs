@@ -45,6 +45,7 @@
             // ModeDropdown
             // 
             this.ModeDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ModeDropdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ModeDropdown.FormattingEnabled = true;
             this.ModeDropdown.Items.AddRange(new object[] {
             "Debug",
@@ -85,6 +86,7 @@
             // AutoGenModelButton
             // 
             this.AutoGenModelButton.Enabled = false;
+            this.AutoGenModelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AutoGenModelButton.Location = new System.Drawing.Point(539, 133);
             this.AutoGenModelButton.Name = "AutoGenModelButton";
             this.AutoGenModelButton.Size = new System.Drawing.Size(103, 22);
@@ -124,6 +126,7 @@
             // DisplaySizeDropdown
             // 
             this.DisplaySizeDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DisplaySizeDropdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DisplaySizeDropdown.FormattingEnabled = true;
             this.DisplaySizeDropdown.Items.AddRange(new object[] {
             "Debug",
@@ -138,6 +141,7 @@
             // 
             this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelButton.Location = new System.Drawing.Point(648, 133);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
@@ -151,9 +155,10 @@
             this.CascasdeCheckbox.AutoSize = true;
             this.CascasdeCheckbox.Checked = true;
             this.CascasdeCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CascasdeCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CascasdeCheckbox.Location = new System.Drawing.Point(86, 133);
             this.CascasdeCheckbox.Name = "CascasdeCheckbox";
-            this.CascasdeCheckbox.Size = new System.Drawing.Size(185, 17);
+            this.CascasdeCheckbox.Size = new System.Drawing.Size(182, 17);
             this.CascasdeCheckbox.TabIndex = 10;
             this.CascasdeCheckbox.Text = "Cascade Generate Missing Types";
             this.CascasdeCheckbox.UseVisualStyleBackColor = true;
@@ -163,9 +168,10 @@
             this.GenerateLabelsCheckBox.AutoSize = true;
             this.GenerateLabelsCheckBox.Checked = true;
             this.GenerateLabelsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.GenerateLabelsCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GenerateLabelsCheckBox.Location = new System.Drawing.Point(291, 133);
             this.GenerateLabelsCheckBox.Name = "GenerateLabelsCheckBox";
-            this.GenerateLabelsCheckBox.Size = new System.Drawing.Size(104, 17);
+            this.GenerateLabelsCheckBox.Size = new System.Drawing.Size(101, 17);
             this.GenerateLabelsCheckBox.TabIndex = 11;
             this.GenerateLabelsCheckBox.Text = "Generate Labels";
             this.GenerateLabelsCheckBox.UseVisualStyleBackColor = true;
@@ -175,6 +181,7 @@
             this.AcceptButton = this.AutoGenModelButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.CancelButton;
             this.ClientSize = new System.Drawing.Size(735, 168);
             this.Controls.Add(this.GenerateLabelsCheckBox);
             this.Controls.Add(this.CascasdeCheckbox);
