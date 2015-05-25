@@ -160,7 +160,7 @@
             // 
             this.DeleteButton.Enabled = false;
             this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteButton.Location = new System.Drawing.Point(291, 28);
+            this.DeleteButton.Location = new System.Drawing.Point(316, 30);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(75, 23);
             this.DeleteButton.TabIndex = 2;
@@ -171,7 +171,7 @@
             // CreateNewButton
             // 
             this.CreateNewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CreateNewButton.Location = new System.Drawing.Point(372, 28);
+            this.CreateNewButton.Location = new System.Drawing.Point(397, 30);
             this.CreateNewButton.Name = "CreateNewButton";
             this.CreateNewButton.Size = new System.Drawing.Size(75, 23);
             this.CreateNewButton.TabIndex = 3;
@@ -196,7 +196,7 @@
             this.BusinessModuleDropdown.FormattingEnabled = true;
             this.BusinessModuleDropdown.Location = new System.Drawing.Point(65, 30);
             this.BusinessModuleDropdown.Name = "BusinessModuleDropdown";
-            this.BusinessModuleDropdown.Size = new System.Drawing.Size(220, 21);
+            this.BusinessModuleDropdown.Size = new System.Drawing.Size(245, 21);
             this.BusinessModuleDropdown.TabIndex = 1;
             this.BusinessModuleDropdown.SelectedIndexChanged += new System.EventHandler(this.BusinessModuleDropdown_SelectedIndexChanged);
             // 

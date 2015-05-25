@@ -332,11 +332,11 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             {
                 foreach (DirectoryInfo cdi in di.GetDirectories())
                 {
-                    if (cdi.Name == "Main")
+                    if (cdi.Name == "Main" || cdi.Name == "Dev")
                     {
                         foreach (DirectoryInfo ccdi in cdi.GetDirectories())
                         {
-                            if (ccdi.Name == "BAS")
+                            if (ccdi.Name == "BAS" || ccdi.Name == "Batch" || ccdi.Name == "UX")
                             {
                                 isValid = true;
                                 break;
@@ -381,12 +381,19 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
 
             string path = _modules[BusinessModuleDropdown.SelectedItem.ToString()] + "\\Main\\BAS";
             DirectoryInfo di = new DirectoryInfo(path);
-            foreach (DirectoryInfo cdi in di.GetDirectories())
+            if (di.Exists == false)
             {
-                if (IsValidServiceDir(cdi))
+                Directory.CreateDirectory(path);
+            }
+            else
+            {
+                foreach (DirectoryInfo cdi in di.GetDirectories())
                 {
-                    _basServices.Add(cdi.Name, cdi.FullName);
-                    BASDropdown.Items.Add(cdi.Name);
+                    if (IsValidServiceDir(cdi))
+                    {
+                        _basServices.Add(cdi.Name, cdi.FullName);
+                        BASDropdown.Items.Add(cdi.Name);
+                    }
                 }
             }
 
@@ -401,12 +408,19 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
 
             string path = _modules[BusinessModuleDropdown.SelectedItem.ToString()] + "\\Main\\Batch";
             DirectoryInfo di = new DirectoryInfo(path);
-            foreach (DirectoryInfo cdi in di.GetDirectories())
+            if (di.Exists == false)
             {
-                if (IsValidServiceDir(cdi))
+                Directory.CreateDirectory(path);
+            }
+            else
+            {
+                foreach (DirectoryInfo cdi in di.GetDirectories())
                 {
-                    _batchServices.Add(cdi.Name, cdi.FullName);
-                    BatchDropdown.Items.Add(cdi.Name);
+                    if (IsValidServiceDir(cdi))
+                    {
+                        _batchServices.Add(cdi.Name, cdi.FullName);
+                        BatchDropdown.Items.Add(cdi.Name);
+                    }
                 }
             }
 
