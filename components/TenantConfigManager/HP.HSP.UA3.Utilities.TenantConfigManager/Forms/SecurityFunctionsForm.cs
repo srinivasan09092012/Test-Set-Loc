@@ -333,7 +333,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
         private void ShowSecurityRights(string id)
         {
-            SecurityFunctionModel function = this.Role.Functions.Find(i => i.Id == id);
+            SecurityFunctionModel function = _functions.Find(i => i.Id == id);
 
             SecurityRightsForm form = new SecurityRightsForm()
             {
