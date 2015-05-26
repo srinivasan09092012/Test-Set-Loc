@@ -220,9 +220,10 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for ID value
                 if (string.IsNullOrEmpty(item.Id))
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     DataListItemsGridView.CurrentCell = DataListItemsGridView.Rows[idx].Cells[0];
                     DataListItemsGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show("ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -230,9 +231,10 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for unique ID value
                 if (_dataListItems.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     DataListItemsGridView.CurrentCell = DataListItemsGridView.Rows[idx].Cells[0];
                     DataListItemsGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show(string.Format("ID must be a unqiue value. There are more than 1 rows with a name value of '{0}'.", item.Id), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }

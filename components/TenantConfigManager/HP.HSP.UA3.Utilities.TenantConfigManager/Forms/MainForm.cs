@@ -1401,10 +1401,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for ID value
                 if (string.IsNullOrEmpty(item.Id))
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[1];
                     DisplaySizesGridView.CurrentCell = DisplaySizesGridView.Rows[idx].Cells[0];
                     DisplaySizesGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show("ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -1412,10 +1413,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for unique ID value
                 if (_tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[1];
                     DisplaySizesGridView.CurrentCell = DisplaySizesGridView.Rows[idx].Cells[0];
                     DisplaySizesGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show(string.Format("ID must be a unqiue value. There are more than 1 rows with a name value of '{0}'.", item.Id), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -1509,12 +1511,13 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for ID value
                 if (string.IsNullOrEmpty(item.Id))
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
                     LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[0];
                     DataListsGridView.CurrentCell = DataListsGridView.Rows[idx].Cells[0];
                     DataListsGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show("ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -1522,12 +1525,13 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for unique ID value
                 if (_tenantConfig.Modules[0].LocalizationConfiguration.Locales[localeIdx].LocaleDataLists.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
                     LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[0];
                     DataListsGridView.CurrentCell = DataListsGridView.Rows[idx].Cells[0];
                     DataListsGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show(string.Format("ID must be a unqiue value. There are more than 1 rows with a name value of '{0}'.", item.Id), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -1606,12 +1610,13 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for ID value
                 if (string.IsNullOrEmpty(item.Id))
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
                     LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[1];
                     EmailTemplatesGridView.CurrentCell = EmailTemplatesGridView.Rows[idx].Cells[0];
                     EmailTemplatesGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show("ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -1619,12 +1624,13 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for unique ID value
                 if (_tenantConfig.Modules[0].LocalizationConfiguration.Locales[localeIdx].LocaleEmailTemplates.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
                     LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[1];
                     EmailTemplatesGridView.CurrentCell = EmailTemplatesGridView.Rows[idx].Cells[0];
                     EmailTemplatesGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show(string.Format("ID must be a unqiue value. There are more than 1 rows with a name value of '{0}'.", item.Id), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -1727,12 +1733,13 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for ID value
                 if (string.IsNullOrEmpty(item.Id))
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
                     LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[2];
                     HtmlBlocksGridView.CurrentCell = HtmlBlocksGridView.Rows[idx].Cells[0];
                     HtmlBlocksGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show("ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -1740,12 +1747,13 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for unique ID value
                 if (_tenantConfig.Modules[0].LocalizationConfiguration.Locales[localeIdx].LocaleHtmlBlocks.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
                     LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[2];
                     HtmlBlocksGridView.CurrentCell = HtmlBlocksGridView.Rows[idx].Cells[0];
                     HtmlBlocksGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show(string.Format("ID must be a unqiue value. There are more than 1 rows with a name value of '{0}'.", item.Id), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -1812,12 +1820,13 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for ID value
                 if (string.IsNullOrEmpty(item.Id))
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
                     LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     ImagesGridView.CurrentCell = ImagesGridView.Rows[idx].Cells[0];
                     ImagesGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show("ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -1825,12 +1834,13 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for unique ID value
                 if (_tenantConfig.Modules[0].LocalizationConfiguration.Locales[localeIdx].LocaleImages.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
                     LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[3];
                     ImagesGridView.CurrentCell = ImagesGridView.Rows[idx].Cells[0];
                     ImagesGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show(string.Format("ID must be a unqiue value. There are more than 1 rows with a name value of '{0}'.", item.Id), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -1909,12 +1919,13 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for ID value
                 if (string.IsNullOrEmpty(item.Id))
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
                     LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[4];
                     LabelsGridView.CurrentCell = LabelsGridView.Rows[idx].Cells[0];
                     LabelsGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show("ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -1922,12 +1933,13 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for unique ID value
                 if (_tenantConfig.Modules[0].LocalizationConfiguration.Locales[localeIdx].LocaleLabels.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
                     LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[4];
                     LabelsGridView.CurrentCell = LabelsGridView.Rows[idx].Cells[0];
                     LabelsGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show(string.Format("ID must be a unqiue value. There are more than 1 rows with a name value of '{0}'.", item.Id), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -1994,12 +2006,13 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for ID value
                 if (string.IsNullOrEmpty(item.Id))
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
                     LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[5];
                     MessagesGridView.CurrentCell = MessagesGridView.Rows[idx].Cells[0];
                     MessagesGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show("ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -2007,12 +2020,13 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for unique ID value
                 if (_tenantConfig.Modules[0].LocalizationConfiguration.Locales[localeIdx].LocaleMessages.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
                     LocaleDropdown.SelectedIndex = localeIdx;
                     LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[5];
                     MessagesGridView.CurrentCell = MessagesGridView.Rows[idx].Cells[0];
                     MessagesGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show(string.Format("ID must be a unqiue value. There are more than 1 rows with a name value of '{0}'.", item.Id), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -2079,10 +2093,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for ID value
                 if (string.IsNullOrEmpty(item.Id))
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[4];
                     ModelDefinitionsGridView.CurrentCell = ModelDefinitionsGridView.Rows[idx].Cells[0];
                     ModelDefinitionsGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show("ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -2090,10 +2105,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for unique ID value
                 if (_tenantConfig.Modules[0].ModelDefinitionConfiguration.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[4];
                     ModelDefinitionsGridView.CurrentCell = ModelDefinitionsGridView.Rows[idx].Cells[0];
                     ModelDefinitionsGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show(string.Format("ID must be a unqiue value. There are more than 1 rows with a name value of '{0}'.", item.Id), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -2140,10 +2156,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for ID value
                 if (string.IsNullOrEmpty(item.Id))
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[5];
                     MenusGridView.CurrentCell = MenusGridView.Rows[idx].Cells[0];
                     MenusGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show("ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -2151,10 +2168,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for unique ID value
                 if (_tenantConfig.Modules[0].Menus.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[5];
                     MenusGridView.CurrentCell = MenusGridView.Rows[idx].Cells[0];
                     MenusGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show(string.Format("ID must be a unqiue value. There are more than 1 rows with a name value of '{0}'.", item.Id), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -2211,10 +2229,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for ID value
                 if (string.IsNullOrEmpty(item.Id))
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[6];
                     ServicesGridView.CurrentCell = ServicesGridView.Rows[idx].Cells[0];
                     ServicesGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show("ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -2222,10 +2241,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for unique ID value
                 if (_tenantConfig.Modules[0].Menus.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[6];
                     ServicesGridView.CurrentCell = ServicesGridView.Rows[idx].Cells[0];
                     ServicesGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show(string.Format("ID must be a unqiue value. There are more than 1 rows with a name value of '{0}'.", item.Id), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -2282,10 +2302,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for ID value
                 if (string.IsNullOrEmpty(item.Id))
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[7];
                     SecurityRolesGridView.CurrentCell = SecurityRolesGridView.Rows[idx].Cells[0];
                     SecurityRolesGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show("ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -2293,10 +2314,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for unique ID value
                 if (_tenantConfig.Modules[0].SecurityRoles.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
                 {
+                    ShowIdsCheckBox.Checked = true;
+                    ToggleShowIds(true);
                     TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[7];
                     SecurityRolesGridView.CurrentCell = SecurityRolesGridView.Rows[idx].Cells[0];
                     SecurityRolesGridView.Rows[idx].Cells[0].Selected = true;
-                    ShowIdsCheckBox.Checked = true;
                     MessageBox.Show(string.Format("ID must be a unqiue value. There are more than 1 rows with a name value of '{0}'.", item.Id), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
