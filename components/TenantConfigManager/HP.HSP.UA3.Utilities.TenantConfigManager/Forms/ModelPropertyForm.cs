@@ -106,25 +106,25 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         {
             switch (e.ColumnIndex)
             {
-                case 12:
-                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[13].Value == null)
+                case 13:
+                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[14].Value == null)
                     {
-                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[14].Value = "Add";
+                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[15].Value = "Add";
                     }
                     else
                     {
-                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[14].Value = "Delete";
+                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[15].Value = "Delete";
                     }
                     break;
 
-                case 14:
-                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[15].Value == null)
+                case 15:
+                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[16].Value == null)
                     {
-                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[16].Value = "Add";
+                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[17].Value = "Add";
                     }
                     else
                     {
-                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[16].Value = "Delete";
+                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[17].Value = "Delete";
                     }
                     break;
             }
@@ -134,8 +134,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         {
             switch(e.ColumnIndex)
             {
-                case 12:
-                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[11].Value == null)
+                case 13:
+                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[12].Value == null)
                     {
                         //Add view restriction
                         SecurityRightModel securityRight = new SecurityRightModel()
@@ -147,7 +147,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                             Type = SecurityRightModel.RightType.Property
                         };
 
-                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[11].Value = securityRight.Id;
+                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[12].Value = securityRight.Id;
                     }
                     else
                     {
@@ -155,8 +155,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     }
                     break;
 
-                case 14:
-                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[13].Value == null)
+                case 15:
+                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[14].Value == null)
                     {
                         //Add edit restriction
                         SecurityRightModel securityRight = new SecurityRightModel()
@@ -168,7 +168,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                             Type = SecurityRightModel.RightType.Property
                         };
 
-                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[13].Value = securityRight.Id;
+                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[14].Value = securityRight.Id;
                     }
                     else
                     {
@@ -184,8 +184,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             {
                 Cursor = Cursors.WaitCursor;
                 e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
-                e.Row.Cells[6].Value = 0;
-                e.Row.Cells[9].Value = this.BusinessModule + ".Label.Field.";
+                e.Row.Cells[7].Value = 0;
+                e.Row.Cells[10].Value = this.BusinessModule + ".Label.Field.";
             }
             catch (Exception ex)
             {
@@ -349,8 +349,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 string prefix = this.BusinessModule + ".Label.Field.";
                 if (string.IsNullOrEmpty(item.LabelContentId) || !item.LabelContentId.StartsWith(prefix))
                 {
-                    ModelPropertiesGridView.CurrentCell = ModelPropertiesGridView.Rows[idx].Cells[9];
-                    ModelPropertiesGridView.Rows[idx].Cells[9].Selected = true;
+                    ModelPropertiesGridView.CurrentCell = ModelPropertiesGridView.Rows[idx].Cells[10];
+                    ModelPropertiesGridView.Rows[idx].Cells[10].Selected = true;
                     MessageBox.Show(string.Format("Label Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -358,8 +358,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for default text
                 if (string.IsNullOrEmpty(item.DefaultText))
                 {
-                    ModelPropertiesGridView.CurrentCell = ModelPropertiesGridView.Rows[idx].Cells[10];
-                    ModelPropertiesGridView.Rows[idx].Cells[10].Selected = true;
+                    ModelPropertiesGridView.CurrentCell = ModelPropertiesGridView.Rows[idx].Cells[11];
+                    ModelPropertiesGridView.Rows[idx].Cells[11].Selected = true;
                     MessageBox.Show("Default Text is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -369,8 +369,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 {
                     if (_modelProperties.FindAll(i => string.Compare(i.AccessKey, item.AccessKey, true) == 0).Count > 1)
                     {
-                        ModelPropertiesGridView.CurrentCell = ModelPropertiesGridView.Rows[idx].Cells[12];
-                        ModelPropertiesGridView.Rows[idx].Cells[12].Selected = true;
+                        ModelPropertiesGridView.CurrentCell = ModelPropertiesGridView.Rows[idx].Cells[13];
+                        ModelPropertiesGridView.Rows[idx].Cells[13].Selected = true;
                         MessageBox.Show(string.Format("Access Key must be a unqiue value. There are more than 1 rows with an acces key value of '{0}'.", item.AccessKey), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                     }
