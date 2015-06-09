@@ -207,6 +207,14 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             }
         }
 
+        private void TargetBranchDropdown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BASGroupBox.Enabled = (TargetBranchDropdown.SelectedIndex != -1);
+            BatchGroupBox.Enabled = (TargetBranchDropdown.SelectedIndex != -1);
+            LoadBASServices();
+            LoadBatchServices();
+        }
+
         private void BASDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
             string service = BASDropdown.SelectedItem.ToString();
@@ -379,7 +387,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             DeleteBASButton.Enabled = false;
             _basServices.Clear();
 
-            string path = _modules[BusinessModuleDropdown.SelectedItem.ToString()] + "\\Main\\BAS";
+            string path = _modules[BusinessModuleDropdown.SelectedItem.ToString()] + string.Format("\\{0}\\BAS", TargetBranchDropdown.SelectedItem.ToString());
             DirectoryInfo di = new DirectoryInfo(path);
             if (di.Exists == false)
             {
@@ -406,7 +414,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             DeleteBatchButton.Enabled = false;
             _batchServices.Clear();
 
-            string path = _modules[BusinessModuleDropdown.SelectedItem.ToString()] + "\\Main\\Batch";
+            string path = _modules[BusinessModuleDropdown.SelectedItem.ToString()] + string.Format("\\{0}\\Batch", TargetBranchDropdown.SelectedItem.ToString());
             DirectoryInfo di = new DirectoryInfo(path);
             if (di.Exists == false)
             {
@@ -429,8 +437,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
 
         private void LoadBusinessModule(string module)
         {
-            LoadBASServices();
-            LoadBatchServices();
+            LoadTargetBranches(module);
             ToggleDetails(true);
         }
 
@@ -453,11 +460,31 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             BusinessModuleDropdown.Enabled = BusinessModuleDropdown.Items.Count > 0;
         }
 
+        private void LoadTargetBranches(string module)
+        {
+            TargetBranchDropdown.Items.Clear();
+
+            string path = _modules[module];
+            DirectoryInfo di = new DirectoryInfo(path);
+            if (di.Exists)
+            {
+                foreach (DirectoryInfo cdi in di.GetDirectories())
+                {
+                    TargetBranchDropdown.Items.Add(cdi.Name);
+                }
+                TargetBranchDropdown.SelectedItem = 0;
+            }
+            else
+            {
+                MessageBox.Show("No branches found for currently selected business module.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         private void ShowCreateNewBAS()
         {
             CreateNewBASForm form = new CreateNewBASForm();
             form.ModuleName = BusinessModuleDropdown.SelectedItem.ToString();
-            form.ModulePath = _modules[form.ModuleName] + "\\Main\\BAS";
+            form.ModulePath = _modules[form.ModuleName] + string.Format("\\{0}\\BAS", TargetBranchDropdown.SelectedItem.ToString());
             form.TemplatePath = UserConfig.SourcePath + "\\_ProjectTemplate\\Main\\BAS";
             form.ShowDialog();
             if (form.WasCreated)
@@ -472,6 +499,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
         {
             CreateNewBatchForm form = new CreateNewBatchForm();
             form.ModuleName = BusinessModuleDropdown.SelectedItem.ToString();
+            form.ModulePath = _modules[form.ModuleName] + string.Format("\\{0}\\Batch", TargetBranchDropdown.SelectedItem.ToString());
             form.ModulePath = _modules[form.ModuleName] + "\\Main\\Batch";
             form.TemplatePath = UserConfig.SourcePath + "\\_ProjectTemplate\\Main\\Batch";
             form.ShowDialog();

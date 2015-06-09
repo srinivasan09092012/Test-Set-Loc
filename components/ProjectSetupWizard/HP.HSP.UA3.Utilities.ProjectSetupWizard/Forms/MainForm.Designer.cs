@@ -44,21 +44,23 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BusinessModuleDropdown = new System.Windows.Forms.ComboBox();
             this.DetailsGroupBox = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.BatchGroupBox = new System.Windows.Forms.GroupBox();
             this.DeleteBatchButton = new System.Windows.Forms.Button();
             this.BatchDropdown = new System.Windows.Forms.ComboBox();
             this.CreateBatchButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.BASGroupBox = new System.Windows.Forms.GroupBox();
             this.DeleteBASButton = new System.Windows.Forms.Button();
             this.BASDropdown = new System.Windows.Forms.ComboBox();
             this.CreateBASButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.TargetBranchDropdown = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.DetailsGroupBox.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.BatchGroupBox.SuspendLayout();
+            this.BASGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -69,7 +71,7 @@
             this.hELPToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(541, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(544, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -151,7 +153,7 @@
             this.groupBox1.Controls.Add(this.BusinessModuleDropdown);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(517, 72);
+            this.groupBox1.Size = new System.Drawing.Size(520, 72);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Business Module";
@@ -205,30 +207,32 @@
             this.DetailsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DetailsGroupBox.Controls.Add(this.groupBox4);
-            this.DetailsGroupBox.Controls.Add(this.groupBox3);
+            this.DetailsGroupBox.Controls.Add(this.label4);
+            this.DetailsGroupBox.Controls.Add(this.BatchGroupBox);
+            this.DetailsGroupBox.Controls.Add(this.TargetBranchDropdown);
+            this.DetailsGroupBox.Controls.Add(this.BASGroupBox);
             this.DetailsGroupBox.Enabled = false;
             this.DetailsGroupBox.Location = new System.Drawing.Point(13, 106);
             this.DetailsGroupBox.Name = "DetailsGroupBox";
-            this.DetailsGroupBox.Size = new System.Drawing.Size(516, 223);
+            this.DetailsGroupBox.Size = new System.Drawing.Size(519, 244);
             this.DetailsGroupBox.TabIndex = 3;
             this.DetailsGroupBox.TabStop = false;
             this.DetailsGroupBox.Text = "Business Module Details";
             // 
-            // groupBox4
+            // BatchGroupBox
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.BatchGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.DeleteBatchButton);
-            this.groupBox4.Controls.Add(this.BatchDropdown);
-            this.groupBox4.Controls.Add(this.CreateBatchButton);
-            this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Location = new System.Drawing.Point(19, 124);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(471, 83);
-            this.groupBox4.TabIndex = 8;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Batch Services (Batch)";
+            this.BatchGroupBox.Controls.Add(this.DeleteBatchButton);
+            this.BatchGroupBox.Controls.Add(this.BatchDropdown);
+            this.BatchGroupBox.Controls.Add(this.CreateBatchButton);
+            this.BatchGroupBox.Controls.Add(this.label3);
+            this.BatchGroupBox.Location = new System.Drawing.Point(19, 148);
+            this.BatchGroupBox.Name = "BatchGroupBox";
+            this.BatchGroupBox.Size = new System.Drawing.Size(474, 83);
+            this.BatchGroupBox.TabIndex = 8;
+            this.BatchGroupBox.TabStop = false;
+            this.BatchGroupBox.Text = "Batch Services (Batch)";
             // 
             // DeleteBatchButton
             // 
@@ -274,20 +278,20 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Service";
             // 
-            // groupBox3
+            // BASGroupBox
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.BASGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.DeleteBASButton);
-            this.groupBox3.Controls.Add(this.BASDropdown);
-            this.groupBox3.Controls.Add(this.CreateBASButton);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Location = new System.Drawing.Point(19, 35);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(471, 83);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Business Application Services (BAS)";
+            this.BASGroupBox.Controls.Add(this.DeleteBASButton);
+            this.BASGroupBox.Controls.Add(this.BASDropdown);
+            this.BASGroupBox.Controls.Add(this.CreateBASButton);
+            this.BASGroupBox.Controls.Add(this.label2);
+            this.BASGroupBox.Location = new System.Drawing.Point(19, 59);
+            this.BASGroupBox.Name = "BASGroupBox";
+            this.BASGroupBox.Size = new System.Drawing.Size(474, 83);
+            this.BASGroupBox.TabIndex = 0;
+            this.BASGroupBox.TabStop = false;
+            this.BASGroupBox.Text = "Business Application Services (BAS)";
             // 
             // DeleteBASButton
             // 
@@ -333,16 +337,36 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Service";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(26, 29);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Target Branch";
+            // 
+            // TargetBranchDropdown
+            // 
+            this.TargetBranchDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TargetBranchDropdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TargetBranchDropdown.FormattingEnabled = true;
+            this.TargetBranchDropdown.Location = new System.Drawing.Point(107, 29);
+            this.TargetBranchDropdown.Name = "TargetBranchDropdown";
+            this.TargetBranchDropdown.Size = new System.Drawing.Size(96, 21);
+            this.TargetBranchDropdown.TabIndex = 5;
+            this.TargetBranchDropdown.SelectedIndexChanged += new System.EventHandler(this.TargetBranchDropdown_SelectedIndexChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(541, 341);
+            this.ClientSize = new System.Drawing.Size(544, 362);
             this.Controls.Add(this.DetailsGroupBox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MinimumSize = new System.Drawing.Size(557, 379);
+            this.MinimumSize = new System.Drawing.Size(560, 400);
             this.Name = "MainForm";
             this.Text = "Business Module Project Wizard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
@@ -353,10 +377,11 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.DetailsGroupBox.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.DetailsGroupBox.PerformLayout();
+            this.BatchGroupBox.ResumeLayout(false);
+            this.BatchGroupBox.PerformLayout();
+            this.BASGroupBox.ResumeLayout(false);
+            this.BASGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -380,16 +405,18 @@
         private System.Windows.Forms.ComboBox BusinessModuleDropdown;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.GroupBox DetailsGroupBox;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox BatchGroupBox;
         private System.Windows.Forms.Button DeleteBatchButton;
         private System.Windows.Forms.ComboBox BatchDropdown;
         private System.Windows.Forms.Button CreateBatchButton;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox BASGroupBox;
         private System.Windows.Forms.Button DeleteBASButton;
         private System.Windows.Forms.ComboBox BASDropdown;
         private System.Windows.Forms.Button CreateBASButton;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox TargetBranchDropdown;
     }
 }
 
