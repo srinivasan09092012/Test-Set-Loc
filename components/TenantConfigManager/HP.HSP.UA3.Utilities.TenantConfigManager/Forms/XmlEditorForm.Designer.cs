@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.ResetButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.CancelProcButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,18 +51,18 @@
             this.ResetButton.UseVisualStyleBackColor = true;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
-            // CancelButton
+            // CancelProcButton
             // 
-            this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelButton.Location = new System.Drawing.Point(697, 527);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 16;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancelProcButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelProcButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelProcButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CancelProcButton.Location = new System.Drawing.Point(697, 527);
+            this.CancelProcButton.Name = "CancelProcButton";
+            this.CancelProcButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelProcButton.TabIndex = 16;
+            this.CancelProcButton.Text = "Cancel";
+            this.CancelProcButton.UseVisualStyleBackColor = true;
+            this.CancelProcButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // SaveButton
             // 
@@ -125,11 +125,12 @@
             this.AcceptButton = this.SaveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.CancelProcButton;
             this.ClientSize = new System.Drawing.Size(784, 562);
             this.Controls.Add(this.editorTextBox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ResetButton);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CancelProcButton);
             this.Controls.Add(this.SaveButton);
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "XmlEditorForm";
@@ -147,7 +148,7 @@
         #endregion
 
         private System.Windows.Forms.Button ResetButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CancelProcButton;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;

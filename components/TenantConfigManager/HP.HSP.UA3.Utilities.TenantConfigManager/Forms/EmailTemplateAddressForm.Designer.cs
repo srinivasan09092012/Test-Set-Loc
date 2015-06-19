@@ -29,23 +29,23 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ShowIdsCheckBox = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.TemplateTextBox = new System.Windows.Forms.TextBox();
             this.ResetButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.CancelProcButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.AddressItemsGridView = new System.Windows.Forms.DataGridView();
-            this.emailTemplateAddressBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.displayNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailTemplateAddressBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddressItemsGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emailTemplateAddressBindingSource)).BeginInit();
@@ -108,18 +108,18 @@
             this.ResetButton.UseVisualStyleBackColor = true;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
-            // CancelButton
+            // CancelProcButton
             // 
-            this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelButton.Location = new System.Drawing.Point(788, 377);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 8;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancelProcButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelProcButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelProcButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CancelProcButton.Location = new System.Drawing.Point(788, 377);
+            this.CancelProcButton.Name = "CancelProcButton";
+            this.CancelProcButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelProcButton.TabIndex = 8;
+            this.CancelProcButton.Text = "Cancel";
+            this.CancelProcButton.UseVisualStyleBackColor = true;
+            this.CancelProcButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // SaveButton
             // 
@@ -156,16 +156,11 @@
             this.AddressItemsGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.AddressItemsGridView_DefaultValuesNeeded);
             this.AddressItemsGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.AddressItemsGridView_UserDeletingRow);
             // 
-            // emailTemplateAddressBindingSource
-            // 
-            this.emailTemplateAddressBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.LocaleConfigurationEmailTemplateAddressModel);
-            this.emailTemplateAddressBindingSource.CurrentItemChanged += new System.EventHandler(this.emailTemplateAddressBindingSource_CurrentItemChanged);
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.idDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.idDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.Visible = false;
@@ -174,8 +169,8 @@
             // Type
             // 
             this.Type.DataPropertyName = "Type";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.Type.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.Type.DefaultCellStyle = dataGridViewCellStyle2;
             this.Type.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Type.HeaderText = "Type";
             this.Type.MinimumWidth = 50;
@@ -185,8 +180,8 @@
             // displayNameDataGridViewTextBoxColumn
             // 
             this.displayNameDataGridViewTextBoxColumn.DataPropertyName = "DisplayName";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.displayNameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.displayNameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.displayNameDataGridViewTextBoxColumn.HeaderText = "DisplayName";
             this.displayNameDataGridViewTextBoxColumn.MinimumWidth = 200;
             this.displayNameDataGridViewTextBoxColumn.Name = "displayNameDataGridViewTextBoxColumn";
@@ -195,22 +190,27 @@
             // emailAddressDataGridViewTextBoxColumn
             // 
             this.emailAddressDataGridViewTextBoxColumn.DataPropertyName = "EmailAddress";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.emailAddressDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.emailAddressDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.emailAddressDataGridViewTextBoxColumn.HeaderText = "EmailAddress";
             this.emailAddressDataGridViewTextBoxColumn.MinimumWidth = 200;
             this.emailAddressDataGridViewTextBoxColumn.Name = "emailAddressDataGridViewTextBoxColumn";
             this.emailAddressDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // emailTemplateAddressBindingSource
+            // 
+            this.emailTemplateAddressBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.LocaleConfigurationEmailTemplateAddressModel);
+            this.emailTemplateAddressBindingSource.CurrentItemChanged += new System.EventHandler(this.emailTemplateAddressBindingSource_CurrentItemChanged);
             // 
             // EmailTemplateAddressForm
             // 
             this.AcceptButton = this.SaveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.CancelButton;
+            this.CancelButton = this.CancelProcButton;
             this.ClientSize = new System.Drawing.Size(875, 412);
             this.Controls.Add(this.ResetButton);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CancelProcButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.AddressItemsGridView);
             this.Controls.Add(this.groupBox1);
@@ -235,7 +235,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TemplateTextBox;
         private System.Windows.Forms.Button ResetButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CancelProcButton;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.DataGridView AddressItemsGridView;
         private System.Windows.Forms.BindingSource emailTemplateAddressBindingSource;

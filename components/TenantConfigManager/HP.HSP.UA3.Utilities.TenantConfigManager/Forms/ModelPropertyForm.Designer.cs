@@ -50,17 +50,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ModelTypeTextBox = new System.Windows.Forms.TextBox();
             this.ResetButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.CancelProcButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.ModelPropertiesGridView = new System.Windows.Forms.DataGridView();
-            this.modelPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataTypeDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataRestrictionTypeDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.displayTypeDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.isRequiredDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Height = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maxLengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CompareTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CompareToMsgContentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +70,7 @@
             this.AddViewRestriction = new System.Windows.Forms.DataGridViewButtonColumn();
             this.EditRestrictionSecurityRightId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddEditRestriction = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.modelPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ModelPropertiesGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelPropertiesBindingSource)).BeginInit();
@@ -174,17 +173,18 @@
             this.ResetButton.UseVisualStyleBackColor = true;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
-            // CancelButton
+            // CancelProcButton
             // 
-            this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelButton.Location = new System.Drawing.Point(1259, 377);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 8;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancelProcButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelProcButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelProcButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CancelProcButton.Location = new System.Drawing.Point(1259, 377);
+            this.CancelProcButton.Name = "CancelProcButton";
+            this.CancelProcButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelProcButton.TabIndex = 8;
+            this.CancelProcButton.Text = "Cancel";
+            this.CancelProcButton.UseVisualStyleBackColor = true;
+            this.CancelProcButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // SaveButton
             // 
@@ -214,7 +214,6 @@
             this.dataRestrictionTypeDataGridViewComboBoxColumn,
             this.displayTypeDataGridViewComboBoxColumn,
             this.isRequiredDataGridViewCheckBoxColumn,
-            this.Height,
             this.maxLengthDataGridViewTextBoxColumn,
             this.CompareTo,
             this.CompareToMsgContentId,
@@ -238,10 +237,6 @@
             this.ModelPropertiesGridView.CurrentCellChanged += new System.EventHandler(this.ModelPropertiesGridView_CurrentCellChanged);
             this.ModelPropertiesGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.ModelPropertiesGridView_DefaultValuesNeeded);
             this.ModelPropertiesGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.ModelPropertiesGridView_UserDeletingRow);
-            // 
-            // modelPropertiesBindingSource
-            // 
-            this.modelPropertiesBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.ModelPropertyModel);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -274,7 +269,7 @@
             this.dataTypeDataGridViewComboBoxColumn.Name = "dataTypeDataGridViewComboBoxColumn";
             this.dataTypeDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataTypeDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataTypeDataGridViewComboBoxColumn.Width = 82;
+            this.dataTypeDataGridViewComboBoxColumn.Width = 76;
             // 
             // dataRestrictionTypeDataGridViewComboBoxColumn
             // 
@@ -307,14 +302,6 @@
             this.isRequiredDataGridViewCheckBoxColumn.HeaderText = "Required";
             this.isRequiredDataGridViewCheckBoxColumn.Name = "isRequiredDataGridViewCheckBoxColumn";
             this.isRequiredDataGridViewCheckBoxColumn.Width = 56;
-            // 
-            // Height
-            // 
-            this.Height.DataPropertyName = "Height";
-            this.Height.HeaderText = "Height";
-            this.Height.MinimumWidth = 50;
-            this.Height.Name = "Height";
-            this.Height.Width = 63;
             // 
             // maxLengthDataGridViewTextBoxColumn
             // 
@@ -421,14 +408,19 @@
             this.AddEditRestriction.Visible = false;
             this.AddEditRestriction.Width = 58;
             // 
+            // modelPropertiesBindingSource
+            // 
+            this.modelPropertiesBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.ModelPropertyModel);
+            // 
             // ModelPropertyForm
             // 
             this.AcceptButton = this.SaveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.CancelProcButton;
             this.ClientSize = new System.Drawing.Size(1353, 412);
             this.Controls.Add(this.ResetButton);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CancelProcButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.ModelPropertiesGridView);
             this.Controls.Add(this.groupBox1);
@@ -454,7 +446,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox ModelTypeTextBox;
         private System.Windows.Forms.Button ResetButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CancelProcButton;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.DataGridView ModelPropertiesGridView;
         private System.Windows.Forms.BindingSource modelPropertiesBindingSource;
@@ -462,17 +454,12 @@
         private System.Windows.Forms.TextBox ModelDisplayTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox ModelScopeTextBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createRestrictionSecurityRightIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn readRestrictionSecurityRightIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn updateRestrictionSecurityRightIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn deleteRestrictionSecurityRightIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataTypeDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataRestrictionTypeDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn displayTypeDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isRequiredDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Height;
         private System.Windows.Forms.DataGridViewTextBoxColumn maxLengthDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CompareTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn CompareToMsgContentId;

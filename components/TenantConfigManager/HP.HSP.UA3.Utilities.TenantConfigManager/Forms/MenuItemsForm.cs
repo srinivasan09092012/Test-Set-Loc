@@ -9,7 +9,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
     public partial class MenuItemsForm : Form
     {
         public string BusinessModule = string.Empty;
-        public MenuModel Menu = null;
+        public MenuModel MainMenu = null;
         public MenuItemModel MenuItem = null;
         public bool HasDataChanged = false;
         public bool ShowIds = false;
@@ -246,7 +246,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
                 else
                 {
-                    this.Menu.Items = _menuItems;
+                    this.MainMenu.Items = _menuItems;
                 }
                 isSaved = true;
                 ToggleDirtyData(false);
@@ -349,13 +349,13 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             else
             {
                 MenuItemNameTextBox.Text = this.Menu.Name;
-                if (this.Menu.Items == null)
+                if (this.MainMenu.Items == null)
                 {
-                    this.Menu.Items = new List<MenuItemModel>();
+                    this.MainMenu.Items = new List<MenuItemModel>();
                 }
-                _menuItems = Serializer.Clone<List<MenuItemModel>>(this.Menu.Items);
+                _menuItems = Serializer.Clone<List<MenuItemModel>>(this.MainMenu.Items);
             }
-            MenuItemDisplayTextBox.Text = this.Menu.DisplaySize;
+            MenuItemDisplayTextBox.Text = this.MainMenu.DisplaySize;
 
             menuItemsBindingSource.DataSource = _menuItems;
         }
@@ -370,7 +370,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
             else
             {
-                menuItem = this.Menu.Items.Find(i => i.Id == id);
+                menuItem = this.MainMenu.Items.Find(i => i.Id == id);
             }
 
             MenuItemsForm form = new MenuItemsForm()

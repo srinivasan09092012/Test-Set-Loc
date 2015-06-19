@@ -37,7 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.DisplaySizeDropdown = new System.Windows.Forms.ComboBox();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.CancelProcButton = new System.Windows.Forms.Button();
             this.CascasdeCheckbox = new System.Windows.Forms.CheckBox();
             this.GenerateLabelsCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
@@ -137,18 +137,18 @@
             this.DisplaySizeDropdown.TabIndex = 7;
             this.DisplaySizeDropdown.SelectedIndexChanged += new System.EventHandler(this.DisplaySizeDropdown_SelectedIndexChanged);
             // 
-            // CancelButton
+            // CancelProcButton
             // 
-            this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelButton.Location = new System.Drawing.Point(648, 133);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 9;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancelProcButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelProcButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelProcButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CancelProcButton.Location = new System.Drawing.Point(648, 133);
+            this.CancelProcButton.Name = "CancelProcButton";
+            this.CancelProcButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelProcButton.TabIndex = 9;
+            this.CancelProcButton.Text = "Cancel";
+            this.CancelProcButton.UseVisualStyleBackColor = true;
+            this.CancelProcButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // CascasdeCheckbox
             // 
@@ -181,11 +181,11 @@
             this.AcceptButton = this.AutoGenModelButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.CancelButton;
+            this.CancelButton = this.CancelProcButton;
             this.ClientSize = new System.Drawing.Size(735, 168);
             this.Controls.Add(this.GenerateLabelsCheckBox);
             this.Controls.Add(this.CascasdeCheckbox);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CancelProcButton);
             this.Controls.Add(this.DisplaySizeDropdown);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ScopeTextbox);
@@ -218,7 +218,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox DisplaySizeDropdown;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CancelProcButton;
         private System.Windows.Forms.CheckBox CascasdeCheckbox;
         private System.Windows.Forms.CheckBox GenerateLabelsCheckBox;
     }

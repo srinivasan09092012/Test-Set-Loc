@@ -1886,8 +1886,6 @@
         private System.Windows.Forms.DataGridView DisplaySizesGridView;
         private System.Windows.Forms.DataGridView SecurityRolesGridView;
         private System.Windows.Forms.DataGridView HtmlBlocksGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataTypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataFormatDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userConfigurationToolStripMenuItem;

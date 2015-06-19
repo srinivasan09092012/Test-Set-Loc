@@ -29,18 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.SecurityFunctionsGridView = new System.Windows.Forms.DataGridView();
-            this.securityFunctionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ShowIdsCheckBox = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.SecurityRoleNameTextBox = new System.Windows.Forms.TextBox();
-            this.ResetButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
-            this.SaveButton = new System.Windows.Forms.Button();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contentIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +40,14 @@
             this.isSystemFunctionDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.isRoleBasedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.SecurityRights = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.securityFunctionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ShowIdsCheckBox = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SecurityRoleNameTextBox = new System.Windows.Forms.TextBox();
+            this.ResetButton = new System.Windows.Forms.Button();
+            this.CancelProcButton = new System.Windows.Forms.Button();
+            this.SaveButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SecurityFunctionsGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.securityFunctionsBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -79,6 +79,75 @@
             this.SecurityFunctionsGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.SecurityFunctionsGridView_CellEnter);
             this.SecurityFunctionsGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.SecurityFunctionsGridView_DefaultValuesNeeded);
             this.SecurityFunctionsGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.SecurityFunctionsGridView_UserDeletingRow);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.idDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.idDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.idDataGridViewTextBoxColumn.MinimumWidth = 225;
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            this.idDataGridViewTextBoxColumn.Width = 225;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.nameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 200;
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // contentIdDataGridViewTextBoxColumn
+            // 
+            this.contentIdDataGridViewTextBoxColumn.DataPropertyName = "ContentId";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.contentIdDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.contentIdDataGridViewTextBoxColumn.HeaderText = "Label Content ID";
+            this.contentIdDataGridViewTextBoxColumn.MinimumWidth = 225;
+            this.contentIdDataGridViewTextBoxColumn.Name = "contentIdDataGridViewTextBoxColumn";
+            this.contentIdDataGridViewTextBoxColumn.Width = 225;
+            // 
+            // isActiveDataGridViewCheckBoxColumn
+            // 
+            this.isActiveDataGridViewCheckBoxColumn.DataPropertyName = "IsActive";
+            this.isActiveDataGridViewCheckBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.isActiveDataGridViewCheckBoxColumn.HeaderText = "Active";
+            this.isActiveDataGridViewCheckBoxColumn.MinimumWidth = 50;
+            this.isActiveDataGridViewCheckBoxColumn.Name = "isActiveDataGridViewCheckBoxColumn";
+            this.isActiveDataGridViewCheckBoxColumn.Width = 50;
+            // 
+            // isSystemFunctionDataGridViewCheckBoxColumn
+            // 
+            this.isSystemFunctionDataGridViewCheckBoxColumn.DataPropertyName = "IsSystemFunction";
+            this.isSystemFunctionDataGridViewCheckBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.isSystemFunctionDataGridViewCheckBoxColumn.HeaderText = "System Function";
+            this.isSystemFunctionDataGridViewCheckBoxColumn.MinimumWidth = 50;
+            this.isSystemFunctionDataGridViewCheckBoxColumn.Name = "isSystemFunctionDataGridViewCheckBoxColumn";
+            this.isSystemFunctionDataGridViewCheckBoxColumn.Width = 82;
+            // 
+            // isRoleBasedDataGridViewCheckBoxColumn
+            // 
+            this.isRoleBasedDataGridViewCheckBoxColumn.DataPropertyName = "IsRoleBased";
+            this.isRoleBasedDataGridViewCheckBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.isRoleBasedDataGridViewCheckBoxColumn.HeaderText = "Role Based";
+            this.isRoleBasedDataGridViewCheckBoxColumn.MinimumWidth = 50;
+            this.isRoleBasedDataGridViewCheckBoxColumn.Name = "isRoleBasedDataGridViewCheckBoxColumn";
+            this.isRoleBasedDataGridViewCheckBoxColumn.Width = 61;
+            // 
+            // SecurityRights
+            // 
+            this.SecurityRights.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SecurityRights.HeaderText = "Rights";
+            this.SecurityRights.MinimumWidth = 90;
+            this.SecurityRights.Name = "SecurityRights";
+            this.SecurityRights.Text = "Edit";
+            this.SecurityRights.ToolTipText = "Maintain security rights.";
+            this.SecurityRights.UseColumnTextForButtonValue = true;
+            this.SecurityRights.Width = 90;
             // 
             // securityFunctionsBindingSource
             // 
@@ -141,17 +210,18 @@
             this.ResetButton.UseVisualStyleBackColor = true;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
-            // CancelButton
+            // CancelProcButton
             // 
-            this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelButton.Location = new System.Drawing.Point(922, 377);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 13;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancelProcButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelProcButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelProcButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CancelProcButton.Location = new System.Drawing.Point(922, 377);
+            this.CancelProcButton.Name = "CancelProcButton";
+            this.CancelProcButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelProcButton.TabIndex = 13;
+            this.CancelProcButton.Text = "Cancel";
+            this.CancelProcButton.UseVisualStyleBackColor = true;
+            this.CancelProcButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // SaveButton
             // 
@@ -165,84 +235,15 @@
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.idDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            this.idDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.idDataGridViewTextBoxColumn.MinimumWidth = 225;
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            this.idDataGridViewTextBoxColumn.Width = 225;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.nameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.MinimumWidth = 200;
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // contentIdDataGridViewTextBoxColumn
-            // 
-            this.contentIdDataGridViewTextBoxColumn.DataPropertyName = "ContentId";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.contentIdDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
-            this.contentIdDataGridViewTextBoxColumn.HeaderText = "Label Content ID";
-            this.contentIdDataGridViewTextBoxColumn.MinimumWidth = 225;
-            this.contentIdDataGridViewTextBoxColumn.Name = "contentIdDataGridViewTextBoxColumn";
-            this.contentIdDataGridViewTextBoxColumn.Width = 225;
-            // 
-            // isActiveDataGridViewCheckBoxColumn
-            // 
-            this.isActiveDataGridViewCheckBoxColumn.DataPropertyName = "IsActive";
-            this.isActiveDataGridViewCheckBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.isActiveDataGridViewCheckBoxColumn.HeaderText = "Active";
-            this.isActiveDataGridViewCheckBoxColumn.MinimumWidth = 50;
-            this.isActiveDataGridViewCheckBoxColumn.Name = "isActiveDataGridViewCheckBoxColumn";
-            this.isActiveDataGridViewCheckBoxColumn.Width = 50;
-            // 
-            // isSystemFunctionDataGridViewCheckBoxColumn
-            // 
-            this.isSystemFunctionDataGridViewCheckBoxColumn.DataPropertyName = "IsSystemFunction";
-            this.isSystemFunctionDataGridViewCheckBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.isSystemFunctionDataGridViewCheckBoxColumn.HeaderText = "System Function";
-            this.isSystemFunctionDataGridViewCheckBoxColumn.MinimumWidth = 50;
-            this.isSystemFunctionDataGridViewCheckBoxColumn.Name = "isSystemFunctionDataGridViewCheckBoxColumn";
-            this.isSystemFunctionDataGridViewCheckBoxColumn.Width = 82;
-            // 
-            // isRoleBasedDataGridViewCheckBoxColumn
-            // 
-            this.isRoleBasedDataGridViewCheckBoxColumn.DataPropertyName = "IsRoleBased";
-            this.isRoleBasedDataGridViewCheckBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.isRoleBasedDataGridViewCheckBoxColumn.HeaderText = "Role Based";
-            this.isRoleBasedDataGridViewCheckBoxColumn.MinimumWidth = 50;
-            this.isRoleBasedDataGridViewCheckBoxColumn.Name = "isRoleBasedDataGridViewCheckBoxColumn";
-            this.isRoleBasedDataGridViewCheckBoxColumn.Width = 61;
-            // 
-            // SecurityRights
-            // 
-            this.SecurityRights.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SecurityRights.HeaderText = "Rights";
-            this.SecurityRights.MinimumWidth = 90;
-            this.SecurityRights.Name = "SecurityRights";
-            this.SecurityRights.Text = "Edit";
-            this.SecurityRights.ToolTipText = "Maintain security rights.";
-            this.SecurityRights.UseColumnTextForButtonValue = true;
-            this.SecurityRights.Width = 90;
-            // 
             // SecurityFunctionsForm
             // 
             this.AcceptButton = this.SaveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.CancelButton;
+            this.CancelButton = this.CancelProcButton;
             this.ClientSize = new System.Drawing.Size(1008, 412);
             this.Controls.Add(this.ResetButton);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CancelProcButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.SecurityFunctionsGridView);
             this.Controls.Add(this.groupBox1);
@@ -270,7 +271,7 @@
         private System.Windows.Forms.TextBox SecurityRoleNameTextBox;
         private System.Windows.Forms.BindingSource securityFunctionsBindingSource;
         private System.Windows.Forms.Button ResetButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CancelProcButton;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;

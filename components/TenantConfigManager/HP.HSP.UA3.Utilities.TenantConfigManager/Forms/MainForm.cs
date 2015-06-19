@@ -2637,7 +2637,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             MenuItemsForm form = new MenuItemsForm()
             {
                 BusinessModule = _businessModuleName,
-                Menu = menu,
+                MainMenu = menu,
                 MenuItem = null,
                 ShowIds = ShowIdsCheckBox.Checked
             };
