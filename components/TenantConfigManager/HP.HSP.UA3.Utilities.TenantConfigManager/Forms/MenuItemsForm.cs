@@ -348,7 +348,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
             else
             {
-                MenuItemNameTextBox.Text = this.Menu.Name;
+                MenuItemNameTextBox.Text = this.MainMenu.Name;
                 if (this.MainMenu.Items == null)
                 {
                     this.MainMenu.Items = new List<MenuItemModel>();
