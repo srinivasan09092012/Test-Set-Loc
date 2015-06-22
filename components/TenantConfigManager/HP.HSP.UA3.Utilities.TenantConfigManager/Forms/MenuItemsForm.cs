@@ -102,7 +102,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
                 e.Row.Cells[1].Value = MenuItemNameTextBox.Text + ".";
                 e.Row.Cells[5].Value = this.BusinessModule + ".Label.Menu.";
-                e.Row.Cells[9].Value = this.BusinessModule;
+                e.Row.Cells[11].Value = this.BusinessModule;
             }
             catch (Exception ex)
             {
@@ -365,11 +365,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
                 //Check for proper named label content id
                 string prefix = this.BusinessModule + ".Label.Menu.";
-                if (!item.LabelContentId.StartsWith(prefix))
+                string altPrefix = "Core.Label.Menu.";
+                if (!item.LabelContentId.StartsWith(prefix) && !item.LabelContentId.StartsWith(altPrefix))
                 {
                     MenuItemsGridView.CurrentCell = MenuItemsGridView.Rows[idx].Cells[5];
                     MenuItemsGridView.Rows[idx].Cells[5].Selected = true;
-                    MessageBox.Show(string.Format("Label Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (prefix != altPrefix)
+                    {
+                        MessageBox.Show(string.Format("Label Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show(string.Format("Label Content ID must start with the prefix '{0}' or alt prefix '{1}'.", prefix, altPrefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     return false;
                 }
 
@@ -384,21 +392,37 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
                 //Check for proper named page help content id
                 prefix = this.BusinessModule + ".HtmlBlock.Page.Help.";
-                if (item.PageHelpContentIdSpecified && !item.PageHelpContentId.StartsWith(prefix))
+                altPrefix = "Core.HtmlBlock.Page.Help.";
+                if (item.PageHelpContentIdSpecified && !item.PageHelpContentId.StartsWith(prefix) && !item.PageHelpContentId.StartsWith(altPrefix))
                 {
                     MenuItemsGridView.CurrentCell = MenuItemsGridView.Rows[idx].Cells[9];
                     MenuItemsGridView.Rows[idx].Cells[9].Selected = true;
-                    MessageBox.Show(string.Format("Page Help Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (prefix != altPrefix)
+                    {
+                        MessageBox.Show(string.Format("Page Help Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show(string.Format("Page Help Content ID must start with the prefix '{0}' or alt prefix '{1}'.", prefix, altPrefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     return false;
                 }
 
                 //Check for proper named mita help content id
                 prefix = this.BusinessModule + ".HtmlBlock.MITA.Help.";
-                if (item.MitaHelpContentIdSpecified && !item.MitaHelpContentId.StartsWith(prefix))
+                altPrefix = "Core.HtmlBlock.MITA.Help.";
+                if (item.MitaHelpContentIdSpecified && !item.MitaHelpContentId.StartsWith(prefix) && !item.MitaHelpContentId.StartsWith(altPrefix))
                 {
                     MenuItemsGridView.CurrentCell = MenuItemsGridView.Rows[idx].Cells[10];
                     MenuItemsGridView.Rows[idx].Cells[10].Selected = true;
-                    MessageBox.Show(string.Format("MITA Help Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (prefix != altPrefix)
+                    {
+                        MessageBox.Show(string.Format("MITA Help Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show(string.Format("MITA Help Content ID must start with the prefix '{0}' or alt prefix '{1}'.", prefix, altPrefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     return false;
                 }
                 idx++;
