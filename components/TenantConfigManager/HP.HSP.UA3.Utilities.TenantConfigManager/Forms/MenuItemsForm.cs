@@ -119,7 +119,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                if (e.ColumnIndex == 10)
+                if (e.ColumnIndex == 12)
                 {
                     string id = MenuItemsGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
                     ShowMenuItems(id);
@@ -138,6 +138,58 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         private void MenuItemsGridView_CurrentCellChanged(object sender, EventArgs e)
         {
             ToggleDirtyData(true);
+        }
+
+        private void MenuItemsGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                if(e.RowIndex != -1)
+                {
+                    string id = string.Empty;
+                    if(MenuItemsGridView.Rows[e.RowIndex].Cells[0].Value != null)
+                    {
+                        id = MenuItemsGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        MenuItemModel menuItem = _menuItems.Find(mi => mi.Id == id);
+                        object value;
+                        switch (e.ColumnIndex)
+                        {
+                            case 9:
+                                value = MenuItemsGridView.Rows[e.RowIndex].Cells[9].Value;
+                                if (value != null)
+                                {
+                                    menuItem.PageHelpContentIdSpecified = !string.IsNullOrEmpty(value.ToString().Trim());
+                                }
+                                else
+                                {
+                                    menuItem.PageHelpContentIdSpecified = false;
+                                }
+                                break;
+
+                            case 10:
+                                value = MenuItemsGridView.Rows[e.RowIndex].Cells[10].Value;
+                                if (value != null)
+                                {
+                                    menuItem.MitaHelpContentIdSpecified = !string.IsNullOrEmpty(value.ToString().Trim());
+                                }
+                                else
+                                {
+                                    menuItem.MitaHelpContentIdSpecified = false;
+                                }
+                                break;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }            
         }
 
         private void MenuItemsGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
@@ -329,6 +381,26 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     MessageBox.Show("Default Text is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
+
+                //Check for proper named page help content id
+                prefix = this.BusinessModule + ".HtmlBlock.Page.Help.";
+                if (item.PageHelpContentIdSpecified && !item.PageHelpContentId.StartsWith(prefix))
+                {
+                    MenuItemsGridView.CurrentCell = MenuItemsGridView.Rows[idx].Cells[9];
+                    MenuItemsGridView.Rows[idx].Cells[9].Selected = true;
+                    MessageBox.Show(string.Format("Page Help Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                //Check for proper named mita help content id
+                prefix = this.BusinessModule + ".HtmlBlock.MITA.Help.";
+                if (item.MitaHelpContentIdSpecified && !item.MitaHelpContentId.StartsWith(prefix))
+                {
+                    MenuItemsGridView.CurrentCell = MenuItemsGridView.Rows[idx].Cells[10];
+                    MenuItemsGridView.Rows[idx].Cells[10].Selected = true;
+                    MessageBox.Show(string.Format("MITA Help Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
                 idx++;
             }
 
@@ -376,7 +448,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             MenuItemsForm form = new MenuItemsForm()
             {
                 BusinessModule = this.BusinessModule,
-                Menu = this.Menu,
+                MainMenu = this.MainMenu,
                 MenuItem = menuItem,
                 ShowIds = this.ShowIds
             };

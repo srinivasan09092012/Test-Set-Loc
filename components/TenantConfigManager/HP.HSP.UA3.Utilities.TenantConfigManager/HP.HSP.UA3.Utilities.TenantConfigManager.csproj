@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Utilities.cs" />
+    <Compile Include="Data\SecurityRoleFunctionModel.cs" />
     <Compile Include="Data\UserConfigModel.cs" />
     <Compile Include="Forms\AboutForm.cs">
       <SubType>Form</SubType>
@@ -125,6 +126,12 @@
     <Compile Include="Forms\SecurityRightsForm.Designer.cs">
       <DependentUpon>SecurityRightsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SecurityRightsHelperForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SecurityRightsHelperForm.Designer.cs">
+      <DependentUpon>SecurityRightsHelperForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UserConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +174,9 @@
     <EmbeddedResource Include="Forms\SecurityRightsForm.resx">
       <DependentUpon>SecurityRightsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SecurityRightsHelperForm.resx">
+      <DependentUpon>SecurityRightsHelperForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserConfigForm.resx">
       <DependentUpon>UserConfigForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,6 +217,7 @@
     <None Include="Properties\DataSources\HP.HSP.UA3.Core.UX.Data.Security.SecurityFunctionModel.datasource" />
     <None Include="Properties\DataSources\HP.HSP.UA3.Core.UX.Data.Security.SecurityRightModel.datasource" />
     <None Include="Properties\DataSources\HP.HSP.UA3.Core.UX.Data.Security.SecurityRoleModel.datasource" />
+    <None Include="Properties\DataSources\HP.HSP.UA3.Utilities.TenantConfigManager.Data.SecurityRoleFunctionModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

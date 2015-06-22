@@ -59,6 +59,7 @@
             this.dataRestrictionTypeDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.displayTypeDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.isRequiredDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Height = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maxLengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CompareTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CompareToMsgContentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -214,6 +215,7 @@
             this.dataRestrictionTypeDataGridViewComboBoxColumn,
             this.displayTypeDataGridViewComboBoxColumn,
             this.isRequiredDataGridViewCheckBoxColumn,
+            this.Height,
             this.maxLengthDataGridViewTextBoxColumn,
             this.CompareTo,
             this.CompareToMsgContentId,
@@ -302,6 +304,14 @@
             this.isRequiredDataGridViewCheckBoxColumn.HeaderText = "Required";
             this.isRequiredDataGridViewCheckBoxColumn.Name = "isRequiredDataGridViewCheckBoxColumn";
             this.isRequiredDataGridViewCheckBoxColumn.Width = 56;
+            // 
+            // Height
+            // 
+            this.Height.DataPropertyName = "Height";
+            this.Height.HeaderText = "Height";
+            this.Height.MinimumWidth = 50;
+            this.Height.Name = "Height";
+            this.Height.Width = 63;
             // 
             // maxLengthDataGridViewTextBoxColumn
             // 
@@ -454,12 +464,17 @@
         private System.Windows.Forms.TextBox ModelDisplayTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox ModelScopeTextBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createRestrictionSecurityRightIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn readRestrictionSecurityRightIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn updateRestrictionSecurityRightIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deleteRestrictionSecurityRightIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataTypeDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataRestrictionTypeDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn displayTypeDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isRequiredDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Height;
         private System.Windows.Forms.DataGridViewTextBoxColumn maxLengthDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CompareTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn CompareToMsgContentId;
