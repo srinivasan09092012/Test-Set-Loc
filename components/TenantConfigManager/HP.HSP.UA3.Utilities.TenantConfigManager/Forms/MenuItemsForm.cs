@@ -462,11 +462,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
             if (this.MenuItem != null)
             {
-                menuItem = this.MenuItem.Items.Find(i => i.Id == id);
+                menuItem = _menuItems.Find(i => i.Id == id);
             }
             else
             {
-                menuItem = this.MainMenu.Items.Find(i => i.Id == id);
+                menuItem = _menuItems.Find(i => i.Id == id);
             }
 
             MenuItemsForm form = new MenuItemsForm()
@@ -477,9 +477,12 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 ShowIds = this.ShowIds
             };
             form.ShowDialog();
-            if (!_isDataDrity && form.HasDataChanged)
+            if(form.HasDataChanged)
             {
-                ToggleDirtyData(true);
+                if (!_isDataDrity)
+                {
+                    ToggleDirtyData(true);
+                }
             }
             form.Dispose();
         }
