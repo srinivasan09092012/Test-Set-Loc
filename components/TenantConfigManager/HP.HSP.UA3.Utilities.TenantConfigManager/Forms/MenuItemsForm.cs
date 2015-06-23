@@ -102,7 +102,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
                 e.Row.Cells[1].Value = MenuItemNameTextBox.Text + ".";
                 e.Row.Cells[5].Value = this.BusinessModule + ".Label.Menu.";
-                e.Row.Cells[11].Value = this.BusinessModule;
+                e.Row.Cells[11].Value = this.BusinessModule + ".Label.Menu.";
+                e.Row.Cells[12].Value = this.BusinessModule;
             }
             catch (Exception ex)
             {
@@ -119,7 +120,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                if (e.ColumnIndex == 12)
+                if (e.ColumnIndex == 13)
                 {
                     string id = MenuItemsGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
                     ShowMenuItems(id);
@@ -176,6 +177,18 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                                 else
                                 {
                                     menuItem.MitaHelpContentIdSpecified = false;
+                                }
+                                break;
+
+                            case 11:
+                                value = MenuItemsGridView.Rows[e.RowIndex].Cells[11].Value;
+                                if (value != null)
+                                {
+                                    menuItem.ModuleSectionContentIdSpecified = !string.IsNullOrEmpty(value.ToString().Trim());
+                                }
+                                else
+                                {
+                                    menuItem.ModuleSectionContentIdSpecified = false;
                                 }
                                 break;
                         }
