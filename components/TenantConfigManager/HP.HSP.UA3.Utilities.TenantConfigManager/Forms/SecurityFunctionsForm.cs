@@ -1,5 +1,6 @@
 ﻿using HP.HSP.UA3.Core.UX.Common;
 using HP.HSP.UA3.Core.UX.Common.Utilities;
+using HP.HSP.UA3.Core.UX.Data.Configuration;
 using HP.HSP.UA3.Core.UX.Data.Security;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
     public partial class SecurityFunctionsForm : Form
     {
         public string BusinessModule = string.Empty;
+        public LocalizationConfigurationModel LocalizationConfig = null;
         public SecurityRoleModel Role = null;
         public bool HasDataChanged = false;
         public bool ShowIds = false;
@@ -105,10 +107,18 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                if (e.ColumnIndex == 6)
+                switch(e.ColumnIndex)
                 {
-                    string id = SecurityFunctionsGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    ShowSecurityRights(id);
+                    case 2:
+                        string id = SecurityFunctionsGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+                        ShowLabelHelper(ref id);
+                        SecurityFunctionsGridView.Rows[e.RowIndex].Cells[2].Value = id;
+                        break;
+
+                    case 6:
+                        id = SecurityFunctionsGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        ShowSecurityRights(id);
+                        break;
                 }
             }
             catch (Exception ex)
@@ -331,6 +341,27 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             return isSaved;
         }
 
+        private void ShowLabelHelper(ref string id)
+        {
+            LocaleLabelHelperForm form = new LocaleLabelHelperForm()
+            {
+                LabelContentId = id,
+                LabelContentIdPrefix = string.Format("{0}.Label.Security.Functions.", this.BusinessModule),
+                LocalizationConfig = this.LocalizationConfig,
+                //ShowIds = this.ShowIds
+            };
+            form.ShowDialog();
+            if (form.HasDataChanged)
+            {
+                id = form.LabelContentId;
+                if (!_isDataDrity)
+                {
+                    ToggleDirtyData(true);
+                }
+            }
+            form.Dispose();
+        }
+
         private void ShowSecurityRights(string id)
         {
             SecurityFunctionModel function = _functions.Find(i => i.Id == id);
@@ -338,6 +369,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             SecurityRightsForm form = new SecurityRightsForm()
             {
                 BusinessModule = this.BusinessModule,
+                LocalizationConfig = this.LocalizationConfig,
                 Function = function,
                 ShowIds = this.ShowIds
             };

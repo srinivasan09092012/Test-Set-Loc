@@ -1095,6 +1095,30 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
         }
 
+        private void ServicesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                switch(e.ColumnIndex)
+                {
+                    case 3:
+                        string id = ServicesGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
+                        ShowLabelHelper(ref id, string.Format("{0}.Label.Service.", _businessModuleName));
+                        ServicesGridView.Rows[e.RowIndex].Cells[3].Value = id;
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+
         private void ServicesDataGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             try
@@ -1198,10 +1222,18 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                if (e.ColumnIndex == 8)
+                switch(e.ColumnIndex)
                 {
-                    string id = SecurityRolesGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    ShowSecurityFunctions(id);
+                    case 2:
+                        string id = SecurityRolesGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+                        ShowLabelHelper(ref id, string.Format("{0}.Label.Security.Roles.", _businessModuleName));
+                        SecurityRolesGridView.Rows[e.RowIndex].Cells[2].Value = id;
+                        break;
+
+                    case 8:
+                        id = SecurityRolesGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        ShowSecurityFunctions(id);
+                        break;
                 }
             }
             catch (Exception ex)
@@ -2630,6 +2662,27 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             form.Dispose();
         }
 
+        private void ShowLabelHelper(ref string id, string prefix)
+        {
+            LocaleLabelHelperForm form = new LocaleLabelHelperForm()
+            {
+                LabelContentId = id,
+                LabelContentIdPrefix = prefix,
+                LocalizationConfig = _tenantConfig.Modules[0].LocalizationConfiguration,
+                //ShowIds = this.ShowIds
+            };
+            form.ShowDialog();
+            if (form.HasDataChanged)
+            {
+                id = form.LabelContentId;
+                if (!_isDataDrity)
+                {
+                    ToggleDirtyData(true);
+                }
+            }
+            form.Dispose();
+        }
+
         private void ShowMenuItems(string id)
         {
             MenuModel menu = _tenantConfig.Modules[0].Menus.Find(i => i.Id == id);
@@ -2637,6 +2690,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             MenuItemsForm form = new MenuItemsForm()
             {
                 BusinessModule = _businessModuleName,
+                LocalizationConfig = _tenantConfig.Modules[0].LocalizationConfiguration,
                 MainMenu = menu,
                 MenuItem = null,
                 ShowIds = ShowIdsCheckBox.Checked
@@ -2676,6 +2730,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             SecurityFunctionsForm form = new SecurityFunctionsForm()
             {
                 BusinessModule = _businessModuleName,
+                LocalizationConfig = _tenantConfig.Modules[0].LocalizationConfiguration,
                 Role = role,
                 ShowIds = ShowIdsCheckBox.Checked
             };

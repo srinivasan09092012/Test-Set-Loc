@@ -1,4 +1,5 @@
 ﻿using HP.HSP.UA3.Core.UX.Common.Utilities;
+using HP.HSP.UA3.Core.UX.Data.Configuration;
 using HP.HSP.UA3.Core.UX.Data.Navigation;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
     public partial class MenuItemsForm : Form
     {
         public string BusinessModule = string.Empty;
+        public LocalizationConfigurationModel LocalizationConfig = null;
         public MenuModel MainMenu = null;
         public MenuItemModel MenuItem = null;
         public bool HasDataChanged = false;
@@ -120,10 +122,18 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                if (e.ColumnIndex == 13)
+                switch(e.ColumnIndex)
                 {
-                    string id = MenuItemsGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    ShowMenuItems(id);
+                    case 5:
+                        string id = MenuItemsGridView.Rows[e.RowIndex].Cells[5].Value.ToString();
+                        ShowLabelHelper(ref id);
+                        MenuItemsGridView.Rows[e.RowIndex].Cells[5].Value = id;
+                        break;
+
+                    case 13:
+                        id = MenuItemsGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        ShowMenuItems(id);
+                        break;
                 }
             }
             catch (Exception ex)
@@ -469,6 +479,27 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             menuItemsBindingSource.DataSource = _menuItems;
         }
 
+        private void ShowLabelHelper(ref string id)
+        {
+            LocaleLabelHelperForm form = new LocaleLabelHelperForm()
+            {
+                LabelContentId = id,
+                LabelContentIdPrefix = string.Format("{0}.Label.Menu.", this.BusinessModule),
+                LocalizationConfig = this.LocalizationConfig,
+                //ShowIds = this.ShowIds
+            };
+            form.ShowDialog();
+            if (form.HasDataChanged)
+            {
+                id = form.LabelContentId;
+                if (!_isDataDrity)
+                {
+                    ToggleDirtyData(true);
+                }
+            }
+            form.Dispose();
+        }
+
         private void ShowMenuItems(string id)
         {
             MenuItemModel menuItem = null;
@@ -485,6 +516,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             MenuItemsForm form = new MenuItemsForm()
             {
                 BusinessModule = this.BusinessModule,
+                LocalizationConfig = this.LocalizationConfig,
                 MainMenu = this.MainMenu,
                 MenuItem = menuItem,
                 ShowIds = this.ShowIds

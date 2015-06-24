@@ -134,47 +134,53 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         {
             switch(e.ColumnIndex)
             {
-                case 13:
-                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[12].Value == null)
-                    {
-                        //Add view restriction
-                        SecurityRightModel securityRight = new SecurityRightModel()
-                        {
-                            Id = Common.Utilities.GenerateNewID(),
-                            Name = "Property.View." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString(),
-                            ContentId = this.BusinessModule + ".Label.Securty.Rights.Property.View." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString(),
-                            IsActive = true,
-                            Type = SecurityRightModel.RightType.Property
-                        };
-
-                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[12].Value = securityRight.Id;
-                    }
-                    else
-                    {
-                        //Delete view restriction
-                    }
+                case 10:
+                    string id = ModelPropertiesGridView.Rows[e.RowIndex].Cells[10].Value.ToString();
+                    ShowLabelHelper(ref id);
+                    ModelPropertiesGridView.Rows[e.RowIndex].Cells[10].Value = id;
                     break;
 
-                case 15:
-                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[14].Value == null)
-                    {
-                        //Add edit restriction
-                        SecurityRightModel securityRight = new SecurityRightModel()
-                        {
-                            Id = Common.Utilities.GenerateNewID(),
-                            Name = "Property.Edit." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString(),
-                            ContentId = this.BusinessModule + ".Label.Securty.Rights.Property.Edit." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString(),
-                            IsActive = true,
-                            Type = SecurityRightModel.RightType.Property
-                        };
+            //    case 13:
+            //        if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[12].Value == null)
+            //        {
+            //            //Add view restriction
+            //            SecurityRightModel securityRight = new SecurityRightModel()
+            //            {
+            //                Id = Common.Utilities.GenerateNewID(),
+            //                Name = "Property.View." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString(),
+            //                ContentId = this.BusinessModule + ".Label.Securty.Rights.Property.View." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString(),
+            //                IsActive = true,
+            //                Type = SecurityRightModel.RightType.Property
+            //            };
 
-                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[14].Value = securityRight.Id;
-                    }
-                    else
-                    {
-                        //Delete edit restriction
-                    }
-                    break;
+            //            ModelPropertiesGridView.Rows[e.RowIndex].Cells[12].Value = securityRight.Id;
+            //        }
+            //        else
+            //        {
+            //            //Delete view restriction
+            //        }
+            //        break;
+
+            //    case 15:
+            //        if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[14].Value == null)
+            //        {
+            //            //Add edit restriction
+            //            SecurityRightModel securityRight = new SecurityRightModel()
+            //            {
+            //                Id = Common.Utilities.GenerateNewID(),
+            //                Name = "Property.Edit." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString(),
+            //                ContentId = this.BusinessModule + ".Label.Securty.Rights.Property.Edit." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString(),
+            //                IsActive = true,
+            //                Type = SecurityRightModel.RightType.Property
+            //            };
+
+            //            ModelPropertiesGridView.Rows[e.RowIndex].Cells[14].Value = securityRight.Id;
+            //        }
+            //        else
+            //        {
+            //            //Delete edit restriction
+            //        }
+            //        break;
             }
         }
 
@@ -381,6 +387,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 item.CompareToMsgContentIdSpecified = !string.IsNullOrEmpty(item.CompareToMsgContentId);
                 item.EditRestrictionSecurityRightIdSpecified = !string.IsNullOrEmpty(item.EditRestrictionSecurityRightId);
                 item.ViewRestrictionSecurityRightIdSpecified = !string.IsNullOrEmpty(item.ViewRestrictionSecurityRightId);
+
+                idx++;
             }
 
             return true;
@@ -414,6 +422,27 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
 
             return isSaved;
+        }
+
+        private void ShowLabelHelper(ref string id)
+        {
+            LocaleLabelHelperForm form = new LocaleLabelHelperForm()
+            {
+                LabelContentId = id,
+                LabelContentIdPrefix = string.Format("{0}.Label.Field.", this.BusinessModule),
+                LocalizationConfig = this.LocalizationConfig,
+                //ShowIds = this.ShowIds
+            };
+            form.ShowDialog();
+            if(form.HasDataChanged)
+            {
+                id = form.LabelContentId;
+                if (!_isDataDrity)
+                {
+                    ToggleDirtyData(true);
+                }
+            }
+            form.Dispose();
         }
 
         private void ToggleDirtyData(bool enabled)

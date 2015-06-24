@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace HP.HSP.UA3.Utilities.TenantConfigManager.Data
 {
+    [Serializable()]
     public class SecurityRoleFunctionModel
     {
         public string RoleId { get; set; }

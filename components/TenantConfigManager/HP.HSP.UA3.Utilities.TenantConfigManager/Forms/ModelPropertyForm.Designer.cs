@@ -53,6 +53,7 @@
             this.CancelProcButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.ModelPropertiesGridView = new System.Windows.Forms.DataGridView();
+            this.modelPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataTypeDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -63,7 +64,7 @@
             this.maxLengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CompareTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CompareToMsgContentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelContentIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelContentIdDataGridViewButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.defaultTextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hintTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accessKeyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,7 +72,6 @@
             this.AddViewRestriction = new System.Windows.Forms.DataGridViewButtonColumn();
             this.EditRestrictionSecurityRightId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddEditRestriction = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.modelPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ModelPropertiesGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelPropertiesBindingSource)).BeginInit();
@@ -219,7 +219,7 @@
             this.maxLengthDataGridViewTextBoxColumn,
             this.CompareTo,
             this.CompareToMsgContentId,
-            this.labelContentIdDataGridViewTextBoxColumn,
+            this.labelContentIdDataGridViewButtonColumn,
             this.defaultTextDataGridViewTextBoxColumn,
             this.hintTypeDataGridViewTextBoxColumn,
             this.accessKeyDataGridViewTextBoxColumn,
@@ -240,11 +240,16 @@
             this.ModelPropertiesGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.ModelPropertiesGridView_DefaultValuesNeeded);
             this.ModelPropertiesGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.ModelPropertiesGridView_UserDeletingRow);
             // 
+            // modelPropertiesBindingSource
+            // 
+            this.modelPropertiesBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.ModelPropertyModel);
+            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
             this.idDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.idDataGridViewTextBoxColumn.Frozen = true;
             this.idDataGridViewTextBoxColumn.HeaderText = "ID";
             this.idDataGridViewTextBoxColumn.MinimumWidth = 225;
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
@@ -256,6 +261,7 @@
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
             this.nameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.nameDataGridViewTextBoxColumn.Frozen = true;
             this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
             this.nameDataGridViewTextBoxColumn.MinimumWidth = 200;
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
@@ -271,7 +277,7 @@
             this.dataTypeDataGridViewComboBoxColumn.Name = "dataTypeDataGridViewComboBoxColumn";
             this.dataTypeDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataTypeDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataTypeDataGridViewComboBoxColumn.Width = 76;
+            this.dataTypeDataGridViewComboBoxColumn.Width = 82;
             // 
             // dataRestrictionTypeDataGridViewComboBoxColumn
             // 
@@ -344,15 +350,17 @@
             this.CompareToMsgContentId.Name = "CompareToMsgContentId";
             this.CompareToMsgContentId.Width = 200;
             // 
-            // labelContentIdDataGridViewTextBoxColumn
+            // labelContentIdDataGridViewButtonColumn
             // 
-            this.labelContentIdDataGridViewTextBoxColumn.DataPropertyName = "LabelContentId";
+            this.labelContentIdDataGridViewButtonColumn.DataPropertyName = "LabelContentId";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.labelContentIdDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
-            this.labelContentIdDataGridViewTextBoxColumn.HeaderText = "Label Content ID";
-            this.labelContentIdDataGridViewTextBoxColumn.MinimumWidth = 200;
-            this.labelContentIdDataGridViewTextBoxColumn.Name = "labelContentIdDataGridViewTextBoxColumn";
-            this.labelContentIdDataGridViewTextBoxColumn.Width = 200;
+            this.labelContentIdDataGridViewButtonColumn.DefaultCellStyle = dataGridViewCellStyle9;
+            this.labelContentIdDataGridViewButtonColumn.HeaderText = "Label Content ID";
+            this.labelContentIdDataGridViewButtonColumn.MinimumWidth = 200;
+            this.labelContentIdDataGridViewButtonColumn.Name = "labelContentIdDataGridViewButtonColumn";
+            this.labelContentIdDataGridViewButtonColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.labelContentIdDataGridViewButtonColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.labelContentIdDataGridViewButtonColumn.Width = 200;
             // 
             // defaultTextDataGridViewTextBoxColumn
             // 
@@ -418,10 +426,6 @@
             this.AddEditRestriction.Visible = false;
             this.AddEditRestriction.Width = 58;
             // 
-            // modelPropertiesBindingSource
-            // 
-            this.modelPropertiesBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.ModelPropertyModel);
-            // 
             // ModelPropertyForm
             // 
             this.AcceptButton = this.SaveButton;
@@ -478,7 +482,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn maxLengthDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CompareTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn CompareToMsgContentId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn labelContentIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn labelContentIdDataGridViewButtonColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn defaultTextDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hintTypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn accessKeyDataGridViewTextBoxColumn;

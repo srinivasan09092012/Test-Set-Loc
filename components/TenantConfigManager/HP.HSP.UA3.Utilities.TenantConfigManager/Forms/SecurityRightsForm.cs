@@ -1,5 +1,6 @@
 ﻿using HP.HSP.UA3.Core.UX.Common;
 using HP.HSP.UA3.Core.UX.Common.Utilities;
+using HP.HSP.UA3.Core.UX.Data.Configuration;
 using HP.HSP.UA3.Core.UX.Data.Security;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
     public partial class SecurityRightsForm : Form
     {
         public string BusinessModule = string.Empty;
+        public LocalizationConfigurationModel LocalizationConfig = null;
         public SecurityFunctionModel Function = null;
         public bool HasDataChanged = false;
         public bool ShowIds = false;
@@ -92,6 +94,30 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     TextBox textBox = (TextBox)SecurityRightsGridView.EditingControl;
                     textBox.SelectionStart = textBox.Text.Length;
                 }
+            }
+        }
+
+        private void SecurityRightsGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                switch (e.ColumnIndex)
+                {
+                    case 3:
+                        string id = SecurityRightsGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
+                        ShowLabelHelper(ref id);
+                        SecurityRightsGridView.Rows[e.RowIndex].Cells[3].Value = id;
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
             }
         }
 
@@ -301,6 +327,27 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
 
             return isSaved;
+        }
+
+        private void ShowLabelHelper(ref string id)
+        {
+            LocaleLabelHelperForm form = new LocaleLabelHelperForm()
+            {
+                LabelContentId = id,
+                LabelContentIdPrefix = string.Format("{0}.Label.Security.Rights.", this.BusinessModule),
+                LocalizationConfig = this.LocalizationConfig,
+                //ShowIds = this.ShowIds
+            };
+            form.ShowDialog();
+            if (form.HasDataChanged)
+            {
+                id = form.LabelContentId;
+                if (!_isDataDrity)
+                {
+                    ToggleDirtyData(true);
+                }
+            }
+            form.Dispose();
         }
 
         private void ToggleDirtyData(bool enabled)
