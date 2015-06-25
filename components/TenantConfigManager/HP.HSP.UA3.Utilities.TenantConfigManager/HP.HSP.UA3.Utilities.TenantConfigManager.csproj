@@ -71,7 +71,7 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Utilities.cs" />
     <Compile Include="Data\LocaleLabelHelperModel.cs" />
-    <Compile Include="Data\SecurityRoleFunctionModel.cs" />
+    <Compile Include="Data\SecurityRightHelperModel.cs" />
     <Compile Include="Data\UserConfigModel.cs" />
     <Compile Include="Forms\AboutForm.cs">
       <SubType>Form</SubType>
@@ -127,17 +127,17 @@
     <Compile Include="Forms\SecurityFunctionsForm.Designer.cs">
       <DependentUpon>SecurityFunctionsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SecurityRightHelperForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SecurityRightHelperForm.Designer.cs">
+      <DependentUpon>SecurityRightHelperForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SecurityRightsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\SecurityRightsForm.Designer.cs">
       <DependentUpon>SecurityRightsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\SecurityRightsHelperForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SecurityRightsHelperForm.Designer.cs">
-      <DependentUpon>SecurityRightsHelperForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\UserConfigForm.cs">
       <SubType>Form</SubType>
@@ -181,11 +181,11 @@
     <EmbeddedResource Include="Forms\SecurityFunctionsForm.resx">
       <DependentUpon>SecurityFunctionsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SecurityRightHelperForm.resx">
+      <DependentUpon>SecurityRightHelperForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\SecurityRightsForm.resx">
       <DependentUpon>SecurityRightsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SecurityRightsHelperForm.resx">
-      <DependentUpon>SecurityRightsHelperForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserConfigForm.resx">
       <DependentUpon>UserConfigForm.cs</DependentUpon>
@@ -228,6 +228,7 @@
     <None Include="Properties\DataSources\HP.HSP.UA3.Core.UX.Data.Security.SecurityRightModel.datasource" />
     <None Include="Properties\DataSources\HP.HSP.UA3.Core.UX.Data.Security.SecurityRoleModel.datasource" />
     <None Include="Properties\DataSources\HP.HSP.UA3.Utilities.TenantConfigManager.Data.LocaleLabelHelperModel.datasource" />
+    <None Include="Properties\DataSources\HP.HSP.UA3.Utilities.TenantConfigManager.Data.SecurityRightHelperModel.datasource" />
     <None Include="Properties\DataSources\HP.HSP.UA3.Utilities.TenantConfigManager.Data.SecurityRoleFunctionModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

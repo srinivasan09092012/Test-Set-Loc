@@ -494,7 +494,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 Cursor = Cursors.WaitCursor;
                 if(e.ColumnIndex == 4)
                 {
-                    string id = DataListsGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    string id = Convert.ToString(DataListsGridView.Rows[e.RowIndex].Cells[0].Value);
                     ShowDataListItems(id);
                 }
             }
@@ -619,12 +619,12 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 Cursor = Cursors.WaitCursor;
                 if (e.ColumnIndex == 6)
                 {
-                    string id = EmailTemplatesGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    string id = Convert.ToString(EmailTemplatesGridView.Rows[e.RowIndex].Cells[0].Value);
                     ShowEmailTemplateEditor(id);
                 }
                 else if (e.ColumnIndex == 9)
                 {
-                    string id = EmailTemplatesGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    string id = Convert.ToString(EmailTemplatesGridView.Rows[e.RowIndex].Cells[0].Value);
                     ShowEmailTemplateAddresses(id);
                 }
             }
@@ -704,7 +704,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 Cursor = Cursors.WaitCursor;
                 if (e.ColumnIndex == 3)
                 {
-                    string id = HtmlBlocksGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    string id = Convert.ToString(HtmlBlocksGridView.Rows[e.RowIndex].Cells[0].Value);
                     ShowHtmlBlockEditor(id);
                 }
             }
@@ -979,7 +979,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 Cursor = Cursors.WaitCursor;
                 if (e.ColumnIndex == 4)
                 {
-                    string id = ModelDefinitionsGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    string id = Convert.ToString(ModelDefinitionsGridView.Rows[e.RowIndex].Cells[0].Value);
                     ShowModelProperties(id);
                 }
             }
@@ -1056,10 +1056,18 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                if (e.ColumnIndex == 4)
+                switch(e.ColumnIndex)
                 {
-                    string id = MenusGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    ShowMenuItems(id);
+                    case 2:
+                        string id = Convert.ToString(MenusGridView.Rows[e.RowIndex].Cells[2].Value);
+                        ShowSecurityRightHelper(ref id, SecurityRightModel.RightType.Page, "Page.", "Page." + MenusGridView.Rows[e.RowIndex].Cells[1].Value.ToString());
+                        MenusGridView.Rows[e.RowIndex].Cells[2].Value = id;
+                        break;
+
+                    case 4:
+                        id = Convert.ToString(MenusGridView.Rows[e.RowIndex].Cells[0].Value);
+                        ShowMenuItems(id);
+                        break;
                 }
             }
             catch (Exception ex)
@@ -1102,8 +1110,14 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 Cursor = Cursors.WaitCursor;
                 switch(e.ColumnIndex)
                 {
+                    case 2:
+                        string id = Convert.ToString(ServicesGridView.Rows[e.RowIndex].Cells[2].Value);
+                        ShowSecurityRightHelper(ref id, SecurityRightModel.RightType.Service, _businessModuleName + ".Service.", _businessModuleName + "." + ServicesGridView.Rows[e.RowIndex].Cells[1].Value.ToString());
+                        ServicesGridView.Rows[e.RowIndex].Cells[2].Value = id;
+                        break;
+
                     case 3:
-                        string id = ServicesGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
+                        id = Convert.ToString(ServicesGridView.Rows[e.RowIndex].Cells[3].Value);
                         ShowLabelHelper(ref id, string.Format("{0}.Label.Service.", _businessModuleName));
                         ServicesGridView.Rows[e.RowIndex].Cells[3].Value = id;
                         break;
@@ -1125,7 +1139,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             {
                 Cursor = Cursors.WaitCursor;
                 e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
-                e.Row.Cells[1].Value = BusinessModuleDropdown.Text + ".Service.";
+                e.Row.Cells[1].Value = "Service.";
                 e.Row.Cells[3].Value = BusinessModuleDropdown.Text + ".Label.Service.";
                 e.Row.Cells[6].Value = BusinessModuleDropdown.Text;
             }
@@ -1225,13 +1239,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 switch(e.ColumnIndex)
                 {
                     case 2:
-                        string id = SecurityRolesGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+                        string id = Convert.ToString(SecurityRolesGridView.Rows[e.RowIndex].Cells[2].Value);
                         ShowLabelHelper(ref id, string.Format("{0}.Label.Security.Roles.", _businessModuleName));
                         SecurityRolesGridView.Rows[e.RowIndex].Cells[2].Value = id;
                         break;
 
+                    case 5:
+                        id = Convert.ToString(SecurityRolesGridView.Rows[e.RowIndex].Cells[5].Value);
+                        ShowSecurityRightHelper(ref id, SecurityRightModel.RightType.Other, _businessModuleName + ".Other.", _businessModuleName + ".Other." + SecurityRolesGridView.Rows[e.RowIndex].Cells[1].Value.ToString());
+                        SecurityRolesGridView.Rows[e.RowIndex].Cells[5].Value = id;
+                        break;
+
                     case 8:
-                        id = SecurityRolesGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        id = Convert.ToString(SecurityRolesGridView.Rows[e.RowIndex].Cells[0].Value);
                         ShowSecurityFunctions(id);
                         break;
                 }
@@ -2693,6 +2713,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 LocalizationConfig = _tenantConfig.Modules[0].LocalizationConfiguration,
                 MainMenu = menu,
                 MenuItem = null,
+                ModuleConfig = _tenantConfig.Modules[0],
                 ShowIds = ShowIdsCheckBox.Checked
             };
             form.ShowDialog();
@@ -2710,9 +2731,10 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             ModelPropertyForm form = new ModelPropertyForm()
             {
                 BusinessModule = _businessModuleName,
-                Model = model,
-                Roles = _tenantConfig.Modules[0].SecurityRoles,
                 LocalizationConfig = _tenantConfig.Modules[0].LocalizationConfiguration,
+                Model = model,
+                ModuleConfig = _tenantConfig.Modules[0],
+                Roles = _tenantConfig.Modules[0].SecurityRoles,
                 ShowIds = ShowIdsCheckBox.Checked
             };
             form.ShowDialog();
@@ -2738,6 +2760,29 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             if (!_isDataDrity && form.HasDataChanged)
             {
                 ToggleDirtyData(true);
+            }
+            form.Dispose();
+        }
+
+        private void ShowSecurityRightHelper(ref string id, SecurityRightModel.RightType rightType, string prefix, string name)
+        {
+            SecurityRightHelperForm form = new SecurityRightHelperForm()
+            {
+                ModuleConfig = _tenantConfig.Modules[0],
+                RightId = id,
+                RightName = name,
+                RightNamePrefix = prefix,
+                RightType = rightType
+                //ShowIds = this.ShowIds
+            };
+            form.ShowDialog();
+            if (form.HasDataChanged)
+            {
+                id = form.RightId;
+                if (!_isDataDrity)
+                {
+                    ToggleDirtyData(true);
+                }
             }
             form.Dispose();
         }

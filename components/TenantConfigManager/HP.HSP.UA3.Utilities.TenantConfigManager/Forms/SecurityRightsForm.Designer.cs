@@ -202,6 +202,7 @@
             this.contentIdDataGridViewButtonColumn.DataPropertyName = "ContentId";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
             this.contentIdDataGridViewButtonColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            this.contentIdDataGridViewButtonColumn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.contentIdDataGridViewButtonColumn.HeaderText = "Label Content ID";
             this.contentIdDataGridViewButtonColumn.MinimumWidth = 225;
             this.contentIdDataGridViewButtonColumn.Name = "contentIdDataGridViewButtonColumn";

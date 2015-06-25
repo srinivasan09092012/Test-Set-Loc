@@ -1,6 +1,7 @@
 ﻿using HP.HSP.UA3.Core.UX.Common.Utilities;
 using HP.HSP.UA3.Core.UX.Data.Configuration;
 using HP.HSP.UA3.Core.UX.Data.Navigation;
+using HP.HSP.UA3.Core.UX.Data.Security;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -13,6 +14,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         public LocalizationConfigurationModel LocalizationConfig = null;
         public MenuModel MainMenu = null;
         public MenuItemModel MenuItem = null;
+        public ModuleConfigurationModel ModuleConfig = null;
         public bool HasDataChanged = false;
         public bool ShowIds = false;
 
@@ -125,13 +127,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 switch(e.ColumnIndex)
                 {
                     case 5:
-                        string id = MenuItemsGridView.Rows[e.RowIndex].Cells[5].Value.ToString();
+                        string id = Convert.ToString(MenuItemsGridView.Rows[e.RowIndex].Cells[5].Value);
                         ShowLabelHelper(ref id);
                         MenuItemsGridView.Rows[e.RowIndex].Cells[5].Value = id;
                         break;
 
+                    case 8:
+                        id = Convert.ToString(MenuItemsGridView.Rows[e.RowIndex].Cells[8].Value);
+                        ShowSecurityRightHelper(ref id, SecurityRightModel.RightType.Page, BusinessModule + ".Page.",  BusinessModule + ".Page." + MenuItemsGridView.Rows[e.RowIndex].Cells[1].Value.ToString());
+                        MenuItemsGridView.Rows[e.RowIndex].Cells[8].Value = id;
+                        break;
+
                     case 13:
-                        id = MenuItemsGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        id = Convert.ToString(MenuItemsGridView.Rows[e.RowIndex].Cells[0].Value);
                         ShowMenuItems(id);
                         break;
                 }
@@ -524,6 +532,29 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             form.ShowDialog();
             if(form.HasDataChanged)
             {
+                if (!_isDataDrity)
+                {
+                    ToggleDirtyData(true);
+                }
+            }
+            form.Dispose();
+        }
+
+        private void ShowSecurityRightHelper(ref string id, SecurityRightModel.RightType rightType, string prefix, string name)
+        {
+            SecurityRightHelperForm form = new SecurityRightHelperForm()
+            {
+                ModuleConfig = this.ModuleConfig,
+                RightId = id,
+                RightName = name,
+                RightNamePrefix = prefix,
+                RightType = rightType
+                //ShowIds = this.ShowIds
+            };
+            form.ShowDialog();
+            if (form.HasDataChanged)
+            {
+                id = form.RightId;
                 if (!_isDataDrity)
                 {
                     ToggleDirtyData(true);

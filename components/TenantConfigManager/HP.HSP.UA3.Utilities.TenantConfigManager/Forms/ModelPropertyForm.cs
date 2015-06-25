@@ -12,6 +12,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
     {
         public string BusinessModule = string.Empty;
         public ModelDefinitionModel Model = null;
+        public ModuleConfigurationModel ModuleConfig = null;
         public List<SecurityRoleModel> Roles = null;
         public LocalizationConfigurationModel LocalizationConfig = null;
         public bool HasDataChanged = false;
@@ -135,52 +136,24 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             switch(e.ColumnIndex)
             {
                 case 10:
-                    string id = ModelPropertiesGridView.Rows[e.RowIndex].Cells[10].Value.ToString();
+                    string id = Convert.ToString(ModelPropertiesGridView.Rows[e.RowIndex].Cells[10].Value);
                     ShowLabelHelper(ref id);
                     ModelPropertiesGridView.Rows[e.RowIndex].Cells[10].Value = id;
                     break;
 
-            //    case 13:
-            //        if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[12].Value == null)
-            //        {
-            //            //Add view restriction
-            //            SecurityRightModel securityRight = new SecurityRightModel()
-            //            {
-            //                Id = Common.Utilities.GenerateNewID(),
-            //                Name = "Property.View." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString(),
-            //                ContentId = this.BusinessModule + ".Label.Securty.Rights.Property.View." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString(),
-            //                IsActive = true,
-            //                Type = SecurityRightModel.RightType.Property
-            //            };
+                case 14:
+                    List<string> typeNodes = new List<string>(ModelTypeTextBox.Text.Split('.'));
+                    id = Convert.ToString(ModelPropertiesGridView.Rows[e.RowIndex].Cells[14].Value);
+                    ShowSecurityRightHelper(ref id, SecurityRightModel.RightType.Control, BusinessModule + ".Control.View." + typeNodes[typeNodes.Count - 1] + "." , BusinessModule + ".Control.View." + typeNodes[typeNodes.Count - 1] + "." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString());
+                    ModelPropertiesGridView.Rows[e.RowIndex].Cells[14].Value = id;
+                    break;
 
-            //            ModelPropertiesGridView.Rows[e.RowIndex].Cells[12].Value = securityRight.Id;
-            //        }
-            //        else
-            //        {
-            //            //Delete view restriction
-            //        }
-            //        break;
-
-            //    case 15:
-            //        if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[14].Value == null)
-            //        {
-            //            //Add edit restriction
-            //            SecurityRightModel securityRight = new SecurityRightModel()
-            //            {
-            //                Id = Common.Utilities.GenerateNewID(),
-            //                Name = "Property.Edit." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString(),
-            //                ContentId = this.BusinessModule + ".Label.Securty.Rights.Property.Edit." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString(),
-            //                IsActive = true,
-            //                Type = SecurityRightModel.RightType.Property
-            //            };
-
-            //            ModelPropertiesGridView.Rows[e.RowIndex].Cells[14].Value = securityRight.Id;
-            //        }
-            //        else
-            //        {
-            //            //Delete edit restriction
-            //        }
-            //        break;
+                case 16:
+                    typeNodes = new List<string>(ModelTypeTextBox.Text.Split('.'));
+                    id = Convert.ToString(ModelPropertiesGridView.Rows[e.RowIndex].Cells[16].Value);
+                    ShowSecurityRightHelper(ref id, SecurityRightModel.RightType.Control, BusinessModule + ".Control.Edit." + typeNodes[typeNodes.Count - 1] + ".", BusinessModule + ".Control.Edit" + typeNodes[typeNodes.Count - 1] + "." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString());
+                    ModelPropertiesGridView.Rows[e.RowIndex].Cells[16].Value = id;
+                    break;
             }
         }
 
@@ -437,6 +410,29 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             if(form.HasDataChanged)
             {
                 id = form.LabelContentId;
+                if (!_isDataDrity)
+                {
+                    ToggleDirtyData(true);
+                }
+            }
+            form.Dispose();
+        }
+
+        private void ShowSecurityRightHelper(ref string id, SecurityRightModel.RightType rightType, string prefix, string name)
+        {
+            SecurityRightHelperForm form = new SecurityRightHelperForm()
+            {
+                ModuleConfig = this.ModuleConfig,
+                RightId = id,
+                RightName = name,
+                RightNamePrefix = prefix,
+                RightType = rightType
+                //ShowIds = this.ShowIds
+            };
+            form.ShowDialog();
+            if (form.HasDataChanged)
+            {
+                id = form.RightId;
                 if (!_isDataDrity)
                 {
                     ToggleDirtyData(true);

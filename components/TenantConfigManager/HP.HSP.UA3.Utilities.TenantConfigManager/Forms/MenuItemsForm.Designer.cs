@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ResetButton = new System.Windows.Forms.Button();
             this.CancelProcButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
@@ -57,7 +57,7 @@
             this.labelContentIdDataGridViewButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.defaultTextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cssClassDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.securityRightIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.securityRightIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.PageHelpContentIdDataGridTextBox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MitaHelpContentIdDataGridTextBox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModuleSectionContentIdDataGridTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -214,8 +214,8 @@
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.idDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.idDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.idDataGridViewTextBoxColumn.Frozen = true;
             this.idDataGridViewTextBoxColumn.HeaderText = "ID";
             this.idDataGridViewTextBoxColumn.MinimumWidth = 225;
@@ -226,8 +226,8 @@
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.nameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.nameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.nameDataGridViewTextBoxColumn.Frozen = true;
             this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
             this.nameDataGridViewTextBoxColumn.MinimumWidth = 200;
@@ -237,10 +237,10 @@
             // orderIndexDataGridViewTextBoxColumn
             // 
             this.orderIndexDataGridViewTextBoxColumn.DataPropertyName = "OrderIndex";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle12.Format = "N0";
-            dataGridViewCellStyle12.NullValue = "0";
-            this.orderIndexDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = "0";
+            this.orderIndexDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.orderIndexDataGridViewTextBoxColumn.Frozen = true;
             this.orderIndexDataGridViewTextBoxColumn.HeaderText = "Order";
             this.orderIndexDataGridViewTextBoxColumn.MinimumWidth = 50;
@@ -260,8 +260,8 @@
             // baseUrlDataGridViewTextBoxColumn
             // 
             this.baseUrlDataGridViewTextBoxColumn.DataPropertyName = "BaseUrl";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.baseUrlDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.baseUrlDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.baseUrlDataGridViewTextBoxColumn.Frozen = true;
             this.baseUrlDataGridViewTextBoxColumn.HeaderText = "Base Url";
             this.baseUrlDataGridViewTextBoxColumn.MinimumWidth = 200;
@@ -271,8 +271,9 @@
             // labelContentIdDataGridViewButtonColumn
             // 
             this.labelContentIdDataGridViewButtonColumn.DataPropertyName = "LabelContentId";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.labelContentIdDataGridViewButtonColumn.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.labelContentIdDataGridViewButtonColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            this.labelContentIdDataGridViewButtonColumn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.labelContentIdDataGridViewButtonColumn.Frozen = true;
             this.labelContentIdDataGridViewButtonColumn.HeaderText = "Label Content ID";
             this.labelContentIdDataGridViewButtonColumn.MinimumWidth = 225;
@@ -284,8 +285,8 @@
             // defaultTextDataGridViewTextBoxColumn
             // 
             this.defaultTextDataGridViewTextBoxColumn.DataPropertyName = "DefaultText";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.defaultTextDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.defaultTextDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.defaultTextDataGridViewTextBoxColumn.HeaderText = "Default Text";
             this.defaultTextDataGridViewTextBoxColumn.MinimumWidth = 100;
             this.defaultTextDataGridViewTextBoxColumn.Name = "defaultTextDataGridViewTextBoxColumn";
@@ -293,8 +294,8 @@
             // cssClassDataGridViewTextBoxColumn
             // 
             this.cssClassDataGridViewTextBoxColumn.DataPropertyName = "CssClass";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.cssClassDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.cssClassDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
             this.cssClassDataGridViewTextBoxColumn.HeaderText = "Css Class";
             this.cssClassDataGridViewTextBoxColumn.MinimumWidth = 50;
             this.cssClassDataGridViewTextBoxColumn.Name = "cssClassDataGridViewTextBoxColumn";
@@ -303,11 +304,14 @@
             // securityRightIdDataGridViewTextBoxColumn
             // 
             this.securityRightIdDataGridViewTextBoxColumn.DataPropertyName = "SecurityRightId";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.securityRightIdDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.securityRightIdDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            this.securityRightIdDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.securityRightIdDataGridViewTextBoxColumn.HeaderText = "Security Right ID";
             this.securityRightIdDataGridViewTextBoxColumn.MinimumWidth = 225;
             this.securityRightIdDataGridViewTextBoxColumn.Name = "securityRightIdDataGridViewTextBoxColumn";
+            this.securityRightIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.securityRightIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.securityRightIdDataGridViewTextBoxColumn.Width = 225;
             // 
             // PageHelpContentIdDataGridTextBox
@@ -337,8 +341,8 @@
             // iocContainerDataGridViewTextBoxColumn
             // 
             this.iocContainerDataGridViewTextBoxColumn.DataPropertyName = "IocContainer";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.iocContainerDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.iocContainerDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
             this.iocContainerDataGridViewTextBoxColumn.HeaderText = "IOC Container";
             this.iocContainerDataGridViewTextBoxColumn.MinimumWidth = 50;
             this.iocContainerDataGridViewTextBoxColumn.Name = "iocContainerDataGridViewTextBoxColumn";
@@ -346,7 +350,7 @@
             // 
             // Items4
             // 
-            this.Items4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Items4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Items4.HeaderText = "Items";
             this.Items4.MinimumWidth = 90;
             this.Items4.Name = "Items4";
@@ -403,7 +407,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn labelContentIdDataGridViewButtonColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn defaultTextDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cssClassDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn securityRightIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn securityRightIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn PageHelpContentIdDataGridTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn MitaHelpContentIdDataGridTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModuleSectionContentIdDataGridTextBoxColumn;

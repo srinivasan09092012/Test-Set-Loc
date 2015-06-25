@@ -199,7 +199,7 @@
             this.MenusGridView = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.securityRightIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.securityRightIdDataGridViewButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.displaySizeDataGridViewComboBoxColumn2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Items2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.menuBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -213,7 +213,7 @@
             this.ResetButton = new System.Windows.Forms.Button();
             this.idDataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.securityRightIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.securityRightIdDataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.labelContentIdDataGridViewButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.defaultTextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.baseUrlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -223,7 +223,7 @@
             this.contentIdDataGridViewButtonColumn5 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.roleTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.categoryIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adminSecurityRightIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adminSecurityRightIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.isActiveDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.isInternalDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DataGridViewFunctions = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -757,7 +757,7 @@
             // 
             // Items
             // 
-            this.Items.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Items.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Items.HeaderText = "Items";
             this.Items.Name = "Items";
             this.Items.Text = "Edit";
@@ -870,7 +870,7 @@
             // 
             // Body
             // 
-            this.Body.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Body.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Body.HeaderText = "Body";
             this.Body.MinimumWidth = 70;
             this.Body.Name = "Body";
@@ -901,7 +901,7 @@
             // 
             // Addresses
             // 
-            this.Addresses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Addresses.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Addresses.HeaderText = "Addresses";
             this.Addresses.MinimumWidth = 70;
             this.Addresses.Name = "Addresses";
@@ -983,7 +983,7 @@
             dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.htmlDataGridViewButtonColumn.DefaultCellStyle = dataGridViewCellStyle22;
-            this.htmlDataGridViewButtonColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.htmlDataGridViewButtonColumn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.htmlDataGridViewButtonColumn.HeaderText = "Html";
             this.htmlDataGridViewButtonColumn.MinimumWidth = 70;
             this.htmlDataGridViewButtonColumn.Name = "htmlDataGridViewButtonColumn";
@@ -1397,7 +1397,7 @@
             // 
             // Properties
             // 
-            this.Properties.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Properties.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Properties.HeaderText = "Properties";
             this.Properties.Name = "Properties";
             this.Properties.Text = "Edit";
@@ -1429,7 +1429,7 @@
             this.MenusGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn7,
             this.nameDataGridViewTextBoxColumn2,
-            this.securityRightIdDataGridViewTextBoxColumn,
+            this.securityRightIdDataGridViewButtonColumn,
             this.displaySizeDataGridViewComboBoxColumn2,
             this.Items2});
             this.MenusGridView.DataSource = this.menuBindingSource;
@@ -1462,14 +1462,17 @@
             this.nameDataGridViewTextBoxColumn2.HeaderText = "Name";
             this.nameDataGridViewTextBoxColumn2.Name = "nameDataGridViewTextBoxColumn2";
             // 
-            // securityRightIdDataGridViewTextBoxColumn
+            // securityRightIdDataGridViewButtonColumn
             // 
-            this.securityRightIdDataGridViewTextBoxColumn.DataPropertyName = "SecurityRightId";
+            this.securityRightIdDataGridViewButtonColumn.DataPropertyName = "SecurityRightId";
             dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.securityRightIdDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle46;
-            this.securityRightIdDataGridViewTextBoxColumn.HeaderText = "Security Right ID";
-            this.securityRightIdDataGridViewTextBoxColumn.Name = "securityRightIdDataGridViewTextBoxColumn";
-            this.securityRightIdDataGridViewTextBoxColumn.Width = 93;
+            this.securityRightIdDataGridViewButtonColumn.DefaultCellStyle = dataGridViewCellStyle46;
+            this.securityRightIdDataGridViewButtonColumn.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.securityRightIdDataGridViewButtonColumn.HeaderText = "Security Right ID";
+            this.securityRightIdDataGridViewButtonColumn.Name = "securityRightIdDataGridViewButtonColumn";
+            this.securityRightIdDataGridViewButtonColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.securityRightIdDataGridViewButtonColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.securityRightIdDataGridViewButtonColumn.Width = 93;
             // 
             // displaySizeDataGridViewComboBoxColumn2
             // 
@@ -1490,7 +1493,7 @@
             // 
             // Items2
             // 
-            this.Items2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Items2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Items2.HeaderText = "Items";
             this.Items2.Name = "Items2";
             this.Items2.Text = "Edit";
@@ -1522,7 +1525,7 @@
             this.ServicesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn9,
             this.nameDataGridViewTextBoxColumn4,
-            this.securityRightIdDataGridViewTextBoxColumn1,
+            this.securityRightIdDataGridViewButtonColumn1,
             this.labelContentIdDataGridViewButtonColumn,
             this.defaultTextDataGridViewTextBoxColumn,
             this.baseUrlDataGridViewTextBoxColumn,
@@ -1630,20 +1633,24 @@
             this.nameDataGridViewTextBoxColumn4.HeaderText = "Name";
             this.nameDataGridViewTextBoxColumn4.Name = "nameDataGridViewTextBoxColumn4";
             // 
-            // securityRightIdDataGridViewTextBoxColumn1
+            // securityRightIdDataGridViewButtonColumn1
             // 
-            this.securityRightIdDataGridViewTextBoxColumn1.DataPropertyName = "SecurityRightId";
+            this.securityRightIdDataGridViewButtonColumn1.DataPropertyName = "SecurityRightId";
             dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.securityRightIdDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle50;
-            this.securityRightIdDataGridViewTextBoxColumn1.HeaderText = "Security Right ID";
-            this.securityRightIdDataGridViewTextBoxColumn1.Name = "securityRightIdDataGridViewTextBoxColumn1";
-            this.securityRightIdDataGridViewTextBoxColumn1.Width = 93;
+            this.securityRightIdDataGridViewButtonColumn1.DefaultCellStyle = dataGridViewCellStyle50;
+            this.securityRightIdDataGridViewButtonColumn1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.securityRightIdDataGridViewButtonColumn1.HeaderText = "Security Right ID";
+            this.securityRightIdDataGridViewButtonColumn1.Name = "securityRightIdDataGridViewButtonColumn1";
+            this.securityRightIdDataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.securityRightIdDataGridViewButtonColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.securityRightIdDataGridViewButtonColumn1.Width = 93;
             // 
             // labelContentIdDataGridViewButtonColumn
             // 
             this.labelContentIdDataGridViewButtonColumn.DataPropertyName = "LabelContentId";
             dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
             this.labelContentIdDataGridViewButtonColumn.DefaultCellStyle = dataGridViewCellStyle51;
+            this.labelContentIdDataGridViewButtonColumn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.labelContentIdDataGridViewButtonColumn.HeaderText = "Label Content ID";
             this.labelContentIdDataGridViewButtonColumn.Name = "labelContentIdDataGridViewButtonColumn";
             this.labelContentIdDataGridViewButtonColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -1703,6 +1710,7 @@
             this.contentIdDataGridViewButtonColumn5.DataPropertyName = "ContentId";
             dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
             this.contentIdDataGridViewButtonColumn5.DefaultCellStyle = dataGridViewCellStyle57;
+            this.contentIdDataGridViewButtonColumn5.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.contentIdDataGridViewButtonColumn5.HeaderText = "Label Content ID";
             this.contentIdDataGridViewButtonColumn5.Name = "contentIdDataGridViewButtonColumn5";
             this.contentIdDataGridViewButtonColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -1740,8 +1748,11 @@
             this.adminSecurityRightIdDataGridViewTextBoxColumn.DataPropertyName = "AdminSecurityRightId";
             dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
             this.adminSecurityRightIdDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle60;
+            this.adminSecurityRightIdDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.adminSecurityRightIdDataGridViewTextBoxColumn.HeaderText = "Admin Security Right ID";
             this.adminSecurityRightIdDataGridViewTextBoxColumn.Name = "adminSecurityRightIdDataGridViewTextBoxColumn";
+            this.adminSecurityRightIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.adminSecurityRightIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.adminSecurityRightIdDataGridViewTextBoxColumn.Width = 119;
             // 
             // isActiveDataGridViewCheckBoxColumn
@@ -1770,7 +1781,7 @@
             // 
             dataGridViewCellStyle63.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             this.DataGridViewFunctions.DefaultCellStyle = dataGridViewCellStyle63;
-            this.DataGridViewFunctions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DataGridViewFunctions.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.DataGridViewFunctions.HeaderText = "Functions";
             this.DataGridViewFunctions.Name = "DataGridViewFunctions";
             this.DataGridViewFunctions.Text = "Edit";
@@ -1935,26 +1946,17 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn isDefaultDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn maxHeightDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn maxWidthDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn localeIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contentIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn Items;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn localeIdDataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn contentIdDataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewComboBoxColumn messageTypeDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn textDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn scopeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn displaySizeDataGridViewComboBoxColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn Properties;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn securityRightIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn displaySizeDataGridViewComboBoxColumn2;
-        private System.Windows.Forms.DataGridViewButtonColumn Items2;
+        private ScintillaNET.Scintilla IocTextBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn localeIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contentIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn Items;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -1969,10 +1971,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn localeIdDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn contentIdDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewButtonColumn htmlDataGridViewButtonColumn;
-        private ScintillaNET.Scintilla IocTextBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn scopeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn displaySizeDataGridViewComboBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn Properties;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewButtonColumn securityRightIdDataGridViewButtonColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn displaySizeDataGridViewComboBoxColumn2;
+        private System.Windows.Forms.DataGridViewButtonColumn Items2;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn securityRightIdDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewButtonColumn securityRightIdDataGridViewButtonColumn1;
         private System.Windows.Forms.DataGridViewButtonColumn labelContentIdDataGridViewButtonColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn defaultTextDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn baseUrlDataGridViewTextBoxColumn;
@@ -1982,7 +1993,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn contentIdDataGridViewButtonColumn5;
         private System.Windows.Forms.DataGridViewComboBoxColumn roleTypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoryIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn adminSecurityRightIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn adminSecurityRightIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isActiveDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isInternalDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn DataGridViewFunctions;

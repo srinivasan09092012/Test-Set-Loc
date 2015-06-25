@@ -192,6 +192,7 @@
             this.contentIdDataGridViewButtonColumn.DataPropertyName = "ContentId";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
             this.contentIdDataGridViewButtonColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.contentIdDataGridViewButtonColumn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.contentIdDataGridViewButtonColumn.HeaderText = "Label Content ID";
             this.contentIdDataGridViewButtonColumn.MinimumWidth = 225;
             this.contentIdDataGridViewButtonColumn.Name = "contentIdDataGridViewButtonColumn";
@@ -228,7 +229,7 @@
             // 
             // SecurityRights
             // 
-            this.SecurityRights.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SecurityRights.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.SecurityRights.HeaderText = "Rights";
             this.SecurityRights.MinimumWidth = 90;
             this.SecurityRights.Name = "SecurityRights";

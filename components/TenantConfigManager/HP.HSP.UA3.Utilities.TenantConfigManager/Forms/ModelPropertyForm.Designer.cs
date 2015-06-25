@@ -68,9 +68,9 @@
             this.defaultTextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hintTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accessKeyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ViewRestrictionSecurityRightId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ViewRestrictionSecurityRightId = new System.Windows.Forms.DataGridViewButtonColumn();
             this.AddViewRestriction = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.EditRestrictionSecurityRightId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditRestrictionSecurityRightId = new System.Windows.Forms.DataGridViewButtonColumn();
             this.AddEditRestriction = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ModelPropertiesGridView)).BeginInit();
@@ -355,6 +355,7 @@
             this.labelContentIdDataGridViewButtonColumn.DataPropertyName = "LabelContentId";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
             this.labelContentIdDataGridViewButtonColumn.DefaultCellStyle = dataGridViewCellStyle9;
+            this.labelContentIdDataGridViewButtonColumn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.labelContentIdDataGridViewButtonColumn.HeaderText = "Label Content ID";
             this.labelContentIdDataGridViewButtonColumn.MinimumWidth = 200;
             this.labelContentIdDataGridViewButtonColumn.Name = "labelContentIdDataGridViewButtonColumn";
@@ -395,14 +396,17 @@
             // ViewRestrictionSecurityRightId
             // 
             this.ViewRestrictionSecurityRightId.DataPropertyName = "ViewRestrictionSecurityRightId";
+            this.ViewRestrictionSecurityRightId.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.ViewRestrictionSecurityRightId.HeaderText = "View Restriction Security Right ID";
             this.ViewRestrictionSecurityRightId.MinimumWidth = 100;
             this.ViewRestrictionSecurityRightId.Name = "ViewRestrictionSecurityRightId";
+            this.ViewRestrictionSecurityRightId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ViewRestrictionSecurityRightId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.ViewRestrictionSecurityRightId.Width = 139;
             // 
             // AddViewRestriction
             // 
-            this.AddViewRestriction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddViewRestriction.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.AddViewRestriction.HeaderText = "View Action";
             this.AddViewRestriction.Name = "AddViewRestriction";
             this.AddViewRestriction.Text = "";
@@ -412,14 +416,17 @@
             // EditRestrictionSecurityRightId
             // 
             this.EditRestrictionSecurityRightId.DataPropertyName = "EditRestrictionSecurityRightId";
+            this.EditRestrictionSecurityRightId.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.EditRestrictionSecurityRightId.HeaderText = "Edit Restriction Security Right ID";
             this.EditRestrictionSecurityRightId.MinimumWidth = 100;
             this.EditRestrictionSecurityRightId.Name = "EditRestrictionSecurityRightId";
+            this.EditRestrictionSecurityRightId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.EditRestrictionSecurityRightId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.EditRestrictionSecurityRightId.Width = 134;
             // 
             // AddEditRestriction
             // 
-            this.AddEditRestriction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddEditRestriction.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.AddEditRestriction.HeaderText = "Edit Action";
             this.AddEditRestriction.Name = "AddEditRestriction";
             this.AddEditRestriction.Text = "";
@@ -472,6 +479,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn readRestrictionSecurityRightIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn updateRestrictionSecurityRightIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn deleteRestrictionSecurityRightIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HeightDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CompareToDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataTypeDataGridViewComboBoxColumn;
@@ -486,9 +495,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn defaultTextDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hintTypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn accessKeyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ViewRestrictionSecurityRightId;
+        private System.Windows.Forms.DataGridViewButtonColumn ViewRestrictionSecurityRightId;
         private System.Windows.Forms.DataGridViewButtonColumn AddViewRestriction;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EditRestrictionSecurityRightId;
+        private System.Windows.Forms.DataGridViewButtonColumn EditRestrictionSecurityRightId;
         private System.Windows.Forms.DataGridViewButtonColumn AddEditRestriction;
     }
 }

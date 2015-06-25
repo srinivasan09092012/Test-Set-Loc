@@ -9,38 +9,42 @@ using System.Windows.Forms;
 
 namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 {
-    public partial class LocaleLabelHelperForm : Form
+    public partial class SecurityRightHelperForm : Form
     {
-        public string LabelContentId = string.Empty;
-        public string LabelContentIdPrefix = string.Empty;
-        public LocalizationConfigurationModel LocalizationConfig = null;
+        public string RightId = string.Empty;
+        public string RightName = string.Empty;
+        public string RightNamePrefix = string.Empty;
+        public ModuleConfigurationModel ModuleConfig = null;
         public bool HasDataChanged = false;
+        public SecurityRightModel.RightType RightType = SecurityRightModel.RightType.Other;
         public bool ShowIds = false;
 
-        private List<LocaleLabelHelperModel> _labelHelpers = new List<LocaleLabelHelperModel>();
+        private List<SecurityRightHelperModel> _rightHelpers = new List<SecurityRightHelperModel>();
         private bool _isDataDrity = false;
-
-        public LocaleLabelHelperForm()
+        
+        public SecurityRightHelperForm()
         {
             InitializeComponent();
         }
 
-        private void LocaleLabelHelperForm_Load(object sender, EventArgs e)
+        private void SecurityRightsHelperForm_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void LocaleLabelHelperForm_Shown(object sender, EventArgs e)
+        private void SecurityRightsHelperForm_Shown(object sender, EventArgs e)
         {
             try
             {
                 Cursor = Cursors.WaitCursor;
-                LabelContentIdTextBox.Text = this.LabelContentId;
-                if(this.LabelContentId.Length == 0)
+                SecurityRightIdTextBox.Text = this.RightId;
+                SecurityRightNameTextBox.Text = this.RightName;
+                if (this.RightName.Length == 0)
                 {
-                    LabelContentIdTextBox.Text = LabelContentIdPrefix;
+                    SecurityRightNameTextBox.Text = RightNamePrefix;
                 }
-                else if (LabelContentIdTextBox.Text != LabelContentIdPrefix)
+
+                if (SecurityRightIdTextBox.Text.Length > 0 && SecurityRightNameTextBox.Text != RightNamePrefix)
                 {
                     InitializeForm();
                 }
@@ -55,7 +59,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
         }
 
-        private void LocaleLabelHelperForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void SecurityRightsHelperForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             try
             {
@@ -66,7 +70,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                         MessageBox.Show("Would you like to save your changes before exiting?", this.Text, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        if(!IsDataSaved())
+                        if (!IsDataSaved())
                         {
                             e.Cancel = true;
                         }
@@ -76,7 +80,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                         e.Cancel = true;
                     }
 
-                    if(!e.Cancel)
+                    if (!e.Cancel)
                     {
                         e.Cancel = true;
                         this.Hide();
@@ -93,25 +97,26 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
         }
 
-        private void labelsBindingSource_CurrentItemChanged(object sender, EventArgs e)
+        private void rightsBindingSource_CurrentItemChanged(object sender, EventArgs e)
         {
             ToggleDirtyData(true);
         }
 
-        private void LabelsGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
+        private void RightsGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex == LabelsGridView.NewRowIndex)
+            ToggleDirtyData(true);
+            if (e.RowIndex == RightsGridView.NewRowIndex)
             {
-                if (LabelsGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
+                if (RightsGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
                 {
-                    LabelsGridView.BeginEdit(false);
-                    TextBox textBox = (TextBox)LabelsGridView.EditingControl;
+                    RightsGridView.BeginEdit(false);
+                    TextBox textBox = (TextBox)RightsGridView.EditingControl;
                     textBox.SelectionStart = textBox.Text.Length;
                 }
             }
         }
 
-        private void LabelsGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        private void RightsGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             try
             {
@@ -127,12 +132,12 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
         }
 
-        private void LabelContentIdTextBox_TextChanged(object sender, EventArgs e)
+        private void SecurityRightNameTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 Cursor = Cursors.WaitCursor;
-                LabelsGridView.Enabled = false;
+                RightsGridView.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -141,7 +146,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             finally
             {
                 Cursor = Cursors.Default;
-            } 
+            }
         }
 
         private void EditButton_Click(object sender, EventArgs e)
@@ -150,22 +155,22 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             {
                 Cursor = Cursors.WaitCursor;
 
-                LabelContentIdTextBox.Text = LabelContentIdTextBox.Text.Trim();
+                SecurityRightNameTextBox.Text = SecurityRightNameTextBox.Text.Trim();
 
-                if (!LabelContentIdTextBox.Text.ToLower().StartsWith(LabelContentIdPrefix.ToLower()))
+                if (!SecurityRightNameTextBox.Text.ToLower().StartsWith(RightNamePrefix.ToLower()))
                 {
-                    LabelContentIdTextBox.Focus();
-                    throw new Exception(string.Format("Content ID must start with the prefix '{0}'", LabelContentIdPrefix));
+                    SecurityRightNameTextBox.Focus();
+                    throw new Exception(string.Format("Name must start with the prefix '{0}'", RightNamePrefix));
                 }
-                else if (LabelContentIdTextBox.Text.ToLower() == LabelContentIdPrefix.ToLower())
+                else if (SecurityRightNameTextBox.Text.ToLower() == RightNamePrefix.ToLower())
                 {
-                    LabelContentIdTextBox.Focus();
-                    throw new Exception(string.Format("You must enter a Content ID.", LabelContentIdPrefix));
+                    SecurityRightNameTextBox.Focus();
+                    throw new Exception(string.Format("You must enter a Name.", RightNamePrefix));
                 }
                 InitializeForm();
                 ToggleDirtyData(true);
-                LabelsGridView.Enabled = true;
-                LabelsGridView.Focus();
+                RightsGridView.Enabled = true;
+                RightsGridView.Focus();
             }
             catch (Exception ex)
             {
@@ -249,89 +254,124 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         private void InitializeForm()
         {
             //ShowIdsCheckBox.Checked = this.ShowIds;
-            LoadLabel();
+            LoadRight();
             ToggleDirtyData(false);
-            LabelsGridView.Enabled = true;
-            LabelsGridView.Focus();
+            RightsGridView.Enabled = true;
+            RightsGridView.Focus();
         }
 
-        private bool IsValidLabels()
+        private bool IsValidRights()
         {
             int idx = 0;
-            foreach (LocaleLabelHelperModel item in _labelHelpers)
+            foreach (SecurityRightHelperModel item in _rightHelpers)
             {
-                //Check for text
-                if (string.IsNullOrEmpty(item.Text))
-                {
-                    LabelsGridView.CurrentCell = LabelsGridView.Rows[idx].Cells[2];
-                    LabelsGridView.Rows[idx].Cells[2].Selected = true;
-                    MessageBox.Show("Text is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
+                //Nothing to validate since we just have a checkbox
                 idx++;
             }
 
             return true;
         }
 
-        private void LoadLabel()
+        private void LoadRight()
         {
-            _labelHelpers = new List<LocaleLabelHelperModel>();
-            foreach(LocaleConfigurationModel localeConfig in this.LocalizationConfig.Locales)
+            _rightHelpers = new List<SecurityRightHelperModel>();
+            foreach (SecurityRoleModel securityRole in this.ModuleConfig.SecurityRoles)
             {
-                LocaleLabelHelperModel labelHelper = new LocaleLabelHelperModel()
+                if (securityRole.Functions != null && securityRole.Functions.Count > 0)
                 {
-                    LocaleId = localeConfig.LocaleId
-                };
+                    SecurityRightHelperModel rightHelper = new SecurityRightHelperModel()
+                    {
+                        RoleId = securityRole.Id,
+                        RoleName = securityRole.Name
+                    };
 
-                LocaleConfigurationLabelModel label = localeConfig.LocaleLabels.Find(l => string.Compare(l.ContentId, LabelContentIdTextBox.Text, true) == 0);
-                if(label != null)
-                {
-                    labelHelper.LocaleLabelId = label.Id;
-                    labelHelper.Text = label.Text;
-                    labelHelper.Tooltip = label.Tooltip;
+                    foreach (SecurityFunctionModel securityFunction in securityRole.Functions)
+                    {
+                        rightHelper.FunctionId = securityFunction.Id;
+                        rightHelper.FunctionName = securityFunction.Name;
+                        rightHelper.isIncluded = false;
+
+                        SecurityRightModel securityRight = securityFunction.Rights.Find(sr => sr.Id == SecurityRightIdTextBox.Text);
+                        if (securityRight != null)
+                        {
+                            rightHelper.isIncluded = true;
+                            SecurityRightNameTextBox.Text = securityRight.Name;
+                        }
+                        else
+                        {
+                            securityRight = securityFunction.Rights.Find(sr => string.Compare(sr.Name, SecurityRightNameTextBox.Text, true) == 0);
+                            if (securityRight != null)
+                            {
+                                rightHelper.isIncluded = true;
+                                SecurityRightIdTextBox.Text = securityRight.Id;
+                            }
+                        }
+                    }
+
+                    _rightHelpers.Add(rightHelper);
                 }
-                _labelHelpers.Add(labelHelper);
             }
 
-            labelsBindingSource.DataSource = _labelHelpers;
+            rightsBindingSource.DataSource = _rightHelpers;
         }
 
         private bool IsDataSaved()
         {
             bool isSaved = false;
 
-            if (IsValidLabels())
+            if (IsValidRights())
             {
-                foreach(LocaleLabelHelperModel labelHelper in _labelHelpers)
+                if (string.IsNullOrEmpty(SecurityRightIdTextBox.Text))
                 {
-                    LocaleConfigurationModel localeConfig = this.LocalizationConfig.Locales.Find(l => l.LocaleId == labelHelper.LocaleId);
-                    if(localeConfig != null)
+                    SecurityRightIdTextBox.Text = Common.Utilities.GenerateNewID();
+                }
+                string id = SecurityRightIdTextBox.Text;
+                bool isInUse = false;
+                foreach (SecurityRightHelperModel rightHelper in _rightHelpers)
+                {
+                    SecurityRoleModel securityRole = this.ModuleConfig.SecurityRoles.Find(sr => sr.Id == rightHelper.RoleId);
+                    if (securityRole != null)
                     {
-                        LocaleConfigurationLabelModel label = localeConfig.LocaleLabels.Find(l => string.Compare(l.ContentId, LabelContentIdTextBox.Text, true) == 0);
-                        if (label != null)
+                        SecurityFunctionModel securityFunction = securityRole.Functions.Find(sf => sf.Id == rightHelper.FunctionId);
+                        if (securityRole != null)
                         {
-                            label.Text = labelHelper.Text;
-                            label.Tooltip = labelHelper.Tooltip;
-                        }
-                        else
-                        {
-                            label = new LocaleConfigurationLabelModel()
+                            SecurityRightModel securityRight = securityFunction.Rights.Find(sr => sr.Id == SecurityRightIdTextBox.Text);
+                            if (rightHelper.isIncluded)
                             {
-                                Id = Common.Utilities.GenerateNewID(),
-                                LocaleId = labelHelper.LocaleId,
-                                ContentId = LabelContentIdTextBox.Text,
-                                Text = labelHelper.Text,
-                                Tooltip = labelHelper.Tooltip
-                            };
-                            localeConfig.LocaleLabels.Add(label);
+                                isInUse = true;
+                                if (securityRight == null)
+                                {
+                                    securityFunction.Rights.Add(
+                                        new SecurityRightModel()
+                                        {
+                                            Id = id,
+                                            IsActive = true,
+                                            Name = SecurityRightNameTextBox.Text,
+                                            Type = this.RightType
+                                        });
+                                }
+                            }
+                            else
+                            {
+                                if (securityRight != null)
+                                {
+                                    securityFunction.Rights.Remove(securityRight);
+                                }
+                            }
                         }
                     }
                 }
                 isSaved = true;
                 ToggleDirtyData(false);
-                this.LabelContentId = LabelContentIdTextBox.Text;
+                if (isInUse)
+                {
+                    this.RightId = SecurityRightIdTextBox.Text;
+                }
+                else
+                {
+                    this.RightId = "";
+                }
+                this.RightName = SecurityRightNameTextBox.Text;
                 this.HasDataChanged = true;
                 this.Close();
             }
@@ -348,7 +388,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
         private void ToggleShowIds(bool showIds)
         {
-            LabelsGridView.Columns[0].Visible = showIds;
+            RightsGridView.Columns[0].Visible = showIds;
         }
     }
 }
