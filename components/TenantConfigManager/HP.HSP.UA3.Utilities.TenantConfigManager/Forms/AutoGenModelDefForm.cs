@@ -185,6 +185,12 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                                     hintType = "ListItemSingle";
                                     break;
 
+                                case "HP.HSP.UA3.Core.UX.Data.Common.ListModel":
+                                    dataType = System.ComponentModel.DataAnnotations.DataType.Custom;
+                                    dataRestrictionType = Core.UX.Common.CoreEnumerations.DataAnnotations.DataRestrictionType.None;
+                                    hintType = "ListSingle";
+                                    break;
+
                                 case "System.Boolean":
                                     break;
 
