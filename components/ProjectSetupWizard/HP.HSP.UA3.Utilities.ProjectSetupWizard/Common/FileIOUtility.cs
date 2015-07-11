@@ -161,7 +161,8 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Common
 
             foreach(string oldGuid in guids.Keys)
             {
-                contents = contents.Replace(oldGuid, guids[oldGuid]);
+                contents = contents.Replace(oldGuid.ToUpper(), guids[oldGuid]);
+                contents = contents.Replace(oldGuid.ToLower(), guids[oldGuid]);
             }
 
             File.WriteAllText(file, contents);
