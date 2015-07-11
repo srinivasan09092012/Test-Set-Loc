@@ -479,7 +479,10 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                LoadLocaleConfiguration(LocaleDropdown.SelectedValue);
+                if (LocaleDropdown.SelectedValue != null)
+                {
+                    LoadLocaleConfiguration(LocaleDropdown.SelectedValue);
+                }
             }
             catch (Exception ex)
             {
