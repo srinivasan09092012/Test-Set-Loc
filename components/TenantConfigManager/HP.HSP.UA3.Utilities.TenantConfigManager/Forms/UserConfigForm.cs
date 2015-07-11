@@ -9,6 +9,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 {
     public partial class UserConfigForm : Form
     {
+        public bool HasDataChanged = false;
+
         public UserConfigForm()
         {
             InitializeComponent();
@@ -60,7 +62,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 if(IsFormValid())
                 {
                     SaveUserConfig();
-                    this.Close();
+                    HasDataChanged = true;
+                    this.Hide();
                 }
             }
             catch (Exception ex)

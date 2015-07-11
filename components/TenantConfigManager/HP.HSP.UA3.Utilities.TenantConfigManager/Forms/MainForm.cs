@@ -107,6 +107,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 TenantDropdown.SelectedIndex = -1;
                 TenantDropdown.Enabled = false;
 
+                ClearEditor();
+
                 if (!string.IsNullOrEmpty(AppTierDropdown.SelectedItem.ToString()))
                 {
                     _appTierName = AppTierDropdown.SelectedItem.ToString();
@@ -155,6 +157,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 TenantDropdown.Items.Clear();
                 TenantDropdown.Enabled = false;
                 TenantConfigTabControl.Enabled = false;
+
+                ClearEditor();
 
                 if (!string.IsNullOrEmpty(BusinessModuleDropdown.SelectedItem.ToString()))
                 {
@@ -276,7 +280,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 TenantConfigTabControl.Enabled = false;
                 _tenantName = TenantDropdown.SelectedItem.ToString();
                 _tenantConfig = _tenantConfigs[_tenantName];
-                LoadTenantConfiguration();
+                LoadTenantConfiguration(_tenantConfig);
                 TenantConfigTabControl.Enabled = true;
                 ToggleShowIds(ShowIdsCheckBox.Checked);
                 ToggleDirtyData(false);
@@ -1280,6 +1284,31 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             return true;
         }
 
+        private void ClearEditor()
+        {
+            TenantConfigurationModel tenantConfig = new TenantConfigurationModel();
+            tenantConfig.Contacts = new List<Core.UX.Data.Common.ContactModel>();
+            tenantConfig.Modules = new List<ModuleConfigurationModel>();
+            tenantConfig.Modules.Add(
+                new ModuleConfigurationModel()
+                {
+                    ApplicationSettings = new List<ConfigurationItemModel>(),
+                    DisplayConfiguration = new DisplayConfigurationModel(),
+                    IocConfigurationString = string.Empty,
+                    LocalizationConfiguration = new LocalizationConfigurationModel(),
+                    Menus = new List<MenuModel>(),
+                    ModelDefinitionConfiguration = new List<ModelDefinitionModel>(),
+                    SecurityRoles = new List<SecurityRoleModel>(),
+                    Services = new List<ServiceItemModel>()
+                }
+            );
+            tenantConfig.Modules[0].LocalizationConfiguration.Locales = new List<LocaleConfigurationModel>();
+
+            LoadTenantConfiguration(tenantConfig);
+            LocalizationTabControl.SelectTab(0);
+            TenantConfigTabControl.SelectTab(0);
+        }
+
         private bool ConfirmDeleteRow(string name)
         {
             DialogResult result =
@@ -1328,7 +1357,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             if (IsValidTenantConfigData())
             {
                 //Sort data
-                SortConfigurationData();
+                SortConfigurationData(_tenantConfig);
 
                 //Configure file properties
                 string existingFilePath = _moduleConfigs[_businessModuleName];
@@ -2521,35 +2550,35 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
         }
 
-        private void LoadTenantConfiguration()
+        private void LoadTenantConfiguration(TenantConfigurationModel tenantConfig)
         {
-            SortConfigurationData();
+            SortConfigurationData(tenantConfig);
 
             //Application settings
-            configurationItemModelBindingSource.DataSource = _tenantConfig.Modules[0].ApplicationSettings;
+            configurationItemModelBindingSource.DataSource = tenantConfig.Modules[0].ApplicationSettings;
 
             //Display Sizes
-            displaySizeBindingSource.DataSource = _tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes;
+            displaySizeBindingSource.DataSource = tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes;
 
             //IOC Configuration
-            IocTextBox.Text = _tenantConfig.Modules[0].IocConfigurationString;
+            IocTextBox.Text = tenantConfig.Modules[0].IocConfigurationString;
 
             //Localization
-            LocaleDropdown.DataSource = _tenantConfig.Modules[0].LocalizationConfiguration.Locales;
+            LocaleDropdown.DataSource = tenantConfig.Modules[0].LocalizationConfiguration.Locales;
             LocaleDropdown.DisplayMember = "Name";
             LocaleDropdown.ValueMember = "LocaleId";
 
             //Model Definitions
-            modelDefsBindingSource.DataSource = _tenantConfig.Modules[0].ModelDefinitionConfiguration;
+            modelDefsBindingSource.DataSource = tenantConfig.Modules[0].ModelDefinitionConfiguration;
 
             //Menus
-            menuBindingSource.DataSource = _tenantConfig.Modules[0].Menus;
+            menuBindingSource.DataSource = tenantConfig.Modules[0].Menus;
 
             //Services
-            servicesBindingSource.DataSource = _tenantConfig.Modules[0].Services;
+            servicesBindingSource.DataSource = tenantConfig.Modules[0].Services;
 
             //Security Roles
-            securityRolesBindingSource.DataSource = _tenantConfig.Modules[0].SecurityRoles;
+            securityRolesBindingSource.DataSource = tenantConfig.Modules[0].SecurityRoles;
         }
 
         private void ShowAbout()
@@ -2573,7 +2602,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             form.ShowDialog();
             if (!_isDataDrity && form.HasDataChanged)
             {
-                SortConfigurationData();
+                SortConfigurationData(_tenantConfig);
                 labelBindingSource.ResetBindings(false);
                 modelDefsBindingSource.ResetBindings(false);
                 ToggleDirtyData(true);
@@ -2791,32 +2820,37 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         {
             UserConfigForm form = new UserConfigForm();
             form.ShowDialog();
+            if(form.HasDataChanged)
+            {
+                InitializeForm();
+            }
+            form.Dispose();
         }
 
-        private void SortConfigurationData()
+        private void SortConfigurationData(TenantConfigurationModel tenantConfig)
         {
-            if (_tenantConfig.Modules[0].ApplicationSettings != null)
+            if (tenantConfig.Modules[0].ApplicationSettings != null)
             {
-                _tenantConfig.Modules[0].ApplicationSettings.Sort(
+                tenantConfig.Modules[0].ApplicationSettings.Sort(
                     delegate(ConfigurationItemModel i1, ConfigurationItemModel i2) { return string.Compare(i1.Key, i2.Key); }
                 );
             }
 
-            if (_tenantConfig.Modules[0].DisplayConfiguration != null)
+            if (tenantConfig.Modules[0].DisplayConfiguration != null)
             {
-                if (_tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes != null)
+                if (tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes != null)
                 {
-                    _tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes.Sort(
+                    tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes.Sort(
                         delegate(DisplaySizeConfigurationModel i1, DisplaySizeConfigurationModel i2) { return string.Compare(i1.Name, i2.Name); }
                     );
                 }
             }
 
-            if (_tenantConfig.Modules[0].LocalizationConfiguration != null)
+            if (tenantConfig.Modules[0].LocalizationConfiguration != null)
             {
-                if (_tenantConfig.Modules[0].LocalizationConfiguration.Locales != null)
+                if (tenantConfig.Modules[0].LocalizationConfiguration.Locales != null)
                 {
-                    foreach (LocaleConfigurationModel locale in _tenantConfig.Modules[0].LocalizationConfiguration.Locales)
+                    foreach (LocaleConfigurationModel locale in tenantConfig.Modules[0].LocalizationConfiguration.Locales)
                     {
                         locale.LocaleDataLists.Sort(
                             delegate(LocaleConfigurationDataListModel i1, LocaleConfigurationDataListModel i2) { return string.Compare(i1.ContentId, i2.ContentId); }
@@ -2851,12 +2885,12 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
             }
 
-            if (_tenantConfig.Modules[0].ModelDefinitionConfiguration != null)
+            if (tenantConfig.Modules[0].ModelDefinitionConfiguration != null)
             {
-                _tenantConfig.Modules[0].ModelDefinitionConfiguration.Sort(
+                tenantConfig.Modules[0].ModelDefinitionConfiguration.Sort(
                     delegate(ModelDefinitionModel i1, ModelDefinitionModel i2) { return string.Compare(i1.Type, i2.Type); }
                 );
-                foreach (ModelDefinitionModel item in _tenantConfig.Modules[0].ModelDefinitionConfiguration)
+                foreach (ModelDefinitionModel item in tenantConfig.Modules[0].ModelDefinitionConfiguration)
                 {
                     if (item.ModelProperties != null)
                     {
@@ -2867,12 +2901,12 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
             }
 
-            if (_tenantConfig.Modules[0].Menus != null)
+            if (tenantConfig.Modules[0].Menus != null)
             {
-                _tenantConfig.Modules[0].Menus.Sort(
+                tenantConfig.Modules[0].Menus.Sort(
                     delegate(MenuModel i1, MenuModel i2) { return string.Compare(i1.Name, i2.Name); }
                 );
-                foreach (MenuModel item in _tenantConfig.Modules[0].Menus)
+                foreach (MenuModel item in tenantConfig.Modules[0].Menus)
                 {
                     item.Items.Sort(
                         delegate(MenuItemModel i1, MenuItemModel i2) { return string.Compare(i1.Name, i2.Name); }
@@ -2892,19 +2926,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 }
             }
 
-            if (_tenantConfig.Modules[0].Services != null)
+            if (tenantConfig.Modules[0].Services != null)
             {
-                _tenantConfig.Modules[0].Services.Sort(
+                tenantConfig.Modules[0].Services.Sort(
                     delegate(ServiceItemModel i1, ServiceItemModel i2) { return string.Compare(i1.Name, i2.Name); }
                 );
             }
 
-            if (_tenantConfig.Modules[0].SecurityRoles != null)
+            if (tenantConfig.Modules[0].SecurityRoles != null)
             {
-                _tenantConfig.Modules[0].SecurityRoles.Sort(
+                tenantConfig.Modules[0].SecurityRoles.Sort(
                     delegate(SecurityRoleModel i1, SecurityRoleModel i2) { return string.Compare(i1.Name, i2.Name); }
                 );
-                foreach (SecurityRoleModel role in _tenantConfig.Modules[0].SecurityRoles)
+                foreach (SecurityRoleModel role in tenantConfig.Modules[0].SecurityRoles)
                 {
                     if (role.Functions != null)
                     {

@@ -59,14 +59,14 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(109, 57);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(424, 13);
+            this.label2.Size = new System.Drawing.Size(149, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "example: C:\\Projects\\HP\\USHC_AMERICAS_US_ADU_HSP_UA3\\Source";
+            this.label2.Text = "example: C:\\UA3\\Source";
             // 
             // SourceDirectoryBrowseButton
             // 
             this.SourceDirectoryBrowseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SourceDirectoryBrowseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SourceDirectoryBrowseButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.SourceDirectoryBrowseButton.Location = new System.Drawing.Point(652, 30);
             this.SourceDirectoryBrowseButton.Name = "SourceDirectoryBrowseButton";
             this.SourceDirectoryBrowseButton.Size = new System.Drawing.Size(32, 20);
