@@ -12,7 +12,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Common
     {
         public static string GenerateNewID()
         {
-            return Guid.NewGuid().ToString("D").ToUpper();
+            return Guid.NewGuid().ToString();
         }
 
         public static void StyleXmlEditor(Scintilla editor)

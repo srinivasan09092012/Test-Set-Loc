@@ -1319,6 +1319,192 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             return (result == System.Windows.Forms.DialogResult.Yes);
         }
 
+        private void FormatGuids(TenantConfigurationModel tenantConfig)
+        {
+            if(tenantConfig != null)
+            {
+                tenantConfig.TenantId = tenantConfig.TenantId.ToLower();
+
+                if(tenantConfig.Modules != null && tenantConfig.Modules.Count > 0)
+                {
+                    foreach(ModuleConfigurationModel module in tenantConfig.Modules)
+                    {
+                        module.ModuleId = module.ModuleId.ToLower();
+
+                        if(module.DisplayConfiguration != null && module.DisplayConfiguration.DisplaySizes.Count > 0)
+                        {
+                            foreach(DisplaySizeConfigurationModel displaySize in module.DisplayConfiguration.DisplaySizes)
+                            {
+                                displaySize.Id = displaySize.Id.ToLower();
+                            }
+                        }
+
+                        if(module.LocalizationConfiguration != null && module.LocalizationConfiguration.Locales.Count > 0)
+                        {
+                            foreach (LocaleConfigurationModel locale in module.LocalizationConfiguration.Locales)
+                            {
+                                locale.Id = locale.Id.ToLower();
+
+                                if(locale.LocaleDataLists != null && locale.LocaleDataLists.Count > 0)
+                                {
+                                    foreach (LocaleConfigurationDataListModel datalist in locale.LocaleDataLists)
+                                    {
+                                        datalist.Id = datalist.Id.ToLower();
+
+                                        if(datalist.LocaleDataListItems != null && datalist.LocaleDataListItems.Count > 0)
+                                        {
+                                            foreach (LocaleConfigurationDataListItemModel item in datalist.LocaleDataListItems)
+                                            {
+                                                item.Id = item.Id.ToLower();
+                                            }
+                                        }
+                                    }
+                                }
+
+                                if (locale.LocaleEmailTemplates != null && locale.LocaleEmailTemplates.Count > 0)
+                                {
+                                    foreach (LocaleConfigurationEmailTemplateModel template in locale.LocaleEmailTemplates)
+                                    {
+                                        template.Id = template.Id.ToLower();
+
+                                        if(template.Addresses != null && template.Addresses.Count > 0)
+                                        {
+                                            foreach (LocaleConfigurationEmailTemplateAddressModel address in template.Addresses)
+                                            {
+                                                address.Id = address.Id.ToLower();
+                                            }
+                                        }
+                                    }
+                                }
+
+                                if (locale.LocaleHtmlBlocks != null && locale.LocaleHtmlBlocks.Count > 0)
+                                {
+                                    foreach (LocaleConfigurationHtmlBlockModel block in locale.LocaleHtmlBlocks)
+                                    {
+                                        block.Id = block.Id.ToLower();
+                                    }
+                                }
+
+                                if (locale.LocaleImages != null && locale.LocaleImages.Count > 0)
+                                {
+                                    foreach (LocaleConfigurationImageModel image in locale.LocaleImages)
+                                    {
+                                        image.Id = image.Id.ToLower();
+                                    }
+                                }
+
+                                if (locale.LocaleLabels != null && locale.LocaleLabels.Count > 0)
+                                {
+                                    foreach (LocaleConfigurationLabelModel label in locale.LocaleLabels)
+                                    {
+                                        label.Id = label.Id.ToLower();
+                                    }
+                                }
+
+                                if (locale.LocaleMessages != null && locale.LocaleMessages.Count > 0)
+                                {
+                                    foreach (LocaleConfigurationMessageModel msg in locale.LocaleMessages)
+                                    {
+                                        msg.Id = msg.Id.ToLower();
+                                    }
+                                }
+                            }
+                        }
+
+                        if (module.Menus != null && module.Menus.Count > 0)
+                        {
+                            foreach (MenuModel menu in module.Menus)
+                            {
+                                menu.Id = menu.Id.ToLower();
+                                menu.SecurityRightId = menu.SecurityRightId.ToLower();
+
+                                if(menu.Items != null && menu.Items.Count > 0)
+                                {
+                                    foreach (MenuItemModel item in menu.Items)
+                                    {
+                                        item.Id = item.Id.ToLower();
+
+                                        if (item.SecurityRightId != null)
+                                        {
+                                            item.SecurityRightId = item.SecurityRightId.ToLower();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        if (module.ModelDefinitionConfiguration != null && module.ModelDefinitionConfiguration.Count > 0)
+                        {
+                            foreach (ModelDefinitionModel model in module.ModelDefinitionConfiguration)
+                            {
+                                model.Id = model.Id.ToLower();
+
+                                if (model.ModelProperties != null && model.ModelProperties.Count > 0)
+                                {
+                                    foreach (ModelPropertyModel prop in model.ModelProperties)
+                                    {
+                                        prop.Id = prop.Id.ToLower();
+
+                                        if (prop.EditRestrictionSecurityRightId != null)
+                                        {
+                                            prop.EditRestrictionSecurityRightId = prop.EditRestrictionSecurityRightId.ToLower();
+                                        }
+
+                                        if (prop.ViewRestrictionSecurityRightId != null)
+                                        {
+                                            prop.ViewRestrictionSecurityRightId = prop.ViewRestrictionSecurityRightId.ToLower();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        if (module.Services != null && module.Services.Count > 0)
+                        {
+                            foreach (ServiceItemModel service in module.Services)
+                            {
+                                service.Id = service.Id.ToLower();
+
+                                if (service.SecurityRightId != null)
+                                {
+                                    service.SecurityRightId = service.SecurityRightId.ToLower();
+                                }
+                            }
+                        }
+
+                        if (module.SecurityRoles != null && module.SecurityRoles.Count > 0)
+                        {
+                            foreach (SecurityRoleModel role in module.SecurityRoles)
+                            {
+                                role.Id = role.Id.ToLower();
+
+                                if (role.AdminSecurityRightId != null)
+                                {
+                                    role.AdminSecurityRightId = role.AdminSecurityRightId.ToLower();
+                                }
+
+                                if (role.Functions != null && role.Functions.Count > 0)
+                                {
+                                    foreach (SecurityFunctionModel function in role.Functions)
+                                    {
+                                        function.Id = function.Id.ToLower();
+
+                                        if (function.Rights != null && function.Rights.Count > 0)
+                                        {
+                                            foreach (SecurityRightModel right in function.Rights)
+                                            {
+                                                right.Id = right.Id.ToLower();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         private void InitializeDataGrids()
         {
             ((DataGridViewComboBoxColumn)EmailTemplatesGridView.Columns[5]).DataSource = Enum.GetValues(typeof(CoreEnumerations.Notifications.PriorityType));
@@ -1359,6 +1545,9 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
             if (IsValidTenantConfigData())
             {
+                //Format Guids to conform to lower case standard (ensure manually entered IDs follow the format)
+                FormatGuids(_tenantConfig);
+
                 //Sort data
                 SortConfigurationData(_tenantConfig);
 
