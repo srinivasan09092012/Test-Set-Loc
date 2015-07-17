@@ -44,6 +44,8 @@ namespace OracleDBUtil.Business
                     SaveMetadata(workingDirectory + @"\Procs", procedures);
                 }
             }
+
+            Console.WriteLine("Operation Complete");
         }
 
         public void SaveMetadata(string saveDirectory, List<DatabaseObject> toSave)

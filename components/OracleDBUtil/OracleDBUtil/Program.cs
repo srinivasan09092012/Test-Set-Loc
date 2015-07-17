@@ -10,9 +10,15 @@ namespace OracleDBUtil
     {
         static void Main(string[] args)
         {
-            new Business.ExtractDatabaseServices().ExtractDatabaseObjects();
-
-            Console.WriteLine("Operation Complete");
+            try
+            {
+                new Business.ExtractDatabaseServices().ExtractDatabaseObjects();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.InnerException);
+            }
+            
             Console.ReadLine();
         }
     }
