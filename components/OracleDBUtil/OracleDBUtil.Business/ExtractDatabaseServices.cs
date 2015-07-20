@@ -29,7 +29,7 @@ namespace OracleDBUtil.Business
 
             foreach (ConnectionStringSettings connection in ConfigurationManager.ConnectionStrings)
             {
-                if (connection.ProviderName == "System.Data.OracleClient")
+                if (connection.ProviderName == "System.Data.OracleClient" && connection.Name != "InstallConnection")
                 {
                     string workingDirectory = sourceRoot + connection.Name + extrationExt;
 

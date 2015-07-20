@@ -52,6 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAOHelpers\CreateDBObject.cs" />
+    <Compile Include="DAOHelpers\CreateSchema.cs" />
     <Compile Include="DatabaseMetaRepository.cs" />
     <Compile Include="DAOHelpers\GetSchemaProcedures.cs" />
     <Compile Include="DAOHelpers\GetSchemaTables.cs" />

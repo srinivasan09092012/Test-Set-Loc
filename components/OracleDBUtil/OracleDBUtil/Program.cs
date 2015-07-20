@@ -12,7 +12,30 @@ namespace OracleDBUtil
         {
             try
             {
-                new Business.ExtractDatabaseServices().ExtractDatabaseObjects();
+                string select = "0";
+                Console.WriteLine("UA3 Database Utility");
+
+                while (select != "3")
+                {
+                    Console.WriteLine("Select Option:");
+                    Console.WriteLine("1. Extract Schema Metadata");
+                    Console.WriteLine("2. Install Database");
+                    Console.WriteLine("3. Exit");
+                    select = Console.ReadLine();
+
+                    switch (select)
+                    {
+                        case "1":
+                            new Business.ExtractDatabaseServices().ExtractDatabaseObjects();
+                            break;
+                        case "2":
+                            new Business.DatabaseInstallServices().ExecuteInstall();
+                            break;
+                        default:
+                            Console.WriteLine("Invalid Option");
+                            break;
+                    }
+                }
             }
             catch(Exception ex)
             {

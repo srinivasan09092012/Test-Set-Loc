@@ -18,5 +18,15 @@ namespace OracleDBUtil.DataAccess
         {
             return new DAOHelpers.GetSchemaProcedures(ConnectionName).ExecuteProcedure();
         }
+
+        public int CreateDBObject(string command)
+        {
+            return new DAOHelpers.CreateDBObject().ExecuteProcedure(command);
+        }
+
+        public int CreateSchema(string user, string password)
+        {
+            return new DAOHelpers.CreateSchema().ExecuteProcedure(user, password);
+        }        
     }
 }
