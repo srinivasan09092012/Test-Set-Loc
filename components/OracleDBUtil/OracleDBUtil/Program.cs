@@ -17,6 +17,7 @@ namespace OracleDBUtil
 
                 while (select != "3")
                 {
+                    Console.WriteLine(Environment.NewLine);
                     Console.WriteLine("Select Option:");
                     Console.WriteLine("1. Extract Schema Metadata");
                     Console.WriteLine("2. Install Database");
@@ -31,6 +32,8 @@ namespace OracleDBUtil
                         case "2":
                             new Business.DatabaseInstallServices().ExecuteInstall();
                             break;
+                        case "3":
+                            break;
                         default:
                             Console.WriteLine("Invalid Option");
                             break;
@@ -39,10 +42,9 @@ namespace OracleDBUtil
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex.InnerException);
+                Console.WriteLine(ex.Message);
+                Console.ReadLine();
             }
-            
-            Console.ReadLine();
         }
     }
 }

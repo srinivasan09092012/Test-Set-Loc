@@ -34,7 +34,11 @@ namespace OracleDBUtil.Business
 
                     string workingDirectory = sourceRoot + connection.Name + extrationExt ;
 
+                    Console.WriteLine("Installing Tables...");
                     InstallObjects(workingDirectory + @"\Tables");
+
+                    Console.WriteLine(Environment.NewLine);
+                    Console.WriteLine("Installing Procedures...");
                     InstallObjects(workingDirectory + @"\Procs");
                 }
             }
@@ -47,6 +51,7 @@ namespace OracleDBUtil.Business
                 var tablescripts = Directory.GetFiles(fileLocation);
                 foreach(string script in tablescripts)
                 {
+                    Console.WriteLine("Installing " + script);
                     string scriptText = File.ReadAllText(script);
 
                     if(scriptText.Contains("USING INDEX PCTFREE"))
