@@ -16,7 +16,22 @@ namespace OracleDBUtil.DataAccess
 
         public List<DatabaseObject> GetProcedureMetadata(string ConnectionName)
         {
-            return new DAOHelpers.GetSchemaProcedures(ConnectionName).ExecuteProcedure();
+            return new DAOHelpers.GetSchemaProcedures(ConnectionName, DatabaseObjectType.Procedure).ExecuteProcedure();
+        }
+
+        public List<DatabaseObject> GetPackageSpecMetadata(string ConnectionName)
+        {
+            return  new DAOHelpers.GetSchemaProcedures(ConnectionName, DatabaseObjectType.PackageSpec).ExecuteProcedure();
+        }
+
+        public List<DatabaseObject> GetPackageBodyMetadata(string ConnectionName)
+        {
+            return new DAOHelpers.GetSchemaProcedures(ConnectionName, DatabaseObjectType.PackageBody).ExecuteProcedure();
+        }
+
+        public List<DatabaseObject> GetSequenceMetadata(string ConnectionName)
+        {
+            return new DAOHelpers.GetSchemaProcedures(ConnectionName, DatabaseObjectType.Sequence).ExecuteProcedure();
         }
 
         public int CreateDBObject(string command)

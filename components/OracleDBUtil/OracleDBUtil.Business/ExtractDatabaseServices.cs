@@ -38,10 +38,23 @@ namespace OracleDBUtil.Business
 
                     SaveMetadata(workingDirectory + @"\Tables", tables);
 
+                    Console.WriteLine("Extracting sequences from " + connection.Name);
+                    List<DatabaseObject> sequences = repos.GetSequenceMetadata(connection.Name);
+
+                    SaveMetadata(workingDirectory + @"\Seq", sequences);
+
                     Console.WriteLine("Extracting procedures from " + connection.Name);
                     List<DatabaseObject> procedures = repos.GetProcedureMetadata(connection.Name);
 
                     SaveMetadata(workingDirectory + @"\Procs", procedures);
+
+                    Console.WriteLine("Extracting packages from " + connection.Name);
+                    List<DatabaseObject> packageSpec = repos.GetPackageSpecMetadata(connection.Name);
+
+                    SaveMetadata(workingDirectory + @"\Packages\Spec", packageSpec);
+
+                    List<DatabaseObject> packageBody = repos.GetPackageBodyMetadata(connection.Name);
+                    SaveMetadata(workingDirectory + @"\Packages\Body", packageBody);
                 }
             }
 

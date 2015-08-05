@@ -42,7 +42,7 @@ namespace OracleDBUtil.DataAccess.DAOHelpers
                         IF (v_count = 0) THEN
                           EXECUTE IMMEDIATE ('CREATE USER USERNAME IDENTIFIED BY PASSWORD');
                           EXECUTE IMMEDIATE ('GRANT CREATE TABLE, CREATE PROCEDURE TO USERNAME');
-                          EXECUTE IMMEDIATE ('ALTER USER UA3_PROVIDER QUOTA UNLIMITED ON USERS');
+                          EXECUTE IMMEDIATE ('ALTER USER USERNAME QUOTA UNLIMITED ON USERS');
                             
                         END IF;
 

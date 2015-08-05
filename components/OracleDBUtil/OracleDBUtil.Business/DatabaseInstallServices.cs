@@ -38,8 +38,17 @@ namespace OracleDBUtil.Business
                     InstallObjects(workingDirectory + @"\Tables");
 
                     Console.WriteLine(Environment.NewLine);
+                    Console.WriteLine("Installing Sequences...");
+                    InstallObjects(workingDirectory + @"\Seq");
+
+                    Console.WriteLine(Environment.NewLine);
                     Console.WriteLine("Installing Procedures...");
                     InstallObjects(workingDirectory + @"\Procs");
+
+                    Console.WriteLine(Environment.NewLine);
+                    Console.WriteLine("Installing Packages...");
+                    InstallObjects(workingDirectory + @"\Packages\Spec");
+                    InstallObjects(workingDirectory + @"\Packages\Body");
                 }
             }
         }
