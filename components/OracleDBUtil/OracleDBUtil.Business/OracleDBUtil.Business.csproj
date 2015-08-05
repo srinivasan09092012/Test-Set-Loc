@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseInstallServices.cs" />
+    <Compile Include="Directories.cs" />
     <Compile Include="ExtractDatabaseServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

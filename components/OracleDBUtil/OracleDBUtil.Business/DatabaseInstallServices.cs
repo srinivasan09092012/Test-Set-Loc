@@ -11,44 +11,37 @@ namespace OracleDBUtil.Business
     public class DatabaseInstallServices
     {
         private DataAccess.DatabaseMetaRepository repos;
-        private string sourceRoot;
-        private string extrationExt;
+        private Directories directories;
 
         public DatabaseInstallServices()
         {
             repos = new DataAccess.DatabaseMetaRepository();
-            sourceRoot = ConfigurationManager.AppSettings["SourceRoot"];
-            extrationExt = ConfigurationManager.AppSettings["ExtractionExt"];
         }
 
         public void ExecuteInstall()
         {
-            if (!Directory.Exists(sourceRoot))
-                throw new Exception("Source Root directory does not exist (" + sourceRoot + ") , configure source root correctly in App.config file");
-
             foreach (ConnectionStringSettings connection in ConfigurationManager.ConnectionStrings)
             {
                 if (connection.ProviderName == "System.Data.OracleClient" && connection.Name != "InstallConnection")
                 {
+                    directories = new Directories(connection.Name);
                     CreateSchema(connection.ConnectionString);
 
-                    string workingDirectory = sourceRoot + connection.Name + extrationExt ;
-
                     Console.WriteLine("Installing Tables...");
-                    InstallObjects(workingDirectory + @"\Tables");
+                    InstallObjects(directories.TableDir);
 
                     Console.WriteLine(Environment.NewLine);
                     Console.WriteLine("Installing Sequences...");
-                    InstallObjects(workingDirectory + @"\Seq");
+                    InstallObjects(directories.SequenceDir);
 
                     Console.WriteLine(Environment.NewLine);
                     Console.WriteLine("Installing Procedures...");
-                    InstallObjects(workingDirectory + @"\Procs");
+                    InstallObjects(directories.ProcDir);
 
                     Console.WriteLine(Environment.NewLine);
                     Console.WriteLine("Installing Packages...");
-                    InstallObjects(workingDirectory + @"\Packages\Spec");
-                    InstallObjects(workingDirectory + @"\Packages\Body");
+                    InstallObjects(directories.PackageSpecDir);
+                    InstallObjects(directories.PackageBodyDir);
                 }
             }
         }

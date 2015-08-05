@@ -12,49 +12,42 @@ namespace OracleDBUtil.Business
     public class ExtractDatabaseServices
     {
         private DataAccess.DatabaseMetaRepository repos;
-        private string sourceRoot;
-        private string extrationExt;
+        private Directories directory;
 
         public ExtractDatabaseServices()
         {
             repos = new DataAccess.DatabaseMetaRepository();
-            sourceRoot = ConfigurationManager.AppSettings["SourceRoot"];
-            extrationExt = ConfigurationManager.AppSettings["ExtractionExt"];
         }
 
         public void ExtractDatabaseObjects()
         {
-            if (!Directory.Exists(sourceRoot))
-                throw new Exception("Source Root directory does not exist (" + sourceRoot + ") , configure source root correctly in App.config file");
-
             foreach (ConnectionStringSettings connection in ConfigurationManager.ConnectionStrings)
             {
                 if (connection.ProviderName == "System.Data.OracleClient" && connection.Name != "InstallConnection")
                 {
-                    string workingDirectory = sourceRoot + connection.Name + extrationExt;
-
+                    directory = new Directories(connection.Name);
                     Console.WriteLine("Extracting tables from " + connection.Name);
-                    List<DatabaseObject> tables = repos.GetTableMetadata(connection.Name);
+                    var tables = repos.GetTableMetadata(connection.Name);
 
-                    SaveMetadata(workingDirectory + @"\Tables", tables);
+                    SaveMetadata(directory.TableDir, tables);
 
                     Console.WriteLine("Extracting sequences from " + connection.Name);
-                    List<DatabaseObject> sequences = repos.GetSequenceMetadata(connection.Name);
+                    var sequences = repos.GetSequenceMetadata(connection.Name);
 
-                    SaveMetadata(workingDirectory + @"\Seq", sequences);
+                    SaveMetadata(directory.SequenceDir, sequences);
 
                     Console.WriteLine("Extracting procedures from " + connection.Name);
-                    List<DatabaseObject> procedures = repos.GetProcedureMetadata(connection.Name);
+                    var procedures = repos.GetProcedureMetadata(connection.Name);
 
-                    SaveMetadata(workingDirectory + @"\Procs", procedures);
+                    SaveMetadata(directory.ProcDir, procedures);
 
                     Console.WriteLine("Extracting packages from " + connection.Name);
-                    List<DatabaseObject> packageSpec = repos.GetPackageSpecMetadata(connection.Name);
+                    var packageSpec = repos.GetPackageSpecMetadata(connection.Name);
 
-                    SaveMetadata(workingDirectory + @"\Packages\Spec", packageSpec);
+                    SaveMetadata(directory.PackageSpecDir, packageSpec);
 
-                    List<DatabaseObject> packageBody = repos.GetPackageBodyMetadata(connection.Name);
-                    SaveMetadata(workingDirectory + @"\Packages\Body", packageBody);
+                    var packageBody = repos.GetPackageBodyMetadata(connection.Name);
+                    SaveMetadata(directory.PackageBodyDir, packageBody);
                 }
             }
 
