@@ -7,12 +7,14 @@ using HP.HSP.UA3.Core.UX.Data.Security;
 using HP.HSP.UA3.Core.UX.Providers;
 using HP.HSP.UA3.Utilities.TenantConfigManager.Common;
 using HP.HSP.UA3.Utilities.TenantConfigManager.Data;
+using HP.HSP.UA3.Utilities.TenantConfigManager.Services;
 using ScintillaNET;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
@@ -32,6 +34,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         private string _businessModuleName = string.Empty;
         private string _tenantName = string.Empty;
         private Dictionary<string, TenantConfigurationModel> _tenantConfigs = new Dictionary<string, TenantConfigurationModel>();
+        private Dictionary<string, TenantConfigurationModel> _originalTenantConfigs = new Dictionary<string, TenantConfigurationModel>();
         private TenantConfigurationModel _tenantConfig = null;
 
         #region Main Form Events
@@ -1278,11 +1281,13 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         private bool AreTenantConfigsLoaded(string module)
         {
             _tenantConfigs.Clear();
+            _originalTenantConfigs.Clear();
 
             TenantConfigurationModel tenantConfig = 
                 Serializer.XmlDeserialize<TenantConfigurationModel>(File.ReadAllText(_moduleConfigs[module]), CoreConstants.Xml.NamespacePrefixCore);
 
             _tenantConfigs.Add(tenantConfig.Name, tenantConfig);
+            _originalTenantConfigs.Add(tenantConfig.TenantId, tenantConfig.Clone() as TenantConfigurationModel);
 
             return true;
         }
@@ -1573,6 +1578,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 string xmlConfig = Serializer.XmlSerialize<TenantConfigurationModel>(_tenantConfig, settings);
                 File.WriteAllText(existingFilePath, xmlConfig);
 
+                _originalTenantConfigs[_tenantConfig.TenantId] = _tenantConfig.Clone() as TenantConfigurationModel;                
+
                 isSaved = true;
                 MessageBox.Show("Tenant configuration files have been successfully saved.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ToggleDirtyData(false);
@@ -1617,16 +1624,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     AppSettingsGridView.CurrentCell = AppSettingsGridView.Rows[idx].Cells[0];
                     AppSettingsGridView.Rows[idx].Cells[0].Selected = true;
                     MessageBox.Show(string.Format("Key must be a unqiue value. There are more than 1 rows with a key value of '{0}'.",  item.Key), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for value
-                if (string.IsNullOrEmpty(item.Value))
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[0];
-                    AppSettingsGridView.CurrentCell = AppSettingsGridView.Rows[idx].Cells[1];
-                    AppSettingsGridView.Rows[idx].Cells[1].Selected = true;
-                    MessageBox.Show("Value is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
 
@@ -3156,6 +3153,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             _isDataDrity = enabled;
             ResetButton.Enabled = enabled;
             SaveButton.Enabled = enabled;
+            ViewChangesButton.Enabled = enabled;
             saveToolStripMenuItem.Enabled = enabled;
         }
 
@@ -3184,5 +3182,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             SecurityRolesGridView.Columns[0].Visible = showIds;
         }
         #endregion
+
+        private void ViewChangesButton_Click(object sender, EventArgs e)
+        {
+            if (IsValidTenantConfigData())
+            {
+                var originalConfigs = _originalTenantConfigs.Select(p => p.Value).ToList();
+                var updatedConfigs = _tenantConfigs.Select(p => p.Value).ToList();
+
+                using (var historyForm = new ChangeHistoryForm(originalConfigs, updatedConfigs))
+                {
+                    historyForm.ShowDialog();
+                }
+            }
+        }
     }
 }
