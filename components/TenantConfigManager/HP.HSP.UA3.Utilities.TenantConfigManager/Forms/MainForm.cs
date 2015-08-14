@@ -23,6 +23,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
     {
         public static UserConfigModel UserConfig = null;
 
+        private string _coreTenantConfigPath = string.Empty;
+        private TenantConfigurationModel _coreTenantConfig = null;
         private string _currentModelDataAssemblyFile = string.Empty;
         private string _currentModelDataBinPath = string.Empty;
         private string _currentModelNamespace = string.Empty;
@@ -1288,6 +1290,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
             _tenantConfigs.Add(tenantConfig.Name, tenantConfig);
             _originalTenantConfigs.Add(tenantConfig.TenantId, tenantConfig.Clone() as TenantConfigurationModel);
+
+            //Load core tenant config
+            _coreTenantConfigPath = _moduleConfigs[module].Replace(_businessModuleName, "Core");
+            _coreTenantConfig =
+                Serializer.XmlDeserialize<TenantConfigurationModel>(File.ReadAllText(_coreTenantConfigPath), CoreConstants.Xml.NamespacePrefixCore);
 
             return true;
         }
@@ -2781,6 +2788,10 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             AutoGenModelDefForm form = new AutoGenModelDefForm()
             {
                 BusinessModelName = _businessModuleName,
+                CoreTenantConfig = _coreTenantConfig,
+                CoreModelDataAssembly = _currentModelDataAssemblyFile.Replace(_businessModuleName, "Core"),
+                CoreModelDataBinPath = _currentModelDataBinPath.Replace(_businessModuleName, "Core"),
+                CoreModelNamespace = _currentModelNamespace.Replace(_businessModuleName, "Core"),
                 CurrentModelDataAssembly = _currentModelDataAssemblyFile,
                 CurrentModelDataBinPath = _currentModelDataBinPath,
                 CurrentModelNamespace = _currentModelNamespace,
@@ -2789,7 +2800,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 ModelDefinitions = _tenantConfig.Modules[0].ModelDefinitionConfiguration
             };
             form.ShowDialog();
-            if (!_isDataDrity && form.HasDataChanged)
+            if (form.HasDataChanged)
             {
                 SortConfigurationData(_tenantConfig);
                 labelBindingSource.ResetBindings(false);
@@ -2818,7 +2829,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 ShowIds = ShowIdsCheckBox.Checked
             };
             form.ShowDialog();
-            if (!_isDataDrity && form.HasDataChanged)
+            if (form.HasDataChanged)
             {
                 ToggleDirtyData(true);
             }
@@ -2868,7 +2879,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 ShowIds = ShowIdsCheckBox.Checked
             };
             form.ShowDialog();
-            if (!_isDataDrity && form.HasDataChanged)
+            if (form.HasDataChanged)
             {
                 ToggleDirtyData(true);
             }
@@ -2935,7 +2946,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 ShowIds = ShowIdsCheckBox.Checked
             };
             form.ShowDialog();
-            if (!_isDataDrity && form.HasDataChanged)
+            if (form.HasDataChanged)
             {
                 ToggleDirtyData(true);
             }
@@ -2956,7 +2967,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 ShowIds = ShowIdsCheckBox.Checked
             };
             form.ShowDialog();
-            if (!_isDataDrity && form.HasDataChanged)
+            if (form.HasDataChanged)
             {
                 ToggleDirtyData(true);
             }
@@ -2975,7 +2986,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 ShowIds = ShowIdsCheckBox.Checked
             };
             form.ShowDialog();
-            if (!_isDataDrity && form.HasDataChanged)
+            if (form.HasDataChanged)
             {
                 ToggleDirtyData(true);
             }
