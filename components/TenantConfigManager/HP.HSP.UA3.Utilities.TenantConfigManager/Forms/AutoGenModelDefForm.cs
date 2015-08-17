@@ -203,6 +203,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 if(externalModelDef != null)
                 {
                     ModelDefinitionModel modelDef = (ModelDefinitionModel)externalModelDef.Clone();
+                    modelDef.Id = Common.Utilities.GenerateNewID();
                     modelDef.Scope = ScopeTextbox.Text;
                     modelDef.DisplaySize = DisplaySizeDropdown.SelectedItem.ToString();
                     foreach (ModelPropertyModel property in modelDef.ModelProperties)
@@ -212,7 +213,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                         {
                             foreach (LocaleConfigurationModel locale in this.LocalConfig.Locales)
                             {
-                                if (locale.LocaleLabels.Find(l => string.Compare(l.ContentId, property.LabelContentId, true) == 0) == null)
+                                if (locale.LocaleLabels.Find(l => string.Compare(l.ContentId, newLabelContentId, true) == 0) == null)
                                 {
                                     LocaleConfigurationModel coreLocalConfig = this.CoreTenantConfig.Modules[0].LocalizationConfiguration.Locales.Find(lc => lc.LocaleId == locale.LocaleId);
                                     LocaleConfigurationLabelModel coreLabel = coreLocalConfig.LocaleLabels.Find(l => l.ContentId == property.LabelContentId);
@@ -221,6 +222,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                                     if(coreLabel != null)
                                     {
                                         label = (LocaleConfigurationLabelModel)coreLabel.Clone();
+                                        label.Id = Common.Utilities.GenerateNewID();
                                         label.ContentId = newLabelContentId;
                                     }
                                     else
@@ -228,7 +230,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                                         label = new LocaleConfigurationLabelModel()
                                         {
                                             Id = Common.Utilities.GenerateNewID(),
-                                            ContentId = property.LabelContentId,
+                                            ContentId = newLabelContentId,
                                             LocaleId = locale.Id,
                                             Text = property.DefaultText,
                                             Tooltip = property.DefaultText
@@ -443,11 +445,25 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             }
 
             //Check for unique model definition
-            ModelDefinitionModel modelDef = this.ModelDefinitions.Find(md =>
-                   string.Compare(md.Type, ClassTextbox.Text.Trim(), true) == 0
-                && string.Compare(md.Scope, ScopeTextbox.Text) == 0
-                && md.DisplaySize == DisplaySizeDropdown.SelectedItem.ToString()
-                );
+            ModelDefinitionModel modelDef = null;
+            if (_isExternalDefinition)
+            {
+                string modelDefString = ClassDropdown.SelectedItem.ToString();
+                string[] modelDefStringParts = modelDefString.Split('|');
+                modelDef = this.ModelDefinitions.Find(md =>
+                       string.Compare(md.Type, modelDefStringParts[0].Trim(), true) == 0
+                    && string.Compare(md.Scope, ScopeTextbox.Text, true) == 0
+                    && md.DisplaySize == DisplaySizeDropdown.SelectedItem.ToString()
+                    );
+            }
+            else
+            {
+                modelDef = this.ModelDefinitions.Find(md =>
+                       string.Compare(md.Type, ClassTextbox.Text.Trim(), true) == 0
+                    && string.Compare(md.Scope, ScopeTextbox.Text, true) == 0
+                    && md.DisplaySize == DisplaySizeDropdown.SelectedItem.ToString()
+                    );
+            }
 
             if(modelDef != null)
             {
