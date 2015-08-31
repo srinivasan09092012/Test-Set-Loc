@@ -107,25 +107,25 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         {
             switch (e.ColumnIndex)
             {
-                case 13:
-                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[14].Value == null)
+                case 14:
+                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[15].Value == null)
                     {
-                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[15].Value = "Add";
+                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[16].Value = "Add";
                     }
                     else
                     {
-                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[15].Value = "Delete";
+                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[16].Value = "Delete";
                     }
                     break;
 
-                case 15:
-                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[16].Value == null)
+                case 16:
+                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[17].Value == null)
                     {
-                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[17].Value = "Add";
+                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[18].Value = "Add";
                     }
                     else
                     {
-                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[17].Value = "Delete";
+                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[18].Value = "Delete";
                     }
                     break;
             }

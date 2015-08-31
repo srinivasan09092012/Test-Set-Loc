@@ -314,6 +314,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Services
                     p => p.EditRestrictionSecurityRightIdSpecified,
                     p => p.Height,
                     p => p.HintType,
+                    p => p.IgnoreDirtyData,
                     p => p.IsRequired,
                     p => p.LabelContentId,
                     p => p.MaxLength,

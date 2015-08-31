@@ -60,6 +60,7 @@
             this.dataRestrictionTypeDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.displayTypeDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.isRequiredDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.IgnoreDirtyData = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Height = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maxLengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CompareTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -215,6 +216,7 @@
             this.dataRestrictionTypeDataGridViewComboBoxColumn,
             this.displayTypeDataGridViewComboBoxColumn,
             this.isRequiredDataGridViewCheckBoxColumn,
+            this.IgnoreDirtyData,
             this.Height,
             this.maxLengthDataGridViewTextBoxColumn,
             this.CompareTo,
@@ -310,6 +312,14 @@
             this.isRequiredDataGridViewCheckBoxColumn.HeaderText = "Required";
             this.isRequiredDataGridViewCheckBoxColumn.Name = "isRequiredDataGridViewCheckBoxColumn";
             this.isRequiredDataGridViewCheckBoxColumn.Width = 56;
+            // 
+            // IgnoreDirtyData
+            // 
+            this.IgnoreDirtyData.DataPropertyName = "IgnoreDirtyData";
+            this.IgnoreDirtyData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.IgnoreDirtyData.HeaderText = "Ignore Dirty Data";
+            this.IgnoreDirtyData.Name = "IgnoreDirtyData";
+            this.IgnoreDirtyData.Width = 63;
             // 
             // Height
             // 
@@ -487,6 +497,7 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn dataRestrictionTypeDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn displayTypeDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isRequiredDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IgnoreDirtyData;
         private System.Windows.Forms.DataGridViewTextBoxColumn Height;
         private System.Windows.Forms.DataGridViewTextBoxColumn maxLengthDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CompareTo;
