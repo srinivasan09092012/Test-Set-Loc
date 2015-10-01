@@ -141,18 +141,18 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     ModelPropertiesGridView.Rows[e.RowIndex].Cells[11].Value = id;
                     break;
 
-                case 14:
+                case 15:
                     List<string> typeNodes = new List<string>(ModelTypeTextBox.Text.Split('.'));
-                    id = Convert.ToString(ModelPropertiesGridView.Rows[e.RowIndex].Cells[14].Value);
+                    id = Convert.ToString(ModelPropertiesGridView.Rows[e.RowIndex].Cells[15].Value);
                     ShowSecurityRightHelper(ref id, SecurityRightModel.RightType.Control, BusinessModule + ".Control.View." + typeNodes[typeNodes.Count - 1] + "." , BusinessModule + ".Control.View." + typeNodes[typeNodes.Count - 1] + "." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString());
-                    ModelPropertiesGridView.Rows[e.RowIndex].Cells[14].Value = id;
+                    ModelPropertiesGridView.Rows[e.RowIndex].Cells[15].Value = id;
                     break;
 
-                case 16:
+                case 17:
                     typeNodes = new List<string>(ModelTypeTextBox.Text.Split('.'));
-                    id = Convert.ToString(ModelPropertiesGridView.Rows[e.RowIndex].Cells[16].Value);
-                    ShowSecurityRightHelper(ref id, SecurityRightModel.RightType.Control, BusinessModule + ".Control.Edit." + typeNodes[typeNodes.Count - 1] + ".", BusinessModule + ".Control.Edit" + typeNodes[typeNodes.Count - 1] + "." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString());
-                    ModelPropertiesGridView.Rows[e.RowIndex].Cells[16].Value = id;
+                    id = Convert.ToString(ModelPropertiesGridView.Rows[e.RowIndex].Cells[17].Value);
+                    ShowSecurityRightHelper(ref id, SecurityRightModel.RightType.Control, BusinessModule + ".Control.Edit." + typeNodes[typeNodes.Count - 1] + ".", BusinessModule + ".Control.Edit." + typeNodes[typeNodes.Count - 1] + "." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString());
+                    ModelPropertiesGridView.Rows[e.RowIndex].Cells[17].Value = id;
                     break;
             }
         }
