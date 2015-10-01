@@ -135,10 +135,10 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         {
             switch(e.ColumnIndex)
             {
-                case 10:
-                    string id = Convert.ToString(ModelPropertiesGridView.Rows[e.RowIndex].Cells[10].Value);
+                case 11:
+                    string id = Convert.ToString(ModelPropertiesGridView.Rows[e.RowIndex].Cells[11].Value);
                     ShowLabelHelper(ref id);
-                    ModelPropertiesGridView.Rows[e.RowIndex].Cells[10].Value = id;
+                    ModelPropertiesGridView.Rows[e.RowIndex].Cells[11].Value = id;
                     break;
 
                 case 14:
@@ -164,7 +164,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 Cursor = Cursors.WaitCursor;
                 e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
                 e.Row.Cells[7].Value = 0;
-                e.Row.Cells[10].Value = this.BusinessModule + ".Label.Field.";
+                e.Row.Cells[11].Value = this.BusinessModule + ".Label.Field.";
             }
             catch (Exception ex)
             {
@@ -328,8 +328,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 string prefix = this.BusinessModule + ".Label.Field.";
                 if (string.IsNullOrEmpty(item.LabelContentId) || !item.LabelContentId.StartsWith(prefix))
                 {
-                    ModelPropertiesGridView.CurrentCell = ModelPropertiesGridView.Rows[idx].Cells[10];
-                    ModelPropertiesGridView.Rows[idx].Cells[10].Selected = true;
+                    ModelPropertiesGridView.CurrentCell = ModelPropertiesGridView.Rows[idx].Cells[11];
+                    ModelPropertiesGridView.Rows[idx].Cells[11].Selected = true;
                     MessageBox.Show(string.Format("Label Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
