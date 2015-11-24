@@ -279,20 +279,25 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Check for label content id
                 if (string.IsNullOrEmpty(item.ContentId))
                 {
-                    SecurityRightsGridView.CurrentCell = SecurityRightsGridView.Rows[idx].Cells[3];
-                    SecurityRightsGridView.Rows[idx].Cells[3].Selected = true;
-                    MessageBox.Show("Label Content ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
+                    if (item.Type != SecurityRightModel.RightType.Service)
+                    {
+                        SecurityRightsGridView.CurrentCell = SecurityRightsGridView.Rows[idx].Cells[3];
+                        SecurityRightsGridView.Rows[idx].Cells[3].Selected = true;
+                        MessageBox.Show("Label Content ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
                 }
-
-                //Check for proper named label content id
-                string prefix = this.BusinessModule + ".Label.Security.Rights.";
-                if (!item.ContentId.StartsWith(prefix))
+                else
                 {
-                    SecurityRightsGridView.CurrentCell = SecurityRightsGridView.Rows[idx].Cells[3];
-                    SecurityRightsGridView.Rows[idx].Cells[3].Selected = true;
-                    MessageBox.Show(string.Format("Label Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
+                    //Check for proper named label content id
+                    string prefix = this.BusinessModule + ".Label.Security.Rights.";
+                    if (!item.ContentId.StartsWith(prefix))
+                    {
+                        SecurityRightsGridView.CurrentCell = SecurityRightsGridView.Rows[idx].Cells[3];
+                        SecurityRightsGridView.Rows[idx].Cells[3].Selected = true;
+                        MessageBox.Show(string.Format("Label Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
                 }
 
                 idx++;
