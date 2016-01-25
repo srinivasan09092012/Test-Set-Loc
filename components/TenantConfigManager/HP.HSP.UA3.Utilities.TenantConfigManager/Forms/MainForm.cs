@@ -1583,7 +1583,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     OmitXmlDeclaration = true
                 };
                 string xmlConfig = Serializer.XmlSerialize<TenantConfigurationModel>(_tenantConfig, settings);
-                File.WriteAllText(existingFilePath, xmlConfig);
+                File.WriteAllText(existingFilePath, xmlConfig, System.Text.Encoding.Unicode);
 
                 _originalTenantConfigs[_tenantConfig.TenantId] = _tenantConfig.Clone() as TenantConfigurationModel;                
 
