@@ -279,17 +279,17 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             {
                 if (securityRole.Functions != null && securityRole.Functions.Count > 0)
                 {
-                    SecurityRightHelperModel rightHelper = new SecurityRightHelperModel()
-                    {
-                        RoleId = securityRole.Id,
-                        RoleName = securityRole.Name
-                    };
 
                     foreach (SecurityFunctionModel securityFunction in securityRole.Functions)
                     {
-                        rightHelper.FunctionId = securityFunction.Id;
-                        rightHelper.FunctionName = securityFunction.Name;
-                        rightHelper.isIncluded = false;
+                        SecurityRightHelperModel rightHelper = new SecurityRightHelperModel()
+                        {
+                            RoleId = securityRole.Id,
+                            RoleName = securityRole.Name,
+                            FunctionId = securityFunction.Id,
+                            FunctionName = securityFunction.Name,
+                            isIncluded = false
+                        };
 
                         SecurityRightModel securityRight = securityFunction.Rights.Find(sr => sr.Id == SecurityRightIdTextBox.Text);
                         if (securityRight != null)
@@ -306,9 +306,9 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                                 SecurityRightIdTextBox.Text = securityRight.Id;
                             }
                         }
-                    }
 
                     _rightHelpers.Add(rightHelper);
+                    }
                 }
             }
 

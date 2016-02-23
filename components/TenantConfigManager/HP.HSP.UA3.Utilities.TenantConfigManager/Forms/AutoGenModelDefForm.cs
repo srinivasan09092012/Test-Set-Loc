@@ -231,7 +231,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                                         {
                                             Id = Common.Utilities.GenerateNewID(),
                                             ContentId = newLabelContentId,
-                                            LocaleId = locale.Id,
+                                            LocaleId = locale.LocaleId,
                                             Text = property.DefaultText,
                                             Tooltip = property.DefaultText
                                         };
@@ -364,7 +364,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                                                 {
                                                     Id = Common.Utilities.GenerateNewID(),
                                                     ContentId = labelContentId,
-                                                    LocaleId = locale.Id,
+                                                    LocaleId = locale.LocaleId,
                                                     Text = defaultText,
                                                     Tooltip = defaultText
                                                 };
@@ -478,7 +478,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         private string FormatCamelCaseText(string originalText)
         {
             Regex r = new Regex("([A-Z]+[a-z]+)");
-            return r.Replace(originalText, m => (m.Value.Length > 3 ? m.Value : m.Value.ToLower()) + " ");
+            return r.Replace(originalText, m => (m.Value.Length > 3 ? m.Value : m.Value.ToLower()) + " ").Trim();
         }
 
         private void LoadCoreModelDefintions()

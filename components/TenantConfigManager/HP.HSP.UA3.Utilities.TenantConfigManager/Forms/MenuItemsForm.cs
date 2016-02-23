@@ -124,7 +124,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                switch(e.ColumnIndex)
+                switch (e.ColumnIndex)
                 {
                     case 5:
                         string id = Convert.ToString(MenuItemsGridView.Rows[e.RowIndex].Cells[5].Value);
@@ -134,7 +134,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
                     case 8:
                         id = Convert.ToString(MenuItemsGridView.Rows[e.RowIndex].Cells[8].Value);
-                        ShowSecurityRightHelper(ref id, SecurityRightModel.RightType.Page, BusinessModule + ".Page.",  BusinessModule + ".Page." + MenuItemsGridView.Rows[e.RowIndex].Cells[1].Value.ToString());
+                        ShowSecurityRightHelper(ref id, SecurityRightModel.RightType.Page, BusinessModule + ".Page.", BusinessModule + ".Page." + MenuItemsGridView.Rows[e.RowIndex].Cells[1].Value.ToString());
                         MenuItemsGridView.Rows[e.RowIndex].Cells[8].Value = id;
                         break;
 
@@ -164,10 +164,10 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                if(e.RowIndex != -1)
+                if (e.RowIndex != -1)
                 {
                     string id = string.Empty;
-                    if(MenuItemsGridView.Rows[e.RowIndex].Cells[0].Value != null)
+                    if (MenuItemsGridView.Rows[e.RowIndex].Cells[0].Value != null)
                     {
                         id = MenuItemsGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
                         MenuItemModel menuItem = _menuItems.Find(mi => mi.Id == id);
@@ -220,7 +220,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             finally
             {
                 Cursor = Cursors.Default;
-            }            
+            }
         }
 
         private void MenuItemsGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
@@ -464,7 +464,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
         private void LoadMenuItems()
         {
-            if(this.MenuItem != null)
+            if (this.MenuItem != null)
             {
                 MenuItemNameTextBox.Text = this.MenuItem.Name;
                 if (this.MenuItem.Items == null)
@@ -527,10 +527,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 LocalizationConfig = this.LocalizationConfig,
                 MainMenu = this.MainMenu,
                 MenuItem = menuItem,
+                ModuleConfig = this.ModuleConfig,
                 ShowIds = this.ShowIds
             };
             form.ShowDialog();
-            if(form.HasDataChanged)
+            if (form.HasDataChanged)
             {
                 if (!_isDataDrity)
                 {
