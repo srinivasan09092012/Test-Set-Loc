@@ -1,4 +1,10 @@
-﻿using HP.HSP.UA3.Core.UX.Common.Utilities;
+﻿//--------------------------------------------------------------------------------------------------
+// This code is the property of Hewlett Packard Enterprise, Copyright (c) 2016. All rights reserved. 
+// Any unauthorized use in whole or in part without written consent is strictly prohibited.
+// Violators may be punished to the full extent of the law.
+//--------------------------------------------------------------------------------------------------
+
+using HP.HSP.UA3.Core.UX.Common.Utilities;
 using HP.HSP.UA3.Utilities.ProjectSetupWizard.Common;
 using HP.HSP.UA3.Utilities.ProjectSetupWizard.Data;
 using System;
@@ -17,6 +23,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
         private Dictionary<string, string> _batchServices = new Dictionary<string, string>();
 
         #region Main Form Events
+
         public MainForm()
         {
             InitializeComponent();
@@ -24,7 +31,6 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
         }
 
         private void Main_Shown(object sender, EventArgs e)
@@ -122,7 +128,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
                 Cursor = Cursors.WaitCursor;
                 string module = BusinessModuleDropdown.SelectedItem.ToString();
                 string msg = string.Format("You are requesting to delete the business module '{0}'.\nThis action will only delete it from disk and not TFS.\n\nDo you wish to delete this module?", module);
-                DialogResult result = MessageBox.Show(msg,this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show(msg, this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
                     if (IsBusinessModuleDeleted(module))
@@ -201,7 +207,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             ToggleDetails(false);
             string module = BusinessModuleDropdown.SelectedItem.ToString();
             DeleteButton.Enabled = !string.IsNullOrEmpty(module);
-            if(DeleteButton.Enabled)
+            if (DeleteButton.Enabled)
             {
                 LoadBusinessModule(module);
             }
@@ -277,9 +283,11 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
                 Cursor = Cursors.Default;
             }
         }
-        #endregion
+
+        #endregion Main Form Events
 
         #region Private Methods
+
         private void InitializeForm()
         {
             BusinessModuleDropdown.Enabled = false;
@@ -351,7 +359,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
                             }
                         }
                     }
-                    if(isValid)
+                    if (isValid)
                     {
                         break;
                     }
@@ -515,9 +523,12 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
         {
             CreateNewModuleForm form = new CreateNewModuleForm();
             form.ShowDialog();
-            if(form.WasCreated)
+            if (form.WasCreated)
             {
-                MessageBox.Show("Business module project structure was successfully created.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string msg = string.Format("Business module project structure was successfully created." + Environment.NewLine + Environment.NewLine +
+                                           "You must add the new module to TENANT in all databases." + Environment.NewLine +
+                                           "Refer to the Project Setup Wizard document in Sharepoint.");
+                MessageBox.Show(msg, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 InitializeForm();
                 BusinessModuleDropdown.SelectedItem = form.ModuleName;
             }
@@ -545,6 +556,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             }
             DetailsGroupBox.Enabled = enabled;
         }
-        #endregion
+
+        #endregion Private Methods
     }
 }

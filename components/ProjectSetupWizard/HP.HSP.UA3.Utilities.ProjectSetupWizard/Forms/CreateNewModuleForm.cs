@@ -1,4 +1,10 @@
-﻿using HP.HSP.UA3.Utilities.ProjectSetupWizard.Common;
+﻿//--------------------------------------------------------------------------------------------------
+// This code is the property of Hewlett Packard Enterprise, Copyright (c) 2016. All rights reserved. 
+// Any unauthorized use in whole or in part without written consent is strictly prohibited.
+// Violators may be punished to the full extent of the law.
+//--------------------------------------------------------------------------------------------------
+
+using HP.HSP.UA3.Utilities.ProjectSetupWizard.Common;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -25,7 +31,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                if(IsModuleCreated())
+                if (IsModuleCreated())
                 {
                     this.WasCreated = true;
                     this.ModuleName = ModuleNameTextbox.Text;
@@ -62,7 +68,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
         private bool IsFormValid()
         {
             string moduleName = ModuleNameTextbox.Text.Trim();
-            if(string.IsNullOrEmpty(moduleName))
+            if (string.IsNullOrEmpty(moduleName))
             {
                 MessageBox.Show("Module Name is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ModuleNameTextbox.Focus();
@@ -74,11 +80,11 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
 
         private bool IsModuleCreated()
         {
-            if(IsFormValid())
+            if (IsFormValid())
             {
                 if (IsModuleFolderRootAvailable())
                 {
-                    if(IsProjectDirectoryStructureCreated())
+                    if (IsProjectDirectoryStructureCreated())
                     {
                         return true;
                     }

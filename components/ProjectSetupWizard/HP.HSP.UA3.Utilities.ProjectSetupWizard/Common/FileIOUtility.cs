@@ -1,8 +1,12 @@
-﻿using System;
+﻿//--------------------------------------------------------------------------------------------------
+// This code is the property of Hewlett Packard Enterprise, Copyright (c) 2016. All rights reserved. 
+// Any unauthorized use in whole or in part without written consent is strictly prohibited.
+// Violators may be punished to the full extent of the law.
+//--------------------------------------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Xml;
 using System.Xml.Linq;
 
 namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Common
@@ -66,9 +70,9 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Common
         private static void ProcessProjectFiles()
         {
             Dictionary<string, string> guids = new Dictionary<string, string>();
-            foreach(string file in _projectFiles)
+            foreach (string file in _projectFiles)
             {
-                if(file.EndsWith(".csproj"))
+                if (file.EndsWith(".csproj"))
                 {
                     string oldGuid = ParseProjectGuid(file);
                     string newGuid = Guid.NewGuid().ToString("b").ToUpper();
@@ -108,9 +112,9 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Common
             bool processDir = true;
             if (_excludeDirNames != null)
             {
-                foreach(string excludeDirName in _excludeDirNames)
+                foreach (string excludeDirName in _excludeDirNames)
                 {
-                    if(templateDir.Contains(excludeDirName))
+                    if (templateDir.Contains(excludeDirName))
                     {
                         processDir = false;
                         break;
@@ -159,7 +163,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Common
         {
             string contents = File.ReadAllText(file);
 
-            foreach(string oldGuid in guids.Keys)
+            foreach (string oldGuid in guids.Keys)
             {
                 contents = contents.Replace(oldGuid.ToUpper(), guids[oldGuid]);
                 contents = contents.Replace(oldGuid.ToLower(), guids[oldGuid]);
