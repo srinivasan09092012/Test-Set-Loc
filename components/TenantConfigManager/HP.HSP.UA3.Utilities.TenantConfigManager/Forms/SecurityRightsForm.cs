@@ -105,7 +105,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 switch (e.ColumnIndex)
                 {
                     case 3:
-                        string id = SecurityRightsGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
+                        string id = SecurityRightsGridView.Rows[e.RowIndex].Cells[3].Value == null ? string.Empty : SecurityRightsGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
                         ShowLabelHelper(ref id);
                         SecurityRightsGridView.Rows[e.RowIndex].Cells[3].Value = id;
                         break;
