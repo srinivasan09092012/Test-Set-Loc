@@ -58,6 +58,10 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Common
             contents = contents.Replace("[ModuleGuid]", Guid.NewGuid().ToString("n"));
             contents = contents.Replace("[NewGuid]", Guid.NewGuid().ToString("n"));
             contents = contents.Replace("[ServiceName]", serviceName);
+            if (!String.IsNullOrEmpty(serviceName))
+            {
+                contents = contents.Replace("[ServiceNameWithLowerCaseFirstChar]", char.ToLower(serviceName[0]) + serviceName.Substring(1));
+            }
             contents = contents.Replace("[ServicePort]", servicePort.ToString());
             File.WriteAllText(moduleFile, contents);
         }
