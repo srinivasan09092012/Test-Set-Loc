@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Domain" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Domain" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="AddDataListItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DataListAttributeValues" nillable="true" type="tns:ArrayOfDataListAttributeValue" />
+      <xs:element minOccurs="0" name="DataListId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataListItemId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataListItemLanguages" nillable="true" type="tns:ArrayOfDataListItemLanguage" />
+      <xs:element minOccurs="0" name="DataListItemLinks" nillable="true" type="tns:ArrayOfDataListItemLink" />
+      <xs:element minOccurs="0" name="EffectiveDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ItemIsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ItemLastModified" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderIndex" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddDataListItem" nillable="true" type="tns:AddDataListItem" />
+  <xs:complexType name="ArrayOfDataListAttributeValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataListAttributeValue" nillable="true" type="tns:DataListAttributeValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataListAttributeValue" nillable="true" type="tns:ArrayOfDataListAttributeValue" />
+  <xs:complexType name="DataListAttributeValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DataListAttributeId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataListsAttributeValueId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataListsItemId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataListsItemValueId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastModified" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataListAttributeValue" nillable="true" type="tns:DataListAttributeValue" />
+  <xs:complexType name="ArrayOfDataListItemLanguage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataListItemLanguage" nillable="true" type="tns:DataListItemLanguage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataListItemLanguage" nillable="true" type="tns:ArrayOfDataListItemLanguage" />
+  <xs:complexType name="DataListItemLanguage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DataListItemId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastModified" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Local" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataListItemLanguage" nillable="true" type="tns:DataListItemLanguage" />
+  <xs:complexType name="ArrayOfDataListItemLink">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataListItemLink" nillable="true" type="tns:DataListItemLink" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataListItemLink" nillable="true" type="tns:ArrayOfDataListItemLink" />
+  <xs:complexType name="DataListItemLink">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChildId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastModified" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ParentId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataListItemLink" nillable="true" type="tns:DataListItemLink" />
+  <xs:complexType name="UpdateDataListItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DataListAttributeValues" nillable="true" type="tns:ArrayOfDataListAttributeValue" />
+      <xs:element minOccurs="0" name="DataListId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataListItemId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataListItemLanguages" nillable="true" type="tns:ArrayOfDataListItemLanguage" />
+      <xs:element minOccurs="0" name="DataListItemLinks" nillable="true" type="tns:ArrayOfDataListItemLink" />
+      <xs:element minOccurs="0" name="EffectiveDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ItemIsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ItemLastModified" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderIndex" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdateDataListItem" nillable="true" type="tns:UpdateDataListItem" />
+  <xs:complexType name="AddDataList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ContentId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataListAttributes" nillable="true" type="tns:ArrayOfDataListAttribute" />
+      <xs:element minOccurs="0" name="DataListsName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TenantModuleId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddDataList" nillable="true" type="tns:AddDataList" />
+  <xs:complexType name="ArrayOfDataListAttribute">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataListAttribute" nillable="true" type="tns:DataListAttribute" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataListAttribute" nillable="true" type="tns:ArrayOfDataListAttribute" />
+  <xs:complexType name="DataListAttribute">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DataListId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataListsAttributeId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastModified" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TypeDataListId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TypeDefaultItemId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TypeName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataListAttribute" nillable="true" type="tns:DataListAttribute" />
+  <xs:complexType name="UpdateDataList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ContentId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataListAttributes" nillable="true" type="tns:ArrayOfDataListAttribute" />
+      <xs:element minOccurs="0" name="DataListsName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TenantModuleId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdateDataList" nillable="true" type="tns:UpdateDataList" />
+</xs:schema>

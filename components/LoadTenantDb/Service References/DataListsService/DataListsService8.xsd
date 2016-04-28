@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Events" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Events" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.DataLists/R1.0/DataListsService.svc?xsd=xsd7" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.DataLists/R1.0/DataListsService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
+  <xs:complexType name="DataListItemAdded">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DataListsEvents">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DataListAttributeValues" nillable="true" type="q1:ArrayOfstring" />
+          <xs:element minOccurs="0" name="DataListItemId" nillable="true" type="xs:string" />
+          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DataListItemLanguages" nillable="true" type="q2:ArrayOfstring" />
+          <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DataListItemLinks" nillable="true" type="q3:ArrayOfstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataListItemAdded" nillable="true" type="tns:DataListItemAdded" />
+  <xs:complexType name="DataListsEvents">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q4:Event">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataListsEvents" nillable="true" type="tns:DataListsEvents" />
+  <xs:complexType name="DataListItemUpdated">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DataListsEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DataListItemId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataListItemUpdated" nillable="true" type="tns:DataListItemUpdated" />
+  <xs:complexType name="DataListsAdded">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DataListsEvents">
+        <xs:sequence>
+          <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DataListAttributeIds" nillable="true" type="q5:ArrayOfstring" />
+          <xs:element minOccurs="0" name="DataListId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataListsAdded" nillable="true" type="tns:DataListsAdded" />
+  <xs:complexType name="DataListsUpdated">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DataListsEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DataListId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataListsUpdated" nillable="true" type="tns:DataListsUpdated" />
+</xs:schema>

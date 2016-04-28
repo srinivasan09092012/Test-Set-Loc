@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="HP.HSP.DataLists" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="HP.HSP.DataLists" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="HP.HSP.DataLists/Imports">
+      <xsd:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.DataLists/R1.0/DataListsService.svc?xsd=xsd0" namespace="HP.HSP.DataLists" />
+      <xsd:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.DataLists/R1.0/DataListsService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
+      <xsd:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.DataLists/R1.0/DataListsService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.DataLists/R1.0/DataListsService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Commands" />
+      <xsd:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.DataLists/R1.0/DataListsService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta" />
+      <xsd:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.DataLists/R1.0/DataListsService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Domain" />
+      <xsd:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.DataLists/R1.0/DataListsService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Events" />
+      <xsd:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.DataLists/R1.0/DataListsService.svc?xsd=xsd7" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IDataListsService_AddDataListItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddDataListItem" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_AddDataListItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddDataListItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_AddDataListItem_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q1:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_UpdateDataListItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDataListItem" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_UpdateDataListItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDataListItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_UpdateDataListItem_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q2:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_AddDataList_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddDataList" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_AddDataList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddDataListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_AddDataList_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q3:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_UpdateDataList_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDataList" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_UpdateDataList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDataListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_UpdateDataList_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q4:ServiceException" />
+  </wsdl:message>
+  <wsdl:portType name="IDataListsService">
+    <wsdl:operation name="AddDataListItem">
+      <wsdl:input wsaw:Action="HP.HSP.DataLists/IDataListsService/AddDataListItem" message="tns:IDataListsService_AddDataListItem_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataLists/IDataListsService/AddDataListItemResponse" message="tns:IDataListsService_AddDataListItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/AddDataListItemServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsService_AddDataListItem_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDataListItem">
+      <wsdl:input wsaw:Action="HP.HSP.DataLists/IDataListsService/UpdateDataListItem" message="tns:IDataListsService_UpdateDataListItem_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataLists/IDataListsService/UpdateDataListItemResponse" message="tns:IDataListsService_UpdateDataListItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/UpdateDataListItemServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsService_UpdateDataListItem_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDataList">
+      <wsdl:input wsaw:Action="HP.HSP.DataLists/IDataListsService/AddDataList" message="tns:IDataListsService_AddDataList_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataLists/IDataListsService/AddDataListResponse" message="tns:IDataListsService_AddDataList_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/AddDataListServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsService_AddDataList_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDataList">
+      <wsdl:input wsaw:Action="HP.HSP.DataLists/IDataListsService/UpdateDataList" message="tns:IDataListsService_UpdateDataList_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataLists/IDataListsService/UpdateDataListResponse" message="tns:IDataListsService_UpdateDataList_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/UpdateDataListServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsService_UpdateDataList_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
