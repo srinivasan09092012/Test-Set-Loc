@@ -4,6 +4,7 @@
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
 // Violators may be punished to the full extent of the law.
 //--------------------------------------------------------------------------------------------------
+using HP.HSP.UA3.Administration.UX.Common;
 using HP.HSP.UA3.Utilities.LoadTenantDb.Forms;
 using System;
 using System.Collections;
@@ -61,6 +62,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
 
         public string GetDataListItem(Datalist datalist, DatalistItem dataListItem)
         {
+            int retryCount = 0;
             string objDataQuery = string.Format("ReferenceCodes?$filter=ContentID%20eq%20%27{0}%27%20and%20Code%20eq%20%27{1}%27&$expand=Children,Attributes", datalist.ContentId, dataListItem.Key);
             string baseUrl = this.MainForm.ODataEndpointAddress;
 
@@ -70,6 +72,11 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             HttpResponseMessage response = client.GetAsync(objDataQuery).Result;
+            while (!response.IsSuccessStatusCode && retryCount < 9999)
+            {
+                response = client.GetAsync(objDataQuery).Result;
+                retryCount++;
+            }
 
             if (response.IsSuccessStatusCode)
             {
@@ -86,12 +93,16 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
                         {
                             dataListItem.Id = dataListItemDetail["ID"].ToString();
                             dataListItem.ContentId = dataListItemDetail["ContentID"].ToString();
+                            dataListItem.Key = dataListItemDetail["Code"].ToString();
                             dataListItem.TenantId = dataListItemDetail["TenantID"].ToString();
                             dataListItem.OrderIndex = (int)dataListItemDetail["OrderIndex"];
                             dataListItem.EffectiveDate = Convert.ToDateTime(dataListItemDetail["EffectiveStartDate"].ToString());
                             dataListItem.EndDate = Convert.ToDateTime(dataListItemDetail["EffectiveEndDate"].ToString());
                             dataListItem.IsActive = (bool)dataListItemDetail["IsActive"];
-                            dataListItem.DataListItemLanguages = new List<DatalistItemLanguage>();
+                            dataListItem.DataListId = datalist.Id;
+                            dataListItem.DataListItemLanguages.Clear();
+                            dataListItem.DataListItemLinks.Clear();
+                            dataListItem.DataListItemAttributeValues.Clear();
 
                             if (dataListItemDetail.ContainsKey("LanguageList"))
                             {
@@ -125,8 +136,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
 
                             if (dataListItemDetail.ContainsKey("Attributes"))
                             {
-                                object linkListAttributes = dataListItemDetail["Attributes"] as object;
-                                foreach (Dictionary<string, object> attributes in (IList)linkListAttributes)
+                                object attributeList = dataListItemDetail["Attributes"] as object;
+                                foreach (Dictionary<string, object> attributes in (IList)attributeList)
                                 {
                                     DatalistItemAttributeValue datalistItemAttributeValue = new DatalistItemAttributeValue();
                                     datalistItemAttributeValue.DataListsAttributeValueId = attributes["ID"].ToString();
@@ -163,6 +174,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
                     Key = dataListItem.Key,
                     ItemIsActive = dataListItem.IsActive,
                     OrderIndex = dataListItem.OrderIndex,
+                    ItemLastModified = DateTime.Now,
                     DataListItemLanguages = this.SetDataListItemLanguages(dataListItem.DataListItemLanguages),
                     DataListItemLinks = this.SetDataListItemLinks(dataListItem.DataListItemLinks),
                     DataListAttributeValues = this.SetDataListItemAttributeValues(dataListItem.DataListItemAttributeValues)
@@ -178,6 +190,9 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             try
             {
                 response = this.clientLicense.UpdateDataListItem(command);
+                this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListItemAttrKey, "false", "false", "false");
+                this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheItemLinkerKey, "false", "false", "false");
+                this.RefreshCache(string.Empty, "false", "false", "true");
             }
             catch
             {
@@ -202,6 +217,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             {
                 AddDataListItem = new DataListsService.AddDataListItem()
                 {
+                    DataListItemId = dataListItem.Id,
                     DataListId = dataListItem.DataListId,
                     Key = dataListItem.Key,
                     OrderIndex = dataListItem.OrderIndex,
@@ -223,6 +239,9 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             try
             {
                 response = this.clientLicense.AddDataListItem(command);
+                this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListItemAttrKey, "false", "false", "false");
+                this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheItemLinkerKey, "false", "false", "false");
+                this.RefreshCache(string.Empty, "false", "false", "true");
             }
             catch
             {
@@ -327,6 +346,21 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             {
                 return null;
             }
+        }
+
+        private void RefreshCache(string cacheKey, string clearAllCodeTableCacheFlag = "false", string reloadCache = "true", string reloadAllCodeTableCache = "false")
+        {
+            string objDataQuery = string.Empty;
+
+            objDataQuery = string.Format("CacheRefresh(CacheKey='{0}',ClearAllCodeTableCache={1},ReloadCache={2},ReloadAllCodeTableCache={3})", cacheKey, clearAllCodeTableCacheFlag, reloadCache, reloadAllCodeTableCache);
+            string baseUrl = MainForm.ODataEndpointAddress;
+
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(baseUrl);
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = client.GetAsync(objDataQuery).Result;
         }
     }
 }

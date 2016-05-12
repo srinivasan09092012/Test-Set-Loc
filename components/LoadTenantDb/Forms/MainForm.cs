@@ -190,7 +190,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 securityRoleNode.Id = role.Attributes["id"].Value;
                 securityRoleNode.Name = role.Attributes["name"].Value;
                 securityRoleNode.ContentId = role.Attributes["contentId"].Value;
-                securityRoleNode.Link = null;
+                securityRoleNode.ParentLink = null;
+                securityRoleNode.ParentKey = null;
 
                 for (int i = 0; i < role.Attributes.Count; i++)
                 {
@@ -215,7 +216,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         securityFunctionNode.Id = function.Attributes["id"].Value;
                         securityFunctionNode.Name = function.Attributes["name"].Value;
                         securityFunctionNode.ContentId = function.Attributes["contentId"].Value;
-                        securityFunctionNode.Link = role.Attributes["contentId"].Value;
+                        securityFunctionNode.ParentLink = role.Attributes["contentId"].Value;
+                        securityFunctionNode.ParentKey = role.Attributes["contentId"].Value;
 
                         for (int i = 0; i < function.Attributes.Count; i++)
                         {
@@ -239,10 +241,16 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                                 securityRightNode.Module.Id = checkedModule.Id;
                                 securityRightNode.Id = right.Attributes["id"].Value;
                                 securityRightNode.Name = right.Attributes["name"].Value;
-                                securityRightNode.Link = function.Attributes["contentId"].Value;
+                                securityRightNode.ParentLink = function.Attributes["contentId"].Value;
+                                securityRightNode.ParentKey = function.Attributes["contentId"].Value;
+
                                 if (right.Attributes["contentId"] != null)
                                 {
                                     securityRightNode.ContentId = right.Attributes["contentId"].Value;
+                                }
+                                else
+                                {
+                                    securityRightNode.ContentId = right.Attributes["name"].Value;
                                 }
 
                                 for (int i = 0; i < right.Attributes.Count; i++)
@@ -452,7 +460,9 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
             public string ContentId { get; set; }
 
-            public string Link { get; set; }
+            public string ParentLink { get; set; }
+
+            public string ParentKey { get; set; }
         }
 
         public class SecurityNodeAttribute

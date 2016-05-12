@@ -8,7 +8,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 {
     public partial class MainForm
     {
-        public System.Windows.Forms.CheckedListBox moduleListBox;
+        private System.Windows.Forms.CheckedListBox moduleListBox;
         private System.Windows.Forms.GroupBox moduleGroupBox;
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;

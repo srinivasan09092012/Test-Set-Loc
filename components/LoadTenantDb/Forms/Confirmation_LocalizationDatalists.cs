@@ -8,6 +8,7 @@ using HP.HSP.UA3.Utilities.LoadTenantDb.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -79,6 +80,37 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.LoadGrid();
         }
 
+        private string DetermineTenantModuleId(string module)
+        {
+            switch (module)
+            {
+                case "Core":
+                    return ConfigurationManager.AppSettings["CoreTenantModuleId"];
+                case "Administration":
+                    return ConfigurationManager.AppSettings["AdministrationTenantModuleId"];
+                case "EmployeeMgmt":
+                    return ConfigurationManager.AppSettings["EmployeeManagementTenantModuleId"];
+                case "ProviderCredentialing":
+                    return ConfigurationManager.AppSettings["ProviderCredentialingTenantModuleId"];
+                case "ProviderEnrollment":
+                    return ConfigurationManager.AppSettings["ProviderEnrollmentTenantModuleId"];
+                case "PlanManagement":
+                    return ConfigurationManager.AppSettings["PlanManagementTenantModuleId"];
+                case "CorrespondenceManagement":
+                    return ConfigurationManager.AppSettings["CorrespondenceManagementTenantModuleId"];
+                case "ProviderManagement":
+                    return ConfigurationManager.AppSettings["ProviderManagementTenantModuleId"];
+                case "ProviderPortal":
+                    return ConfigurationManager.AppSettings["ProviderPortalTenantModuleId"];
+                case "MemberPortal":
+                    return ConfigurationManager.AppSettings["MemberPortalTenantModuleId"];
+                case "ProgramIntegrity":
+                    return ConfigurationManager.AppSettings["ProgramIntegrityTenantModuleId"];
+                default:
+                    return null;
+            }
+        }
+
         private void LoadGrid()
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -92,162 +124,218 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             {
                 for (int j = 0; j < this.MainForm.LocalizationDatalists[i].Datalists.Count; j++)
                 {
-                    Datalist datalist = new Datalist();
-                    datalist.MainForm = this.MainForm;
+                    string tenantModuleId = this.DetermineTenantModuleId(this.MainForm.LocalizationDatalists[i].Module.Name);
 
-                    datalist.ContentId = this.MainForm.LocalizationDatalists[i].Datalists[j].ContentId;
-                    datalist.Id = datalist.GetDataList(datalist);
-                    datalist.TenantId = this.MainForm.TenantId;
-                    datalist.Name = this.MainForm.LocalizationDatalists[i].Datalists[j].Name;
-                    datalist.TenantModuleId = this.MainForm.LocalizationDatalists[i].Module.Id;
-                    datalist.Description = this.MainForm.LocalizationDatalists[i].Datalists[j].Name;
-                    datalist.IdentifierId = "USER1";
-                    datalist.IsActive = true;
-
-                    if (datalist.Id == null)
+                    if (tenantModuleId != null)
                     {
-                        try
-                        {
-                            datalist = datalist.AddDataList(datalist);
-                        }
-                        catch
-                        {
-                            datalist = null;
-                        }
+                        Datalist datalist = new Datalist();
+                        datalist.MainForm = this.MainForm;
 
-                        if (datalist != null)
+                        datalist.ContentId = this.MainForm.LocalizationDatalists[i].Datalists[j].ContentId;
+                        datalist.Id = datalist.GetDataList(datalist);
+                        datalist.TenantId = this.MainForm.TenantId;
+                        datalist.Name = this.MainForm.LocalizationDatalists[i].Datalists[j].Name;
+                        datalist.TenantModuleId = tenantModuleId;
+                        datalist.Description = this.MainForm.LocalizationDatalists[i].Datalists[j].Name;
+                        datalist.IdentifierId = "USER1";
+                        datalist.IsActive = true;
+
+                        if (datalist.Id == null)
                         {
-                            this.MainForm.LocalizationDatalists[i].Datalists[j].Action = "Added";
-                            loadDatalistSuccessful++;
+                            try
+                            {
+                                datalist.Id = this.MainForm.LocalizationDatalists[i].Datalists[j].Id;
+                                datalist = datalist.AddDataList(datalist);
+                            }
+                            catch
+                            {
+                                datalist = null;
+                            }
+
+                            if (datalist != null)
+                            {
+                                this.MainForm.LocalizationDatalists[i].Datalists[j].Action = "Added";
+                                loadDatalistSuccessful++;
+                            }
+                            else
+                            {
+                                this.MainForm.LocalizationDatalists[i].Datalists[j].Action = "Add Error";
+                                loadErrors++;
+                            }
                         }
                         else
                         {
-                            this.MainForm.LocalizationDatalists[i].Datalists[j].Action = "Add Error";
-                            loadErrors++;
+                            bool rowUpdated;
+
+                            try
+                            {
+                                rowUpdated = datalist.UpdateDataList(datalist);
+                            }
+                            catch
+                            {
+                                rowUpdated = false;
+                            }
+
+                            if (rowUpdated)
+                            {
+                                this.MainForm.LocalizationDatalists[i].Datalists[j].Action = "Updated";
+                                loadDatalistSuccessful++;
+                            }
+                            else
+                            {
+                                this.MainForm.LocalizationDatalists[i].Datalists[j].Action = "Update Error";
+                                loadErrors++;
+                            }
+                        }
+
+                        this.datalistsGridView.Rows[currentRow].Cells[0].Value = this.MainForm.LocalizationDatalists[i].Datalists[j].Action;
+                        this.datalistsGridView.Refresh();
+
+                        for (int k = 0; k < this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems.Count; k++)
+                        {
+                            if (datalist != null)
+                            {
+                                DatalistItem datalistItem = new DatalistItem();
+                                datalistItem.MainForm = this.MainForm;
+                                datalistItem.DataListItemLanguages.Add(new DatalistItemLanguage());
+
+                                datalistItem.ContentId = this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].ContentId;
+                                datalistItem.Key = this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Value;
+                                datalistItem.Id = datalistItem.GetDataListItem(datalist, datalistItem);
+                                datalistItem.DataListId = datalist.Id;
+                                datalistItem.TenantId = this.MainForm.TenantId;
+                                datalistItem.IdentifierId = "USER1";
+                                datalistItem.IsActive = true;
+                                datalistItem.OrderIndex = int.Parse(this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Order);
+
+                                if (datalistItem.Id != null)
+                                {
+                                    bool newLanguage = true;
+
+                                    for (int l = 0; l < datalistItem.DataListItemLanguages.Count; l++)
+                                    {
+                                        if (datalistItem.DataListItemLanguages[l].Locale == this.MainForm.LocalizationDatalists[i].LocaleId.ToLower())
+                                        {
+                                            newLanguage = false;
+                                            datalistItem.DataListItemLanguages[l].DataListItemId = datalistItem.Id;
+                                            datalistItem.DataListItemLanguages[l].Locale = this.MainForm.LocalizationDatalists[i].LocaleId.ToLower();
+                                            datalistItem.DataListItemLanguages[l].Description = this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Text;
+                                            datalistItem.DataListItemLanguages[l].IsActive = true;
+                                        }
+                                    }
+
+                                    if (newLanguage)
+                                    {
+                                        int numLangs = datalistItem.DataListItemLanguages.Count;
+                                        datalistItem.DataListItemLanguages.Add(new DatalistItemLanguage());
+                                        datalistItem.DataListItemLanguages[numLangs].DataListItemId = null;
+                                        datalistItem.DataListItemLanguages[numLangs].Locale = this.MainForm.LocalizationDatalists[i].LocaleId.ToLower();
+                                        datalistItem.DataListItemLanguages[numLangs].Description = this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Text;
+                                        datalistItem.DataListItemLanguages[numLangs].IsActive = true;
+                                    }
+                                }
+                                else
+                                {
+                                    datalistItem.DataListItemLanguages[0].DataListItemId = null;
+                                    datalistItem.DataListItemLanguages[0].Locale = this.MainForm.LocalizationDatalists[i].LocaleId.ToLower();
+                                    datalistItem.DataListItemLanguages[0].Description = this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Text;
+                                    datalistItem.DataListItemLanguages[0].IsActive = true;
+                                }
+
+                                if (datalistItem.Id == null)
+                                {
+                                    try
+                                    {
+                                        datalistItem = datalistItem.AddDataListItem(datalistItem);
+                                    }
+                                    catch
+                                    {
+                                        datalistItem = null;
+                                    }
+
+                                    if (datalistItem != null)
+                                    {
+                                        this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Action = "Added";
+                                        loadDatalistItemSuccessful++;
+                                    }
+                                    else
+                                    {
+                                        this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Action = "Add Error";
+                                        loadErrors++;
+                                    }
+                                }
+                                else
+                                {
+                                    bool rowUpdated;
+
+                                    try
+                                    {
+                                        rowUpdated = datalistItem.UpdateDataListItem(datalistItem);
+                                    }
+                                    catch
+                                    {
+                                        rowUpdated = false;
+                                    }
+
+                                    if (rowUpdated)
+                                    {
+                                        this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Action = "Updated";
+                                        loadDatalistItemSuccessful++;
+                                    }
+                                    else
+                                    {
+                                        this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Action = "Update Error";
+                                        loadErrors++;
+                                    }
+                                }
+                            }
+                            else 
+                            {
+                                this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Action = "  ----";
+                            }
+
+                            this.datalistsGridView.Rows[currentRow].Cells[1].Value = this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Action;
+
+                            if (string.IsNullOrEmpty((string)this.datalistsGridView.Rows[currentRow].Cells[0].Value))
+                            {
+                                this.datalistsGridView.Rows[currentRow].Cells[0].Value = "  ----";
+                            }
+
+                            if (this.datalistsGridView.Rows.Count > currentRow + 1)
+                            {
+                                this.datalistsGridView.CurrentCell = this.datalistsGridView.Rows[currentRow + 1].Cells[0];
+                                this.datalistsGridView.Rows[currentRow + 1].Selected = true;
+                            }
+
+                            this.datalistsGridView.Refresh();
+                            currentRow++;
                         }
                     }
                     else
                     {
-                        bool rowUpdated;
-
-                        try
-                        {
-                            rowUpdated = datalist.UpdateDataList(datalist);
-                        }
-                        catch
-                        {
-                            rowUpdated = false;
-                        }
-
-                        if (rowUpdated)
-                        {
-                            this.MainForm.LocalizationDatalists[i].Datalists[j].Action = "Updated";
-                            loadDatalistSuccessful++;
-                        }
-                        else
-                        {
-                            this.MainForm.LocalizationDatalists[i].Datalists[j].Action = "Update Error";
-                            loadErrors++;
-                        }
-                    }
-
-                    this.datalistsGridView.Rows[currentRow].Cells[0].Value = this.MainForm.LocalizationDatalists[i].Datalists[j].Action;
-                    this.datalistsGridView.Refresh();
-
-                    for (int k = 0; k < this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems.Count; k++)
-                    {
-                        if (datalist != null)
-                        {
-                            DatalistItem datalistItem = new DatalistItem();
-                            datalistItem.MainForm = this.MainForm;
-                            datalistItem.DataListItemLanguages.Add(new DatalistItemLanguage());
-
-                            datalistItem.ContentId = this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].ContentId;
-                            datalistItem.Key = this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Value;
-                            datalistItem.Id = datalistItem.GetDataListItem(datalist, datalistItem);
-                            datalistItem.DataListId = datalist.Id;
-                            datalistItem.TenantId = this.MainForm.TenantId;
-                            datalistItem.IdentifierId = "USER1";
-                            datalistItem.IsActive = true;
-                            datalistItem.OrderIndex = int.Parse(this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Order);
-                            datalistItem.DataListItemLanguages[0].Locale = this.MainForm.LocalizationDatalists[i].LocaleId.ToLower();
-                            datalistItem.DataListItemLanguages[0].Description = this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Text;
-                            datalistItem.DataListItemLanguages[0].IsActive = true;
-                            datalistItem.DataListItemLanguages[0].DataListItemId = datalistItem.Id;
-
-                            if (datalistItem.Id == null)
-                            {
-                                try
-                                {
-                                    datalistItem = datalistItem.AddDataListItem(datalistItem);
-                                }
-                                catch
-                                {
-                                    datalistItem = null;
-                                }
-
-                                if (datalistItem != null)
-                                {
-                                    this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Action = "Added";
-                                    loadDatalistItemSuccessful++;
-                                }
-                                else
-                                {
-                                    this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Action = "Add Error";
-                                    loadErrors++;
-                                }
-                            }
-                            else
-                            {
-                                bool rowUpdated;
-
-                                try
-                                {
-                                    rowUpdated = datalistItem.UpdateDataListItem(datalistItem);
-                                }
-                                catch
-                                {
-                                    rowUpdated = false;
-                                }
-
-                                if (rowUpdated)
-                                {
-                                    this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Action = "Updated";
-                                    loadDatalistItemSuccessful++;
-                                }
-                                else
-                                {
-                                    this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Action = "Update Error";
-                                    loadErrors++;
-                                }
-                            }
-                        }
-                        else 
-                        {
-                            this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Action = "  ----";
-                        }
-
-                        this.datalistsGridView.Rows[currentRow].Cells[1].Value = this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Action;
-
-                        if (string.IsNullOrEmpty((string)this.datalistsGridView.Rows[currentRow].Cells[0].Value))
-                        {
-                            this.datalistsGridView.Rows[currentRow].Cells[0].Value = "  ----";
-                        }
-
-                        if (this.datalistsGridView.Rows.Count > currentRow + 1)
-                        {
-                            this.datalistsGridView.CurrentCell = this.datalistsGridView.Rows[currentRow + 1].Cells[0];
-                            this.datalistsGridView.Rows[currentRow + 1].Selected = true;
-                        }
-
+                        this.datalistsGridView.Rows[currentRow].Cells[0].Value = "Missing TM ID";
                         this.datalistsGridView.Refresh();
-                        currentRow++;
+                        loadErrors++;
+
+                        for (int k = 0; k < this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems.Count; k++)
+                        {
+                            this.datalistsGridView.Rows[currentRow].Cells[1].Value = "  ----";
+
+                            if (this.datalistsGridView.Rows.Count > currentRow + 1)
+                            {
+                                this.datalistsGridView.CurrentCell = this.datalistsGridView.Rows[currentRow + 1].Cells[0];
+                                this.datalistsGridView.Rows[currentRow + 1].Selected = true;
+                            }
+
+                            this.datalistsGridView.Refresh();
+                            currentRow++;
+                        }
                     }
                 }
             }
 
             Cursor.Current = Cursors.Default;
-            MessageBox.Show("Tenant Configuration load complete. " + loadDatalistSuccessful + " DataLists loaded, " + loadDatalistItemSuccessful + " DataList items loaded, and " + loadErrors + " errors reported.", "Tenant Load Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Tenant Configuration load complete. " + loadDatalistSuccessful + " DataLists loaded, " + loadDatalistItemSuccessful + " DataList Items loaded, and " + loadErrors + " errors reported.", "Tenant Load Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

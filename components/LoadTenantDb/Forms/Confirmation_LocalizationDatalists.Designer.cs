@@ -113,6 +113,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.datalistItemContentID,
             this.datalistItemOrder});
             this.datalistsGridView.Location = new System.Drawing.Point(19, 25);
+            this.datalistsGridView.MultiSelect = false;
             this.datalistsGridView.Name = "datalistsGridView";
             this.datalistsGridView.ReadOnly = true;
             this.datalistsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
