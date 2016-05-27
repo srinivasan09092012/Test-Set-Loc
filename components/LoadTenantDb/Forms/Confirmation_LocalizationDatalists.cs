@@ -62,7 +62,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         row.Clear();
                         row.Add(this.MainForm.LocalizationDatalists[i].Datalists[j].Action);
                         row.Add(this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Action);
-                        row.Add(this.MainForm.LocalizationDatalists[i].Name);
+                        row.Add(this.MainForm.LocalizationDatalists[i].LocaleId.ToLower());
                         row.Add(this.MainForm.LocalizationDatalists[i].Module.Name);
                         row.Add(this.MainForm.LocalizationDatalists[i].Datalists[j].Name);
                         row.Add(this.MainForm.LocalizationDatalists[i].Datalists[j].ContentId);
@@ -134,8 +134,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         datalist.ContentId = this.MainForm.LocalizationDatalists[i].Datalists[j].ContentId;
                         datalist.Id = datalist.GetDataList(datalist);
                         datalist.TenantId = this.MainForm.TenantId;
-                        datalist.Name = this.MainForm.LocalizationDatalists[i].Datalists[j].Name;
                         datalist.TenantModuleId = tenantModuleId;
+                        datalist.Name = this.MainForm.LocalizationDatalists[i].Datalists[j].Name;
                         datalist.Description = this.MainForm.LocalizationDatalists[i].Datalists[j].Name;
                         datalist.IdentifierId = "USER1";
                         datalist.IsActive = true;

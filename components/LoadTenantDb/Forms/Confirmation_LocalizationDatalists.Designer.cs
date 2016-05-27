@@ -12,15 +12,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         private System.Windows.Forms.Button loadPushButtonAll;
         private System.Windows.Forms.GroupBox datalistGroupBox;
         private System.Windows.Forms.DataGridView datalistsGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn datalistAction;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemAction;
-        private System.Windows.Forms.DataGridViewTextBoxColumn localeName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn module;
-        private System.Windows.Forms.DataGridViewTextBoxColumn datalistName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn datalistContentId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn datalistItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn datalistItemContentID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn datalistItemOrder;
 
         /// <summary>
         /// Required designer variable.
@@ -139,7 +130,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.localeName.HeaderText = "Locale";
             this.localeName.Name = "localeName";
             this.localeName.ReadOnly = true;
-            this.localeName.Width = 135;
+            this.localeName.Width = 90;
             // 
             // module
             // 
@@ -205,5 +196,17 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridViewTextBoxColumn datalistAction;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemAction;
+        private System.Windows.Forms.DataGridViewTextBoxColumn localeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn module;
+        private System.Windows.Forms.DataGridViewTextBoxColumn datalistName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn datalistContentId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn datalistItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn datalistItemContentID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn datalistItemOrder;
+
+
     }
 }

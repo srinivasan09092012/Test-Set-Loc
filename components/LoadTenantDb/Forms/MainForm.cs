@@ -93,6 +93,18 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             }
         }
 
+        private string RemoveLanguage(string datalist)
+        {
+            string convertedString = datalist;
+
+            if (datalist.IndexOf(" (English)") > 0 || datalist.IndexOf(" (Spanish)") > 0)
+            {
+                convertedString = datalist.Substring(0, datalist.Length - 10);
+            }
+
+            return convertedString;
+        }
+
         private void LoadTenantModel()
         {
             XmlNodeList nl = this.XmlDoc.GetElementsByTagName("Module");
@@ -156,7 +168,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                             {
                                 LocalizationDatalistNode localizationDatalistNode = new LocalizationDatalistNode();
                                 localizationDatalistNode.Id = datalist.Attributes["id"].Value;
-                                localizationDatalistNode.Name = datalist.Attributes["name"].Value;
+                                localizationDatalistNode.Name = RemoveLanguage(datalist.Attributes["name"].Value);
                                 localizationDatalistNode.ContentId = datalist.Attributes["contentId"].Value;
                                 localizationLocaleNode.Datalists.Add(localizationDatalistNode);
 
