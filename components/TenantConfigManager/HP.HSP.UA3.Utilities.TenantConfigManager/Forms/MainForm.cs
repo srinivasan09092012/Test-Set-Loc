@@ -466,19 +466,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         #endregion
 
         #region Localization DataLists Tab Events
-        private void DataListsGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex == DataListsGridView.NewRowIndex)
-            {
-                if (DataListsGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
-                {
-                    DataListsGridView.BeginEdit(false);
-                    TextBox textBox = (TextBox)DataListsGridView.EditingControl;
-                    textBox.SelectionStart = textBox.Text.Length;
-                }
-            }
-        }
-
         private void LocaleDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -487,27 +474,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 if (LocaleDropdown.SelectedValue != null)
                 {
                     LoadLocaleConfiguration(LocaleDropdown.SelectedValue);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
-        }
-
-        private void DataListsGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-                if(e.ColumnIndex == 4)
-                {
-                    string id = Convert.ToString(DataListsGridView.Rows[e.RowIndex].Cells[0].Value);
-                    ShowDataListItems(id);
                 }
             }
             catch (Exception ex)
@@ -1745,11 +1711,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             int idx = 0;
             foreach (LocaleConfigurationModel item in _tenantConfig.Modules[0].LocalizationConfiguration.Locales)
             {
-                if (!IsValidLocalizationDataLists(item.LocaleDataLists, idx))
-                {
-                    return false;
-                }
-
                 if (!IsValidLocalizationEmailTemplates(item.LocaleEmailTemplates, idx))
                 {
                     return false;
@@ -1772,105 +1733,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
                 if (!IsValidLocalizationMessages(item.LocaleMessages, idx))
                 {
-                    return false;
-                }
-
-                idx++;
-            }
-            return true;
-        }
-
-        private bool IsValidLocalizationDataLists(List<LocaleConfigurationDataListModel> items, int localeIdx)
-        {
-            int idx = 0;
-            foreach (LocaleConfigurationDataListModel item in items)
-            {
-                //Check for ID value
-                if (string.IsNullOrEmpty(item.Id))
-                {
-                    ShowIdsCheckBox.Checked = true;
-                    ToggleShowIds(true);
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[0];
-                    DataListsGridView.CurrentCell = DataListsGridView.Rows[idx].Cells[0];
-                    DataListsGridView.Rows[idx].Cells[0].Selected = true;
-                    MessageBox.Show("ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for unique ID value
-                if (_tenantConfig.Modules[0].LocalizationConfiguration.Locales[localeIdx].LocaleDataLists.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
-                {
-                    ShowIdsCheckBox.Checked = true;
-                    ToggleShowIds(true);
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[0];
-                    DataListsGridView.CurrentCell = DataListsGridView.Rows[idx].Cells[0];
-                    DataListsGridView.Rows[idx].Cells[0].Selected = true;
-                    MessageBox.Show(string.Format("ID must be a unqiue value. There are more than 1 rows with a name value of '{0}'.", item.Id), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for name value
-                if (string.IsNullOrEmpty(item.Name))
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[0];
-                    DataListsGridView.CurrentCell = DataListsGridView.Rows[idx].Cells[2];
-                    DataListsGridView.Rows[idx].Cells[2].Selected = true;
-                    MessageBox.Show("Name is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for unique names
-                if (items.FindAll(i => string.Compare(i.Name, item.Name, true) == 0).Count > 1)
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[0];
-                    DataListsGridView.CurrentCell = DataListsGridView.Rows[idx].Cells[2];
-                    DataListsGridView.Rows[idx].Cells[2].Selected = true;
-                    MessageBox.Show(string.Format("Name must be a unqiue value. There are more than 1 rows with a name value of '{0}'.", item.Name), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for content id
-                if (string.IsNullOrEmpty(item.ContentId))
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[0];
-                    DataListsGridView.CurrentCell = DataListsGridView.Rows[idx].Cells[3];
-                    DataListsGridView.Rows[idx].Cells[3].Selected = true;
-                    MessageBox.Show("Content ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for proper named content id
-                string prefix = BusinessModuleDropdown.Text + ".DataList.";
-                if (!item.ContentId.StartsWith(prefix))
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[0];
-                    DataListsGridView.CurrentCell = DataListsGridView.Rows[idx].Cells[3];
-                    DataListsGridView.Rows[idx].Cells[3].Selected = true;
-                    MessageBox.Show(string.Format("Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for unique content id
-                if (items.FindAll(i => string.Compare(i.ContentId, item.ContentId, true) == 0).Count > 1)
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[0];
-                    DataListsGridView.CurrentCell = DataListsGridView.Rows[idx].Cells[3];
-                    DataListsGridView.Rows[idx].Cells[3].Selected = true;
-                    MessageBox.Show(string.Format("Content ID must be a unqiue value. There are more than 1 rows with a content ID value of '{0}'.", item.ContentId), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
 
@@ -3171,8 +3033,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         private void ToggleShowIds(bool showIds)
         {
             DisplaySizesGridView.Columns[0].Visible = showIds;
-
-            DataListsGridView.Columns[0].Visible = showIds;
 
             EmailTemplatesGridView.Columns[0].Visible = showIds;
 
