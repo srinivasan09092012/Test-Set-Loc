@@ -22,20 +22,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         private System.Windows.Forms.DataGridView functionsGridView;
         private System.Windows.Forms.DataGridView rolesGridView;
         private System.Windows.Forms.Button cancelPushButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rightAction;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rightModule;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rightName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rightContentId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rightLinkToFunction;
-        private System.Windows.Forms.DataGridViewTextBoxColumn functionAction;
-        private System.Windows.Forms.DataGridViewTextBoxColumn functionModule;
-        private System.Windows.Forms.DataGridViewTextBoxColumn functionName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn functionContentId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn functionLink;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roleAction;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roleModule;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roleName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roleContentId;
         
         /// <summary>
         /// Required designer variable.
@@ -67,11 +53,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.rightsGroupBox = new System.Windows.Forms.GroupBox();
             this.loadRightsCheckbox = new System.Windows.Forms.CheckBox();
             this.rightsGridView = new System.Windows.Forms.DataGridView();
-            this.rightAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rightModule = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rightName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rightContentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rightLinkToFunction = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.loadPushButton = new System.Windows.Forms.Button();
             this.rightAttributesGroupBox = new System.Windows.Forms.GroupBox();
             this.rightAttributesListBox = new System.Windows.Forms.CheckedListBox();
@@ -80,21 +61,26 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.functionsGroupBox = new System.Windows.Forms.GroupBox();
             this.loadFunctionsCheckbox = new System.Windows.Forms.CheckBox();
             this.functionsGridView = new System.Windows.Forms.DataGridView();
-            this.functionAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.functionModule = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.functionName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.functionContentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.functionLink = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roleAttributesGroupBox = new System.Windows.Forms.GroupBox();
             this.roleAttributesListBox = new System.Windows.Forms.CheckedListBox();
             this.rolesGroupBox = new System.Windows.Forms.GroupBox();
             this.loadRolesCheckbox = new System.Windows.Forms.CheckBox();
             this.rolesGridView = new System.Windows.Forms.DataGridView();
+            this.cancelPushButton = new System.Windows.Forms.Button();
             this.roleAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roleModule = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roleContentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cancelPushButton = new System.Windows.Forms.Button();
+            this.functionAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.functionModule = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.functionName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.functionContentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.functionLink = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rightAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rightModule = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rightName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rightContentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rightLinkToFunction = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rightsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rightsGridView)).BeginInit();
             this.rightAttributesGroupBox.SuspendLayout();
@@ -147,40 +133,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.rightsGridView.Size = new System.Drawing.Size(964, 188);
             this.rightsGridView.TabIndex = 7;
             this.rightsGridView.TabStop = false;
-            // 
-            // rightAction
-            // 
-            this.rightAction.HeaderText = "Action";
-            this.rightAction.Name = "rightAction";
-            this.rightAction.ReadOnly = true;
-            // 
-            // rightModule
-            // 
-            this.rightModule.HeaderText = "Module";
-            this.rightModule.Name = "rightModule";
-            this.rightModule.ReadOnly = true;
-            this.rightModule.Width = 130;
-            // 
-            // rightName
-            // 
-            this.rightName.HeaderText = "Name";
-            this.rightName.Name = "rightName";
-            this.rightName.ReadOnly = true;
-            this.rightName.Width = 220;
-            // 
-            // rightContentId
-            // 
-            this.rightContentId.HeaderText = "Content ID";
-            this.rightContentId.Name = "rightContentId";
-            this.rightContentId.ReadOnly = true;
-            this.rightContentId.Width = 420;
-            // 
-            // rightLinkToFunction
-            // 
-            this.rightLinkToFunction.HeaderText = "Link to Function";
-            this.rightLinkToFunction.Name = "rightLinkToFunction";
-            this.rightLinkToFunction.ReadOnly = true;
-            this.rightLinkToFunction.Width = 420;
             // 
             // loadPushButton
             // 
@@ -268,40 +220,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.functionsGridView.TabIndex = 4;
             this.functionsGridView.TabStop = false;
             // 
-            // functionAction
-            // 
-            this.functionAction.HeaderText = "Action";
-            this.functionAction.Name = "functionAction";
-            this.functionAction.ReadOnly = true;
-            // 
-            // functionModule
-            // 
-            this.functionModule.HeaderText = "Module";
-            this.functionModule.Name = "functionModule";
-            this.functionModule.ReadOnly = true;
-            this.functionModule.Width = 130;
-            // 
-            // functionName
-            // 
-            this.functionName.HeaderText = "Name";
-            this.functionName.Name = "functionName";
-            this.functionName.ReadOnly = true;
-            this.functionName.Width = 220;
-            // 
-            // functionContentId
-            // 
-            this.functionContentId.HeaderText = "Content ID";
-            this.functionContentId.Name = "functionContentId";
-            this.functionContentId.ReadOnly = true;
-            this.functionContentId.Width = 420;
-            // 
-            // functionLink
-            // 
-            this.functionLink.HeaderText = "Link to Role";
-            this.functionLink.Name = "functionLink";
-            this.functionLink.ReadOnly = true;
-            this.functionLink.Width = 420;
-            // 
             // roleAttributesGroupBox
             // 
             this.roleAttributesGroupBox.Controls.Add(this.roleAttributesListBox);
@@ -361,6 +279,16 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.rolesGridView.TabIndex = 1;
             this.rolesGridView.TabStop = false;
             // 
+            // cancelPushButton
+            // 
+            this.cancelPushButton.Location = new System.Drawing.Point(1101, 741);
+            this.cancelPushButton.Name = "cancelPushButton";
+            this.cancelPushButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelPushButton.TabIndex = 0;
+            this.cancelPushButton.Text = "Cancel";
+            this.cancelPushButton.UseVisualStyleBackColor = true;
+            this.cancelPushButton.Click += new System.EventHandler(this.CancelPushButton_Click);
+            // 
             // roleAction
             // 
             this.roleAction.HeaderText = "Action";
@@ -388,15 +316,73 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.roleContentId.ReadOnly = true;
             this.roleContentId.Width = 420;
             // 
-            // cancelPushButton
+            // functionAction
             // 
-            this.cancelPushButton.Location = new System.Drawing.Point(1101, 741);
-            this.cancelPushButton.Name = "cancelPushButton";
-            this.cancelPushButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelPushButton.TabIndex = 0;
-            this.cancelPushButton.Text = "Cancel";
-            this.cancelPushButton.UseVisualStyleBackColor = true;
-            this.cancelPushButton.Click += new System.EventHandler(this.CancelPushButton_Click);
+            this.functionAction.HeaderText = "Action";
+            this.functionAction.Name = "functionAction";
+            this.functionAction.ReadOnly = true;
+            // 
+            // functionModule
+            // 
+            this.functionModule.HeaderText = "Module";
+            this.functionModule.Name = "functionModule";
+            this.functionModule.ReadOnly = true;
+            this.functionModule.Width = 130;
+            // 
+            // functionName
+            // 
+            this.functionName.HeaderText = "Name";
+            this.functionName.Name = "functionName";
+            this.functionName.ReadOnly = true;
+            this.functionName.Width = 220;
+            // 
+            // functionContentId
+            // 
+            this.functionContentId.HeaderText = "Content ID";
+            this.functionContentId.Name = "functionContentId";
+            this.functionContentId.ReadOnly = true;
+            this.functionContentId.Width = 420;
+            // 
+            // functionLink
+            // 
+            this.functionLink.HeaderText = "Link to Role";
+            this.functionLink.Name = "functionLink";
+            this.functionLink.ReadOnly = true;
+            this.functionLink.Width = 420;
+            // 
+            // rightAction
+            // 
+            this.rightAction.HeaderText = "Action";
+            this.rightAction.Name = "rightAction";
+            this.rightAction.ReadOnly = true;
+            // 
+            // rightModule
+            // 
+            this.rightModule.HeaderText = "Module";
+            this.rightModule.Name = "rightModule";
+            this.rightModule.ReadOnly = true;
+            this.rightModule.Width = 130;
+            // 
+            // rightName
+            // 
+            this.rightName.HeaderText = "Name";
+            this.rightName.Name = "rightName";
+            this.rightName.ReadOnly = true;
+            this.rightName.Width = 220;
+            // 
+            // rightContentId
+            // 
+            this.rightContentId.HeaderText = "Content ID";
+            this.rightContentId.Name = "rightContentId";
+            this.rightContentId.ReadOnly = true;
+            this.rightContentId.Width = 420;
+            // 
+            // rightLinkToFunction
+            // 
+            this.rightLinkToFunction.HeaderText = "Link to Function";
+            this.rightLinkToFunction.Name = "rightLinkToFunction";
+            this.rightLinkToFunction.ReadOnly = true;
+            this.rightLinkToFunction.Width = 420;
             // 
             // ConfirmationSecurityDialog
             // 
@@ -439,5 +425,19 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         private System.Windows.Forms.CheckBox loadRightsCheckbox;
         private System.Windows.Forms.CheckBox loadFunctionsCheckbox;
         private System.Windows.Forms.CheckBox loadRolesCheckbox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rightAction;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rightModule;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rightName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rightContentId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rightLinkToFunction;
+        private System.Windows.Forms.DataGridViewTextBoxColumn functionAction;
+        private System.Windows.Forms.DataGridViewTextBoxColumn functionModule;
+        private System.Windows.Forms.DataGridViewTextBoxColumn functionName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn functionContentId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn functionLink;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roleAction;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roleModule;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roleName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roleContentId;
     }
 }

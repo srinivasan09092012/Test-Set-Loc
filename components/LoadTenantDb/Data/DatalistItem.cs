@@ -1,4 +1,6 @@
-﻿//--------------------------------------------------------------------------------------------------
+﻿using HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities;
+
+//--------------------------------------------------------------------------------------------------
 // This code is the property of Hewlett Packard Enterprise, Copyright (c) 2016. All rights reserved.
 //
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
@@ -59,6 +61,57 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
         public List<DatalistItemLink> DataListItemLinks { get; set; }
 
         public List<DatalistItemAttributeValue> DataListItemAttributeValues { get; set; }
+
+        public string GetDataListItemId(Datalist datalist, DatalistItem dataListItem)
+        {
+            DataListDBContext dataListDBContext = new DataListDBContext();
+
+            var datalistItemId = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItems>() where dl.DataListsId == new Guid(datalist.Id) && dl.DataListsItemKey == dataListItem.Key select dl.DataListsItemId).FirstOrDefault();
+
+            if (datalistItemId.Equals(new Guid("{00000000-0000-0000-0000-000000000000}")))
+            {
+                return null;
+            }
+            else
+            {
+                return datalistItemId.ToString();
+            }
+        }
+
+        public void GetDataListItemTest(Datalist datalist, DatalistItem dataListItem)
+        {
+            DataListDBContext dataListDBContext = new DataListDBContext();
+            //Dictionary<string, object> dataListItemDetail;
+
+            var datalistItemId = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItems>() where dl.DataListsId == new Guid(datalist.Id) && dl.DataListsItemKey == dataListItem.Key select dl.DataListsItemId).FirstOrDefault();
+
+            var datalistAttributes = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListAttributes>() where dl.DataListsId == new Guid(datalist.Id) select new { dl.TypeName, dl.DataListsAttributeId }).ToList();
+
+            var datalistAttributeValues = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListAttributeValues>() where dl.DataListsItemId == new Guid(dataListItem.Id) select dl.DataListAttributeId).ToList();
+
+            //if (dataListItemDetail.ContainsKey("Attributes"))
+            //{
+            //    object attributeList = dataListItemDetail["Attributes"] as object;
+            //    foreach (Dictionary<string, object> attributes in (IList)attributeList)
+            //    {
+            //        DatalistItemAttributeValue datalistItemAttributeValue = new DatalistItemAttributeValue();
+            //        datalistItemAttributeValue.DataListsAttributeValueId = attributes["ID"].ToString();
+            //        datalistItemAttributeValue.DataListsItemId = attributes["DataListItemID"].ToString();
+            //        datalistItemAttributeValue.DataListAttributeId = attributes["DataListAttributeID"].ToString();
+            //        datalistItemAttributeValue.DataListAttributeText = attributes["DataListAttributeName"].ToString();
+            //        datalistItemAttributeValue.DataListsItemValueId = attributes["DataListValueID"].ToString();
+            //        datalistItemAttributeValue.DataListsItemValueText = attributes["DataListAttributeValue"].ToString();
+            //        dataListItem.DataListItemAttributeValues.Add(datalistItemAttributeValue);
+            //    }
+            //}
+
+            foreach (Guid attribute in datalistAttributeValues)
+            {
+                //DatalistItemAttributeValue datalistItemAttributeValue = new DatalistItemAttributeValue();
+                //datalistItemAttributeValue.DataListAttributeText = attribute;
+                //dataListItem.DataListItemAttributeValues.Add(datalistItemAttributeValue);
+            }
+        }
 
         public string GetDataListItem(Datalist datalist, DatalistItem dataListItem)
         {
@@ -147,7 +200,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
                                     datalistItemAttributeValue.DataListsItemValueId = attributes["DataListValueID"].ToString();
                                     datalistItemAttributeValue.DataListsItemValueText = attributes["DataListAttributeValue"].ToString();
                                     dataListItem.DataListItemAttributeValues.Add(datalistItemAttributeValue);
-                                }   
+                                }
                             }
 
                             return dataListItem.Id;
@@ -262,7 +315,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
         private DataListsService.DataListItemLanguage[] SetDataListItemLanguages(List<DatalistItemLanguage> langList)
         {
             if (langList != null)
-            { 
+            {
                 DataListsService.DataListItemLanguage[] result = new DataListsService.DataListItemLanguage[] { };
                 List<DataListsService.DataListItemLanguage> result2 = new List<DataListsService.DataListItemLanguage>();
                 DataListsService.DataListItemLanguage lang = null;

@@ -210,7 +210,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             datalist.IdentifierId = "USER1";
             datalist.IsActive = true;
             datalist.ContentId = "Core.DataList.SecurityRoles";
-            datalist.Id = datalist.GetDataList(datalist);
+            datalist.Id = datalist.GetDataListId(datalist);
             datalist.Name = "Security Roles";
             datalist.Description = "Security Roles";
 
@@ -232,8 +232,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     DatalistItem datalistItem = new DatalistItem();
                     datalistItem.MainForm = this.MainForm;
                     datalistItem.ContentId = this.MainForm.SecurityRoles[i].ContentId;
-                    datalistItem.Key = this.MainForm.SecurityRoles[i].ContentId;
-                    datalistItem.Id = datalistItem.GetDataListItem(datalist, datalistItem);
+                    datalistItem.Key = this.MainForm.SecurityRoles[i].Name;
+                    datalistItem.Id = datalistItem.GetDataListItemId(datalist, datalistItem);
                     datalistItem.DataListId = datalist.Id;
                     datalistItem.TenantId = this.MainForm.TenantId;
                     datalistItem.IsActive = true;
@@ -243,12 +243,18 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     if (datalistItem.DataListItemLanguages.Count == 0)
                     {
                         datalistItem.DataListItemLanguages.Add(new DatalistItemLanguage());
+                        datalistItem.DataListItemLanguages.Add(new DatalistItemLanguage());
                     }
 
                     datalistItem.DataListItemLanguages[0].Locale = "en-us";
-                    datalistItem.DataListItemLanguages[0].Description = this.MainForm.SecurityRoles[i].Name;
+                    datalistItem.DataListItemLanguages[0].Description = this.MainForm.SecurityRoles[i].SecurityNodeAttribute[0].Value;
                     datalistItem.DataListItemLanguages[0].IsActive = true;
                     datalistItem.DataListItemLanguages[0].DataListItemId = datalistItem.Id;
+
+                    datalistItem.DataListItemLanguages[1].Locale = "es-mx";
+                    datalistItem.DataListItemLanguages[1].Description = this.MainForm.SecurityRoles[i].SecurityNodeAttribute[1].Value;
+                    datalistItem.DataListItemLanguages[1].IsActive = true;
+                    datalistItem.DataListItemLanguages[1].DataListItemId = datalistItem.Id;
 
                     if (datalistItem.Id == null)
                     {
@@ -300,7 +306,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
                     if (parentDatalist != null && parentDatalistItem != null)
                     {
-                        for (int j = 0; j < this.roleAttributesListBox.Items.Count; j++)
+                        for (int j = 2; j < this.roleAttributesListBox.Items.Count; j++)
                         {
                             if (this.roleAttributesListBox.GetItemChecked(j))
                             {
@@ -350,7 +356,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             datalist.IdentifierId = "USER1";
             datalist.IsActive = true;
             datalist.ContentId = "Core.DataList.SecurityFunctions";
-            datalist.Id = datalist.GetDataList(datalist);
+            datalist.Id = datalist.GetDataListId(datalist);
             datalist.Name = "Security Functions";
             datalist.Description = "Security Functions";
 
@@ -372,8 +378,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     DatalistItem datalistItem = new DatalistItem();
                     datalistItem.MainForm = this.MainForm;
                     datalistItem.ContentId = this.MainForm.SecurityFunctions[i].ContentId;
-                    datalistItem.Key = this.MainForm.SecurityFunctions[i].ContentId;
-                    datalistItem.Id = datalistItem.GetDataListItem(datalist, datalistItem);
+                    datalistItem.Key = this.MainForm.SecurityFunctions[i].Name;
+                    datalistItem.Id = datalistItem.GetDataListItemId(datalist, datalistItem);
                     datalistItem.DataListId = datalist.Id;
                     datalistItem.TenantId = this.MainForm.TenantId;
                     datalistItem.IsActive = true;
@@ -383,12 +389,18 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     if (datalistItem.DataListItemLanguages.Count == 0)
                     {
                         datalistItem.DataListItemLanguages.Add(new DatalistItemLanguage());
+                        datalistItem.DataListItemLanguages.Add(new DatalistItemLanguage());
                     }
 
                     datalistItem.DataListItemLanguages[0].Locale = "en-us";
-                    datalistItem.DataListItemLanguages[0].Description = this.MainForm.SecurityFunctions[i].Name;
+                    datalistItem.DataListItemLanguages[0].Description = this.MainForm.SecurityFunctions[i].SecurityNodeAttribute[0].Value;
                     datalistItem.DataListItemLanguages[0].IsActive = true;
                     datalistItem.DataListItemLanguages[0].DataListItemId = datalistItem.Id;
+
+                    datalistItem.DataListItemLanguages[1].Locale = "es-mx";
+                    datalistItem.DataListItemLanguages[1].Description = this.MainForm.SecurityFunctions[i].SecurityNodeAttribute[1].Value;
+                    datalistItem.DataListItemLanguages[1].IsActive = true;
+                    datalistItem.DataListItemLanguages[1].DataListItemId = datalistItem.Id;
 
                     if (datalistItem.Id == null)
                     {
@@ -453,6 +465,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         roleDatalist.ContentId = "Core.DataList.SecurityRoles";
                         roleDatalistItem.Key = this.MainForm.SecurityFunctions[i].ParentKey;
                         roleDatalist.GetDataList(roleDatalist);
+                        roleDatalistItem.DataListId = roleDatalist.Id;
                         roleDatalistItem.GetDataListItem(roleDatalist, roleDatalistItem);
 
                         for (int j = 0; j < roleDatalistItem.DataListItemLinks.Count; j++)
@@ -482,7 +495,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
                     if (parentDatalist != null && parentDatalistItem != null)
                     {
-                        for (int j = 0; j < this.functionAttributesListBox.Items.Count; j++)
+                        for (int j = 2; j < this.functionAttributesListBox.Items.Count; j++)
                         {
                             if (this.functionAttributesListBox.GetItemChecked(j))
                             {
@@ -534,7 +547,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             datalist.IdentifierId = "USER1";
             datalist.IsActive = true;
             datalist.ContentId = "Core.DataList.SecurityRights";
-            datalist.Id = datalist.GetDataList(datalist);
+            datalist.Id = datalist.GetDataListId(datalist);
             datalist.Name = "Security Rights";
             datalist.Description = "Security Rights";
 
@@ -556,8 +569,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     DatalistItem datalistItem = new DatalistItem();
                     datalistItem.MainForm = this.MainForm;
                     datalistItem.ContentId = this.MainForm.SecurityRights[i].ContentId;
-                    datalistItem.Key = this.MainForm.SecurityRights[i].ContentId;
-                    datalistItem.Id = datalistItem.GetDataListItem(datalist, datalistItem);
+                    datalistItem.Key = this.MainForm.SecurityRights[i].Name;
+                    datalistItem.Id = datalistItem.GetDataListItemId(datalist, datalistItem);
                     datalistItem.DataListId = datalist.Id;
                     datalistItem.TenantId = this.MainForm.TenantId;
                     datalistItem.IsActive = true;
@@ -567,12 +580,18 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     if (datalistItem.DataListItemLanguages.Count == 0)
                     {
                         datalistItem.DataListItemLanguages.Add(new DatalistItemLanguage());
+                        datalistItem.DataListItemLanguages.Add(new DatalistItemLanguage());
                     }
 
                     datalistItem.DataListItemLanguages[0].Locale = "en-us";
-                    datalistItem.DataListItemLanguages[0].Description = this.MainForm.SecurityRights[i].Name;
+                    datalistItem.DataListItemLanguages[0].Description = this.MainForm.SecurityRights[i].SecurityNodeAttribute[0].Value;
                     datalistItem.DataListItemLanguages[0].IsActive = true;
                     datalistItem.DataListItemLanguages[0].DataListItemId = datalistItem.Id;
+
+                    datalistItem.DataListItemLanguages[1].Locale = "es-mx";
+                    datalistItem.DataListItemLanguages[1].Description = this.MainForm.SecurityRights[i].SecurityNodeAttribute[1].Value;
+                    datalistItem.DataListItemLanguages[1].IsActive = true;
+                    datalistItem.DataListItemLanguages[1].DataListItemId = datalistItem.Id;
 
                     if (datalistItem.Id == null)
                     {
@@ -637,6 +656,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         functionDatalist.ContentId = "Core.DataList.SecurityFunctions";
                         functionDatalistItem.Key = this.MainForm.SecurityRights[i].ParentKey;
                         functionDatalist.GetDataList(functionDatalist);
+                        functionDatalistItem.DataListId = functionDatalist.Id;
                         functionDatalistItem.GetDataListItem(functionDatalist, functionDatalistItem);
 
                         for (int j = 0; j < functionDatalistItem.DataListItemLinks.Count; j++)
@@ -666,7 +686,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
                     if (parentDatalist != null && parentDatalistItem != null)
                     {
-                        for (int j = 0; j < this.rightAttributesListBox.Items.Count; j++)
+                        for (int j = 2; j < this.rightAttributesListBox.Items.Count; j++)
                         {
                             if (this.rightAttributesListBox.GetItemChecked(j))
                             {
@@ -712,7 +732,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             Datalist attributeDatalist = new Datalist();
             attributeDatalist.MainForm = this.MainForm;
             attributeDatalist.ContentId = "Core.DataList.Attributes." + attribute;
-            attributeDatalist.Id = attributeDatalist.GetDataList(attributeDatalist);
+            attributeDatalist.Id = attributeDatalist.GetDataListId(attributeDatalist);
 
             if (attributeDatalist.Id == null)
             {
@@ -730,7 +750,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             attributeDatalistItem.MainForm = this.MainForm;
             attributeDatalistItem.ContentId = attributeDatalist.ContentId;
             attributeDatalistItem.Key = attributeValue;
-            attributeDatalistItem.Id = attributeDatalistItem.GetDataListItem(attributeDatalist, attributeDatalistItem);
+            attributeDatalistItem.Id = attributeDatalistItem.GetDataListItemId(attributeDatalist, attributeDatalistItem);
 
             if (attributeDatalistItem.Id == null)
             {
@@ -784,6 +804,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 attributeDatalist.GetDataList(attributeDatalist);
                 attributeDatalistItem.GetDataListItem(attributeDatalist, attributeDatalistItem);
                 parentDatalist.GetDataList(parentDatalist);
+                parentDatalistItem.MainForm = this.MainForm;
                 parentDatalistItem.GetDataListItem(parentDatalist, parentDatalistItem);
 
                 for (int i = 0; i < parentDatalistItem.DataListItemAttributeValues.Count; i++)
@@ -791,6 +812,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     if (parentDatalistItem.DataListItemAttributeValues[i].DataListAttributeText == attribute)
                     {
                         newAttributeValue = false;
+                        break;
                     }
                 }
 
@@ -813,5 +835,5 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 }
             }
         }
-   }
+    }
 }

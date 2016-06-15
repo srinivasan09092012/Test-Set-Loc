@@ -26,6 +26,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.InitializeComponent();
 
             this.LocalizationDatalists = new List<LocalizationLocaleNode>();
+            this.LocalizationLabelsEnglish = new List<LocalizationDatalistItemNode>();
+            this.LocalizationLabelsSpanish = new List<LocalizationDatalistItemNode>();
             this.SecurityRoles = new List<SecurityNode>();
             this.SecurityFunctions = new List<SecurityNode>();
             this.SecurityRights = new List<SecurityNode>();
@@ -48,6 +50,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         public List<string> SecurityRightsAttributes { get; set; }
 
         public List<LocalizationLocaleNode> LocalizationDatalists { get; set; }
+
+        public List<LocalizationDatalistItemNode> LocalizationLabelsEnglish { get; set; }
+
+        public List<LocalizationDatalistItemNode> LocalizationLabelsSpanish { get; set; }
 
         public string TenantId { get; set; }
 
@@ -135,6 +141,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                                 {
                                     this.LoadSecurityNodes(sd, checkedModule);
                                 }
+                                else if (this.configTypeComboBox.SelectedItem.ToString() == "Security Roles" && sd.Name == "LocalizationConfiguration")
+                                {
+                                    this.LoadLocalizationLabelsNodes(sd, checkedModule);
+                                }
                                 else if (this.configTypeComboBox.SelectedItem.ToString() == "Localization DataLists" && sd.Name == "LocalizationConfiguration")
                                 {
                                     this.LoadLocalizationDatalistNodes(sd, checkedModule);
@@ -146,7 +156,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             }
         }
 
-        private void LoadLocalizationDatalistNodes(XmlNode sd, Module checkedModule) 
+        private void LoadLocalizationDatalistNodes(XmlNode sd, Module checkedModule)
         {
             foreach (XmlNode locales in sd.ChildNodes)
             {
@@ -192,10 +202,66 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             }
         }
 
+        private void LoadLocalizationLabelsNodes(XmlNode sd, Module checkedModule)
+        {
+            foreach (XmlNode locales in sd.ChildNodes)
+            {
+                foreach (XmlNode locale in locales.ChildNodes)
+                {
+                    LocalizationLocaleNode localizationLocaleNode = new LocalizationLocaleNode();
+                    localizationLocaleNode.LocaleId = locale.Attributes["localeId"].Value;
+
+                    if (localizationLocaleNode.LocaleId == "es-MX")
+                    {
+                        foreach (XmlNode datalists in locale.ChildNodes)
+                        {
+                            if (datalists.Name == "LocaleLabels")
+                            {
+                                foreach (XmlNode datalistItem in datalists.ChildNodes)
+                                {
+                                    LocalizationDatalistItemNode localizationDatalistItemNode = new LocalizationDatalistItemNode();
+                                    localizationDatalistItemNode.Id = datalistItem.Attributes["id"].Value;
+                                    localizationDatalistItemNode.Text = datalistItem.Attributes["text"].Value;
+                                    localizationDatalistItemNode.ContentId = datalistItem.Attributes["contentId"].Value;
+                                    this.LocalizationLabelsSpanish.Add(localizationDatalistItemNode);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (XmlNode datalists in locale.ChildNodes)
+                        {
+                            if (datalists.Name == "LocaleLabels")
+                            {
+                                foreach (XmlNode datalistItem in datalists.ChildNodes)
+                                {
+                                    LocalizationDatalistItemNode localizationDatalistItemNode = new LocalizationDatalistItemNode();
+                                    localizationDatalistItemNode.Id = datalistItem.Attributes["id"].Value;
+                                    localizationDatalistItemNode.Text = datalistItem.Attributes["text"].Value;
+                                    localizationDatalistItemNode.ContentId = datalistItem.Attributes["contentId"].Value;
+                                    this.LocalizationLabelsEnglish.Add(localizationDatalistItemNode);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         private void LoadSecurityNodes(XmlNode sd, Module checkedModule)
         {
+            bool englishRoleFound = false;
+            bool spanishRoleFound = false;
+            bool englishFunctionFound = false;
+            bool spanishFunctionFound = false;
+            bool englishRightFound = false;
+            bool spanishRightFound = false;
+
             foreach (XmlNode role in sd.ChildNodes)
             {
+                englishRoleFound = false;
+                spanishRoleFound = false;
                 SecurityNode securityRoleNode = new SecurityNode();
                 securityRoleNode.Module.Name = checkedModule.Name;
                 securityRoleNode.Module.Id = checkedModule.Id;
@@ -204,6 +270,46 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 securityRoleNode.ContentId = role.Attributes["contentId"].Value;
                 securityRoleNode.ParentLink = null;
                 securityRoleNode.ParentKey = null;
+
+                foreach (LocalizationDatalistItemNode english in this.LocalizationLabelsEnglish)
+                {
+                    if (english.ContentId == securityRoleNode.ContentId && english.Text != String.Empty)
+                    {
+                        SecurityNodeAttribute securityNodeAttribute = new SecurityNodeAttribute();
+                        securityNodeAttribute.Name = "English Description";
+                        securityNodeAttribute.Value = english.Text;
+                        securityRoleNode.SecurityNodeAttribute.Add(securityNodeAttribute);
+                        englishRoleFound = true;
+                        break;
+                    }
+                }
+                if (!englishRoleFound)
+                {
+                    SecurityNodeAttribute securityNodeAttribute = new SecurityNodeAttribute();
+                    securityNodeAttribute.Name = "English Description";
+                    securityNodeAttribute.Value = "No English Description";
+                    securityRoleNode.SecurityNodeAttribute.Add(securityNodeAttribute);
+                }
+
+                foreach (LocalizationDatalistItemNode spanish in this.LocalizationLabelsSpanish)
+                {
+                    if (spanish.ContentId == securityRoleNode.ContentId && spanish.Text != String.Empty)
+                    {
+                        SecurityNodeAttribute securityNodeAttribute = new SecurityNodeAttribute();
+                        securityNodeAttribute.Name = "Spanish Description";
+                        securityNodeAttribute.Value = spanish.Text;
+                        securityRoleNode.SecurityNodeAttribute.Add(securityNodeAttribute);
+                        spanishRoleFound = true;
+                        break;
+                    }
+                }
+                if (!spanishRoleFound)
+                {
+                    SecurityNodeAttribute securityNodeAttribute = new SecurityNodeAttribute();
+                    securityNodeAttribute.Name = "Spanish Description";
+                    securityNodeAttribute.Value = "No Spanish Description";
+                    securityRoleNode.SecurityNodeAttribute.Add(securityNodeAttribute);
+                }
 
                 for (int i = 0; i < role.Attributes.Count; i++)
                 {
@@ -222,6 +328,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 {
                     foreach (XmlNode function in functions.ChildNodes)
                     {
+                        englishFunctionFound = false;
+                        spanishFunctionFound = false;
                         SecurityNode securityFunctionNode = new SecurityNode();
                         securityFunctionNode.Module.Name = checkedModule.Name;
                         securityFunctionNode.Module.Id = checkedModule.Id;
@@ -229,7 +337,46 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         securityFunctionNode.Name = function.Attributes["name"].Value;
                         securityFunctionNode.ContentId = function.Attributes["contentId"].Value;
                         securityFunctionNode.ParentLink = role.Attributes["contentId"].Value;
-                        securityFunctionNode.ParentKey = role.Attributes["contentId"].Value;
+                        securityFunctionNode.ParentKey = role.Attributes["name"].Value;
+
+                        foreach (LocalizationDatalistItemNode english in this.LocalizationLabelsEnglish)
+                        {
+                            if (english.ContentId == securityFunctionNode.ContentId && english.Text != String.Empty)
+                            {
+                                SecurityNodeAttribute securityNodeAttribute = new SecurityNodeAttribute();
+                                securityNodeAttribute.Name = "English Description";
+                                securityNodeAttribute.Value = english.Text;
+                                securityFunctionNode.SecurityNodeAttribute.Add(securityNodeAttribute);
+                                englishFunctionFound = true;
+                                break;
+                            }
+                        }
+                        if (!englishFunctionFound)
+                        {
+                            SecurityNodeAttribute securityNodeAttribute = new SecurityNodeAttribute();
+                            securityNodeAttribute.Name = "English Description";
+                            securityNodeAttribute.Value = "No English Description";
+                            securityFunctionNode.SecurityNodeAttribute.Add(securityNodeAttribute);
+                        }
+                        foreach (LocalizationDatalistItemNode spanish in this.LocalizationLabelsSpanish)
+                        {
+                            if (spanish.ContentId == securityFunctionNode.ContentId && spanish.Text != String.Empty)
+                            {
+                                SecurityNodeAttribute securityNodeAttribute = new SecurityNodeAttribute();
+                                securityNodeAttribute.Name = "Spanish Description";
+                                securityNodeAttribute.Value = spanish.Text;
+                                securityFunctionNode.SecurityNodeAttribute.Add(securityNodeAttribute);
+                                spanishFunctionFound = true;
+                                break;
+                            }
+                        }
+                        if (!spanishFunctionFound)
+                        {
+                            SecurityNodeAttribute securityNodeAttribute = new SecurityNodeAttribute();
+                            securityNodeAttribute.Name = "Spanish Description";
+                            securityNodeAttribute.Value = "No Spanish Description";
+                            securityFunctionNode.SecurityNodeAttribute.Add(securityNodeAttribute);
+                        }
 
                         for (int i = 0; i < function.Attributes.Count; i++)
                         {
@@ -240,7 +387,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                                 securityNodeAttribute.Value = function.Attributes[i].Value;
                                 securityFunctionNode.SecurityNodeAttribute.Add(securityNodeAttribute);
                             }
-                    }
+                        }
 
                         this.SecurityFunctions.Add(securityFunctionNode);
 
@@ -248,13 +395,15 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         {
                             foreach (XmlNode right in rights.ChildNodes)
                             {
+                                englishRightFound = false;
+                                spanishRightFound = false;
                                 SecurityNode securityRightNode = new SecurityNode();
                                 securityRightNode.Module.Name = checkedModule.Name;
                                 securityRightNode.Module.Id = checkedModule.Id;
                                 securityRightNode.Id = right.Attributes["id"].Value;
                                 securityRightNode.Name = right.Attributes["name"].Value;
                                 securityRightNode.ParentLink = function.Attributes["contentId"].Value;
-                                securityRightNode.ParentKey = function.Attributes["contentId"].Value;
+                                securityRightNode.ParentKey = function.Attributes["name"].Value;
 
                                 if (right.Attributes["contentId"] != null)
                                 {
@@ -263,6 +412,45 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                                 else
                                 {
                                     securityRightNode.ContentId = right.Attributes["name"].Value;
+                                }
+
+                                foreach (LocalizationDatalistItemNode english in this.LocalizationLabelsEnglish)
+                                {
+                                    if (english.ContentId == securityRightNode.ContentId && english.Text != String.Empty)
+                                    {
+                                        SecurityNodeAttribute securityNodeAttribute = new SecurityNodeAttribute();
+                                        securityNodeAttribute.Name = "English Description";
+                                        securityNodeAttribute.Value = english.Text;
+                                        securityRightNode.SecurityNodeAttribute.Add(securityNodeAttribute);
+                                        englishRightFound = true;
+                                        break;
+                                    }
+                                }
+                                if (!englishRightFound)
+                                {
+                                    SecurityNodeAttribute securityNodeAttribute = new SecurityNodeAttribute();
+                                    securityNodeAttribute.Name = "English Description";
+                                    securityNodeAttribute.Value = "No English Description";
+                                    securityRightNode.SecurityNodeAttribute.Add(securityNodeAttribute);
+                                }
+                                foreach (LocalizationDatalistItemNode spanish in this.LocalizationLabelsSpanish)
+                                {
+                                    if (spanish.ContentId == securityRightNode.ContentId && spanish.Text != String.Empty)
+                                    {
+                                        SecurityNodeAttribute securityNodeAttribute = new SecurityNodeAttribute();
+                                        securityNodeAttribute.Name = "Spanish Description";
+                                        securityNodeAttribute.Value = spanish.Text;
+                                        securityRightNode.SecurityNodeAttribute.Add(securityNodeAttribute);
+                                        spanishRightFound = true;
+                                        break;
+                                    }
+                                }
+                                if (!spanishRightFound)
+                                {
+                                    SecurityNodeAttribute securityNodeAttribute = new SecurityNodeAttribute();
+                                    securityNodeAttribute.Name = "Spanish Description";
+                                    securityNodeAttribute.Value = "No Spanish Description";
+                                    securityRightNode.SecurityNodeAttribute.Add(securityNodeAttribute);
                                 }
 
                                 for (int i = 0; i < right.Attributes.Count; i++)
@@ -342,7 +530,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 module.Id = xl.Attributes["id"].Value;
                 configuredModules.ModuleNames.Add(module);
             }
-                                                  
+
             return configuredModules;
         }
 
@@ -392,7 +580,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 this.nextButton.Enabled = false;
             }
         }
-        
+
         public class LocalizationDatalistItemNode
         {
             public string Action { get; set; }
@@ -407,7 +595,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
             public string Order { get; set; }
         }
-        
+
         public class LocalizationDatalistNode
         {
             public LocalizationDatalistNode()

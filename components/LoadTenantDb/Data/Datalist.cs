@@ -1,4 +1,6 @@
-﻿//--------------------------------------------------------------------------------------------------
+﻿using HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities;
+
+//--------------------------------------------------------------------------------------------------
 // This code is the property of Hewlett Packard Enterprise, Copyright (c) 2016. All rights reserved.
 //
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
@@ -49,8 +51,26 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
 
         public List<DatalistItemAttribute> DataListItemAttributes { get; set; }
 
+        public string GetDataListId(Datalist dataList)
+        {
+            DataListDBContext dataListDBContext = new DataListDBContext();
+
+            var datalistId = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataLists>() where dl.ContentId == dataList.ContentId select dl.DataListsId).FirstOrDefault();
+
+            if (datalistId.Equals(new Guid("{00000000-0000-0000-0000-000000000000}")))
+            {
+                return null;
+            }
+            else
+            {
+                return datalistId.ToString();
+            }
+        }
+
         public string GetDataList(Datalist dataList)
         {
+            GetDataListId(dataList);
+
             int retryCount = 0;
             string objDataQuery = string.Format("DataList?$filter=ContentID%20eq%20%27{0}%27", dataList.ContentId);
             string baseUrl = MainForm.ODataEndpointAddress;
@@ -146,7 +166,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
                 this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheItemLinkerKey, "false", "false", "false");
                 this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheLocalLanguageKey, "false", "false", "false");
                 this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListAttrKey, "false", "false", "false");
-                this.RefreshCache(string.Empty, "false", "false", "true"); 
+                this.RefreshCache(string.Empty, "false", "false", "true");
             }
             catch
             {
@@ -192,7 +212,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
                 this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheItemLinkerKey, "false", "false", "false");
                 this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheLocalLanguageKey, "false", "false", "false");
                 this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListAttrKey, "false", "false", "false");
-                this.RefreshCache(string.Empty, "false", "false", "true"); 
+                this.RefreshCache(string.Empty, "false", "false", "true");
             }
             catch
             {
