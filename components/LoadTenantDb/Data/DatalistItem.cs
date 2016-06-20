@@ -78,39 +78,33 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             }
         }
 
-        public void GetDataListItemTest(Datalist datalist, DatalistItem dataListItem)
+        public bool DoesLinkExists(string datalistId, string childDatalistItemKey, string parentDatalistItemKey)
         {
             DataListDBContext dataListDBContext = new DataListDBContext();
-            //Dictionary<string, object> dataListItemDetail;
 
-            var datalistItemId = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItems>() where dl.DataListsId == new Guid(datalist.Id) && dl.DataListsItemKey == dataListItem.Key select dl.DataListsItemId).FirstOrDefault();
+            var parentDatalistItemId = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItems>() where dl.DataListsId == new Guid(datalistId) && dl.DataListsItemKey == parentDatalistItemKey select dl.DataListsItemId).FirstOrDefault();
 
-            var datalistAttributes = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListAttributes>() where dl.DataListsId == new Guid(datalist.Id) select new { dl.TypeName, dl.DataListsAttributeId }).ToList();
+            var childDatalistItemId = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItems>() where dl.DataListsItemKey == childDatalistItemKey select dl.DataListsItemId).FirstOrDefault();
 
-            var datalistAttributeValues = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListAttributeValues>() where dl.DataListsItemId == new Guid(dataListItem.Id) select dl.DataListAttributeId).ToList();
+            var datalistLinks = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItemsLinks>() where dl.ParentId == parentDatalistItemId && dl.ChildId == childDatalistItemId select dl.ChildId).ToList();
 
-            //if (dataListItemDetail.ContainsKey("Attributes"))
-            //{
-            //    object attributeList = dataListItemDetail["Attributes"] as object;
-            //    foreach (Dictionary<string, object> attributes in (IList)attributeList)
-            //    {
-            //        DatalistItemAttributeValue datalistItemAttributeValue = new DatalistItemAttributeValue();
-            //        datalistItemAttributeValue.DataListsAttributeValueId = attributes["ID"].ToString();
-            //        datalistItemAttributeValue.DataListsItemId = attributes["DataListItemID"].ToString();
-            //        datalistItemAttributeValue.DataListAttributeId = attributes["DataListAttributeID"].ToString();
-            //        datalistItemAttributeValue.DataListAttributeText = attributes["DataListAttributeName"].ToString();
-            //        datalistItemAttributeValue.DataListsItemValueId = attributes["DataListValueID"].ToString();
-            //        datalistItemAttributeValue.DataListsItemValueText = attributes["DataListAttributeValue"].ToString();
-            //        dataListItem.DataListItemAttributeValues.Add(datalistItemAttributeValue);
-            //    }
-            //}
-
-            foreach (Guid attribute in datalistAttributeValues)
+            if (datalistLinks.Count != 0)
             {
-                //DatalistItemAttributeValue datalistItemAttributeValue = new DatalistItemAttributeValue();
-                //datalistItemAttributeValue.DataListAttributeText = attribute;
-                //dataListItem.DataListItemAttributeValues.Add(datalistItemAttributeValue);
+                return false;
             }
+
+            return true;
+        }
+
+        public int GetLinksCount(string datalistId, string parentDatalistItemKey)
+        {
+            DataListDBContext dataListDBContext = new DataListDBContext();
+
+            var parentDatalistItemId = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItems>() where dl.DataListsId == new Guid(datalistId) && dl.DataListsItemKey == parentDatalistItemKey select dl.DataListsItemId).FirstOrDefault();
+
+            var datalistLinks = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItemsLinks>() where dl.ParentId == parentDatalistItemId select dl.ChildId).ToList();
+
+            return datalistLinks.Count;
         }
 
         public string GetDataListItem(Datalist datalist, DatalistItem dataListItem)
@@ -222,11 +216,11 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
                 {
                     DataListItemId = dataListItem.Id,
                     DataListId = dataListItem.DataListId,
-                    EffectiveDate = dataListItem.EffectiveDate,
-                    EndDate = dataListItem.EndDate,
+                    EffectiveDate = Convert.ToDateTime("1899-12-31"),
+                    EndDate = Convert.ToDateTime("9999-12-31"),
                     Key = dataListItem.Key,
-                    ItemIsActive = dataListItem.IsActive,
-                    OrderIndex = dataListItem.OrderIndex,
+                    ItemIsActive = true,
+                    OrderIndex = 0,
                     ItemLastModified = DateTime.Now,
                     DataListItemLanguages = this.SetDataListItemLanguages(dataListItem.DataListItemLanguages),
                     DataListItemLinks = this.SetDataListItemLinks(dataListItem.DataListItemLinks),
@@ -243,9 +237,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             try
             {
                 response = this.clientLicense.UpdateDataListItem(command);
-                this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListItemAttrKey, "false", "false", "false");
-                this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheItemLinkerKey, "false", "false", "false");
-                this.RefreshCache(string.Empty, "false", "false", "true");
             }
             catch
             {
@@ -292,9 +283,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             try
             {
                 response = this.clientLicense.AddDataListItem(command);
-                this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListItemAttrKey, "false", "false", "false");
-                this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheItemLinkerKey, "false", "false", "false");
-                this.RefreshCache(string.Empty, "false", "false", "true");
             }
             catch
             {
@@ -401,7 +389,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             }
         }
 
-        private void RefreshCache(string cacheKey, string clearAllCodeTableCacheFlag = "false", string reloadCache = "true", string reloadAllCodeTableCache = "false")
+        public void RefreshCache(string cacheKey, string clearAllCodeTableCacheFlag = "false", string reloadCache = "true", string reloadAllCodeTableCache = "false")
         {
             string objDataQuery = string.Empty;
 

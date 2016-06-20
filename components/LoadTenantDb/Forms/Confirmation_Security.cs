@@ -1,4 +1,6 @@
-﻿//--------------------------------------------------------------------------------------------------
+﻿using HP.HSP.UA3.Administration.UX.Common;
+
+//--------------------------------------------------------------------------------------------------
 // This code is the property of Hewlett Packard Enterprise, Copyright (c) 2016. All rights reserved.
 //
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
@@ -304,6 +306,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         }
                     }
 
+                    datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListItemAttrKey, "false", "false", "false");
+                    datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheItemLinkerKey, "false", "false", "false");
+                    datalistItem.RefreshCache(string.Empty, "false", "false", "true");
+
                     if (parentDatalist != null && parentDatalistItem != null)
                     {
                         for (int j = 2; j < this.roleAttributesListBox.Items.Count; j++)
@@ -453,7 +459,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     if (!string.IsNullOrEmpty(MainForm.SecurityFunctions[i].ParentLink) &&
                         datalistItem != null)
                     {
-                        int numLinkIdx = 0;
                         bool newLink = true;
 
                         Datalist roleDatalist = new Datalist();
@@ -464,24 +469,18 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
                         roleDatalist.ContentId = "Core.DataList.SecurityRoles";
                         roleDatalistItem.Key = this.MainForm.SecurityFunctions[i].ParentKey;
-                        roleDatalist.GetDataList(roleDatalist);
+                        roleDatalist.Id = roleDatalist.GetDataListId(roleDatalist);
                         roleDatalistItem.DataListId = roleDatalist.Id;
-                        roleDatalistItem.GetDataListItem(roleDatalist, roleDatalistItem);
 
-                        for (int j = 0; j < roleDatalistItem.DataListItemLinks.Count; j++)
-                        {
-                            if (roleDatalistItem.DataListItemLinks[j].ChildId == datalistItem.Id)
-                            {
-                                newLink = false;
-                            }
-                        }
+                        newLink = roleDatalistItem.DoesLinkExists(roleDatalist.Id, datalistItem.Key, roleDatalistItem.Key);
 
                         if (newLink)
                         {
-                            numLinkIdx = roleDatalistItem.DataListItemLinks.Count;
                             roleDatalistItem.DataListItemLinks.Add(new DatalistItemLink());
-                            roleDatalistItem.DataListItemLinks[numLinkIdx].ChildId = datalistItem.Id;
-                            roleDatalistItem.DataListItemLinks[numLinkIdx].Active = true;
+                            roleDatalist.Id = roleDatalist.GetDataListId(roleDatalist);
+                            roleDatalistItem.Id = datalistItem.GetDataListItemId(roleDatalist, roleDatalistItem);
+                            roleDatalistItem.DataListItemLinks[0].ChildId = datalistItem.Id;
+                            roleDatalistItem.DataListItemLinks[0].Active = true;
                             updated = roleDatalistItem.UpdateDataListItem(roleDatalistItem);
 
                             if (!updated)
@@ -492,6 +491,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                             }
                         }
                     }
+
+                    datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListItemAttrKey, "false", "false", "false");
+                    datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheItemLinkerKey, "false", "false", "false");
+                    datalistItem.RefreshCache(string.Empty, "false", "false", "true");
 
                     if (parentDatalist != null && parentDatalistItem != null)
                     {
@@ -644,7 +647,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     if (!string.IsNullOrEmpty(MainForm.SecurityRights[i].ParentLink) &&
                         datalistItem != null)
                     {
-                        int numLinkIdx = 0;
                         bool newLink = true;
 
                         Datalist functionDatalist = new Datalist();
@@ -655,24 +657,18 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
                         functionDatalist.ContentId = "Core.DataList.SecurityFunctions";
                         functionDatalistItem.Key = this.MainForm.SecurityRights[i].ParentKey;
-                        functionDatalist.GetDataList(functionDatalist);
+                        functionDatalist.Id = functionDatalist.GetDataListId(functionDatalist);
                         functionDatalistItem.DataListId = functionDatalist.Id;
-                        functionDatalistItem.GetDataListItem(functionDatalist, functionDatalistItem);
 
-                        for (int j = 0; j < functionDatalistItem.DataListItemLinks.Count; j++)
-                        {
-                            if (functionDatalistItem.DataListItemLinks[j].ChildId == datalistItem.Id)
-                            {
-                                newLink = false;
-                            }
-                        }
+                        newLink = functionDatalistItem.DoesLinkExists(functionDatalist.Id, datalistItem.Key, functionDatalistItem.Key);
 
                         if (newLink)
                         {
-                            numLinkIdx = functionDatalistItem.DataListItemLinks.Count;
                             functionDatalistItem.DataListItemLinks.Add(new DatalistItemLink());
-                            functionDatalistItem.DataListItemLinks[numLinkIdx].ChildId = datalistItem.Id;
-                            functionDatalistItem.DataListItemLinks[numLinkIdx].Active = true;
+                            functionDatalist.Id = functionDatalist.GetDataListId(functionDatalist);
+                            functionDatalistItem.Id = datalistItem.GetDataListItemId(functionDatalist, functionDatalistItem);
+                            functionDatalistItem.DataListItemLinks[0].ChildId = datalistItem.Id;
+                            functionDatalistItem.DataListItemLinks[0].Active = true;
                             updated = functionDatalistItem.UpdateDataListItem(functionDatalistItem);
 
                             if (!updated)
@@ -683,6 +679,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                             }
                         }
                     }
+
+                    datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListItemAttrKey, "false", "false", "false");
+                    datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheItemLinkerKey, "false", "false", "false");
+                    datalistItem.RefreshCache(string.Empty, "false", "false", "true");
 
                     if (parentDatalist != null && parentDatalistItem != null)
                     {
@@ -785,6 +785,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     if (parentDatalist.DataListItemAttributes[i].TypeName == attribute)
                     {
                         newAttribute = false;
+                        break;
                     }
                 }
 
@@ -823,6 +824,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         if (parentDatalist.DataListItemAttributes[i].TypeName == attribute)
                         {
                             numAttributeIdx = i;
+                            break;
                         }
                     }
 
