@@ -101,7 +101,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             string serviceRootPath = this.ModulePath + "\\" + serviceName;
             if (Directory.Exists(serviceRootPath))
             {
-                MessageBox.Show(string.Format("Service path '{0}' already exists. Select a new Service Name or delete existing service path.", serviceRootPath.ToLower()), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format("Service path '{0}' already exists. Select a new Service Name or delete the existing one first.", serviceRootPath.ToLower()), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ServiceNameTextbox.Focus();
                 return false;
             }

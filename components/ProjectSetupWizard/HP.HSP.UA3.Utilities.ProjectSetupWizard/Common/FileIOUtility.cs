@@ -19,16 +19,16 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Common
         public static void CreateBusinessModuleDirectory(string templateRootDir, string moduleRootDir, string moduleName)
         {
             _projectFiles = new List<string>();
-            _excludeDirNames = new List<string>() { "[ServiceName]" };
+            _excludeDirNames = new List<string>() { "[ServiceName]", "[ApiName]" };
             ProcessTemplateDirectory(templateRootDir, moduleRootDir, moduleName, null);
             ProcessProjectFiles();
         }
 
-        public static void CreateServiceDirectory(string templateRootDir, string serviceRootDir, string moduleName, string serviceName)
+        public static void CreateServiceDirectory(string templateRootDir, string serviceRootDir, string moduleName, string componentName)
         {
             _projectFiles = new List<string>();
             _excludeDirNames = null;
-            ProcessTemplateDirectory(templateRootDir, serviceRootDir, moduleName, serviceName);
+            ProcessTemplateDirectory(templateRootDir, serviceRootDir, moduleName, componentName);
             ProcessProjectFiles();
         }
 
@@ -48,7 +48,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Common
             }
         }
 
-        private static void ConvertFileContents(string moduleFile, string moduleName, string serviceName)
+        private static void ConvertFileContents(string moduleFile, string moduleName, string componentName)
         {
             Random rnd = new Random();
             int servicePort = rnd.Next(40100, 40999);
@@ -57,18 +57,21 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Common
             contents = contents.Replace("[ModuleName]", moduleName);
             contents = contents.Replace("[ModuleGuid]", Guid.NewGuid().ToString("n"));
             contents = contents.Replace("[NewGuid]", Guid.NewGuid().ToString("n"));
-            contents = contents.Replace("[ServiceName]", serviceName);
-            if (!String.IsNullOrEmpty(serviceName))
+            contents = contents.Replace("[ServiceName]", componentName);
+            contents = contents.Replace("[ApiName]", componentName);
+            if (!String.IsNullOrEmpty(componentName))
             {
-                contents = contents.Replace("[ServiceNameWithLowerCaseFirstChar]", char.ToLower(serviceName[0]) + serviceName.Substring(1));
+                contents = contents.Replace("[ServiceNameWithLowerCaseFirstChar]", char.ToLower(componentName[0]) + componentName.Substring(1));
             }
             contents = contents.Replace("[ServicePort]", servicePort.ToString());
             File.WriteAllText(moduleFile, contents);
         }
 
-        private static string ConvertName(string templateFileName, string moduleName, string serviceName)
+        private static string ConvertName(string templateFileName, string moduleName, string componentName)
         {
-            return templateFileName.Replace("[ModuleName]", moduleName).Replace("[ServiceName]", serviceName);
+            return templateFileName.Replace("[ModuleName]", moduleName)
+                .Replace("[ServiceName]", componentName)
+                .Replace("[ApiName]", componentName);
         }
 
         private static void ProcessProjectFiles()
@@ -111,7 +114,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Common
             return projectGuid;
         }
 
-        private static void ProcessTemplateDirectory(string templateDir, string targetDir, string moduleName, string serviceName)
+        private static void ProcessTemplateDirectory(string templateDir, string targetDir, string moduleName, string componentName)
         {
             bool processDir = true;
             if (_excludeDirNames != null)
@@ -137,14 +140,14 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Common
                 foreach (string templateDirFile in templateDirFiles)
                 {
                     string templateFileName = Path.GetFileName(templateDirFile);
-                    string moduleFileName = ConvertName(templateFileName, moduleName, serviceName);
+                    string moduleFileName = ConvertName(templateFileName, moduleName, componentName);
                     string moduleDirFile = Path.Combine(targetDir, moduleFileName);
 
                     if (!File.Exists(moduleDirFile))
                     {
                         File.Copy(templateDirFile, moduleDirFile, true);
                         File.SetAttributes(moduleDirFile, FileAttributes.Normal);
-                        ConvertFileContents(moduleDirFile, moduleName, serviceName);
+                        ConvertFileContents(moduleDirFile, moduleName, componentName);
                     }
 
                     if (moduleDirFile.EndsWith(".csproj") || moduleDirFile.EndsWith(".sln"))
@@ -157,8 +160,8 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Common
                 foreach (string templateDirChildDir in templateDirChildDirs)
                 {
                     string templateChildDirName = templateDirChildDir.Replace(templateDir + "\\", "");
-                    string moduleDirChildDir = Path.Combine(targetDir, ConvertName(templateChildDirName, moduleName, serviceName));
-                    ProcessTemplateDirectory(templateDirChildDir, moduleDirChildDir, moduleName, serviceName);
+                    string moduleDirChildDir = Path.Combine(targetDir, ConvertName(templateChildDirName, moduleName, componentName));
+                    ProcessTemplateDirectory(templateDirChildDir, moduleDirChildDir, moduleName, componentName);
                 }
             }
         }

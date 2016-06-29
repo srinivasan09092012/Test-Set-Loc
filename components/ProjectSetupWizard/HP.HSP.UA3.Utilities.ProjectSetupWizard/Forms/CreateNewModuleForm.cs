@@ -100,7 +100,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             string moduleRootPath = MainForm.UserConfig.SourcePath + "\\" + moduleName;
             if (Directory.Exists(moduleRootPath))
             {
-                MessageBox.Show(string.Format("Module path '{0}' already exists. Select a new Module Name or delete existing module path.", moduleRootPath.ToLower()), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format("Module path '{0}' already exists. Select a new Module Name or delete the existing one first.", moduleRootPath.ToLower()), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ModuleNameTextbox.Focus();
                 return false;
             }

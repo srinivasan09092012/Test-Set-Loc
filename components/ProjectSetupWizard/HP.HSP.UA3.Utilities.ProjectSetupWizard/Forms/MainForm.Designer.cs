@@ -50,21 +50,27 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.BusinessModuleDropdown = new System.Windows.Forms.ComboBox();
             this.DetailsGroupBox = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.DeleteApiButton = new System.Windows.Forms.Button();
+            this.ApiDropdown = new System.Windows.Forms.ComboBox();
+            this.CreateApiButton = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.BatchGroupBox = new System.Windows.Forms.GroupBox();
             this.DeleteBatchButton = new System.Windows.Forms.Button();
             this.BatchDropdown = new System.Windows.Forms.ComboBox();
             this.CreateBatchButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.TargetBranchDropdown = new System.Windows.Forms.ComboBox();
             this.BASGroupBox = new System.Windows.Forms.GroupBox();
             this.DeleteBASButton = new System.Windows.Forms.Button();
             this.BASDropdown = new System.Windows.Forms.ComboBox();
             this.CreateBASButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.TargetBranchDropdown = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.DetailsGroupBox.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.BatchGroupBox.SuspendLayout();
             this.BASGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -78,7 +84,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(544, 24);
-            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fIleToolStripMenuItem
@@ -160,7 +166,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(520, 72);
-            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Business Module";
             // 
@@ -213,6 +219,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.DetailsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.DetailsGroupBox.Controls.Add(this.groupBox2);
             this.DetailsGroupBox.Controls.Add(this.label4);
             this.DetailsGroupBox.Controls.Add(this.BatchGroupBox);
             this.DetailsGroupBox.Controls.Add(this.TargetBranchDropdown);
@@ -220,10 +227,78 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.DetailsGroupBox.Enabled = false;
             this.DetailsGroupBox.Location = new System.Drawing.Point(13, 106);
             this.DetailsGroupBox.Name = "DetailsGroupBox";
-            this.DetailsGroupBox.Size = new System.Drawing.Size(519, 244);
-            this.DetailsGroupBox.TabIndex = 3;
+            this.DetailsGroupBox.Size = new System.Drawing.Size(519, 339);
+            this.DetailsGroupBox.TabIndex = 2;
             this.DetailsGroupBox.TabStop = false;
             this.DetailsGroupBox.Text = "Business Module Details";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.DeleteApiButton);
+            this.groupBox2.Controls.Add(this.ApiDropdown);
+            this.groupBox2.Controls.Add(this.CreateApiButton);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Location = new System.Drawing.Point(19, 237);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(474, 83);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Package API";
+            // 
+            // DeleteApiButton
+            // 
+            this.DeleteApiButton.Enabled = false;
+            this.DeleteApiButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteApiButton.Location = new System.Drawing.Point(296, 34);
+            this.DeleteApiButton.Name = "DeleteApiButton";
+            this.DeleteApiButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteApiButton.TabIndex = 2;
+            this.DeleteApiButton.Text = "Delete";
+            this.DeleteApiButton.UseVisualStyleBackColor = true;
+            this.DeleteApiButton.Click += new System.EventHandler(this.DeleteApiButton_Click);
+            // 
+            // ApiDropdown
+            // 
+            this.ApiDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ApiDropdown.Enabled = false;
+            this.ApiDropdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ApiDropdown.FormattingEnabled = true;
+            this.ApiDropdown.Location = new System.Drawing.Point(70, 36);
+            this.ApiDropdown.Name = "ApiDropdown";
+            this.ApiDropdown.Size = new System.Drawing.Size(220, 21);
+            this.ApiDropdown.TabIndex = 1;
+            this.ApiDropdown.SelectedIndexChanged += new System.EventHandler(this.ApiDropdown_SelectedIndexChanged);
+            // 
+            // CreateApiButton
+            // 
+            this.CreateApiButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CreateApiButton.Location = new System.Drawing.Point(377, 34);
+            this.CreateApiButton.Name = "CreateApiButton";
+            this.CreateApiButton.Size = new System.Drawing.Size(75, 23);
+            this.CreateApiButton.TabIndex = 3;
+            this.CreateApiButton.Text = "Create New";
+            this.CreateApiButton.UseVisualStyleBackColor = true;
+            this.CreateApiButton.Click += new System.EventHandler(this.CreateApiButton_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(22, 36);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(24, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "API";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(26, 29);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Target Branch";
             // 
             // BatchGroupBox
             // 
@@ -236,7 +311,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.BatchGroupBox.Location = new System.Drawing.Point(19, 148);
             this.BatchGroupBox.Name = "BatchGroupBox";
             this.BatchGroupBox.Size = new System.Drawing.Size(474, 83);
-            this.BatchGroupBox.TabIndex = 8;
+            this.BatchGroupBox.TabIndex = 3;
             this.BatchGroupBox.TabStop = false;
             this.BatchGroupBox.Text = "Batch Services (Batch)";
             // 
@@ -247,7 +322,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.DeleteBatchButton.Location = new System.Drawing.Point(296, 34);
             this.DeleteBatchButton.Name = "DeleteBatchButton";
             this.DeleteBatchButton.Size = new System.Drawing.Size(75, 23);
-            this.DeleteBatchButton.TabIndex = 6;
+            this.DeleteBatchButton.TabIndex = 2;
             this.DeleteBatchButton.Text = "Delete";
             this.DeleteBatchButton.UseVisualStyleBackColor = true;
             this.DeleteBatchButton.Click += new System.EventHandler(this.DeleteBatchButton_Click);
@@ -261,7 +336,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.BatchDropdown.Location = new System.Drawing.Point(70, 36);
             this.BatchDropdown.Name = "BatchDropdown";
             this.BatchDropdown.Size = new System.Drawing.Size(220, 21);
-            this.BatchDropdown.TabIndex = 5;
+            this.BatchDropdown.TabIndex = 0;
             this.BatchDropdown.SelectedIndexChanged += new System.EventHandler(this.BatchDropdown_SelectedIndexChanged);
             // 
             // CreateBatchButton
@@ -270,7 +345,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.CreateBatchButton.Location = new System.Drawing.Point(377, 34);
             this.CreateBatchButton.Name = "CreateBatchButton";
             this.CreateBatchButton.Size = new System.Drawing.Size(75, 23);
-            this.CreateBatchButton.TabIndex = 7;
+            this.CreateBatchButton.TabIndex = 3;
             this.CreateBatchButton.Text = "Create New";
             this.CreateBatchButton.UseVisualStyleBackColor = true;
             this.CreateBatchButton.Click += new System.EventHandler(this.CreateBatchButton_Click);
@@ -281,8 +356,19 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.label3.Location = new System.Drawing.Point(22, 36);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
-            this.label3.TabIndex = 4;
+            this.label3.TabIndex = 0;
             this.label3.Text = "Service";
+            // 
+            // TargetBranchDropdown
+            // 
+            this.TargetBranchDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TargetBranchDropdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TargetBranchDropdown.FormattingEnabled = true;
+            this.TargetBranchDropdown.Location = new System.Drawing.Point(107, 29);
+            this.TargetBranchDropdown.Name = "TargetBranchDropdown";
+            this.TargetBranchDropdown.Size = new System.Drawing.Size(96, 21);
+            this.TargetBranchDropdown.TabIndex = 1;
+            this.TargetBranchDropdown.SelectedIndexChanged += new System.EventHandler(this.TargetBranchDropdown_SelectedIndexChanged);
             // 
             // BASGroupBox
             // 
@@ -295,7 +381,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.BASGroupBox.Location = new System.Drawing.Point(19, 59);
             this.BASGroupBox.Name = "BASGroupBox";
             this.BASGroupBox.Size = new System.Drawing.Size(474, 83);
-            this.BASGroupBox.TabIndex = 0;
+            this.BASGroupBox.TabIndex = 2;
             this.BASGroupBox.TabStop = false;
             this.BASGroupBox.Text = "Business Application Services (BAS)";
             // 
@@ -306,7 +392,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.DeleteBASButton.Location = new System.Drawing.Point(296, 34);
             this.DeleteBASButton.Name = "DeleteBASButton";
             this.DeleteBASButton.Size = new System.Drawing.Size(75, 23);
-            this.DeleteBASButton.TabIndex = 6;
+            this.DeleteBASButton.TabIndex = 2;
             this.DeleteBASButton.Text = "Delete";
             this.DeleteBASButton.UseVisualStyleBackColor = true;
             this.DeleteBASButton.Click += new System.EventHandler(this.DeleteBASButton_Click);
@@ -320,7 +406,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.BASDropdown.Location = new System.Drawing.Point(70, 36);
             this.BASDropdown.Name = "BASDropdown";
             this.BASDropdown.Size = new System.Drawing.Size(220, 21);
-            this.BASDropdown.TabIndex = 5;
+            this.BASDropdown.TabIndex = 1;
             this.BASDropdown.SelectedIndexChanged += new System.EventHandler(this.BASDropdown_SelectedIndexChanged);
             // 
             // CreateBASButton
@@ -329,7 +415,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.CreateBASButton.Location = new System.Drawing.Point(377, 34);
             this.CreateBASButton.Name = "CreateBASButton";
             this.CreateBASButton.Size = new System.Drawing.Size(75, 23);
-            this.CreateBASButton.TabIndex = 7;
+            this.CreateBASButton.TabIndex = 3;
             this.CreateBASButton.Text = "Create New";
             this.CreateBASButton.UseVisualStyleBackColor = true;
             this.CreateBASButton.Click += new System.EventHandler(this.CreateBASButton_Click);
@@ -340,39 +426,19 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.label2.Location = new System.Drawing.Point(22, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 4;
+            this.label2.TabIndex = 0;
             this.label2.Text = "Service";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 29);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Target Branch";
-            // 
-            // TargetBranchDropdown
-            // 
-            this.TargetBranchDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TargetBranchDropdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TargetBranchDropdown.FormattingEnabled = true;
-            this.TargetBranchDropdown.Location = new System.Drawing.Point(107, 29);
-            this.TargetBranchDropdown.Name = "TargetBranchDropdown";
-            this.TargetBranchDropdown.Size = new System.Drawing.Size(96, 21);
-            this.TargetBranchDropdown.TabIndex = 5;
-            this.TargetBranchDropdown.SelectedIndexChanged += new System.EventHandler(this.TargetBranchDropdown_SelectedIndexChanged);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 362);
+            this.ClientSize = new System.Drawing.Size(544, 457);
             this.Controls.Add(this.DetailsGroupBox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MinimumSize = new System.Drawing.Size(560, 400);
+            this.MinimumSize = new System.Drawing.Size(560, 495);
             this.Name = "MainForm";
             this.Text = "Business Module Project Wizard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
@@ -384,6 +450,8 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.groupBox1.PerformLayout();
             this.DetailsGroupBox.ResumeLayout(false);
             this.DetailsGroupBox.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.BatchGroupBox.ResumeLayout(false);
             this.BatchGroupBox.PerformLayout();
             this.BASGroupBox.ResumeLayout(false);
@@ -423,6 +491,11 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox TargetBranchDropdown;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button DeleteApiButton;
+        private System.Windows.Forms.ComboBox ApiDropdown;
+        private System.Windows.Forms.Button CreateApiButton;
+        private System.Windows.Forms.Label label5;
     }
 }
 

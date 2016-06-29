@@ -3,7 +3,6 @@
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
 // Violators may be punished to the full extent of the law.
 //--------------------------------------------------------------------------------------------------
-
 using HP.HSP.UA3.Core.UX.Common.Utilities;
 using HP.HSP.UA3.Utilities.ProjectSetupWizard.Common;
 using HP.HSP.UA3.Utilities.ProjectSetupWizard.Data;
@@ -21,6 +20,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
         private Dictionary<string, string> _modules = new Dictionary<string, string>();
         private Dictionary<string, string> _basServices = new Dictionary<string, string>();
         private Dictionary<string, string> _batchServices = new Dictionary<string, string>();
+        private Dictionary<string, string> _apis = new Dictionary<string, string>();
 
         #region Main Form Events
 
@@ -121,6 +121,23 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             }
         }
 
+        private void CreateApiButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                ShowCreateNewApi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             try
@@ -154,7 +171,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             {
                 Cursor = Cursors.WaitCursor;
                 string service = BASDropdown.SelectedItem.ToString();
-                string msg = string.Format("You are requesting to delete the BAS service '{0}'.\nThis action will only delete it from disk and not TFS.\n\nDo you wish to delete this service?", service);
+                string msg = string.Format("You are requesting to delete the BAS service '{0}'.\nThis action will only delete it from disk and not TFS.\n\nDo you wish to continue?", service);
                 DialogResult result = MessageBox.Show(msg, this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
@@ -181,7 +198,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             {
                 Cursor = Cursors.WaitCursor;
                 string service = BatchDropdown.SelectedItem.ToString();
-                string msg = string.Format("You are requesting to delete the batch service '{0}'.\nThis action will only delete it from disk and not TFS.\n\nDo you wish to delete this service?", service);
+                string msg = string.Format("You are requesting to delete the batch service '{0}'.\nThis action will only delete it from disk and not TFS.\n\nDo you wish to continue?", service);
                 DialogResult result = MessageBox.Show(msg, this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
@@ -189,6 +206,33 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
                     {
                         MessageBox.Show("Service was successfully deleted.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadBatchServices();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+
+        private void DeleteApiButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                string api = ApiDropdown.SelectedItem.ToString();
+                string msg = string.Format("You are requesting to delete the API '{0}'.\nThis action will only delete it from disk and not TFS.\n\nDo you wish to continue?", api);
+                DialogResult result = MessageBox.Show(msg, this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    if (IsApiDeleted(api))
+                    {
+                        MessageBox.Show("API was successfully deleted.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadApis();
                     }
                 }
             }
@@ -219,6 +263,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             BatchGroupBox.Enabled = (TargetBranchDropdown.SelectedIndex != -1);
             LoadBASServices();
             LoadBatchServices();
+            LoadApis();
         }
 
         private void BASDropdown_SelectedIndexChanged(object sender, EventArgs e)
@@ -231,6 +276,12 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
         {
             string service = BatchDropdown.SelectedItem.ToString();
             DeleteBatchButton.Enabled = !string.IsNullOrEmpty(service);
+        }
+
+        private void ApiDropdown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string service = ApiDropdown.SelectedItem.ToString();
+            DeleteApiButton.Enabled = !string.IsNullOrEmpty(service);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -317,6 +368,15 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             return true;
         }
 
+        private bool IsApiDeleted(string api)
+        {
+            string path = _apis[api];
+            FileIOUtility.DeleteDirectory(path);
+            Directory.Delete(path);
+
+            return true;
+        }
+
         private bool IsBusinessModuleDeleted(string module)
         {
             string path = _modules[module];
@@ -339,6 +399,20 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             }
             return false;
         }
+
+        private bool IsValidApiDir(DirectoryInfo di)
+        {
+            bool isValid = false;
+
+            foreach (DirectoryInfo cdi in di.GetDirectories())
+            {
+                isValid = true;
+                break;
+            }
+
+            return isValid;
+        }
+
 
         private bool IsValidBusinessModuleDir(DirectoryInfo di)
         {
@@ -387,6 +461,33 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             }
 
             return isValid;
+        }
+
+        private void LoadApis()
+        {
+            ApiDropdown.Items.Clear();
+            DeleteApiButton.Enabled = false;
+            _apis.Clear();
+
+            string path = _modules[BusinessModuleDropdown.SelectedItem.ToString()] + string.Format("\\{0}\\API", TargetBranchDropdown.SelectedItem.ToString());
+            DirectoryInfo di = new DirectoryInfo(path);
+            if (di.Exists == false)
+            {
+                Directory.CreateDirectory(path);
+            }
+            else
+            {
+                foreach (DirectoryInfo cdi in di.GetDirectories())
+                {
+                    if (IsValidApiDir(cdi))
+                    {
+                        _apis.Add(cdi.Name, cdi.FullName);
+                        ApiDropdown.Items.Add(cdi.Name);
+                    }
+                }
+            }
+
+            ApiDropdown.Enabled = ApiDropdown.Items.Count > 0;
         }
 
         private void LoadBASServices()
@@ -508,13 +609,27 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             CreateNewBatchForm form = new CreateNewBatchForm();
             form.ModuleName = BusinessModuleDropdown.SelectedItem.ToString();
             form.ModulePath = _modules[form.ModuleName] + string.Format("\\{0}\\Batch", TargetBranchDropdown.SelectedItem.ToString());
-            form.ModulePath = _modules[form.ModuleName] + "\\Main\\Batch";
             form.TemplatePath = UserConfig.SourcePath + "\\_ProjectTemplate\\Main\\Batch";
             form.ShowDialog();
             if (form.WasCreated)
             {
                 MessageBox.Show("Batch service project structure was successfully created.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadBatchServices();
+            }
+            form.Dispose();
+        }
+
+        private void ShowCreateNewApi()
+        {
+            CreateNewApiForm form = new CreateNewApiForm();
+            form.ModuleName = BusinessModuleDropdown.SelectedItem.ToString();
+            form.ModulePath = _modules[form.ModuleName] + string.Format("\\{0}\\API", TargetBranchDropdown.SelectedItem.ToString());
+            form.TemplatePath = UserConfig.SourcePath + "\\_ProjectTemplate\\Main\\API";
+            form.ShowDialog();
+            if (form.WasCreated)
+            {
+                MessageBox.Show("API project structure was successfully created.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadApis();
             }
             form.Dispose();
         }

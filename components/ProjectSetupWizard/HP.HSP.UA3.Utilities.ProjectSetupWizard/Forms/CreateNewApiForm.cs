@@ -11,21 +11,21 @@ using System.Windows.Forms;
 
 namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
 {
-    public partial class CreateNewBASForm : Form
+    public partial class CreateNewApiForm : Form
     {
         public string ModuleName = string.Empty;
         public string ModulePath = string.Empty;
         public string TemplatePath = string.Empty;
         public bool WasCreated = false;
 
-        public CreateNewBASForm()
+        public CreateNewApiForm()
         {
             InitializeComponent();
         }
 
-        private void CreateNewBASForm_Shown(object sender, EventArgs e)
+        private void CreateNewApiForm_Shown(object sender, EventArgs e)
         {
-            ServiceNameTextbox.Focus();
+            ApiNameTextbox.Focus();
         }
 
         private void CreateButton_Click(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                if (IsServiceCreated())
+                if (IsApiCreated())
                 {
                     this.WasCreated = true;
                     this.Hide();
@@ -68,22 +68,22 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
 
         private bool IsFormValid()
         {
-            string serviceName = ServiceNameTextbox.Text.Trim();
-            if (string.IsNullOrEmpty(serviceName))
+            string apiName = ApiNameTextbox.Text.Trim();
+            if (string.IsNullOrEmpty(apiName))
             {
-                MessageBox.Show("Service Name is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ServiceNameTextbox.Focus();
+                MessageBox.Show("API Name is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ApiNameTextbox.Focus();
                 return false;
             }
 
             return true;
         }
 
-        private bool IsServiceCreated()
+        private bool IsApiCreated()
         {
             if (IsFormValid())
             {
-                if (IsServiceFolderRootAvailable())
+                if (IsApiFolderRootAvailable())
                 {
                     if (IsProjectDirectoryStructureCreated())
                     {
@@ -95,14 +95,14 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             return false;
         }
 
-        private bool IsServiceFolderRootAvailable()
+        private bool IsApiFolderRootAvailable()
         {
-            string serviceName = ServiceNameTextbox.Text.Trim();
-            string serviceRootPath = this.ModulePath + "\\" + serviceName;
-            if (Directory.Exists(serviceRootPath))
+            string apiName = ApiNameTextbox.Text.Trim();
+            string apiRootPath = this.ModulePath + "\\" + apiName;
+            if (Directory.Exists(apiRootPath))
             {
-                MessageBox.Show(string.Format("Service path '{0}' already exists. Select a new Service Name or delete the existing one first.", serviceRootPath.ToLower()), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ServiceNameTextbox.Focus();
+                MessageBox.Show(string.Format("API path '{0}' already exists. Select a new API Name or delete the existing one first.", apiRootPath.ToLower()), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ApiNameTextbox.Focus();
                 return false;
             }
             return true;
@@ -110,11 +110,11 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
 
         private bool IsProjectDirectoryStructureCreated()
         {
-            string serviceName = ServiceNameTextbox.Text.Trim();
-            string serviceRootPath = this.ModulePath + "\\" + serviceName;
-            string templateRootPath = this.TemplatePath + "\\[ServiceName]";
+            string apiName = ApiNameTextbox.Text.Trim();
+            string apiRootPath = this.ModulePath + "\\" + apiName;
+            string templateRootPath = this.TemplatePath + "\\[ApiName]";
 
-            FileIOUtility.CreateServiceDirectory(templateRootPath, serviceRootPath, this.ModuleName, serviceName);
+            FileIOUtility.CreateServiceDirectory(templateRootPath, apiRootPath, this.ModuleName, apiName);
 
             return true;
         }
