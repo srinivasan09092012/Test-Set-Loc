@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22823.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracleDBUtil", "OracleDBUtil\OracleDBUtil.csproj", "{A5DEE8ED-8FE9-48CD-A229-729E98D5E8F0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DA55617F-51B2-4710-AFAC-EA9D2FDF4819} = {DA55617F-51B2-4710-AFAC-EA9D2FDF4819}
+		{E8B718A6-AACE-4A2A-9861-53BF0B64F599} = {E8B718A6-AACE-4A2A-9861-53BF0B64F599}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracleDBUtil.Business", "OracleDBUtil.Business\OracleDBUtil.Business.csproj", "{3473A97B-8DCF-4736-9886-5DCABC4DD1E5}"
 EndProject
