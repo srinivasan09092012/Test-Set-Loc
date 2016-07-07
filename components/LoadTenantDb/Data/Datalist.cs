@@ -67,6 +67,17 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             }
         }
 
+        public static string GetAttributeId(Datalist dataList)
+        {
+            DataListDBContext dataListDBContext = new DataListDBContext();
+
+            var datalistId = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListAttributes>() 
+                              where dl.DataListsId == new Guid(dataList.Id) select dl.DataListsAttributeId).FirstOrDefault();
+
+            // TODO: Consider error logic.
+            return datalistId.ToString();
+        }
+
         public string GetDataList(Datalist dataList)
         {
             GetDataListId(dataList);

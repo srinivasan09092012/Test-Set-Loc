@@ -66,7 +66,9 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
         {
             DataListDBContext dataListDBContext = new DataListDBContext();
 
-            var datalistItemId = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItems>() where dl.DataListsId == new Guid(datalist.Id) && dl.DataListsItemKey == dataListItem.Key select dl.DataListsItemId).FirstOrDefault();
+            var datalistItemId = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItems>() 
+                                  where dl.DataListsId == new Guid(datalist.Id) && dl.DataListsItemKey == dataListItem.Key 
+                                  select dl.DataListsItemId).FirstOrDefault();
 
             if (datalistItemId.Equals(new Guid("{00000000-0000-0000-0000-000000000000}")))
             {
@@ -78,15 +80,52 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             }
         }
 
+        public List<Object> GetDataListItemLanguages(string datalistItemId)
+        {
+            DataListDBContext dataListDBContext = new DataListDBContext();
+
+            var localList = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsLanguages>() 
+                                         where dl.DataListsItemId == new Guid(datalistItemId) 
+                                         select new { dl.LocalId }).ToList<Object>();
+
+            return localList;
+        }
+
+        public static List<DataListsItems> GetMessageTypeDatalistItems(string datalistId)
+        {
+            DataListDBContext dataListDBContext = new DataListDBContext();
+
+            var itemList = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItems>()
+                             where dl.DataListsId == new Guid(datalistId)
+                             select new { dl.DataListsItemId, dl.DataListsItemKey }).ToList();
+
+            List<DataListsItems> datalistItems = new List<DataListsItems>();
+            foreach (var item in itemList)
+            {
+                DataListsItems datalistItem = new DataListsItems();
+                datalistItem.DataListsItemId = item.DataListsItemId;
+                datalistItem.DataListsItemKey = item.DataListsItemKey;
+                datalistItems.Add(datalistItem);
+            }
+
+            return datalistItems;
+        }
+
         public bool DoesLinkExists(string datalistId, string childDatalistItemKey, string parentDatalistItemKey)
         {
             DataListDBContext dataListDBContext = new DataListDBContext();
 
-            var parentDatalistItemId = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItems>() where dl.DataListsId == new Guid(datalistId) && dl.DataListsItemKey == parentDatalistItemKey select dl.DataListsItemId).FirstOrDefault();
+            var parentDatalistItemId = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItems>() 
+                                        where dl.DataListsId == new Guid(datalistId) && dl.DataListsItemKey == parentDatalistItemKey 
+                                        select dl.DataListsItemId).FirstOrDefault();
 
-            var childDatalistItemId = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItems>() where dl.DataListsItemKey == childDatalistItemKey select dl.DataListsItemId).FirstOrDefault();
+            var childDatalistItemId = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItems>() 
+                                       where dl.DataListsItemKey == childDatalistItemKey 
+                                       select dl.DataListsItemId).FirstOrDefault();
 
-            var datalistLinks = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItemsLinks>() where dl.ParentId == parentDatalistItemId && dl.ChildId == childDatalistItemId select dl.ChildId).ToList();
+            var datalistLinks = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItemsLinks>() 
+                                 where dl.ParentId == parentDatalistItemId && dl.ChildId == childDatalistItemId 
+                                 select dl.ChildId).ToList();
 
             if (datalistLinks.Count != 0)
             {
@@ -100,9 +139,13 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
         {
             DataListDBContext dataListDBContext = new DataListDBContext();
 
-            var parentDatalistItemId = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItems>() where dl.DataListsId == new Guid(datalistId) && dl.DataListsItemKey == parentDatalistItemKey select dl.DataListsItemId).FirstOrDefault();
+            var parentDatalistItemId = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItems>() 
+                                        where dl.DataListsId == new Guid(datalistId) && dl.DataListsItemKey == parentDatalistItemKey 
+                                        select dl.DataListsItemId).FirstOrDefault();
 
-            var datalistLinks = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItemsLinks>() where dl.ParentId == parentDatalistItemId select dl.ChildId).ToList();
+            var datalistLinks = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataListsItemsLinks>() 
+                                 where dl.ParentId == parentDatalistItemId 
+                                 select dl.ChildId).ToList();
 
             return datalistLinks.Count;
         }
@@ -128,6 +171,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             if (response.IsSuccessStatusCode)
             {
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
+                serializer.MaxJsonLength = 99999999;
                 Dictionary<string, object> parameters = serializer.Deserialize<Dictionary<string, object>>(response.Content.ReadAsStringAsync().Result);
 
                 foreach (KeyValuePair<string, object> parameter in parameters)

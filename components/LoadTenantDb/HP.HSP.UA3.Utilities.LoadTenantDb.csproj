@@ -83,6 +83,12 @@
     <Compile Include="Data\Datalist.cs" />
     <Compile Include="Data\DatalistItem.cs" />
     <Compile Include="Data\DatalistItemLink.cs" />
+    <Compile Include="Forms\Confirmation_LocalizationMessages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Confirmation_LocalizationMessages.Designer.cs">
+      <DependentUpon>Confirmation_LocalizationMessages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Confirmation_Security.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     <EmbeddedResource Include="Forms\Confirmation_LocalizationDatalists.resx">
       <DependentUpon>Confirmation_LocalizationDatalists.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Confirmation_LocalizationMessages.resx">
+      <DependentUpon>Confirmation_LocalizationMessages.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Confirmation_Security.resx">
       <DependentUpon>Confirmation_Security.cs</DependentUpon>
