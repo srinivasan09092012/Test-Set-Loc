@@ -897,6 +897,9 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LocalField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LongDescriptionField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -968,6 +971,19 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService {
                 if ((object.ReferenceEquals(this.LocalField, value) != true)) {
                     this.LocalField = value;
                     this.RaisePropertyChanged("Local");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LongDescription {
+            get {
+                return this.LongDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LongDescriptionField, value) != true)) {
+                    this.LongDescriptionField = value;
+                    this.RaisePropertyChanged("LongDescription");
                 }
             }
         }

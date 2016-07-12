@@ -28,6 +28,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.LocalizationDatalists = new List<LocalizationLocaleNode>();
             this.LocalizationLabelsEnglish = new List<LocalizationDatalistItemNode>();
             this.LocalizationLabelsSpanish = new List<LocalizationDatalistItemNode>();
+            this.LocalizationLabels = new List<LocalizationLocaleNode>();
 			this.LocalizationMessages = new List<LocalizationLocaleNode>();
             this.SecurityRoles = new List<SecurityNode>();
             this.SecurityFunctions = new List<SecurityNode>();
@@ -56,6 +57,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
         public List<LocalizationDatalistItemNode> LocalizationLabelsSpanish { get; set; }
 
+        public List<LocalizationLocaleNode> LocalizationLabels { get; set; }
+
         public List<LocalizationLocaleNode> LocalizationMessages { get; set; }
 
         public string TenantId { get; set; }
@@ -73,6 +76,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.configTypeComboBox.Items.Add("Localization DataLists");
             this.configTypeComboBox.Items.Add("Security Roles");
             this.configTypeComboBox.Items.Add("Localization Messages");
+            this.configTypeComboBox.Items.Add("Localization Labels");
             this.configTypeComboBox.SelectedItem = "Localization DataLists";
 
             this.ODataEndpointAddress = ConfigurationManager.AppSettings["ODataEndpointAddress"];
@@ -81,6 +85,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         private void NextButtonClick(object sender, EventArgs e)
         {
             this.LocalizationDatalists.Clear();
+            this.LocalizationLabels.Clear();
             this.LocalizationMessages.Clear();
             this.SecurityRoles.Clear();
             this.SecurityFunctions.Clear();
@@ -88,26 +93,34 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
             this.LoadTenantModel();
 
-            if (this.configTypeComboBox.SelectedItem.ToString() == "Security Roles")
+            switch (this.configTypeComboBox.SelectedItem.ToString())
             {
-                ConfirmationSecurityDialog securityForm = new ConfirmationSecurityDialog();
-                securityForm.MainForm = this;
-                securityForm.ShowDialog();
-                securityForm.Dispose();
-            }
-            else if (this.configTypeComboBox.SelectedItem.ToString() == "Localization DataLists")
-            {
-                ConfirmationLocalizationDatalistDialog localizationDatalistForm = new ConfirmationLocalizationDatalistDialog();
-                localizationDatalistForm.MainForm = this;
-                localizationDatalistForm.ShowDialog();
-                localizationDatalistForm.Dispose();
-            }
-            else if (this.configTypeComboBox.SelectedItem.ToString() == "Localization Messages")
-            {
-                Confirmation_LocalizationMessages localizationMessageForm = new Confirmation_LocalizationMessages();
-                localizationMessageForm.MainForm = this;
-                localizationMessageForm.ShowDialog();
-                localizationMessageForm.Dispose();
+                case "Security Roles":
+                    ConfirmationSecurityDialog securityForm = new ConfirmationSecurityDialog();
+                    securityForm.MainForm = this;
+                    securityForm.ShowDialog();
+                    securityForm.Dispose();
+                    break;
+                case "Localization DataLists":
+                    ConfirmationLocalizationDatalistDialog localizationDatalistForm = new ConfirmationLocalizationDatalistDialog();
+                    localizationDatalistForm.MainForm = this;
+                    localizationDatalistForm.ShowDialog();
+                    localizationDatalistForm.Dispose();
+                    break;
+                case "Localization Messages":
+                    Confirmation_LocalizationMessages localizationMessageForm = new Confirmation_LocalizationMessages();
+                    localizationMessageForm.MainForm = this;
+                    localizationMessageForm.ShowDialog();
+                    localizationMessageForm.Dispose();
+                    break;
+                case "Localization Labels":
+                    Confirmation_LocalizationLabels localizationLabelForm = new Confirmation_LocalizationLabels();
+                    localizationLabelForm.MainForm = this;
+                    localizationLabelForm.ShowDialog();
+                    localizationLabelForm.Dispose();
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -164,6 +177,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                                 else if (this.configTypeComboBox.SelectedItem.ToString() == "Localization Messages" && sd.Name == "LocalizationConfiguration")
                                 {
                                     this.LoadLocalizationMessages(sd, checkedModule);
+                                }
+                                else if (this.configTypeComboBox.SelectedItem.ToString() == "Localization Labels" && sd.Name == "LocalizationConfiguration")
+                                {
+                                    this.LoadLocalizationLabels(sd, checkedModule);
                                 }
                             }
                         }
@@ -488,6 +505,41 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             }
         }
 
+        private void LoadLocalizationLabels(XmlNode sd, Module checkedModule)
+        {
+            foreach (XmlNode locales in sd.ChildNodes)
+            {
+                foreach (XmlNode locale in locales.ChildNodes)
+                {
+                    LocalizationLocaleNode localizationLocaleNode = new LocalizationLocaleNode();
+                    localizationLocaleNode.Module.Name = checkedModule.Name;
+                    localizationLocaleNode.Module.Id = checkedModule.Id;
+                    localizationLocaleNode.Id = locale.Attributes["id"].Value;
+                    localizationLocaleNode.LocaleId = locale.Attributes["localeId"].Value;
+                    localizationLocaleNode.Name = locale.Attributes["name"].Value;
+                    this.LocalizationLabels.Add(localizationLocaleNode);
+
+                    foreach (XmlNode datalists in locale.ChildNodes)
+                    {
+                        if (datalists.Name == "LocaleLabels")
+                        {
+                            foreach (XmlNode datalist in datalists.ChildNodes)
+                            {
+                                LocalizationLabelNode localizationLabelNode = new LocalizationLabelNode();
+                                localizationLabelNode.Id = datalist.Attributes["id"].Value;
+                                localizationLabelNode.ContentId = datalist.Attributes["contentId"].Value;
+                                localizationLabelNode.LocaleId = datalist.Attributes["localeId"].Value; 
+                                localizationLabelNode.Text = datalist.Attributes["text"].Value;
+                                if (datalist.Attributes["tooltip"] != null)
+                                    localizationLabelNode.Tooltip = datalist.Attributes["tooltip"].Value;
+                                localizationLocaleNode.Labels.Add(localizationLabelNode);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         private void LoadLocalizationMessages(XmlNode sd, Module checkedModule)
         {
             foreach (XmlNode locales in sd.ChildNodes)
@@ -527,7 +579,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             // Set filter options and filter index.
-            openFileDialog1.Filter = "XML Files|*.xml";
+            openFileDialog1.Filter = "XML Files|tenantConfiguration.*.xml";
             openFileDialog1.DefaultExt = "xml";
             openFileDialog1.FilterIndex = 0;
             openFileDialog1.Multiselect = false;
@@ -644,6 +696,22 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             public string ContentId { get; set; }
 
             public string Order { get; set; }
+
+        }
+
+        public class LocalizationLabelNode
+        {
+            public string Action { get; set; }
+
+            public string Id { get; set; }
+
+            public string LocaleId { get; set; }
+
+            public string Tooltip { get; set; }
+
+            public string Text { get; set; }
+
+            public string ContentId { get; set; }
         }
 
         public class LocalizationMessageNode
@@ -692,6 +760,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 this.Datalists = new List<LocalizationDatalistNode>();
                 this.Module = new Module();
                 this.Messages = new List<LocalizationMessageNode>();
+                this.Labels = new List<LocalizationLabelNode>();
             }
 
             public List<LocalizationDatalistNode> Datalists { get; set; }
@@ -703,6 +772,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             public string Name { get; set; }
 
             public string LocaleId { get; set; }
+
+            public List<LocalizationLabelNode> Labels { get; set; }
 
             public List<LocalizationMessageNode> Messages { get; set; }
         }

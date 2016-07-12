@@ -29,6 +29,10 @@ namespace HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities
         [Column("DESCRIPTION")]
         public string Description { get; set; }
 
+        [StringLength(2000)]
+        [Column("LONG_DESCRIPTION")]
+        public string LongDescription { get; set; }
+
         [Column("IS_ACTIVE")]
         public bool IsActive { get; set; }
 

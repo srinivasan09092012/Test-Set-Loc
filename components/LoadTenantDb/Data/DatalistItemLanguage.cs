@@ -25,5 +25,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
         public bool IsActive { get; set; }
 
         public string DataListItemId { get; set; }
+
+        public string LongDescription { get; set; }
     }
 }

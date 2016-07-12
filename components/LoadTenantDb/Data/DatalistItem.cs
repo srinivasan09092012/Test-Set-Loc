@@ -358,6 +358,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
                     {
                         DataListItemId = itemLang.DataListItemId,
                         Description = itemLang.Description,
+                        LongDescription = itemLang.LongDescription,
                         IsActive = itemLang.IsActive,
                         Local = itemLang.Locale
                     };
