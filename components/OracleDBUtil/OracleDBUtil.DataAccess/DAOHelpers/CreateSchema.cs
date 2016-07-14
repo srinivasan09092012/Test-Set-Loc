@@ -21,7 +21,7 @@ namespace OracleDBUtil.DataAccess.DAOHelpers
             return 1;
         }
 
-        protected override string ConnectionString
+        protected override string ConnectionName
         {
             get
             {
