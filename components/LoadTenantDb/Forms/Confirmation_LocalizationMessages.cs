@@ -132,7 +132,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             datalist.IsActive = true;
             datalist.ContentId = contentId;
             // Read the database to see if the Datalist already exists and set the Id.
-            datalist.Id = datalist.GetDataList(datalist);
+            datalist.Id = Datalist.GetDataListId(contentId);
 
             return datalist;
         }

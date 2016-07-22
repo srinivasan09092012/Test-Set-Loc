@@ -78,6 +78,18 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             return datalistId.ToString();
         }
 
+        public static string GetDataListId(string contentId)
+        {
+            DataListDBContext dataListDBContext = new DataListDBContext();
+
+            var datalistId = (from dl in dataListDBContext.Set<HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities.DataLists>()
+                              where dl.ContentId == contentId
+                              select dl.DataListsId).FirstOrDefault();
+
+            // TODO: Consider error logic.
+            return datalistId.ToString();
+        }
+
         public string GetDataList(Datalist dataList)
         {
             GetDataListId(dataList);
