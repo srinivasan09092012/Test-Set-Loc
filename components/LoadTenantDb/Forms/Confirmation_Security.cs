@@ -211,7 +211,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             datalist.TenantModuleId = tenantModuleId;
             datalist.IdentifierId = "USER1";
             datalist.IsActive = true;
-            datalist.ContentId = "Core.DataList.SecurityRoles";
+            datalist.ContentId = "Core.SecurityRoles";
             datalist.Id = datalist.GetDataListId(datalist);
             datalist.Name = "Security Roles";
             datalist.Description = "Security Roles";
@@ -361,7 +361,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             datalist.TenantModuleId = tenantModuleId;
             datalist.IdentifierId = "USER1";
             datalist.IsActive = true;
-            datalist.ContentId = "Core.DataList.SecurityFunctions";
+            datalist.ContentId = "Core.SecurityFunctions";
             datalist.Id = datalist.GetDataListId(datalist);
             datalist.Name = "Security Functions";
             datalist.Description = "Security Functions";
@@ -467,7 +467,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         DatalistItem roleDatalistItem = new DatalistItem();
                         roleDatalistItem.MainForm = this.MainForm;
 
-                        roleDatalist.ContentId = "Core.DataList.SecurityRoles";
+                        roleDatalist.ContentId = "Core.SecurityRoles";
                         roleDatalistItem.Key = this.MainForm.SecurityFunctions[i].ParentKey;
                         roleDatalist.Id = roleDatalist.GetDataListId(roleDatalist);
                         roleDatalistItem.DataListId = roleDatalist.Id;
@@ -549,7 +549,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             datalist.TenantModuleId = tenantModuleId;
             datalist.IdentifierId = "USER1";
             datalist.IsActive = true;
-            datalist.ContentId = "Core.DataList.SecurityRights";
+            datalist.ContentId = "Core.SecurityRights";
             datalist.Id = datalist.GetDataListId(datalist);
             datalist.Name = "Security Rights";
             datalist.Description = "Security Rights";
@@ -655,7 +655,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         DatalistItem functionDatalistItem = new DatalistItem();
                         functionDatalistItem.MainForm = this.MainForm;
 
-                        functionDatalist.ContentId = "Core.DataList.SecurityFunctions";
+                        functionDatalist.ContentId = "Core.SecurityFunctions";
                         functionDatalistItem.Key = this.MainForm.SecurityRights[i].ParentKey;
                         functionDatalist.Id = functionDatalist.GetDataListId(functionDatalist);
                         functionDatalistItem.DataListId = functionDatalist.Id;
