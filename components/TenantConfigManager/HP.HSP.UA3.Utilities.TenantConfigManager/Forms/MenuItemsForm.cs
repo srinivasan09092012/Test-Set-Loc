@@ -28,7 +28,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
         private void ModelPropertyForm_Load(object sender, EventArgs e)
         {
-
         }
 
         private void ModelPropertyForm_Shown(object sender, EventArgs e)
@@ -85,6 +84,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 Cursor = Cursors.Default;
             }
         }
+
         private void MenuItemsGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == MenuItemsGridView.NewRowIndex)
@@ -106,8 +106,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
                 e.Row.Cells[1].Value = MenuItemNameTextBox.Text + ".";
                 e.Row.Cells[5].Value = this.BusinessModule + ".Label.Menu.";
-                e.Row.Cells[11].Value = this.BusinessModule + ".Label.Menu.";
-                e.Row.Cells[12].Value = this.BusinessModule;
+                e.Row.Cells[12].Value = this.BusinessModule + ".Label.Menu.";
+                e.Row.Cells[13].Value = this.BusinessModule;
             }
             catch (Exception ex)
             {
@@ -138,7 +138,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                         MenuItemsGridView.Rows[e.RowIndex].Cells[8].Value = id;
                         break;
 
-                    case 13:
+                    case 14:
                         id = Convert.ToString(MenuItemsGridView.Rows[e.RowIndex].Cells[0].Value);
                         ShowMenuItems(id);
                         break;
@@ -200,6 +200,18 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
                             case 11:
                                 value = MenuItemsGridView.Rows[e.RowIndex].Cells[11].Value;
+                                if (value != null)
+                                {
+                                    menuItem.PageHelpContentIdSpecified = !string.IsNullOrEmpty(value.ToString().Trim());
+                                }
+                                else
+                                {
+                                    menuItem.PageHelpContentIdSpecified = false;
+                                }
+                                break;
+
+                            case 12:
+                                value = MenuItemsGridView.Rows[e.RowIndex].Cells[12].Value;
                                 if (value != null)
                                 {
                                     menuItem.ModuleSectionContentIdSpecified = !string.IsNullOrEmpty(value.ToString().Trim());
@@ -453,6 +465,22 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     else
                     {
                         MessageBox.Show(string.Format("MITA Help Content ID must start with the prefix '{0}' or alt prefix '{1}'.", prefix, altPrefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    return false;
+                }
+                prefix = "/" + this.BusinessModule + "/";
+                altPrefix = "/Core/";
+                if (item.PageHelpContentUrlSpecified && !item.PageHelpContentUrl.StartsWith(prefix) && !item.PageHelpContentUrl.StartsWith(altPrefix))
+                {
+                    MenuItemsGridView.CurrentCell = MenuItemsGridView.Rows[idx].Cells[11];
+                    MenuItemsGridView.Rows[idx].Cells[11].Selected = true;
+                    if (prefix != altPrefix)
+                    {
+                        MessageBox.Show(string.Format("Page Help Content URL must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show(string.Format("Page Help Content URL must start with the prefix '{0}' or alt prefix '{1}'.", prefix, altPrefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     return false;
                 }

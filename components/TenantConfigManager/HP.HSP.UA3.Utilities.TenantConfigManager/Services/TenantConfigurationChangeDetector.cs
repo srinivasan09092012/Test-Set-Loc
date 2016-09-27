@@ -58,7 +58,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Services
             {
                 T changedItem = null;
 
-                changedById.TryGetValue(originalPair.Key, out changedItem);                
+                changedById.TryGetValue(originalPair.Key, out changedItem);
 
                 if (changedItem == null)
                 {
@@ -88,9 +88,9 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Services
             }
 
             var originalIds = original.Select(p => idSelectorFunc(p)).Distinct();
-            var addedItems = changed.Where(p => originalIds.Contains( idSelectorFunc(p)) == false).ToList();
+            var addedItems = changed.Where(p => originalIds.Contains(idSelectorFunc(p)) == false).ToList();
 
-            foreach(var added in addedItems)
+            foreach (var added in addedItems)
             {
                 var addedId = idSelectorFunc(added);
 
@@ -139,7 +139,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Services
             return result;
         }
 
-        #endregion
+        #endregion resuable methods among all change detection
 
         private void DetectChanges(List<ModuleConfigurationModel> original, List<ModuleConfigurationModel> changed, List<ConfigurationChange> results, int order)
         {
@@ -213,7 +213,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Services
                     p => p.State,
                     p => p.Type == null ? string.Empty : p.Type.Name,
                     p => p.Type == null ? string.Empty : p.Type.ID,
-                });         
+                });
         }
 
         private void DetectChanges(List<ServiceItemModel> original, List<ServiceItemModel> changed, List<ConfigurationChange> results, int order)
@@ -353,6 +353,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Services
                 p => p.LabelContentId,
                 p => p.MitaHelpContentId,
                 p => p.MitaHelpContentIdSpecified,
+                p => p.PageHelpContentId,
+                p => p.PageHelpContentUrlSpecified,
                 p => p.ModuleSectionContentId,
                 p => p.ModuleSectionContentIdSpecified,
                 p => p.Name,
@@ -379,7 +381,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Services
                 new Func<LocaleConfigurationModel, object>[]
                 {
                     p => p.LocaleId,
-                    p => p.Name, 
+                    p => p.Name,
                     p => p
                 },
                 (o, c) =>

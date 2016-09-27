@@ -60,6 +60,7 @@
             this.securityRightIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.PageHelpContentIdDataGridTextBox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MitaHelpContentIdDataGridTextBox = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PageHelpContentUrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModuleSectionContentIdDataGridTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iocContainerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Items4 = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -127,6 +128,7 @@
             this.securityRightIdDataGridViewTextBoxColumn,
             this.PageHelpContentIdDataGridTextBox,
             this.MitaHelpContentIdDataGridTextBox,
+            this.PageHelpContentUrl,
             this.ModuleSectionContentIdDataGridTextBoxColumn,
             this.iocContainerDataGridViewTextBoxColumn,
             this.Items4});
@@ -330,6 +332,13 @@
             this.MitaHelpContentIdDataGridTextBox.Name = "MitaHelpContentIdDataGridTextBox";
             this.MitaHelpContentIdDataGridTextBox.Width = 225;
             // 
+            // PageHelpContentUrl
+            // 
+            this.PageHelpContentUrl.DataPropertyName = "PageHelpContentUrl";
+            this.PageHelpContentUrl.HeaderText = "PageHelpContentUrl";
+            this.PageHelpContentUrl.Name = "PageHelpContentUrl";
+            this.PageHelpContentUrl.Width = 129;
+            // 
             // ModuleSectionContentIdDataGridTextBoxColumn
             // 
             this.ModuleSectionContentIdDataGridTextBoxColumn.DataPropertyName = "ModuleSectionContentId";
@@ -410,6 +419,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn securityRightIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn PageHelpContentIdDataGridTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn MitaHelpContentIdDataGridTextBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PageHelpContentUrl;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModuleSectionContentIdDataGridTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iocContainerDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Items4;
