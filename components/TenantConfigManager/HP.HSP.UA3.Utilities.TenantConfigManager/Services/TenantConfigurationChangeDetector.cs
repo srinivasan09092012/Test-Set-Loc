@@ -1,4 +1,5 @@
-﻿using HP.HSP.UA3.Core.UX.Data.Configuration;
+﻿
+using HP.HSP.UA3.Core.UX.Data.Configuration;
 using HP.HSP.UA3.Core.UX.Data.Navigation;
 using HP.HSP.UA3.Core.UX.Data.Security;
 using System;
@@ -389,7 +390,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Services
                     DetectChanges(o.LocaleDataLists, c.LocaleDataLists, results, _order++);
                     DetectChanges(o.LocaleEmailTemplates, c.LocaleEmailTemplates, results, _order++);
                     DetectChanges(o.LocaleHtmlBlocks, c.LocaleHtmlBlocks, results, _order++);
-                    DetectChanges(o.LocaleImages, c.LocaleImages, results, _order++);
                     DetectChanges(o.LocaleLabels, c.LocaleLabels, results, _order++);
                     DetectChanges(o.LocaleMessages, c.LocaleMessages, results, _order++);
                 });
@@ -416,20 +416,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Services
                     p => p.LocaleId,
                     p => p.MessageType,
                     p => p.Text
-                });
-        }
-
-        private void DetectChanges(List<LocaleConfigurationImageModel> original, List<LocaleConfigurationImageModel> changed, List<ConfigurationChange> results, int order)
-        {
-            DetectChanges(original, changed, "Localized Image", results, _order, p => p.Id,
-                new Func<LocaleConfigurationImageModel, object>[]
-                {
-                    p => p.ContentId,
-                    p => p.Height,
-                    p => p.LocaleId,
-                    p => p.Source,
-                    p => p.Tooltip,
-                    p => p.Width
                 });
         }
 

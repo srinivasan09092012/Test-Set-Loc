@@ -697,65 +697,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         }
         #endregion
 
-        #region Localization Images Tab Events
-        private void imageBindingSource_CurrentItemChanged(object sender, EventArgs e)
-        {
-            if (_tenantConfigs != null && _tenantConfigs.Count > 0)
-            {
-                ToggleDirtyData(true);
-            }
-        }
-
-        private void ImagesGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex == ImagesGridView.NewRowIndex)
-            {
-                if (ImagesGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
-                {
-                    ImagesGridView.BeginEdit(false);
-                    TextBox textBox = (TextBox)ImagesGridView.EditingControl;
-                    textBox.SelectionStart = textBox.Text.Length;
-                }
-            }
-        }
-
-        private void ImagesGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-                e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
-                e.Row.Cells[1].Value = LocaleDropdown.SelectedValue;
-                e.Row.Cells[2].Value = BusinessModuleDropdown.Text + ".Image.";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
-        }
-
-        private void ImagesGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-                e.Cancel = !ConfirmDeleteRow(e.Row.Cells[2].Value.ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
-        }
-        #endregion
-
         #region Localization Labels Tab Events
         private void labelBindingSource_CurrentItemChanged(object sender, EventArgs e)
         {
@@ -1363,14 +1304,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                                     }
                                 }
 
-                                if (locale.LocaleImages != null && locale.LocaleImages.Count > 0)
-                                {
-                                    foreach (LocaleConfigurationImageModel image in locale.LocaleImages)
-                                    {
-                                        image.Id = image.Id.ToLower();
-                                    }
-                                }
-
                                 if (locale.LocaleLabels != null && locale.LocaleLabels.Count > 0)
                                 {
                                     foreach (LocaleConfigurationLabelModel label in locale.LocaleLabels)
@@ -1721,11 +1654,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     return false;
                 }
 
-                if (!IsValidLocalizationImages(item.LocaleImages, idx))
-                {
-                    return false;
-                }
-
                 if (!IsValidLocalizationLabels(item.LocaleLabels, idx))
                 {
                     return false;
@@ -1943,105 +1871,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     HtmlBlocksGridView.CurrentCell = HtmlBlocksGridView.Rows[idx].Cells[3];
                     HtmlBlocksGridView.Rows[idx].Cells[3].Selected = true;
                     MessageBox.Show("Html is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                idx++;
-            }
-            return true;
-        }
-
-        private bool IsValidLocalizationImages(List<LocaleConfigurationImageModel> items, int localeIdx)
-        {
-            int idx = 0;
-            foreach (LocaleConfigurationImageModel item in items)
-            {
-                //Check for ID value
-                if (string.IsNullOrEmpty(item.Id))
-                {
-                    ShowIdsCheckBox.Checked = true;
-                    ToggleShowIds(true);
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
-                    ImagesGridView.CurrentCell = ImagesGridView.Rows[idx].Cells[0];
-                    ImagesGridView.Rows[idx].Cells[0].Selected = true;
-                    MessageBox.Show("ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for unique ID value
-                if (_tenantConfig.Modules[0].LocalizationConfiguration.Locales[localeIdx].LocaleImages.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
-                {
-                    ShowIdsCheckBox.Checked = true;
-                    ToggleShowIds(true);
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[3];
-                    ImagesGridView.CurrentCell = ImagesGridView.Rows[idx].Cells[0];
-                    ImagesGridView.Rows[idx].Cells[0].Selected = true;
-                    MessageBox.Show(string.Format("ID must be a unqiue value. There are more than 1 rows with a name value of '{0}'.", item.Id), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for content id
-                if (string.IsNullOrEmpty(item.ContentId))
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[3];
-                    ImagesGridView.CurrentCell = ImagesGridView.Rows[idx].Cells[2];
-                    ImagesGridView.Rows[idx].Cells[2].Selected = true;
-                    MessageBox.Show("Content ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for proper named content id
-                string prefix = BusinessModuleDropdown.Text + ".Image.";
-                if (!item.ContentId.StartsWith(prefix))
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[3];
-                    ImagesGridView.CurrentCell = ImagesGridView.Rows[idx].Cells[2];
-                    ImagesGridView.Rows[idx].Cells[2].Selected = true;
-                    MessageBox.Show(string.Format("Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for unique content id
-                if (items.FindAll(i => string.Compare(i.ContentId, item.ContentId, true) == 0).Count > 1)
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[3];
-                    ImagesGridView.CurrentCell = ImagesGridView.Rows[idx].Cells[2];
-                    ImagesGridView.Rows[idx].Cells[2].Selected = true;
-                    MessageBox.Show(string.Format("Content ID must be a unqiue value. There are more than 1 rows with a content ID value of '{0}'.", item.ContentId), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for source
-                if (string.IsNullOrEmpty(item.Source))
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[3];
-                    ImagesGridView.CurrentCell = ImagesGridView.Rows[idx].Cells[3];
-                    ImagesGridView.Rows[idx].Cells[3].Selected = true;
-                    MessageBox.Show("Source is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for tooltip
-                if (string.IsNullOrEmpty(item.Tooltip))
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[3];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[3];
-                    ImagesGridView.CurrentCell = ImagesGridView.Rows[idx].Cells[6];
-                    ImagesGridView.Rows[idx].Cells[6].Selected = true;
-                    MessageBox.Show("Tooltip is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
 
@@ -2587,7 +2416,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             dataListBindingSource.DataSource = typeof(LocaleConfigurationDataListModel);
             emailTemplatesBindingSource.DataSource = typeof(LocaleConfigurationEmailTemplateModel);
             htmlBlockBindingSource.DataSource = typeof(LocaleConfigurationHtmlBlockModel);
-            imageBindingSource.DataSource = typeof(LocaleConfigurationImageModel);
             labelBindingSource.DataSource = typeof(LocaleConfigurationLabelModel);
             messagesBindingSource.DataSource = typeof(LocaleConfigurationMessageModel);
 
@@ -2602,7 +2430,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 dataListBindingSource.DataSource = locale.LocaleDataLists;
                 emailTemplatesBindingSource.DataSource = locale.LocaleEmailTemplates;
                 htmlBlockBindingSource.DataSource = locale.LocaleHtmlBlocks;
-                imageBindingSource.DataSource = locale.LocaleImages;
                 labelBindingSource.DataSource = locale.LocaleLabels;
                 messagesBindingSource.DataSource = locale.LocaleMessages;
             }
@@ -2932,10 +2759,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                             delegate(LocaleConfigurationHtmlBlockModel i1, LocaleConfigurationHtmlBlockModel i2) { return string.Compare(i1.ContentId, i2.ContentId); }
                         );
 
-                        locale.LocaleImages.Sort(
-                            delegate(LocaleConfigurationImageModel i1, LocaleConfigurationImageModel i2) { return string.Compare(i1.ContentId, i2.ContentId); }
-                        );
-
                         locale.LocaleLabels.Sort(
                             delegate(LocaleConfigurationLabelModel i1, LocaleConfigurationLabelModel i2) { return string.Compare(i1.ContentId, i2.ContentId); }
                         );
@@ -3037,8 +2860,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             EmailTemplatesGridView.Columns[0].Visible = showIds;
 
             HtmlBlocksGridView.Columns[0].Visible = showIds;
-
-            ImagesGridView.Columns[0].Visible = showIds;
 
             LabelsGridView.Columns[0].Visible = showIds;
 
