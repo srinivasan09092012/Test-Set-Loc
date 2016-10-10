@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Events" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Events" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
+  <xs:complexType name="MenuAdded">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:TenantConfigurationEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MenuId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MenuAdded" nillable="true" type="tns:MenuAdded" />
+  <xs:complexType name="TenantConfigurationEvents">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q1:Event">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TenantConfigurationEvents" nillable="true" type="tns:TenantConfigurationEvents" />
+  <xs:complexType name="MenuUpdated">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:TenantConfigurationEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MenuId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MenuUpdated" nillable="true" type="tns:MenuUpdated" />
+  <xs:complexType name="MenuItemAdded">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:TenantConfigurationEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MenuItemId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MenuItemAdded" nillable="true" type="tns:MenuItemAdded" />
+  <xs:complexType name="MenuItemUpdated">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:TenantConfigurationEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MenuItemId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MenuItemUpdated" nillable="true" type="tns:MenuItemUpdated" />
+</xs:schema>

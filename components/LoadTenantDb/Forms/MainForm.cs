@@ -33,6 +33,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.SecurityRoles = new List<SecurityNode>();
             this.SecurityFunctions = new List<SecurityNode>();
             this.SecurityRights = new List<SecurityNode>();
+            this.Menus = new List<MenuNode>();
+            this.MenuItems = new List<MenuItemNode>();
+            this.ModelDefinitions = new List<ModelDefinitionNode>();
+            this.ModelProperties = new List<ModelPropertyNode>();
             this.SecurityRolesAttributes = new List<string>();
             this.SecurityFunctionsAttributes = new List<string>();
             this.SecurityRightsAttributes = new List<string>();
@@ -48,6 +52,14 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         public List<string> SecurityFunctionsAttributes { get; set; }
 
         public List<SecurityNode> SecurityRights { get; set; }
+
+        public List<MenuNode> Menus { get; set; }
+
+        public List<MenuItemNode> MenuItems { get; set; }
+
+        public List<ModelDefinitionNode> ModelDefinitions { get; set; }
+
+        public List<ModelPropertyNode> ModelProperties { get; set; }
 
         public List<string> SecurityRightsAttributes { get; set; }
 
@@ -77,6 +89,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.configTypeComboBox.Items.Add("Security Roles");
             this.configTypeComboBox.Items.Add("Localization Messages");
             this.configTypeComboBox.Items.Add("Localization Labels");
+            this.configTypeComboBox.Items.Add("Model Definitions");
+            this.configTypeComboBox.Items.Add("Menu Items");
             this.configTypeComboBox.SelectedItem = "Localization DataLists";
 
             this.ODataEndpointAddress = ConfigurationManager.AppSettings["ODataEndpointAddress"];
@@ -87,7 +101,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.LocalizationDatalists.Clear();
             this.LocalizationLabels.Clear();
             this.LocalizationMessages.Clear();
+            this.MenuItems.Clear();
             this.SecurityRoles.Clear();
+            this.ModelDefinitions.Clear();
+            this.ModelProperties.Clear();
             this.SecurityFunctions.Clear();
             this.SecurityRights.Clear();
 
@@ -118,6 +135,18 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     localizationLabelForm.MainForm = this;
                     localizationLabelForm.ShowDialog();
                     localizationLabelForm.Dispose();
+                    break;
+                case "Model Definitions":
+                    Confirmation_LocalizationModel localizationModelForm = new Confirmation_LocalizationModel();
+                    localizationModelForm.MainForm = this;
+                    localizationModelForm.ShowDialog();
+                    localizationModelForm.Dispose();
+                    break;
+                case "Menu Items":
+                    Confirmation_MenuItems menuItemForm = new Confirmation_MenuItems();
+                    menuItemForm.MainForm = this;
+                    menuItemForm.ShowDialog();
+                    menuItemForm.Dispose();
                     break;
                 default:
                     break;
@@ -182,8 +211,101 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                                 {
                                     this.LoadLocalizationLabels(sd, checkedModule);
                                 }
+                                else if (this.configTypeComboBox.SelectedItem.ToString() == "Model Definitions" && sd.Name == "ModelDefinitionConfiguration")
+                                {
+                                    this.LoadLocalizationModels(sd, checkedModule);
+                                }
+                                else if (this.configTypeComboBox.SelectedItem.ToString() == "Menu Items" && sd.Name == "Menus")
+                                {
+                                    this.LoadMenuItems(sd, checkedModule);
+                                }
                             }
                         }
+                    }
+                }
+            }
+        }
+
+        private void LoadLocalizationModels(XmlNode sd, Module checkedModule)
+        {
+            foreach (XmlNode modeldefinitionconfiguration in sd.ChildNodes)
+            {
+                ModelDefinitionNode modelDefintionNode = new ModelDefinitionNode();
+                modelDefintionNode.Module.Name = checkedModule.Name;
+                modelDefintionNode.Module.Id = checkedModule.Id;
+                modelDefintionNode.Id = modeldefinitionconfiguration.Attributes["id"].Value;
+                modelDefintionNode.Type = modeldefinitionconfiguration.Attributes["type"].Value;
+                modelDefintionNode.Scope = modeldefinitionconfiguration.Attributes["scope"].Value;
+                modelDefintionNode.DisplaySize = modeldefinitionconfiguration.Attributes["displaySize"].Value;
+                
+                this.ModelDefinitions.Add(modelDefintionNode);
+
+                foreach (XmlNode modelproperites in modeldefinitionconfiguration.ChildNodes)
+                {
+                    foreach (XmlNode property in modelproperites.ChildNodes)
+                    {
+                        ModelPropertyNode modelPropertyNode = new ModelPropertyNode();
+                        modelPropertyNode.Module.Name = checkedModule.Name;
+                        modelPropertyNode.Module.Id = checkedModule.Id;
+                        modelPropertyNode.Id = property.Attributes["id"].Value;
+                        modelPropertyNode.ParentLink = modeldefinitionconfiguration.Attributes["type"].Value;
+                        modelPropertyNode.Name = property.Attributes["name"].Value;
+                        if (property.Attributes["Type"] != null)
+                        {
+                            modelPropertyNode.DataType = property.Attributes["Type"].Value;
+                        }
+                        else
+                        {
+                            if (property.Attributes["dataType"] != null)
+                            {
+                                modelPropertyNode.DataType = property.Attributes["dataType"].Value;
+                            }
+                            else
+                            {
+                                modelPropertyNode.DataType = " ";
+                            }
+                        }
+                        modelPropertyNode.DataRestrictionType = property.Attributes["dataRestrictionType"].Value;
+                        modelPropertyNode.DisplayType = property.Attributes["displayType"].Value;
+                        modelPropertyNode.IgnoreDirtyData = property.Attributes["ignoreDirtyData"].Value;
+                        modelPropertyNode.IsRequired = property.Attributes["isRequired"].Value;
+                        modelPropertyNode.MaxLength = property.Attributes["maxLength"].Value;
+                        modelPropertyNode.LabelContentId = property.Attributes["labelContentId"].Value;
+                        if (property.Attributes["defaultText"] != null)
+                        {
+                            modelPropertyNode.DefaultText = property.Attributes["defaultText"].Value;
+                        }
+                        if (property.Attributes["hintType"] != null)
+                        {
+                            modelPropertyNode.HintType = property.Attributes["hintType"].Value;
+                        }
+                        if (property.Attributes["accessKey"] != null)
+                        {
+                            modelPropertyNode.AccessKey = property.Attributes["accessKey"].Value;
+                        }
+                        if (property.Attributes["height"] != null)
+                        {
+                            modelPropertyNode.Height = property.Attributes["height"].Value;
+                        }
+                        if (property.Attributes["hecompareToight"] != null)
+                        {
+                        modelPropertyNode.CompareTo = property.Attributes["compareTo"].Value;
+                        }
+                        if (property.Attributes["compareToContent"] != null)
+                        {
+                            modelPropertyNode.CompareToContent = property.Attributes["compareToContent"].Value;
+                        }
+                        if (property.Attributes["viewRight"] != null)
+                        {
+                            modelPropertyNode.ViewRight = property.Attributes["viewRight"].Value;
+                        }
+                        if (property.Attributes["editRight"] != null)
+                        {
+                            modelPropertyNode.EditRight = property.Attributes["editRight"].Value;
+                        }
+                        modelPropertyNode.ParentLink = modeldefinitionconfiguration.Attributes["type"].Value;
+
+                        this.ModelProperties.Add(modelPropertyNode);
                     }
                 }
             }
@@ -504,6 +626,144 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 }
             }
         }
+        private void LoadMenuItems(XmlNode sd, Module checkedModule)
+        {
+            foreach (XmlNode menu in sd.ChildNodes)
+            {
+                MenuNode menuNode = new MenuNode();
+                menuNode.Module.Name = checkedModule.Name;
+                menuNode.Module.Id = checkedModule.Id;
+                menuNode.Id = menu.Attributes["id"].Value;
+                menuNode.Name = menu.Attributes["name"].Value;
+                menuNode.SecurityRightId = menu.Attributes["securityRightId"].Value;
+                menuNode.DisplaySize = menu.Attributes["displaySize"].Value;
+                this.Menus.Add(menuNode);
+
+                foreach (XmlNode items in menu.ChildNodes)
+                {
+                    foreach (XmlNode item in items.ChildNodes)
+                    {
+                        MenuItemNode menuItemNode = new MenuItemNode();
+                        menuItemNode.Module.Name = checkedModule.Name;
+                        menuItemNode.Module.Id = checkedModule.Id;
+                        menuItemNode.MenuId = menu.Attributes["id"].Value;
+                        menuItemNode.Id = item.Attributes["id"].Value;
+                        menuItemNode.ParentId = ""; 
+                        menuItemNode.Name = item.Attributes["name"].Value;
+                        menuItemNode.Order = item.Attributes["orderIndex"].Value;
+                        menuItemNode.SecurityRightId = item.Attributes["securityRightId"].Value;
+                        menuItemNode.LabelConentID = item.Attributes["labelContentId"].Value;
+                        menuItemNode.DefaultText = item.Attributes["defaultText"].Value;
+                        menuItemNode.IocContainer = item.Attributes["iocContainer"].Value;
+                        menuItemNode.IsVisible = item.Attributes["isVisible"].Value;
+                        if (item.Attributes["cssClass"] != null)
+                        {
+                            menuItemNode.CssClass = item.Attributes["cssClass"].Value;
+                        }
+                        if (item.Attributes["baseUrl"] != null)
+                        {
+                            menuItemNode.BaseURL = item.Attributes["baseUrl"].Value;
+                        }
+                        if (item.Attributes["pageHelpContentId"] != null)
+                        {
+                            menuItemNode.PageHelpContentId = item.Attributes["pageHelpContentId"].Value;
+                        }
+                        if (item.Attributes["mitaHelpContentId"] != null)
+                        {
+                            menuItemNode.MitaHelpContentId = item.Attributes["mitaHelpContentId"].Value;
+                        }
+                        if (item.Attributes["moduleSectionContentId"] != null)
+                        {
+                            menuItemNode.ModuleSectionContentId = item.Attributes["moduleSectionContentId"].Value;
+                        }
+                        this.MenuItems.Add(menuItemNode);
+                        foreach (XmlNode items2 in item.ChildNodes)
+                        {
+                            foreach (XmlNode item2 in items2.ChildNodes)
+                            {
+                                MenuItemNode menuItemNode2 = new MenuItemNode();
+                                menuItemNode2.Module.Name = checkedModule.Name;
+                                menuItemNode2.Module.Id = checkedModule.Id;
+                                menuItemNode2.MenuId = menu.Attributes["id"].Value;
+                                menuItemNode2.Id = item2.Attributes["id"].Value;
+                                menuItemNode2.ParentId = item.Attributes["id"].Value;
+                                menuItemNode2.Name = item2.Attributes["name"].Value;
+                                menuItemNode2.Order = item2.Attributes["orderIndex"].Value;
+                                menuItemNode2.SecurityRightId = item2.Attributes["securityRightId"].Value;
+                                menuItemNode2.LabelConentID = item2.Attributes["labelContentId"].Value;
+                                menuItemNode2.DefaultText = item2.Attributes["defaultText"].Value;
+                                menuItemNode2.IocContainer = item2.Attributes["iocContainer"].Value;
+                                menuItemNode2.IsVisible = item2.Attributes["isVisible"].Value;
+                                if (item2.Attributes["cssClass"] != null)
+                                {
+                                    menuItemNode2.CssClass = item2.Attributes["cssClass"].Value;
+                                }
+                                if (item2.Attributes["baseUrl"] != null)
+                                {
+                                    menuItemNode2.BaseURL = item2.Attributes["baseUrl"].Value;
+                                }
+                                if (item2.Attributes["pageHelpContentId"] != null)
+                                {
+                                    menuItemNode2.PageHelpContentId = item2.Attributes["pageHelpContentId"].Value;
+                                }
+                                if (item2.Attributes["mitaHelpContentId"] != null)
+                                {
+                                    menuItemNode2.MitaHelpContentId = item2.Attributes["mitaHelpContentId"].Value;
+                                }
+                                if (item2.Attributes["moduleSectionContentId"] != null)
+                                {
+                                    menuItemNode2.ModuleSectionContentId = item2.Attributes["moduleSectionContentId"].Value;
+                                }
+                                this.MenuItems.Add(menuItemNode2);
+                                foreach (XmlNode items3 in item2.ChildNodes)
+                                {
+                                    foreach (XmlNode item3 in items3.ChildNodes)
+                                    {
+                                        MenuItemNode menuItemNode3 = new MenuItemNode();
+                                        menuItemNode3.Module.Name = checkedModule.Name;
+                                        menuItemNode3.Module.Id = checkedModule.Id;
+                                        menuItemNode3.MenuId = menu.Attributes["id"].Value;
+                                        menuItemNode3.Id = item3.Attributes["id"].Value;
+                                        menuItemNode3.ParentId = item2.Attributes["id"].Value;
+                                        menuItemNode3.Name = item3.Attributes["name"].Value;
+                                        menuItemNode3.Order = item3.Attributes["orderIndex"].Value;
+                                        menuItemNode3.LabelConentID = item3.Attributes["labelContentId"].Value;
+                                        menuItemNode3.DefaultText = item3.Attributes["defaultText"].Value;
+                                        menuItemNode3.IocContainer = item3.Attributes["iocContainer"].Value;
+                                        menuItemNode3.IsVisible = item3.Attributes["isVisible"].Value;
+                                        if (item3.Attributes["securityRightId"] != null)
+                                        {
+                                            menuItemNode3.SecurityRightId = item3.Attributes["securityRightId"].Value;
+                                        }
+                                        if (item3.Attributes["cssClass"] != null)
+                                        {
+                                            menuItemNode3.CssClass = item3.Attributes["cssClass"].Value;
+                                        }
+                                        if (item3.Attributes["baseUrl"] != null)
+                                        {
+                                            menuItemNode3.BaseURL = item3.Attributes["baseUrl"].Value;
+                                        }
+                                        if (item3.Attributes["pageHelpContentId"] != null)
+                                        {
+                                            menuItemNode3.PageHelpContentId = item3.Attributes["pageHelpContentId"].Value;
+                                        }
+                                        if (item3.Attributes["mitaHelpContentId"] != null)
+                                        {
+                                            menuItemNode3.MitaHelpContentId = item3.Attributes["mitaHelpContentId"].Value;
+                                        }
+                                        if (item3.Attributes["moduleSectionContentId"] != null)
+                                        {
+                                            menuItemNode3.ModuleSectionContentId = item3.Attributes["moduleSectionContentId"].Value;
+                                        }
+                                        this.MenuItems.Add(menuItemNode3);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         private void LoadLocalizationLabels(XmlNode sd, Module checkedModule)
         {
@@ -810,6 +1070,73 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             public string ParentKey { get; set; }
         }
 
+        public class MenuNode
+        {
+            public MenuNode()
+            {
+                this.Module = new Module();
+            }
+
+            public Module Module { get; set; }
+
+            public MenuItem MenuItem { get; set; }
+
+            public string Action { get; set; }
+
+            public string Id { get; set; }
+
+            public string Name { get; set; }
+
+            public string SecurityRightId { get; set; }
+
+            public string DisplaySize { get; set; }
+        }
+
+        public class MenuItemNode
+        {
+            public MenuItemNode()
+            {
+                this.Module = new Module();
+            }
+            
+            public Module Module { get; set; }
+
+            public MenuItem MenuItem { get; set; }
+
+            public string Action { get; set; }
+
+            public string MenuId { get; set; }
+
+            public string Id { get; set; }
+
+            public string ParentId { get; set; }
+
+            public string Name { get; set; }
+
+            public string Order { get; set; }
+
+            public string IsVisible { get; set; }
+
+            public string BaseURL { get; set; }
+
+            public string LabelConentID { get; set; }
+
+            public string DefaultText { get; set; }
+
+            public string CssClass { get; set; }
+
+            public string SecurityRightId { get; set; }
+
+            public string PageHelpContentId { get; set; }
+
+            public string MitaHelpContentId { get; set; }
+
+            public string ModuleSectionContentId { get; set; }
+
+            public string IocContainer { get; set; }
+
+        }
+
         public class SecurityNodeAttribute
         {
             public string Name { get; set; }
@@ -825,6 +1152,76 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             }
 
             public List<Module> ModuleNames { get; set; }
+        }
+
+        public class ModelDefinitionNode
+        {
+            public ModelDefinitionNode()
+            {
+                this.Module = new Module();
+            }
+
+            public Module Module { get; set; }
+
+            public string Action { get; set; }
+
+            public string Id { get; set; }
+
+            public string Type { get; set; }
+
+            public string Scope { get; set; }
+
+            public string DisplaySize { get; set; }
+        }
+
+        public class ModelPropertyNode
+        {
+            public ModelPropertyNode()
+            {
+                this.Module = new Module();
+            }
+
+            public Module Module { get; set; }
+
+            public string Action { get; set; }
+
+            public string Id { get; set; }
+
+            public string ParentLink { get; set; }
+
+            public string Name { get; set; }
+
+            public string DataType { get; set; }
+
+            public string DataRestrictionType { get; set; }
+
+            public string DisplayType { get; set; }
+
+            public string IgnoreDirtyData { get; set; }
+
+            public string IsRequired { get; set; }
+
+            public string MaxLength { get; set; }
+
+            public string LabelContentId { get; set; }
+
+            public string DefaultText { get; set; }
+
+            public string HintType { get; set; }
+
+            public string AccessKey { get; set; }
+
+            public string Height { get; set; }
+
+            public string CompareTo { get; set; }
+
+            public string CompareToContent { get; set; }
+
+            public string ViewRight { get; set; }
+
+            public string EditRight { get; set; }
+
+            public string ParentKey { get; set; }
         }
     }
 }

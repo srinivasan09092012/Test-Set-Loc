@@ -48,7 +48,17 @@
     <Reference Include="HP.HSP.UA3.Administration.UX.Common">
       <HintPath>..\..\..\Administration\Dev\UX\HP.HSP.UA3.Administration.UX.Common\bin\Debug\HP.HSP.UA3.Administration.UX.Common.dll</HintPath>
     </Reference>
+    <Reference Include="HP.HSP.UA3.Core.BAS.CQRS">
+      <HintPath>..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.1.0.0\lib\net45\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.TeamFoundation.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.TeamFoundation.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.TeamFoundation.VersionControl.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Oracle.DataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.1.0.0\lib\net45\Oracle.DataAccess.dll</HintPath>
+    </Reference>
     <Reference Include="Oracle.DataAccess.EntityFramework, Version=6.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
       <HintPath>packages\Oracle.DataAccess.EntityFramework.12.1.0.10\lib\net45\Oracle.DataAccess.EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -70,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\MenuItem.cs" />
     <Compile Include="Entities\DataListAttributes.cs" />
     <Compile Include="Entities\DataListAttributeValues.cs" />
     <Compile Include="Entities\DataListDBContext.cs" />
@@ -83,6 +94,7 @@
     <Compile Include="Data\Datalist.cs" />
     <Compile Include="Data\DatalistItem.cs" />
     <Compile Include="Data\DatalistItemLink.cs" />
+    <Compile Include="Entities\MenuItems.cs" />
     <Compile Include="Forms\Confirmation_LocalizationLabels.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +106,18 @@
     </Compile>
     <Compile Include="Forms\Confirmation_LocalizationMessages.Designer.cs">
       <DependentUpon>Confirmation_LocalizationMessages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Confirmation_LocalizationModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Confirmation_LocalizationModel.Designer.cs">
+      <DependentUpon>Confirmation_LocalizationModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Confirmation_MenuItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Confirmation_MenuItems.Designer.cs">
+      <DependentUpon>Confirmation_MenuItems.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Confirmation_Security.cs">
       <SubType>Form</SubType>
@@ -120,6 +144,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\MenuService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\Confirmation_LocalizationDatalists.resx">
       <DependentUpon>Confirmation_LocalizationDatalists.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -129,6 +158,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Confirmation_LocalizationMessages.resx">
       <DependentUpon>Confirmation_LocalizationMessages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Confirmation_LocalizationModel.resx">
+      <DependentUpon>Confirmation_LocalizationModel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Confirmation_MenuItems.resx">
+      <DependentUpon>Confirmation_MenuItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Confirmation_Security.resx">
       <DependentUpon>Confirmation_Security.cs</DependentUpon>
@@ -148,9 +184,11 @@
     </Compile>
     <None Include="App.Debug.config">
       <DependentUpon>App.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="App.Release.config">
       <DependentUpon>App.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -200,6 +238,43 @@
     <None Include="Service References\DataListsService\HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.DataListsUpdated.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\MenuService\HP.HSP.UA3.Utilities.LoadTenantDb.MenuService.MenuAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MenuService\HP.HSP.UA3.Utilities.LoadTenantDb.MenuService.MenuItemAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MenuService\HP.HSP.UA3.Utilities.LoadTenantDb.MenuService.MenuItemUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MenuService\HP.HSP.UA3.Utilities.LoadTenantDb.MenuService.MenuUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MenuService\MenuService.wsdl" />
+    <None Include="Service References\MenuService\MenuService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MenuService\MenuService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MenuService\MenuService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MenuService\MenuService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MenuService\MenuService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MenuService\MenuService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MenuService\MenuService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MenuService\MenuService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -211,6 +286,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\DataListsService\" />
+    <WCFMetadataStorage Include="Service References\MenuService\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\DataListsService\configuration91.svcinfo" />
@@ -227,7 +303,21 @@
   <ItemGroup>
     <None Include="Service References\DataListsService\DataListsService1.disco" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Service References\MenuService\MenuService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MenuService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MenuService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MenuService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

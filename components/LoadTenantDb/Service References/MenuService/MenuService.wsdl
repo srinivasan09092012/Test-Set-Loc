@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MenuService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
+      <xsd:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Commands" />
+      <xsd:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta" />
+      <xsd:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Domain" />
+      <xsd:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Events" />
+      <xsd:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?xsd=xsd7" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IMenuService_AddMenu_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMenu" />
+  </wsdl:message>
+  <wsdl:message name="IMenuService_AddMenu_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMenuResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMenuService_AddMenu_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q1:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IMenuService_UpdateMenu_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMenu" />
+  </wsdl:message>
+  <wsdl:message name="IMenuService_UpdateMenu_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMenuResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMenuService_UpdateMenu_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q2:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IMenuService_AddMenuItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMenuItem" />
+  </wsdl:message>
+  <wsdl:message name="IMenuService_AddMenuItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMenuItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMenuService_AddMenuItem_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q3:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IMenuService_UpdateMenuItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMenuItem" />
+  </wsdl:message>
+  <wsdl:message name="IMenuService_UpdateMenuItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMenuItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMenuService_UpdateMenuItem_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q4:ServiceException" />
+  </wsdl:message>
+  <wsdl:portType name="IMenuService">
+    <wsdl:operation name="AddMenu">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMenuService/AddMenu" message="tns:IMenuService_AddMenu_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMenuService/AddMenuResponse" message="tns:IMenuService_AddMenu_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMenuService/AddMenuServiceExceptionFault" name="ServiceExceptionFault" message="tns:IMenuService_AddMenu_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMenu">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMenuService/UpdateMenu" message="tns:IMenuService_UpdateMenu_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMenuService/UpdateMenuResponse" message="tns:IMenuService_UpdateMenu_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMenuService/UpdateMenuServiceExceptionFault" name="ServiceExceptionFault" message="tns:IMenuService_UpdateMenu_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMenuItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMenuService/AddMenuItem" message="tns:IMenuService_AddMenuItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMenuService/AddMenuItemResponse" message="tns:IMenuService_AddMenuItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMenuService/AddMenuItemServiceExceptionFault" name="ServiceExceptionFault" message="tns:IMenuService_AddMenuItem_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMenuItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMenuService/UpdateMenuItem" message="tns:IMenuService_UpdateMenuItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMenuService/UpdateMenuItemResponse" message="tns:IMenuService_UpdateMenuItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMenuService/UpdateMenuItemServiceExceptionFault" name="ServiceExceptionFault" message="tns:IMenuService_UpdateMenuItem_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IMenuService" type="tns:IMenuService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddMenu">
+      <soap:operation soapAction="http://tempuri.org/IMenuService/AddMenu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMenu">
+      <soap:operation soapAction="http://tempuri.org/IMenuService/UpdateMenu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddMenuItem">
+      <soap:operation soapAction="http://tempuri.org/IMenuService/AddMenuItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMenuItem">
+      <soap:operation soapAction="http://tempuri.org/IMenuService/UpdateMenuItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MenuService">
+    <wsdl:port name="BasicHttpBinding_IMenuService" binding="tns:BasicHttpBinding_IMenuService">
+      <soap:address location="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

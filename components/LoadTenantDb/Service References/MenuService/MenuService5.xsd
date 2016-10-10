@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Commands" />
+  <xs:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Events" />
+  <xs:element name="AddMenu">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Commands" minOccurs="0" name="command" nillable="true" type="q1:AddMenuCommand" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMenuResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Events" minOccurs="0" name="AddMenuResult" nillable="true" type="q2:MenuAdded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMenu">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Commands" minOccurs="0" name="command" nillable="true" type="q3:UpdateMenuCommand" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMenuResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Events" minOccurs="0" name="UpdateMenuResult" nillable="true" type="q4:MenuUpdated" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMenuItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Commands" minOccurs="0" name="command" nillable="true" type="q5:AddMenuItemCommand" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMenuItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Events" minOccurs="0" name="AddMenuItemResult" nillable="true" type="q6:MenuItemAdded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMenuItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Commands" minOccurs="0" name="command" nillable="true" type="q7:UpdateMenuItemCommand" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMenuItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Events" minOccurs="0" name="UpdateMenuItemResult" nillable="true" type="q8:MenuItemUpdated" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
