@@ -218,11 +218,99 @@ namespace ProviderManagement.EnrollmentTestClient.EventDistribution {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+    [System.SerializableAttribute()]
+    public partial class ServiceException : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ProviderManagement.EnrollmentTestClient.EventDistribution.ServiceException.StatusCodeType ErrorCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<string> ErrorMessagesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ProviderManagement.EnrollmentTestClient.EventDistribution.ServiceException.StatusCodeType ErrorCode {
+            get {
+                return this.ErrorCodeField;
+            }
+            set {
+                if ((this.ErrorCodeField.Equals(value) != true)) {
+                    this.ErrorCodeField = value;
+                    this.RaisePropertyChanged("ErrorCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<string> ErrorMessages {
+            get {
+                return this.ErrorMessagesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorMessagesField, value) != true)) {
+                    this.ErrorMessagesField = value;
+                    this.RaisePropertyChanged("ErrorMessages");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="ServiceException.StatusCodeType", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        public enum StatusCodeType : int {
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            OK = 0,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            CorruptFile = 9000,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Unauthorized = 9010,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Duplicate = 9020,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            NotFound = 9030,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Stale = 9040,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Error = 9999,
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="HP.HSP.UA3.Eventing", ConfigurationName="EventDistribution.IEventDistribution")]
     public interface IEventDistribution {
         
         [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UA3.Eventing/IEventDistribution/ProcessEvent", ReplyAction="HP.HSP.UA3.Eventing/IEventDistribution/ProcessEventResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ProviderManagement.EnrollmentTestClient.EventDistribution.ServiceException), Action="HP.HSP.UA3.Eventing/IEventDistribution/ProcessEventServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
         void ProcessEvent(ProviderManagement.EnrollmentTestClient.EventDistribution.EventMessage @event);
     }
     

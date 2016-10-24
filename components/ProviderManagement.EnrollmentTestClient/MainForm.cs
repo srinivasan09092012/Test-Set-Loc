@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -35,6 +36,11 @@ namespace ProviderManagement.EnrollmentTestClient
             {
                 Name = "TEST (http://localhost:40520/ProviderEventService.svc)",
                 Value = "http://localhost:40520/ProviderEventService.svc"
+            });
+            this.cbEndpoint.Items.Add(new ListItem()
+            {
+                Name = "LOCAL (http://localhost:40520/EmployeeEventService.svc)",
+                Value = "http://localhost:40520/EmployeeEventService.svc"
             });
             this.cbEndpoint.SelectedIndex = 0;            
         }
@@ -168,10 +174,21 @@ namespace ProviderManagement.EnrollmentTestClient
                     MessageBox.Show("Event submitted successfully!");
                 }
             }
+            catch (FaultException<EventDistribution.ServiceException> svcEx)
+            {
+                StringBuilder builder = new StringBuilder();
+                foreach (string message in svcEx.Detail.ErrorMessages)
+                {
+                    builder.Append(message + Environment.NewLine);
+                }
+
+                MessageBox.Show(string.Format("Error while {0}: {1}", state, builder.ToString()));
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(string.Format("Error while {0}: {1}", state, ex.Message));
             }
+
             finally
             {
                 btnSubmit.Enabled = true;
