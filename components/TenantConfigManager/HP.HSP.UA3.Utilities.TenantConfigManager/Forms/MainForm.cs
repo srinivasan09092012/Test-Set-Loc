@@ -341,53 +341,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         }
         #endregion
 
-        #region AppSettings Tab Events
-        private void AppSettingsGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex == AppSettingsGridView.NewRowIndex)
-            {
-                if (AppSettingsGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
-                {
-                    AppSettingsGridView.BeginEdit(false);
-                    TextBox textBox = (TextBox)AppSettingsGridView.EditingControl;
-                    textBox.SelectionStart = textBox.Text.Length;
-                }
-            }
-        }
-
-        private void AppSettingsGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
-        }
-
-        private void AppSettingsGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-                e.Cancel = !ConfirmDeleteRow(e.Row.Cells[0].Value.ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
-        }
-
         private void configurationItemModelBindingSource_CurrentItemChanged(object sender, EventArgs e)
         {
             if (_tenantConfigs != null && _tenantConfigs.Count > 0)
@@ -395,8 +348,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 ToggleDirtyData(true);
             }
         }
-        #endregion
-
+      
         #region Display Sizes Tab Events
         private void DisplaySizesGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -1508,36 +1460,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             return false;
         }
 
-        private bool IsValidAppSettings()
-        {
-            int idx = 0;
-            foreach (ConfigurationItemModel item in _tenantConfig.Modules[0].ApplicationSettings)
-            {
-                //Check for key value
-                if(string.IsNullOrEmpty(item.Key))
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[0];
-                    AppSettingsGridView.CurrentCell = AppSettingsGridView.Rows[idx].Cells[0];
-                    AppSettingsGridView.Rows[idx].Cells[0].Selected = true;
-                    MessageBox.Show("Key is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for unique keys
-                if (_tenantConfig.Modules[0].ApplicationSettings.FindAll(i => string.Compare(i.Key, item.Key, true) == 0).Count > 1)
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[0];
-                    AppSettingsGridView.CurrentCell = AppSettingsGridView.Rows[idx].Cells[0];
-                    AppSettingsGridView.Rows[idx].Cells[0].Selected = true;
-                    MessageBox.Show(string.Format("Key must be a unqiue value. There are more than 1 rows with a key value of '{0}'.",  item.Key), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                idx++;
-            }
-            return true;
-        }
-
         private bool IsValidBusinessModuleDir(DirectoryInfo di, out List<string> appTiers)
         {
             bool isValid = false;
@@ -2338,11 +2260,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
         private bool IsValidTenantConfigData()
         {
-            if(!IsValidAppSettings())
-            {
-                return false;
-            }
-
             if (!IsValidDisplaySizes())
             {
                 return false;

@@ -154,7 +154,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Services
                 (o, c) =>
                 {
                     _module = c.Name;
-                    DetectChanges(o.ApplicationSettings, c.ApplicationSettings, results, _order++);
                     DetectChanges(o.DisplayConfiguration.DisplaySizes, c.DisplayConfiguration.DisplaySizes, results, _order++);
                     DetectChanges(o.LocalizationConfiguration.Locales, c.LocalizationConfiguration.Locales, results, _order++);
                     DetectChanges(o.Menus, c.Menus, results, _order);
@@ -498,15 +497,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Services
                     p => p.MaxHeight,
                     p => p.MaxWidth,
                     p => p.Name
-                });
-        }
-
-        private void DetectChanges(List<ConfigurationItemModel> original, List<ConfigurationItemModel> changed, List<ConfigurationChange> results, int order)
-        {
-            DetectChanges(original, changed, "AppSettings configuration", results, _order, p => p.Key,
-                new Func<ConfigurationItemModel, object>[]
-                {
-                    p => p.Value
                 });
         }
     }
