@@ -25,6 +25,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         {
             this.InitializeComponent();
 
+            this.AppSettings = new List<AppSettingNode>();
             this.LocalizationDatalists = new List<LocalizationLocaleNode>();
             this.LocalizationLabelsEnglish = new List<LocalizationDatalistItemNode>();
             this.LocalizationLabelsSpanish = new List<LocalizationDatalistItemNode>();
@@ -42,6 +43,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.SecurityRightsAttributes = new List<string>();
             this.XmlDoc = new XmlDocument();
         }
+
+        public List<AppSettingNode> AppSettings { get; set; }
 
         public List<SecurityNode> SecurityRoles { get; set; }
 
@@ -85,6 +88,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         {
             this.nextButton.Enabled = false;
 
+            this.configTypeComboBox.Items.Add("Application Settings");
             this.configTypeComboBox.Items.Add("Localization DataLists");
             this.configTypeComboBox.Items.Add("Security Roles");
             this.configTypeComboBox.Items.Add("Localization Messages");
@@ -112,6 +116,12 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
             switch (this.configTypeComboBox.SelectedItem.ToString())
             {
+                case "Application Settings":
+                    Confirmation_AppSettings appSettingForm = new Confirmation_AppSettings();
+                    appSettingForm.MainForm = this;
+                    appSettingForm.ShowDialog();
+                    appSettingForm.Dispose();
+                    break;
                 case "Security Roles":
                     ConfirmationSecurityDialog securityForm = new ConfirmationSecurityDialog();
                     securityForm.MainForm = this;
@@ -219,10 +229,29 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                                 {
                                     this.LoadMenuItems(sd, checkedModule);
                                 }
+                                else if (this.configTypeComboBox.SelectedItem.ToString() == "Application Settings" && sd.Name == "ApplicationSettings")
+                                {
+                                    this.LoadAppSettings(sd, checkedModule);
+                                }
                             }
                         }
                     }
                 }
+            }
+        }
+
+
+        private void LoadAppSettings(XmlNode sd, Module checkedModule)
+        {
+            foreach (XmlNode appSetting in sd.ChildNodes)
+            {
+                AppSettingNode appSettingNode = new AppSettingNode();
+                appSettingNode.Module.Name = checkedModule.Name;
+                appSettingNode.Module.Id = checkedModule.Id;
+                appSettingNode.Key = appSetting.Attributes["key"].Value;
+                appSettingNode.Value = appSetting.Attributes["value"].Value;
+
+                this.AppSettings.Add(appSettingNode);
             }
         }
 
@@ -941,6 +970,25 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             {
                 this.nextButton.Enabled = false;
             }
+        }
+
+
+        public class AppSettingNode
+        {
+            public AppSettingNode()
+            {
+                this.Module = new Module();
+            }
+
+            public Module Module { get; set; }
+
+            public string Action { get; set; }
+
+            public string Id { get; set; }
+
+            public string Key { get; set; }
+
+            public string Value { get; set; }
         }
 
         public class LocalizationDatalistItemNode

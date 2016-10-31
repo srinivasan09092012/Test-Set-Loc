@@ -30,10 +30,15 @@
         {
             this.definitionsGroupBox = new System.Windows.Forms.GroupBox();
             this.definitionsGridView = new System.Windows.Forms.DataGridView();
+            this.definitionAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.definitionModule = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.definitionId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.definitiontype = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.definitionScope = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.definitionDisplaySize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.loadPushButton = new System.Windows.Forms.Button();
             this.propertiesGroupBox = new System.Windows.Forms.GroupBox();
             this.propertiesGridView = new System.Windows.Forms.DataGridView();
-            this.cancelPushButton = new System.Windows.Forms.Button();
             this.propertyAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.propertyModule = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.propertyId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,12 +59,7 @@
             this.propertyCompareToContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.propertyViewRight = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.propertyEditRight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.definitionAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.definitionModule = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.definitionId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.definitiontype = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.definitionScope = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.definitionDisplaySize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cancelPushButton = new System.Windows.Forms.Button();
             this.definitionsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.definitionsGridView)).BeginInit();
             this.propertiesGroupBox.SuspendLayout();
@@ -99,6 +99,47 @@
             this.definitionsGridView.TabIndex = 1;
             this.definitionsGridView.TabStop = false;
             this.definitionsGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.definitionssGridView_CellContentClick);
+            // 
+            // definitionAction
+            // 
+            this.definitionAction.HeaderText = "Action";
+            this.definitionAction.Name = "definitionAction";
+            this.definitionAction.ReadOnly = true;
+            // 
+            // definitionModule
+            // 
+            this.definitionModule.HeaderText = "Module";
+            this.definitionModule.Name = "definitionModule";
+            this.definitionModule.ReadOnly = true;
+            this.definitionModule.Width = 130;
+            // 
+            // definitionId
+            // 
+            this.definitionId.HeaderText = "ID";
+            this.definitionId.Name = "definitionId";
+            this.definitionId.ReadOnly = true;
+            this.definitionId.Width = 200;
+            // 
+            // definitiontype
+            // 
+            this.definitiontype.HeaderText = "Type";
+            this.definitiontype.Name = "definitiontype";
+            this.definitiontype.ReadOnly = true;
+            this.definitiontype.Width = 600;
+            // 
+            // definitionScope
+            // 
+            this.definitionScope.HeaderText = "Scope";
+            this.definitionScope.Name = "definitionScope";
+            this.definitionScope.ReadOnly = true;
+            this.definitionScope.Width = 50;
+            // 
+            // definitionDisplaySize
+            // 
+            this.definitionDisplaySize.HeaderText = "Display Size";
+            this.definitionDisplaySize.Name = "definitionDisplaySize";
+            this.definitionDisplaySize.ReadOnly = true;
+            this.definitionDisplaySize.Width = 50;
             // 
             // loadPushButton
             // 
@@ -156,16 +197,6 @@
             this.propertiesGridView.TabIndex = 4;
             this.propertiesGridView.TabStop = false;
             this.propertiesGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.propertiesGridView_CellContentClick);
-            // 
-            // cancelPushButton
-            // 
-            this.cancelPushButton.Location = new System.Drawing.Point(1129, 488);
-            this.cancelPushButton.Name = "cancelPushButton";
-            this.cancelPushButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelPushButton.TabIndex = 14;
-            this.cancelPushButton.Text = "Cancel";
-            this.cancelPushButton.UseVisualStyleBackColor = true;
-            this.cancelPushButton.Click += new System.EventHandler(this.cancelPushButton_Click);
             // 
             // propertyAction
             // 
@@ -291,46 +322,15 @@
             this.propertyEditRight.Name = "propertyEditRight";
             this.propertyEditRight.ReadOnly = true;
             // 
-            // definitionAction
+            // cancelPushButton
             // 
-            this.definitionAction.HeaderText = "Action";
-            this.definitionAction.Name = "definitionAction";
-            this.definitionAction.ReadOnly = true;
-            // 
-            // definitionModule
-            // 
-            this.definitionModule.HeaderText = "Module";
-            this.definitionModule.Name = "definitionModule";
-            this.definitionModule.ReadOnly = true;
-            this.definitionModule.Width = 130;
-            // 
-            // definitionId
-            // 
-            this.definitionId.HeaderText = "ID";
-            this.definitionId.Name = "definitionId";
-            this.definitionId.ReadOnly = true;
-            this.definitionId.Width = 200;
-            // 
-            // definitiontype
-            // 
-            this.definitiontype.HeaderText = "Type";
-            this.definitiontype.Name = "definitiontype";
-            this.definitiontype.ReadOnly = true;
-            this.definitiontype.Width = 600;
-            // 
-            // definitionScope
-            // 
-            this.definitionScope.HeaderText = "Scope";
-            this.definitionScope.Name = "definitionScope";
-            this.definitionScope.ReadOnly = true;
-            this.definitionScope.Width = 50;
-            // 
-            // definitionDisplaySize
-            // 
-            this.definitionDisplaySize.HeaderText = "Display Size";
-            this.definitionDisplaySize.Name = "definitionDisplaySize";
-            this.definitionDisplaySize.ReadOnly = true;
-            this.definitionDisplaySize.Width = 50;
+            this.cancelPushButton.Location = new System.Drawing.Point(1129, 488);
+            this.cancelPushButton.Name = "cancelPushButton";
+            this.cancelPushButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelPushButton.TabIndex = 14;
+            this.cancelPushButton.Text = "Cancel";
+            this.cancelPushButton.UseVisualStyleBackColor = true;
+            this.cancelPushButton.Click += new System.EventHandler(this.cancelPushButton_Click);
             // 
             // Confirmation_LocalizationModel
             // 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2b34d29b-2857-44bf-8c7e-c91478264d87" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:40520/AppSettingService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AppSettingService.xsd" MetadataType="Schema" ID="9936e627-60bb-4e76-be2d-6508c232c302" SourceId="1" SourceUrl="http://localhost:40520/AppSettingService.svc?xsd=xsd6" />
+    <MetadataFile FileName="AppSettingService1.xsd" MetadataType="Schema" ID="4c307a5a-7a6b-4bb2-a832-fb196dc65b6d" SourceId="1" SourceUrl="http://localhost:40520/AppSettingService.svc?xsd=xsd7" />
+    <MetadataFile FileName="AppSettingService2.xsd" MetadataType="Schema" ID="eea52c5a-8d89-4753-a725-bfa47a405fd7" SourceId="1" SourceUrl="http://localhost:40520/AppSettingService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AppSettingService.wsdl" MetadataType="Wsdl" ID="705c4dd4-2dbc-4572-be7a-d37884a8c0d8" SourceId="1" SourceUrl="http://localhost:40520/AppSettingService.svc?wsdl" />
+    <MetadataFile FileName="AppSettingService3.xsd" MetadataType="Schema" ID="ecb9bb1d-0ac5-4731-927a-22dd0a541029" SourceId="1" SourceUrl="http://localhost:40520/AppSettingService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AppSettingService4.xsd" MetadataType="Schema" ID="127f37e6-be88-45ec-ae10-fc0c972ffdb7" SourceId="1" SourceUrl="http://localhost:40520/AppSettingService.svc?xsd=xsd3" />
+    <MetadataFile FileName="AppSettingService5.xsd" MetadataType="Schema" ID="2de955f7-92c6-407a-8e61-14e90dc31ffc" SourceId="1" SourceUrl="http://localhost:40520/AppSettingService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AppSettingService.disco" MetadataType="Disco" ID="427375f8-303b-4d45-bafa-bc16c99ccb04" SourceId="1" SourceUrl="http://localhost:40520/AppSettingService.svc?disco" />
+    <MetadataFile FileName="AppSettingService6.xsd" MetadataType="Schema" ID="2f1751c7-442e-4ec5-baf0-4149a73f02b0" SourceId="1" SourceUrl="http://localhost:40520/AppSettingService.svc?xsd=xsd4" />
+    <MetadataFile FileName="AppSettingService7.xsd" MetadataType="Schema" ID="757d7cdc-1ce4-4226-9e40-8fdda31cbe52" SourceId="1" SourceUrl="http://localhost:40520/AppSettingService.svc?xsd=xsd5" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

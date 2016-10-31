@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Events" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Events" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:40520/AppSettingService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
+  <xs:complexType name="AppSettingAdded">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:TenantConfigurationEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TenantModuleAppSettingId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AppSettingAdded" nillable="true" type="tns:AppSettingAdded" />
+  <xs:complexType name="TenantConfigurationEvents">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q1:Event">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TenantConfigurationEvents" nillable="true" type="tns:TenantConfigurationEvents" />
+  <xs:complexType name="AppSettingUpdated">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:TenantConfigurationEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TenantModuleAppSettingId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AppSettingUpdated" nillable="true" type="tns:AppSettingUpdated" />
+</xs:schema>
