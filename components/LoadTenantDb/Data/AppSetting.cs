@@ -59,7 +59,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
                     IdentifierId = "User1",
                     IdentifierIdType = Core.BAS.CQRS.UserMeta.CoreEnumerations.Messaging.IdentifierIdType.User,
                     TenantId = this.MainForm.TenantId,
-                    RequestDate = DateTime.Now
+                    RequestDate = DateTime.UtcNow
                 }
             };
 
@@ -105,7 +105,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
                     IdentifierId = "User1",
                     IdentifierIdType = Core.BAS.CQRS.UserMeta.CoreEnumerations.Messaging.IdentifierIdType.User,
                     TenantId = this.MainForm.TenantId,
-                    RequestDate = DateTime.Now
+                    RequestDate = DateTime.UtcNow
                 }
             };
 

@@ -15,22 +15,16 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Command", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AddDataListItemCommand", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.C" +
+        "ontracts.Commands")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.UpdateDataListItemCommand))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.AddDataListCommand))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.UpdateDataListCommand))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.AddDataListItemCommand))]
-    public partial class Command : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class AddDataListItemCommand : HP.HSP.UA3.Core.BAS.CQRS.Base.Command, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.RequestorModel RequestorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime ViewTimeStampField;
+        private HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.AddDataListItem AddDataListItemField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -43,27 +37,14 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.RequestorModel Requestor {
+        public HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.AddDataListItem AddDataListItem {
             get {
-                return this.RequestorField;
+                return this.AddDataListItemField;
             }
             set {
-                if ((object.ReferenceEquals(this.RequestorField, value) != true)) {
-                    this.RequestorField = value;
-                    this.RaisePropertyChanged("Requestor");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime ViewTimeStamp {
-            get {
-                return this.ViewTimeStampField;
-            }
-            set {
-                if ((this.ViewTimeStampField.Equals(value) != true)) {
-                    this.ViewTimeStampField = value;
-                    this.RaisePropertyChanged("ViewTimeStamp");
+                if ((object.ReferenceEquals(this.AddDataListItemField, value) != true)) {
+                    this.AddDataListItemField = value;
+                    this.RaisePropertyChanged("AddDataListItem");
                 }
             }
         }
@@ -74,237 +55,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RequestorModel", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta")]
-    [System.SerializableAttribute()]
-    public partial class RequestorModel : HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.BaseModel {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string BrowserInfoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CorrelationIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IdentifierIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.CoreEnumerationsMessagingIdentifierIdType IdentifierIdTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IpAddressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LocaleCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime RequestDateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TenantIdField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string BrowserInfo {
-            get {
-                return this.BrowserInfoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BrowserInfoField, value) != true)) {
-                    this.BrowserInfoField = value;
-                    this.RaisePropertyChanged("BrowserInfo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CorrelationId {
-            get {
-                return this.CorrelationIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CorrelationIdField, value) != true)) {
-                    this.CorrelationIdField = value;
-                    this.RaisePropertyChanged("CorrelationId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string IdentifierId {
-            get {
-                return this.IdentifierIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IdentifierIdField, value) != true)) {
-                    this.IdentifierIdField = value;
-                    this.RaisePropertyChanged("IdentifierId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.CoreEnumerationsMessagingIdentifierIdType IdentifierIdType {
-            get {
-                return this.IdentifierIdTypeField;
-            }
-            set {
-                if ((this.IdentifierIdTypeField.Equals(value) != true)) {
-                    this.IdentifierIdTypeField = value;
-                    this.RaisePropertyChanged("IdentifierIdType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string IpAddress {
-            get {
-                return this.IpAddressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IpAddressField, value) != true)) {
-                    this.IpAddressField = value;
-                    this.RaisePropertyChanged("IpAddress");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LocaleCode {
-            get {
-                return this.LocaleCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LocaleCodeField, value) != true)) {
-                    this.LocaleCodeField = value;
-                    this.RaisePropertyChanged("LocaleCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime RequestDate {
-            get {
-                return this.RequestDateField;
-            }
-            set {
-                if ((this.RequestDateField.Equals(value) != true)) {
-                    this.RequestDateField = value;
-                    this.RaisePropertyChanged("RequestDate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string TenantId {
-            get {
-                return this.TenantIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TenantIdField, value) != true)) {
-                    this.TenantIdField = value;
-                    this.RaisePropertyChanged("TenantId");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UpdateDataListItemCommand", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.C" +
-        "ontracts.Commands")]
-    [System.SerializableAttribute()]
-    public partial class UpdateDataListItemCommand : HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.Command {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.UpdateDataListItem UpdateDataListItemField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.UpdateDataListItem UpdateDataListItem {
-            get {
-                return this.UpdateDataListItemField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UpdateDataListItemField, value) != true)) {
-                    this.UpdateDataListItemField = value;
-                    this.RaisePropertyChanged("UpdateDataListItem");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="AddDataListCommand", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.C" +
-        "ontracts.Commands")]
-    [System.SerializableAttribute()]
-    public partial class AddDataListCommand : HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.Command {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.AddDataList AddDataListField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.AddDataList AddDataList {
-            get {
-                return this.AddDataListField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AddDataListField, value) != true)) {
-                    this.AddDataListField = value;
-                    this.RaisePropertyChanged("AddDataList");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UpdateDataListCommand", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.C" +
-        "ontracts.Commands")]
-    [System.SerializableAttribute()]
-    public partial class UpdateDataListCommand : HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.Command {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.UpdateDataList UpdateDataListField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.UpdateDataList UpdateDataList {
-            get {
-                return this.UpdateDataListField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UpdateDataListField, value) != true)) {
-                    this.UpdateDataListField = value;
-                    this.RaisePropertyChanged("UpdateDataList");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="AddDataListItemCommand", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.C" +
-        "ontracts.Commands")]
-    [System.SerializableAttribute()]
-    public partial class AddDataListItemCommand : HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.Command {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.AddDataListItem AddDataListItemField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.AddDataListItem AddDataListItem {
-            get {
-                return this.AddDataListItemField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AddDataListItemField, value) != true)) {
-                    this.AddDataListItemField = value;
-                    this.RaisePropertyChanged("AddDataListItem");
-                }
             }
         }
     }
@@ -517,13 +267,16 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="BaseModel", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UpdateDataListItemCommand", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.C" +
+        "ontracts.Commands")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.RequestorModel))]
-    public partial class BaseModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class UpdateDataListItemCommand : HP.HSP.UA3.Core.BAS.CQRS.Base.Command, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.UpdateDataListItem UpdateDataListItemField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -535,6 +288,19 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.UpdateDataListItem UpdateDataListItem {
+            get {
+                return this.UpdateDataListItemField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UpdateDataListItemField, value) != true)) {
+                    this.UpdateDataListItemField = value;
+                    this.RaisePropertyChanged("UpdateDataListItem");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -543,17 +309,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CoreEnumerations.Messaging.IdentifierIdType", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta")]
-    public enum CoreEnumerationsMessagingIdentifierIdType : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        User = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        System = 1,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1094,6 +849,52 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AddDataListCommand", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.C" +
+        "ontracts.Commands")]
+    [System.SerializableAttribute()]
+    public partial class AddDataListCommand : HP.HSP.UA3.Core.BAS.CQRS.Base.Command, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.AddDataList AddDataListField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.AddDataList AddDataList {
+            get {
+                return this.AddDataListField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AddDataListField, value) != true)) {
+                    this.AddDataListField = value;
+                    this.RaisePropertyChanged("AddDataList");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="AddDataList", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.C" +
         "ontracts.Domain")]
     [System.SerializableAttribute()]
@@ -1362,6 +1163,52 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UpdateDataListCommand", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.C" +
+        "ontracts.Commands")]
+    [System.SerializableAttribute()]
+    public partial class UpdateDataListCommand : HP.HSP.UA3.Core.BAS.CQRS.Base.Command, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.UpdateDataList UpdateDataListField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.UpdateDataList UpdateDataList {
+            get {
+                return this.UpdateDataListField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UpdateDataListField, value) != true)) {
+                    this.UpdateDataListField = value;
+                    this.RaisePropertyChanged("UpdateDataList");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="UpdateDataList", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.C" +
         "ontracts.Domain")]
     [System.SerializableAttribute()]
@@ -1504,29 +1351,17 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Event", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DataListsEvents", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.C" +
+        "ontracts.Events")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.DataListsEvents))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.DataListItemUpdated))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.DataListsAdded))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.DataListsUpdated))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.DataListItemAdded))]
-    public partial class Event : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class DataListsEvents : HP.HSP.UA3.Core.BAS.CQRS.Base.Event, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EventIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ModelIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ModelTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserIDField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1538,58 +1373,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string EventID {
-            get {
-                return this.EventIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EventIDField, value) != true)) {
-                    this.EventIDField = value;
-                    this.RaisePropertyChanged("EventID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ModelID {
-            get {
-                return this.ModelIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ModelIDField, value) != true)) {
-                    this.ModelIDField = value;
-                    this.RaisePropertyChanged("ModelID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ModelType {
-            get {
-                return this.ModelTypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ModelTypeField, value) != true)) {
-                    this.ModelTypeField = value;
-                    this.RaisePropertyChanged("ModelType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserID {
-            get {
-                return this.UserIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserIDField, value) != true)) {
-                    this.UserIDField = value;
-                    this.RaisePropertyChanged("UserID");
-                }
-            }
-        }
-        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -1598,18 +1381,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DataListsEvents", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.C" +
-        "ontracts.Events")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.DataListItemUpdated))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.DataListsAdded))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.DataListsUpdated))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.DataListItemAdded))]
-    public partial class DataListsEvents : HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.Event {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1772,120 +1543,33 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
-    [System.SerializableAttribute()]
-    public partial class ServiceException : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.ServiceException.StatusCodeType ErrorCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] ErrorMessagesField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.ServiceException.StatusCodeType ErrorCode {
-            get {
-                return this.ErrorCodeField;
-            }
-            set {
-                if ((this.ErrorCodeField.Equals(value) != true)) {
-                    this.ErrorCodeField = value;
-                    this.RaisePropertyChanged("ErrorCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] ErrorMessages {
-            get {
-                return this.ErrorMessagesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ErrorMessagesField, value) != true)) {
-                    this.ErrorMessagesField = value;
-                    this.RaisePropertyChanged("ErrorMessages");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="ServiceException.StatusCodeType", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
-        public enum StatusCodeType : int {
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            OK = 0,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            CorruptFile = 9000,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Unauthorized = 9010,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Duplicate = 9020,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            NotFound = 9030,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Stale = 9040,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Error = 9999,
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="HP.HSP.DataLists", ConfigurationName="DataListsService.IDataListsService")]
     public interface IDataListsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.DataLists/IDataListsService/AddDataListItem", ReplyAction="HP.HSP.DataLists/IDataListsService/AddDataListItemResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.ServiceException), Action="HP.HSP.DataLists/IDataListsService/AddDataListItemServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HP.HSP.UA3.Core.BAS.CQRS.Base.ServiceException), Action="HP.HSP.DataLists/IDataListsService/AddDataListItemServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
         HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.DataListItemAdded AddDataListItem(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.AddDataListItemCommand command);
         
         [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.DataLists/IDataListsService/AddDataListItem", ReplyAction="HP.HSP.DataLists/IDataListsService/AddDataListItemResponse")]
         System.Threading.Tasks.Task<HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.DataListItemAdded> AddDataListItemAsync(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.AddDataListItemCommand command);
         
         [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.DataLists/IDataListsService/UpdateDataListItem", ReplyAction="HP.HSP.DataLists/IDataListsService/UpdateDataListItemResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.ServiceException), Action="HP.HSP.DataLists/IDataListsService/UpdateDataListItemServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HP.HSP.UA3.Core.BAS.CQRS.Base.ServiceException), Action="HP.HSP.DataLists/IDataListsService/UpdateDataListItemServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
         HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.DataListItemUpdated UpdateDataListItem(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.UpdateDataListItemCommand command);
         
         [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.DataLists/IDataListsService/UpdateDataListItem", ReplyAction="HP.HSP.DataLists/IDataListsService/UpdateDataListItemResponse")]
         System.Threading.Tasks.Task<HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.DataListItemUpdated> UpdateDataListItemAsync(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.UpdateDataListItemCommand command);
         
         [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.DataLists/IDataListsService/AddDataList", ReplyAction="HP.HSP.DataLists/IDataListsService/AddDataListResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.ServiceException), Action="HP.HSP.DataLists/IDataListsService/AddDataListServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HP.HSP.UA3.Core.BAS.CQRS.Base.ServiceException), Action="HP.HSP.DataLists/IDataListsService/AddDataListServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
         HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.DataListsAdded AddDataList(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.AddDataListCommand command);
         
         [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.DataLists/IDataListsService/AddDataList", ReplyAction="HP.HSP.DataLists/IDataListsService/AddDataListResponse")]
         System.Threading.Tasks.Task<HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.DataListsAdded> AddDataListAsync(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.AddDataListCommand command);
         
         [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.DataLists/IDataListsService/UpdateDataList", ReplyAction="HP.HSP.DataLists/IDataListsService/UpdateDataListResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.ServiceException), Action="HP.HSP.DataLists/IDataListsService/UpdateDataListServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HP.HSP.UA3.Core.BAS.CQRS.Base.ServiceException), Action="HP.HSP.DataLists/IDataListsService/UpdateDataListServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
         HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.DataListsUpdated UpdateDataList(HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.UpdateDataListCommand command);
         
         [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.DataLists/IDataListsService/UpdateDataList", ReplyAction="HP.HSP.DataLists/IDataListsService/UpdateDataListResponse")]

@@ -19,19 +19,19 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/MenuService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="MenuService.xsd" MetadataType="Schema" ID="40f98d0f-b183-4bdb-a797-0f0e1426061f" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?xsd=xsd2" />
-    <MetadataFile FileName="MenuService.wsdl" MetadataType="Wsdl" ID="8250ceba-d9ac-4ac1-b511-99a3c90e9251" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?wsdl" />
-    <MetadataFile FileName="MenuService1.xsd" MetadataType="Schema" ID="b747410e-a973-4031-aa91-a5c74c83de78" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?xsd=xsd5" />
-    <MetadataFile FileName="MenuService2.xsd" MetadataType="Schema" ID="9cff0ece-b69d-4151-9b9d-603879053368" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?xsd=xsd3" />
-    <MetadataFile FileName="MenuService3.xsd" MetadataType="Schema" ID="e92e5908-d349-4acd-aa2b-ed27f93e998c" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?xsd=xsd7" />
-    <MetadataFile FileName="MenuService.disco" MetadataType="Disco" ID="0ac02361-5adf-44a6-9f03-4287d2a3868f" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?disco" />
-    <MetadataFile FileName="MenuService4.xsd" MetadataType="Schema" ID="a09d8417-c3a5-465d-a237-a6ccc5c21523" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?xsd=xsd6" />
-    <MetadataFile FileName="MenuService5.xsd" MetadataType="Schema" ID="0f4b3840-9b3d-46da-829f-126754ffd472" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?xsd=xsd0" />
-    <MetadataFile FileName="MenuService6.xsd" MetadataType="Schema" ID="72b199bf-4a86-449d-a84c-921d0d506bcf" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?xsd=xsd4" />
-    <MetadataFile FileName="MenuService7.xsd" MetadataType="Schema" ID="6e672f08-4a64-4a08-b8bf-93ff9f8d46f3" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.MenuWRK/R1.0/MenuService.svc?xsd=xsd1" />
+    <MetadataFile FileName="MenuService8.xsd" MetadataType="Schema" ID="9b345976-4498-418a-9513-83036f97151c" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/MenuService.svc?xsd=xsd3" />
+    <MetadataFile FileName="MenuService81.xsd" MetadataType="Schema" ID="bdf030b2-4457-4be6-b8a1-7fc812c70166" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/MenuService.svc?xsd=xsd5" />
+    <MetadataFile FileName="MenuService1.wsdl" MetadataType="Wsdl" ID="f6a95026-1c16-460d-bb0b-0d056888b2f7" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/MenuService.svc?wsdl" />
+    <MetadataFile FileName="MenuService82.xsd" MetadataType="Schema" ID="058d6fe3-abb7-4578-bb6a-9f3e888a4ff2" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/MenuService.svc?xsd=xsd4" />
+    <MetadataFile FileName="MenuService1.disco" MetadataType="Disco" ID="516d9e6a-5c46-421a-a604-1000f6cb2822" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/MenuService.svc?disco" />
+    <MetadataFile FileName="MenuService83.xsd" MetadataType="Schema" ID="1e6c893d-32f1-438a-b311-cde1026c37f2" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/MenuService.svc?xsd=xsd1" />
+    <MetadataFile FileName="MenuService84.xsd" MetadataType="Schema" ID="0eead27b-6786-4d16-b87e-c9d82a70b4a0" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/MenuService.svc?xsd=xsd6" />
+    <MetadataFile FileName="MenuService85.xsd" MetadataType="Schema" ID="3a5977b1-568b-445b-b56b-1135fd233624" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/MenuService.svc?xsd=xsd0" />
+    <MetadataFile FileName="MenuService86.xsd" MetadataType="Schema" ID="0efb6d2f-bbb9-4f80-b820-c76450eb3f37" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/MenuService.svc?xsd=xsd2" />
+    <MetadataFile FileName="MenuService87.xsd" MetadataType="Schema" ID="319d82af-368b-44d7-b598-3430370610f9" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/MenuService.svc?xsd=xsd7" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

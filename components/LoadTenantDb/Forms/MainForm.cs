@@ -41,6 +41,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.SecurityRolesAttributes = new List<string>();
             this.SecurityFunctionsAttributes = new List<string>();
             this.SecurityRightsAttributes = new List<string>();
+            this.Services = new List<ServiceNode>();
             this.XmlDoc = new XmlDocument();
         }
 
@@ -76,6 +77,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
         public List<LocalizationLocaleNode> LocalizationMessages { get; set; }
 
+        public List<ServiceNode> Services { get; set; }
+
         public string TenantId { get; set; }
 
         public string ODataEndpointAddress { get; set; }
@@ -95,6 +98,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.configTypeComboBox.Items.Add("Localization Labels");
             this.configTypeComboBox.Items.Add("Model Definitions");
             this.configTypeComboBox.Items.Add("Menu Items");
+            this.configTypeComboBox.Items.Add("Services");
             this.configTypeComboBox.SelectedItem = "Localization DataLists";
 
             this.ODataEndpointAddress = ConfigurationManager.AppSettings["ODataEndpointAddress"];
@@ -111,6 +115,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.ModelProperties.Clear();
             this.SecurityFunctions.Clear();
             this.SecurityRights.Clear();
+            this.Services.Clear();
 
             this.LoadTenantModel();
 
@@ -157,6 +162,12 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     menuItemForm.MainForm = this;
                     menuItemForm.ShowDialog();
                     menuItemForm.Dispose();
+                    break;
+                case "Services":
+                    Confirmation_Services serviceForm = new Confirmation_Services();
+                    serviceForm.MainForm = this;
+                    serviceForm.ShowDialog();
+                    serviceForm.Dispose();
                     break;
                 default:
                     break;
@@ -232,6 +243,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                                 else if (this.configTypeComboBox.SelectedItem.ToString() == "Application Settings" && sd.Name == "ApplicationSettings")
                                 {
                                     this.LoadAppSettings(sd, checkedModule);
+                                }
+                                else if (this.configTypeComboBox.SelectedItem.ToString() == "Services" && sd.Name == "Services")
+                                {
+                                    this.LoadServices(sd, checkedModule);
                                 }
                             }
                         }
@@ -863,6 +878,36 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             }
         }
 
+        private void LoadServices(XmlNode sd, Module checkedModule)
+        {
+            foreach (XmlNode service in sd.ChildNodes)
+            {
+                ServiceNode serviceNode = new ServiceNode();
+                serviceNode.Module.Name = checkedModule.Name;
+                serviceNode.Module.Id = checkedModule.Id;
+                serviceNode.Id = service.Attributes["id"].Value;
+                serviceNode.Name = service.Attributes["name"].Value;
+                serviceNode.SecurityRightId = service.Attributes["securityRightId"].Value;
+                serviceNode.IocContainer = service.Attributes["iocContainer"].Value;
+                if (service.Attributes["labelContentId"] != null)
+                {
+                    serviceNode.LabelConentID = service.Attributes["labelContentId"].Value;
+                }
+
+                if (service.Attributes["defaultText"] != null)
+                {
+                    serviceNode.DefaultText = service.Attributes["defaultText"].Value;
+                }
+               
+                if (service.Attributes["baseUrl"] != null)
+                {
+                    serviceNode.BaseURL = service.Attributes["baseUrl"].Value;
+                }
+
+                this.Services.Add(serviceNode);
+            }
+        }
+
         private void TenantConfigFileOpen_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -1270,6 +1315,32 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             public string EditRight { get; set; }
 
             public string ParentKey { get; set; }
+        }
+
+        public class ServiceNode
+        {
+            public ServiceNode()
+            {
+                this.Module = new Module();
+            }
+
+            public Module Module { get; set; }
+
+            public string Action { get; set; }
+
+            public string Id { get; set; }
+
+            public string Name { get; set; }
+
+            public string BaseURL { get; set; }
+
+            public string LabelConentID { get; set; }
+
+            public string DefaultText { get; set; }
+
+            public string SecurityRightId { get; set; }
+
+            public string IocContainer { get; set; }
         }
     }
 }

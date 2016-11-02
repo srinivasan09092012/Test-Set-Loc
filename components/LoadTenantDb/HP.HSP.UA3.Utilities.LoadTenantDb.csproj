@@ -37,13 +37,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\..\Packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\..\Packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="HP.HSP.UA3.Administration.UX.Common">
       <HintPath>..\..\..\Administration\Dev\UX\HP.HSP.UA3.Administration.UX.Common\bin\Debug\HP.HSP.UA3.Administration.UX.Common.dll</HintPath>
@@ -52,9 +50,27 @@
       <HintPath>..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.1.0.0\lib\net45\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.TeamFoundation.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.TeamFoundation.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.TeamFoundation.VersionControl.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.TeamFoundation.Client">
+      <HintPath>..\..\..\Packages\Microsoft.TeamFoundation.14.0\lib\net45\Microsoft.TeamFoundation.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.Common">
+      <HintPath>..\..\..\Packages\Microsoft.TeamFoundation.14.0\lib\net45\Microsoft.TeamFoundation.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.VersionControl.Client">
+      <HintPath>..\..\..\Packages\Microsoft.TeamFoundation.14.0\lib\net45\Microsoft.TeamFoundation.VersionControl.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.VersionControl.Common">
+      <HintPath>..\..\..\Packages\Microsoft.TeamFoundation.14.0\lib\net45\Microsoft.TeamFoundation.VersionControl.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Services.Client">
+      <HintPath>..\..\..\Packages\Microsoft.TeamFoundation.14.0\lib\net45\Microsoft.VisualStudio.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Services.Common">
+      <HintPath>..\..\..\Packages\Microsoft.TeamFoundation.14.0\lib\net45\Microsoft.VisualStudio.Services.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Services.WebApi">
+      <HintPath>..\..\..\Packages\Microsoft.TeamFoundation.14.0\lib\net45\Microsoft.VisualStudio.Services.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="Oracle.DataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.1.0.0\lib\net45\Oracle.DataAccess.dll</HintPath>
@@ -70,7 +86,9 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\..\..\Packages\Microsoft.TeamFoundation.14.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
@@ -82,6 +100,13 @@
   <ItemGroup>
     <Compile Include="Data\AppSetting.cs" />
     <Compile Include="Data\MenuItem.cs" />
+    <Compile Include="Data\Service.cs" />
+    <Compile Include="Data\DatalistItemAttribute.cs" />
+    <Compile Include="Data\DatalistItemAttributeValue.cs" />
+    <Compile Include="Data\DatalistItemLanguage.cs" />
+    <Compile Include="Data\Datalist.cs" />
+    <Compile Include="Data\DatalistItem.cs" />
+    <Compile Include="Data\DatalistItemLink.cs" />
     <Compile Include="Entities\DataListAttributes.cs" />
     <Compile Include="Entities\DataListAttributeValues.cs" />
     <Compile Include="Entities\DataListDBContext.cs" />
@@ -89,12 +114,6 @@
     <Compile Include="Entities\DataListsItems.cs" />
     <Compile Include="Entities\DataListsItemsLinks.cs" />
     <Compile Include="Entities\DataListsLanguages.cs" />
-    <Compile Include="Data\DatalistItemAttribute.cs" />
-    <Compile Include="Data\DatalistItemAttributeValue.cs" />
-    <Compile Include="Data\DatalistItemLanguage.cs" />
-    <Compile Include="Data\Datalist.cs" />
-    <Compile Include="Data\DatalistItem.cs" />
-    <Compile Include="Data\DatalistItemLink.cs" />
     <Compile Include="Entities\MenuItems.cs" />
     <Compile Include="Forms\Confirmation_AppSettings.cs">
       <SubType>Form</SubType>
@@ -119,6 +138,12 @@
     </Compile>
     <Compile Include="Forms\Confirmation_LocalizationModel.Designer.cs">
       <DependentUpon>Confirmation_LocalizationModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Confirmation_Services.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Confirmation_Services.Designer.cs">
+      <DependentUpon>Confirmation_Services.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Confirmation_MenuItems.cs">
       <SubType>Form</SubType>
@@ -161,6 +186,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ServiceService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\Confirmation_AppSettings.resx">
       <DependentUpon>Confirmation_AppSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +207,9 @@
     <EmbeddedResource Include="Forms\Confirmation_LocalizationModel.resx">
       <DependentUpon>Confirmation_LocalizationModel.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Confirmation_Services.resx">
+      <DependentUpon>Confirmation_Services.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Confirmation_MenuItems.resx">
       <DependentUpon>Confirmation_MenuItems.cs</DependentUpon>
@@ -296,29 +329,60 @@
     <None Include="Service References\MenuService\HP.HSP.UA3.Utilities.LoadTenantDb.MenuService.MenuUpdated.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\MenuService\MenuService.wsdl" />
-    <None Include="Service References\MenuService\MenuService.xsd">
+    <None Include="Service References\MenuService\MenuService1.wsdl" />
+    <None Include="Service References\MenuService\MenuService8.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MenuService\MenuService1.xsd">
+    <None Include="Service References\MenuService\MenuService81.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MenuService\MenuService2.xsd">
+    <None Include="Service References\MenuService\MenuService82.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MenuService\MenuService3.xsd">
+    <None Include="Service References\MenuService\MenuService83.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MenuService\MenuService4.xsd">
+    <None Include="Service References\MenuService\MenuService84.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MenuService\MenuService5.xsd">
+    <None Include="Service References\MenuService\MenuService85.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MenuService\MenuService6.xsd">
+    <None Include="Service References\MenuService\MenuService86.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MenuService\MenuService7.xsd">
+    <None Include="Service References\MenuService\MenuService87.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceService\HP.HSP.UA3.Utilities.LoadTenantDb.ServiceService.ServiceAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceService\HP.HSP.UA3.Utilities.LoadTenantDb.ServiceService.ServiceUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceService\ServiceService.wsdl" />
+    <None Include="Service References\ServiceService\ServiceService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceService\ServiceService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceService\ServiceService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceService\ServiceService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceService\ServiceService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceService\ServiceService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceService\ServiceService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceService\ServiceService7.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -334,6 +398,7 @@
     <WCFMetadataStorage Include="Service References\AppSettingService\" />
     <WCFMetadataStorage Include="Service References\DataListsService\" />
     <WCFMetadataStorage Include="Service References\MenuService\" />
+    <WCFMetadataStorage Include="Service References\ServiceService\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\DataListsService\configuration91.svcinfo" />
@@ -349,9 +414,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\DataListsService\DataListsService1.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\MenuService\MenuService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\MenuService\configuration91.svcinfo" />
@@ -379,6 +441,24 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceService\ServiceService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MenuService\MenuService1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

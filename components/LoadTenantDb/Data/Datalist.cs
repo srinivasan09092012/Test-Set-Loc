@@ -1,11 +1,10 @@
-﻿using HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities;
-
-//--------------------------------------------------------------------------------------------------
+﻿//--------------------------------------------------------------------------------------------------
 // This code is the property of Hewlett Packard Enterprise, Copyright (c) 2016. All rights reserved.
 //
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
 // Violators may be punished to the full extent of the law.
 //--------------------------------------------------------------------------------------------------
+using HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities;
 using HP.HSP.UA3.Administration.UX.Common;
 using HP.HSP.UA3.Utilities.LoadTenantDb.Forms;
 using System;
@@ -13,10 +12,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using WebRefDataListsMaint = HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService;
 
@@ -175,11 +171,12 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
                     TenantModuleId = dataList.TenantModuleId,
                     DataListAttributes = this.SetDataListAttributes(dataList.DataListItemAttributes)
                 },
-                Requestor = new DataListsService.RequestorModel()
+                Requestor = new Core.BAS.CQRS.UserMeta.RequestorModel()
                 {
-                    IdentifierId = dataList.IdentifierId,
-                    IdentifierIdType = HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.CoreEnumerationsMessagingIdentifierIdType.User,
-                    TenantId = dataList.TenantId
+                    IdentifierId = "User1",
+                    IdentifierIdType = Core.BAS.CQRS.UserMeta.CoreEnumerations.Messaging.IdentifierIdType.User,
+                    TenantId = this.MainForm.TenantId,
+                    RequestDate = DateTime.UtcNow
                 }
             };
 
@@ -221,11 +218,12 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
                     IsActive = true,
                     DataListAttributes = this.SetDataListAttributes(dataList.DataListItemAttributes)
                 },
-                Requestor = new DataListsService.RequestorModel()
+                Requestor = new Core.BAS.CQRS.UserMeta.RequestorModel()
                 {
-                    IdentifierId = dataList.IdentifierId,
-                    IdentifierIdType = HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.CoreEnumerationsMessagingIdentifierIdType.User,
-                    TenantId = dataList.TenantId
+                    IdentifierId = "User1",
+                    IdentifierIdType = Core.BAS.CQRS.UserMeta.CoreEnumerations.Messaging.IdentifierIdType.User,
+                    TenantId = this.MainForm.TenantId,
+                    RequestDate = DateTime.UtcNow
                 }
             };
 

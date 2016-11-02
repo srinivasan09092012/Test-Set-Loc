@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="SS6TnePINZleVBYBfrHSJUZoFiM=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="goHaolYdV1ggkMU46fWKQz2enM8=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="ws2007FederationHttpBinding" name="WS2007FederationHttpBinding_IMenuService">
+    <bindingConfiguration bindingType="ws2007FederationHttpBinding" name="WS2007FederationHttpBinding_IServiceService">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WS2007FederationHttpBinding_IMenuService</serializedValue>
+          <serializedValue>WS2007FederationHttpBinding_IServiceService</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -243,10 +243,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="WS2007FederationHttpBinding_IMenuService" contract="MenuService.IMenuService" bindingType="ws2007FederationHttpBinding" address="https://bas.dev.ua3.eslabs.ssn.hp.com/HP.HSP.UA3.TenantConfiguration/R1.0/MenuService.svc" bindingConfiguration="WS2007FederationHttpBinding_IMenuService">
+    <endpoint name="WS2007FederationHttpBinding_IServiceService" contract="ServiceService.IServiceService" bindingType="ws2007FederationHttpBinding" address="https://bas.dev.ua3.eslabs.ssn.hp.com/HP.HSP.UA3.TenantConfiguration/R1.0/ServiceService.svc" bindingConfiguration="WS2007FederationHttpBinding_IServiceService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>https://bas.dev.ua3.eslabs.ssn.hp.com/HP.HSP.UA3.TenantConfiguration/R1.0/MenuService.svc</serializedValue>
+          <serializedValue>https://bas.dev.ua3.eslabs.ssn.hp.com/HP.HSP.UA3.TenantConfiguration/R1.0/ServiceService.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -255,10 +255,10 @@
           <serializedValue>ws2007FederationHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WS2007FederationHttpBinding_IMenuService</serializedValue>
+          <serializedValue>WS2007FederationHttpBinding_IServiceService</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>MenuService.IMenuService</serializedValue>
+          <serializedValue>ServiceService.IServiceService</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -318,7 +318,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WS2007FederationHttpBinding_IMenuService</serializedValue>
+          <serializedValue>WS2007FederationHttpBinding_IServiceService</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

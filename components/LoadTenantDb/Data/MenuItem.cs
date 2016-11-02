@@ -10,13 +10,10 @@ using HP.HSP.UA3.Core.BAS.CQRS.DataAccess.Entities;
 using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
 using HP.HSP.UA3.Utilities.LoadTenantDb.Forms;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Web.Script.Serialization;
 using WebRefMenuItemsMaint = HP.HSP.UA3.Utilities.LoadTenantDb.MenuService;
 
 namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
@@ -66,12 +63,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
 
         public string MitaHelpContentId { get; set; }
 
-        public bool IsActive { get; set; }
-
-        public string OperatorId { get; set; }
-
-        public DateTime LastModified { get; set; }
-
         public Guid TenantModuleId { get; set; }
 
         private IDbSession session;
@@ -95,70 +86,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             {
                 return MenuItemId.ToString();
             } 
-        }
-
-        public string GetMenuItem(MenuItem MenuItem)
-        {
-            GetMenuItemId(MenuItem);
-
-            int retryCount = 0;
-            string objDataQuery = string.Format("MenuItem?$filter=ContentID%20eq%20%27{0}%27", MenuItem.MenuItemId);
-            string baseUrl = MainForm.ODataEndpointAddress;
-
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(baseUrl);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            HttpResponseMessage response = client.GetAsync(objDataQuery).Result;
-            while (!response.IsSuccessStatusCode && retryCount < 9999)
-            {
-                response = client.GetAsync(objDataQuery).Result;
-                retryCount++;
-            }
-
-            if (response.IsSuccessStatusCode)
-            {
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-                Dictionary<string, object> parameters = serializer.Deserialize<Dictionary<string, object>>(response.Content.ReadAsStringAsync().Result);
-
-                foreach (KeyValuePair<string, object> parameter in parameters)
-                {
-                    if (parameter.Value is IList)
-                    {
-                        IList MenuItems = (IList)parameter.Value;
-
-                        foreach (Dictionary<string, object> MenuItemDetail in MenuItems)
-                        {
-                            MenuItem.MenuItemId = (Guid)MenuItemDetail["ID"];
-                            MenuItem.MenuId = (Guid)MenuItemDetail["MenuID"];
-                            MenuItem.ParentMenuItemId = (Guid)MenuItemDetail["ParentMenuItemId"];
-                            MenuItem.SecurityRightItemId = (Guid)MenuItemDetail["SecurityRightItemId"];
-                            MenuItem.Name = MenuItemDetail["Name"].ToString();
-                            MenuItem.OrderIndex = MenuItemDetail["OrderIndex"].ToString();
-                            MenuItem.IsVisible = (bool)MenuItemDetail["IsVisible"];
-                            MenuItem.DefaultText = (string)MenuItemDetail["DefaultText"];
-                            MenuItem.CssClass = (string)MenuItemDetail["CssClass"];
-                            MenuItem.IocContainer = (string)MenuItemDetail["IocContainer"];
-                            MenuItem.LabelItemContentId = (string)MenuItemDetail["LabelItemContentId"];
-                            MenuItem.ModuleSectionContentId = (string)MenuItemDetail["ModuleSectionContentId"];
-                            MenuItem.BaseUrl = (string)MenuItemDetail["BaseUrl"];
-                            MenuItem.ReportsContentUrl = (string)MenuItemDetail["ReportsContentUrl"];
-                            MenuItem.PrintPreviewContentUrl = (string)MenuItemDetail["PrintPreviewContentUrl"];
-                            MenuItem.PageHelpContentId = (string)MenuItemDetail["PageHelpContentId"];
-                            MenuItem.MitaHelpContentId = (string)MenuItemDetail["MitaHelpContentId"];
-                            MenuItem.IsActive = (bool)MenuItemDetail["IsActive"];
-                            MenuItem.OperatorId = MenuItemDetail["OperatorId"].ToString();
-                            MenuItem.LastModified = (DateTime)MenuItemDetail["LastModified"];
-                            MenuItem.TenantModuleId = (Guid)MenuItemDetail["TenantModuleID"];
-                            
-                            return MenuItem.MenuItemId.ToString();
-                        }
-                    }
-                }
-            }
-
-            return null;
         } 
 
         public bool UpdateMenuItem(MenuItem MenuItem)
@@ -192,22 +119,21 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
                     PrintPreviewContentUrl = MenuItem.PrintPreviewContentUrl,
                     PageHelpHtmlContentId = MenuItem.PageHelpContentId,
                     MitaHelpHtmlContentId = MenuItem.MitaHelpContentId,
-                    IsActive = true,
-                    OperatorId = "USER1",
-                    ItemLastModified = System.DateTime.UtcNow,
+                    IsActive = true
                 },
-                Requestor = new MenuService.RequestorModel()
+                Requestor = new Core.BAS.CQRS.UserMeta.RequestorModel()
                 {
-                    IdentifierId = MenuItem.MenuItemId.ToString(),
-                    IdentifierIdType = HP.HSP.UA3.Utilities.LoadTenantDb.MenuService.CoreEnumerationsMessagingIdentifierIdType.User,
-                    TenantId = MenuItem.TenantModuleId.ToString()
+                    IdentifierId = "User1",
+                    IdentifierIdType = Core.BAS.CQRS.UserMeta.CoreEnumerations.Messaging.IdentifierIdType.User,
+                    TenantId = this.MainForm.TenantId,
+                    RequestDate = DateTime.UtcNow
                 }
             };
 
             try
             {
                 response = this.clientLicense.UpdateMenuItem(command);
-                this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheFullMenuTableKey, "false", "false", "false");
+                this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheFullMenuTableKey);
             }
             catch
             {
@@ -255,22 +181,21 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
                     PrintPreviewContentUrl = MenuItem.PrintPreviewContentUrl,
                     PageHelpHtmlContentId = MenuItem.PageHelpContentId,
                     MitaHelpHtmlContentId = MenuItem.MitaHelpContentId,
-                    IsActive = true,
-                    OperatorId = "USER1",
-                    ItemLastModified = System.DateTime.UtcNow,
+                    IsActive = true
                 },
-                Requestor = new MenuService.RequestorModel()
+                Requestor = new Core.BAS.CQRS.UserMeta.RequestorModel()
                 {
-                    IdentifierId = MenuItem.MenuItemId.ToString(),
-                    IdentifierIdType = HP.HSP.UA3.Utilities.LoadTenantDb.MenuService.CoreEnumerationsMessagingIdentifierIdType.User,
-                    TenantId = MenuItem.TenantModuleId.ToString()
+                    IdentifierId = "User1",
+                    IdentifierIdType = Core.BAS.CQRS.UserMeta.CoreEnumerations.Messaging.IdentifierIdType.User,
+                    TenantId = this.MainForm.TenantId,
+                    RequestDate = DateTime.UtcNow
                 }
             };
 
             try
             {
                 response = this.clientLicense.AddMenuItem(command);
-                this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheFullMenuTableKey, "false", "false", "false");
+                this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheFullMenuTableKey);
             }
             catch
             {
@@ -289,11 +214,9 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
         }
 
 
-        private void RefreshCache(string cacheKey, string clearAllCodeTableCacheFlag = "false", string reloadCache = "true", string reloadAllCodeTableCache = "false")
+        private void RefreshCache(string cacheKey, string reloadCache = "true", string cacheType = "Menu")
         {
-            string objDataQuery = string.Empty;
-
-            objDataQuery = string.Format("CacheRefresh(CacheKey='{0}',ClearAllCodeTableCache={1},ReloadCache={2},ReloadAllCodeTableCache={3})", cacheKey, clearAllCodeTableCacheFlag, reloadCache, reloadAllCodeTableCache);
+            string objDataQuery = string.Format("CacheRefreshTable(CacheKey='{0}',ReloadCache={1},CacheType='{2}')", cacheKey, reloadCache, cacheType);
             string baseUrl = MainForm.ODataEndpointAddress;
 
             HttpClient client = new HttpClient();
