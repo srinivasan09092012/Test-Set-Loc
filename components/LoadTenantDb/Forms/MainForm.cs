@@ -21,6 +21,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 {
     public partial class MainForm : Form
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public MainForm()
         {
             this.InitializeComponent();
@@ -43,6 +45,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.SecurityRightsAttributes = new List<string>();
             this.Services = new List<ServiceNode>();
             this.XmlDoc = new XmlDocument();
+
+            log4net.Config.XmlConfigurator.Configure();
         }
 
         public List<AppSettingNode> AppSettings { get; set; }
@@ -106,6 +110,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
         private void NextButtonClick(object sender, EventArgs e)
         {
+            log.Info("Load Process has Started");
             this.LocalizationDatalists.Clear();
             this.LocalizationLabels.Clear();
             this.LocalizationMessages.Clear();

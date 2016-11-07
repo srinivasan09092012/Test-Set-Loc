@@ -150,7 +150,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             }
         }
 
-        public MenuItem AddMenuItem(MenuItem MenuItem)
+        public bool AddMenuItem(MenuItem MenuItem)
         {
             MenuService.MenuItemAdded response = null;
 
@@ -199,17 +199,17 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             }
             catch
             {
-                return null;
+                return false;
             }
 
             if (response.MenuItemId != null)
             {
                 MenuItem.MenuItemId = Guid.Parse(response.MenuItemId); 
-                return MenuItem;
+                return true;
             }
             else
             {
-                return null;
+                return false;
             }
         }
 
@@ -225,6 +225,29 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             HttpResponseMessage response = client.GetAsync(objDataQuery).Result;
+        }
+        public override string ToString()
+        {
+            String returnString = string.Concat("MenuItemId=[", this.MenuItemId, "]\n",
+                "MenuId=[", this.MenuId, "]\n",
+                "ParentMenuItemId=[", this.ParentMenuItemId, "]\n",
+                "SecurityRightItemId=[", this.SecurityRightItemId, "]\n",
+                "Name=[", this.Name, "]\n",
+                "OrderIndex=[", this.OrderIndex, "]\n",
+                "IsVisible=[", this.IsVisible, "]\n",
+                "DefaultText=[", this.DefaultText, "]\n",
+                "CssClass=[", this.CssClass, "]\n",
+                "IocContainer=[", this.IocContainer, "]\n",
+                "LabelItemContentId=[", this.LabelItemContentId, "]\n",
+                "ModuleSectionContentId=[", this.ModuleSectionContentId, "]\n",
+                "BaseUrl=[", this.BaseUrl, "]\n",
+                "ReportsContentUrl=[", this.ReportsContentUrl, "]\n",
+                "PrintPreviewContentUrl=[", this.PrintPreviewContentUrl, "]\n",
+                "PageHelpContentId=[", this.PageHelpContentId, "]\n",
+                "MitaHelpContentId=[", this.MitaHelpContentId, "]\n",
+                "TenantModuleId=[", this.TenantModuleId, "]\n");
+
+            return returnString;
         }
     }
 }

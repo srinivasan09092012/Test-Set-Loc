@@ -15,6 +15,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 {
     public partial class Confirmation_Services : Form
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public Confirmation_Services()
         {
             InitializeComponent();
@@ -57,6 +59,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
             this.LoadServices(ref loadServicesSuccessful, ref loadErrors);
             Cursor.Current = Cursors.Default;
+            log.Info("Tenant Configuration load complete. " + loadServicesSuccessful + " Services loaded and " + loadErrors + " errors reported.");
             MessageBox.Show("Tenant Configuration load complete. " + loadServicesSuccessful + " Services loaded and " + loadErrors + " errors reported.", "Tenant Load Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         
@@ -64,6 +67,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         {
             int currentRow = 0;
             bool updated = true;
+            bool added = false;
             string tenantModuleId = string.Empty;
 
             for (int i = 0; i < MainForm.Services.Count; i++)
@@ -90,16 +94,9 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
                     if (service.GetServiceId(service) == null)
                     {
-                        try
-                        {
-                            service = service.AddService(service);
-                        }
-                        catch
-                        {
-                            service = null;
-                        }
+                        added = service.AddService(service);                      
 
-                        if (service != null)
+                        if (added)
                         {
                             this.MainForm.Services[i].Action = "Added";
                             loadServicesSuccessful++;
@@ -107,6 +104,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         else
                         {
                             this.MainForm.Services[i].Action = "Add Error";
+                            log.Error("Error Confirmation_Services.LoadServices Add Error " +
+                                "Name=" + service.ToString());
                             loadErrors++;
                         }
                     }
@@ -129,6 +128,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         else
                         {
                             this.MainForm.Services[i].Action = "Update Error";
+                            log.Error("Error Confirmation_Services.LoadServices Update Error " +
+                                "Name=" + service.ToString());
                             loadErrors++;
                         }
                     }
@@ -136,6 +137,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 else
                 {
                     this.MainForm.Services[i].Action = "TM_ID Error";
+                    log.Error("Error Confirmation_Services.LoadServices BAD TENANT MODULE ID - TM_ID Error " +
+                        "IocContainer=" + this.MainForm.Services[i].IocContainer);
                     loadErrors++;
                 }
 

@@ -14,6 +14,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 {
     public partial class Confirmation_MenuItems : Form
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public Confirmation_MenuItems()
         {
             InitializeComponent();
@@ -89,6 +91,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             {
                 this.LoadMenuAndMenuItems(coreTenantModuleId, ref loadMenusSuccessful, ref loadErrors);
                 Cursor.Current = Cursors.Default;
+                log.Info("Tenant Configuration load complete. " + loadMenusSuccessful + " Menu Items loaded and " + loadErrors + " errors reported.");
                 MessageBox.Show("Tenant Configuration load complete. " + loadMenusSuccessful + " Menu Items loaded and " + loadErrors + " errors reported.", "Tenant Load Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -97,6 +100,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         {
                int currentRow = 0;
                bool updated = true;
+               bool added = false;
 
                for (int i = 0; i < MainForm.MenuItems.Count; i++)
                {
@@ -122,16 +126,9 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
                    if (menuItem.GetMenuItemId(menuItem) == null)
                    {
-                       try
-                       {
-                           menuItem = menuItem.AddMenuItem(menuItem);
-                       }
-                       catch
-                       {
-                           menuItem = null;
-                       }
+                       added = menuItem.AddMenuItem(menuItem); 
 
-                       if (menuItem != null)
+                       if (added)
                        {
                            this.MainForm.MenuItems[i].Action = "Added";
                            loadMenusSuccessful++;
@@ -139,7 +136,9 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                        else
                        {
                            this.MainForm.MenuItems[i].Action = "Add Error";
-                           loadErrors++;
+                            log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Add Error " +
+                                "Name=" + menuItem.ToString());
+                        loadErrors++;
                        }
                    }
                    else
@@ -161,7 +160,9 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                        else
                        {
                            this.MainForm.MenuItems[i].Action = "Update Error";
-                           loadErrors++;
+                            log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Update Error " +
+                                "Name=" + menuItem.ToString());
+                        loadErrors++;
                        }
                    }
 

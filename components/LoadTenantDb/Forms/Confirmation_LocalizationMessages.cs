@@ -15,6 +15,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 {
     public partial class Confirmation_LocalizationMessages : Form
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private int loadDatalistsSuccessful = 0;
         private int loadDatalistItemSuccessful = 0;
         private int loadDatalistErrors = 0;
@@ -134,6 +136,15 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             // Read the database to see if the Datalist already exists and set the Id.
             datalist.Id = Datalist.GetDataListId(contentId);
 
+            if (datalist.Id == null)
+            {
+                datalist = datalist.AddDataList(datalist);
+            }
+            else
+            {
+                updated = datalist.UpdateDataList(datalist);
+            }
+
             return datalist;
         }
 
@@ -229,20 +240,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             }
         }
 
-        private DatalistItem AddDataListItem(DatalistItem datalistItem)
-        {
-            // Add the DatalistItem
-            try
-            {
-                datalistItem = datalistItem.AddDataListItem(datalistItem);
-            }
-            catch
-            {
-                datalistItem = null;
-            }
-
-            return datalistItem;
-        }
 
         private bool UpdateDataListItem(DatalistItem datalistItem)
         {
@@ -264,6 +261,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         private void LoadGrid()
         {
             Cursor.Current = Cursors.WaitCursor;
+            bool added = false;
 
             int currentRow = 0;
 
@@ -305,9 +303,9 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         if (datalistItem.Id == null)
                         {
                             // Add the DatalistItem
-                            datalistItem = datalistItem.AddDataListItem(datalistItem);
+                            added = datalistItem.AddDataListItem(datalistItem);
 
-                            if (datalistItem != null)
+                            if (added)
                             {
                                 this.MainForm.LocalizationMessages[i].Messages[j].Action = "Added";
                                 loadDatalistItemSuccessful++;
@@ -315,6 +313,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                             else
                             {
                                 this.MainForm.LocalizationMessages[i].Messages[j].Action = "Add Error";
+                                log.Error("Error Confirmation_LocalizationMessages.LoadGrid Add Error " +
+                                    "ContentId=" + datalistItem.ContentId);
                                 loadDatalistItemErrors++;
                             }
                         }
@@ -329,6 +329,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                             else
                             {
                                 this.MainForm.LocalizationMessages[i].Messages[j].Action = "Update Error";
+                                log.Error("Error Confirmation_LocalizationMessages.LoadGrid Update Error " + 
+                                    "ContentId=" + datalistItem.ContentId);
                                 loadDatalistItemErrors++;
                             }
                         }
@@ -357,6 +359,12 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             }
 
             Cursor.Current = Cursors.Default;
+            log.Info("Tenant Configuration Messages load complete. " + "\n" +
+                loadDatalistsSuccessful + " DataLists Loaded, " + "\n" +
+                loadDatalistItemSuccessful + " DataList Items loaded, " + "\n" +
+                loadDatalistErrors + " DataList errors reported, and " + "\n" +
+                loadDatalistItemErrors + " DataList item errors reported. ");
+
             MessageBox.Show("Tenant Configuration Messages load complete. " +
                 loadDatalistsSuccessful + " DataLists Loaded " +
                 loadDatalistItemSuccessful + " DataList Items loaded, and " +

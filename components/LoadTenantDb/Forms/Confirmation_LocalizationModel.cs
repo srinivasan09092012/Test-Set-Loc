@@ -19,6 +19,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 {
     public partial class Confirmation_LocalizationModel : Form
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public Confirmation_LocalizationModel()
         {
             InitializeComponent();
@@ -112,7 +114,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             {
                 this.LoadModelDefintionAndProperties(coreTenantModuleId, ref loadModelDefintionSuccessful, ref loadErrors);
                 Cursor.Current = Cursors.Default;
-                MessageBox.Show("Tenant Configuration load complete. " + loadModelDefintionSuccessful + " DataList Items loaded and " + loadErrors + " errors reported.", "Tenant Load Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                log.Info("Tenant Configuration load complete. " + loadModelDefintionSuccessful + " Models loaded and " + loadErrors + " errors reported.");
+                MessageBox.Show("Tenant Configuration load complete. " + loadModelDefintionSuccessful + " Models loaded and " + loadErrors + " errors reported.", "Tenant Load Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         
@@ -137,6 +140,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     {
                         errorLine = MainForm.ModelDefinitions[i].Module.Name + " Discrepencies Between Tenant COnfig XML and TFS";
                         ef.WriteLine(errorLine);
+                        log.Error(errorLine);
                         errorLine = " ";
                         ef.WriteLine(errorLine);
                         ef.WriteLine(errorLine);
@@ -306,6 +310,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                                             + " -- "
                                             + MainForm.ModelProperties[j].Name;
                                 ef.WriteLine(errorLine);
+                                log.Error(errorLine);
                                 this.MainForm.ModelProperties[j].Action = "NOT FOUND";
                                 this.propertiesGridView.Rows[j].Cells[0].Value = this.MainForm.ModelProperties[j].Action;
                                 this.propertiesGridView.CurrentCell = this.propertiesGridView.Rows[j].Cells[0];

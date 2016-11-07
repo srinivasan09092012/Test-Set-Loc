@@ -20,6 +20,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 {
     public partial class ConfirmationLocalizationDatalistDialog : Form
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public ConfirmationLocalizationDatalistDialog()
         {
             this.InitializeComponent();
@@ -116,6 +118,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             Cursor.Current = Cursors.WaitCursor;
 
             int currentRow = 0;
+            bool added = false;
             int loadDatalistSuccessful = 0;
             int loadDatalistItemSuccessful = 0;
             int loadErrors = 0;
@@ -160,6 +163,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                             else
                             {
                                 this.MainForm.LocalizationDatalists[i].Datalists[j].Action = "Add Error";
+                                log.Error("Error Confirmation_LocalizationDatalists.LoadGrid Add Error " +
+                                    "Contentid=" + datalist.ContentId);
                                 loadErrors++;
                             }
                         }
@@ -184,6 +189,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                             else
                             {
                                 this.MainForm.LocalizationDatalists[i].Datalists[j].Action = "Update Error";
+                                log.Error("Error Confirmation_LocalizationDatalists.LoadGrid Update Error " +
+                                    "Contentid=" + datalist.ContentId);
                                 loadErrors++;
                             }
                         }
@@ -244,16 +251,9 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
                                 if (datalistItem.Id == null)
                                 {
-                                    try
-                                    {
-                                        datalistItem = datalistItem.AddDataListItem(datalistItem);
-                                    }
-                                    catch
-                                    {
-                                        datalistItem = null;
-                                    }
+                                    added = datalistItem.AddDataListItem(datalistItem);
 
-                                    if (datalistItem != null)
+                                    if (added)
                                     {
                                         this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Action = "Added";
                                         loadDatalistItemSuccessful++;
@@ -261,6 +261,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                                     else
                                     {
                                         this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Action = "Add Error";
+                                        log.Error("Error Confirmation_LocalizationDatalists.LoadGrid Add Error " +
+                                            "Contentid=" + datalist.ContentId);
                                         loadErrors++;
                                     }
                                 }
@@ -285,6 +287,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                                     else
                                     {
                                         this.MainForm.LocalizationDatalists[i].Datalists[j].DatalistItems[k].Action = "Update Error";
+                                        log.Error("Error Confirmation_LocalizationDatalists.LoadGrid Update Error " +
+                                            "Contentid=" + datalist.ContentId);
                                         loadErrors++;
                                     }
                                 }
@@ -335,6 +339,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             }
 
             Cursor.Current = Cursors.Default;
+            log.Info("Tenant Configuration load complete. " + loadDatalistSuccessful + " DataLists loaded, " + loadDatalistItemSuccessful + " DataList Items loaded, and " + loadErrors + " errors reported.");
             MessageBox.Show("Tenant Configuration load complete. " + loadDatalistSuccessful + " DataLists loaded, " + loadDatalistItemSuccessful + " DataList Items loaded, and " + loadErrors + " errors reported.", "Tenant Load Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }

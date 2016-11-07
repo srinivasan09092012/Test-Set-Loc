@@ -15,6 +15,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 {
     public partial class Confirmation_LocalizationLabels : Form
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private int loadDatalistsSuccessful = 0;
         private int loadDatalistItemSuccessful = 0;
         private int loadDatalistErrors = 0;
@@ -135,6 +137,15 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             // Read the database to see if the Datalist already exists and set the Id.
             datalist.Id = datalist.GetDataListId(datalist);
 
+            if (datalist.Id == null)
+            {
+                datalist = datalist.AddDataList(datalist);
+            }
+            else
+            {
+                updated = datalist.UpdateDataList(datalist);
+            }
+
             return datalist;
         }
 
@@ -233,21 +244,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             }
         }
 
-        private DatalistItem AddDataListItem(DatalistItem datalistItem)
-        {
-            // Add the DatalistItem
-            try
-            {
-                datalistItem = datalistItem.AddDataListItem(datalistItem);
-            }
-            catch
-            {
-                datalistItem = null;
-            }
-
-            return datalistItem;
-        }
-
         private bool UpdateDataListItem(DatalistItem datalistItem)
         {
             // Update the DatalistItem
@@ -270,6 +266,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             Cursor.Current = Cursors.WaitCursor;
 
             int currentRow = 0;
+            bool added = false;
 
             // Load the module specific Messages DataList. (i.e. Module.Msg)
             Datalist datalist = LoadDataList(this.MainForm.LocalizationLabels[0].Module.Name + " Labels",
@@ -300,16 +297,18 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         if (datalistItem.Id == null)
                         {
                             // Add the DatalistItem
-                            datalistItem = datalistItem.AddDataListItem(datalistItem);
+                            added = datalistItem.AddDataListItem(datalistItem);
 
-                            if (datalistItem != null)
+                            if (added)
                             {
                                 this.MainForm.LocalizationLabels[i].Labels[j].Action = "Added";
                                 loadDatalistItemSuccessful++;
                             }
                             else
                             {
-                                this.MainForm.LocalizationLabels[i].Labels[j].Action = "Add Error";
+                                this.MainForm.LocalizationLabels[i].Labels[j].Action = "Add Error ";
+                                log.Error("Error Confirmation_LocalizationLabels.LoadGrid Add Error" + 
+                                    "ContentId=" + datalistItem.ContentId);
                                 loadDatalistItemErrors++;
                             }
                         }
@@ -324,8 +323,11 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                             else
                             {
                                 this.MainForm.LocalizationLabels[i].Labels[j].Action = "Update Error";
+                                log.Error("Error Confirmation_LocalizationLabels.LoadGrid Update Error " +
+                                    "ContentId=" + datalistItem.ContentId);
                                 loadDatalistItemErrors++;
                             }
+
                         }
                     }
                     else
@@ -352,7 +354,13 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             }
 
             Cursor.Current = Cursors.Default;
-            MessageBox.Show("Tenant Configuration Messages load complete. " + "\n" +
+            log.Info("Tenant Configuration Labels load complete. " + "\n" +
+                loadDatalistsSuccessful + " DataLists Loaded, " + "\n" +
+                loadDatalistItemSuccessful + " DataList Items loaded, " + "\n" +
+                loadDatalistErrors + " DataList errors reported, and " + "\n" +
+                loadDatalistItemErrors + " DataList item errors reported. ");
+
+            MessageBox.Show("Tenant Configuration Labels load complete. " + "\n" +
                 loadDatalistsSuccessful + " DataLists Loaded, " + "\n" +
                 loadDatalistItemSuccessful + " DataList Items loaded, " + "\n" +
                 loadDatalistErrors + " DataList errors reported, and " + "\n" +

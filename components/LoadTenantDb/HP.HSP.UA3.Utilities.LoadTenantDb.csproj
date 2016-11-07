@@ -49,6 +49,10 @@
     <Reference Include="HP.HSP.UA3.Core.BAS.CQRS">
       <HintPath>..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.1.0.0\lib\net45\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.TeamFoundation.Client">
       <HintPath>..\..\..\Packages\Microsoft.TeamFoundation.14.0\lib\net45\Microsoft.TeamFoundation.Client.dll</HintPath>

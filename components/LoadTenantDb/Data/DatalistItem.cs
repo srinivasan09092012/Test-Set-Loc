@@ -20,6 +20,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
     public class DatalistItem
     {
         private WebRefDataListsMaint.DataListsServiceClient clientLicense = new WebRefDataListsMaint.DataListsServiceClient();
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public DatalistItem()
         {
@@ -276,8 +277,15 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             {
                 response = this.clientLicense.UpdateDataListItem(command);
             }
-            catch
+            catch(Exception ex)
             {
+                log.Error("ERROR UpdateDataListItem ContentId=" + dataListItem.ContentId, ex);
+                log.Error("StackTrace=" + ex.StackTrace);
+                if (ex.InnerException != null)
+                {
+                    log.Error("Inner Exception Message=" + ex.InnerException);
+                }
+                log.Error("DataListItem=" + dataListItem.ToString());
                 return false;
             }
 
@@ -291,7 +299,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             }
         }
 
-        public DatalistItem AddDataListItem(DatalistItem dataListItem)
+        public bool AddDataListItem(DatalistItem dataListItem)
         {
             DataListsService.DataListItemAdded response = null;
 
@@ -323,19 +331,27 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             {
                 response = this.clientLicense.AddDataListItem(command);
             }
-            catch
+
+            catch(Exception ex)
             {
-                return null;
+                log.Error("ERROR AddDataListItem ContentId=" + dataListItem.ContentId, ex);
+                log.Error("StackTrace=" + ex.StackTrace);
+                if (ex.InnerException != null)
+                {
+                    log.Error("Inner Exception Message=" + ex.InnerException);
+                }
+                log.Error("DataListItem=" + dataListItem.ToString());
+                return false;                
             }
 
             if (response.DataListItemId != null)
             {
                 dataListItem.Id = response.DataListItemId;
-                return dataListItem;
+                return true;
             }
             else
             {
-                return null;
+                return false;
             }
         }
 
@@ -442,6 +458,67 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             HttpResponseMessage response = client.GetAsync(objDataQuery).Result;
+        }
+       
+        public override string ToString()
+        {           
+            String returnString = string.Concat("DataListId=[", this.DataListId, "]\n",
+                "Id=[", this.Id, "]\n",
+                "Key=[" , this.Key, "]\n",
+                "ContentId=[", this.ContentId, "]\n",
+                "OrderIndex=[", this.OrderIndex, "]\n",
+                "IsActive=[", this.IsActive, "]\n",
+                "EffectiveDate=[", this.EffectiveDate, "]\n",
+                "EndDate=[", this.EndDate, "]\n",
+                "IdentifierId=[", this.IdentifierId, "]\n",
+                "TenantId=[", this.TenantId, "]\n",
+                "DataListId=[", this.DataListId, "]\n");
+
+            if(this.DataListItemLinks != null)
+            {
+                foreach (DatalistItemLink datalistItemLink in this.DataListItemLinks)
+                {
+                    String returnLinkString = string.Concat("LINK\n", "ChilId=[", datalistItemLink.ChildId, "]\n",
+                        "ParentId=[", datalistItemLink.ParentId, "]\n",
+                        "Link=[", datalistItemLink.Link, "]\n",
+                        "Description=[", datalistItemLink.Description, "]\n",
+                        "Code=[", datalistItemLink.Code, "]\n",
+                        "Active=[", datalistItemLink.Active, "]\n",
+                        "LastModified=[", datalistItemLink.LastModified, "]\n",
+                        "DataListItemId=[", datalistItemLink.DataListItemId, "]\n");
+                    returnString += returnLinkString;
+                }
+            }
+
+            if (this.DataListItemLanguages != null)
+            {
+                foreach (DatalistItemLanguage datalistItemLanguage in this.DataListItemLanguages)
+                {
+                    String returnLangString = string.Concat("LANGUAGE\n", "Locale=[", datalistItemLanguage.Locale, "]\n",
+                        "Description=[", datalistItemLanguage.Description, "]\n",
+                        "IsActive=[", datalistItemLanguage.IsActive, "]\n",
+                        "Description=[", datalistItemLanguage.Description, "]\n",
+                        "DataListItemId=[", datalistItemLanguage.DataListItemId, "]\n",
+                        "LongDescription=[", datalistItemLanguage.LongDescription, "]\n");
+                    returnString += returnLangString;
+                }
+            }  
+
+            if(this.DataListItemAttributeValues != null)
+            {
+                foreach (DatalistItemAttributeValue datalistItemAttributeValue in this.DataListItemAttributeValues)
+                {
+                    String returnAttributeString = string.Concat("ATTRIBUTE\n", "DataListsAttributeValueId=[", datalistItemAttributeValue.DataListsAttributeValueId, "]\n",
+                        "DataListsItemId=[", datalistItemAttributeValue.DataListsItemId, "]\n",
+                        "DataListAttributeId=[", datalistItemAttributeValue.DataListAttributeId, "]\n" +
+                        "DataListAttributeText=[", datalistItemAttributeValue.DataListAttributeText, "]\n",
+                        "DataListsItemValueId=[", datalistItemAttributeValue.DataListsItemValueId, "]\n",
+                        "DataListsItemValueText=[", datalistItemAttributeValue.DataListsItemValueText, "]\n");
+                    returnString += returnAttributeString;
+                }
+            }
+
+            return returnString;
         }
     }
 }

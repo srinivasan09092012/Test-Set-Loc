@@ -18,6 +18,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 {
     public partial class Confirmation_AppSettings : Form
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public Confirmation_AppSettings()
         {
             InitializeComponent();
@@ -120,6 +122,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     else
                     {
                         this.MainForm.AppSettings[i].Action = "Update Error";
+                        log.Error("Error Confirmation_AppSettings.LoadAppSettings Update Error " +
+                            "Id=" + item.Id);
                         loadErrors++;
                     }
                 }
@@ -143,6 +147,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     else
                     {
                         this.MainForm.AppSettings[i].Action = "Add Error";
+                        log.Error("Error Confirmation_AppSettings.LoadAppSettings Add Error " +
+                            "Id=" + item.Id);
                         loadErrors++;
                     }
                 }

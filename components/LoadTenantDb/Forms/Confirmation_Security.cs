@@ -25,6 +25,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 {
     public partial class ConfirmationSecurityDialog : Form
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public ConfirmationSecurityDialog()
         {
             this.InitializeComponent();
@@ -64,40 +66,64 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
             if (MainForm.SecurityRoles.Count > 0)
             {
+                int rolesAdded = 0;
                 for (int i = 0; i < MainForm.SecurityRoles[0].SecurityNodeAttribute.Count; i++)
                 {
-                    this.roleAttributesListBox.Items.Add(MainForm.SecurityRoles[0].SecurityNodeAttribute[i].Name);
-                    this.roleAttributesListBox.SetItemChecked(i, true);
+                    string roleName = MainForm.SecurityRoles[0].SecurityNodeAttribute[i].Name;
+                    if (roleName == "English Description" ||
+                        roleName == "Spanish Description" ||
+                        roleName == "roleType" ||
+                        roleName == "isInternal")
+                    {
+                        this.roleAttributesListBox.Items.Add(roleName);
+                        this.roleAttributesListBox.SetItemChecked(rolesAdded, true);
 
-                    lastCol = this.rolesGridView.ColumnCount;
-                    this.rolesGridView.ColumnCount++;
-                    this.rolesGridView.Columns[lastCol].Name = MainForm.SecurityRoles[0].SecurityNodeAttribute[i].Name;
+                        lastCol = this.rolesGridView.ColumnCount;
+                        this.rolesGridView.ColumnCount++;
+                        this.rolesGridView.Columns[lastCol].Name = roleName;
+                        rolesAdded++;
+                    }
                 }
             }
 
             if (MainForm.SecurityFunctions.Count > 0)
             {
+                int functionsAdded = 0;
                 for (int i = 0; i < MainForm.SecurityFunctions[0].SecurityNodeAttribute.Count; i++)
                 {
-                    this.functionAttributesListBox.Items.Add(MainForm.SecurityFunctions[0].SecurityNodeAttribute[i].Name);
-                    this.functionAttributesListBox.SetItemChecked(i, true);
+                    string functionName = MainForm.SecurityFunctions[0].SecurityNodeAttribute[i].Name;
+                    if (functionName == "English Description" ||
+                        functionName == "Spanish Description")
+                    {
+                        this.functionAttributesListBox.Items.Add(functionName);
+                        this.functionAttributesListBox.SetItemChecked(functionsAdded, true);
 
-                    lastCol = this.functionsGridView.ColumnCount;
-                    this.functionsGridView.ColumnCount++;
-                    this.functionsGridView.Columns[lastCol].Name = MainForm.SecurityFunctions[0].SecurityNodeAttribute[i].Name;
+                        lastCol = this.functionsGridView.ColumnCount;
+                        this.functionsGridView.ColumnCount++;
+                        this.functionsGridView.Columns[lastCol].Name = functionName;
+                        functionsAdded++;
+                    }
                 }
             }
 
             if (MainForm.SecurityRights.Count > 0)
             {
+                int rightsAdded = 0;
                 for (int i = 0; i < MainForm.SecurityRights[0].SecurityNodeAttribute.Count; i++)
                 {
-                    this.rightAttributesListBox.Items.Add(MainForm.SecurityRights[0].SecurityNodeAttribute[i].Name);
-                    this.rightAttributesListBox.SetItemChecked(i, true);
+                    string rightName = MainForm.SecurityRights[0].SecurityNodeAttribute[i].Name;
+                    if (rightName == "English Description" ||
+                        rightName == "Spanish Description" ||
+                        rightName == "type")
+                    {
+                        this.rightAttributesListBox.Items.Add(rightName);
+                        this.rightAttributesListBox.SetItemChecked(rightsAdded, true);
 
-                    lastCol = this.rightsGridView.ColumnCount;
-                    this.rightsGridView.ColumnCount++;
-                    this.rightsGridView.Columns[lastCol].Name = MainForm.SecurityRights[0].SecurityNodeAttribute[i].Name;
+                        lastCol = this.rightsGridView.ColumnCount;
+                        this.rightsGridView.ColumnCount++;
+                        this.rightsGridView.Columns[lastCol].Name = rightName;
+                        rightsAdded++;
+                    }
                 }
             }
 
@@ -170,7 +196,9 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         private void ProcessLoad(object sender, EventArgs e)
         {
             string coreTenantModuleId;
-            int loadDatalistItemSuccessful = 0;
+            int loadRoleDatalistItemSuccessful = 0;
+            int loadFunctionDatalistItemSuccessful = 0;
+            int loadRightDatalistItemSuccessful = 0;
             int loadErrors = 0;
 
             Cursor.Current = Cursors.WaitCursor;
@@ -180,21 +208,29 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             {
                 if (this.loadRolesCheckbox.Checked == true)
                 {
-                    this.LoadSecurityRoles(coreTenantModuleId, ref loadDatalistItemSuccessful, ref loadErrors);
+                    this.LoadSecurityRoles(coreTenantModuleId, ref loadRoleDatalistItemSuccessful, ref loadErrors);
                 }
 
                 if (this.loadFunctionsCheckbox.Checked == true)
                 {
-                    this.LoadSecurityFunctions(coreTenantModuleId, ref loadDatalistItemSuccessful, ref loadErrors);
+                    this.LoadSecurityFunctions(coreTenantModuleId, ref loadFunctionDatalistItemSuccessful, ref loadErrors);
                 }
 
                 if (this.loadRightsCheckbox.Checked == true)
                 {
-                    this.LoadSecurityRights(coreTenantModuleId, ref loadDatalistItemSuccessful, ref loadErrors);
+                    this.LoadSecurityRights(coreTenantModuleId, ref loadRightDatalistItemSuccessful, ref loadErrors);
                 }
 
                 Cursor.Current = Cursors.Default;
-                MessageBox.Show("Tenant Configuration load complete. " + loadDatalistItemSuccessful + " DataList Items loaded and " + loadErrors + " errors reported.", "Tenant Load Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                log.Info("Tenant Configuration load complete. Roles =" + loadRoleDatalistItemSuccessful + 
+                    " Functions =" + loadFunctionDatalistItemSuccessful +
+                    " Rights = " + loadRightDatalistItemSuccessful +
+                    " DataList Items loaded and " + loadErrors + " errors reported.");
+                MessageBox.Show("Tenant Configuration load complete. Roles = " + loadRoleDatalistItemSuccessful +
+                    " Functions =" + loadFunctionDatalistItemSuccessful +
+                    " Rights = " + loadRightDatalistItemSuccessful +
+                    " DataList Items loaded and " + loadErrors + " errors reported.", "Tenant Load Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
         }
 
@@ -202,6 +238,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         {
             int currentRow = 0;
             bool updated = true;
+            bool added = false;
             DatalistItem parentDatalistItem = new DatalistItem();
             Datalist parentDatalist = new Datalist();
 
@@ -260,17 +297,11 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
                     if (datalistItem.Id == null)
                     {
-                        try
-                        {
-                            datalistItem.Id = this.MainForm.SecurityRoles[i].Id;
-                            datalistItem = datalistItem.AddDataListItem(datalistItem);
-                        }
-                        catch
-                        {
-                            datalistItem = null;
-                        }
 
-                        if (datalistItem != null)
+                        datalistItem.Id = this.MainForm.SecurityRoles[i].Id;
+                        added = datalistItem.AddDataListItem(datalistItem);
+
+                        if (added)
                         {
                             parentDatalistItem = datalistItem;
                             this.MainForm.SecurityRoles[i].Action = "Added";
@@ -279,7 +310,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         else
                         {
                             this.MainForm.SecurityRoles[i].Action = "Add Error";
+                            log.Error("Error Confirmation_Security.LoadSecurityRoles Add Error " +
+                                "ContentId=" + datalistItem.ContentId);
                             loadErrors++;
+                            continue;
                         }
                     }
                     else
@@ -302,22 +336,9 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         else
                         {
                             this.MainForm.SecurityRoles[i].Action = "Update Error";
+                            log.Error("Error Confirmation_Security.LoadSecurityRoles Update Error " +
+                                "ContentId=" + datalistItem.ContentId);
                             loadErrors++;
-                        }
-                    }
-
-                    datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListItemAttrKey, "false", "false", "false");
-                    datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheItemLinkerKey, "false", "false", "false");
-                    datalistItem.RefreshCache(string.Empty, "false", "false", "true");
-
-                    if (parentDatalist != null && parentDatalistItem != null)
-                    {
-                        for (int j = 2; j < this.roleAttributesListBox.Items.Count; j++)
-                        {
-                            if (this.roleAttributesListBox.GetItemChecked(j))
-                            {
-                                this.CreateAttributeDataLists(datalist.TenantModuleId, parentDatalist, parentDatalistItem, this.roleAttributesListBox.Items[j].ToString(), this.MainForm.SecurityRoles[i].SecurityNodeAttribute[j].Value);
-                            }
                         }
                     }
 
@@ -345,13 +366,14 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     this.rolesGridView.Refresh();
                     currentRow++;
                 }
-            }
+             }
         }
 
         private void LoadSecurityFunctions(string tenantModuleId, ref int loadDatalistItemSuccessful, ref int loadErrors)
         {
             int currentRow = 0;
             bool updated = true;
+            bool added = false;
             DatalistItem parentDatalistItem = new DatalistItem();
             Datalist parentDatalist = new Datalist();
 
@@ -410,17 +432,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
                     if (datalistItem.Id == null)
                     {
-                        try
-                        {
-                            datalistItem.Id = this.MainForm.SecurityFunctions[i].Id;
-                            datalistItem = datalistItem.AddDataListItem(datalistItem);
-                        }
-                        catch
-                        {
-                            datalistItem = null;
-                        }
+                        datalistItem.Id = this.MainForm.SecurityFunctions[i].Id;
+                        added = datalistItem.AddDataListItem(datalistItem);
 
-                        if (datalistItem != null)
+                        if (added)
                         {
                             parentDatalistItem = datalistItem;
                             this.MainForm.SecurityFunctions[i].Action = "Added";
@@ -429,7 +444,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         else
                         {
                             this.MainForm.SecurityFunctions[i].Action = "Add Error";
+                            log.Error("Error Confirmation_Security.LoadSecurityFunctions Add Error " +
+                                "ContentId=" + datalistItem.ContentId);
                             loadErrors++;
+                            continue;
                         }
                     }
                     else
@@ -452,6 +470,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         else
                         {
                             this.MainForm.SecurityFunctions[i].Action = "Update Error";
+                            log.Error("Error Confirmation_Security.LoadSecurityFunctions Update Error " +
+                                "ContentId=" + datalistItem.ContentId);
                             loadErrors++;
                         }
                     }
@@ -486,27 +506,14 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                             if (!updated)
                             {
                                 this.MainForm.SecurityFunctions[i].Action = "Link Error";
+                                log.Error("Error Confirmation_Security.LoadSecurityFunctions Link Error " +
+                                    "ContentId=" + datalistItem.ContentId);
                                 loadDatalistItemSuccessful--;
                                 loadErrors++;
                             }
                         }
                     }
-
-                    datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListItemAttrKey, "false", "false", "false");
-                    datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheItemLinkerKey, "false", "false", "false");
-                    datalistItem.RefreshCache(string.Empty, "false", "false", "true");
-
-                    if (parentDatalist != null && parentDatalistItem != null)
-                    {
-                        for (int j = 2; j < this.functionAttributesListBox.Items.Count; j++)
-                        {
-                            if (this.functionAttributesListBox.GetItemChecked(j))
-                            {
-                                this.CreateAttributeDataLists(datalist.TenantModuleId, parentDatalist, parentDatalistItem, this.functionAttributesListBox.Items[j].ToString(), this.MainForm.SecurityFunctions[i].SecurityNodeAttribute[j].Value);
-                            }
-                        }
-                    }
-
+ 
                     this.functionsGridView.Rows[currentRow].Cells[0].Value = this.MainForm.SecurityFunctions[i].Action;
 
                     if (this.functionsGridView.Rows.Count > currentRow + 1)
@@ -538,6 +545,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         {
             int currentRow = 0;
             bool updated = true;
+            bool added = false;
             DatalistItem parentDatalistItem = new DatalistItem();
             parentDatalistItem.MainForm = this.MainForm;
             Datalist parentDatalist = new Datalist();
@@ -598,17 +606,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
                     if (datalistItem.Id == null)
                     {
-                        try
-                        {
-                            datalistItem.Id = this.MainForm.SecurityRights[i].Id;
-                            datalistItem = datalistItem.AddDataListItem(datalistItem);
-                        }
-                        catch
-                        {
-                            datalistItem = null;
-                        }
-
-                        if (datalistItem != null)
+                        datalistItem.Id = this.MainForm.SecurityRights[i].Id;
+                        added = datalistItem.AddDataListItem(datalistItem);
+ 
+                        if (added)
                         {
                             parentDatalistItem = datalistItem;
                             this.MainForm.SecurityRights[i].Action = "Added";
@@ -617,7 +618,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         else
                         {
                             this.MainForm.SecurityRights[i].Action = "Add Error";
+                            log.Error("Error Confirmation_Security.LoadSecurityRights Add Error " +
+                                "ContentId=" + datalistItem.ContentId);
                             loadErrors++;
+                            continue;
                         }
                     }
                     else
@@ -640,6 +644,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         else
                         {
                             this.MainForm.SecurityRights[i].Action = "Update Error";
+                            log.Error("Error Confirmation_Security.LoadSecurityRights Update Error " +
+                                "ContentId=" + datalistItem.ContentId);
                             loadErrors++;
                         }
                     }
@@ -674,23 +680,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                             if (!updated)
                             {
                                 this.MainForm.SecurityRights[i].Action = "Link Error";
+                                log.Error("Error Confirmation_Security.LoadSecurityRights Link Error " +
+                                    "ContentId=" + datalistItem.ContentId);
                                 loadDatalistItemSuccessful--;
                                 loadErrors++;
-                            }
-                        }
-                    }
-
-                    datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListItemAttrKey, "false", "false", "false");
-                    datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheItemLinkerKey, "false", "false", "false");
-                    datalistItem.RefreshCache(string.Empty, "false", "false", "true");
-
-                    if (parentDatalist != null && parentDatalistItem != null)
-                    {
-                        for (int j = 2; j < this.rightAttributesListBox.Items.Count; j++)
-                        {
-                            if (this.rightAttributesListBox.GetItemChecked(j))
-                            {
-                                this.CreateAttributeDataLists(datalist.TenantModuleId, parentDatalist, parentDatalistItem, this.rightAttributesListBox.Items[j].ToString(), this.MainForm.SecurityRights[i].SecurityNodeAttribute[j].Value);
                             }
                         }
                     }
@@ -725,6 +718,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         private void CreateAttributeDataLists(string tenantModuleId, Datalist parentDatalist, DatalistItem parentDatalistItem, string attribute, string attributeValue)
         {
             bool updated = false;
+            bool added = false;
             int numAttributeIdx = 0;
             int numAttributeValueIdx = 0;
 
@@ -768,10 +762,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 attributeDatalistItem.DataListItemLanguages[0].Description = attributeValue;
                 attributeDatalistItem.DataListItemLanguages[0].IsActive = true;
                 attributeDatalistItem.DataListItemLanguages[0].DataListItemId = null;
-                attributeDatalistItem = attributeDatalistItem.AddDataListItem(attributeDatalistItem);
+                added = attributeDatalistItem.AddDataListItem(attributeDatalistItem);
             }
 
-            if (attributeDatalist.Id != null && attributeDatalistItem.Id != null)
+            if (added && attributeDatalistItem.Id != null)
             {
                 bool newAttribute = true;
                 bool newAttributeValue = true;

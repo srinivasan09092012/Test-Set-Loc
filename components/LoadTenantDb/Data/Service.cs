@@ -68,7 +68,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             }
         }
 
-        public Service AddService(Service service)
+        public bool AddService(Service service)
         {
             ServiceService.ServiceAdded response = null;
 
@@ -100,19 +100,19 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
                 response = this.clientLicense.AddService(command);
                 this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheFullServiceTableKey);
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                return false;
             }
 
             if (response.ServiceId != null)
             {
                 service.ServiceId = Guid.Parse(response.ServiceId);
-                return service;
+                return true;
             }
             else
             {
-                return null;
+                return false;
             }
         }
 
@@ -174,6 +174,20 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             HttpResponseMessage response = client.GetAsync(objDataQuery).Result;
+        }
+
+        public override string ToString()
+        {
+            String returnString = string.Concat("ServiceId=[", this.ServiceId, "]\n",
+                "TenantModuleId=[", this.TenantModuleId, "]\n",
+                "Name=[", this.Name, "]\n",
+                "SecurityRightItemId=[", this.SecurityRightItemId, "]\n",
+                "LabelItemContentId=[", this.LabelItemContentId, "]\n",
+                "DefaultText=[", this.DefaultText, "]\n",
+                "IocContainer=[", this.IocContainer, "]\n",
+                "BaseUrl=[", this.BaseUrl, "]\n");
+
+            return returnString;
         }
     }
 }
