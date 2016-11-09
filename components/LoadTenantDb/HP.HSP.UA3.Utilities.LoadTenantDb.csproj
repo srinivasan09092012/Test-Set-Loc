@@ -103,6 +103,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\AppSetting.cs" />
+    <Compile Include="Data\HtmlBlock.cs" />
+    <Compile Include="Data\HtmlBlockLanguage.cs" />
     <Compile Include="Data\MenuItem.cs" />
     <Compile Include="Data\Service.cs" />
     <Compile Include="Data\DatalistItemAttribute.cs" />
@@ -124,6 +126,12 @@
     </Compile>
     <Compile Include="Forms\Confirmation_AppSettings.Designer.cs">
       <DependentUpon>Confirmation_AppSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Confirmation_LocalizationHtmlBlocks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Confirmation_LocalizationHtmlBlocks.Designer.cs">
+      <DependentUpon>Confirmation_LocalizationHtmlBlocks.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Confirmation_LocalizationLabels.cs">
       <SubType>Form</SubType>
@@ -185,6 +193,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\HtmlBlockService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\MenuService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -197,6 +210,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\Confirmation_AppSettings.resx">
       <DependentUpon>Confirmation_AppSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Confirmation_LocalizationHtmlBlocks.resx">
+      <DependentUpon>Confirmation_LocalizationHtmlBlocks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Confirmation_LocalizationDatalists.resx">
       <DependentUpon>Confirmation_LocalizationDatalists.cs</DependentUpon>
@@ -321,6 +337,37 @@
     <None Include="Service References\DataListsService\HP.HSP.UA3.Utilities.LoadTenantDb.DataListsService.DataListsUpdated.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\HtmlBlockService\HP.HSP.UA3.Utilities.LoadTenantDb.HtmlBlockService.HtmlBlockAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\HtmlBlockService\HP.HSP.UA3.Utilities.LoadTenantDb.HtmlBlockService.HtmlBlockUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\HtmlBlockService\HtmlBlockService.wsdl" />
+    <None Include="Service References\HtmlBlockService\HtmlBlockService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\HtmlBlockService\HtmlBlockService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\HtmlBlockService\HtmlBlockService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\HtmlBlockService\HtmlBlockService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\HtmlBlockService\HtmlBlockService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\HtmlBlockService\HtmlBlockService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\HtmlBlockService\HtmlBlockService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\HtmlBlockService\HtmlBlockService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MenuService\HP.HSP.UA3.Utilities.LoadTenantDb.MenuService.MenuAdded.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -401,6 +448,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AppSettingService\" />
     <WCFMetadataStorage Include="Service References\DataListsService\" />
+    <WCFMetadataStorage Include="Service References\HtmlBlockService\" />
     <WCFMetadataStorage Include="Service References\MenuService\" />
     <WCFMetadataStorage Include="Service References\ServiceService\" />
   </ItemGroup>
@@ -463,6 +511,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\MenuService\MenuService1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\HtmlBlockService\HtmlBlockService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\HtmlBlockService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\HtmlBlockService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\HtmlBlockService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Commands" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Commands" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/HtmlBlockService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Domain" />
+  <xs:import schemaLocation="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/HtmlBlockService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
+  <xs:complexType name="AddHtmlBlockCommand">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q1:Command">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Domain" minOccurs="0" name="HtmlBlock" nillable="true" type="q2:HtmlBlock" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddHtmlBlockCommand" nillable="true" type="tns:AddHtmlBlockCommand" />
+  <xs:complexType name="UpdateHtmlBlockCommand">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q3:Command">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Domain" minOccurs="0" name="HtmlBlock" nillable="true" type="q4:HtmlBlock" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateHtmlBlockCommand" nillable="true" type="tns:UpdateHtmlBlockCommand" />
+</xs:schema>

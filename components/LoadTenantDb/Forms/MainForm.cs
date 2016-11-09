@@ -28,6 +28,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.InitializeComponent();
 
             this.AppSettings = new List<AppSettingNode>();
+            this.LocalizationHtmlBlocks = new List<LocalizationLocaleNode>();
             this.LocalizationDatalists = new List<LocalizationLocaleNode>();
             this.LocalizationLabelsEnglish = new List<LocalizationDatalistItemNode>();
             this.LocalizationLabelsSpanish = new List<LocalizationDatalistItemNode>();
@@ -73,6 +74,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
         public List<LocalizationLocaleNode> LocalizationDatalists { get; set; }
 
+        public List<LocalizationLocaleNode> LocalizationHtmlBlocks { get; set; }
+
         public List<LocalizationDatalistItemNode> LocalizationLabelsEnglish { get; set; }
 
         public List<LocalizationDatalistItemNode> LocalizationLabelsSpanish { get; set; }
@@ -97,13 +100,14 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
             this.configTypeComboBox.Items.Add("Application Settings");
             this.configTypeComboBox.Items.Add("Localization DataLists");
-            this.configTypeComboBox.Items.Add("Security Roles");
-            this.configTypeComboBox.Items.Add("Localization Messages");
+            this.configTypeComboBox.Items.Add("Localization HtmlBlocks");
             this.configTypeComboBox.Items.Add("Localization Labels");
-            this.configTypeComboBox.Items.Add("Model Definitions");
+            this.configTypeComboBox.Items.Add("Localization Messages");
             this.configTypeComboBox.Items.Add("Menu Items");
+            this.configTypeComboBox.Items.Add("Model Definitions");
+            this.configTypeComboBox.Items.Add("Security Roles");
             this.configTypeComboBox.Items.Add("Services");
-            this.configTypeComboBox.SelectedItem = "Localization DataLists";
+            this.configTypeComboBox.SelectedItem = "Application Settings";
 
             this.ODataEndpointAddress = ConfigurationManager.AppSettings["ODataEndpointAddress"];
         }
@@ -111,13 +115,15 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         private void NextButtonClick(object sender, EventArgs e)
         {
             log.Info("Load Process has Started");
+            this.AppSettings.Clear();
             this.LocalizationDatalists.Clear();
+            this.LocalizationHtmlBlocks.Clear();
             this.LocalizationLabels.Clear();
             this.LocalizationMessages.Clear();
             this.MenuItems.Clear();
-            this.SecurityRoles.Clear();
             this.ModelDefinitions.Clear();
             this.ModelProperties.Clear();
+            this.SecurityRoles.Clear();
             this.SecurityFunctions.Clear();
             this.SecurityRights.Clear();
             this.Services.Clear();
@@ -143,6 +149,12 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     localizationDatalistForm.MainForm = this;
                     localizationDatalistForm.ShowDialog();
                     localizationDatalistForm.Dispose();
+                    break;
+                case "Localization HtmlBlocks":
+                    Confirmation_LocalizationHtmlBlocks localizationHtmlBlockForm = new Confirmation_LocalizationHtmlBlocks();
+                    localizationHtmlBlockForm.MainForm = this;
+                    localizationHtmlBlockForm.ShowDialog();
+                    localizationHtmlBlockForm.Dispose();
                     break;
                 case "Localization Messages":
                     Confirmation_LocalizationMessages localizationMessageForm = new Confirmation_LocalizationMessages();
@@ -228,6 +240,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                                 else if (this.configTypeComboBox.SelectedItem.ToString() == "Localization DataLists" && sd.Name == "LocalizationConfiguration")
                                 {
                                     this.LoadLocalizationDatalistNodes(sd, checkedModule);
+                                }
+                                else if (this.configTypeComboBox.SelectedItem.ToString() == "Localization HtmlBlocks" && sd.Name == "LocalizationConfiguration")
+                                {
+                                    this.LoadLocalizationHtmlBLocks(sd, checkedModule);
                                 }
                                 else if (this.configTypeComboBox.SelectedItem.ToString() == "Localization Messages" && sd.Name == "LocalizationConfiguration")
                                 {
@@ -675,6 +691,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 }
             }
         }
+
         private void LoadMenuItems(XmlNode sd, Module checkedModule)
         {
             foreach (XmlNode menu in sd.ChildNodes)
@@ -814,6 +831,41 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             }
         }
 
+        private void LoadLocalizationHtmlBLocks(XmlNode sd, Module checkedModule)
+        {
+            foreach (XmlNode locales in sd.ChildNodes)
+            {
+                foreach (XmlNode locale in locales.ChildNodes)
+                {
+                    LocalizationLocaleNode localizationLocaleNode = new LocalizationLocaleNode();
+                    localizationLocaleNode.Module.Name = checkedModule.Name;
+                    localizationLocaleNode.Module.Id = checkedModule.Id;
+                    localizationLocaleNode.Id = locale.Attributes["id"].Value;
+                    localizationLocaleNode.LocaleId = locale.Attributes["localeId"].Value;
+                    localizationLocaleNode.Name = locale.Attributes["name"].Value;
+                    this.LocalizationHtmlBlocks.Add(localizationLocaleNode);
+
+                    foreach (XmlNode htmlBlocks in locale.ChildNodes)
+                    {
+                        if (htmlBlocks.Name == "LocaleHtmlBlocks")
+                        {
+                            foreach (XmlNode htmlBlock in htmlBlocks.ChildNodes)
+                            {
+                                LocalizationHtmlBlockNode localizationHtmlBlockNode = new LocalizationHtmlBlockNode();
+                                localizationHtmlBlockNode.Id = htmlBlock.Attributes["id"].Value;
+                                localizationHtmlBlockNode.ContentId = htmlBlock.Attributes["contentId"].Value;
+                                localizationHtmlBlockNode.LocaleId = htmlBlock.Attributes["localeId"].Value;
+                                foreach (XmlNode html in htmlBlock.ChildNodes)
+                                {
+                                    localizationHtmlBlockNode.Html = html.InnerText;
+                                }
+                                localizationLocaleNode.HtmlBlocks.Add(localizationHtmlBlockNode);
+                            }
+                        }
+                    }
+                }
+            }
+        }
         private void LoadLocalizationLabels(XmlNode sd, Module checkedModule)
         {
             foreach (XmlNode locales in sd.ChildNodes)
@@ -1057,6 +1109,19 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
         }
 
+        public class LocalizationHtmlBlockNode
+        {
+            public string Action { get; set; }
+
+            public string Id { get; set; }
+
+            public string LocaleId { get; set; }
+
+            public string Html { get; set; }
+
+            public string ContentId { get; set; }
+        }
+
         public class LocalizationLabelNode
         {
             public string Action { get; set; }
@@ -1116,12 +1181,15 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             public LocalizationLocaleNode()
             {
                 this.Datalists = new List<LocalizationDatalistNode>();
+                this.HtmlBlocks = new List<LocalizationHtmlBlockNode>();
                 this.Module = new Module();
                 this.Messages = new List<LocalizationMessageNode>();
                 this.Labels = new List<LocalizationLabelNode>();
             }
 
             public List<LocalizationDatalistNode> Datalists { get; set; }
+
+            public List<LocalizationHtmlBlockNode> HtmlBlocks { get; set; }
 
             public Module Module { get; set; }
 

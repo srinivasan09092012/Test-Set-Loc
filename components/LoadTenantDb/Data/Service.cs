@@ -51,21 +51,26 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
 
         public string GetServiceId(Service service)
         {
+            string id = null;
             this.ConnectionStringSettings = ConfigurationManager.ConnectionStrings["DefaultConnection"];
-            this.session = new DbSession(this.ConnectionStringSettings.ProviderName, this.ConnectionStringSettings.ConnectionString);
-
-            ServiceDbContext serviceDbContext = new ServiceDbContext(this.session);
-
-            var serviceId = (from s in serviceDbContext.Set<HP.HSP.UA3.Core.BAS.CQRS.DataAccess.Entities.Service>() where s.ServiceID == service.ServiceId select s.ServiceID).FirstOrDefault();
-
-            if (serviceId.Equals(new Guid("{00000000-0000-0000-0000-000000000000}")))
+            using (this.session = new DbSession(this.ConnectionStringSettings.ProviderName, this.ConnectionStringSettings.ConnectionString))
             {
-                return null;
+
+                ServiceDbContext serviceDbContext = new ServiceDbContext(this.session);
+
+                var serviceId = (from s in serviceDbContext.Set<HP.HSP.UA3.Core.BAS.CQRS.DataAccess.Entities.Service>() where s.ServiceID == service.ServiceId select s.ServiceID).FirstOrDefault();
+
+                if (serviceId.Equals(new Guid("{00000000-0000-0000-0000-000000000000}")))
+                {
+                    id = null;
+                }
+                else
+                {
+                    id = serviceId.ToString();
+                }
             }
-            else
-            {
-                return serviceId.ToString();
-            }
+
+            return id;
         }
 
         public bool AddService(Service service)
