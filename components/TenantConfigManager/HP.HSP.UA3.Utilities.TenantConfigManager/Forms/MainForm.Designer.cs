@@ -126,13 +126,9 @@
             this.EndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Addresses = new System.Windows.Forms.DataGridViewButtonColumn();
             this.emailTemplatesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.HtmlBlocksGridView = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.localeIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contentIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.htmlDataGridViewButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.htmlBlockBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.LabelsGridView = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -208,9 +204,6 @@
             this.tabPage14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EmailTemplatesGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emailTemplatesBindingSource)).BeginInit();
-            this.tabPage8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.HtmlBlocksGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.htmlBlockBindingSource)).BeginInit();
             this.tabPage10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LabelsGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelBindingSource)).BeginInit();
@@ -584,7 +577,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LocalizationTabControl.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.LocalizationTabControl.Controls.Add(this.tabPage14);
-            this.LocalizationTabControl.Controls.Add(this.tabPage8);
             this.LocalizationTabControl.Controls.Add(this.tabPage10);
             this.LocalizationTabControl.Controls.Add(this.tabPage11);
             this.LocalizationTabControl.Location = new System.Drawing.Point(0, 46);
@@ -738,38 +730,6 @@
             this.emailTemplatesBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.LocaleConfigurationEmailTemplateModel);
             this.emailTemplatesBindingSource.CurrentItemChanged += new System.EventHandler(this.emailTemplatesBindingSource_CurrentItemChanged);
             // 
-            // tabPage8
-            // 
-            this.tabPage8.Controls.Add(this.HtmlBlocksGridView);
-            this.tabPage8.Location = new System.Drawing.Point(4, 25);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(967, 422);
-            this.tabPage8.TabIndex = 1;
-            this.tabPage8.Text = "Html Blocks";
-            this.tabPage8.UseVisualStyleBackColor = true;
-            // 
-            // HtmlBlocksGridView
-            // 
-            this.HtmlBlocksGridView.AutoGenerateColumns = false;
-            this.HtmlBlocksGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.HtmlBlocksGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.HtmlBlocksGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.HtmlBlocksGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn2,
-            this.localeIdDataGridViewTextBoxColumn1,
-            this.contentIdDataGridViewTextBoxColumn1,
-            this.htmlDataGridViewButtonColumn});
-            this.HtmlBlocksGridView.DataSource = this.htmlBlockBindingSource;
-            this.HtmlBlocksGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HtmlBlocksGridView.Location = new System.Drawing.Point(3, 3);
-            this.HtmlBlocksGridView.Name = "HtmlBlocksGridView";
-            this.HtmlBlocksGridView.Size = new System.Drawing.Size(961, 416);
-            this.HtmlBlocksGridView.TabIndex = 2;
-            this.HtmlBlocksGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.HtmlBlocksGridView_CellContentClick);
-            this.HtmlBlocksGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.HtmlBlocksGridView_CellEnter);
-            this.HtmlBlocksGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.HtmlBlocksGridView_DefaultValuesNeeded);
-            this.HtmlBlocksGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.HtmlBlocksGridView_UserDeletingRow);
             // 
             // idDataGridViewTextBoxColumn2
             // 
@@ -800,27 +760,6 @@
             this.contentIdDataGridViewTextBoxColumn1.HeaderText = "Content ID";
             this.contentIdDataGridViewTextBoxColumn1.Name = "contentIdDataGridViewTextBoxColumn1";
             this.contentIdDataGridViewTextBoxColumn1.Width = 83;
-            // 
-            // htmlDataGridViewButtonColumn
-            // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.htmlDataGridViewButtonColumn.DefaultCellStyle = dataGridViewCellStyle16;
-            this.htmlDataGridViewButtonColumn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.htmlDataGridViewButtonColumn.HeaderText = "Html";
-            this.htmlDataGridViewButtonColumn.MinimumWidth = 70;
-            this.htmlDataGridViewButtonColumn.Name = "htmlDataGridViewButtonColumn";
-            this.htmlDataGridViewButtonColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.htmlDataGridViewButtonColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.htmlDataGridViewButtonColumn.Text = "Edit";
-            this.htmlDataGridViewButtonColumn.ToolTipText = "Edit the html text.";
-            this.htmlDataGridViewButtonColumn.UseColumnTextForButtonValue = true;
-            this.htmlDataGridViewButtonColumn.Width = 70;
-            // 
-            // htmlBlockBindingSource
-            // 
-            this.htmlBlockBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.LocaleConfigurationHtmlBlockModel);
-            this.htmlBlockBindingSource.CurrentItemChanged += new System.EventHandler(this.htmlBlockBindingSource_CurrentItemChanged);
             // 
             // tabPage10
             // 
@@ -1555,9 +1494,6 @@
             this.tabPage14.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.EmailTemplatesGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emailTemplatesBindingSource)).EndInit();
-            this.tabPage8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.HtmlBlocksGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.htmlBlockBindingSource)).EndInit();
             this.tabPage10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.LabelsGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelBindingSource)).EndInit();
@@ -1609,7 +1545,6 @@
         private System.Windows.Forms.CheckBox AutoTranslateCheckBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabControl LocalizationTabControl;
-        private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.TabPage tabPage10;
         private System.Windows.Forms.TabPage tabPage11;
         private System.Windows.Forms.ComboBox LocaleDropdown;
@@ -1619,13 +1554,11 @@
         private System.Windows.Forms.TabPage tabPage12;
         private System.Windows.Forms.DataGridView DisplaySizesGridView;
         private System.Windows.Forms.DataGridView SecurityRolesGridView;
-        private System.Windows.Forms.DataGridView HtmlBlocksGridView;
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userConfigurationToolStripMenuItem;
         private System.Windows.Forms.BindingSource displaySizeBindingSource;
         private System.Windows.Forms.BindingSource dataListBindingSource;
-        private System.Windows.Forms.BindingSource htmlBlockBindingSource;
         private System.Windows.Forms.ComboBox AppTierDropdown;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.BindingSource localeConfigurationBindingSource;
@@ -1674,7 +1607,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn localeIdDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn contentIdDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewButtonColumn htmlDataGridViewButtonColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn scopeDataGridViewTextBoxColumn;

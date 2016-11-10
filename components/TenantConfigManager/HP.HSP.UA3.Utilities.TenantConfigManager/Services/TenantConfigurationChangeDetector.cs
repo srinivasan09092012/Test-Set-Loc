@@ -388,7 +388,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Services
                 {
                     DetectChanges(o.LocaleDataLists, c.LocaleDataLists, results, _order++);
                     DetectChanges(o.LocaleEmailTemplates, c.LocaleEmailTemplates, results, _order++);
-                    DetectChanges(o.LocaleHtmlBlocks, c.LocaleHtmlBlocks, results, _order++);
                     DetectChanges(o.LocaleLabels, c.LocaleLabels, results, _order++);
                     DetectChanges(o.LocaleMessages, c.LocaleMessages, results, _order++);
                 });
@@ -415,17 +414,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Services
                     p => p.LocaleId,
                     p => p.MessageType,
                     p => p.Text
-                });
-        }
-
-        private void DetectChanges(List<LocaleConfigurationHtmlBlockModel> original, List<LocaleConfigurationHtmlBlockModel> changed, List<ConfigurationChange> results, int order)
-        {
-            DetectChanges(original, changed, "Localized Hml Block", results, _order, p => p.Id,
-                new Func<LocaleConfigurationHtmlBlockModel, object>[]
-                {
-                    p => p.ContentId,
-                    p => p.Html.OuterXml,
-                    p => p.LocaleId
                 });
         }
 
