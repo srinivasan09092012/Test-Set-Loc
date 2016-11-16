@@ -105,6 +105,7 @@
     <Compile Include="Data\AppSetting.cs" />
     <Compile Include="Data\HtmlBlock.cs" />
     <Compile Include="Data\HtmlBlockLanguage.cs" />
+    <Compile Include="Data\IocConfiguration.cs" />
     <Compile Include="Data\MenuItem.cs" />
     <Compile Include="Data\Service.cs" />
     <Compile Include="Data\DatalistItemAttribute.cs" />
@@ -126,6 +127,12 @@
     </Compile>
     <Compile Include="Forms\Confirmation_AppSettings.Designer.cs">
       <DependentUpon>Confirmation_AppSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Confirmation_IocSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Confirmation_IocSettings.Designer.cs">
+      <DependentUpon>Confirmation_IocSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Confirmation_LocalizationHtmlBlocks.cs">
       <SubType>Form</SubType>
@@ -210,6 +217,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\Confirmation_AppSettings.resx">
       <DependentUpon>Confirmation_AppSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Confirmation_IocSettings.resx">
+      <DependentUpon>Confirmation_IocSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Confirmation_LocalizationHtmlBlocks.resx">
       <DependentUpon>Confirmation_LocalizationHtmlBlocks.cs</DependentUpon>

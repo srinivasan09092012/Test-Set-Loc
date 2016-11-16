@@ -28,6 +28,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.InitializeComponent();
 
             this.AppSettings = new List<AppSettingNode>();
+            this.IocSettings = new List<IocSettingNode>();
             this.LocalizationHtmlBlocks = new List<LocalizationLocaleNode>();
             this.LocalizationDatalists = new List<LocalizationLocaleNode>();
             this.LocalizationLabelsEnglish = new List<LocalizationDatalistItemNode>();
@@ -51,6 +52,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         }
 
         public List<AppSettingNode> AppSettings { get; set; }
+
+        public List<IocSettingNode> IocSettings { get; set; }
 
         public List<SecurityNode> SecurityRoles { get; set; }
 
@@ -99,6 +102,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.nextButton.Enabled = false;
 
             this.configTypeComboBox.Items.Add("Application Settings");
+            this.configTypeComboBox.Items.Add("IOC Configurations");
             this.configTypeComboBox.Items.Add("Localization DataLists");
             this.configTypeComboBox.Items.Add("Localization HtmlBlocks");
             this.configTypeComboBox.Items.Add("Localization Labels");
@@ -116,6 +120,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         {
             log.Info("Load Process has Started");
             this.AppSettings.Clear();
+            this.IocSettings.Clear();
             this.LocalizationDatalists.Clear();
             this.LocalizationHtmlBlocks.Clear();
             this.LocalizationLabels.Clear();
@@ -137,6 +142,12 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     appSettingForm.MainForm = this;
                     appSettingForm.ShowDialog();
                     appSettingForm.Dispose();
+                    break;
+                case "IOC Configurations":
+                    Confirmation_IocSettings iocSettingForm = new Confirmation_IocSettings();
+                    iocSettingForm.MainForm = this;
+                    iocSettingForm.ShowDialog();
+                    iocSettingForm.Dispose();
                     break;
                 case "Security Roles":
                     ConfirmationSecurityDialog securityForm = new ConfirmationSecurityDialog();
@@ -265,6 +276,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                                 {
                                     this.LoadAppSettings(sd, checkedModule);
                                 }
+                                else if (this.configTypeComboBox.SelectedItem.ToString() == "IOC Configurations" && sd.Name == "IocConfiguration")
+                                {
+                                    this.LoadIocSettings(sd, checkedModule);
+                                }
                                 else if (this.configTypeComboBox.SelectedItem.ToString() == "Services" && sd.Name == "Services")
                                 {
                                     this.LoadServices(sd, checkedModule);
@@ -288,6 +303,19 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 appSettingNode.Value = appSetting.Attributes["value"].Value;
 
                 this.AppSettings.Add(appSettingNode);
+            }
+        }
+
+        private void LoadIocSettings(XmlNode sd, Module checkedModule)
+        {
+            foreach (XmlNode iocSetting in sd.ChildNodes)
+            {
+                IocSettingNode iocSettingNode = new IocSettingNode();
+                iocSettingNode.Module.Name = checkedModule.Name;
+                iocSettingNode.Module.Id = checkedModule.Id;
+                iocSettingNode.Value = iocSetting.Value.ToString().Trim();
+
+                this.IocSettings.Add(iocSettingNode);
             }
         }
 
@@ -1090,6 +1118,22 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
             public string Key { get; set; }
 
+            public string Value { get; set; }
+        }
+
+        public class IocSettingNode
+        {
+            public IocSettingNode()
+            {
+                this.Module = new Module();
+            }
+
+            public Module Module { get; set; }
+
+            public string Action { get; set; }
+
+            public string Id { get; set; }
+                        
             public string Value { get; set; }
         }
 
