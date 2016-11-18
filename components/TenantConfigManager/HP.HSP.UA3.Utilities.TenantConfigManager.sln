@@ -1,11 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP.HSP.UA3.Utilities.TenantConfigManager", "HP.HSP.UA3.Utilities.TenantConfigManager\HP.HSP.UA3.Utilities.TenantConfigManager.csproj", "{3F6CE6D8-A08D-456D-965D-BCFA53C3A953}"
 EndProject
 Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfspro.austin.hp.com/tfs/tfs01
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = HP.HSP.UA3.Utilities.TenantConfigManager\\HP.HSP.UA3.Utilities.TenantConfigManager.csproj
+		SccProjectName1 = HP.HSP.UA3.Utilities.TenantConfigManager
+		SccLocalPath1 = HP.HSP.UA3.Utilities.TenantConfigManager
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -18,14 +27,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 2
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfspro.austin.hpecorp.net/tfs/tfs01
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = HP.HSP.UA3.Utilities.TenantConfigManager\\HP.HSP.UA3.Utilities.TenantConfigManager.csproj
-		SccProjectName1 = HP.HSP.UA3.Utilities.TenantConfigManager
-		SccLocalPath1 = HP.HSP.UA3.Utilities.TenantConfigManager
 	EndGlobalSection
 EndGlobal
