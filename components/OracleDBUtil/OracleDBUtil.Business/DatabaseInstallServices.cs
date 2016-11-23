@@ -56,6 +56,11 @@ namespace OracleDBUtil.Business
                     Console.WriteLine("Installing " + script);
                     string scriptText = File.ReadAllText(script);
 
+                    if(scriptText.Contains("NOPARTITION"))
+                    {
+                        scriptText = scriptText.Replace("NOPARTITION", string.Empty);
+                    }
+
                     if(scriptText.Contains("USING INDEX PCTFREE"))
                     {
                         scriptText = scriptText.Substring(0, scriptText.IndexOf("USING INDEX PCTFREE")).TrimEnd() + ")";
