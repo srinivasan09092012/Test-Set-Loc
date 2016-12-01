@@ -78,6 +78,24 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 case "ProgramIntegrity":
                     return ConfigurationManager.AppSettings["ProgramIntegrityTenantModuleId"];
 
+                case "MemberManagement":
+                    return ConfigurationManager.AppSettings["MemberManagementTenantModuleId"];
+
+                case "NetworkManagement":
+                    return ConfigurationManager.AppSettings["NetworkManagementTenantModuleId"];
+
+                case "TPLBillings":
+                    return ConfigurationManager.AppSettings["TPLBillingsTenantModuleId"];
+
+                case "TPLCaseTracking":
+                    return ConfigurationManager.AppSettings["TPLCaseTrackingTenantModuleId"];
+
+                case "TPLHIPP":
+                    return ConfigurationManager.AppSettings["TPLHIPPTenantModuleId"];
+
+                case "TPLPolicy":
+                    return ConfigurationManager.AppSettings["TPLPolicyTenantModuleId"];
+
                 default:
                     return null;
             }
