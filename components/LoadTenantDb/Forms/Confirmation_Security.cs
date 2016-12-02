@@ -48,8 +48,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.loadRightsCheckbox.Checked = true;
 
             if (MainForm.SecurityFunctions.Count > 0 &&
-                MainForm.SecurityRoles.Count > 0 &&
-                MainForm.SecurityRights.Count > 0)
+                MainForm.SecurityRoles.Count > 0)
             {
                 this.loadPushButton.Enabled = true;
             }
@@ -216,7 +215,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     this.LoadSecurityFunctions(coreTenantModuleId, ref loadFunctionDatalistItemSuccessful, ref loadErrors);
                 }
 
-                if (this.loadRightsCheckbox.Checked == true)
+                if (this.loadRightsCheckbox.Checked == true && MainForm.SecurityRights.Count > 0)
                 {
                     this.LoadSecurityRights(coreTenantModuleId, ref loadRightDatalistItemSuccessful, ref loadErrors);
                 }
@@ -250,6 +249,11 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             datalist.IsActive = true;
             datalist.ContentId = "Core.SecurityRoles";
             datalist.Id = datalist.GetDataListId(datalist);
+            if (datalist.Id == "00000000-0000-0000-0000-000000000000")
+            {
+                datalist.Id = null;
+            }
+
             datalist.Name = "Security Roles";
             datalist.Description = "Security Roles";
 
@@ -263,6 +267,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             }
 
             parentDatalist = datalist;
+            bool createAttribute = true;
 
             for (int i = 0; i < MainForm.SecurityRoles.Count; i++)
             {
@@ -297,6 +302,13 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
                     if (datalistItem.Id == null)
                     {
+                        //Check to see if we have a valid GUID if not error off and skip process 
+                        Guid testNewGuid;
+                        if (!Guid.TryParse(this.MainForm.SecurityRoles[i].Id, out testNewGuid))
+                        {
+                            log.Error("Error Confirmation_Security.LoadSecurityRoles Add Error " +
+                              "INVALID GUID=" + this.MainForm.SecurityRoles[i].Id);
+                        }
 
                         datalistItem.Id = this.MainForm.SecurityRoles[i].Id;
                         added = datalistItem.AddDataListItem(datalistItem);
@@ -342,6 +354,51 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         }
                     }
 
+                    if (createAttribute)
+                    {
+                        //Add RoleType Attribute
+                        List<string> attributeValuesRoleType = new List<string>();
+                        attributeValuesRoleType.Add("U");
+                        attributeValuesRoleType.Add("A");
+                        this.CreateAttributeDataListsWithValue(datalist.TenantModuleId, parentDatalist, "roleType", attributeValuesRoleType);
+
+                        //Add IsInternal Attribute
+                        List<string> attributeValuesIsInternal = new List<string>();
+                        attributeValuesIsInternal.Add("true");
+                        attributeValuesIsInternal.Add("false");
+                        this.CreateAttributeDataListsWithValue(datalist.TenantModuleId, parentDatalist, "isInternal", attributeValuesIsInternal);
+
+                        datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListItemAttrKey, "false", "false", "false");
+                        datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheItemLinkerKey, "false", "false", "false");
+                        datalistItem.RefreshCache("FullCodeTableKey", "true", "false", "true");
+
+                        createAttribute = false;
+                    }
+
+                    string attributeValue = null;
+                    for (int j = 0; j < MainForm.SecurityRoles[i].SecurityNodeAttribute.Count; j++)
+                    {
+                        string roleName = MainForm.SecurityRoles[i].SecurityNodeAttribute[j].Name;
+
+                        if (roleName == "roleType")
+                        {
+                            attributeValue = MainForm.SecurityRoles[i].SecurityNodeAttribute[j].Value;
+                            updateDataListItemAttributeWithValue(
+                               "roleType",
+                                attributeValue,
+                               datalist,
+                               datalistItem);                         
+                        } 
+                        else if(roleName == "isInternal")
+                        {
+                            updateDataListItemAttributeWithValue(
+                                  "isInternal",
+                                   attributeValue,
+                                  datalist,
+                                  datalistItem);
+                        }
+                    }
+
                     this.rolesGridView.Rows[currentRow].Cells[0].Value = this.MainForm.SecurityRoles[i].Action;
 
                     if (this.rolesGridView.Rows.Count > currentRow + 1)
@@ -370,7 +427,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         }
 
         private void LoadSecurityFunctions(string tenantModuleId, ref int loadDatalistItemSuccessful, ref int loadErrors)
-        {
+        {            
             int currentRow = 0;
             bool updated = true;
             bool added = false;
@@ -385,6 +442,11 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             datalist.IsActive = true;
             datalist.ContentId = "Core.SecurityFunctions";
             datalist.Id = datalist.GetDataListId(datalist);
+            if (datalist.Id == "00000000-0000-0000-0000-000000000000")
+            {
+                datalist.Id = null;
+            }
+
             datalist.Name = "Security Functions";
             datalist.Description = "Security Functions";
 
@@ -432,6 +494,14 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
                     if (datalistItem.Id == null)
                     {
+                        //Check to see if we have a valid GUID if not error off and skip process 
+                        Guid testNewGuid;
+                        if (!Guid.TryParse(this.MainForm.SecurityFunctions[i].Id, out testNewGuid))
+                        {
+                            log.Error("Error Confirmation_Security.LoadSecurityFunctions Add Error " +
+                              "INVALID GUID=" + this.MainForm.SecurityFunctions[i].Id);
+                        }
+
                         datalistItem.Id = this.MainForm.SecurityFunctions[i].Id;
                         added = datalistItem.AddDataListItem(datalistItem);
 
@@ -473,7 +543,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                             log.Error("Error Confirmation_Security.LoadSecurityFunctions Update Error " +
                                 "ContentId=" + datalistItem.ContentId);
                             loadErrors++;
-                        }
+                        }                        
                     }
 
                     if (!string.IsNullOrEmpty(MainForm.SecurityFunctions[i].ParentLink) &&
@@ -545,7 +615,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         {
             int currentRow = 0;
             bool updated = true;
-            bool added = false;
+            bool added = false;           
             DatalistItem parentDatalistItem = new DatalistItem();
             parentDatalistItem.MainForm = this.MainForm;
             Datalist parentDatalist = new Datalist();
@@ -559,6 +629,11 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             datalist.IsActive = true;
             datalist.ContentId = "Core.SecurityRights";
             datalist.Id = datalist.GetDataListId(datalist);
+            if (datalist.Id == "00000000-0000-0000-0000-000000000000")
+            {
+                datalist.Id = null;
+            }
+
             datalist.Name = "Security Rights";
             datalist.Description = "Security Rights";
 
@@ -572,6 +647,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             }
 
             parentDatalist = datalist;
+            bool createAttribute = true;
 
             for (int i = 0; i < MainForm.SecurityRights.Count; i++)
             {
@@ -606,7 +682,15 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
                     if (datalistItem.Id == null)
                     {
-                        datalistItem.Id = this.MainForm.SecurityRights[i].Id;
+                        //Check to see if we have a valid GUID if not error off and skip process 
+                        Guid testNewGuid;
+                        if (!Guid.TryParse(this.MainForm.SecurityRights[i].Id, out testNewGuid))
+                        {
+                            log.Error("Error Confirmation_Security.LoadSecurityRights Add Error " +
+                              "INVALID GUID=" + this.MainForm.SecurityRights[i].Id);
+                        }
+
+                        datalistItem.Id = this.MainForm.SecurityRights[i].Id;                        
                         added = datalistItem.AddDataListItem(datalistItem);
  
                         if (added)
@@ -685,6 +769,45 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                                 loadDatalistItemSuccessful--;
                                 loadErrors++;
                             }
+                        }
+                    }
+
+                    if (createAttribute)
+                    {
+                        //Add Type Attribute
+                        List<string> attributeValuesType = new List<string>();
+                        attributeValuesType.Add("Application");
+                        attributeValuesType.Add("Page");
+                        attributeValuesType.Add("Service");
+                        attributeValuesType.Add("Component");
+                        attributeValuesType.Add("Operation");
+                        attributeValuesType.Add("Control");
+                        attributeValuesType.Add("Property");
+                        attributeValuesType.Add("Other");
+                        this.CreateAttributeDataListsWithValue(datalist.TenantModuleId, parentDatalist, "type", attributeValuesType);
+
+                        datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListItemAttrKey, "false", "false", "false");
+                        datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheItemLinkerKey, "false", "false", "false");
+                        datalistItem.RefreshCache("FullCodeTableKey", "true", "false", "true");
+
+                        createAttribute = false;
+                    }
+
+
+
+                    string attributeValue = null;
+                    for (int j = 0; j < MainForm.SecurityRights[i].SecurityNodeAttribute.Count; j++)
+                    {
+                        string roleName = MainForm.SecurityRights[i].SecurityNodeAttribute[j].Name;
+
+                        if (roleName == "type")
+                        {
+                            attributeValue = MainForm.SecurityRights[i].SecurityNodeAttribute[j].Value;
+                            updateDataListItemAttributeWithValue(
+                               "type",
+                                attributeValue,
+                               datalist,
+                               datalistItem);
                         }
                     }
 
@@ -830,6 +953,222 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     updated = parentDatalistItem.UpdateDataListItem(parentDatalistItem);
                 }
             }
+        }
+
+        private void CreateAttributeDataListsWithValue(
+            string tenantModuleId,
+            Datalist parentDatalist,
+            string nameOfAttribute,
+            List<string> attributeValues)
+        {
+           bool updated = false;
+            List<bool> addedSuccessfullyList = new List<bool>();
+            List<DatalistItem> attributeDatalistItems = new List<DatalistItem>();            
+
+           bool addedSuccessfully = false;
+            int numAttributeIdx = 0;
+            bool addAttributeToDataList = true;
+            string defaultAttributeDatalistItemId = null;
+            DatalistItem attributeDatalistItem = null;
+
+            // Create Attribute DataList using the nameOfAttribute
+            Datalist attributeDatalist = new Datalist();
+            attributeDatalist.MainForm = this.MainForm;
+            attributeDatalist.ContentId = "Core.DataList.Attributes." + nameOfAttribute;
+            attributeDatalist.Id = attributeDatalist.GetDataListId(attributeDatalist);
+
+            if (attributeDatalist.Id == null)
+            {
+                attributeDatalist.TenantId = MainForm.TenantId;
+                attributeDatalist.TenantModuleId = tenantModuleId;
+                attributeDatalist.IdentifierId = "USER1";
+                attributeDatalist.IsActive = true;
+                attributeDatalist.Name = nameOfAttribute + " Attribute";
+                attributeDatalist.Description = nameOfAttribute + " Attribute";                
+                attributeDatalist = attributeDatalist.AddDataList(attributeDatalist);
+
+                // Create Attribute DataList Item with all values passed in 
+                foreach (string attributeValue in attributeValues)
+                {
+                    attributeDatalistItem = new DatalistItem();
+                    attributeDatalistItem.MainForm = this.MainForm;
+                    attributeDatalistItem.ContentId = attributeDatalist.ContentId;
+                    attributeDatalistItem.Key = attributeValue;
+                    attributeDatalistItem.Id = attributeDatalistItem.GetDataListItemId(attributeDatalist, attributeDatalistItem);
+
+                    if (attributeDatalistItem.Id == null)
+                    {
+                        if (attributeDatalistItem.DataListItemLanguages.Count == 0)
+                        {
+                            attributeDatalistItem.DataListItemLanguages.Add(new DatalistItemLanguage());
+                        }
+
+                        attributeDatalistItem.DataListId = attributeDatalist.Id;
+                        attributeDatalistItem.TenantId = this.MainForm.TenantId;
+                        attributeDatalistItem.IdentifierId = "USER1";
+                        attributeDatalistItem.IsActive = true;
+                        attributeDatalistItem.OrderIndex = 0;
+                        attributeDatalistItem.DataListItemLanguages[0].Locale = "en-us";
+                        attributeDatalistItem.DataListItemLanguages[0].Description = attributeValue;
+                        attributeDatalistItem.DataListItemLanguages[0].IsActive = true;
+                        attributeDatalistItem.DataListItemLanguages[0].DataListItemId = null;
+                        addedSuccessfully = attributeDatalistItem.AddDataListItem(attributeDatalistItem);
+                        if (addedSuccessfully)
+                        {
+                            attributeDatalistItems.Add(attributeDatalistItem);
+                        }
+                        addedSuccessfullyList.Add(addedSuccessfully);
+                    }
+                }
+
+                //If all attribute values where added succesfully then continue              
+                foreach (bool added in addedSuccessfullyList)
+                {
+                    if (!added)
+                    {
+                        addAttributeToDataList = false;
+                        break;
+                    }
+                }
+            }
+
+
+            //Check to see if Attribute has already been Added to the DataList, assumes exists data list with
+            //the attribute already
+            parentDatalist.GetDataListDirect(parentDatalist);
+            string parentAttributeDataListId = attributeDatalist.GetDataList(attributeDatalist);
+            if (parentAttributeDataListId == "00000000-0000-0000-0000-000000000000")
+            {
+                parentAttributeDataListId = null;
+            }
+
+            //Add the Attribute to the data list if needed
+            if (addAttributeToDataList && parentAttributeDataListId == null)
+            {
+                //Get default id for Type attribute
+                if (nameOfAttribute == "roleType")
+                {
+                    if (attributeDatalistItems.Count == 0)
+                    {
+                        attributeDatalistItem = new DatalistItem();
+                        attributeDatalistItem.Key = "U";
+                        defaultAttributeDatalistItemId = attributeDatalistItem.GetDataListItemId(attributeDatalist, attributeDatalistItem);
+
+                    }
+                    else
+                    {
+                        defaultAttributeDatalistItemId = attributeDatalistItems[0].Id;
+                    }
+                }
+                else if (nameOfAttribute == "isInternal")
+                {
+                    if (attributeDatalistItems.Count == 0)
+                    {
+                        attributeDatalistItem = new DatalistItem();
+                        attributeDatalistItem.Key = "true";
+                        defaultAttributeDatalistItemId = attributeDatalistItem.GetDataListItemId(attributeDatalist, attributeDatalistItem);
+
+                    }
+                    else
+                    {
+                        defaultAttributeDatalistItemId = attributeDatalistItems[0].Id;
+                    }
+                }
+                else if (nameOfAttribute == "type")
+                {
+                    if (attributeDatalistItems.Count == 0)
+                    {
+                        attributeDatalistItem = new DatalistItem();
+                        attributeDatalistItem.Key = "Page";
+                        defaultAttributeDatalistItemId = attributeDatalistItem.GetDataListItemId(attributeDatalist, attributeDatalistItem);
+
+                    }
+                    else
+                    {
+                        defaultAttributeDatalistItemId = attributeDatalistItems[0].Id;
+                    }
+                }
+
+                //Update the Datalist with the Attribute 
+                numAttributeIdx = parentDatalist.DataListItemAttributes.Count;
+                parentDatalist.DataListItemAttributes.Add(new DatalistItemAttribute());
+                parentDatalist.DataListItemAttributes[numAttributeIdx].IsActive = true;
+                parentDatalist.DataListItemAttributes[numAttributeIdx].TypeName = nameOfAttribute;
+                parentDatalist.DataListItemAttributes[numAttributeIdx].DataListId = parentDatalist.Id;
+                parentDatalist.DataListItemAttributes[numAttributeIdx].TypeDataListId = attributeDatalist.Id;
+                //Pick the first datalist attribute item as the default value
+                parentDatalist.DataListItemAttributes[numAttributeIdx].TypeDefaultItemId = defaultAttributeDatalistItemId;
+                updated = parentDatalist.UpdateDataList(parentDatalist);
+            }
+        }
+
+        private bool updateDataListItemAttributeWithValue(
+            string nameOfAttribute,
+            string attributeValue,
+            Datalist parentDatalist,
+            DatalistItem parentDatalistItem)
+        {
+            int numAttributeValueIdx = 0;
+            int numAttributeIdx = 0;
+            bool updateSuccess = true;
+            List<DatalistItem> attributeDataListItems = new List<DatalistItem>();
+            Datalist attributeDatalist = new Datalist();
+            DatalistItem attributeDatalistItem = new DatalistItem();
+            string attributeDataListItemIdToUse = null;
+            bool updated = false;
+
+            //For this attribute(nameOfAttribute) get a list of data list items
+            try
+            {
+                attributeDatalist.ContentId = "Core.DataList.Attributes." + nameOfAttribute;
+                attributeDatalist.Id = attributeDatalist.GetDataListId(attributeDatalist);
+                attributeDatalistItem.Key = attributeValue;
+                attributeDataListItemIdToUse = attributeDatalistItem.GetDataListItemId(attributeDatalist, attributeDatalistItem);
+            }
+            catch
+            {
+                updateSuccess = false;
+            }
+
+            if (updateSuccess && attributeDataListItemIdToUse != null)
+            {
+
+                // Update the DataList Item with new Attribute Values
+                parentDatalist.GetDataListDirect(parentDatalist);
+                string parentDataListemItemId = parentDatalistItem.GetDataListItemId(parentDatalist, parentDatalistItem);
+
+                //Set DataListItem ID on language so it will not try to perform and add
+                foreach (DatalistItemLanguage datalistItemLanguage in parentDatalistItem.DataListItemLanguages)
+                {
+                    datalistItemLanguage.DataListItemId = parentDataListemItemId;
+                }
+
+                for (int i = 0; i < parentDatalist.DataListItemAttributes.Count; i++)
+                {
+                    if (parentDatalist.DataListItemAttributes[i].TypeName == nameOfAttribute)
+                    {
+                        numAttributeIdx = i;
+                        break;
+                    }
+                }
+
+                //Update the datalist item with the attribute value
+                numAttributeValueIdx = parentDatalistItem.DataListItemAttributeValues.Count;
+                parentDatalistItem.DataListItemAttributeValues.Add(new DatalistItemAttributeValue());
+                parentDatalistItem.DataListItemAttributeValues[numAttributeValueIdx].DataListsItemId = parentDatalistItem.Id;
+                parentDatalistItem.DataListItemAttributeValues[numAttributeValueIdx].DataListAttributeId = parentDatalist.DataListItemAttributes[numAttributeIdx].DataListsAttributeId;
+                parentDatalistItem.DataListItemAttributeValues[numAttributeValueIdx].DataListsItemValueId = attributeDataListItemIdToUse;
+                try
+                {
+                    updated = parentDatalistItem.UpdateDataListItem(parentDatalistItem);
+                }
+                catch
+                {
+                    updateSuccess = false;
+                }
+            }
+
+            return updateSuccess;
         }
     }
 }

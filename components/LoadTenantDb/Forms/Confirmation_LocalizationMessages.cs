@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HP.HSP.UA3.Administration.UX.Common;
 
 namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 {
@@ -135,6 +136,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             datalist.ContentId = contentId;
             // Read the database to see if the Datalist already exists and set the Id.
             datalist.Id = Datalist.GetDataListId(contentId);
+            if(datalist.Id == "00000000-0000-0000-0000-000000000000")
+            {
+                datalist.Id = null;
+            }
 
             if (datalist.Id == null)
             {
@@ -176,19 +181,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             }
 
             return itemId;
-        }
-
-        private void CreateAttributeValues(Datalist datalist, DatalistItem datalistItem, String typeAttribute)
-        {
-            // If the datalist item doesn't exist on the database yet, add the attribute value to it.
-            if (datalistItem.Id == null)
-            {
-                datalistItem.DataListItemAttributeValues.Add(new DatalistItemAttributeValue());
-                datalistItem.DataListItemAttributeValues[0].DataListsAttributeValueId = null;
-                datalistItem.DataListItemAttributeValues[0].DataListAttributeId = Datalist.GetAttributeId(datalist);  // GUID OF ATTRIBUTE ID column on ATTRIBUTES table.
-                datalistItem.DataListItemAttributeValues[0].DataListsItemId = null;
-                datalistItem.DataListItemAttributeValues[0].DataListsItemValueId = GetMessageTypeItemId(typeAttribute);
-            }
         }
 
         private void CreateDatalistItemLanguages(DatalistItem datalistItem, String locale, String text)
@@ -261,7 +253,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         private void LoadGrid()
         {
             Cursor.Current = Cursors.WaitCursor;
-            bool added = false;
+            bool added = false;            
 
             int currentRow = 0;
 
@@ -278,6 +270,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             messageTypeItems = DatalistItem.GetMessageTypeDatalistItems(messageTypeDatalist.Id);
 
             // Process each locale (i.e. English, Spanish, etc.)
+            bool createAttribute = true;
             for (int i = 0; i < this.MainForm.LocalizationMessages.Count; i++)
             {
                 // Process each message for a given locale.
@@ -293,8 +286,21 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         DatalistItem datalistItem = CreateDatalistItem(datalist, this.MainForm.LocalizationMessages[i].Messages[j].ContentId);
                         // Process the DatalistItemLanguages.
                         CreateDatalistItemLanguages(datalistItem, this.MainForm.LocalizationMessages[i].LocaleId.ToLower(), this.MainForm.LocalizationMessages[i].Messages[j].Text);
-                        // Process the attribute values.
-                        CreateAttributeValues(datalist, datalistItem, this.MainForm.LocalizationMessages[i].Messages[j].Type);
+
+                        List<string> attributeValues = new List<string>();
+                        if (createAttribute)
+                        {
+                            // Process the attribute values.                            
+                            attributeValues.Add("Info");
+                            attributeValues.Add("Success");
+                            attributeValues.Add("Question");
+                            attributeValues.Add("Warning");
+                            attributeValues.Add("Error");
+
+                            this.CreateAttributeDataListsWithValue(datalist.TenantModuleId, datalist, "MessageType", attributeValues);
+                            createAttribute = false;
+                        }
+
 
                         // Set the datalist id for the datalist item.
                         datalistItem.DataListId = datalist.Id;
@@ -334,6 +340,17 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                                 loadDatalistItemErrors++;
                             }
                         }
+
+
+                        datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListItemAttrKey, "false", "false", "false");
+                        datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheItemLinkerKey, "false", "false", "false");
+                        datalistItem.RefreshCache("FullCodeTableKey", "true", "false", "true");
+
+                        updateDataListItemAttributeWithValue(
+                            "MessageType",
+                            MainForm.LocalizationMessages[i].Messages[j].Type,
+                            datalist,
+                            datalistItem );
                     }
                     else
                     {
@@ -371,6 +388,193 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 loadDatalistErrors + " DataList errors reported " +
                 loadDatalistItemErrors + " DataList item errors reported. ",
                 "Tenant Load Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void CreateAttributeDataListsWithValue(
+            string tenantModuleId,
+            Datalist parentDatalist,
+            string nameOfAttribute,
+            List<string> attributeValues)
+        {
+            bool updated = false;
+            List<bool> addedSuccessfullyList = new List<bool>();
+            List<DatalistItem> attributeDatalistItems = new List<DatalistItem>();
+            bool addedSuccessfully = false;
+            int numAttributeIdx = 0;
+            bool addAttributeToDataList = true;
+            string defaultAttributeDatalistItemId = null;
+            DatalistItem attributeDatalistItem = null;
+
+            // Create Attribute DataList using the nameOfAttribute
+            Datalist attributeDatalist = new Datalist();
+            attributeDatalist.MainForm = this.MainForm;
+            attributeDatalist.ContentId = "Core.DataList.Attributes." + nameOfAttribute;
+            attributeDatalist.Id = attributeDatalist.GetDataListId(attributeDatalist);
+
+            if (attributeDatalist.Id == null)
+            {
+                attributeDatalist.TenantId = MainForm.TenantId;
+                attributeDatalist.TenantModuleId = tenantModuleId;
+                attributeDatalist.IdentifierId = "USER1";
+                attributeDatalist.IsActive = true;
+                attributeDatalist.Name = nameOfAttribute + " Attribute";
+                attributeDatalist.Description = nameOfAttribute + " Attribute";
+                attributeDatalist = attributeDatalist.AddDataList(attributeDatalist);
+
+                // Create Attribute DataList Item with all values passed in 
+                foreach (string attributeValue in attributeValues)
+                {
+                    attributeDatalistItem = new DatalistItem();
+                    attributeDatalistItem.MainForm = this.MainForm;
+                    attributeDatalistItem.ContentId = attributeDatalist.ContentId;
+                    attributeDatalistItem.Key = attributeValue;
+                    attributeDatalistItem.Id = attributeDatalistItem.GetDataListItemId(attributeDatalist, attributeDatalistItem);
+
+                    if (attributeDatalistItem.Id == null)
+                    {
+                        if (attributeDatalistItem.DataListItemLanguages.Count == 0)
+                        {
+                            attributeDatalistItem.DataListItemLanguages.Add(new DatalistItemLanguage());
+                        }
+
+                        attributeDatalistItem.DataListId = attributeDatalist.Id;
+                        attributeDatalistItem.TenantId = this.MainForm.TenantId;
+                        attributeDatalistItem.IdentifierId = "USER1";
+                        attributeDatalistItem.IsActive = true;
+                        attributeDatalistItem.OrderIndex = 0;
+                        attributeDatalistItem.DataListItemLanguages[0].Locale = "en-us";
+                        attributeDatalistItem.DataListItemLanguages[0].Description = attributeValue;
+                        attributeDatalistItem.DataListItemLanguages[0].IsActive = true;
+                        attributeDatalistItem.DataListItemLanguages[0].DataListItemId = null;
+                        addedSuccessfully = attributeDatalistItem.AddDataListItem(attributeDatalistItem);
+                        if (addedSuccessfully)
+                        {
+                            attributeDatalistItems.Add(attributeDatalistItem);
+                        }
+                        addedSuccessfullyList.Add(addedSuccessfully);
+                    }
+                }
+
+                //If all attribute values where added succesfully then continue              
+                foreach (bool added in addedSuccessfullyList)
+                {
+                    if (!added)
+                    {
+                        addAttributeToDataList = false;
+                        break;
+                    }
+                }
+            }
+
+            //Check to see if Attribute has already been Added to the DataList, assumes exists data list with
+            //the attribute already
+            parentDatalist.GetDataListDirect(parentDatalist);
+            string parentAttributeDataListId = attributeDatalist.GetDataList(attributeDatalist);
+            if (parentAttributeDataListId == "00000000-0000-0000-0000-000000000000")
+            {
+                parentAttributeDataListId = null;
+            }
+
+            //Add the Attribute to the data list if needed
+            if ((addAttributeToDataList && parentAttributeDataListId == null) || 
+                (addAttributeToDataList && parentDatalist.DataListItemAttributes.Count == 0))
+            {
+                //Get default id for Type attribute
+                if (nameOfAttribute == "MessageType")
+                {
+                    if (attributeDatalistItems.Count == 0)
+                    {
+                        attributeDatalistItem = new DatalistItem();
+                        attributeDatalistItem.Key = "Info";
+                        defaultAttributeDatalistItemId = attributeDatalistItem.GetDataListItemId(attributeDatalist, attributeDatalistItem);
+
+                    }
+                    else
+                    {
+                        defaultAttributeDatalistItemId = attributeDatalistItems[0].Id;
+                    }
+                }
+                   
+                //Update the Datalist with the Attribute 
+                numAttributeIdx = parentDatalist.DataListItemAttributes.Count;
+                parentDatalist.DataListItemAttributes.Add(new DatalistItemAttribute());
+                parentDatalist.DataListItemAttributes[numAttributeIdx].IsActive = true;
+                parentDatalist.DataListItemAttributes[numAttributeIdx].TypeName = nameOfAttribute;
+                parentDatalist.DataListItemAttributes[numAttributeIdx].DataListId = parentDatalist.Id;
+                parentDatalist.DataListItemAttributes[numAttributeIdx].TypeDataListId = attributeDatalist.Id;
+                //Pick the first datalist attribute item as the default value
+                parentDatalist.DataListItemAttributes[numAttributeIdx].TypeDefaultItemId = defaultAttributeDatalistItemId;
+                updated = parentDatalist.UpdateDataList(parentDatalist);
+            }            
+        }
+
+        private bool updateDataListItemAttributeWithValue(
+            string nameOfAttribute,
+            string attributeValue,
+            Datalist parentDatalist,
+            DatalistItem parentDatalistItem)
+        {
+            int numAttributeValueIdx = 0;
+            int numAttributeIdx = 0;
+            bool updateSuccess = true;
+            List<DatalistItem> attributeDataListItems = new List<DatalistItem>();
+            Datalist attributeDatalist = new Datalist();
+            DatalistItem attributeDatalistItem = new DatalistItem();
+            string attributeDataListItemIdToUse = null;
+            bool updated = false;
+
+            //For this attribute(nameOfAttribute) get a list of data list items
+            try
+            {
+                attributeDatalist.ContentId = "Core.DataList.Attributes." + nameOfAttribute;
+                attributeDatalist.Id = attributeDatalist.GetDataListId(attributeDatalist);
+                attributeDatalistItem.Key = attributeValue;
+                attributeDataListItemIdToUse = attributeDatalistItem.GetDataListItemId(attributeDatalist, attributeDatalistItem);
+            }
+            catch
+            {
+                updateSuccess = false;
+            }
+
+            if (updateSuccess && attributeDataListItemIdToUse != null)
+            {
+
+                // Update the DataList Item with new Attribute Values
+                parentDatalist.GetDataListDirect(parentDatalist);
+                string parentDataListemItemId = parentDatalistItem.GetDataListItemId(parentDatalist, parentDatalistItem);
+
+                //Set DataListItem ID on language so it will not try to perform and add
+                foreach (DatalistItemLanguage datalistItemLanguage in parentDatalistItem.DataListItemLanguages)
+                {
+                    datalistItemLanguage.DataListItemId = parentDataListemItemId;
+                }
+
+                for (int i = 0; i < parentDatalist.DataListItemAttributes.Count; i++)
+                {
+                    if (parentDatalist.DataListItemAttributes[i].TypeName == nameOfAttribute)
+                    {
+                        numAttributeIdx = i;
+                        break;
+                    }
+                }
+
+                //Update the datalist item with the attribute value
+                numAttributeValueIdx = parentDatalistItem.DataListItemAttributeValues.Count;
+                parentDatalistItem.DataListItemAttributeValues.Add(new DatalistItemAttributeValue());
+                parentDatalistItem.DataListItemAttributeValues[numAttributeValueIdx].DataListsItemId = parentDatalistItem.Id;
+                parentDatalistItem.DataListItemAttributeValues[numAttributeValueIdx].DataListAttributeId = parentDatalist.DataListItemAttributes[numAttributeIdx].DataListsAttributeId;
+                parentDatalistItem.DataListItemAttributeValues[numAttributeValueIdx].DataListsItemValueId = attributeDataListItemIdToUse;
+                try
+                {
+                    updated = parentDatalistItem.UpdateDataListItem(parentDatalistItem);
+                }
+                catch
+                {
+                    updateSuccess = false;
+                }
+            }
+
+            return updateSuccess;
         }
     }
 }

@@ -86,6 +86,57 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             return datalistId.ToString();
         }
 
+        public string GetDataListDirect(Datalist dataList)
+        {
+            DataListDBContext dataListDBContext = new DataListDBContext();
+
+            var result = from dl in dataListDBContext.DataLists
+                         join dlAttributes in dataListDBContext.DataListAttributes on dl.DataListsId equals dlAttributes.DataListsId
+                         where dl.ContentId == dataList.ContentId
+                         select new { Id = dl.DataListsId,
+                             ContentId = dl.ContentId,
+                             Description = dl.Description,
+                             Name = dl.DataListsName,
+                             TenantId = dl.TenantId.ToString(),
+                             TenantModuleId = dl.TenantModuleId.ToString(),
+                             IsActive = dl.IsActive,
+                             AttributesDataListId = dlAttributes.DataListsId,
+                             DataListsAttributeId = dlAttributes.DataListsAttributeId,
+                             TypeName = dlAttributes.TypeName,
+                             TypeDataListId = dlAttributes.TypeDataListsId,
+                             TypeDefaultItemId = dlAttributes.TypeDefaultItemId,
+                             AttributesIsActive = dlAttributes.IsActive
+                         };
+
+            string returnDatalistId = null;
+            List<DatalistItemAttribute> allDatalistItemAttributes = new List<DatalistItemAttribute>();
+            foreach (var singleResult in result)
+            {
+                returnDatalistId = singleResult.Id.ToString("D").ToUpper();
+                dataList.Id = singleResult.Id.ToString("D").ToUpper();
+                dataList.ContentId = singleResult.ContentId;
+                dataList.Description = singleResult.Description;
+                dataList.Name = singleResult.Name;
+                dataList.TenantId = singleResult.TenantId;
+                dataList.TenantModuleId = singleResult.TenantModuleId;
+                dataList.IsActive = singleResult.IsActive;
+
+                DatalistItemAttribute datalistItemAttributes = new DatalistItemAttribute();               
+                datalistItemAttributes.DataListId = singleResult.AttributesDataListId.ToString("D").ToUpper();
+                datalistItemAttributes.DataListsAttributeId = singleResult.DataListsAttributeId.ToString("D").ToUpper();
+                datalistItemAttributes.TypeName = singleResult.TypeName;
+                datalistItemAttributes.TypeDataListId = singleResult.TypeDataListId.ToString("D").ToUpper();
+                datalistItemAttributes.TypeDefaultItemId = singleResult.TypeDefaultItemId.ToString("D").ToUpper();
+                datalistItemAttributes.IsActive = singleResult.AttributesIsActive;
+
+                allDatalistItemAttributes.Add(datalistItemAttributes);                                        
+            }
+
+            dataList.DataListItemAttributes = allDatalistItemAttributes;
+
+            return returnDatalistId;
+        }
+
         public string GetDataList(Datalist dataList)
         {
             GetDataListId(dataList);
@@ -100,7 +151,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             HttpResponseMessage response = client.GetAsync(objDataQuery).Result;
-            while (!response.IsSuccessStatusCode && retryCount < 9999)
+            while (!response.IsSuccessStatusCode && retryCount < 100)
             {
                 response = client.GetAsync(objDataQuery).Result;
                 retryCount++;
