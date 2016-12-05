@@ -212,6 +212,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
         private void CreateDatalistItemLanguages(DatalistItem datalistItem, String locale, String text, String tooltip)
         {
+            if (text.Trim().Length == 0)
+            {
+                text = "No Description";
+            }
             // If the datalist item doesn't exist on the database yet, add the language to it.
             if (datalistItem.Id == null)
             {
