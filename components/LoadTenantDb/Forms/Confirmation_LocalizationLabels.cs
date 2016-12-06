@@ -95,6 +95,9 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
                 case "TPLPolicy":
                     return ConfigurationManager.AppSettings["TPLPolicyTenantModuleId"];
+                    
+                case "ManagedCare":
+                    return ConfigurationManager.AppSettings["ManagedCareTenantModuleId"];
 
                 default:
                     return null;
