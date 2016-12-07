@@ -79,6 +79,24 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 case "ProgramIntegrity":
                     return ConfigurationManager.AppSettings["ProgramIntegrityTenantModuleId"];
 
+                case "MemberManagement":
+                    return ConfigurationManager.AppSettings["MemberManagementTenantModuleId"];
+
+                case "NetworkManagement":
+                    return ConfigurationManager.AppSettings["NetworkManagementTenantModuleId"];
+
+                case "TPLBillings":
+                    return ConfigurationManager.AppSettings["TPLBillingsTenantModuleId"];
+
+                case "TPLCaseTracking":
+                    return ConfigurationManager.AppSettings["TPLCaseTrackingTenantModuleId"];
+
+                case "TPLHIPP":
+                    return ConfigurationManager.AppSettings["TPLHIPPTenantModuleId"];
+
+                case "TPLPolicy":
+                    return ConfigurationManager.AppSettings["TPLPolicyTenantModuleId"];
+
                 default:
                     return null;
             }
@@ -304,6 +322,13 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
                         // Set the datalist id for the datalist item.
                         datalistItem.DataListId = datalist.Id;
+
+                        //Check to see if the descirption is too long 
+                        if (this.MainForm.LocalizationMessages[i].Messages[j].Text.Length > 1000)
+                        {
+                            log.Error("Error Confirmation_LocalizationMessages.LoadGrid Error " +
+                              "DESCRIPTION TOO LONG - Max 1000 for Key=" + this.MainForm.LocalizationMessages[i].Messages[j].ContentId);
+                        }
 
                         // Determine if the DataList Item should be added or updated.
                         if (datalistItem.Id == null)

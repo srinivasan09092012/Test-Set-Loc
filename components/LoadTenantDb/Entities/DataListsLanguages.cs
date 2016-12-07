@@ -25,7 +25,7 @@ namespace HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities
         public string LocalId { get; set; }
 
         [Required]
-        [StringLength(400)]
+        [StringLength(1000)]
         [Column("DESCRIPTION")]
         public string Description { get; set; }
 
