@@ -22,6 +22,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
     {
         private WebRefDataListsMaint.DataListsServiceClient clientLicense = new WebRefDataListsMaint.DataListsServiceClient();
 
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public Datalist()
         {
             this.DataListItemAttributes = new List<DatalistItemAttribute>();
@@ -237,7 +239,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
                 this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheItemLinkerKey, "false", "false", "false");
                 this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheLocalLanguageKey, "false", "false", "false");
                 this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListAttrKey, "false", "false", "false");
-                this.RefreshCache(string.Empty, "false", "false", "true");
+                this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListsKey, "false", "false", "true");
             }
             catch
             {
@@ -281,15 +283,26 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             try
             {
                 response = this.clientLicense.AddDataList(command);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Datalist.AddDataList ERROR Datalist Exception", ex);
+                throw (ex);
+            }
+
+            try
+            {
                 this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheItemLinkerKey, "false", "false", "false");
                 this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheLocalLanguageKey, "false", "false", "false");
                 this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListAttrKey, "false", "false", "false");
-                this.RefreshCache(string.Empty, "false", "false", "true");
+                this.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListsKey, "false", "false", "true");
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                log.Error("Datalist.AddDataList ERROR Refersh Cache Exception", ex);
+                throw (ex);
             }
+
 
             if (response.DataListId != null)
             {
