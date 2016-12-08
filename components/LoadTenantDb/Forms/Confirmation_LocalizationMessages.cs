@@ -97,6 +97,9 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 case "TPLPolicy":
                     return ConfigurationManager.AppSettings["TPLPolicyTenantModuleId"];
 
+                case "ManagedCare":
+                    return ConfigurationManager.AppSettings["ManagedCareTenantModuleId"];
+
                 default:
                     return null;
             }
@@ -371,10 +374,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheItemLinkerKey, "false", "false", "false");
                         datalistItem.RefreshCache("FullCodeTableKey", "true", "false", "true");
 
-                        updateDataListItemAttributeWithValue(
-                            "MessageType",
-                            MainForm.LocalizationMessages[i].Messages[j].Type,
-                            datalist,
+                            updateDataListItemAttributeWithValue(
+                                "MessageType",
+                                MainForm.LocalizationMessages[i].Messages[j].Type,
+                                datalist,
                             datalistItem );
                     }
                     else
