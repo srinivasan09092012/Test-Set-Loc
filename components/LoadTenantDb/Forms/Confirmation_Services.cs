@@ -69,70 +69,105 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             bool updated = true;
             bool added = false;
             string tenantModuleId = string.Empty;
+            bool skipProcessing = false;
 
             for (int i = 0; i < MainForm.Services.Count; i++)
             {
+                skipProcessing = false;
                 tenantModuleId = ConfigurationManager.AppSettings[this.MainForm.Services[i].IocContainer + "TenantModuleId"];
 
                 if (tenantModuleId != null)
                 {
                     Service service = new Service();
                     service.MainForm = this.MainForm;
-                    service.ServiceId = Guid.Parse(this.MainForm.Services[i].Id);
+                    //Check to see if we have a valid GUID if not error off and skip process 
+                    Guid testNewGuid;
+                    if (!Guid.TryParse(this.MainForm.Services[i].Id, out testNewGuid))
+                    {
+                        log.Error("Error Confirmation_Services.LoadServices Id Error " +
+                            "Service Name = " + this.MainForm.Services[i].Id +
+                            "INVALID Security Right Item GUID=" + this.MainForm.Services[i].Id);
+                        skipProcessing = true;
+                        this.MainForm.Services[i].Action = "Add Error";
+                        loadErrors++;
+                    }
+                    else
+                    {
+                        service.ServiceId = Guid.Parse(this.MainForm.Services[i].Id);
+                    }
+
                     service.TenantModuleId = Guid.Parse(tenantModuleId);
                     service.Name = this.MainForm.Services[i].Name;
 
                     if (this.MainForm.Services[i].SecurityRightId != "")
                     {
-                        service.SecurityRightItemId = Guid.Parse(this.MainForm.Services[i].SecurityRightId);
-                    }
-                        
-                    service.LabelItemContentId = this.MainForm.Services[i].LabelConentID;
-                    service.DefaultText = this.MainForm.Services[i].DefaultText;
-                    service.BaseUrl = this.MainForm.Services[i].BaseURL;
-                    service.IocContainer = this.MainForm.Services[i].IocContainer;
-
-                    if (service.GetServiceId(service) == null)
-                    {
-                        added = service.AddService(service);                      
-
-                        if (added)
+                        //Check to see if we have a valid GUID if not error off and skip process 
+                        Guid testNewGuidSecurity;
+                        if (!Guid.TryParse(this.MainForm.Services[i].SecurityRightId, out testNewGuidSecurity))
                         {
-                            this.MainForm.Services[i].Action = "Added";
-                            loadServicesSuccessful++;
-                        }
-                        else
-                        {
+                            log.Error("Error Confirmation_Services.LoadServices Security Right Id Error " +
+                                "Service Name = " + this.MainForm.Services[i].Name +
+                                "INVALID Security Right Item GUID=" + this.MainForm.Services[i].SecurityRightId);
+                            skipProcessing = true;
                             this.MainForm.Services[i].Action = "Add Error";
-                            log.Error("Error Confirmation_Services.LoadServices Add Error " +
-                                "Name=" + service.ToString());
                             loadErrors++;
-                        }
-                    }
-                    else
-                    {
-                        try
-                        {
-                            updated = service.UpdateService(service);
-                        }
-                        catch
-                        {
-                            updated = false;
-                        }
-
-                        if (updated)
-                        {
-                            this.MainForm.Services[i].Action = "Updated";
-                            loadServicesSuccessful++;
                         }
                         else
                         {
-                            this.MainForm.Services[i].Action = "Update Error";
-                            log.Error("Error Confirmation_Services.LoadServices Update Error " +
-                                "Name=" + service.ToString());
-                            loadErrors++;
+                            service.SecurityRightItemId = Guid.Parse(this.MainForm.Services[i].SecurityRightId);
                         }
                     }
+
+                    if (!skipProcessing)
+                    {
+                        service.LabelItemContentId = this.MainForm.Services[i].LabelConentID;
+                        service.DefaultText = this.MainForm.Services[i].DefaultText;
+                        service.BaseUrl = this.MainForm.Services[i].BaseURL;
+                        service.IocContainer = this.MainForm.Services[i].IocContainer;
+
+                        if (service.GetServiceId(service) == null)
+                        {
+                            added = service.AddService(service);
+
+                            if (added)
+                            {
+                                this.MainForm.Services[i].Action = "Added";
+                                loadServicesSuccessful++;
+                            }
+                            else
+                            {
+                                this.MainForm.Services[i].Action = "Add Error";
+                                log.Error("Error Confirmation_Services.LoadServices Add Error " +
+                                    "Name=" + service.ToString());
+                                loadErrors++;
+                            }
+                        }
+                        else
+                        {
+                            try
+                            {
+                                updated = service.UpdateService(service);
+                            }
+                            catch
+                            {
+                                updated = false;
+                            }
+
+                            if (updated)
+                            {
+                                this.MainForm.Services[i].Action = "Updated";
+                                loadServicesSuccessful++;
+                            }
+                            else
+                            {
+                                this.MainForm.Services[i].Action = "Update Error";
+                                log.Error("Error Confirmation_Services.LoadServices Update Error " +
+                                    "Name=" + service.ToString());
+                                loadErrors++;
+                            }
+                        }
+                    }
+                    
                 }
                 else
                 {

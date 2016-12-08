@@ -101,69 +101,107 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                int currentRow = 0;
                bool updated = true;
                bool added = false;
+               bool skipProcessing = false;
 
                for (int i = 0; i < MainForm.MenuItems.Count; i++)
                {
+                   skipProcessing = false;
                    HP.HSP.UA3.Utilities.LoadTenantDb.Data.MenuItem menuItem = new HP.HSP.UA3.Utilities.LoadTenantDb.Data.MenuItem();
                    menuItem.MainForm = this.MainForm;
-                   menuItem.MenuItemId = Guid.Parse(this.MainForm.MenuItems[i].Id);
+                   //Check to see if we have a valid GUID if not error off and skip process 
+                   Guid testNewGuid;
+                   if (!Guid.TryParse(this.MainForm.MenuItems[i].Id, out testNewGuid))
+                   {
+                        log.Error("Error Confirmation_Services.LoadServices Id Error " +
+                            "Service Name = " + this.MainForm.MenuItems[i].Id +
+                            "INVALID Security Right Item GUID=" + this.MainForm.MenuItems[i].Id);
+                        skipProcessing = true;
+                        this.MainForm.MenuItems[i].Action = "Add Error";
+                        loadErrors++;
+                   }
+                   else
+                   {
+                        menuItem.MenuItemId = Guid.Parse(this.MainForm.MenuItems[i].Id);
+                   }
+
                    if (this.MainForm.MenuItems[i].ParentId != "")
                        menuItem.ParentMenuItemId = Guid.Parse(this.MainForm.MenuItems[i].ParentId);
                    menuItem.Name = this.MainForm.MenuItems[i].Name;
                    menuItem.OrderIndex = this.MainForm.MenuItems[i].Order;
                    if (this.MainForm.MenuItems[i].SecurityRightId != "")
-                       menuItem.SecurityRightItemId = Guid.Parse(this.MainForm.MenuItems[i].SecurityRightId);
-                   menuItem.LabelItemContentId = this.MainForm.MenuItems[i].LabelConentID;
-                   menuItem.DefaultText = this.MainForm.MenuItems[i].DefaultText;
-                   menuItem.BaseUrl = this.MainForm.MenuItems[i].BaseURL;
-                   menuItem.CssClass = this.MainForm.MenuItems[i].CssClass;
-                   menuItem.IocContainer = this.MainForm.MenuItems[i].IocContainer;
-                   menuItem.IsVisible = bool.Parse(this.MainForm.MenuItems[i].IsVisible);
-                   menuItem.PageHelpContentId = this.MainForm.MenuItems[i].PageHelpContentId;
-                   menuItem.MitaHelpContentId = this.MainForm.MenuItems[i].MitaHelpContentId;
-                   menuItem.ModuleSectionContentId = this.MainForm.MenuItems[i].ModuleSectionContentId;
-                   menuItem.MenuId = Guid.Parse(this.MainForm.MenuItems[i].MenuId);
-
-                   if (menuItem.GetMenuItemId(menuItem) == null)
                    {
-                       added = menuItem.AddMenuItem(menuItem); 
-
-                       if (added)
-                       {
-                           this.MainForm.MenuItems[i].Action = "Added";
-                           loadMenusSuccessful++;
-                       }
-                       else
-                       {
-                           this.MainForm.MenuItems[i].Action = "Add Error";
-                            log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Add Error " +
-                                "Name=" + menuItem.ToString());
-                        loadErrors++;
-                       }
+                        //Check to see if we have a valid GUID if not error off and skip process 
+                        Guid testNewGuidSecurity;
+                        if (!Guid.TryParse(this.MainForm.MenuItems[i].SecurityRightId, out testNewGuidSecurity))
+                        {
+                            log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Security Right Error " +
+                                "Menu Name = " + this.MainForm.MenuItems[i].Name +
+                                "INVALID Security Right Item GUID=" + this.MainForm.MenuItems[i].SecurityRightId);
+                            skipProcessing = true;
+                            this.MainForm.MenuItems[i].Action = "Add Error";
+                            loadErrors++;
+                        }
+                        else
+                        {
+                            menuItem.SecurityRightItemId = Guid.Parse(this.MainForm.MenuItems[i].SecurityRightId);
+                        }
                    }
-                   else
-                   {
-                       try
-                       {
-                           updated = menuItem.UpdateMenuItem(menuItem);
-                       }
-                       catch
-                       {
-                           updated = false;
-                       }
 
-                       if (updated)
-                       {
-                           this.MainForm.MenuItems[i].Action = "Updated";
-                           loadMenusSuccessful++;
-                       }
-                       else
-                       {
-                           this.MainForm.MenuItems[i].Action = "Update Error";
-                            log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Update Error " +
-                                "Name=" + menuItem.ToString());
-                        loadErrors++;
-                       }
+                   if (!skipProcessing)
+                   {
+
+                        menuItem.LabelItemContentId = this.MainForm.MenuItems[i].LabelConentID;
+                        menuItem.DefaultText = this.MainForm.MenuItems[i].DefaultText;
+                        menuItem.BaseUrl = this.MainForm.MenuItems[i].BaseURL;
+                        menuItem.CssClass = this.MainForm.MenuItems[i].CssClass;
+                        menuItem.IocContainer = this.MainForm.MenuItems[i].IocContainer;
+                        menuItem.IsVisible = bool.Parse(this.MainForm.MenuItems[i].IsVisible);
+                        menuItem.PageHelpContentId = this.MainForm.MenuItems[i].PageHelpContentId;
+                        menuItem.MitaHelpContentId = this.MainForm.MenuItems[i].MitaHelpContentId;
+                        menuItem.ModuleSectionContentId = this.MainForm.MenuItems[i].ModuleSectionContentId;
+                        menuItem.MenuId = Guid.Parse(this.MainForm.MenuItems[i].MenuId);
+
+                        if (menuItem.GetMenuItemId(menuItem) == null)
+                        {
+                            added = menuItem.AddMenuItem(menuItem);
+
+                            if (added)
+                            {
+                                this.MainForm.MenuItems[i].Action = "Added";
+                                loadMenusSuccessful++;
+                            }
+                            else
+                            {
+                                this.MainForm.MenuItems[i].Action = "Add Error";
+                                log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Add Error " +
+                                    "Name=" + menuItem.ToString());
+                                loadErrors++;
+                            }
+                        }
+                        else
+                        {
+                            try
+                            {
+                                updated = menuItem.UpdateMenuItem(menuItem);
+                            }
+                            catch
+                            {
+                                updated = false;
+                            }
+
+                            if (updated)
+                            {
+                                this.MainForm.MenuItems[i].Action = "Updated";
+                                loadMenusSuccessful++;
+                            }
+                            else
+                            {
+                                this.MainForm.MenuItems[i].Action = "Update Error";
+                                log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Update Error " +
+                                    "Name=" + menuItem.ToString());
+                                loadErrors++;
+                            }
+                        }
                    }
 
            /*        menuItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheFullMenuTableKey, "false", "false", "false");
