@@ -23,7 +23,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         private int loadDatalistErrors = 0;
         private int loadDatalistItemErrors = 0;
         private bool updated = true;
-        private List<DataListsItems> messageTypeItems = new List<DataListsItems>();
 
         public Confirmation_LocalizationMessages()
         {
@@ -189,21 +188,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             return datalistItem;
         }
 
-        private string GetMessageTypeItemId(String type)
-        {
-            string itemId = null;
-            foreach (var DataListsItems in messageTypeItems) 
-            {
-                if (DataListsItems.DataListsItemKey.Contains(type))
-                {
-                    itemId = DataListsItems.DataListsItemId.ToString();
-                    break;
-                }
-            }
-
-            return itemId;
-        }
-
         private void CreateDatalistItemLanguages(DatalistItem datalistItem, String locale, String text)
         {
             // If the datalist item doesn't exist on the database yet, add the language to it.
@@ -283,13 +267,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 this.MainForm.LocalizationMessages[0].Module.Name + " Messages",
                 this.MainForm.LocalizationMessages[0].Module.Name + ".Msg");
 
-            // Load the Datalist for the Message Type Attributes Datalist (i.e. Core.Datalist.Attributes.MessageType).
-            Datalist messageTypeDatalist = LoadDataList("Core DataList Attribute Message Type",
-                "Core DataList Message Type",
-                "Core.DataList.MessageType");
-
-            messageTypeItems = DatalistItem.GetMessageTypeDatalistItems(messageTypeDatalist.Id);
-
             // Process each locale (i.e. English, Spanish, etc.)
             bool createAttribute = true;
             for (int i = 0; i < this.MainForm.LocalizationMessages.Count; i++)
@@ -318,7 +295,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                             attributeValues.Add("Warning");
                             attributeValues.Add("Error");
 
-                            this.CreateAttributeDataListsWithValue(datalist.TenantModuleId, datalist, "MessageType", attributeValues);
+                            this.CreateAttributeDataListsWithValue(datalist.TenantModuleId, datalist, "Type", attributeValues);
                             createAttribute = false;
                         }
 
@@ -343,6 +320,16 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                             {
                                 this.MainForm.LocalizationMessages[i].Messages[j].Action = "Added";
                                 loadDatalistItemSuccessful++;
+
+                                datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListItemAttrKey, "false", "false", "false");
+                                datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheItemLinkerKey, "false", "false", "false");
+                                datalistItem.RefreshCache("FullCodeTableKey", "true", "false", "true");
+
+                                updateDataListItemAttributeWithValue(
+                                    "Type",
+                                    MainForm.LocalizationMessages[i].Messages[j].Type,
+                                    datalist,
+                                datalistItem);
                             }
                             else
                             {
@@ -368,17 +355,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                                 loadDatalistItemErrors++;
                             }
                         }
-
-
-                        datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheDataListItemAttrKey, "false", "false", "false");
-                        datalistItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheItemLinkerKey, "false", "false", "false");
-                        datalistItem.RefreshCache("FullCodeTableKey", "true", "false", "true");
-
-                            updateDataListItemAttributeWithValue(
-                                "MessageType",
-                                MainForm.LocalizationMessages[i].Messages[j].Type,
-                                datalist,
-                            datalistItem );
                     }
                     else
                     {
@@ -436,7 +412,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             // Create Attribute DataList using the nameOfAttribute
             Datalist attributeDatalist = new Datalist();
             attributeDatalist.MainForm = this.MainForm;
-            attributeDatalist.ContentId = "Core.DataList.Attributes." + nameOfAttribute;
+            attributeDatalist.ContentId = "Core.DataList.MessageType";
             attributeDatalist.Id = attributeDatalist.GetDataListId(attributeDatalist);
 
             if (attributeDatalist.Id == null)
@@ -508,7 +484,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 (addAttributeToDataList && parentDatalist.DataListItemAttributes.Count == 0))
             {
                 //Get default id for Type attribute
-                if (nameOfAttribute == "MessageType")
+                if (nameOfAttribute == "Type")
                 {
                     if (attributeDatalistItems.Count == 0)
                     {
@@ -554,7 +530,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             //For this attribute(nameOfAttribute) get a list of data list items
             try
             {
-                attributeDatalist.ContentId = "Core.DataList.Attributes." + nameOfAttribute;
+                attributeDatalist.ContentId = "Core.DataList.MessageType";
                 attributeDatalist.Id = attributeDatalist.GetDataListId(attributeDatalist);
                 attributeDatalistItem.Key = attributeValue;
                 attributeDataListItemIdToUse = attributeDatalistItem.GetDataListItemId(attributeDatalist, attributeDatalistItem);
