@@ -22,7 +22,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
         public LocaleLabelHelperForm()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
 
         private void LocaleLabelHelperForm_Load(object sender, EventArgs e)
@@ -32,6 +32,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
         private void LocaleLabelHelperForm_Shown(object sender, EventArgs e)
         {
+            SaveButton.Enabled = false;
             try
             {
                 Cursor = Cursors.WaitCursor;
@@ -98,19 +99,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             ToggleDirtyData(true);
         }
 
-        private void LabelsGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex == LabelsGridView.NewRowIndex)
-            {
-                if (LabelsGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
-                {
-                    LabelsGridView.BeginEdit(false);
-                    TextBox textBox = (TextBox)LabelsGridView.EditingControl;
-                    textBox.SelectionStart = textBox.Text.Length;
-                }
-            }
-        }
-
         private void LabelsGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             try
@@ -132,7 +120,18 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                LabelsGridView.Enabled = false;
+
+
+                LabelContentIdTextBox.Text = LabelContentIdTextBox.Text.Trim();
+
+                if (!LabelContentIdTextBox.Text.ToLower().StartsWith(LabelContentIdPrefix.ToLower()))
+                {
+                    LabelContentIdTextBox.Focus();
+                    throw new Exception(string.Format("Content ID must start with the prefix '{0}'", LabelContentIdPrefix));
+                }
+                InitializeForm();
+                ToggleDirtyData(true);
+
             }
             catch (Exception ex)
             {
@@ -144,41 +143,14 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             } 
         }
 
-        private void EditButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-
-                LabelContentIdTextBox.Text = LabelContentIdTextBox.Text.Trim();
-
-                if (!LabelContentIdTextBox.Text.ToLower().StartsWith(LabelContentIdPrefix.ToLower()))
-                {
-                    LabelContentIdTextBox.Focus();
-                    throw new Exception(string.Format("Content ID must start with the prefix '{0}'", LabelContentIdPrefix));
-                }
-                else if (LabelContentIdTextBox.Text.ToLower() == LabelContentIdPrefix.ToLower())
-                {
-                    LabelContentIdTextBox.Focus();
-                    throw new Exception(string.Format("You must enter a Content ID.", LabelContentIdPrefix));
-                }
-                InitializeForm();
-                ToggleDirtyData(true);
-                LabelsGridView.Enabled = true;
-                LabelsGridView.Focus();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
-        }
-
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            if (LabelContentIdTextBox.Text.ToLower() == LabelContentIdPrefix.ToLower())
+            {
+                LabelContentIdTextBox.Focus();
+                throw new Exception(string.Format("You must enter a Content ID.", LabelContentIdPrefix));
+            }
+
             try
             {
                 Cursor = Cursors.WaitCursor;
@@ -251,28 +223,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             //ShowIdsCheckBox.Checked = this.ShowIds;
             LoadLabel();
             ToggleDirtyData(false);
-            LabelsGridView.Enabled = true;
-            LabelsGridView.Focus();
-        }
-
-        private bool IsValidLabels()
-        {
-            int idx = 0;
-            foreach (LocaleLabelHelperModel item in _labelHelpers)
-            {
-                //Check for text
-                if (string.IsNullOrEmpty(item.Text))
-                {
-                    LabelsGridView.CurrentCell = LabelsGridView.Rows[idx].Cells[2];
-                    LabelsGridView.Rows[idx].Cells[2].Selected = true;
-                    MessageBox.Show("Text is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                idx++;
-            }
-
-            return true;
         }
 
         private void LoadLabel()
@@ -302,39 +252,24 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         {
             bool isSaved = false;
 
-            if (IsValidLabels())
+            foreach(LocaleLabelHelperModel labelHelper in _labelHelpers)
             {
-                foreach(LocaleLabelHelperModel labelHelper in _labelHelpers)
+                LocaleConfigurationModel localeConfig = this.LocalizationConfig.Locales.Find(l => l.LocaleId == labelHelper.LocaleId);
+                if(localeConfig != null)
                 {
-                    LocaleConfigurationModel localeConfig = this.LocalizationConfig.Locales.Find(l => l.LocaleId == labelHelper.LocaleId);
-                    if(localeConfig != null)
+                    LocaleConfigurationLabelModel label = localeConfig.LocaleLabels.Find(l => string.Compare(l.ContentId, LabelContentIdTextBox.Text, true) == 0);
+                    if (label != null)
                     {
-                        LocaleConfigurationLabelModel label = localeConfig.LocaleLabels.Find(l => string.Compare(l.ContentId, LabelContentIdTextBox.Text, true) == 0);
-                        if (label != null)
-                        {
-                            label.Text = labelHelper.Text;
-                            label.Tooltip = labelHelper.Tooltip;
-                        }
-                        else
-                        {
-                            label = new LocaleConfigurationLabelModel()
-                            {
-                                Id = Common.Utilities.GenerateNewID(),
-                                LocaleId = labelHelper.LocaleId,
-                                ContentId = LabelContentIdTextBox.Text,
-                                Text = labelHelper.Text,
-                                Tooltip = labelHelper.Tooltip
-                            };
-                            localeConfig.LocaleLabels.Add(label);
-                        }
+                        label.Text = labelHelper.Text;
+                        label.Tooltip = labelHelper.Tooltip;
                     }
                 }
-                isSaved = true;
-                ToggleDirtyData(false);
-                this.LabelContentId = LabelContentIdTextBox.Text;
-                this.HasDataChanged = true;
-                this.Close();
             }
+            isSaved = true;
+            ToggleDirtyData(false);
+            this.LabelContentId = LabelContentIdTextBox.Text;
+            this.HasDataChanged = true;
+            this.Close();           
 
             return isSaved;
         }
@@ -343,12 +278,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         {
             _isDataDrity = enabled;
             ResetButton.Enabled = enabled;
-            SaveButton.Enabled = enabled;
+
+            if (LabelContentIdTextBox.Text.ToLower() == LabelContentIdPrefix.ToLower())
+            {
+                SaveButton.Enabled = false;
+            }
+            else
+            {
+                SaveButton.Enabled = enabled;
+            }
         }
 
         private void ToggleShowIds(bool showIds)
-        {
-            LabelsGridView.Columns[0].Visible = showIds;
+        {           
         }
     }
 }

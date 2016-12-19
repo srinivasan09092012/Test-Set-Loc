@@ -209,37 +209,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     foreach (ModelPropertyModel property in modelDef.ModelProperties)
                     {
                         string newLabelContentId = property.LabelContentId.Replace("Core", this.BusinessModelName);
-                        if (GenerateLabelsCheckBox.Checked)
-                        {
-                            foreach (LocaleConfigurationModel locale in this.LocalConfig.Locales)
-                            {
-                                if (locale.LocaleLabels.Find(l => string.Compare(l.ContentId, newLabelContentId, true) == 0) == null)
-                                {
-                                    LocaleConfigurationModel coreLocalConfig = this.CoreTenantConfig.Modules[0].LocalizationConfiguration.Locales.Find(lc => lc.LocaleId == locale.LocaleId);
-                                    LocaleConfigurationLabelModel coreLabel = coreLocalConfig.LocaleLabels.Find(l => l.ContentId == property.LabelContentId);
-
-                                    LocaleConfigurationLabelModel label;
-                                    if(coreLabel != null)
-                                    {
-                                        label = (LocaleConfigurationLabelModel)coreLabel.Clone();
-                                        label.Id = Common.Utilities.GenerateNewID();
-                                        label.ContentId = newLabelContentId;
-                                    }
-                                    else
-                                    {
-                                        label = new LocaleConfigurationLabelModel()
-                                        {
-                                            Id = Common.Utilities.GenerateNewID(),
-                                            ContentId = newLabelContentId,
-                                            LocaleId = locale.LocaleId,
-                                            Text = property.DefaultText,
-                                            Tooltip = property.DefaultText
-                                        };
-                                    }
-                                    locale.LocaleLabels.Add(label);
-                                }
-                            }
-                        }
                         property.LabelContentId = newLabelContentId;
                     }
 
@@ -353,25 +322,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                                         Name = property.Name
                                     };
                                     modelDef.ModelProperties.Add(propertyModel);
-
-                                    if (GenerateLabelsCheckBox.Checked)
-                                    {
-                                        foreach (LocaleConfigurationModel locale in this.LocalConfig.Locales)
-                                        {
-                                            if (locale.LocaleLabels.Find(l => string.Compare(l.ContentId, labelContentId, true) == 0) == null)
-                                            {
-                                                LocaleConfigurationLabelModel label = new LocaleConfigurationLabelModel()
-                                                {
-                                                    Id = Common.Utilities.GenerateNewID(),
-                                                    ContentId = labelContentId,
-                                                    LocaleId = locale.LocaleId,
-                                                    Text = defaultText,
-                                                    Tooltip = defaultText
-                                                };
-                                                locale.LocaleLabels.Add(label);
-                                            }
-                                        }
-                                    }
                                 }
                             }
                         }
