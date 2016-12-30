@@ -1,0 +1,96 @@
+﻿<Queries>
+  <!-- Datalist Queries-->
+  <DataList Name="DataListInsert" Script="INSERT INTO TM_DATA_LISTS VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', {5}, SYSDATE, '{6}', {7});"></DataList>
+  <DataList Name="DataListUpdate" Script="UPDATE TM_DATA_LISTS SET TM_DATA_LISTS_NAME = '{1}', DESCRIPTION = '{2}', IS_ACTIVE = {3}, IS_EDITABLE ={4}, LAST_MODIFIED_TS = SYSDATE WHERE CONTENT_ID = '{0}';"></DataList>
+  <DataList Name="DataListCheck" Script="SELECT COUNT(*) INTO rows_found FROM TM_DATA_LISTS WHERE CONTENT_ID = '{0}';"></DataList>
+  <DataList Name="DeclarationStart" Script="DECLARE
+ rows_found number;
+BEGIN"></DataList>
+  <DataList Name="DataListIFCondition" Script="IF rows_found > 0 THEN"></DataList>
+  <DataList Name="DataListELSECondition" Script="ELSE"></DataList>
+  <DataList Name="ENDIFCondition" Script="END IF;"></DataList>
+  <DataList Name="Commit" Script="COMMIT;"></DataList>
+  <DataList Name="DeclarationEnd" Script="END;"></DataList>
+
+<!-- Datalist Item Queries-->
+<DataList Name="ItemDeclarationStart" Script="DECLARE
+ data_list_item_id RAW(16);
+ data_list_id RAW(16);
+ locale VARCHAR2(5 BYTE);
+BEGIN"></DataList>
+<DataList Name="DataListItemExist" Script="SELECT TM_DATA_LISTS_ID INTO data_list_id FROM TM_DATA_LISTS WHERE CONTENT_ID='{0}';
+BEGIN
+  SELECT TDLI.TM_DATA_LISTS_ITEM_ID INTO data_list_item_id FROM TM_DATA_LISTS TDL JOIN TM_DATA_LISTS_ITEM TDLI ON (TDL.TM_DATA_LISTS_ID = TDLI.TM_DATA_LISTS_ID)
+  WHERE TDL.CONTENT_ID='{0}' AND TDLI.TM_DATA_LISTS_ITEM_KEY='{1}';
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+     data_list_item_id := NULL;
+END;"></DataList>
+<DataList Name="DataListItemAddUpdate" Script="IF data_list_item_id IS NOT NULL THEN
+  UPDATE TM_DATA_LISTS_ITEM SET ORDER_INDEX = {0}, IS_ACTIVE = {1}, IS_EDITABLE = {7}, LAST_MODIFIED_TS = SYSDATE, EFF_DT = '{2}', END_DT = '{3}' WHERE TM_DATA_LISTS_ITEM_ID = data_list_item_id;
+ELSE
+  INSERT INTO TM_DATA_LISTS_ITEM (TM_DATA_LISTS_ID,TM_DATA_LISTS_ITEM_KEY,ORDER_INDEX,IS_ACTIVE,LAST_MODIFIED_TS,TM_DATA_LISTS_ITEM_ID,EFF_DT,END_DT,IS_EDITABLE) VALUES (data_list_id,'{5}',{0},{1},SYSDATE,'{6}','{2}','{3}',{7});
+  data_list_item_id := '{6}';
+END IF;"></DataList>
+<DataList Name="DataListItemLanguageCheck" Script="BEGIN
+  SELECT TDLL.LOCAL_ID INTO locale FROM TM_DATA_LISTS TDL JOIN TM_DATA_LISTS_ITEM TDLI ON (TDL.TM_DATA_LISTS_ID = TDLI.TM_DATA_LISTS_ID)
+                                JOIN TM_DATA_LISTS_LANGUAGES TDLL ON (TDLL.TM_DATA_LISTS_ITEM_ID = TDLI.TM_DATA_LISTS_ITEM_ID)
+WHERE TDL.CONTENT_ID='{0}' AND TDLI.TM_DATA_LISTS_ITEM_KEY='{1}' AND TDLL.LOCAL_ID = '{2}';
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+     locale := NULL;
+END;"></DataList>
+<DataList Name="DataListItemLanguageAddUpdate" Script="IF locale IS NOT NULL THEN
+  UPDATE TM_DATA_LISTS_LANGUAGES SET DESCRIPTION = '{0}', IS_ACTIVE={1}, LAST_MODIFIED_TS=SYSDATE, LONG_DESCRIPTION = '{2}' WHERE TM_DATA_LISTS_ITEM_ID = data_list_item_id AND LOCAL_ID = '{4}';
+ELSE
+  INSERT INTO TM_DATA_LISTS_LANGUAGES (TM_DATA_LISTS_ITEM_ID,LOCAL_ID,DESCRIPTION,IS_ACTIVE,LAST_MODIFIED_TS,LONG_DESCRIPTION) VALUES (data_list_item_id,'{4}','{0}',{1},SYSDATE,'{2}');
+END IF;"></DataList>
+
+<!-- Datalist Item Queries-->
+<DataList Name="ItemLinkDeclarationStart" Script="DECLARE
+ parent_item_id RAW(16);
+ child_item_id RAW(16);
+BEGIN"></DataList>
+<DataList Name="DataListItemLinkAddUpdate" Script="BEGIN 
+SELECT TDIL.PARENT_ID_FK INTO parent_item_id FROM TM_DATA_LISTS TDL 
+                JOIN TM_DATA_LISTS_ITEM TDLI ON (TDL.TM_DATA_LISTS_ID = TDLI.TM_DATA_LISTS_ID)
+                JOIN TM_DATA_LISTS_ITEM_LINK TDIL ON (TDLI.TM_DATA_LISTS_ITEM_ID = TDIL.PARENT_ID_FK)
+WHERE TDL.CONTENT_ID = '{0}' AND TDLI.TM_DATA_LISTS_ITEM_KEY = '{1}' AND ROWNUM = 1;
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+     parent_item_id := NULL;
+END;
+BEGIN
+SELECT TDIL.CHILD_ID_FK INTO child_item_id FROM TM_DATA_LISTS TDL 
+                JOIN TM_DATA_LISTS_ITEM TDLI ON (TDL.TM_DATA_LISTS_ID = TDLI.TM_DATA_LISTS_ID)
+                JOIN TM_DATA_LISTS_ITEM_LINK TDIL ON (TDLI.TM_DATA_LISTS_ITEM_ID = TDIL.CHILD_ID_FK)
+WHERE TDL.CONTENT_ID = '{2}' AND TDLI.TM_DATA_LISTS_ITEM_KEY = '{3}' AND ROWNUM = 1;
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+     child_item_id := NULL;
+END;
+
+IF parent_item_id IS NOT NULL AND child_item_id IS NOT NULL THEN
+UPDATE TM_DATA_LISTS_ITEM_LINK SET IS_ACTIVE = {4}, LAST_MODIFIED_TS = SYSDATE WHERE PARENT_ID_FK = parent_item_id AND CHILD_ID_FK = child_item_id;
+ELSE
+BEGIN
+SELECT TDLI.TM_DATA_LISTS_ITEM_ID INTO parent_item_id FROM TM_DATA_LISTS TDL 
+                JOIN TM_DATA_LISTS_ITEM TDLI ON (TDL.TM_DATA_LISTS_ID = TDLI.TM_DATA_LISTS_ID)
+WHERE TDL.CONTENT_ID = '{0}' AND TDLI.TM_DATA_LISTS_ITEM_KEY = '{1}' AND ROWNUM = 1;
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+     DBMS_OUTPUT.PUT_LINE('ERROR-1205: ' || '{0}.{1} does not exist' );
+END;
+BEGIN
+SELECT TDLI.TM_DATA_LISTS_ITEM_ID INTO child_item_id FROM TM_DATA_LISTS TDL 
+                JOIN TM_DATA_LISTS_ITEM TDLI ON (TDL.TM_DATA_LISTS_ID = TDLI.TM_DATA_LISTS_ID)
+WHERE TDL.CONTENT_ID = '{2}' AND TDLI.TM_DATA_LISTS_ITEM_KEY = '{3}' AND ROWNUM = 1;
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+     DBMS_OUTPUT.PUT_LINE('ERROR-1205: ' || '{2}.{3} does not exist' );
+END;
+IF parent_item_id IS NOT NULL AND child_item_id IS NOT NULL THEN
+  INSERT INTO TM_DATA_LISTS_ITEM_LINK VALUES (parent_item_id, child_item_id, {4}, SYSDATE);
+END IF;
+END IF;"></DataList>
+</Queries>
