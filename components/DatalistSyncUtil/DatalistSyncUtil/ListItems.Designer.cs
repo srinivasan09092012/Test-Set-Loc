@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.ListItemView = new System.Windows.Forms.DataGridView();
+            this.SelectItem = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastModified = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ItemViewClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblContentID = new System.Windows.Forms.Label();
             this.Save = new System.Windows.Forms.Button();
             this.Clear = new System.Windows.Forms.Button();
-            this.SelectItem = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastModified = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.SelectAllChkBox = new System.Windows.Forms.CheckBox();
             this.ChkDateOverride = new System.Windows.Forms.CheckBox();
             this.InactiveCB = new System.Windows.Forms.CheckBox();
@@ -61,6 +61,39 @@
             this.ListItemView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ListItemView.Size = new System.Drawing.Size(833, 362);
             this.ListItemView.TabIndex = 0;
+            // 
+            // SelectItem
+            // 
+            this.SelectItem.DataPropertyName = "Selected";
+            this.SelectItem.FalseValue = "false";
+            this.SelectItem.HeaderText = "";
+            this.SelectItem.IndeterminateValue = "false";
+            this.SelectItem.Name = "SelectItem";
+            this.SelectItem.TrueValue = "true";
+            this.SelectItem.Width = 30;
+            // 
+            // ItemCode
+            // 
+            this.ItemCode.DataPropertyName = "Code";
+            this.ItemCode.HeaderText = "Code";
+            this.ItemCode.Name = "ItemCode";
+            this.ItemCode.ReadOnly = true;
+            this.ItemCode.Width = 450;
+            // 
+            // LastModified
+            // 
+            this.LastModified.DataPropertyName = "ModifiedDate";
+            this.LastModified.HeaderText = "Modified Date";
+            this.LastModified.Name = "LastModified";
+            this.LastModified.ReadOnly = true;
+            this.LastModified.Width = 200;
+            // 
+            // Active
+            // 
+            this.Active.DataPropertyName = "IsActive";
+            this.Active.HeaderText = "Active";
+            this.Active.Name = "Active";
+            this.Active.ReadOnly = true;
             // 
             // ItemViewClose
             // 
@@ -114,39 +147,6 @@
             this.Clear.UseVisualStyleBackColor = true;
             this.Clear.Click += new System.EventHandler(this.Clear_Click);
             // 
-            // SelectItem
-            // 
-            this.SelectItem.DataPropertyName = "Selected";
-            this.SelectItem.FalseValue = "false";
-            this.SelectItem.HeaderText = "";
-            this.SelectItem.IndeterminateValue = "false";
-            this.SelectItem.Name = "SelectItem";
-            this.SelectItem.TrueValue = "true";
-            this.SelectItem.Width = 30;
-            // 
-            // ItemCode
-            // 
-            this.ItemCode.DataPropertyName = "Code";
-            this.ItemCode.HeaderText = "Code";
-            this.ItemCode.Name = "ItemCode";
-            this.ItemCode.ReadOnly = true;
-            this.ItemCode.Width = 450;
-            // 
-            // LastModified
-            // 
-            this.LastModified.DataPropertyName = "ModifiedDate";
-            this.LastModified.HeaderText = "Modified Date";
-            this.LastModified.Name = "LastModified";
-            this.LastModified.ReadOnly = true;
-            this.LastModified.Width = 200;
-            // 
-            // Active
-            // 
-            this.Active.DataPropertyName = "IsActive";
-            this.Active.HeaderText = "Active";
-            this.Active.Name = "Active";
-            this.Active.ReadOnly = true;
-            // 
             // SelectAllChkBox
             // 
             this.SelectAllChkBox.AutoSize = true;
@@ -165,9 +165,9 @@
             this.ChkDateOverride.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChkDateOverride.Location = new System.Drawing.Point(124, 36);
             this.ChkDateOverride.Name = "ChkDateOverride";
-            this.ChkDateOverride.Size = new System.Drawing.Size(132, 21);
+            this.ChkDateOverride.Size = new System.Drawing.Size(126, 21);
             this.ChkDateOverride.TabIndex = 8;
-            this.ChkDateOverride.Text = "Override Date";
+            this.ChkDateOverride.Text = "Override Age";
             this.ChkDateOverride.UseVisualStyleBackColor = true;
             this.ChkDateOverride.CheckedChanged += new System.EventHandler(this.ChkDateOverride_CheckedChanged);
             // 
