@@ -34,7 +34,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             this.LocalizationLabelsEnglish = new List<LocalizationDatalistItemNode>();
             this.LocalizationLabelsSpanish = new List<LocalizationDatalistItemNode>();
             this.LocalizationLabels = new List<LocalizationLocaleNode>();
-			this.LocalizationMessages = new List<LocalizationLocaleNode>();
+            this.LocalizationMessages = new List<LocalizationLocaleNode>();
             this.SecurityRoles = new List<SecurityNode>();
             this.SecurityFunctions = new List<SecurityNode>();
             this.SecurityRights = new List<SecurityNode>();
@@ -722,6 +722,9 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
         private void LoadMenuItems(XmlNode sd, Module checkedModule)
         {
+            Guid testNewGuid;
+            string generatedGuid;
+
             foreach (XmlNode menu in sd.ChildNodes)
             {
                 MenuNode menuNode = new MenuNode();
@@ -741,7 +744,23 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         menuItemNode.Module.Name = checkedModule.Name;
                         menuItemNode.Module.Id = checkedModule.Id;
                         menuItemNode.MenuId = menu.Attributes["id"].Value;
-                        menuItemNode.Id = item.Attributes["id"].Value;
+
+                        // Validate the guid before assigning it
+                        if (!Guid.TryParse(item.Attributes["id"].Value, out testNewGuid))
+                        {
+                            generatedGuid = Guid.NewGuid().ToString();
+                            menuItemNode.Id = generatedGuid;
+                            item.Attributes["id"].Value = generatedGuid;
+
+                            log.Warn("Warning LoadMenuItems item Id Error " +
+                                " Menu Name = " + item.Attributes["name"].Value +
+                                "\n\t  INVALID Menu Item GUID=" + item.Attributes["id"].Value +
+                                "\n\t  NEW Menu Item GUID = " + generatedGuid);
+                        }
+                        else
+                        {
+                            menuItemNode.Id = item.Attributes["id"].Value;
+                        }
                         menuItemNode.ParentId = ""; 
                         menuItemNode.Name = item.Attributes["name"].Value;
                         menuItemNode.Order = item.Attributes["orderIndex"].Value;
@@ -779,7 +798,24 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                                 menuItemNode2.Module.Name = checkedModule.Name;
                                 menuItemNode2.Module.Id = checkedModule.Id;
                                 menuItemNode2.MenuId = menu.Attributes["id"].Value;
-                                menuItemNode2.Id = item2.Attributes["id"].Value;
+
+                                // Validate the item2 guid before assigning it
+                                if (!Guid.TryParse(item2.Attributes["id"].Value, out testNewGuid))
+                                {
+                                    generatedGuid = Guid.NewGuid().ToString();
+                                    menuItemNode2.Id = generatedGuid;
+
+                                    log.Warn("Warning LoadMenuItems item2 Id Error " +
+                                        " Menu Name = " + item2.Attributes["name"].Value +
+                                        "\n\t  INVALID Menu Item2 GUID=" + item2.Attributes["id"].Value +
+                                        "\n\t  NEW Menu Item2 GUID = " + generatedGuid);
+
+                                    item2.Attributes["id"].Value = generatedGuid;
+                                }
+                                else
+                                {
+                                    menuItemNode2.Id = item2.Attributes["id"].Value;
+                                }
                                 menuItemNode2.ParentId = item.Attributes["id"].Value;
                                 menuItemNode2.Name = item2.Attributes["name"].Value;
                                 menuItemNode2.Order = item2.Attributes["orderIndex"].Value;
@@ -817,7 +853,25 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                                         menuItemNode3.Module.Name = checkedModule.Name;
                                         menuItemNode3.Module.Id = checkedModule.Id;
                                         menuItemNode3.MenuId = menu.Attributes["id"].Value;
-                                        menuItemNode3.Id = item3.Attributes["id"].Value;
+
+                                        // Validate the item3 guid before assigning it
+                                        if (!Guid.TryParse(item3.Attributes["id"].Value, out testNewGuid))
+                                        {
+                                            generatedGuid = Guid.NewGuid().ToString();
+                                            menuItemNode3.Id = generatedGuid;
+
+                                            log.Warn("Warning LoadMenuItems item3 Id Error " +
+                                                " Menu Name = " + item3.Attributes["name"].Value +
+                                                "\n\t INVALID Menu Item3 GUID=" + item3.Attributes["id"].Value +
+                                                "\n\t NEW Menu Item3 GUID = " + generatedGuid);
+
+                                            item3.Attributes["id"].Value = generatedGuid;
+                                        }
+                                        else
+                                        {
+                                            menuItemNode3.Id = item3.Attributes["id"].Value;
+                                        }
+
                                         menuItemNode3.ParentId = item2.Attributes["id"].Value;
                                         menuItemNode3.Name = item3.Attributes["name"].Value;
                                         menuItemNode3.Order = item3.Attributes["orderIndex"].Value;

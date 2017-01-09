@@ -112,9 +112,9 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                    Guid testNewGuid;
                    if (!Guid.TryParse(this.MainForm.MenuItems[i].Id, out testNewGuid))
                    {
-                        log.Error("Error Confirmation_Services.LoadServices Id Error " +
-                            "Service Name = " + this.MainForm.MenuItems[i].Id +
-                            "INVALID Security Right Item GUID=" + this.MainForm.MenuItems[i].Id);
+                        log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Id Error " +
+                            " Menu Name = " + this.MainForm.MenuItems[i].Name +
+                            " INVALID Menu Item GUID=" + this.MainForm.MenuItems[i].Id);
                         skipProcessing = true;
                         this.MainForm.MenuItems[i].Action = "Add Error";
                         loadErrors++;
@@ -125,7 +125,21 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                    }
 
                    if (this.MainForm.MenuItems[i].ParentId != "")
-                       menuItem.ParentMenuItemId = Guid.Parse(this.MainForm.MenuItems[i].ParentId);
+                   {
+                        if (!Guid.TryParse(this.MainForm.MenuItems[i].ParentId, out testNewGuid))
+                        {
+                            log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Id Error " +
+                                " Menu Name = " + this.MainForm.MenuItems[i].Name +
+                                " INVALID ParentId=" + this.MainForm.MenuItems[i].ParentId);
+                            skipProcessing = true;
+                            this.MainForm.MenuItems[i].Action = "Add Error";
+                            loadErrors++;
+                        }
+                        else
+                        {
+                            menuItem.ParentMenuItemId = Guid.Parse(this.MainForm.MenuItems[i].ParentId);
+                        }
+                   }
                    menuItem.Name = this.MainForm.MenuItems[i].Name;
                    menuItem.OrderIndex = this.MainForm.MenuItems[i].Order;
                    if (this.MainForm.MenuItems[i].SecurityRightId != "")
@@ -135,8 +149,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         if (!Guid.TryParse(this.MainForm.MenuItems[i].SecurityRightId, out testNewGuidSecurity))
                         {
                             log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Security Right Error " +
-                                "Menu Name = " + this.MainForm.MenuItems[i].Name +
-                                "INVALID Security Right Item GUID=" + this.MainForm.MenuItems[i].SecurityRightId);
+                                " Menu Name = " + this.MainForm.MenuItems[i].Name +
+                                " INVALID Security Right Item GUID=" + this.MainForm.MenuItems[i].SecurityRightId);
                             skipProcessing = true;
                             this.MainForm.MenuItems[i].Action = "Add Error";
                             loadErrors++;
