@@ -267,7 +267,17 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             }
 
             parentDatalist = datalist;
-            bool createAttribute = true;
+
+            //Assumption here is that if Core.DataList.Attributes.roleType exists then no need to 
+            //create attributes
+            Datalist checkAttributeDatalist = new Datalist();
+            string contentIdAttribute = "Core.DataList.Attributes.roleType";
+            bool createAttribute = false;
+            if (!checkAttributeDatalist.DoesDataListExistsDirect(contentIdAttribute))
+            {
+                createAttribute = true;
+            }
+
 
             for (int i = 0; i < MainForm.SecurityRoles.Count; i++)
             {
@@ -362,7 +372,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         attributeValuesRoleType.Add("A");
                         this.CreateAttributeDataListsWithValue(datalist.TenantModuleId, parentDatalist, "roleType", attributeValuesRoleType);
 
-                        //Add IsInternal Attribute
+                         //Add IsInternal Attribute
                         List<string> attributeValuesIsInternal = new List<string>();
                         attributeValuesIsInternal.Add("true");
                         attributeValuesIsInternal.Add("false");
@@ -647,7 +657,16 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             }
 
             parentDatalist = datalist;
-            bool createAttribute = true;
+
+            //Assumption here is that if Core.DataList.Attributes.type exists then no need to 
+            //create attributes
+            Datalist checkAttributeDatalist = new Datalist();
+            string contentIdAttribute = "Core.DataList.Attributes.type";
+            bool createAttribute = false;
+            if (!checkAttributeDatalist.DoesDataListExistsDirect(contentIdAttribute))
+            {
+                createAttribute = true;
+            }
 
             for (int i = 0; i < MainForm.SecurityRights.Count; i++)
             {
@@ -1036,7 +1055,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             //Check to see if Attribute has already been Added to the DataList, assumes exists data list with
             //the attribute already
             parentDatalist.GetDataListDirect(parentDatalist);
-            string parentAttributeDataListId = attributeDatalist.GetDataList(attributeDatalist);
+            string parentAttributeDataListId = attributeDatalist.GetDataListDirect(attributeDatalist);
             if (parentAttributeDataListId == "00000000-0000-0000-0000-000000000000")
             {
                 parentAttributeDataListId = null;

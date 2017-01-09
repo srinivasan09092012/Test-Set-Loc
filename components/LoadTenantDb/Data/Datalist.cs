@@ -100,7 +100,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
                              Description = dl.Description,
                              Name = dl.DataListsName,
                              TenantId = dl.TenantId.ToString(),
-                             TenantModuleId = dl.TenantModuleId.ToString(),
+                             TenantModuleId = dl.TenantModuleId,
                              IsActive = dl.IsActive,
                              AttributesDataListId = dlAttributes.DataListsId,
                              DataListsAttributeId = dlAttributes.DataListsAttributeId,
@@ -120,7 +120,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
                 dataList.Description = singleResult.Description;
                 dataList.Name = singleResult.Name;
                 dataList.TenantId = singleResult.TenantId;
-                dataList.TenantModuleId = singleResult.TenantModuleId;
+                dataList.TenantModuleId = singleResult.TenantModuleId.ToString("D").ToUpper();
                 dataList.IsActive = singleResult.IsActive;
 
                 DatalistItemAttribute datalistItemAttributes = new DatalistItemAttribute();               
@@ -137,6 +137,27 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             dataList.DataListItemAttributes = allDatalistItemAttributes;
 
             return returnDatalistId;
+        }
+
+        public bool DoesDataListExistsDirect(string contentId)
+        {
+            DataListDBContext dataListDBContext = new DataListDBContext();
+            bool dataListsExists = false;
+
+            var result = from dl in dataListDBContext.DataLists
+                         where dl.ContentId == contentId
+                         select new
+                         {
+                             Id = dl.DataListsId
+                         };
+
+            foreach (var singleResult in result)
+            {
+                dataListsExists = true;
+                break;
+            }
+
+            return dataListsExists;
         }
 
         public string GetDataList(Datalist dataList)
