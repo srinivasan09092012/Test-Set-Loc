@@ -84,17 +84,14 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     Guid testNewGuid;
                     if (!Guid.TryParse(this.MainForm.Services[i].Id, out testNewGuid))
                     {
-                        log.Error("Error Confirmation_Services.LoadServices Id Error " +
-                            "Service Name = " + this.MainForm.Services[i].Id +
-                            "INVALID Security Right Item GUID=" + this.MainForm.Services[i].Id);
-                        skipProcessing = true;
-                        this.MainForm.Services[i].Action = "Add Error";
-                        loadErrors++;
+                        string systemGeneratedGuid = Guid.NewGuid().ToString("D").ToUpper();
+                        log.Warn("Warn Confirmation_Services.LoadServices Id Warning " +
+                            " Service Name = " + this.MainForm.Services[i].Id +
+                            " INVALID ID GUID=" + this.MainForm.Services[i].Id + 
+                            " Changing to System Generated GUID=" + systemGeneratedGuid);
+                        this.MainForm.Services[i].Id = systemGeneratedGuid;
                     }
-                    else
-                    {
-                        service.ServiceId = Guid.Parse(this.MainForm.Services[i].Id);
-                    }
+                    service.ServiceId = Guid.Parse(this.MainForm.Services[i].Id);
 
                     service.TenantModuleId = Guid.Parse(tenantModuleId);
                     service.Name = this.MainForm.Services[i].Name;
