@@ -76,7 +76,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             using (this.session = new DbSession(this.ConnectionStringSettings.ProviderName, this.ConnectionStringSettings.ConnectionString))
             {
                 MenuDbContext MenuDbContext = new MenuDbContext(this.session);
-
                 var MenuItemId = (from mi in MenuDbContext.Set<HP.HSP.UA3.Core.BAS.CQRS.DataAccess.Entities.MenuItem>() where mi.MenuItemID == MenuItem.MenuItemId select mi.MenuItemID).FirstOrDefault();
 
                 if (MenuItemId.Equals(new Guid("{00000000-0000-0000-0000-000000000000}")))

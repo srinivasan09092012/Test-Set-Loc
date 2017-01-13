@@ -734,18 +734,33 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 menuNode.Name = menu.Attributes["name"].Value;
                 menuNode.SecurityRightId = menu.Attributes["securityRightId"].Value;
                 menuNode.DisplaySize = menu.Attributes["displaySize"].Value;
+                this.Menus.Add(menuNode);
 
                 foreach (XmlNode items in menu.ChildNodes)
                 {
-                    List<MenuItemNode> menuItemNodes = new List<MenuItemNode>();
-
                     foreach (XmlNode item in items.ChildNodes)
                     {
                         MenuItemNode menuItemNode = new MenuItemNode();
-                        menuItemNode.Id = item.Attributes["id"].Value;
                         menuItemNode.Module.Name = checkedModule.Name;
                         menuItemNode.Module.Id = checkedModule.Id;
-                        menuItemNode.MenuId = menuNode.Id;
+                        menuItemNode.MenuId = menu.Attributes["id"].Value;
+
+                        // Validate the guid before assigning it
+                        if (!Guid.TryParse(item.Attributes["id"].Value, out testNewGuid))
+                        {
+                            generatedGuid = Guid.NewGuid().ToString();
+                            menuItemNode.Id = generatedGuid;
+                            item.Attributes["id"].Value = generatedGuid;
+
+                            log.Warn("Warning LoadMenuItems item Id Error " +
+                                " Menu Name = " + item.Attributes["name"].Value +
+                                "\n\t  INVALID Menu Item GUID=" + item.Attributes["id"].Value +
+                                "\n\t  NEW Menu Item GUID = " + generatedGuid);
+                        }
+                        else
+                        {
+                            menuItemNode.Id = item.Attributes["id"].Value;
+                        }
                         menuItemNode.ParentId = ""; 
                         menuItemNode.Name = item.Attributes["name"].Value;
                         menuItemNode.Order = item.Attributes["orderIndex"].Value;
@@ -775,8 +790,6 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                             menuItemNode.ModuleSectionContentId = item.Attributes["moduleSectionContentId"].Value;
                         }
                         this.MenuItems.Add(menuItemNode);
-                        menuItemNodes.Add(menuItemNode);
-
                         foreach (XmlNode items2 in item.ChildNodes)
                         {
                             foreach (XmlNode item2 in items2.ChildNodes)
@@ -896,9 +909,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                             }
                         }
                     }
-                    menuNode.MenuItemNodes = menuItemNodes;
                 }
-                this.Menus.Add(menuNode);
             }
         }
 
@@ -1332,7 +1343,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
             public Module Module { get; set; }
 
-            public List<MenuItemNode> MenuItemNodes { get; set; }
+            public MenuItem MenuItem { get; set; }
 
             public string Action { get; set; }
 
