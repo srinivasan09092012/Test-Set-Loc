@@ -106,6 +106,7 @@
     <Compile Include="Data\HtmlBlock.cs" />
     <Compile Include="Data\HtmlBlockLanguage.cs" />
     <Compile Include="Data\IocConfiguration.cs" />
+    <Compile Include="Data\Menu.cs" />
     <Compile Include="Data\MenuItem.cs" />
     <Compile Include="Data\Service.cs" />
     <Compile Include="Data\DatalistItemAttribute.cs" />

@@ -80,16 +80,17 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
         private void ProcessLoad(object sender, EventArgs e)
         {
-            string coreTenantModuleId;
+            string tenantModuleId;
+            
             int loadMenusSuccessful = 0;
             int loadErrors = 0;
 
             Cursor.Current = Cursors.WaitCursor;
-            coreTenantModuleId = ConfigurationManager.AppSettings["CoreTenantModuleId"];
+            tenantModuleId = ConfigurationManager.AppSettings[this.MainForm.MenuItems[0].Module.Name + "TenantModuleId"];
 
-            if (coreTenantModuleId != null)
+            if (tenantModuleId != null)
             {
-                this.LoadMenuAndMenuItems(coreTenantModuleId, ref loadMenusSuccessful, ref loadErrors);
+                this.LoadMenuAndMenuItems(tenantModuleId, ref loadMenusSuccessful, ref loadErrors);
                 Cursor.Current = Cursors.Default;
                 log.Info("Tenant Configuration load complete. " + loadMenusSuccessful + " Menu Items loaded and " + loadErrors + " errors reported.");
                 MessageBox.Show("Tenant Configuration load complete. " + loadMenusSuccessful + " Menu Items loaded and " + loadErrors + " errors reported.", "Tenant Load Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -98,139 +99,190 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         
         private void LoadMenuAndMenuItems(string tenantModuleId, ref int loadMenusSuccessful, ref int loadErrors)
         {
-               int currentRow = 0;
-               bool updated = true;
-               bool added = false;
-               bool skipProcessing = false;
+            int currentRow = 0;
+            bool updated = true;
+            bool added = false;
+            bool menuAdded = false;
+            bool skipProcessing = false;
+            for (int j = 0; j < MainForm.Menus.Count; j++)
+            {
+                HP.HSP.UA3.Utilities.LoadTenantDb.Data.Menu menu = new HP.HSP.UA3.Utilities.LoadTenantDb.Data.Menu();
+                menu.MainForm = this.MainForm;
+                menu.MenuId = Guid.Parse(this.MainForm.Menus[j].Id);
+                menu.DisplaySize = this.MainForm.Menus[j].DisplaySize;
+                menu.IsActive = true;
+                menu.SecurityRightItemId = Guid.Parse(this.MainForm.Menus[j].SecurityRightId);
+                menu.OperatorID = "USER1";
+                menu.Name = this.MainForm.Menus[j].Name;
+                menu.TenantModuleId = Guid.Parse(tenantModuleId);
 
-               for (int i = 0; i < MainForm.MenuItems.Count; i++)
-               {
-                   skipProcessing = false;
-                   HP.HSP.UA3.Utilities.LoadTenantDb.Data.MenuItem menuItem = new HP.HSP.UA3.Utilities.LoadTenantDb.Data.MenuItem();
-                   menuItem.MainForm = this.MainForm;
-                   //Check to see if we have a valid GUID if not error off and skip process 
-                   Guid testNewGuid;
-                   if (!Guid.TryParse(this.MainForm.MenuItems[i].Id, out testNewGuid))
-                   {
+                try
+                {
+                    menuAdded = menu.AddMenu(menu);
+                }
+                catch (Exception)
+                {
+                    menuAdded = false;
+                }
+                if (menuAdded)
+                {
+                    loadMenusSuccessful++;
+                }
+                else
+                {
+                    log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Add Menu Error " +
+                        "Menu=" + menu.ToString());
+                    loadErrors++;
+                }
+            }
+
+            for (int i = 0; i < MainForm.MenuItems.Count; i++)
+            {
+                skipProcessing = false;
+                HP.HSP.UA3.Utilities.LoadTenantDb.Data.MenuItem menuItem = new HP.HSP.UA3.Utilities.LoadTenantDb.Data.MenuItem();
+                menuItem.MainForm = this.MainForm;
+
+                //Check to see if we have a valid GUID if not error off and skip process 
+                Guid testNewGuid;
+                if (!Guid.TryParse(this.MainForm.MenuItems[i].Id, out testNewGuid))
+                {
+                    log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Id Error " +
+                        " Menu Name = " + this.MainForm.MenuItems[i].Name +
+                        " INVALID Menu Item GUID=" + this.MainForm.MenuItems[i].Id);
+                    skipProcessing = true;
+                    this.MainForm.MenuItems[i].Action = "Add Error";
+                    loadErrors++;
+                }
+                else
+                {
+                    menuItem.MenuItemId = Guid.Parse(this.MainForm.MenuItems[i].Id);
+                }
+
+                if (this.MainForm.MenuItems[i].ParentId != "")
+                {
+                    if (!Guid.TryParse(this.MainForm.MenuItems[i].ParentId, out testNewGuid))
+                    {
                         log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Id Error " +
                             " Menu Name = " + this.MainForm.MenuItems[i].Name +
-                            " INVALID Menu Item GUID=" + this.MainForm.MenuItems[i].Id);
+                            " INVALID ParentId=" + this.MainForm.MenuItems[i].ParentId);
                         skipProcessing = true;
                         this.MainForm.MenuItems[i].Action = "Add Error";
                         loadErrors++;
-                   }
-                   else
-                   {
-                        menuItem.MenuItemId = Guid.Parse(this.MainForm.MenuItems[i].Id);
-                   }
+                    }
+                    else
+                    {
+                        menuItem.ParentMenuItemId = Guid.Parse(this.MainForm.MenuItems[i].ParentId);
+                    }
+                }
+                else
+                {
+                    string menuLevel1Id = getLevel1MenuId(menuItem.MenuItemId);
+                    if (menuLevel1Id != null)
+                    {
+                        menuItem.MenuId = Guid.Parse(menuLevel1Id);
+                    }
+                    else
+                    {
+                        log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Menu Id Not Found Error " +
+                        " Menu Item Id = " + this.MainForm.MenuItems[i].Id);
+                        skipProcessing = true;
+                        this.MainForm.MenuItems[i].Action = "Add Error";
+                        loadErrors++;
 
-                   if (this.MainForm.MenuItems[i].ParentId != "")
-                   {
-                        if (!Guid.TryParse(this.MainForm.MenuItems[i].ParentId, out testNewGuid))
+                    }
+                }
+
+                menuItem.Name = this.MainForm.MenuItems[i].Name;
+                menuItem.OrderIndex = this.MainForm.MenuItems[i].Order;
+                if (this.MainForm.MenuItems[i].SecurityRightId != "")
+                {
+                    //Check to see if we have a valid GUID if not error off and skip process 
+                    Guid testNewGuidSecurity;
+                    if (!Guid.TryParse(this.MainForm.MenuItems[i].SecurityRightId, out testNewGuidSecurity))
+                    {
+                        log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Security Right Error " +
+                            " Menu Name = " + this.MainForm.MenuItems[i].Name +
+                            " INVALID Security Right Item GUID=" + this.MainForm.MenuItems[i].SecurityRightId);
+                        skipProcessing = true;
+                        this.MainForm.MenuItems[i].Action = "Add Error";
+                        loadErrors++;
+                    }
+                    else
+                    {
+                        menuItem.SecurityRightItemId = Guid.Parse(this.MainForm.MenuItems[i].SecurityRightId);
+                    }
+                }
+
+                if (!skipProcessing)
+                {
+
+                    menuItem.LabelItemContentId = this.MainForm.MenuItems[i].LabelConentID;
+                    menuItem.DefaultText = this.MainForm.MenuItems[i].DefaultText;
+                    menuItem.BaseUrl = this.MainForm.MenuItems[i].BaseURL;
+                    menuItem.CssClass = this.MainForm.MenuItems[i].CssClass;
+                    menuItem.IocContainer = this.MainForm.MenuItems[i].IocContainer;
+                    menuItem.IsVisible = bool.Parse(this.MainForm.MenuItems[i].IsVisible);
+                    menuItem.PageHelpContentId = this.MainForm.MenuItems[i].PageHelpContentId;
+                    menuItem.MitaHelpContentId = this.MainForm.MenuItems[i].MitaHelpContentId;
+                    menuItem.ModuleSectionContentId = this.MainForm.MenuItems[i].ModuleSectionContentId;
+                    menuItem.MenuId = Guid.Parse(this.MainForm.MenuItems[i].MenuId);
+
+                    if (menuItem.GetMenuItemId(menuItem) == null)
+                    {
+                        added = menuItem.AddMenuItem(menuItem);
+
+                        if (added)
                         {
-                            log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Id Error " +
-                                " Menu Name = " + this.MainForm.MenuItems[i].Name +
-                                " INVALID ParentId=" + this.MainForm.MenuItems[i].ParentId);
-                            skipProcessing = true;
+                            this.MainForm.MenuItems[i].Action = "Added";
+                            loadMenusSuccessful++;
+                        }
+                        else
+                        {
                             this.MainForm.MenuItems[i].Action = "Add Error";
+                            log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Add Error " +
+                                "MenuItem=" + menuItem.ToString());
                             loadErrors++;
                         }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            updated = menuItem.UpdateMenuItem(menuItem);
+                        }
+                        catch
+                        {
+                            updated = false;
+                        }
+
+                        if (updated)
+                        {
+                            this.MainForm.MenuItems[i].Action = "Updated";
+                            loadMenusSuccessful++;
+                        }
                         else
                         {
-                            menuItem.ParentMenuItemId = Guid.Parse(this.MainForm.MenuItems[i].ParentId);
-                        }
-                   }
-                   menuItem.Name = this.MainForm.MenuItems[i].Name;
-                   menuItem.OrderIndex = this.MainForm.MenuItems[i].Order;
-                   if (this.MainForm.MenuItems[i].SecurityRightId != "")
-                   {
-                        //Check to see if we have a valid GUID if not error off and skip process 
-                        Guid testNewGuidSecurity;
-                        if (!Guid.TryParse(this.MainForm.MenuItems[i].SecurityRightId, out testNewGuidSecurity))
-                        {
-                            log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Security Right Error " +
-                                " Menu Name = " + this.MainForm.MenuItems[i].Name +
-                                " INVALID Security Right Item GUID=" + this.MainForm.MenuItems[i].SecurityRightId);
-                            skipProcessing = true;
-                            this.MainForm.MenuItems[i].Action = "Add Error";
+                            this.MainForm.MenuItems[i].Action = "Update Error";
+                            log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Update Error " +
+                                "Name=" + menuItem.ToString());
                             loadErrors++;
                         }
-                        else
-                        {
-                            menuItem.SecurityRightItemId = Guid.Parse(this.MainForm.MenuItems[i].SecurityRightId);
-                        }
-                   }
+                    }
+                }
 
-                   if (!skipProcessing)
-                   {
+                /*        menuItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheFullMenuTableKey, "false", "false", "false");
+                */
+                this.menuItemsGridView.Rows[currentRow].Cells[0].Value = this.MainForm.MenuItems[i].Action;
 
-                        menuItem.LabelItemContentId = this.MainForm.MenuItems[i].LabelConentID;
-                        menuItem.DefaultText = this.MainForm.MenuItems[i].DefaultText;
-                        menuItem.BaseUrl = this.MainForm.MenuItems[i].BaseURL;
-                        menuItem.CssClass = this.MainForm.MenuItems[i].CssClass;
-                        menuItem.IocContainer = this.MainForm.MenuItems[i].IocContainer;
-                        menuItem.IsVisible = bool.Parse(this.MainForm.MenuItems[i].IsVisible);
-                        menuItem.PageHelpContentId = this.MainForm.MenuItems[i].PageHelpContentId;
-                        menuItem.MitaHelpContentId = this.MainForm.MenuItems[i].MitaHelpContentId;
-                        menuItem.ModuleSectionContentId = this.MainForm.MenuItems[i].ModuleSectionContentId;
-                        menuItem.MenuId = Guid.Parse(this.MainForm.MenuItems[i].MenuId);
+                if (this.menuItemsGridView.Rows.Count > currentRow + 1)
+                {
+                    this.menuItemsGridView.CurrentCell = this.menuItemsGridView.Rows[currentRow + 1].Cells[0];
+                    this.menuItemsGridView.Rows[currentRow + 1].Selected = true;
+                }
 
-                        if (menuItem.GetMenuItemId(menuItem) == null)
-                        {
-                            added = menuItem.AddMenuItem(menuItem);
-
-                            if (added)
-                            {
-                                this.MainForm.MenuItems[i].Action = "Added";
-                                loadMenusSuccessful++;
-                            }
-                            else
-                            {
-                                this.MainForm.MenuItems[i].Action = "Add Error";
-                                log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Add Error " +
-                                    "Name=" + menuItem.ToString());
-                                loadErrors++;
-                            }
-                        }
-                        else
-                        {
-                            try
-                            {
-                                updated = menuItem.UpdateMenuItem(menuItem);
-                            }
-                            catch
-                            {
-                                updated = false;
-                            }
-
-                            if (updated)
-                            {
-                                this.MainForm.MenuItems[i].Action = "Updated";
-                                loadMenusSuccessful++;
-                            }
-                            else
-                            {
-                                this.MainForm.MenuItems[i].Action = "Update Error";
-                                log.Error("Error Confirmation_MenuItems.LoadMenuAndMenuItems Update Error " +
-                                    "Name=" + menuItem.ToString());
-                                loadErrors++;
-                            }
-                        }
-                   }
-
-           /*        menuItem.RefreshCache(AdministrationConstants.ApplicationSettings.ODataCacheFullMenuTableKey, "false", "false", "false");
-           */     
-                   this.menuItemsGridView.Rows[currentRow].Cells[0].Value = this.MainForm.MenuItems[i].Action;
-
-                   if (this.menuItemsGridView.Rows.Count > currentRow + 1)
-                   {
-                       this.menuItemsGridView.CurrentCell = this.menuItemsGridView.Rows[currentRow + 1].Cells[0];
-                       this.menuItemsGridView.Rows[currentRow + 1].Selected = true;
-                   }
-
-                   this.menuItemsGridView.Refresh();
-                   currentRow++;
-               }
+                this.menuItemsGridView.Refresh();
+                currentRow++;
+            }
         }
 
         private void propertiesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -260,6 +312,21 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         private void cancelPushButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private string getLevel1MenuId(Guid menuItemId)
+        {
+            MainForm.MenuItemNode miNode;
+
+            foreach (MainForm.MenuNode menuNode in this.MainForm.Menus)
+            {
+                miNode = menuNode.MenuItemNodes.Find(mi => mi.Id.ToUpper() == menuItemId.ToString("D").ToUpper());
+                if (miNode != null)
+                {
+                    return miNode.MenuId;
+                }
+            }
+            return null;
         }
     }
 }
