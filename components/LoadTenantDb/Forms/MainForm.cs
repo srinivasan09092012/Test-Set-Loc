@@ -525,7 +525,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                     {
                         SecurityNodeAttribute securityNodeAttribute = new SecurityNodeAttribute();
                         securityNodeAttribute.Name = "English Description";
-                        securityNodeAttribute.Value = english.Text;
+                        securityNodeAttribute.Value = securityRoleNode.Name; 
                         securityRoleNode.SecurityNodeAttribute.Add(securityNodeAttribute);
                         englishRoleFound = true;
                         break;
@@ -535,7 +535,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 {
                     SecurityNodeAttribute securityNodeAttribute = new SecurityNodeAttribute();
                     securityNodeAttribute.Name = "English Description";
-                    securityNodeAttribute.Value = "No English Description";
+                    securityNodeAttribute.Value = securityRoleNode.Name;
                     securityRoleNode.SecurityNodeAttribute.Add(securityNodeAttribute);
                 }
 
@@ -593,7 +593,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                             {
                                 SecurityNodeAttribute securityNodeAttribute = new SecurityNodeAttribute();
                                 securityNodeAttribute.Name = "English Description";
-                                securityNodeAttribute.Value = english.Text;
+                                securityNodeAttribute.Value = securityRoleNode.Name; 
                                 securityFunctionNode.SecurityNodeAttribute.Add(securityNodeAttribute);
                                 englishFunctionFound = true;
                                 break;
@@ -603,7 +603,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         {
                             SecurityNodeAttribute securityNodeAttribute = new SecurityNodeAttribute();
                             securityNodeAttribute.Name = "English Description";
-                            securityNodeAttribute.Value = "No English Description";
+                            securityNodeAttribute.Value = securityFunctionNode.Name;
                             securityFunctionNode.SecurityNodeAttribute.Add(securityNodeAttribute);
                         }
                         foreach (LocalizationDatalistItemNode spanish in this.LocalizationLabelsSpanish)
@@ -668,7 +668,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                                     {
                                         SecurityNodeAttribute securityNodeAttribute = new SecurityNodeAttribute();
                                         securityNodeAttribute.Name = "English Description";
-                                        securityNodeAttribute.Value = english.Text;
+                                        securityNodeAttribute.Value = securityRoleNode.Name;
                                         securityRightNode.SecurityNodeAttribute.Add(securityNodeAttribute);
                                         englishRightFound = true;
                                         break;
@@ -678,7 +678,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                                 {
                                     SecurityNodeAttribute securityNodeAttribute = new SecurityNodeAttribute();
                                     securityNodeAttribute.Name = "English Description";
-                                    securityNodeAttribute.Value = "No English Description";
+                                    securityNodeAttribute.Value = securityRightNode.Name;
                                     securityRightNode.SecurityNodeAttribute.Add(securityNodeAttribute);
                                 }
                                 foreach (LocalizationDatalistItemNode spanish in this.LocalizationLabelsSpanish)
