@@ -735,6 +735,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                 menuNode.SecurityRightId = menu.Attributes["securityRightId"].Value;
                 menuNode.DisplaySize = menu.Attributes["displaySize"].Value;
                 this.Menus.Add(menuNode);
+                List<MenuItemNode> menuItemNodesLevel1 = new List<MenuItemNode>();
 
                 foreach (XmlNode items in menu.ChildNodes)
                 {
@@ -790,6 +791,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                             menuItemNode.ModuleSectionContentId = item.Attributes["moduleSectionContentId"].Value;
                         }
                         this.MenuItems.Add(menuItemNode);
+                        menuItemNodesLevel1.Add(menuItemNode);
+
                         foreach (XmlNode items2 in item.ChildNodes)
                         {
                             foreach (XmlNode item2 in items2.ChildNodes)
@@ -910,6 +913,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
                         }
                     }
                 }
+                menuNode.MenuItemNodes = menuItemNodesLevel1;
             }
         }
 
@@ -1354,6 +1358,8 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
             public string SecurityRightId { get; set; }
 
             public string DisplaySize { get; set; }
+
+            public List<MenuItemNode> MenuItemNodes { get; set; }
         }
 
         public class MenuItemNode
