@@ -4,6 +4,7 @@ using HP.HSP.UA3.Core.BAS.CQRS.Config.DAOHelpers;
 using HP.HSP.UA3.Core.BAS.CQRS.DataAccess.Entities;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
 using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,6 +59,7 @@ namespace DatalistSyncUtil
             querySet.ReadXml("DataListQueries.xml");
             this.DataListQueryDetails = querySet.Tables[0];
             this.Cache = new RedisCacheManager();
+            this.LoadTenants();
             this.LoadModules();
             ModuleList.ClearSelected();
             this.DataListsQueryPath = ConfigurationManager.AppSettings["DataListsQueryFilePath"];
@@ -79,6 +81,8 @@ namespace DatalistSyncUtil
 
         public List<string> ListItemContents { get; set; }
 
+        public List<TenantModel> TenantLists { get; set; }
+
         public List<DataList> SourceLists { get; set; }
 
         public List<CodeListModel> SourceListItems { get; set; }
@@ -95,16 +99,34 @@ namespace DatalistSyncUtil
 
         public string QueryFilePath { get; set; }
 
+        private void LoadTenants()
+        {
+            List<TenantModel> result = null;
+
+            if (!this.Cache.IsSet("Tenants"))
+            {
+                using (IDbSession session = new DbSession(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString))
+                {
+                    result = new GetTenantDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
+                }
+
+                this.Cache.Set("Tenants", result.OrderBy(o => o.TenantName).ToList(), 1440);
+                this.TenantLists = result;
+            }
+
+            TenantList.DataSource = this.Cache.Get<List<TenantModel>>("Tenants").ToList();
+        }
+
         private void LoadModules()
         {
-
+            Guid tenantID = new Guid(TenantList.SelectedValue.ToString());
             if (!this.Cache.IsSet("TenantModules"))
             {
                 this.TenantModules = this.GetTenantModules(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
                 this.Cache.Set("TenantModules", this.TenantModules, 1440);
             }
 
-            ModuleList.DataSource = this.Cache.Get<List<TenantModuleModel>>("TenantModules").GroupBy(i => i.ModuleName)
+            ModuleList.DataSource = this.Cache.Get<List<TenantModuleModel>>("TenantModules").Where(w => w.TenantId == tenantID).GroupBy(i => i.ModuleName)
                   .Select(group =>
                         new
                         {
@@ -144,6 +166,7 @@ namespace DatalistSyncUtil
 
         private void BindDataList()
         {
+            Guid tenantID = new Guid(TenantList.SelectedValue.ToString());
             if (!this.Cache.IsSet("DataLists"))
             {
                 this.SourceLists = this.LoadDataList(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
@@ -157,11 +180,11 @@ namespace DatalistSyncUtil
 
             if (this.SkipNoOfDays)
             {
-                DataListView.DataSource = new BindingList<DataList>(this.SourceLists);
+                DataListView.DataSource = new BindingList<DataList>(this.SourceLists.Where(w => w.TenantID == tenantID).ToList());
             }
             else
             {
-                DataListView.DataSource = new BindingList<DataList>(this.SourceLists.Where(w => w.LastModified.Value >= DateTime.UtcNow.AddDays(this.NoOfDays)).ToList());
+                DataListView.DataSource = new BindingList<DataList>(this.SourceLists.Where(w => w.TenantID == tenantID && w.LastModified.Value >= DateTime.UtcNow.AddDays(this.NoOfDays)).ToList());
             }
         }
 
@@ -233,6 +256,7 @@ namespace DatalistSyncUtil
             this.ListContents = new List<string>();
             this.ListItemContents = new List<string>();
             List<DataList> selectedDataList = null;
+            Guid tenantID = new Guid(TenantList.SelectedValue.ToString());
 
             foreach (DataGridViewRow row in DataListView.Rows)
             {
@@ -251,7 +275,7 @@ namespace DatalistSyncUtil
             //this.ListContents.Add("ProviderManagement.DataList.RateType");
             //this.ListContents.Add("ProviderManagement.DataList.RelationshipTypes");
 
-            selectedDataList = this.SourceLists.Where(w => this.ListContents.Contains(w.ContentID)).ToList();
+            selectedDataList = this.SourceLists.Where(w => this.ListContents.Contains(w.ContentID) && w.TenantID == tenantID).ToList();
 
             File.WriteAllText(this.DataListsQueryPath + DateTime.UtcNow.Ticks + ".sql", this.GenerateDataList(selectedDataList));
 
@@ -440,6 +464,7 @@ namespace DatalistSyncUtil
             TenantModuleModel module = null;
             List<DataList> filteredModuleList = null;
             List<DataList> modifiedItems = null;
+            Guid tenantID = new Guid(TenantList.SelectedValue.ToString());
 
             if (ModuleList.SelectedItems.Count > 0)
             {
@@ -474,7 +499,7 @@ namespace DatalistSyncUtil
                 filteredModuleList = modulesQuery.ToList();
             }
 
-            DataListView.DataSource = new BindingList<DataList>(filteredModuleList);
+            DataListView.DataSource = new BindingList<DataList>(filteredModuleList.Where(w => w.TenantID == tenantID).ToList());
         }
 
         private List<DataList> GetUpdatedListItems(List<TenantModuleModel> selectedModules)
@@ -529,6 +554,99 @@ namespace DatalistSyncUtil
             {
                 this.Cache.Clear();
             }
+        }
+
+        private void BtnDownloadToFile_Click(object sender, EventArgs e)
+        {
+            List<DataListMainModel> listsMain = this.ConvertToCustomDataList();
+            File.WriteAllText(this.QueryFilePath + "\\" + (TenantList.SelectedItem as TenantModel).TenantName + ".list", JsonConvert.SerializeObject(listsMain));
+        }
+
+        private List<DataListMainModel> ConvertToCustomDataList()
+        {
+            List<DataList> lists = null;
+            List<DataListMainModel> listsMain = new List<DataListMainModel>();
+            DataListMainModel list1 = null;
+
+            Guid tenantID = new Guid(TenantList.SelectedValue.ToString());
+
+            lists = this.SourceLists.Where(w => w.TenantID == tenantID).ToList();
+
+            foreach (DataList list in lists)
+            {
+                list1 = new DataListMainModel()
+                {
+                    ContentID = list.ContentID,
+                    Description = list.Description,
+                    IsActive = list.IsActive,
+                    IsEditable = list.IsEditable,
+                    ReleaseStatus = list.ReleaseStatus,
+                    Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID),
+                    TenantID = list.TenantID
+                };
+
+                listsMain.Add(list1);
+            }
+
+            return listsMain;
+        }
+
+        private List<CodeItemModel> ConvertToCustomDataListItems(string contentID, Guid tenantID)
+        {
+            List<CodeListModel> listItems = null;
+            List <CodeItemModel> items = new List<CodeItemModel>();
+            CodeItemModel item = null;
+            listItems = this.SourceListItems.Where(w => w.ContentID == contentID && w.TenantID == tenantID).ToList();
+
+            listItems.ForEach(e =>
+            {
+                item = new CodeItemModel()
+                {
+                    Code = e.Code,
+                    ContentID = e.ContentID, 
+                    EffectiveEndDate = e.EffectiveEndDate,
+                    EffectiveStartDate = e.EffectiveStartDate,
+                    IsActive = e.IsActive,
+                    IsEditable = e.IsEditable,
+                    LanguageList = this.GetLanguageListCustom(e.LanguageList),
+                    OrderIndex = e.OrderIndex,
+                    TenantID = e.TenantID 
+                };
+                items.Add(item);
+            });
+
+
+            return items;
+        }
+
+        private List<ItemLanguage> GetLanguageListCustom(List<Languages> languageList)
+        {
+            List<ItemLanguage> languages = new List<ItemLanguage>();
+            ItemLanguage language = null;
+
+            languageList.ForEach(e =>
+            {
+                language = new ItemLanguage()
+                {
+                    Description = e.Description,
+                    LocaleID = e.LocaleID,
+                    LongDescription = e.LongDescription
+                };
+                languages.Add(language);
+            });
+
+            return languages;
+        }
+
+        private void TenantList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.LoadModules();
+        }
+
+        private void btnCompare_Click(object sender, EventArgs e)
+        {
+            DatalistComparer compare = new DatalistComparer();
+            compare.ShowDialog();
         }
     }
 }

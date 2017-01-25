@@ -18,7 +18,7 @@
     <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -82,25 +82,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataListSync.cs">
+    <Compile Include="Views\DatalistDiff.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DataListSync.Designer.cs">
+    <Compile Include="Views\DatalistDiff.Designer.cs">
+      <DependentUpon>DatalistDiff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CodeItemModel.cs" />
+    <Compile Include="Views\DatalistComparer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DatalistComparer.Designer.cs">
+      <DependentUpon>DatalistComparer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataListMainModel.cs" />
+    <Compile Include="Views\DataListSync.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DataListSync.Designer.cs">
       <DependentUpon>DataListSync.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListItems.cs">
+    <Compile Include="Models\ItemLanguage.cs" />
+    <Compile Include="Views\ListItems.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListItems.Designer.cs">
+    <Compile Include="Views\ListItems.Designer.cs">
       <DependentUpon>ListItems.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SelectedItem.cs" />
-    <EmbeddedResource Include="DataListSync.resx">
+    <Compile Include="Helpers\TenantHelper.cs" />
+    <Compile Include="Models\SelectedItem.cs" />
+    <EmbeddedResource Include="Views\DatalistComparer.resx">
+      <DependentUpon>DatalistComparer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DatalistDiff.resx">
+      <DependentUpon>DatalistDiff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DataListSync.resx">
       <DependentUpon>DataListSync.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListItems.resx">
+    <EmbeddedResource Include="Views\ListItems.resx">
       <DependentUpon>ListItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -128,11 +150,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataListQueries.xml">
+    <Content Include="Configs\DataListQueries.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <EmbeddedResource Include="Images\FileExplorer.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
