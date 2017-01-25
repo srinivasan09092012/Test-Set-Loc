@@ -69,10 +69,6 @@
             this.defaultTextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hintTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accessKeyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ViewRestrictionSecurityRightId = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.AddViewRestriction = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.EditRestrictionSecurityRightId = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.AddEditRestriction = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ModelPropertiesGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelPropertiesBindingSource)).BeginInit();
@@ -224,11 +220,7 @@
             this.labelContentIdDataGridViewButtonColumn,
             this.defaultTextDataGridViewTextBoxColumn,
             this.hintTypeDataGridViewTextBoxColumn,
-            this.accessKeyDataGridViewTextBoxColumn,
-            this.ViewRestrictionSecurityRightId,
-            this.AddViewRestriction,
-            this.EditRestrictionSecurityRightId,
-            this.AddEditRestriction});
+            this.accessKeyDataGridViewTextBoxColumn});
             this.ModelPropertiesGridView.DataSource = this.modelPropertiesBindingSource;
             this.ModelPropertiesGridView.Location = new System.Drawing.Point(12, 90);
             this.ModelPropertiesGridView.Name = "ModelPropertiesGridView";
@@ -236,7 +228,6 @@
             this.ModelPropertiesGridView.TabIndex = 6;
             this.ModelPropertiesGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ModelPropertiesGridView_CellContentClick);
             this.ModelPropertiesGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.ModelPropertiesGridView_CellEnter);
-            this.ModelPropertiesGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ModelPropertiesGridView_CellFormatting);
             this.ModelPropertiesGridView.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.ModelPropertiesGridView_CellLeave);
             this.ModelPropertiesGridView.CurrentCellChanged += new System.EventHandler(this.ModelPropertiesGridView_CurrentCellChanged);
             this.ModelPropertiesGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.ModelPropertiesGridView_DefaultValuesNeeded);
@@ -403,46 +394,6 @@
             this.accessKeyDataGridViewTextBoxColumn.Name = "accessKeyDataGridViewTextBoxColumn";
             this.accessKeyDataGridViewTextBoxColumn.Width = 81;
             // 
-            // ViewRestrictionSecurityRightId
-            // 
-            this.ViewRestrictionSecurityRightId.DataPropertyName = "ViewRestrictionSecurityRightId";
-            this.ViewRestrictionSecurityRightId.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ViewRestrictionSecurityRightId.HeaderText = "View Restriction Security Right ID";
-            this.ViewRestrictionSecurityRightId.MinimumWidth = 100;
-            this.ViewRestrictionSecurityRightId.Name = "ViewRestrictionSecurityRightId";
-            this.ViewRestrictionSecurityRightId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ViewRestrictionSecurityRightId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ViewRestrictionSecurityRightId.Width = 139;
-            // 
-            // AddViewRestriction
-            // 
-            this.AddViewRestriction.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.AddViewRestriction.HeaderText = "View Action";
-            this.AddViewRestriction.Name = "AddViewRestriction";
-            this.AddViewRestriction.Text = "";
-            this.AddViewRestriction.Visible = false;
-            this.AddViewRestriction.Width = 62;
-            // 
-            // EditRestrictionSecurityRightId
-            // 
-            this.EditRestrictionSecurityRightId.DataPropertyName = "EditRestrictionSecurityRightId";
-            this.EditRestrictionSecurityRightId.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.EditRestrictionSecurityRightId.HeaderText = "Edit Restriction Security Right ID";
-            this.EditRestrictionSecurityRightId.MinimumWidth = 100;
-            this.EditRestrictionSecurityRightId.Name = "EditRestrictionSecurityRightId";
-            this.EditRestrictionSecurityRightId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.EditRestrictionSecurityRightId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.EditRestrictionSecurityRightId.Width = 134;
-            // 
-            // AddEditRestriction
-            // 
-            this.AddEditRestriction.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.AddEditRestriction.HeaderText = "Edit Action";
-            this.AddEditRestriction.Name = "AddEditRestriction";
-            this.AddEditRestriction.Text = "";
-            this.AddEditRestriction.Visible = false;
-            this.AddEditRestriction.Width = 58;
-            // 
             // ModelPropertyForm
             // 
             this.AcceptButton = this.SaveButton;
@@ -506,9 +457,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn defaultTextDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hintTypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn accessKeyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn ViewRestrictionSecurityRightId;
-        private System.Windows.Forms.DataGridViewButtonColumn AddViewRestriction;
-        private System.Windows.Forms.DataGridViewButtonColumn EditRestrictionSecurityRightId;
-        private System.Windows.Forms.DataGridViewButtonColumn AddEditRestriction;
+
     }
 }

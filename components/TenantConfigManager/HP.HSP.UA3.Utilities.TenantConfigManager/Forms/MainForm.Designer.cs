@@ -48,26 +48,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fIleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -112,8 +92,6 @@
             this.EndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Addresses = new System.Windows.Forms.DataGridViewButtonColumn();
             this.emailTemplatesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.labelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.messagesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.LocaleDropdown = new System.Windows.Forms.ComboBox();
             this.localeConfigurationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -125,36 +103,11 @@
             this.displaySizeDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Properties = new System.Windows.Forms.DataGridViewButtonColumn();
             this.modelDefsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.MenusGridView = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.securityRightIdDataGridViewButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.displaySizeDataGridViewComboBoxColumn2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Items2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.menuBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tabPage13 = new System.Windows.Forms.TabPage();
-            this.ServicesGridView = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.securityRightIdDataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.labelContentIdDataGridViewButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.defaultTextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.baseUrlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iocContainerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.servicesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.SecurityRolesGridView = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contentIdDataGridViewButtonColumn5 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.roleTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.categoryIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adminSecurityRightIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.isActiveDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.isInternalDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.DataGridViewFunctions = new System.Windows.Forms.DataGridViewButtonColumn();
             this.securityRolesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.labelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.messagesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.configurationItemModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.localeIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -175,21 +128,15 @@
             this.tabPage14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EmailTemplatesGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emailTemplatesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.labelBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.messagesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.localeConfigurationBindingSource)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ModelDefinitionsGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelDefsBindingSource)).BeginInit();
-            this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MenusGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuBindingSource)).BeginInit();
-            this.tabPage13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ServicesGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.servicesBindingSource)).BeginInit();
-            this.tabPage6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SecurityRolesGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.securityRolesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.messagesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurationItemModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListBindingSource)).BeginInit();
@@ -204,8 +151,7 @@
             this.hELPToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1344, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1131, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -216,7 +162,7 @@
             this.toolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.fIleToolStripMenuItem.Name = "fIleToolStripMenuItem";
-            this.fIleToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
+            this.fIleToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.fIleToolStripMenuItem.Text = "&FILE";
             // 
             // saveToolStripMenuItem
@@ -224,20 +170,20 @@
             this.saveToolStripMenuItem.Enabled = false;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.saveToolStripMenuItem.Text = "S&ave";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(162, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(135, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.X)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -246,14 +192,14 @@
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.userConfigurationToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(52, 24);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.editToolStripMenuItem.Text = "E&DIT";
             // 
             // userConfigurationToolStripMenuItem
             // 
             this.userConfigurationToolStripMenuItem.Name = "userConfigurationToolStripMenuItem";
             this.userConfigurationToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F4)));
-            this.userConfigurationToolStripMenuItem.Size = new System.Drawing.Size(265, 26);
+            this.userConfigurationToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.userConfigurationToolStripMenuItem.Text = "User Configuration";
             this.userConfigurationToolStripMenuItem.Click += new System.EventHandler(this.userConfigurationToolStripMenuItem_Click);
             // 
@@ -263,18 +209,18 @@
             this.toolStripMenuItem2,
             this.aboutTenentConfigurationManagerToolStripMenuItem});
             this.hELPToolStripMenuItem.Name = "hELPToolStripMenuItem";
-            this.hELPToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.hELPToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.hELPToolStripMenuItem.Text = "HELP";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(329, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(271, 6);
             // 
             // aboutTenentConfigurationManagerToolStripMenuItem
             // 
             this.aboutTenentConfigurationManagerToolStripMenuItem.Name = "aboutTenentConfigurationManagerToolStripMenuItem";
-            this.aboutTenentConfigurationManagerToolStripMenuItem.Size = new System.Drawing.Size(332, 26);
+            this.aboutTenentConfigurationManagerToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
             this.aboutTenentConfigurationManagerToolStripMenuItem.Text = "A&bout Tenent Configuration Manager";
             this.aboutTenentConfigurationManagerToolStripMenuItem.Click += new System.EventHandler(this.aboutTenentConfigurationManagerToolStripMenuItem_Click);
             // 
@@ -289,11 +235,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.BusinessModuleDropdown);
-            this.groupBox1.Location = new System.Drawing.Point(16, 33);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(1312, 148);
+            this.groupBox1.Size = new System.Drawing.Size(1107, 120);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Configuration";
@@ -302,10 +246,9 @@
             // 
             this.ShowIdsCheckBox.AutoSize = true;
             this.ShowIdsCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ShowIdsCheckBox.Location = new System.Drawing.Point(460, 100);
-            this.ShowIdsCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ShowIdsCheckBox.Location = new System.Drawing.Point(345, 81);
             this.ShowIdsCheckBox.Name = "ShowIdsCheckBox";
-            this.ShowIdsCheckBox.Size = new System.Drawing.Size(84, 21);
+            this.ShowIdsCheckBox.Size = new System.Drawing.Size(69, 17);
             this.ShowIdsCheckBox.TabIndex = 6;
             this.ShowIdsCheckBox.Text = "Show IDs";
             this.ShowIdsCheckBox.UseVisualStyleBackColor = true;
@@ -317,20 +260,18 @@
             this.AppTierDropdown.Enabled = false;
             this.AppTierDropdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AppTierDropdown.FormattingEnabled = true;
-            this.AppTierDropdown.Location = new System.Drawing.Point(95, 66);
-            this.AppTierDropdown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AppTierDropdown.Location = new System.Drawing.Point(71, 54);
             this.AppTierDropdown.Name = "AppTierDropdown";
-            this.AppTierDropdown.Size = new System.Drawing.Size(292, 24);
+            this.AppTierDropdown.Size = new System.Drawing.Size(220, 21);
             this.AppTierDropdown.TabIndex = 5;
             this.AppTierDropdown.SelectedIndexChanged += new System.EventHandler(this.AppTierDropdown_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 66);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(18, 54);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 17);
+            this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 4;
             this.label4.Text = "App Tier";
             // 
@@ -340,30 +281,27 @@
             this.TenantDropdown.Enabled = false;
             this.TenantDropdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TenantDropdown.FormattingEnabled = true;
-            this.TenantDropdown.Location = new System.Drawing.Point(95, 100);
-            this.TenantDropdown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TenantDropdown.Location = new System.Drawing.Point(71, 81);
             this.TenantDropdown.Name = "TenantDropdown";
-            this.TenantDropdown.Size = new System.Drawing.Size(292, 24);
+            this.TenantDropdown.Size = new System.Drawing.Size(220, 21);
             this.TenantDropdown.TabIndex = 3;
             this.TenantDropdown.SelectedIndexChanged += new System.EventHandler(this.TenantDropdown_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 100);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(24, 81);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 17);
+            this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Tenant";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 33);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(23, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 17);
+            this.label1.Size = new System.Drawing.Size(42, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Module";
             // 
@@ -373,10 +311,9 @@
             this.BusinessModuleDropdown.Enabled = false;
             this.BusinessModuleDropdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BusinessModuleDropdown.FormattingEnabled = true;
-            this.BusinessModuleDropdown.Location = new System.Drawing.Point(95, 33);
-            this.BusinessModuleDropdown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BusinessModuleDropdown.Location = new System.Drawing.Point(71, 27);
             this.BusinessModuleDropdown.Name = "BusinessModuleDropdown";
-            this.BusinessModuleDropdown.Size = new System.Drawing.Size(292, 24);
+            this.BusinessModuleDropdown.Size = new System.Drawing.Size(220, 21);
             this.BusinessModuleDropdown.TabIndex = 1;
             this.BusinessModuleDropdown.SelectedIndexChanged += new System.EventHandler(this.BusinessModuleDropdown_SelectedIndexChanged);
             // 
@@ -389,24 +326,19 @@
             this.TenantConfigTabControl.Controls.Add(this.tabPage12);
             this.TenantConfigTabControl.Controls.Add(this.tabPage3);
             this.TenantConfigTabControl.Controls.Add(this.tabPage4);
-            this.TenantConfigTabControl.Controls.Add(this.tabPage5);
-            this.TenantConfigTabControl.Controls.Add(this.tabPage13);
-            this.TenantConfigTabControl.Controls.Add(this.tabPage6);
             this.TenantConfigTabControl.Enabled = false;
-            this.TenantConfigTabControl.Location = new System.Drawing.Point(17, 188);
-            this.TenantConfigTabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TenantConfigTabControl.Location = new System.Drawing.Point(13, 153);
             this.TenantConfigTabControl.Name = "TenantConfigTabControl";
             this.TenantConfigTabControl.SelectedIndex = 0;
-            this.TenantConfigTabControl.Size = new System.Drawing.Size(1311, 647);
+            this.TenantConfigTabControl.Size = new System.Drawing.Size(1106, 526);
             this.TenantConfigTabControl.TabIndex = 2;
             // 
             // tabPage12
             // 
             this.tabPage12.Controls.Add(this.DisplaySizesGridView);
-            this.tabPage12.Location = new System.Drawing.Point(4, 28);
-            this.tabPage12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage12.Location = new System.Drawing.Point(4, 25);
             this.tabPage12.Name = "tabPage12";
-            this.tabPage12.Size = new System.Drawing.Size(1303, 615);
+            this.tabPage12.Size = new System.Drawing.Size(1098, 497);
             this.tabPage12.TabIndex = 6;
             this.tabPage12.Text = "Display Sizes";
             this.tabPage12.UseVisualStyleBackColor = true;
@@ -426,9 +358,8 @@
             this.DisplaySizesGridView.DataSource = this.displaySizeBindingSource;
             this.DisplaySizesGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DisplaySizesGridView.Location = new System.Drawing.Point(0, 0);
-            this.DisplaySizesGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DisplaySizesGridView.Name = "DisplaySizesGridView";
-            this.DisplaySizesGridView.Size = new System.Drawing.Size(1303, 615);
+            this.DisplaySizesGridView.Size = new System.Drawing.Size(1098, 497);
             this.DisplaySizesGridView.TabIndex = 0;
             this.DisplaySizesGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DisplaySizesGridView_CellEnter);
             this.DisplaySizesGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.DisplaySizesGridView_DefaultValuesNeeded);
@@ -460,7 +391,7 @@
             this.isDefaultDataGridViewCheckBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.isDefaultDataGridViewCheckBoxColumn.HeaderText = "Default";
             this.isDefaultDataGridViewCheckBoxColumn.Name = "isDefaultDataGridViewCheckBoxColumn";
-            this.isDefaultDataGridViewCheckBoxColumn.Width = 59;
+            this.isDefaultDataGridViewCheckBoxColumn.Width = 47;
             // 
             // maxHeightDataGridViewTextBoxColumn
             // 
@@ -471,7 +402,7 @@
             this.maxHeightDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.maxHeightDataGridViewTextBoxColumn.HeaderText = "Max Height";
             this.maxHeightDataGridViewTextBoxColumn.Name = "maxHeightDataGridViewTextBoxColumn";
-            this.maxHeightDataGridViewTextBoxColumn.Width = 99;
+            this.maxHeightDataGridViewTextBoxColumn.Width = 86;
             // 
             // maxWidthDataGridViewTextBoxColumn
             // 
@@ -482,7 +413,7 @@
             this.maxWidthDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.maxWidthDataGridViewTextBoxColumn.HeaderText = "Max Width";
             this.maxWidthDataGridViewTextBoxColumn.Name = "maxWidthDataGridViewTextBoxColumn";
-            this.maxWidthDataGridViewTextBoxColumn.Width = 94;
+            this.maxWidthDataGridViewTextBoxColumn.Width = 83;
             // 
             // displaySizeBindingSource
             // 
@@ -495,10 +426,9 @@
             this.tabPage3.Controls.Add(this.label3);
             this.tabPage3.Controls.Add(this.LocalizationTabControl);
             this.tabPage3.Controls.Add(this.LocaleDropdown);
-            this.tabPage3.Location = new System.Drawing.Point(4, 28);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1303, 615);
+            this.tabPage3.Size = new System.Drawing.Size(975, 497);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Localization";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -508,10 +438,9 @@
             this.AutoTranslateCheckBox.AutoSize = true;
             this.AutoTranslateCheckBox.Enabled = false;
             this.AutoTranslateCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AutoTranslateCheckBox.Location = new System.Drawing.Point(311, 21);
-            this.AutoTranslateCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AutoTranslateCheckBox.Location = new System.Drawing.Point(233, 17);
             this.AutoTranslateCheckBox.Name = "AutoTranslateCheckBox";
-            this.AutoTranslateCheckBox.Size = new System.Drawing.Size(274, 21);
+            this.AutoTranslateCheckBox.Size = new System.Drawing.Size(207, 17);
             this.AutoTranslateCheckBox.TabIndex = 6;
             this.AutoTranslateCheckBox.Text = "Auto-translate changes to other locales";
             this.AutoTranslateCheckBox.UseVisualStyleBackColor = true;
@@ -519,10 +448,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 16);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(18, 13);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 17);
+            this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Locale";
             // 
@@ -533,20 +461,18 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LocalizationTabControl.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.LocalizationTabControl.Controls.Add(this.tabPage14);
-            this.LocalizationTabControl.Location = new System.Drawing.Point(0, 57);
-            this.LocalizationTabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LocalizationTabControl.Location = new System.Drawing.Point(0, 46);
             this.LocalizationTabControl.Name = "LocalizationTabControl";
             this.LocalizationTabControl.SelectedIndex = 0;
-            this.LocalizationTabControl.Size = new System.Drawing.Size(1300, 555);
+            this.LocalizationTabControl.Size = new System.Drawing.Size(975, 451);
             this.LocalizationTabControl.TabIndex = 0;
             // 
             // tabPage14
             // 
             this.tabPage14.Controls.Add(this.EmailTemplatesGridView);
-            this.tabPage14.Location = new System.Drawing.Point(4, 28);
-            this.tabPage14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage14.Location = new System.Drawing.Point(4, 25);
             this.tabPage14.Name = "tabPage14";
-            this.tabPage14.Size = new System.Drawing.Size(1292, 523);
+            this.tabPage14.Size = new System.Drawing.Size(967, 422);
             this.tabPage14.TabIndex = 5;
             this.tabPage14.Text = "Email Templates";
             this.tabPage14.UseVisualStyleBackColor = true;
@@ -571,9 +497,8 @@
             this.EmailTemplatesGridView.DataSource = this.emailTemplatesBindingSource;
             this.EmailTemplatesGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EmailTemplatesGridView.Location = new System.Drawing.Point(0, 0);
-            this.EmailTemplatesGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EmailTemplatesGridView.Name = "EmailTemplatesGridView";
-            this.EmailTemplatesGridView.Size = new System.Drawing.Size(1292, 523);
+            this.EmailTemplatesGridView.Size = new System.Drawing.Size(967, 422);
             this.EmailTemplatesGridView.TabIndex = 3;
             this.EmailTemplatesGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EmailTemplatesGridView_CellContentClick);
             this.EmailTemplatesGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.EmailTemplatesGridView_CellEnter);
@@ -608,7 +533,7 @@
             this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewTextBoxColumn3.HeaderText = "Content ID";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 103;
+            this.dataGridViewTextBoxColumn3.Width = 83;
             // 
             // nameDataGridViewTextBoxColumnET
             // 
@@ -617,7 +542,7 @@
             this.nameDataGridViewTextBoxColumnET.DefaultCellStyle = dataGridViewCellStyle8;
             this.nameDataGridViewTextBoxColumnET.HeaderText = "Name";
             this.nameDataGridViewTextBoxColumnET.Name = "nameDataGridViewTextBoxColumnET";
-            this.nameDataGridViewTextBoxColumnET.Width = 74;
+            this.nameDataGridViewTextBoxColumnET.Width = 60;
             // 
             // Subject
             // 
@@ -626,7 +551,7 @@
             this.Subject.DefaultCellStyle = dataGridViewCellStyle9;
             this.Subject.HeaderText = "Subject";
             this.Subject.Name = "Subject";
-            this.Subject.Width = 84;
+            this.Subject.Width = 68;
             // 
             // Priority
             // 
@@ -638,7 +563,7 @@
             this.Priority.Name = "Priority";
             this.Priority.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Priority.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Priority.Width = 81;
+            this.Priority.Width = 63;
             // 
             // Body
             // 
@@ -660,7 +585,7 @@
             this.StartDate.DefaultCellStyle = dataGridViewCellStyle11;
             this.StartDate.HeaderText = "StartDate";
             this.StartDate.Name = "StartDate";
-            this.StartDate.Width = 97;
+            this.StartDate.Width = 77;
             // 
             // EndDate
             // 
@@ -669,7 +594,7 @@
             this.EndDate.DefaultCellStyle = dataGridViewCellStyle12;
             this.EndDate.HeaderText = "EndDate";
             this.EndDate.Name = "EndDate";
-            this.EndDate.Width = 92;
+            this.EndDate.Width = 74;
             // 
             // Addresses
             // 
@@ -680,22 +605,12 @@
             this.Addresses.Text = "Edit";
             this.Addresses.ToolTipText = "Maintain template email addresses.";
             this.Addresses.UseColumnTextForButtonValue = true;
-            this.Addresses.Width = 81;
+            this.Addresses.Width = 70;
             // 
             // emailTemplatesBindingSource
             // 
             this.emailTemplatesBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.LocaleConfigurationEmailTemplateModel);
             this.emailTemplatesBindingSource.CurrentItemChanged += new System.EventHandler(this.emailTemplatesBindingSource_CurrentItemChanged);
-            // 
-            // labelBindingSource
-            // 
-            this.labelBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.LocaleConfigurationLabelModel);
-            this.labelBindingSource.CurrentItemChanged += new System.EventHandler(this.labelBindingSource_CurrentItemChanged);
-            // 
-            // messagesBindingSource
-            // 
-            this.messagesBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.LocaleConfigurationMessageModel);
-            this.messagesBindingSource.CurrentItemChanged += new System.EventHandler(this.messagesBindingSource_CurrentItemChanged);
             // 
             // LocaleDropdown
             // 
@@ -703,10 +618,9 @@
             this.LocaleDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LocaleDropdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LocaleDropdown.FormattingEnabled = true;
-            this.LocaleDropdown.Location = new System.Drawing.Point(88, 16);
-            this.LocaleDropdown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LocaleDropdown.Location = new System.Drawing.Point(66, 13);
             this.LocaleDropdown.Name = "LocaleDropdown";
-            this.LocaleDropdown.Size = new System.Drawing.Size(188, 24);
+            this.LocaleDropdown.Size = new System.Drawing.Size(142, 21);
             this.LocaleDropdown.TabIndex = 4;
             this.LocaleDropdown.SelectedIndexChanged += new System.EventHandler(this.LocaleDropdown_SelectedIndexChanged);
             // 
@@ -718,10 +632,9 @@
             // 
             this.tabPage4.Controls.Add(this.AutoGenModelButton);
             this.tabPage4.Controls.Add(this.ModelDefinitionsGridView);
-            this.tabPage4.Location = new System.Drawing.Point(4, 28);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1303, 615);
+            this.tabPage4.Size = new System.Drawing.Size(975, 497);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Model Definitions";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -729,10 +642,9 @@
             // AutoGenModelButton
             // 
             this.AutoGenModelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AutoGenModelButton.Location = new System.Drawing.Point(21, 18);
-            this.AutoGenModelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AutoGenModelButton.Location = new System.Drawing.Point(16, 15);
             this.AutoGenModelButton.Name = "AutoGenModelButton";
-            this.AutoGenModelButton.Size = new System.Drawing.Size(268, 27);
+            this.AutoGenModelButton.Size = new System.Drawing.Size(201, 22);
             this.AutoGenModelButton.TabIndex = 5;
             this.AutoGenModelButton.Text = "Auto-Generate New From Assembly";
             this.AutoGenModelButton.UseVisualStyleBackColor = true;
@@ -754,10 +666,9 @@
             this.displaySizeDataGridViewComboBoxColumn,
             this.Properties});
             this.ModelDefinitionsGridView.DataSource = this.modelDefsBindingSource;
-            this.ModelDefinitionsGridView.Location = new System.Drawing.Point(0, 65);
-            this.ModelDefinitionsGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ModelDefinitionsGridView.Location = new System.Drawing.Point(0, 53);
             this.ModelDefinitionsGridView.Name = "ModelDefinitionsGridView";
-            this.ModelDefinitionsGridView.Size = new System.Drawing.Size(1300, 546);
+            this.ModelDefinitionsGridView.Size = new System.Drawing.Size(975, 444);
             this.ModelDefinitionsGridView.TabIndex = 4;
             this.ModelDefinitionsGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ModelDefinitionsGridView_CellContentClick);
             this.ModelDefinitionsGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.ModelDefinitionsGridView_CellEnter);
@@ -790,7 +701,7 @@
             this.scopeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle15;
             this.scopeDataGridViewTextBoxColumn.HeaderText = "Scope";
             this.scopeDataGridViewTextBoxColumn.Name = "scopeDataGridViewTextBoxColumn";
-            this.scopeDataGridViewTextBoxColumn.Width = 77;
+            this.scopeDataGridViewTextBoxColumn.Width = 63;
             // 
             // displaySizeDataGridViewComboBoxColumn
             // 
@@ -807,7 +718,7 @@
             this.displaySizeDataGridViewComboBoxColumn.Name = "displaySizeDataGridViewComboBoxColumn";
             this.displaySizeDataGridViewComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.displaySizeDataGridViewComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.displaySizeDataGridViewComboBoxColumn.Width = 110;
+            this.displaySizeDataGridViewComboBoxColumn.Width = 86;
             // 
             // Properties
             // 
@@ -817,371 +728,22 @@
             this.Properties.Text = "Edit";
             this.Properties.ToolTipText = "Maintain the model properties.";
             this.Properties.UseColumnTextForButtonValue = true;
-            this.Properties.Width = 79;
+            this.Properties.Width = 60;
             // 
             // modelDefsBindingSource
             // 
             this.modelDefsBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.ModelDefinitionModel);
             this.modelDefsBindingSource.CurrentItemChanged += new System.EventHandler(this.modelDefsBindingSource_CurrentItemChanged);
             // 
-            // tabPage5
+            // labelBindingSource
             // 
-            this.tabPage5.Controls.Add(this.MenusGridView);
-            this.tabPage5.Location = new System.Drawing.Point(4, 28);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1303, 615);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Menus";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.labelBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.LocaleConfigurationLabelModel);
+            this.labelBindingSource.CurrentItemChanged += new System.EventHandler(this.labelBindingSource_CurrentItemChanged);
             // 
-            // MenusGridView
+            // messagesBindingSource
             // 
-            this.MenusGridView.AutoGenerateColumns = false;
-            this.MenusGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.MenusGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.MenusGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MenusGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn7,
-            this.nameDataGridViewTextBoxColumn2,
-            this.securityRightIdDataGridViewButtonColumn,
-            this.displaySizeDataGridViewComboBoxColumn2,
-            this.Items2});
-            this.MenusGridView.DataSource = this.menuBindingSource;
-            this.MenusGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MenusGridView.Location = new System.Drawing.Point(0, 0);
-            this.MenusGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MenusGridView.Name = "MenusGridView";
-            this.MenusGridView.Size = new System.Drawing.Size(1303, 615);
-            this.MenusGridView.TabIndex = 5;
-            this.MenusGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MenusGridView_CellContentClick);
-            this.MenusGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.MenusGridView_CellEnter);
-            this.MenusGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.MenusGridView_DefaultValuesNeeded);
-            this.MenusGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.MenusGridView_UserDeletingRow);
-            // 
-            // idDataGridViewTextBoxColumn7
-            // 
-            this.idDataGridViewTextBoxColumn7.DataPropertyName = "Id";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.idDataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle17;
-            this.idDataGridViewTextBoxColumn7.HeaderText = "ID";
-            this.idDataGridViewTextBoxColumn7.Name = "idDataGridViewTextBoxColumn7";
-            this.idDataGridViewTextBoxColumn7.Visible = false;
-            this.idDataGridViewTextBoxColumn7.Width = 43;
-            // 
-            // nameDataGridViewTextBoxColumn2
-            // 
-            this.nameDataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nameDataGridViewTextBoxColumn2.DataPropertyName = "Name";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.nameDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle18;
-            this.nameDataGridViewTextBoxColumn2.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn2.Name = "nameDataGridViewTextBoxColumn2";
-            // 
-            // securityRightIdDataGridViewButtonColumn
-            // 
-            this.securityRightIdDataGridViewButtonColumn.DataPropertyName = "SecurityRightId";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.securityRightIdDataGridViewButtonColumn.DefaultCellStyle = dataGridViewCellStyle19;
-            this.securityRightIdDataGridViewButtonColumn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.securityRightIdDataGridViewButtonColumn.HeaderText = "Security Right ID";
-            this.securityRightIdDataGridViewButtonColumn.Name = "securityRightIdDataGridViewButtonColumn";
-            this.securityRightIdDataGridViewButtonColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.securityRightIdDataGridViewButtonColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.securityRightIdDataGridViewButtonColumn.Width = 118;
-            // 
-            // displaySizeDataGridViewComboBoxColumn2
-            // 
-            this.displaySizeDataGridViewComboBoxColumn2.DataPropertyName = "DisplaySize";
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.displaySizeDataGridViewComboBoxColumn2.DefaultCellStyle = dataGridViewCellStyle20;
-            this.displaySizeDataGridViewComboBoxColumn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.displaySizeDataGridViewComboBoxColumn2.HeaderText = "Display Size";
-            this.displaySizeDataGridViewComboBoxColumn2.Items.AddRange(new object[] {
-            "*",
-            "Small",
-            "Medium",
-            "Large"});
-            this.displaySizeDataGridViewComboBoxColumn2.Name = "displaySizeDataGridViewComboBoxColumn2";
-            this.displaySizeDataGridViewComboBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.displaySizeDataGridViewComboBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.displaySizeDataGridViewComboBoxColumn2.Width = 105;
-            // 
-            // Items2
-            // 
-            this.Items2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.Items2.HeaderText = "Items";
-            this.Items2.Name = "Items2";
-            this.Items2.Text = "Edit";
-            this.Items2.ToolTipText = "Maintain menu items.";
-            this.Items2.UseColumnTextForButtonValue = true;
-            this.Items2.Width = 47;
-            // 
-            // menuBindingSource
-            // 
-            this.menuBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Navigation.MenuModel);
-            this.menuBindingSource.CurrentItemChanged += new System.EventHandler(this.MenuBindingSource_CurrentItemChanged);
-            // 
-            // tabPage13
-            // 
-            this.tabPage13.Controls.Add(this.ServicesGridView);
-            this.tabPage13.Location = new System.Drawing.Point(4, 28);
-            this.tabPage13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage13.Name = "tabPage13";
-            this.tabPage13.Size = new System.Drawing.Size(1303, 615);
-            this.tabPage13.TabIndex = 7;
-            this.tabPage13.Text = "Services";
-            this.tabPage13.UseVisualStyleBackColor = true;
-            // 
-            // ServicesGridView
-            // 
-            this.ServicesGridView.AutoGenerateColumns = false;
-            this.ServicesGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.ServicesGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.ServicesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ServicesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn9,
-            this.nameDataGridViewTextBoxColumn4,
-            this.securityRightIdDataGridViewButtonColumn1,
-            this.labelContentIdDataGridViewButtonColumn,
-            this.defaultTextDataGridViewTextBoxColumn,
-            this.baseUrlDataGridViewTextBoxColumn,
-            this.iocContainerDataGridViewTextBoxColumn});
-            this.ServicesGridView.DataSource = this.servicesBindingSource;
-            this.ServicesGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ServicesGridView.Location = new System.Drawing.Point(0, 0);
-            this.ServicesGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.ServicesGridView.Name = "ServicesGridView";
-            this.ServicesGridView.Size = new System.Drawing.Size(1303, 615);
-            this.ServicesGridView.TabIndex = 5;
-            this.ServicesGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ServicesGridView_CellContentClick);
-            this.ServicesGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.ServicesGridView_CellEnter);
-            this.ServicesGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.ServicesDataGridView_DefaultValuesNeeded);
-            this.ServicesGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.ServicesDataGridView_UserDeletingRow);
-            // 
-            // idDataGridViewTextBoxColumn9
-            // 
-            this.idDataGridViewTextBoxColumn9.DataPropertyName = "Id";
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.idDataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle21;
-            this.idDataGridViewTextBoxColumn9.HeaderText = "ID";
-            this.idDataGridViewTextBoxColumn9.Name = "idDataGridViewTextBoxColumn9";
-            this.idDataGridViewTextBoxColumn9.Visible = false;
-            this.idDataGridViewTextBoxColumn9.Width = 43;
-            // 
-            // nameDataGridViewTextBoxColumn4
-            // 
-            this.nameDataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nameDataGridViewTextBoxColumn4.DataPropertyName = "Name";
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.nameDataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle22;
-            this.nameDataGridViewTextBoxColumn4.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn4.Name = "nameDataGridViewTextBoxColumn4";
-            // 
-            // securityRightIdDataGridViewButtonColumn1
-            // 
-            this.securityRightIdDataGridViewButtonColumn1.DataPropertyName = "SecurityRightId";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.securityRightIdDataGridViewButtonColumn1.DefaultCellStyle = dataGridViewCellStyle23;
-            this.securityRightIdDataGridViewButtonColumn1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.securityRightIdDataGridViewButtonColumn1.HeaderText = "Security Right ID";
-            this.securityRightIdDataGridViewButtonColumn1.Name = "securityRightIdDataGridViewButtonColumn1";
-            this.securityRightIdDataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.securityRightIdDataGridViewButtonColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.securityRightIdDataGridViewButtonColumn1.Width = 118;
-            // 
-            // labelContentIdDataGridViewButtonColumn
-            // 
-            this.labelContentIdDataGridViewButtonColumn.DataPropertyName = "LabelContentId";
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.labelContentIdDataGridViewButtonColumn.DefaultCellStyle = dataGridViewCellStyle24;
-            this.labelContentIdDataGridViewButtonColumn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.labelContentIdDataGridViewButtonColumn.HeaderText = "Label Content ID";
-            this.labelContentIdDataGridViewButtonColumn.Name = "labelContentIdDataGridViewButtonColumn";
-            this.labelContentIdDataGridViewButtonColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.labelContentIdDataGridViewButtonColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.labelContentIdDataGridViewButtonColumn.Width = 95;
-            // 
-            // defaultTextDataGridViewTextBoxColumn
-            // 
-            this.defaultTextDataGridViewTextBoxColumn.DataPropertyName = "DefaultText";
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.defaultTextDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle25;
-            this.defaultTextDataGridViewTextBoxColumn.HeaderText = "Default Text";
-            this.defaultTextDataGridViewTextBoxColumn.Name = "defaultTextDataGridViewTextBoxColumn";
-            this.defaultTextDataGridViewTextBoxColumn.Width = 104;
-            // 
-            // baseUrlDataGridViewTextBoxColumn
-            // 
-            this.baseUrlDataGridViewTextBoxColumn.DataPropertyName = "BaseUrl";
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.baseUrlDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle26;
-            this.baseUrlDataGridViewTextBoxColumn.HeaderText = "Base Url";
-            this.baseUrlDataGridViewTextBoxColumn.Name = "baseUrlDataGridViewTextBoxColumn";
-            this.baseUrlDataGridViewTextBoxColumn.Width = 84;
-            // 
-            // iocContainerDataGridViewTextBoxColumn
-            // 
-            this.iocContainerDataGridViewTextBoxColumn.DataPropertyName = "IocContainer";
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.iocContainerDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle27;
-            this.iocContainerDataGridViewTextBoxColumn.HeaderText = "IOC Container";
-            this.iocContainerDataGridViewTextBoxColumn.Name = "iocContainerDataGridViewTextBoxColumn";
-            this.iocContainerDataGridViewTextBoxColumn.Width = 115;
-            // 
-            // servicesBindingSource
-            // 
-            this.servicesBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.ServiceItemModel);
-            this.servicesBindingSource.CurrentItemChanged += new System.EventHandler(this.servicesBindingSource_CurrentItemChanged);
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Controls.Add(this.SecurityRolesGridView);
-            this.tabPage6.Location = new System.Drawing.Point(4, 28);
-            this.tabPage6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(1303, 615);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Security Roles";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // SecurityRolesGridView
-            // 
-            this.SecurityRolesGridView.AutoGenerateColumns = false;
-            this.SecurityRolesGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.SecurityRolesGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.SecurityRolesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.SecurityRolesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn8,
-            this.nameDataGridViewTextBoxColumn3,
-            this.contentIdDataGridViewButtonColumn5,
-            this.roleTypeDataGridViewTextBoxColumn,
-            this.categoryIdDataGridViewTextBoxColumn,
-            this.adminSecurityRightIdDataGridViewTextBoxColumn,
-            this.isActiveDataGridViewCheckBoxColumn,
-            this.isInternalDataGridViewCheckBoxColumn,
-            this.DataGridViewFunctions});
-            this.SecurityRolesGridView.DataSource = this.securityRolesBindingSource;
-            this.SecurityRolesGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SecurityRolesGridView.Location = new System.Drawing.Point(0, 0);
-            this.SecurityRolesGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.SecurityRolesGridView.Name = "SecurityRolesGridView";
-            this.SecurityRolesGridView.Size = new System.Drawing.Size(1303, 615);
-            this.SecurityRolesGridView.TabIndex = 4;
-            this.SecurityRolesGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SecurityRolesGridView_CellContentClick);
-            this.SecurityRolesGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.SecurityRolesGridView_CellEnter);
-            this.SecurityRolesGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.SecurityRolesGridView_DefaultValuesNeeded);
-            this.SecurityRolesGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.SecurityRolesGridView_UserDeletingRow);
-            // 
-            // idDataGridViewTextBoxColumn8
-            // 
-            this.idDataGridViewTextBoxColumn8.DataPropertyName = "Id";
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.idDataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle28;
-            this.idDataGridViewTextBoxColumn8.HeaderText = "ID";
-            this.idDataGridViewTextBoxColumn8.Name = "idDataGridViewTextBoxColumn8";
-            this.idDataGridViewTextBoxColumn8.Visible = false;
-            this.idDataGridViewTextBoxColumn8.Width = 43;
-            // 
-            // nameDataGridViewTextBoxColumn3
-            // 
-            this.nameDataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.nameDataGridViewTextBoxColumn3.DataPropertyName = "Name";
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.nameDataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle29;
-            this.nameDataGridViewTextBoxColumn3.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn3.Name = "nameDataGridViewTextBoxColumn3";
-            this.nameDataGridViewTextBoxColumn3.Width = 150;
-            // 
-            // contentIdDataGridViewButtonColumn5
-            // 
-            this.contentIdDataGridViewButtonColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.contentIdDataGridViewButtonColumn5.DataPropertyName = "ContentId";
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.contentIdDataGridViewButtonColumn5.DefaultCellStyle = dataGridViewCellStyle30;
-            this.contentIdDataGridViewButtonColumn5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.contentIdDataGridViewButtonColumn5.HeaderText = "Label Content ID";
-            this.contentIdDataGridViewButtonColumn5.Name = "contentIdDataGridViewButtonColumn5";
-            this.contentIdDataGridViewButtonColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.contentIdDataGridViewButtonColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // roleTypeDataGridViewTextBoxColumn
-            // 
-            this.roleTypeDataGridViewTextBoxColumn.DataPropertyName = "RoleType";
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.roleTypeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle31;
-            this.roleTypeDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roleTypeDataGridViewTextBoxColumn.HeaderText = "Role Type";
-            this.roleTypeDataGridViewTextBoxColumn.Items.AddRange(new object[] {
-            "A",
-            "D",
-            "U"});
-            this.roleTypeDataGridViewTextBoxColumn.Name = "roleTypeDataGridViewTextBoxColumn";
-            this.roleTypeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.roleTypeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.roleTypeDataGridViewTextBoxColumn.Width = 94;
-            // 
-            // categoryIdDataGridViewTextBoxColumn
-            // 
-            this.categoryIdDataGridViewTextBoxColumn.DataPropertyName = "CategoryId";
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle32.Format = "N0";
-            dataGridViewCellStyle32.NullValue = null;
-            this.categoryIdDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle32;
-            this.categoryIdDataGridViewTextBoxColumn.HeaderText = "Category ID";
-            this.categoryIdDataGridViewTextBoxColumn.Name = "categoryIdDataGridViewTextBoxColumn";
-            this.categoryIdDataGridViewTextBoxColumn.Width = 102;
-            // 
-            // adminSecurityRightIdDataGridViewTextBoxColumn
-            // 
-            this.adminSecurityRightIdDataGridViewTextBoxColumn.DataPropertyName = "AdminSecurityRightId";
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.adminSecurityRightIdDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle33;
-            this.adminSecurityRightIdDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.adminSecurityRightIdDataGridViewTextBoxColumn.HeaderText = "Admin Security Right ID";
-            this.adminSecurityRightIdDataGridViewTextBoxColumn.Name = "adminSecurityRightIdDataGridViewTextBoxColumn";
-            this.adminSecurityRightIdDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.adminSecurityRightIdDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.adminSecurityRightIdDataGridViewTextBoxColumn.Width = 124;
-            // 
-            // isActiveDataGridViewCheckBoxColumn
-            // 
-            this.isActiveDataGridViewCheckBoxColumn.DataPropertyName = "IsActive";
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle34.NullValue = false;
-            this.isActiveDataGridViewCheckBoxColumn.DefaultCellStyle = dataGridViewCellStyle34;
-            this.isActiveDataGridViewCheckBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.isActiveDataGridViewCheckBoxColumn.HeaderText = "Active";
-            this.isActiveDataGridViewCheckBoxColumn.Name = "isActiveDataGridViewCheckBoxColumn";
-            this.isActiveDataGridViewCheckBoxColumn.Width = 52;
-            // 
-            // isInternalDataGridViewCheckBoxColumn
-            // 
-            this.isInternalDataGridViewCheckBoxColumn.DataPropertyName = "IsInternal";
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle35.NullValue = false;
-            this.isInternalDataGridViewCheckBoxColumn.DefaultCellStyle = dataGridViewCellStyle35;
-            this.isInternalDataGridViewCheckBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.isInternalDataGridViewCheckBoxColumn.HeaderText = "Internal";
-            this.isInternalDataGridViewCheckBoxColumn.Name = "isInternalDataGridViewCheckBoxColumn";
-            this.isInternalDataGridViewCheckBoxColumn.Width = 61;
-            // 
-            // DataGridViewFunctions
-            // 
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.DataGridViewFunctions.DefaultCellStyle = dataGridViewCellStyle36;
-            this.DataGridViewFunctions.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.DataGridViewFunctions.HeaderText = "Functions";
-            this.DataGridViewFunctions.Name = "DataGridViewFunctions";
-            this.DataGridViewFunctions.Text = "Edit";
-            this.DataGridViewFunctions.ToolTipText = "Maintain security role functions.";
-            this.DataGridViewFunctions.UseColumnTextForButtonValue = true;
-            this.DataGridViewFunctions.Width = 75;
-            // 
-            // securityRolesBindingSource
-            // 
-            this.securityRolesBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Security.SecurityRoleModel);
-            this.securityRolesBindingSource.CurrentItemChanged += new System.EventHandler(this.securityRolesBindingSource_CurrentItemChanged);
+            this.messagesBindingSource.DataSource = typeof(HP.HSP.UA3.Core.UX.Data.Configuration.LocaleConfigurationMessageModel);
+            this.messagesBindingSource.CurrentItemChanged += new System.EventHandler(this.messagesBindingSource_CurrentItemChanged);
             // 
             // configurationItemModelBindingSource
             // 
@@ -1191,8 +753,8 @@
             // idDataGridViewTextBoxColumn2
             // 
             this.idDataGridViewTextBoxColumn2.DataPropertyName = "Id";
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.idDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.idDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle17;
             this.idDataGridViewTextBoxColumn2.HeaderText = "ID";
             this.idDataGridViewTextBoxColumn2.Name = "idDataGridViewTextBoxColumn2";
             this.idDataGridViewTextBoxColumn2.Visible = false;
@@ -1201,8 +763,8 @@
             // localeIdDataGridViewTextBoxColumn1
             // 
             this.localeIdDataGridViewTextBoxColumn1.DataPropertyName = "LocaleId";
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.localeIdDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.localeIdDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle18;
             this.localeIdDataGridViewTextBoxColumn1.HeaderText = "Locale";
             this.localeIdDataGridViewTextBoxColumn1.Name = "localeIdDataGridViewTextBoxColumn1";
             this.localeIdDataGridViewTextBoxColumn1.ReadOnly = true;
@@ -1212,8 +774,8 @@
             // contentIdDataGridViewTextBoxColumn1
             // 
             this.contentIdDataGridViewTextBoxColumn1.DataPropertyName = "ContentId";
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.contentIdDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.contentIdDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle19;
             this.contentIdDataGridViewTextBoxColumn1.HeaderText = "Content ID";
             this.contentIdDataGridViewTextBoxColumn1.Name = "contentIdDataGridViewTextBoxColumn1";
             this.contentIdDataGridViewTextBoxColumn1.Width = 83;
@@ -1228,10 +790,9 @@
             this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SaveButton.Enabled = false;
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SaveButton.Location = new System.Drawing.Point(1223, 855);
-            this.SaveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SaveButton.Location = new System.Drawing.Point(1040, 695);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(100, 28);
+            this.SaveButton.Size = new System.Drawing.Size(75, 23);
             this.SaveButton.TabIndex = 4;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
@@ -1242,10 +803,9 @@
             this.ResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ResetButton.Enabled = false;
             this.ResetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ResetButton.Location = new System.Drawing.Point(16, 855);
-            this.ResetButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ResetButton.Location = new System.Drawing.Point(12, 695);
             this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Size = new System.Drawing.Size(100, 28);
+            this.ResetButton.Size = new System.Drawing.Size(75, 23);
             this.ResetButton.TabIndex = 3;
             this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = true;
@@ -1256,10 +816,9 @@
             this.ViewChangesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ViewChangesButton.Enabled = false;
             this.ViewChangesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ViewChangesButton.Location = new System.Drawing.Point(1115, 855);
-            this.ViewChangesButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ViewChangesButton.Location = new System.Drawing.Point(959, 695);
             this.ViewChangesButton.Name = "ViewChangesButton";
-            this.ViewChangesButton.Size = new System.Drawing.Size(100, 28);
+            this.ViewChangesButton.Size = new System.Drawing.Size(75, 23);
             this.ViewChangesButton.TabIndex = 5;
             this.ViewChangesButton.Text = "Changes...";
             this.ViewChangesButton.UseVisualStyleBackColor = true;
@@ -1268,9 +827,9 @@
             // MainForm
             // 
             this.AcceptButton = this.SaveButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1344, 898);
+            this.ClientSize = new System.Drawing.Size(1131, 603);
             this.Controls.Add(this.ViewChangesButton);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.SaveButton);
@@ -1279,8 +838,7 @@
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MinimumSize = new System.Drawing.Size(1358, 883);
+            this.MinimumSize = new System.Drawing.Size(1022, 597);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tenant Configuration Manager";
@@ -1301,21 +859,15 @@
             this.tabPage14.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.EmailTemplatesGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emailTemplatesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.labelBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.messagesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.localeConfigurationBindingSource)).EndInit();
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ModelDefinitionsGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelDefsBindingSource)).EndInit();
-            this.tabPage5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.MenusGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuBindingSource)).EndInit();
-            this.tabPage13.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ServicesGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.servicesBindingSource)).EndInit();
-            this.tabPage6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SecurityRolesGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.securityRolesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.messagesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurationItemModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListBindingSource)).EndInit();
@@ -1340,8 +892,6 @@
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.ComboBox TenantDropdown;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -1350,10 +900,8 @@
         private System.Windows.Forms.TabControl LocalizationTabControl;
         private System.Windows.Forms.ComboBox LocaleDropdown;
         private System.Windows.Forms.DataGridView ModelDefinitionsGridView;
-        private System.Windows.Forms.DataGridView MenusGridView;
         private System.Windows.Forms.TabPage tabPage12;
         private System.Windows.Forms.DataGridView DisplaySizesGridView;
-        private System.Windows.Forms.DataGridView SecurityRolesGridView;
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userConfigurationToolStripMenuItem;
@@ -1369,8 +917,6 @@
         private System.Windows.Forms.BindingSource modelDefsBindingSource;
         private System.Windows.Forms.BindingSource menuBindingSource;
         private System.Windows.Forms.BindingSource securityRolesBindingSource;
-        private System.Windows.Forms.TabPage tabPage13;
-        private System.Windows.Forms.DataGridView ServicesGridView;
         private System.Windows.Forms.BindingSource servicesBindingSource;
         private System.Windows.Forms.BindingSource configurationItemModelBindingSource;
         private System.Windows.Forms.Button AutoGenModelButton;
@@ -1400,27 +946,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn scopeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn displaySizeDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Properties;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewButtonColumn securityRightIdDataGridViewButtonColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn displaySizeDataGridViewComboBoxColumn2;
-        private System.Windows.Forms.DataGridViewButtonColumn Items2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewButtonColumn securityRightIdDataGridViewButtonColumn1;
-        private System.Windows.Forms.DataGridViewButtonColumn labelContentIdDataGridViewButtonColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn defaultTextDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn baseUrlDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iocContainerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewButtonColumn contentIdDataGridViewButtonColumn5;
-        private System.Windows.Forms.DataGridViewComboBoxColumn roleTypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoryIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn adminSecurityRightIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn isActiveDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn isInternalDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn DataGridViewFunctions;
         private System.Windows.Forms.Button ViewChangesButton;
     }
 }

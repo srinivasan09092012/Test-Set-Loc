@@ -103,33 +103,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         {
         }
 
-        private void ModelPropertiesGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            switch (e.ColumnIndex)
-            {
-                case 14:
-                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[15].Value == null)
-                    {
-                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[16].Value = "Add";
-                    }
-                    else
-                    {
-                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[16].Value = "Delete";
-                    }
-                    break;
-
-                case 16:
-                    if (ModelPropertiesGridView.Rows[e.RowIndex].Cells[17].Value == null)
-                    {
-                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[18].Value = "Add";
-                    }
-                    else
-                    {
-                        ModelPropertiesGridView.Rows[e.RowIndex].Cells[18].Value = "Delete";
-                    }
-                    break;
-            }
-        }
 
         private void ModelPropertiesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -141,19 +114,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                     ModelPropertiesGridView.Rows[e.RowIndex].Cells[11].Value = id;
                     break;
 
-                case 15:
-                    List<string> typeNodes = new List<string>(ModelTypeTextBox.Text.Split('.'));
-                    id = Convert.ToString(ModelPropertiesGridView.Rows[e.RowIndex].Cells[15].Value);
-                    ShowSecurityRightHelper(ref id, SecurityRightModel.RightType.Control, BusinessModule + ".Control.View." + typeNodes[typeNodes.Count - 1] + "." , BusinessModule + ".Control.View." + typeNodes[typeNodes.Count - 1] + "." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString());
-                    ModelPropertiesGridView.Rows[e.RowIndex].Cells[15].Value = id;
-                    break;
-
-                case 17:
-                    typeNodes = new List<string>(ModelTypeTextBox.Text.Split('.'));
-                    id = Convert.ToString(ModelPropertiesGridView.Rows[e.RowIndex].Cells[17].Value);
-                    ShowSecurityRightHelper(ref id, SecurityRightModel.RightType.Control, BusinessModule + ".Control.Edit." + typeNodes[typeNodes.Count - 1] + ".", BusinessModule + ".Control.Edit." + typeNodes[typeNodes.Count - 1] + "." + ModelPropertiesGridView.Rows[e.RowIndex].Cells[1].Value.ToString());
-                    ModelPropertiesGridView.Rows[e.RowIndex].Cells[17].Value = id;
-                    break;
             }
         }
 
@@ -358,8 +318,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 //Set specifieds
                 item.CompareToSpecified = !string.IsNullOrEmpty(item.CompareTo);
                 item.CompareToMsgContentIdSpecified = !string.IsNullOrEmpty(item.CompareToMsgContentId);
-                item.EditRestrictionSecurityRightIdSpecified = !string.IsNullOrEmpty(item.EditRestrictionSecurityRightId);
-                item.ViewRestrictionSecurityRightIdSpecified = !string.IsNullOrEmpty(item.ViewRestrictionSecurityRightId);
 
                 idx++;
             }

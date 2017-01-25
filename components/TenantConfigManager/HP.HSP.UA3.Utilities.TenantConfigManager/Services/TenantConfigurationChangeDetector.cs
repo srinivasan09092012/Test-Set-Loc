@@ -156,10 +156,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Services
                     _module = c.Name;
                     DetectChanges(o.DisplayConfiguration.DisplaySizes, c.DisplayConfiguration.DisplaySizes, results, _order++);
                     DetectChanges(o.LocalizationConfiguration.Locales, c.LocalizationConfiguration.Locales, results, _order++);
-                    DetectChanges(o.Menus, c.Menus, results, _order);
                     DetectChanges(o.ModelDefinitionConfiguration, c.ModelDefinitionConfiguration, results, _order++);
-                    DetectChanges(o.SecurityRoles, c.SecurityRoles, results, _order++);
-                    DetectChanges(o.Services, c.Services, results, _order++);
                 });
         }
 
@@ -216,71 +213,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Services
                 });
         }
 
-        private void DetectChanges(List<ServiceItemModel> original, List<ServiceItemModel> changed, List<ConfigurationChange> results, int order)
-        {
-            DetectChanges(original, changed, "Service definition", results, _order, p => p.Id,
-                new Func<ServiceItemModel, object>[]
-                {
-                    p => p.BaseUrl,
-                    p => p.DefaultText,
-                    p => p.IocContainer,
-                    p => p.LabelContentId,
-                    p => p.Name,
-                    p => p.SecurityRightId,
-                    p => p.Text
-                });
-        }
-
-        private void DetectChanges(List<SecurityRoleModel> original, List<SecurityRoleModel> changed, List<ConfigurationChange> results, int order)
-        {
-            DetectChanges(original, changed, "Security Role", results, _order, p => p.Id,
-                new Func<SecurityRoleModel, object>[]
-                {
-                    p => p.AdminSecurityRightId,
-                    p => p.CategoryId,
-                    p => p.ContentId,
-                    p => p.EulaContentId,
-                    p => p.IsActive,
-                    p => p.IsInternal,
-                    p => p.IsSignatureRequired,
-                    p => p.Name,
-                    p => p.RoleType
-                },
-                (o, c) =>
-                {
-                    DetectChanges(o.Functions, c.Functions, results, _order++);
-                });
-        }
-
-        private void DetectChanges(List<SecurityFunctionModel> original, List<SecurityFunctionModel> changed, List<ConfigurationChange> results, int order)
-        {
-            DetectChanges(original, changed, "Security Role Function", results, _order, p => p.Id,
-                new Func<SecurityFunctionModel, object>[]
-                {
-                    p => p.ContentId,
-                    p => p.IsActive,
-                    p => p.IsRoleBased,
-                    p => p.IsSystemFunction,
-                    p => p.Name
-                },
-                (o, c) =>
-                {
-                    DetectChanges(o.Rights, c.Rights, results, _order++);
-                });
-        }
-
-        private void DetectChanges(List<SecurityRightModel> original, List<SecurityRightModel> changed, List<ConfigurationChange> results, int order)
-        {
-            DetectChanges(original, changed, "Security Role Function Right", results, _order, p => p.Id,
-                new Func<SecurityRightModel, object>[]
-                {
-                    p => p.ContentId,
-                    p => p.IsActive,
-                    p => p.Name,
-                    p => p.Type
-                });
-        }
-
         private void DetectChanges(List<ModelDefinitionModel> original, List<ModelDefinitionModel> changed, List<ConfigurationChange> results, int order)
         {
             DetectChanges(original, changed, "Model definition", results, _order, p => p.Id,
@@ -322,57 +254,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Services
                     p => p.ViewRestrictionSecurityRightId,
                     p => p.ViewRestrictionSecurityRightIdSpecified
                 });
-        }
-
-        private void DetectChanges(List<MenuModel> original, List<MenuModel> changed, List<ConfigurationChange> results, int order)
-        {
-            DetectChanges(original, changed, "Menu", results, _order, p => p.Id,
-            new Func<MenuModel, object>[]
-            {
-                p => p.DisplaySize,
-                p => p.Name,
-                p => p.SecurityRightId
-            },
-            (o, c) =>
-            {
-                DetectChanges(o.Items, c.Items, results, _order);
-            });
-        }
-
-        private void DetectChanges(List<MenuItemModel> original, List<MenuItemModel> changed, List<ConfigurationChange> results, int order)
-        {
-            DetectChanges(original, changed, "Menu item", results, _order, p => p.Id,
-            new Func<MenuItemModel, object>[]
-            {
-                p => p.BaseUrl,
-                p => p.CssClass,
-                p => p.DefaultText,
-                p => p.FullUrl,
-                p => p.IocContainer,
-                p => p.IsVisible,
-                p => p.LabelContentId,
-                p => p.MitaHelpContentId,
-                p => p.MitaHelpContentIdSpecified,
-                p => p.PageHelpContentId,
-                p => p.PageHelpContentUrlSpecified,
-                p => p.ModuleSectionContentId,
-                p => p.ModuleSectionContentIdSpecified,
-                p => p.Name,
-                p => p.OrderIndex,
-                p => p.PageHelpContentId,
-                p => p.PageHelpContentIdSpecified,
-                p => p.QId,
-                p => p.SecurityRightId,
-                p => p.Text,
-                p => p.Tooltip
-            },
-            (o, c) =>
-            {
-                if (o.Items.Count > 0 || c.Items.Count > 0)
-                {
-                    DetectChanges(o.Items, c.Items, results, _order++);
-                }
-            });
         }
 
         private void DetectChanges(List<LocaleConfigurationModel> original, List<LocaleConfigurationModel> changed, List<ConfigurationChange> results, int order)
