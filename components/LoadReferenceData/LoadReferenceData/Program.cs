@@ -80,6 +80,11 @@ namespace LoadReferenceData
                 LoadQuery("AppSetting", "AppSetting");
             }));
 
+            tasks.Add(Task.Factory.StartNew(() =>
+            {
+                LoadHelpQuery("HelpNodeLocale", "HelpNodeLocale");
+            }));
+
             Task.WaitAll(tasks.ToArray());
 
             Console.WriteLine("Data Load completed..... ");
@@ -93,6 +98,16 @@ namespace LoadReferenceData
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             LoadTenantHelper.ExecuteODataQuery(query);
+            stopWatch.Stop();
+            PrintTimeTaken(stopWatch, queryType);
+            stopWatch.Reset();
+        }
+
+        private static void LoadHelpQuery(string query, string queryType)
+        {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            LoadHelpNodeHelper.ExecuteODataQuery(query);
             stopWatch.Stop();
             PrintTimeTaken(stopWatch, queryType);
             stopWatch.Reset();
