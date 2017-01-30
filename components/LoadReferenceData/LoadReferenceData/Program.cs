@@ -90,7 +90,6 @@ namespace LoadReferenceData
             Console.WriteLine("Data Load completed..... ");
             watch.Stop();
             PrintTimeTaken(watch, string.Empty);
-            Console.Read();
         }
 
         private static void LoadQuery(string query, string queryType)
