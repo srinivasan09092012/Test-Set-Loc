@@ -121,7 +121,8 @@ namespace DatalistSyncUtil
                     IsEditable = list.IsEditable,
                     ReleaseStatus = list.ReleaseStatus,
                     Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID, listItems),
-                    TenantID = list.TenantID
+                    TenantID = list.TenantID,
+                    ID = list.ID
                 };
 
                 listsMain.Add(list1);
@@ -148,7 +149,8 @@ namespace DatalistSyncUtil
                     IsEditable = e.IsEditable,
                     LanguageList = this.GetLanguageListCustom(e.LanguageList),
                     OrderIndex = e.OrderIndex,
-                    TenantID = e.TenantID
+                    TenantID = e.TenantID,
+                    ID = e.ID
                 };
                 items.Add(item);
             });
@@ -168,7 +170,8 @@ namespace DatalistSyncUtil
                 {
                     Description = e.Description,
                     LocaleID = e.LocaleID,
-                    LongDescription = e.LongDescription
+                    LongDescription = e.LongDescription,
+                    ItemID = e.CodeID
                 };
                 languages.Add(language);
             });

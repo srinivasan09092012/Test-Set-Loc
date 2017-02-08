@@ -5,6 +5,8 @@ namespace DatalistSyncUtil
     [Serializable]
     public class ItemLanguage
     {
+        public Guid ItemID { get; set; }
+
         public string ContentID { get; set; }
 
         public string Code { get; set; }

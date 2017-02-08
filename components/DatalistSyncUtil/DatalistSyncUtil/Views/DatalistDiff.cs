@@ -1,4 +1,5 @@
-﻿using HP.HSP.UA3.Core.BAS.CQRS.Extensions;
+﻿using DatalistSyncUtil.Views;
+using HP.HSP.UA3.Core.BAS.CQRS.Extensions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,6 +36,12 @@ namespace DatalistSyncUtil
         public List<DataListMainModel> SourceList { get; set; }
 
         public List<DataListMainModel> TargetList { get; set; }
+
+        public List<DataListMainModel> UpdateList { get; set; }
+
+        public List<CodeItemModel> UpdateListItems { get; set; }
+
+        public List<ItemLanguage> UpdateItemLanguages { get; set; }
 
         private void LoadDelta()
         {
@@ -84,6 +91,7 @@ namespace DatalistSyncUtil
                 {
                     sourceDatalist.Status = "UPDATE";
                     sourceDatalist.ItemsCount = sourceDatalist.Items.Count;
+                    sourceDatalist.ID = targetDatalist.ID;
                     updatedDatalists.Add(sourceDatalist);
                 }
             });
@@ -404,11 +412,6 @@ namespace DatalistSyncUtil
             this.Close();
         }
 
-        private void btnListUpdate_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void UpdateSourceItemView_Scroll(object sender, ScrollEventArgs e)
         {
             UpdateTargetItemView.FirstDisplayedScrollingRowIndex = UpdateSourceItemView.FirstDisplayedScrollingRowIndex;
@@ -582,7 +585,7 @@ namespace DatalistSyncUtil
         {
             foreach (DataGridViewRow row in NewLangView.Rows)
             {
-                string rowStatus = row.Cells[8].Value != null ? row.Cells[8].Value.ToString() : string.Empty;
+                string rowStatus = row.Cells[9].Value != null ? row.Cells[9].Value.ToString() : string.Empty;
 
                 if (rowStatus == "DATALIST_NEW")
                 {
@@ -600,6 +603,85 @@ namespace DatalistSyncUtil
                     row.DefaultCellStyle.ForeColor = Color.Black;
                 }
             }
+        }
+
+        private void btnListUpdate_Click(object sender, EventArgs e)
+        {
+            bool selected = false;
+            this.UpdateList = new List<DataListMainModel>();
+            foreach (DataGridViewRow row in DataListView.Rows)
+            {
+                selected = Convert.ToBoolean(row.Cells["Select"].Value);
+
+                if (selected)
+                {
+                    this.UpdateList.Add(row.DataBoundItem as DataListMainModel);
+                }
+            }
+
+        }
+
+        private void btnUpdateItems_Click(object sender, EventArgs e)
+        {
+            bool selected = false;
+            this.UpdateListItems = new List<CodeItemModel>();
+
+            foreach (DataGridViewRow row in NewItemsView.Rows)
+            {
+                selected = Convert.ToBoolean(row.Cells[0].Value);
+
+                if (selected)
+                {
+                    this.UpdateListItems.Add(row.DataBoundItem as CodeItemModel);
+                }
+            }
+
+            foreach (DataGridViewRow row in UpdateSourceItemView.Rows)
+            {
+                selected = Convert.ToBoolean(row.Cells[0].Value);
+
+                if (selected)
+                {
+                    this.UpdateListItems.Add(row.DataBoundItem as CodeItemModel);
+                }
+            }
+        }
+
+        private void btnUpdateLanguages_Click(object sender, EventArgs e)
+        {
+            bool selected = false; 
+            this.UpdateItemLanguages = new List<ItemLanguage>();
+
+            foreach (DataGridViewRow row in NewLangView.Rows)
+            {
+                selected = Convert.ToBoolean(row.Cells[0].Value);
+
+                if (selected)
+                {
+                    this.UpdateItemLanguages.Add(row.DataBoundItem as ItemLanguage);
+                }
+            }
+
+            foreach (DataGridViewRow row in SourceUpdateLangView.Rows)
+            {
+                selected = Convert.ToBoolean(row.Cells[0].Value);
+
+                if (selected)
+                {
+                    this.UpdateItemLanguages.Add(row.DataBoundItem as ItemLanguage);
+                }
+            }
+        }
+
+        private void SelectNewList_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void PreviewUpdate_Click(object sender, EventArgs e)
+        {
+            PreviewPage previewPage = new PreviewPage(this.UpdateList, this.UpdateListItems, this.UpdateItemLanguages);
+            previewPage.ShowDialog();
         }
     }
 }

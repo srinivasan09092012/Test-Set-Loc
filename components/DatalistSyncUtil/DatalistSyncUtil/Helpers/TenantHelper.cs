@@ -1,4 +1,5 @@
-﻿using HP.HSP.UA3.Core.BAS.CQRS.Base;
+﻿using DatalistSyncUtil.DaoHelpers;
+using HP.HSP.UA3.Core.BAS.CQRS.Base;
 using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Config.DAOHelpers;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
@@ -105,6 +106,16 @@ namespace DatalistSyncUtil
             this.Cache.Set("TargetDataListItems", result, 1440);
 
             return result;
+        }
+
+        public bool AddDatalist(DataListMainModel cmd)
+        {
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                new AddDataListDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
+            }
+
+            return true;
         }
     }
 }

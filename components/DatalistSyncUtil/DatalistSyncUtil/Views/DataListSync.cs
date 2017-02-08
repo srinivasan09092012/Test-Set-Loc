@@ -56,7 +56,7 @@ namespace DatalistSyncUtil
             this.NoOfDays = (int)Age.Value;
             this.SkipNoOfDays = bool.Parse(ConfigurationManager.AppSettings["SkipNoOfDays"]);
             DataSet querySet = new DataSet();
-            querySet.ReadXml("DataListQueries.xml");
+            querySet.ReadXml(@"Configs\DataListQueries.xml");
             this.DataListQueryDetails = querySet.Tables[0];
             this.Cache = new RedisCacheManager();
             this.LoadTenants();
@@ -560,6 +560,8 @@ namespace DatalistSyncUtil
         {
             List<DataListMainModel> listsMain = this.ConvertToCustomDataList();
             File.WriteAllText(this.QueryFilePath + "\\" + (TenantList.SelectedItem as TenantModel).TenantName + ".list", JsonConvert.SerializeObject(listsMain));
+            MessageBox.Show("Download completed!");
+            Process.Start("explorer.exe", this.QueryFilePath);
         }
 
         private List<DataListMainModel> ConvertToCustomDataList()

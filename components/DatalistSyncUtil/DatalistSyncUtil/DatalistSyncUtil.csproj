@@ -82,6 +82,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DaoHelpers\AddDataListDaoHelper.cs" />
+    <Compile Include="DaoHelpers\AddDataListItemDaoHelper.cs" />
+    <Compile Include="DaoHelpers\UpdateDataListDaoHelper.cs" />
+    <Compile Include="DaoHelpers\UpdateDataListItemDaoHelper.cs" />
     <Compile Include="Views\DatalistDiff.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +117,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\TenantHelper.cs" />
     <Compile Include="Models\SelectedItem.cs" />
+    <Compile Include="Views\PreviewPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\PreviewPage.Designer.cs">
+      <DependentUpon>PreviewPage.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\DatalistComparer.resx">
       <DependentUpon>DatalistComparer.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,6 +144,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\PreviewPage.resx">
+      <DependentUpon>PreviewPage.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

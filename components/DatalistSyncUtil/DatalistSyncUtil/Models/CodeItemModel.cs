@@ -10,7 +10,9 @@ namespace DatalistSyncUtil
         {
             this.LanguageList = new List<ItemLanguage>();
         }
-        
+
+        public Guid ID { get; set; }
+
         public string Code { get; set; }
 
         public string ContentID { get; set; }
