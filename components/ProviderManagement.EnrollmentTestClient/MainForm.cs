@@ -27,36 +27,32 @@ namespace ProviderManagement.EnrollmentTestClient
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            this.cbEndpoint.Items.Add(new ListItem()
-            {
-                Name = "DEV  (http://206.122.21.177:8010/HP.HSP.UA3.ProviderMgmt/R1.0/ProviderEventService.svc)",
-                Value = "http://206.122.21.177:8010/HP.HSP.UA3.ProviderMgmt/R1.0/ProviderEventService.svc"
-            });
-            this.cbEndpoint.Items.Add(new ListItem()
-            {
-                Name = "TEST (http://localhost:40520/ProviderEventService.svc)",
-                Value = "http://localhost:40520/ProviderEventService.svc"
-            });
-            this.cbEndpoint.Items.Add(new ListItem()
-            {
-                Name = "LOCAL (http://localhost:40520/EmployeeEventService.svc)",
-                Value = "http://localhost:40520/EmployeeEventService.svc"
-            });
-            this.cbEndpoint.SelectedIndex = 0;            
-        }
 
-        private void btnBrowse_Click(object sender, EventArgs e)
-        {
-            using (var dialog = new OpenFileDialog())
+            ListItemSection endPointSection = ConfigurationManager.GetSection("myEndPoints") as ListItemSection;
+            for (int i = 0; i < endPointSection.Values.Count; i++)
             {
-                dialog.Filter = "Xml Files (*.xml)|*.xml";
-                dialog.InitialDirectory = Environment.CurrentDirectory;
-                dialog.Multiselect = false;
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    this.LoadPayload(dialog.FileName);
-                }
+                this.cbEndpoint.Items.Add(new ListItem()
+                    {
+                        Name = endPointSection.Values[i].Name + " (" + endPointSection.Values[i].Value + ")",
+                        Value = endPointSection.Values[i].Value
+                    }
+                );
             }
+
+            this.cbEndpoint.SelectedIndex = 0;
+
+            ListItemSection eventSection = ConfigurationManager.GetSection("myEvents") as ListItemSection;
+            for (int i = 0; i < eventSection.Values.Count; i++)
+            {
+                this.cbEventName.Items.Add(new ListItem()
+                    {
+                        Name = eventSection.Values[i].Name,
+                        Value = eventSection.Values[i].Value
+                }
+                );
+            }
+
+            this.cbEventName.SelectedIndex = 0;
         }
 
         private void LoadPayload(string filePath)
@@ -66,6 +62,8 @@ namespace ProviderManagement.EnrollmentTestClient
             tbFileName.Text = filePath;
             tbPayloadContent.Text = formatted;
             btnSubmit.Enabled = true;
+
+            wbXML.Navigate(filePath);
         }
 
         private string GetFormattedXml(string filePath)
@@ -105,39 +103,31 @@ namespace ProviderManagement.EnrollmentTestClient
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            tbError.Text = string.Empty;
             btnSubmit.Enabled = false;            
             string state = "initializing event message properties";
             EventMessage em = new EventMessage();
 
-            em.EventNamespace = ConfigurationManager.AppSettings["EventNamespace"];
-            MessageBox.Show("EventNamespace 1 = " + em.EventNamespace);
-
-            em.EventType = ConfigurationManager.AppSettings["EventName"];
             em.TenantID = ConfigurationManager.AppSettings["TenantId"];
-
-            if (string.IsNullOrWhiteSpace(em.EventNamespace))
-            {
-                em.EventNamespace = "HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.Contracts.Events";
-            }
-
-            MessageBox.Show("EventNamespace 2 = " + em.EventNamespace);
-            if (string.IsNullOrWhiteSpace(em.EventType))
-            {
-                em.EventType = "EnrollmentApproved";
-            }
-
             if (string.IsNullOrWhiteSpace(em.TenantID))
             {
                 em.TenantID = "081e354b-2184-47fe-b69d-3c5229d8bccf";
             }
 
-            string serviceUrl = "";
-            string urlOverride = ConfigurationManager.AppSettings["ServiceUrlOverride"];
-            if (!string.IsNullOrWhiteSpace(urlOverride))
+            em.EventType = ConfigurationManager.AppSettings["EventNameOverride"];
+            if (string.IsNullOrWhiteSpace(em.EventType))
             {
-                serviceUrl = urlOverride;
+                em.EventType = ((ListItem)this.cbEventName.SelectedItem).Name;
             }
-            else
+
+            em.EventNamespace = ConfigurationManager.AppSettings["EventNamespaceOverride"];
+            if (string.IsNullOrWhiteSpace(em.EventNamespace))
+            {
+                em.EventNamespace = ((ListItem)this.cbEventName.SelectedItem).Value;
+            }
+
+            string serviceUrl = ConfigurationManager.AppSettings["ServiceUrlOverride"];
+            if (string.IsNullOrWhiteSpace(serviceUrl))
             {
                 serviceUrl = ((ListItem)this.cbEndpoint.SelectedItem).Value;
             }
@@ -181,17 +171,77 @@ namespace ProviderManagement.EnrollmentTestClient
                 {
                     builder.Append(message + Environment.NewLine);
                 }
-
+                tbError.Text = svcEx.ToString();
                 MessageBox.Show(string.Format("Error while {0}: {1}", state, builder.ToString()));
             }
             catch (Exception ex)
             {
+                tbError.Text = ex.ToString();
                 MessageBox.Show(string.Format("Error while {0}: {1}", state, ex.Message));
             }
-
             finally
             {
                 btnSubmit.Enabled = true;
+            }
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            string fileDirectory = ConfigurationManager.AppSettings["FileDirectory"];
+            if (string.IsNullOrWhiteSpace(fileDirectory))
+            {
+                fileDirectory = Environment.CurrentDirectory;
+            }
+
+            using (var dialog = new OpenFileDialog())
+            {
+                dialog.Filter = "Xml Files (*.xml)|*.xml";
+                dialog.InitialDirectory = fileDirectory;
+                dialog.Multiselect = false;
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    this.LoadPayload(dialog.FileName);
+                }
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (this.payloadDocument == null)
+            {
+                this.payloadDocument = new XmlDocument();
+            }
+            this.payloadDocument.LoadXml(tbPayloadContent.Text);
+            using (var sfd = new SaveFileDialog())
+            {
+                string fileDirectory = ConfigurationManager.AppSettings["FileDirectory"];
+                if (!string.IsNullOrWhiteSpace(fileDirectory))
+                {
+                    sfd.InitialDirectory = fileDirectory;
+                }
+
+                sfd.Filter = "Xml Files (*.xml)|*.xml";
+                sfd.FilterIndex = 1;
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    this.payloadDocument.Save(sfd.FileName);
+                    this.LoadPayload(sfd.FileName);
+                }
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.LoadPayload(tbFileName.Text);
+        }
+
+        private void TbPayloadContent_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.Control | Keys.A))
+            {
+                tbPayloadContent.SelectAll();
+                e.Handled = e.SuppressKeyPress = true;
             }
         }
     }
