@@ -50,7 +50,6 @@ namespace DatalistSyncUtil.Views
 
         private void SaveDatalistItems()
         {
-            List<ItemLanguage> languages = null;
             List<DataList> dataList = this.LoadHelper.GetDataList();
             DataList list = null;
 
@@ -62,9 +61,42 @@ namespace DatalistSyncUtil.Views
                     if (list != null)
                     {
                         f.DatalistID = list.ID;
-                        languages = this.FinalItemLanguages.FindAll(w => w.ContentID == f.ContentID && w.Code == f.Code);
-                        f.LanguageList = languages;
-                        this.LoadHelper.AddDatalistItem(f);
+                        if (f.ID == Guid.Empty)
+                        {
+                            this.LoadHelper.AddDatalistItem(f);
+                        }
+                        else
+                        {
+                            this.LoadHelper.UpdateDatalistItem(f);
+                        }
+                    }
+                });
+
+                this.Cache.Remove("TargetDataListItems");
+            }
+        }
+
+        private void SaveDatalistItemLanguages()
+        {
+            List<CodeListModel> dataListItems = this.LoadHelper.GetDataListItems();
+            CodeListModel item = null;
+
+            if (this.FinalItemLanguages != null)
+            {
+                this.FinalItemLanguages.ForEach(f =>
+                {
+                    item = dataListItems.Find(e => e.ContentID == f.ContentID && e.Code == f.Code && e.IsActive == true);
+                    if (item != null)
+                    {
+                        f.ItemID = item.ID;
+                        if (f.Status == "DATALIST_NEW" || f.Status == "ITEM_NEW" || f.Status == "LOCALE_NEW")
+                        {
+                            this.LoadHelper.AddDatalistItemLanguage(f);
+                        }
+                        else
+                        {
+                            this.LoadHelper.UpdateDatalistItemLanguage(f);
+                        }
                     }
                 });
 
@@ -83,7 +115,14 @@ namespace DatalistSyncUtil.Views
                     foreach (DataListMainModel list in this.FinalList)
                     {
                         list.TenantModuleID = modules.Find(f => f.TenantId == list.TenantID && f.ModuleName == list.ModuleName).TenantModuleId;
-                        this.LoadHelper.AddDatalist(list);
+                        if(list.ID == null)
+                        {
+                            this.LoadHelper.AddDatalist(list);
+                        }
+                        else
+                        {
+                            this.LoadHelper.UpdateDatalist(list);
+                        }
                     }
 
                     this.Cache.Remove("TargetDataLists");
@@ -139,7 +178,7 @@ namespace DatalistSyncUtil.Views
                 langNodes = new List<TreeNode>();
                 if (this.FinalItemLanguages != null)
                 {
-                    this.GetTreeItemLanguages(langNodes, f.ContentID);
+                    this.GetTreeItemLanguages(langNodes, f.ContentID, f.Code);
                 }
                 
                 node = new TreeNode(f.Code, langNodes.ToArray());
@@ -147,12 +186,12 @@ namespace DatalistSyncUtil.Views
             });
         }
 
-        private void GetTreeItemLanguages(List<TreeNode> langNodes, string contentID)
+        private void GetTreeItemLanguages(List<TreeNode> langNodes, string contentID, string code)
         {
             TreeNode node = null;
             string languageSeparator = " - ";
 
-            List<ItemLanguage> items = this.FinalItemLanguages.FindAll(f => f.ContentID.Trim() == contentID);
+            List<ItemLanguage> items = this.FinalItemLanguages.FindAll(f => f.ContentID.Trim() == contentID && f.Code == code);
 
             items.ForEach(f =>
             {

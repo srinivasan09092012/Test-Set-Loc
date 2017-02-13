@@ -207,7 +207,7 @@
             // 
             // btnListUpdate
             // 
-            this.btnListUpdate.Location = new System.Drawing.Point(1192, 630);
+            this.btnListUpdate.Location = new System.Drawing.Point(0, 630);
             this.btnListUpdate.Name = "btnListUpdate";
             this.btnListUpdate.Size = new System.Drawing.Size(75, 32);
             this.btnListUpdate.TabIndex = 2;
@@ -306,7 +306,7 @@
             // 
             // btnUpdateItems
             // 
-            this.btnUpdateItems.Location = new System.Drawing.Point(1396, 639);
+            this.btnUpdateItems.Location = new System.Drawing.Point(2, 642);
             this.btnUpdateItems.Name = "btnUpdateItems";
             this.btnUpdateItems.Size = new System.Drawing.Size(75, 26);
             this.btnUpdateItems.TabIndex = 1;
@@ -823,7 +823,7 @@
             // 
             // btnUpdateLanguages
             // 
-            this.btnUpdateLanguages.Location = new System.Drawing.Point(1390, 636);
+            this.btnUpdateLanguages.Location = new System.Drawing.Point(3, 638);
             this.btnUpdateLanguages.Name = "btnUpdateLanguages";
             this.btnUpdateLanguages.Size = new System.Drawing.Size(75, 28);
             this.btnUpdateLanguages.TabIndex = 1;

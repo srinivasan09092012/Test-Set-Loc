@@ -26,8 +26,6 @@ namespace DatalistSyncUtil
             this.LoadModules();
         }
 
-        
-
         public List<DataListMainModel> SourceList { get; set; }
 
         public List<DataListMainModel> TargetList { get; set; }
@@ -116,7 +114,7 @@ namespace DatalistSyncUtil
                 filteredDataList = this.TargetList.Where(w => w.TenantModuleID == tenantModuleId).ToList();
             }
 
-            this.LoadTreeView(TargetTreeList, filteredDataList);
+            this.LoadTreeView(TargetTreeList, filteredDataList.OrderBy(o=>o.ContentID).ToList());
             Cursor.Current = Cursors.Default;
         }
 

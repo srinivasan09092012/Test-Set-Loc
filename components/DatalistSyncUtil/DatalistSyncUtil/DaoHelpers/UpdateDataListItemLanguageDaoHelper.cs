@@ -15,32 +15,28 @@ namespace DatalistSyncUtil.DaoHelpers
     /// <summary>
     /// UpdateDataListItemDaoHelper
     /// </summary>
-    public class UpdateDataListItemDaoHelper
+    public class UpdateDataListItemLanguageDaoHelper
     {
-        public UpdateDataListItemDaoHelper(DataListsDbContext context)
+        public UpdateDataListItemLanguageDaoHelper(DataListsDbContext context)
         {
             this.Context = context;
         }
 
         public DataListsDbContext Context { get; set; }
 
-        public bool ExecuteProcedure(CodeItemModel cmd)
+        public bool ExecuteProcedure(ItemLanguage cmd)
         {
-            DataListItemModel dataListitemUpdated = new DataListItemModel()
+            DataListItemLanguage languageUpdate = new DataListItemLanguage()
             {
-                ID = cmd.ID,
-                DataListID = cmd.DatalistID,
-                DataListItemName = cmd.Code,
-                EffectiveDate = cmd.EffectiveStartDate.Value,
-                EndDate = cmd.EffectiveEndDate.Value,
-                IsActive = cmd.IsActive,
-                IsEditable = cmd.IsEditable,
-                OrderIndex = cmd.OrderIndex.Value,
+                DataListItemID = cmd.ItemID,
+                Description = cmd.Description,
+                LongDescription = cmd.LongDescription,
+                IsActive = true,
                 LastModified = DateTime.UtcNow,
+                LocaleID = cmd.LocaleID
             };
 
-            this.Context.Entry(dataListitemUpdated).State = EntityState.Modified;
-
+            this.Context.Entry(languageUpdate).State = EntityState.Modified;
             this.Context.SaveChanges();
 
             return true;

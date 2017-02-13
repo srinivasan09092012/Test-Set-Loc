@@ -83,8 +83,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DaoHelpers\AddDataListDaoHelper.cs" />
+    <Compile Include="DaoHelpers\AddDataListItemLanguageDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataListItemDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateDataListDaoHelper.cs" />
+    <Compile Include="DaoHelpers\UpdateDataListItemLanguageDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateDataListItemDaoHelper.cs" />
     <Compile Include="Views\DatalistDiff.cs">
       <SubType>Form</SubType>

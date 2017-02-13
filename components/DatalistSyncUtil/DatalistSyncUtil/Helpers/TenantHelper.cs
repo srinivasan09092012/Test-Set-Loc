@@ -139,6 +139,16 @@ namespace DatalistSyncUtil
             return true;
         }
 
+        public bool UpdateDatalist(DataListMainModel cmd)
+        {
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                new UpdateDataListDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
+            }
+
+            return true;
+        }
+
         public bool AddDatalistItem(CodeItemModel cmd)
         {
             using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
@@ -146,6 +156,54 @@ namespace DatalistSyncUtil
                 try
                 {
                     new AddDataListItemDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch
+                {
+                }
+            }
+
+            return true;
+        }
+
+        public bool AddDatalistItemLanguage(ItemLanguage cmd)
+        {
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new AddDataListItemLanguageDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch
+                {
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateDatalistItem(CodeItemModel cmd)
+        {
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new UpdateDataListItemDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch
+                {
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateDatalistItemLanguage(ItemLanguage cmd)
+        {
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new UpdateDataListItemLanguageDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
                 }
                 catch
                 {

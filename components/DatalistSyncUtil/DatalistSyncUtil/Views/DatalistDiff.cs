@@ -181,7 +181,7 @@ namespace DatalistSyncUtil
                 }
             });
 
-            return newDatalistItemsFromUpdateList.OrderBy(o => o.ContentID).ToList(); 
+            return newDatalistItemsFromUpdateList.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList(); 
         }
 
         private void UpdatedDatalistItems()
@@ -229,8 +229,8 @@ namespace DatalistSyncUtil
                 updatedTargetDatalistItems = updatedTargetDatalistItems.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
             }
 
-            UpdateSourceItemView.DataSource = new BindingList<CodeItemModel>(updatedDatalistItems.OrderBy(o => o.ContentID).ToList());
-            UpdateTargetItemView.DataSource = new BindingList<CodeItemModel>(updatedTargetDatalistItems.OrderBy(o => o.ContentID).ToList());
+            UpdateSourceItemView.DataSource = new BindingList<CodeItemModel>(updatedDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+            UpdateTargetItemView.DataSource = new BindingList<CodeItemModel>(updatedTargetDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
         }
 
         private void UpdateLanguages()
@@ -308,7 +308,7 @@ namespace DatalistSyncUtil
                 }
             });
 
-            return newDatalistItemLanguages.OrderBy(o => o.ContentID).ToList(); 
+            return newDatalistItemLanguages.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ThenBy(t => t.Code).ToList(); 
         }
 
         private List<ItemLanguage> GetNewLanguagesFromExistingItems()
@@ -346,7 +346,7 @@ namespace DatalistSyncUtil
                 }
             });
 
-            return newDatalistItemLanguages.OrderBy(o => o.ContentID).ToList();
+            return newDatalistItemLanguages.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
         }
 
         private void LoadUpdateLanguagesFromExistingItems()
@@ -415,8 +415,8 @@ namespace DatalistSyncUtil
                 updateTargetDatalistItemLanguages = updateTargetDatalistItemLanguages.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
             }
 
-            SourceUpdateLangView.DataSource = new BindingList<ItemLanguage>(updateSourceDatalistItemLanguages.OrderBy(o => o.ContentID).ToList());
-            TargetUpdateLangView.DataSource = new BindingList<ItemLanguage>(updateTargetDatalistItemLanguages.OrderBy(o => o.ContentID).ToList());
+            SourceUpdateLangView.DataSource = new BindingList<ItemLanguage>(updateSourceDatalistItemLanguages.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+            TargetUpdateLangView.DataSource = new BindingList<ItemLanguage>(updateTargetDatalistItemLanguages.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
         }
 
         private bool CheckUpdateItemChanged(ref CodeItemModel t, ref CodeItemModel targetItem)
@@ -461,7 +461,7 @@ namespace DatalistSyncUtil
                 i.Items.ForEach(f => f.Status = "NEW");
                 newDatalistItems.AddRange(i.Items);
             });
-            return newDatalistItems.OrderBy(o => o.ContentID).ToList(); ;
+            return newDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
         }
 
         private void LoadDatalistItemLanguagesDelta()
