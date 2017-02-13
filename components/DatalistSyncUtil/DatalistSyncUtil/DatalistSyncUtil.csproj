@@ -88,6 +88,7 @@
     <Compile Include="DaoHelpers\UpdateDataListDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateDataListItemLanguageDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateDataListItemDaoHelper.cs" />
+    <Compile Include="Helpers\SourceTenantHelper.cs" />
     <Compile Include="Views\DatalistDiff.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -28,16 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle85 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle86 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle87 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle88 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle89 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle90 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle91 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DiffTab = new System.Windows.Forms.TabControl();
             this.DatalistTabPage = new System.Windows.Forms.TabPage();
-            this.SelectNewList = new System.Windows.Forms.CheckBox();
             this.DatalistSelectAllChkBox = new System.Windows.Forms.CheckBox();
             this.btnListUpdate = new System.Windows.Forms.Button();
             this.DataListView = new System.Windows.Forms.DataGridView();
@@ -134,6 +133,20 @@
             this.PreviewUpdate = new System.Windows.Forms.Button();
             this.ModuleList = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.ItemMessagesCB = new System.Windows.Forms.CheckBox();
+            this.ItemLabelsCB = new System.Windows.Forms.CheckBox();
+            this.ItemRightsCB = new System.Windows.Forms.CheckBox();
+            this.ItemFunctionsCB = new System.Windows.Forms.CheckBox();
+            this.ItemRolesCB = new System.Windows.Forms.CheckBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.LangMessagesCB = new System.Windows.Forms.CheckBox();
+            this.LangLabelsCB = new System.Windows.Forms.CheckBox();
+            this.LangRightsCB = new System.Windows.Forms.CheckBox();
+            this.LangFunctionsCB = new System.Windows.Forms.CheckBox();
+            this.LangRolesCB = new System.Windows.Forms.CheckBox();
+            this.ItemDatalistCB = new System.Windows.Forms.CheckBox();
+            this.LangDatalistCB = new System.Windows.Forms.CheckBox();
             this.DiffTab.SuspendLayout();
             this.DatalistTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataListView)).BeginInit();
@@ -151,6 +164,8 @@
             this.UpdateLangTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TargetUpdateLangView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SourceUpdateLangView)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // DiffTab
@@ -168,7 +183,6 @@
             // DatalistTabPage
             // 
             this.DatalistTabPage.AutoScroll = true;
-            this.DatalistTabPage.Controls.Add(this.SelectNewList);
             this.DatalistTabPage.Controls.Add(this.DatalistSelectAllChkBox);
             this.DatalistTabPage.Controls.Add(this.btnListUpdate);
             this.DatalistTabPage.Controls.Add(this.DataListView);
@@ -181,23 +195,12 @@
             this.DatalistTabPage.Text = "Datalist";
             this.DatalistTabPage.UseVisualStyleBackColor = true;
             // 
-            // SelectNewList
-            // 
-            this.SelectNewList.AutoSize = true;
-            this.SelectNewList.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SelectNewList.Location = new System.Drawing.Point(158, 8);
-            this.SelectNewList.Name = "SelectNewList";
-            this.SelectNewList.Size = new System.Drawing.Size(60, 21);
-            this.SelectNewList.TabIndex = 8;
-            this.SelectNewList.Text = "New";
-            this.SelectNewList.UseVisualStyleBackColor = true;
-            this.SelectNewList.CheckedChanged += new System.EventHandler(this.SelectNewList_CheckedChanged);
-            // 
             // DatalistSelectAllChkBox
             // 
             this.DatalistSelectAllChkBox.AutoSize = true;
+            this.DatalistSelectAllChkBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.DatalistSelectAllChkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DatalistSelectAllChkBox.Location = new System.Drawing.Point(41, 8);
+            this.DatalistSelectAllChkBox.Location = new System.Drawing.Point(6, 8);
             this.DatalistSelectAllChkBox.Name = "DatalistSelectAllChkBox";
             this.DatalistSelectAllChkBox.Size = new System.Drawing.Size(98, 21);
             this.DatalistSelectAllChkBox.TabIndex = 7;
@@ -277,8 +280,8 @@
             // ItemsCount
             // 
             this.ItemsCount.DataPropertyName = "ItemsCount";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ItemsCount.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle85.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ItemsCount.DefaultCellStyle = dataGridViewCellStyle85;
             this.ItemsCount.HeaderText = "Items";
             this.ItemsCount.Name = "ItemsCount";
             this.ItemsCount.ReadOnly = true;
@@ -294,6 +297,7 @@
             // 
             // ItemTabPage
             // 
+            this.ItemTabPage.Controls.Add(this.panel1);
             this.ItemTabPage.Controls.Add(this.btnUpdateItems);
             this.ItemTabPage.Controls.Add(this.ItemsTab);
             this.ItemTabPage.Location = new System.Drawing.Point(4, 25);
@@ -318,20 +322,20 @@
             // 
             this.ItemsTab.Controls.Add(this.NewItemsPage);
             this.ItemsTab.Controls.Add(this.UpdateItemsTab);
-            this.ItemsTab.Location = new System.Drawing.Point(5, 6);
+            this.ItemsTab.Location = new System.Drawing.Point(5, 50);
             this.ItemsTab.Name = "ItemsTab";
             this.ItemsTab.SelectedIndex = 0;
-            this.ItemsTab.Size = new System.Drawing.Size(1473, 634);
+            this.ItemsTab.Size = new System.Drawing.Size(1473, 590);
             this.ItemsTab.TabIndex = 0;
             // 
             // NewItemsPage
             // 
-            this.NewItemsPage.Controls.Add(this.NewItemsSelectAllCB);
             this.NewItemsPage.Controls.Add(this.NewItemsView);
+            this.NewItemsPage.Controls.Add(this.NewItemsSelectAllCB);
             this.NewItemsPage.Location = new System.Drawing.Point(4, 25);
             this.NewItemsPage.Name = "NewItemsPage";
             this.NewItemsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.NewItemsPage.Size = new System.Drawing.Size(1465, 605);
+            this.NewItemsPage.Size = new System.Drawing.Size(1465, 561);
             this.NewItemsPage.TabIndex = 0;
             this.NewItemsPage.Text = "New Items";
             this.NewItemsPage.UseVisualStyleBackColor = true;
@@ -339,8 +343,9 @@
             // NewItemsSelectAllCB
             // 
             this.NewItemsSelectAllCB.AutoSize = true;
+            this.NewItemsSelectAllCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.NewItemsSelectAllCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewItemsSelectAllCB.Location = new System.Drawing.Point(57, 6);
+            this.NewItemsSelectAllCB.Location = new System.Drawing.Point(3, 6);
             this.NewItemsSelectAllCB.Name = "NewItemsSelectAllCB";
             this.NewItemsSelectAllCB.Size = new System.Drawing.Size(98, 21);
             this.NewItemsSelectAllCB.TabIndex = 8;
@@ -367,11 +372,11 @@
             this.dataGridViewCheckBoxColumn2,
             this.dataGridViewCheckBoxColumn3,
             this.dataGridViewTextBoxColumn4});
-            this.NewItemsView.Location = new System.Drawing.Point(16, 31);
+            this.NewItemsView.Location = new System.Drawing.Point(16, 33);
             this.NewItemsView.Name = "NewItemsView";
             this.NewItemsView.RowTemplate.Height = 24;
             this.NewItemsView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.NewItemsView.Size = new System.Drawing.Size(1143, 566);
+            this.NewItemsView.Size = new System.Drawing.Size(1143, 522);
             this.NewItemsView.TabIndex = 6;
             this.NewItemsView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.NewItemsView_RowsAdded);
             // 
@@ -408,9 +413,9 @@
             // EffDate
             // 
             this.EffDate.DataPropertyName = "EffectiveStartDate";
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.EffDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle86.Format = "d";
+            dataGridViewCellStyle86.NullValue = null;
+            this.EffDate.DefaultCellStyle = dataGridViewCellStyle86;
             this.EffDate.HeaderText = "Eff Date";
             this.EffDate.Name = "EffDate";
             this.EffDate.ReadOnly = true;
@@ -419,9 +424,9 @@
             // EndDate
             // 
             this.EndDate.DataPropertyName = "EffectiveEndDate";
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.EndDate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle87.Format = "d";
+            dataGridViewCellStyle87.NullValue = null;
+            this.EndDate.DefaultCellStyle = dataGridViewCellStyle87;
             this.EndDate.HeaderText = "End Date";
             this.EndDate.Name = "EndDate";
             this.EndDate.ReadOnly = true;
@@ -495,7 +500,7 @@
             this.UpdateItemsTab.Location = new System.Drawing.Point(4, 25);
             this.UpdateItemsTab.Name = "UpdateItemsTab";
             this.UpdateItemsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.UpdateItemsTab.Size = new System.Drawing.Size(1465, 605);
+            this.UpdateItemsTab.Size = new System.Drawing.Size(1465, 561);
             this.UpdateItemsTab.TabIndex = 1;
             this.UpdateItemsTab.Text = "Update Items";
             this.UpdateItemsTab.UseVisualStyleBackColor = true;
@@ -594,9 +599,9 @@
             // dataGridViewTextBoxColumn16
             // 
             this.dataGridViewTextBoxColumn16.DataPropertyName = "EffectiveStartDate";
-            dataGridViewCellStyle4.Format = "d";
-            dataGridViewCellStyle4.NullValue = null;
-            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle88.Format = "d";
+            dataGridViewCellStyle88.NullValue = null;
+            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle88;
             this.dataGridViewTextBoxColumn16.HeaderText = "Eff Date";
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
             this.dataGridViewTextBoxColumn16.ReadOnly = true;
@@ -605,9 +610,9 @@
             // dataGridViewTextBoxColumn17
             // 
             this.dataGridViewTextBoxColumn17.DataPropertyName = "EffectiveEndDate";
-            dataGridViewCellStyle5.Format = "d";
-            dataGridViewCellStyle5.NullValue = null;
-            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle89.Format = "d";
+            dataGridViewCellStyle89.NullValue = null;
+            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle89;
             this.dataGridViewTextBoxColumn17.HeaderText = "End Date";
             this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
             this.dataGridViewTextBoxColumn17.ReadOnly = true;
@@ -732,9 +737,9 @@
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "EffectiveStartDate";
-            dataGridViewCellStyle6.Format = "d";
-            dataGridViewCellStyle6.NullValue = null;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle90.Format = "d";
+            dataGridViewCellStyle90.NullValue = null;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle90;
             this.dataGridViewTextBoxColumn6.HeaderText = "Eff Date";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
@@ -743,9 +748,9 @@
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.DataPropertyName = "EffectiveEndDate";
-            dataGridViewCellStyle7.Format = "d";
-            dataGridViewCellStyle7.NullValue = null;
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle91.Format = "d";
+            dataGridViewCellStyle91.NullValue = null;
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle91;
             this.dataGridViewTextBoxColumn7.HeaderText = "End Date";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
@@ -811,6 +816,7 @@
             // 
             // ItemLanguages
             // 
+            this.ItemLanguages.Controls.Add(this.panel2);
             this.ItemLanguages.Controls.Add(this.btnUpdateLanguages);
             this.ItemLanguages.Controls.Add(this.tabControl1);
             this.ItemLanguages.Location = new System.Drawing.Point(4, 25);
@@ -835,10 +841,10 @@
             // 
             this.tabControl1.Controls.Add(this.NewLangTab);
             this.tabControl1.Controls.Add(this.UpdateLangTab);
-            this.tabControl1.Location = new System.Drawing.Point(6, 6);
+            this.tabControl1.Location = new System.Drawing.Point(6, 50);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1469, 628);
+            this.tabControl1.Size = new System.Drawing.Size(1469, 584);
             this.tabControl1.TabIndex = 0;
             // 
             // NewLangTab
@@ -848,7 +854,7 @@
             this.NewLangTab.Location = new System.Drawing.Point(4, 25);
             this.NewLangTab.Name = "NewLangTab";
             this.NewLangTab.Padding = new System.Windows.Forms.Padding(3);
-            this.NewLangTab.Size = new System.Drawing.Size(1461, 599);
+            this.NewLangTab.Size = new System.Drawing.Size(1461, 555);
             this.NewLangTab.TabIndex = 0;
             this.NewLangTab.Text = "New";
             this.NewLangTab.UseVisualStyleBackColor = true;
@@ -856,8 +862,9 @@
             // NewLangSelectAllCB
             // 
             this.NewLangSelectAllCB.AutoSize = true;
+            this.NewLangSelectAllCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.NewLangSelectAllCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewLangSelectAllCB.Location = new System.Drawing.Point(48, 8);
+            this.NewLangSelectAllCB.Location = new System.Drawing.Point(6, 6);
             this.NewLangSelectAllCB.Name = "NewLangSelectAllCB";
             this.NewLangSelectAllCB.Size = new System.Drawing.Size(98, 21);
             this.NewLangSelectAllCB.TabIndex = 12;
@@ -882,7 +889,7 @@
             this.NewLangView.Name = "NewLangView";
             this.NewLangView.RowTemplate.Height = 24;
             this.NewLangView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.NewLangView.Size = new System.Drawing.Size(1449, 562);
+            this.NewLangView.Size = new System.Drawing.Size(1449, 516);
             this.NewLangView.TabIndex = 7;
             this.NewLangView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.NewLangView_RowsAdded);
             // 
@@ -948,7 +955,7 @@
             this.UpdateLangTab.Location = new System.Drawing.Point(4, 25);
             this.UpdateLangTab.Name = "UpdateLangTab";
             this.UpdateLangTab.Padding = new System.Windows.Forms.Padding(3);
-            this.UpdateLangTab.Size = new System.Drawing.Size(1461, 599);
+            this.UpdateLangTab.Size = new System.Drawing.Size(1461, 555);
             this.UpdateLangTab.TabIndex = 1;
             this.UpdateLangTab.Text = "Update";
             this.UpdateLangTab.UseVisualStyleBackColor = true;
@@ -956,8 +963,9 @@
             // UpdateLangSelectAllCB
             // 
             this.UpdateLangSelectAllCB.AutoSize = true;
+            this.UpdateLangSelectAllCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.UpdateLangSelectAllCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateLangSelectAllCB.Location = new System.Drawing.Point(48, 4);
+            this.UpdateLangSelectAllCB.Location = new System.Drawing.Point(6, 6);
             this.UpdateLangSelectAllCB.Name = "UpdateLangSelectAllCB";
             this.UpdateLangSelectAllCB.Size = new System.Drawing.Size(98, 21);
             this.UpdateLangSelectAllCB.TabIndex = 12;
@@ -980,7 +988,7 @@
             this.TargetUpdateLangView.Name = "TargetUpdateLangView";
             this.TargetUpdateLangView.RowTemplate.Height = 24;
             this.TargetUpdateLangView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TargetUpdateLangView.Size = new System.Drawing.Size(552, 570);
+            this.TargetUpdateLangView.Size = new System.Drawing.Size(552, 526);
             this.TargetUpdateLangView.TabIndex = 9;
             this.TargetUpdateLangView.Scroll += new System.Windows.Forms.ScrollEventHandler(this.TargetUpdateLangView_Scroll);
             // 
@@ -1043,7 +1051,7 @@
             this.SourceUpdateLangView.Name = "SourceUpdateLangView";
             this.SourceUpdateLangView.RowTemplate.Height = 24;
             this.SourceUpdateLangView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.SourceUpdateLangView.Size = new System.Drawing.Size(894, 570);
+            this.SourceUpdateLangView.Size = new System.Drawing.Size(894, 526);
             this.SourceUpdateLangView.TabIndex = 8;
             this.SourceUpdateLangView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.SourceUpdateLangView_RowsAdded);
             this.SourceUpdateLangView.Scroll += new System.Windows.Forms.ScrollEventHandler(this.SourceUpdateLangView_Scroll);
@@ -1161,6 +1169,178 @@
             this.label4.TabIndex = 27;
             this.label4.Text = "Module:";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Controls.Add(this.ItemDatalistCB);
+            this.panel1.Controls.Add(this.ItemMessagesCB);
+            this.panel1.Controls.Add(this.ItemLabelsCB);
+            this.panel1.Controls.Add(this.ItemRightsCB);
+            this.panel1.Controls.Add(this.ItemFunctionsCB);
+            this.panel1.Controls.Add(this.ItemRolesCB);
+            this.panel1.Location = new System.Drawing.Point(9, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(551, 41);
+            this.panel1.TabIndex = 13;
+            // 
+            // ItemMessagesCB
+            // 
+            this.ItemMessagesCB.AutoSize = true;
+            this.ItemMessagesCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ItemMessagesCB.Location = new System.Drawing.Point(357, 11);
+            this.ItemMessagesCB.Name = "ItemMessagesCB";
+            this.ItemMessagesCB.Size = new System.Drawing.Size(102, 21);
+            this.ItemMessagesCB.TabIndex = 13;
+            this.ItemMessagesCB.Text = "Messages";
+            this.ItemMessagesCB.UseVisualStyleBackColor = true;
+            this.ItemMessagesCB.CheckedChanged += new System.EventHandler(this.ItemCB_CheckedChanged);
+            // 
+            // ItemLabelsCB
+            // 
+            this.ItemLabelsCB.AutoSize = true;
+            this.ItemLabelsCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ItemLabelsCB.Location = new System.Drawing.Point(273, 11);
+            this.ItemLabelsCB.Name = "ItemLabelsCB";
+            this.ItemLabelsCB.Size = new System.Drawing.Size(78, 21);
+            this.ItemLabelsCB.TabIndex = 12;
+            this.ItemLabelsCB.Text = "Labels";
+            this.ItemLabelsCB.UseVisualStyleBackColor = true;
+            this.ItemLabelsCB.CheckedChanged += new System.EventHandler(this.ItemCB_CheckedChanged);
+            // 
+            // ItemRightsCB
+            // 
+            this.ItemRightsCB.AutoSize = true;
+            this.ItemRightsCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ItemRightsCB.Location = new System.Drawing.Point(191, 11);
+            this.ItemRightsCB.Name = "ItemRightsCB";
+            this.ItemRightsCB.Size = new System.Drawing.Size(76, 21);
+            this.ItemRightsCB.TabIndex = 11;
+            this.ItemRightsCB.Text = "Rights";
+            this.ItemRightsCB.UseVisualStyleBackColor = true;
+            this.ItemRightsCB.CheckedChanged += new System.EventHandler(this.ItemCB_CheckedChanged);
+            // 
+            // ItemFunctionsCB
+            // 
+            this.ItemFunctionsCB.AutoSize = true;
+            this.ItemFunctionsCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ItemFunctionsCB.Location = new System.Drawing.Point(85, 11);
+            this.ItemFunctionsCB.Name = "ItemFunctionsCB";
+            this.ItemFunctionsCB.Size = new System.Drawing.Size(100, 21);
+            this.ItemFunctionsCB.TabIndex = 10;
+            this.ItemFunctionsCB.Text = "Functions";
+            this.ItemFunctionsCB.UseVisualStyleBackColor = true;
+            this.ItemFunctionsCB.CheckedChanged += new System.EventHandler(this.ItemCB_CheckedChanged);
+            // 
+            // ItemRolesCB
+            // 
+            this.ItemRolesCB.AutoSize = true;
+            this.ItemRolesCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ItemRolesCB.Location = new System.Drawing.Point(8, 11);
+            this.ItemRolesCB.Name = "ItemRolesCB";
+            this.ItemRolesCB.Size = new System.Drawing.Size(71, 21);
+            this.ItemRolesCB.TabIndex = 9;
+            this.ItemRolesCB.Text = "Roles";
+            this.ItemRolesCB.UseVisualStyleBackColor = true;
+            this.ItemRolesCB.CheckedChanged += new System.EventHandler(this.ItemCB_CheckedChanged);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel2.Controls.Add(this.LangDatalistCB);
+            this.panel2.Controls.Add(this.LangMessagesCB);
+            this.panel2.Controls.Add(this.LangLabelsCB);
+            this.panel2.Controls.Add(this.LangRightsCB);
+            this.panel2.Controls.Add(this.LangFunctionsCB);
+            this.panel2.Controls.Add(this.LangRolesCB);
+            this.panel2.Location = new System.Drawing.Point(6, 5);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(554, 41);
+            this.panel2.TabIndex = 14;
+            // 
+            // LangMessagesCB
+            // 
+            this.LangMessagesCB.AutoSize = true;
+            this.LangMessagesCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LangMessagesCB.Location = new System.Drawing.Point(357, 11);
+            this.LangMessagesCB.Name = "LangMessagesCB";
+            this.LangMessagesCB.Size = new System.Drawing.Size(102, 21);
+            this.LangMessagesCB.TabIndex = 13;
+            this.LangMessagesCB.Text = "Messages";
+            this.LangMessagesCB.UseVisualStyleBackColor = true;
+            this.LangMessagesCB.CheckedChanged += new System.EventHandler(this.LangCB_CheckedChanged);
+            // 
+            // LangLabelsCB
+            // 
+            this.LangLabelsCB.AutoSize = true;
+            this.LangLabelsCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LangLabelsCB.Location = new System.Drawing.Point(273, 11);
+            this.LangLabelsCB.Name = "LangLabelsCB";
+            this.LangLabelsCB.Size = new System.Drawing.Size(78, 21);
+            this.LangLabelsCB.TabIndex = 12;
+            this.LangLabelsCB.Text = "Labels";
+            this.LangLabelsCB.UseVisualStyleBackColor = true;
+            this.LangLabelsCB.CheckedChanged += new System.EventHandler(this.LangCB_CheckedChanged);
+            // 
+            // LangRightsCB
+            // 
+            this.LangRightsCB.AutoSize = true;
+            this.LangRightsCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LangRightsCB.Location = new System.Drawing.Point(191, 11);
+            this.LangRightsCB.Name = "LangRightsCB";
+            this.LangRightsCB.Size = new System.Drawing.Size(76, 21);
+            this.LangRightsCB.TabIndex = 11;
+            this.LangRightsCB.Text = "Rights";
+            this.LangRightsCB.UseVisualStyleBackColor = true;
+            this.LangRightsCB.CheckedChanged += new System.EventHandler(this.LangCB_CheckedChanged);
+            // 
+            // LangFunctionsCB
+            // 
+            this.LangFunctionsCB.AutoSize = true;
+            this.LangFunctionsCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LangFunctionsCB.Location = new System.Drawing.Point(85, 11);
+            this.LangFunctionsCB.Name = "LangFunctionsCB";
+            this.LangFunctionsCB.Size = new System.Drawing.Size(100, 21);
+            this.LangFunctionsCB.TabIndex = 10;
+            this.LangFunctionsCB.Text = "Functions";
+            this.LangFunctionsCB.UseVisualStyleBackColor = true;
+            this.LangFunctionsCB.CheckedChanged += new System.EventHandler(this.LangCB_CheckedChanged);
+            // 
+            // LangRolesCB
+            // 
+            this.LangRolesCB.AutoSize = true;
+            this.LangRolesCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LangRolesCB.Location = new System.Drawing.Point(8, 11);
+            this.LangRolesCB.Name = "LangRolesCB";
+            this.LangRolesCB.Size = new System.Drawing.Size(71, 21);
+            this.LangRolesCB.TabIndex = 9;
+            this.LangRolesCB.Text = "Roles";
+            this.LangRolesCB.UseVisualStyleBackColor = true;
+            this.LangRolesCB.CheckedChanged += new System.EventHandler(this.LangCB_CheckedChanged);
+            // 
+            // ItemDatalistCB
+            // 
+            this.ItemDatalistCB.AutoSize = true;
+            this.ItemDatalistCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ItemDatalistCB.Location = new System.Drawing.Point(459, 11);
+            this.ItemDatalistCB.Name = "ItemDatalistCB";
+            this.ItemDatalistCB.Size = new System.Drawing.Size(85, 21);
+            this.ItemDatalistCB.TabIndex = 14;
+            this.ItemDatalistCB.Text = "Datalist";
+            this.ItemDatalistCB.UseVisualStyleBackColor = true;
+            this.ItemDatalistCB.CheckedChanged += new System.EventHandler(this.ItemCB_CheckedChanged);
+            // 
+            // LangDatalistCB
+            // 
+            this.LangDatalistCB.AutoSize = true;
+            this.LangDatalistCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LangDatalistCB.Location = new System.Drawing.Point(465, 11);
+            this.LangDatalistCB.Name = "LangDatalistCB";
+            this.LangDatalistCB.Size = new System.Drawing.Size(85, 21);
+            this.LangDatalistCB.TabIndex = 15;
+            this.LangDatalistCB.Text = "Datalist";
+            this.LangDatalistCB.UseVisualStyleBackColor = true;
+            this.LangDatalistCB.CheckedChanged += new System.EventHandler(this.LangCB_CheckedChanged);
+            // 
             // DatalistDiff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1196,6 +1376,10 @@
             this.UpdateLangTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TargetUpdateLangView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SourceUpdateLangView)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1298,9 +1482,22 @@
         private System.Windows.Forms.CheckBox UpdateLangSelectAllCB;
         private System.Windows.Forms.Button btnUpdateItems;
         private System.Windows.Forms.Button btnUpdateLanguages;
-        private System.Windows.Forms.CheckBox SelectNewList;
         private System.Windows.Forms.Button PreviewUpdate;
         private System.Windows.Forms.ComboBox ModuleList;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox ItemMessagesCB;
+        private System.Windows.Forms.CheckBox ItemLabelsCB;
+        private System.Windows.Forms.CheckBox ItemRightsCB;
+        private System.Windows.Forms.CheckBox ItemFunctionsCB;
+        private System.Windows.Forms.CheckBox ItemRolesCB;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.CheckBox LangMessagesCB;
+        private System.Windows.Forms.CheckBox LangLabelsCB;
+        private System.Windows.Forms.CheckBox LangRightsCB;
+        private System.Windows.Forms.CheckBox LangFunctionsCB;
+        private System.Windows.Forms.CheckBox LangRolesCB;
+        private System.Windows.Forms.CheckBox ItemDatalistCB;
+        private System.Windows.Forms.CheckBox LangDatalistCB;
     }
 }

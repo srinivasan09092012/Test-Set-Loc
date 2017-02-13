@@ -18,7 +18,7 @@ namespace DatalistSyncUtil
     {
         public TenantHelper()
         {
-            this.ConnectionString = ConfigurationManager.ConnectionStrings["SourceDataList"];
+            this.ConnectionString = ConfigurationManager.ConnectionStrings["TargetDataList"];
             this.Cache = new RedisCacheManager();
         }
 

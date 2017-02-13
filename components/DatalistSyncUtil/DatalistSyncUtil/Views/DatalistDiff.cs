@@ -21,7 +21,7 @@ namespace DatalistSyncUtil
         public DatalistDiff(Guid tenantID, string type, List<DataListMainModel> sourceList, List<DataListMainModel> targetList)
         {
             InitializeComponent();
-            this.TargetConnectionString = ConfigurationManager.ConnectionStrings["SourceDataList"];
+            this.TargetConnectionString = ConfigurationManager.ConnectionStrings["TargetDataList"];
             this.LoadHelper = new TenantHelper(this.TargetConnectionString);
             this.TenantID = tenantID;
             this.DeltaType = type;
@@ -46,6 +46,20 @@ namespace DatalistSyncUtil
         public List<DataListMainModel> UpdateList { get; set; }
 
         public List<CodeItemModel> UpdateListItems { get; set; }
+
+        public List<CodeItemModel> NewListItems { get; set; }
+
+        public List<CodeItemModel> UpdateNewListItems { get; set; }
+
+        public List<CodeItemModel> UpdatedItems { get; set; }
+
+        public List<ItemLanguage> NewItemLanguages { get; set; }
+
+        public List<ItemLanguage> UpdateNewItemLanguages { get; set; }
+
+        public List<ItemLanguage> UpdatedTargetLanguages { get; set; }
+
+        public List<CodeItemModel> UpdatedTargetItems { get; set; }
 
         public List<ItemLanguage> UpdateItemLanguages { get; set; }
 
@@ -155,6 +169,7 @@ namespace DatalistSyncUtil
                 newDatalistItems = newDatalistItems.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
             }
 
+            this.NewListItems = newDatalistItems;
             NewItemsView.DataSource = new BindingList<CodeItemModel>(newDatalistItems);
             this.UpdatedDatalistItems();
             this.UpdateLanguages();
@@ -229,6 +244,8 @@ namespace DatalistSyncUtil
                 updatedTargetDatalistItems = updatedTargetDatalistItems.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
             }
 
+            this.UpdatedItems = updatedDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
+            this.UpdatedTargetItems = updatedTargetDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
             UpdateSourceItemView.DataSource = new BindingList<CodeItemModel>(updatedDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
             UpdateTargetItemView.DataSource = new BindingList<CodeItemModel>(updatedTargetDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
         }
@@ -274,6 +291,7 @@ namespace DatalistSyncUtil
             {
                 newDatalistItemLanguages = newDatalistItemLanguages.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
             }
+            this.NewItemLanguages = newDatalistItemLanguages;
             NewLangView.DataSource = new BindingList<ItemLanguage>(newDatalistItemLanguages);
             this.LoadUpdateLanguagesFromExistingItems();
         }
@@ -415,8 +433,10 @@ namespace DatalistSyncUtil
                 updateTargetDatalistItemLanguages = updateTargetDatalistItemLanguages.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
             }
 
-            SourceUpdateLangView.DataSource = new BindingList<ItemLanguage>(updateSourceDatalistItemLanguages.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
-            TargetUpdateLangView.DataSource = new BindingList<ItemLanguage>(updateTargetDatalistItemLanguages.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+            this.UpdateNewItemLanguages = updateSourceDatalistItemLanguages;
+            this.UpdatedTargetLanguages = updateTargetDatalistItemLanguages;
+            SourceUpdateLangView.DataSource = new BindingList<ItemLanguage>(updateSourceDatalistItemLanguages.OrderBy(o => o.ContentID).ToList());
+            TargetUpdateLangView.DataSource = new BindingList<ItemLanguage>(updateTargetDatalistItemLanguages.OrderBy(o => o.ContentID).ToList());
         }
 
         private bool CheckUpdateItemChanged(ref CodeItemModel t, ref CodeItemModel targetItem)
@@ -735,11 +755,6 @@ namespace DatalistSyncUtil
             }
         }
 
-        private void SelectNewList_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void PreviewUpdate_Click(object sender, EventArgs e)
         {
             PreviewPage previewPage = new PreviewPage(this.UpdateList, this.UpdateListItems, this.UpdateItemLanguages);
@@ -750,6 +765,203 @@ namespace DatalistSyncUtil
         {
             this.LoadDatalistDelta();
             this.LoadDatalistItemsDelta();
+        }
+
+        private void ItemRolesCB_CheckedChanged(object sender, EventArgs e)
+        {
+            this.FilterDataList();
+        }
+
+        private void ItemFunctionsCB_CheckedChanged(object sender, EventArgs e)
+        {
+            this.FilterDataList();
+        }
+
+        private void ItemRightsCB_CheckedChanged(object sender, EventArgs e)
+        {
+            this.FilterDataList();
+        }
+
+        private void FilterDataList()
+        {
+            List<CodeItemModel> filteredNewDatalistItems = new List<CodeItemModel>();
+            List<CodeItemModel> filteredUpdatedNewDatalistItems = new List<CodeItemModel>();
+            List<CodeItemModel> filteredUpdatedDatalistItems = new List<CodeItemModel>();
+            string rolesContentID = "Core.SecurityRoles";
+            string functionsContentID = "Core.SecurityFunctions";
+            string rightsContentID = "Core.SecurityRights";
+            string msgContentID = ".Msg";
+            string labelContentID = ".Label";
+            string datalistContentID = ".DataList";
+            bool isChecked = false;
+
+            if (ItemRolesCB.Checked)
+            {
+                isChecked = true;
+                this.GetFilteredDataListItems(ref filteredNewDatalistItems, ref filteredUpdatedNewDatalistItems, ref filteredUpdatedDatalistItems, rolesContentID);
+            }
+
+            if (ItemFunctionsCB.Checked)
+            {
+                isChecked = true;
+                this.GetFilteredDataListItems(ref filteredNewDatalistItems, ref filteredUpdatedNewDatalistItems, ref filteredUpdatedDatalistItems, functionsContentID);
+            }
+
+            if (ItemRightsCB.Checked)
+            {
+                isChecked = true;
+                this.GetFilteredDataListItems(ref filteredNewDatalistItems, ref filteredUpdatedNewDatalistItems, ref filteredUpdatedDatalistItems, rightsContentID);
+            }
+
+            if (ItemMessagesCB.Checked)
+            {
+                isChecked = true;
+                this.GetFilteredDataListItems(ref filteredNewDatalistItems, ref filteredUpdatedNewDatalistItems, ref filteredUpdatedDatalistItems, msgContentID);
+            }
+
+            if (ItemLabelsCB.Checked)
+            {
+                isChecked = true;
+                this.GetFilteredDataListItems(ref filteredNewDatalistItems, ref filteredUpdatedNewDatalistItems, ref filteredUpdatedDatalistItems, labelContentID);
+            }
+
+            if (ItemDatalistCB.Checked)
+            {
+                isChecked = true;
+                this.GetFilteredDataListItems(ref filteredNewDatalistItems, ref filteredUpdatedNewDatalistItems, ref filteredUpdatedDatalistItems, datalistContentID);
+            }
+
+            if(isChecked)
+            {
+                NewItemsView.DataSource = new BindingList<CodeItemModel>(filteredNewDatalistItems);
+                UpdateSourceItemView.DataSource = new BindingList<CodeItemModel>(filteredUpdatedNewDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+                UpdateTargetItemView.DataSource = new BindingList<CodeItemModel>(filteredUpdatedDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+            }
+            else
+            {
+                NewItemsView.DataSource = new BindingList<CodeItemModel>(this.NewListItems);
+                UpdateSourceItemView.DataSource = new BindingList<CodeItemModel>(this.UpdatedItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+                UpdateTargetItemView.DataSource = new BindingList<CodeItemModel>(this.UpdatedTargetItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+            }
+        }
+
+        private void GetFilteredDataListItems(ref List<CodeItemModel> filteredNewDatalistItems, ref List<CodeItemModel> filteredUpdatedNewDatalistItems, ref List<CodeItemModel> filteredUpdatedDatalistItems, string contentID)
+        {
+            List<CodeItemModel> items = new List<CodeItemModel>();
+
+            items = this.NewListItems.Where(f => f.ContentID.Contains(contentID)).ToList();
+            if (items != null && items.Count > 0)
+            {
+                filteredNewDatalistItems.AddRange(items);
+            }
+
+            items = this.UpdatedItems.Where(f => f.ContentID.Contains(contentID)).ToList();
+            if (items != null && items.Count > 0)
+            {
+                filteredUpdatedNewDatalistItems.AddRange(items);
+            }
+
+            items = this.UpdatedTargetItems.Where(f => f.ContentID.Contains(contentID)).ToList();
+            if (items != null && items.Count > 0)
+            {
+                filteredUpdatedDatalistItems.AddRange(items);
+            }
+        }
+        
+        private void ItemCB_CheckedChanged(object sender, EventArgs e)
+        {
+            this.FilterDataList();
+        }
+
+        private void LangCB_CheckedChanged(object sender, EventArgs e)
+        {
+            this.FilterDataListLanguages();
+        }
+
+        private void FilterDataListLanguages()
+        {
+            List<ItemLanguage> filteredNewItemLanguages = new List<ItemLanguage>();
+            List<ItemLanguage> filteredUpdatedNewItemLanguages = new List<ItemLanguage>();
+            List<ItemLanguage> filteredUpdatedItemLanguages = new List<ItemLanguage>();
+            string rolesContentID = "Core.SecurityRoles";
+            string functionsContentID = "Core.SecurityFunctions";
+            string rightsContentID = "Core.SecurityRights";
+            string msgContentID = ".Msg";
+            string labelContentID = ".Label";
+            string datalistContentID = ".DataList";
+            bool isChecked = false;
+
+            if (LangRolesCB.Checked)
+            {
+                isChecked = true;
+                this.GetFilteredItemLanguages(ref filteredNewItemLanguages, ref filteredUpdatedNewItemLanguages, ref filteredUpdatedItemLanguages, rolesContentID);
+            }
+
+            if (LangFunctionsCB.Checked)
+            {
+                isChecked = true;
+                this.GetFilteredItemLanguages(ref filteredNewItemLanguages, ref filteredUpdatedNewItemLanguages, ref filteredUpdatedItemLanguages, functionsContentID);
+            }
+
+            if (LangRightsCB.Checked)
+            {
+                isChecked = true;
+                this.GetFilteredItemLanguages(ref filteredNewItemLanguages, ref filteredUpdatedNewItemLanguages, ref filteredUpdatedItemLanguages, rightsContentID);
+            }
+
+            if (LangMessagesCB.Checked)
+            {
+                isChecked = true;
+                this.GetFilteredItemLanguages(ref filteredNewItemLanguages, ref filteredUpdatedNewItemLanguages, ref filteredUpdatedItemLanguages, msgContentID);
+            }
+
+            if (LangLabelsCB.Checked)
+            {
+                isChecked = true;
+                this.GetFilteredItemLanguages(ref filteredNewItemLanguages, ref filteredUpdatedNewItemLanguages, ref filteredUpdatedItemLanguages, labelContentID);
+            }
+
+            if (LangDatalistCB.Checked)
+            {
+                isChecked = true;
+                this.GetFilteredItemLanguages(ref filteredNewItemLanguages, ref filteredUpdatedNewItemLanguages, ref filteredUpdatedItemLanguages, datalistContentID);
+            }
+
+            if(isChecked)
+            {
+                NewLangView.DataSource = new BindingList<ItemLanguage>(filteredNewItemLanguages);
+                SourceUpdateLangView.DataSource = new BindingList<ItemLanguage>(filteredUpdatedNewItemLanguages.OrderBy(o => o.ContentID).ToList());
+                TargetUpdateLangView.DataSource = new BindingList<ItemLanguage>(filteredUpdatedItemLanguages.OrderBy(o => o.ContentID).ToList());
+            }
+            else
+            {
+                NewLangView.DataSource = new BindingList<ItemLanguage>(this.NewItemLanguages);
+                SourceUpdateLangView.DataSource = new BindingList<ItemLanguage>(this.UpdateNewItemLanguages.OrderBy(o => o.ContentID).ToList());
+                TargetUpdateLangView.DataSource = new BindingList<ItemLanguage>(this.UpdatedTargetLanguages.OrderBy(o => o.ContentID).ToList());
+            }
+        }
+
+        private void GetFilteredItemLanguages(ref List<ItemLanguage> filteredNewItemLanguages, ref List<ItemLanguage> filteredUpdatedNewItemLanguages, ref List<ItemLanguage> filteredUpdatedItemLanguages, string contentID)
+        {
+            List<ItemLanguage> languages = new List<ItemLanguage>();
+
+            languages = this.NewItemLanguages.Where(f => f.ContentID.Contains(contentID)).ToList();
+            if (languages != null && languages.Count > 0)
+            {
+                filteredNewItemLanguages.AddRange(languages);
+            }
+
+            languages = this.UpdateNewItemLanguages.Where(f => f.ContentID.Contains(contentID)).ToList();
+            if (languages != null && languages.Count > 0)
+            {
+                filteredUpdatedNewItemLanguages.AddRange(languages);
+            }
+
+            languages = this.UpdatedTargetLanguages.Where(f => f.ContentID.Contains(contentID)).ToList();
+            if (languages != null && languages.Count > 0)
+            {
+                filteredUpdatedItemLanguages.AddRange(languages);
+            }
         }
     }
 }

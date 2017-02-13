@@ -19,11 +19,16 @@ namespace DatalistSyncUtil
         public DatalistComparer()
         {
             InitializeComponent();
-            this.TargetConnectionString = ConfigurationManager.ConnectionStrings["SourceDataList"];
+            this.TargetConnectionString = ConfigurationManager.ConnectionStrings["TargetDataList"];
+            this.SourceConnectionString = ConfigurationManager.ConnectionStrings["SourceDataList"];
             this.LoadHelper = new TenantHelper(this.TargetConnectionString);
+            this.SourceLoadHelper = new SourceTenantHelper(this.SourceConnectionString);
             txtTargetConnection.Text = this.TargetConnectionString.ConnectionString;
+            txtSourceConnection.Text = this.SourceConnectionString.ConnectionString;
             this.LoadTenant();
             this.LoadModules();
+            this.LoadSourceTenant();
+            this.LoadSourceModules();
         }
 
         public List<DataListMainModel> SourceList { get; set; }
@@ -32,15 +37,20 @@ namespace DatalistSyncUtil
 
         public TenantHelper LoadHelper { get; set; }
 
+        public SourceTenantHelper SourceLoadHelper { get; set; }
+
         public ConnectionStringSettings TargetConnectionString { get; set; }
+
+        public ConnectionStringSettings SourceConnectionString { get; set; }
 
         private void btnSourceFile_Click(object sender, EventArgs e)
         {
             DialogResult result = OpenDatalistFile.ShowDialog();
+
             if (result == DialogResult.OK)
             {
                 string file = OpenDatalistFile.FileName;
-                txtSourceFile.Text = file;
+                txtSourceConnection.Text = file;
                 try
                 {
                     this.SourceList = JsonConvert.DeserializeObject<List<DataListMainModel>>(File.ReadAllText(file));
@@ -52,7 +62,7 @@ namespace DatalistSyncUtil
                 }
 
                 Cursor.Current = Cursors.WaitCursor;
-                this.LoadTreeView(SourceTreeList, this.SourceList.OrderBy(o=>o.ContentID).ToList());
+                this.LoadTreeView(SourceTreeList, this.SourceList.OrderBy(o => o.ContentID).ToList());
                 Cursor.Current = Cursors.Default;
             }
         }
@@ -114,7 +124,7 @@ namespace DatalistSyncUtil
                 filteredDataList = this.TargetList.Where(w => w.TenantModuleID == tenantModuleId).ToList();
             }
 
-            this.LoadTreeView(TargetTreeList, filteredDataList.OrderBy(o=>o.ContentID).ToList());
+            this.LoadTreeView(TargetTreeList, filteredDataList.OrderBy(o => o.ContentID).ToList());
             Cursor.Current = Cursors.Default;
         }
 
@@ -129,6 +139,39 @@ namespace DatalistSyncUtil
 
             lists = this.LoadHelper.GetDataList().Where(w => w.TenantID == tenantID).ToList();
             listItems = this.LoadHelper.GetDataListItems();
+
+            foreach (DataList list in lists)
+            {
+                list1 = new DataListMainModel()
+                {
+                    ContentID = list.ContentID,
+                    Description = list.Description,
+                    IsActive = list.IsActive,
+                    IsEditable = list.IsEditable,
+                    ReleaseStatus = list.ReleaseStatus,
+                    Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID, listItems),
+                    TenantID = list.TenantID,
+                    TenantModuleID = list.TenantModuleID,
+                    ID = list.ID
+                };
+
+                listsMain.Add(list1);
+            }
+
+            return listsMain;
+        }
+
+        private List<DataListMainModel> LoadSourceDatalist()
+        {
+            List<DataList> lists = null;
+            List<CodeListModel> listItems = null;
+            List<DataListMainModel> listsMain = new List<DataListMainModel>();
+            DataListMainModel list1 = null;
+
+            Guid tenantID = new Guid(SourceTenantList.SelectedValue.ToString());
+
+            lists = this.SourceLoadHelper.GetDataList().Where(w => w.TenantID == tenantID).ToList();
+            listItems = this.SourceLoadHelper.GetDataListItems();
 
             foreach (DataList list in lists)
             {
@@ -227,6 +270,34 @@ namespace DatalistSyncUtil
             ModuleList.SelectAll();
         }
 
+        private void LoadSourceTenant()
+        {
+            SourceTenantList.DataSource = this.SourceLoadHelper.GetTenants().ToList();
+            SourceTenantList.DisplayMember = "TenantName";
+        }
+
+        private void LoadSourceModules()
+        {
+            Guid tenantID = (SourceTenantList.SelectedItem as TenantModel).TenantID;
+            List<TenantModuleModel> modules = this.SourceLoadHelper.LoadModules();
+            modules.Insert(0, new TenantModuleModel()
+            {
+                ModuleName = "---All Modules---",
+                TenantModuleId = Guid.Empty,
+                TenantId = tenantID
+            });
+            SourceModuleList.DataSource = modules.Where(w => w.TenantId == tenantID).GroupBy(i => i.ModuleName)
+                  .Select(group =>
+                        new
+                        {
+                            Key = group.Key,
+                            Items = group.OrderByDescending(x => x.ModuleName)
+                        })
+                  .Select(g => g.Items.First()).OrderBy(o => o.ModuleName).ToList();
+            SourceModuleList.DisplayMember = "ModuleName";
+            SourceModuleList.SelectAll();
+        }
+
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -234,19 +305,48 @@ namespace DatalistSyncUtil
 
         private void datalistToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             DatalistDiff diffPage = new DatalistDiff(new Guid(TenantList.SelectedValue.ToString()), "DATALIST", this.SourceList, this.TargetList);
             diffPage.ShowDialog();
+            Cursor.Current = Cursors.Default;
         }
 
         private void datalistItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             DatalistDiff diffPage = new DatalistDiff(new Guid(TenantList.SelectedValue.ToString()), "ITEMS", this.SourceList, this.TargetList);
             diffPage.ShowDialog();
+            Cursor.Current = Cursors.Default;
         }
 
         private void TenantList_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.LoadModules();
+        }
+
+        private void SourceTenantList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.LoadSourceModules();
+        }
+
+        private void btnSourceLoad_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            Guid tenantModuleId = (SourceModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
+            this.SourceList = this.LoadSourceDatalist();
+            List<DataListMainModel> filteredDataList = null;
+
+            if (tenantModuleId == Guid.Empty)
+            {
+                filteredDataList = this.SourceList;
+            }
+            else
+            {
+                filteredDataList = this.SourceList.Where(w => w.TenantModuleID == tenantModuleId).ToList();
+            }
+
+            this.LoadTreeView(SourceTreeList, filteredDataList.OrderBy(o => o.ContentID).ToList());
+            Cursor.Current = Cursors.Default;
         }
     }
 }
