@@ -22,6 +22,7 @@ namespace DatalistSyncUtil.Views
             this.FinalListItems = finalListItems;
             this.FinalItemLanguages = finalLanguages;
             this.LoadHelper = new TenantHelper();
+            this.TargetDataList = this.LoadHelper.GetDataList();
             this.LoadTreeView(PreviewTreeList, this.FinalList);
         }
 
@@ -30,6 +31,8 @@ namespace DatalistSyncUtil.Views
         public List<CodeItemModel> FinalListItems { get; set; }
 
         public List<ItemLanguage> FinalItemLanguages { get; set; }
+
+        public List<DataList> TargetDataList { get; set; }
 
         public TenantHelper LoadHelper { get; set; }
 

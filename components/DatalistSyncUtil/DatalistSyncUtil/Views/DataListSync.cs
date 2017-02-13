@@ -138,8 +138,10 @@ namespace DatalistSyncUtil
 
         private void DataListLoad_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             this.SourceListItems = this.LoadDataListItems(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
             this.LoadSearchCriteria();
+            Cursor.Current = Cursors.Default;
 
             ////this.SourceLinks = this.GetDataListItemLinks(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
             ////this.Cache.Set("DataListItemLinks", this.SourceLinks, 1440);
@@ -573,7 +575,7 @@ namespace DatalistSyncUtil
             Guid tenantID = new Guid(TenantList.SelectedValue.ToString());
 
             lists = this.SourceLists.Where(w => w.TenantID == tenantID).ToList();
-
+            List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
             foreach (DataList list in lists)
             {
                 list1 = new DataListMainModel()
@@ -583,6 +585,7 @@ namespace DatalistSyncUtil
                     IsActive = list.IsActive,
                     IsEditable = list.IsEditable,
                     ReleaseStatus = list.ReleaseStatus,
+                    ModuleName = modules.Find(f => f.TenantModuleId == list.TenantModuleID).ModuleName,
                     Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID),
                     TenantID = list.TenantID
                 };

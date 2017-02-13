@@ -35,6 +35,8 @@
             this.btnSourceFile = new System.Windows.Forms.Button();
             this.txtSourceFile = new System.Windows.Forms.TextBox();
             this.RightPanel = new System.Windows.Forms.Panel();
+            this.ModuleList = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.TenantList = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnLoadTarget = new System.Windows.Forms.Button();
@@ -108,6 +110,8 @@
             // 
             // RightPanel
             // 
+            this.RightPanel.Controls.Add(this.ModuleList);
+            this.RightPanel.Controls.Add(this.label4);
             this.RightPanel.Controls.Add(this.TenantList);
             this.RightPanel.Controls.Add(this.label3);
             this.RightPanel.Controls.Add(this.btnLoadTarget);
@@ -118,6 +122,28 @@
             this.RightPanel.Name = "RightPanel";
             this.RightPanel.Size = new System.Drawing.Size(697, 826);
             this.RightPanel.TabIndex = 1;
+            // 
+            // ModuleList
+            // 
+            this.ModuleList.DisplayMember = "ModuleName";
+            this.ModuleList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ModuleList.FormattingEnabled = true;
+            this.ModuleList.Location = new System.Drawing.Point(350, 33);
+            this.ModuleList.Name = "ModuleList";
+            this.ModuleList.Size = new System.Drawing.Size(278, 24);
+            this.ModuleList.Sorted = true;
+            this.ModuleList.TabIndex = 26;
+            this.ModuleList.ValueMember = "TenantModuleID";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(284, 36);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 17);
+            this.label4.TabIndex = 25;
+            this.label4.Text = "Module:";
             // 
             // TenantList
             // 
@@ -130,6 +156,7 @@
             this.TenantList.Sorted = true;
             this.TenantList.TabIndex = 24;
             this.TenantList.ValueMember = "TenantID";
+            this.TenantList.SelectedIndexChanged += new System.EventHandler(this.TenantList_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -143,7 +170,7 @@
             // 
             // btnLoadTarget
             // 
-            this.btnLoadTarget.Location = new System.Drawing.Point(297, 31);
+            this.btnLoadTarget.Location = new System.Drawing.Point(634, 32);
             this.btnLoadTarget.Name = "btnLoadTarget";
             this.btnLoadTarget.Size = new System.Drawing.Size(51, 30);
             this.btnLoadTarget.TabIndex = 7;
@@ -225,7 +252,7 @@
             this.labelsToolStripMenuItem,
             this.messagesToolStripMenuItem});
             this.deltaToolStripMenuItem.Name = "deltaToolStripMenuItem";
-            this.deltaToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.deltaToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
             this.deltaToolStripMenuItem.Text = "Delta";
             // 
             // datalistToolStripMenuItem
@@ -238,7 +265,7 @@
             // datalistItemToolStripMenuItem
             // 
             this.datalistItemToolStripMenuItem.Name = "datalistItemToolStripMenuItem";
-            this.datalistItemToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.datalistItemToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.datalistItemToolStripMenuItem.Text = "Datalist Item";
             this.datalistItemToolStripMenuItem.Click += new System.EventHandler(this.datalistItemToolStripMenuItem_Click);
             // 
@@ -257,7 +284,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -311,5 +338,7 @@
         private System.Windows.Forms.ToolStripMenuItem labelsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem messagesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ComboBox ModuleList;
+        private System.Windows.Forms.Label label4;
     }
 }

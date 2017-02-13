@@ -2,6 +2,7 @@
 using HP.HSP.UA3.Core.BAS.CQRS.Base;
 using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Config.DAOHelpers;
+using HP.HSP.UA3.Core.BAS.CQRS.DataAccess.Entities;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
 using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
 using System;
@@ -47,6 +48,26 @@ namespace DatalistSyncUtil
             else
             {
                 result = this.Cache.Get<List<TenantModel>>("TargetTenants").ToList();
+            }
+
+            return result;
+        }
+
+        public List<TenantModuleModel> LoadModules()
+        {
+            List<TenantModuleModel> result = null;
+            if (!this.Cache.IsSet("TenantModules"))
+            {
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    result = new GetTenantModuleDaoHelper(new TenantModuleDbContext(session, true)).ExecuteProcedure();
+                }
+
+                this.Cache.Set("TenantModules", result, 1440);
+            }
+            else
+            {
+                result = this.Cache.Get<List<TenantModuleModel>>("TenantModules").ToList();
             }
 
             return result;

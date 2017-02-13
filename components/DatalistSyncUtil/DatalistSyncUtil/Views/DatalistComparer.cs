@@ -23,7 +23,10 @@ namespace DatalistSyncUtil
             this.LoadHelper = new TenantHelper(this.TargetConnectionString);
             txtTargetConnection.Text = this.TargetConnectionString.ConnectionString;
             this.LoadTenant();
+            this.LoadModules();
         }
+
+        
 
         public List<DataListMainModel> SourceList { get; set; }
 
@@ -43,12 +46,16 @@ namespace DatalistSyncUtil
                 try
                 {
                     this.SourceList = JsonConvert.DeserializeObject<List<DataListMainModel>>(File.ReadAllText(file));
+                    List<TenantModuleModel> targetModules = ModuleList.DataSource as List<TenantModuleModel>;
+                    List<DataListMainModel> sourceDataList = this.SourceList.Where(w => targetModules.Select(s => s.ModuleName).Contains(w.ModuleName)).ToList();
                 }
                 catch (IOException)
                 {
                 }
 
-                this.LoadTreeView(SourceTreeList, this.SourceList);
+                Cursor.Current = Cursors.WaitCursor;
+                this.LoadTreeView(SourceTreeList, this.SourceList.OrderBy(o=>o.ContentID).ToList());
+                Cursor.Current = Cursors.Default;
             }
         }
 
@@ -95,8 +102,22 @@ namespace DatalistSyncUtil
 
         private void btnLoadTarget_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            Guid tenantModuleId = (ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
             this.TargetList = this.LoadTargetDatalist();
-            this.LoadTreeView(TargetTreeList, this.TargetList);
+            List<DataListMainModel> filteredDataList = null;
+
+            if (tenantModuleId == Guid.Empty)
+            {
+                filteredDataList = this.TargetList;
+            }
+            else
+            {
+                filteredDataList = this.TargetList.Where(w => w.TenantModuleID == tenantModuleId).ToList();
+            }
+
+            this.LoadTreeView(TargetTreeList, filteredDataList);
+            Cursor.Current = Cursors.Default;
         }
 
         private List<DataListMainModel> LoadTargetDatalist()
@@ -122,6 +143,7 @@ namespace DatalistSyncUtil
                     ReleaseStatus = list.ReleaseStatus,
                     Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID, listItems),
                     TenantID = list.TenantID,
+                    TenantModuleID = list.TenantModuleID,
                     ID = list.ID
                 };
 
@@ -185,6 +207,28 @@ namespace DatalistSyncUtil
             TenantList.DisplayMember = "TenantName";
         }
 
+        private void LoadModules()
+        {
+            Guid tenantID = (TenantList.SelectedItem as TenantModel).TenantID;
+            List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+            modules.Insert(0, new TenantModuleModel()
+            {
+                ModuleName = "---All Modules---",
+                TenantModuleId = Guid.Empty,
+                TenantId = tenantID
+            });
+            ModuleList.DataSource = modules.Where(w => w.TenantId == tenantID).GroupBy(i => i.ModuleName)
+                  .Select(group =>
+                        new
+                        {
+                            Key = group.Key,
+                            Items = group.OrderByDescending(x => x.ModuleName)
+                        })
+                  .Select(g => g.Items.First()).OrderBy(o => o.ModuleName).ToList();
+            ModuleList.DisplayMember = "ModuleName";
+            ModuleList.SelectAll();
+        }
+
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -200,6 +244,11 @@ namespace DatalistSyncUtil
         {
             DatalistDiff diffPage = new DatalistDiff(new Guid(TenantList.SelectedValue.ToString()), "ITEMS", this.SourceList, this.TargetList);
             diffPage.ShowDialog();
+        }
+
+        private void TenantList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.LoadModules();
         }
     }
 }

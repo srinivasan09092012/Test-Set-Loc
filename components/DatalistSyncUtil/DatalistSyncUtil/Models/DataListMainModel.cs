@@ -17,6 +17,8 @@ namespace DatalistSyncUtil
 
         public string Description { get; set; }
 
+        public string ModuleName { get; set; }
+
         public string Name { get; set; }
 
         public bool IsActive { get; set; }

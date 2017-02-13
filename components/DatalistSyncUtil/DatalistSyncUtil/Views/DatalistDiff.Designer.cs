@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DiffTab = new System.Windows.Forms.TabControl();
             this.DatalistTabPage = new System.Windows.Forms.TabPage();
+            this.SelectNewList = new System.Windows.Forms.CheckBox();
             this.DatalistSelectAllChkBox = new System.Windows.Forms.CheckBox();
             this.btnListUpdate = new System.Windows.Forms.Button();
             this.DataListView = new System.Windows.Forms.DataGridView();
@@ -130,8 +131,9 @@
             this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClose = new System.Windows.Forms.Button();
-            this.SelectNewList = new System.Windows.Forms.CheckBox();
             this.PreviewUpdate = new System.Windows.Forms.Button();
+            this.ModuleList = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.DiffTab.SuspendLayout();
             this.DatalistTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataListView)).BeginInit();
@@ -157,7 +159,7 @@
             this.DiffTab.Controls.Add(this.ItemTabPage);
             this.DiffTab.Controls.Add(this.ItemLanguages);
             this.DiffTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DiffTab.Location = new System.Drawing.Point(12, 12);
+            this.DiffTab.Location = new System.Drawing.Point(12, 37);
             this.DiffTab.Name = "DiffTab";
             this.DiffTab.SelectedIndex = 0;
             this.DiffTab.Size = new System.Drawing.Size(1489, 697);
@@ -178,6 +180,18 @@
             this.DatalistTabPage.TabIndex = 0;
             this.DatalistTabPage.Text = "Datalist";
             this.DatalistTabPage.UseVisualStyleBackColor = true;
+            // 
+            // SelectNewList
+            // 
+            this.SelectNewList.AutoSize = true;
+            this.SelectNewList.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectNewList.Location = new System.Drawing.Point(158, 8);
+            this.SelectNewList.Name = "SelectNewList";
+            this.SelectNewList.Size = new System.Drawing.Size(60, 21);
+            this.SelectNewList.TabIndex = 8;
+            this.SelectNewList.Text = "New";
+            this.SelectNewList.UseVisualStyleBackColor = true;
+            this.SelectNewList.CheckedChanged += new System.EventHandler(this.SelectNewList_CheckedChanged);
             // 
             // DatalistSelectAllChkBox
             // 
@@ -263,8 +277,8 @@
             // ItemsCount
             // 
             this.ItemsCount.DataPropertyName = "ItemsCount";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ItemsCount.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ItemsCount.DefaultCellStyle = dataGridViewCellStyle15;
             this.ItemsCount.HeaderText = "Items";
             this.ItemsCount.Name = "ItemsCount";
             this.ItemsCount.ReadOnly = true;
@@ -394,9 +408,9 @@
             // EffDate
             // 
             this.EffDate.DataPropertyName = "EffectiveStartDate";
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.EffDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle16.Format = "d";
+            dataGridViewCellStyle16.NullValue = null;
+            this.EffDate.DefaultCellStyle = dataGridViewCellStyle16;
             this.EffDate.HeaderText = "Eff Date";
             this.EffDate.Name = "EffDate";
             this.EffDate.ReadOnly = true;
@@ -405,9 +419,9 @@
             // EndDate
             // 
             this.EndDate.DataPropertyName = "EffectiveEndDate";
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.EndDate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle17.Format = "d";
+            dataGridViewCellStyle17.NullValue = null;
+            this.EndDate.DefaultCellStyle = dataGridViewCellStyle17;
             this.EndDate.HeaderText = "End Date";
             this.EndDate.Name = "EndDate";
             this.EndDate.ReadOnly = true;
@@ -580,9 +594,9 @@
             // dataGridViewTextBoxColumn16
             // 
             this.dataGridViewTextBoxColumn16.DataPropertyName = "EffectiveStartDate";
-            dataGridViewCellStyle4.Format = "d";
-            dataGridViewCellStyle4.NullValue = null;
-            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle18.Format = "d";
+            dataGridViewCellStyle18.NullValue = null;
+            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridViewTextBoxColumn16.HeaderText = "Eff Date";
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
             this.dataGridViewTextBoxColumn16.ReadOnly = true;
@@ -591,9 +605,9 @@
             // dataGridViewTextBoxColumn17
             // 
             this.dataGridViewTextBoxColumn17.DataPropertyName = "EffectiveEndDate";
-            dataGridViewCellStyle5.Format = "d";
-            dataGridViewCellStyle5.NullValue = null;
-            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle19.Format = "d";
+            dataGridViewCellStyle19.NullValue = null;
+            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridViewTextBoxColumn17.HeaderText = "End Date";
             this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
             this.dataGridViewTextBoxColumn17.ReadOnly = true;
@@ -718,9 +732,9 @@
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "EffectiveStartDate";
-            dataGridViewCellStyle6.Format = "d";
-            dataGridViewCellStyle6.NullValue = null;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle20.Format = "d";
+            dataGridViewCellStyle20.NullValue = null;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridViewTextBoxColumn6.HeaderText = "Eff Date";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
@@ -729,9 +743,9 @@
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.DataPropertyName = "EffectiveEndDate";
-            dataGridViewCellStyle7.Format = "d";
-            dataGridViewCellStyle7.NullValue = null;
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle21.Format = "d";
+            dataGridViewCellStyle21.NullValue = null;
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridViewTextBoxColumn7.HeaderText = "End Date";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
@@ -1105,7 +1119,7 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(1422, 715);
+            this.btnClose.Location = new System.Drawing.Point(1418, 736);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 32);
             this.btnClose.TabIndex = 1;
@@ -1113,22 +1127,10 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // SelectNewList
-            // 
-            this.SelectNewList.AutoSize = true;
-            this.SelectNewList.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SelectNewList.Location = new System.Drawing.Point(158, 8);
-            this.SelectNewList.Name = "SelectNewList";
-            this.SelectNewList.Size = new System.Drawing.Size(60, 21);
-            this.SelectNewList.TabIndex = 8;
-            this.SelectNewList.Text = "New";
-            this.SelectNewList.UseVisualStyleBackColor = true;
-            this.SelectNewList.CheckedChanged += new System.EventHandler(this.SelectNewList_CheckedChanged);
-            // 
             // PreviewUpdate
             // 
             this.PreviewUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreviewUpdate.Location = new System.Drawing.Point(1231, 715);
+            this.PreviewUpdate.Location = new System.Drawing.Point(1227, 736);
             this.PreviewUpdate.Name = "PreviewUpdate";
             this.PreviewUpdate.Size = new System.Drawing.Size(176, 32);
             this.PreviewUpdate.TabIndex = 2;
@@ -1136,11 +1138,35 @@
             this.PreviewUpdate.UseVisualStyleBackColor = true;
             this.PreviewUpdate.Click += new System.EventHandler(this.PreviewUpdate_Click);
             // 
+            // ModuleList
+            // 
+            this.ModuleList.DisplayMember = "ModuleName";
+            this.ModuleList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ModuleList.FormattingEnabled = true;
+            this.ModuleList.Location = new System.Drawing.Point(77, 8);
+            this.ModuleList.Name = "ModuleList";
+            this.ModuleList.Size = new System.Drawing.Size(278, 24);
+            this.ModuleList.Sorted = true;
+            this.ModuleList.TabIndex = 28;
+            this.ModuleList.ValueMember = "TenantModuleID";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(11, 11);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 17);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Module:";
+            // 
             // DatalistDiff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1504, 750);
+            this.ClientSize = new System.Drawing.Size(1504, 769);
+            this.Controls.Add(this.ModuleList);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.PreviewUpdate);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.DiffTab);
@@ -1170,6 +1196,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TargetUpdateLangView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SourceUpdateLangView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1272,5 +1299,7 @@
         private System.Windows.Forms.Button btnUpdateLanguages;
         private System.Windows.Forms.CheckBox SelectNewList;
         private System.Windows.Forms.Button PreviewUpdate;
+        private System.Windows.Forms.ComboBox ModuleList;
+        private System.Windows.Forms.Label label4;
     }
 }
