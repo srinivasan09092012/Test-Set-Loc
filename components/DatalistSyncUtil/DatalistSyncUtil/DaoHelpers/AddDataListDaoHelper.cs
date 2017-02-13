@@ -21,15 +21,19 @@ namespace DatalistSyncUtil.DaoHelpers
 
         public bool ExecuteProcedure(DataListMainModel cmd)
         {
-            Guid newGuidDatalist = Guid.NewGuid();
-            List<string> attributes = new List<string>();
+            Guid datalistID = Guid.NewGuid();
+
+            if (cmd.ID != null)
+            {
+                datalistID = cmd.ID;
+            }
 
             this.Context.DataLists.Add(new DataListModel()
             {
                 ContentID = cmd.ContentID,
                 DataListsName = cmd.Description,
                 Description = cmd.Description,
-                ID = newGuidDatalist,
+                ID = datalistID,
                 IsActive = cmd.IsActive,
                 IsEditable = cmd.IsEditable,
                 ReleaseStatus = cmd.ReleaseStatus,
@@ -37,7 +41,7 @@ namespace DatalistSyncUtil.DaoHelpers
                 TenantModuleID = cmd.TenantModuleID
             });
 
-            ////this.Context.SaveChanges();
+            this.Context.SaveChanges();
 
             return true;
         }

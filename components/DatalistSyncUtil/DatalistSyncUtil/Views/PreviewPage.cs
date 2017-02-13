@@ -1,7 +1,9 @@
 ﻿using HP.HSP.UA3.Core.BAS.CQRS.Base;
+using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
 using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -18,6 +20,7 @@ namespace DatalistSyncUtil.Views
         {
             InitializeComponent();
 
+            this.Cache = new RedisCacheManager();
             this.FinalList = finalList;
             this.FinalListItems = finalListItems;
             this.FinalItemLanguages = finalLanguages;
@@ -25,6 +28,8 @@ namespace DatalistSyncUtil.Views
             this.TargetDataList = this.LoadHelper.GetDataList();
             this.LoadTreeView(PreviewTreeList, this.FinalList);
         }
+
+        public ICacheManager Cache { get; set; }
 
         public List<DataListMainModel> FinalList { get; set; }
 
@@ -45,16 +50,43 @@ namespace DatalistSyncUtil.Views
 
         private void SaveDatalistItems()
         {
-            
+            List<ItemLanguage> languages = null;
+            List<DataList> dataList = this.LoadHelper.GetDataList();
+            DataList list = null;
+
+            if (this.FinalListItems != null)
+            {
+                this.FinalListItems.ForEach(f =>
+                {
+                    list = dataList.Where(e => e.ContentID == f.ContentID && e.TenantID == f.TenantID).FirstOrDefault();
+                    if (list != null)
+                    {
+                        f.DatalistID = list.ID;
+                        languages = this.FinalItemLanguages.FindAll(w => w.ContentID == f.ContentID && w.Code == f.Code);
+                        f.LanguageList = languages;
+                        this.LoadHelper.AddDatalistItem(f);
+                    }
+                });
+
+                this.Cache.Remove("TargetDataListItems");
+            }
         }
 
         private void SaveDataList()
         {
             try
             {
-                foreach (DataListMainModel list in this.FinalList)
+                if(this.FinalList != null)
                 {
-                    this.LoadHelper.AddDatalist(list);
+                    List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+
+                    foreach (DataListMainModel list in this.FinalList)
+                    {
+                        list.TenantModuleID = modules.Find(f => f.TenantId == list.TenantID && f.ModuleName == list.ModuleName).TenantModuleId;
+                        this.LoadHelper.AddDatalist(list);
+                    }
+
+                    this.Cache.Remove("TargetDataLists");
                 }
             }
             catch(Exception ex)
@@ -77,7 +109,11 @@ namespace DatalistSyncUtil.Views
                 parentlists.ForEach(f =>
                 {
                     itemNodes = new List<TreeNode>();
-                    this.GetTreeItems(itemNodes,f.Trim());
+                    if (this.FinalListItems != null)
+                    {
+                        this.GetTreeItems(itemNodes, f.Trim());
+                    }
+                    
                     listNode = new TreeNode(f.Trim(), itemNodes.ToArray());
                     treeView.Nodes.Add(listNode);
                 });
@@ -101,7 +137,11 @@ namespace DatalistSyncUtil.Views
             items.ForEach(f =>
             {
                 langNodes = new List<TreeNode>();
-                this.GetTreeItemLanguages(langNodes, f.ContentID);
+                if (this.FinalItemLanguages != null)
+                {
+                    this.GetTreeItemLanguages(langNodes, f.ContentID);
+                }
+                
                 node = new TreeNode(f.Code, langNodes.ToArray());
                 itemNodes.Add(node);
             });
@@ -125,23 +165,35 @@ namespace DatalistSyncUtil.Views
         {
             List<string> listContents = new List<string>();
 
-            this.FinalList.ForEach(f => {
+            if (this.FinalList != null)
+            {
+                this.FinalList.ForEach(f =>
+            {
                 listContents.Add(f.ContentID.Trim());
             });
+            }
 
-            this.FinalListItems.ForEach(f => {
-                if(!listContents.Contains(f.ContentID.Trim()))
+            if (this.FinalListItems != null)
+            {
+                this.FinalListItems.ForEach(f =>
                 {
-                    listContents.Add(f.ContentID.Trim());
-                }
-            });
+                    if (!listContents.Contains(f.ContentID.Trim()))
+                    {
+                        listContents.Add(f.ContentID.Trim());
+                    }
+                });
+            }
 
-            this.FinalItemLanguages.ForEach(f => {
-                if (!listContents.Contains(f.ContentID.Trim()))
+            if (this.FinalItemLanguages != null)
+            {
+                this.FinalItemLanguages.ForEach(f =>
                 {
-                    listContents.Add(f.ContentID.Trim());
-                }
-            });
+                    if (!listContents.Contains(f.ContentID.Trim()))
+                    {
+                        listContents.Add(f.ContentID.Trim());
+                    }
+                });
+            }
 
             return listContents;
         }

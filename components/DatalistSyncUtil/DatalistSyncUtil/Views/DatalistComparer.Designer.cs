@@ -48,10 +48,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deltaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.datalistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.datalistItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.labelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.messagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LeftPanel.SuspendLayout();
             this.RightPanel.SuspendLayout();
@@ -247,44 +244,22 @@
             // deltaToolStripMenuItem
             // 
             this.deltaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.datalistToolStripMenuItem,
-            this.datalistItemToolStripMenuItem,
-            this.labelsToolStripMenuItem,
-            this.messagesToolStripMenuItem});
+            this.datalistItemToolStripMenuItem});
             this.deltaToolStripMenuItem.Name = "deltaToolStripMenuItem";
-            this.deltaToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
+            this.deltaToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.deltaToolStripMenuItem.Text = "Delta";
-            // 
-            // datalistToolStripMenuItem
-            // 
-            this.datalistToolStripMenuItem.Name = "datalistToolStripMenuItem";
-            this.datalistToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
-            this.datalistToolStripMenuItem.Text = "Datalist";
-            this.datalistToolStripMenuItem.Click += new System.EventHandler(this.datalistToolStripMenuItem_Click);
             // 
             // datalistItemToolStripMenuItem
             // 
             this.datalistItemToolStripMenuItem.Name = "datalistItemToolStripMenuItem";
-            this.datalistItemToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.datalistItemToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.datalistItemToolStripMenuItem.Text = "Datalist Item";
             this.datalistItemToolStripMenuItem.Click += new System.EventHandler(this.datalistItemToolStripMenuItem_Click);
-            // 
-            // labelsToolStripMenuItem
-            // 
-            this.labelsToolStripMenuItem.Name = "labelsToolStripMenuItem";
-            this.labelsToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
-            this.labelsToolStripMenuItem.Text = "Labels";
-            // 
-            // messagesToolStripMenuItem
-            // 
-            this.messagesToolStripMenuItem.Name = "messagesToolStripMenuItem";
-            this.messagesToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
-            this.messagesToolStripMenuItem.Text = "Messages";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -333,10 +308,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deltaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem datalistToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem datalistItemToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem labelsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem messagesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ComboBox ModuleList;
         private System.Windows.Forms.Label label4;

@@ -138,5 +138,21 @@ namespace DatalistSyncUtil
 
             return true;
         }
+
+        public bool AddDatalistItem(CodeItemModel cmd)
+        {
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new AddDataListItemDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch
+                {
+                }
+            }
+
+            return true;
+        }
     }
 }

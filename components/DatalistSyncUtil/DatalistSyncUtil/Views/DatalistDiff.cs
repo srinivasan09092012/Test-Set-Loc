@@ -1,6 +1,5 @@
 ﻿using DatalistSyncUtil.Views;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
-using HP.HSP.UA3.Core.BAS.CQRS.Extensions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,8 +7,6 @@ using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DatalistSyncUtil
@@ -30,8 +27,8 @@ namespace DatalistSyncUtil
             this.DeltaType = type;
             this.SourceList = sourceList;
             this.TargetList = targetList;
-            this.LoadDelta();
             this.LoadModules();
+            this.LoadDelta();
         }
 
         public TenantHelper LoadHelper { get; set; }
@@ -56,17 +53,10 @@ namespace DatalistSyncUtil
         {
             switch (this.DeltaType.ToUpper())
             {
-                case "DATALIST":
-                    this.LoadDatalistDelta();
-                    DiffTab.SelectedTab = DatalistTabPage;
-                    break;
                 case "ITEMS":
                     this.LoadDatalistDelta();
                     this.LoadDatalistItemsDelta();
                     DiffTab.SelectedTab = DatalistTabPage;
-                    break;
-                case "LANGUAGES":
-                    this.LoadDatalistItemLanguagesDelta();
                     break;
                 default:
                     break;
@@ -102,6 +92,13 @@ namespace DatalistSyncUtil
             newDatalists = this.GetNewDatalist();
             updatedDatalists = this.UpdatedDatalist();
             newDatalists.AddRange(updatedDatalists);
+            Guid tenantModuleId = (ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
+
+            if (tenantModuleId != Guid.Empty)
+            {
+                newDatalists = newDatalists.Where(w => w.TenantModuleID == tenantModuleId).ToList();
+            }
+            
             DataListView.DataSource = new BindingList<DataListMainModel>(newDatalists);
         }
 
@@ -150,6 +147,14 @@ namespace DatalistSyncUtil
             newDatalistItems.AddRange(newDatalistItemsFromNewList);
             newDatalistItemsFromUpdateList = this.GetNewDatalistItemsFromExistingList();
             newDatalistItems.AddRange(newDatalistItemsFromUpdateList);
+            Guid tenantModuleId = (ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
+            string moduleName = (ModuleList.SelectedItem as TenantModuleModel).ModuleName;
+
+            if (tenantModuleId != Guid.Empty)
+            {
+                newDatalistItems = newDatalistItems.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
+            }
+
             NewItemsView.DataSource = new BindingList<CodeItemModel>(newDatalistItems);
             this.UpdatedDatalistItems();
             this.UpdateLanguages();
@@ -215,6 +220,15 @@ namespace DatalistSyncUtil
             UpdateSourceItemView.AutoGenerateColumns = false;
             UpdateTargetItemView.AutoGenerateColumns = false;
 
+            Guid tenantModuleId = (ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
+            string moduleName = (ModuleList.SelectedItem as TenantModuleModel).ModuleName;
+
+            if (tenantModuleId != Guid.Empty)
+            {
+                updatedDatalistItems = updatedDatalistItems.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
+                updatedTargetDatalistItems = updatedTargetDatalistItems.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
+            }
+
             UpdateSourceItemView.DataSource = new BindingList<CodeItemModel>(updatedDatalistItems.OrderBy(o => o.ContentID).ToList());
             UpdateTargetItemView.DataSource = new BindingList<CodeItemModel>(updatedTargetDatalistItems.OrderBy(o => o.ContentID).ToList());
         }
@@ -252,6 +266,14 @@ namespace DatalistSyncUtil
             newDatalistItemLanguages.AddRange(newDatalistItemLanguagesExisting);
             newDatalistItemLanguagesExisting = this.GetNewLanguagesFromExistingItems();
             newDatalistItemLanguages.AddRange(newDatalistItemLanguagesExisting);
+
+            Guid tenantModuleId = (ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
+            string moduleName = (ModuleList.SelectedItem as TenantModuleModel).ModuleName;
+
+            if (tenantModuleId != Guid.Empty)
+            {
+                newDatalistItemLanguages = newDatalistItemLanguages.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
+            }
             NewLangView.DataSource = new BindingList<ItemLanguage>(newDatalistItemLanguages);
             this.LoadUpdateLanguagesFromExistingItems();
         }
@@ -374,6 +396,7 @@ namespace DatalistSyncUtil
                                 h.Status = "UPDATE";
                                 h.Code = l.Code;
                                 h.ContentID = l.ContentID;
+                                targetDatalistItemLanguage.ContentID = l.ContentID;
                                 updateSourceDatalistItemLanguages.Add(h);
                                 updateTargetDatalistItemLanguages.Add(targetDatalistItemLanguage);
                             }
@@ -383,6 +406,15 @@ namespace DatalistSyncUtil
             });
 
             SourceUpdateLangView.AutoGenerateColumns = TargetUpdateLangView.AutoGenerateColumns = false;
+            Guid tenantModuleId = (ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
+            string moduleName = (ModuleList.SelectedItem as TenantModuleModel).ModuleName;
+
+            if (tenantModuleId != Guid.Empty)
+            {
+                updateSourceDatalistItemLanguages = updateSourceDatalistItemLanguages.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
+                updateTargetDatalistItemLanguages = updateTargetDatalistItemLanguages.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
+            }
+
             SourceUpdateLangView.DataSource = new BindingList<ItemLanguage>(updateSourceDatalistItemLanguages.OrderBy(o => o.ContentID).ToList());
             TargetUpdateLangView.DataSource = new BindingList<ItemLanguage>(updateTargetDatalistItemLanguages.OrderBy(o => o.ContentID).ToList());
         }
@@ -712,6 +744,12 @@ namespace DatalistSyncUtil
         {
             PreviewPage previewPage = new PreviewPage(this.UpdateList, this.UpdateListItems, this.UpdateItemLanguages);
             previewPage.ShowDialog();
+        }
+
+        private void ModuleList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.LoadDatalistDelta();
+            this.LoadDatalistItemsDelta();
         }
     }
 }

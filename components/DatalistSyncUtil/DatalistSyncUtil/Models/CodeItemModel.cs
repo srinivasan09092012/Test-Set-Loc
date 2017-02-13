@@ -17,6 +17,8 @@ namespace DatalistSyncUtil
 
         public string ContentID { get; set; }
 
+        public Guid DatalistID { get; set; }
+
         public Guid TenantID { get; set; }
 
         public bool OrderIndexModified { get; set; }
