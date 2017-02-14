@@ -42,6 +42,7 @@
             // 
             // Submit
             // 
+            this.Submit.Enabled = false;
             this.Submit.Location = new System.Drawing.Point(1079, 734);
             this.Submit.Name = "Submit";
             this.Submit.Size = new System.Drawing.Size(75, 29);
