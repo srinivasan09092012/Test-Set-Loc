@@ -16,7 +16,7 @@ namespace DatalistSyncUtil
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DatalistComparer());
+            Application.Run(new DataListSync());
         }
     }
 }

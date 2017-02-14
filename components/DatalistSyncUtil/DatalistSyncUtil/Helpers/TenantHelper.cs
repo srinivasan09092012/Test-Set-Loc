@@ -56,18 +56,18 @@ namespace DatalistSyncUtil
         public List<TenantModuleModel> LoadModules()
         {
             List<TenantModuleModel> result = null;
-            if (!this.Cache.IsSet("TenantModules"))
+            if (!this.Cache.IsSet("TargetTenantModules"))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
                     result = new GetTenantModuleDaoHelper(new TenantModuleDbContext(session, true)).ExecuteProcedure();
                 }
 
-                this.Cache.Set("TenantModules", result, 1440);
+                this.Cache.Set("TargetTenantModules", result, 1440);
             }
             else
             {
-                result = this.Cache.Get<List<TenantModuleModel>>("TenantModules").ToList();
+                result = this.Cache.Get<List<TenantModuleModel>>("TargetTenantModules").ToList();
             }
 
             return result;

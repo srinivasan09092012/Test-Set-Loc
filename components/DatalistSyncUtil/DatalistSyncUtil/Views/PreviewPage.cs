@@ -108,14 +108,14 @@ namespace DatalistSyncUtil.Views
         {
             try
             {
-                if(this.FinalList != null)
+                if (this.FinalList != null)
                 {
                     List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
 
                     foreach (DataListMainModel list in this.FinalList)
                     {
                         list.TenantModuleID = modules.Find(f => f.TenantId == list.TenantID && f.ModuleName == list.ModuleName).TenantModuleId;
-                        if(list.ID == null)
+                        if (list.ID == null || list.ID == Guid.Empty)
                         {
                             this.LoadHelper.AddDatalist(list);
                         }
