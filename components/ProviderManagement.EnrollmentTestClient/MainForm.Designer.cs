@@ -61,14 +61,14 @@
             this.tbFileName.Margin = new System.Windows.Forms.Padding(2);
             this.tbFileName.Name = "tbFileName";
             this.tbFileName.ReadOnly = true;
-            this.tbFileName.Size = new System.Drawing.Size(1045, 24);
+            this.tbFileName.Size = new System.Drawing.Size(938, 24);
             this.tbFileName.TabIndex = 0;
             // 
             // btnBrowse
             // 
             this.btnBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBrowse.Location = new System.Drawing.Point(1060, 18);
+            this.btnBrowse.Location = new System.Drawing.Point(953, 18);
             this.btnBrowse.Margin = new System.Windows.Forms.Padding(2);
             this.btnBrowse.MaximumSize = new System.Drawing.Size(105, 31);
             this.btnBrowse.MinimumSize = new System.Drawing.Size(105, 31);
@@ -105,7 +105,7 @@
             this.allTabs.Margin = new System.Windows.Forms.Padding(2);
             this.allTabs.Name = "allTabs";
             this.allTabs.SelectedIndex = 0;
-            this.allTabs.Size = new System.Drawing.Size(1154, 524);
+            this.allTabs.Size = new System.Drawing.Size(1047, 560);
             this.allTabs.TabIndex = 3;
             // 
             // tabPayload
@@ -115,7 +115,7 @@
             this.tabPayload.Margin = new System.Windows.Forms.Padding(2);
             this.tabPayload.Name = "tabPayload";
             this.tabPayload.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPayload.Size = new System.Drawing.Size(1146, 491);
+            this.tabPayload.Size = new System.Drawing.Size(1690, 714);
             this.tabPayload.TabIndex = 0;
             this.tabPayload.Text = "Payload";
             this.tabPayload.UseVisualStyleBackColor = true;
@@ -125,7 +125,7 @@
             this.wbXML.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wbXML.Location = new System.Drawing.Point(2, 2);
             this.wbXML.Name = "wbXML";
-            this.wbXML.Size = new System.Drawing.Size(1142, 487);
+            this.wbXML.Size = new System.Drawing.Size(1686, 710);
             this.wbXML.TabIndex = 0;
             // 
             // tbErrors
@@ -134,7 +134,7 @@
             this.tbErrors.Location = new System.Drawing.Point(4, 29);
             this.tbErrors.Name = "tbErrors";
             this.tbErrors.Padding = new System.Windows.Forms.Padding(3);
-            this.tbErrors.Size = new System.Drawing.Size(1042, 360);
+            this.tbErrors.Size = new System.Drawing.Size(1237, 791);
             this.tbErrors.TabIndex = 1;
             this.tbErrors.Text = "Errors";
             this.tbErrors.UseVisualStyleBackColor = true;
@@ -148,7 +148,7 @@
             this.tbError.Multiline = true;
             this.tbError.Name = "tbError";
             this.tbError.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbError.Size = new System.Drawing.Size(1036, 354);
+            this.tbError.Size = new System.Drawing.Size(1231, 785);
             this.tbError.TabIndex = 1;
             // 
             // tabPage1
@@ -160,7 +160,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1042, 360);
+            this.tabPage1.Size = new System.Drawing.Size(1039, 527);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "XML";
             // 
@@ -168,7 +168,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(882, 490);
+            this.btnCancel.Location = new System.Drawing.Point(905, 491);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 31);
@@ -181,7 +181,7 @@
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(961, 490);
+            this.btnSave.Location = new System.Drawing.Point(984, 491);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(50, 31);
@@ -201,7 +201,7 @@
             this.tbPayloadContent.Multiline = true;
             this.tbPayloadContent.Name = "tbPayloadContent";
             this.tbPayloadContent.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbPayloadContent.Size = new System.Drawing.Size(1012, 481);
+            this.tbPayloadContent.Size = new System.Drawing.Size(1032, 485);
             this.tbPayloadContent.TabIndex = 1;
             // 
             // cbEndpoint
@@ -213,10 +213,10 @@
             this.cbEndpoint.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEndpoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEndpoint.FormattingEnabled = true;
-            this.cbEndpoint.Location = new System.Drawing.Point(108, 581);
+            this.cbEndpoint.Location = new System.Drawing.Point(108, 617);
             this.cbEndpoint.Margin = new System.Windows.Forms.Padding(2);
             this.cbEndpoint.Name = "cbEndpoint";
-            this.cbEndpoint.Size = new System.Drawing.Size(948, 26);
+            this.cbEndpoint.Size = new System.Drawing.Size(841, 26);
             this.cbEndpoint.TabIndex = 4;
             this.cbEndpoint.ValueMember = "Value";
             // 
@@ -227,10 +227,10 @@
             this.btnSubmit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSubmit.Enabled = false;
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(308, 662);
+            this.btnSubmit.Location = new System.Drawing.Point(308, 698);
             this.btnSubmit.Margin = new System.Windows.Forms.Padding(2);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(479, 59);
+            this.btnSubmit.Size = new System.Drawing.Size(372, 59);
             this.btnSubmit.TabIndex = 5;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
@@ -242,7 +242,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 585);
+            this.label2.Location = new System.Drawing.Point(13, 621);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 18);
@@ -255,7 +255,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(15, 623);
+            this.label3.Location = new System.Drawing.Point(15, 659);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 18);
@@ -270,11 +270,11 @@
             this.cbEventName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEventName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEventName.FormattingEnabled = true;
-            this.cbEventName.Location = new System.Drawing.Point(108, 619);
+            this.cbEventName.Location = new System.Drawing.Point(108, 655);
             this.cbEventName.Margin = new System.Windows.Forms.Padding(2);
             this.cbEventName.MaxDropDownItems = 25;
             this.cbEventName.Name = "cbEventName";
-            this.cbEventName.Size = new System.Drawing.Size(484, 26);
+            this.cbEventName.Size = new System.Drawing.Size(377, 26);
             this.cbEventName.TabIndex = 8;
             this.cbEventName.ValueMember = "Value";
             // 
@@ -282,7 +282,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1176, 732);
+            this.ClientSize = new System.Drawing.Size(1069, 768);
             this.Controls.Add(this.cbEventName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
