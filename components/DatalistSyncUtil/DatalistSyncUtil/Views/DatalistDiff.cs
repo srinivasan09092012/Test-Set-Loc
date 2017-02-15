@@ -963,5 +963,70 @@ namespace DatalistSyncUtil
                 filteredUpdatedItemLanguages.AddRange(languages);
             }
         }
+
+        private void NewListNewItemCB_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in NewItemsView.Rows)
+            {
+                string rowStatus = row.Cells[12].Value != null ? row.Cells[12].Value.ToString() : string.Empty;
+
+                if (rowStatus == "NEW")
+                {
+                    row.Cells[0].Value = NewListNewItemCB.Checked;
+                }
+            }
+        }
+
+        private void ExistingListNewItemCB_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in NewItemsView.Rows)
+            {
+                string rowStatus = row.Cells[12].Value != null ? row.Cells[12].Value.ToString() : string.Empty;
+
+                if (rowStatus != "NEW")
+                {
+                    row.Cells[0].Value = ExistingListNewItemCB.Checked;
+                }
+            }
+        }
+
+        private void NewLangNewListCB_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in NewLangView.Rows)
+            {
+                string rowStatus = row.Cells[9].Value != null ? row.Cells[9].Value.ToString() : string.Empty;
+
+                if (rowStatus == "DATALIST_NEW")
+                {
+                    row.Cells[0].Value = NewLangNewListCB.Checked;
+                }
+            }
+        }
+
+        private void NewLangNewItemCB_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in NewLangView.Rows)
+            {
+                string rowStatus = row.Cells[9].Value != null ? row.Cells[9].Value.ToString() : string.Empty;
+
+                if (rowStatus == "ITEM_NEW")
+                {
+                    row.Cells[0].Value = NewLangNewItemCB.Checked;
+                }
+            }
+        }
+
+        private void NewLangExistingItemCB_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in NewLangView.Rows)
+            {
+                string rowStatus = row.Cells[9].Value != null ? row.Cells[9].Value.ToString() : string.Empty;
+
+                if (rowStatus != "DATALIST_NEW" && rowStatus != "ITEM_NEW")
+                {
+                    row.Cells[0].Value = NewLangExistingItemCB.Checked;
+                }
+            }
+        }
     }
 }

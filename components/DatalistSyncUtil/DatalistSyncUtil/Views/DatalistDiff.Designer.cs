@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DiffTab = new System.Windows.Forms.TabControl();
             this.DatalistTabPage = new System.Windows.Forms.TabPage();
             this.DatalistSelectAllChkBox = new System.Windows.Forms.CheckBox();
@@ -147,6 +147,11 @@
             this.PreviewUpdate = new System.Windows.Forms.Button();
             this.ModuleList = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.NewListNewItemCB = new System.Windows.Forms.CheckBox();
+            this.ExistingListNewItemCB = new System.Windows.Forms.CheckBox();
+            this.NewLangNewListCB = new System.Windows.Forms.CheckBox();
+            this.NewLangNewItemCB = new System.Windows.Forms.CheckBox();
+            this.NewLangExistingItemCB = new System.Windows.Forms.CheckBox();
             this.DiffTab.SuspendLayout();
             this.DatalistTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataListView)).BeginInit();
@@ -280,8 +285,8 @@
             // ItemsCount
             // 
             this.ItemsCount.DataPropertyName = "ItemsCount";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ItemsCount.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ItemsCount.DefaultCellStyle = dataGridViewCellStyle29;
             this.ItemsCount.HeaderText = "Items";
             this.ItemsCount.Name = "ItemsCount";
             this.ItemsCount.ReadOnly = true;
@@ -416,6 +421,8 @@
             // 
             // NewItemsPage
             // 
+            this.NewItemsPage.Controls.Add(this.ExistingListNewItemCB);
+            this.NewItemsPage.Controls.Add(this.NewListNewItemCB);
             this.NewItemsPage.Controls.Add(this.NewItemsView);
             this.NewItemsPage.Controls.Add(this.NewItemsSelectAllCB);
             this.NewItemsPage.Location = new System.Drawing.Point(4, 25);
@@ -486,9 +493,9 @@
             // EffDate
             // 
             this.EffDate.DataPropertyName = "EffectiveStartDate";
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.EffDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle30.Format = "d";
+            dataGridViewCellStyle30.NullValue = null;
+            this.EffDate.DefaultCellStyle = dataGridViewCellStyle30;
             this.EffDate.HeaderText = "Eff Date";
             this.EffDate.Name = "EffDate";
             this.EffDate.ReadOnly = true;
@@ -497,9 +504,9 @@
             // EndDate
             // 
             this.EndDate.DataPropertyName = "EffectiveEndDate";
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.EndDate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle31.Format = "d";
+            dataGridViewCellStyle31.NullValue = null;
+            this.EndDate.DefaultCellStyle = dataGridViewCellStyle31;
             this.EndDate.HeaderText = "End Date";
             this.EndDate.Name = "EndDate";
             this.EndDate.ReadOnly = true;
@@ -685,9 +692,9 @@
             // dataGridViewTextBoxColumn16
             // 
             this.dataGridViewTextBoxColumn16.DataPropertyName = "EffectiveStartDate";
-            dataGridViewCellStyle4.Format = "d";
-            dataGridViewCellStyle4.NullValue = null;
-            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle32.Format = "d";
+            dataGridViewCellStyle32.NullValue = null;
+            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle32;
             this.dataGridViewTextBoxColumn16.HeaderText = "Eff Date";
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
             this.dataGridViewTextBoxColumn16.ReadOnly = true;
@@ -696,9 +703,9 @@
             // dataGridViewTextBoxColumn17
             // 
             this.dataGridViewTextBoxColumn17.DataPropertyName = "EffectiveEndDate";
-            dataGridViewCellStyle5.Format = "d";
-            dataGridViewCellStyle5.NullValue = null;
-            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle33.Format = "d";
+            dataGridViewCellStyle33.NullValue = null;
+            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle33;
             this.dataGridViewTextBoxColumn17.HeaderText = "End Date";
             this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
             this.dataGridViewTextBoxColumn17.ReadOnly = true;
@@ -823,9 +830,9 @@
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "EffectiveStartDate";
-            dataGridViewCellStyle6.Format = "d";
-            dataGridViewCellStyle6.NullValue = null;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle34.Format = "d";
+            dataGridViewCellStyle34.NullValue = null;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle34;
             this.dataGridViewTextBoxColumn6.HeaderText = "Eff Date";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
@@ -834,9 +841,9 @@
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.DataPropertyName = "EffectiveEndDate";
-            dataGridViewCellStyle7.Format = "d";
-            dataGridViewCellStyle7.NullValue = null;
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle35.Format = "d";
+            dataGridViewCellStyle35.NullValue = null;
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle35;
             this.dataGridViewTextBoxColumn7.HeaderText = "End Date";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
@@ -1021,6 +1028,9 @@
             // 
             // NewLangTab
             // 
+            this.NewLangTab.Controls.Add(this.NewLangExistingItemCB);
+            this.NewLangTab.Controls.Add(this.NewLangNewItemCB);
+            this.NewLangTab.Controls.Add(this.NewLangNewListCB);
             this.NewLangTab.Controls.Add(this.NewLangSelectAllCB);
             this.NewLangTab.Controls.Add(this.NewLangView);
             this.NewLangTab.Location = new System.Drawing.Point(4, 25);
@@ -1341,6 +1351,71 @@
             this.label4.TabIndex = 27;
             this.label4.Text = "Module:";
             // 
+            // NewListNewItemCB
+            // 
+            this.NewListNewItemCB.AutoSize = true;
+            this.NewListNewItemCB.BackColor = System.Drawing.Color.LightBlue;
+            this.NewListNewItemCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewListNewItemCB.Location = new System.Drawing.Point(150, 6);
+            this.NewListNewItemCB.Name = "NewListNewItemCB";
+            this.NewListNewItemCB.Size = new System.Drawing.Size(201, 21);
+            this.NewListNewItemCB.TabIndex = 18;
+            this.NewListNewItemCB.Text = "New Item - New Datalist";
+            this.NewListNewItemCB.UseVisualStyleBackColor = false;
+            this.NewListNewItemCB.CheckedChanged += new System.EventHandler(this.NewListNewItemCB_CheckedChanged);
+            // 
+            // ExistingListNewItemCB
+            // 
+            this.ExistingListNewItemCB.AutoSize = true;
+            this.ExistingListNewItemCB.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ExistingListNewItemCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExistingListNewItemCB.Location = new System.Drawing.Point(357, 6);
+            this.ExistingListNewItemCB.Name = "ExistingListNewItemCB";
+            this.ExistingListNewItemCB.Size = new System.Drawing.Size(227, 21);
+            this.ExistingListNewItemCB.TabIndex = 19;
+            this.ExistingListNewItemCB.Text = "New Item - Existing Datalist";
+            this.ExistingListNewItemCB.UseVisualStyleBackColor = false;
+            this.ExistingListNewItemCB.CheckedChanged += new System.EventHandler(this.ExistingListNewItemCB_CheckedChanged);
+            // 
+            // NewLangNewListCB
+            // 
+            this.NewLangNewListCB.AutoSize = true;
+            this.NewLangNewListCB.BackColor = System.Drawing.Color.LightBlue;
+            this.NewLangNewListCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewLangNewListCB.Location = new System.Drawing.Point(165, 6);
+            this.NewLangNewListCB.Name = "NewLangNewListCB";
+            this.NewLangNewListCB.Size = new System.Drawing.Size(251, 21);
+            this.NewLangNewListCB.TabIndex = 25;
+            this.NewLangNewListCB.Text = "New Languages - New Datalist";
+            this.NewLangNewListCB.UseVisualStyleBackColor = false;
+            this.NewLangNewListCB.CheckedChanged += new System.EventHandler(this.NewLangNewListCB_CheckedChanged);
+            // 
+            // NewLangNewItemCB
+            // 
+            this.NewLangNewItemCB.AutoSize = true;
+            this.NewLangNewItemCB.BackColor = System.Drawing.Color.LightGray;
+            this.NewLangNewItemCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewLangNewItemCB.Location = new System.Drawing.Point(431, 6);
+            this.NewLangNewItemCB.Name = "NewLangNewItemCB";
+            this.NewLangNewItemCB.Size = new System.Drawing.Size(234, 21);
+            this.NewLangNewItemCB.TabIndex = 26;
+            this.NewLangNewItemCB.Text = "New Languages - New Items";
+            this.NewLangNewItemCB.UseVisualStyleBackColor = false;
+            this.NewLangNewItemCB.CheckedChanged += new System.EventHandler(this.NewLangNewItemCB_CheckedChanged);
+            // 
+            // NewLangExistingItemCB
+            // 
+            this.NewLangExistingItemCB.AutoSize = true;
+            this.NewLangExistingItemCB.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.NewLangExistingItemCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewLangExistingItemCB.Location = new System.Drawing.Point(671, 7);
+            this.NewLangExistingItemCB.Name = "NewLangExistingItemCB";
+            this.NewLangExistingItemCB.Size = new System.Drawing.Size(260, 21);
+            this.NewLangExistingItemCB.TabIndex = 27;
+            this.NewLangExistingItemCB.Text = "New Languages - Existing Items";
+            this.NewLangExistingItemCB.UseVisualStyleBackColor = false;
+            this.NewLangExistingItemCB.CheckedChanged += new System.EventHandler(this.NewLangExistingItemCB_CheckedChanged);
+            // 
             // DatalistDiff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1499,5 +1574,10 @@
         private System.Windows.Forms.CheckBox LangRolesCB;
         private System.Windows.Forms.CheckBox ItemDatalistCB;
         private System.Windows.Forms.CheckBox LangDatalistCB;
+        private System.Windows.Forms.CheckBox ExistingListNewItemCB;
+        private System.Windows.Forms.CheckBox NewListNewItemCB;
+        private System.Windows.Forms.CheckBox NewLangExistingItemCB;
+        private System.Windows.Forms.CheckBox NewLangNewItemCB;
+        private System.Windows.Forms.CheckBox NewLangNewListCB;
     }
 }

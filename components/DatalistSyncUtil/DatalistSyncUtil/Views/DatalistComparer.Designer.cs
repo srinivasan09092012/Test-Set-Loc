@@ -30,7 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DatalistComparer));
             this.LeftPanel = new System.Windows.Forms.Panel();
+            this.SourceModuleList = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SourceTreeList = new System.Windows.Forms.TreeView();
+            this.SourceTenantList = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtSourceConnection = new System.Windows.Forms.TextBox();
+            this.btnSourceLoad = new System.Windows.Forms.Button();
             this.btnSourceFile = new System.Windows.Forms.Button();
             this.RightPanel = new System.Windows.Forms.Panel();
             this.ModuleList = new System.Windows.Forms.ComboBox();
@@ -48,13 +55,6 @@
             this.deltaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.datalistItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtSourceConnection = new System.Windows.Forms.TextBox();
-            this.SourceModuleList = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.SourceTenantList = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnSourceLoad = new System.Windows.Forms.Button();
             this.LeftPanel.SuspendLayout();
             this.RightPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -80,12 +80,85 @@
             this.LeftPanel.Size = new System.Drawing.Size(717, 829);
             this.LeftPanel.TabIndex = 0;
             // 
+            // SourceModuleList
+            // 
+            this.SourceModuleList.DisplayMember = "ModuleName";
+            this.SourceModuleList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SourceModuleList.FormattingEnabled = true;
+            this.SourceModuleList.Location = new System.Drawing.Point(349, 34);
+            this.SourceModuleList.Name = "SourceModuleList";
+            this.SourceModuleList.Size = new System.Drawing.Size(278, 24);
+            this.SourceModuleList.Sorted = true;
+            this.SourceModuleList.TabIndex = 31;
+            this.SourceModuleList.ValueMember = "TenantModuleID";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(3, 8);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 17);
+            this.label5.TabIndex = 28;
+            this.label5.Text = "Source:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(283, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 17);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "Module:";
+            // 
             // SourceTreeList
             // 
             this.SourceTreeList.Location = new System.Drawing.Point(-1, 64);
             this.SourceTreeList.Name = "SourceTreeList";
             this.SourceTreeList.Size = new System.Drawing.Size(711, 762);
             this.SourceTreeList.TabIndex = 5;
+            // 
+            // SourceTenantList
+            // 
+            this.SourceTenantList.DisplayMember = "TenantName";
+            this.SourceTenantList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SourceTenantList.FormattingEnabled = true;
+            this.SourceTenantList.Location = new System.Drawing.Point(76, 35);
+            this.SourceTenantList.Name = "SourceTenantList";
+            this.SourceTenantList.Size = new System.Drawing.Size(202, 24);
+            this.SourceTenantList.Sorted = true;
+            this.SourceTenantList.TabIndex = 29;
+            this.SourceTenantList.ValueMember = "TenantID";
+            this.SourceTenantList.SelectedIndexChanged += new System.EventHandler(this.SourceTenantList_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(3, 38);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(64, 17);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "Tenant:";
+            // 
+            // txtSourceConnection
+            // 
+            this.txtSourceConnection.Location = new System.Drawing.Point(76, 5);
+            this.txtSourceConnection.Name = "txtSourceConnection";
+            this.txtSourceConnection.ReadOnly = true;
+            this.txtSourceConnection.Size = new System.Drawing.Size(589, 22);
+            this.txtSourceConnection.TabIndex = 27;
+            // 
+            // btnSourceLoad
+            // 
+            this.btnSourceLoad.Location = new System.Drawing.Point(652, 32);
+            this.btnSourceLoad.Name = "btnSourceLoad";
+            this.btnSourceLoad.Size = new System.Drawing.Size(51, 30);
+            this.btnSourceLoad.TabIndex = 27;
+            this.btnSourceLoad.Text = "Load";
+            this.btnSourceLoad.UseVisualStyleBackColor = true;
+            this.btnSourceLoad.Click += new System.EventHandler(this.btnSourceLoad_Click);
             // 
             // btnSourceFile
             // 
@@ -245,7 +318,7 @@
             // 
             this.datalistItemToolStripMenuItem.Name = "datalistItemToolStripMenuItem";
             this.datalistItemToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.datalistItemToolStripMenuItem.Text = "Datalist Item";
+            this.datalistItemToolStripMenuItem.Text = "Datalist";
             this.datalistItemToolStripMenuItem.Click += new System.EventHandler(this.datalistItemToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
@@ -254,79 +327,6 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(3, 8);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 17);
-            this.label5.TabIndex = 28;
-            this.label5.Text = "Source:";
-            // 
-            // txtSourceConnection
-            // 
-            this.txtSourceConnection.Location = new System.Drawing.Point(76, 5);
-            this.txtSourceConnection.Name = "txtSourceConnection";
-            this.txtSourceConnection.ReadOnly = true;
-            this.txtSourceConnection.Size = new System.Drawing.Size(589, 22);
-            this.txtSourceConnection.TabIndex = 27;
-            // 
-            // SourceModuleList
-            // 
-            this.SourceModuleList.DisplayMember = "ModuleName";
-            this.SourceModuleList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SourceModuleList.FormattingEnabled = true;
-            this.SourceModuleList.Location = new System.Drawing.Point(349, 34);
-            this.SourceModuleList.Name = "SourceModuleList";
-            this.SourceModuleList.Size = new System.Drawing.Size(278, 24);
-            this.SourceModuleList.Sorted = true;
-            this.SourceModuleList.TabIndex = 31;
-            this.SourceModuleList.ValueMember = "TenantModuleID";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(283, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 17);
-            this.label2.TabIndex = 30;
-            this.label2.Text = "Module:";
-            // 
-            // SourceTenantList
-            // 
-            this.SourceTenantList.DisplayMember = "TenantName";
-            this.SourceTenantList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SourceTenantList.FormattingEnabled = true;
-            this.SourceTenantList.Location = new System.Drawing.Point(76, 35);
-            this.SourceTenantList.Name = "SourceTenantList";
-            this.SourceTenantList.Size = new System.Drawing.Size(202, 24);
-            this.SourceTenantList.Sorted = true;
-            this.SourceTenantList.TabIndex = 29;
-            this.SourceTenantList.ValueMember = "TenantID";
-            this.SourceTenantList.SelectedIndexChanged += new System.EventHandler(this.SourceTenantList_SelectedIndexChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 38);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 17);
-            this.label6.TabIndex = 28;
-            this.label6.Text = "Tenant:";
-            // 
-            // btnSourceLoad
-            // 
-            this.btnSourceLoad.Location = new System.Drawing.Point(652, 32);
-            this.btnSourceLoad.Name = "btnSourceLoad";
-            this.btnSourceLoad.Size = new System.Drawing.Size(51, 30);
-            this.btnSourceLoad.TabIndex = 27;
-            this.btnSourceLoad.Text = "Load";
-            this.btnSourceLoad.UseVisualStyleBackColor = true;
-            this.btnSourceLoad.Click += new System.EventHandler(this.btnSourceLoad_Click);
             // 
             // DatalistComparer
             // 
