@@ -44,7 +44,12 @@ namespace LoadReferenceData
             {
                 LoadQuery("Image?$expand=ImageLanguages", "Image");
             }));
-           
+
+            tasks.Add(Task.Factory.StartNew(() =>
+            {
+                LoadQuery("Messages?$expand=Attributes", "Messages");
+            }));
+
             tasks.Add(Task.Factory.StartNew(() =>
             {
                 LoadQuery("Application", "Application");
@@ -69,7 +74,12 @@ namespace LoadReferenceData
             {
                 LoadQuery("Menu?$expand=Children", "Menu");
             }));
-           
+
+            tasks.Add(Task.Factory.StartNew(() =>
+            {
+                LoadQuery("Labels", "Labels");
+            }));
+
             tasks.Add(Task.Factory.StartNew(() =>
             {
                 LoadQuery("Service", "Service");
