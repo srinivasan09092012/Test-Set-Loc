@@ -95,6 +95,11 @@ namespace LoadReferenceData
                 LoadHelpQuery("HelpNodeLocale", "HelpNodeLocale");
             }));
 
+            tasks.Add(Task.Factory.StartNew(() =>
+            {
+                LoadHelpQuery("DataList", "DataList");
+            }));
+
             Task.WaitAll(tasks.ToArray());
 
             Console.WriteLine("Data Load completed..... ");
