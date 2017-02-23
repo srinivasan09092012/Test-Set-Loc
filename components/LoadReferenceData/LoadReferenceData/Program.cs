@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace LoadReferenceData
@@ -19,7 +16,19 @@ namespace LoadReferenceData
 
         private static void LoadAsync()
         {
+            bool errorFlag = false;
             List<Task> tasks = new List<Task>();
+            Action<string, Task> action =
+            (str, t) =>
+            {
+                if (t.Exception != null)
+                {
+                    errorFlag = true;
+                    Console.WriteLine();
+                    Console.WriteLine("***** Task={0}, ERROR={1} *****", str, t.Exception.Message);
+                    Console.WriteLine();
+                }
+            };
 
             Console.WriteLine("Data Load started..... ");
             Stopwatch watch = new Stopwatch();
@@ -28,83 +37,93 @@ namespace LoadReferenceData
             tasks.Add(Task.Factory.StartNew(() =>
             {
                 LoadQuery("HtmlBlock?$expand=HtmlBlockLanguages", "HtmlBlock");
-            }));
-            
+            }).ContinueWith(c => action("HtmlBlock", c)));
+
             tasks.Add(Task.Factory.StartNew(() =>
             {
                 LoadQuery("SecurityCodes?$expand=Children,Attributes", "SecurityCodes");
-            }));
+            }).ContinueWith(c => action("SecurityCodes", c)));
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
                 LoadQuery("ReferenceCodes?$expand=Children,Attributes", "ReferenceCodes");
-            }));
+            }).ContinueWith(c => action("ReferenceCodes", c)));
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
                 LoadQuery("Image?$expand=ImageLanguages", "Image");
-            }));
+            }).ContinueWith(c => action("Image", c)));
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
                 LoadQuery("Messages?$expand=Attributes", "Messages");
-            }));
+            }).ContinueWith(c => action("Messages", c)));
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
                 LoadQuery("Application", "Application");
-            }));
-            
+            }).ContinueWith(c => action("Application", c)));
+
             tasks.Add(Task.Factory.StartNew(() =>
             {
                 LoadQuery("TenantModule", "TenantModule");
-            }));
-            
+            }).ContinueWith(c => action("TenantModule", c)));
+
             tasks.Add(Task.Factory.StartNew(() =>
             {
                 LoadQuery("Module", "Module");
-            }));
-            
+            }).ContinueWith(c => action("Module", c)));
+
             tasks.Add(Task.Factory.StartNew(() =>
             {
                 LoadQuery("ModelDefintion?$expand=ModelProperties", "ModelDefintion");
-            }));
-            
+            }).ContinueWith(c => action("ModelDefintion", c)));
+
             tasks.Add(Task.Factory.StartNew(() =>
             {
                 LoadQuery("Menu?$expand=Children", "Menu");
-            }));
+            }).ContinueWith(c => action("Menu", c)));
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
                 LoadQuery("Labels", "Labels");
-            }));
+            }).ContinueWith(c => action("Labels", c)));
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
                 LoadQuery("Service", "Service");
-            }));
+            }).ContinueWith(c => action("Service", c)));
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
                 LoadQuery("AppSetting", "AppSetting");
-            }));
+            }).ContinueWith(c => action("AppSetting", c)));
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
                 LoadHelpQuery("HelpNodeLocale", "HelpNodeLocale");
-            }));
+            }).ContinueWith(c => action("HelpNodeLocale", c)));
 
-            tasks.Add(Task.Factory.StartNew(() =>
+            if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["Runtime"]))
             {
-                LoadHelpQuery("DataList", "DataList");
-            }));
+                tasks.Add(Task.Factory.StartNew(() =>
+                {
+                    LoadHelpQuery("DataList", "DataList");
+                }).ContinueWith(c => action("DataList", c)));
+            }
 
             Task.WaitAll(tasks.ToArray());
 
             Console.WriteLine("Data Load completed..... ");
             watch.Stop();
             PrintTimeTaken(watch, string.Empty);
+            if(errorFlag)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("***** THERE ARE ERRORS WHILE LOADING *****");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Read();
+            }
         }
 
         private static void LoadQuery(string query, string queryType)
