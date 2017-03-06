@@ -1,20 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP.HSP.UA3.Utilities.ProjectSetupWizard", "HP.HSP.UA3.Utilities.ProjectSetupWizard\HP.HSP.UA3.Utilities.ProjectSetupWizard.csproj", "{9DFEBAF3-B515-459C-A7F4-46D867358F95}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 2
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfspro.austin.hp.com/tfs/tfs01
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = HP.HSP.UA3.Utilities.ProjectSetupWizard\\HP.HSP.UA3.Utilities.ProjectSetupWizard.csproj
-		SccProjectName1 = HP.HSP.UA3.Utilities.ProjectSetupWizard
-		SccLocalPath1 = HP.HSP.UA3.Utilities.ProjectSetupWizard
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -27,5 +18,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://evrt-tfspro.houston.entsvcs.net/tfs/tfs01
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = HP.HSP.UA3.Utilities.ProjectSetupWizard\\HP.HSP.UA3.Utilities.ProjectSetupWizard.csproj
+		SccProjectName1 = HP.HSP.UA3.Utilities.ProjectSetupWizard
+		SccLocalPath1 = HP.HSP.UA3.Utilities.ProjectSetupWizard
 	EndGlobalSection
 EndGlobal

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracleDBUtil", "OracleDBUtil\OracleDBUtil.csproj", "{A5DEE8ED-8FE9-48CD-A229-729E98D5E8F0}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -44,7 +44,7 @@ Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 5
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfspro.austin.hp.com/tfs/tfs01
+		SccTeamFoundationServer = https://evrt-tfspro.houston.entsvcs.net/tfs/tfs01
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = OracleDBUtil\\OracleDBUtil.csproj
 		SccProjectName1 = OracleDBUtil
