@@ -37,9 +37,9 @@
             this.tbErrors = new System.Windows.Forms.TabPage();
             this.tbError = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tbPayloadContent = new System.Windows.Forms.RichTextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.tbPayloadContent = new System.Windows.Forms.TextBox();
             this.cbEndpoint = new System.Windows.Forms.ComboBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -115,7 +115,7 @@
             this.tabPayload.Margin = new System.Windows.Forms.Padding(2);
             this.tabPayload.Name = "tabPayload";
             this.tabPayload.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPayload.Size = new System.Drawing.Size(1690, 714);
+            this.tabPayload.Size = new System.Drawing.Size(1039, 527);
             this.tabPayload.TabIndex = 0;
             this.tabPayload.Text = "Payload";
             this.tabPayload.UseVisualStyleBackColor = true;
@@ -125,7 +125,7 @@
             this.wbXML.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wbXML.Location = new System.Drawing.Point(2, 2);
             this.wbXML.Name = "wbXML";
-            this.wbXML.Size = new System.Drawing.Size(1686, 710);
+            this.wbXML.Size = new System.Drawing.Size(1035, 523);
             this.wbXML.TabIndex = 0;
             // 
             // tbErrors
@@ -134,7 +134,7 @@
             this.tbErrors.Location = new System.Drawing.Point(4, 29);
             this.tbErrors.Name = "tbErrors";
             this.tbErrors.Padding = new System.Windows.Forms.Padding(3);
-            this.tbErrors.Size = new System.Drawing.Size(1237, 791);
+            this.tbErrors.Size = new System.Drawing.Size(1039, 527);
             this.tbErrors.TabIndex = 1;
             this.tbErrors.Text = "Errors";
             this.tbErrors.UseVisualStyleBackColor = true;
@@ -148,21 +148,34 @@
             this.tbError.Multiline = true;
             this.tbError.Name = "tbError";
             this.tbError.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbError.Size = new System.Drawing.Size(1231, 785);
+            this.tbError.Size = new System.Drawing.Size(1033, 521);
             this.tbError.TabIndex = 1;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.DarkGray;
+            this.tabPage1.Controls.Add(this.tbPayloadContent);
             this.tabPage1.Controls.Add(this.btnCancel);
             this.tabPage1.Controls.Add(this.btnSave);
-            this.tabPage1.Controls.Add(this.tbPayloadContent);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1039, 527);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "XML";
+            // 
+            // tbPayloadContent
+            // 
+            this.tbPayloadContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPayloadContent.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPayloadContent.Location = new System.Drawing.Point(1, 0);
+            this.tbPayloadContent.Name = "tbPayloadContent";
+            this.tbPayloadContent.Size = new System.Drawing.Size(1035, 486);
+            this.tbPayloadContent.TabIndex = 12;
+            this.tbPayloadContent.Text = "";
+            this.tbPayloadContent.WordWrap = false;
             // 
             // btnCancel
             // 
@@ -189,20 +202,6 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // tbPayloadContent
-            // 
-            this.tbPayloadContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbPayloadContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPayloadContent.Location = new System.Drawing.Point(2, 2);
-            this.tbPayloadContent.Margin = new System.Windows.Forms.Padding(2);
-            this.tbPayloadContent.Multiline = true;
-            this.tbPayloadContent.Name = "tbPayloadContent";
-            this.tbPayloadContent.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbPayloadContent.Size = new System.Drawing.Size(1032, 485);
-            this.tbPayloadContent.TabIndex = 1;
             // 
             // cbEndpoint
             // 
@@ -302,7 +301,6 @@
             this.tbErrors.ResumeLayout(false);
             this.tbErrors.PerformLayout();
             this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -323,10 +321,10 @@
         private System.Windows.Forms.TabPage tbErrors;
         private System.Windows.Forms.TextBox tbError;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TextBox tbPayloadContent;
         private System.Windows.Forms.WebBrowser wbXML;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.RichTextBox tbPayloadContent;
     }
 }
 

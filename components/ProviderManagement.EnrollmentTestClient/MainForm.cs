@@ -236,13 +236,5 @@ namespace ProviderManagement.EnrollmentTestClient
             this.LoadPayload(tbFileName.Text);
         }
 
-        private void TbPayloadContent_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == (Keys.Control | Keys.A))
-            {
-                tbPayloadContent.SelectAll();
-                e.Handled = e.SuppressKeyPress = true;
-            }
-        }
     }
 }
