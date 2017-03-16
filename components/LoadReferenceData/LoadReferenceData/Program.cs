@@ -10,8 +10,23 @@ namespace LoadReferenceData
     {
         static void Main(string[] args)
         {
-            //LoadSync();
-            LoadAsync();
+            if (args.Length > 1)
+            {
+                Console.WriteLine("Data Load started..... ");
+                if (args[1].ToLower() == "helpnodelocale")
+                {
+                    LoadHelpQuery(args[0], args[1]);
+                }
+                else
+                {
+                    LoadQuery(args[0], args[1]);
+                }
+            }
+            else
+            {
+                //LoadSync();
+                LoadAsync();
+            }
         }
 
         private static void LoadAsync()
