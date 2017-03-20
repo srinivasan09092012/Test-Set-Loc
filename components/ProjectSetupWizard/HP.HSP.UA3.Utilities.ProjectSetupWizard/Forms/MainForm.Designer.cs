@@ -273,6 +273,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             // 
             // CreateApiButton
             // 
+            this.CreateApiButton.Enabled = false;
             this.CreateApiButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateApiButton.Location = new System.Drawing.Point(377, 34);
             this.CreateApiButton.Name = "CreateApiButton";
@@ -341,6 +342,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             // 
             // CreateBatchButton
             // 
+            this.CreateBatchButton.Enabled = false;
             this.CreateBatchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateBatchButton.Location = new System.Drawing.Point(377, 34);
             this.CreateBatchButton.Name = "CreateBatchButton";
@@ -411,6 +413,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             // 
             // CreateBASButton
             // 
+            this.CreateBASButton.Enabled = false;
             this.CreateBASButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateBASButton.Location = new System.Drawing.Point(377, 34);
             this.CreateBASButton.Name = "CreateBASButton";

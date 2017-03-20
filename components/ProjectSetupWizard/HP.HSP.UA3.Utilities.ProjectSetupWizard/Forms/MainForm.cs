@@ -259,8 +259,13 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
 
         private void TargetBranchDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BASGroupBox.Enabled = (TargetBranchDropdown.SelectedIndex != -1);
-            BatchGroupBox.Enabled = (TargetBranchDropdown.SelectedIndex != -1);
+            bool enabled = (TargetBranchDropdown.SelectedIndex != -1);
+
+            BASGroupBox.Enabled = enabled;
+            BatchGroupBox.Enabled = enabled;
+            CreateBASButton.Enabled = enabled;
+            CreateBatchButton.Enabled = enabled;
+            CreateApiButton.Enabled = enabled;
             LoadBASServices();
             LoadBatchServices();
             LoadApis();
@@ -666,8 +671,10 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
         {
             if (!enabled)
             {
+                TargetBranchDropdown.SelectedValue = string.Empty;
                 BASDropdown.Items.Clear();
                 BatchDropdown.Items.Clear();
+                ApiDropdown.Items.Clear();
             }
             DetailsGroupBox.Enabled = enabled;
         }
