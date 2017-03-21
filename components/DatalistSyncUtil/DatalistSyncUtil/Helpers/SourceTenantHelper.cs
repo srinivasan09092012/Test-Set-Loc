@@ -1,4 +1,11 @@
-﻿using DatalistSyncUtil.DaoHelpers;
+﻿//-----------------------------------------------------------------------------------------
+// This code is the property of Hewlett Packard Enterprise, Copyright (c) 2016. All rights reserved.
+//
+// Any unauthorized use in whole or in part without written consent is strictly prohibited.
+// Violators may be punished to the full extent of the law.
+//-----------------------------------------------------------------------------------------
+using DatalistSyncUtil.Configs;
+using DatalistSyncUtil.DaoHelpers;
 using HP.HSP.UA3.Core.BAS.CQRS.Base;
 using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Config.DAOHelpers;
@@ -103,6 +110,10 @@ namespace DatalistSyncUtil
             List<Task> tasks = new List<Task>();
             List<CodeListModel> result = null;
             List<Languages> languages = null;
+            List<CodeListModel> resultmsg = new List<CodeListModel>();
+            List<CodeListModel> resultlbl = new List<CodeListModel>();
+            List<CodeListModel> resultsecrights = new List<CodeListModel>();
+
 
             using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
             {
@@ -115,9 +126,28 @@ namespace DatalistSyncUtil
                 {
                     languages = new SearchDataListLanguagesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
                 }));
+
+                tasks.Add(Task.Factory.StartNew(() =>
+                {
+                    resultmsg = new MessageCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString)).SearchMessages();
+                }));
+
+                tasks.Add(Task.Factory.StartNew(() =>
+                {
+                    resultlbl = new LabelsCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString)).SearchLabels();
+                }));
+
+                tasks.Add(Task.Factory.StartNew(() =>
+                {
+                    resultsecrights = new SecurityCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString)).SearchCodeTables();
+                }));
+
             }
 
             Task.WaitAll(tasks.ToArray());
+            result.AddRange(resultmsg);
+            result.AddRange(resultlbl);
+            result.AddRange(resultsecrights);
 
             result.ForEach(x =>
             {

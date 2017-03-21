@@ -1,4 +1,11 @@
-﻿using HP.HSP.UA3.Core.BAS.CQRS.Base;
+﻿//-----------------------------------------------------------------------------------------
+// This code is the property of Hewlett Packard Enterprise, Copyright (c) 2016. All rights reserved.
+//
+// Any unauthorized use in whole or in part without written consent is strictly prohibited.
+// Violators may be punished to the full extent of the law.
+//-----------------------------------------------------------------------------------------
+using DatalistSyncUtil.Configs;
+using HP.HSP.UA3.Core.BAS.CQRS.Base;
 using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Config.DAOHelpers;
 using HP.HSP.UA3.Core.BAS.CQRS.DataAccess.Entities;
@@ -16,6 +23,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace DatalistSyncUtil
 {
@@ -189,16 +197,15 @@ namespace DatalistSyncUtil
                 DataListView.DataSource = new BindingList<DataList>(this.SourceLists.Where(w => w.TenantID == tenantID && w.LastModified.Value >= DateTime.UtcNow.AddDays(this.NoOfDays)).ToList());
             }
         }
-
+    
         private List<DataList> LoadDataList(string providerName, string connectionString)
         {
             List<DataList> result = null;
-
+           
             using (IDbSession session = new DbSession(providerName, connectionString))
             {
-                result = new SearchDataListDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
+                result = new SearchDataListDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();  
             }
-
             this.Cache.Set("DataLists", result.OrderBy(o => o.ContentID).ToList(), 1440);
 
             return result;
@@ -214,9 +221,12 @@ namespace DatalistSyncUtil
             List<Task> tasks = new List<Task>();
             List<CodeListModel> result = null;
             List<Languages> languages = null;
-
+            List<CodeListModel> resultmsg = new List<CodeListModel>();
+            List<CodeListModel> resultlbl = new List<CodeListModel>();
+            List<CodeListModel> resultsecrights = new List<CodeListModel>();
+            
             using (IDbSession session = new DbSession(providerName, connectionString))
-            {
+            { 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
                     result = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(string.Empty);
@@ -226,10 +236,29 @@ namespace DatalistSyncUtil
                 {
                     languages = new SearchDataListLanguagesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
                 }));
+
+                tasks.Add(Task.Factory.StartNew(() =>
+                {
+                     resultmsg =new MessageCodeReadOnly(new DbSession(providerName, connectionString)).SearchMessages();
+                }));
+
+                tasks.Add(Task.Factory.StartNew(() =>
+                {
+                    resultlbl=new LabelsCodeReadOnly(new DbSession(providerName, connectionString)).SearchLabels();
+                }));
+
+                tasks.Add(Task.Factory.StartNew(() =>
+                { 
+                    resultsecrights = new SecurityCodeReadOnly(new DbSession(providerName, connectionString)).SearchCodeTables();
+                }));
+
             }
 
             Task.WaitAll(tasks.ToArray());
-
+            result.AddRange(resultmsg);
+            result.AddRange(resultlbl);
+            result.AddRange(resultsecrights);
+            
             result.ForEach(x =>
             {
                 x.LanguageList = languages.FindAll(c => c.CodeID == x.ID);
@@ -623,7 +652,7 @@ namespace DatalistSyncUtil
 
             return items;
         }
-
+     
         private List<ItemLanguage> GetLanguageListCustom(List<Languages> languageList)
         {
             List<ItemLanguage> languages = new List<ItemLanguage>();

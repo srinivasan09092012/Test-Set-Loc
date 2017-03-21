@@ -45,7 +45,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="HP.HSP.UA3.Core.BAS.CQRS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dcb1b3a095369f29, processorArchitecture=MSIL">
+    <Reference Include="HP.HSP.UA3.Core.BAS.CQRS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.1.0.0\lib\net45\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
     </Reference>
@@ -82,6 +82,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configs\LabelsCodeReadOnly.cs" />
+    <Compile Include="Configs\MessageCodeReadOnly.cs" />
+    <Compile Include="Configs\SecurityCodeReadOnly.cs" />
     <Compile Include="DaoHelpers\AddDataListDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataListItemLanguageDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataListItemDaoHelper.cs" />
