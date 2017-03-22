@@ -455,16 +455,19 @@ namespace DatalistSyncUtil
                 t.IsEditableModified = targetItem.IsEditableModified = true;
             }
 
-            if (t.EffectiveEndDate.Value.ToShortDateString() != targetItem.EffectiveEndDate.Value.ToShortDateString())
+            if ((!t.ContentID.Contains("Message")) && (!t.ContentID.Contains("Label") && (!t.ContentID.Contains("Msg"))))
             {
-                itemChanged = true;
-                t.EffectiveEndDateModified = targetItem.EffectiveEndDateModified = true;
-            }
+                if (t.EffectiveEndDate.Value.ToShortDateString() != targetItem.EffectiveEndDate.Value.ToShortDateString())
+                {
+                    itemChanged = true;
+                    t.EffectiveEndDateModified = targetItem.EffectiveEndDateModified = true;
+                }
 
-            if (t.EffectiveStartDate.Value.ToShortDateString() != targetItem.EffectiveStartDate.Value.ToShortDateString())
-            {
-                itemChanged = true;
-                t.EffectiveStartDateModified = targetItem.EffectiveStartDateModified = true;
+                if (t.EffectiveStartDate.Value.ToShortDateString() != targetItem.EffectiveStartDate.Value.ToShortDateString())
+                {
+                    itemChanged = true;
+                    t.EffectiveStartDateModified = targetItem.EffectiveStartDateModified = true;
+                }
             }
 
             return itemChanged;
@@ -473,7 +476,7 @@ namespace DatalistSyncUtil
         private List<CodeItemModel> GetNewDatalistItemsFromNewList()
         {
             List<CodeItemModel> newDatalistItems = new List<CodeItemModel>();
-            List<string> dataLists = this.SourceList.Select(c => c.ContentID).Except(this.TargetList.Select(c => c.ContentID)).ToList();
+            List<string> dataLists = this.SourceList.Select(c => c.ContentID).Except(this.TargetList.Where(c => c.ContentID.Contains("Claims")).Select(c => c.ContentID)).ToList();
             List<DataListMainModel> newDatalists = this.SourceList.Where(c => dataLists.Contains(c.ContentID)).ToList();
 
             newDatalists.ForEach(i =>
