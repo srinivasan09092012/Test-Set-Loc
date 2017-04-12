@@ -45,7 +45,7 @@ namespace DatalistSyncUtil.DaoHelpers
 
             this.Context.SaveChanges();
 
-            if (cmd.LanguageList !=null)
+            if (cmd.LanguageList != null)
             {
                 foreach (ItemLanguage datalistLanguage in cmd.LanguageList)
                 {
