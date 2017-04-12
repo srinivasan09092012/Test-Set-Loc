@@ -8,18 +8,29 @@ using System;
 
 namespace DatalistSyncUtil
 {
-    public class SelectedItem
+    [Serializable]
+    public class ItemAttribute
     {
+        public string ParentContentId { get; set; }
+
         public string ContentID { get; set; }
 
         public string Code { get; set; }
 
-        public DateTime? ModifiedDate { get; set; }
+        public string Status { get; set; }
 
         public bool IsActive { get; set; }
 
-        public bool Selected { get; set; }
+        public DateTime? LastModifiedDate { get; set; }
+
+        public Guid DataListID { get; set; }
+
+        public Guid DataListTypeID { get; set; }
+
+        public Guid DefaultTypeValue { get; set; }
 
         public Guid ID { get; set; }
+
+        public Guid TenantID { get; set; }
     }
 }

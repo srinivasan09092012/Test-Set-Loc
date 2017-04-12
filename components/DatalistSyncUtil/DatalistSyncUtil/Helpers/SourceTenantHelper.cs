@@ -5,18 +5,15 @@
 // Violators may be punished to the full extent of the law.
 //-----------------------------------------------------------------------------------------
 using DatalistSyncUtil.Configs;
-using DatalistSyncUtil.DaoHelpers;
 using HP.HSP.UA3.Core.BAS.CQRS.Base;
 using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Config.DAOHelpers;
 using HP.HSP.UA3.Core.BAS.CQRS.DataAccess.Entities;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
 using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DatalistSyncUtil
@@ -114,7 +111,6 @@ namespace DatalistSyncUtil
             List<CodeListModel> resultlbl = new List<CodeListModel>();
             List<CodeListModel> resultsecrights = new List<CodeListModel>();
 
-
             using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
             {
                 tasks.Add(Task.Factory.StartNew(() =>
@@ -129,19 +125,18 @@ namespace DatalistSyncUtil
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    resultmsg = new MessageCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString)).SearchMessages();
+                    resultmsg = new MessageCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").SearchMessages();
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    resultlbl = new LabelsCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString)).SearchLabels();
+                    resultlbl = new LabelsCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").SearchLabels();
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    resultsecrights = new SecurityCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString)).SearchCodeTables();
+                    resultsecrights = new SecurityCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString)).SearchCodeTables("Source");
                 }));
-
             }
 
             Task.WaitAll(tasks.ToArray());
@@ -155,6 +150,29 @@ namespace DatalistSyncUtil
             });
 
             this.Cache.Set("SourceDataListItems", result, 1440);
+
+            return result;
+        }
+
+        public List<DataList> GetAttributesList()
+        {
+            List<DataList> result = null;
+            List<CodeListModel> resultitems = null;
+
+            if (!this.Cache.IsSet("SourceDataListAttributes"))
+            {
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    resultitems = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(string.Empty);
+
+                    result = new DataListAttributesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").SearchCodeTables(resultitems);
+                    this.Cache.Set("SourceDataListAttributes", result, 1440);
+                }
+            }
+            else
+            {
+                result = this.Cache.Get<List<DataList>>("SourceDataListAttributes");
+            }
 
             return result;
         }

@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using Newtonsoft.Json;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Configuration;
+﻿//-----------------------------------------------------------------------------------------
+// This code is the property of Hewlett Packard Enterprise, Copyright (c) 2016. All rights reserved.
+//
+// Any unauthorized use in whole or in part without written consent is strictly prohibited.
+// Violators may be punished to the full extent of the law.
+//-----------------------------------------------------------------------------------------
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace DatalistSyncUtil
 {
@@ -18,13 +20,13 @@ namespace DatalistSyncUtil
     {
         public DatalistComparer()
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.TargetConnectionString = ConfigurationManager.ConnectionStrings["TargetDataList"];
             this.SourceConnectionString = ConfigurationManager.ConnectionStrings["SourceDataList"];
             this.LoadHelper = new TenantHelper(this.TargetConnectionString);
             this.SourceLoadHelper = new SourceTenantHelper(this.SourceConnectionString);
-            txtTargetConnection.Text = this.TargetConnectionString.ConnectionString;
-            txtSourceConnection.Text = this.SourceConnectionString.ConnectionString;
+            this.txtTargetConnection.Text = this.TargetConnectionString.ConnectionString;
+            this.txtSourceConnection.Text = this.SourceConnectionString.ConnectionString;
             this.LoadTenant();
             this.LoadModules();
             this.LoadSourceTenant();
@@ -43,18 +45,18 @@ namespace DatalistSyncUtil
 
         public ConnectionStringSettings SourceConnectionString { get; set; }
 
-        private void btnSourceFile_Click(object sender, EventArgs e)
+        private void BtnSourceFile_Click(object sender, EventArgs e)
         {
-            DialogResult result = OpenDatalistFile.ShowDialog();
+            DialogResult result = this.openDatalistFile.ShowDialog();
 
             if (result == DialogResult.OK)
             {
-                string file = OpenDatalistFile.FileName;
-                txtSourceConnection.Text = file;
+                string file = this.openDatalistFile.FileName;
+                this.txtSourceConnection.Text = file;
                 try
                 {
                     this.SourceList = JsonConvert.DeserializeObject<List<DataListMainModel>>(File.ReadAllText(file));
-                    List<TenantModuleModel> targetModules = ModuleList.DataSource as List<TenantModuleModel>;
+                    List<TenantModuleModel> targetModules = this.moduleList.DataSource as List<TenantModuleModel>;
                     List<DataListMainModel> sourceDataList = this.SourceList.Where(w => targetModules.Select(s => s.ModuleName).Contains(w.ModuleName)).ToList();
                 }
                 catch (IOException)
@@ -62,7 +64,7 @@ namespace DatalistSyncUtil
                 }
 
                 Cursor.Current = Cursors.WaitCursor;
-                this.LoadTreeView(SourceTreeList, this.SourceList.OrderBy(o => o.ContentID).ToList());
+                this.LoadTreeView(this.sourceTreeList, this.SourceList.OrderBy(o => o.ContentID).ToList());
                 Cursor.Current = Cursors.Default;
             }
         }
@@ -74,6 +76,8 @@ namespace DatalistSyncUtil
             List<TreeNode> itemNodes = null;
             TreeNode langNode = null;
             List<TreeNode> langNodes = null;
+            List<TreeNode> attributenodes = null;
+            TreeNode attributenode = null;
             string languageSeparator = " - ";
 
             try
@@ -95,6 +99,16 @@ namespace DatalistSyncUtil
                         itemNodes.Add(itemNode);
                     });
                     listNode = new TreeNode(list.ContentID, itemNodes.ToArray());
+
+                    attributenodes = new List<TreeNode>();
+                    list.DataListAttributes.ForEach(f =>
+                    {
+                        attributenode = new TreeNode(f.ParentContentId + "." + f.Code);
+                        attributenodes.Add(attributenode);
+                    });
+
+                    listNode = new TreeNode(list.ContentID, attributenodes.ToArray());
+
                     treeView.Nodes.Add(listNode);
                 }
             }
@@ -108,10 +122,10 @@ namespace DatalistSyncUtil
             }
         }
 
-        private void btnLoadTarget_Click(object sender, EventArgs e)
+        private void BtnLoadTarget_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            Guid tenantModuleId = (ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
+            Guid tenantModuleId = (this.moduleList.SelectedItem as TenantModuleModel).TenantModuleId;
             this.TargetList = this.LoadTargetDatalist();
             List<DataListMainModel> filteredDataList = null;
 
@@ -124,7 +138,7 @@ namespace DatalistSyncUtil
                 filteredDataList = this.TargetList.Where(w => w.TenantModuleID == tenantModuleId).ToList();
             }
 
-            this.LoadTreeView(TargetTreeList, filteredDataList.OrderBy(o => o.ContentID).ToList());
+            this.LoadTreeView(this.targetTreeList, filteredDataList.OrderBy(o => o.ContentID).ToList());
             Cursor.Current = Cursors.Default;
         }
 
@@ -135,9 +149,10 @@ namespace DatalistSyncUtil
             List<DataListMainModel> listsMain = new List<DataListMainModel>();
             DataListMainModel list1 = null;
 
-            Guid tenantID = new Guid(TenantList.SelectedValue.ToString());
+            Guid tenantID = new Guid(this.tenantList.SelectedValue.ToString());
 
             lists = this.LoadHelper.GetDataList().Where(w => w.TenantID == tenantID).ToList();
+            lists = this.LoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID).ToList();
             listItems = this.LoadHelper.GetDataListItems();
 
             foreach (DataList list in lists)
@@ -152,7 +167,8 @@ namespace DatalistSyncUtil
                     Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID, listItems),
                     TenantID = list.TenantID,
                     TenantModuleID = list.TenantModuleID,
-                    ID = list.ID
+                    ID = list.ID,
+                    DataListAttributes = this.ConverttoAttributes(list.DataListAttributes, list.ContentID, list.TenantID, list.ID)
                 };
 
                 listsMain.Add(list1);
@@ -168,9 +184,10 @@ namespace DatalistSyncUtil
             List<DataListMainModel> listsMain = new List<DataListMainModel>();
             DataListMainModel list1 = null;
 
-            Guid tenantID = new Guid(SourceTenantList.SelectedValue.ToString());
+            Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
 
             lists = this.SourceLoadHelper.GetDataList().Where(w => w.TenantID == tenantID).ToList();
+            lists = this.SourceLoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID).ToList();
             listItems = this.SourceLoadHelper.GetDataListItems();
 
             foreach (DataList list in lists)
@@ -185,7 +202,8 @@ namespace DatalistSyncUtil
                     Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID, listItems),
                     TenantID = list.TenantID,
                     TenantModuleID = list.TenantModuleID,
-                    ID = list.ID
+                    ID = list.ID,
+                    DataListAttributes = this.ConverttoAttributes(list.DataListAttributes, list.ContentID, list.TenantID, list.ID)
                 };
 
                 listsMain.Add(list1);
@@ -213,13 +231,34 @@ namespace DatalistSyncUtil
                     LanguageList = this.GetLanguageListCustom(e.LanguageList),
                     OrderIndex = e.OrderIndex,
                     TenantID = e.TenantID,
-                    ID = e.ID
+                    ID = e.ID,
                 };
                 items.Add(item);
             });
 
-
             return items;
+        }
+
+        private List<ItemAttribute> ConverttoAttributes(List<DataListAttribute> list, string parentContentId, Guid tenantID, Guid dataListID)
+        {
+            List<ItemAttribute> item = new List<ItemAttribute>();
+            
+            foreach (DataListAttribute listattribute in list)
+            {
+                ItemAttribute itemList = new ItemAttribute();
+                itemList.ContentID = listattribute.DataListTypeName;
+                itemList.Code = listattribute.DefaultTypeText;
+                itemList.ParentContentId = parentContentId;
+                itemList.IsActive = listattribute.IsActive;
+                itemList.DataListID = listattribute.DataListID;
+                itemList.DataListTypeID = listattribute.DataListTypeID;
+                itemList.ID = listattribute.ID;
+                itemList.TenantID = tenantID;
+                itemList.DefaultTypeValue = listattribute.DefaultTypeValue;
+                item.Add(itemList);
+            }
+
+            return item;
         }
 
         private List<ItemLanguage> GetLanguageListCustom(List<Languages> languageList)
@@ -244,21 +283,23 @@ namespace DatalistSyncUtil
 
         private void LoadTenant()
         {
-            TenantList.DataSource = this.LoadHelper.GetTenants().ToList();
-            TenantList.DisplayMember = "TenantName";
+            this.tenantList.DataSource = this.LoadHelper.GetTenants().ToList();
+            this.tenantList.DisplayMember = "TenantName";
         }
 
         private void LoadModules()
         {
-            Guid tenantID = (TenantList.SelectedItem as TenantModel).TenantID;
+            Guid tenantID = (this.tenantList.SelectedItem as TenantModel).TenantID;
             List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
-            modules.Insert(0, new TenantModuleModel()
-            {
-                ModuleName = "---All Modules---",
-                TenantModuleId = Guid.Empty,
-                TenantId = tenantID
-            });
-            ModuleList.DataSource = modules.Where(w => w.TenantId == tenantID).GroupBy(i => i.ModuleName)
+            modules.Insert(
+                    0,
+                    new TenantModuleModel()
+                    {
+                      ModuleName = "---All Modules---",
+                      TenantModuleId = Guid.Empty,
+                      TenantId = tenantID
+                    });
+            this.moduleList.DataSource = modules.Where(w => w.TenantId == tenantID).GroupBy(i => i.ModuleName)
                   .Select(group =>
                         new
                         {
@@ -266,27 +307,29 @@ namespace DatalistSyncUtil
                             Items = group.OrderByDescending(x => x.ModuleName)
                         })
                   .Select(g => g.Items.First()).OrderBy(o => o.ModuleName).ToList();
-            ModuleList.DisplayMember = "ModuleName";
-            ModuleList.SelectAll();
+            this.moduleList.DisplayMember = "ModuleName";
+            this.moduleList.SelectAll();
         }
 
         private void LoadSourceTenant()
         {
-            SourceTenantList.DataSource = this.SourceLoadHelper.GetTenants().ToList();
-            SourceTenantList.DisplayMember = "TenantName";
+            this.sourceTenantList.DataSource = this.SourceLoadHelper.GetTenants().ToList();
+            this.sourceTenantList.DisplayMember = "TenantName";
         }
 
         private void LoadSourceModules()
         {
-            Guid tenantID = (SourceTenantList.SelectedItem as TenantModel).TenantID;
+            Guid tenantID = (this.sourceTenantList.SelectedItem as TenantModel).TenantID;
             List<TenantModuleModel> modules = this.SourceLoadHelper.LoadModules();
-            modules.Insert(0, new TenantModuleModel()
-            {
-                ModuleName = "---All Modules---",
-                TenantModuleId = Guid.Empty,
-                TenantId = tenantID
-            });
-            SourceModuleList.DataSource = modules.Where(w => w.TenantId == tenantID).GroupBy(i => i.ModuleName)
+            modules.Insert(
+                0, 
+                new TenantModuleModel()
+                 {
+                   ModuleName = "---All Modules---",
+                   TenantModuleId = Guid.Empty,
+                   TenantId = tenantID
+                  });
+            this.sourceModuleList.DataSource = modules.Where(w => w.TenantId == tenantID).GroupBy(i => i.ModuleName)
                   .Select(group =>
                         new
                         {
@@ -294,8 +337,8 @@ namespace DatalistSyncUtil
                             Items = group.OrderByDescending(x => x.ModuleName)
                         })
                   .Select(g => g.Items.First()).OrderBy(o => o.ModuleName).ToList();
-            SourceModuleList.DisplayMember = "ModuleName";
-            SourceModuleList.SelectAll();
+            this.sourceModuleList.DisplayMember = "ModuleName";
+            this.sourceModuleList.SelectAll();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -306,7 +349,7 @@ namespace DatalistSyncUtil
         private void datalistToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            DatalistDiff diffPage = new DatalistDiff(new Guid(TenantList.SelectedValue.ToString()), "DATALIST", this.SourceList, this.TargetList);
+            DatalistDiff diffPage = new DatalistDiff(new Guid(this.tenantList.SelectedValue.ToString()), "DATALIST", this.SourceList, this.TargetList);
             diffPage.ShowDialog();
             Cursor.Current = Cursors.Default;
         }
@@ -314,7 +357,7 @@ namespace DatalistSyncUtil
         private void datalistItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            DatalistDiff diffPage = new DatalistDiff(new Guid(TenantList.SelectedValue.ToString()), "ITEMS", this.SourceList, this.TargetList);
+            DatalistDiff diffPage = new DatalistDiff(new Guid(this.tenantList.SelectedValue.ToString()), "ITEMS", this.SourceList, this.TargetList);
             diffPage.ShowDialog();
             Cursor.Current = Cursors.Default;
         }
@@ -332,7 +375,7 @@ namespace DatalistSyncUtil
         private void btnSourceLoad_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            Guid tenantModuleId = (SourceModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
+            Guid tenantModuleId = (this.sourceModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
             this.SourceList = this.LoadSourceDatalist();
             List<DataListMainModel> filteredDataList = null;
 
@@ -345,7 +388,7 @@ namespace DatalistSyncUtil
                 filteredDataList = this.SourceList.Where(w => w.TenantModuleID == tenantModuleId).ToList();
             }
 
-            this.LoadTreeView(SourceTreeList, filteredDataList.OrderBy(o => o.ContentID).ToList());
+            this.LoadTreeView(this.sourceTreeList, filteredDataList.OrderBy(o => o.ContentID).ToList());
             Cursor.Current = Cursors.Default;
         }
     }

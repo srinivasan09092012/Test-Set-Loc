@@ -1,10 +1,14 @@
-﻿
+﻿//-----------------------------------------------------------------------------------------
+// This code is the property of Hewlett Packard Enterprise, Copyright (c) 2016. All rights reserved.
+//
+// Any unauthorized use in whole or in part without written consent is strictly prohibited.
+// Violators may be punished to the full extent of the law.
+//-----------------------------------------------------------------------------------------
 using HP.HSP.UA3.Core.BAS.CQRS.Base;
 using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Config.DAOHelpers;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
 using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -14,18 +18,19 @@ namespace DatalistSyncUtil.Configs
 {
     public class MessageCodeReadOnly
     {
-        private const string MessagesCacheKey = "UtilityMessageCodeTableKey";
-        private const string DataListAttrKey = "UtilityMessageAttrKey";
-        private const string DataListItemAttrKey = "UtilityMessageItemAttrKey";
+        private string messagesCacheKey = "UtilityMessageCodeTableKey";
+        private string dataListAttrKey = "UtilityMessageAttrKey";
+        private string dataListItemAttrKey = "UtilityMessageItemAttrKey";
         private ICacheManager cachemanager;
         private int cacheTimeInMins = string.IsNullOrEmpty(ConfigurationManager.AppSettings["CacheRefreshTime"]) ? 1440 : int.Parse(ConfigurationManager.AppSettings["CacheRefreshTime"]);
 
-       
-
-        public MessageCodeReadOnly(DbSession session) 
+        public MessageCodeReadOnly(DbSession session, string envLocation)
         {
             this.cachemanager = new RedisCacheManager();
             this.ConnectionString = new ConnectionStringSettings("TenantConfig", session.ConnectionString, session.ProviderInvariantName);
+            this.messagesCacheKey = envLocation + this.messagesCacheKey;
+            this.dataListAttrKey = envLocation + this.dataListAttrKey;
+            this.dataListItemAttrKey = envLocation + this.dataListItemAttrKey;
         }
 
         public ConnectionStringSettings ConnectionString { get; set; }
@@ -35,9 +40,8 @@ namespace DatalistSyncUtil.Configs
             List<CodeListModel> result = new List<CodeListModel>();
             List<Task> tasks = new List<Task>();
             List<Languages> languages = new List<Languages>();
-          
 
-            if (!this.cachemanager.IsSet(MessagesCacheKey))
+            if (!this.cachemanager.IsSet(this.messagesCacheKey))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
@@ -54,7 +58,7 @@ namespace DatalistSyncUtil.Configs
                     Task.WaitAll(tasks.ToArray());
                     tasks.Clear();
 
-                    if (!this.cachemanager.IsSet(DataListAttrKey))
+                    if (!this.cachemanager.IsSet(this.dataListAttrKey))
                     {
                         tasks.Add(Task.Factory.StartNew(() =>
                         {
@@ -62,7 +66,7 @@ namespace DatalistSyncUtil.Configs
                         }));
                     }
 
-                    if (!this.cachemanager.IsSet(DataListItemAttrKey))
+                    if (!this.cachemanager.IsSet(this.dataListItemAttrKey))
                     {
                         tasks.Add(Task.Factory.StartNew(() =>
                         {
@@ -80,27 +84,25 @@ namespace DatalistSyncUtil.Configs
                 List<DataListItemAttributeModel> itemAttributes = this.GetDataListItemAttributes();
                 result.ForEach(x => x.Attributes = this.ExpandAttributes(x, result, listAttributes, itemAttributes));
 
-                this.cachemanager.Set(MessagesCacheKey, result, this.cacheTimeInMins);
+                this.cachemanager.Set(this.messagesCacheKey, result, this.cacheTimeInMins);
                 result = result.Where(x => (string.IsNullOrEmpty(contentID) || x.ContentID == contentID)
                                         && (string.IsNullOrEmpty(tenantID) || x.TenantID.ToString() == tenantID))
                                 .ToList();
             }
             else
             {
-
-                result = this.cachemanager.Get<List<CodeListModel>>(MessagesCacheKey)
+                result = this.cachemanager.Get<List<CodeListModel>>(this.messagesCacheKey)
                      .Where(x => (string.IsNullOrEmpty(contentID) || x.ContentID == contentID)
                               && (string.IsNullOrEmpty(tenantID) || x.TenantID.ToString() == tenantID))
                      .ToList();
             }
-              
-            
+
             return result;
         }
 
         public List<DataListItemAttributeModel> ExpandAttributes(CodeListModel toExpand, List<CodeListModel> items, List<DataListAttribute> listAttributes, List<DataListItemAttributeModel> itemAttribues)
         {
-            if (!this.cachemanager.IsSet(DataListItemAttrKey))
+            if (!this.cachemanager.IsSet(this.dataListItemAttrKey))
             {
                 this.GetDataListItemAttributes();
             }
@@ -118,17 +120,17 @@ namespace DatalistSyncUtil.Configs
         private List<DataListAttribute> GetDataListAttributes()
         {
             List<DataListAttribute> result = new List<DataListAttribute>();
-            if (!this.cachemanager.IsSet(DataListAttrKey))
+            if (!this.cachemanager.IsSet(this.dataListAttrKey))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
                     result = new GetDataListAttributesDaoHelper(new DataListAttributeDbContext(session, true)).ExecuteProcedure();
-                    this.cachemanager.Set(DataListAttrKey, result, this.cacheTimeInMins);
+                    this.cachemanager.Set(this.dataListAttrKey, result, this.cacheTimeInMins);
                 }
             }
             else
             {
-                result = this.cachemanager.Get<List<DataListAttribute>>(DataListAttrKey);
+                result = this.cachemanager.Get<List<DataListAttribute>>(this.dataListAttrKey);
             }
 
             return result;
@@ -140,7 +142,7 @@ namespace DatalistSyncUtil.Configs
             List<DataListItemAttributeModel> itemAtttributes = new List<DataListItemAttributeModel>();
             List<DataListItemAttribute> attrValues = null;
 
-            if (!this.cachemanager.IsSet(DataListItemAttrKey))
+            if (!this.cachemanager.IsSet(this.dataListItemAttrKey))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
@@ -163,11 +165,11 @@ namespace DatalistSyncUtil.Configs
                     itemAtttributes.Add(dataItem);
                 }
 
-                this.cachemanager.Set(DataListItemAttrKey, itemAtttributes, this.cacheTimeInMins);
+                this.cachemanager.Set(this.dataListItemAttrKey, itemAtttributes, this.cacheTimeInMins);
             }
             else
             {
-                itemAtttributes = this.cachemanager.Get<List<DataListItemAttributeModel>>(DataListItemAttrKey);
+                itemAtttributes = this.cachemanager.Get<List<DataListItemAttributeModel>>(this.dataListItemAttrKey);
             }
 
             return itemAtttributes;

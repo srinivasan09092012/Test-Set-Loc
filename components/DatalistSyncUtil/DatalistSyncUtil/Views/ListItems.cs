@@ -1,4 +1,10 @@
-﻿using HP.HSP.UA3.Core.BAS.CQRS.Caching;
+﻿//-----------------------------------------------------------------------------------------
+// This code is the property of Hewlett Packard Enterprise, Copyright (c) 2016. All rights reserved.
+//
+// Any unauthorized use in whole or in part without written consent is strictly prohibited.
+// Violators may be punished to the full extent of the law.
+//-----------------------------------------------------------------------------------------
+using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
 using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
 using System;
@@ -13,45 +19,46 @@ namespace DatalistSyncUtil
     public partial class ListItems : Form
     {
         private readonly string listKeyword = "CodeList_";
-
-        public List<CodeListModel> SourceListItems { get; set; }
-        public ICacheManager Cache { get; set; }
-
-        public string ContentID { get; set; }
-
-        public int NoOfDays { get; set; }
-
+    
         public ListItems(string contentID, int numberOfDays)
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.ContentID = contentID;
             this.NoOfDays = numberOfDays;
             this.Cache = new RedisCacheManager();
             this.SourceListItems = this.Cache.Get<List<CodeListModel>>("DataListItems");
-            lblContentID.Text = this.ContentID;
+            this.lblContentID.Text = this.ContentID;
             this.LoadDataListItems(numberOfDays);
         }
+
+        public int NoOfDays { get; set; }
+
+        public List<CodeListModel> SourceListItems { get; set; }
+
+        public ICacheManager Cache { get; set; }
+
+        public string ContentID { get; set; }
 
         private void LoadDataListItems(int numberOfDays)
         {
             string key = this.listKeyword + this.ContentID;
             List<SelectedItem> items = null;
-            ListItemView.AutoGenerateColumns = false;
+            this.ListItemView.AutoGenerateColumns = false;
 
             if (this.Cache.IsSet(key))
             {
                 items = this.Cache.Get<List<SelectedItem>>(key);
-                ListItemView.DataSource = new BindingList<SelectedItem>(items);
+                this.ListItemView.DataSource = new BindingList<SelectedItem>(items);
             }
             else
             {
-                if(numberOfDays > 0)
+                if (numberOfDays > 0)
                 {
-                    ListItemView.DataSource = new BindingList<CodeListModel>(this.SourceListItems.Where(w => w.ContentID == this.ContentID && w.ModifiedDate >= DateTime.UtcNow.AddDays(this.NoOfDays * -1)).ToList());
+                    this.ListItemView.DataSource = new BindingList<CodeListModel>(this.SourceListItems.Where(w => w.ContentID == this.ContentID && w.ModifiedDate >= DateTime.UtcNow.AddDays(this.NoOfDays * -1)).ToList());
                 }
                 else
                 {
-                    ListItemView.DataSource = new BindingList<CodeListModel>(this.SourceListItems.Where(w => w.ContentID == this.ContentID).ToList());
+                    this.ListItemView.DataSource = new BindingList<CodeListModel>(this.SourceListItems.Where(w => w.ContentID == this.ContentID).ToList());
                 }
             }
         }
@@ -68,9 +75,9 @@ namespace DatalistSyncUtil
             List<SelectedItem> items = new List<SelectedItem>();
             CodeListModel codeItem = null;
 
-            foreach (DataGridViewRow row in ListItemView.Rows)
+            foreach (DataGridViewRow row in this.ListItemView.Rows)
             {
-                if(row.DataBoundItem is SelectedItem)
+                if (row.DataBoundItem is SelectedItem)
                 {
                     item = row.DataBoundItem as SelectedItem;
                     itemSelected = new SelectedItem()
@@ -112,15 +119,15 @@ namespace DatalistSyncUtil
 
         private void SelectAllChkBox_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in ListItemView.Rows)
+            foreach (DataGridViewRow row in this.ListItemView.Rows)
             {
-                row.Cells["SelectItem"].Value = SelectAllChkBox.Checked;
+                row.Cells["SelectItem"].Value = this.SelectAllChkBox.Checked;
             }
         }
 
         private void ChkDateOverride_CheckedChanged(object sender, EventArgs e)
         {
-            if(ChkDateOverride.Checked)
+            if (this.ChkDateOverride.Checked)
             {
                 this.LoadDataListItems(0);
             }
@@ -132,7 +139,6 @@ namespace DatalistSyncUtil
 
         private void InactiveCB_CheckedChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

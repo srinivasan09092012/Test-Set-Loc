@@ -1,11 +1,20 @@
-﻿namespace DatalistSyncUtil.Views
+﻿//-----------------------------------------------------------------------------------------
+// This code is the property of Hewlett Packard Enterprise, Copyright (c) 2016. All rights reserved.
+//
+// Any unauthorized use in whole or in part without written consent is strictly prohibited.
+// Violators may be punished to the full extent of the law.
+//-----------------------------------------------------------------------------------------
+namespace DatalistSyncUtil.Views
 {
-    partial class PreviewPage
+    public partial class PreviewPage
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private System.Windows.Forms.TreeView PreviewTreeList;
+        private System.Windows.Forms.Button Submit;
+        private System.Windows.Forms.Button btnCancel;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -13,10 +22,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -75,10 +85,6 @@
 
         }
 
-        #endregion
-
-        private System.Windows.Forms.TreeView PreviewTreeList;
-        private System.Windows.Forms.Button Submit;
-        private System.Windows.Forms.Button btnCancel;
+        #endregion        
     }
 }

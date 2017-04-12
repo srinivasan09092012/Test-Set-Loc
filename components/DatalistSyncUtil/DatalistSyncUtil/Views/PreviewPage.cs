@@ -1,10 +1,16 @@
-﻿using HP.HSP.UA3.Core.BAS.CQRS.Base;
+﻿//-----------------------------------------------------------------------------------------
+// This code is the property of Hewlett Packard Enterprise, Copyright (c) 2016. All rights reserved.
+//
+// Any unauthorized use in whole or in part without written consent is strictly prohibited.
+// Violators may be punished to the full extent of the law.
+//-----------------------------------------------------------------------------------------
+using HP.HSP.UA3.Core.BAS.CQRS.Base;
 using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
 using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DatalistSyncUtil.Views
@@ -13,20 +19,21 @@ namespace DatalistSyncUtil.Views
     {
         public PreviewPage()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
-        public PreviewPage(List<DataListMainModel> finalList, List<CodeItemModel> finalListItems, List<ItemLanguage> finalLanguages)
+        public PreviewPage(List<DataListMainModel> finalList, List<CodeItemModel> finalListItems, List<ItemLanguage> finalLanguages, List<ItemAttribute> finalAttributes)
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
             this.Cache = new RedisCacheManager();
             this.FinalList = finalList;
             this.FinalListItems = finalListItems;
             this.FinalItemLanguages = finalLanguages;
+            this.FinalAttributes = finalAttributes;
             this.LoadHelper = new TenantHelper();
             this.TargetDataList = this.LoadHelper.GetDataList();
-            this.LoadTreeView(PreviewTreeList, this.FinalList);
+            this.LoadTreeView(this.PreviewTreeList, this.FinalList);
         }
 
         public ICacheManager Cache { get; set; }
@@ -37,6 +44,8 @@ namespace DatalistSyncUtil.Views
 
         public List<ItemLanguage> FinalItemLanguages { get; set; }
 
+        public List<ItemAttribute> FinalAttributes { get; set; }
+
         public List<DataList> TargetDataList { get; set; }
 
         public TenantHelper LoadHelper { get; set; }
@@ -46,6 +55,38 @@ namespace DatalistSyncUtil.Views
             this.SaveDataList();
 
             this.SaveDatalistItems();
+
+            this.SaveDataListAttributes();
+        }
+
+        private void SaveDataListAttributes()
+        {
+            List<DataList> dataList = this.LoadHelper.GetDataList();
+            DataList list = null;
+            if (this.FinalAttributes != null)
+            {
+                this.FinalAttributes.ForEach(f =>
+                {
+                    list = dataList.Where(e => e.ContentID == f.ParentContentId && e.TenantID == f.TenantID).FirstOrDefault();
+                    if (list != null)
+                    {
+                        f.DataListID = list.ID;
+                        f.DataListTypeID = f.DataListTypeID;
+                        if (f.Status == "DATALIST_NEW")
+                        {
+                            this.LoadHelper.AddDataListAttributes(f);
+                        }
+                        else
+                        {
+                            this.LoadHelper.UpdateDatalistAttribute(f);
+                        }
+                    }
+                });
+            }
+
+            this.Cache.Remove("TargetUtilityDataAttrKey");
+            this.Cache.Remove("TargetUtilityDataListItemAttrKey");
+            this.Cache.Remove("TargetUtilityCombineAttributes");
         }
 
         private void SaveDatalistItems()
@@ -128,7 +169,7 @@ namespace DatalistSyncUtil.Views
                     this.Cache.Remove("TargetDataLists");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("ERROR:" + ex.Message);
             }
@@ -138,6 +179,8 @@ namespace DatalistSyncUtil.Views
         {
             TreeNode listNode = null;
             List<TreeNode> itemNodes = null;
+            List<TreeNode> itemNodesAttribute = null;
+            TreeNode dataListNode = null;
             string contentID = string.Empty;
 
             try
@@ -148,13 +191,35 @@ namespace DatalistSyncUtil.Views
                 parentlists.ForEach(f =>
                 {
                     itemNodes = new List<TreeNode>();
+                    itemNodesAttribute = new List<TreeNode>();
+                    bool isParentModeAdded = false;
                     if (this.FinalListItems != null)
                     {
                         this.GetTreeItems(itemNodes, f.Trim());
+                        listNode = new TreeNode(f.Trim(), itemNodes.ToArray());
+                        if (itemNodes.Count != 0)
+                        {
+                            treeView.Nodes.Add(listNode);
+                            isParentModeAdded = true;
+                        }
                     }
-                    
-                    listNode = new TreeNode(f.Trim(), itemNodes.ToArray());
-                    treeView.Nodes.Add(listNode);
+
+                    if (this.FinalAttributes != null)
+                    {
+                        this.GetTreeAttributeItems(itemNodesAttribute, f.Trim());
+                        listNode = new TreeNode(f.Trim(), itemNodesAttribute.ToArray());
+                        if (itemNodesAttribute.Count != 0)
+                        {
+                            treeView.Nodes.Add(listNode);
+                            isParentModeAdded = true;
+                        }
+                    }
+
+                    if (!isParentModeAdded)
+                    {
+                        dataListNode = new TreeNode(f.Trim());
+                        treeView.Nodes.Add(dataListNode);
+                    }
                 });
 
                 treeView.ExpandAll();
@@ -170,7 +235,6 @@ namespace DatalistSyncUtil.Views
         {
             TreeNode node = null;
             List<TreeNode> langNodes = null;
-
             List<CodeItemModel> items = this.FinalListItems.FindAll(f => f.ContentID.Trim() == contentID);
 
             items.ForEach(f =>
@@ -180,8 +244,21 @@ namespace DatalistSyncUtil.Views
                 {
                     this.GetTreeItemLanguages(langNodes, f.ContentID, f.Code);
                 }
-                
+
                 node = new TreeNode(f.Code, langNodes.ToArray());
+                itemNodes.Add(node);
+            });
+        }
+
+        private void GetTreeAttributeItems(List<TreeNode> itemNodes, string contentID)
+        {
+            TreeNode node = null;
+            string separator = " - ";
+            List<ItemAttribute> items = this.FinalAttributes.FindAll(f => f.ParentContentId.Trim() == contentID);
+
+            items.ForEach(f =>
+            {
+                node = new TreeNode(f.ContentID + separator + f.Code);
                 itemNodes.Add(node);
             });
         }
@@ -230,6 +307,28 @@ namespace DatalistSyncUtil.Views
                     if (!listContents.Contains(f.ContentID.Trim()))
                     {
                         listContents.Add(f.ContentID.Trim());
+                    }
+                });
+            }
+
+            if (this.FinalListItems != null)
+            {
+                this.FinalListItems.ForEach(f =>
+                {
+                    if (!listContents.Contains(f.ContentID.Trim()))
+                    {
+                        listContents.Add(f.ContentID.Trim());
+                    }
+                });
+            }
+
+            if (this.FinalAttributes != null)
+            {
+                this.FinalAttributes.ForEach(f =>
+                {
+                    if (!listContents.Contains(f.ParentContentId.Trim()))
+                    {
+                        listContents.Add(f.ParentContentId.Trim());
                     }
                 });
             }

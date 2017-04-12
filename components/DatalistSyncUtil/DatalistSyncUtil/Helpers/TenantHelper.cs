@@ -16,9 +16,8 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 
 namespace DatalistSyncUtil
 {
@@ -129,21 +128,20 @@ namespace DatalistSyncUtil
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    resultmsg = new MessageCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString)).SearchMessages();
+                    resultmsg = new MessageCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").SearchMessages();
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    resultlbl = new LabelsCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString)).SearchLabels();
+                    resultlbl = new LabelsCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").SearchLabels();
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    resultsecrights = new SecurityCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString)).SearchCodeTables();
+                    resultsecrights = new SecurityCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString)).SearchCodeTables("Target");
                 }));
             }
 
-                
             Task.WaitAll(tasks.ToArray());
             result.AddRange(resultmsg);
             result.AddRange(resultlbl);
@@ -211,6 +209,25 @@ namespace DatalistSyncUtil
             return true;
         }
 
+        public bool AddDataListAttributes(ItemAttribute cmd)
+        {
+            bool success = true;
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new AddDataAttributesDaoHelper(new DataListAttributeDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
+                }
+            }
+
+            return success;
+        }
+
         public bool UpdateDatalistItem(CodeItemModel cmd)
         {
             using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
@@ -241,6 +258,44 @@ namespace DatalistSyncUtil
             }
 
             return true;
+        }
+
+        public bool UpdateDatalistAttribute(ItemAttribute cmd)
+        {
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new UpdateDataListAttributesDaoHelper(new DataListAttributeDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch
+                {
+                }
+            }
+
+            return true;
+        }
+
+        public List<DataList> GetAttributesList()
+        {
+            List<DataList> result = null;
+            List<CodeListModel> resultitems = null;
+
+            if (!this.Cache.IsSet("TargetDataListAttributes"))
+            {
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    resultitems = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(string.Empty);
+                    result = new DataListAttributesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "target").SearchCodeTables(resultitems);
+                    this.Cache.Set("TargetDataListAttributes", result, 1440);
+                }
+            }
+            else
+            {
+                result = this.Cache.Get<List<DataList>>("TargetDataListAttributes");
+            }
+
+            return result;
         }
     }
 }

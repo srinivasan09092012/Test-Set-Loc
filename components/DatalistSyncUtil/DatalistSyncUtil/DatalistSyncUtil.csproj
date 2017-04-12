@@ -82,35 +82,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configs\DataListAttributesReadOnly.cs" />
     <Compile Include="Configs\LabelsCodeReadOnly.cs" />
     <Compile Include="Configs\MessageCodeReadOnly.cs" />
     <Compile Include="Configs\SecurityCodeReadOnly.cs" />
+    <Compile Include="DaoHelpers\AddDataAttributesDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataListDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataListItemLanguageDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataListItemDaoHelper.cs" />
+    <Compile Include="DaoHelpers\UpdateDataListAttributesDaoHelper.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="DaoHelpers\UpdateDataListDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateDataListItemLanguageDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateDataListItemDaoHelper.cs" />
     <Compile Include="Helpers\SourceTenantHelper.cs" />
+    <Compile Include="Models\ItemAttribute.cs" />
     <Compile Include="Views\DatalistDiff.cs">
       <SubType>Form</SubType>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Views\DatalistDiff.Designer.cs">
       <DependentUpon>DatalistDiff.cs</DependentUpon>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Models\CodeItemModel.cs" />
     <Compile Include="Views\DatalistComparer.cs">
       <SubType>Form</SubType>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Views\DatalistComparer.Designer.cs">
       <DependentUpon>DatalistComparer.cs</DependentUpon>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Models\DataListMainModel.cs" />
     <Compile Include="Views\DataListSync.cs">
       <SubType>Form</SubType>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Views\DataListSync.Designer.cs">
       <DependentUpon>DataListSync.cs</DependentUpon>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Models\ItemLanguage.cs" />
     <Compile Include="Views\ListItems.cs">
@@ -118,16 +130,21 @@
     </Compile>
     <Compile Include="Views\ListItems.Designer.cs">
       <DependentUpon>ListItems.cs</DependentUpon>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Helpers\TenantHelper.cs" />
     <Compile Include="Models\SelectedItem.cs" />
     <Compile Include="Views\PreviewPage.cs">
       <SubType>Form</SubType>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Views\PreviewPage.Designer.cs">
       <DependentUpon>PreviewPage.cs</DependentUpon>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <EmbeddedResource Include="Views\DatalistComparer.resx">
       <DependentUpon>DatalistComparer.cs</DependentUpon>
@@ -177,6 +194,27 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- Additions for StyleCop -->
+  <PropertyGroup>
+    <StyleCopTargetFilePath>C:\UA3\Source\Packages\StyleCop.4.7\Visual-StyleCop.MSBuild.targets</StyleCopTargetFilePath>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+  </PropertyGroup>
+  <ItemGroup>
+    <ExcludeFromStyleCop Include="$(IntermediateOutputPath)\**\*.cs">
+      <Visible>False</Visible>
+    </ExcludeFromStyleCop>
+  </ItemGroup>
+  <ItemGroup />
+  <!-- This import statement actually runs StyleCop, by configuring its targets to run automatically - so no explicit target call (if you are looking for one) -->
+  <Import Project="$(StyleCopTargetFilePath)" Condition="Exists('$(StyleCopTargetFilePath)') and '$(Configuration)|$(Platform)' == 'Debug|AnyCPU'" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  -->
+  <Target Name="AfterBuild">
+    <Error Text="StyleCop build integration is improperly configured, please raise this issue with your team and Scrum Master." Condition="!Exists('$(StyleCopTargetFilePath)')" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

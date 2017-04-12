@@ -24,7 +24,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace DatalistSyncUtil
 {
     public partial class DataListSync : Form
@@ -32,36 +31,40 @@ namespace DatalistSyncUtil
         private readonly string listKeyword = "CodeList_";
 
         //Common
-        private readonly string Commit = "Commit";
-        private readonly string DeclarationEnd = "DeclarationEnd";
+        private readonly string commit = "Commit";
+
+        private readonly string declarationEnd = "DeclarationEnd";
 
         //DataList variables
-        private readonly string DataListInsert = "DataListInsert";
-        private readonly string DataListUpdate = "DataListUpdate";
-        private readonly string DataListCheck = "DataListCheck";
-        private readonly string DeclarationStart = "DeclarationStart";
-        private readonly string DataListIFCondition = "DataListIFCondition";
-        private readonly string DataListELSECondition = "DataListELSECondition";
-        private readonly string ENDIFCondition = "ENDIFCondition";
+        private readonly string dataListInsert = "DataListInsert";
+
+        private readonly string dataListUpdate = "DataListUpdate";
+        private readonly string dataListCheck = "DataListCheck";
+        private readonly string declarationStart = "DeclarationStart";
+        private readonly string dataListIFCondition = "DataListIFCondition";
+        private readonly string dataListELSECondition = "DataListELSECondition";
+        private readonly string endifCondition = "ENDIFCondition";
 
         //DataList Item variables
-        private readonly string ItemDeclarationStart = "ItemDeclarationStart";
-        private readonly string DataListItemExist = "DataListItemExist";
-        private readonly string DataListItemAddUpdate = "DataListItemAddUpdate";
-        private readonly string DataListItemLanguageCheck = "DataListItemLanguageCheck";
-        private readonly string DataListItemLanguageAddUpdate = "DataListItemLanguageAddUpdate";
+        private readonly string itemDeclarationStart = "ItemDeclarationStart";
+
+        private readonly string dataListItemExist = "DataListItemExist";
+        private readonly string dataListItemAddUpdate = "DataListItemAddUpdate";
+        private readonly string dataListItemLanguageCheck = "DataListItemLanguageCheck";
+        private readonly string dataListItemLanguageAddUpdate = "DataListItemLanguageAddUpdate";
 
         //DataList Item Link variables
-        private readonly string ItemLinkDeclarationStart = "ItemLinkDeclarationStart";
-        private readonly string DataListItemLinkAddUpdate = "DataListItemLinkAddUpdate";
+        private readonly string itemLinkDeclarationStart = "ItemLinkDeclarationStart";
+
+        private readonly string dataListItemLinkAddUpdate = "DataListItemLinkAddUpdate";
 
         public DataListSync()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
             this.SourceConnectionString = ConfigurationManager.ConnectionStrings["SourceDataList"];
             this.TargetConnectionString = ConfigurationManager.ConnectionStrings["TargetDataList"];
-            this.NoOfDays = (int)Age.Value;
+            this.NoOfDays = (int)this.Age.Value;
             this.SkipNoOfDays = bool.Parse(ConfigurationManager.AppSettings["SkipNoOfDays"]);
             DataSet querySet = new DataSet();
             querySet.ReadXml(@"Configs\DataListQueries.xml");
@@ -69,7 +72,7 @@ namespace DatalistSyncUtil
             this.Cache = new RedisCacheManager();
             this.LoadTenants();
             this.LoadModules();
-            ModuleList.ClearSelected();
+            this.ModuleList.ClearSelected();
             this.DataListsQueryPath = ConfigurationManager.AppSettings["DataListsQueryFilePath"];
             this.DataListItemsQueryPath = ConfigurationManager.AppSettings["DataListItemsQueryFilePath"];
             this.QueryFilePath = ConfigurationManager.AppSettings["QueryFilePath"];
@@ -122,19 +125,19 @@ namespace DatalistSyncUtil
                 this.TenantLists = result;
             }
 
-            TenantList.DataSource = this.Cache.Get<List<TenantModel>>("Tenants").ToList();
+            this.TenantList.DataSource = this.Cache.Get<List<TenantModel>>("Tenants").ToList();
         }
 
         private void LoadModules()
         {
-            Guid tenantID = new Guid(TenantList.SelectedValue.ToString());
+            Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
             if (!this.Cache.IsSet("TenantModules"))
             {
                 this.TenantModules = this.GetTenantModules(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
                 this.Cache.Set("TenantModules", this.TenantModules, 1440);
             }
 
-            ModuleList.DataSource = this.Cache.Get<List<TenantModuleModel>>("TenantModules").Where(w => w.TenantId == tenantID).GroupBy(i => i.ModuleName)
+            this.ModuleList.DataSource = this.Cache.Get<List<TenantModuleModel>>("TenantModules").Where(w => w.TenantId == tenantID).GroupBy(i => i.ModuleName)
                   .Select(group =>
                         new
                         {
@@ -157,7 +160,7 @@ namespace DatalistSyncUtil
 
         private void LoadSearchCriteria()
         {
-            this.NoOfDays = (int)Age.Value;
+            this.NoOfDays = (int)this.Age.Value;
             this.BindDataList();
             this.ModuleListSelectedItems();
         }
@@ -176,7 +179,7 @@ namespace DatalistSyncUtil
 
         private void BindDataList()
         {
-            Guid tenantID = new Guid(TenantList.SelectedValue.ToString());
+            Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
             if (!this.Cache.IsSet("DataLists"))
             {
                 this.SourceLists = this.LoadDataList(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
@@ -186,26 +189,27 @@ namespace DatalistSyncUtil
                 this.SourceLists = this.Cache.Get<List<DataList>>("DataLists");
             }
 
-            DataListView.AutoGenerateColumns = false;
+            this.DataListView.AutoGenerateColumns = false;
 
             if (this.SkipNoOfDays)
             {
-                DataListView.DataSource = new BindingList<DataList>(this.SourceLists.Where(w => w.TenantID == tenantID).ToList());
+                this.DataListView.DataSource = new BindingList<DataList>(this.SourceLists.Where(w => w.TenantID == tenantID).ToList());
             }
             else
             {
-                DataListView.DataSource = new BindingList<DataList>(this.SourceLists.Where(w => w.TenantID == tenantID && w.LastModified.Value >= DateTime.UtcNow.AddDays(this.NoOfDays)).ToList());
+                this.DataListView.DataSource = new BindingList<DataList>(this.SourceLists.Where(w => w.TenantID == tenantID && w.LastModified.Value >= DateTime.UtcNow.AddDays(this.NoOfDays)).ToList());
             }
         }
-    
+
         private List<DataList> LoadDataList(string providerName, string connectionString)
         {
             List<DataList> result = null;
-           
+
             using (IDbSession session = new DbSession(providerName, connectionString))
             {
-                result = new SearchDataListDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();  
+                result = new SearchDataListDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
             }
+
             this.Cache.Set("DataLists", result.OrderBy(o => o.ContentID).ToList(), 1440);
 
             return result;
@@ -224,9 +228,9 @@ namespace DatalistSyncUtil
             List<CodeListModel> resultmsg = new List<CodeListModel>();
             List<CodeListModel> resultlbl = new List<CodeListModel>();
             List<CodeListModel> resultsecrights = new List<CodeListModel>();
-            
+
             using (IDbSession session = new DbSession(providerName, connectionString))
-            { 
+            {
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
                     result = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(string.Empty);
@@ -239,26 +243,25 @@ namespace DatalistSyncUtil
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                     resultmsg =new MessageCodeReadOnly(new DbSession(providerName, connectionString)).SearchMessages();
+                    resultmsg = new MessageCodeReadOnly(new DbSession(providerName, connectionString), "Source").SearchMessages();
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    resultlbl=new LabelsCodeReadOnly(new DbSession(providerName, connectionString)).SearchLabels();
+                    resultlbl = new LabelsCodeReadOnly(new DbSession(providerName, connectionString), "Source").SearchLabels();
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
-                { 
-                    resultsecrights = new SecurityCodeReadOnly(new DbSession(providerName, connectionString)).SearchCodeTables();
+                {
+                    resultsecrights = new SecurityCodeReadOnly(new DbSession(providerName, connectionString)).SearchCodeTables("Source");
                 }));
-
             }
 
             Task.WaitAll(tasks.ToArray());
             result.AddRange(resultmsg);
             result.AddRange(resultlbl);
             result.AddRange(resultsecrights);
-            
+
             result.ForEach(x =>
             {
                 x.LanguageList = languages.FindAll(c => c.CodeID == x.ID);
@@ -287,9 +290,9 @@ namespace DatalistSyncUtil
             this.ListContents = new List<string>();
             this.ListItemContents = new List<string>();
             List<DataList> selectedDataList = null;
-            Guid tenantID = new Guid(TenantList.SelectedValue.ToString());
+            Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
 
-            foreach (DataGridViewRow row in DataListView.Rows)
+            foreach (DataGridViewRow row in this.DataListView.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells["Select"].Value);
 
@@ -301,18 +304,18 @@ namespace DatalistSyncUtil
 
             this.SourceLists = this.Cache.Get<List<DataList>>("DataLists");
             this.SourceListItems = this.Cache.Get<List<CodeListModel>>("DataListItems");
-            //this.SourceLinks = this.Cache.Get<List<CodeLinkTable>>("DataListItemLinks");
-            //this.ListContents.Add("PlanManagement.DataList.SP29Test29123");
-            //this.ListContents.Add("ProviderManagement.DataList.RateType");
-            //this.ListContents.Add("ProviderManagement.DataList.RelationshipTypes");
+
+            ///this.SourceLinks = this.Cache.Get<List<CodeLinkTable>>("DataListItemLinks");
+            ///this.ListContents.Add("PlanManagement.DataList.SP29Test29123");
+            ///this.ListContents.Add("ProviderManagement.DataList.RateType");
+            ///this.ListContents.Add("ProviderManagement.DataList.RelationshipTypes");
 
             selectedDataList = this.SourceLists.Where(w => this.ListContents.Contains(w.ContentID) && w.TenantID == tenantID).ToList();
 
             File.WriteAllText(this.DataListsQueryPath + DateTime.UtcNow.Ticks + ".sql", this.GenerateDataList(selectedDataList));
 
             File.WriteAllText(this.DataListItemsQueryPath + DateTime.UtcNow.Ticks + ".sql", this.GenerateDataListItems(selectedDataList));
-
-            if(MessageBox.Show("Datalist and Datalist Items SQL files generated successfully. Do you want to close?","Success",MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show("Datalist and Datalist Items SQL files generated successfully. Do you want to close?", "Success", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 this.Close();
             }
@@ -325,7 +328,7 @@ namespace DatalistSyncUtil
         {
             StringBuilder dataQuery = new StringBuilder();
             List<CodeListModel> itemList = null;
-            dataQuery.AppendLine(this.GetQuery(this.ItemDeclarationStart));
+            dataQuery.AppendLine(this.GetQuery(this.itemDeclarationStart));
             string dataListItemID = string.Empty;
 
             foreach (DataList list in selectedDataList)
@@ -337,14 +340,14 @@ namespace DatalistSyncUtil
                 foreach (CodeListModel item in itemList)
                 {
                     dataListItemID = this.GuidToRAW(Guid.NewGuid().ToString());
-                    dataQuery.AppendLine(string.Format(this.GetQuery(this.DataListItemExist), item.ContentID, item.Code));
-                    dataQuery.AppendLine(string.Format(this.GetQuery(this.DataListItemAddUpdate), item.OrderIndex, this.BoolToBit(item.IsActive), item.EffectiveStartDate.Value.ToString("dd-MMM-yyyy"), item.EffectiveEndDate.Value.ToString("dd-MMM-yyyy"), this.GuidToRAW(item.ID.ToString()), item.Code, dataListItemID, this.BoolToBit(item.IsActive)));
+                    dataQuery.AppendLine(string.Format(this.GetQuery(this.dataListItemExist), item.ContentID, item.Code));
+                    dataQuery.AppendLine(string.Format(this.GetQuery(this.dataListItemAddUpdate), item.OrderIndex, this.BoolToBit(item.IsActive), item.EffectiveStartDate.Value.ToString("dd-MMM-yyyy"), item.EffectiveEndDate.Value.ToString("dd-MMM-yyyy"), this.GuidToRAW(item.ID.ToString()), item.Code, dataListItemID, this.BoolToBit(item.IsActive)));
                     dataQuery.AppendLine(this.GenerateLanguages(item, dataListItemID));
                 }
             }
 
-            dataQuery.AppendLine(this.GetQuery(this.Commit));
-            dataQuery.AppendLine(this.GetQuery(this.DeclarationEnd));
+            dataQuery.AppendLine(this.GetQuery(this.commit));
+            dataQuery.AppendLine(this.GetQuery(this.declarationEnd));
 
             return dataQuery.ToString();
         }
@@ -366,7 +369,7 @@ namespace DatalistSyncUtil
             StringBuilder dataQuery = new StringBuilder();
             List<CodeListModel> itemList = null;
             List<CodeLinkTable> links = null;
-            dataQuery.AppendLine(this.GetQuery(this.ItemLinkDeclarationStart));
+            dataQuery.AppendLine(this.GetQuery(this.itemLinkDeclarationStart));
             string dataListItemID = string.Empty;
 
             foreach (DataList list in selectedDataList)
@@ -383,8 +386,8 @@ namespace DatalistSyncUtil
                 }
             }
 
-            dataQuery.AppendLine(this.GetQuery(this.Commit));
-            dataQuery.AppendLine(this.GetQuery(this.DeclarationEnd));
+            dataQuery.AppendLine(this.GetQuery(this.commit));
+            dataQuery.AppendLine(this.GetQuery(this.declarationEnd));
 
             return dataQuery.ToString();
         }
@@ -401,7 +404,7 @@ namespace DatalistSyncUtil
 
                 if (!string.IsNullOrEmpty(parentContentID) && !string.IsNullOrEmpty(parentItemCode) && !string.IsNullOrEmpty(childContentID) && !string.IsNullOrEmpty(childItemCode))
                 {
-                    dataQuery.AppendLine(string.Format(this.GetQuery(this.DataListItemLinkAddUpdate), parentContentID, parentItemCode, childContentID, childItemCode, this.BoolToBit(link.IsActive)));
+                    dataQuery.AppendLine(string.Format(this.GetQuery(this.dataListItemLinkAddUpdate), parentContentID, parentItemCode, childContentID, childItemCode, this.BoolToBit(link.IsActive)));
                 }
             }
 
@@ -425,8 +428,8 @@ namespace DatalistSyncUtil
 
             foreach (Languages lang in item.LanguageList)
             {
-                langQuery.AppendLine(string.Format(this.GetQuery(this.DataListItemLanguageCheck), item.ContentID, item.Code, lang.LocaleID));
-                langQuery.AppendLine(string.Format(this.GetQuery(this.DataListItemLanguageAddUpdate), lang.Description, this.BoolToBit(lang.IsActive), lang.LongDescription, this.GuidToRAW(item.ID.ToString()), lang.LocaleID, itemID));
+                langQuery.AppendLine(string.Format(this.GetQuery(this.dataListItemLanguageCheck), item.ContentID, item.Code, lang.LocaleID));
+                langQuery.AppendLine(string.Format(this.GetQuery(this.dataListItemLanguageAddUpdate), lang.Description, this.BoolToBit(lang.IsActive), lang.LongDescription, this.GuidToRAW(item.ID.ToString()), lang.LocaleID, itemID));
             }
 
             return langQuery.ToString();
@@ -435,20 +438,20 @@ namespace DatalistSyncUtil
         private string GenerateDataList(List<DataList> selectedDataList)
         {
             StringBuilder dataQuery = new StringBuilder();
-            dataQuery.AppendLine(this.GetQuery(this.DeclarationStart));
+            dataQuery.AppendLine(this.GetQuery(this.declarationStart));
 
             foreach (DataList list in selectedDataList)
             {
-                dataQuery.AppendLine(string.Format(this.GetQuery(this.DataListCheck), list.ContentID));
-                dataQuery.AppendLine(this.GetQuery(this.DataListIFCondition));
-                dataQuery.AppendLine(string.Format(this.GetQuery(this.DataListUpdate), list.ContentID, list.DataListsName, list.Description, this.BoolToBit(list.IsActive), this.BoolToBit(list.IsActive)));
-                dataQuery.AppendLine(this.GetQuery(this.DataListELSECondition));
-                dataQuery.AppendLine(string.Format(this.GetQuery(this.DataListInsert), this.GuidToRAW(Guid.NewGuid().ToString()), this.GuidToRAW(list.TenantModuleID.ToString()), list.ContentID, list.DataListsName, list.Description, this.BoolToBit(list.IsActive), this.GuidToRAW(list.TenantID.ToString()), this.BoolToBit(list.IsActive)));
-                dataQuery.AppendLine(this.GetQuery(this.ENDIFCondition));
+                dataQuery.AppendLine(string.Format(this.GetQuery(this.dataListCheck), list.ContentID));
+                dataQuery.AppendLine(this.GetQuery(this.dataListIFCondition));
+                dataQuery.AppendLine(string.Format(this.GetQuery(this.dataListUpdate), list.ContentID, list.DataListsName, list.Description, this.BoolToBit(list.IsActive), this.BoolToBit(list.IsActive)));
+                dataQuery.AppendLine(this.GetQuery(this.dataListELSECondition));
+                dataQuery.AppendLine(string.Format(this.GetQuery(this.dataListInsert), this.GuidToRAW(Guid.NewGuid().ToString()), this.GuidToRAW(list.TenantModuleID.ToString()), list.ContentID, list.DataListsName, list.Description, this.BoolToBit(list.IsActive), this.GuidToRAW(list.TenantID.ToString()), this.BoolToBit(list.IsActive)));
+                dataQuery.AppendLine(this.GetQuery(this.endifCondition));
             }
 
-            dataQuery.AppendLine(this.GetQuery(this.Commit));
-            dataQuery.AppendLine(this.GetQuery(this.DeclarationEnd));
+            dataQuery.AppendLine(this.GetQuery(this.commit));
+            dataQuery.AppendLine(this.GetQuery(this.declarationEnd));
 
             return dataQuery.ToString();
         }
@@ -464,16 +467,16 @@ namespace DatalistSyncUtil
 
         private void SelectAllChkBox_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in DataListView.Rows)
+            foreach (DataGridViewRow row in this.DataListView.Rows)
             {
-                row.Cells["Select"].Value = SelectAllChkBox.Checked;
+                row.Cells["Select"].Value = this.SelectAllChkBox.Checked;
             }
         }
 
         private string GuidToRAW(string text)
         {
             Guid guid = new Guid(text);
-            return BitConverter.ToString(guid.ToByteArray()).Replace("-", "");
+            return BitConverter.ToString(guid.ToByteArray()).Replace("-", string.Empty);
         }
 
         private string BoolToBit(bool flag)
@@ -483,9 +486,8 @@ namespace DatalistSyncUtil
 
         private void DataListView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (DataListView.Columns[e.ColumnIndex].Name == "Select")
+            if (this.DataListView.Columns[e.ColumnIndex].Name == "Select")
             {
-
             }
         }
 
@@ -495,11 +497,11 @@ namespace DatalistSyncUtil
             TenantModuleModel module = null;
             List<DataList> filteredModuleList = null;
             List<DataList> modifiedItems = null;
-            Guid tenantID = new Guid(TenantList.SelectedValue.ToString());
+            Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
 
-            if (ModuleList.SelectedItems.Count > 0)
+            if (this.ModuleList.SelectedItems.Count > 0)
             {
-                foreach (object item in ModuleList.SelectedItems)
+                foreach (object item in this.ModuleList.SelectedItems)
                 {
                     module = item as TenantModuleModel;
                     selectedModules.Add(module);
@@ -530,7 +532,7 @@ namespace DatalistSyncUtil
                 filteredModuleList = modulesQuery.ToList();
             }
 
-            DataListView.DataSource = new BindingList<DataList>(filteredModuleList.Where(w => w.TenantID == tenantID).ToList());
+            this.DataListView.DataSource = new BindingList<DataList>(filteredModuleList.Where(w => w.TenantID == tenantID).ToList());
         }
 
         private List<DataList> GetUpdatedListItems(List<TenantModuleModel> selectedModules)
@@ -562,13 +564,12 @@ namespace DatalistSyncUtil
 
         private void DataListView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            ListItems itemsPage = new ListItems((DataListView.Rows[e.RowIndex].DataBoundItem as DataList).ContentID, this.NoOfDays);
+            ListItems itemsPage = new ListItems((this.DataListView.Rows[e.RowIndex].DataBoundItem as DataList).ContentID, this.NoOfDays);
             itemsPage.ShowDialog();
         }
 
         private void Preview_Click(object sender, EventArgs e)
         {
-
         }
 
         private void Clear_Click(object sender, EventArgs e)
@@ -590,7 +591,7 @@ namespace DatalistSyncUtil
         private void BtnDownloadToFile_Click(object sender, EventArgs e)
         {
             List<DataListMainModel> listsMain = this.ConvertToCustomDataList();
-            File.WriteAllText(this.QueryFilePath + "\\" + (TenantList.SelectedItem as TenantModel).TenantName + ".list", JsonConvert.SerializeObject(listsMain));
+            File.WriteAllText(this.QueryFilePath + "\\" + (this.TenantList.SelectedItem as TenantModel).TenantName + ".list", JsonConvert.SerializeObject(listsMain));
             MessageBox.Show("Download completed!");
             Process.Start("explorer.exe", this.QueryFilePath);
         }
@@ -601,7 +602,7 @@ namespace DatalistSyncUtil
             List<DataListMainModel> listsMain = new List<DataListMainModel>();
             DataListMainModel list1 = null;
 
-            Guid tenantID = new Guid(TenantList.SelectedValue.ToString());
+            Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
 
             lists = this.SourceLists.Where(w => w.TenantID == tenantID).ToList();
             List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
@@ -628,7 +629,7 @@ namespace DatalistSyncUtil
         private List<CodeItemModel> ConvertToCustomDataListItems(string contentID, Guid tenantID)
         {
             List<CodeListModel> listItems = null;
-            List <CodeItemModel> items = new List<CodeItemModel>();
+            List<CodeItemModel> items = new List<CodeItemModel>();
             CodeItemModel item = null;
             listItems = this.SourceListItems.Where(w => w.ContentID == contentID && w.TenantID == tenantID).ToList();
 
@@ -637,22 +638,21 @@ namespace DatalistSyncUtil
                 item = new CodeItemModel()
                 {
                     Code = e.Code,
-                    ContentID = e.ContentID, 
+                    ContentID = e.ContentID,
                     EffectiveEndDate = e.EffectiveEndDate,
                     EffectiveStartDate = e.EffectiveStartDate,
                     IsActive = e.IsActive,
                     IsEditable = e.IsEditable,
                     LanguageList = this.GetLanguageListCustom(e.LanguageList),
                     OrderIndex = e.OrderIndex,
-                    TenantID = e.TenantID 
+                    TenantID = e.TenantID
                 };
                 items.Add(item);
             });
 
-
             return items;
         }
-     
+
         private List<ItemLanguage> GetLanguageListCustom(List<Languages> languageList)
         {
             List<ItemLanguage> languages = new List<ItemLanguage>();

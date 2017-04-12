@@ -1,4 +1,10 @@
-﻿using DatalistSyncUtil.Views;
+﻿//-----------------------------------------------------------------------------------------
+// This code is the property of Hewlett Packard Enterprise, Copyright (c) 2016. All rights reserved.
+//
+// Any unauthorized use in whole or in part without written consent is strictly prohibited.
+// Violators may be punished to the full extent of the law.
+//-----------------------------------------------------------------------------------------
+using DatalistSyncUtil.Views;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
 using System;
 using System.Collections.Generic;
@@ -15,12 +21,12 @@ namespace DatalistSyncUtil
     {
         public DatalistDiff()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         public DatalistDiff(Guid tenantID, string type, List<DataListMainModel> sourceList, List<DataListMainModel> targetList)
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.TargetConnectionString = ConfigurationManager.ConnectionStrings["TargetDataList"];
             this.LoadHelper = new TenantHelper(this.TargetConnectionString);
             this.TenantID = tenantID;
@@ -63,6 +69,14 @@ namespace DatalistSyncUtil
 
         public List<ItemLanguage> UpdateItemLanguages { get; set; }
 
+        public List<ItemAttribute> NewItemAttribute { get; set; }
+
+        public List<ItemAttribute> UpdateAttribute { get; set; }
+
+        public List<ItemAttribute> UpdatedTargetAttribute { get; set; }
+
+        public List<ItemAttribute> UpdateItemAttributes { get; set; }
+
         private void LoadDelta()
         {
             switch (this.DeltaType.ToUpper())
@@ -70,8 +84,9 @@ namespace DatalistSyncUtil
                 case "ITEMS":
                     this.LoadDatalistDelta();
                     this.LoadDatalistItemsDelta();
-                    DiffTab.SelectedTab = DatalistTabPage;
+                    this.diffTab.SelectedTab = this.DatalistTabPage;
                     break;
+
                 default:
                     break;
             }
@@ -80,13 +95,15 @@ namespace DatalistSyncUtil
         private void LoadModules()
         {
             List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
-            modules.Insert(0, new TenantModuleModel()
-            {
-                ModuleName = "---All Modules---",
-                TenantModuleId = Guid.Empty,
-                TenantId = this.TenantID
-            });
-            ModuleList.DataSource = modules.Where(w => w.TenantId == this.TenantID).GroupBy(i => i.ModuleName)
+            modules.Insert(
+                   0, 
+                   new TenantModuleModel()
+                   {
+                    ModuleName = "---All Modules---",
+                    TenantModuleId = Guid.Empty,
+                    TenantId = this.TenantID
+                   });
+            this.ModuleList.DataSource = modules.Where(w => w.TenantId == this.TenantID).GroupBy(i => i.ModuleName)
                   .Select(group =>
                         new
                         {
@@ -94,26 +111,26 @@ namespace DatalistSyncUtil
                             Items = group.OrderByDescending(x => x.ModuleName)
                         })
                   .Select(g => g.Items.First()).OrderBy(o => o.ModuleName).ToList();
-            ModuleList.DisplayMember = "ModuleName";
-            ModuleList.SelectAll();
+            this.ModuleList.DisplayMember = "ModuleName";
+            this.ModuleList.SelectAll();
         }
 
         private void LoadDatalistDelta()
         {
             List<DataListMainModel> newDatalists = null;
             List<DataListMainModel> updatedDatalists = null;
-            DataListView.AutoGenerateColumns = false;
+            this.DataListView.AutoGenerateColumns = false;
             newDatalists = this.GetNewDatalist();
             updatedDatalists = this.UpdatedDatalist();
             newDatalists.AddRange(updatedDatalists);
-            Guid tenantModuleId = (ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
+            Guid tenantModuleId = (this.ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
 
             if (tenantModuleId != Guid.Empty)
             {
                 newDatalists = newDatalists.Where(w => w.TenantModuleID == tenantModuleId).ToList();
             }
-            
-            DataListView.DataSource = new BindingList<DataListMainModel>(newDatalists);
+
+            this.DataListView.DataSource = new BindingList<DataListMainModel>(newDatalists);
         }
 
         private List<DataListMainModel> UpdatedDatalist()
@@ -148,7 +165,7 @@ namespace DatalistSyncUtil
                 i.Status = "NEW";
                 i.ItemsCount = i.Items.Count;
             });
-            return newDatalists.OrderBy(o=>o.ContentID).ToList();
+            return newDatalists.OrderBy(o => o.ContentID).ToList();
         }
 
         private void LoadDatalistItemsDelta()
@@ -156,13 +173,13 @@ namespace DatalistSyncUtil
             List<CodeItemModel> newDatalistItemsFromNewList = null;
             List<CodeItemModel> newDatalistItemsFromUpdateList = null;
             List<CodeItemModel> newDatalistItems = new List<CodeItemModel>();
-            NewItemsView.AutoGenerateColumns = false;
+            this.NewItemsView.AutoGenerateColumns = false;
             newDatalistItemsFromNewList = this.GetNewDatalistItemsFromNewList();
             newDatalistItems.AddRange(newDatalistItemsFromNewList);
             newDatalistItemsFromUpdateList = this.GetNewDatalistItemsFromExistingList();
             newDatalistItems.AddRange(newDatalistItemsFromUpdateList);
-            Guid tenantModuleId = (ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
-            string moduleName = (ModuleList.SelectedItem as TenantModuleModel).ModuleName;
+            Guid tenantModuleId = (this.ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
+            string moduleName = (this.ModuleList.SelectedItem as TenantModuleModel).ModuleName;
 
             if (tenantModuleId != Guid.Empty)
             {
@@ -170,9 +187,10 @@ namespace DatalistSyncUtil
             }
 
             this.NewListItems = newDatalistItems;
-            NewItemsView.DataSource = new BindingList<CodeItemModel>(newDatalistItems);
+            this.NewItemsView.DataSource = new BindingList<CodeItemModel>(newDatalistItems);
             this.UpdatedDatalistItems();
             this.UpdateLanguages();
+            this.UpdateDataListAttributes();
         }
 
         private List<CodeItemModel> GetNewDatalistItemsFromExistingList()
@@ -196,7 +214,7 @@ namespace DatalistSyncUtil
                 }
             });
 
-            return newDatalistItemsFromUpdateList.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList(); 
+            return newDatalistItemsFromUpdateList.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
         }
 
         private void UpdatedDatalistItems()
@@ -232,11 +250,11 @@ namespace DatalistSyncUtil
                 });
             });
 
-            UpdateSourceItemView.AutoGenerateColumns = false;
-            UpdateTargetItemView.AutoGenerateColumns = false;
+            this.UpdateSourceItemView.AutoGenerateColumns = false;
+            this.UpdateTargetItemView.AutoGenerateColumns = false;
 
-            Guid tenantModuleId = (ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
-            string moduleName = (ModuleList.SelectedItem as TenantModuleModel).ModuleName;
+            Guid tenantModuleId = (this.ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
+            string moduleName = (this.ModuleList.SelectedItem as TenantModuleModel).ModuleName;
 
             if (tenantModuleId != Guid.Empty)
             {
@@ -246,13 +264,18 @@ namespace DatalistSyncUtil
 
             this.UpdatedItems = updatedDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
             this.UpdatedTargetItems = updatedTargetDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
-            UpdateSourceItemView.DataSource = new BindingList<CodeItemModel>(updatedDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
-            UpdateTargetItemView.DataSource = new BindingList<CodeItemModel>(updatedTargetDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+            this.UpdateSourceItemView.DataSource = new BindingList<CodeItemModel>(updatedDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+            this.UpdateTargetItemView.DataSource = new BindingList<CodeItemModel>(updatedTargetDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
         }
 
         private void UpdateLanguages()
         {
             this.LoadNewLanguages();
+        }
+
+        private void UpdateDataListAttributes()
+        {
+            this.LoadNewDataListAttributes();
         }
 
         private void LoadNewLanguages()
@@ -276,7 +299,6 @@ namespace DatalistSyncUtil
                         newDatalistItemLanguages.Add(l);
                     });
                 });
-
             });
 
             newDatalistItemLanguagesExisting = this.GetNewLanguagesFromNewItems();
@@ -284,15 +306,16 @@ namespace DatalistSyncUtil
             newDatalistItemLanguagesExisting = this.GetNewLanguagesFromExistingItems();
             newDatalistItemLanguages.AddRange(newDatalistItemLanguagesExisting);
 
-            Guid tenantModuleId = (ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
-            string moduleName = (ModuleList.SelectedItem as TenantModuleModel).ModuleName;
+            Guid tenantModuleId = (this.ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
+            string moduleName = (this.ModuleList.SelectedItem as TenantModuleModel).ModuleName;
 
             if (tenantModuleId != Guid.Empty)
             {
                 newDatalistItemLanguages = newDatalistItemLanguages.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
             }
+
             this.NewItemLanguages = newDatalistItemLanguages;
-            NewLangView.DataSource = new BindingList<ItemLanguage>(newDatalistItemLanguages);
+            this.NewLangView.DataSource = new BindingList<ItemLanguage>(newDatalistItemLanguages);
             this.LoadUpdateLanguagesFromExistingItems();
         }
 
@@ -326,7 +349,7 @@ namespace DatalistSyncUtil
                 }
             });
 
-            return newDatalistItemLanguages.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ThenBy(t => t.Code).ToList(); 
+            return newDatalistItemLanguages.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ThenBy(t => t.Code).ToList();
         }
 
         private List<ItemLanguage> GetNewLanguagesFromExistingItems()
@@ -354,7 +377,6 @@ namespace DatalistSyncUtil
                         finalDatalistItemLanguages = l.LanguageList.Where(b => !targetDatalistItemLanguages.Any(a => a.LocaleID == b.LocaleID)).ToList();
                         finalDatalistItemLanguages.ForEach(h =>
                         {
-
                             h.Status = "LOCALE_NEW";
                             h.Code = l.Code;
                             h.ContentID = l.ContentID;
@@ -403,7 +425,7 @@ namespace DatalistSyncUtil
                                 h.DescriptionModified = true;
                             }
 
-                            if (targetDatalistItemLanguage.LongDescription !=null && h.LongDescription != null && targetDatalistItemLanguage.LongDescription.Trim() != h.LongDescription.Trim())
+                            if (targetDatalistItemLanguage.LongDescription != null && h.LongDescription != null && targetDatalistItemLanguage.LongDescription.Trim() != h.LongDescription.Trim())
                             {
                                 isChanged = true;
                                 h.LongDescriptionModified = true;
@@ -423,9 +445,9 @@ namespace DatalistSyncUtil
                 }
             });
 
-            SourceUpdateLangView.AutoGenerateColumns = TargetUpdateLangView.AutoGenerateColumns = false;
-            Guid tenantModuleId = (ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
-            string moduleName = (ModuleList.SelectedItem as TenantModuleModel).ModuleName;
+            this.SourceUpdateLangView.AutoGenerateColumns = this.TargetUpdateLangView.AutoGenerateColumns = false;
+            Guid tenantModuleId = (this.ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
+            string moduleName = (this.ModuleList.SelectedItem as TenantModuleModel).ModuleName;
 
             if (tenantModuleId != Guid.Empty)
             {
@@ -435,8 +457,123 @@ namespace DatalistSyncUtil
 
             this.UpdateNewItemLanguages = updateSourceDatalistItemLanguages;
             this.UpdatedTargetLanguages = updateTargetDatalistItemLanguages;
-            SourceUpdateLangView.DataSource = new BindingList<ItemLanguage>(updateSourceDatalistItemLanguages.OrderBy(o => o.ContentID).ToList());
-            TargetUpdateLangView.DataSource = new BindingList<ItemLanguage>(updateTargetDatalistItemLanguages.OrderBy(o => o.ContentID).ToList());
+            this.SourceUpdateLangView.DataSource = new BindingList<ItemLanguage>(updateSourceDatalistItemLanguages.OrderBy(o => o.ContentID).ToList());
+            this.TargetUpdateLangView.DataSource = new BindingList<ItemLanguage>(updateTargetDatalistItemLanguages.OrderBy(o => o.ContentID).ToList());
+        }
+
+        private void LoadNewDataListAttributes()
+        {
+            List<ItemAttribute> newDatalistAttributes = new List<ItemAttribute>();
+            List<ItemAttribute> newDatalistAttributesExisting = new List<ItemAttribute>();
+            List<string> dataLists = null;
+
+            dataLists = this.SourceList.Select(c => c.ContentID).Except(this.TargetList.Select(c => c.ContentID)).ToList();
+            List<DataListMainModel> newDatalists = this.SourceList.Where(c => dataLists.Contains(c.ContentID)).ToList();
+
+            newDatalists.ForEach(i =>
+            {
+                i.DataListAttributes.ForEach(f =>
+                {
+                    f.Status = "DATALIST_NEW";
+                    newDatalistAttributes.Add(f);
+                });
+            });
+
+            newDatalistAttributesExisting = this.GetNewAttributesFromExistingItems();
+            newDatalistAttributes.AddRange(newDatalistAttributesExisting);
+
+            Guid tenantModuleId = (this.ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
+            string moduleName = (this.ModuleList.SelectedItem as TenantModuleModel).ModuleName;
+
+            if (tenantModuleId != Guid.Empty)
+            {
+                newDatalistAttributes = newDatalistAttributes.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
+            }
+
+            newDatalistAttributes = newDatalistAttributes.OrderBy(o => o.ParentContentId).ThenBy(t => t.Code).ToList();
+            this.NewItemAttribute = newDatalistAttributes;
+
+            this.NewAttributesView.DataSource = new BindingList<ItemAttribute>(newDatalistAttributes);
+            this.LoadUpdateAttributes();
+        }
+
+        private void LoadUpdateAttributes()
+        {
+            List<ItemAttribute> updatedAttributes = new List<ItemAttribute>();
+            List<ItemAttribute> updatedTargetAttributes = new List<ItemAttribute>();
+            List<ItemAttribute> sourceAttributes = null;
+            List<ItemAttribute> targetAttributes = null;
+            ItemAttribute targetItem = null;
+            bool itemChanged = false;
+
+            List<string> dataLists = this.SourceList.Select(c => c.ContentID).Intersect(this.TargetList.Select(c => c.ContentID)).ToList();
+            dataLists.ForEach(f =>
+            {
+                sourceAttributes = this.SourceList.Find(e => e.ContentID == f).DataListAttributes;
+                targetAttributes = this.TargetList.Find(e => e.ContentID == f).DataListAttributes;
+
+                targetAttributes.ForEach(t =>
+                {
+                    itemChanged = false;
+                    targetItem = targetAttributes.Find(u => t.ContentID == u.ContentID && t.Code == u.Code);
+
+                    if (targetItem != null)
+                    {
+                        itemChanged = this.CheckUpdateAttributeChanged(ref t, ref targetItem);
+
+                        if (itemChanged)
+                        {
+                            updatedAttributes.Add(t);
+                            updatedTargetAttributes.Add(targetItem);
+                        }
+                    }
+                });
+            });
+
+            this.SourceUpdateAttributeView.AutoGenerateColumns = false;
+            this.TargetUpdateAttributeView.AutoGenerateColumns = false;
+
+            Guid tenantModuleId = (this.ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
+            string moduleName = (this.ModuleList.SelectedItem as TenantModuleModel).ModuleName;
+
+            if (tenantModuleId != Guid.Empty)
+            {
+                updatedAttributes = updatedAttributes.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
+                updatedTargetAttributes = updatedTargetAttributes.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
+            }
+
+            this.UpdateAttribute = updatedAttributes.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
+            this.UpdatedTargetAttribute = updatedTargetAttributes.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
+            this.SourceUpdateAttributeView.DataSource = new BindingList<ItemAttribute>(updatedAttributes.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+            this.TargetUpdateAttributeView.DataSource = new BindingList<ItemAttribute>(updatedTargetAttributes.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+        }
+
+        private List<ItemAttribute> GetNewAttributesFromExistingItems()
+        {
+            List<ItemAttribute> newDataListAttribute = new List<ItemAttribute>();
+            List<ItemAttribute> sourceDatalistItems = new List<ItemAttribute>();
+            List<ItemAttribute> targetDatalistItems = new List<ItemAttribute>();
+            List<ItemAttribute> dataListAttributes = new List<ItemAttribute>();
+
+            List<string> dataLists = this.SourceList.Select(c => c.ContentID).Intersect(this.TargetList.Select(c => c.ContentID)).ToList();
+            dataLists.ForEach(f =>
+            {
+                sourceDatalistItems = this.SourceList.Find(e => e.ContentID == f).DataListAttributes;
+                targetDatalistItems = this.TargetList.Find(e => e.ContentID == f).DataListAttributes;
+
+                dataListAttributes = sourceDatalistItems.Where(b => !targetDatalistItems.Any(a => a.ContentID == b.ContentID && a.Code == b.Code)).ToList();
+
+                if (dataListAttributes != null && dataListAttributes.Count > 0)
+                {
+                    dataListAttributes.ForEach(h =>
+                    {
+                        h.Status = "DATALIST_NEW";
+                        newDataListAttribute.Add(h);
+                    });
+                }
+            });
+
+            return newDataListAttribute.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
         }
 
         private bool CheckUpdateItemChanged(ref CodeItemModel t, ref CodeItemModel targetItem)
@@ -476,7 +613,8 @@ namespace DatalistSyncUtil
         private List<CodeItemModel> GetNewDatalistItemsFromNewList()
         {
             List<CodeItemModel> newDatalistItems = new List<CodeItemModel>();
-            List<string> dataLists = this.SourceList.Select(c => c.ContentID).Except(this.TargetList.Where(c => c.ContentID.Contains("Claims")).Select(c => c.ContentID)).ToList();
+
+            List<string> dataLists = this.SourceList.Select(c => c.ContentID).Except(this.TargetList.Select(c => c.ContentID)).ToList();
             List<DataListMainModel> newDatalists = this.SourceList.Where(c => dataLists.Contains(c.ContentID)).ToList();
 
             newDatalists.ForEach(i =>
@@ -499,17 +637,17 @@ namespace DatalistSyncUtil
 
         private void UpdateSourceItemView_Scroll(object sender, ScrollEventArgs e)
         {
-            UpdateTargetItemView.FirstDisplayedScrollingRowIndex = UpdateSourceItemView.FirstDisplayedScrollingRowIndex;
+            this.UpdateTargetItemView.FirstDisplayedScrollingRowIndex = this.UpdateSourceItemView.FirstDisplayedScrollingRowIndex;
         }
 
         private void UpdateTargetItemView_Scroll(object sender, ScrollEventArgs e)
         {
-            UpdateSourceItemView.FirstDisplayedScrollingRowIndex = UpdateTargetItemView.FirstDisplayedScrollingRowIndex;
+            this.UpdateSourceItemView.FirstDisplayedScrollingRowIndex = this.UpdateTargetItemView.FirstDisplayedScrollingRowIndex;
         }
 
         private void NewItemsView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            foreach (DataGridViewRow row in NewItemsView.Rows)
+            foreach (DataGridViewRow row in this.NewItemsView.Rows)
             {
                 string rowStatus = row.Cells[12].Value != null ? row.Cells[12].Value.ToString() : string.Empty;
 
@@ -528,7 +666,7 @@ namespace DatalistSyncUtil
 
         private void UpdateSourceItemView_RowAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            foreach (DataGridViewRow row in UpdateSourceItemView.Rows)
+            foreach (DataGridViewRow row in this.UpdateSourceItemView.Rows)
             {
                 bool orderIndexModified = row.Cells[6].Value != null ? Convert.ToBoolean(row.Cells[6].Value) : false;
 
@@ -586,12 +724,12 @@ namespace DatalistSyncUtil
 
         private void SourceUpdateLangView_Scroll(object sender, ScrollEventArgs e)
         {
-            TargetUpdateLangView.FirstDisplayedScrollingRowIndex = SourceUpdateLangView.FirstDisplayedScrollingRowIndex;
+            this.TargetUpdateLangView.FirstDisplayedScrollingRowIndex = this.SourceUpdateLangView.FirstDisplayedScrollingRowIndex;
         }
 
         private void SourceUpdateLangView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            foreach (DataGridViewRow row in SourceUpdateLangView.Rows)
+            foreach (DataGridViewRow row in this.SourceUpdateLangView.Rows)
             {
                 bool descModified = row.Cells[5].Value != null ? Convert.ToBoolean(row.Cells[5].Value) : false;
 
@@ -623,52 +761,52 @@ namespace DatalistSyncUtil
 
         private void TargetUpdateLangView_Scroll(object sender, ScrollEventArgs e)
         {
-            SourceUpdateLangView.FirstDisplayedScrollingRowIndex = TargetUpdateLangView.FirstDisplayedScrollingRowIndex;
+            this.SourceUpdateLangView.FirstDisplayedScrollingRowIndex = this.TargetUpdateLangView.FirstDisplayedScrollingRowIndex;
         }
 
         private void DatalistSelectAllChkBox_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in DataListView.Rows)
+            foreach (DataGridViewRow row in this.DataListView.Rows)
             {
-                row.Cells[0].Value = DatalistSelectAllChkBox.Checked;
+                row.Cells[0].Value = this.DatalistSelectAllChkBox.Checked;
             }
         }
 
         private void UpdateLangSelectAllCB_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in SourceUpdateLangView.Rows)
+            foreach (DataGridViewRow row in this.SourceUpdateLangView.Rows)
             {
-                row.Cells[0].Value = UpdateLangSelectAllCB.Checked;
+                row.Cells[0].Value = this.UpdateLangSelectAllCB.Checked;
             }
         }
 
         private void NewLangSelectAllCB_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in NewLangView.Rows)
+            foreach (DataGridViewRow row in this.NewLangView.Rows)
             {
-                row.Cells[0].Value = NewLangSelectAllCB.Checked;
+                row.Cells[0].Value = this.NewLangSelectAllCB.Checked;
             }
         }
 
         private void UpdateItemsSelectAllCB_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in UpdateSourceItemView.Rows)
+            foreach (DataGridViewRow row in this.UpdateSourceItemView.Rows)
             {
-                row.Cells[0].Value = UpdateItemsSelectAllCB.Checked;
+                row.Cells[0].Value = this.UpdateItemsSelectAllCB.Checked;
             }
         }
 
         private void NewItemsSelectAllCB_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in NewItemsView.Rows)
+            foreach (DataGridViewRow row in this.NewItemsView.Rows)
             {
-                row.Cells[0].Value = NewItemsSelectAllCB.Checked;
+                row.Cells[0].Value = this.NewItemsSelectAllCB.Checked;
             }
         }
 
         private void NewLangView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            foreach (DataGridViewRow row in NewLangView.Rows)
+            foreach (DataGridViewRow row in this.NewLangView.Rows)
             {
                 string rowStatus = row.Cells[9].Value != null ? row.Cells[9].Value.ToString() : string.Empty;
 
@@ -694,7 +832,7 @@ namespace DatalistSyncUtil
         {
             bool selected = false;
             this.UpdateList = new List<DataListMainModel>();
-            foreach (DataGridViewRow row in DataListView.Rows)
+            foreach (DataGridViewRow row in this.DataListView.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells["Select"].Value);
 
@@ -703,7 +841,6 @@ namespace DatalistSyncUtil
                     this.UpdateList.Add(row.DataBoundItem as DataListMainModel);
                 }
             }
-
         }
 
         private void btnUpdateItems_Click(object sender, EventArgs e)
@@ -711,7 +848,7 @@ namespace DatalistSyncUtil
             bool selected = false;
             this.UpdateListItems = new List<CodeItemModel>();
 
-            foreach (DataGridViewRow row in NewItemsView.Rows)
+            foreach (DataGridViewRow row in this.NewItemsView.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells[0].Value);
 
@@ -721,7 +858,7 @@ namespace DatalistSyncUtil
                 }
             }
 
-            foreach (DataGridViewRow row in UpdateSourceItemView.Rows)
+            foreach (DataGridViewRow row in this.UpdateSourceItemView.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells[0].Value);
 
@@ -734,10 +871,10 @@ namespace DatalistSyncUtil
 
         private void btnUpdateLanguages_Click(object sender, EventArgs e)
         {
-            bool selected = false; 
+            bool selected = false;
             this.UpdateItemLanguages = new List<ItemLanguage>();
 
-            foreach (DataGridViewRow row in NewLangView.Rows)
+            foreach (DataGridViewRow row in this.NewLangView.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells[0].Value);
 
@@ -747,7 +884,7 @@ namespace DatalistSyncUtil
                 }
             }
 
-            foreach (DataGridViewRow row in SourceUpdateLangView.Rows)
+            foreach (DataGridViewRow row in this.SourceUpdateLangView.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells[0].Value);
 
@@ -760,7 +897,7 @@ namespace DatalistSyncUtil
 
         private void PreviewUpdate_Click(object sender, EventArgs e)
         {
-            PreviewPage previewPage = new PreviewPage(this.UpdateList, this.UpdateListItems, this.UpdateItemLanguages);
+            PreviewPage previewPage = new PreviewPage(this.UpdateList, this.UpdateListItems, this.UpdateItemLanguages, this.UpdateAttribute);
             previewPage.ShowDialog();
         }
 
@@ -798,53 +935,53 @@ namespace DatalistSyncUtil
             string datalistContentID = ".DataList";
             bool isChecked = false;
 
-            if (ItemRolesCB.Checked)
+            if (this.ItemRolesCB.Checked)
             {
                 isChecked = true;
                 this.GetFilteredDataListItems(ref filteredNewDatalistItems, ref filteredUpdatedNewDatalistItems, ref filteredUpdatedDatalistItems, rolesContentID);
             }
 
-            if (ItemFunctionsCB.Checked)
+            if (this.ItemFunctionsCB.Checked)
             {
                 isChecked = true;
                 this.GetFilteredDataListItems(ref filteredNewDatalistItems, ref filteredUpdatedNewDatalistItems, ref filteredUpdatedDatalistItems, functionsContentID);
             }
 
-            if (ItemRightsCB.Checked)
+            if (this.ItemRightsCB.Checked)
             {
                 isChecked = true;
                 this.GetFilteredDataListItems(ref filteredNewDatalistItems, ref filteredUpdatedNewDatalistItems, ref filteredUpdatedDatalistItems, rightsContentID);
             }
 
-            if (ItemMessagesCB.Checked)
+            if (this.ItemMessagesCB.Checked)
             {
                 isChecked = true;
                 this.GetFilteredDataListItems(ref filteredNewDatalistItems, ref filteredUpdatedNewDatalistItems, ref filteredUpdatedDatalistItems, msgContentID);
             }
 
-            if (ItemLabelsCB.Checked)
+            if (this.ItemLabelsCB.Checked)
             {
                 isChecked = true;
                 this.GetFilteredDataListItems(ref filteredNewDatalistItems, ref filteredUpdatedNewDatalistItems, ref filteredUpdatedDatalistItems, labelContentID);
             }
 
-            if (ItemDatalistCB.Checked)
+            if (this.ItemDatalistCB.Checked)
             {
                 isChecked = true;
                 this.GetFilteredDataListItems(ref filteredNewDatalistItems, ref filteredUpdatedNewDatalistItems, ref filteredUpdatedDatalistItems, datalistContentID);
             }
 
-            if(isChecked)
+            if (isChecked)
             {
-                NewItemsView.DataSource = new BindingList<CodeItemModel>(filteredNewDatalistItems);
-                UpdateSourceItemView.DataSource = new BindingList<CodeItemModel>(filteredUpdatedNewDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
-                UpdateTargetItemView.DataSource = new BindingList<CodeItemModel>(filteredUpdatedDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+                this.NewItemsView.DataSource = new BindingList<CodeItemModel>(filteredNewDatalistItems);
+                this.UpdateSourceItemView.DataSource = new BindingList<CodeItemModel>(filteredUpdatedNewDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+                this.UpdateTargetItemView.DataSource = new BindingList<CodeItemModel>(filteredUpdatedDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
             }
             else
             {
-                NewItemsView.DataSource = new BindingList<CodeItemModel>(this.NewListItems);
-                UpdateSourceItemView.DataSource = new BindingList<CodeItemModel>(this.UpdatedItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
-                UpdateTargetItemView.DataSource = new BindingList<CodeItemModel>(this.UpdatedTargetItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+                this.NewItemsView.DataSource = new BindingList<CodeItemModel>(this.NewListItems);
+                this.UpdateSourceItemView.DataSource = new BindingList<CodeItemModel>(this.UpdatedItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+                this.UpdateTargetItemView.DataSource = new BindingList<CodeItemModel>(this.UpdatedTargetItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
             }
         }
 
@@ -870,7 +1007,7 @@ namespace DatalistSyncUtil
                 filteredUpdatedDatalistItems.AddRange(items);
             }
         }
-        
+
         private void ItemCB_CheckedChanged(object sender, EventArgs e)
         {
             this.FilterDataList();
@@ -894,25 +1031,25 @@ namespace DatalistSyncUtil
             string datalistContentID = ".DataList";
             bool isChecked = false;
 
-            if (LangRolesCB.Checked)
+            if (this.LangRolesCB.Checked)
             {
                 isChecked = true;
                 this.GetFilteredItemLanguages(ref filteredNewItemLanguages, ref filteredUpdatedNewItemLanguages, ref filteredUpdatedItemLanguages, rolesContentID);
             }
 
-            if (LangFunctionsCB.Checked)
+            if (this.LangFunctionsCB.Checked)
             {
                 isChecked = true;
                 this.GetFilteredItemLanguages(ref filteredNewItemLanguages, ref filteredUpdatedNewItemLanguages, ref filteredUpdatedItemLanguages, functionsContentID);
             }
 
-            if (LangRightsCB.Checked)
+            if (this.LangRightsCB.Checked)
             {
                 isChecked = true;
                 this.GetFilteredItemLanguages(ref filteredNewItemLanguages, ref filteredUpdatedNewItemLanguages, ref filteredUpdatedItemLanguages, rightsContentID);
             }
 
-            if (LangMessagesCB.Checked)
+            if (this.LangMessagesCB.Checked)
             {
                 isChecked = true;
                 this.GetFilteredItemLanguages(ref filteredNewItemLanguages, ref filteredUpdatedNewItemLanguages, ref filteredUpdatedItemLanguages, msgContentID);
@@ -924,23 +1061,23 @@ namespace DatalistSyncUtil
                 this.GetFilteredItemLanguages(ref filteredNewItemLanguages, ref filteredUpdatedNewItemLanguages, ref filteredUpdatedItemLanguages, labelContentID);
             }
 
-            if (LangDatalistCB.Checked)
+            if (this.LangDatalistCB.Checked)
             {
                 isChecked = true;
                 this.GetFilteredItemLanguages(ref filteredNewItemLanguages, ref filteredUpdatedNewItemLanguages, ref filteredUpdatedItemLanguages, datalistContentID);
             }
 
-            if(isChecked)
+            if (isChecked)
             {
-                NewLangView.DataSource = new BindingList<ItemLanguage>(filteredNewItemLanguages);
-                SourceUpdateLangView.DataSource = new BindingList<ItemLanguage>(filteredUpdatedNewItemLanguages.OrderBy(o => o.ContentID).ToList());
-                TargetUpdateLangView.DataSource = new BindingList<ItemLanguage>(filteredUpdatedItemLanguages.OrderBy(o => o.ContentID).ToList());
+                this.NewLangView.DataSource = new BindingList<ItemLanguage>(filteredNewItemLanguages);
+                this.SourceUpdateLangView.DataSource = new BindingList<ItemLanguage>(filteredUpdatedNewItemLanguages.OrderBy(o => o.ContentID).ToList());
+                this.TargetUpdateLangView.DataSource = new BindingList<ItemLanguage>(filteredUpdatedItemLanguages.OrderBy(o => o.ContentID).ToList());
             }
             else
             {
-                NewLangView.DataSource = new BindingList<ItemLanguage>(this.NewItemLanguages);
-                SourceUpdateLangView.DataSource = new BindingList<ItemLanguage>(this.UpdateNewItemLanguages.OrderBy(o => o.ContentID).ToList());
-                TargetUpdateLangView.DataSource = new BindingList<ItemLanguage>(this.UpdatedTargetLanguages.OrderBy(o => o.ContentID).ToList());
+                this.NewLangView.DataSource = new BindingList<ItemLanguage>(this.NewItemLanguages);
+                this.SourceUpdateLangView.DataSource = new BindingList<ItemLanguage>(this.UpdateNewItemLanguages.OrderBy(o => o.ContentID).ToList());
+                this.TargetUpdateLangView.DataSource = new BindingList<ItemLanguage>(this.UpdatedTargetLanguages.OrderBy(o => o.ContentID).ToList());
             }
         }
 
@@ -969,26 +1106,26 @@ namespace DatalistSyncUtil
 
         private void NewListNewItemCB_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in NewItemsView.Rows)
+            foreach (DataGridViewRow row in this.NewItemsView.Rows)
             {
                 string rowStatus = row.Cells[12].Value != null ? row.Cells[12].Value.ToString() : string.Empty;
 
                 if (rowStatus == "NEW")
                 {
-                    row.Cells[0].Value = NewListNewItemCB.Checked;
+                    row.Cells[0].Value = this.NewListNewItemCB.Checked;
                 }
             }
         }
 
         private void ExistingListNewItemCB_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in NewItemsView.Rows)
+            foreach (DataGridViewRow row in this.NewItemsView.Rows)
             {
                 string rowStatus = row.Cells[12].Value != null ? row.Cells[12].Value.ToString() : string.Empty;
 
                 if (rowStatus != "NEW")
                 {
-                    row.Cells[0].Value = ExistingListNewItemCB.Checked;
+                    row.Cells[0].Value = this.ExistingListNewItemCB.Checked;
                 }
             }
         }
@@ -1001,33 +1138,189 @@ namespace DatalistSyncUtil
 
                 if (rowStatus == "DATALIST_NEW")
                 {
-                    row.Cells[0].Value = NewLangNewListCB.Checked;
+                    row.Cells[0].Value = this.NewLangNewListCB.Checked;
                 }
             }
         }
 
         private void NewLangNewItemCB_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in NewLangView.Rows)
+            foreach (DataGridViewRow row in this.NewLangView.Rows)
             {
                 string rowStatus = row.Cells[9].Value != null ? row.Cells[9].Value.ToString() : string.Empty;
 
                 if (rowStatus == "ITEM_NEW")
                 {
-                    row.Cells[0].Value = NewLangNewItemCB.Checked;
+                    row.Cells[0].Value = this.NewLangNewItemCB.Checked;
                 }
             }
         }
 
         private void NewLangExistingItemCB_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in NewLangView.Rows)
+            foreach (DataGridViewRow row in this.NewLangView.Rows)
             {
                 string rowStatus = row.Cells[9].Value != null ? row.Cells[9].Value.ToString() : string.Empty;
 
                 if (rowStatus != "DATALIST_NEW" && rowStatus != "ITEM_NEW")
                 {
-                    row.Cells[0].Value = NewLangExistingItemCB.Checked;
+                    row.Cells[0].Value = this.NewLangExistingItemCB.Checked;
+                }
+            }
+        }
+
+        private void AttributesRoleCB_CheckedChanged(object sender, EventArgs e)
+        {
+            this.FilterDataListAttributes();
+        }
+
+        private void FilterDataListAttributes()
+        {
+            List<ItemAttribute> filteredNewDatalistAttributes = new List<ItemAttribute>();
+            List<ItemAttribute> filteredUpdatedNewDatalistAttributes = new List<ItemAttribute>();
+            List<ItemAttribute> filteredUpdatedDatalistAttributes = new List<ItemAttribute>();
+            string rolesContentID = "Core.SecurityRoles";
+            string functionsContentID = "Core.SecurityFunctions";
+            string rightsContentID = "Core.SecurityRights";
+            string msgContentID = ".Msg";
+            string datalistContentID = ".DataList";
+            bool isChecked = false;
+
+            if (this.AttributesRoleCB.Checked)
+            {
+                isChecked = true;
+                this.GetFilteredDataListAttributes(ref filteredNewDatalistAttributes, ref filteredUpdatedNewDatalistAttributes, ref filteredUpdatedDatalistAttributes, rolesContentID);
+            }
+
+            if (this.AttributesFunctionCB.Checked)
+            {
+                isChecked = true;
+                this.GetFilteredDataListAttributes(ref filteredNewDatalistAttributes, ref filteredUpdatedNewDatalistAttributes, ref filteredUpdatedDatalistAttributes, functionsContentID);
+            }
+
+            if (this.AttributesRoleCB.Checked)
+            {
+                isChecked = true;
+                this.GetFilteredDataListAttributes(ref filteredNewDatalistAttributes, ref filteredUpdatedNewDatalistAttributes, ref filteredUpdatedDatalistAttributes, rightsContentID);
+            }
+
+            if (this.AttributesMsgCB.Checked)
+            {
+                isChecked = true;
+                this.GetFilteredDataListAttributes(ref filteredNewDatalistAttributes, ref filteredUpdatedNewDatalistAttributes, ref filteredUpdatedDatalistAttributes, msgContentID);
+            }
+
+            if (this.AttributesDataListCB.Checked)
+            {
+                isChecked = true;
+                this.GetFilteredDataListAttributes(ref filteredNewDatalistAttributes, ref filteredUpdatedNewDatalistAttributes, ref filteredUpdatedDatalistAttributes, datalistContentID);
+            }
+
+            if (isChecked)
+            {
+                this.NewAttributesView.DataSource = new BindingList<ItemAttribute>(filteredNewDatalistAttributes);
+                this.UpdateSourceItemView.DataSource = new BindingList<ItemAttribute>(filteredUpdatedNewDatalistAttributes.OrderBy(o => o.ParentContentId).ThenBy(t => t.Code).ToList());
+                this.UpdateTargetItemView.DataSource = new BindingList<ItemAttribute>(filteredUpdatedDatalistAttributes.OrderBy(o => o.ParentContentId).ThenBy(t => t.Code).ToList());
+            }
+            else
+            {
+                this.NewItemsView.DataSource = new BindingList<CodeItemModel>(this.NewListItems);
+                this.UpdateSourceItemView.DataSource = new BindingList<CodeItemModel>(this.UpdatedItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+                this.UpdateTargetItemView.DataSource = new BindingList<CodeItemModel>(this.UpdatedTargetItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+            }
+        }
+
+        private void GetFilteredDataListAttributes(ref List<ItemAttribute> filteredNewDataAttributes, ref List<ItemAttribute> filteredUpdatedNewAttributes, ref List<ItemAttribute> filteredUpdatedAttributes, string contentID)
+        {
+            List<ItemAttribute> itemattributes = new List<ItemAttribute>();
+
+            itemattributes = this.NewItemAttribute.Where(f => f.ContentID.Contains(contentID)).ToList();
+            if (itemattributes != null && itemattributes.Count > 0)
+            {
+                filteredNewDataAttributes.AddRange(itemattributes);
+            }
+
+            itemattributes = this.UpdateAttribute.Where(f => f.ContentID.Contains(contentID)).ToList();
+            if (itemattributes != null && itemattributes.Count > 0)
+            {
+                filteredUpdatedNewAttributes.AddRange(itemattributes);
+            }
+
+            itemattributes = this.UpdatedTargetAttribute.Where(f => f.ContentID.Contains(contentID)).ToList();
+            if (itemattributes != null && itemattributes.Count > 0)
+            {
+                filteredUpdatedAttributes.AddRange(itemattributes);
+            }
+        }
+
+        private void NewItemsAttributeSelectAllCB_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in this.NewAttributesView.Rows)
+            {
+                row.Cells[0].Value = this.NewItemsAttributeSelectAllCB.Checked;
+            }
+        }
+
+        private void AttributesFunctionCB_CheckedChanged(object sender, EventArgs e)
+        {
+            this.FilterDataListAttributes();
+        }
+
+        private void AttributesRightsCB_CheckedChanged(object sender, EventArgs e)
+        {
+            this.FilterDataListAttributes();
+        }
+
+        private void AttributesMsgCB_CheckedChanged(object sender, EventArgs e)
+        {
+            this.FilterDataListAttributes();
+        }
+
+        private void AttributesDataListCB_CheckedChanged(object sender, EventArgs e)
+        {
+            this.FilterDataListAttributes();
+        }
+
+        private void AttributesRoleCB_CheckedChanged_1(object sender, EventArgs e)
+        {
+            this.FilterDataListAttributes();
+        }
+
+        private bool CheckUpdateAttributeChanged(ref ItemAttribute t, ref ItemAttribute targetItem)
+        {
+            bool itemChanged = false;
+
+            if (t.IsActive != targetItem.IsActive)
+            {
+                itemChanged = true;
+                t.IsActive = targetItem.IsActive = true;
+            }
+
+            return itemChanged;
+        }
+
+        private void btnUpdateAttribute_Click(object sender, EventArgs e)
+        {
+            bool selected = false;
+            this.UpdateAttribute = new List<ItemAttribute>();
+
+            foreach (DataGridViewRow row in this.NewAttributesView.Rows)
+            {
+                selected = Convert.ToBoolean(row.Cells[0].Value);
+
+                if (selected)
+                {
+                    this.UpdateAttribute.Add(row.DataBoundItem as ItemAttribute);
+                }
+            }
+
+            foreach (DataGridViewRow row in this.SourceUpdateAttributeView.Rows)
+            {
+                selected = Convert.ToBoolean(row.Cells[0].Value);
+
+                if (selected)
+                {
+                    this.UpdateAttribute.Add(row.DataBoundItem as ItemAttribute);
                 }
             }
         }
