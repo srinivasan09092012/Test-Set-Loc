@@ -143,15 +143,14 @@ namespace DatalistSyncUtil
             }
 
             Task.WaitAll(tasks.ToArray());
-            result.AddRange(resultmsg);
-            result.AddRange(resultlbl);
-            result.AddRange(resultsecrights);
-
             result.ForEach(x =>
             {
                 x.LanguageList = languages.FindAll(c => c.CodeID == x.ID);
             });
 
+            result.AddRange(resultmsg);
+            result.AddRange(resultlbl);
+            result.AddRange(resultsecrights);
             this.Cache.Set("TargetDataListItems", result, 1440);
 
             return result;
@@ -159,22 +158,40 @@ namespace DatalistSyncUtil
 
         public bool AddDatalist(DataListMainModel cmd)
         {
+            bool success = true;
             using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
             {
-                new AddDataListDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
+                try
+                {
+                    new AddDataListDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
+                }
             }
 
-            return true;
+            return success;
         }
 
         public bool UpdateDatalist(DataListMainModel cmd)
         {
+            bool success = true;
             using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
             {
-                new UpdateDataListDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
+                try
+                {
+                    new UpdateDataListDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
+                }
             }
 
-            return true;
+            return success;
         }
 
         public bool AddDatalistItem(CodeItemModel cmd)
@@ -185,8 +202,9 @@ namespace DatalistSyncUtil
                 {
                     new AddDataListItemDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
                 }
-                catch
+                catch (Exception ex)
                 {
+                    MessageBox.Show("ERROR:" + ex.Message);
                 }
             }
 
@@ -201,8 +219,9 @@ namespace DatalistSyncUtil
                 {
                     new AddDataListItemLanguageDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
                 }
-                catch
+                catch (Exception ex)
                 {
+                    MessageBox.Show("ERROR:" + ex.Message);  
                 }
             }
 

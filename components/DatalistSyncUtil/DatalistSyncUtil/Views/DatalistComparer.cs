@@ -101,13 +101,16 @@ namespace DatalistSyncUtil
                     listNode = new TreeNode(list.ContentID, itemNodes.ToArray());
 
                     attributenodes = new List<TreeNode>();
-                    list.DataListAttributes.ForEach(f =>
+                    if (list.DataListAttributes != null)
                     {
-                        attributenode = new TreeNode(f.ParentContentId + "." + f.Code);
-                        attributenodes.Add(attributenode);
-                    });
+                        list.DataListAttributes.ForEach(f =>
+                        {
+                            attributenode = new TreeNode(f.ParentContentId + "." + f.Code);
+                            attributenodes.Add(attributenode);
+                        });
 
-                    listNode = new TreeNode(list.ContentID, attributenodes.ToArray());
+                        listNode = new TreeNode(list.ContentID, attributenodes.ToArray());
+                    }
 
                     treeView.Nodes.Add(listNode);
                 }
@@ -168,6 +171,7 @@ namespace DatalistSyncUtil
                     TenantID = list.TenantID,
                     TenantModuleID = list.TenantModuleID,
                     ID = list.ID,
+                    ModuleName=list.ModuleName,
                     DataListAttributes = this.ConverttoAttributes(list.DataListAttributes, list.ContentID, list.TenantID, list.ID)
                 };
 
@@ -224,14 +228,15 @@ namespace DatalistSyncUtil
                 {
                     Code = e.Code,
                     ContentID = e.ContentID,
-                    EffectiveEndDate = e.EffectiveEndDate,
-                    EffectiveStartDate = e.EffectiveStartDate,
+                    EffectiveEndDate = e.EffectiveEndDate == null ? DateTime.UtcNow.AddYears(1):e.EffectiveEndDate,
+                    EffectiveStartDate = e.EffectiveStartDate == null ? DateTime.UtcNow:e.EffectiveStartDate,
                     IsActive = e.IsActive,
                     IsEditable = e.IsEditable,
                     LanguageList = this.GetLanguageListCustom(e.LanguageList),
                     OrderIndex = e.OrderIndex,
                     TenantID = e.TenantID,
-                    ID = e.ID,
+                    ID = e.ID
+                    
                 };
                 items.Add(item);
             });
@@ -391,5 +396,6 @@ namespace DatalistSyncUtil
             this.LoadTreeView(this.sourceTreeList, filteredDataList.OrderBy(o => o.ContentID).ToList());
             Cursor.Current = Cursors.Default;
         }
+
     }
 }

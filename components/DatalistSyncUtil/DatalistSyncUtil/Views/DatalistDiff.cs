@@ -504,7 +504,6 @@ namespace DatalistSyncUtil
             List<ItemAttribute> sourceAttributes = null;
             List<ItemAttribute> targetAttributes = null;
             ItemAttribute targetItem = null;
-            bool itemChanged = false;
 
             List<string> dataLists = this.SourceList.Select(c => c.ContentID).Intersect(this.TargetList.Select(c => c.ContentID)).ToList();
             dataLists.ForEach(f =>
@@ -512,17 +511,15 @@ namespace DatalistSyncUtil
                 sourceAttributes = this.SourceList.Find(e => e.ContentID == f).DataListAttributes;
                 targetAttributes = this.TargetList.Find(e => e.ContentID == f).DataListAttributes;
 
-                targetAttributes.ForEach(t =>
+                sourceAttributes.ForEach(t =>
                 {
-                    itemChanged = false;
                     targetItem = targetAttributes.Find(u => t.ContentID == u.ContentID && t.Code == u.Code);
 
                     if (targetItem != null)
                     {
-                        itemChanged = this.CheckUpdateAttributeChanged(ref t, ref targetItem);
-
-                        if (itemChanged)
+                        if (t.IsActive != targetItem.IsActive)
                         {
+                           // t.ID=ta
                             updatedAttributes.Add(t);
                             updatedTargetAttributes.Add(targetItem);
                         }

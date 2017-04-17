@@ -23,7 +23,7 @@ namespace DatalistSyncUtil.DaoHelpers
         {
             Guid datalistID = Guid.NewGuid();
 
-            if (cmd.ID != null)
+            if (cmd.ID != Guid.Empty)
             {
                 datalistID = cmd.ID;
             }

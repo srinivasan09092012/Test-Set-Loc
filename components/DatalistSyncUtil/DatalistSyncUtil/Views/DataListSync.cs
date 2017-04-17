@@ -153,11 +153,11 @@ namespace DatalistSyncUtil
             this.SourceListItems = this.LoadDataListItems(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
             this.LoadSearchCriteria();
             Cursor.Current = Cursors.Default;
-
             ////this.SourceLinks = this.GetDataListItemLinks(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
             ////this.Cache.Set("DataListItemLinks", this.SourceLinks, 1440);
         }
 
+       
         private void LoadSearchCriteria()
         {
             this.NoOfDays = (int)this.Age.Value;
@@ -180,10 +180,30 @@ namespace DatalistSyncUtil
         private void BindDataList()
         {
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
+            List<DataListAttribute> datalistattribute = new List<DataListAttribute>();
             if (!this.Cache.IsSet("DataLists"))
             {
                 this.SourceLists = this.LoadDataList(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
+               
+                if (!this.Cache.IsSet("SourceDataSyncAttributeList"))
+                {
+                    using (IDbSession session = new DbSession(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString))
+                    {
+                        datalistattribute = new GetDataListAttributesDaoHelper(new DataListAttributeDbContext(session, true)).ExecuteProcedure();
+                        this.Cache.Set("SourceDataSyncAttributeList", datalistattribute, 1440);
+                    }
+                }
+                else
+                {
+                    datalistattribute = this.Cache.Get<List<DataListAttribute>>("SourceDataSyncAttributeList");
+                }
+
+                this.SourceLists.ForEach(x => x.DataListAttributes = datalistattribute.FindAll(c => c.DataListID == x.ID));
+                this.SourceLists.ForEach(x => x.DataListAttributes.ForEach(y => y.DataListTypeName = this.SourceLists.Find(p => p.ID == y.DataListTypeID).ContentID));
+                this.SourceLists.ForEach(x => x.DataListAttributes.ForEach(y => y.DefaultTypeText = this.SourceListItems.Find(c => c.ID == y.DefaultTypeValue).Code));
+                this.Cache.Set("DataLists", this.SourceLists, 1440);
             }
+
             else
             {
                 this.SourceLists = this.Cache.Get<List<DataList>>("DataLists");
@@ -258,15 +278,14 @@ namespace DatalistSyncUtil
             }
 
             Task.WaitAll(tasks.ToArray());
-            result.AddRange(resultmsg);
-            result.AddRange(resultlbl);
-            result.AddRange(resultsecrights);
-
             result.ForEach(x =>
             {
                 x.LanguageList = languages.FindAll(c => c.CodeID == x.ID);
             });
-
+            result.AddRange(resultmsg);
+            result.AddRange(resultlbl);
+            result.AddRange(resultsecrights);
+      
             this.Cache.Set("DataListItems", result, 1440);
 
             return result;
@@ -617,7 +636,9 @@ namespace DatalistSyncUtil
                     ReleaseStatus = list.ReleaseStatus,
                     ModuleName = modules.Find(f => f.TenantModuleId == list.TenantModuleID).ModuleName,
                     Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID),
+                    DataListAttributes=this.ConverttoAttributes(list.DataListAttributes, list.ContentID, list.TenantID, list.ID),
                     TenantID = list.TenantID
+                    
                 };
 
                 listsMain.Add(list1);
@@ -626,6 +647,27 @@ namespace DatalistSyncUtil
             return listsMain;
         }
 
+        private List<ItemAttribute> ConverttoAttributes(List<DataListAttribute> list, string parentContentId, Guid tenantID, Guid dataListID)
+        {
+            List<ItemAttribute> item = new List<ItemAttribute>();
+
+            foreach (DataListAttribute listattribute in list)
+            {
+                ItemAttribute itemList = new ItemAttribute();
+                itemList.ContentID = listattribute.DataListTypeName;
+                itemList.Code = listattribute.DefaultTypeText;
+                itemList.ParentContentId = parentContentId;
+                itemList.IsActive = listattribute.IsActive;
+                itemList.DataListID = listattribute.DataListID;
+                itemList.DataListTypeID = listattribute.DataListTypeID;
+                itemList.ID = listattribute.ID;
+                itemList.TenantID = tenantID;
+                itemList.DefaultTypeValue = listattribute.DefaultTypeValue;
+                item.Add(itemList);
+            }
+
+            return item;
+        }
         private List<CodeItemModel> ConvertToCustomDataListItems(string contentID, Guid tenantID)
         {
             List<CodeListModel> listItems = null;
@@ -639,8 +681,8 @@ namespace DatalistSyncUtil
                 {
                     Code = e.Code,
                     ContentID = e.ContentID,
-                    EffectiveEndDate = e.EffectiveEndDate,
-                    EffectiveStartDate = e.EffectiveStartDate,
+                    EffectiveEndDate = e.EffectiveEndDate == null ? DateTime.UtcNow.AddYears(1) : e.EffectiveEndDate,
+                    EffectiveStartDate = e.EffectiveStartDate == null ? DateTime.UtcNow : e.EffectiveStartDate,
                     IsActive = e.IsActive,
                     IsEditable = e.IsEditable,
                     LanguageList = this.GetLanguageListCustom(e.LanguageList),

@@ -140,15 +140,14 @@ namespace DatalistSyncUtil
             }
 
             Task.WaitAll(tasks.ToArray());
-            result.AddRange(resultmsg);
-            result.AddRange(resultlbl);
-            result.AddRange(resultsecrights);
-
             result.ForEach(x =>
             {
                 x.LanguageList = languages.FindAll(c => c.CodeID == x.ID);
             });
-
+            result.AddRange(resultmsg);
+            result.AddRange(resultlbl);
+            result.AddRange(resultsecrights);
+           
             this.Cache.Set("SourceDataListItems", result, 1440);
 
             return result;
@@ -175,6 +174,25 @@ namespace DatalistSyncUtil
             }
 
             return result;
+        }
+
+        public List<DataListItemAttributeModel> GetItemAttributeList()
+        {
+            List<DataListItemAttributeModel> resultitems = null;
+            if (!this.Cache.IsSet("SourceDataListItemAttributes"))
+            {
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    resultitems = new DataListAttributesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").GetDataListItemAttributes();
+                    this.Cache.Set("SourceDataListItemAttributes", resultitems, 1440);
+                }
+            }
+            else
+            {
+                resultitems = this.Cache.Get<List<DataListItemAttributeModel>>("SourceDataListItemAttributes");
+            }
+
+            return resultitems;
         }
     }
 }
