@@ -176,23 +176,23 @@ namespace DatalistSyncUtil
             return result;
         }
 
-        public List<DataListItemAttributeModel> GetItemAttributeList()
-        {
-            List<DataListItemAttributeModel> resultitems = null;
-            if (!this.Cache.IsSet("SourceDataListItemAttributes"))
-            {
-                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
-                {
-                    resultitems = new DataListAttributesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").GetDataListItemAttributes();
-                    this.Cache.Set("SourceDataListItemAttributes", resultitems, 1440);
-                }
-            }
-            else
-            {
-                resultitems = this.Cache.Get<List<DataListItemAttributeModel>>("SourceDataListItemAttributes");
-            }
+        //public List<DataListItemAttributeModel> GetItemAttributeList()
+        //{
+        //    List<DataListItemAttributeModel> resultitems = null;
+        //    if (!this.Cache.IsSet("SourceDataListItemAttributes"))
+        //    {
+        //        using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+        //        {
+        //            resultitems = new DataListAttributesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").GetDataListItemAttributes();
+        //            this.Cache.Set("SourceDataListItemAttributes", resultitems, 1440);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        resultitems = this.Cache.Get<List<DataListItemAttributeModel>>("SourceDataListItemAttributes");
+        //    }
 
-            return resultitems;
-        }
+        //    return resultitems;
+        //}
     }
 }
