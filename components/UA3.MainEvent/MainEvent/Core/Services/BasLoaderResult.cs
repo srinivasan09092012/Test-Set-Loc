@@ -1,0 +1,36 @@
+﻿//-----------------------------------------------------------------------------------------
+// This code is the property of Hewlett Packard Enterprise, Copyright (c) 2016. All rights reserved.
+//
+// Any unauthorized use in whole or in part without written consent is strictly prohibited.
+// Violators may be punished to the full extent of the law.
+//-----------------------------------------------------------------------------------------
+using HP.HSP.UA3.Core.BAS.CQRS.Config;
+using System.Collections.Generic;
+using System.Reflection;
+
+namespace MainEvent.Core.Services
+{
+    public class BasLoaderResult
+    {
+        public BasLoaderResult(string path)
+        {
+            this.Path = path;
+            this.Assemblies = new List<Assembly>();
+        }
+
+        public string Path { get; private set; }
+
+        public string ApplicationName { get; internal set; }
+
+        public string ModuleName { get; internal set; }
+
+        public TenantBasConfiguration Configuration { get; internal set; }
+
+        public List<Assembly> Assemblies { get; internal set; }
+
+        public BasReflector CreateReflector()
+        {
+            return new BasReflector(this);
+        }
+    }
+}
