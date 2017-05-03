@@ -30,7 +30,7 @@ namespace LoadReferenceData
                     }
                     else
                     {
-                        throw new Exception(response.ReasonPhrase);
+                        return false;
                     }
                 }
             }
@@ -54,7 +54,7 @@ namespace LoadReferenceData
                     }
                     else
                     {
-                        throw new Exception(response.ReasonPhrase);
+                        return false;
                     }
                 }
             }

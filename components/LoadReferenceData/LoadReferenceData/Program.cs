@@ -8,74 +8,29 @@ namespace LoadReferenceData
 {
     class Program
     {
-        private static bool overallErrors = false;
-
         static void Main(string[] args)
         {
             if (args.Length > 1)
             {
-                Console.WriteLine("Data Load started for " + args[1] + "' ..... ");
-                try
+                Console.WriteLine("Data Load started..... ");
+                if (args[1].ToLower() == "helpnodelocale")
                 {
-                    if (args[1].ToLower().Contains("helpnodelocale"))
-                    {
-                        LoadHelpQuery(args[0], args[1]);
-                    }
-                    else
-                    {
-                        LoadQuery(args[0], args[1]);
-                    }
+                    LoadHelpQuery(args[0], args[1]);
                 }
-                catch(Exception e)
+                else
                 {
-                    Console.WriteLine("*** Task={0}, ERROR={1} ***", args[1], e.Message);
-                    overallErrors = true;
+                    LoadQuery(args[0], args[1]);
                 }
             }
             else
             {
-                string configTenantID = ConfigurationManager.AppSettings["TenantID"];
-                List<string> tenantList = new List<string>();
-
-                if (string.IsNullOrEmpty(configTenantID))
-                {
-                    //tenantList = call ODATA to get list of tenants
-                }
-                else
-                {
-                    Guid validTenandID;
-                    if (Guid.TryParse(configTenantID, out validTenandID))
-                    {
-                        tenantList.Add(configTenantID);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid Guid for TenantID '" + configTenantID + "' in app.config.");
-                    }
-                }
-
-                foreach (string tenantID in tenantList)
-                {
-                    //LoadSync();
-                    LoadAsync(tenantID);
-                }
-            }
-            Console.WriteLine("Data Load completed ..... ");
-            if (overallErrors)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("*** THERE ARE ERRORS WHILE LOADING  ***");
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Console.Read();
+                //LoadSync();
+                LoadAsync();
             }
         }
 
-        private static void LoadAsync(string tenantID)
+        private static void LoadAsync()
         {
-            Console.WriteLine("Data Load started for TenantID '" + tenantID + "' ..... ");
-            Stopwatch watch = new Stopwatch();
-            watch.Start();
-
             bool errorFlag = false;
             List<Task> tasks = new List<Task>();
             Action<string, Task> action =
@@ -84,33 +39,39 @@ namespace LoadReferenceData
                 if (t.Exception != null)
                 {
                     errorFlag = true;
-                    Console.WriteLine("*** Task={0}, ERROR={1} / {2} ***", str, t.Exception.Message, t.Exception.InnerException.Message);
+                    Console.WriteLine();
+                    Console.WriteLine("***** Task={0}, ERROR={1} *****", str, t.Exception.Message);
+                    Console.WriteLine();
                 }
             };
 
+            Console.WriteLine("Data Load started..... ");
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+
             tasks.Add(Task.Factory.StartNew(() =>
             {
-                LoadQuery("HtmlBlock(TenantID=" + tenantID + ")?$expand=HtmlBlockLanguages", "HtmlBlock");
+                LoadQuery("HtmlBlock?$expand=HtmlBlockLanguages", "HtmlBlock");
             }).ContinueWith(c => action("HtmlBlock", c)));
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
-                LoadQuery("SecurityCodes(TenantID=" + tenantID + ")?$expand=Children,Attributes", "SecurityCodes");
+                LoadQuery("SecurityCodes?$expand=Children,Attributes", "SecurityCodes");
             }).ContinueWith(c => action("SecurityCodes", c)));
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
-                LoadQuery("ReferenceCodes(" + tenantID + ")?$expand=Children,Attributes", "ReferenceCodes");
+                LoadQuery("ReferenceCodes?$expand=Children,Attributes", "ReferenceCodes");
             }).ContinueWith(c => action("ReferenceCodes", c)));
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
-                LoadQuery("Image(TenantID=" + tenantID + ")?$expand=ImageLanguages", "Image");
+                LoadQuery("Image?$expand=ImageLanguages", "Image");
             }).ContinueWith(c => action("Image", c)));
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
-                LoadQuery("Messages(TenantID=" + tenantID + ")?$expand=Attributes", "Messages");
+                LoadQuery("Messages?$expand=Attributes", "Messages");
             }).ContinueWith(c => action("Messages", c)));
 
             tasks.Add(Task.Factory.StartNew(() =>
@@ -120,7 +81,7 @@ namespace LoadReferenceData
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
-                LoadQuery("TenantModule(TenantID=" + tenantID + ")", "TenantModule");
+                LoadQuery("TenantModule", "TenantModule");
             }).ContinueWith(c => action("TenantModule", c)));
 
             tasks.Add(Task.Factory.StartNew(() =>
@@ -130,53 +91,53 @@ namespace LoadReferenceData
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
-                LoadQuery("ModelDefinition(TenantID=" + tenantID + ")?$expand=ModelProperties", "ModelDefinition");
-            }).ContinueWith(c => action("ModelDefinition", c)));
+                LoadQuery("ModelDefintion?$expand=ModelProperties", "ModelDefintion");
+            }).ContinueWith(c => action("ModelDefintion", c)));
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
-                LoadQuery("Menu(TenantID=" + tenantID + ")?$expand=Children", "Menu");
+                LoadQuery("Menu?$expand=Children", "Menu");
             }).ContinueWith(c => action("Menu", c)));
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
-                LoadQuery("Labels(TenantID=" + tenantID + ")", "Labels");
+                LoadQuery("Labels", "Labels");
             }).ContinueWith(c => action("Labels", c)));
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
-                LoadQuery("Service(TenantID=" + tenantID + ")", "Service");
+                LoadQuery("Service", "Service");
             }).ContinueWith(c => action("Service", c)));
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
-                LoadQuery("AppSetting(TenantID=" + tenantID + ")", "AppSetting");
+                LoadQuery("AppSetting", "AppSetting");
             }).ContinueWith(c => action("AppSetting", c)));
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
-                LoadHelpQuery("HelpNodeLocale(TenantID=" + tenantID + ")", "HelpNodeLocale");
+                LoadHelpQuery("HelpNodeLocale", "HelpNodeLocale");
             }).ContinueWith(c => action("HelpNodeLocale", c)));
 
             if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["Runtime"]))
             {
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    LoadHelpQuery("DataList(TenantID=" + tenantID + ")", "DataList");
+                    LoadHelpQuery("DataList", "DataList");
                 }).ContinueWith(c => action("DataList", c)));
             }
 
             Task.WaitAll(tasks.ToArray());
 
-            Console.WriteLine("Data Load completed for TenantID '" + tenantID + "' ..... ");
+            Console.WriteLine("Data Load completed..... ");
             watch.Stop();
-            PrintTimeTaken(watch, "Tenant");
+            PrintTimeTaken(watch, string.Empty);
             if(errorFlag)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("*** THERE ARE ERRORS WHILE LOADING THIS TENANT ***");
-                Console.ForegroundColor = ConsoleColor.Gray;
-                overallErrors = true;
+                Console.WriteLine("***** THERE ARE ERRORS WHILE LOADING *****");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Read();
             }
         }
 
@@ -200,7 +161,7 @@ namespace LoadReferenceData
             stopWatch.Reset();
         }
 
-        private static void LoadSync(string tenantID)
+        private static void LoadSync()
         {
             Console.WriteLine("Data Load started..... ");
             Stopwatch stopWatch = new Stopwatch();
@@ -233,9 +194,9 @@ namespace LoadReferenceData
             stopWatch.Stop();
             PrintTimeTaken(stopWatch, "Module");
             stopWatch.Start();
-            LoadTenantHelper.ExecuteODataQuery("ModelDefinition?$expand=ModelProperties");
+            LoadTenantHelper.ExecuteODataQuery("ModelDefintion?$expand=ModelProperties");
             stopWatch.Stop();
-            PrintTimeTaken(stopWatch, "ModelDefinition");
+            PrintTimeTaken(stopWatch, "ModelDefintion");
             stopWatch.Start();
             LoadTenantHelper.ExecuteODataQuery("Menu?$expand=Children");
             stopWatch.Stop();

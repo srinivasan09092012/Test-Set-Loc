@@ -43,18 +43,18 @@ namespace DatalistSyncUtil.Configs
         /// </summary>
         /// <param name="query">CodeTablesQuery</param>
         /// <returns>List<CodeTablesModel></returns>
-        public List<CodeListModel> SearchCodeTables(Guid tenantID, string envLocation, string contentID = null, bool expandChildren = false, bool expandParents = false, bool expandAttributes = false)
+        public List<CodeListModel> SearchCodeTables(string envLocation, string contentID = null, string tenantID = null, bool expandChildren = false, bool expandParents = false, bool expandAttributes = false)
         {
             List<CodeListModel> result = new List<CodeListModel>();
             List<Task> tasks = new List<Task>();
             List<Languages> languages = null;
-            this.localLanguageKey = envLocation + this.localLanguageKey + tenantID.ToString();
-            this.codeTablesKey = envLocation + this.codeTablesKey + tenantID.ToString();
-            this.dataListsKey = envLocation + this.dataListsKey + tenantID.ToString();
-            this.plainDataListsKey = envLocation + this.plainDataListsKey + tenantID.ToString();
-            this.itemLinkerKey = envLocation + this.itemLinkerKey + tenantID.ToString();
-            this.dataListAttrKey = envLocation + this.dataListAttrKey + tenantID.ToString();
-            this.dataListItemAttrKey = envLocation + this.dataListItemAttrKey + tenantID.ToString();
+            this.localLanguageKey = envLocation + this.localLanguageKey;
+            this.codeTablesKey = envLocation + this.codeTablesKey;
+            this.dataListsKey = envLocation + this.dataListsKey;
+            this.plainDataListsKey = envLocation + this.plainDataListsKey;
+            this.itemLinkerKey = envLocation + this.itemLinkerKey;
+            this.dataListAttrKey = envLocation + this.dataListAttrKey;
+            this.dataListItemAttrKey = envLocation + this.dataListItemAttrKey;
             this.envLocation = envLocation;
 
             if (!this.cachemanager.IsSet(this.codeTablesKey))
@@ -63,19 +63,19 @@ namespace DatalistSyncUtil.Configs
                 {
                     tasks.Add(Task.Factory.StartNew(() =>
                     {
-                        result = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteSecurityProcedure(tenantID);
+                        result = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteSecurityProcedure(contentID);
                     }));
 
                     tasks.Add(Task.Factory.StartNew(() =>
                     {
-                        languages = this.GetLocalizedLanguages(tenantID, session);
+                        languages = this.GetLocalizedLanguages(session);
                     }));
 
                     if (!this.cachemanager.IsSet(this.itemLinkerKey) && (expandChildren || expandParents))
                     {
                         tasks.Add(Task.Factory.StartNew(() =>
                         {
-                            var linkers = new GetDataListItemLinksDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(tenantID);
+                            var linkers = new GetDataListItemLinksDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
                             this.cachemanager.Set(itemLinkerKey, linkers, this.cacheTimeInMins);
                         }));
                     }
@@ -93,7 +93,7 @@ namespace DatalistSyncUtil.Configs
                     {
                         tasks.Add(Task.Factory.StartNew(() =>
                         {
-                            this.GetDataListAttributes(tenantID);
+                            this.GetDataListAttributes();
                         }));
                     }
 
@@ -101,7 +101,7 @@ namespace DatalistSyncUtil.Configs
                     {
                         tasks.Add(Task.Factory.StartNew(() =>
                         {
-                            this.GetDataListItemAttributes(tenantID);
+                            this.GetDataListItemAttributes();
                         }));
                     }
 
@@ -113,20 +113,20 @@ namespace DatalistSyncUtil.Configs
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    List<CodeLinkTable> itemLinks = this.GetDataListItemLinks(tenantID);
+                    List<CodeLinkTable> itemLinks = this.GetDataListItemLinks();
                     result.ForEach(x => x.Children = this.ExpandChildren(x, result, itemLinks));
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    List<DataListAttribute> listAttributes = this.GetDataListAttributes(tenantID);
-                    List<DataListItemAttributeModel> itemAttributes = this.GetDataListItemAttributes(tenantID);
-                    result.ForEach(x => x.Attributes = this.ExpandAttributes(x, result, listAttributes, itemAttributes, tenantID));
+                    List<DataListAttribute> listAttributes = this.GetDataListAttributes();
+                    List<DataListItemAttributeModel> itemAttributes = this.GetDataListItemAttributes();
+                    result.ForEach(x => x.Attributes = this.ExpandAttributes(x, result, listAttributes, itemAttributes));
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    List<CodeLinkTable> itemLinks = this.GetDataListItemLinks(tenantID);
+                    List<CodeLinkTable> itemLinks = this.GetDataListItemLinks();
                     result.ForEach(x => x.Parents = this.ExpandParent(x, result, itemLinks));
                 }));
 
@@ -135,13 +135,15 @@ namespace DatalistSyncUtil.Configs
 
                 this.cachemanager.Set(this.codeTablesKey, result, this.cacheTimeInMins);
 
-                result = result.Where(x => (string.IsNullOrEmpty(contentID) || x.ContentID == contentID))
+                result = result.Where(x => (string.IsNullOrEmpty(contentID) || x.ContentID == contentID)
+                                        && (string.IsNullOrEmpty(tenantID) || x.TenantID.ToString() == tenantID))
                                 .ToList();
             }
             else
             {
                 result = this.cachemanager.Get<List<CodeListModel>>(this.codeTablesKey)
-                    .Where(x => (string.IsNullOrEmpty(contentID) || x.ContentID == contentID))
+                    .Where(x => (string.IsNullOrEmpty(contentID) || x.ContentID == contentID)
+                             && (string.IsNullOrEmpty(tenantID) || x.TenantID.ToString() == tenantID))
                     .ToList();
             }
 
@@ -154,20 +156,20 @@ namespace DatalistSyncUtil.Configs
         /// <param name="tenantID">string</param>
         /// <param name="moduleID">string</param>
         /// <returns>List<DataList></returns>
-        public List<Languages> GetLocalizedLanguages(Guid tenantID, IDbSession session = null)
+        public List<Languages> GetLocalizedLanguages(IDbSession session = null)
         {
             List<Languages> result = new List<Languages>();
             if (!this.cachemanager.IsSet(this.localLanguageKey))
             {
                 if (session != null)
                 {
-                    result = new SearchDataListLanguagesDaoHelper(new DataListsDbContext(session, true)).ExecuteSecurityProcedure(tenantID);
+                    result = new SearchDataListLanguagesDaoHelper(new DataListsDbContext(session, true)).ExecuteSecurityProcedure();
                 }
                 else
                 {
                     using (IDbSession session1 = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                     {
-                        result = new SearchDataListLanguagesDaoHelper(new DataListsDbContext(session1, true)).ExecuteSecurityProcedure(tenantID);
+                        result = new SearchDataListLanguagesDaoHelper(new DataListsDbContext(session1, true)).ExecuteSecurityProcedure();
                     }
                 }
 
@@ -253,13 +255,13 @@ namespace DatalistSyncUtil.Configs
             return toExpand.Parents.ToList();
         }
 
-        public List<DataList> SearchDataList(Guid tenantID, string moduleID = null)
+        public List<DataList> SearchDataList(string tenantID = null, string moduleID = null)
         {
             List<DataList> result = new List<DataList>();
 
             if (!this.cachemanager.IsSet(this.dataListsKey))
             {
-                this.SearchCodeTables(tenantID, this.envLocation);
+                this.SearchCodeTables(this.envLocation);
                 if (!this.cachemanager.IsSet(this.plainDataListsKey))
                 {
                     using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
@@ -275,31 +277,33 @@ namespace DatalistSyncUtil.Configs
                 }
 
                 List<CodeListModel> items = this.cachemanager.Get<List<CodeListModel>>(this.codeTablesKey);
-                var attributes = this.GetDataListAttributes(tenantID);
+                var attributes = this.GetDataListAttributes();
                 result.ForEach(x => x.DataListAttributes = attributes.FindAll(c => c.DataListID == x.ID));
                 result.ForEach(x => x.DataListAttributes.ForEach(y => y.DataListTypeName = result.Find(p => p.ID == y.DataListTypeID).ContentID));
                 result.ForEach(x => x.DataListAttributes.ForEach(y => y.DefaultTypeText = items.Find(c => c.ID == y.DefaultTypeValue).Code));
                 this.cachemanager.Set(this.dataListsKey, result, this.cacheTimeInMins);
 
-                result = result.Where(x => (string.IsNullOrEmpty(moduleID) || x.ModuleID.ToString() == moduleID))
+                result = result.Where(x => (string.IsNullOrEmpty(moduleID) || x.ModuleID.ToString() == moduleID)
+                                        && (string.IsNullOrEmpty(tenantID) || x.TenantID.ToString() == tenantID))
                                 .ToList();
             }
             else
             {
                 result = this.cachemanager.Get<List<DataList>>(this.dataListsKey)
-                    .Where(x => (string.IsNullOrEmpty(moduleID) || x.ModuleID.ToString() == moduleID))
+                    .Where(x => (string.IsNullOrEmpty(moduleID) || x.ModuleID.ToString() == moduleID)
+                             && (string.IsNullOrEmpty(tenantID) || x.TenantID.ToString() == tenantID))
                     .ToList();
             }
 
             return result;
         }
 
-        public List<DataListItemAttributeModel> ExpandAttributes(CodeListModel toExpand, List<CodeListModel> items, List<DataListAttribute> listAttributes, List<DataListItemAttributeModel> itemAttribues, Guid tenantID)
+        public List<DataListItemAttributeModel> ExpandAttributes(CodeListModel toExpand, List<CodeListModel> items, List<DataListAttribute> listAttributes, List<DataListItemAttributeModel> itemAttribues)
         {
             if (!this.cachemanager.IsSet(this.dataListItemAttrKey))
             {
-                this.SearchDataList(tenantID);
-                this.GetDataListItemAttributes(tenantID);
+                this.SearchDataList();
+                this.GetDataListItemAttributes();
             }
 
             var itemAttrValues = itemAttribues.FindAll(x => x.DataListItemID == toExpand.ID);
@@ -312,14 +316,14 @@ namespace DatalistSyncUtil.Configs
             return toExpand.Attributes.ToList();
         }
 
-        private List<DataListAttribute> GetDataListAttributes(Guid tenantID)
+        private List<DataListAttribute> GetDataListAttributes()
         {
             List<DataListAttribute> result = new List<DataListAttribute>();
             if (!this.cachemanager.IsSet(this.dataListAttrKey))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
-                    result = new GetDataListAttributesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(tenantID);
+                    result = new GetDataListAttributesDaoHelper(new DataListAttributeDbContext(session, true)).ExecuteProcedure();
                     this.cachemanager.Set(this.dataListAttrKey, result, this.cacheTimeInMins);
                 }
             }
@@ -331,15 +335,33 @@ namespace DatalistSyncUtil.Configs
             return result;
         }
 
-        private List<DataListItemAttributeModel> GetDataListItemAttributes(Guid tenantID)
+        private List<DataListItemAttributeModel> GetDataListItemAttributes()
         {
+            DataListItemAttributeModel dataItem = null;
             List<DataListItemAttributeModel> itemAtttributes = new List<DataListItemAttributeModel>();
+            List<DataListItemAttribute> attrValues = null;
 
             if (!this.cachemanager.IsSet(this.dataListItemAttrKey))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
-                    itemAtttributes = new GetDataListItemAttributesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(tenantID);
+                    attrValues = new GetDataListItemAttributesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
+                }
+
+                foreach (DataListItemAttribute item in attrValues)
+                {
+                    dataItem = new DataListItemAttributeModel()
+                    {
+                        DataListAttributeID = item.DataListAttributeID,
+                        DataListAttributeName = string.Empty,
+                        DataListAttributeValue = string.Empty,
+                        DataListItemID = item.DataListItemID,
+                        DataListValueID = item.DataListValueID,
+                        ID = item.ID,
+                        LastModifiedDate = item.LastModifiedDate
+                    };
+
+                    itemAtttributes.Add(dataItem);
                 }
 
                 this.cachemanager.Set(this.dataListItemAttrKey, itemAtttributes, this.cacheTimeInMins);
@@ -352,7 +374,7 @@ namespace DatalistSyncUtil.Configs
             return itemAtttributes;
         }
 
-        private List<CodeLinkTable> GetDataListItemLinks(Guid tenantID)
+        private List<CodeLinkTable> GetDataListItemLinks()
         {
             List<CodeLinkTable> linkers = null;
 
@@ -360,7 +382,7 @@ namespace DatalistSyncUtil.Configs
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
-                    linkers = new GetDataListItemLinksDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(tenantID);
+                    linkers = new GetDataListItemLinksDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
                 }
 
                 this.cachemanager.Set(this.itemLinkerKey, linkers, this.cacheTimeInMins);

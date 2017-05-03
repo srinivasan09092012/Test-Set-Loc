@@ -60,51 +60,51 @@ namespace DatalistSyncUtil
             return result;
         }
 
-        public List<TenantModuleModel> LoadModules(Guid tenantID)
+        public List<TenantModuleModel> LoadModules()
         {
             List<TenantModuleModel> result = null;
-            if (!this.Cache.IsSet("TargetTenantModules" + tenantID.ToString()))
+            if (!this.Cache.IsSet("TargetTenantModules"))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
-                    result = new GetTenantModuleDaoHelper(new TenantModuleDbContext(session, true)).ExecuteProcedure(tenantID);
+                    result = new GetTenantModuleDaoHelper(new TenantModuleDbContext(session, true)).ExecuteProcedure();
                 }
 
-                this.Cache.Set("TargetTenantModules" + tenantID.ToString(), result, 1440);
+                this.Cache.Set("TargetTenantModules", result, 1440);
             }
             else
             {
-                result = this.Cache.Get<List<TenantModuleModel>>("TargetTenantModules" + tenantID.ToString()).ToList();
+                result = this.Cache.Get<List<TenantModuleModel>>("TargetTenantModules").ToList();
             }
 
             return result;
         }
 
-        public List<DataList> GetDataList(Guid tenantID)
+        public List<DataList> GetDataList()
         {
             List<DataList> result = null;
-            if (!this.Cache.IsSet("TargetDataLists" + tenantID.ToString()))
+            if (!this.Cache.IsSet("TargetDataLists"))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
-                    result = new SearchDataListDaoHelper(new DataListsDbContext(session, true)).ExecuteDataListsProcedure(tenantID);
+                    result = new SearchDataListDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
                 }
 
-                this.Cache.Set("TargetDataLists" + tenantID.ToString(), result.OrderBy(o => o.ContentID).ToList(), 1440);
+                this.Cache.Set("TargetDataLists", result.OrderBy(o => o.ContentID).ToList(), 1440);
             }
             else
             {
-                result = this.Cache.Get<List<DataList>>("TargetDataLists" + tenantID.ToString()).ToList();
+                result = this.Cache.Get<List<DataList>>("TargetDataLists").ToList();
             }
 
             return result;
         }
 
-        public List<CodeListModel> GetDataListItems(Guid tenantID)
+        public List<CodeListModel> GetDataListItems()
         {
-            if (this.Cache.IsSet("TargetDataListItems" + tenantID.ToString()))
+            if (this.Cache.IsSet("TargetDataListItems"))
             {
-                return this.Cache.Get<List<CodeListModel>>("TargetDataListItems" + tenantID.ToString());
+                return this.Cache.Get<List<CodeListModel>>("TargetDataListItems");
             }
 
             List<Task> tasks = new List<Task>();
@@ -118,27 +118,27 @@ namespace DatalistSyncUtil
             {
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    result = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(tenantID, string.Empty);
+                    result = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(string.Empty);
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    languages = new SearchDataListLanguagesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(tenantID);
+                    languages = new SearchDataListLanguagesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    resultmsg = new MessageCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").SearchMessages(tenantID);
+                    resultmsg = new MessageCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").SearchMessages();
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    resultlbl = new LabelsCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").SearchLabels(tenantID);
+                    resultlbl = new LabelsCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").SearchLabels();
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    resultsecrights = new SecurityCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString)).SearchCodeTables(tenantID, "Target");
+                    resultsecrights = new SecurityCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString)).SearchCodeTables("Target");
                 }));
             }
 
@@ -151,7 +151,7 @@ namespace DatalistSyncUtil
             result.AddRange(resultmsg);
             result.AddRange(resultlbl);
             result.AddRange(resultsecrights);
-            this.Cache.Set("TargetDataListItems" + tenantID.ToString(), result, 1440);
+            this.Cache.Set("TargetDataListItems", result, 1440);
 
             return result;
         }
@@ -295,23 +295,23 @@ namespace DatalistSyncUtil
             return true;
         }
 
-        public List<DataList> GetAttributesList(Guid tenantID)
+        public List<DataList> GetAttributesList()
         {
             List<DataList> result = null;
             List<CodeListModel> resultitems = null;
 
-            if (!this.Cache.IsSet("TargetDataListAttributes" + tenantID.ToString()))
+            if (!this.Cache.IsSet("TargetDataListAttributes"))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
-                    resultitems = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(tenantID, string.Empty);
-                    result = new DataListAttributesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "target").SearchCodeTables(resultitems, tenantID);
-                    this.Cache.Set("TargetDataListAttributes" + tenantID.ToString(), result, 1440);
+                    resultitems = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(string.Empty);
+                    result = new DataListAttributesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "target").SearchCodeTables(resultitems);
+                    this.Cache.Set("TargetDataListAttributes", result, 1440);
                 }
             }
             else
             {
-                result = this.Cache.Get<List<DataList>>("TargetDataListAttributes" + tenantID.ToString());
+                result = this.Cache.Get<List<DataList>>("TargetDataListAttributes");
             }
 
             return result;
