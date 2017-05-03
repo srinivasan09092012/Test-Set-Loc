@@ -22,7 +22,7 @@ namespace DatalistSyncUtil.Views
             this.InitializeComponent();
         }
 
-        public PreviewPage(List<DataListMainModel> finalList, List<CodeItemModel> finalListItems, List<ItemLanguage> finalLanguages, List<ItemAttribute> finalAttributes)
+        public PreviewPage(Guid tenantID, List<DataListMainModel> finalList, List<CodeItemModel> finalListItems, List<ItemLanguage> finalLanguages, List<ItemAttribute> finalAttributes)
         {
             this.InitializeComponent();
 
@@ -32,7 +32,8 @@ namespace DatalistSyncUtil.Views
             this.FinalItemLanguages = finalLanguages;
             this.FinalAttributes = finalAttributes;
             this.LoadHelper = new TenantHelper();
-            this.TargetDataList = this.LoadHelper.GetDataList();
+            this.TenantID = tenantID;
+            this.TargetDataList = this.LoadHelper.GetDataList(tenantID);
             this.LoadTreeView(this.PreviewTreeList, this.FinalList);
         }
 
@@ -45,6 +46,8 @@ namespace DatalistSyncUtil.Views
         public List<ItemLanguage> FinalItemLanguages { get; set; }
 
         public List<ItemAttribute> FinalAttributes { get; set; }
+
+        public Guid TenantID { get; set; }
 
         public List<DataList> TargetDataList { get; set; }
 
@@ -61,7 +64,7 @@ namespace DatalistSyncUtil.Views
 
         private void SaveDataListAttributes()
         {
-            List<DataList> dataList = this.LoadHelper.GetDataList();
+            List<DataList> dataList = this.LoadHelper.GetDataList(this.TenantID);
             DataList list = null;
             if (this.FinalAttributes != null)
             {
@@ -84,14 +87,14 @@ namespace DatalistSyncUtil.Views
                 });
             }
 
-            this.Cache.Remove("TargetUtilityDataAttrKey");
-            this.Cache.Remove("TargetUtilityDataListItemAttrKey");
-            this.Cache.Remove("TargetUtilityCombineAttributes");
+            this.Cache.Remove("TargetUtilityDataAttrKey" + this.TenantID.ToString());
+            this.Cache.Remove("TargetUtilityDataListItemAttrKey" + this.TenantID.ToString());
+            this.Cache.Remove("TargetUtilityCombineAttributes" + this.TenantID.ToString());
         }
 
         private void SaveDatalistItems()
         {
-            List<DataList> dataList = this.LoadHelper.GetDataList();
+            List<DataList> dataList = this.LoadHelper.GetDataList(this.TenantID);
             DataList list = null;
 
             if (this.FinalListItems != null)
@@ -113,13 +116,13 @@ namespace DatalistSyncUtil.Views
                     }
                 });
 
-                this.Cache.Remove("TargetDataListItems");
+                this.Cache.Remove("TargetDataListItems" + this.TenantID.ToString());
             }
         }
 
         private void SaveDatalistItemLanguages()
         {
-            List<CodeListModel> dataListItems = this.LoadHelper.GetDataListItems();
+            List<CodeListModel> dataListItems = this.LoadHelper.GetDataListItems(this.TenantID);
             CodeListModel item = null;
 
             if (this.FinalItemLanguages != null)
@@ -141,7 +144,7 @@ namespace DatalistSyncUtil.Views
                     }
                 });
 
-                this.Cache.Remove("TargetDataListItems");
+                this.Cache.Remove("TargetDataListItems" + this.TenantID.ToString());
             }
         }
 
@@ -151,7 +154,7 @@ namespace DatalistSyncUtil.Views
             {
                 if (this.FinalList != null)
                 {
-                    List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+                    List<TenantModuleModel> modules = this.LoadHelper.LoadModules(this.TenantID);
 
                     foreach (DataListMainModel list in this.FinalList)
                     {
@@ -166,7 +169,7 @@ namespace DatalistSyncUtil.Views
                         }
                     }
 
-                    this.Cache.Remove("TargetDataLists");
+                    this.Cache.Remove("TargetDataLists" + this.TenantID.ToString());
                 }
             }
             catch (Exception ex)

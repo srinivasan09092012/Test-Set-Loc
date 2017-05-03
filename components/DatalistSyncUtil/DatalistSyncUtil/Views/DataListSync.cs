@@ -131,13 +131,13 @@ namespace DatalistSyncUtil
         private void LoadModules()
         {
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
-            if (!this.Cache.IsSet("TenantModules"))
+            if (!this.Cache.IsSet("TenantModules" + tenantID.ToString()))
             {
-                this.TenantModules = this.GetTenantModules(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
-                this.Cache.Set("TenantModules", this.TenantModules, 1440);
+                this.TenantModules = this.GetTenantModules(tenantID, this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
+                this.Cache.Set("TenantModules" + tenantID.ToString(), this.TenantModules, 1440);
             }
 
-            this.ModuleList.DataSource = this.Cache.Get<List<TenantModuleModel>>("TenantModules").Where(w => w.TenantId == tenantID).GroupBy(i => i.ModuleName)
+            this.ModuleList.DataSource = this.Cache.Get<List<TenantModuleModel>>("TenantModules" + tenantID.ToString()).GroupBy(i => i.ModuleName)
                   .Select(group =>
                         new
                         {
@@ -150,11 +150,12 @@ namespace DatalistSyncUtil
         private void DataListLoad_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            this.SourceListItems = this.LoadDataListItems(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
+            Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
+            this.SourceListItems = this.LoadDataListItems(tenantID, this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
             this.LoadSearchCriteria();
             Cursor.Current = Cursors.Default;
             ////this.SourceLinks = this.GetDataListItemLinks(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
-            ////this.Cache.Set("DataListItemLinks", this.SourceLinks, 1440);
+            ////this.Cache.Set("DataListItemLinks" + tenantID.ToString(), this.SourceLinks, 1440);
         }
 
        
@@ -165,13 +166,13 @@ namespace DatalistSyncUtil
             this.ModuleListSelectedItems();
         }
 
-        private List<TenantModuleModel> GetTenantModules(string providerName, string connectionString)
+        private List<TenantModuleModel> GetTenantModules(Guid tenantID, string providerName, string connectionString)
         {
             List<TenantModuleModel> result = null;
 
             using (IDbSession session = new DbSession(providerName, connectionString))
             {
-                result = new GetTenantModuleDaoHelper(new TenantModuleDbContext(session, true)).ExecuteProcedure();
+                result = new GetTenantModuleDaoHelper(new TenantModuleDbContext(session, true)).ExecuteProcedure(tenantID);
             }
 
             return result;
@@ -181,32 +182,32 @@ namespace DatalistSyncUtil
         {
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
             List<DataListAttribute> datalistattribute = new List<DataListAttribute>();
-            if (!this.Cache.IsSet("DataLists"))
+            if (!this.Cache.IsSet("DataLists" + tenantID.ToString()))
             {
-                this.SourceLists = this.LoadDataList(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
+                this.SourceLists = this.LoadDataList(tenantID, this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
                
-                if (!this.Cache.IsSet("SourceDataSyncAttributeList"))
+                if (!this.Cache.IsSet("SourceDataSyncAttributeList" + tenantID.ToString()))
                 {
                     using (IDbSession session = new DbSession(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString))
                     {
-                        datalistattribute = new GetDataListAttributesDaoHelper(new DataListAttributeDbContext(session, true)).ExecuteProcedure();
-                        this.Cache.Set("SourceDataSyncAttributeList", datalistattribute, 1440);
+                        datalistattribute = new GetDataListAttributesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(tenantID);
+                        this.Cache.Set("SourceDataSyncAttributeList" + tenantID.ToString(), datalistattribute, 1440);
                     }
                 }
                 else
                 {
-                    datalistattribute = this.Cache.Get<List<DataListAttribute>>("SourceDataSyncAttributeList");
+                    datalistattribute = this.Cache.Get<List<DataListAttribute>>("SourceDataSyncAttributeList" + tenantID.ToString());
                 }
 
                 this.SourceLists.ForEach(x => x.DataListAttributes = datalistattribute.FindAll(c => c.DataListID == x.ID));
                 this.SourceLists.ForEach(x => x.DataListAttributes.ForEach(y => y.DataListTypeName = this.SourceLists.Find(p => p.ID == y.DataListTypeID).ContentID));
                 this.SourceLists.ForEach(x => x.DataListAttributes.ForEach(y => y.DefaultTypeText = this.SourceListItems.Find(c => c.ID == y.DefaultTypeValue).Code));
-                this.Cache.Set("DataLists", this.SourceLists, 1440);
+                this.Cache.Set("DataLists" + tenantID.ToString(), this.SourceLists, 1440);
             }
 
             else
             {
-                this.SourceLists = this.Cache.Get<List<DataList>>("DataLists");
+                this.SourceLists = this.Cache.Get<List<DataList>>("DataLists" + tenantID.ToString());
             }
 
             this.DataListView.AutoGenerateColumns = false;
@@ -221,25 +222,25 @@ namespace DatalistSyncUtil
             }
         }
 
-        private List<DataList> LoadDataList(string providerName, string connectionString)
+        private List<DataList> LoadDataList(Guid tenantID,string providerName, string connectionString)
         {
             List<DataList> result = null;
 
             using (IDbSession session = new DbSession(providerName, connectionString))
             {
-                result = new SearchDataListDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
+                result = new SearchDataListDaoHelper(new DataListsDbContext(session, true)).ExecuteDataListsProcedure(tenantID);
             }
 
-            this.Cache.Set("DataLists", result.OrderBy(o => o.ContentID).ToList(), 1440);
+            this.Cache.Set("DataLists" + tenantID.ToString(), result.OrderBy(o => o.ContentID).ToList(), 1440);
 
             return result;
         }
 
-        private List<CodeListModel> LoadDataListItems(string providerName, string connectionString)
+        private List<CodeListModel> LoadDataListItems(Guid tenantID, string providerName, string connectionString)
         {
-            if (this.Cache.IsSet("DataListItems"))
+            if (this.Cache.IsSet("DataListItems" + tenantID.ToString()))
             {
-                return this.Cache.Get<List<CodeListModel>>("DataListItems");
+                return this.Cache.Get<List<CodeListModel>>("DataListItems" + tenantID.ToString());
             }
 
             List<Task> tasks = new List<Task>();
@@ -253,27 +254,27 @@ namespace DatalistSyncUtil
             {
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    result = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(string.Empty);
+                    result = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(tenantID, string.Empty);
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    languages = new SearchDataListLanguagesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
+                    languages = new SearchDataListLanguagesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(tenantID);
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    resultmsg = new MessageCodeReadOnly(new DbSession(providerName, connectionString), "Source").SearchMessages();
+                    resultmsg = new MessageCodeReadOnly(new DbSession(providerName, connectionString), "Source").SearchMessages(tenantID);
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    resultlbl = new LabelsCodeReadOnly(new DbSession(providerName, connectionString), "Source").SearchLabels();
+                    resultlbl = new LabelsCodeReadOnly(new DbSession(providerName, connectionString), "Source").SearchLabels(tenantID);
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    resultsecrights = new SecurityCodeReadOnly(new DbSession(providerName, connectionString)).SearchCodeTables("Source");
+                    resultsecrights = new SecurityCodeReadOnly(new DbSession(providerName, connectionString)).SearchCodeTables(tenantID, "Source");
                 }));
             }
 
@@ -286,18 +287,18 @@ namespace DatalistSyncUtil
             result.AddRange(resultlbl);
             result.AddRange(resultsecrights);
       
-            this.Cache.Set("DataListItems", result, 1440);
+            this.Cache.Set("DataListItems" + tenantID.ToString(), result, 1440);
 
             return result;
         }
 
-        private List<CodeLinkTable> GetDataListItemLinks(string providerName, string connectionString)
+        private List<CodeLinkTable> GetDataListItemLinks(Guid tenantID, string providerName, string connectionString)
         {
             List<CodeLinkTable> linkers = null;
 
             using (IDbSession session = new DbSession(providerName, connectionString))
             {
-                linkers = new GetDataListItemLinksDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
+                linkers = new GetDataListItemLinksDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(tenantID);
             }
 
             return linkers;
@@ -321,10 +322,10 @@ namespace DatalistSyncUtil
                 }
             }
 
-            this.SourceLists = this.Cache.Get<List<DataList>>("DataLists");
-            this.SourceListItems = this.Cache.Get<List<CodeListModel>>("DataListItems");
+            this.SourceLists = this.Cache.Get<List<DataList>>("DataLists" + tenantID.ToString());
+            this.SourceListItems = this.Cache.Get<List<CodeListModel>>("DataListItems" + tenantID.ToString());
 
-            ///this.SourceLinks = this.Cache.Get<List<CodeLinkTable>>("DataListItemLinks");
+            ///this.SourceLinks = this.Cache.Get<List<CodeLinkTable>>("DataListItemLinks"); + tenantID.ToString());
             ///this.ListContents.Add("PlanManagement.DataList.SP29Test29123");
             ///this.ListContents.Add("ProviderManagement.DataList.RateType");
             ///this.ListContents.Add("ProviderManagement.DataList.RelationshipTypes");
@@ -583,7 +584,7 @@ namespace DatalistSyncUtil
 
         private void DataListView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            ListItems itemsPage = new ListItems((this.DataListView.Rows[e.RowIndex].DataBoundItem as DataList).ContentID, this.NoOfDays);
+            ListItems itemsPage = new ListItems(new Guid(this.TenantList.SelectedValue.ToString()), (this.DataListView.Rows[e.RowIndex].DataBoundItem as DataList).ContentID, this.NoOfDays);
             itemsPage.ShowDialog();
         }
 
@@ -623,9 +624,8 @@ namespace DatalistSyncUtil
 
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
 
-            lists = this.SourceLists.Where(w => w.TenantID == tenantID).ToList();
-            List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
-            foreach (DataList list in lists)
+            List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules" + tenantID.ToString());
+            foreach (DataList list in this.SourceLists)
             {
                 list1 = new DataListMainModel()
                 {

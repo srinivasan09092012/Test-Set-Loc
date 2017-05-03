@@ -154,9 +154,9 @@ namespace DatalistSyncUtil
 
             Guid tenantID = new Guid(this.tenantList.SelectedValue.ToString());
 
-            lists = this.LoadHelper.GetDataList().Where(w => w.TenantID == tenantID).ToList();
-            lists = this.LoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID).ToList();
-            listItems = this.LoadHelper.GetDataListItems();
+            lists = this.LoadHelper.GetDataList(tenantID);
+            lists = this.LoadHelper.GetAttributesList(tenantID);
+            listItems = this.LoadHelper.GetDataListItems(tenantID);
 
             foreach (DataList list in lists)
             {
@@ -190,9 +190,9 @@ namespace DatalistSyncUtil
 
             Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
 
-            lists = this.SourceLoadHelper.GetDataList().Where(w => w.TenantID == tenantID).ToList();
-            lists = this.SourceLoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID).ToList();
-            listItems = this.SourceLoadHelper.GetDataListItems();
+            lists = this.SourceLoadHelper.GetDataList(tenantID);
+            lists = this.SourceLoadHelper.GetAttributesList(tenantID);
+            listItems = this.SourceLoadHelper.GetDataListItems(tenantID);
 
             foreach (DataList list in lists)
             {
@@ -295,7 +295,7 @@ namespace DatalistSyncUtil
         private void LoadModules()
         {
             Guid tenantID = (this.tenantList.SelectedItem as TenantModel).TenantID;
-            List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+            List<TenantModuleModel> modules = this.LoadHelper.LoadModules(tenantID);
             modules.Insert(
                     0,
                     new TenantModuleModel()
@@ -304,7 +304,7 @@ namespace DatalistSyncUtil
                       TenantModuleId = Guid.Empty,
                       TenantId = tenantID
                     });
-            this.moduleList.DataSource = modules.Where(w => w.TenantId == tenantID).GroupBy(i => i.ModuleName)
+            this.moduleList.DataSource = modules.GroupBy(i => i.ModuleName)
                   .Select(group =>
                         new
                         {
@@ -325,7 +325,7 @@ namespace DatalistSyncUtil
         private void LoadSourceModules()
         {
             Guid tenantID = (this.sourceTenantList.SelectedItem as TenantModel).TenantID;
-            List<TenantModuleModel> modules = this.SourceLoadHelper.LoadModules();
+            List<TenantModuleModel> modules = this.SourceLoadHelper.LoadModules(tenantID);
             modules.Insert(
                 0, 
                 new TenantModuleModel()
@@ -334,7 +334,7 @@ namespace DatalistSyncUtil
                    TenantModuleId = Guid.Empty,
                    TenantId = tenantID
                   });
-            this.sourceModuleList.DataSource = modules.Where(w => w.TenantId == tenantID).GroupBy(i => i.ModuleName)
+            this.sourceModuleList.DataSource = modules.GroupBy(i => i.ModuleName)
                   .Select(group =>
                         new
                         {

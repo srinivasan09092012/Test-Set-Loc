@@ -94,7 +94,7 @@ namespace DatalistSyncUtil
 
         private void LoadModules()
         {
-            List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+            List<TenantModuleModel> modules = this.LoadHelper.LoadModules(this.TenantID);
             modules.Insert(
                    0, 
                    new TenantModuleModel()
@@ -103,7 +103,7 @@ namespace DatalistSyncUtil
                     TenantModuleId = Guid.Empty,
                     TenantId = this.TenantID
                    });
-            this.ModuleList.DataSource = modules.Where(w => w.TenantId == this.TenantID).GroupBy(i => i.ModuleName)
+            this.ModuleList.DataSource = modules.GroupBy(i => i.ModuleName)
                   .Select(group =>
                         new
                         {
@@ -894,7 +894,7 @@ namespace DatalistSyncUtil
 
         private void PreviewUpdate_Click(object sender, EventArgs e)
         {
-            PreviewPage previewPage = new PreviewPage(this.UpdateList, this.UpdateListItems, this.UpdateItemLanguages, this.UpdateAttribute);
+            PreviewPage previewPage = new PreviewPage(this.TenantID, this.UpdateList, this.UpdateListItems, this.UpdateItemLanguages, this.UpdateAttribute);
             previewPage.ShowDialog();
         }
 

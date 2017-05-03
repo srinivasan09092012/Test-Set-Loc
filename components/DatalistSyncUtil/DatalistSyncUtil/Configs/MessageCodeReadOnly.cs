@@ -9,6 +9,7 @@ using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Config.DAOHelpers;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
 using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -35,42 +36,42 @@ namespace DatalistSyncUtil.Configs
 
         public ConnectionStringSettings ConnectionString { get; set; }
 
-        public List<CodeListModel> SearchMessages(string contentID = null, string tenantID = null)
+        public List<CodeListModel> SearchMessages(Guid tenantID, string contentID = null)
         {
             List<CodeListModel> result = new List<CodeListModel>();
             List<Task> tasks = new List<Task>();
             List<Languages> languages = new List<Languages>();
 
-            if (!this.cachemanager.IsSet(this.messagesCacheKey))
+            if (!this.cachemanager.IsSet(this.messagesCacheKey + tenantID.ToString()))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
                     tasks.Add(Task.Factory.StartNew(() =>
                     {
-                        result = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteMessageProcedure();
+                        result = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteMessageProcedure(tenantID);
                     }));
 
                     tasks.Add(Task.Factory.StartNew(() =>
                     {
-                        languages = new SearchDataListLanguagesDaoHelper(new DataListsDbContext(session, true)).ExecuteMessageProcedure();
+                        languages = new SearchDataListLanguagesDaoHelper(new DataListsDbContext(session, true)).ExecuteMessageProcedure(tenantID);
                     }));
 
                     Task.WaitAll(tasks.ToArray());
                     tasks.Clear();
 
-                    if (!this.cachemanager.IsSet(this.dataListAttrKey))
+                    if (!this.cachemanager.IsSet(this.dataListAttrKey + tenantID.ToString()))
                     {
                         tasks.Add(Task.Factory.StartNew(() =>
                         {
-                            this.GetDataListAttributes();
+                            this.GetDataListAttributes(tenantID);
                         }));
                     }
 
-                    if (!this.cachemanager.IsSet(this.dataListItemAttrKey))
+                    if (!this.cachemanager.IsSet(this.dataListItemAttrKey + tenantID.ToString()))
                     {
                         tasks.Add(Task.Factory.StartNew(() =>
                         {
-                            this.GetDataListItemAttributes();
+                            this.GetDataListItemAttributes(tenantID);
                         }));
                     }
 
@@ -80,31 +81,29 @@ namespace DatalistSyncUtil.Configs
 
                 result.ForEach(x => x.LanguageList = languages.FindAll(c => c.CodeID == x.ID));
 
-                List<DataListAttribute> listAttributes = this.GetDataListAttributes();
-                List<DataListItemAttributeModel> itemAttributes = this.GetDataListItemAttributes();
-                result.ForEach(x => x.Attributes = this.ExpandAttributes(x, result, listAttributes, itemAttributes));
+                List<DataListAttribute> listAttributes = this.GetDataListAttributes(tenantID);
+                List<DataListItemAttributeModel> itemAttributes = this.GetDataListItemAttributes(tenantID);
+                result.ForEach(x => x.Attributes = this.ExpandAttributes(x, result, listAttributes, itemAttributes, tenantID));
 
-                this.cachemanager.Set(this.messagesCacheKey, result, this.cacheTimeInMins);
-                result = result.Where(x => (string.IsNullOrEmpty(contentID) || x.ContentID == contentID)
-                                        && (string.IsNullOrEmpty(tenantID) || x.TenantID.ToString() == tenantID))
+                this.cachemanager.Set(this.messagesCacheKey + tenantID.ToString(), result, this.cacheTimeInMins);
+                result = result.Where(x => (string.IsNullOrEmpty(contentID) || x.ContentID == contentID))
                                 .ToList();
             }
             else
             {
-                result = this.cachemanager.Get<List<CodeListModel>>(this.messagesCacheKey)
-                     .Where(x => (string.IsNullOrEmpty(contentID) || x.ContentID == contentID)
-                              && (string.IsNullOrEmpty(tenantID) || x.TenantID.ToString() == tenantID))
+                result = this.cachemanager.Get<List<CodeListModel>>(this.messagesCacheKey + tenantID.ToString())
+                     .Where(x => (string.IsNullOrEmpty(contentID) || x.ContentID == contentID))
                      .ToList();
             }
 
             return result;
         }
 
-        public List<DataListItemAttributeModel> ExpandAttributes(CodeListModel toExpand, List<CodeListModel> items, List<DataListAttribute> listAttributes, List<DataListItemAttributeModel> itemAttribues)
+        public List<DataListItemAttributeModel> ExpandAttributes(CodeListModel toExpand, List<CodeListModel> items, List<DataListAttribute> listAttributes, List<DataListItemAttributeModel> itemAttribues, Guid tenantID)
         {
-            if (!this.cachemanager.IsSet(this.dataListItemAttrKey))
+            if (!this.cachemanager.IsSet(this.dataListItemAttrKey + tenantID.ToString()))
             {
-                this.GetDataListItemAttributes();
+                this.GetDataListItemAttributes(tenantID);
             }
 
             var itemAttrValues = itemAttribues.FindAll(x => x.DataListItemID == toExpand.ID);
@@ -117,59 +116,41 @@ namespace DatalistSyncUtil.Configs
             return toExpand.Attributes.ToList();
         }
 
-        private List<DataListAttribute> GetDataListAttributes()
+        private List<DataListAttribute> GetDataListAttributes(Guid tenantID)
         {
             List<DataListAttribute> result = new List<DataListAttribute>();
-            if (!this.cachemanager.IsSet(this.dataListAttrKey))
+            if (!this.cachemanager.IsSet(this.dataListAttrKey + tenantID.ToString()))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
-                    result = new GetDataListAttributesDaoHelper(new DataListAttributeDbContext(session, true)).ExecuteProcedure();
-                    this.cachemanager.Set(this.dataListAttrKey, result, this.cacheTimeInMins);
+                    result = new GetDataListAttributesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(tenantID);
+                    this.cachemanager.Set(this.dataListAttrKey + tenantID.ToString(), result, this.cacheTimeInMins);
                 }
             }
             else
             {
-                result = this.cachemanager.Get<List<DataListAttribute>>(this.dataListAttrKey);
+                result = this.cachemanager.Get<List<DataListAttribute>>(this.dataListAttrKey + tenantID.ToString());
             }
 
             return result;
         }
 
-        private List<DataListItemAttributeModel> GetDataListItemAttributes()
+        private List<DataListItemAttributeModel> GetDataListItemAttributes(Guid tenantID)
         {
-            DataListItemAttributeModel dataItem = null;
             List<DataListItemAttributeModel> itemAtttributes = new List<DataListItemAttributeModel>();
-            List<DataListItemAttribute> attrValues = null;
 
-            if (!this.cachemanager.IsSet(this.dataListItemAttrKey))
+            if (!this.cachemanager.IsSet(this.dataListItemAttrKey + tenantID.ToString()))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
-                    attrValues = new GetDataListItemAttributesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
+                    itemAtttributes = new GetDataListItemAttributesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(tenantID);
                 }
 
-                foreach (DataListItemAttribute item in attrValues)
-                {
-                    dataItem = new DataListItemAttributeModel()
-                    {
-                        DataListAttributeID = item.DataListAttributeID,
-                        DataListAttributeName = string.Empty,
-                        DataListAttributeValue = string.Empty,
-                        DataListItemID = item.DataListItemID,
-                        DataListValueID = item.DataListValueID,
-                        ID = item.ID,
-                        LastModifiedDate = item.LastModifiedDate
-                    };
-
-                    itemAtttributes.Add(dataItem);
-                }
-
-                this.cachemanager.Set(this.dataListItemAttrKey, itemAtttributes, this.cacheTimeInMins);
+                this.cachemanager.Set(this.dataListItemAttrKey + tenantID.ToString(), itemAtttributes, this.cacheTimeInMins);
             }
             else
             {
-                itemAtttributes = this.cachemanager.Get<List<DataListItemAttributeModel>>(this.dataListItemAttrKey);
+                itemAtttributes = this.cachemanager.Get<List<DataListItemAttributeModel>>(this.dataListItemAttrKey + tenantID.ToString());
             }
 
             return itemAtttributes;
