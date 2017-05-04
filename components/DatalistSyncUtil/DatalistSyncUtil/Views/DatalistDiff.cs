@@ -338,7 +338,7 @@ namespace DatalistSyncUtil
             else
             {
 
-                MessageBox.Show("Insert Data List");
+              //  MessageBox.Show("Insert Data List");
             }
            
             return LinkItem.OrderBy(o => o.ParentID).ThenBy(t => t.ChildID).ToList();
