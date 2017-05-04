@@ -110,7 +110,6 @@ namespace DatalistSyncUtil
             List<CodeListModel> resultmsg = new List<CodeListModel>();
             List<CodeListModel> resultlbl = new List<CodeListModel>();
             List<CodeListModel> resultsecrights = new List<CodeListModel>();
-
             using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
             {
                 tasks.Add(Task.Factory.StartNew(() =>
@@ -120,7 +119,7 @@ namespace DatalistSyncUtil
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    languages = new SearchDataListLanguagesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
+                          languages = new SearchDataListLanguagesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
@@ -149,9 +148,8 @@ namespace DatalistSyncUtil
             result.AddRange(resultsecrights);
            
             this.Cache.Set("SourceDataListItems", result, 1440);
-
-            return result;
-        }
+           return result;
+       }
 
         public List<DataList> GetAttributesList()
         {
@@ -176,23 +174,46 @@ namespace DatalistSyncUtil
             return result;
         }
 
-        //public List<DataListItemAttributeModel> GetItemAttributeList()
-        //{
-        //    List<DataListItemAttributeModel> resultitems = null;
-        //    if (!this.Cache.IsSet("SourceDataListItemAttributes"))
-        //    {
-        //        using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
-        //        {
-        //            resultitems = new DataListAttributesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").GetDataListItemAttributes();
-        //            this.Cache.Set("SourceDataListItemAttributes", resultitems, 1440);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        resultitems = this.Cache.Get<List<DataListItemAttributeModel>>("SourceDataListItemAttributes");
-        //    }
+        ////public List<DataListItemAttributeModel> GetItemAttributeList()
+        ////{
+        ////    List<DataListItemAttributeModel> resultitems = null;
+        ////    if (!this.Cache.IsSet("SourceDataListItemAttributes"))
+        ////    {
+        ////        using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+        ////        {
+        ////            resultitems = new DataListAttributesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").GetDataListItemAttributes();
+        ////            this.Cache.Set("SourceDataListItemAttributes", resultitems, 1440);
+        ////        }
+        ////    }
+        ////    else
+        ////    {
+        ////        resultitems = this.Cache.Get<List<DataListItemAttributeModel>>("SourceDataListItemAttributes");
+        ////    }
 
-        //    return resultitems;
-        //}
+        ////    return resultitems;
+        ////}
+
+        public List<CodeLinkTable> GetDataListLinks()
+        {
+            List<CodeLinkTable> result = null;
+            List<CodeListModel> resultitems = null;
+
+            if (!this.Cache.IsSet("SourceDataListLinks"))
+            {
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    resultitems = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(string.Empty);
+
+                    result = new DataListLinksReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").SearchCodeTables(resultitems);
+                   this.Cache.Set("SourceDataListLinks", result, 1440);
+                }
+            }
+            else
+            {
+                result = this.Cache.Get<List<CodeLinkTable>>("SourceDataListLinks");
+            }
+
+            return result;
+        }
     }
 }

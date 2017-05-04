@@ -22,7 +22,7 @@ namespace DatalistSyncUtil.Views
             this.InitializeComponent();
         }
 
-        public PreviewPage(List<DataListMainModel> finalList, List<CodeItemModel> finalListItems, List<ItemLanguage> finalLanguages, List<ItemAttribute> finalAttributes)
+        public PreviewPage(List<DataListMainModel> finalList, List<CodeItemModel> finalListItems, List<ItemLanguage> finalLanguages, List<ItemAttribute> finalAttributes,List<DataListItemLink> finalLinkList)
         {
             this.InitializeComponent();
 
@@ -31,6 +31,7 @@ namespace DatalistSyncUtil.Views
             this.FinalListItems = finalListItems;
             this.FinalItemLanguages = finalLanguages;
             this.FinalAttributes = finalAttributes;
+            this.FinalListLinkItems = finalLinkList;
             this.LoadHelper = new TenantHelper();
             this.TargetDataList = this.LoadHelper.GetDataList();
             this.LoadTreeView(this.PreviewTreeList, this.FinalList);
@@ -41,6 +42,8 @@ namespace DatalistSyncUtil.Views
         public List<DataListMainModel> FinalList { get; set; }
 
         public List<CodeItemModel> FinalListItems { get; set; }
+
+        public List<DataListItemLink> FinalListLinkItems { get; set; }
 
         public List<ItemLanguage> FinalItemLanguages { get; set; }
 
@@ -57,8 +60,37 @@ namespace DatalistSyncUtil.Views
             this.SaveDatalistItems();
 
             this.SaveDataListAttributes();
+            this.SaveDataItemLink();
         }
 
+
+        private void SaveDataItemLink()
+        {
+            List<DataList> dataList = this.LoadHelper.GetDataList();
+            DataList Parentlist = null;
+            DataList childlist = null;
+            if (this.FinalListLinkItems != null)
+            {
+                this.FinalListLinkItems.ForEach(f =>
+                {
+                    Parentlist = dataList.Where(e => e.ContentID == f.ParentDataList && e.TenantID == f.TenantID).FirstOrDefault();
+                    childlist = dataList.Where(e => e.ContentID == f.ChildDataList && e.TenantID == f.TenantID).FirstOrDefault();
+                    if (Parentlist != null && childlist !=null)
+                    {
+                        f.ParentID = Parentlist.ID;
+                        f.ChildID = childlist.ID;
+                        if (f.Status == "DATALIST_NEW")
+                        {
+                            this.LoadHelper.AddDataListLink(f);
+                        }
+                        else
+                        {
+                           this.LoadHelper.UpdateDatalistLink(f);
+                        }
+                    }
+                });
+            }
+        }
         private void SaveDataListAttributes()
         {
             List<DataList> dataList = this.LoadHelper.GetDataList();
@@ -178,6 +210,7 @@ namespace DatalistSyncUtil.Views
         private void LoadTreeView(TreeView treeView, List<DataListMainModel> lists)
         {
             TreeNode listNode = null;
+            TreeNode ParentlistNode = null;
             List<TreeNode> itemNodes = null;
             List<TreeNode> itemNodesAttribute = null;
             TreeNode dataListNode = null;
@@ -208,6 +241,22 @@ namespace DatalistSyncUtil.Views
                     {
                         this.GetTreeAttributeItems(itemNodesAttribute, f.Trim());
                         listNode = new TreeNode(f.Trim(), itemNodesAttribute.ToArray());
+                        if (itemNodesAttribute.Count != 0)
+                        {
+                            treeView.Nodes.Add(listNode);
+                            isParentModeAdded = true;
+                        }
+                    }
+
+                    if (this.FinalListLinkItems != null)
+                    {
+                        this.GetTreeLinkItems(itemNodesAttribute, f.Trim());
+                        ParentlistNode = new TreeNode(f.Trim());
+                        treeView.Nodes.Add(listNode);
+                        f = itemNodesAttribute[0].Text;
+                        itemNodesAttribute.RemoveAt(0);
+                        listNode = new TreeNode(f.Trim(), itemNodesAttribute.ToArray());
+                       // listNode = new TreeNode(f.Trim(), itemNodesAttribute.ToArray());
                         if (itemNodesAttribute.Count != 0)
                         {
                             treeView.Nodes.Add(listNode);
@@ -259,6 +308,22 @@ namespace DatalistSyncUtil.Views
             items.ForEach(f =>
             {
                 node = new TreeNode(f.ContentID + separator + f.Code);
+                itemNodes.Add(node);
+            });
+        }
+
+        private void GetTreeLinkItems(List<TreeNode> itemNodes, string contentID)
+        {
+            TreeNode node = null;
+            string separator = " - ";
+            List<DataListItemLink> items = this.FinalListLinkItems.FindAll(f => f.ParentDataList.Trim() == contentID);
+            node = new TreeNode(items[0].ParentCode);
+            itemNodes.Add(node);
+            items.ForEach(f =>
+            {
+            // node = new TreeNode(f.ParentDataList + separator + f.ParentCode + separator + f.ChildDataList+ separator + f.Description);
+              
+               node = new TreeNode(f.ChildDataList + separator + f.Description);
                 itemNodes.Add(node);
             });
         }
@@ -318,6 +383,18 @@ namespace DatalistSyncUtil.Views
                     if (!listContents.Contains(f.ContentID.Trim()))
                     {
                         listContents.Add(f.ContentID.Trim());
+                    }
+                });
+            }
+
+            if (this.FinalListLinkItems != null)
+            {
+                this.FinalListLinkItems.ForEach(f =>
+                {
+                    if (!listContents.Contains(f.ParentDataList.Trim()))
+                    {
+                        listContents.Add(f.ParentDataList.Trim());
+                        //listContents.Add(f.ParentCode.Trim());
                     }
                 });
             }

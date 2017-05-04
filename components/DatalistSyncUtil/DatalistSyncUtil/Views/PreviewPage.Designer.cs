@@ -45,17 +45,18 @@ namespace DatalistSyncUtil.Views
             // 
             // PreviewTreeList
             // 
-            this.PreviewTreeList.Location = new System.Drawing.Point(12, 12);
+            this.PreviewTreeList.Location = new System.Drawing.Point(9, 10);
+            this.PreviewTreeList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PreviewTreeList.Name = "PreviewTreeList";
-            this.PreviewTreeList.Size = new System.Drawing.Size(1142, 716);
+            this.PreviewTreeList.Size = new System.Drawing.Size(858, 582);
             this.PreviewTreeList.TabIndex = 6;
             // 
             // Submit
             // 
-            this.Submit.Enabled = false;
-            this.Submit.Location = new System.Drawing.Point(1079, 734);
+            this.Submit.Location = new System.Drawing.Point(809, 596);
+            this.Submit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Submit.Name = "Submit";
-            this.Submit.Size = new System.Drawing.Size(75, 29);
+            this.Submit.Size = new System.Drawing.Size(56, 24);
             this.Submit.TabIndex = 7;
             this.Submit.Text = "Submit";
             this.Submit.UseVisualStyleBackColor = true;
@@ -63,9 +64,10 @@ namespace DatalistSyncUtil.Views
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(998, 734);
+            this.btnCancel.Location = new System.Drawing.Point(748, 596);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 29);
+            this.btnCancel.Size = new System.Drawing.Size(56, 24);
             this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -73,12 +75,13 @@ namespace DatalistSyncUtil.Views
             // 
             // PreviewPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1162, 765);
+            this.ClientSize = new System.Drawing.Size(872, 622);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.Submit);
             this.Controls.Add(this.PreviewTreeList);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "PreviewPage";
             this.Text = "Preview";
             this.ResumeLayout(false);

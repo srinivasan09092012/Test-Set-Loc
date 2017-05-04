@@ -49,9 +49,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.1.0.0\lib\net45\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Oracle.DataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
@@ -71,6 +71,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -82,14 +83,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configs\DataListLinksReadOnly.cs" />
     <Compile Include="Configs\DataListAttributesReadOnly.cs" />
     <Compile Include="Configs\LabelsCodeReadOnly.cs" />
     <Compile Include="Configs\MessageCodeReadOnly.cs" />
     <Compile Include="Configs\SecurityCodeReadOnly.cs" />
+    <Compile Include="DaoHelpers\AddDataListLinkDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataAttributesDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataListDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataListItemLanguageDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataListItemDaoHelper.cs" />
+    <Compile Include="DaoHelpers\UpdateDataListLinkDaoHelper .cs" />
     <Compile Include="DaoHelpers\UpdateDataListAttributesDaoHelper.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
@@ -98,6 +102,12 @@
     <Compile Include="DaoHelpers\UpdateDataListItemDaoHelper.cs" />
     <Compile Include="Helpers\SourceTenantHelper.cs" />
     <Compile Include="Models\ItemAttribute.cs" />
+    <Compile Include="Models\DatalistLinkModel.cs" />
+    <Compile Include="Service References\DataListsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Views\DatalistDiff.cs">
       <SubType>Form</SubType>
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
@@ -170,6 +180,7 @@
     <EmbeddedResource Include="Views\PreviewPage.resx">
       <DependentUpon>PreviewPage.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -179,6 +190,35 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Service References\DataListsService\DataListsService.wsdl" />
+    <None Include="Service References\DataListsService\DataListsService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataListsService\DataListsService1.wsdl" />
+    <None Include="Service References\DataListsService\DataListsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataListsService\DataListsService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataListsService\DataListsService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataListsService\DataListsService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataListsService\DataListsService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataListsService\DataListsService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataListsService\DataListsService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataListsService\DataListsService8.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -190,9 +230,30 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Service References\DataListsService\DatalistSyncUtil.DataListsService.DataListItemAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DataListsService\DatalistSyncUtil.DataListsService.DataListItemUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DataListsService\DatalistSyncUtil.DataListsService.DataListsAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DataListsService\DatalistSyncUtil.DataListsService.DataListsUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DataListsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\DataListsService\configuration.svcinfo" />
+    <None Include="Service References\DataListsService\configuration91.svcinfo" />
+    <None Include="Service References\DataListsService\DataListsService.disco" />
     <EmbeddedResource Include="Images\FileExplorer.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- Additions for StyleCop -->
   <PropertyGroup>
@@ -204,7 +265,9 @@
       <Visible>False</Visible>
     </ExcludeFromStyleCop>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\DataListsService\" />
+  </ItemGroup>
   <!-- This import statement actually runs StyleCop, by configuring its targets to run automatically - so no explicit target call (if you are looking for one) -->
   <Import Project="$(StyleCopTargetFilePath)" Condition="Exists('$(StyleCopTargetFilePath)') and '$(Configuration)|$(Platform)' == 'Debug|AnyCPU'" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

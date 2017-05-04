@@ -15,6 +15,7 @@ namespace DatalistSyncUtil
         public DataListMainModel()
         {
             this.Items = new List<CodeItemModel>();
+            this.ListLinkitem = new List<CodeItemModel>();
         }
 
         public Guid ID { get; set; }
@@ -44,5 +45,7 @@ namespace DatalistSyncUtil
         public int ItemsCount { get; set; }
 
         public List<ItemAttribute> DataListAttributes { get; set; }
+
+        public List<CodeItemModel> ListLinkitem { get; set; }
     }
 }

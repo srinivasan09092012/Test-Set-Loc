@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using DatalistSyncUtil.DataListsService;
 
 namespace DatalistSyncUtil
 {
@@ -15,6 +16,7 @@ namespace DatalistSyncUtil
         public CodeItemModel()
         {
             this.LanguageList = new List<ItemLanguage>();
+            this.DataListLink = new List<DataListItemLink>();
         }
 
         public Guid ID { get; set; }
@@ -32,6 +34,8 @@ namespace DatalistSyncUtil
         public int? OrderIndex { get; set; }
 
         public List<ItemLanguage> LanguageList { get; set; }
+
+        public List<DataListItemLink> DataListLink { get; set; }
 
         public bool EffectiveStartDateModified { get; set; }
 

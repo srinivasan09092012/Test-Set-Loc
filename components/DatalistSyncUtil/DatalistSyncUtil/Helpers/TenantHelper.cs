@@ -247,7 +247,26 @@ namespace DatalistSyncUtil
             return success;
         }
 
-        public bool UpdateDatalistItem(CodeItemModel cmd)
+        public bool AddDataListLink(DataListItemLink cmd)
+        {
+            bool success = true;
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new AddDataListLinkDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
+                }
+            }
+
+            return success;
+        }
+
+       public bool UpdateDatalistItem(CodeItemModel cmd)
         {
             using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
             {
@@ -286,6 +305,22 @@ namespace DatalistSyncUtil
                 try
                 {
                     new UpdateDataListAttributesDaoHelper(new DataListAttributeDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch
+                {
+                }
+            }
+
+            return true;
+        }
+
+        public bool UpdateDatalistLink(DataListItemLink cmd)
+        {
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new UpdateDataListLinkDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
                 }
                 catch
                 {

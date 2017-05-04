@@ -14,6 +14,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
+
 namespace DatalistSyncUtil
 {
     public partial class DatalistComparer : Form
@@ -34,6 +35,7 @@ namespace DatalistSyncUtil
         }
 
         public List<DataListMainModel> SourceList { get; set; }
+        public List<CodeLinkTable> SourceLink { get; set; }
 
         public List<DataListMainModel> TargetList { get; set; }
 
@@ -44,6 +46,8 @@ namespace DatalistSyncUtil
         public ConnectionStringSettings TargetConnectionString { get; set; }
 
         public ConnectionStringSettings SourceConnectionString { get; set; }
+
+       public List<CodeLinkTable> listlink = new List<CodeLinkTable>();
 
         private void BtnSourceFile_Click(object sender, EventArgs e)
         {
@@ -157,6 +161,8 @@ namespace DatalistSyncUtil
             lists = this.LoadHelper.GetDataList().Where(w => w.TenantID == tenantID).ToList();
             lists = this.LoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID).ToList();
             listItems = this.LoadHelper.GetDataListItems();
+            listlink = this.SourceLoadHelper.GetDataListLinks();
+            //lists = lists.Where(w => w.ContentID == "Core.DataList.ProviderTypes").ToList();
 
             foreach (DataList list in lists)
             {
@@ -187,13 +193,13 @@ namespace DatalistSyncUtil
             List<CodeListModel> listItems = null;
             List<DataListMainModel> listsMain = new List<DataListMainModel>();
             DataListMainModel list1 = null;
-
+           // List<CodeLinkTable> listlink = new List<CodeLinkTable>();
             Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
-
             lists = this.SourceLoadHelper.GetDataList().Where(w => w.TenantID == tenantID).ToList();
             lists = this.SourceLoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID).ToList();
             listItems = this.SourceLoadHelper.GetDataListItems();
-
+            listlink = this.SourceLoadHelper.GetDataListLinks();
+          // lists = lists.Where(w => w.ContentID == "Core.DataList.ProviderTypes").ToList();
             foreach (DataList list in lists)
             {
                 list1 = new DataListMainModel()
@@ -208,21 +214,23 @@ namespace DatalistSyncUtil
                     TenantModuleID = list.TenantModuleID,
                     ID = list.ID,
                     DataListAttributes = this.ConverttoAttributes(list.DataListAttributes, list.ContentID, list.TenantID, list.ID)
+                   
                 };
-
                 listsMain.Add(list1);
-            }
-
+}
+            
             return listsMain;
+
         }
 
         private List<CodeItemModel> ConvertToCustomDataListItems(string contentID, Guid tenantID, List<CodeListModel> listItems)
         {
             List<CodeItemModel> items = new List<CodeItemModel>();
-            CodeItemModel item = null;
-            listItems = listItems.Where(w => w.ContentID == contentID && w.TenantID == tenantID).ToList();
+            List<CodeListModel> itemList = new List<CodeListModel>();
+             CodeItemModel item = null;
+            itemList = listItems.Where(w => w.ContentID == contentID && w.TenantID == tenantID).ToList();
 
-            listItems.ForEach(e =>
+            itemList.ForEach(e =>
             {
                 item = new CodeItemModel()
                 {
@@ -235,13 +243,46 @@ namespace DatalistSyncUtil
                     LanguageList = this.GetLanguageListCustom(e.LanguageList),
                     OrderIndex = e.OrderIndex,
                     TenantID = e.TenantID,
-                    ID = e.ID
-                    
+                    ID = e.ID,
+                    DataListLink = this.GetcoustmItemLink(e.ContentID, e.ID, listlink, e.OrderIndex,e.LanguageList,  listItems, e.TenantID),
+
+
                 };
                 items.Add(item);
             });
 
             return items;
+        }
+        private List<DataListItemLink> GetcoustmItemLink(string ContentID,Guid id,List<CodeLinkTable> link, int ? OrderIndex,List<Languages>Language, List<CodeListModel> listItems,Guid TenantID)
+        {
+            List<DataListItemLink> listlink = new List<DataListItemLink>();
+            DataListItemLink itemlink  = null;
+
+            List<CodeListModel> listItemschild = new List<CodeListModel>();
+            link = link.Where(w=> w.ParentID == id).ToList();
+           
+            
+
+            link.ForEach(e =>
+            {
+                listItemschild = listItems.Where(w => w.ID == e.ChildID).ToList();
+                if(listItemschild.Count()>0)
+                itemlink = new DataListItemLink()
+                {
+                    ParentDataList = ContentID,
+                    ChildDataList = listItemschild[0].ContentID,
+                    ParentCode = Convert.ToString(OrderIndex)+"-"+Language[0].Description,
+                    ParentID = e.ParentID,
+                    ChildID = e.ChildID,
+                    IsActive = e.IsActive,
+                    Description= listItemschild[0].OrderIndex+"-"+ listItemschild[0].LanguageList[0].Description,
+                    TenantID= TenantID
+
+                };
+                listlink.Add(itemlink);
+            });
+            
+            return listlink;
         }
 
         private List<ItemAttribute> ConverttoAttributes(List<DataListAttribute> list, string parentContentId, Guid tenantID, Guid dataListID)
@@ -396,6 +437,5 @@ namespace DatalistSyncUtil
             this.LoadTreeView(this.sourceTreeList, filteredDataList.OrderBy(o => o.ContentID).ToList());
             Cursor.Current = Cursors.Default;
         }
-
     }
 }
