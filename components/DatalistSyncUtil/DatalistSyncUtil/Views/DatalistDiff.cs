@@ -204,15 +204,16 @@ namespace DatalistSyncUtil
 
         private void Add_Udate_Link()
         {
-           // this.GetNewDatalistItemsLINKFromExistingList();
-        }
-        private List<CodeItemModel> GetNewDatalistItemsFromExistingList()
-        {
-            List<CodeItemModel> newDatalistItemsFromUpdateList = new List<CodeItemModel>();
+            List<DataListItemLink> newDatalistItemsFromUpdateList = new List<DataListItemLink>();
+            List<DataListItemLink> newDatalistItemsLink = new List<DataListItemLink>();
+            CodeItemModel dataListItemsLink = new CodeItemModel();
             List<CodeItemModel> sourceDatalistItems = null;
             List<CodeItemModel> targetDatalistItems = null;
             List<CodeItemModel> dataListItems = null;
-
+            List<DataListItemLink> SourcenewLinkItem = new List<DataListItemLink>();
+            List<DataListItemLink> TargetnewLinkItem = new List<DataListItemLink>();
+            List<DataListItemLink> updatedLink = new List<DataListItemLink>();
+            List<DataListItemLink> updatedTargetLink = new List<DataListItemLink>();
             List<string> dataLists = this.SourceList.Select(c => c.ContentID).Intersect(this.TargetList.Select(c => c.ContentID)).ToList();
             dataLists.ForEach(f =>
             {
@@ -220,28 +221,24 @@ namespace DatalistSyncUtil
                 targetDatalistItems = this.TargetList.Find(e => e.ContentID == f).Items;
                 if (sourceDatalistItems.Count() == targetDatalistItems.Count())
                 {
-                    GetNewDatalistItemsLINKFromExistingList(sourceDatalistItems, targetDatalistItems);
+                    newDatalistItemsFromUpdateList = this.NewLinkItemList(sourceDatalistItems, targetDatalistItems);
+                    newDatalistItemsLink.AddRange(newDatalistItemsFromUpdateList);
                 }
                 
 
-                dataListItems = sourceDatalistItems.Where(b => !targetDatalistItems.Any(a => a.ContentID == b.ContentID && a.Code == b.Code && a.IsActive == b.IsActive)).ToList();
-
-                if (dataListItems != null && dataListItems.Count > 0)
-                {
-                    newDatalistItemsFromUpdateList.AddRange(dataListItems);
-                }
             });
-         
-             return newDatalistItemsFromUpdateList.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
-        }
+            for (int i = 0; i < sourceDatalistItems.Count(); i++)
+            {
+                SourcenewLinkItem = sourceDatalistItems[i].DataListLink;
+                TargetnewLinkItem = targetDatalistItems[i].DataListLink;
+                if (TargetnewLinkItem.Count() == SourcenewLinkItem.Count())
+                {
+                    KeyValuePair < List<DataListItemLink>, List < DataListItemLink >> result= this.LoadUpdateLinkItem(sourceDatalistItems, targetDatalistItems);
+                    updatedLink.AddRange(result.Key);
+                    updatedTargetLink.AddRange(result.Value);
+                }
+            }
 
-        private void  GetNewDatalistItemsLINKFromExistingList(List<CodeItemModel> sourceDatalistItems, List<CodeItemModel> targetDatalistItems)
-        {
-            List<DataListItemLink> newDatalistItemsFromUpdateList = new List<DataListItemLink>();
-            List<DataListItemLink> newDatalistItemsLink = new List<DataListItemLink>();
-            CodeItemModel dataListItemsLink = new CodeItemModel();
-            newDatalistItemsFromUpdateList = this.NewLinkItemList(sourceDatalistItems, targetDatalistItems);
-            newDatalistItemsLink.AddRange(newDatalistItemsFromUpdateList);
 
             Guid tenantModuleId = (this.ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
             string moduleName = (this.ModuleList.SelectedItem as TenantModuleModel).ModuleName;
@@ -255,9 +252,50 @@ namespace DatalistSyncUtil
             this.NewLinkItem = newDatalistItemsLink;
             this.LinkgridView.AutoGenerateColumns = false;
             this.LinkgridView.DataSource = new BindingList<DataListItemLink>(newDatalistItemsLink);
-            this.LoadUpdateLinkItem(sourceDatalistItems, targetDatalistItems);
+
+            this.SourceLinkView.AutoGenerateColumns = false;
+            this.TargetLinkView.AutoGenerateColumns = false;
+            if (tenantModuleId != Guid.Empty)
+            {
+                updatedLink = updatedLink.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
+                updatedTargetLink = updatedTargetLink.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
+            }
+
+            this.UpdateLink = updatedLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
+            this.UpdatedTargetLink = updatedTargetLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
+            this.SourceLinkView.DataSource = new BindingList<DataListItemLink>(updatedLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+            this.TargetLinkView.DataSource = new BindingList<DataListItemLink>(updatedTargetLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+
+
+
+
+
         }
-        private void LoadUpdateLinkItem(List<CodeItemModel> sourceDatalistItems, List<CodeItemModel> targetDatalistItems)
+        private List<CodeItemModel> GetNewDatalistItemsFromExistingList()
+        {
+            List<CodeItemModel> newDatalistItemsFromUpdateList = new List<CodeItemModel>();
+            List<CodeItemModel> sourceDatalistItems = null;
+            List<CodeItemModel> targetDatalistItems = null;
+            List<CodeItemModel> dataListItems = null;
+
+            List<string> dataLists = this.SourceList.Select(c => c.ContentID).Intersect(this.TargetList.Select(c => c.ContentID)).ToList();
+            dataLists.ForEach(f =>
+            {
+                sourceDatalistItems = this.SourceList.Find(e => e.ContentID == f).Items;
+                targetDatalistItems = this.TargetList.Find(e => e.ContentID == f).Items;
+                
+               dataListItems = sourceDatalistItems.Where(b => !targetDatalistItems.Any(a => a.ContentID == b.ContentID && a.Code == b.Code && a.IsActive == b.IsActive)).ToList();
+
+                if (dataListItems != null && dataListItems.Count > 0)
+                {
+                    newDatalistItemsFromUpdateList.AddRange(dataListItems);
+                }
+            });
+         
+             return newDatalistItemsFromUpdateList.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
+        }
+
+        private KeyValuePair<List<DataListItemLink>, List<DataListItemLink>> LoadUpdateLinkItem(List<CodeItemModel> sourceDatalistItems, List<CodeItemModel> targetDatalistItems)
         {
             List<DataListItemLink> updatedLink = new List<DataListItemLink>();
             List<DataListItemLink> updatedTargetLink = new List<DataListItemLink>();
@@ -287,22 +325,8 @@ namespace DatalistSyncUtil
 
                 }
             }
-            this.SourceLinkView.AutoGenerateColumns = false;
-            this.TargetLinkView.AutoGenerateColumns = false;
 
-            Guid tenantModuleId = (this.ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
-            string moduleName = (this.ModuleList.SelectedItem as TenantModuleModel).ModuleName;
-
-            if (tenantModuleId != Guid.Empty)
-            {
-                updatedLink = updatedLink.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
-                updatedTargetLink = updatedTargetLink.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
-            }
-
-            this.UpdateLink = updatedLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
-            this.UpdatedTargetLink = updatedTargetLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
-            this.SourceLinkView.DataSource = new BindingList<DataListItemLink>(updatedLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
-            this.TargetLinkView.DataSource = new BindingList<DataListItemLink>(updatedTargetLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+           return new KeyValuePair<List<DataListItemLink>, List<DataListItemLink>>((updatedLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList()), updatedTargetLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
         }
         private List<DataListItemLink> NewLinkItemList(List<CodeItemModel> sourceDatalistItems, List<CodeItemModel> targetDatalistItems)
         {
