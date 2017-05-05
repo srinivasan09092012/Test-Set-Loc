@@ -6,7 +6,6 @@
 //-----------------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
-using DatalistSyncUtil.DataListsService;
 
 namespace DatalistSyncUtil
 {

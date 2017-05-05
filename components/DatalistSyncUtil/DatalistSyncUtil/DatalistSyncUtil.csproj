@@ -103,11 +103,6 @@
     <Compile Include="Helpers\SourceTenantHelper.cs" />
     <Compile Include="Models\ItemAttribute.cs" />
     <Compile Include="Models\DatalistLinkModel.cs" />
-    <Compile Include="Service References\DataListsService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Views\DatalistDiff.cs">
       <SubType>Form</SubType>
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
@@ -190,35 +185,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\DataListsService\DataListsService.wsdl" />
-    <None Include="Service References\DataListsService\DataListsService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DataListsService\DataListsService1.wsdl" />
-    <None Include="Service References\DataListsService\DataListsService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DataListsService\DataListsService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DataListsService\DataListsService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DataListsService\DataListsService4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DataListsService\DataListsService5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DataListsService\DataListsService6.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DataListsService\DataListsService7.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DataListsService\DataListsService8.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -230,25 +196,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Service References\DataListsService\DatalistSyncUtil.DataListsService.DataListItemAdded.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\DataListsService\DatalistSyncUtil.DataListsService.DataListItemUpdated.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\DataListsService\DatalistSyncUtil.DataListsService.DataListsAdded.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\DataListsService\DatalistSyncUtil.DataListsService.DataListsUpdated.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\DataListsService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\DataListsService\configuration.svcinfo" />
-    <None Include="Service References\DataListsService\configuration91.svcinfo" />
-    <None Include="Service References\DataListsService\DataListsService.disco" />
     <EmbeddedResource Include="Images\FileExplorer.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -264,9 +211,6 @@
     <ExcludeFromStyleCop Include="$(IntermediateOutputPath)\**\*.cs">
       <Visible>False</Visible>
     </ExcludeFromStyleCop>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\DataListsService\" />
   </ItemGroup>
   <!-- This import statement actually runs StyleCop, by configuring its targets to run automatically - so no explicit target call (if you are looking for one) -->
   <Import Project="$(StyleCopTargetFilePath)" Condition="Exists('$(StyleCopTargetFilePath)') and '$(Configuration)|$(Platform)' == 'Debug|AnyCPU'" />
