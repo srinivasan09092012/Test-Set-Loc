@@ -10,7 +10,6 @@ using MainEvent.Core;
 using MainEvent.Core.Messages;
 using MainEvent.Core.Services;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 using CoreInterfaces = HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
 
@@ -64,9 +63,11 @@ namespace MainEvent.ViewModel
                     }
                 });
 
+                this.SetStatus("Replaying events...");
+
                 new EventReplayer().Replay(context);
 
-                MessageBox.Show("Replay completed successfully");
+                this.SetStatus("Event replay completed successfully");
             }).ContinueWith(t =>
             {
                 if (t.IsFaulted)

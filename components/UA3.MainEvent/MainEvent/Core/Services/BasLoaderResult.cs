@@ -20,13 +20,13 @@ namespace MainEvent.Core.Services
 
         public string Path { get; private set; }
 
-        public string ApplicationName { get; internal set; }
+        public string ApplicationName { get; set; }
 
-        public string ModuleName { get; internal set; }
+        public string ModuleName { get; set; }
 
-        public TenantBasConfiguration Configuration { get; internal set; }
+        public TenantBasConfiguration Configuration { get; set; }
 
-        public List<Assembly> Assemblies { get; internal set; }
+        public List<Assembly> Assemblies { get; private set; }
 
         public BasReflector CreateReflector()
         {

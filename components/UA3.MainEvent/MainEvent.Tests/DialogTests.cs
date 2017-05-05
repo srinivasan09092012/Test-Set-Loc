@@ -4,27 +4,34 @@
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
 // Violators may be punished to the full extent of the law.
 //-----------------------------------------------------------------------------------------
-using MainEvent.Core.Services;
+using MainEvent.ViewModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Configuration;
+using System.Reflection;
 
-namespace MainEvent.Tests.Core.Services
+namespace MainEvent.Tests
 {
     [TestClass]
-    public class OracleDbServiceTests
+    public class DialogTests
     {
         [TestMethod]
         [TestCategory("IgnoreOnBuild")]
-        public void OracleDbService_should_get_aggregates_from_range()
+        public void ErrorMessage_dialog_test()
         {
-            var cs = ConfigurationManager.ConnectionStrings["Employee"];
-            using (var svc = new OracleDbService(cs.ConnectionString, cs.ProviderName))
+            try
             {
-                DateTime start = DateTime.Parse("01/01/2017");
-                DateTime end = DateTime.Parse("01/01/2018");
-                var result = svc.GetAggregatesWithCommitsBetween(start, end);
+                this.Throw();
             }
+            catch (Exception ex)
+            {
+                ViewModelExtensions.ShowErrorMessage(null, "Description", new AggregateException(ex));
+            }
+        }
+
+        private void Throw()
+        {
+            var ex = new InvalidOperationException();
+            throw new TargetInvocationException(ex);
         }
     }
 }

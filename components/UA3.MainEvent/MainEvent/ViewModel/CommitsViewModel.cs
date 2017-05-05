@@ -56,7 +56,7 @@ namespace MainEvent.ViewModel
 
                     if (ids.Count == 0)
                     {
-                        MessageBox.Show("No aggregates found within the specified date range", "UA3 Main Event", MessageBoxButton.OK, MessageBoxImage.Information);
+                        this.windowService.ShowMessageBox("No aggregates found within the specified date range", "UA3 Main Event", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     else
                     {

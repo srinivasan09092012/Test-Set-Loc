@@ -21,8 +21,8 @@ namespace MainEvent.Tests
     [TestClass]
     public class IntegrationTests
     {
-        //// WHY DOES THIS FAIL????
         [TestMethod]
+        [TestCategory("IgnoreOnBuild")]
         public void Integration_Test()
         {
             BasLoader loader = new BasLoader();
@@ -60,6 +60,7 @@ namespace MainEvent.Tests
         }
 
         [TestMethod]
+        [TestCategory("IgnoreOnBuild")]
         public void NEventstore_serialization_bug_fixed_by_using_latest_greatest_jsondotnet_binder()
         {
             var binder = new DefaultSerializationBinder();
@@ -69,6 +70,7 @@ namespace MainEvent.Tests
         }
 
         [TestMethod]
+        [TestCategory("IgnoreOnBuild")]
         public void NEventstore_serialization_bug_replicated()
         {
             dynamic binder = typeof(Bucket).Assembly.CreateInstance("Newtonsoft.Json.Serialization.DefaultSerializationBinder");

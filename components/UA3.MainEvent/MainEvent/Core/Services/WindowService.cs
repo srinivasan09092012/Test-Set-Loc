@@ -58,14 +58,19 @@ namespace MainEvent.Core.Services
                         .AppendLine("Continue with delete?")
                         .ToString();
 
-            return MessageBox.Show(message, "UA3 Main Event - Input Required", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            return this.ShowMessageBox(message, "UA3 Main Event - Input Required", MessageBoxButton.YesNo, MessageBoxImage.Question);
         }
 
         public MessageBoxResult PromptAggregateDeletes(int total)
         {
             string message = "This will delete {0} aggregates from the commits table. Continue?";
 
-            return MessageBox.Show(message, "UA3 Main Event - Input Required", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            return this.ShowMessageBox(message, "UA3 Main Event - Input Required", MessageBoxButton.YesNo, MessageBoxImage.Question);
+        }
+
+        public virtual MessageBoxResult ShowMessageBox(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon)
+        {
+            return MessageBox.Show(messageBoxText, caption, button, icon);
         }
     }
 }

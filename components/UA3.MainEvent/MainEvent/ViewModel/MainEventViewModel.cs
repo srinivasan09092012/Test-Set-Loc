@@ -8,6 +8,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Threading;
 using MainEvent.Core.Services;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace MainEvent.ViewModel
 {
@@ -16,6 +17,7 @@ namespace MainEvent.ViewModel
         private bool isIdle;
         private IBusyTracker busyTracker;
         private IStatusTracker statusTracker;
+        private TaskScheduler scheduler;
 
         public MainEventViewModel(IBusyTracker busyTracker, IStatusTracker statusTracker)
             : base()
@@ -28,12 +30,23 @@ namespace MainEvent.ViewModel
             this.busyTracker.OnIdle += this.OnIdle;
 
             this.statusTracker.StatusUpdated += this.OnStatusUpdated;
+            this.SetTaskScheduler(TaskScheduler.Default);
         }
 
         public bool IsIdle
         {
             get { return this.isIdle; }
             set { this.SetValue(ref this.isIdle, value); }
+        }
+
+        public void SetTaskScheduler(TaskScheduler scheduler)
+        {
+            this.scheduler = scheduler ?? TaskScheduler.Default;
+        }
+
+        protected TaskScheduler Scheduler
+        {
+            get { return this.scheduler; }
         }
 
         protected IStatusTracker StatusTracker

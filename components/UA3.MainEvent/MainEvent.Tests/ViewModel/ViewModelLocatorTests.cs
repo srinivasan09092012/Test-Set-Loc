@@ -10,7 +10,18 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace MainEvent.Tests.ViewModel
 {
     [TestClass]
-    public class CommitsViewModelTests
-    {        
+    public class ViewModelLocatorTests
+    {
+        [TestMethod]
+        public void ViewModelLocator_should_initialize_viewmodels()
+        {
+            ViewModelLocator inst = new ViewModelLocator();
+
+            Assert.IsNotNull(inst.BasLoad);
+            Assert.IsNotNull(inst.Commits);
+            Assert.IsNotNull(inst.Main);
+            Assert.IsNotNull(inst.Replay);
+            Assert.IsNotNull(inst.ViewProjections);
+        }
     }
 }

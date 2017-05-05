@@ -13,6 +13,7 @@ using System.Configuration;
 using System.IO;
 using System.Reflection;
 using System.Web.Configuration;
+using HP.HSP.UA3.Core.BAS.CQRS.Config;
 
 namespace MainEvent.Core.Services
 {
@@ -53,11 +54,28 @@ namespace MainEvent.Core.Services
                 result.Configuration = this.configProvider.GetConfiguration(LocalSettings.TenantId, result.ModuleName, result.ApplicationName, ctx);
             }
 
+            this.MergeLocalSettings(config, result.Configuration);            
+
             statusTracker.Set("Loading assemblies...");
             this.LoadAssemblies(result);
             statusTracker.Clear();
 
             return result;
+        }
+
+        private void MergeLocalSettings(Configuration config, TenantBasConfiguration configuration)
+        {
+            ConnectionStringSettings defaultCs = config.ConnectionStrings.ConnectionStrings["DefaultConnection"];
+            if (defaultCs != null)
+            {
+                configuration.ConnectionString = defaultCs.ConnectionString;
+                configuration.ConnectionStringProvider = defaultCs.ProviderName;
+            }
+
+            foreach (string key in config.AppSettings.Settings.AllKeys)
+            {
+                configuration.AppSettings[key] = config.AppSettings.Settings[key].Value;
+            }
         }
 
         private void LoadAssemblies(BasLoaderResult loaderResult)

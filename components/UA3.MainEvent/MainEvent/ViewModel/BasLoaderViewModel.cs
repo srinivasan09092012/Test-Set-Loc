@@ -8,6 +8,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Threading;
 using MainEvent.Core.Messages;
 using MainEvent.Core.Services;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -49,7 +50,7 @@ namespace MainEvent.ViewModel
             Task.Factory.StartNew<BasLoaderResult>(() =>
             {
                 return this.basLoader.Load(this.BasPath, this.StatusTracker);
-            }).ContinueWith(t =>
+            }, CancellationToken.None, TaskCreationOptions.None, this.Scheduler).ContinueWith(t =>
             {
                 if (t.IsFaulted)
                 {
@@ -65,7 +66,7 @@ namespace MainEvent.ViewModel
                         this.OnBasLoadCompleted();
                     });
                 }
-            }).ConfigureAwait(false);
+            }, this.Scheduler).ConfigureAwait(false);
         }
 
         private void OnBasLoadCompleted()

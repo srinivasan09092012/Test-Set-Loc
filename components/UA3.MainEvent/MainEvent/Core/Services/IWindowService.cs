@@ -17,6 +17,8 @@ namespace MainEvent.Core.Services
 
         MessageBoxResult PromptAggregateDeletes(int total);
 
+        MessageBoxResult ShowMessageBox(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon);
+
         bool BrowseForFolder(string description, out string selectedPath);
     }
 }
