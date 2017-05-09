@@ -161,7 +161,7 @@ namespace DatalistSyncUtil
             lists = this.LoadHelper.GetDataList().Where(w => w.TenantID == tenantID).ToList();
             lists = this.LoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID).ToList();
             listItems = this.LoadHelper.GetDataListItems();
-            listlink = this.SourceLoadHelper.GetDataListLinks();
+            listlink = this.SourceLoadHelper.GetDataListLinks("TargetDataListLinks");
             //lists = lists.Where(w => w.ContentID == "Core.DataList.ProviderTypes").ToList();
 
             foreach (DataList list in lists)
@@ -198,7 +198,7 @@ namespace DatalistSyncUtil
             lists = this.SourceLoadHelper.GetDataList().Where(w => w.TenantID == tenantID).ToList();
             lists = this.SourceLoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID).ToList();
             listItems = this.SourceLoadHelper.GetDataListItems();
-            listlink = this.SourceLoadHelper.GetDataListLinks();
+            listlink = this.SourceLoadHelper.GetDataListLinks("SourceDataListLinks");
           // lists = lists.Where(w => w.ContentID == "Core.DataList.ProviderTypes").ToList();
             foreach (DataList list in lists)
             {

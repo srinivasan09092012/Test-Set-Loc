@@ -28,5 +28,7 @@ namespace DatalistSyncUtil
         public bool LongDescriptionModified { get; set; }
 
         public string Status { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

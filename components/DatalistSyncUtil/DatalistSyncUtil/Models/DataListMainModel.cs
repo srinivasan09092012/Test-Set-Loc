@@ -47,5 +47,7 @@ namespace DatalistSyncUtil
         public List<ItemAttribute> DataListAttributes { get; set; }
 
         public List<CodeItemModel> ListLinkitem { get; set; }
+
+        public string SortOrder { get; set; }
     }
 }

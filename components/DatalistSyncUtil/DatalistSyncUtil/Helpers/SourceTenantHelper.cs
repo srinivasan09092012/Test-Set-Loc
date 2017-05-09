@@ -193,24 +193,24 @@ namespace DatalistSyncUtil
         ////    return resultitems;
         ////}
 
-        public List<CodeLinkTable> GetDataListLinks()
+        public List<CodeLinkTable> GetDataListLinks(string key)
         {
             List<CodeLinkTable> result = null;
             List<CodeListModel> resultitems = null;
 
-            if (!this.Cache.IsSet("SourceDataListLinks"))
+            if (!this.Cache.IsSet(key))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
                     resultitems = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(string.Empty);
 
                     result = new DataListLinksReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").SearchCodeTables(resultitems);
-                   this.Cache.Set("SourceDataListLinks", result, 1440);
+                   this.Cache.Set(key, result, 1440);
                 }
             }
             else
             {
-                result = this.Cache.Get<List<CodeLinkTable>>("SourceDataListLinks");
+                result = this.Cache.Get<List<CodeLinkTable>>(key);
             }
 
             return result;

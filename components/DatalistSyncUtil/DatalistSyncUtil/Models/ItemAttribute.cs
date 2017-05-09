@@ -32,5 +32,7 @@ namespace DatalistSyncUtil
         public Guid ID { get; set; }
 
         public Guid TenantID { get; set; }
+
+        public string TypeName { get; set; }
     }
 }

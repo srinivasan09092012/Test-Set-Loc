@@ -49,6 +49,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.1.0.0\lib\net45\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.6.1.7600.16394\lib\net35\Microsoft.IdentityModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -69,6 +73,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
@@ -103,6 +108,13 @@
     <Compile Include="Helpers\SourceTenantHelper.cs" />
     <Compile Include="Models\ItemAttribute.cs" />
     <Compile Include="Models\DatalistLinkModel.cs" />
+    <Compile Include="security\AuthController.cs" />
+    <Compile Include="security\ServiceApiFactory.cs" />
+    <Compile Include="Service References\DataListService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Views\DatalistDiff.cs">
       <SubType>Form</SubType>
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
@@ -185,6 +197,35 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Service References\DataListService\DataListsService.wsdl" />
+    <None Include="Service References\DataListService\DataListsService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataListService\DataListsService1.wsdl" />
+    <None Include="Service References\DataListService\DataListsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataListService\DataListsService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataListService\DataListsService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataListService\DataListsService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataListService\DataListsService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataListService\DataListsService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataListService\DataListsService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataListService\DataListsService8.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -196,6 +237,25 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Service References\DataListService\DatalistSyncUtil.DataListService.DataListItemAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DataListService\DatalistSyncUtil.DataListService.DataListItemUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DataListService\DatalistSyncUtil.DataListService.DataListsAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DataListService\DatalistSyncUtil.DataListService.DataListsUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DataListService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\DataListService\configuration.svcinfo" />
+    <None Include="Service References\DataListService\configuration91.svcinfo" />
+    <None Include="Service References\DataListService\DataListsService.disco" />
     <EmbeddedResource Include="Images\FileExplorer.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +271,9 @@
     <ExcludeFromStyleCop Include="$(IntermediateOutputPath)\**\*.cs">
       <Visible>False</Visible>
     </ExcludeFromStyleCop>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\DataListService\" />
   </ItemGroup>
   <!-- This import statement actually runs StyleCop, by configuring its targets to run automatically - so no explicit target call (if you are looking for one) -->
   <Import Project="$(StyleCopTargetFilePath)" Condition="Exists('$(StyleCopTargetFilePath)') and '$(Configuration)|$(Platform)' == 'Debug|AnyCPU'" />
