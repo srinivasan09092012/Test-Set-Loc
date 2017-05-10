@@ -64,11 +64,11 @@ namespace DatalistSyncUtil.Views
            // this.SaveDataList();
             SaveDataListWithDataListAttributes();
             // this.SaveDatalistItems();
-          //  SaveDataListItemsWithAttributesValandLinks();
+           SaveDataListItemsWithAttributesValandLinks();
 
-            this.SaveDatalistItems();
+          //  this.SaveDatalistItems();
 
-           this.SaveDataListAttributes();
+          // this.SaveDataListAttributes();
             this.SaveDataItemLink();
         }
 
@@ -99,7 +99,7 @@ namespace DatalistSyncUtil.Views
                     }
                 });
             }
-            this.Cache.Remove("TargetDataListLinks");
+          //  this.Cache.Remove("TargetDataListLinks");
         }
         private void SaveDataListAttributes()
         {
@@ -126,9 +126,9 @@ namespace DatalistSyncUtil.Views
                 });
             }
 
-            this.Cache.Remove("TargetUtilityDataAttrKey");
-            this.Cache.Remove("TargetUtilityDataListItemAttrKey");
-            this.Cache.Remove("TargetUtilityCombineAttributes");
+           // this.Cache.Remove("TargetUtilityDataAttrKey");
+           // this.Cache.Remove("TargetUtilityDataListItemAttrKey");
+           // this.Cache.Remove("TargetUtilityCombineAttributes");
         }
 
         private void SaveDatalistItems()
@@ -183,10 +183,10 @@ namespace DatalistSyncUtil.Views
                     }
                 });
 
-                this.Cache.Remove("TargetDataListItems");
-                this.Cache.Remove("TargetUtilityDataAttrKey");
-                this.Cache.Remove("TargetUtilityDataListItemAttrKey");
-                this.Cache.Remove("TargetUtilityCombineAttributes");
+              //  this.Cache.Remove("TargetDataListItems");
+              //  this.Cache.Remove("TargetUtilityDataAttrKey");
+              //  this.Cache.Remove("TargetUtilityDataListItemAttrKey");
+              //  this.Cache.Remove("TargetUtilityCombineAttributes");
             }
         }
 
@@ -211,7 +211,7 @@ namespace DatalistSyncUtil.Views
                         }
                     }
 
-                    this.Cache.Remove("TargetDataLists");
+                  //  this.Cache.Remove("TargetDataLists");
                 }
             }
             catch (Exception ex)
@@ -232,30 +232,33 @@ namespace DatalistSyncUtil.Views
                 this.FinalListItems.ForEach(f =>
                 {
                     list = dataList.Where(e => e.ContentID == f.ContentID && e.TenantID == f.TenantID).FirstOrDefault();
-                    RequestorModel requestObject = new RequestorModel() { TenantId = list.TenantID.ToString() };
                     if (list != null)
                     {
-                        f.DatalistID = list.ID;
-                        if (f.ID == Guid.Empty)
+                        RequestorModel requestObject = new RequestorModel() { TenantId = list.TenantID.ToString() };
+                        if (list != null)
                         {
+                            f.DatalistID = list.ID;
+                            if (f.Status == "DATALIST_NEW")
+                            {
 
-                            AddDataListItemCommand addListitem = new AddDataListItemCommand();
-                            addListitem.Requestor = requestObject;
-                            addListitem.AddDataListItem = this.ConvertServiceAddDataListItems(f);
-                            objService.AddDataListItem(addListitem);
-                            
-                        }
-                        else
-                        {
-                            UpdateDataListItemCommand updateListitem = new UpdateDataListItemCommand();
-                            updateListitem.Requestor = requestObject;
-                            updateListitem.UpdateDataListItem = this.ConvertUpdateServiceDataListItems(f);
-                            objService.UpdateDataListItem(updateListitem);
+                                AddDataListItemCommand addListitem = new AddDataListItemCommand();
+                                addListitem.Requestor = requestObject;
+                                addListitem.AddDataListItem = this.ConvertServiceAddDataListItems(f);
+                                objService.AddDataListItem(addListitem);
+
+                            }
+                            else
+                            {
+                                UpdateDataListItemCommand updateListitem = new UpdateDataListItemCommand();
+                                updateListitem.Requestor = requestObject;
+                                updateListitem.UpdateDataListItem = this.ConvertUpdateServiceDataListItems(f);
+                                objService.UpdateDataListItem(updateListitem);
+                            }
                         }
                     }
                 });
 
-                this.Cache.Remove("TargetDataListItems");
+               // this.Cache.Remove("TargetDataListItems");
             }
         }
 
@@ -279,7 +282,9 @@ namespace DatalistSyncUtil.Views
 
         private AddDataListItem ConvertServiceAddDataListItems(CodeItemModel f)
         {
+           
             AddDataListItem listitem = new AddDataListItem();
+            listitem.DataListContentID = f.ContentID.ToString();
             listitem.DataListId = f.DatalistID.ToString();
             listitem.DataListItemId = f.ID.ToString();
             listitem.Key = f.Code;
@@ -351,7 +356,7 @@ namespace DatalistSyncUtil.Views
                     }
 
 
-                    this.Cache.Remove("TargetDataList");
+                   // this.Cache.Remove("TargetDataList");
                    
                     
                 }

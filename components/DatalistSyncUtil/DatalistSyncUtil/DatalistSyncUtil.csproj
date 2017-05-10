@@ -94,7 +94,6 @@
     <Compile Include="Configs\MenusReadOnly.cs" />
     <Compile Include="Configs\MessageCodeReadOnly.cs" />
     <Compile Include="Configs\SecurityCodeReadOnly.cs" />
-    <Compile Include="Configs\SecurityRightsReadOnly.cs" />
     <Compile Include="DaoHelpers\AddDataListLinkDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataAttributesDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataListDaoHelper.cs" />
@@ -234,6 +233,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configs\DataListQueries.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Service References\DataListService\DataListsService.disco" />
     <None Include="Service References\DataListService\DataListsService.wsdl" />
     <None Include="Service References\DataListService\DataListsService.xsd">
       <SubType>Designer</SubType>
@@ -263,17 +274,6 @@
     <None Include="Service References\DataListService\DataListsService8.xsd">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Configs\DataListQueries.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </Content>
     <None Include="Service References\DataListService\DatalistSyncUtil.DataListService.DataListItemAdded.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -292,7 +292,6 @@
     </None>
     <None Include="Service References\DataListService\configuration.svcinfo" />
     <None Include="Service References\DataListService\configuration91.svcinfo" />
-    <None Include="Service References\DataListService\DataListsService.disco" />
     <EmbeddedResource Include="Images\FileExplorer.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -288,7 +288,13 @@ namespace DatalistSyncUtil
 
                 if (dataListItems != null && dataListItems.Count > 0)
                 {
-                    newDatalistItemsFromUpdateList.AddRange(dataListItems);
+                    dataListItems.ForEach(t =>
+                    {
+                        t.Status = "DATALIST_NEW";
+
+                        newDatalistItemsFromUpdateList.Add(t);
+                    });
+                    
                 }
             });
          
@@ -316,6 +322,7 @@ namespace DatalistSyncUtil
 
                         if (targetItemLink != null)
                         {
+                            t.Status = "Update";
                             updatedLink.Add(t);
                             updatedTargetLink.Add(targetItemLink);
 
