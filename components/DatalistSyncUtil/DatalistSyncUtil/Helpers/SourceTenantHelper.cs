@@ -151,6 +151,25 @@ namespace DatalistSyncUtil
            return result;
        }
 
+        public List<MenuListModel> GetMenu()
+        {
+            if (this.Cache.IsSet("Menus"))
+            {
+                return this.Cache.Get<List<MenuListModel>>("Menus");
+            }
+
+            List<MenuListModel> resultmenu = new List<MenuListModel>();
+
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                resultmenu = new MenusReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").SearchMenus(true);
+            }
+
+            this.Cache.Set("Menus", resultmenu, 1440);
+
+            return resultmenu;
+        }
+
         public List<DataList> GetAttributesList()
         {
             List<DataList> result = null;

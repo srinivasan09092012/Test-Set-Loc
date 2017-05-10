@@ -19,7 +19,7 @@ namespace DatalistSyncUtil
     public partial class ListItems : Form
     {
         private readonly string listKeyword = "CodeList_";
-    
+
         public ListItems(string contentID, int numberOfDays)
         {
             this.InitializeComponent();

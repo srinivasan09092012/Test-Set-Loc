@@ -156,6 +156,61 @@ namespace DatalistSyncUtil
             return result;
         }
 
+        public List<MenuListModel> GetMenu()
+        {
+            if (!this.Cache.IsSet("TargetMenu"))
+            {
+                List<MenuListModel> resultmenu = new List<MenuListModel>();
+
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    resultmenu = new MenusReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").SearchMenus(true);
+                }
+
+                this.Cache.Set("TargetMenus", resultmenu, 1440);
+
+                return resultmenu;
+            }
+            else
+            {
+                return this.Cache.Get<List<MenuListModel>>("TargetMenu");
+            }
+         }
+
+        public bool UpdateMenuItem(MenuItemModel cmd)
+        {
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new UpdateMenuItemDaoHelper(new MenuDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                }
+            }
+
+            return true;
+        }
+
+        public bool AddMenuItem(MenuItemModel cmd)
+        {
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new AddMenuItemDaoHelper(new MenuDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                }
+            }
+
+            return true;
+        }
+
         public bool AddDatalist(DataListMainModel cmd)
         {
             bool success = true;
@@ -183,6 +238,44 @@ namespace DatalistSyncUtil
                 try
                 {
                     new UpdateDataListDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
+                }
+            }
+
+            return success;
+        }
+
+        public bool AddMenus(MenuListModel cmd)
+        {
+            bool success = true;
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new AddMenuDaoHelper(new MenuDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
+                }
+            }
+
+            return success;
+        }
+
+        public bool UpdateMenus(MenuListModel cmd)
+        {
+            bool success = true;
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new UpdateMenuDaoHelper(new MenuDbContext(session, true)).ExecuteProcedure(cmd);
                 }
                 catch (Exception ex)
                 {

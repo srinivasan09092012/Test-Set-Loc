@@ -91,13 +91,17 @@
     <Compile Include="Configs\DataListLinksReadOnly.cs" />
     <Compile Include="Configs\DataListAttributesReadOnly.cs" />
     <Compile Include="Configs\LabelsCodeReadOnly.cs" />
+    <Compile Include="Configs\MenusReadOnly.cs" />
     <Compile Include="Configs\MessageCodeReadOnly.cs" />
     <Compile Include="Configs\SecurityCodeReadOnly.cs" />
+    <Compile Include="Configs\SecurityRightsReadOnly.cs" />
     <Compile Include="DaoHelpers\AddDataListLinkDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataAttributesDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataListDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataListItemLanguageDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataListItemDaoHelper.cs" />
+    <Compile Include="DaoHelpers\AddMenuDaoHelper.cs" />
+    <Compile Include="DaoHelpers\AddMenuItemDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateDataListLinkDaoHelper .cs" />
     <Compile Include="DaoHelpers\UpdateDataListAttributesDaoHelper.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
@@ -105,9 +109,12 @@
     <Compile Include="DaoHelpers\UpdateDataListDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateDataListItemLanguageDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateDataListItemDaoHelper.cs" />
+    <Compile Include="DaoHelpers\UpdateMenuDaoHelper.cs" />
+    <Compile Include="DaoHelpers\UpdateMenuItemDaoHelper.cs" />
     <Compile Include="Helpers\SourceTenantHelper.cs" />
     <Compile Include="Models\ItemAttribute.cs" />
     <Compile Include="Models\DatalistLinkModel.cs" />
+    <Compile Include="Models\TreeSyncData.cs" />
     <Compile Include="security\AuthController.cs" />
     <Compile Include="security\ServiceApiFactory.cs" />
     <Compile Include="Service References\DataListService\Reference.cs">
@@ -155,6 +162,27 @@
     </Compile>
     <Compile Include="Helpers\TenantHelper.cs" />
     <Compile Include="Models\SelectedItem.cs" />
+    <Compile Include="Views\ListMenuItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ListMenuItem.Designer.cs">
+      <DependentUpon>ListMenuItem.cs</DependentUpon>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Views\MenuListDiff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MenuListDiff.Designer.cs">
+      <DependentUpon>MenuListDiff.cs</DependentUpon>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Views\MenuPreviewPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MenuPreviewPage.Designer.cs">
+      <DependentUpon>MenuPreviewPage.cs</DependentUpon>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Views\PreviewPage.cs">
       <SubType>Form</SubType>
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
@@ -184,6 +212,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\ListMenuItem.resx">
+      <DependentUpon>ListMenuItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MenuListDiff.resx">
+      <DependentUpon>MenuListDiff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MenuPreviewPage.resx">
+      <DependentUpon>MenuPreviewPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\PreviewPage.resx">
       <DependentUpon>PreviewPage.cs</DependentUpon>
     </EmbeddedResource>

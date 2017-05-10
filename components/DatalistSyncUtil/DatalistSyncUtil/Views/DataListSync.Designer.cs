@@ -35,12 +35,13 @@ namespace DatalistSyncUtil
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DataListView = new System.Windows.Forms.DataGridView();
             this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ContentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DataListLoad = new System.Windows.Forms.Button();
             this.Start = new System.Windows.Forms.Button();
@@ -58,6 +59,8 @@ namespace DatalistSyncUtil
             this.label2 = new System.Windows.Forms.Label();
             this.TenantList = new System.Windows.Forms.ComboBox();
             this.btnCompare = new System.Windows.Forms.Button();
+            this.control_label = new System.Windows.Forms.Label();
+            this.ControlName = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.DataListView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Age)).BeginInit();
             this.SuspendLayout();
@@ -66,37 +69,38 @@ namespace DatalistSyncUtil
             // 
             this.DataListView.AllowUserToAddRows = false;
             this.DataListView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataListView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataListView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.DataListView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataListView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Select,
             this.ContentID,
+            this.Column1,
             this.IsActive});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataListView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataListView.DefaultCellStyle = dataGridViewCellStyle5;
             this.DataListView.Location = new System.Drawing.Point(15, 135);
             this.DataListView.Name = "DataListView";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataListView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataListView.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.DataListView.RowTemplate.Height = 24;
             this.DataListView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DataListView.Size = new System.Drawing.Size(981, 540);
@@ -106,7 +110,7 @@ namespace DatalistSyncUtil
             // 
             // Select
             // 
-            this.Select.HeaderText = string.Empty;
+            this.Select.HeaderText = "";
             this.Select.Name = "Select";
             this.Select.Width = 25;
             // 
@@ -116,7 +120,15 @@ namespace DatalistSyncUtil
             this.ContentID.HeaderText = "Content ID";
             this.ContentID.Name = "ContentID";
             this.ContentID.ReadOnly = true;
+            this.ContentID.Visible = false;
             this.ContentID.Width = 850;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Name";
+            this.Column1.HeaderText = "Name";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 550;
             // 
             // IsActive
             // 
@@ -300,11 +312,36 @@ namespace DatalistSyncUtil
             this.btnCompare.UseVisualStyleBackColor = true;
             this.btnCompare.Click += new System.EventHandler(this.btnCompare_Click);
             // 
+            // control_label
+            // 
+            this.control_label.AutoSize = true;
+            this.control_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.control_label.Location = new System.Drawing.Point(12, 68);
+            this.control_label.Name = "control_label";
+            this.control_label.Size = new System.Drawing.Size(73, 17);
+            this.control_label.TabIndex = 24;
+            this.control_label.Text = "Controls:";
+            // 
+            // ControlName
+            // 
+            this.ControlName.DisplayMember = "ControlName";
+            this.ControlName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ControlName.FormattingEnabled = true;
+            this.ControlName.Location = new System.Drawing.Point(82, 68);
+            this.ControlName.Name = "ControlName";
+            this.ControlName.Size = new System.Drawing.Size(202, 24);
+            this.ControlName.Sorted = true;
+            this.ControlName.TabIndex = 25;
+            this.ControlName.ValueMember = "TenantID";
+            this.ControlName.SelectedIndexChanged += new System.EventHandler(this.Control_SelectedIndexChanged);
+            // 
             // DataListSync
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 728);
+            this.Controls.Add(this.ControlName);
+            this.Controls.Add(this.control_label);
             this.Controls.Add(this.btnCompare);
             this.Controls.Add(this.TenantList);
             this.Controls.Add(this.label2);
@@ -336,9 +373,6 @@ namespace DatalistSyncUtil
 
         private System.Windows.Forms.DataGridView DataListView;
         private System.Windows.Forms.Button DataListLoad;
-        private new System.Windows.Forms.DataGridViewCheckBoxColumn Select;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ContentID;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn IsActive;
         private System.Windows.Forms.Button Start;
         private System.Windows.Forms.CheckBox SelectAllChkBox;
         private System.Windows.Forms.ListBox ModuleList;
@@ -354,5 +388,11 @@ namespace DatalistSyncUtil
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox TenantList;
         private System.Windows.Forms.Button btnCompare;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Select;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ContentID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsActive;
+        private System.Windows.Forms.Label control_label;
+        private System.Windows.Forms.ComboBox ControlName;
     }
 }
