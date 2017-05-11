@@ -35,7 +35,7 @@ namespace DatalistSyncUtil
             this.LoadTenant();
             this.LoadModules();
             this.LoadControls();
-            this.LoadTargetControls();
+            this.LoadSourceControls();
             this.LoadSourceTenant();
             this.LoadSourceModules();
         }
@@ -48,8 +48,6 @@ namespace DatalistSyncUtil
         public List<MenuListModel> SourceMenuList { get; set; }
 
         public List<MenuItemModel> SourceMenuItems { get; set; }
-
-        public string control { get; set; }
 
         public List<DataListMainModel> TargetList { get; set; }
 
@@ -86,108 +84,106 @@ namespace DatalistSyncUtil
                 }
 
                 Cursor.Current = Cursors.WaitCursor;
-                switch (control)
+                string caseSwitch = this.SourceControlNames.SelectedItem.ToString();
+                switch (caseSwitch)
                 {
                     case "Datalist":
-                        syncdata.DataListItems = this.SourceList.OrderBy(x => x.ContentID).ToList();
+                        this.LoadTreeView(this.sourceTreeList, this.SourceList.OrderBy(o => o.ContentID).ToList());
                         break;
 
                     case "Menus":
-                        syncdata.MenuListItems = this.SourceMenus.OrderBy(o => o.Name).ToList();
+                        this.LoadMenuTreeView(this.sourceTreeList, this.SourceMenus.OrderBy(o => o.Name).ToList());
                         break;
                     default:
                         break;
                 }
-                this.LoadTreeView(this.sourceTreeList, syncdata);
                 Cursor.Current = Cursors.Default;
             }
         }
 
-        private void LoadTreeView(TreeView treeView, TreeSyncData itemList)
+        private void LoadTreeView(TreeView treeView, List<DataListMainModel> lists)
         {
             TreeNode listNode = null;
+            TreeNode itemNode = null;
+            List<TreeNode> itemNodes = null;
+            TreeNode langNode = null;
+            List<TreeNode> langNodes = null;
+            List<TreeNode> attributenodes = null;
+            TreeNode attributenode = null;
             string languageSeparator = " - ";
-            treeView.Nodes.Clear();
-            if (itemList.DataListItems != null)
+
+            try
             {
-                TreeNode itemNode = null;
-                List<TreeNode> itemNodes = null;
-                TreeNode langNode = null;
-                List<TreeNode> langNodes = null;
-                List<TreeNode> attributenodes = null;
-                TreeNode attributenode = null;
+                treeView.Nodes.Clear();
 
-                try
+                foreach (DataListMainModel list in lists)
                 {
-                    treeView.Nodes.Clear();
-                    foreach (DataListMainModel list in itemList.DataListItems)
+                    itemNodes = new List<TreeNode>();
+                    list.Items.ForEach(i =>
                     {
-                        itemNodes = new List<TreeNode>();
-                        list.Items.ForEach(i =>
+                        langNodes = new List<TreeNode>();
+                        i.LanguageList.ForEach(l =>
                         {
-                            langNodes = new List<TreeNode>();
-                            i.LanguageList.ForEach(l =>
-                            {
-                                langNode = new TreeNode(l.LocaleID + languageSeparator + l.Description);
-                                langNodes.Add(langNode);
-                            });
-                            itemNode = new TreeNode(i.Code, langNodes.ToArray());
-                            itemNodes.Add(itemNode);
+                            langNode = new TreeNode(l.LocaleID + languageSeparator + l.Description);
+                            langNodes.Add(langNode);
                         });
-                        listNode = new TreeNode(list.ContentID, itemNodes.ToArray());
+                        itemNode = new TreeNode(i.Code, langNodes.ToArray());
+                        itemNodes.Add(itemNode);
+                    });
+                    listNode = new TreeNode(list.ContentID, itemNodes.ToArray());
 
-                        attributenodes = new List<TreeNode>();
-                        if (list.DataListAttributes != null)
+                    attributenodes = new List<TreeNode>();
+                    if (list.DataListAttributes != null)
+                    {
+                        list.DataListAttributes.ForEach(f =>
                         {
-                            list.DataListAttributes.ForEach(f =>
-                            {
-                                attributenode = new TreeNode(f.ParentContentId + "." + f.Code);
-                                attributenodes.Add(attributenode);
-                            });
+                            attributenode = new TreeNode(f.ParentContentId + "." + f.Code);
+                            attributenodes.Add(attributenode);
+                        });
 
-                            listNode = new TreeNode(list.ContentID, attributenodes.ToArray());
-                            treeView.Nodes.Add(listNode);
-                        }
+                        listNode = new TreeNode(list.ContentID, attributenodes.ToArray());
                     }
-                }
 
-                finally
-                {
-                    listNode = null;
-                    itemNode = null;
-                    itemNodes = null;
-                    langNode = null;
-                    langNodes = null;
+                    treeView.Nodes.Add(listNode);
                 }
             }
-
-            else
+            finally
             {
-                List<TreeNode> menuNodes = null;
-                TreeNode menuNode = null;
-                List<MenuItemModel> childnode = null;
-                try
+                listNode = null;
+                itemNode = null;
+                itemNodes = null;
+                langNode = null;
+                langNodes = null;
+            }
+        }
+
+        private void LoadMenuTreeView(TreeView treeView, List<MenuListModel> itemlist)
+        {
+            TreeNode listNode = null;
+            List<TreeNode> menuNodes = null;
+            TreeNode menuNode = null;
+            List<MenuItemModel> childnode = null;
+            try
+            {
+                treeView.Nodes.Clear();
+                foreach (MenuListModel list in itemlist)
                 {
-                    foreach (MenuListModel list in itemList.MenuListItems)
+                    menuNodes = new List<TreeNode>();
+                    childnode = list.Children.ToList();
+                    childnode.ForEach(f =>
                     {
-                        menuNodes = new List<TreeNode>();
-                        childnode = list.Children.ToList();
-                        childnode.ForEach(f =>
-                        {
-                            menuNode = new TreeNode(f.Name);
-                            menuNodes.Add(menuNode);
-                        });
-                        listNode = new TreeNode(list.Name, menuNodes.ToArray());
-                        treeView.Nodes.Add(listNode);
-                    }
-                }
-                finally
-                {
-                    menuNodes = null;
-                    menuNode = null;
+                        menuNode = new TreeNode(f.Name);
+                        menuNodes.Add(menuNode);
+                    });
+                    listNode = new TreeNode(list.Name, menuNodes.ToArray());
+                    treeView.Nodes.Add(listNode);
                 }
             }
-
+            finally
+            {
+                menuNodes = null;
+                menuNode = null;
+            }
 
         }
 
@@ -195,15 +191,15 @@ namespace DatalistSyncUtil
         {
             Cursor.Current = Cursors.WaitCursor;
             Guid tenantModuleId = (this.moduleList.SelectedItem as TenantModuleModel).TenantModuleId;
-            switch (control)
+            string caseSwitch = this.SourceControlNames.SelectedItem.ToString();
+            switch (caseSwitch)
             {
                 case "Menus":
                     {
                         this.TargetMenuList = this.LoadTargetMenus();
                         List<MenuListModel> filteredDataList1 = null;
                         filteredDataList1 = this.TargetMenuList;
-                        syncdata.MenuListItems = filteredDataList1.OrderBy(w => w.Name).ToList();
-                        this.LoadTreeView(this.targetTreeList, syncdata);
+                        this.LoadMenuTreeView(this.targetTreeList, filteredDataList1.OrderBy(w => w.Name).ToList());
                         break;
                      }
                 case "Datalist":
@@ -218,8 +214,7 @@ namespace DatalistSyncUtil
                         {
                             filteredDataList = this.TargetList.Where(w => w.TenantModuleID == tenantModuleId).ToList();
                         }
-                        syncdata.DataListItems = filteredDataList.OrderBy(o => o.ContentID).ToList();
-                        this.LoadTreeView(this.targetTreeList, syncdata);
+                        this.LoadTreeView(this.targetTreeList, filteredDataList.OrderBy(o => o.ContentID).ToList());
                         break;
                     }
                 default:
@@ -278,7 +273,7 @@ namespace DatalistSyncUtil
             lists = this.LoadHelper.GetDataList().Where(w => w.TenantID == tenantID).ToList();
             lists = this.LoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID).ToList();
             listItems = this.LoadHelper.GetDataListItems();
-            listlink = this.SourceLoadHelper.GetDataListLinks("TargetDataListLinks");
+            listlink = this.LoadHelper.GetDataListLinks("TargetDataListLinks");
 
             foreach (DataList list in lists)
             {
@@ -615,16 +610,15 @@ namespace DatalistSyncUtil
         {
             Cursor.Current = Cursors.WaitCursor;
             Guid tenantModuleId = (this.sourceModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
-
-            switch (control)
+            string caseSwitch = this.SourceControlNames.SelectedItem.ToString();
+            switch (caseSwitch)
             {
                 case "Menus":
                     {
                         this.SourceMenuList = this.LoadSourceMenus();
                         List<MenuListModel> filteredDataList1 = null;
                         filteredDataList1 = this.SourceMenuList;
-                        syncdata.MenuListItems = filteredDataList1.OrderBy(w => w.Name).ToList();
-                        this.LoadTreeView(this.sourceTreeList, syncdata);
+                        this.LoadMenuTreeView(this.sourceTreeList, filteredDataList1.OrderBy(w => w.Name).ToList());
                         break;
                     }
                 case "Datalist":
@@ -639,8 +633,7 @@ namespace DatalistSyncUtil
                         {
                             filteredDataList = this.SourceList.Where(w => w.TenantModuleID == tenantModuleId).ToList();
                         }
-                        syncdata.DataListItems = filteredDataList.OrderBy(o => o.ContentID).ToList();
-                        this.LoadTreeView(this.sourceTreeList, syncdata);
+                        this.LoadTreeView(this.sourceTreeList, filteredDataList.OrderBy(o => o.ContentID).ToList());
                         break;
                     }
                 default:
@@ -656,32 +649,26 @@ namespace DatalistSyncUtil
             this.Close();
         }
 
+        private void LoadSourceControls()
+        {
+            List<string> ControlNames = new List<string>(new string[] { "Datalist", "HtmlBlock", "Images", "Menus" });
+            for (int i = 0; i <= ControlNames.Count - 1; i++)
+            {
+                this.SourceControlNames.Items.Add(ControlNames[i]);
+            }
+            this.SourceControlNames.Text = "Datalist";
+        }
+
         private void LoadControls()
         {
             List<string> ControlNames = new List<string>(new string[] { "Datalist", "HtmlBlock", "Images", "Menus" });
             for (int i = 0; i <= ControlNames.Count - 1; i++)
             {
-                this.ControlName.Items.Add(ControlNames[i]);
+                this.TargetControlNames.Items.Add(ControlNames[i]);
             }
+            this.TargetControlNames.Text = "Datalist";
         }
 
-        private void LoadTargetControls()
-        {
-            List<string> ControlNames = new List<string>(new string[] { "Datalist", "HtmlBlock", "Images", "Menus" });
-            for (int i = 0; i <= ControlNames.Count - 1; i++)
-            {
-                this.ControlsNames.Items.Add(ControlNames[i]);
-            }
-        }
 
-        private void Control_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.control = this.ControlName.SelectedItem.ToString();
-        }
-
-        private void Controls_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.control = this.ControlName.SelectedItem.ToString();
-        }
     }
 }

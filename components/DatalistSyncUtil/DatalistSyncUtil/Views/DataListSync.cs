@@ -100,8 +100,6 @@ namespace DatalistSyncUtil
 
         public List<MenuListModel> ChildMenuItem { get; set; }
 
-        public string control { get; set; }
-
         public List<CodeListModel> SourceListItems { get; set; }
 
         public List<MenuListModel> SourceMenus { get; set; }
@@ -170,23 +168,26 @@ namespace DatalistSyncUtil
         private void LoadSearchCriteria()
         {
             this.NoOfDays = (int)this.Age.Value;
-            switch (control)
+            string caseSwitch = this.ControlName.SelectedItem.ToString();
+            switch (caseSwitch)
             {
                 case "Datalist":
                     this.SourceListItems = this.LoadDataListItems(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
                     this.DataListView.Columns[1].Visible = true;
                     this.DataListView.Columns[2].Visible = false;
                     this.BindDataList();
+                    this.ModuleListSelectedItems();
                     break;
                 case "Menus":
                     this.DataListView.Columns[2].Visible = true;
                     this.DataListView.Columns[1].Visible = false;
                     this.BindMenus();
+                    this.ModuleMenuListSelectedItems();
                     break;
                 default:
                     break;
             }
-           this.ModuleListSelectedItems();
+           
         }
 
         private List<TenantModuleModel> GetTenantModules(string providerName, string connectionString)
@@ -272,17 +273,6 @@ namespace DatalistSyncUtil
         }
     });
     this.ChildMenuItem = ChildMenuItem1;
-    
-
-                //ChildMenuItems.ForEach(x=>
-                //{
-                //    bool modifieddate = x.LastModifiedDate >= DateTime.UtcNow.AddDays(this.NoOfDays);
-                //    if()
-                //    ChildMenuItem.AddRange(ChildMenuItems);
-                //})
-
-
-
      this.DataListView.AutoGenerateColumns = false;
     this.DataListView.DataSource = new BindingList<MenuListModel>(this.ChildMenuItem.Where(w => w.TenantId == tenantID).ToList());
 
@@ -603,7 +593,7 @@ namespace DatalistSyncUtil
             TenantModuleModel module = null;
             List<DataList> filteredModuleList = null;
             List<DataList> modifiedItems = null;
-            List<MenuListModel> filteredModuleList1 = null;
+            
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
 
             if (this.ModuleList.SelectedItems.Count > 0)
@@ -614,21 +604,7 @@ namespace DatalistSyncUtil
                     selectedModules.Add(module);
                 }
             }
-            switch (control)
-            {
-                case "Menus":
-                    { 
-                var modulesQuery = from lists in this.ChildMenuItem
-                                   join modules in selectedModules
-                                        on lists.TenantModuleID equals modules.TenantModuleId
-                                   select lists;
-                filteredModuleList1 = modulesQuery.ToList();
-
-                this.DataListView.DataSource = new BindingList<MenuListModel>(filteredModuleList1.Where(w => w.TenantId == tenantID).ToList());
-                        break;
-                    }
-                case "Datalist":
-                    {
+          
                         if (this.NoOfDays > 0)
                         {
                             var modulesQuery = from lists in this.SourceLists
@@ -645,7 +621,6 @@ namespace DatalistSyncUtil
                             .Select(group => group.First()).ToList();
                         }
                         else
-                        {
                             {
                                 var modulesQuery = from lists in this.SourceLists
                                                    join modules in selectedModules
@@ -654,14 +629,33 @@ namespace DatalistSyncUtil
                                 filteredModuleList = modulesQuery.ToList();
                             }
 
-                            this.DataListView.DataSource = new BindingList<DataList>(filteredModuleList.Where(w => w.TenantID == tenantID).ToList());
-                        }
-                        break;
-                    }
-                default:
-                    break;
+                            this.DataListView.DataSource = new BindingList<DataList>(filteredModuleList.Where(w => w.TenantID == tenantID).ToList());              
+        }
 
+        private void ModuleMenuListSelectedItems()
+        {
+            List<TenantModuleModel> selectedModules = new List<TenantModuleModel>();
+            List<MenuListModel> filteredModuleList1 = null;
+            TenantModuleModel module = null;
+            Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
+
+            if (this.ModuleList.SelectedItems.Count > 0)
+            {
+                foreach (object item in this.ModuleList.SelectedItems)
+                {
+                    module = item as TenantModuleModel;
+                    selectedModules.Add(module);
+                }
             }
+
+            var modulesQuery = from lists in this.ChildMenuItem
+                               join modules in selectedModules
+                                    on lists.TenantModuleID equals modules.TenantModuleId
+                               select lists;
+            filteredModuleList1 = modulesQuery.ToList();
+
+            this.DataListView.DataSource = new BindingList<MenuListModel>(filteredModuleList1.Where(w => w.TenantId == tenantID).ToList());
+
         }
 
         private List<DataList> GetUpdatedListItems(List<TenantModuleModel> selectedModules)
@@ -693,7 +687,8 @@ namespace DatalistSyncUtil
 
         private void DataListView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            switch (control)
+            string caseSwitch = this.ControlName.SelectedItem.ToString();
+            switch (caseSwitch)
             {
                 case "Datalist":
                     ListItems itemsPage = new ListItems((this.DataListView.Rows[e.RowIndex].DataBoundItem as DataList).ContentID, this.NoOfDays);
@@ -728,8 +723,9 @@ namespace DatalistSyncUtil
         }
 
         private void BtnDownloadToFile_Click(object sender, EventArgs e)
-        { 
-            switch (control)
+        {
+            string caseSwitch = this.ControlName.SelectedItem.ToString();
+            switch (caseSwitch)
             {
                 case "Datalist":
                     List<DataListMainModel> listsMain = this.ConvertToCustomDataList();
@@ -932,7 +928,7 @@ namespace DatalistSyncUtil
 
         private void Control_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.control = this.ControlName.SelectedItem.ToString();
+            this.LoadModules();
         }
         
         private void LoadControls()

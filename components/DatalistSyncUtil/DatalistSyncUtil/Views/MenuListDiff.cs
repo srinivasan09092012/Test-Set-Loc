@@ -183,23 +183,23 @@ namespace DatalistSyncUtil.Views
             bool itemChanged = false;
             Guid sourceSecurityRightID = t.SecurityRightItemID;
             Guid targetSecurityRightID = targetItem.SecurityRightItemID;
+            CodeListModel sourceSecurity = null;
+            CodeListModel targetSecurity = null;
             string sourceSecurityRight = null;
             string targetSecurityRight = null;
-            try
+            sourceSecurity = this.Sourceitems.Where(c => c.ID == sourceSecurityRightID).FirstOrDefault();
+            targetSecurity = this.Sourceitems.Where(c => c.ID == sourceSecurityRightID).FirstOrDefault();
+            if (sourceSecurity != null || targetSecurity != null)
             {
-                    sourceSecurityRight = this.Sourceitems.Find(c => c.ID == sourceSecurityRightID).Code;
-                    targetSecurityRight = this.Items.Find(c => c.ID == targetSecurityRightID).Code;
-            }
-            catch
-            {
+                sourceSecurityRight = sourceSecurity.Code;
+                targetSecurityRight = targetSecurity.Code;
+                if (sourceSecurityRight != targetSecurityRight)
+                {
+                    itemChanged = true;
+                }
             }
 
             if (t.LabelItemContentID != targetItem.LabelItemContentID)
-            {
-                itemChanged = true;
-            }
-
-            if (sourceSecurityRight != targetSecurityRight)
             {
                 itemChanged = true;
             }
@@ -214,8 +214,20 @@ namespace DatalistSyncUtil.Views
 
         private void PreviewUpdate_Click(object sender, EventArgs e)
         {
-            MenuPreviewPage previewPage = new MenuPreviewPage(this.UpdateList, this.UpdateListItems);
-            previewPage.ShowDialog();
+            bool newscreenforlabels = false;
+            bool newscreenforrights = this.CheckRights();
+            newscreenforlabels = this.CheckLabels();
+            if (newscreenforlabels == true || newscreenforrights == true)
+            {
+                DataListSync sync = new DataListSync();
+
+                sync.ShowDialog();
+            }
+            else
+            {
+                MenuPreviewPage previewPage = new MenuPreviewPage(this.UpdateList, this.UpdateListItems);
+                previewPage.ShowDialog();
+            }
         }
 
         private void BtnClose_Click_1(object sender, EventArgs e)
@@ -235,14 +247,6 @@ namespace DatalistSyncUtil.Views
                 {
                     this.UpdateList.Add(row.DataBoundItem as MenuListModel);
                 }
-            }
-
-            bool newscreenforrights = this.CheckRights();
-            if (newscreenforrights == true)
-            {
-                DataListSync sync = new DataListSync();
-                sync.ShowDialog();
-                this.Close();
             }
         }
 
@@ -302,16 +306,7 @@ namespace DatalistSyncUtil.Views
                 {
                     this.UpdateListItems.Add(row.DataBoundItem as MenuItemModel);
                 }
-            }
-
-           bool newscreenforrights = this.CheckRights();
-            bool newscreenforlabels = this.CheckLabels();
-            if (newscreenforlabels == true || newscreenforrights == true)
-            {
-                DataListSync sync = new DataListSync();
-                sync.ShowDialog();
-                this.Close();
-            }
+            }          
         }
 
         private bool CheckRights()
@@ -331,7 +326,7 @@ namespace DatalistSyncUtil.Views
                     {
                         syncscreen = true;
                         modelListItem = this.Sourceitems.Where(a => a.ID == f.SecurityRightItemID).FirstOrDefault();
-                        str = str + modelListItem.Code;
+                        str = str + " " + modelListItem.Code;
                         right = false;
                     }
                      });
@@ -347,7 +342,7 @@ namespace DatalistSyncUtil.Views
                     {
                         syncscreen = true;
                         modelListItem = this.Sourceitems.Where(a => a.ID == f.SecurityRightItemID).FirstOrDefault();
-                        str = str + modelListItem.Code;
+                        str = str + " " + modelListItem.Code;
                         right = false;
                     }
                 });
@@ -356,8 +351,8 @@ namespace DatalistSyncUtil.Views
             if (!right)
             {
                 MessageBox.Show("The Security Right is not present : " + str, "Security Right", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
-            }
-           
+            } 
+                     
             return syncscreen;
         }
 
@@ -377,10 +372,13 @@ namespace DatalistSyncUtil.Views
                     {
                         syncscreen = true;
                         modelListItem = this.Sourceitems.Where(a => a.Code == f.LabelItemContentID).FirstOrDefault();
-                        str = str + modelListItem.Code;
-                        MessageBox.Show("The Label is not present : " + str, "Label", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                        str = str + " " + modelListItem.Code;           
                      }          
                 });
+                if (!right)
+                {
+                    MessageBox.Show("The Label is not present : " + str, "Label", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                }
             }
 
             return syncscreen;        

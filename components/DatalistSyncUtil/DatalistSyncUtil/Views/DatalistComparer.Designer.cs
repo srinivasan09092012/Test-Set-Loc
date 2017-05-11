@@ -62,6 +62,8 @@ namespace DatalistSyncUtil
         private void InitializeComponent()
         {
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.SourceControlNames = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.sourceModuleList = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -72,6 +74,8 @@ namespace DatalistSyncUtil
             this.btnSourceLoad = new System.Windows.Forms.Button();
             this.btnSourceFile = new System.Windows.Forms.Button();
             this.rightPanel = new System.Windows.Forms.Panel();
+            this.TargetControlNames = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.moduleList = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tenantList = new System.Windows.Forms.ComboBox();
@@ -88,10 +92,6 @@ namespace DatalistSyncUtil
             this.datalistItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.ControlName = new System.Windows.Forms.ComboBox();
-            this.ControlsNames = new System.Windows.Forms.ComboBox();
             this.leftPanel.SuspendLayout();
             this.rightPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -103,7 +103,7 @@ namespace DatalistSyncUtil
             // 
             // leftPanel
             // 
-            this.leftPanel.Controls.Add(this.ControlName);
+            this.leftPanel.Controls.Add(this.SourceControlNames);
             this.leftPanel.Controls.Add(this.label7);
             this.leftPanel.Controls.Add(this.sourceModuleList);
             this.leftPanel.Controls.Add(this.label5);
@@ -118,6 +118,28 @@ namespace DatalistSyncUtil
             this.leftPanel.Name = "leftPanel";
             this.leftPanel.Size = new System.Drawing.Size(717, 829);
             this.leftPanel.TabIndex = 0;
+            // 
+            // SourceControlNames
+            // 
+            this.SourceControlNames.DisplayMember = "ControlName";
+            this.SourceControlNames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SourceControlNames.FormattingEnabled = true;
+            this.SourceControlNames.Location = new System.Drawing.Point(543, 38);
+            this.SourceControlNames.Name = "SourceControlNames";
+            this.SourceControlNames.Size = new System.Drawing.Size(103, 24);
+            this.SourceControlNames.Sorted = true;
+            this.SourceControlNames.TabIndex = 34;
+            this.SourceControlNames.ValueMember = "TenantID";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(468, 40);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(73, 17);
+            this.label7.TabIndex = 32;
+            this.label7.Text = "Controls:";
             // 
             // sourceModuleList
             // 
@@ -210,7 +232,7 @@ namespace DatalistSyncUtil
             // 
             // rightPanel
             // 
-            this.rightPanel.Controls.Add(this.ControlsNames);
+            this.rightPanel.Controls.Add(this.TargetControlNames);
             this.rightPanel.Controls.Add(this.label8);
             this.rightPanel.Controls.Add(this.moduleList);
             this.rightPanel.Controls.Add(this.label4);
@@ -224,6 +246,28 @@ namespace DatalistSyncUtil
             this.rightPanel.Name = "rightPanel";
             this.rightPanel.Size = new System.Drawing.Size(697, 826);
             this.rightPanel.TabIndex = 1;
+            // 
+            // TargetControlNames
+            // 
+            this.TargetControlNames.DisplayMember = "ControlName";
+            this.TargetControlNames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TargetControlNames.FormattingEnabled = true;
+            this.TargetControlNames.Location = new System.Drawing.Point(536, 38);
+            this.TargetControlNames.Name = "TargetControlNames";
+            this.TargetControlNames.Size = new System.Drawing.Size(92, 24);
+            this.TargetControlNames.Sorted = true;
+            this.TargetControlNames.TabIndex = 35;
+            this.TargetControlNames.ValueMember = "TenantID";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(468, 40);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(73, 17);
+            this.label8.TabIndex = 33;
+            this.label8.Text = "Controls:";
             // 
             // moduleList
             // 
@@ -376,52 +420,6 @@ namespace DatalistSyncUtil
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(468, 40);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(73, 17);
-            this.label7.TabIndex = 32;
-            this.label7.Text = "Controls:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(468, 40);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(73, 17);
-            this.label8.TabIndex = 33;
-            this.label8.Text = "Controls:";
-            // 
-            // ControlName
-            // 
-            this.ControlName.DisplayMember = "ControlName";
-            this.ControlName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ControlName.FormattingEnabled = true;
-            this.ControlName.Location = new System.Drawing.Point(543, 38);
-            this.ControlName.Name = "ControlName";
-            this.ControlName.Size = new System.Drawing.Size(103, 24);
-            this.ControlName.Sorted = true;
-            this.ControlName.TabIndex = 34;
-            this.ControlName.ValueMember = "TenantID";
-            this.ControlName.SelectedIndexChanged += new System.EventHandler(this.Control_SelectedIndexChanged);
-            // 
-            // ControlsNames
-            // 
-            this.ControlsNames.DisplayMember = "ControlName";
-            this.ControlsNames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ControlsNames.FormattingEnabled = true;
-            this.ControlsNames.Location = new System.Drawing.Point(536, 38);
-            this.ControlsNames.Name = "ControlsNames";
-            this.ControlsNames.Size = new System.Drawing.Size(92, 24);
-            this.ControlsNames.Sorted = true;
-            this.ControlsNames.TabIndex = 35;
-            this.ControlsNames.ValueMember = "TenantID";
-            this.ControlsNames.SelectedIndexChanged += new System.EventHandler(this.Controls_SelectedIndexChanged);
-            // 
             // DatalistComparer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -453,7 +451,7 @@ namespace DatalistSyncUtil
         private System.Windows.Forms.ToolStripMenuItem menusToolStripMenuItem;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox ControlName;
-        private System.Windows.Forms.ComboBox ControlsNames;
+        private System.Windows.Forms.ComboBox SourceControlNames;
+        private System.Windows.Forms.ComboBox TargetControlNames;
     }
 }
