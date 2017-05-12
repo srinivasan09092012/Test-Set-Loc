@@ -11,6 +11,12 @@ namespace SolutionRefactorMgr.Domain
             Main
         }
 
+        public enum EditModeTypes
+        {
+            Copy,
+            Inline
+        }
+
         [Serializable]
         public enum ProjectTypes
         {

@@ -1,24 +1,81 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<RefactorConfig>
+<RefactorConfig editMode="Copy">
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs>
     <ModuleConfig name="Core" branch="Dev" types="All" />
   </ModuleConfigs>
+  <LineDeletes>
+    <LineDelete contains="[GeneratedCodeAttribute(" />
+    <LineDelete contains="[XmlType(Namespace" />
+    <LineDelete contains="[XmlRoot(Namespace" />
+    <LineDelete contains="[ServiceContract(Namespace" />
+  </LineDeletes>
   <ReplacementStrings>
+    <!-- Copyrights -->
     <ReplacementString original="Hewlett Packard Enterprise" new="DXC Technology" />
     <ReplacementString original="Hewlett-Packard Enterprise" new="DXC Technology" />
     <ReplacementString original="Copyright © Microsoft 2016" new="Copyright © DXC Technology 2017" />
     <ReplacementString original="Copyright © Hewlett-Packard Enterprise 2016" new="Copyright © DXC Technology 2017" />
     <ReplacementString original="Copyright (c) 2016" new="Copyright (c) 2017" />
     <ReplacementString original="AssemblyCompany(&quot;Microsoft&quot;)" new="AssemblyCompany(&quot;DXC Technology&quot;)" />
-    <ReplacementString original="HPE.HSP.UA3" new="HSP.MAPS" />
-    <ReplacementString original="HP.HSP.UA3" new="HSP.MAPS" />
-    <ReplacementString original="HSP.UA3" new="HSP.MAPS" />
+    
+    <!-- Namespaces -->
+    <ReplacementString original="HP.HSP.UA." new="HSP.MAPS." />
+    <ReplacementString original="HP.HSP.UA3." new="HSP.MAPS." />
+    <ReplacementString original="HP.HSP." new="HSP.MAPS." />
+    <ReplacementString original="HP.U3." new="HSP.MAPS." />
+    <ReplacementString original="HP.UA." new="HSP.MAPS." />
+    <ReplacementString original="HP.UA3." new="HSP.MAPS." />
+    <ReplacementString original="HP." new="HSP." />
+
+    <ReplacementString original="hp.hsp.ua." new="hsp.maps." />
+    <ReplacementString original="hp.hsp.ua3." new="hsp.maps." />
+    <ReplacementString original="hp.hsp." new="hsp.maps." />
+    <ReplacementString original="hp.u3." new="hsp.maps." />
+    <ReplacementString original="hp.ua." new="hsp.maps." />
+    <ReplacementString original="hp.ua3." new="hsp.maps." />
+    <!-- ReplacementString original="hp." new="hsp." /-->
+
+    <ReplacementString original="HPE.HSP.UA." new="HSP.MAPS." />
+    <ReplacementString original="HPE.HSP.UA3." new="HSP.MAPS." />
+    <ReplacementString original="HPE.HSP." new="HSP.MAPS." />
+    <ReplacementString original="HPE.U3." new="HSP.MAPS." />
+    <ReplacementString original="HPE.UA." new="HSP.MAPS." />
+    <ReplacementString original="HPE.UA3." new="HSP.MAPS." />
+    <ReplacementString original="HPE." new="HSP." />
+
+    <ReplacementString original="hpe.hsp.ua." new="hsp.maps." />
+    <ReplacementString original="hpe.hsp.ua3." new="hsp.maps." />
+    <ReplacementString original="hpe.hsp." new="hsp.maps." />
+    <ReplacementString original="hpe.u3." new="hsp.maps." />
+    <ReplacementString original="hpe.ua." new="hsp.maps." />
+    <ReplacementString original="hpe.ua3." new="hsp.maps." />
+    <!-- ReplacementString original="hpe." new="hsp." /-->
+
+    <ReplacementString original="HSP.U3." new="HSP.MAPS." />
+    <ReplacementString original="HSP.UA." new="HSP.MAPS." />
+    <ReplacementString original="HSP.UA3." new="HSP.MAPS." />
+
+    <ReplacementString original="hsp.u3." new="hsp.maps." />
+    <ReplacementString original="hsp.uA." new="hsp.maps." />
+    <ReplacementString original="hsp.ua3." new="hsp.maps." />
+
+    <ReplacementString original="urn:hpe.ua3" new="urn:hps.maps" />
+    <ReplacementString original="urn:hp.ua3" new="urn:hps.maps" />
+
+    <ReplacementString original="IndexOf(&quot;UA3.&quot;) + 4" new="IndexOf(&quot;MAPS.&quot;) + 5" />
+    
+    <!-- NuGet Package Source -->
     <ReplacementString original="HP UA3 Package Source" new="HSP MAPS Package Source" />
-    <ReplacementString original="UA3" new="HSP" />
+
+    <!-- Solution & Project Attributes -->
     <ReplacementString original="&gt;SAK&lt;" new="&gt;&lt;" />
     <ReplacementString original="&lt;TargetFrameworkVersion&gt;v4.5.1&lt;/TargetFrameworkVersion&gt;" new="&lt;TargetFrameworkVersion&gt;v4.5.2&lt;/TargetFrameworkVersion&gt;" />
     <ReplacementString original="&lt;TargetFrameworkVersion&gt;v4.5&lt;/TargetFrameworkVersion&gt;" new="&lt;TargetFrameworkVersion&gt;v4.5.2&lt;/TargetFrameworkVersion&gt;" />
     <ReplacementString original="&lt;TargetFrameworkVersion&gt;v4.0&lt;/TargetFrameworkVersion&gt;" new="&lt;TargetFrameworkVersion&gt;v4.5.2&lt;/TargetFrameworkVersion&gt;" />
+
+    <!-- Miscellaneous -->
+    <ReplacementString original="HP.*.dll" new="HSP.*.dll" />
+    <ReplacementString original="hpeDbConnection" new="hpsDbConnection" />
   </ReplacementStrings>
 </RefactorConfig>

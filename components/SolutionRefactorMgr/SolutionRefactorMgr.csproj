@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Domain\Constants.cs" />
     <Compile Include="Domain\Enumerations.cs" />
+    <Compile Include="Domain\LineDelete.cs" />
     <Compile Include="Domain\ModuleConfig.cs" />
     <Compile Include="Domain\RefactorConfig.cs" />
     <Compile Include="Domain\ReplacementString.cs" />
@@ -74,7 +75,9 @@
     <Folder Include="Common\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="RefactorConfig.xml" />
+    <Content Include="RefactorConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
