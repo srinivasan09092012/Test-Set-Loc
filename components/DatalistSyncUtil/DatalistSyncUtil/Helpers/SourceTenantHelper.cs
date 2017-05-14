@@ -97,6 +97,26 @@ namespace DatalistSyncUtil
             return result;
         }
 
+        public List<HtmlBlockModel> GetHTMLList()
+        {
+            List<HtmlBlockModel> result = null;
+            if (!this.Cache.IsSet("SourceHtmlBlock"))
+            {
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    result = new HtmlBlocksReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").SearchHtmlBlocks();
+                }
+
+                this.Cache.Set("SourceHtmlBlock", result.OrderBy(o => o.ContentId).ToList(), 1440);
+            }
+            else
+            {
+                result = this.Cache.Get<List<HtmlBlockModel>>("SourceHtmlBlock").ToList();
+            }
+
+            return result;
+        }
+
         public List<CodeListModel> GetDataListItems()
         {
             if (this.Cache.IsSet("SourceDataListItems"))
@@ -148,8 +168,44 @@ namespace DatalistSyncUtil
             result.AddRange(resultsecrights);
            
             this.Cache.Set("SourceDataListItems", result, 1440);
-           return result;
-       }
+
+            return result;
+        }
+
+        public List<HtmlBlockLanguagesModel> GetHtmlListLangs()
+        {
+            List<Task> tasks = new List<Task>();
+            List<HtmlBlockModel> result = null;
+            List<HtmlBlockLanguagesModel> languages = null;
+
+            if (this.Cache.IsSet("SourceHtmlLangs"))
+            {
+                languages = this.Cache.Get<List<HtmlBlockLanguagesModel>>("SourceHtmlLangs");
+            }
+
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                tasks.Add(Task.Factory.StartNew(() =>
+                {
+                    result = new HtmlBlocksReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").SearchHtmlBlocks();
+                }));
+
+                tasks.Add(Task.Factory.StartNew(() =>
+                {
+                    languages = new HtmlBlocksReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").GetHtmlBlockLanguages();
+                }));
+            }
+
+            Task.WaitAll(tasks.ToArray());
+            result.ForEach(x =>
+            {
+                x.HtmlBlockLanguages = languages.FindAll(c => c.ID == x.ID);
+            });
+
+            this.Cache.Set("SourceHtmlLangs", result, 1440);
+
+            return languages;
+        }
 
         public List<MenuListModel> GetMenu()
         {

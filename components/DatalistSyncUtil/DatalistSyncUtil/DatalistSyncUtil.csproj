@@ -90,6 +90,7 @@
   <ItemGroup>
     <Compile Include="Configs\DataListLinksReadOnly.cs" />
     <Compile Include="Configs\DataListAttributesReadOnly.cs" />
+    <Compile Include="Configs\HtmlBlockReadOnly.cs" />
     <Compile Include="Configs\LabelsCodeReadOnly.cs" />
     <Compile Include="Configs\MenusReadOnly.cs" />
     <Compile Include="Configs\MessageCodeReadOnly.cs" />
@@ -101,6 +102,8 @@
     <Compile Include="DaoHelpers\AddDataListItemDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddMenuDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddMenuItemDaoHelper.cs" />
+    <Compile Include="DaoHelpers\AddHtmlBlockDaoHelper.cs" />
+    <Compile Include="DaoHelpers\AddHtmlBlockLanguageDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateDataListLinkDaoHelper .cs" />
     <Compile Include="DaoHelpers\UpdateDataListAttributesDaoHelper.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
@@ -110,7 +113,11 @@
     <Compile Include="DaoHelpers\UpdateDataListItemDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateMenuDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateMenuItemDaoHelper.cs" />
+    <Compile Include="DaoHelpers\UpdateHtmlBlockDaoHelper.cs" />
+    <Compile Include="DaoHelpers\UpdateHtmlBlockLanguageDaoHelper.cs" />
     <Compile Include="Helpers\SourceTenantHelper.cs" />
+    <Compile Include="Models\HtmlBlockMainModel.cs" />
+    <Compile Include="Models\HtmlBlockLanguage.cs" />
     <Compile Include="Models\ItemAttribute.cs" />
     <Compile Include="Models\DatalistLinkModel.cs" />
     <Compile Include="Models\TreeSyncData.cs" />
@@ -148,6 +155,14 @@
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Models\ItemLanguage.cs" />
+    <Compile Include="Views\HtmlBlockDiff.cs">
+      <SubType>Form</SubType>
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Views\HtmlBlockDiff.Designer.cs">
+      <DependentUpon>HtmlBlockDiff.cs</DependentUpon>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Views\ListItems.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DataListSync.resx">
       <DependentUpon>DataListSync.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\HtmlBlockDiff.resx">
+      <DependentUpon>HtmlBlockDiff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ListItems.resx">
       <DependentUpon>ListItems.cs</DependentUpon>

@@ -100,6 +100,26 @@ namespace DatalistSyncUtil
             return result;
         }
 
+        public List<HtmlBlockModel> GetHTMLList()
+        {
+            List<HtmlBlockModel> result = null;
+            if (!this.Cache.IsSet("TargetHtmlBlock"))
+            {
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    result = new HtmlBlocksReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").SearchHtmlBlocks();
+                }
+
+                this.Cache.Set("TargetHtmlBlock", result.OrderBy(o => o.ContentId).ToList(), 1440);
+            }
+            else
+            {
+                result = this.Cache.Get<List<HtmlBlockModel>>("TargetHtmlBlock").ToList();
+            }
+
+            return result;
+        }
+
         public List<CodeListModel> GetDataListItems()
         {
             if (this.Cache.IsSet("TargetDataListItems"))
@@ -211,6 +231,41 @@ namespace DatalistSyncUtil
             return true;
         }
 
+        public List<HtmlBlockLanguagesModel> GetHtmlListLangs()
+        {
+            List<Task> tasks = new List<Task>();
+            List<HtmlBlockModel> result = null;
+            List<HtmlBlockLanguagesModel> languages = null;
+
+            if (this.Cache.IsSet("TargetHtmlLangs"))
+            {
+                languages = this.Cache.Get<List<HtmlBlockLanguagesModel>>("TargetHtmlLangs");
+            }
+
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                tasks.Add(Task.Factory.StartNew(() =>
+                {
+                    result = new HtmlBlocksReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").SearchHtmlBlocks();
+                }));
+
+                tasks.Add(Task.Factory.StartNew(() =>
+                {
+                    languages = new HtmlBlocksReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").GetHtmlBlockLanguages();
+                }));
+            }
+
+            Task.WaitAll(tasks.ToArray());
+            result.ForEach(x =>
+            {
+                x.HtmlBlockLanguages = languages.FindAll(c => c.ID == x.ID);
+            });
+
+            this.Cache.Set("TargetHtmlLangs", result, 1440);
+
+            return languages;
+        }
+
         public bool AddDatalist(DataListMainModel cmd)
         {
             bool success = true;
@@ -257,6 +312,82 @@ namespace DatalistSyncUtil
                 try
                 {
                     new AddMenuDaoHelper(new MenuDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
+                }
+            }
+
+            return success;
+        }
+
+        public bool AddHtmlBlk(HtmlBlockMainModel cmd)
+        {
+            bool success = true;
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new AddHtmlBlockDaoHelper(new HtmlBlockDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
+                }
+            }
+
+            return success;
+        }
+
+        public bool UpdateHtmlBlk(HtmlBlockMainModel cmd)
+        {
+            bool success = true;
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new UpdateHtmlBlockDaoHelper(new HtmlBlockDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
+                }
+            }
+
+            return success;
+        }
+
+        public bool AddHtmlBlkLanguage(HtmlBlockLanguage cmd)
+        {
+            bool success = true;
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new AddHtmlBlockLanguageDaoHelper(new HtmlBlockDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
+                }
+            }
+
+            return success;
+        }
+
+        public bool UpdateHtmlBlkLanguage(HtmlBlockLanguage cmd)
+        {
+            bool success = true;
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new UpdateHtmlBlockLanguageDaoHelper(new HtmlBlockDbContext(session, true)).ExecuteProcedure(cmd);
                 }
                 catch (Exception ex)
                 {

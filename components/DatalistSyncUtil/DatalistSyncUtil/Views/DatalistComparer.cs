@@ -16,13 +16,10 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-
 namespace DatalistSyncUtil
 {
     public partial class DatalistComparer : Form
     {
-        TreeSyncData syncdata = new TreeSyncData();
-
         public DatalistComparer()
         {
             this.InitializeComponent();
@@ -40,7 +37,10 @@ namespace DatalistSyncUtil
             this.LoadSourceModules();
         }
 
+        public List<CodeLinkTable> Listlink = new List<CodeLinkTable>();
+
         public List<DataListMainModel> SourceList { get; set; }
+
         public List<CodeLinkTable> SourceLink { get; set; }
 
         public List<MenuListModel> SourceMenus { get; set; }
@@ -49,9 +49,13 @@ namespace DatalistSyncUtil
 
         public List<MenuItemModel> SourceMenuItems { get; set; }
 
+        public List<HtmlBlockMainModel> SourceHtmlList { get; set; }
+
         public List<DataListMainModel> TargetList { get; set; }
 
         public List<MenuListModel> TargetMenuList { get; set; }
+
+        public List<HtmlBlockMainModel> TargetHtmlList { get; set; }
 
         public TenantHelper LoadHelper { get; set; }
 
@@ -60,8 +64,6 @@ namespace DatalistSyncUtil
         public ConnectionStringSettings TargetConnectionString { get; set; }
 
         public ConnectionStringSettings SourceConnectionString { get; set; }
-
-        public List<CodeLinkTable> listlink = new List<CodeLinkTable>();
 
         private void BtnSourceFile_Click(object sender, EventArgs e)
         {
@@ -78,26 +80,25 @@ namespace DatalistSyncUtil
                     List<MenuListModel> sourceMenuList = this.SourceMenus.ToList();
                     this.SourceList = JsonConvert.DeserializeObject<List<DataListMainModel>>(File.ReadAllText(file));
                     List<DataListMainModel> sourceDataList = this.SourceList.Where(w => targetModules.Select(s => s.ModuleName).Contains(w.ModuleName)).ToList();
+                    this.SourceHtmlList = JsonConvert.DeserializeObject<List<HtmlBlockMainModel>>(File.ReadAllText(file));
+                    List<HtmlBlockMainModel> sourceHtmlBlks = this.SourceHtmlList.ToList();
                 }
                 catch (IOException)
                 {
                 }
 
-                Cursor.Current = Cursors.WaitCursor;
-                string caseSwitch = this.SourceControlNames.SelectedItem.ToString();
-                switch (caseSwitch)
+                if (File.ReadAllText(file).Contains("HtmlBlock"))
                 {
-                    case "Datalist":
-                        this.LoadTreeView(this.sourceTreeList, this.SourceList.OrderBy(o => o.ContentID).ToList());
-                        break;
-
-                    case "Menus":
-                        this.LoadMenuTreeView(this.sourceTreeList, this.SourceMenus.OrderBy(o => o.Name).ToList());
-                        break;
-                    default:
-                        break;
+                    this.LoadHtmlTreeView(this.sourceTreeList, this.SourceHtmlList.OrderBy(o => o.ContentId).ToList());
                 }
-                Cursor.Current = Cursors.Default;
+                else if (File.ReadAllText(file).Contains("ParentMenuItemID"))
+                {
+                    this.LoadMenuTreeView(this.sourceTreeList, this.SourceMenus.OrderBy(o => o.Name).ToList());
+                }
+                else
+                {
+                    this.LoadTreeView(this.sourceTreeList, this.SourceList.OrderBy(o => o.ContentID).ToList());
+                }
             }
         }
 
@@ -184,7 +185,40 @@ namespace DatalistSyncUtil
                 menuNodes = null;
                 menuNode = null;
             }
+        }
 
+        private void LoadHtmlTreeView(TreeView treeView, List<HtmlBlockMainModel> lists)
+        {
+            TreeNode listNode = null;
+            
+            TreeNode langNode = null;
+            List<TreeNode> langNodes = null;
+            string languageSeparator = " - ";
+
+            try
+            {
+                treeView.Nodes.Clear();
+
+                foreach (HtmlBlockMainModel list in lists)
+                {
+                    langNodes = new List<TreeNode>();
+                    list.HtmlBlockLanguages.ForEach(l =>
+                    {
+                        langNode = new TreeNode(l.LocaleId + languageSeparator + l.Html);
+                        langNodes.Add(langNode);
+                    });
+                                        
+                    listNode = new TreeNode(list.ContentId, langNodes.ToArray());
+
+                    treeView.Nodes.Add(listNode);
+                }
+            }
+            finally
+            {
+                listNode = null;
+                langNode = null;
+                langNodes = null;
+            }
         }
 
         private void BtnLoadTarget_Click(object sender, EventArgs e)
@@ -195,15 +229,12 @@ namespace DatalistSyncUtil
             switch (caseSwitch)
             {
                 case "Menus":
-                    {
                         this.TargetMenuList = this.LoadTargetMenus();
                         List<MenuListModel> filteredDataList1 = null;
                         filteredDataList1 = this.TargetMenuList;
                         this.LoadMenuTreeView(this.targetTreeList, filteredDataList1.OrderBy(w => w.Name).ToList());
                         break;
-                     }
                 case "Datalist":
-                    {
                         this.TargetList = this.LoadTargetDatalist();
                         List<DataListMainModel> filteredDataList = null;
                         if (tenantModuleId == Guid.Empty)
@@ -214,9 +245,24 @@ namespace DatalistSyncUtil
                         {
                             filteredDataList = this.TargetList.Where(w => w.TenantModuleID == tenantModuleId).ToList();
                         }
+
                         this.LoadTreeView(this.targetTreeList, filteredDataList.OrderBy(o => o.ContentID).ToList());
                         break;
+                case "HtmlBlock":
+                    this.TargetHtmlList = this.LoadTargetHTMLlist();
+                    List<HtmlBlockMainModel> filteredHtmlList = null;
+
+                    if (tenantModuleId == Guid.Empty)
+                    {
+                        filteredHtmlList = this.TargetHtmlList;
                     }
+                    else
+                    {
+                        filteredHtmlList = this.TargetHtmlList.Where(w => w.TenantModuleId == tenantModuleId).ToList();
+                    }
+
+                    this.LoadHtmlTreeView(this.targetTreeList, filteredHtmlList.OrderBy(o => o.ContentId).ToList());
+                    break;
                 default:
                     break;
             }
@@ -229,16 +275,16 @@ namespace DatalistSyncUtil
             List<MenuListModel> lists = null;
             List<MenuListModel> listsMain = new List<MenuListModel>();
             MenuListModel list1 = null;
-            List<MenuItemModel> ChildMenuItems = new List<MenuItemModel>();
+            List<MenuItemModel> childMenuItems = new List<MenuItemModel>();
 
             Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
             lists = this.LoadHelper.GetMenu().Where(w => w.TenantId == tenantID).ToList();
             lists.ForEach(x =>
             {
-                ChildMenuItems.AddRange(x.Children.ToList());
-            }
-           );
-            this.SourceMenuItems = ChildMenuItems;
+                childMenuItems.AddRange(x.Children.ToList());
+            });
+
+            this.SourceMenuItems = childMenuItems;
             foreach (MenuListModel list in lists)
             {
                 list1 = new MenuListModel()
@@ -273,7 +319,7 @@ namespace DatalistSyncUtil
             lists = this.LoadHelper.GetDataList().Where(w => w.TenantID == tenantID).ToList();
             lists = this.LoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID).ToList();
             listItems = this.LoadHelper.GetDataListItems();
-            listlink = this.LoadHelper.GetDataListLinks("TargetDataListLinks");
+            Listlink = this.LoadHelper.GetDataListLinks("TargetDataListLinks");
 
             foreach (DataList list in lists)
             {
@@ -298,21 +344,76 @@ namespace DatalistSyncUtil
             return listsMain;
         }
 
+        private List<HtmlBlockMainModel> LoadTargetHTMLlist()
+        {
+            List<HtmlBlockModel> lists = null;
+            List<HtmlBlockLanguagesModel> listItems = null;
+            List<HtmlBlockMainModel> listsMain = new List<HtmlBlockMainModel>();
+            HtmlBlockMainModel list1 = null;
+
+            Guid tenantID = new Guid(this.tenantList.SelectedValue.ToString());
+
+            lists = this.LoadHelper.GetHTMLList().Where(w => w.TenantId == tenantID).ToList();
+            listItems = this.LoadHelper.GetHtmlListLangs();
+
+            foreach (HtmlBlockModel list in lists)
+            {
+                list1 = new HtmlBlockMainModel()
+                {
+                    ContentId = list.ContentId,
+                    Description = list.Description,
+                    ID = list.ID,
+                    HtmlBlockLanguages = this.ConvertToCustomHtmlLang(list.ContentId, list.ID, listItems),
+                    IsActive = list.IsActive,
+                    LastModifiedTS = list.LastModifiedTS,
+                    OperatorId = list.OperatorId,
+                    TenantModuleId = list.TenantModuleId
+                };
+
+                listsMain.Add(list1);
+            }
+
+            return listsMain;
+        }
+
+        private List<HtmlBlockLanguage> ConvertToCustomHtmlLang(string contentID, Guid iD, List<HtmlBlockLanguagesModel> listItems)
+        {
+            List<HtmlBlockLanguage> items = new List<HtmlBlockLanguage>();
+            HtmlBlockLanguage item = null;
+            listItems = listItems.Where(w => w.ID == iD).ToList();
+
+            listItems.ForEach(e =>
+            {
+                item = new HtmlBlockLanguage()
+                {
+                    HtmlBlockId = e.ID,
+                    LocaleId = e.LocaleId,
+                    Html = e.Html,
+                    IsActive = e.IsActive,
+                    OperatorId = e.OperatorId,
+                    LastModifiedTS = e.LastModifiedTS
+                };
+                items.Add(item);
+            });
+
+            return items;
+        }
+
         private List<MenuListModel> LoadSourceMenus()
         {
             List<MenuListModel> lists = null;
             List<MenuListModel> listsMain = new List<MenuListModel>();
             MenuListModel list1 = null;
-            List<MenuItemModel> ChildMenuItems = new List<MenuItemModel>();
+            List<MenuItemModel> childMenuItems = new List<MenuItemModel>();
 
             Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
             lists = this.SourceLoadHelper.GetMenu().ToList();
             lists.ForEach(x =>
             {
-                ChildMenuItems.AddRange(x.Children.ToList());
-            }
-           );
-            this.SourceMenuItems = ChildMenuItems;
+                childMenuItems.AddRange(x.Children.ToList());
+            });
+
+            this.SourceMenuItems = childMenuItems;
             foreach (MenuListModel list in lists)
             {
                 list1 = new MenuListModel()
@@ -386,7 +487,7 @@ namespace DatalistSyncUtil
             lists = this.SourceLoadHelper.GetDataList().Where(w => w.TenantID == tenantID).ToList();
             lists = this.SourceLoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID).ToList();
             listItems = this.SourceLoadHelper.GetDataListItems();
-            listlink = this.SourceLoadHelper.GetDataListLinks("SourceDataListLinks");
+            Listlink = this.SourceLoadHelper.GetDataListLinks("SourceDataListLinks");
             foreach (DataList list in lists)
             {
                 list1 = new DataListMainModel()
@@ -401,13 +502,67 @@ namespace DatalistSyncUtil
                     TenantModuleID = list.TenantModuleID,
                     ID = list.ID,
                     DataListAttributes = this.ConverttoAttributes(list.DataListAttributes, list.ContentID, list.TenantID, list.ID)
-
                 };
                 listsMain.Add(list1);
             }
 
             return listsMain;
+        }
 
+        private List<HtmlBlockMainModel> LoadSourceHTMLlist()
+        {
+            List<HtmlBlockModel> lists = null;
+            List<HtmlBlockLanguagesModel> listItems = null;
+            List<HtmlBlockMainModel> listsMain = new List<HtmlBlockMainModel>();
+            HtmlBlockMainModel list1 = null;
+
+            Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
+
+            lists = this.SourceLoadHelper.GetHTMLList().Where(w => w.TenantId == tenantID).ToList();
+            listItems = this.SourceLoadHelper.GetHtmlListLangs();
+
+            foreach (HtmlBlockModel list in lists)
+            {
+                list1 = new HtmlBlockMainModel()
+                {
+                    ContentId = list.ContentId,
+                    Description = list.Description,
+                    ID = list.ID,
+                    HtmlBlockLanguages = this.GetHtmlLanguageListCustom(list.ID, listItems),
+                    IsActive = list.IsActive,
+                    LastModifiedTS = list.LastModifiedTS,
+                    OperatorId = list.OperatorId,
+                    TenantModuleId = list.TenantModuleId
+                };
+
+                listsMain.Add(list1);
+            }
+
+            return listsMain;
+        }
+
+        private List<HtmlBlockLanguage> GetHtmlLanguageListCustom(Guid id, List<HtmlBlockLanguagesModel> listItems)
+        {
+            List<HtmlBlockLanguage> languages = new List<HtmlBlockLanguage>();
+            HtmlBlockLanguage language = null;
+
+            listItems = listItems.Where(w => w.ID == id).ToList();
+
+            listItems.ForEach(e =>
+            {
+                language = new HtmlBlockLanguage()
+                {
+                    HtmlBlockId = e.ID,
+                    LocaleId = e.LocaleId,
+                    Html = e.Html,
+                    IsActive = e.IsActive,
+                    OperatorId = e.OperatorId,
+                    LastModifiedTS = e.LastModifiedTS
+                };
+                languages.Add(language);
+            });
+
+            return languages;
         }
 
         private List<CodeItemModel> ConvertToCustomDataListItems(string contentID, Guid tenantID, List<CodeListModel> listItems)
@@ -431,16 +586,15 @@ namespace DatalistSyncUtil
                     OrderIndex = e.OrderIndex,
                     TenantID = e.TenantID,
                     ID = e.ID,
-                    DataListLink = this.GetcoustmItemLink(e.ContentID, e.ID, listlink, e.OrderIndex, e.LanguageList, listItems, e.TenantID),
-
-
+                    DataListLink = this.GetcoustmItemLink(e.ContentID, e.ID, Listlink, e.OrderIndex, e.LanguageList, listItems, e.TenantID),
                 };
                 items.Add(item);
             });
 
             return items;
         }
-        private List<DataListItemLink> GetcoustmItemLink(string ContentID, Guid id, List<CodeLinkTable> link, int? OrderIndex, List<Languages> Language, List<CodeListModel> listItems, Guid TenantID)
+
+        private List<DataListItemLink> GetcoustmItemLink(string contentID, Guid id, List<CodeLinkTable> link, int? orderIndex, List<Languages> language, List<CodeListModel> listItems, Guid tenantID)
         {
             List<DataListItemLink> listlink = new List<DataListItemLink>();
             DataListItemLink itemlink = null;
@@ -448,23 +602,20 @@ namespace DatalistSyncUtil
             List<CodeListModel> listItemschild = new List<CodeListModel>();
             link = link.Where(w => w.ParentID == id).ToList();
 
-
-
             link.ForEach(e =>
             {
                 listItemschild = listItems.Where(w => w.ID == e.ChildID).ToList();
                 if (listItemschild.Count() > 0)
                     itemlink = new DataListItemLink()
                     {
-                        ParentDataList = ContentID,
+                        ParentDataList = contentID,
                         ChildDataList = listItemschild[0].ContentID,
-                        ParentCode = Convert.ToString(OrderIndex) + "-" + Language[0].Description,
+                        ParentCode = Convert.ToString(orderIndex) + "-" + language[0].Description,
                         ParentID = e.ParentID,
                         ChildID = e.ChildID,
                         IsActive = e.IsActive,
                         Description = listItemschild[0].OrderIndex + "-" + listItemschild[0].LanguageList[0].Description,
-                        TenantID = TenantID
-
+                        TenantID = tenantID
                     };
                 listlink.Add(itemlink);
             });
@@ -574,25 +725,32 @@ namespace DatalistSyncUtil
             this.sourceModuleList.SelectAll();
         }
 
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void datalistToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DatalistToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            DatalistDiff diffPage = new DatalistDiff(new Guid(this.tenantList.SelectedValue.ToString()), "DATALIST", this.SourceList, this.TargetList);
-            diffPage.ShowDialog();
+            if (this.SourceList != null)
+            {
+                DatalistDiff diffPage = new DatalistDiff(new Guid(this.tenantList.SelectedValue.ToString()), "DATALIST", this.SourceList, this.TargetList);
+                diffPage.ShowDialog();
+            }
+
             Cursor.Current = Cursors.Default;
         }
 
-        private void datalistItemToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DatalistItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            DatalistDiff diffPage = new DatalistDiff(new Guid(this.tenantList.SelectedValue.ToString()), "ITEMS", this.SourceList, this.TargetList);
-            diffPage.ShowDialog();
+            if (this.SourceList != null)
+            {
+                DatalistDiff diffPage = new DatalistDiff(new Guid(this.tenantList.SelectedValue.ToString()), "ITEMS", this.SourceList, this.TargetList);
+                diffPage.ShowDialog();
+            }
+
             Cursor.Current = Cursors.Default;
         }
 
@@ -606,7 +764,7 @@ namespace DatalistSyncUtil
             this.LoadSourceModules();
         }
 
-        private void btnSourceLoad_Click(object sender, EventArgs e)
+        private void BtnSourceLoad_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
             Guid tenantModuleId = (this.sourceModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
@@ -614,61 +772,90 @@ namespace DatalistSyncUtil
             switch (caseSwitch)
             {
                 case "Menus":
-                    {
                         this.SourceMenuList = this.LoadSourceMenus();
                         List<MenuListModel> filteredDataList1 = null;
                         filteredDataList1 = this.SourceMenuList;
                         this.LoadMenuTreeView(this.sourceTreeList, filteredDataList1.OrderBy(w => w.Name).ToList());
                         break;
-                    }
                 case "Datalist":
+                    this.SourceList = this.LoadSourceDatalist();
+                    List<DataListMainModel> filteredDataList = null;
+
+                    if (tenantModuleId == Guid.Empty)
                     {
-                        this.SourceList = this.LoadSourceDatalist();
-                        List<DataListMainModel> filteredDataList = null;
-                        if (tenantModuleId == Guid.Empty)
-                        {
-                            filteredDataList = this.SourceList;
-                        }
-                        else
-                        {
-                            filteredDataList = this.SourceList.Where(w => w.TenantModuleID == tenantModuleId).ToList();
-                        }
-                        this.LoadTreeView(this.sourceTreeList, filteredDataList.OrderBy(o => o.ContentID).ToList());
-                        break;
+                        filteredDataList = this.SourceList;
                     }
+                    else
+                    {
+                        filteredDataList = this.SourceList.Where(w => w.TenantModuleID == tenantModuleId).ToList();
+                    }
+
+                    this.LoadTreeView(this.sourceTreeList, filteredDataList.OrderBy(o => o.ContentID).ToList());
+                    break;
+                case "HtmlBlock":
+                    this.SourceHtmlList = this.LoadSourceHTMLlist();
+                    List<HtmlBlockMainModel> filteredHtmlList = null;
+
+                    if (tenantModuleId == Guid.Empty)
+                    {
+                        filteredHtmlList = this.SourceHtmlList;
+                    }
+                    else
+                    {
+                        filteredHtmlList = this.SourceHtmlList.Where(w => w.TenantModuleId == tenantModuleId).ToList();
+                    }
+
+                    this.LoadHtmlTreeView(this.sourceTreeList, filteredHtmlList.OrderBy(o => o.ContentId).ToList());
+                    break;
                 default:
                     break;
             }
-                    Cursor.Current = Cursors.Default;
+
+            Cursor.Current = Cursors.Default;
         }
 
-        private void menusToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MenusToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MenuListDiff menudiffPage = new MenuListDiff(new Guid(this.tenantList.SelectedValue.ToString()), "MENUS", this.SourceMenuList, this.TargetMenuList);
-            menudiffPage.ShowDialog();
-            this.Close();
+            if (this.SourceMenuList != null)
+            {
+                MenuListDiff menudiffPage = new MenuListDiff(new Guid(this.tenantList.SelectedValue.ToString()), "MENUS", this.SourceMenuList, this.TargetMenuList);
+                menudiffPage.ShowDialog();
+                this.Close();
+            }
         }
 
         private void LoadSourceControls()
         {
-            List<string> ControlNames = new List<string>(new string[] { "Datalist", "HtmlBlock", "Images", "Menus" });
-            for (int i = 0; i <= ControlNames.Count - 1; i++)
+            List<string> controlNames = new List<string>(new string[] { "Datalist", "HtmlBlock", "Images", "Menus" });
+            for (int i = 0; i <= controlNames.Count - 1; i++)
             {
-                this.SourceControlNames.Items.Add(ControlNames[i]);
+                this.SourceControlNames.Items.Add(controlNames[i]);
             }
+
             this.SourceControlNames.Text = "Datalist";
         }
 
         private void LoadControls()
         {
-            List<string> ControlNames = new List<string>(new string[] { "Datalist", "HtmlBlock", "Images", "Menus" });
-            for (int i = 0; i <= ControlNames.Count - 1; i++)
+            List<string> controlNames = new List<string>(new string[] { "Datalist", "HtmlBlock", "Images", "Menus" });
+            for (int i = 0; i <= controlNames.Count - 1; i++)
             {
-                this.TargetControlNames.Items.Add(ControlNames[i]);
+                this.TargetControlNames.Items.Add(controlNames[i]);
             }
+
             this.TargetControlNames.Text = "Datalist";
         }
 
+        private void HtmlBlockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            if (this.SourceHtmlList != null)
+            { 
+                HtmlBlockDiff diffPage = new HtmlBlockDiff(new Guid(this.tenantList.SelectedValue.ToString()), "ITEMS", this.SourceHtmlList, this.TargetHtmlList);
+                diffPage.ShowDialog();
+            }
 
+            Cursor.Current = Cursors.Default;
+        }
     }
 }
