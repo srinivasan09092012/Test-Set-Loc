@@ -892,8 +892,15 @@ namespace DatalistSyncUtil
             if (itemAttrValues.Count > 0)
             {
                 itemAttrValues.ForEach(y => y.DataListAttributeValue = items.Find(c => c.ID == y.DataListValueID).Code);
-                itemAttrValues.ForEach(y => y.DataListAttributeName = listAttributes.Find(d => d.ID == y.DataListAttributeID).TypeName);
-                itemAttrValues.ForEach(y => y.DataListTypeName = listAttributes.Find(d => d.ID == y.DataListAttributeID).DataListTypeName);
+                itemAttrValues.ForEach(y => {
+                    DataListAttribute attributes = new DataListAttribute();
+                    attributes=listAttributes.Find(d => d.ID == y.DataListAttributeID);
+                    if (attributes != null)
+                    {
+                        y.DataListAttributeName = attributes.TypeName;
+                        y.DataListTypeName = attributes.DataListTypeName;
+                    }
+                });
             }
             return itemAttrValues;
         }
