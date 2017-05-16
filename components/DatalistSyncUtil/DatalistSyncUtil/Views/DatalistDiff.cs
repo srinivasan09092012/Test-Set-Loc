@@ -185,7 +185,7 @@ namespace DatalistSyncUtil
             List<DataListMainModel> newDatalists = this.SourceList.Where(c => dataLists.Contains(c.ContentID)).ToList();
             newDatalists.ForEach(i =>
             {
-                i.Status = "DATALIST_NEW";
+                i.Status = "NEW";
                 i.ItemsCount = i.Items.Count;
             });
             return newDatalists.OrderBy(o => o.ContentID).ToList();
@@ -1169,42 +1169,44 @@ namespace DatalistSyncUtil
                         ItemList = ItemList + x.ItemCode + Environment.NewLine;
                     }
                 });
-            }
 
-            if (chkItems)
-            {
-                MessageBox.Show("Error:Please include following related DataListItems from Items tabs " + ItemList);
-                return;
-
-            }
-            else
-            {
-                List < string > DataListContentID = this.UpdateAttribute.Select(c => c.ParentContentId).Distinct().ToList();
-                List<CodeItemModel> items = new List<CodeItemModel>();
-
-                DataListContentID.ForEach(x => 
+                if (chkItems)
                 {
-                    items = this.TargetList.Find(t => t.ContentID == x).Items;
-                    items.ForEach(t =>
+                    MessageBox.Show("Error:Please include following related DataListItems from Items tabs " + ItemList);
+                    return;
+
+                }
+                else
+                {
+                    List<string> DataListContentID = this.UpdateAttribute.Select(c => c.ParentContentId).Distinct().ToList();
+                    List<CodeItemModel> items = new List<CodeItemModel>();
+
+                    DataListContentID.ForEach(x =>
                     {
-                        List<ItemDataListItemAttributeVal> itematrributes = this.UpdateAttributeVal.Where(f => f.ParentContentId == x && f.ItemCode == t.Code).ToList();
-                        
-                        if (this.UpdateListItems.Where(c => c.Code == t.Code && c.ContentID==t.ContentID).Any())
+                        items = this.TargetList.Find(t => t.ContentID == x).Items;
+                        items.ForEach(t =>
                         {
-                            this.UpdateListItems.Find(c => c.Code == t.Code && c.ContentID == t.ContentID).Attributes = itematrributes;
-                        }
-                        else
-                        {
+                            List<ItemDataListItemAttributeVal> itematrributes = this.UpdateAttributeVal.Where(f => f.ParentContentId == x && f.ItemCode == t.Code).ToList();
 
-                            t.Attributes = itematrributes;
-                            UpdateListItems.Add(t);
-                        }
+                            if (this.UpdateListItems.Where(c => c.Code == t.Code && c.ContentID == t.ContentID).Any())
+                            {
+                                this.UpdateListItems.Find(c => c.Code == t.Code && c.ContentID == t.ContentID).Attributes = itematrributes;
+                            }
+                            else
+                            {
+
+                                t.Attributes = itematrributes;
+                                UpdateListItems.Add(t);
+                            }
 
 
+                        });
                     });
-                });
-                
+
+                }
             }
+
+           
            
 
 
