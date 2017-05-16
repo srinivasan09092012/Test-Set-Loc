@@ -576,6 +576,25 @@ namespace DatalistSyncUtil
             return result;
         }
 
+        public List<ItemDataListItemAttributeVal> GetItemAttributeList()
+        {
+            List<ItemDataListItemAttributeVal> resultitems = null;
+            if (!this.Cache.IsSet("TargetDataListItemAttributes"))
+            {
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    resultitems = new DataListAttributesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").GetDataListItemAttributes();
+                    this.Cache.Set("TargetDataListItemAttributes", resultitems, 1440);
+                }
+            }
+            else
+            {
+                resultitems = this.Cache.Get<List<ItemDataListItemAttributeVal>>("TargetDataListItemAttributes");
+            }
+
+            return resultitems;
+        }
+
         public List<CodeLinkTable> GetDataListLinks(string key)
         {
             List<CodeLinkTable> result = null;

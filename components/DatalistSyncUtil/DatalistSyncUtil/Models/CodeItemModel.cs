@@ -6,6 +6,11 @@
 //-----------------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using HP.HSP.UA3.Core.BAS.CQRS.Base;
+using HP.HSP.UA3.Core.BAS.CQRS.Caching;
+using HP.HSP.UA3.Core.BAS.CQRS.Config.DAOHelpers;
+using HP.HSP.UA3.Core.BAS.CQRS.Domain;
+using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
 
 namespace DatalistSyncUtil
 {
@@ -50,6 +55,8 @@ namespace DatalistSyncUtil
 
         public bool IsEditable { get; set; }
 
-        public string Status { get; set; }
+        public string Status { get; set; }  
+
+        public List<ItemDataListItemAttributeVal> Attributes { get; set; }
     }
 }

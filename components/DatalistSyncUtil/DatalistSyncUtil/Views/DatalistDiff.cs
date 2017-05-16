@@ -23,6 +23,7 @@ namespace DatalistSyncUtil
         public DatalistDiff()
         {
             this.InitializeComponent();
+            this.NewItemAttributeView.AutoGenerateColumns = false;
         }
 
         public DatalistDiff(Guid tenantID, string type, List<DataListMainModel> sourceList, List<DataListMainModel> targetList)
@@ -36,6 +37,7 @@ namespace DatalistSyncUtil
             this.TargetList = targetList;
             this.LoadModules();
             this.LoadDelta();
+
         }
 
         public TenantHelper LoadHelper { get; set; }
@@ -84,6 +86,19 @@ namespace DatalistSyncUtil
         public List<DataListItemLink> UpdateLink { get; set; }
 
         public List<DataListItemLink> UpdatedTargetLink { get; set; }
+
+        public List<ItemAttribute> SourceUpdateAttribute { get; set; }
+
+        public List<ItemDataListItemAttributeVal> NewItemAttributeVal { get; set; }
+
+        public List<ItemDataListItemAttributeVal> UpdateAttributeVal { get; set; }
+
+
+        public List<ItemDataListItemAttributeVal> UpdateTargetItemAttributes { get; set; }
+
+        public List<ItemDataListItemAttributeVal> UpdateSourceItemAttributeVal { get; set; }
+
+        public List<DataListMainModel> FinalUpdateDataList { get; set; }
 
         private void LoadDelta()
         {
@@ -170,7 +185,7 @@ namespace DatalistSyncUtil
             List<DataListMainModel> newDatalists = this.SourceList.Where(c => dataLists.Contains(c.ContentID)).ToList();
             newDatalists.ForEach(i =>
             {
-                i.Status = "NEW";
+                i.Status = "DATALIST_NEW";
                 i.ItemsCount = i.Items.Count;
             });
             return newDatalists.OrderBy(o => o.ContentID).ToList();
@@ -200,6 +215,7 @@ namespace DatalistSyncUtil
             this.Add_Udate_Link();
             this.UpdateLanguages();
             this.UpdateDataListAttributes();
+            this.LoadDataListItemAttributes();
         }
 
         private void Add_Udate_Link()
@@ -209,7 +225,6 @@ namespace DatalistSyncUtil
             CodeItemModel dataListItemsLink = new CodeItemModel();
             List<CodeItemModel> sourceDatalistItems = null;
             List<CodeItemModel> targetDatalistItems = null;
-            List<CodeItemModel> dataListItems = null;
             List<DataListItemLink> SourcenewLinkItem = new List<DataListItemLink>();
             List<DataListItemLink> TargetnewLinkItem = new List<DataListItemLink>();
             List<DataListItemLink> updatedLink = new List<DataListItemLink>();
@@ -233,7 +248,7 @@ namespace DatalistSyncUtil
                 TargetnewLinkItem = targetDatalistItems[i].DataListLink;
                 if (TargetnewLinkItem.Count() == SourcenewLinkItem.Count())
                 {
-                    KeyValuePair < List<DataListItemLink>, List < DataListItemLink >> result= this.LoadUpdateLinkItem(sourceDatalistItems, targetDatalistItems);
+                    KeyValuePair<List<DataListItemLink>, List<DataListItemLink>> result = this.LoadUpdateLinkItem(sourceDatalistItems, targetDatalistItems);
                     updatedLink.AddRange(result.Key);
                     updatedTargetLink.AddRange(result.Value);
                 }
@@ -283,7 +298,10 @@ namespace DatalistSyncUtil
             {
                 sourceDatalistItems = this.SourceList.Find(e => e.ContentID == f).Items;
                 targetDatalistItems = this.TargetList.Find(e => e.ContentID == f).Items;
-                
+                DataListMainModel List = this.TargetList.Find(e => e.ContentID == f);
+
+
+
                dataListItems = sourceDatalistItems.Where(b => !targetDatalistItems.Any(a => a.ContentID == b.ContentID && a.Code == b.Code && a.IsActive == b.IsActive)).ToList();
 
                 if (dataListItems != null && dataListItems.Count > 0)
@@ -291,7 +309,7 @@ namespace DatalistSyncUtil
                     dataListItems.ForEach(t =>
                     {
                         t.Status = "DATALIST_NEW";
-
+                        t.DatalistID = List.ID;
                         newDatalistItemsFromUpdateList.Add(t);
                     });
                     
@@ -333,7 +351,7 @@ namespace DatalistSyncUtil
                 }
             }
 
-           return new KeyValuePair<List<DataListItemLink>, List<DataListItemLink>>((updatedLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList()), updatedTargetLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+           return new KeyValuePair<List<DataListItemLink>, List<DataListItemLink>>(updatedLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList(), updatedTargetLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
         }
         private List<DataListItemLink> NewLinkItemList(List<CodeItemModel> sourceDatalistItems, List<CodeItemModel> targetDatalistItems)
         {
@@ -628,11 +646,39 @@ namespace DatalistSyncUtil
             dataLists = this.SourceList.Select(c => c.ContentID).Except(this.TargetList.Select(c => c.ContentID)).ToList();
             List<DataListMainModel> newDatalists = this.SourceList.Where(c => dataLists.Contains(c.ContentID)).ToList();
 
+
+
             newDatalists.ForEach(i =>
             {
                 i.DataListAttributes.ForEach(f =>
                 {
-                    f.Status = "DATALIST_NEW";
+                    f.Status = "NEW";
+                    f.DataListID = i.ID;
+                    DataListMainModel DataListTypeName = new DataListMainModel();
+                    CodeItemModel DataListItem = new CodeItemModel();
+                    DataListTypeName = this.TargetList.Where(c => c.ContentID == f.ContentID).FirstOrDefault();
+                    if (DataListTypeName != null)
+                    {
+                        DataListItem = DataListTypeName.Items.Where(x => x.Code == f.Code).FirstOrDefault();
+                        f.DataListTypeID = DataListTypeName.ID;
+
+                        if (DataListItem != null)
+                        {
+                            f.DefaultTypeValue = DataListItem.ID;
+                        }
+                        else
+                        {
+                            f.Status = "DEFAULTITEM_NEW";
+                        }
+
+                    }
+                    else
+                    {
+                        f.Status = "TYPEDATALIST_NEW";
+                    }
+
+
+
                     newDatalistAttributes.Add(f);
                 });
             });
@@ -697,9 +743,9 @@ namespace DatalistSyncUtil
                 updatedTargetAttributes = updatedTargetAttributes.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
             }
 
-            this.UpdateAttribute = updatedAttributes.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
+            this.SourceUpdateAttribute = updatedAttributes.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
             this.UpdatedTargetAttribute = updatedTargetAttributes.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
-            this.SourceUpdateAttributeView.DataSource = new BindingList<ItemAttribute>(updatedAttributes.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+            this.SourceUpdateAttributeView.DataSource = new BindingList<ItemAttribute>(this.SourceUpdateAttribute.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
             this.TargetUpdateAttributeView.DataSource = new BindingList<ItemAttribute>(updatedTargetAttributes.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
         }
 
@@ -709,12 +755,15 @@ namespace DatalistSyncUtil
             List<ItemAttribute> sourceDatalistItems = new List<ItemAttribute>();
             List<ItemAttribute> targetDatalistItems = new List<ItemAttribute>();
             List<ItemAttribute> dataListAttributes = new List<ItemAttribute>();
+           
 
             List<string> dataLists = this.SourceList.Select(c => c.ContentID).Intersect(this.TargetList.Select(c => c.ContentID)).ToList();
             dataLists.ForEach(f =>
             {
                 sourceDatalistItems = this.SourceList.Find(e => e.ContentID == f).DataListAttributes;
                 targetDatalistItems = this.TargetList.Find(e => e.ContentID == f).DataListAttributes;
+                
+
 
                 dataListAttributes = sourceDatalistItems.Where(b => !targetDatalistItems.Any(a => a.ContentID == b.ContentID && a.Code == b.Code)).ToList();
 
@@ -723,9 +772,36 @@ namespace DatalistSyncUtil
                     dataListAttributes.ForEach(h =>
                     {
                         h.Status = "DATALIST_NEW";
+                        DataListMainModel DataListTypeName = new DataListMainModel();
+                        CodeItemModel DataListItem = new CodeItemModel();
+                        DataListTypeName = this.TargetList.Where(c => c.ContentID == h.ContentID).FirstOrDefault();
+
+                        if (DataListTypeName != null)
+                        {
+                            DataListItem = DataListTypeName.Items.Where(x => x.Code == h.Code).FirstOrDefault();
+                            h.DataListTypeID = DataListTypeName.ID;
+
+                            if (DataListItem != null)
+                            {
+                                h.DefaultTypeValue = DataListItem.ID;
+                            }
+                            else
+                            {
+                                h.Status = "DEFAULTITEM_NEW";
+                            }
+
+                        }
+                        else
+                        {
+                            h.Status = "TYPEDATALIST_NEW";
+                        }
                         newDataListAttribute.Add(h);
+                        
                     });
+
+                   
                 }
+
             });
 
             return newDataListAttribute.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
@@ -774,7 +850,11 @@ namespace DatalistSyncUtil
 
             newDatalists.ForEach(i =>
             {
-                i.Items.ForEach(f => f.Status = "NEW");
+                i.Items.ForEach(f =>
+                {
+                    f.Status = "NEW";
+                 });
+                
                 newDatalistItems.AddRange(i.Items);
             });
             return newDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
@@ -810,6 +890,7 @@ namespace DatalistSyncUtil
                 {
                     row.DefaultCellStyle.BackColor = Color.LightBlue;
                     row.DefaultCellStyle.ForeColor = Color.Black;
+                    row.ReadOnly = true;
                 }
                 else
                 {
@@ -1052,8 +1133,145 @@ namespace DatalistSyncUtil
 
         private void PreviewUpdate_Click(object sender, EventArgs e)
         {
-            PreviewPage previewPage = new PreviewPage(this.UpdateList, this.UpdateListItems, this.UpdateItemLanguages, this.UpdateAttribute,this.UpdateListLinkItems);
-            previewPage.ShowDialog();
+            string ItemList=String.Empty;
+            bool chkItems = false;
+
+            if (this.UpdateList != null)
+            {
+                this.UpdateList.ForEach(x => x.DataListAttributes = null);
+            }
+
+            if (this.UpdateListItems != null)
+            {
+                this.UpdateListItems.ForEach(x => x.Attributes = null);
+            }
+
+
+            if (this.UpdateAttributeVal !=null)
+            {
+                if (this.UpdateListItems == null)
+                    this.UpdateListItems = new List<CodeItemModel>();
+               
+                this.UpdateAttributeVal.ForEach(x =>
+                {
+                    if (x.Status == "NEW" || x.Status == "DATALISTITEM_NEW")
+                    {
+                        if (this.UpdateListItems != null)
+                        {
+                            CodeItemModel list = this.UpdateListItems.Find(c => c.ID == x.DataListItemID);
+                            if (list == null)
+                                chkItems = true;
+                        }
+                        else
+                        {
+                            chkItems = true;
+                        }
+                        ItemList = ItemList + x.ItemCode + Environment.NewLine;
+                    }
+                });
+            }
+
+            if (chkItems)
+            {
+                MessageBox.Show("Error:Please include following related DataListItems from Items tabs " + ItemList);
+                return;
+
+            }
+            else
+            {
+                List < string > DataListContentID = this.UpdateAttribute.Select(c => c.ParentContentId).Distinct().ToList();
+                List<CodeItemModel> items = new List<CodeItemModel>();
+
+                DataListContentID.ForEach(x => 
+                {
+                    items = this.TargetList.Find(t => t.ContentID == x).Items;
+                    items.ForEach(t =>
+                    {
+                        List<ItemDataListItemAttributeVal> itematrributes = this.UpdateAttributeVal.Where(f => f.ParentContentId == x && f.ItemCode == t.Code).ToList();
+                        
+                        if (this.UpdateListItems.Where(c => c.Code == t.Code && c.ContentID==t.ContentID).Any())
+                        {
+                            this.UpdateListItems.Find(c => c.Code == t.Code && c.ContentID == t.ContentID).Attributes = itematrributes;
+                        }
+                        else
+                        {
+
+                            t.Attributes = itematrributes;
+                            UpdateListItems.Add(t);
+                        }
+
+
+                    });
+                });
+                
+            }
+           
+
+
+            bool chkAttributes = false;
+             if (this.UpdateAttribute!=null)
+             {
+                if(this.UpdateList==null)
+                this.UpdateList = new List<DataListMainModel>();
+                string List = String.Empty;
+
+                this.UpdateAttribute.ForEach(x =>
+                {
+                    if (x.Status == "NEW")
+                    {
+                        if (this.UpdateList != null)
+                        {
+                            DataListMainModel list = this.UpdateList.Find(c => c.ContentID == x.ParentContentId);
+                            if (list == null)
+                                chkAttributes = true;
+                        }
+                        else
+                        {
+                            chkAttributes = true;
+                        }
+                        List = ItemList + x.ParentContentId + Environment.NewLine;
+                    }
+                });
+
+                if (chkAttributes)
+                {
+                    MessageBox.Show("Error:Please include following related DataList from Datalist Tab " + List);
+                    return;
+
+                }
+                else
+                {
+                    List<string> DataListItem = this.UpdateAttribute.Select(c => c.ParentContentId).Distinct().ToList();
+                    DataListItem.ForEach(x =>
+                    {
+
+                        DataListMainModel DataList = new DataListMainModel();
+                        List<ItemAttribute> attribute = this.UpdateAttribute.Where(c => c.ParentContentId == x).ToList();
+
+                        if (this.UpdateList.Where(c => c.ContentID == x).Any())
+                        {
+                            this.UpdateList.Find(c => c.ContentID == x).DataListAttributes = attribute;
+                        }
+                        else
+                        {
+                            DataList = this.TargetList.Where(c => c.ContentID == x).First();
+                            DataList.DataListAttributes = attribute;
+                            UpdateList.Add(DataList);
+                        }
+
+
+
+                    });
+                }
+            }
+
+
+
+            if (!chkItems)
+            {
+                PreviewPage previewPage = new PreviewPage(this.UpdateList, this.UpdateListItems, this.UpdateItemLanguages, this.UpdateAttribute, this.UpdateListLinkItems, this.UpdateAttributeVal);
+                previewPage.ShowDialog();
+            }
         }
 
         private void ModuleList_SelectedIndexChanged(object sender, EventArgs e)
@@ -1547,6 +1765,452 @@ namespace DatalistSyncUtil
         private void TargetLinkView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnItemAttribute_Click(object sender, EventArgs e)
+        {
+            bool selected = false;
+            this.UpdateAttributeVal = new List<ItemDataListItemAttributeVal>();
+
+            foreach (DataGridViewRow row in this.NewItemAttributeView.Rows)
+            {
+                selected = Convert.ToBoolean(row.Cells[0].Value);
+
+                if (selected)
+                {
+                    this.UpdateAttributeVal.Add(row.DataBoundItem as ItemDataListItemAttributeVal);
+                }
+            }
+
+            foreach (DataGridViewRow row in this.UpdateSourceItemAttributeView.Rows)
+            {
+                selected = Convert.ToBoolean(row.Cells[0].Value);
+
+                if (selected)
+                {
+                    this.UpdateAttributeVal.Add(row.DataBoundItem as ItemDataListItemAttributeVal);
+                }
+            }
+        }
+
+        private void NewItemAttrNewDataListCB_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in NewItemAttributeView.Rows)
+            {
+                string rowStatus = row.Cells[11].Value != null ? row.Cells[11].Value.ToString() : string.Empty;
+
+                if (rowStatus == "DATALIST_NEW")
+                {
+                    row.Cells[0].Value = this.NewItemAttrNewDataListCB.Checked;
+                }
+            }
+
+        }
+
+        private void NewItemAtrrNewItemsCB_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in this.NewItemAttributeView.Rows)
+            {
+                string rowStatus = row.Cells[11].Value != null ? row.Cells[11].Value.ToString() : string.Empty;
+
+                if (rowStatus == "DATALISTITEM_NEW")
+                {
+                    row.Cells[0].Value = this.NewItemAtrrNewItemsCB.Checked;
+                }
+            }
+        }
+
+        private void NewItemAttrExitingItemsCB_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in this.NewItemAttributeView.Rows)
+            {
+                string rowStatus = row.Cells[11].Value != null ? row.Cells[11].Value.ToString() : string.Empty;
+
+                if (rowStatus == "ITEMATTRIBUTE_NEW")
+                {
+                    row.Cells[0].Value = this.NewItemAttrExitingItemsCB.Checked;
+                }
+            }
+
+        }
+        private void NewItemAttributeView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            foreach (DataGridViewRow row in this.NewItemAttributeView.Rows)
+            {
+                string rowStatus = row.Cells[10].Value != null ? row.Cells[10].Value.ToString() : string.Empty;
+                bool isEditable = (bool)row.Cells[13].Value;
+
+                if (rowStatus == "NEW")
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightBlue;
+                    row.DefaultCellStyle.ForeColor = Color.Black;
+                    row.ReadOnly = isEditable;
+                }
+
+                if (rowStatus == "EXISTINGITEM_NEW")
+                {
+                    row.DefaultCellStyle.BackColor = Color.Silver;
+                    row.DefaultCellStyle.ForeColor = Color.Black;
+                    row.ReadOnly = isEditable;
+                }
+                
+
+                if (rowStatus == "DATALISTITEM_NEW")
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightGray;
+                    row.DefaultCellStyle.ForeColor = Color.Black;
+                    row.ReadOnly = isEditable;
+                }
+
+               
+            }
+        }
+        private void NewItemsAttrSelectAllCB_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in this.NewItemAttributeView.Rows)
+            {
+                row.Cells[0].Value = this.NewItemsAttrSelectAllCB.Checked;
+            }
+
+        }
+
+        private void ItemAttributesDataListCB_CheckedChanged(object sender, EventArgs e)
+        {
+            this.FilterDataListItemAttributes();
+        }
+
+        private void FilterDataListItemAttributes()
+        {
+            List<ItemDataListItemAttributeVal> filteredNewDatalistAttributes = new List<ItemDataListItemAttributeVal>();
+            List<ItemDataListItemAttributeVal> filteredUpdatedNewDatalistAttributes = new List<ItemDataListItemAttributeVal>();
+            List<ItemDataListItemAttributeVal> filteredUpdatedDatalistAttributes = new List<ItemDataListItemAttributeVal>();
+            string msgContentID = ".Msg";
+            string datalistContentID = ".DataList";
+            bool isChecked = false;
+
+
+            if (this.ItemAttributesMsgCB.Checked)
+            {
+                isChecked = true;
+                this.GetFilteredDataListItemAttributes(ref filteredNewDatalistAttributes, ref filteredUpdatedNewDatalistAttributes, ref filteredUpdatedDatalistAttributes, msgContentID);
+            }
+
+            if (this.ItemAttributesDataListCB.Checked)
+            {
+                isChecked = true;
+                this.GetFilteredDataListItemAttributes(ref filteredNewDatalistAttributes, ref filteredUpdatedNewDatalistAttributes, ref filteredUpdatedDatalistAttributes, datalistContentID);
+            }
+
+            if (isChecked)
+            {
+                this.NewItemAttributeView.DataSource = new BindingList<ItemDataListItemAttributeVal>(filteredNewDatalistAttributes);
+                this.UpdateSourceItemView.DataSource = new BindingList<ItemDataListItemAttributeVal>(filteredUpdatedNewDatalistAttributes.OrderBy(o => o.ParentContentId).ThenBy(t => t.ItemCode).ToList());
+                this.UpdateTargetItemView.DataSource = new BindingList<ItemDataListItemAttributeVal>(filteredUpdatedDatalistAttributes.OrderBy(o => o.ParentContentId).ThenBy(t => t.ItemCode).ToList());
+            }
+            else
+            {
+                this.NewItemAttributeView.DataSource = new BindingList<ItemDataListItemAttributeVal>(this.NewItemAttributeVal);
+                this.UpdateSourceItemView.DataSource = new BindingList<ItemDataListItemAttributeVal>(this.UpdateAttributeVal.OrderBy(o => o.ParentContentId).ThenBy(t => t.ItemCode).ToList());
+                this.UpdateTargetItemView.DataSource = new BindingList<ItemDataListItemAttributeVal>(this.UpdateTargetItemAttributes.OrderBy(o => o.ParentContentId).ThenBy(t => t.ItemCode).ToList());
+            }
+        }
+
+        private void GetFilteredDataListItemAttributes(ref List<ItemDataListItemAttributeVal> filteredNewDataAttributes, ref List<ItemDataListItemAttributeVal> filteredUpdatedNewAttributes, ref List<ItemDataListItemAttributeVal> filteredUpdatedAttributes, string contentID)
+        {
+            List<ItemDataListItemAttributeVal> itemattributes = new List<ItemDataListItemAttributeVal>();
+            itemattributes = this.NewItemAttributeVal.Where(f => f.ParentContentId.Contains(contentID)).ToList();
+            if (itemattributes != null && itemattributes.Count > 0)
+            {
+                filteredNewDataAttributes.AddRange(itemattributes);
+            }
+
+            itemattributes = this.UpdateAttributeVal.Where(f => f.ParentContentId.Contains(contentID)).ToList();
+            if (itemattributes != null && itemattributes.Count > 0)
+            {
+                filteredUpdatedNewAttributes.AddRange(itemattributes);
+            }
+
+            itemattributes = this.UpdateTargetItemAttributes.Where(f => f.ParentContentId.Contains(contentID)).ToList();
+            if (itemattributes != null && itemattributes.Count > 0)
+            {
+                filteredUpdatedAttributes.AddRange(itemattributes);
+            }
+        }
+
+        private void LoadDataListItemAttributes()
+        {
+
+            List<ItemDataListItemAttributeVal> newDatalistitemAttributes = new List<ItemDataListItemAttributeVal>();
+            List<ItemDataListItemAttributeVal> newDatalistitemAttributesExisting = new List<ItemDataListItemAttributeVal>();
+            List<ItemDataListItemAttributeVal> newDataListItemAttriuteFromNewItems = new List<ItemDataListItemAttributeVal>();
+            List<string> dataLists = null;
+
+            dataLists = this.SourceList.Select(c => c.ContentID).Except(this.TargetList.Select(c => c.ContentID)).ToList();
+            List<DataListMainModel> newDatalists = this.SourceList.Where(c => dataLists.Contains(c.ContentID)).Distinct().ToList();
+            List<CodeItemModel> codeitem = new List<CodeItemModel>();
+            List<ItemAttribute> attributes = new List<ItemAttribute>();
+            this.TargetList.ForEach(t => { attributes.AddRange(t.DataListAttributes); });
+
+
+            newDatalists.ForEach(i =>
+            {
+                i.Items.ForEach(f =>
+                {
+                    f.Attributes.ForEach(x =>
+                    {
+                        x.Status = "NEW";
+                        x.ParentContentId = i.ContentID;
+                        x.ItemCode = f.Code;
+                       
+                        ItemAttribute DataAttribute = new ItemAttribute();
+                        DataAttribute = attributes.Where(t => t.TypeName == x.DataListAttributeName ).FirstOrDefault();
+                        if (DataAttribute != null)
+                        {
+                            x.DataListValueID = DataAttribute.DefaultTypeValue;
+                            x.DataListAttributeID = DataAttribute.ID;
+                            f.IsEditable = false;
+                        }
+                        else
+                        {  
+                            f.IsEditable=true;
+                        }
+
+
+                        newDatalistitemAttributes.Add(x);
+                    });
+                });
+            });
+
+            newDataListItemAttriuteFromNewItems = this.GetNewItemAttributesFromNewItems();
+            newDatalistitemAttributes.AddRange(newDataListItemAttriuteFromNewItems);
+
+            newDatalistitemAttributesExisting = this.GetNewItemAttributesFromExistingItems();
+            newDatalistitemAttributes.AddRange(newDatalistitemAttributesExisting);
+
+
+            Guid tenantModuleId = (this.ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
+            string moduleName = (this.ModuleList.SelectedItem as TenantModuleModel).ModuleName;
+
+            if (tenantModuleId != Guid.Empty)
+            {
+                newDatalistitemAttributes = newDatalistitemAttributes.Where(w => w.DataListTypeName.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
+            }
+
+            newDatalistitemAttributes = newDatalistitemAttributes.OrderBy(o => o.ParentContentId).ThenBy(t => t.ItemCode).ToList();
+            this.NewItemAttributeVal = newDatalistitemAttributes;
+
+            this.NewItemAttributeView.DataSource = new BindingList<ItemDataListItemAttributeVal>(newDatalistitemAttributes);
+            this.LoadUpdateItemAttributeFromExistingItems();
+        }
+
+
+        private List<ItemDataListItemAttributeVal> GetNewItemAttributesFromExistingItems()
+        {
+            List<ItemDataListItemAttributeVal> newDatalistItemAttributes = new List<ItemDataListItemAttributeVal>();
+            List<CodeItemModel> sourceDatalistItems = null;
+            List<CodeItemModel> targetDatalistItems = null;
+            List<CodeItemModel> dataListItems = null;
+            List<ItemDataListItemAttributeVal> targetDatalistItemAttributes = null;
+            List<ItemDataListItemAttributeVal> finalDatalistItemAttributes = null;
+            List<ItemAttribute> attributes = new List<ItemAttribute>();
+            this.TargetList.ForEach(t => { attributes.AddRange(t.DataListAttributes); });
+
+            List<string> dataLists = this.SourceList.Select(c => c.ContentID).Intersect(this.TargetList.Select(c => c.ContentID)).ToList();
+            dataLists.ForEach(f =>
+            {
+                sourceDatalistItems = this.SourceList.Find(e => e.ContentID == f).Items;
+                targetDatalistItems = this.TargetList.Find(e => e.ContentID == f).Items;
+
+                dataListItems = sourceDatalistItems.Where(b => targetDatalistItems.Any(a => a.ContentID == b.ContentID && a.Code == b.Code && a.IsActive == b.IsActive)).ToList();
+                if (dataListItems != null && dataListItems.Count > 0)
+                {
+                    dataListItems.ForEach(l =>
+                    {
+                        ItemAttribute DataAttribute = new ItemAttribute();
+                        targetDatalistItemAttributes = targetDatalistItems.Find(i => i.ContentID == l.ContentID && i.Code == l.Code && i.IsActive == l.IsActive).Attributes;
+                        finalDatalistItemAttributes = l.Attributes.Where(b => !targetDatalistItemAttributes.Any(a => a.DataListAttributeName == b.DataListAttributeName && a.DataListAttributeValue == b.DataListAttributeValue)).ToList();
+                        finalDatalistItemAttributes.ForEach(h =>
+                        {
+                            h.Status = "EXISTINGITEM_NEW";
+                            DataAttribute = attributes.Where(t => t.TypeName == h.DataListAttributeName).FirstOrDefault();
+                            h.ItemCode = l.Code;
+                            h.ParentContentId = l.ContentID;
+                            if (DataAttribute != null)
+                            {
+                                h.DataListValueID = DataAttribute.DefaultTypeValue;
+                                h.DataListAttributeID = DataAttribute.ID;
+                                h.IsEditable = false;
+                            }
+                            else
+                            {
+                                h.IsEditable = true;
+                            }
+                            newDatalistItemAttributes.Add(h);
+                        });
+                    });
+                }
+            });
+
+            return newDatalistItemAttributes.OrderBy(o => o.ParentContentId).ThenBy(t => t.ItemCode).ToList();
+
+        }
+
+        private List<ItemDataListItemAttributeVal> GetNewItemAttributesFromNewItems()
+        {
+            List<ItemDataListItemAttributeVal> newDataListItemAttribute = new List<ItemDataListItemAttributeVal>();
+            List<CodeItemModel> sourceDatalistItems = new List<CodeItemModel>();
+            List<CodeItemModel> targetDatalistItems = new List<CodeItemModel>();
+            List<CodeItemModel> ExitingDatalistItems = new List<CodeItemModel>();
+            List<ItemDataListItemAttributeVal> dataListAttributes = new List<ItemDataListItemAttributeVal>();
+            List<ItemAttribute> attributes = new List<ItemAttribute>();
+            this.TargetList.ForEach(t => { attributes.AddRange(t.DataListAttributes); });
+
+
+            List<string> dataLists = this.SourceList.Select(c => c.ContentID).Intersect(this.TargetList.Select(c => c.ContentID)).ToList();
+
+            dataLists.ForEach(f =>
+            {
+
+                sourceDatalistItems = this.SourceList.Find(e => e.ContentID == f).Items;
+                targetDatalistItems = this.TargetList.Find(e => e.ContentID == f).Items;
+
+
+                ExitingDatalistItems = sourceDatalistItems.Where(b => !targetDatalistItems.Any(a => a.ContentID == b.ContentID && a.Code == b.Code && a.IsActive == b.IsActive)).ToList();
+
+                if (ExitingDatalistItems != null && ExitingDatalistItems.Count > 0)
+                {
+                    ExitingDatalistItems.ForEach(l =>
+                    {
+                        l.Attributes.ForEach(h =>
+                        {
+                            ItemAttribute DataAttribute = new ItemAttribute();
+                            DataAttribute = attributes.Where(t => t.TypeName == h.DataListAttributeName).FirstOrDefault();
+                            h.Status = "DATALISTITEM_NEW";
+                            h.ParentContentId = f;
+                            h.ItemCode = l.Code;
+                            if (DataAttribute != null)
+                            {
+                                h.DataListValueID = DataAttribute.DefaultTypeValue;
+                                h.DataListAttributeID = DataAttribute.ID;
+                                h.IsEditable = false;
+                            }
+                            else
+                            {
+                                h.IsEditable = true;
+                                
+                            }
+                            newDataListItemAttribute.Add(h);
+                        });
+                    });
+                }
+
+            });
+
+            return newDataListItemAttribute.OrderBy(o => o.DataListAttributeName).ToList();
+        }
+
+        private void ItemAttributesMsgCB_CheckedChanged(object sender, EventArgs e)
+        {
+            this.FilterDataListItemAttributes();
+
+        }
+
+        private void LoadUpdateItemAttributeFromExistingItems()
+        {
+            List<ItemDataListItemAttributeVal> updateSourceDatalistItemAttributes = new List<ItemDataListItemAttributeVal>();
+            List<ItemDataListItemAttributeVal> updateTargetDatalistItemAttributes = new List<ItemDataListItemAttributeVal>();
+            List<CodeItemModel> sourceDatalistItems = null;
+            List<CodeItemModel> targetDatalistItems = null;
+            List<CodeItemModel> dataListItems = null;
+            List<ItemDataListItemAttributeVal> targetDatalistItemAttributes = null;
+            ItemDataListItemAttributeVal targetDatalistItemAttribute = null;
+            List<ItemDataListItemAttributeVal> finalDatalistItemAttributes = null;
+            bool isChanged = false;
+
+            List<string> dataLists = this.SourceList.Select(c => c.ContentID).Intersect(this.TargetList.Select(c => c.ContentID)).ToList();
+            dataLists.ForEach(f =>
+            {
+                sourceDatalistItems = this.SourceList.Find(e => e.ContentID == f).Items;
+                targetDatalistItems = this.TargetList.Find(e => e.ContentID == f).Items;
+
+                dataListItems = sourceDatalistItems.Where(b => targetDatalistItems.Any(a => a.ContentID == b.ContentID && a.Code == b.Code && a.IsActive == b.IsActive)).ToList();
+
+                if (dataListItems != null && dataListItems.Count > 0)
+                {
+                    dataListItems.ForEach(l =>
+                    {
+                        targetDatalistItemAttributes = targetDatalistItems.Find(i => i.ContentID == l.ContentID && i.Code == l.Code && i.IsActive == l.IsActive).Attributes;
+                        finalDatalistItemAttributes = l.Attributes.Where(b => targetDatalistItemAttributes.Any(a => a.DataListAttributeName == b.DataListAttributeName && a.DataListAttributeValue == b.DataListAttributeValue)).ToList();
+                        finalDatalistItemAttributes.ForEach(h =>
+                        {
+                            isChanged = false;
+                            targetDatalistItemAttribute = targetDatalistItemAttributes.Find(n => n.DataListAttributeName == h.DataListAttributeName && n.DataListAttributeValue == h.DataListAttributeValue);
+                            if (targetDatalistItemAttribute.DataListAttributeValue != null && targetDatalistItemAttribute.DataListAttributeValue.Trim() != h.DataListAttributeValue.Trim())
+                            {
+                                isChanged = true;
+
+                            }
+
+
+                            if (isChanged)
+                            {
+                                h.Status = "UPDATE";
+                                h.ItemCode = l.Code;
+                                h.ParentContentId = l.ContentID;
+                                targetDatalistItemAttribute.ParentContentId = l.ContentID;
+                                targetDatalistItemAttribute.ItemCode = l.Code;
+                                updateSourceDatalistItemAttributes.Add(h);
+                                updateTargetDatalistItemAttributes.Add(targetDatalistItemAttribute);
+                            }
+                        });
+                    });
+                }
+            });
+
+            this.UpdateSourceItemAttributeView.AutoGenerateColumns = this.UpdateTargetItemView.AutoGenerateColumns = false;
+            Guid tenantModuleId = (this.ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
+            string moduleName = (this.ModuleList.SelectedItem as TenantModuleModel).ModuleName;
+
+            if (tenantModuleId != Guid.Empty)
+            {
+                updateSourceDatalistItemAttributes = updateSourceDatalistItemAttributes.Where(w => w.ParentContentId.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
+                updateTargetDatalistItemAttributes = updateTargetDatalistItemAttributes.Where(w => w.ParentContentId.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
+            }
+
+            this.UpdateSourceItemAttributeVal = updateSourceDatalistItemAttributes;
+            this.UpdateTargetItemAttributes = updateTargetDatalistItemAttributes;
+            this.UpdateSourceItemAttributeView.DataSource = new BindingList<ItemDataListItemAttributeVal>(UpdateSourceItemAttributeVal.OrderBy(o => o.ParentContentId).ToList());
+            this.UpdateTargetItemAttributeView.DataSource = new BindingList<ItemDataListItemAttributeVal>(UpdateTargetItemAttributes.OrderBy(o => o.ParentContentId).ToList());
+        }
+
+        private void NewAttributeView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            foreach (DataGridViewRow row in this.NewAttributesView.Rows)
+            {
+                string rowStatus = row.Cells[5].Value != null ? row.Cells[5].Value.ToString() : string.Empty;
+
+                if (rowStatus == "TYPEDATALIST_NEW")
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightBlue;
+                    row.DefaultCellStyle.ForeColor = Color.Black;
+                    row.ReadOnly = true;
+                }
+               
+                if (rowStatus == "DEFAULTITEM_NEW")
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightGray;
+                    row.DefaultCellStyle.ForeColor = Color.Black;
+                    row.ReadOnly = true;
+                }
+
+                if (rowStatus == "DATALIST_NEW" || rowStatus == "NEW")
+                {
+                    row.DefaultCellStyle.BackColor = Color.WhiteSmoke;
+                    row.DefaultCellStyle.ForeColor = Color.Black;
+                    row.ReadOnly = false;
+                    
+                }
+            }
         }
     }
 }

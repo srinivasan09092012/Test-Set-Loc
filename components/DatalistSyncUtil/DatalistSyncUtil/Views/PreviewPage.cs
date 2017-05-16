@@ -29,7 +29,7 @@ namespace DatalistSyncUtil.Views
             this.InitializeComponent();
         }
 
-        public PreviewPage(List<DataListMainModel> finalList, List<CodeItemModel> finalListItems, List<ItemLanguage> finalLanguages, List<ItemAttribute> finalAttributes, List<DataListItemLink> finalLinkList)
+        public PreviewPage(List<DataListMainModel> finalList, List<CodeItemModel> finalListItems, List<ItemLanguage> finalLanguages, List<ItemAttribute> finalAttributes,List<DataListItemLink> finalLinkList, List<ItemDataListItemAttributeVal> finalItemAttributes)
         {
             this.InitializeComponent();
 
@@ -39,6 +39,7 @@ namespace DatalistSyncUtil.Views
             this.FinalItemLanguages = finalLanguages;
             this.FinalAttributes = finalAttributes;
             this.FinalListLinkItems = finalLinkList;
+            this.FinalItemAttributes = finalItemAttributes;
             this.LoadHelper = new TenantHelper();
             this.TargetDataList = this.LoadHelper.GetDataList();
             this.LoadTreeView(this.PreviewTreeList, this.FinalList);
@@ -66,6 +67,8 @@ namespace DatalistSyncUtil.Views
 
         public List<ItemAttribute> FinalAttributes { get; set; }
 
+        public List<ItemDataListItemAttributeVal> FinalItemAttributes { get; set; }
+
         public List<DataList> TargetDataList { get; set; }
 
         public List<HtmlBlockMainModel> FinalHtmlBlks { get; set; }
@@ -82,20 +85,20 @@ namespace DatalistSyncUtil.Views
             }
 
             if (this.FinalHtmlBlkLanguages != null)
-            { 
+            {
                 this.SaveHtmlBlkLanguages();
             }
             else
             {
                 // this.SaveDataList();
-            this.SaveDataListWithDataListAttributes();
+                this.SaveDataListWithDataListAttributes();
 
-            // this.SaveDatalistItems();
-           this.SaveDataListItemsWithAttributesValandLinks();
+                // this.SaveDatalistItems();
+                this.SaveDataListItemsWithAttributesValandLinks();
 
-          //  this.SaveDatalistItems();
-          // this.SaveDataListAttributes();
-            this.SaveDataItemLink();
+                //  this.SaveDatalistItems();
+                // this.SaveDataListAttributes();
+                this.SaveDataItemLink();
             }
         }
 
@@ -333,6 +336,9 @@ namespace DatalistSyncUtil.Views
                     list = dataList.Where(e => e.ContentID == f.ContentID && e.TenantID == f.TenantID).FirstOrDefault();
                     if (list != null)
                     {
+                        DataListItemAdded itemadded = new DataListItemAdded();
+                        DataListItemUpdated itemupdated = new DataListItemUpdated();
+
                         RequestorModel requestObject = new RequestorModel() { TenantId = list.TenantID.ToString() };
                         if (list != null)
                         {
@@ -342,14 +348,14 @@ namespace DatalistSyncUtil.Views
                                 AddDataListItemCommand addListitem = new AddDataListItemCommand();
                                 addListitem.Requestor = requestObject;
                                 addListitem.AddDataListItem = this.ConvertServiceAddDataListItems(f);
-                                objService.AddDataListItem(addListitem);
+                                itemadded=objService.AddDataListItem(addListitem);
                             }
                             else
                             {
                                 UpdateDataListItemCommand updateListitem = new UpdateDataListItemCommand();
                                 updateListitem.Requestor = requestObject;
                                 updateListitem.UpdateDataListItem = this.ConvertUpdateServiceDataListItems(f);
-                                objService.UpdateDataListItem(updateListitem);
+                                itemupdated=objService.UpdateDataListItem(updateListitem);
                             }
                         }
                     }
@@ -374,14 +380,15 @@ namespace DatalistSyncUtil.Views
             listitem.DataListItemLanguages = this.ConvertCustomLang(f.LanguageList);
 
             //listitem.DataListItemLinks=f.L
-            // listitem.DataListAttributeValues
+            if(f.Attributes!=null)
+            listitem.DataListAttributeValues = this.ConvertToCustomAttributeVal(f.Attributes);
             return listitem;
         }
 
         private AddDataListItem ConvertServiceAddDataListItems(CodeItemModel f)
         {           
             AddDataListItem listitem = new AddDataListItem();
-            listitem.DataListContentID = f.ContentID.ToString();
+            //listitem.DataListContentID = f.ContentID.ToString();
             listitem.DataListId = f.DatalistID.ToString();
             listitem.DataListItemId = f.ID.ToString();
             listitem.Key = f.Code;
@@ -394,8 +401,23 @@ namespace DatalistSyncUtil.Views
             listitem.DataListItemLanguages = this.ConvertCustomLang(f.LanguageList);
 
             //listitem.DataListItemLinks=f.L
-            // listitem.DataListAttributeValues
+            if (f.Attributes != null)
+            listitem.DataListAttributeValues = ConvertToCustomAttributeVal(f.Attributes);
             return listitem;
+        }
+
+        private DataListAttributeValue[] ConvertToCustomAttributeVal(List<ItemDataListItemAttributeVal> attributes)
+        {
+            DataListService.DataListAttributeValue[] DataListItemAttr = new DataListService.DataListAttributeValue[attributes.Count()];
+            int iCount = 0;
+            attributes.ForEach(x=>
+            {
+                DataListService.DataListAttributeValue itemattr = new DataListService.DataListAttributeValue();
+                itemattr.DataListAttributeId = x.DataListAttributeID.ToString();
+                itemattr.DataListsItemValueId= x.DataListValueID.ToString();
+                DataListItemAttr[iCount] = itemattr;
+            });
+            return DataListItemAttr;
         }
 
         private DataListService.DataListItemLanguage[] ConvertCustomLang(List<ItemLanguage> languageList)
@@ -411,7 +433,7 @@ namespace DatalistSyncUtil.Views
                 lang.LongDescription = x.LongDescription;
                 lang.IsActive = x.IsActive;
                 lang.LastModified = DateTime.UtcNow;
-                dataListlistlang[0] = lang;
+                dataListlistlang[iCount] = lang;
                 iCount++;
             });
             return dataListlistlang;
@@ -425,31 +447,48 @@ namespace DatalistSyncUtil.Views
             try
             {
                 if (this.FinalList != null)
-                {  
+                {
+
+                    DataListsAdded datalistadd = new DataListsAdded();
+                    DataListsUpdated datalistupdated = new DataListsUpdated();
                     foreach (DataListMainModel list in this.FinalList)
                     {
                         List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
 
                         RequestorModel requestObject = new RequestorModel() { TenantId = list.TenantID.ToString() };
                         list.TenantModuleID = modules.Find(f => f.TenantId == list.TenantID && f.ModuleName == list.ModuleName).TenantModuleId;
-                        if (list.ID == null || list.ID == Guid.Empty)
+
+
+
+
+                        if (list.Status == "NEW")
                         {
-                            AddDataListCommand addList = new AddDataListCommand();                    
+                            AddDataListCommand addList = new AddDataListCommand();
                             addList.Requestor = requestObject;
                             addList.AddDataList = this.ConvertAddServiceDataList(list);
-                            objService.AddDataList(addList);
+                            datalistadd = objService.AddDataList(addList);
                         }
                         else
                         {
                             UpdateDataListCommand updatelist = new UpdateDataListCommand();
                             updatelist.Requestor = requestObject;
                             updatelist.UpdateDataList = (UpdateDataList)this.ConvertServiceUpdateDataList(list);
-                            objService.UpdateDataList(updatelist);
+                            datalistupdated=objService.UpdateDataList(updatelist);
                         }
                     }
 
-                   // this.Cache.Remove("TargetDataList");
-                }
+                    if (datalistadd != null || datalistupdated != null)
+                    {
+                        MessageBox.Show("Data Added Successfully");
+                        this.Cache.Remove("TargetDataList");
+                        this.Cache.Remove("UtilityDataItemLinkerKeytarget");
+                        this.Cache.Remove("UtilityDataAttrKeytarget");
+                        this.Cache.Remove("UtilityDataListItemAttrKeytarget");
+                        this.Cache.Remove("UtilityCombineAttributestarget");
+                        this.Cache.Remove("TargetDataListAttributes");
+
+                    }
+                }             
             }
             catch (Exception ex)
             {
@@ -468,7 +507,7 @@ namespace DatalistSyncUtil.Views
             dataList.IsEditable = list.IsEditable;
             dataList.ReleaseStatus = list.ReleaseStatus;
             dataList.DataListAttributes = this.ConvertToDataServiceAttributes(list.DataListAttributes);
-            dataList.SortOrder = "OrderIndex";
+           // dataList.SortOrder = "OrderIndex";
             return dataList;
         }
 
@@ -482,6 +521,7 @@ namespace DatalistSyncUtil.Views
             dataList.IsActive = list.IsActive;
             dataList.IsEditable = list.IsEditable;
             dataList.ReleaseStatus = list.ReleaseStatus;
+            dataList.Id = list.ID.ToString();
             dataList.DataListAttributes = this.ConvertToDataServiceAttributes(list.DataListAttributes);
             return dataList;
         }
@@ -493,14 +533,11 @@ namespace DatalistSyncUtil.Views
             listattributes.ForEach(x =>
             {
                 DataListService.DataListAttribute attribute = new DataListService.DataListAttribute();
-                attribute.DataListId = x.DataListID.ToString();
-                attribute.DataListsAttributeId = x.ID.ToString();
                 attribute.TypeName = x.TypeName;
                 attribute.TypeDataListId = x.DataListTypeID.ToString();
                 attribute.TypeDefaultItemId = x.DefaultTypeValue.ToString();
                 attribute.IsActive = x.IsActive;
-                attribute.LastModified = DateTime.UtcNow;
-                dataListlistattributes[0] = attribute;
+                dataListlistattributes[iCount] = attribute;
                 iCount++;
             });
             return dataListlistattributes;
@@ -534,12 +571,12 @@ namespace DatalistSyncUtil.Views
             {
                 treeView.Nodes.Clear();
                 List<string> parentlists = this.GetAllContentID();
-
+                bool isParentModeAdded = false;
                 parentlists.ForEach(f =>
                 {
                     itemNodes = new List<TreeNode>();
                     itemNodesAttribute = new List<TreeNode>();
-                    bool isParentModeAdded = false;
+                    
                     if (this.FinalListItems != null)
                     {
                         this.GetTreeItems(itemNodes, f.Trim());
@@ -570,7 +607,6 @@ namespace DatalistSyncUtil.Views
                         f = itemNodesAttribute[0].Text;
                         itemNodesAttribute.RemoveAt(0);
                         listNode = new TreeNode(f.Trim(), itemNodesAttribute.ToArray());
-
                        // listNode = new TreeNode(f.Trim(), itemNodesAttribute.ToArray());
                         if (itemNodesAttribute.Count != 0)
                         {
@@ -578,6 +614,7 @@ namespace DatalistSyncUtil.Views
                             isParentModeAdded = true;
                         }
                     }
+
 
                     if (!isParentModeAdded)
                     {
@@ -659,7 +696,9 @@ namespace DatalistSyncUtil.Views
         {
             TreeNode node = null;
             List<TreeNode> langNodes = null;
+            List<TreeNode> itemAttrNodes = null;
             List<CodeItemModel> items = this.FinalListItems.FindAll(f => f.ContentID.Trim() == contentID);
+            bool itemasparentadded = true;
 
             items.ForEach(f =>
             {
@@ -669,11 +708,48 @@ namespace DatalistSyncUtil.Views
                     this.GetTreeItemLanguages(langNodes, f.ContentID, f.Code);
                 }
 
-                node = new TreeNode(f.Code, langNodes.ToArray());
-                itemNodes.Add(node);
+                if (langNodes.ToArray().Count() != 0)
+                {
+                    node = new TreeNode(f.Code, langNodes.ToArray());
+                    itemNodes.Add(node);
+                    itemasparentadded = false;
+                }
+
+                itemAttrNodes = new List<TreeNode>();
+                if (FinalItemAttributes != null)
+                {
+                    this.GetTreeItemAttributeVal(itemAttrNodes, f.ContentID, f.Code);
+                }
+
+                if (itemAttrNodes.ToArray().Count() != 0)
+                {
+                    node = new TreeNode(f.Code, itemAttrNodes.ToArray());
+                    itemNodes.Add(node);
+                    itemasparentadded = false;
+                }
+
+                if (itemasparentadded)
+                {
+                    node = new TreeNode(f.Code, itemAttrNodes.ToArray());
+                    itemNodes.Add(node);
+                }
             });
         }
 
+        private void GetTreeItemAttributeVal(List<TreeNode> itemAttrNodes, string contentID, string code)
+        {
+            TreeNode node = null;
+            string Separator = " - ";
+
+            List<ItemDataListItemAttributeVal> items = this.FinalItemAttributes.FindAll(f => f.ParentContentId.Trim() == contentID && f.ItemCode == code);
+
+            items.ForEach(f =>
+            {
+                node = new TreeNode(f.DataListAttributeName + Separator + f.DataListAttributeValue);
+                itemAttrNodes.Add(node);
+            });
+
+        }
         private void GetTreeAttributeItems(List<TreeNode> itemNodes, string contentID)
         {
             TreeNode node = null;

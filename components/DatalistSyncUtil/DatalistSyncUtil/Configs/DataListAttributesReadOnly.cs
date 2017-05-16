@@ -69,6 +69,46 @@ namespace DatalistSyncUtil.Configs
             return resultdatalist;
         }
 
+        public List<ItemDataListItemAttributeVal> GetDataListItemAttributes()
+        {
+            ItemDataListItemAttributeVal dataItem = null;
+            List<ItemDataListItemAttributeVal> itemAtttributes = new List<ItemDataListItemAttributeVal>();
+            List<DataListItemAttribute> attrValues = null;
+
+            if (!this.Cachemanager.IsSet(this.dataListItemAttrKey))
+            {
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    attrValues = new GetDataListItemAttributesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
+                }
+
+                foreach (DataListItemAttribute item in attrValues)
+                {
+                    dataItem = new ItemDataListItemAttributeVal()
+                    {
+                        DataListAttributeID = item.DataListAttributeID,
+                        DataListAttributeName = string.Empty,
+                        DataListAttributeValue = string.Empty,
+                        DataListItemID = item.DataListItemID,
+                        DataListValueID = item.DataListValueID,
+                        DataListTypeName = string.Empty,
+                        ID = item.ID,
+                        LastModifiedDate = item.LastModifiedDate
+                    };
+
+                    itemAtttributes.Add(dataItem);
+                }
+
+                this.Cachemanager.Set(this.dataListItemAttrKey, itemAtttributes, this.cacheTimeInMins);
+            }
+            else
+            {
+                itemAtttributes = this.Cachemanager.Get<List<ItemDataListItemAttributeVal>>(this.dataListItemAttrKey);
+            }
+
+            return itemAtttributes;
+        }
+
         private List<DataList> UpdateDataListAttributeProperties(List<DataListAttribute> attributes, List<CodeListModel> items, string tenantID = null, string moduleID = null)
         {
             List<DataList> result = new List<DataList>();
@@ -117,57 +157,6 @@ namespace DatalistSyncUtil.Configs
             }
 
             return result.Select(x => x).Distinct().ToList();
-        }
-
-        private List<DataListItemAttributeModel> GetDataListItemAttributes()
-        {
-            DataListItemAttributeModel dataItem = null;
-            List<DataListItemAttributeModel> itemAtttributes = new List<DataListItemAttributeModel>();
-            List<DataListItemAttribute> attrValues = null;
-
-            if (!this.Cachemanager.IsSet(this.dataListItemAttrKey))
-            {
-                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
-                {
-                    attrValues = new GetDataListItemAttributesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
-                }
-
-                foreach (DataListItemAttribute item in attrValues)
-                {
-                    dataItem = new DataListItemAttributeModel()
-                    {
-                        DataListAttributeID = item.DataListAttributeID,
-                        DataListAttributeName = string.Empty,
-                        DataListAttributeValue = string.Empty,
-                        DataListItemID = item.DataListItemID,
-                        DataListValueID = item.DataListValueID,
-                        ID = item.ID,
-                        LastModifiedDate = item.LastModifiedDate
-                    };
-
-                    itemAtttributes.Add(dataItem);
-                }
-
-                this.Cachemanager.Set(this.dataListItemAttrKey, itemAtttributes, this.cacheTimeInMins);
-            }
-            else
-            {
-                itemAtttributes = this.Cachemanager.Get<List<DataListItemAttributeModel>>(this.dataListItemAttrKey);
-            }
-
-            return itemAtttributes;
-        }
-
-        private List<DataListItemAttributeModel> ExpandAttributes(CodeListModel toExpand, List<CodeListModel> items, List<DataListAttribute> listAttributes, List<DataListItemAttributeModel> itemAttribues)
-        {
-            var itemAttrValues = itemAttribues.FindAll(x => x.DataListItemID == toExpand.ID);
-            itemAttrValues.ForEach(y => y.DataListAttributeValue = items.Find(c => c.ID == y.DataListValueID).Code);
-            itemAttrValues.ForEach(y => y.DataListAttributeName = listAttributes.Find(d => d.ID == y.DataListAttributeID).TypeName);
-            itemAttrValues.ForEach(y => y.DataListTypeID = listAttributes.Find(d => d.ID == y.DataListAttributeID).DataListTypeID);
-            itemAttrValues.ForEach(y => y.DataListTypeName = listAttributes.Find(d => d.ID == y.DataListAttributeID).DataListTypeName);
-            toExpand.Attributes = itemAttrValues;
-
-            return toExpand.Attributes.ToList();
-        }
+        }    
     }
 }

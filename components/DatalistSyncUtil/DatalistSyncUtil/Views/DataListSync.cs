@@ -120,6 +120,9 @@ namespace DatalistSyncUtil
 
         public string QueryFilePath { get; set; }
 
+        public List<ItemDataListItemAttributeVal> resultitems { get; set; }
+  
+
         private void LoadTenants()
         {
             List<TenantModel> result = null;
@@ -160,10 +163,32 @@ namespace DatalistSyncUtil
         private void DataListLoad_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
+            this.SourceListItems = this.LoadDataListItems(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
+            List<CodeListModel> test = this.SourceListItems.Where(x => x.ContentID.Contains("Core.DataList.ProviderTypes")).ToList();
+            this.resultitems = this.LoadDataListItemAttributes();
+            
             this.LoadSearchCriteria();
             Cursor.Current = Cursors.Default;
             ////this.SourceLinks = this.GetDataListItemLinks(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
             ////this.Cache.Set("DataListItemLinks", this.SourceLinks, 1440);
+        }
+
+        private List<ItemDataListItemAttributeVal> LoadDataListItemAttributes()
+        {
+            if (!this.Cache.IsSet("SourceSyncDataListItemAttributes"))
+            {
+                using (IDbSession session = new DbSession(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString))
+                {
+                    resultitems = new DataListAttributesReadOnly(new DbSession(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString), "Source").GetDataListItemAttributes();
+                    this.Cache.Set("SourceDataListItemAttributes", resultitems, 1440);
+                }
+            }
+            else
+            {
+                resultitems = this.Cache.Get<List<ItemDataListItemAttributeVal>>("SourceSyncDataListItemAttributes");
+            }
+
+            return resultitems;
         }
 
         private void LoadSearchCriteria()
@@ -868,6 +893,9 @@ namespace DatalistSyncUtil
 
             lists = this.SourceLists.Where(w => w.TenantID == tenantID).ToList();
             List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
+            List<DataListAttribute> attributes = new List<DataListAttribute>();
+            lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
+            
             foreach (DataList list in lists)
             {
                 list1 = new DataListMainModel()
@@ -878,9 +906,12 @@ namespace DatalistSyncUtil
                     IsEditable = list.IsEditable,
                     ReleaseStatus = list.ReleaseStatus,
                     ModuleName = modules.Find(f => f.TenantModuleId == list.TenantModuleID).ModuleName,
-                    Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID),
-                    DataListAttributes = this.ConverttoAttributes(list.DataListAttributes, list.ContentID, list.TenantID, list.ID),
-                    TenantID = list.TenantID  
+                    Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID,this.SourceListItems,attributes),
+                    DataListAttributes=this.ConverttoAttributes(list.DataListAttributes, list.ContentID, list.TenantID, list.ID),
+                    TenantID = list.TenantID,
+                    Name=list.DataListsName,
+                    TenantModuleID=list.TenantModuleID                   
+                   
                 };
 
                 listsMain.Add(list1);
@@ -917,7 +948,7 @@ namespace DatalistSyncUtil
                     OperatorId = list.OperatorId,
                     TenantModuleId = list.TenantModuleId
                 };
-
+               
                 listsMain.Add(list1);
             }
 
@@ -1042,14 +1073,15 @@ namespace DatalistSyncUtil
 
             return item;
         }
-
-        private List<CodeItemModel> ConvertToCustomDataListItems(string contentID, Guid tenantID)
+        private List<CodeItemModel> ConvertToCustomDataListItems(string contentID, Guid tenantID, List<CodeListModel> listdatalistitems, List<DataListAttribute> datalistattribute)
         {
             List<CodeListModel> listItems = null;
             List<CodeItemModel> items = new List<CodeItemModel>();
             CodeItemModel item = null;
             listItems = this.SourceListItems.Where(w => w.ContentID == contentID && w.TenantID == tenantID).ToList();
+            
 
+       
             listItems.ForEach(e =>
             {
                 item = new CodeItemModel()
@@ -1062,7 +1094,9 @@ namespace DatalistSyncUtil
                     IsEditable = e.IsEditable,
                     LanguageList = this.GetLanguageListCustom(e.LanguageList),
                     OrderIndex = e.OrderIndex,
-                    TenantID = e.TenantID
+                    TenantID = e.TenantID,
+                    ID = e.ID,
+                    Attributes = this.GetCustomItemAttributes(e, listdatalistitems, datalistattribute, resultitems, e.ContentID)
                 };
                 items.Add(item);
             });
@@ -1081,7 +1115,8 @@ namespace DatalistSyncUtil
                 {
                     Description = e.Description,
                     LocaleID = e.LocaleID,
-                    LongDescription = e.LongDescription
+                    LongDescription = e.LongDescription,
+                    IsActive = e.IsActive
                 };
                 languages.Add(language);
             });
@@ -1113,6 +1148,21 @@ namespace DatalistSyncUtil
             {
                 this.ControlName.Items.Add(controlNames[i]);
             }
+
+        }
+
+
+        private List<ItemDataListItemAttributeVal> GetCustomItemAttributes(CodeListModel toExpand, List<CodeListModel> items, List<DataListAttribute> listAttributes, List<ItemDataListItemAttributeVal> itemAttribues, string ContentID)
+        {
+            List<ItemDataListItemAttributeVal> itemAttrValues = new List<ItemDataListItemAttributeVal>();
+            itemAttrValues = itemAttribues.FindAll(x => x.DataListItemID == toExpand.ID).ToList();
+            if (itemAttrValues.Count > 0)
+            {
+                itemAttrValues.ForEach(y => y.DataListAttributeValue = items.Find(c => c.ID == y.DataListValueID).Code);
+                itemAttrValues.ForEach(y => y.DataListAttributeName = listAttributes.Find(d => d.ID == y.DataListAttributeID).TypeName);
+                itemAttrValues.ForEach(y => y.DataListTypeName = listAttributes.Find(d => d.ID == y.DataListAttributeID).DataListTypeName);
+            }
+            return itemAttrValues;
         }
     }
 }

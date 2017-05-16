@@ -6,7 +6,9 @@
 //-----------------------------------------------------------------------------------------
 using DatalistSyncUtil.Models;
 using DatalistSyncUtil.Views;
+using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
+using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using DataListService = DatalistSyncUtil.DataListService;
 
 namespace DatalistSyncUtil
 {
@@ -35,9 +38,12 @@ namespace DatalistSyncUtil
             this.LoadSourceControls();
             this.LoadSourceTenant();
             this.LoadSourceModules();
+            this.Cachemanager = new RedisCacheManager();
         }
 
-        public List<CodeLinkTable> Listlink = new List<CodeLinkTable>();
+        public List<CodeLinkTable> SourceListlink = new List<CodeLinkTable>();
+
+        public ICacheManager Cachemanager { get; set; }
 
         public List<DataListMainModel> SourceList { get; set; }
 
@@ -64,6 +70,13 @@ namespace DatalistSyncUtil
         public ConnectionStringSettings TargetConnectionString { get; set; }
 
         public ConnectionStringSettings SourceConnectionString { get; set; }
+
+        public List<DataListItemAttributeModel> SourceDataListItemAttributes { get; set;}
+
+        public List<DataListItemAttributeModel>TargetDataListItemAttributes { get; set; }
+
+        public List<CodeLinkTable> TargetListlink = new List<CodeLinkTable>();
+
 
         private void BtnSourceFile_Click(object sender, EventArgs e)
         {
@@ -313,13 +326,17 @@ namespace DatalistSyncUtil
             List<CodeListModel> listItems = null;
             List<DataListMainModel> listsMain = new List<DataListMainModel>();
             DataListMainModel list1 = null;
+            List<ItemDataListItemAttributeVal> TargetDataListItemAttributes  = new List<ItemDataListItemAttributeVal>();
 
             Guid tenantID = new Guid(this.tenantList.SelectedValue.ToString());
-
+            TargetDataListItemAttributes = this.LoadHelper.GetItemAttributeList();
             lists = this.LoadHelper.GetDataList().Where(w => w.TenantID == tenantID).ToList();
             lists = this.LoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID).ToList();
             listItems = this.LoadHelper.GetDataListItems();
-            Listlink = this.LoadHelper.GetDataListLinks("TargetDataListLinks");
+            List<DataListAttribute> attributes = new List<DataListAttribute>();
+            lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
+            
+            TargetListlink = this.LoadHelper.GetDataListLinks("TargetDataListLinks");
 
             foreach (DataList list in lists)
             {
@@ -330,17 +347,18 @@ namespace DatalistSyncUtil
                     IsActive = list.IsActive,
                     IsEditable = list.IsEditable,
                     ReleaseStatus = list.ReleaseStatus,
-                    Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID, listItems),
+                    Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID, listItems, attributes, TargetDataListItemAttributes, TargetListlink),
                     TenantID = list.TenantID,
                     TenantModuleID = list.TenantModuleID,
                     ID = list.ID,
-                    ModuleName = list.ModuleName,
-                    DataListAttributes = this.ConverttoAttributes(list.DataListAttributes, list.ContentID, list.TenantID, list.ID)
+                    ModuleName=list.ModuleName,
+                    DataListAttributes = this.ConverttoAttributes(list.DataListAttributes, list.ContentID, list.TenantID, list.ID),
+                    Name=list.DataListsName
+
                 };
 
                 listsMain.Add(list1);
             }
-
             return listsMain;
         }
 
@@ -482,12 +500,19 @@ namespace DatalistSyncUtil
             List<DataList> lists = null;
             List<CodeListModel> listItems = null;
             List<DataListMainModel> listsMain = new List<DataListMainModel>();
+            List<ItemDataListItemAttributeVal> SourceDataListItemAttributes = new List<ItemDataListItemAttributeVal>();
+            List<DataListAttribute> attributes = new List<DataListAttribute>();
+
             DataListMainModel list1 = null;
             Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
             lists = this.SourceLoadHelper.GetDataList().Where(w => w.TenantID == tenantID).ToList();
             lists = this.SourceLoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID).ToList();
             listItems = this.SourceLoadHelper.GetDataListItems();
-            Listlink = this.SourceLoadHelper.GetDataListLinks("SourceDataListLinks");
+            SourceDataListItemAttributes = this.SourceLoadHelper.GetItemAttributeList();
+            lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
+
+
+            SourceListlink = this.SourceLoadHelper.GetDataListLinks("SourceDataListLinks");
             foreach (DataList list in lists)
             {
                 list1 = new DataListMainModel()
@@ -497,15 +522,15 @@ namespace DatalistSyncUtil
                     IsActive = list.IsActive,
                     IsEditable = list.IsEditable,
                     ReleaseStatus = list.ReleaseStatus,
-                    Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID, listItems),
+                    DataListAttributes = this.ConverttoAttributes(list.DataListAttributes, list.ContentID, list.TenantID, list.ID),
+                    Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID, listItems, attributes, SourceDataListItemAttributes, SourceListlink),
                     TenantID = list.TenantID,
                     TenantModuleID = list.TenantModuleID,
                     ID = list.ID,
-                    DataListAttributes = this.ConverttoAttributes(list.DataListAttributes, list.ContentID, list.TenantID, list.ID)
+                    Name = list.DataListsName,
+                    ModuleName = list.ModuleName
                 };
-                listsMain.Add(list1);
             }
-
             return listsMain;
         }
 
@@ -565,7 +590,7 @@ namespace DatalistSyncUtil
             return languages;
         }
 
-        private List<CodeItemModel> ConvertToCustomDataListItems(string contentID, Guid tenantID, List<CodeListModel> listItems)
+        private List<CodeItemModel> ConvertToCustomDataListItems(string contentID, Guid tenantID, List<CodeListModel> listItems, List<DataListAttribute> listattributes, List<ItemDataListItemAttributeVal>itemattributes,List<CodeLinkTable> Listlink)
         {
             List<CodeItemModel> items = new List<CodeItemModel>();
             List<CodeListModel> itemList = new List<CodeListModel>();
@@ -587,6 +612,7 @@ namespace DatalistSyncUtil
                     TenantID = e.TenantID,
                     ID = e.ID,
                     DataListLink = this.GetcoustmItemLink(e.ContentID, e.ID, Listlink, e.OrderIndex, e.LanguageList, listItems, e.TenantID),
+                    Attributes = this.GetCustomItemAttributes(e, listItems, listattributes, itemattributes, e.ContentID)
                 };
                 items.Add(item);
             });
@@ -623,6 +649,7 @@ namespace DatalistSyncUtil
             return listlink;
         }
 
+
         private List<ItemAttribute> ConverttoAttributes(List<DataListAttribute> list, string parentContentId, Guid tenantID, Guid dataListID)
         {
             List<ItemAttribute> item = new List<ItemAttribute>();
@@ -639,6 +666,7 @@ namespace DatalistSyncUtil
                 itemList.ID = listattribute.ID;
                 itemList.TenantID = tenantID;
                 itemList.DefaultTypeValue = listattribute.DefaultTypeValue;
+                itemList.TypeName=listattribute.TypeName;
                 item.Add(itemList);
             }
 
@@ -657,7 +685,8 @@ namespace DatalistSyncUtil
                     Description = e.Description,
                     LocaleID = e.LocaleID,
                     LongDescription = e.LongDescription,
-                    ItemID = e.CodeID
+                    ItemID = e.CodeID,
+                    IsActive = e.IsActive
                 };
                 languages.Add(language);
             });
@@ -850,12 +879,28 @@ namespace DatalistSyncUtil
         {
             Cursor.Current = Cursors.WaitCursor;
             if (this.SourceHtmlList != null)
-            { 
+            {
                 HtmlBlockDiff diffPage = new HtmlBlockDiff(new Guid(this.tenantList.SelectedValue.ToString()), "ITEMS", this.SourceHtmlList, this.TargetHtmlList);
                 diffPage.ShowDialog();
             }
-
             Cursor.Current = Cursors.Default;
+        }
+        private List<ItemDataListItemAttributeVal> GetCustomItemAttributes(CodeListModel toExpand, List<CodeListModel> items, List<DataListAttribute> listAttributes, List<ItemDataListItemAttributeVal> itemAttribues,string ContentID)
+        {
+            List<ItemDataListItemAttributeVal> itemAttrValues = new List<ItemDataListItemAttributeVal>();
+            itemAttrValues= itemAttribues.FindAll(x => x.DataListItemID == toExpand.ID).ToList();
+            if (itemAttrValues.Count > 0)
+            {
+                itemAttrValues.ForEach(y => y.DataListAttributeValue = items.Find(c => c.ID == y.DataListValueID).Code);
+                itemAttrValues.ForEach(y => y.DataListAttributeName = listAttributes.Find(d => d.ID == y.DataListAttributeID).TypeName);
+                itemAttrValues.ForEach(y => y.DataListTypeName = listAttributes.Find(d => d.ID == y.DataListAttributeID).DataListTypeName);
+            }
+            return itemAttrValues;
+        }
+
+        private void Controls_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
