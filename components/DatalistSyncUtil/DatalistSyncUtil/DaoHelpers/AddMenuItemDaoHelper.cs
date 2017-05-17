@@ -27,10 +27,10 @@ namespace DatalistSyncUtil.DaoHelpers
         {
             Guid menuItemID = Guid.NewGuid();
 
-            if (cmd.ID != Guid.Empty)
-            {
-                menuItemID = cmd.ID;
-            }
+            ///if (cmd.ID != Guid.Empty)
+            ///{
+            ///    menuItemID = cmd.ID;
+            ///}
 
             this.Context.MenuItem.Add(new MenuItem()
             {

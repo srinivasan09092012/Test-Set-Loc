@@ -1080,6 +1080,7 @@ namespace DatalistSyncUtil
                 itemList.ID = listattribute.ID;
                 itemList.TenantID = tenantID;
                 itemList.DefaultTypeValue = listattribute.DefaultTypeValue;
+                itemList.TypeName = listattribute.TypeName;
                 item.Add(itemList);
             }
 

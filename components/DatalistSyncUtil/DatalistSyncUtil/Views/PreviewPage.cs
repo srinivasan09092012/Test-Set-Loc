@@ -416,7 +416,7 @@ namespace DatalistSyncUtil.Views
             AddDataListItem listitem = new AddDataListItem();
             //listitem.DataListContentID = f.ContentID.ToString();
             listitem.DataListId = f.DatalistID.ToString();
-            listitem.DataListItemId = f.ID.ToString();
+            //listitem.DataListItemId = f.ID.ToString();
             listitem.Key = f.Code;
             listitem.OrderIndex = f.OrderIndex ?? default(int);
             listitem.ItemIsActive = f.IsActive;

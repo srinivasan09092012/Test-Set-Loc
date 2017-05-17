@@ -1179,12 +1179,17 @@ namespace DatalistSyncUtil
                 }
                 else
                 {
-                    List<string> DataListContentID = this.UpdateAttribute.Select(c => c.ParentContentId).Distinct().ToList();
+                    List<string> DataListContentID = this.UpdateAttributeVal.Select(c => c.ParentContentId).Distinct().ToList();
                     List<CodeItemModel> items = new List<CodeItemModel>();
 
                     DataListContentID.ForEach(x =>
                     {
+                       
                         items = this.TargetList.Find(t => t.ContentID == x).Items;
+
+                        List<CodeItemModel> listFinalItems = this.UpdateListItems.Where(t => t.ContentID == x &&( t.Status == "DATALIST_NEW" || t.Status == "NEW")).ToList();
+                        if (listFinalItems != null)
+                        items.AddRange(listFinalItems);
                         items.ForEach(t =>
                         {
                             List<ItemDataListItemAttributeVal> itematrributes = this.UpdateAttributeVal.Where(f => f.ParentContentId == x && f.ItemCode == t.Code).ToList();
@@ -1199,9 +1204,9 @@ namespace DatalistSyncUtil
                                 t.Attributes = itematrributes;
                                 UpdateListItems.Add(t);
                             }
-
-
                         });
+
+
                     });
 
                 }
@@ -1974,8 +1979,8 @@ namespace DatalistSyncUtil
                             f.IsEditable = false;
                         }
                         else
-                        {
-                            f.IsEditable = true;
+                        {  
+                            f.IsEditable=true;
                         }
 
 
