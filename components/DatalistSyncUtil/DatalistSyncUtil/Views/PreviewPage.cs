@@ -79,27 +79,39 @@ namespace DatalistSyncUtil.Views
 
         private void Submit_Click(object sender, EventArgs e)
         {
-            if (this.FinalHtmlBlks != null)
+            Cursor.Current = Cursors.WaitCursor;
+            try
             {
-                this.SaveHtmlBlks();
-            }
+                if (this.FinalHtmlBlks != null)
+                {
+                    this.SaveHtmlBlks();
+                }
 
-            if (this.FinalHtmlBlkLanguages != null)
+                if (this.FinalHtmlBlkLanguages != null)
+                {
+                    this.SaveHtmlBlkLanguages();
+                }
+                else
+                {
+                    // this.SaveDataList();
+                    this.SaveDataListWithDataListAttributes();
+
+                    // this.SaveDatalistItems();
+                    this.SaveDataListItemsWithAttributesValandLinks();
+
+                    //  this.SaveDatalistItems();
+                    // this.SaveDataListAttributes();
+                    this.SaveDataItemLink();
+                }
+                Cursor.Current = Cursors.Default;
+                MessageBox.Show("Saved Sucessfully");
+            }
+            catch (Exception ex)
             {
-                this.SaveHtmlBlkLanguages();
+                Cursor.Current = Cursors.Default;
+                MessageBox.Show("Failed to Save");
             }
-            else
-            {
-                // this.SaveDataList();
-                this.SaveDataListWithDataListAttributes();
-
-                // this.SaveDatalistItems();
-                this.SaveDataListItemsWithAttributesValandLinks();
-
-                //  this.SaveDatalistItems();
-                // this.SaveDataListAttributes();
-                this.SaveDataItemLink();
-            }
+                
         }
 
         private void SaveDataItemLink()

@@ -119,12 +119,12 @@ namespace DatalistSyncUtil
         {
             List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
             modules.Insert(
-                   0, 
+                   0,
                    new TenantModuleModel()
                    {
-                    ModuleName = "---All Modules---",
-                    TenantModuleId = Guid.Empty,
-                    TenantId = this.TenantID
+                       ModuleName = "---All Modules---",
+                       TenantModuleId = Guid.Empty,
+                       TenantId = this.TenantID
                    });
             this.ModuleList.DataSource = modules.Where(w => w.TenantId == this.TenantID).GroupBy(i => i.ModuleName)
                   .Select(group =>
@@ -239,13 +239,14 @@ namespace DatalistSyncUtil
                     newDatalistItemsFromUpdateList = this.NewLinkItemList(sourceDatalistItems, targetDatalistItems);
                     newDatalistItemsLink.AddRange(newDatalistItemsFromUpdateList);
                 }
-                
+
 
             });
             for (int i = 0; i < sourceDatalistItems.Count(); i++)
             {
                 SourcenewLinkItem = sourceDatalistItems[i].DataListLink;
-                TargetnewLinkItem = targetDatalistItems[i].DataListLink;
+                if (i < targetDatalistItems.Count())
+                    TargetnewLinkItem = targetDatalistItems[i].DataListLink;
                 if (TargetnewLinkItem.Count() == SourcenewLinkItem.Count())
                 {
                     KeyValuePair<List<DataListItemLink>, List<DataListItemLink>> result = this.LoadUpdateLinkItem(sourceDatalistItems, targetDatalistItems);
@@ -302,7 +303,7 @@ namespace DatalistSyncUtil
 
 
 
-               dataListItems = sourceDatalistItems.Where(b => !targetDatalistItems.Any(a => a.ContentID == b.ContentID && a.Code == b.Code && a.IsActive == b.IsActive)).ToList();
+                dataListItems = sourceDatalistItems.Where(b => !targetDatalistItems.Any(a => a.ContentID == b.ContentID && a.Code == b.Code && a.IsActive == b.IsActive)).ToList();
 
                 if (dataListItems != null && dataListItems.Count > 0)
                 {
@@ -312,11 +313,11 @@ namespace DatalistSyncUtil
                         t.DatalistID = List.ID;
                         newDatalistItemsFromUpdateList.Add(t);
                     });
-                    
+
                 }
             });
-         
-             return newDatalistItemsFromUpdateList.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
+
+            return newDatalistItemsFromUpdateList.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
         }
 
         private KeyValuePair<List<DataListItemLink>, List<DataListItemLink>> LoadUpdateLinkItem(List<CodeItemModel> sourceDatalistItems, List<CodeItemModel> targetDatalistItems)
@@ -326,12 +327,12 @@ namespace DatalistSyncUtil
             List<DataListItemLink> sourceLink = null;
             List<DataListItemLink> targetLink = null;
             DataListItemLink targetItemLink = null;
-            // sourceDatalistItems = sourceDatalistItems.Where(t=>t.IsActive==true).ToList();
-            //  targetDatalistItems = targetDatalistItems.Where(t => t.IsActive == true).ToList();
+
             for (int i = 0; i < sourceDatalistItems.Count(); i++)
             {
                 sourceLink = sourceDatalistItems[i].DataListLink;
-                targetLink = targetDatalistItems[i].DataListLink;
+                if (i < targetDatalistItems.Count())
+                    targetLink = targetDatalistItems[i].DataListLink;
                 if (targetLink.Count() == sourceLink.Count())
                 {
                     sourceLink.ForEach(t =>
@@ -351,7 +352,7 @@ namespace DatalistSyncUtil
                 }
             }
 
-           return new KeyValuePair<List<DataListItemLink>, List<DataListItemLink>>(updatedLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList(), updatedTargetLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
+            return new KeyValuePair<List<DataListItemLink>, List<DataListItemLink>>(updatedLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList(), updatedTargetLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
         }
         private List<DataListItemLink> NewLinkItemList(List<CodeItemModel> sourceDatalistItems, List<CodeItemModel> targetDatalistItems)
         {
@@ -362,7 +363,7 @@ namespace DatalistSyncUtil
             sourceDatalistItems = sourceDatalistItems.Where(t => t.IsActive == true).ToList();
             targetDatalistItems = targetDatalistItems.Where(t => t.IsActive == true).ToList();
             if (sourceDatalistItems.Count() == targetDatalistItems.Count())
-            { 
+            {
                 for (int i = 0; i < sourceDatalistItems.Count(); i++)
                 {
                     SourcenewLinkItem = sourceDatalistItems[i].DataListLink;
@@ -383,13 +384,13 @@ namespace DatalistSyncUtil
 
                     }
                 }
-        }
+            }
             else
             {
 
-              //  MessageBox.Show("Insert Data List");
+                //  MessageBox.Show("Insert Data List");
             }
-           
+
             return LinkItem.OrderBy(o => o.ParentID).ThenBy(t => t.ChildID).ToList();
         }
 
@@ -723,7 +724,7 @@ namespace DatalistSyncUtil
                     {
                         if (t.IsActive != targetItem.IsActive)
                         {
-                           // t.ID=ta
+                            // t.ID=ta
                             updatedAttributes.Add(t);
                             updatedTargetAttributes.Add(targetItem);
                         }
@@ -755,14 +756,14 @@ namespace DatalistSyncUtil
             List<ItemAttribute> sourceDatalistItems = new List<ItemAttribute>();
             List<ItemAttribute> targetDatalistItems = new List<ItemAttribute>();
             List<ItemAttribute> dataListAttributes = new List<ItemAttribute>();
-           
+
 
             List<string> dataLists = this.SourceList.Select(c => c.ContentID).Intersect(this.TargetList.Select(c => c.ContentID)).ToList();
             dataLists.ForEach(f =>
             {
                 sourceDatalistItems = this.SourceList.Find(e => e.ContentID == f).DataListAttributes;
                 targetDatalistItems = this.TargetList.Find(e => e.ContentID == f).DataListAttributes;
-                
+
 
 
                 dataListAttributes = sourceDatalistItems.Where(b => !targetDatalistItems.Any(a => a.ContentID == b.ContentID && a.Code == b.Code)).ToList();
@@ -796,10 +797,10 @@ namespace DatalistSyncUtil
                             h.Status = "TYPEDATALIST_NEW";
                         }
                         newDataListAttribute.Add(h);
-                        
+
                     });
 
-                   
+
                 }
 
             });
@@ -853,8 +854,8 @@ namespace DatalistSyncUtil
                 i.Items.ForEach(f =>
                 {
                     f.Status = "NEW";
-                 });
-                
+                });
+
                 newDatalistItems.AddRange(i.Items);
             });
             return newDatalistItems.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
@@ -1133,7 +1134,7 @@ namespace DatalistSyncUtil
 
         private void PreviewUpdate_Click(object sender, EventArgs e)
         {
-            string ItemList=String.Empty;
+            string ItemList = String.Empty;
             bool chkItems = false;
 
             if (this.UpdateList != null)
@@ -1147,11 +1148,11 @@ namespace DatalistSyncUtil
             }
 
 
-            if (this.UpdateAttributeVal !=null)
+            if (this.UpdateAttributeVal != null)
             {
                 if (this.UpdateListItems == null)
                     this.UpdateListItems = new List<CodeItemModel>();
-               
+
                 this.UpdateAttributeVal.ForEach(x =>
                 {
                     if (x.Status == "NEW" || x.Status == "DATALISTITEM_NEW")
@@ -1206,15 +1207,15 @@ namespace DatalistSyncUtil
                 }
             }
 
-           
-           
+
+
 
 
             bool chkAttributes = false;
-             if (this.UpdateAttribute!=null)
-             {
-                if(this.UpdateList==null)
-                this.UpdateList = new List<DataListMainModel>();
+            if (this.UpdateAttribute != null)
+            {
+                if (this.UpdateList == null)
+                    this.UpdateList = new List<DataListMainModel>();
                 string List = String.Empty;
 
                 this.UpdateAttribute.ForEach(x =>
@@ -1855,7 +1856,7 @@ namespace DatalistSyncUtil
                     row.DefaultCellStyle.ForeColor = Color.Black;
                     row.ReadOnly = isEditable;
                 }
-                
+
 
                 if (rowStatus == "DATALISTITEM_NEW")
                 {
@@ -1864,7 +1865,7 @@ namespace DatalistSyncUtil
                     row.ReadOnly = isEditable;
                 }
 
-               
+
             }
         }
         private void NewItemsAttrSelectAllCB_CheckedChanged(object sender, EventArgs e)
@@ -1963,9 +1964,9 @@ namespace DatalistSyncUtil
                         x.Status = "NEW";
                         x.ParentContentId = i.ContentID;
                         x.ItemCode = f.Code;
-                       
+
                         ItemAttribute DataAttribute = new ItemAttribute();
-                        DataAttribute = attributes.Where(t => t.TypeName == x.DataListAttributeName ).FirstOrDefault();
+                        DataAttribute = attributes.Where(t => t.TypeName == x.DataListAttributeName).FirstOrDefault();
                         if (DataAttribute != null)
                         {
                             x.DataListValueID = DataAttribute.DefaultTypeValue;
@@ -1973,8 +1974,8 @@ namespace DatalistSyncUtil
                             f.IsEditable = false;
                         }
                         else
-                        {  
-                            f.IsEditable=true;
+                        {
+                            f.IsEditable = true;
                         }
 
 
@@ -2099,7 +2100,7 @@ namespace DatalistSyncUtil
                             else
                             {
                                 h.IsEditable = true;
-                                
+
                             }
                             newDataListItemAttribute.Add(h);
                         });
@@ -2197,7 +2198,7 @@ namespace DatalistSyncUtil
                     row.DefaultCellStyle.ForeColor = Color.Black;
                     row.ReadOnly = true;
                 }
-               
+
                 if (rowStatus == "DEFAULTITEM_NEW")
                 {
                     row.DefaultCellStyle.BackColor = Color.LightGray;
@@ -2210,7 +2211,7 @@ namespace DatalistSyncUtil
                     row.DefaultCellStyle.BackColor = Color.WhiteSmoke;
                     row.DefaultCellStyle.ForeColor = Color.Black;
                     row.ReadOnly = false;
-                    
+
                 }
             }
         }

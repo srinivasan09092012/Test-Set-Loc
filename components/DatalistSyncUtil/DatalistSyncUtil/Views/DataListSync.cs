@@ -217,6 +217,13 @@ namespace DatalistSyncUtil
                     this.BindHTMLBlock();
                     this.ModuleHtmlListSelectedItems();
                     break;
+                case "Security":
+                    this.SourceListItems = this.LoadDataListItems(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
+                    this.DataListView.Columns[1].Visible = true;
+                    this.DataListView.Columns[2].Visible = false;
+                    this.BindDataList();
+                    this.ModuleListSelectedSecurityItems();
+                    break;
                 default:
                     break;
             }
@@ -246,7 +253,7 @@ namespace DatalistSyncUtil
                 {
                     using (IDbSession session = new DbSession(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString))
                     {
-                        datalistattribute = new GetDataListAttributesDaoHelper(new DataListAttributeDbContext(session, true)).ExecuteProcedure();
+                        datalistattribute = new GetDataListAttributesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
                         this.Cache.Set("SourceDataSyncAttributeList", datalistattribute, 1440);
                     }
                 }
@@ -828,6 +835,7 @@ namespace DatalistSyncUtil
             switch (caseSwitch)
             {
                 case "Datalist":
+                case "Security":
                     ListItems itemsPage = new ListItems((this.DataListView.Rows[e.RowIndex].DataBoundItem as DataList).ContentID, this.NoOfDays);
                     itemsPage.ShowDialog();
                     break;
@@ -865,15 +873,19 @@ namespace DatalistSyncUtil
             {
                 case "Datalist":
                     List<DataListMainModel> listsMain = this.ConvertToCustomDataList();
-                    File.WriteAllText(this.QueryFilePath + "\\" + (this.TenantList.SelectedItem as TenantModel).TenantName + ".list", JsonConvert.SerializeObject(listsMain));
+                    File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(listsMain));
                     break;
                 case "Menus":
                     List<MenuListModel> listsMenu = this.ConvertToCustomMenus();
-                    File.WriteAllText(this.QueryFilePath + "\\" + (this.TenantList.SelectedItem as TenantModel).TenantName + ".list", JsonConvert.SerializeObject(listsMenu));
+                    File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(listsMenu));
                     break;
                 case "HtmlBlock":
                     List<HtmlBlockMainModel> htmlBlks = this.ConvertToCustomHtmlBlks();
-                    File.WriteAllText(this.QueryFilePath + "\\" + (this.TenantList.SelectedItem as TenantModel).TenantName + ".list", JsonConvert.SerializeObject(htmlBlks));
+                    File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(htmlBlks));
+                    break;
+                case "Security":
+                    List<DataListMainModel> listsSecurityMain = this.ConvertToCustomSecurityDataList();
+                    File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(listsSecurityMain));
                     break;
                 default:
                     break;
@@ -1143,14 +1155,13 @@ namespace DatalistSyncUtil
         
         private void LoadControls()
         { 
-            List<string> controlNames = new List<string>(new string[] { "Datalist", "HtmlBlock", "Images", "Menus" });
+            List<string> controlNames = new List<string>(new string[] { "Datalist", "HtmlBlock", "Images", "Menus", "Security" });
             for (int i = 0; i <= controlNames.Count - 1; i++)
             {
                 this.ControlName.Items.Add(controlNames[i]);
             }
 
         }
-
 
         private List<ItemDataListItemAttributeVal> GetCustomItemAttributes(CodeListModel toExpand, List<CodeListModel> items, List<DataListAttribute> listAttributes, List<ItemDataListItemAttributeVal> itemAttribues, string ContentID)
         {
@@ -1172,5 +1183,87 @@ namespace DatalistSyncUtil
             }
             return itemAttrValues;
         }
+
+        private void ModuleListSelectedSecurityItems()
+        {
+            List<TenantModuleModel> selectedModules = new List<TenantModuleModel>();
+            TenantModuleModel module = null;
+            List<DataList> filteredModuleList = null;
+            List<DataList> modifiedItems = null;
+
+            Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
+
+            if (this.ModuleList.SelectedItems.Count > 0)
+            {
+                foreach (object item in this.ModuleList.SelectedItems)
+                {
+                    module = item as TenantModuleModel;
+                    selectedModules.Add(module);
+                }
+            }
+
+            if (this.NoOfDays > 0)
+            {
+                var modulesQuery = from lists in this.SourceLists
+                                   join modules in selectedModules
+                                   on lists.ModuleName equals modules.ModuleName
+                                   where lists.LastModified >= DateTime.UtcNow.AddDays(this.NoOfDays * -1)
+                                   select lists;
+                filteredModuleList = modulesQuery.ToList();
+
+                modifiedItems = this.GetUpdatedListItems(selectedModules);
+
+                filteredModuleList = filteredModuleList.Concat(modifiedItems)
+                .GroupBy(item => item.ContentID)
+                .Select(group => group.First()).ToList();
+            }
+            else
+            {
+                var modulesQuery = from lists in this.SourceLists
+                                   join modules in selectedModules
+                                   on lists.ModuleName equals modules.ModuleName
+                                   select lists;
+                filteredModuleList = modulesQuery.ToList();
+            }
+
+            this.DataListView.DataSource = new BindingList<DataList>(filteredModuleList.Where(w => w.TenantID == tenantID && (w.ContentID == "Core.SecurityFunctions" || w.ContentID == "Core.SecurityRoles" || w.ContentID == "Core.SecurityRights")).ToList());
+
+        }
+
+        private List<DataListMainModel> ConvertToCustomSecurityDataList()
+        {
+            List<DataList> lists = null;
+            List<DataListMainModel> listsMain = new List<DataListMainModel>();
+            DataListMainModel list1 = null;
+
+            Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
+
+            lists = this.SourceLists.Where(w => w.TenantID == tenantID && (w.ContentID == "Core.SecurityFunctions" || w.ContentID == "Core.SecurityRoles" || w.ContentID == "Core.SecurityRights")).ToList();
+            List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
+            List<DataListAttribute> attributes = new List<DataListAttribute>();
+            lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
+
+            foreach (DataList list in lists)
+            {
+                list1 = new DataListMainModel()
+                {
+                    ContentID = list.ContentID,
+                    Description = list.Description,
+                    IsActive = list.IsActive,
+                    IsEditable = list.IsEditable,
+                    ReleaseStatus = list.ReleaseStatus,
+                    ModuleName = modules.Find(f => f.TenantModuleId == list.TenantModuleID).ModuleName,
+                    Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID, this.SourceListItems, attributes),
+                    DataListAttributes = this.ConverttoAttributes(list.DataListAttributes, list.ContentID, list.TenantID, list.ID),
+                    TenantID = list.TenantID
+
+                };
+
+                listsMain.Add(list1);
+            }
+
+            return listsMain;
+        }
+
     }
 }

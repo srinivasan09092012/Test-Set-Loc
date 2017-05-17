@@ -71,12 +71,15 @@ namespace DatalistSyncUtil
 
         public ConnectionStringSettings SourceConnectionString { get; set; }
 
-        public List<DataListItemAttributeModel> SourceDataListItemAttributes { get; set;}
+        public List<DataListItemAttributeModel> SourceDataListItemAttributes { get; set; }
 
-        public List<DataListItemAttributeModel>TargetDataListItemAttributes { get; set; }
+        public List<DataListItemAttributeModel> TargetDataListItemAttributes { get; set; }
 
         public List<CodeLinkTable> TargetListlink = new List<CodeLinkTable>();
 
+        string rolesContentID = "Core.SecurityRoles";
+        string functionsContentID = "Core.SecurityFunctions";
+        string rightsContentID = "Core.SecurityRights";
 
         private void BtnSourceFile_Click(object sender, EventArgs e)
         {
@@ -86,31 +89,39 @@ namespace DatalistSyncUtil
             {
                 string file = this.openDatalistFile.FileName;
                 this.txtSourceConnection.Text = file;
+                string filename = Path.GetFileNameWithoutExtension(file);
                 try
                 {
                     List<TenantModuleModel> targetModules = this.moduleList.DataSource as List<TenantModuleModel>;
-                    this.SourceMenus = JsonConvert.DeserializeObject<List<MenuListModel>>(File.ReadAllText(file));
-                    List<MenuListModel> sourceMenuList = this.SourceMenus.ToList();
                     this.SourceList = JsonConvert.DeserializeObject<List<DataListMainModel>>(File.ReadAllText(file));
                     List<DataListMainModel> sourceDataList = this.SourceList.Where(w => targetModules.Select(s => s.ModuleName).Contains(w.ModuleName)).ToList();
-                    this.SourceHtmlList = JsonConvert.DeserializeObject<List<HtmlBlockMainModel>>(File.ReadAllText(file));
-                    List<HtmlBlockMainModel> sourceHtmlBlks = this.SourceHtmlList.ToList();
                 }
                 catch (IOException)
                 {
                 }
 
-                if (File.ReadAllText(file).Contains("HtmlBlock"))
+                switch (filename)
                 {
-                    this.LoadHtmlTreeView(this.sourceTreeList, this.SourceHtmlList.OrderBy(o => o.ContentId).ToList());
-                }
-                else if (File.ReadAllText(file).Contains("ParentMenuItemID"))
-                {
-                    this.LoadMenuTreeView(this.sourceTreeList, this.SourceMenus.OrderBy(o => o.Name).ToList());
-                }
-                else
-                {
-                    this.LoadTreeView(this.sourceTreeList, this.SourceList.OrderBy(o => o.ContentID).ToList());
+                    case "Datalist":
+                        this.LoadTreeView(this.sourceTreeList, this.SourceList.OrderBy(o => o.ContentID).ToList());
+                        break;
+
+                    case "Menus":
+                        this.SourceMenus = JsonConvert.DeserializeObject<List<MenuListModel>>(File.ReadAllText(file));
+                        List<MenuListModel> sourceMenuList = this.SourceMenus.ToList();
+                        this.LoadMenuTreeView(this.sourceTreeList, this.SourceMenus.OrderBy(o => o.Name).ToList());
+                        break;
+                    case "HtmlBlock":
+                        this.SourceHtmlList = JsonConvert.DeserializeObject<List<HtmlBlockMainModel>>(File.ReadAllText(file));
+                        List<HtmlBlockMainModel> sourceHtmlBlks = this.SourceHtmlList.ToList();
+                        this.LoadHtmlTreeView(this.sourceTreeList, this.SourceHtmlList.OrderBy(o => o.ContentId).ToList());
+
+                        break;
+                    case "Security":
+                        this.LoadTreeViewforSecurity(this.sourceTreeList, this.SourceList.OrderBy(x => x.ContentID).ToList());
+                        break;
+                    default:
+                        break;
                 }
             }
         }
@@ -203,7 +214,7 @@ namespace DatalistSyncUtil
         private void LoadHtmlTreeView(TreeView treeView, List<HtmlBlockMainModel> lists)
         {
             TreeNode listNode = null;
-            
+
             TreeNode langNode = null;
             List<TreeNode> langNodes = null;
             string languageSeparator = " - ";
@@ -220,7 +231,7 @@ namespace DatalistSyncUtil
                         langNode = new TreeNode(l.LocaleId + languageSeparator + l.Html);
                         langNodes.Add(langNode);
                     });
-                                        
+
                     listNode = new TreeNode(list.ContentId, langNodes.ToArray());
 
                     treeView.Nodes.Add(listNode);
@@ -238,29 +249,29 @@ namespace DatalistSyncUtil
         {
             Cursor.Current = Cursors.WaitCursor;
             Guid tenantModuleId = (this.moduleList.SelectedItem as TenantModuleModel).TenantModuleId;
-            string caseSwitch = this.SourceControlNames.SelectedItem.ToString();
+            string caseSwitch = this.TargetControlNames.SelectedItem.ToString();
             switch (caseSwitch)
             {
                 case "Menus":
-                        this.TargetMenuList = this.LoadTargetMenus();
-                        List<MenuListModel> filteredDataList1 = null;
-                        filteredDataList1 = this.TargetMenuList;
-                        this.LoadMenuTreeView(this.targetTreeList, filteredDataList1.OrderBy(w => w.Name).ToList());
-                        break;
+                    this.TargetMenuList = this.LoadTargetMenus();
+                    List<MenuListModel> filteredDataList1 = null;
+                    filteredDataList1 = this.TargetMenuList;
+                    this.LoadMenuTreeView(this.targetTreeList, filteredDataList1.OrderBy(w => w.Name).ToList());
+                    break;
                 case "Datalist":
-                        this.TargetList = this.LoadTargetDatalist();
-                        List<DataListMainModel> filteredDataList = null;
-                        if (tenantModuleId == Guid.Empty)
-                        {
-                            filteredDataList = this.TargetList;
-                        }
-                        else
-                        {
-                            filteredDataList = this.TargetList.Where(w => w.TenantModuleID == tenantModuleId).ToList();
-                        }
+                    this.TargetList = this.LoadTargetDatalist();
+                    List<DataListMainModel> filteredDataList = null;
+                    if (tenantModuleId == Guid.Empty)
+                    {
+                        filteredDataList = this.TargetList;
+                    }
+                    else
+                    {
+                        filteredDataList = this.TargetList.Where(w => w.TenantModuleID == tenantModuleId).ToList();
+                    }
 
-                        this.LoadTreeView(this.targetTreeList, filteredDataList.OrderBy(o => o.ContentID).ToList());
-                        break;
+                    this.LoadTreeView(this.targetTreeList, filteredDataList.OrderBy(o => o.ContentID).ToList());
+                    break;
                 case "HtmlBlock":
                     this.TargetHtmlList = this.LoadTargetHTMLlist();
                     List<HtmlBlockMainModel> filteredHtmlList = null;
@@ -276,6 +287,13 @@ namespace DatalistSyncUtil
 
                     this.LoadHtmlTreeView(this.targetTreeList, filteredHtmlList.OrderBy(o => o.ContentId).ToList());
                     break;
+                case "Security":
+                    {
+                        List<DataListMainModel> filteredSecurityTargetDataList = null;
+                        this.TargetList = filteredSecurityTargetDataList = filteredDataList = this.LoadTargetSecurityDatalist(tenantModuleId);
+                        this.LoadTreeViewforSecurity(this.targetTreeList, filteredSecurityTargetDataList);
+                        break;
+                    }
                 default:
                     break;
             }
@@ -326,7 +344,7 @@ namespace DatalistSyncUtil
             List<CodeListModel> listItems = null;
             List<DataListMainModel> listsMain = new List<DataListMainModel>();
             DataListMainModel list1 = null;
-            List<ItemDataListItemAttributeVal> TargetDataListItemAttributes  = new List<ItemDataListItemAttributeVal>();
+            List<ItemDataListItemAttributeVal> TargetDataListItemAttributes = new List<ItemDataListItemAttributeVal>();
 
             Guid tenantID = new Guid(this.tenantList.SelectedValue.ToString());
             TargetDataListItemAttributes = this.LoadHelper.GetItemAttributeList();
@@ -335,7 +353,7 @@ namespace DatalistSyncUtil
             listItems = this.LoadHelper.GetDataListItems();
             List<DataListAttribute> attributes = new List<DataListAttribute>();
             lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
-            
+
             TargetListlink = this.LoadHelper.GetDataListLinks("TargetDataListLinks");
 
             foreach (DataList list in lists)
@@ -351,9 +369,9 @@ namespace DatalistSyncUtil
                     TenantID = list.TenantID,
                     TenantModuleID = list.TenantModuleID,
                     ID = list.ID,
-                    ModuleName=list.ModuleName,
+                    ModuleName = list.ModuleName,
                     DataListAttributes = this.ConverttoAttributes(list.DataListAttributes, list.ContentID, list.TenantID, list.ID),
-                    Name=list.DataListsName
+                    Name = list.DataListsName
 
                 };
 
@@ -590,7 +608,7 @@ namespace DatalistSyncUtil
             return languages;
         }
 
-        private List<CodeItemModel> ConvertToCustomDataListItems(string contentID, Guid tenantID, List<CodeListModel> listItems, List<DataListAttribute> listattributes, List<ItemDataListItemAttributeVal>itemattributes,List<CodeLinkTable> Listlink)
+        private List<CodeItemModel> ConvertToCustomDataListItems(string contentID, Guid tenantID, List<CodeListModel> listItems, List<DataListAttribute> listattributes, List<ItemDataListItemAttributeVal> itemattributes, List<CodeLinkTable> Listlink)
         {
             List<CodeItemModel> items = new List<CodeItemModel>();
             List<CodeListModel> itemList = new List<CodeListModel>();
@@ -666,7 +684,7 @@ namespace DatalistSyncUtil
                 itemList.ID = listattribute.ID;
                 itemList.TenantID = tenantID;
                 itemList.DefaultTypeValue = listattribute.DefaultTypeValue;
-                itemList.TypeName=listattribute.TypeName;
+                itemList.TypeName = listattribute.TypeName;
                 item.Add(itemList);
             }
 
@@ -801,11 +819,11 @@ namespace DatalistSyncUtil
             switch (caseSwitch)
             {
                 case "Menus":
-                        this.SourceMenuList = this.LoadSourceMenus();
-                        List<MenuListModel> filteredDataList1 = null;
-                        filteredDataList1 = this.SourceMenuList;
-                        this.LoadMenuTreeView(this.sourceTreeList, filteredDataList1.OrderBy(w => w.Name).ToList());
-                        break;
+                    this.SourceMenuList = this.LoadSourceMenus();
+                    List<MenuListModel> filteredDataList1 = null;
+                    filteredDataList1 = this.SourceMenuList;
+                    this.LoadMenuTreeView(this.sourceTreeList, filteredDataList1.OrderBy(w => w.Name).ToList());
+                    break;
                 case "Datalist":
                     this.SourceList = this.LoadSourceDatalist();
                     List<DataListMainModel> filteredDataList = null;
@@ -836,6 +854,13 @@ namespace DatalistSyncUtil
 
                     this.LoadHtmlTreeView(this.sourceTreeList, filteredHtmlList.OrderBy(o => o.ContentId).ToList());
                     break;
+                case "Security":
+                    {
+                        List<DataListMainModel> filteredSecuritySorceDataList = null;
+                        this.SourceList = filteredSecuritySorceDataList = this.LoadSourceSecurityDatalist(tenantModuleId);
+                        this.LoadTreeViewforSecurity(this.sourceTreeList, filteredSecuritySorceDataList);
+                        break;
+                    }
                 default:
                     break;
             }
@@ -855,7 +880,7 @@ namespace DatalistSyncUtil
 
         private void LoadSourceControls()
         {
-            List<string> controlNames = new List<string>(new string[] { "Datalist", "HtmlBlock", "Images", "Menus" });
+            List<string> controlNames = new List<string>(new string[] { "Datalist", "HtmlBlock", "Images", "Menus" , "Security" });
             for (int i = 0; i <= controlNames.Count - 1; i++)
             {
                 this.SourceControlNames.Items.Add(controlNames[i]);
@@ -866,7 +891,7 @@ namespace DatalistSyncUtil
 
         private void LoadControls()
         {
-            List<string> controlNames = new List<string>(new string[] { "Datalist", "HtmlBlock", "Images", "Menus" });
+            List<string> controlNames = new List<string>(new string[] { "Datalist", "HtmlBlock", "Images", "Menus", "Security" });
             for (int i = 0; i <= controlNames.Count - 1; i++)
             {
                 this.TargetControlNames.Items.Add(controlNames[i]);
@@ -885,16 +910,17 @@ namespace DatalistSyncUtil
             }
             Cursor.Current = Cursors.Default;
         }
-        private List<ItemDataListItemAttributeVal> GetCustomItemAttributes(CodeListModel toExpand, List<CodeListModel> items, List<DataListAttribute> listAttributes, List<ItemDataListItemAttributeVal> itemAttribues,string ContentID)
+        private List<ItemDataListItemAttributeVal> GetCustomItemAttributes(CodeListModel toExpand, List<CodeListModel> items, List<DataListAttribute> listAttributes, List<ItemDataListItemAttributeVal> itemAttribues, string ContentID)
         {
             List<ItemDataListItemAttributeVal> itemAttrValues = new List<ItemDataListItemAttributeVal>();
-            itemAttrValues= itemAttribues.FindAll(x => x.DataListItemID == toExpand.ID).ToList();
+            itemAttrValues = itemAttribues.FindAll(x => x.DataListItemID == toExpand.ID).ToList();
             if (itemAttrValues.Count > 0)
             {
                 itemAttrValues.ForEach(y => y.DataListAttributeValue = items.Find(c => c.ID == y.DataListValueID).Code);
-                itemAttrValues.ForEach(y => {
+                itemAttrValues.ForEach(y =>
+                {
                     DataListAttribute attributes = new DataListAttribute();
-                    attributes=listAttributes.Find(d => d.ID == y.DataListAttributeID);
+                    attributes = listAttributes.Find(d => d.ID == y.DataListAttributeID);
                     if (attributes != null)
                     {
                         y.DataListAttributeName = attributes.TypeName;
@@ -907,7 +933,150 @@ namespace DatalistSyncUtil
 
         private void Controls_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
+        }
+
+
+        private void LoadTreeViewforSecurity(TreeView treeView, List<DataListMainModel> itemList)
+        {
+            TreeNode listNode = null;
+            treeView.Nodes.Clear();
+            if (itemList != null)
+            {
+                List<TreeNode> itemNodes = null;
+                TreeNode itemNode = null;
+                try
+                {
+                    treeView.Nodes.Clear();
+                    foreach (DataListMainModel list in itemList)
+                    {
+                        itemNodes = new List<TreeNode>();
+
+                        list.Items.ForEach(f =>
+                        {
+                            itemNode = new TreeNode(f.Code);
+                            itemNodes.Add(itemNode);
+                        });
+                        listNode = new TreeNode(list.ContentID, itemNodes.ToArray());
+                        treeView.Nodes.Add(listNode);
+                    }
+                }
+
+                finally
+                {
+                    listNode = null;
+                    itemNodes = null;
+
+                }
+            }
+        }
+
+        private List<DataListMainModel> LoadTargetSecurityDatalist(Guid tenantModuleId)
+        {
+            List<DataList> lists = null;
+            List<CodeListModel> listItems = null;
+            List<DataListMainModel> listsMain = new List<DataListMainModel>();
+            DataListMainModel list1 = null;
+            List<DataListAttribute> attributes = new List<DataListAttribute>();
+            List<ItemDataListItemAttributeVal> TargetDataListItemAttributes = new List<ItemDataListItemAttributeVal>();
+            Guid tenantID = new Guid(this.tenantList.SelectedValue.ToString());
+
+            if (tenantModuleId == Guid.Empty)
+            {
+                lists = this.LoadHelper.GetDataList().Where(w => w.TenantID == tenantID && (w.ContentID == functionsContentID || w.ContentID == rolesContentID || w.ContentID == rightsContentID)).OrderBy(o => o.ContentID).ToList();
+            }
+            else
+            {
+                lists = this.LoadHelper.GetDataList().Where(w => w.TenantID == tenantID && w.TenantModuleID == tenantModuleId && (w.ContentID == functionsContentID || w.ContentID == rolesContentID || w.ContentID == rightsContentID)).OrderBy(o => o.ContentID).ToList();
+            }
+            lists = this.LoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID && (w.ContentID == functionsContentID || w.ContentID == rolesContentID || w.ContentID == rightsContentID)).ToList();
+            listItems = this.LoadHelper.GetDataListItems().Where(w => w.TenantID == tenantID && (w.ContentID == functionsContentID || w.ContentID == rolesContentID || w.ContentID == rightsContentID)).OrderBy(o => o.ContentID).ToList();
+            TargetDataListItemAttributes = this.LoadHelper.GetItemAttributeList().Where(a => a.ParentContentId == functionsContentID || a.ParentContentId == rolesContentID || a.ParentContentId == rightsContentID).OrderBy(o => o.ParentContentId).ToList(); 
+            lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
+
+            TargetListlink = this.LoadHelper.GetDataListLinks("TargetDataListLinks");
+
+            foreach (DataList list in lists)
+            {
+                list1 = new DataListMainModel()
+                {
+                    ContentID = list.ContentID,
+                    Description = list.Description,
+                    IsActive = list.IsActive,
+                    IsEditable = list.IsEditable,
+                    ReleaseStatus = list.ReleaseStatus,
+                    Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID, listItems, attributes, TargetDataListItemAttributes, TargetListlink),
+                    TenantID = list.TenantID,
+                    TenantModuleID = list.TenantModuleID,
+                    ID = list.ID,
+                    ModuleName = list.ModuleName,
+                    DataListAttributes = this.ConverttoAttributes(list.DataListAttributes, list.ContentID, list.TenantID, list.ID),
+                    Name = list.DataListsName
+
+                };
+
+                listsMain.Add(list1);
+            }
+            return listsMain;
+
+        }
+        private List<DataListMainModel> LoadSourceSecurityDatalist(Guid tenantModuleId)
+        {
+            List<DataList> lists = null;
+            List<CodeListModel> listItems = null;
+            List<DataListMainModel> listsMain = new List<DataListMainModel>();
+            DataListMainModel list1 = null;
+            List<ItemDataListItemAttributeVal> SourceDataListItemAttributes = new List<ItemDataListItemAttributeVal>();
+            List<DataListAttribute> attributes = new List<DataListAttribute>();
+            Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
+
+            if (tenantModuleId == Guid.Empty)
+            {
+                lists = this.SourceLoadHelper.GetDataList().Where(w => w.TenantID == tenantID && (w.ContentID == functionsContentID || w.ContentID == rolesContentID || w.ContentID == rightsContentID)).OrderBy(o => o.ContentID).ToList();
+            }
+            else
+            {
+                lists = this.SourceLoadHelper.GetDataList().Where(w => w.TenantID == tenantID && w.TenantModuleID == tenantModuleId && (w.ContentID == functionsContentID || w.ContentID == rolesContentID || w.ContentID == rightsContentID)).OrderBy(o => o.ContentID).ToList();
+            }
+            lists = this.SourceLoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID && (w.ContentID == functionsContentID || w.ContentID == rolesContentID || w.ContentID == rightsContentID)).ToList();
+            listItems = this.SourceLoadHelper.GetDataListItems().Where(t => t.TenantID == tenantID && (t.ContentID == functionsContentID || t.ContentID == rolesContentID || t.ContentID == rightsContentID)).OrderBy(o => o.ContentID).ToList();
+            lists = this.SourceLoadHelper.GetAttributesList().Where(a => a.TenantID == tenantID && (a.ContentID == functionsContentID || a.ContentID == rolesContentID || a.ContentID == rightsContentID)).OrderBy(o => o.ContentID).ToList();
+
+            SourceDataListItemAttributes = this.SourceLoadHelper.GetItemAttributeList().Where(a=>a.ParentContentId == functionsContentID || a.ParentContentId == rolesContentID || a.ParentContentId == rightsContentID).OrderBy(o => o.ParentContentId).ToList(); 
+            lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
+
+
+            SourceListlink = this.SourceLoadHelper.GetDataListLinks("SourceDataListLinks");
+            foreach (DataList list in lists)
+            {
+                list1 = new DataListMainModel()
+                {
+                    ContentID = list.ContentID,
+                    Description = list.Description,
+                    IsActive = list.IsActive,
+                    IsEditable = list.IsEditable,
+                    ReleaseStatus = list.ReleaseStatus,
+                    DataListAttributes = this.ConverttoAttributes(list.DataListAttributes, list.ContentID, list.TenantID, list.ID),
+                    Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID, listItems, attributes, SourceDataListItemAttributes, SourceListlink),
+                    TenantID = list.TenantID,
+                    TenantModuleID = list.TenantModuleID,
+                    ID = list.ID,
+                    Name = list.DataListsName,
+                    ModuleName = list.ModuleName
+                };
+                listsMain.Add(list1);
+            }
+            return listsMain;
+
+        }
+
+        private void securityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            DatalistDiff diffPage = new DatalistDiff(new Guid(this.tenantList.SelectedValue.ToString()), "DATALIST", this.SourceList, this.TargetList);
+            diffPage.ShowDialog();
+            Cursor.Current = Cursors.Default;
+
         }
     }
 }

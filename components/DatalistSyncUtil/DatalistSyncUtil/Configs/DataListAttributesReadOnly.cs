@@ -147,7 +147,7 @@ namespace DatalistSyncUtil.Configs
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
-                    result = new GetDataListAttributesDaoHelper(new DataListAttributeDbContext(session, true)).ExecuteProcedure();
+                    result = new GetDataListAttributesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
                     this.Cachemanager.Set(this.dataListAttrKey, result, this.cacheTimeInMins);
                 }
             }
