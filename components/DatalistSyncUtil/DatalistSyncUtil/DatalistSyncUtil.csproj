@@ -200,7 +200,7 @@
     </Compile>
     <Compile Include="Views\PreviewPage.cs">
       <SubType>Form</SubType>
-      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Views\PreviewPage.Designer.cs">
       <DependentUpon>PreviewPage.cs</DependentUpon>
