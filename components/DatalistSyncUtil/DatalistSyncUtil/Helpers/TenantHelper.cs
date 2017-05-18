@@ -178,7 +178,7 @@ namespace DatalistSyncUtil
 
         public List<MenuListModel> GetMenu()
         {
-            if (!this.Cache.IsSet("TargetMenu"))
+            if (!this.Cache.IsSet("TargetMenus"))
             {
                 List<MenuListModel> resultmenu = new List<MenuListModel>();
 
@@ -193,7 +193,7 @@ namespace DatalistSyncUtil
             }
             else
             {
-                return this.Cache.Get<List<MenuListModel>>("TargetMenu");
+                return this.Cache.Get<List<MenuListModel>>("TargetMenus");
             }
          }
 

@@ -329,6 +329,10 @@ namespace DatalistSyncUtil.Views
                         str = str + " " + modelListItem.Code;
                         right = false;
                     }
+                    else
+                    {
+                        f.SecurityRightItemID = this.Items.Find(c => c.Code == securityRight).ID;
+                    }
                      });
             }
 
@@ -344,6 +348,10 @@ namespace DatalistSyncUtil.Views
                         modelListItem = this.Sourceitems.Where(a => a.ID == f.SecurityRightItemID).FirstOrDefault();
                         str = str + " " + modelListItem.Code;
                         right = false;
+                    }
+                    else
+                    {
+                        f.SecurityRightItemID = this.Items.Find(c => c.Code == securityRight).ID;
                     }
                 });
             }

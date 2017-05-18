@@ -141,9 +141,20 @@ namespace DatalistSyncUtil.Views
 
         private void Submit_btn(object sender, EventArgs e)
         {
-            this.MenuList = this.LoadHelper.GetMenu();
-            this.SaveMenus();
-            this.SaveMenuItems();
+            Cursor.Current = Cursors.WaitCursor;
+            try
+            {
+                this.MenuList = this.LoadHelper.GetMenu();
+                this.SaveMenus();
+               this.SaveMenuItems();
+                Cursor.Current = Cursors.Default;
+                MessageBox.Show("Saved Sucessfully");
+            }
+            catch (Exception ex)
+            {
+                Cursor.Current = Cursors.Default;
+                MessageBox.Show("Failed to Save");
+            }
         }
 
         private void SaveMenus()

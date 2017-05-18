@@ -30,8 +30,8 @@ namespace DatalistSyncUtil
             this.SourceConnectionString = ConfigurationManager.ConnectionStrings["SourceDataList"];
             this.LoadHelper = new TenantHelper(this.TargetConnectionString);
             this.SourceLoadHelper = new SourceTenantHelper(this.SourceConnectionString);
-            this.txtTargetConnection.Text = this.TargetConnectionString.ConnectionString;
-            this.txtSourceConnection.Text = this.SourceConnectionString.ConnectionString;
+            this.txtTargetConnection.Text = GetDataSourceName(this.TargetConnectionString);
+            this.txtSourceConnection.Text = GetDataSourceName(this.SourceConnectionString);
             this.LoadTenant();
             this.LoadModules();
             this.LoadControls();
@@ -1076,6 +1076,23 @@ namespace DatalistSyncUtil
             DatalistDiff diffPage = new DatalistDiff(new Guid(this.tenantList.SelectedValue.ToString()), "DATALIST", this.SourceList, this.TargetList);
             diffPage.ShowDialog();
             Cursor.Current = Cursors.Default;
+
+        }
+
+        private string GetDataSourceName(ConnectionStringSettings connection)
+        {
+            string dataSource = "";
+            string[] parts = connection.ConnectionString.Split(';');
+            for (int i = 0; i < parts.Length; i++)
+            {
+                string part = parts[i].Trim().ToUpper();
+                if (part.Contains("SOURCE"))
+                {
+                    dataSource = part;
+                    break;
+                }
+            }
+            return dataSource;
 
         }
     }
