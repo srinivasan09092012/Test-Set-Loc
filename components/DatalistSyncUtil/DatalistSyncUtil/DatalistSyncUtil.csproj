@@ -16,6 +16,21 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x64</PlatformTarget>
@@ -89,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configs\DataListLinksReadOnly.cs" />
+    <Compile Include="Configs\AppSettingsReadOnly.cs" />
     <Compile Include="Configs\DataListAttributesReadOnly.cs" />
     <Compile Include="Configs\HtmlBlockReadOnly.cs" />
     <Compile Include="Configs\ImagesReadOnly.cs" />
@@ -96,6 +112,7 @@
     <Compile Include="Configs\MenusReadOnly.cs" />
     <Compile Include="Configs\MessageCodeReadOnly.cs" />
     <Compile Include="Configs\SecurityCodeReadOnly.cs" />
+    <Compile Include="DaoHelpers\AddAppSettingDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataListLinkDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataAttributesDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataListDaoHelper.cs" />
@@ -112,6 +129,7 @@
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="DaoHelpers\UpdateDataListDaoHelper.cs" />
+    <Compile Include="DaoHelpers\SearchAppSettingsDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateDataListItemLanguageDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateDataListItemDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateImageLanguageDaoHelper.cs" />
@@ -152,6 +170,15 @@
     </Compile>
     <Compile Include="Views\DatalistDiff.designer.cs">
       <DependentUpon>DatalistDiff.cs</DependentUpon>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Models\AppSettingsModel.cs" />
+    <Compile Include="Views\AppSettingDiff.cs">
+      <SubType>Form</SubType>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Views\AppSettingDiff.Designer.cs">
+      <DependentUpon>AppSettingDiff.cs</DependentUpon>
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Views\DataListSync.cs">
@@ -220,8 +247,12 @@
       <DependentUpon>PreviewPage.cs</DependentUpon>
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
+    <EmbeddedResource Include="Views\AppSettingDiff.resx">
+      <DependentUpon>AppSettingDiff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\DatalistComparer.resx">
       <DependentUpon>DatalistComparer.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DatalistDiff.resx">
       <DependentUpon>DatalistDiff.cs</DependentUpon>
@@ -346,6 +377,18 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\DataListService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <!-- This import statement actually runs StyleCop, by configuring its targets to run automatically - so no explicit target call (if you are looking for one) -->
   <Import Project="$(StyleCopTargetFilePath)" Condition="Exists('$(StyleCopTargetFilePath)') and '$(Configuration)|$(Platform)' == 'Debug|AnyCPU'" />

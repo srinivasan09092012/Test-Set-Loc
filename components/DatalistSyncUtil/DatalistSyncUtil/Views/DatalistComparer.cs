@@ -75,6 +75,10 @@ namespace DatalistSyncUtil
 
         public SourceTenantHelper SourceLoadHelper { get; set; }
 
+        public List<AppSettingsModel> SourceAppSetting { get; set; }
+
+        public List<AppSettingsModel> TargetAppSetting { get; set; }
+
         public ConnectionStringSettings TargetConnectionString { get; set; }
 
         public ConnectionStringSettings SourceConnectionString { get; set; }
@@ -97,6 +101,10 @@ namespace DatalistSyncUtil
                     List<TenantModuleModel> targetModules = this.moduleList.DataSource as List<TenantModuleModel>;
                     this.SourceList = JsonConvert.DeserializeObject<List<DataListMainModel>>(File.ReadAllText(file));
                     List<DataListMainModel> sourceDataList = this.SourceList.Where(w => targetModules.Select(s => s.ModuleName).Contains(w.ModuleName)).ToList();
+                    this.SourceHtmlList = JsonConvert.DeserializeObject<List<HtmlBlockMainModel>>(File.ReadAllText(file));
+                    List<HtmlBlockMainModel> sourceHtmlBlks = this.SourceHtmlList.ToList();
+                    this.SourceAppSetting = JsonConvert.DeserializeObject<List<AppSettingsModel>>(File.ReadAllText(file));
+                    List<AppSettingsModel> sourceAppSetting = this.SourceAppSetting.ToList();
                 }
                 catch (IOException)
                 {
@@ -104,6 +112,10 @@ namespace DatalistSyncUtil
 
                 switch (filename)
                 {
+                    case "AppSetting":
+                        this.LoadAppSettingTreeView(this.sourceTreeList, SourceAppSetting.OrderBy(o => o.AppSettingKey).ToList());
+                        break;
+
                     case "Datalist":
                         this.LoadTreeView(this.sourceTreeList, this.SourceList.OrderBy(o => o.ContentID).ToList());
                         break;
@@ -129,6 +141,28 @@ namespace DatalistSyncUtil
             }
         }
 
+        private void LoadAppSettingTreeView(TreeView treeView, List<AppSettingsModel> lists)
+        {
+            TreeNode listNode = null;
+            List<TreeNode> appNodes = new List<TreeNode>();       
+
+            try
+            {
+                treeView.Nodes.Clear();
+                foreach (AppSettingsModel list in lists)
+                {
+                    listNode = new TreeNode();
+                    listNode = new TreeNode(list.AppSettingKey, appNodes.ToArray());
+                    listNode = new TreeNode(list.Value, appNodes.ToArray());
+                    treeView.Nodes.Add(listNode);                  
+                }
+            }
+            finally
+            {
+                listNode = null;
+                appNodes = null;               
+            }
+        }
         private void LoadTreeView(TreeView treeView, List<DataListMainModel> lists)
         {
             TreeNode listNode = null;
@@ -291,11 +325,18 @@ namespace DatalistSyncUtil
             string caseSwitch = this.TargetControlNames.SelectedItem.ToString();
             switch (caseSwitch)
             {
-                case "Menus":
-                    this.TargetMenuList = this.LoadTargetMenus();
-                    List<MenuListModel> filteredDataList1 = null;
-                    filteredDataList1 = this.TargetMenuList;
-                    this.LoadMenuTreeView(this.targetTreeList, filteredDataList1.OrderBy(w => w.Name).ToList());
+                case "AppSetting":
+                    this.TargetAppSetting = this.LoadTargetAppSetting();
+                    List<AppSettingsModel> filteredAppSetting = null;
+                    if (tenantModuleId == Guid.Empty)
+                    {
+                        filteredAppSetting = this.TargetAppSetting;
+                    }
+                    else
+                    {
+                        filteredAppSetting = this.TargetAppSetting.Where(w => w.TenantModuleID == tenantModuleId).ToList();
+                    }
+                    this.LoadAppSettingTreeView(this.targetTreeList, filteredAppSetting.OrderBy(o =>o.AppSettingKey).ToList());
                     break;
                 case "Datalist":
                     this.TargetList = this.LoadTargetDatalist();
@@ -326,6 +367,12 @@ namespace DatalistSyncUtil
 
                     this.LoadHtmlTreeView(this.targetTreeList, filteredHtmlList.OrderBy(o => o.ContentId).ToList());
                     break;
+                case "Menus":
+                    this.TargetMenuList = this.LoadTargetMenus();
+                    List<MenuListModel> filteredDataList1 = null;
+                    filteredDataList1 = this.TargetMenuList;
+                    this.LoadMenuTreeView(this.targetTreeList, filteredDataList1.OrderBy(w => w.Name).ToList());
+                    break;
                 case "Security":
                     List<DataListMainModel> filteredSecurityTargetDataList = null;
                     this.TargetList = filteredSecurityTargetDataList = filteredDataList = this.LoadTargetSecurityDatalist(tenantModuleId);
@@ -353,6 +400,39 @@ namespace DatalistSyncUtil
             Cursor.Current = Cursors.Default;
         }
 
+         private List<AppSettingsModel> LoadTargetAppSetting()
+        {
+            List<AppSettingsModel> lists = null;
+            List<AppSettingsModel> listsMain = new List<AppSettingsModel>();
+            AppSettingsModel list1 = null;
+                       
+            Guid tenantID = new Guid(this.tenantList.SelectedValue.ToString());
+            lists = this.LoadHelper.GetAppSetting().Where(w => w.TenantID == tenantID).ToList();
+                                  
+            foreach (AppSettingsModel list in lists)
+            {
+                list1 = new AppSettingsModel()
+                {
+                    TenantModuleAppSettingId = list.TenantModuleAppSettingId,
+                    ApplicationId = list.ApplicationId,
+                    AppSettingKey = list.AppSettingKey,
+                    Value = list.Value,
+                    TargetValue = null,
+                    SettingTypeItemKey = list.SettingTypeItemKey,
+                    Description = list.Description,
+                    ModuleName = list.ModuleName,
+                    TenantID = list.TenantID,
+                    OperatorID = list.OperatorID,
+                    TenantModuleID = list.TenantModuleID,
+                    LastModifiedTimeStamp = list.LastModifiedTimeStamp == null ? DateTime.UtcNow : list.LastModifiedTimeStamp,
+                    IsActive = list.IsActive
+                };
+
+                listsMain.Add(list1);
+            }
+
+            return listsMain;
+        }
         private List<MenuListModel> LoadTargetMenus()
         {
             List<MenuListModel> lists = null;
@@ -988,11 +1068,18 @@ namespace DatalistSyncUtil
             string caseSwitch = this.SourceControlNames.SelectedItem.ToString();
             switch (caseSwitch)
             {
-                case "Menus":
-                    this.SourceMenuList = this.LoadSourceMenus();
-                    List<MenuListModel> filteredDataList1 = null;
-                    filteredDataList1 = this.SourceMenuList;
-                    this.LoadMenuTreeView(this.sourceTreeList, filteredDataList1.OrderBy(w => w.Name).ToList());
+                case "AppSetting":
+                    this.SourceAppSetting = this.LoadSourceAppSetting();
+                    List<AppSettingsModel> filteredAppSetting = null;
+                    if (tenantModuleId == Guid.Empty)
+                    {
+                        filteredAppSetting = this.SourceAppSetting;
+                    }
+                    else
+                    {
+                        filteredAppSetting = this.SourceAppSetting.Where(w => w.TenantModuleID == tenantModuleId).ToList();
+                    }
+                    this.LoadAppSettingTreeView(this.sourceTreeList, filteredAppSetting.OrderBy(o => o.AppSettingKey).ToList());
                     break;
                 case "Datalist":
                     this.SourceList = this.LoadSourceDatalist();
@@ -1024,6 +1111,12 @@ namespace DatalistSyncUtil
 
                     this.LoadHtmlTreeView(this.sourceTreeList, filteredHtmlList.OrderBy(o => o.ContentId).ToList());
                     break;
+                case "Menus":
+                    this.SourceMenuList = this.LoadSourceMenus();
+                    List<MenuListModel> filteredDataList1 = null;
+                    filteredDataList1 = this.SourceMenuList;
+                    this.LoadMenuTreeView(this.sourceTreeList, filteredDataList1.OrderBy(w => w.Name).ToList());
+                    break;
                 case "Security":
                     List<DataListMainModel> filteredSecuritySorceDataList = null;
                     this.SourceList = filteredSecuritySorceDataList = this.LoadSourceSecurityDatalist(tenantModuleId);
@@ -1051,6 +1144,40 @@ namespace DatalistSyncUtil
             Cursor.Current = Cursors.Default;
         }
 
+        private List<AppSettingsModel> LoadSourceAppSetting()
+        {
+            List<AppSettingsModel> lists = null;
+            List<AppSettingsModel> listsMain = new List<AppSettingsModel>();
+            AppSettingsModel list1 = null;
+
+            Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
+            lists = this.SourceLoadHelper.GetAppSetting().Where(w => w.TenantID == tenantID).ToList();
+
+            foreach (AppSettingsModel list in lists)
+            {
+                list1 = new AppSettingsModel()
+                {
+                    TenantModuleAppSettingId = list.TenantModuleAppSettingId,
+                    ApplicationId = list.ApplicationId,
+                    AppSettingKey = list.AppSettingKey,
+                    TargetValue = null,
+                    Value = list.Value,
+                    ModuleName = list.ModuleName,
+                    TenantID = list.TenantID,
+                    SettingTypeItemKey = list.SettingTypeItemKey,
+                    Description = list.Description,
+                    TenantModuleID = list.TenantModuleID,
+                    OperatorID = list.OperatorID,
+                    LastModifiedTimeStamp = list.LastModifiedTimeStamp == null ? DateTime.UtcNow : list.LastModifiedTimeStamp,
+                    IsActive = list.IsActive
+                };
+
+                listsMain.Add(list1);
+            }
+
+            return listsMain;
+        }
+
         private void MenusToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (this.SourceMenuList != null)
@@ -1063,7 +1190,7 @@ namespace DatalistSyncUtil
 
         private void LoadSourceControls()
         {
-            List<string> controlNames = new List<string>(new string[] { "Datalist", "HtmlBlock", "Image", "Menus", "Security" });
+            List<string> controlNames = new List<string>(new string[] {"AppSetting", "Datalist", "HtmlBlock", "Images", "Menus", "Security" });
             for (int i = 0; i <= controlNames.Count - 1; i++)
             {
                 this.SourceControlNames.Items.Add(controlNames[i]);
@@ -1074,7 +1201,7 @@ namespace DatalistSyncUtil
 
         private void LoadControls()
         {
-            List<string> controlNames = new List<string>(new string[] { "Datalist", "HtmlBlock", "Image", "Menus", "Security" });
+            List<string> controlNames = new List<string>(new string[] { "AppSetting", "Datalist", "HtmlBlock", "Images", "Menus", "Security" });
             for (int i = 0; i <= controlNames.Count - 1; i++)
             {
                 this.TargetControlNames.Items.Add(controlNames[i]);
@@ -1259,6 +1386,14 @@ namespace DatalistSyncUtil
             }
 
             return listsMain;
+        }
+
+        private void appSettingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            AppSettingDiff diffPage = new AppSettingDiff(new Guid(this.tenantList.SelectedValue.ToString()), "AppSetting", this.SourceAppSetting, this.TargetAppSetting);
+            diffPage.ShowDialog();
+            Cursor.Current = Cursors.Default;
         }
 
         private string GetDataSourceName(ConnectionStringSettings connection)

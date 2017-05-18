@@ -39,6 +39,12 @@ namespace DatalistSyncUtil
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DataListView = new System.Windows.Forms.DataGridView();
+            this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ContentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AppSettingKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DataListLoad = new System.Windows.Forms.Button();
             this.Start = new System.Windows.Forms.Button();
             this.SelectAllChkBox = new System.Windows.Forms.CheckBox();
@@ -82,6 +88,8 @@ namespace DatalistSyncUtil
             this.Select,
             this.ContentID,
             this.Column1,
+            this.AppSettingKey,
+            this.Value,
             this.IsActive});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -109,10 +117,56 @@ namespace DatalistSyncUtil
             this.DataListView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataListView_CellDoubleClick);
             this.DataListView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataListView_CellValueChanged);
             // 
+            // Select
+            // 
+            this.Select.HeaderText = "";
+            this.Select.Name = "Select";
+            this.Select.Width = 25;
+            // 
+            // ContentID
+            // 
+            this.ContentID.DataPropertyName = "ContentID";
+            this.ContentID.HeaderText = "Content ID";
+            this.ContentID.Name = "ContentID";
+            this.ContentID.ReadOnly = true;
+            this.ContentID.Visible = false;
+            this.ContentID.Width = 600;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Name";
+            this.Column1.HeaderText = "Name";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 550;
+            // 
+            // AppSettingKey
+            // 
+            this.AppSettingKey.DataPropertyName = "AppSettingKey";
+            this.AppSettingKey.HeaderText = "AppSettingKey";
+            this.AppSettingKey.Name = "AppSettingKey";
+            this.AppSettingKey.Visible = false;
+            this.AppSettingKey.Width = 250;
+            // 
+            // Value
+            // 
+            this.Value.DataPropertyName = "Value";
+            this.Value.HeaderText = "Value";
+            this.Value.Name = "Value";
+            this.Value.Visible = false;
+            this.Value.Width = 450;
+            // 
+            // IsActive
+            // 
+            this.IsActive.DataPropertyName = "IsActive";
+            this.IsActive.HeaderText = "Active";
+            this.IsActive.Name = "IsActive";
+            this.IsActive.ReadOnly = true;
+            this.IsActive.Width = 60;
+            // 
             // DataListLoad
             // 
             this.DataListLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DataListLoad.Location = new System.Drawing.Point(691, 79);
+            this.DataListLoad.Location = new System.Drawing.Point(692, 81);
             this.DataListLoad.Margin = new System.Windows.Forms.Padding(2);
             this.DataListLoad.Name = "DataListLoad";
             this.DataListLoad.Size = new System.Drawing.Size(56, 28);
@@ -410,6 +464,8 @@ namespace DatalistSyncUtil
         private System.Windows.Forms.DataGridViewCheckBoxColumn Select;
         private System.Windows.Forms.DataGridViewTextBoxColumn ContentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AppSettingKey;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsActive;
     }
 }

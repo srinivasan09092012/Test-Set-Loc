@@ -58,7 +58,7 @@ namespace DatalistSyncUtil
         }
 
         public List<TenantModuleModel> LoadModules()
-        {
+        {          
             List<TenantModuleModel> result = null;
             if (!this.Cache.IsSet("SourceTenantModules"))
             {
@@ -72,6 +72,26 @@ namespace DatalistSyncUtil
             else
             {
                 result = this.Cache.Get<List<TenantModuleModel>>("SourceTenantModules").ToList();
+            }
+
+            return result;
+        }
+
+        public List<ApplicationModel> LoadApplicationName()
+        {            
+            List<ApplicationModel> result = null;
+            if (!this.Cache.IsSet("SourceTenantApplication"))
+            {
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    result = new GetApplicationDaoHelper(new ApplicationDbContext(session, true)).ExecuteProcedure();
+                }
+
+                this.Cache.Set("SourceTenantApplication", result, 1440);
+            }
+            else
+            {
+                result = this.Cache.Get<List<ApplicationModel>>("SourceTenantApplication").ToList();
             }
 
             return result;
@@ -346,6 +366,25 @@ namespace DatalistSyncUtil
             }
 
             return resultitems;
+        }
+
+        public List<AppSettingsModel> GetAppSetting()
+        {
+            if (this.Cache.IsSet("AppSettings"))
+            {
+                return this.Cache.Get<List<AppSettingsModel>>("AppSettings");
+            }
+
+            List<AppSettingsModel> resultmenu = new List<AppSettingsModel>();
+
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                resultmenu = new AppSettingsReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").SearchAppSetting();
+            }
+
+            this.Cache.Set("AppSettings", resultmenu, 1440);
+
+            return resultmenu;
         }
     }
 }

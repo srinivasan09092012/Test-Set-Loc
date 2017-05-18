@@ -89,6 +89,7 @@ namespace DatalistSyncUtil
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deltaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.datalistItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.htmlBlockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -422,6 +423,7 @@ namespace DatalistSyncUtil
             // deltaToolStripMenuItem
             // 
             this.deltaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.appSettingToolStripMenuItem,
             this.datalistItemToolStripMenuItem,
             this.htmlBlockToolStripMenuItem,
             this.menusToolStripMenuItem,
@@ -430,6 +432,13 @@ namespace DatalistSyncUtil
             this.deltaToolStripMenuItem.Name = "deltaToolStripMenuItem";
             this.deltaToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
             this.deltaToolStripMenuItem.Text = "Delta";
+            // 
+            // appSettingToolStripMenuItem
+            // 
+            this.appSettingToolStripMenuItem.Name = "appSettingToolStripMenuItem";
+            this.appSettingToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.appSettingToolStripMenuItem.Text = "AppSetting";
+            this.appSettingToolStripMenuItem.Click += new System.EventHandler(this.appSettingToolStripMenuItem_Click);
             // 
             // datalistItemToolStripMenuItem
             // 
@@ -510,5 +519,6 @@ namespace DatalistSyncUtil
         private System.Windows.Forms.ToolStripMenuItem htmlBlockToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem securityToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem imagesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem appSettingToolStripMenuItem;
     }
 }

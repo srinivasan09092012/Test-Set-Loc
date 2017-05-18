@@ -32,7 +32,7 @@ namespace DatalistSyncUtil
     {
         private readonly string listKeyword = "CodeList_";
 
-        //Common
+       //Common
         private readonly string commit = "Commit";
 
         private readonly string declarationEnd = "DeclarationEnd";
@@ -101,6 +101,8 @@ namespace DatalistSyncUtil
         public List<MenuListModel> ChildMenuItem { get; set; }
 
         public List<CodeListModel> SourceListItems { get; set; }
+
+        public List<AppSettingsModel> SourceAppSettings { get; set; }
 
         public List<MenuListModel> SourceMenus { get; set; }
 
@@ -192,17 +194,29 @@ namespace DatalistSyncUtil
             string caseSwitch = this.ControlName.SelectedItem.ToString();
             switch (caseSwitch)
             {
+                case "AppSetting":                   
+                    this.DataListView.Columns[1].Visible = false;
+                    this.DataListView.Columns[2].Visible = false;
+                    this.DataListView.Columns[3].Visible = true;
+                    this.DataListView.Columns[4].Visible = true;
+                    this.BindAppSettings();
+                    this.ModuleListSelectedAppSetting();
+                    break;                    
                 case "Datalist":
                     this.SourceListItems = this.LoadDataListItems(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
                     this.Resultitems = this.LoadDataListItemAttributes();
                     this.DataListView.Columns[1].Visible = true;
                     this.DataListView.Columns[2].Visible = false;
+                    this.DataListView.Columns[3].Visible = false;
+                    this.DataListView.Columns[4].Visible = false;
                     this.BindDataList();
                     this.ModuleListSelectedItems();
                     break;
                 case "Menus":
                     this.DataListView.Columns[2].Visible = true;
                     this.DataListView.Columns[1].Visible = false;
+                    this.DataListView.Columns[3].Visible = false;
+                    this.DataListView.Columns[4].Visible = false;
                     this.BindMenus();
                     this.ModuleMenuListSelectedItems();
                     break;
@@ -210,6 +224,8 @@ namespace DatalistSyncUtil
                     this.SourceHtmlListItems = this.LoadHTMLBlocks(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
                     this.DataListView.Columns[1].Visible = true;
                     this.DataListView.Columns[2].Visible = false;
+                    this.DataListView.Columns[3].Visible = false;
+                    this.DataListView.Columns[4].Visible = false;
                     this.BindHTMLBlock();
                     this.ModuleHtmlListSelectedItems();
                     break;
@@ -230,6 +246,45 @@ namespace DatalistSyncUtil
                 default:
                     break;
             }
+        }
+
+        private void BindAppSettings()
+        {
+            Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
+                      
+            if (!this.Cache.IsSet("Appsettings"))
+            {
+                this.SourceAppSettings = this.LoadAppSetting(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);                
+            }
+            else
+            {
+                this.SourceAppSettings = this.Cache.Get<List<AppSettingsModel>>("Appsettings");
+            }
+
+            this.DataListView.AutoGenerateColumns = false;
+
+            if (this.SkipNoOfDays)
+            {
+                this.DataListView.DataSource = new BindingList<AppSettingsModel>(this.SourceAppSettings.Where(w => w.TenantID == tenantID).ToList());
+            }
+            else
+            {
+                this.DataListView.DataSource = new BindingList<AppSettingsModel>(this.SourceAppSettings.Where(w => w.TenantID == tenantID && w.LastModifiedTimeStamp.Value >= DateTime.UtcNow.AddDays(this.NoOfDays)).ToList());
+            }
+        }
+
+        private List<AppSettingsModel> LoadAppSetting(string providerName, string connectionString)
+        {
+            List<AppSettingsModel> result = null;
+
+            using (IDbSession session = new DbSession(providerName, connectionString))
+            {
+                result = new Configs.AppSettingsReadOnly(new DbSession(providerName, connectionString), "Source").SearchAppSetting();
+            }
+
+            this.Cache.Set("Appsettings", result.ToList(), 1440);
+
+            return result;          
         }
 
         private List<TenantModuleModel> GetTenantModules(string providerName, string connectionString)
@@ -770,6 +825,42 @@ namespace DatalistSyncUtil
             }
         }
 
+        private void ModuleListSelectedAppSetting()
+        {
+            List<TenantModuleModel> selectedModules = new List<TenantModuleModel>();
+            Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
+            List<AppSettingsModel> filteredModuleList = null;
+            TenantModuleModel module = null;
+            if (this.ModuleList.SelectedItems.Count > 0)
+            {
+                foreach (object item in this.ModuleList.SelectedItems)
+                {
+                    module = item as TenantModuleModel;
+                    selectedModules.Add(module);
+                }
+            }
+
+            if (this.NoOfDays > 0)
+            {
+                var modulesQuery = from lists in this.SourceAppSettings
+                                   join modules in selectedModules
+                                        on lists.TenantModuleID equals modules.TenantModuleId
+                                   where lists.LastModifiedTimeStamp >= DateTime.UtcNow.AddDays(this.NoOfDays * -1)
+                                   select lists;
+                filteredModuleList = modulesQuery.ToList();                
+            }
+            else
+            {
+                var modulesQuery = from lists in this.SourceAppSettings
+                                   join modules in selectedModules
+                                        on lists.TenantModuleID equals modules.TenantModuleId
+                                   select lists;
+                filteredModuleList = modulesQuery.ToList();               
+            }
+
+            this.DataListView.DataSource = new BindingList<AppSettingsModel>(filteredModuleList.Where(w => w.TenantID == tenantID).ToList());
+        }
+
         private void ModuleListSelectedItems()
         {
             List<TenantModuleModel> selectedModules = new List<TenantModuleModel>();
@@ -950,6 +1041,8 @@ namespace DatalistSyncUtil
             string caseSwitch = this.ControlName.SelectedItem.ToString();
             switch (caseSwitch)
             {
+                case "AppSetting":
+                    break;
                 case "Datalist":
                 case "Security":
                     ListItems itemsPage = new ListItems((this.DataListView.Rows[e.RowIndex].DataBoundItem as DataList).ContentID, this.NoOfDays);
@@ -989,6 +1082,10 @@ namespace DatalistSyncUtil
             string caseSwitch = this.ControlName.SelectedItem.ToString();
             switch (caseSwitch)
             {
+                case "AppSetting":
+                    List<AppSettingsModel> listsAppSetting = this.ConvertToCustomAppSetting();                   
+                    File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(listsAppSetting));
+                    break;
                 case "Datalist":
                     List<DataListMainModel> listsMain = this.ConvertToCustomDataList();
                     File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(listsMain));
@@ -1015,6 +1112,38 @@ namespace DatalistSyncUtil
 
             MessageBox.Show("Download completed!");
             Process.Start("explorer.exe", this.QueryFilePath);
+        }
+
+        private List<AppSettingsModel> ConvertToCustomAppSetting()
+        {
+            List<AppSettingsModel> lists = null;
+            List<AppSettingsModel> listsMain = new List<AppSettingsModel>();
+            AppSettingsModel list1 = null;
+
+            Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
+
+            lists = this.SourceAppSettings.Where(w => w.TenantID == tenantID).ToList();
+            List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
+            foreach (AppSettingsModel list in lists)
+            {
+                list1 = new AppSettingsModel()
+                {
+                    TenantModuleAppSettingId = list.TenantModuleAppSettingId,
+                    ApplicationId = list.ApplicationId,
+                    AppSettingKey = list.AppSettingKey,
+                    Value = list.Value,
+                    TargetValue = list.Value,
+                    SettingTypeItemKey = list.SettingTypeItemKey,
+                    ModuleName = modules.Find(f => f.TenantModuleId == list.TenantModuleID).ModuleName,
+                    Description = list.Description,
+                    TenantModuleID = list.TenantModuleID,
+                    IsActive = list.IsActive
+                };
+
+                listsMain.Add(list1);
+            }
+
+            return listsMain;
         }
 
         private List<DataListMainModel> ConvertToCustomDataList()
@@ -1338,7 +1467,7 @@ namespace DatalistSyncUtil
         
         private void LoadControls()
         { 
-            List<string> controlNames = new List<string>(new string[] { "Datalist", "HtmlBlock", "Image", "Menus", "Security" });
+            List<string> controlNames = new List<string>(new string[] { "AppSetting", "Datalist", "HtmlBlock", "Image", "Menus", "Security" });
             for (int i = 0; i <= controlNames.Count - 1; i++)
             {
                 this.ControlName.Items.Add(controlNames[i]);

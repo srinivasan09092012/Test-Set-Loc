@@ -16,6 +16,7 @@ using DatalistSyncUtil.DataListService;
 using System.ServiceModel.Security;
 using DatalistSyncUtil.Security;
 using System.Windows.Forms;
+using DatalistSyncUtil.Configs;
 
 namespace DatalistSyncUtil.Views
 {
@@ -23,6 +24,7 @@ namespace DatalistSyncUtil.Views
     {
         private static readonly AuthController AuthController = new AuthController();
         private TenantHelper objTargetHelper = new TenantHelper();
+        private AppSettingsReadOnly target;
 
         public PreviewPage()
         {
@@ -55,6 +57,18 @@ namespace DatalistSyncUtil.Views
             this.LoadTreeView(this.PreviewTreeList, this.FinalHtmlBlks);
         }
 
+        public PreviewPage(List<AppSettingsModel> finalAppSetting)
+        {
+            this.InitializeComponent();
+            this.target = new AppSettingsReadOnly();
+            this.Cache = new RedisCacheManager();
+            this.LoadHelper = new TenantHelper();
+            this.TargetAppsetting = this.LoadHelper.GetAppSetting();
+            this.FinalAppSetting = finalAppSetting;           
+            
+            this.LoadTreeView(this.PreviewTreeList, this.FinalAppSetting);
+        }        
+
         public PreviewPage(List<ImagesMainModel> finalImages, List<ImageLanguage> finalImageLanguages)
         {
             this.InitializeComponent();
@@ -65,8 +79,12 @@ namespace DatalistSyncUtil.Views
             this.LoadTreeView(this.PreviewTreeList, this.FinalImages);
         }
 
+        public List<AppSettingsModel> Applist { get; set; }
+
         public ICacheManager Cache { get; set; }
 
+        public List<AppSettingsModel> FinalAppSetting { get; set; }
+        
         public List<DataListMainModel> FinalList { get; set; }
 
         public List<CodeItemModel> FinalListItems { get; set; }
@@ -91,6 +109,8 @@ namespace DatalistSyncUtil.Views
 
         public TenantHelper LoadHelper { get; set; }
 
+        public List<AppSettingsModel> TargetAppsetting { get; set; }    
+                  
         private void Submit_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -115,16 +135,17 @@ namespace DatalistSyncUtil.Views
                 {
                     this.SaveImageLanguages();
                 }
+
+                if (this.FinalAppSetting != null)
+                {
+                    this.SaveAppSettings();
+                }
                 else
                 {
-                    // this.SaveDataList();
                     this.SaveDataListWithDataListAttributes();
-
-                    // this.SaveDatalistItems();
+                                       
                     this.SaveDataListItemsWithAttributesValandLinks();
 
-                    //  this.SaveDatalistItems();
-                    // this.SaveDataListAttributes();
                     this.SaveDataItemLink();
                 }
 
@@ -135,9 +156,35 @@ namespace DatalistSyncUtil.Views
             {
                 Cursor.Current = Cursors.Default;
                 MessageBox.Show("Failed to Save");
+            }                
+        }      
+
+       private void SaveAppSettings()
+        {
+            this.Applist = this.LoadHelper.GetAppSetting();
+            try
+            {
+                List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+                if (this.FinalAppSetting != null)
+                {
+                    foreach (AppSettingsModel list in this.FinalAppSetting)
+                    {
+                        list.TenantModuleID = modules.Find(f => f.TenantId == list.TenantID && f.ModuleName == list.ModuleName).TenantModuleId;
+                        if (!this.Applist.Any(a => a.TenantModuleAppSettingId == list.TenantModuleAppSettingId))
+                        {
+                            this.LoadHelper.AddAppSetting(list);                            
+                        }
+
+                        this.target.ManageODataCache(list.AppSettingKey, false);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR:" + ex.Message);
             }
         }
-                      
+
         private void SaveDataItemLink()
         {
             List<DataList> dataList = this.LoadHelper.GetDataList();
@@ -514,6 +561,10 @@ namespace DatalistSyncUtil.Views
             listitem.ItemLastModified = DateTime.UtcNow;
             listitem.ItemIsEditable = f.IsEditable;
             listitem.DataListItemLanguages = this.ConvertCustomLang(f.LanguageList);
+            if (f.Attributes != null)
+            {
+                listitem.DataListAttributeValues = this.ConvertToCustomAttributeVal(f.Attributes);
+            }
 
             ///listitem.DataListItemLinks=f.L
             if (f.Attributes != null)
@@ -799,6 +850,40 @@ namespace DatalistSyncUtil.Views
             }
         }
 
+        private void LoadTreeView(TreeView treeView, List<AppSettingsModel> lists)
+        {
+            TreeNode listNode = null;
+            List<TreeNode> appNodes = null;            
+            string contentID = string.Empty;
+
+            try
+            {
+                treeView.Nodes.Clear();
+                List<string> appSetting = this.GetAllContentID();
+
+                appSetting.ForEach(f =>
+                {
+                appNodes = new List<TreeNode>();
+                    if (this.FinalAppSetting != null)
+                    {
+                         this.GetAppSetting(appNodes, f.Trim());
+                        listNode = new TreeNode(f.Trim(), appNodes.ToArray());
+                        if (appNodes.Count != 0)
+                        {
+                            treeView.Nodes.Add(listNode);
+                        }
+                    }
+                });
+
+                treeView.ExpandAll();
+            }
+            finally
+            {
+                listNode = null;
+                appNodes = null;
+            }
+        }
+
         private void GetTreeHtmlLanguages(List<TreeNode> langNodes, string contentID)
         {
             TreeNode node = null;
@@ -871,6 +956,19 @@ namespace DatalistSyncUtil.Views
             items.ForEach(f =>
             {
                 node = new TreeNode(f.LocaleId + languageSeparator + f.Source + languageSeparator + f.ToolTip + width + f.Width + height + f.Height);
+                langNodes.Add(node);
+            });
+        }
+
+        private void GetAppSetting(List<TreeNode> langNodes, string appSetting)
+        {
+            TreeNode node = null;
+            
+            List<AppSettingsModel> items = this.FinalAppSetting.FindAll(f => f.AppSettingKey.Trim() == appSetting);
+
+            items.ForEach(f =>
+            {
+                node = new TreeNode(f.TargetValue);
                 langNodes.Add(node);
             });
         }
@@ -1062,6 +1160,14 @@ namespace DatalistSyncUtil.Views
                     {
                         listContents.Add(f.ContentId.Trim());
                     }
+                });
+            }
+
+            if (this.FinalAppSetting != null)
+            {
+                this.FinalAppSetting.ForEach(f =>
+                {
+                    listContents.Add(f.AppSettingKey.ToString());                    
                 });
             }
 

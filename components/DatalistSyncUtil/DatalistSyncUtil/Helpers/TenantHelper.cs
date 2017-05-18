@@ -78,6 +78,26 @@ namespace DatalistSyncUtil
             }
 
             return result;
+        }      
+
+        public List<AppSettingsModel> GetAppSetting()
+        {
+            List<AppSettingsModel> result = null;
+            if (!this.Cache.IsSet("TargetAppSetting"))
+            {
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    result = new SearchAppSettingsDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
+                }
+
+                this.Cache.Set("TargetAppSetting", result.OrderBy(o => o.ApplicationId).ToList(), 1440);
+            }
+            else
+            {
+                result = this.Cache.Get<List<AppSettingsModel>>("TargetAppSetting").ToList();
+            }
+
+            return result;
         }
 
         public List<DataList> GetDataList()
@@ -358,6 +378,23 @@ namespace DatalistSyncUtil
 
             return success;
         }
+
+        public bool AddAppSetting(AppSettingsModel cmd)
+        {
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new AddAppSettingDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                }
+            }
+
+            return true;
+        }      
 
         public bool AddMenus(MenuListModel cmd)
         {
