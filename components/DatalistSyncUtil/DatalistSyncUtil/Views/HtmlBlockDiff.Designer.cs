@@ -1569,7 +1569,7 @@ namespace DatalistSyncUtil
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnIncludeHtmlBlk;
         private System.Windows.Forms.Button btnIncludeHtmlLang;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Select;
+        private new System.Windows.Forms.DataGridViewCheckBoxColumn Select;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Code;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;

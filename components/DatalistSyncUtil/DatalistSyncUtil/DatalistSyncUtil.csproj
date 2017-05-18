@@ -91,6 +91,7 @@
     <Compile Include="Configs\DataListLinksReadOnly.cs" />
     <Compile Include="Configs\DataListAttributesReadOnly.cs" />
     <Compile Include="Configs\HtmlBlockReadOnly.cs" />
+    <Compile Include="Configs\ImagesReadOnly.cs" />
     <Compile Include="Configs\LabelsCodeReadOnly.cs" />
     <Compile Include="Configs\MenusReadOnly.cs" />
     <Compile Include="Configs\MessageCodeReadOnly.cs" />
@@ -100,6 +101,8 @@
     <Compile Include="DaoHelpers\AddDataListDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataListItemLanguageDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataListItemDaoHelper.cs" />
+    <Compile Include="DaoHelpers\AddImageLanguageDaoHelper.cs" />
+    <Compile Include="DaoHelpers\AddImagesDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddMenuDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddMenuItemDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddHtmlBlockDaoHelper.cs" />
@@ -111,13 +114,17 @@
     <Compile Include="DaoHelpers\UpdateDataListDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateDataListItemLanguageDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateDataListItemDaoHelper.cs" />
+    <Compile Include="DaoHelpers\UpdateImageLanguageDaoHelper.cs" />
+    <Compile Include="DaoHelpers\UpdateImagesDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateMenuDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateMenuItemDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateHtmlBlockDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateHtmlBlockLanguageDaoHelper.cs" />
     <Compile Include="Helpers\SourceTenantHelper.cs" />
+    <Compile Include="Models\ImageLanguage.cs" />
     <Compile Include="Models\HtmlBlockMainModel.cs" />
     <Compile Include="Models\HtmlBlockLanguage.cs" />
+    <Compile Include="Models\ImagesMainModel.cs" />
     <Compile Include="Models\ItemAttribute.cs" />
     <Compile Include="Models\DatalistLinkModel.cs" />
     <Compile Include="Models\ItemDataListAttributeVal.cs" />
@@ -149,7 +156,7 @@
     </Compile>
     <Compile Include="Views\DataListSync.cs">
       <SubType>Form</SubType>
-      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Views\DataListSync.Designer.cs">
       <DependentUpon>DataListSync.cs</DependentUpon>
@@ -162,6 +169,13 @@
     </Compile>
     <Compile Include="Views\HtmlBlockDiff.Designer.cs">
       <DependentUpon>HtmlBlockDiff.cs</DependentUpon>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Views\ImagesDiff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ImagesDiff.Designer.cs">
+      <DependentUpon>ImagesDiff.cs</DependentUpon>
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Views\ListItems.cs">
@@ -217,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\HtmlBlockDiff.resx">
       <DependentUpon>HtmlBlockDiff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ImagesDiff.resx">
+      <DependentUpon>ImagesDiff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ListItems.resx">
       <DependentUpon>ListItems.cs</DependentUpon>

@@ -61,11 +61,15 @@ namespace DatalistSyncUtil
 
         public List<HtmlBlockMainModel> SourceHtmlList { get; set; }
 
+        public List<ImagesMainModel> SourceImagesList { get; set; }
+
         public List<DataListMainModel> TargetList { get; set; }
 
         public List<MenuListModel> TargetMenuList { get; set; }
 
         public List<HtmlBlockMainModel> TargetHtmlList { get; set; }
+
+        public List<ImagesMainModel> TargetImagesList { get; set; }
 
         public TenantHelper LoadHelper { get; set; }
 
@@ -106,17 +110,18 @@ namespace DatalistSyncUtil
 
                     case "Menus":
                         this.SourceMenus = JsonConvert.DeserializeObject<List<MenuListModel>>(File.ReadAllText(file));
-                        List<MenuListModel> sourceMenuList = this.SourceMenus.ToList();
                         this.LoadMenuTreeView(this.sourceTreeList, this.SourceMenus.OrderBy(o => o.Name).ToList());
                         break;
                     case "HtmlBlock":
                         this.SourceHtmlList = JsonConvert.DeserializeObject<List<HtmlBlockMainModel>>(File.ReadAllText(file));
-                        List<HtmlBlockMainModel> sourceHtmlBlks = this.SourceHtmlList.ToList();
                         this.LoadHtmlTreeView(this.sourceTreeList, this.SourceHtmlList.OrderBy(o => o.ContentId).ToList());
-
                         break;
                     case "Security":
                         this.LoadTreeViewforSecurity(this.sourceTreeList, this.SourceList.OrderBy(x => x.ContentID).ToList());
+                        break;
+                    case "Image":
+                        this.SourceImagesList = JsonConvert.DeserializeObject<List<ImagesMainModel>>(File.ReadAllText(file));
+                        this.LoadImagesTreeView(this.sourceTreeList, this.SourceImagesList.OrderBy(o => o.ContentId).ToList());
                         break;
                     default:
                         break;
@@ -229,6 +234,42 @@ namespace DatalistSyncUtil
                         langNode = new TreeNode(l.LocaleId + languageSeparator + l.Html);
                         langNodes.Add(langNode);
                     });
+                                        
+                    listNode = new TreeNode(list.ContentId, langNodes.ToArray());
+
+                    treeView.Nodes.Add(listNode);
+                }
+            }
+            finally
+            {
+                listNode = null;
+                langNode = null;
+                langNodes = null;
+            }
+        }
+
+        private void LoadImagesTreeView(TreeView treeView, List<ImagesMainModel> lists)
+        {
+            TreeNode listNode = null;
+
+            TreeNode langNode = null;
+            List<TreeNode> langNodes = null;
+            string languageSeparator = " - ";
+            string width = " , Width : ";
+            string height = " , Height : ";
+
+            try
+            {
+                treeView.Nodes.Clear();
+
+                foreach (ImagesMainModel list in lists)
+                {
+                    langNodes = new List<TreeNode>();
+                    list.ImageLanguages.ForEach(l =>
+                    {
+                        langNode = new TreeNode(l.LocaleId + languageSeparator + l.Source + languageSeparator + l.ToolTip + width + l.Width + height + l.Height);
+                        langNodes.Add(langNode);
+                    });
 
                     listNode = new TreeNode(list.ContentId, langNodes.ToArray());
 
@@ -286,13 +327,25 @@ namespace DatalistSyncUtil
                     this.LoadHtmlTreeView(this.targetTreeList, filteredHtmlList.OrderBy(o => o.ContentId).ToList());
                     break;
                 case "Security":
+                    List<DataListMainModel> filteredSecurityTargetDataList = null;
+                    this.TargetList = filteredSecurityTargetDataList = filteredDataList = this.LoadTargetSecurityDatalist(tenantModuleId);
+                    this.LoadTreeViewforSecurity(this.targetTreeList, filteredSecurityTargetDataList);
+                    break;
+                case "Image":
+                    this.TargetImagesList = this.LoadTargetImagesList();
+                    List<ImagesMainModel> filteredImageList = null;
+
+                    if (tenantModuleId == Guid.Empty)
                     {
-                        List<DataListMainModel> filteredSecurityTargetDataList = null;
-                        this.TargetList = filteredSecurityTargetDataList = filteredDataList = this.LoadTargetSecurityDatalist(tenantModuleId);
-                        this.LoadTreeViewforSecurity(this.targetTreeList, filteredSecurityTargetDataList);
-                        break;
+                        filteredImageList = this.TargetImagesList;
+                    }
+                    else
+                    {
+                        filteredImageList = this.TargetImagesList.Where(w => w.TenantModuleId == tenantModuleId).ToList();
                     }
 
+                    this.LoadImagesTreeView(this.targetTreeList, filteredImageList.OrderBy(o => o.ContentId).ToList());
+                    break;
                 default:
                     break;
             }
@@ -424,6 +477,64 @@ namespace DatalistSyncUtil
                     HtmlBlockId = e.ID,
                     LocaleId = e.LocaleId,
                     Html = e.Html,
+                    IsActive = e.IsActive,
+                    OperatorId = e.OperatorId,
+                    LastModifiedTS = e.LastModifiedTS
+                };
+                items.Add(item);
+            });
+
+            return items;
+        }
+
+        private List<ImagesMainModel> LoadTargetImagesList()
+        {
+            List<ImageListModel> lists = null;
+            List<ImageLanguagesModel> listItems = null;
+            List<ImagesMainModel> listsMain = new List<ImagesMainModel>();
+            ImagesMainModel list1 = null;
+
+            Guid tenantID = new Guid(this.tenantList.SelectedValue.ToString());
+
+            lists = this.LoadHelper.GetImagesList().Where(w => w.TenantId == tenantID).ToList();
+            listItems = this.LoadHelper.GetImageLangs();
+
+            foreach (ImageListModel list in lists)
+            {
+                list1 = new ImagesMainModel()
+                {
+                    ContentId = list.ContentId,
+                    Description = list.Description,
+                    ImageId = list.ID,
+                    ImageLanguages = this.ConvertToCustomImagesLang(list.ContentId, list.ID, listItems),
+                    IsActive = list.IsActive,
+                    LastModifiedTS = list.LastModifiedTS,
+                    OperatorId = list.OperatorId,
+                    TenantModuleId = list.TenantModuleId
+                };
+
+                listsMain.Add(list1);
+            }
+
+            return listsMain;
+        }
+
+        private List<ImageLanguage> ConvertToCustomImagesLang(string contentID, Guid iD, List<ImageLanguagesModel> listItems)
+        {
+            List<ImageLanguage> items = new List<ImageLanguage>();
+            ImageLanguage item = null;
+            listItems = listItems.Where(w => w.ID == iD).ToList();
+
+            listItems.ForEach(e =>
+            {
+                item = new ImageLanguage()
+                {
+                    ImageId = e.ID,
+                    LocaleId = e.LocalId,
+                    Source = e.Source,
+                    Width = e.Width,
+                    Height = e.Height,
+                    ToolTip = e.ToolTip,
                     IsActive = e.IsActive,
                     OperatorId = e.OperatorId,
                     LastModifiedTS = e.LastModifiedTS
@@ -596,6 +707,65 @@ namespace DatalistSyncUtil
                     HtmlBlockId = e.ID,
                     LocaleId = e.LocaleId,
                     Html = e.Html,
+                    IsActive = e.IsActive,
+                    OperatorId = e.OperatorId,
+                    LastModifiedTS = e.LastModifiedTS
+                };
+                languages.Add(language);
+            });
+
+            return languages;
+        }
+
+        private List<ImagesMainModel> LoadSourceImageslist()
+        {
+            List<ImageListModel> lists = null;
+            List<ImageLanguagesModel> listItems = null;
+            List<ImagesMainModel> listsMain = new List<ImagesMainModel>();
+            ImagesMainModel list1 = null;
+
+            Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
+
+            lists = this.SourceLoadHelper.GetImagesList().Where(w => w.TenantId == tenantID).ToList();
+            listItems = this.SourceLoadHelper.GetImageLangs();
+
+            foreach (ImageListModel list in lists)
+            {
+                list1 = new ImagesMainModel()
+                {
+                    ContentId = list.ContentId,
+                    Description = list.Description,
+                    ImageId = list.ID,
+                    ImageLanguages = this.GetImagesLanguageListCustom(list.ID, listItems),
+                    IsActive = list.IsActive,
+                    LastModifiedTS = list.LastModifiedTS,
+                    OperatorId = list.OperatorId,
+                    TenantModuleId = list.TenantModuleId
+                };
+
+                listsMain.Add(list1);
+            }
+
+            return listsMain;
+        }
+
+        private List<ImageLanguage> GetImagesLanguageListCustom(Guid id, List<ImageLanguagesModel> listItems)
+        {
+            List<ImageLanguage> languages = new List<ImageLanguage>();
+            ImageLanguage language = null;
+
+            listItems = listItems.Where(w => w.ID == id).ToList();
+
+            listItems.ForEach(e =>
+            {
+                language = new ImageLanguage()
+                {
+                    ImageId = e.ID,
+                    LocaleId = e.LocalId,
+                    Source = e.Source,
+                    Width = e.Width,
+                    Height = e.Height,
+                    ToolTip = e.ToolTip,
                     IsActive = e.IsActive,
                     OperatorId = e.OperatorId,
                     LastModifiedTS = e.LastModifiedTS
@@ -855,13 +1025,25 @@ namespace DatalistSyncUtil
                     this.LoadHtmlTreeView(this.sourceTreeList, filteredHtmlList.OrderBy(o => o.ContentId).ToList());
                     break;
                 case "Security":
+                    List<DataListMainModel> filteredSecuritySorceDataList = null;
+                    this.SourceList = filteredSecuritySorceDataList = this.LoadSourceSecurityDatalist(tenantModuleId);
+                    this.LoadTreeViewforSecurity(this.sourceTreeList, filteredSecuritySorceDataList);
+                    break;
+                case "Image":
+                    this.SourceImagesList = this.LoadSourceImageslist();
+                    List<ImagesMainModel> filteredImageList = null;
+
+                    if (tenantModuleId == Guid.Empty)
                     {
-                        List<DataListMainModel> filteredSecuritySorceDataList = null;
-                        this.SourceList = filteredSecuritySorceDataList = this.LoadSourceSecurityDatalist(tenantModuleId);
-                        this.LoadTreeViewforSecurity(this.sourceTreeList, filteredSecuritySorceDataList);
-                        break;
+                        filteredImageList = this.SourceImagesList;
+                    }
+                    else
+                    {
+                        filteredImageList = this.SourceImagesList.Where(w => w.TenantModuleId == tenantModuleId).ToList();
                     }
 
+                    this.LoadImagesTreeView(this.sourceTreeList, filteredImageList.OrderBy(o => o.ContentId).ToList());
+                    break;
                 default:
                     break;
             }
@@ -881,7 +1063,7 @@ namespace DatalistSyncUtil
 
         private void LoadSourceControls()
         {
-            List<string> controlNames = new List<string>(new string[] { "Datalist", "HtmlBlock", "Images", "Menus", "Security" });
+            List<string> controlNames = new List<string>(new string[] { "Datalist", "HtmlBlock", "Image", "Menus", "Security" });
             for (int i = 0; i <= controlNames.Count - 1; i++)
             {
                 this.SourceControlNames.Items.Add(controlNames[i]);
@@ -892,7 +1074,7 @@ namespace DatalistSyncUtil
 
         private void LoadControls()
         {
-            List<string> controlNames = new List<string>(new string[] { "Datalist", "HtmlBlock", "Images", "Menus", "Security" });
+            List<string> controlNames = new List<string>(new string[] { "Datalist", "HtmlBlock", "Image", "Menus", "Security" });
             for (int i = 0; i <= controlNames.Count - 1; i++)
             {
                 this.TargetControlNames.Items.Add(controlNames[i]);
@@ -935,8 +1117,16 @@ namespace DatalistSyncUtil
             return itemAttrValues;
         }
 
-        private void Controls_SelectedIndexChanged(object sender, EventArgs e)
+        private void ImagesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            if (this.SourceImagesList != null)
+            {
+                ImagesDiff imgdiffPage = new ImagesDiff(new Guid(this.tenantList.SelectedValue.ToString()), "IMAGES", this.SourceImagesList, this.TargetImagesList);
+                imgdiffPage.ShowDialog();
+            }
+
+            Cursor.Current = Cursors.Default;
         }
 
         private void LoadTreeViewforSecurity(TreeView treeView, List<DataListMainModel> itemList)
@@ -1079,7 +1269,7 @@ namespace DatalistSyncUtil
             {
                 string part = parts[i].Trim().ToUpper();
                 if (part.Contains("SOURCE"))
-               {
+                {
                     dataSource = part;
                     break;
                 }

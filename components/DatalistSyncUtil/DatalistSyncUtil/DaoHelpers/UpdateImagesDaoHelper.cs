@@ -4,35 +4,35 @@
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
 // Violators may be punished to the full extent of the law.
 //--------------------------------------------------------------------------------------------------
-
-using System;
 using HP.HSP.UA3.Core.BAS.CQRS.DataAccess.Entities;
 using System.Data.Entity;
 
 namespace DatalistSyncUtil.DaoHelpers
 {
-    public class UpdateHtmlBlockLanguageDaoHelper
+    public class UpdateImagesDaoHelper
     {
-        public UpdateHtmlBlockLanguageDaoHelper(HtmlBlockDbContext context)
+        public UpdateImagesDaoHelper(ImageDbContext context)
         {
             this.Context = context;
         }
 
-        public HtmlBlockDbContext Context { get; set; }
+        public ImageDbContext Context { get; set; }
 
-        public bool ExecuteProcedure(HtmlBlockLanguage cmd)
+        public bool ExecuteProcedure(ImagesMainModel cmd)
         {
-            HtmlBlockLanguages htmlBlockUpdated = new HtmlBlockLanguages()
+            Image imageUpdated = new Image()
             {
-                    HtmlBlockId = cmd.HtmlBlockId,
-                    LocaleId = cmd.LocaleId,
-                    Html = cmd.Html,
-                    IsActive = cmd.IsActive,
-                    OperatorId = cmd.OperatorId,
-                    LastModifiedTS = cmd.LastModifiedTS
+                ContentId = cmd.ContentId,
+                Description = cmd.Description,
+                ImageId = cmd.ImageId,
+                IsActive = cmd.IsActive,
+                LastModifiedTS = cmd.LastModifiedTS,
+                OperatorId = cmd.OperatorId,
+                TenantModuleId = cmd.TenantModuleId
             };
 
-            this.Context.Entry(htmlBlockUpdated).State = EntityState.Modified;
+            this.Context.Entry(imageUpdated).State = EntityState.Modified;
+
             this.Context.SaveChanges();
 
             return true;

@@ -55,6 +55,16 @@ namespace DatalistSyncUtil.Views
             this.LoadTreeView(this.PreviewTreeList, this.FinalHtmlBlks);
         }
 
+        public PreviewPage(List<ImagesMainModel> finalImages, List<ImageLanguage> finalImageLanguages)
+        {
+            this.InitializeComponent();
+            this.Cache = new RedisCacheManager();
+            this.FinalImages = finalImages;
+            this.FinalImageLanguages = finalImageLanguages;
+            this.LoadHelper = new TenantHelper();
+            this.LoadTreeView(this.PreviewTreeList, this.FinalImages);
+        }
+
         public ICacheManager Cache { get; set; }
 
         public List<DataListMainModel> FinalList { get; set; }
@@ -75,6 +85,10 @@ namespace DatalistSyncUtil.Views
 
         public List<HtmlBlockLanguage> FinalHtmlBlkLanguages { get; set; }
 
+        public List<ImagesMainModel> FinalImages { get; set; }
+
+        public List<ImageLanguage> FinalImageLanguages { get; set; }
+
         public TenantHelper LoadHelper { get; set; }
 
         private void Submit_Click(object sender, EventArgs e)
@@ -90,6 +104,16 @@ namespace DatalistSyncUtil.Views
                 if (this.FinalHtmlBlkLanguages != null)
                 {
                     this.SaveHtmlBlkLanguages();
+                }
+
+                if (this.FinalImages != null)
+                {
+                    this.SaveImages();
+                }
+
+                if (this.FinalImageLanguages != null)
+                {
+                    this.SaveImageLanguages();
                 }
                 else
                 {
@@ -211,6 +235,76 @@ namespace DatalistSyncUtil.Views
                 });
 
                 this.Cache.Remove("TargetHtmlLangs");
+            }
+        }
+
+        private void SaveImages()
+        {
+            try
+            {
+                if (this.FinalImages != null)
+                {
+                    List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+
+                    foreach (ImagesMainModel list in this.FinalImages)
+                    {
+                        if (list.Status == "NEW")
+                        {
+                            this.LoadHelper.AddImage(list);
+                            if (this.FinalImageLanguages != null)
+                            {
+                                this.FinalImageLanguages.ForEach(f =>
+                                {
+                                    if (f.ImageId == list.ImageId)
+                                    {
+                                        this.LoadHelper.AddImageLanguage(f);
+                                    }
+                                });
+                            }
+
+                            MessageBox.Show("Image Added successfully !!");
+                        }
+                        else
+                        {
+                            this.LoadHelper.UpdateImage(list);
+                            MessageBox.Show("Images successfully Updated !!");
+                        }
+                    }
+
+                    this.Cache.Remove("TargetImages");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR:" + ex.Message);
+            }
+        }
+
+        private void SaveImageLanguages()
+        {
+            List<ImageListModel> imageLangs = this.LoadHelper.GetImagesList();
+            ImageListModel lang = null;
+
+            if (this.FinalImageLanguages != null)
+            {
+                this.FinalImageLanguages.ForEach(f =>
+                {
+                    lang = imageLangs.Find(e => e.ID == f.ImageId);
+                    if (lang != null)
+                    {
+                        f.ImageId = lang.ID;
+                        if (f.Status == "IMG_NEW" || f.Status == "LANG_NEW")
+                        {
+                            this.LoadHelper.AddImageLanguage(f);
+                        }
+                        else
+                        {
+                            this.LoadHelper.UpdateImageLanguage(f);
+                        }
+                    }
+                });
+
+                this.Cache.Remove("TargetImageLangs");
             }
         }
 
@@ -719,6 +813,68 @@ namespace DatalistSyncUtil.Views
             });
         }
 
+        private void LoadTreeView(TreeView treeView, List<ImagesMainModel> lists)
+        {
+            TreeNode listNode = null;
+            List<TreeNode> langNodes = null;
+            TreeNode imageNode = null;
+            string contentID = string.Empty;
+
+            try
+            {
+                treeView.Nodes.Clear();
+                List<string> images = this.GetAllContentID();
+
+                images.ForEach(f =>
+                {
+                    langNodes = new List<TreeNode>();
+                    bool isParentModeAdded = false;
+                    if (this.FinalImages != null)
+                    {
+                        if (this.FinalImageLanguages != null)
+                        {
+                            this.GetTreeImageLanguages(langNodes, f.Trim());
+                            listNode = new TreeNode(f.Trim(), langNodes.ToArray());
+                            if (langNodes.Count != 0)
+                            {
+                                treeView.Nodes.Add(listNode);
+                                isParentModeAdded = true;
+                            }
+                        }
+                    }
+
+                    if (!isParentModeAdded)
+                    {
+                        imageNode = new TreeNode(f.Trim());
+                        treeView.Nodes.Add(imageNode);
+                    }
+                });
+
+                treeView.ExpandAll();
+            }
+            finally
+            {
+                listNode = null;
+                langNodes = null;
+            }
+        }
+
+        private void GetTreeImageLanguages(List<TreeNode> langNodes, string contentID)
+        {
+            TreeNode node = null;
+            string languageSeparator = " - ";
+            string width = " , Width : ";
+            string height = " , Height : ";
+
+            List<ImageLanguage> items = this.FinalImageLanguages.FindAll(f => f.ContentId.Trim() == contentID);
+
+            items.ForEach(f =>
+            {
+                node = new TreeNode(f.LocaleId + languageSeparator + f.Source + languageSeparator + f.ToolTip + width + f.Width + height + f.Height);
+                langNodes.Add(node);
+            });
+        }
+
         private void GetTreeItems(List<TreeNode> itemNodes, string contentID)
         {
             TreeNode node = null;
@@ -901,6 +1057,28 @@ namespace DatalistSyncUtil.Views
             if (this.FinalHtmlBlkLanguages != null)
             {
                 this.FinalHtmlBlkLanguages.ForEach(f =>
+                {
+                    if (!listContents.Contains(f.ContentId.Trim()))
+                    {
+                        listContents.Add(f.ContentId.Trim());
+                    }
+                });
+            }
+
+            if (this.FinalImages != null)
+            {
+                this.FinalImages.ForEach(f =>
+                {
+                    if (!listContents.Contains(f.ContentId.Trim()))
+                    {
+                        listContents.Add(f.ContentId.Trim());
+                    }
+                });
+            }
+
+            if (this.FinalImageLanguages != null)
+            {
+                this.FinalImageLanguages.ForEach(f =>
                 {
                     if (!listContents.Contains(f.ContentId.Trim()))
                     {

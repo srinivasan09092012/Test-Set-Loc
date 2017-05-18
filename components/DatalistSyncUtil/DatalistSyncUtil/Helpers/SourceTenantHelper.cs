@@ -117,6 +117,26 @@ namespace DatalistSyncUtil
             return result;
         }
 
+        public List<ImageListModel> GetImagesList()
+        {
+            List<ImageListModel> result = null;
+            if (!this.Cache.IsSet("SourceImages"))
+            {
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    result = new ImagesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").SearchImages(true);
+                }
+
+                this.Cache.Set("SourceImages", result.OrderBy(o => o.ContentId).ToList(), 1440);
+            }
+            else
+            {
+                result = this.Cache.Get<List<ImageListModel>>("SourceImages").ToList();
+            }
+
+            return result;
+        }
+
         public List<CodeListModel> GetDataListItems()
         {
             if (this.Cache.IsSet("SourceDataListItems"))
@@ -203,6 +223,41 @@ namespace DatalistSyncUtil
             });
 
             this.Cache.Set("SourceHtmlLangs", result, 1440);
+
+            return languages;
+        }
+
+        public List<ImageLanguagesModel> GetImageLangs()
+        {
+            List<Task> tasks = new List<Task>();
+            List<ImageListModel> result = null;
+            List<ImageLanguagesModel> languages = null;
+
+            if (this.Cache.IsSet("SourceImageLangs"))
+            {
+                languages = this.Cache.Get<List<ImageLanguagesModel>>("SourceImageLangs");
+            }
+
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                tasks.Add(Task.Factory.StartNew(() =>
+                {
+                    result = new ImagesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").SearchImages(true);
+                }));
+
+                tasks.Add(Task.Factory.StartNew(() =>
+                {
+                    languages = new ImagesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").GetImageLanguages();
+                }));
+            }
+
+            Task.WaitAll(tasks.ToArray());
+            result.ForEach(x =>
+            {
+                x.ImageLanguages = languages.FindAll(c => c.ID == x.ID);
+            });
+
+            this.Cache.Set("SourceImageLangs", result, 1440);
 
             return languages;
         }

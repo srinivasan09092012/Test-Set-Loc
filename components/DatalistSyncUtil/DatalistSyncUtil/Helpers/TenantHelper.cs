@@ -120,6 +120,26 @@ namespace DatalistSyncUtil
             return result;
         }
 
+        public List<ImageListModel> GetImagesList()
+        {
+            List<ImageListModel> result = null;
+            if (!this.Cache.IsSet("TargetImages"))
+            {
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    result = new ImagesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").SearchImages();
+                }
+
+                this.Cache.Set("TargetImages", result.OrderBy(o => o.ContentId).ToList(), 1440);
+            }
+            else
+            {
+                result = this.Cache.Get<List<ImageListModel>>("TargetImages").ToList();
+            }
+
+            return result;
+        }
+
         public List<CodeListModel> GetDataListItems()
         {
             if (this.Cache.IsSet("TargetDataListItems"))
@@ -266,6 +286,41 @@ namespace DatalistSyncUtil
             return languages;
         }
 
+        public List<ImageLanguagesModel> GetImageLangs()
+        {
+            List<Task> tasks = new List<Task>();
+            List<ImageListModel> result = null;
+            List<ImageLanguagesModel> languages = null;
+
+            if (this.Cache.IsSet("TargetImageLangs"))
+            {
+                languages = this.Cache.Get<List<ImageLanguagesModel>>("TargetImageLangs");
+            }
+
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                tasks.Add(Task.Factory.StartNew(() =>
+                {
+                    result = new ImagesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").SearchImages(true);
+                }));
+
+                tasks.Add(Task.Factory.StartNew(() =>
+                {
+                    languages = new ImagesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").GetImageLanguages();
+                }));
+            }
+
+            Task.WaitAll(tasks.ToArray());
+            result.ForEach(x =>
+            {
+                x.ImageLanguages = languages.FindAll(c => c.ID == x.ID);
+            });
+
+            this.Cache.Set("TargetImageLangs", result, 1440);
+
+            return languages;
+        }
+
         public bool AddDatalist(DataListMainModel cmd)
         {
             bool success = true;
@@ -388,6 +443,82 @@ namespace DatalistSyncUtil
                 try
                 {
                     new UpdateHtmlBlockLanguageDaoHelper(new HtmlBlockDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
+                }
+            }
+
+            return success;
+        }
+
+        public bool AddImage(ImagesMainModel cmd)
+        {
+            bool success = true;
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new AddImagesDaoHelper(new ImageDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
+                }
+            }
+
+            return success;
+        }
+
+        public bool UpdateImage(ImagesMainModel cmd)
+        {
+            bool success = true;
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new UpdateImagesDaoHelper(new ImageDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
+                }
+            }
+
+            return success;
+        }
+
+        public bool AddImageLanguage(ImageLanguage cmd)
+        {
+            bool success = true;
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new AddImageLanguageDaoHelper(new ImageDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
+                }
+            }
+
+            return success;
+        }
+
+        public bool UpdateImageLanguage(ImageLanguage cmd)
+        {
+            bool success = true;
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new UpdateImageLanguageDaoHelper(new ImageDbContext(session, true)).ExecuteProcedure(cmd);
                 }
                 catch (Exception ex)
                 {
