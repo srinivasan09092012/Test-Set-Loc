@@ -438,7 +438,7 @@ namespace DatalistSyncUtil
             this.appSettingToolStripMenuItem.Name = "appSettingToolStripMenuItem";
             this.appSettingToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.appSettingToolStripMenuItem.Text = "AppSetting";
-            this.appSettingToolStripMenuItem.Click += new System.EventHandler(this.appSettingToolStripMenuItem_Click);
+            this.appSettingToolStripMenuItem.Click += new System.EventHandler(this.AppSettingToolStripMenuItem_Click);
             // 
             // datalistItemToolStripMenuItem
             // 

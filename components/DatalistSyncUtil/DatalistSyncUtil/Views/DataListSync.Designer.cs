@@ -63,10 +63,6 @@ namespace DatalistSyncUtil
             this.btnCompare = new System.Windows.Forms.Button();
             this.control_label = new System.Windows.Forms.Label();
             this.ControlName = new System.Windows.Forms.ComboBox();
-            this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ContentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DataListView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Age)).BeginInit();
             this.SuspendLayout();
@@ -205,7 +201,7 @@ namespace DatalistSyncUtil
             this.ModuleList.DisplayMember = "ModuleName";
             this.ModuleList.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ModuleList.FormattingEnabled = true;
-            this.ModuleList.Location = new System.Drawing.Point(274, 10);
+            this.ModuleList.Location = new System.Drawing.Point(278, 10);
             this.ModuleList.Margin = new System.Windows.Forms.Padding(2);
             this.ModuleList.Name = "ModuleList";
             this.ModuleList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
@@ -374,36 +370,6 @@ namespace DatalistSyncUtil
             this.ControlName.TabIndex = 25;
             this.ControlName.ValueMember = "TenantID";
             this.ControlName.SelectedIndexChanged += new System.EventHandler(this.ControlName_SelectedIndexChanged);
-            // 
-            // Select
-            // 
-            this.Select.HeaderText = "";
-            this.Select.Name = "Select";
-            this.Select.Width = 25;
-            // 
-            // ContentID
-            // 
-            this.ContentID.DataPropertyName = "ContentID";
-            this.ContentID.HeaderText = "Content ID";
-            this.ContentID.Name = "ContentID";
-            this.ContentID.ReadOnly = true;
-            this.ContentID.Visible = false;
-            this.ContentID.Width = 600;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "Name";
-            this.Column1.HeaderText = "Name";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 550;
-            // 
-            // IsActive
-            // 
-            this.IsActive.DataPropertyName = "IsActive";
-            this.IsActive.HeaderText = "Active";
-            this.IsActive.Name = "IsActive";
-            this.IsActive.ReadOnly = true;
-            this.IsActive.Width = 60;
             // 
             // DataListSync
             // 

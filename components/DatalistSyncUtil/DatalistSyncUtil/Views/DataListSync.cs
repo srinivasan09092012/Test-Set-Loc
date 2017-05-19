@@ -32,7 +32,7 @@ namespace DatalistSyncUtil
     {
         private readonly string listKeyword = "CodeList_";
 
-       //Common
+        //Common
         private readonly string commit = "Commit";
 
         private readonly string declarationEnd = "DeclarationEnd";
@@ -233,6 +233,8 @@ namespace DatalistSyncUtil
                     this.SourceListItems = this.LoadDataListItems(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
                     this.DataListView.Columns[1].Visible = true;
                     this.DataListView.Columns[2].Visible = false;
+                    this.DataListView.Columns[3].Visible = false;
+                    this.DataListView.Columns[4].Visible = false;
                     this.BindDataList();
                     this.ModuleListSelectedSecurityItems();
                     break;
@@ -240,6 +242,8 @@ namespace DatalistSyncUtil
                     this.SourceImagesList = this.LoadImages(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
                     this.DataListView.Columns[1].Visible = true;
                     this.DataListView.Columns[2].Visible = false;
+                    this.DataListView.Columns[3].Visible = false;
+                    this.DataListView.Columns[4].Visible = false;
                     this.BindImages();
                     this.ModuleImageListSelectedItems();
                     break;
@@ -1044,6 +1048,7 @@ namespace DatalistSyncUtil
                 case "AppSetting":
                     break;
                 case "Datalist":
+                    break;
                 case "Security":
                     ListItems itemsPage = new ListItems((this.DataListView.Rows[e.RowIndex].DataBoundItem as DataList).ContentID, this.NoOfDays);
                     itemsPage.ShowDialog();

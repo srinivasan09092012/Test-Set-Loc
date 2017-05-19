@@ -101,10 +101,6 @@ namespace DatalistSyncUtil
                     List<TenantModuleModel> targetModules = this.moduleList.DataSource as List<TenantModuleModel>;
                     this.SourceList = JsonConvert.DeserializeObject<List<DataListMainModel>>(File.ReadAllText(file));
                     List<DataListMainModel> sourceDataList = this.SourceList.Where(w => targetModules.Select(s => s.ModuleName).Contains(w.ModuleName)).ToList();
-                    this.SourceHtmlList = JsonConvert.DeserializeObject<List<HtmlBlockMainModel>>(File.ReadAllText(file));
-                    List<HtmlBlockMainModel> sourceHtmlBlks = this.SourceHtmlList.ToList();
-                    this.SourceAppSetting = JsonConvert.DeserializeObject<List<AppSettingsModel>>(File.ReadAllText(file));
-                    List<AppSettingsModel> sourceAppSetting = this.SourceAppSetting.ToList();
                 }
                 catch (IOException)
                 {
@@ -113,7 +109,8 @@ namespace DatalistSyncUtil
                 switch (filename)
                 {
                     case "AppSetting":
-                        this.LoadAppSettingTreeView(this.sourceTreeList, SourceAppSetting.OrderBy(o => o.AppSettingKey).ToList());
+                        this.SourceAppSetting = JsonConvert.DeserializeObject<List<AppSettingsModel>>(File.ReadAllText(file));
+                        this.LoadAppSettingTreeView(this.sourceTreeList, this.SourceAppSetting.OrderBy(o => o.AppSettingKey).ToList());
                         break;
 
                     case "Datalist":
@@ -163,6 +160,7 @@ namespace DatalistSyncUtil
                 appNodes = null;               
             }
         }
+
         private void LoadTreeView(TreeView treeView, List<DataListMainModel> lists)
         {
             TreeNode listNode = null;
@@ -336,7 +334,8 @@ namespace DatalistSyncUtil
                     {
                         filteredAppSetting = this.TargetAppSetting.Where(w => w.TenantModuleID == tenantModuleId).ToList();
                     }
-                    this.LoadAppSettingTreeView(this.targetTreeList, filteredAppSetting.OrderBy(o =>o.AppSettingKey).ToList());
+
+                    this.LoadAppSettingTreeView(this.targetTreeList, filteredAppSetting.OrderBy(o => o.AppSettingKey).ToList());
                     break;
                 case "Datalist":
                     this.TargetList = this.LoadTargetDatalist();
@@ -375,7 +374,7 @@ namespace DatalistSyncUtil
                     break;
                 case "Security":
                     List<DataListMainModel> filteredSecurityTargetDataList = null;
-                    this.TargetList = filteredSecurityTargetDataList = filteredDataList = this.LoadTargetSecurityDatalist(tenantModuleId);
+                    this.TargetList = filteredSecurityTargetDataList = this.LoadTargetSecurityDatalist(tenantModuleId);
                     this.LoadTreeViewforSecurity(this.targetTreeList, filteredSecurityTargetDataList);
                     break;
                 case "Image":
@@ -433,6 +432,7 @@ namespace DatalistSyncUtil
 
             return listsMain;
         }
+
         private List<MenuListModel> LoadTargetMenus()
         {
             List<MenuListModel> lists = null;
@@ -1079,6 +1079,7 @@ namespace DatalistSyncUtil
                     {
                         filteredAppSetting = this.SourceAppSetting.Where(w => w.TenantModuleID == tenantModuleId).ToList();
                     }
+
                     this.LoadAppSettingTreeView(this.sourceTreeList, filteredAppSetting.OrderBy(o => o.AppSettingKey).ToList());
                     break;
                 case "Datalist":
@@ -1190,24 +1191,24 @@ namespace DatalistSyncUtil
 
         private void LoadSourceControls()
         {
-            List<string> controlNames = new List<string>(new string[] {"AppSetting", "Datalist", "HtmlBlock", "Images", "Menus", "Security" });
+            List<string> controlNames = new List<string>(new string[] { "AppSetting", "Datalist", "HtmlBlock", "Image", "Menus", "Security" });
             for (int i = 0; i <= controlNames.Count - 1; i++)
             {
                 this.SourceControlNames.Items.Add(controlNames[i]);
             }
 
-            this.SourceControlNames.Text = "Datalist";
+            this.SourceControlNames.Text = "AppSetting";
         }
 
         private void LoadControls()
         {
-            List<string> controlNames = new List<string>(new string[] { "AppSetting", "Datalist", "HtmlBlock", "Images", "Menus", "Security" });
+            List<string> controlNames = new List<string>(new string[] { "AppSetting", "Datalist", "HtmlBlock", "Image", "Menus", "Security" });
             for (int i = 0; i <= controlNames.Count - 1; i++)
             {
                 this.TargetControlNames.Items.Add(controlNames[i]);
             }
 
-            this.TargetControlNames.Text = "Datalist";
+            this.TargetControlNames.Text = "AppSetting";
         }
 
         private void HtmlBlockToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1388,11 +1389,15 @@ namespace DatalistSyncUtil
             return listsMain;
         }
 
-        private void appSettingToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AppSettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            AppSettingDiff diffPage = new AppSettingDiff(new Guid(this.tenantList.SelectedValue.ToString()), "AppSetting", this.SourceAppSetting, this.TargetAppSetting);
-            diffPage.ShowDialog();
+            if (this.SourceAppSetting != null)
+            {
+                AppSettingDiff diffPage = new AppSettingDiff(new Guid(this.tenantList.SelectedValue.ToString()), "AppSetting", this.SourceAppSetting, this.TargetAppSetting);
+                diffPage.ShowDialog();
+            }
+
             Cursor.Current = Cursors.Default;
         }
 
@@ -1416,8 +1421,12 @@ namespace DatalistSyncUtil
         private void SecurityToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            DatalistDiff diffPage = new DatalistDiff(new Guid(this.tenantList.SelectedValue.ToString()), "DATALIST", this.SourceList, this.TargetList);
-            diffPage.ShowDialog();
+            if (this.SourceList != null)
+            {
+                DatalistDiff diffPage = new DatalistDiff(new Guid(this.tenantList.SelectedValue.ToString()), "DATALIST", this.SourceList, this.TargetList);
+                diffPage.ShowDialog();
+            }
+
             Cursor.Current = Cursors.Default;
         }
     }

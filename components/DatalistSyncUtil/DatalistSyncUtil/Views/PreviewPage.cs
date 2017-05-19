@@ -4,6 +4,9 @@
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
 // Violators may be punished to the full extent of the law.
 //-----------------------------------------------------------------------------------------
+using DatalistSyncUtil.Configs;
+using DatalistSyncUtil.DataListService;
+using DatalistSyncUtil.Security;
 using HP.HSP.UA3.Core.BAS.CQRS.Base;
 using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
@@ -11,12 +14,9 @@ using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
 using HP.HSP.UA3.Core.BAS.CQRS.UserMeta;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
-using DatalistSyncUtil.DataListService;
-using System.ServiceModel.Security;
-using DatalistSyncUtil.Security;
 using System.Windows.Forms;
-using DatalistSyncUtil.Configs;
 
 namespace DatalistSyncUtil.Views
 {
@@ -480,47 +480,99 @@ namespace DatalistSyncUtil.Views
             DataList list = null;
             DataListItemAdded itemadded = new DataListItemAdded();
             DataListItemUpdated itemupdated = new DataListItemUpdated();
-
-            if (this.FinalListItems != null)
+            int fedBindingValue = Convert.ToInt32(ConfigurationManager.AppSettings["WSHttpBindingType"]);
+            int basicBindingValue = Convert.ToInt32(ConfigurationManager.AppSettings["BasicHttpBindingType"]);
+            if (basicBindingValue == 1)
             {
-                var serviceApi = new ServiceApiFactory(AuthController.GeToken(@"UA3dev\PM02DevAdmin1", "Adminpm02"));
-                var objService = serviceApi.GetService<IDataListsService>("WS2007FederationHttpBinding_IDataListsService");
-                this.FinalListItems.ForEach(f =>
+                if (this.FinalListItems != null)
                 {
-                    list = dataList.Where(e => e.ContentID == f.ContentID && e.TenantID == f.TenantID).FirstOrDefault();
-                    if (list != null)
+                    string basicHttpBinding = ConfigurationManager.AppSettings["BasicHttpBinding"];
+                    DataListsServiceClient client = new DataListsServiceClient(basicHttpBinding);
+                    this.FinalListItems.ForEach(f =>
                     {
-                        RequestorModel requestObject = new RequestorModel() { TenantId = list.TenantID.ToString() };
+                        list = dataList.Where(e => e.ContentID == f.ContentID && e.TenantID == f.TenantID).FirstOrDefault();
                         if (list != null)
                         {
-                            f.DatalistID = list.ID;
-                            if (f.Status == "DATALIST_NEW" || f.Status == "NEW")
+                            RequestorModel requestObject = new RequestorModel() { TenantId = list.TenantID.ToString() };
+                            if (list != null)
                             {
-                                AddDataListItemCommand addListitem = new AddDataListItemCommand();
-                                addListitem.Requestor = requestObject;
-                                addListitem.AddDataListItem = this.ConvertServiceAddDataListItems(f);
-                                itemadded = objService.AddDataListItem(addListitem);
-                            }
-                            else
-                            {
-                                UpdateDataListItemCommand updateListitem = new UpdateDataListItemCommand();
-                                updateListitem.Requestor = requestObject;
-                                updateListitem.UpdateDataListItem = this.ConvertUpdateServiceDataListItems(f);
-                                itemupdated = objService.UpdateDataListItem(updateListitem);
+                                f.DatalistID = list.ID;
+                                if (f.Status == "DATALIST_NEW" || f.Status == "NEW")
+                                {
+                                    AddDataListItemCommand addListitem = new AddDataListItemCommand();
+                                    addListitem.Requestor = requestObject;
+                                    addListitem.AddDataListItem = this.ConvertServiceAddDataListItems(f);
+                                    itemadded = client.AddDataListItem(addListitem);
+                                }
+                                else
+                                {
+                                    UpdateDataListItemCommand updateListitem = new UpdateDataListItemCommand();
+                                    updateListitem.Requestor = requestObject;
+                                    updateListitem.UpdateDataListItem = this.ConvertUpdateServiceDataListItems(f);
+                                    itemupdated = client.UpdateDataListItem(updateListitem);
+                                }
                             }
                         }
-                    }
-                });
+                    });
 
-                if (itemadded != null || itemupdated != null)
+                    if (itemadded != null || itemupdated != null)
+                    {
+                        MessageBox.Show("Data Added Successfully");
+                        this.Cache.Remove("TargetDataListItems");
+                        this.Cache.Remove("UtilityDataItemLinkerKeytarget");
+                        this.Cache.Remove("UtilityDataAttrKeytarget");
+                        this.Cache.Remove("UtilityDataListItemAttrKeytarget");
+                        this.Cache.Remove("UtilityCombineAttributestarget");
+                        this.Cache.Remove("TargetDataListItemAttributes");
+                    }
+                }
+            }
+            else
+            {
+                if (this.FinalListItems != null)
                 {
-                    MessageBox.Show("Data Added Successfully");
-                    this.Cache.Remove("TargetDataListItems");
-                    this.Cache.Remove("UtilityDataItemLinkerKeytarget");
-                    this.Cache.Remove("UtilityDataAttrKeytarget");
-                    this.Cache.Remove("UtilityDataListItemAttrKeytarget");
-                    this.Cache.Remove("UtilityCombineAttributestarget");
-                    this.Cache.Remove("TargetDataListItemAttributes");
+                    string fed2007Binding = ConfigurationManager.AppSettings["WSBinding"];
+                    string fedUserName = ConfigurationManager.AppSettings["WSUserName"];
+                    string fedPassword = ConfigurationManager.AppSettings["WSPassword"];
+                    var serviceApi = new ServiceApiFactory(AuthController.GeToken("@" + fedUserName, fedPassword));
+                    var objService = serviceApi.GetService<IDataListsService>(fed2007Binding);
+                    this.FinalListItems.ForEach(f =>
+                    {
+                        list = dataList.Where(e => e.ContentID == f.ContentID && e.TenantID == f.TenantID).FirstOrDefault();
+                        if (list != null)
+                        {
+                            RequestorModel requestObject = new RequestorModel() { TenantId = list.TenantID.ToString() };
+                            if (list != null)
+                            {
+                                f.DatalistID = list.ID;
+                                if (f.Status == "DATALIST_NEW" || f.Status == "NEW")
+                                {
+                                    AddDataListItemCommand addListitem = new AddDataListItemCommand();
+                                    addListitem.Requestor = requestObject;
+                                    addListitem.AddDataListItem = this.ConvertServiceAddDataListItems(f);
+                                    itemadded = objService.AddDataListItem(addListitem);
+                                }
+                                else
+                                {
+                                    UpdateDataListItemCommand updateListitem = new UpdateDataListItemCommand();
+                                    updateListitem.Requestor = requestObject;
+                                    updateListitem.UpdateDataListItem = this.ConvertUpdateServiceDataListItems(f);
+                                    itemupdated = objService.UpdateDataListItem(updateListitem);
+                                }
+                            }
+                        }
+                    });
+
+                    if (itemadded != null || itemupdated != null)
+                    {
+                        MessageBox.Show("Data Added Successfully");
+                        this.Cache.Remove("TargetDataListItems");
+                        this.Cache.Remove("UtilityDataItemLinkerKeytarget");
+                        this.Cache.Remove("UtilityDataAttrKeytarget");
+                        this.Cache.Remove("UtilityDataListItemAttrKeytarget");
+                        this.Cache.Remove("UtilityCombineAttributestarget");
+                        this.Cache.Remove("TargetDataListItemAttributes");
+                    }
                 }
             }
         }
@@ -615,53 +667,110 @@ namespace DatalistSyncUtil.Views
         }
 
         private void SaveDataListWithDataListAttributes()
-        { 
-            try
+        {
+            int fedBindingValue = Convert.ToInt32(ConfigurationManager.AppSettings["WSHttpBindingType"]);
+            int basicBindingValue = Convert.ToInt32(ConfigurationManager.AppSettings["BasicHttpBindingType"]);
+            if (basicBindingValue == 1)
             {
-                if (this.FinalList != null)
+                try
                 {
-                    var serviceApi = new ServiceApiFactory(AuthController.GeToken(@"UA3dev\PM02DevAdmin1", "Adminpm02"));
-                    var objService = serviceApi.GetService<IDataListsService>("WS2007FederationHttpBinding_IDataListsService");
-
-                    DataListsAdded datalistadd = new DataListsAdded();
-                    DataListsUpdated datalistupdated = new DataListsUpdated();
-                    foreach (DataListMainModel list in this.FinalList)
+                    if (this.FinalList != null)
                     {
-                        List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+                        string basicHttpBinding = ConfigurationManager.AppSettings["BasicHttpBinding"];
+                        DataListsServiceClient client = new DataListsServiceClient(basicHttpBinding);
 
-                        RequestorModel requestObject = new RequestorModel() { TenantId = list.TenantID.ToString() };
-                        list.TenantModuleID = modules.Find(f => f.TenantId == list.TenantID && f.ModuleName == list.ModuleName).TenantModuleId;
-                        if (list.Status == "NEW")
+                        DataListsAdded datalistadd = new DataListsAdded();
+                        DataListsUpdated datalistupdated = new DataListsUpdated();
+                        foreach (DataListMainModel list in this.FinalList)
                         {
-                            AddDataListCommand addList = new AddDataListCommand();
-                            addList.Requestor = requestObject;
-                            addList.AddDataList = this.ConvertAddServiceDataList(list);
-                            datalistadd = objService.AddDataList(addList);
+                            List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+
+                            RequestorModel requestObject = new RequestorModel() { TenantId = list.TenantID.ToString() };
+                            list.TenantModuleID = modules.Find(f => f.TenantId == list.TenantID && f.ModuleName == list.ModuleName).TenantModuleId;
+                            if (list.Status == "NEW")
+                            {
+                                AddDataListCommand addList = new AddDataListCommand();
+                                addList.Requestor = requestObject;
+                                addList.AddDataList = this.ConvertAddServiceDataList(list);
+                                datalistadd = client.AddDataList(addList);
+                            }
+                            else
+                            {
+                                UpdateDataListCommand updatelist = new UpdateDataListCommand();
+                                updatelist.Requestor = requestObject;
+                                updatelist.UpdateDataList = (UpdateDataList)this.ConvertServiceUpdateDataList(list);
+                                datalistupdated = client.UpdateDataList(updatelist);
+                            }
                         }
-                        else
+
+                        if (datalistadd != null || datalistupdated != null)
                         {
-                            UpdateDataListCommand updatelist = new UpdateDataListCommand();
-                            updatelist.Requestor = requestObject;
-                            updatelist.UpdateDataList = (UpdateDataList)this.ConvertServiceUpdateDataList(list);
-                            datalistupdated = objService.UpdateDataList(updatelist);
+                            MessageBox.Show("Data Added Successfully");
+                            this.Cache.Remove("TargetDataList");
+                            this.Cache.Remove("UtilityDataItemLinkerKeytarget");
+                            this.Cache.Remove("UtilityDataAttrKeytarget");
+                            this.Cache.Remove("UtilityDataListItemAttrKeytarget");
+                            this.Cache.Remove("UtilityCombineAttributestarget");
+                            this.Cache.Remove("TargetDataListAttributes");
                         }
                     }
-
-                    if (datalistadd != null || datalistupdated != null)
-                    {
-                        MessageBox.Show("Data Added Successfully");
-                        this.Cache.Remove("TargetDataList");
-                        this.Cache.Remove("UtilityDataItemLinkerKeytarget");
-                        this.Cache.Remove("UtilityDataAttrKeytarget");
-                        this.Cache.Remove("UtilityDataListItemAttrKeytarget");
-                        this.Cache.Remove("UtilityCombineAttributestarget");
-                        this.Cache.Remove("TargetDataListAttributes");
-                    }
-                }             
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("ERROR:" + ex.Message);
+                try
+                {
+                    if (this.FinalList != null)
+                    {
+                        string fed2007Binding = ConfigurationManager.AppSettings["WSBinding"];
+                        string fedUserName = ConfigurationManager.AppSettings["WSUserName"];
+                        string fedPassword = ConfigurationManager.AppSettings["WSPassword"];
+                        var serviceApi = new ServiceApiFactory(AuthController.GeToken("@" + fedUserName, fedPassword));
+                        var objService = serviceApi.GetService<IDataListsService>(fed2007Binding);
+                        DataListsAdded datalistadd = new DataListsAdded();
+                        DataListsUpdated datalistupdated = new DataListsUpdated();
+                        foreach (DataListMainModel list in this.FinalList)
+                        {
+                            List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+
+                            RequestorModel requestObject = new RequestorModel() { TenantId = list.TenantID.ToString() };
+                            list.TenantModuleID = modules.Find(f => f.TenantId == list.TenantID && f.ModuleName == list.ModuleName).TenantModuleId;
+                            if (list.Status == "NEW")
+                            {
+                                AddDataListCommand addList = new AddDataListCommand();
+                                addList.Requestor = requestObject;
+                                addList.AddDataList = this.ConvertAddServiceDataList(list);
+                                datalistadd = objService.AddDataList(addList);
+                            }
+                            else
+                            {
+                                UpdateDataListCommand updatelist = new UpdateDataListCommand();
+                                updatelist.Requestor = requestObject;
+                                updatelist.UpdateDataList = (UpdateDataList)this.ConvertServiceUpdateDataList(list);
+                                datalistupdated = objService.UpdateDataList(updatelist);
+                            }
+                        }
+
+                        if (datalistadd != null || datalistupdated != null)
+                        {
+                            MessageBox.Show("Data Added Successfully");
+                            this.Cache.Remove("TargetDataList");
+                            this.Cache.Remove("UtilityDataItemLinkerKeytarget");
+                            this.Cache.Remove("UtilityDataAttrKeytarget");
+                            this.Cache.Remove("UtilityDataListItemAttrKeytarget");
+                            this.Cache.Remove("UtilityCombineAttributestarget");
+                            this.Cache.Remove("TargetDataListAttributes");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                }
             }
         }
 
