@@ -736,6 +736,8 @@ namespace DatalistSyncUtil
                     Name = list.DataListsName,
                     ModuleName = list.ModuleName
                 };
+
+                listsMain.Add(list1);
             }
 
             return listsMain;

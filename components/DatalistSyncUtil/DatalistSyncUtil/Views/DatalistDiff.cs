@@ -333,22 +333,26 @@ namespace DatalistSyncUtil
                 sourceLink = sourceDatalistItems[i].DataListLink;
                 if (i < targetDatalistItems.Count())
                     targetLink = targetDatalistItems[i].DataListLink;
-                if (targetLink.Count() == sourceLink.Count())
+                if (sourceLink.Count > 0)
                 {
-                    sourceLink.ForEach(t =>
+
+                    if (targetLink.Count() == sourceLink.Count())
                     {
-                        targetItemLink = targetLink.Find(u => t.ParentID == u.ParentID && t.ChildID == u.ChildID);
-
-                        if (targetItemLink != null)
+                        sourceLink.ForEach(t =>
                         {
-                            t.Status = "Update";
-                            updatedLink.Add(t);
-                            updatedTargetLink.Add(targetItemLink);
+                            targetItemLink = targetLink.Find(u => t.ParentID == u.ParentID && t.ChildID == u.ChildID);
 
-                        }
-                    });
+                            if (targetItemLink != null)
+                            {
+                                t.Status = "Update";
+                                updatedLink.Add(t);
+                                updatedTargetLink.Add(targetItemLink);
+
+                            }
+                        });
 
 
+                    }
                 }
             }
 

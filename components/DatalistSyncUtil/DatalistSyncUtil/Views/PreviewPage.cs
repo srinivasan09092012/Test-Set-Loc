@@ -150,7 +150,7 @@ namespace DatalistSyncUtil.Views
                 }
 
                 Cursor.Current = Cursors.Default;
-                MessageBox.Show("Saved Sucessfully");
+                ///MessageBox.Show("Saved Sucessfully");
             }
             catch (Exception ex)
             {
@@ -484,95 +484,109 @@ namespace DatalistSyncUtil.Views
             int basicBindingValue = Convert.ToInt32(ConfigurationManager.AppSettings["BasicHttpBindingType"]);
             if (basicBindingValue == 1)
             {
-                if (this.FinalListItems != null)
+                try
                 {
-                    string basicHttpBinding = ConfigurationManager.AppSettings["BasicHttpBinding"];
-                    DataListsServiceClient client = new DataListsServiceClient(basicHttpBinding);
-                    this.FinalListItems.ForEach(f =>
+                    if (this.FinalListItems != null)
                     {
-                        list = dataList.Where(e => e.ContentID == f.ContentID && e.TenantID == f.TenantID).FirstOrDefault();
-                        if (list != null)
+                        string basicHttpBinding = ConfigurationManager.AppSettings["BasicHttpBinding"];
+                        DataListsServiceClient client = new DataListsServiceClient(basicHttpBinding);
+                        this.FinalListItems.ForEach(f =>
                         {
-                            RequestorModel requestObject = new RequestorModel() { TenantId = list.TenantID.ToString() };
+                            list = dataList.Where(e => e.ContentID == f.ContentID && e.TenantID == f.TenantID).FirstOrDefault();
                             if (list != null)
                             {
-                                f.DatalistID = list.ID;
-                                if (f.Status == "DATALIST_NEW" || f.Status == "NEW")
+                                RequestorModel requestObject = new RequestorModel() { TenantId = list.TenantID.ToString() };
+                                if (list != null)
                                 {
-                                    AddDataListItemCommand addListitem = new AddDataListItemCommand();
-                                    addListitem.Requestor = requestObject;
-                                    addListitem.AddDataListItem = this.ConvertServiceAddDataListItems(f);
-                                    itemadded = client.AddDataListItem(addListitem);
-                                }
-                                else
-                                {
-                                    UpdateDataListItemCommand updateListitem = new UpdateDataListItemCommand();
-                                    updateListitem.Requestor = requestObject;
-                                    updateListitem.UpdateDataListItem = this.ConvertUpdateServiceDataListItems(f);
-                                    itemupdated = client.UpdateDataListItem(updateListitem);
+                                    f.DatalistID = list.ID;
+                                    if (f.Status == "DATALIST_NEW" || f.Status == "NEW")
+                                    {
+                                        AddDataListItemCommand addListitem = new AddDataListItemCommand();
+                                        addListitem.Requestor = requestObject;
+                                        addListitem.AddDataListItem = this.ConvertServiceAddDataListItems(f);
+                                        itemadded = client.AddDataListItem(addListitem);
+                                    }
+                                    else
+                                    {
+                                        UpdateDataListItemCommand updateListitem = new UpdateDataListItemCommand();
+                                        updateListitem.Requestor = requestObject;
+                                        updateListitem.UpdateDataListItem = this.ConvertUpdateServiceDataListItems(f);
+                                        itemupdated = client.UpdateDataListItem(updateListitem);
+                                    }
                                 }
                             }
-                        }
-                    });
+                        });
 
-                    if (itemadded != null || itemupdated != null)
-                    {
-                        MessageBox.Show("Data Added Successfully");
-                        this.Cache.Remove("TargetDataListItems");
-                        this.Cache.Remove("UtilityDataItemLinkerKeytarget");
-                        this.Cache.Remove("UtilityDataAttrKeytarget");
-                        this.Cache.Remove("UtilityDataListItemAttrKeytarget");
-                        this.Cache.Remove("UtilityCombineAttributestarget");
-                        this.Cache.Remove("TargetDataListItemAttributes");
+                        if (itemadded != null || itemupdated != null)
+                        {
+                            MessageBox.Show("Data Added Successfully DataListItems/ItemAttribute");
+                            this.Cache.Remove("TargetDataListItems");
+                            this.Cache.Remove("UtilityDataItemLinkerKeytarget");
+                            this.Cache.Remove("UtilityDataAttrKeytarget");
+                            this.Cache.Remove("UtilityDataListItemAttrKeytarget");
+                            this.Cache.Remove("UtilityCombineAttributestarget");
+                            this.Cache.Remove("TargetDataListItemAttributes");
+                        }
                     }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
                 }
             }
             else
             {
-                if (this.FinalListItems != null)
+                try
                 {
-                    string fed2007Binding = ConfigurationManager.AppSettings["WSBinding"];
-                    string fedUserName = ConfigurationManager.AppSettings["WSUserName"];
-                    string fedPassword = ConfigurationManager.AppSettings["WSPassword"];
-                    var serviceApi = new ServiceApiFactory(AuthController.GeToken("@" + fedUserName, fedPassword));
-                    var objService = serviceApi.GetService<IDataListsService>(fed2007Binding);
-                    this.FinalListItems.ForEach(f =>
+                    if (this.FinalListItems != null)
                     {
-                        list = dataList.Where(e => e.ContentID == f.ContentID && e.TenantID == f.TenantID).FirstOrDefault();
-                        if (list != null)
+                        string fed2007Binding = ConfigurationManager.AppSettings["WSBinding"];
+                        string fedUserName = ConfigurationManager.AppSettings["WSUserName"];
+                        string fedPassword = ConfigurationManager.AppSettings["WSPassword"];
+                        var serviceApi = new ServiceApiFactory(AuthController.GeToken(@fedUserName, fedPassword));
+                        var objService = serviceApi.GetService<IDataListsService>(fed2007Binding);
+                        this.FinalListItems.ForEach(f =>
                         {
-                            RequestorModel requestObject = new RequestorModel() { TenantId = list.TenantID.ToString() };
+                            list = dataList.Where(e => e.ContentID == f.ContentID && e.TenantID == f.TenantID).FirstOrDefault();
                             if (list != null)
                             {
-                                f.DatalistID = list.ID;
-                                if (f.Status == "DATALIST_NEW" || f.Status == "NEW")
+                                RequestorModel requestObject = new RequestorModel() { TenantId = list.TenantID.ToString() };
+                                if (list != null)
                                 {
-                                    AddDataListItemCommand addListitem = new AddDataListItemCommand();
-                                    addListitem.Requestor = requestObject;
-                                    addListitem.AddDataListItem = this.ConvertServiceAddDataListItems(f);
-                                    itemadded = objService.AddDataListItem(addListitem);
-                                }
-                                else
-                                {
-                                    UpdateDataListItemCommand updateListitem = new UpdateDataListItemCommand();
-                                    updateListitem.Requestor = requestObject;
-                                    updateListitem.UpdateDataListItem = this.ConvertUpdateServiceDataListItems(f);
-                                    itemupdated = objService.UpdateDataListItem(updateListitem);
+                                    f.DatalistID = list.ID;
+                                    if (f.Status == "DATALIST_NEW" || f.Status == "NEW")
+                                    {
+                                        AddDataListItemCommand addListitem = new AddDataListItemCommand();
+                                        addListitem.Requestor = requestObject;
+                                        addListitem.AddDataListItem = this.ConvertServiceAddDataListItems(f);
+                                        itemadded = objService.AddDataListItem(addListitem);
+                                    }
+                                    else
+                                    {
+                                        UpdateDataListItemCommand updateListitem = new UpdateDataListItemCommand();
+                                        updateListitem.Requestor = requestObject;
+                                        updateListitem.UpdateDataListItem = this.ConvertUpdateServiceDataListItems(f);
+                                        itemupdated = objService.UpdateDataListItem(updateListitem);
+                                    }
                                 }
                             }
-                        }
-                    });
+                        });
 
-                    if (itemadded != null || itemupdated != null)
-                    {
-                        MessageBox.Show("Data Added Successfully");
-                        this.Cache.Remove("TargetDataListItems");
-                        this.Cache.Remove("UtilityDataItemLinkerKeytarget");
-                        this.Cache.Remove("UtilityDataAttrKeytarget");
-                        this.Cache.Remove("UtilityDataListItemAttrKeytarget");
-                        this.Cache.Remove("UtilityCombineAttributestarget");
-                        this.Cache.Remove("TargetDataListItemAttributes");
+                        if (itemadded != null || itemupdated != null)
+                        {
+                            MessageBox.Show("Data Added Successfully DataListItems/ItemAttribute");
+                            this.Cache.Remove("TargetDataListItems");
+                            this.Cache.Remove("UtilityDataItemLinkerKeytarget");
+                            this.Cache.Remove("UtilityDataAttrKeytarget");
+                            this.Cache.Remove("UtilityDataListItemAttrKeytarget");
+                            this.Cache.Remove("UtilityCombineAttributestarget");
+                            this.Cache.Remove("TargetDataListItemAttributes");
+                        }
                     }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
                 }
             }
         }
@@ -705,7 +719,7 @@ namespace DatalistSyncUtil.Views
 
                         if (datalistadd != null || datalistupdated != null)
                         {
-                            MessageBox.Show("Data Added Successfully");
+                            MessageBox.Show("Data Added Successfully For DataList/DataListAttribute");
                             this.Cache.Remove("TargetDataList");
                             this.Cache.Remove("UtilityDataItemLinkerKeytarget");
                             this.Cache.Remove("UtilityDataAttrKeytarget");
@@ -729,7 +743,7 @@ namespace DatalistSyncUtil.Views
                         string fed2007Binding = ConfigurationManager.AppSettings["WSBinding"];
                         string fedUserName = ConfigurationManager.AppSettings["WSUserName"];
                         string fedPassword = ConfigurationManager.AppSettings["WSPassword"];
-                        var serviceApi = new ServiceApiFactory(AuthController.GeToken("@" + fedUserName, fedPassword));
+                        var serviceApi = new ServiceApiFactory(AuthController.GeToken(@fedUserName, fedPassword));
                         var objService = serviceApi.GetService<IDataListsService>(fed2007Binding);
                         DataListsAdded datalistadd = new DataListsAdded();
                         DataListsUpdated datalistupdated = new DataListsUpdated();
@@ -757,7 +771,7 @@ namespace DatalistSyncUtil.Views
 
                         if (datalistadd != null || datalistupdated != null)
                         {
-                            MessageBox.Show("Data Added Successfully");
+                            MessageBox.Show("Data Added Successfully For DataLists/DataListAttribute");
                             this.Cache.Remove("TargetDataList");
                             this.Cache.Remove("UtilityDataItemLinkerKeytarget");
                             this.Cache.Remove("UtilityDataAttrKeytarget");
