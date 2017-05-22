@@ -173,10 +173,10 @@ namespace DatalistSyncUtil.Views
                         if (!this.Applist.Any(a => a.TenantModuleAppSettingId == list.TenantModuleAppSettingId))
                         {
                             this.LoadHelper.AddAppSetting(list);                            
-                        }
-
-                        this.target.ManageODataCache(list.AppSettingKey, false);
+                        }                       
                     }
+
+                    this.Cache.Remove("TargetAppSetting");
                 }
             }
             catch (Exception ex)

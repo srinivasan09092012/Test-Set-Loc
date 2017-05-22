@@ -90,7 +90,7 @@ namespace DatalistSyncUtil
                     result = new SearchAppSettingsDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
                 }
 
-                this.Cache.Set("TargetAppSetting", result.OrderBy(o => o.ApplicationId).ToList(), 1440);
+                this.Cache.Set("TargetAppSetting", result.OrderBy(o => o.AppSettingKey).ToList(), 1440);
             }
             else
             {

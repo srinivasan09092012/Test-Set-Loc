@@ -25,15 +25,21 @@ namespace DatalistSyncUtil.DaoHelpers
         }
 
         public bool ExecuteProcedure(AppSettingsModel cmd)
-        {           
+        {
+            Guid appSettingId = Guid.NewGuid();
+
+            if (cmd.TenantModuleAppSettingId != Guid.Empty)
+            {
+                appSettingId = cmd.TenantModuleAppSettingId;
+            }
+
             this.Context.AppSettings.Add(new AppSetting()
             {
+                TenantModuleAppSettingId = appSettingId,
                 ApplicationId = cmd.ApplicationId,
                 AppSettingKey = cmd.AppSettingKey,
-                SettingTypeItemKey = cmd.SettingTypeItemKey,   
-                Description = cmd.Description,             
-                TenantModuleAppSettingId = cmd.TenantModuleAppSettingId,
-                Value = cmd.TargetValue,                
+                SettingTypeItemKey = cmd.SettingTypeItemKey,                
+                Value = cmd.Value,
                 IsActive = cmd.IsActive,
                 OperatorID = cmd.OperatorID,
                 TenantModuleID = cmd.TenantModuleID

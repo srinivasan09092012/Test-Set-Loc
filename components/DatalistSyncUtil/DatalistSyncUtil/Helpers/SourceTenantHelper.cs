@@ -370,21 +370,22 @@ namespace DatalistSyncUtil
 
         public List<AppSettingsModel> GetAppSetting()
         {
-            if (this.Cache.IsSet("AppSettings"))
+            List<AppSettingsModel> result = null;
+            if (!this.Cache.IsSet("AppSettings"))
             {
-                return this.Cache.Get<List<AppSettingsModel>>("AppSettings");
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    result = new AppSettingsReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").SearchAppSetting();
+                }
+
+                this.Cache.Set("AppSettings", result.OrderBy(o => o.AppSettingKey).ToList(), 1440);
+            }
+            else
+            {
+                result = this.Cache.Get<List<AppSettingsModel>>("AppSettings").ToList();
             }
 
-            List<AppSettingsModel> resultmenu = new List<AppSettingsModel>();
-
-            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
-            {
-                resultmenu = new AppSettingsReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").SearchAppSetting();
-            }
-
-            this.Cache.Set("AppSettings", resultmenu, 1440);
-
-            return resultmenu;
+            return result;
         }
     }
 }
