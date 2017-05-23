@@ -13,7 +13,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using DatalistSyncUtil.Models;
 
 namespace DatalistSyncUtil.Views
 {
@@ -73,7 +72,7 @@ namespace DatalistSyncUtil.Views
         {
             foreach (DataGridViewRow row in this.menuItemView.Rows)
             {
-                row.Cells["SelectItem"].Value = this.selectAllChkBox.Checked;
+                row.Cells[0].Value = this.SelectAllChkBox.Checked;
             }
         }
 

@@ -38,12 +38,13 @@ namespace DatalistSyncUtil.Views
             this.menulabel = new System.Windows.Forms.Label();
             this.inactiveCB = new System.Windows.Forms.CheckBox();
             this.chkDateOverride = new System.Windows.Forms.CheckBox();
-            this.selectAllChkBox = new System.Windows.Forms.CheckBox();
+            this.SelectAllChkBox = new System.Windows.Forms.CheckBox();
             this.menuItemView = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clearmenu = new System.Windows.Forms.Button();
             this.savemenu = new System.Windows.Forms.Button();
             this.menuClose = new System.Windows.Forms.Button();
+            this.Column2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.menuItemView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,15 +82,15 @@ namespace DatalistSyncUtil.Views
             // 
             // selectAllChkBox
             // 
-            this.selectAllChkBox.AutoSize = true;
-            this.selectAllChkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectAllChkBox.Location = new System.Drawing.Point(27, 46);
-            this.selectAllChkBox.Name = "selectAllChkBox";
-            this.selectAllChkBox.Size = new System.Drawing.Size(98, 21);
-            this.selectAllChkBox.TabIndex = 15;
-            this.selectAllChkBox.Text = "Select All";
-            this.selectAllChkBox.UseVisualStyleBackColor = true;
-            this.selectAllChkBox.CheckedChanged += new System.EventHandler(this.SelectAllChkBox_CheckedChanged);
+            this.SelectAllChkBox.AutoSize = true;
+            this.SelectAllChkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectAllChkBox.Location = new System.Drawing.Point(27, 46);
+            this.SelectAllChkBox.Name = "selectAllChkBox";
+            this.SelectAllChkBox.Size = new System.Drawing.Size(98, 21);
+            this.SelectAllChkBox.TabIndex = 15;
+            this.SelectAllChkBox.Text = "Select All";
+            this.SelectAllChkBox.UseVisualStyleBackColor = true;
+            this.SelectAllChkBox.CheckedChanged += new System.EventHandler(this.SelectAllChkBox_CheckedChanged);
             // 
             // menuItemView
             // 
@@ -97,6 +98,7 @@ namespace DatalistSyncUtil.Views
             this.menuItemView.AllowUserToDeleteRows = false;
             this.menuItemView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.menuItemView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column2,
             this.Column1});
             this.menuItemView.Location = new System.Drawing.Point(-1, 73);
             this.menuItemView.Name = "menuItemView";
@@ -105,13 +107,6 @@ namespace DatalistSyncUtil.Views
             this.menuItemView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.menuItemView.Size = new System.Drawing.Size(833, 349);
             this.menuItemView.TabIndex = 18;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "Name";
-            this.Column1.HeaderText = "Content ID";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 800;
             // 
             // clearmenu
             // 
@@ -146,6 +141,18 @@ namespace DatalistSyncUtil.Views
             this.menuClose.UseVisualStyleBackColor = true;
             this.menuClose.Click += new System.EventHandler(this.MenuClose_Click);
             // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "";
+            this.Column2.Name = "Column2";
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Name";
+            this.Column1.HeaderText = "Content ID";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 800;
+            // 
             // ListMenuItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -157,7 +164,7 @@ namespace DatalistSyncUtil.Views
             this.Controls.Add(this.menuItemView);
             this.Controls.Add(this.inactiveCB);
             this.Controls.Add(this.chkDateOverride);
-            this.Controls.Add(this.selectAllChkBox);
+            this.Controls.Add(this.SelectAllChkBox);
             this.Controls.Add(this.menulabel);
             this.Name = "ListMenuItem";
             this.Text = "MenuItem";
@@ -172,12 +179,13 @@ namespace DatalistSyncUtil.Views
         private System.Windows.Forms.Label menulabel;
         private System.Windows.Forms.CheckBox inactiveCB;
         private System.Windows.Forms.CheckBox chkDateOverride;
-        private System.Windows.Forms.CheckBox selectAllChkBox;
+        private System.Windows.Forms.CheckBox SelectAllChkBox;
         private System.Windows.Forms.DataGridView menuItemView;
         private System.Windows.Forms.DataGridViewTextBoxColumn contentid;
         private System.Windows.Forms.Button clearmenu;
         private System.Windows.Forms.Button savemenu;
         private System.Windows.Forms.Button menuClose;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }

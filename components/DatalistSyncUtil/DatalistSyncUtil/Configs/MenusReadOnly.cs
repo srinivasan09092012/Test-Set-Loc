@@ -81,6 +81,8 @@ namespace DatalistSyncUtil.Configs
                 result.ForEach(x => x.Children = this.ExpandChildren(x, languages));
             }
 
+            this.ManageODataCache(this.menuTableKey, false);
+            this.ManageODataCache(this.menuItemTableKey, false);
             return result;
             ///return languages;
         }

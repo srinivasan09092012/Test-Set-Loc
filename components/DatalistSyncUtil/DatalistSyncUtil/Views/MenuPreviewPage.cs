@@ -143,8 +143,7 @@ namespace DatalistSyncUtil.Views
         {
             Cursor.Current = Cursors.WaitCursor;
             try
-            {
-                this.MenuList = this.LoadHelper.GetMenu();
+            {   
                 this.SaveMenus();
                this.SaveMenuItems();
                 Cursor.Current = Cursors.Default;
@@ -159,6 +158,7 @@ namespace DatalistSyncUtil.Views
 
         private void SaveMenus()
         {
+            this.MenuList = this.LoadHelper.GetMenu();
             try
             {
                 if (this.FinalList != null)
@@ -168,19 +168,9 @@ namespace DatalistSyncUtil.Views
                     foreach (MenuListModel list in this.FinalList)
                     {
                         list.TenantModuleID = modules.Find(f => f.TenantId == list.TenantId && f.TenantModuleId == list.TenantModuleID).TenantModuleId;
-                        if (!this.MenuList.Any(a => a.ID == list.ID))
+                        if (!this.MenuList.Any(a => a.Name == list.Name))
                         {
                             this.LoadHelper.AddMenus(list);
-                            if (this.FinalListItems != null)
-                            {
-                                this.FinalListItems.ForEach(f =>
-                                {
-                                    if (f.MenuID == list.ID)
-                                    {
-                                        this.LoadHelper.AddMenuItem(f);
-                                    }
-                                });
-                            }
                         }
                         else
                         {
@@ -201,6 +191,8 @@ namespace DatalistSyncUtil.Views
         {
             List<MenuItemModel> childMenuItems = new List<MenuItemModel>();
             MenuListModel list = null;
+            this.MenuList = this.LoadHelper.GetMenu();
+            List<MenuListModel> sourceMenuList = this.SourceLoadHelper.GetMenu();
 
             this.MenuList.ForEach(x =>
             {
@@ -213,16 +205,18 @@ namespace DatalistSyncUtil.Views
             {
                 this.FinalListItems.ForEach(f =>
                 {
-                    list = this.MenuList.Where(e => e.ID == f.MenuID && e.IsActive == true).FirstOrDefault();
+                    string sourcemenuName = sourceMenuList.Find(e => e.ID == f.MenuID).Name;
+                    list = this.MenuList.Where(e => e.Name == sourcemenuName && e.IsActive == true).FirstOrDefault();
                     if (list != null)
                     {
                         f.MenuID = list.ID;
-                        if (!this.MenuItems.Any(a => a.ID == f.ID))
+                        if (!this.MenuItems.Any(a => a.Name == f.Name))
                         {
                             this.LoadHelper.AddMenuItem(f);
                         }
                         else
                         {
+                            f.ID = this.MenuItems.Find(a => a.Name == f.Name).ID;
                             this.LoadHelper.UpdateMenuItem(f);
                         }
                     }

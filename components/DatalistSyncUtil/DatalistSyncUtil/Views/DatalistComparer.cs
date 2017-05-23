@@ -4,7 +4,6 @@
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
 // Violators may be punished to the full extent of the law.
 //-----------------------------------------------------------------------------------------
-using DatalistSyncUtil.Models;
 using DatalistSyncUtil.Views;
 using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
@@ -440,7 +439,7 @@ namespace DatalistSyncUtil
             MenuListModel list1 = null;
             List<MenuItemModel> childMenuItems = new List<MenuItemModel>();
 
-            Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
+            Guid tenantID = new Guid(this.tenantList.SelectedValue.ToString());
             lists = this.LoadHelper.GetMenu().Where(w => w.TenantId == tenantID).ToList();
             lists.ForEach(x =>
             {

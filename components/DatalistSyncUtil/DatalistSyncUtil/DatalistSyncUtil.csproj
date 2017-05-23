@@ -131,7 +131,6 @@
     <Compile Include="Models\ItemAttribute.cs" />
     <Compile Include="Models\DatalistLinkModel.cs" />
     <Compile Include="Models\ItemDataListAttributeVal.cs" />
-    <Compile Include="Models\TreeSyncData.cs" />
     <Compile Include="security\AuthController.cs" />
     <Compile Include="security\ServiceApiFactory.cs" />
     <Compile Include="Service References\DataListService\Reference.cs">

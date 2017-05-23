@@ -76,13 +76,6 @@
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
             this.MenuItemNewGrid = new System.Windows.Forms.DataGridView();
-            this.MenuItemNewSelectAllChkBox = new System.Windows.Forms.CheckBox();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.MenuItemUpdateTgtSelectAllChkBox = new System.Windows.Forms.CheckBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.MenuItemUpdateSrcSelectAllChkBox = new System.Windows.Forms.CheckBox();
-            this.MenuItemTgtUpdateGrid = new System.Windows.Forms.DataGridView();
-            this.MenuItemSrcUpdateGrid = new System.Windows.Forms.DataGridView();
             this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -107,30 +100,12 @@
             this.dataGridViewTextBoxColumn41 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn42 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn43 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn44 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn45 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn46 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn47 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn48 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn49 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn50 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn52 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn53 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MenuItemNewSelectAllChkBox = new System.Windows.Forms.CheckBox();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.MenuItemUpdateTgtSelectAllChkBox = new System.Windows.Forms.CheckBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.MenuItemUpdateSrcSelectAllChkBox = new System.Windows.Forms.CheckBox();
+            this.MenuItemTgtUpdateGrid = new System.Windows.Forms.DataGridView();
             this.dataGridViewCheckBoxColumn5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -155,6 +130,31 @@
             this.dataGridViewTextBoxColumn67 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn68 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn69 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MenuItemSrcUpdateGrid = new System.Windows.Forms.DataGridView();
+            this.dataGridViewCheckBoxColumn4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn44 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn45 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn46 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn47 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn48 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn49 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn50 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn52 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn53 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MenuitemView)).BeginInit();
@@ -469,6 +469,7 @@
             this.MenuListNewGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.MenuListNewGrid.Size = new System.Drawing.Size(1449, 516);
             this.MenuListNewGrid.TabIndex = 16;
+            this.MenuListNewGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SelectColumnforNewMenu_clicked);
             // 
             // Column1
             // 
@@ -647,144 +648,7 @@
             this.MenuItemNewGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.MenuItemNewGrid.Size = new System.Drawing.Size(1449, 508);
             this.MenuItemNewGrid.TabIndex = 16;
-            // 
-            // MenuItemNewSelectAllChkBox
-            // 
-            this.MenuItemNewSelectAllChkBox.AutoSize = true;
-            this.MenuItemNewSelectAllChkBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.MenuItemNewSelectAllChkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuItemNewSelectAllChkBox.Location = new System.Drawing.Point(20, 16);
-            this.MenuItemNewSelectAllChkBox.Name = "MenuItemNewSelectAllChkBox";
-            this.MenuItemNewSelectAllChkBox.Size = new System.Drawing.Size(98, 21);
-            this.MenuItemNewSelectAllChkBox.TabIndex = 15;
-            this.MenuItemNewSelectAllChkBox.Text = "Select All";
-            this.MenuItemNewSelectAllChkBox.UseVisualStyleBackColor = true;
-            this.MenuItemNewSelectAllChkBox.CheckedChanged += new System.EventHandler(this.MenuItemNewSelectAllChkBox_CheckedChanged);
-            // 
-            // tabPage8
-            // 
-            this.tabPage8.Controls.Add(this.MenuItemUpdateTgtSelectAllChkBox);
-            this.tabPage8.Controls.Add(this.button4);
-            this.tabPage8.Controls.Add(this.MenuItemUpdateSrcSelectAllChkBox);
-            this.tabPage8.Controls.Add(this.MenuItemTgtUpdateGrid);
-            this.tabPage8.Controls.Add(this.MenuItemSrcUpdateGrid);
-            this.tabPage8.Location = new System.Drawing.Point(4, 25);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(1481, 624);
-            this.tabPage8.TabIndex = 1;
-            this.tabPage8.Text = "Update";
-            this.tabPage8.UseVisualStyleBackColor = true;
-            // 
-            // MenuItemUpdateTgtSelectAllChkBox
-            // 
-            this.MenuItemUpdateTgtSelectAllChkBox.AutoSize = true;
-            this.MenuItemUpdateTgtSelectAllChkBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.MenuItemUpdateTgtSelectAllChkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuItemUpdateTgtSelectAllChkBox.Location = new System.Drawing.Point(744, 12);
-            this.MenuItemUpdateTgtSelectAllChkBox.Name = "MenuItemUpdateTgtSelectAllChkBox";
-            this.MenuItemUpdateTgtSelectAllChkBox.Size = new System.Drawing.Size(98, 21);
-            this.MenuItemUpdateTgtSelectAllChkBox.TabIndex = 23;
-            this.MenuItemUpdateTgtSelectAllChkBox.Text = "Select All";
-            this.MenuItemUpdateTgtSelectAllChkBox.UseVisualStyleBackColor = true;
-            this.MenuItemUpdateTgtSelectAllChkBox.CheckedChanged += new System.EventHandler(this.MenuItemUpdateTgtSelectAllChkBox_CheckedChange);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(9, 564);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 28);
-            this.button4.TabIndex = 22;
-            this.button4.Text = "Include";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.IncludeUpdateMenuItems_Click);
-            // 
-            // MenuItemUpdateSrcSelectAllChkBox
-            // 
-            this.MenuItemUpdateSrcSelectAllChkBox.AutoSize = true;
-            this.MenuItemUpdateSrcSelectAllChkBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.MenuItemUpdateSrcSelectAllChkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuItemUpdateSrcSelectAllChkBox.Location = new System.Drawing.Point(27, 11);
-            this.MenuItemUpdateSrcSelectAllChkBox.Name = "MenuItemUpdateSrcSelectAllChkBox";
-            this.MenuItemUpdateSrcSelectAllChkBox.Size = new System.Drawing.Size(98, 21);
-            this.MenuItemUpdateSrcSelectAllChkBox.TabIndex = 17;
-            this.MenuItemUpdateSrcSelectAllChkBox.Text = "Select All";
-            this.MenuItemUpdateSrcSelectAllChkBox.UseVisualStyleBackColor = true;
-            this.MenuItemUpdateSrcSelectAllChkBox.CheckedChanged += new System.EventHandler(this.MenuItemUpdateSrcSelectAllChkBox_CheckedChanged);
-            // 
-            // MenuItemTgtUpdateGrid
-            // 
-            this.MenuItemTgtUpdateGrid.AllowUserToAddRows = false;
-            this.MenuItemTgtUpdateGrid.AllowUserToDeleteRows = false;
-            this.MenuItemTgtUpdateGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MenuItemTgtUpdateGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewCheckBoxColumn5,
-            this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn18,
-            this.dataGridViewTextBoxColumn19,
-            this.dataGridViewTextBoxColumn20,
-            this.dataGridViewTextBoxColumn62,
-            this.dataGridViewTextBoxColumn63,
-            this.dataGridViewTextBoxColumn64,
-            this.dataGridViewTextBoxColumn65,
-            this.Column36,
-            this.Column37,
-            this.Column38,
-            this.Column39,
-            this.Column42,
-            this.Column43,
-            this.Column44,
-            this.Column45,
-            this.Column46,
-            this.Column47,
-            this.Column48,
-            this.dataGridViewTextBoxColumn66,
-            this.dataGridViewTextBoxColumn67,
-            this.dataGridViewTextBoxColumn68,
-            this.dataGridViewTextBoxColumn69});
-            this.MenuItemTgtUpdateGrid.Location = new System.Drawing.Point(735, 51);
-            this.MenuItemTgtUpdateGrid.Name = "MenuItemTgtUpdateGrid";
-            this.MenuItemTgtUpdateGrid.RowTemplate.Height = 24;
-            this.MenuItemTgtUpdateGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.MenuItemTgtUpdateGrid.Size = new System.Drawing.Size(734, 511);
-            this.MenuItemTgtUpdateGrid.TabIndex = 16;
-            // 
-            // MenuItemSrcUpdateGrid
-            // 
-            this.MenuItemSrcUpdateGrid.AllowUserToAddRows = false;
-            this.MenuItemSrcUpdateGrid.AllowUserToDeleteRows = false;
-            this.MenuItemSrcUpdateGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MenuItemSrcUpdateGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewCheckBoxColumn4,
-            this.dataGridViewTextBoxColumn21,
-            this.dataGridViewTextBoxColumn22,
-            this.dataGridViewTextBoxColumn23,
-            this.dataGridViewTextBoxColumn24,
-            this.dataGridViewTextBoxColumn44,
-            this.dataGridViewTextBoxColumn45,
-            this.dataGridViewTextBoxColumn46,
-            this.dataGridViewTextBoxColumn47,
-            this.dataGridViewTextBoxColumn48,
-            this.dataGridViewTextBoxColumn49,
-            this.Column27,
-            this.Column28,
-            this.Column29,
-            this.Column30,
-            this.Column31,
-            this.Column32,
-            this.Column33,
-            this.Column34,
-            this.Column35,
-            this.dataGridViewTextBoxColumn50,
-            this.dataGridViewTextBoxColumn51,
-            this.dataGridViewTextBoxColumn52,
-            this.dataGridViewTextBoxColumn53});
-            this.MenuItemSrcUpdateGrid.Location = new System.Drawing.Point(0, 51);
-            this.MenuItemSrcUpdateGrid.Name = "MenuItemSrcUpdateGrid";
-            this.MenuItemSrcUpdateGrid.RowTemplate.Height = 24;
-            this.MenuItemSrcUpdateGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.MenuItemSrcUpdateGrid.Size = new System.Drawing.Size(736, 511);
-            this.MenuItemSrcUpdateGrid.TabIndex = 11;
+            this.MenuItemNewGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SelectColumn_Clicked);
             // 
             // dataGridViewCheckBoxColumn3
             // 
@@ -953,173 +817,106 @@
             this.dataGridViewTextBoxColumn43.HeaderText = "Is Active";
             this.dataGridViewTextBoxColumn43.Name = "dataGridViewTextBoxColumn43";
             // 
-            // dataGridViewCheckBoxColumn4
+            // MenuItemNewSelectAllChkBox
             // 
-            this.dataGridViewCheckBoxColumn4.HeaderText = "";
-            this.dataGridViewCheckBoxColumn4.Name = "dataGridViewCheckBoxColumn4";
-            this.dataGridViewCheckBoxColumn4.Width = 50;
+            this.MenuItemNewSelectAllChkBox.AutoSize = true;
+            this.MenuItemNewSelectAllChkBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.MenuItemNewSelectAllChkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuItemNewSelectAllChkBox.Location = new System.Drawing.Point(20, 16);
+            this.MenuItemNewSelectAllChkBox.Name = "MenuItemNewSelectAllChkBox";
+            this.MenuItemNewSelectAllChkBox.Size = new System.Drawing.Size(98, 21);
+            this.MenuItemNewSelectAllChkBox.TabIndex = 15;
+            this.MenuItemNewSelectAllChkBox.Text = "Select All";
+            this.MenuItemNewSelectAllChkBox.UseVisualStyleBackColor = true;
+            this.MenuItemNewSelectAllChkBox.CheckedChanged += new System.EventHandler(this.MenuItemNewSelectAllChkBox_CheckedChanged);
             // 
-            // dataGridViewTextBoxColumn21
+            // tabPage8
             // 
-            this.dataGridViewTextBoxColumn21.DataPropertyName = "ID";
-            this.dataGridViewTextBoxColumn21.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            this.dataGridViewTextBoxColumn21.Visible = false;
+            this.tabPage8.Controls.Add(this.MenuItemUpdateTgtSelectAllChkBox);
+            this.tabPage8.Controls.Add(this.button4);
+            this.tabPage8.Controls.Add(this.MenuItemUpdateSrcSelectAllChkBox);
+            this.tabPage8.Controls.Add(this.MenuItemTgtUpdateGrid);
+            this.tabPage8.Controls.Add(this.MenuItemSrcUpdateGrid);
+            this.tabPage8.Location = new System.Drawing.Point(4, 25);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(1481, 624);
+            this.tabPage8.TabIndex = 1;
+            this.tabPage8.Text = "Update";
+            this.tabPage8.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewTextBoxColumn22
+            // MenuItemUpdateTgtSelectAllChkBox
             // 
-            this.dataGridViewTextBoxColumn22.DataPropertyName = "MenuID";
-            this.dataGridViewTextBoxColumn22.HeaderText = "MenuID";
-            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
-            this.dataGridViewTextBoxColumn22.Visible = false;
+            this.MenuItemUpdateTgtSelectAllChkBox.AutoSize = true;
+            this.MenuItemUpdateTgtSelectAllChkBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.MenuItemUpdateTgtSelectAllChkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuItemUpdateTgtSelectAllChkBox.Location = new System.Drawing.Point(744, 12);
+            this.MenuItemUpdateTgtSelectAllChkBox.Name = "MenuItemUpdateTgtSelectAllChkBox";
+            this.MenuItemUpdateTgtSelectAllChkBox.Size = new System.Drawing.Size(98, 21);
+            this.MenuItemUpdateTgtSelectAllChkBox.TabIndex = 23;
+            this.MenuItemUpdateTgtSelectAllChkBox.Text = "Select All";
+            this.MenuItemUpdateTgtSelectAllChkBox.UseVisualStyleBackColor = true;
+            this.MenuItemUpdateTgtSelectAllChkBox.CheckedChanged += new System.EventHandler(this.MenuItemUpdateTgtSelectAllChkBox_CheckedChange);
             // 
-            // dataGridViewTextBoxColumn23
+            // button4
             // 
-            this.dataGridViewTextBoxColumn23.DataPropertyName = "ParentMenuItemID";
-            this.dataGridViewTextBoxColumn23.HeaderText = "ParentMenuItemID";
-            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
-            this.dataGridViewTextBoxColumn23.Visible = false;
+            this.button4.Location = new System.Drawing.Point(9, 564);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 28);
+            this.button4.TabIndex = 22;
+            this.button4.Text = "Include";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.IncludeUpdateMenuItems_Click);
             // 
-            // dataGridViewTextBoxColumn24
+            // MenuItemUpdateSrcSelectAllChkBox
             // 
-            this.dataGridViewTextBoxColumn24.DataPropertyName = "OrderIndex";
-            this.dataGridViewTextBoxColumn24.HeaderText = "OrderIndex";
-            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
-            this.dataGridViewTextBoxColumn24.Visible = false;
+            this.MenuItemUpdateSrcSelectAllChkBox.AutoSize = true;
+            this.MenuItemUpdateSrcSelectAllChkBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.MenuItemUpdateSrcSelectAllChkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuItemUpdateSrcSelectAllChkBox.Location = new System.Drawing.Point(27, 11);
+            this.MenuItemUpdateSrcSelectAllChkBox.Name = "MenuItemUpdateSrcSelectAllChkBox";
+            this.MenuItemUpdateSrcSelectAllChkBox.Size = new System.Drawing.Size(98, 21);
+            this.MenuItemUpdateSrcSelectAllChkBox.TabIndex = 17;
+            this.MenuItemUpdateSrcSelectAllChkBox.Text = "Select All";
+            this.MenuItemUpdateSrcSelectAllChkBox.UseVisualStyleBackColor = true;
+            this.MenuItemUpdateSrcSelectAllChkBox.CheckedChanged += new System.EventHandler(this.MenuItemUpdateSrcSelectAllChkBox_CheckedChanged);
             // 
-            // dataGridViewTextBoxColumn44
+            // MenuItemTgtUpdateGrid
             // 
-            this.dataGridViewTextBoxColumn44.DataPropertyName = "DefaultText";
-            this.dataGridViewTextBoxColumn44.HeaderText = "DefaultText";
-            this.dataGridViewTextBoxColumn44.Name = "dataGridViewTextBoxColumn44";
-            this.dataGridViewTextBoxColumn44.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn45
-            // 
-            this.dataGridViewTextBoxColumn45.DataPropertyName = "BaseURL";
-            this.dataGridViewTextBoxColumn45.HeaderText = "BaseURL";
-            this.dataGridViewTextBoxColumn45.Name = "dataGridViewTextBoxColumn45";
-            this.dataGridViewTextBoxColumn45.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn46
-            // 
-            this.dataGridViewTextBoxColumn46.DataPropertyName = "CSSClass";
-            this.dataGridViewTextBoxColumn46.HeaderText = "CSSClass";
-            this.dataGridViewTextBoxColumn46.Name = "dataGridViewTextBoxColumn46";
-            this.dataGridViewTextBoxColumn46.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn47
-            // 
-            this.dataGridViewTextBoxColumn47.DataPropertyName = "IOCContainer";
-            this.dataGridViewTextBoxColumn47.HeaderText = "IOCContainer";
-            this.dataGridViewTextBoxColumn47.Name = "dataGridViewTextBoxColumn47";
-            this.dataGridViewTextBoxColumn47.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn48
-            // 
-            this.dataGridViewTextBoxColumn48.DataPropertyName = "ModuleSectionContentID";
-            this.dataGridViewTextBoxColumn48.HeaderText = "ModuleSectionContentID";
-            this.dataGridViewTextBoxColumn48.Name = "dataGridViewTextBoxColumn48";
-            this.dataGridViewTextBoxColumn48.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn49
-            // 
-            this.dataGridViewTextBoxColumn49.DataPropertyName = "PageHelpHTMLContentID";
-            this.dataGridViewTextBoxColumn49.HeaderText = "PageHelpHTMLContentID";
-            this.dataGridViewTextBoxColumn49.Name = "dataGridViewTextBoxColumn49";
-            this.dataGridViewTextBoxColumn49.Visible = false;
-            // 
-            // Column27
-            // 
-            this.Column27.DataPropertyName = "ReportContentsURL";
-            this.Column27.HeaderText = "ReportContentsURL";
-            this.Column27.Name = "Column27";
-            this.Column27.Visible = false;
-            // 
-            // Column28
-            // 
-            this.Column28.DataPropertyName = "PrintPreviewContentURL";
-            this.Column28.HeaderText = "PrintPreviewContentURL";
-            this.Column28.Name = "Column28";
-            this.Column28.Visible = false;
-            // 
-            // Column29
-            // 
-            this.Column29.DataPropertyName = "MITAHelpHTMLContentID";
-            this.Column29.HeaderText = "MITAHelpHTMLContentID";
-            this.Column29.Name = "Column29";
-            this.Column29.Visible = false;
-            // 
-            // Column30
-            // 
-            this.Column30.DataPropertyName = "IsVisible";
-            this.Column30.HeaderText = "IsVisible";
-            this.Column30.Name = "Column30";
-            this.Column30.Visible = false;
-            // 
-            // Column31
-            // 
-            this.Column31.DataPropertyName = "OperatorID";
-            this.Column31.HeaderText = "OperatorID";
-            this.Column31.Name = "Column31";
-            this.Column31.Visible = false;
-            // 
-            // Column32
-            // 
-            this.Column32.DataPropertyName = "Level";
-            this.Column32.HeaderText = "Level";
-            this.Column32.Name = "Column32";
-            this.Column32.Visible = false;
-            // 
-            // Column33
-            // 
-            this.Column33.DataPropertyName = "LastModifiedDate";
-            this.Column33.HeaderText = "LastModifiedDate";
-            this.Column33.Name = "Column33";
-            this.Column33.Visible = false;
-            // 
-            // Column34
-            // 
-            this.Column34.DataPropertyName = "AuditContentURL";
-            this.Column34.HeaderText = "AuditContentURL";
-            this.Column34.Name = "Column34";
-            this.Column34.Visible = false;
-            // 
-            // Column35
-            // 
-            this.Column35.DataPropertyName = "ContactUsContentURL";
-            this.Column35.HeaderText = "ContactUsContentURL";
-            this.Column35.Name = "Column35";
-            this.Column35.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn50
-            // 
-            this.dataGridViewTextBoxColumn50.DataPropertyName = "Name";
-            this.dataGridViewTextBoxColumn50.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn50.Name = "dataGridViewTextBoxColumn50";
-            this.dataGridViewTextBoxColumn50.Width = 400;
-            // 
-            // dataGridViewTextBoxColumn51
-            // 
-            this.dataGridViewTextBoxColumn51.DataPropertyName = "LabelItemContentID";
-            this.dataGridViewTextBoxColumn51.HeaderText = "Label";
-            this.dataGridViewTextBoxColumn51.Name = "dataGridViewTextBoxColumn51";
-            this.dataGridViewTextBoxColumn51.Visible = false;
-            this.dataGridViewTextBoxColumn51.Width = 180;
-            // 
-            // dataGridViewTextBoxColumn52
-            // 
-            this.dataGridViewTextBoxColumn52.DataPropertyName = "SecurityRightItemID";
-            this.dataGridViewTextBoxColumn52.HeaderText = "Security Right";
-            this.dataGridViewTextBoxColumn52.Name = "dataGridViewTextBoxColumn52";
-            this.dataGridViewTextBoxColumn52.Visible = false;
-            this.dataGridViewTextBoxColumn52.Width = 180;
-            // 
-            // dataGridViewTextBoxColumn53
-            // 
-            this.dataGridViewTextBoxColumn53.DataPropertyName = "IsActive";
-            this.dataGridViewTextBoxColumn53.HeaderText = "IsActive";
-            this.dataGridViewTextBoxColumn53.Name = "dataGridViewTextBoxColumn53";
+            this.MenuItemTgtUpdateGrid.AllowUserToAddRows = false;
+            this.MenuItemTgtUpdateGrid.AllowUserToDeleteRows = false;
+            this.MenuItemTgtUpdateGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MenuItemTgtUpdateGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewCheckBoxColumn5,
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn18,
+            this.dataGridViewTextBoxColumn19,
+            this.dataGridViewTextBoxColumn20,
+            this.dataGridViewTextBoxColumn62,
+            this.dataGridViewTextBoxColumn63,
+            this.dataGridViewTextBoxColumn64,
+            this.dataGridViewTextBoxColumn65,
+            this.Column36,
+            this.Column37,
+            this.Column38,
+            this.Column39,
+            this.Column42,
+            this.Column43,
+            this.Column44,
+            this.Column45,
+            this.Column46,
+            this.Column47,
+            this.Column48,
+            this.dataGridViewTextBoxColumn66,
+            this.dataGridViewTextBoxColumn67,
+            this.dataGridViewTextBoxColumn68,
+            this.dataGridViewTextBoxColumn69});
+            this.MenuItemTgtUpdateGrid.Location = new System.Drawing.Point(735, 51);
+            this.MenuItemTgtUpdateGrid.Name = "MenuItemTgtUpdateGrid";
+            this.MenuItemTgtUpdateGrid.RowTemplate.Height = 24;
+            this.MenuItemTgtUpdateGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.MenuItemTgtUpdateGrid.Size = new System.Drawing.Size(734, 511);
+            this.MenuItemTgtUpdateGrid.TabIndex = 16;
             // 
             // dataGridViewCheckBoxColumn5
             // 
@@ -1288,6 +1085,212 @@
             this.dataGridViewTextBoxColumn69.DataPropertyName = "IsActive";
             this.dataGridViewTextBoxColumn69.HeaderText = "IsActive";
             this.dataGridViewTextBoxColumn69.Name = "dataGridViewTextBoxColumn69";
+            // 
+            // MenuItemSrcUpdateGrid
+            // 
+            this.MenuItemSrcUpdateGrid.AllowUserToAddRows = false;
+            this.MenuItemSrcUpdateGrid.AllowUserToDeleteRows = false;
+            this.MenuItemSrcUpdateGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MenuItemSrcUpdateGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewCheckBoxColumn4,
+            this.dataGridViewTextBoxColumn21,
+            this.dataGridViewTextBoxColumn22,
+            this.dataGridViewTextBoxColumn23,
+            this.dataGridViewTextBoxColumn24,
+            this.dataGridViewTextBoxColumn44,
+            this.dataGridViewTextBoxColumn45,
+            this.dataGridViewTextBoxColumn46,
+            this.dataGridViewTextBoxColumn47,
+            this.dataGridViewTextBoxColumn48,
+            this.dataGridViewTextBoxColumn49,
+            this.Column27,
+            this.Column28,
+            this.Column29,
+            this.Column30,
+            this.Column31,
+            this.Column32,
+            this.Column33,
+            this.Column34,
+            this.Column35,
+            this.dataGridViewTextBoxColumn50,
+            this.dataGridViewTextBoxColumn51,
+            this.dataGridViewTextBoxColumn52,
+            this.dataGridViewTextBoxColumn53});
+            this.MenuItemSrcUpdateGrid.Location = new System.Drawing.Point(0, 51);
+            this.MenuItemSrcUpdateGrid.Name = "MenuItemSrcUpdateGrid";
+            this.MenuItemSrcUpdateGrid.RowTemplate.Height = 24;
+            this.MenuItemSrcUpdateGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.MenuItemSrcUpdateGrid.Size = new System.Drawing.Size(736, 511);
+            this.MenuItemSrcUpdateGrid.TabIndex = 11;
+            this.MenuItemSrcUpdateGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SelectColumnformenuitems_Clicked);
+            // 
+            // dataGridViewCheckBoxColumn4
+            // 
+            this.dataGridViewCheckBoxColumn4.HeaderText = "";
+            this.dataGridViewCheckBoxColumn4.Name = "dataGridViewCheckBoxColumn4";
+            this.dataGridViewCheckBoxColumn4.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn21
+            // 
+            this.dataGridViewTextBoxColumn21.DataPropertyName = "ID";
+            this.dataGridViewTextBoxColumn21.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
+            this.dataGridViewTextBoxColumn21.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn22
+            // 
+            this.dataGridViewTextBoxColumn22.DataPropertyName = "MenuID";
+            this.dataGridViewTextBoxColumn22.HeaderText = "MenuID";
+            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
+            this.dataGridViewTextBoxColumn22.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn23
+            // 
+            this.dataGridViewTextBoxColumn23.DataPropertyName = "ParentMenuItemID";
+            this.dataGridViewTextBoxColumn23.HeaderText = "ParentMenuItemID";
+            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
+            this.dataGridViewTextBoxColumn23.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn24
+            // 
+            this.dataGridViewTextBoxColumn24.DataPropertyName = "OrderIndex";
+            this.dataGridViewTextBoxColumn24.HeaderText = "OrderIndex";
+            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
+            this.dataGridViewTextBoxColumn24.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn44
+            // 
+            this.dataGridViewTextBoxColumn44.DataPropertyName = "DefaultText";
+            this.dataGridViewTextBoxColumn44.HeaderText = "DefaultText";
+            this.dataGridViewTextBoxColumn44.Name = "dataGridViewTextBoxColumn44";
+            this.dataGridViewTextBoxColumn44.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn45
+            // 
+            this.dataGridViewTextBoxColumn45.DataPropertyName = "BaseURL";
+            this.dataGridViewTextBoxColumn45.HeaderText = "BaseURL";
+            this.dataGridViewTextBoxColumn45.Name = "dataGridViewTextBoxColumn45";
+            this.dataGridViewTextBoxColumn45.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn46
+            // 
+            this.dataGridViewTextBoxColumn46.DataPropertyName = "CSSClass";
+            this.dataGridViewTextBoxColumn46.HeaderText = "CSSClass";
+            this.dataGridViewTextBoxColumn46.Name = "dataGridViewTextBoxColumn46";
+            this.dataGridViewTextBoxColumn46.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn47
+            // 
+            this.dataGridViewTextBoxColumn47.DataPropertyName = "IOCContainer";
+            this.dataGridViewTextBoxColumn47.HeaderText = "IOCContainer";
+            this.dataGridViewTextBoxColumn47.Name = "dataGridViewTextBoxColumn47";
+            this.dataGridViewTextBoxColumn47.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn48
+            // 
+            this.dataGridViewTextBoxColumn48.DataPropertyName = "ModuleSectionContentID";
+            this.dataGridViewTextBoxColumn48.HeaderText = "ModuleSectionContentID";
+            this.dataGridViewTextBoxColumn48.Name = "dataGridViewTextBoxColumn48";
+            this.dataGridViewTextBoxColumn48.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn49
+            // 
+            this.dataGridViewTextBoxColumn49.DataPropertyName = "PageHelpHTMLContentID";
+            this.dataGridViewTextBoxColumn49.HeaderText = "PageHelpHTMLContentID";
+            this.dataGridViewTextBoxColumn49.Name = "dataGridViewTextBoxColumn49";
+            this.dataGridViewTextBoxColumn49.Visible = false;
+            // 
+            // Column27
+            // 
+            this.Column27.DataPropertyName = "ReportContentsURL";
+            this.Column27.HeaderText = "ReportContentsURL";
+            this.Column27.Name = "Column27";
+            this.Column27.Visible = false;
+            // 
+            // Column28
+            // 
+            this.Column28.DataPropertyName = "PrintPreviewContentURL";
+            this.Column28.HeaderText = "PrintPreviewContentURL";
+            this.Column28.Name = "Column28";
+            this.Column28.Visible = false;
+            // 
+            // Column29
+            // 
+            this.Column29.DataPropertyName = "MITAHelpHTMLContentID";
+            this.Column29.HeaderText = "MITAHelpHTMLContentID";
+            this.Column29.Name = "Column29";
+            this.Column29.Visible = false;
+            // 
+            // Column30
+            // 
+            this.Column30.DataPropertyName = "IsVisible";
+            this.Column30.HeaderText = "IsVisible";
+            this.Column30.Name = "Column30";
+            this.Column30.Visible = false;
+            // 
+            // Column31
+            // 
+            this.Column31.DataPropertyName = "OperatorID";
+            this.Column31.HeaderText = "OperatorID";
+            this.Column31.Name = "Column31";
+            this.Column31.Visible = false;
+            // 
+            // Column32
+            // 
+            this.Column32.DataPropertyName = "Level";
+            this.Column32.HeaderText = "Level";
+            this.Column32.Name = "Column32";
+            this.Column32.Visible = false;
+            // 
+            // Column33
+            // 
+            this.Column33.DataPropertyName = "LastModifiedDate";
+            this.Column33.HeaderText = "LastModifiedDate";
+            this.Column33.Name = "Column33";
+            this.Column33.Visible = false;
+            // 
+            // Column34
+            // 
+            this.Column34.DataPropertyName = "AuditContentURL";
+            this.Column34.HeaderText = "AuditContentURL";
+            this.Column34.Name = "Column34";
+            this.Column34.Visible = false;
+            // 
+            // Column35
+            // 
+            this.Column35.DataPropertyName = "ContactUsContentURL";
+            this.Column35.HeaderText = "ContactUsContentURL";
+            this.Column35.Name = "Column35";
+            this.Column35.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn50
+            // 
+            this.dataGridViewTextBoxColumn50.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn50.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn50.Name = "dataGridViewTextBoxColumn50";
+            this.dataGridViewTextBoxColumn50.Width = 400;
+            // 
+            // dataGridViewTextBoxColumn51
+            // 
+            this.dataGridViewTextBoxColumn51.DataPropertyName = "LabelItemContentID";
+            this.dataGridViewTextBoxColumn51.HeaderText = "Label";
+            this.dataGridViewTextBoxColumn51.Name = "dataGridViewTextBoxColumn51";
+            this.dataGridViewTextBoxColumn51.Visible = false;
+            this.dataGridViewTextBoxColumn51.Width = 180;
+            // 
+            // dataGridViewTextBoxColumn52
+            // 
+            this.dataGridViewTextBoxColumn52.DataPropertyName = "SecurityRightItemID";
+            this.dataGridViewTextBoxColumn52.HeaderText = "Security Right";
+            this.dataGridViewTextBoxColumn52.Name = "dataGridViewTextBoxColumn52";
+            this.dataGridViewTextBoxColumn52.Visible = false;
+            this.dataGridViewTextBoxColumn52.Width = 180;
+            // 
+            // dataGridViewTextBoxColumn53
+            // 
+            this.dataGridViewTextBoxColumn53.DataPropertyName = "IsActive";
+            this.dataGridViewTextBoxColumn53.HeaderText = "IsActive";
+            this.dataGridViewTextBoxColumn53.Name = "dataGridViewTextBoxColumn53";
             // 
             // MenuListDiff
             // 

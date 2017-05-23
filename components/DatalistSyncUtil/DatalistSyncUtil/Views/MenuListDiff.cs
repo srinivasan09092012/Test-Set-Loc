@@ -22,7 +22,7 @@ namespace DatalistSyncUtil.Views
     {
         public MenuListDiff()
         {
-           this.InitializeComponent();
+            this.InitializeComponent();
         }
 
         public MenuListDiff(Guid tenantID, string type, List<MenuListModel> sourceList, List<MenuListModel> targetList)
@@ -89,7 +89,7 @@ namespace DatalistSyncUtil.Views
         }
 
         private List<MenuListModel> GetNewMenus()
-        { 
+        {
             List<string> menuLists = this.SourceMenuList.Select(c => c.Name).Except(this.TargetMenuList.Select(c => c.Name)).ToList();
             List<MenuListModel> newMenuList = this.SourceMenuList.Where(c => menuLists.Contains(c.Name)).ToList();
             return newMenuList.OrderBy(o => o.Name).ToList();
@@ -188,7 +188,7 @@ namespace DatalistSyncUtil.Views
             string sourceSecurityRight = null;
             string targetSecurityRight = null;
             sourceSecurity = this.Sourceitems.Where(c => c.ID == sourceSecurityRightID).FirstOrDefault();
-            targetSecurity = this.Sourceitems.Where(c => c.ID == sourceSecurityRightID).FirstOrDefault();
+            targetSecurity = this.Items.Where(c => c.ID == targetSecurityRightID).FirstOrDefault();
             if (sourceSecurity != null || targetSecurity != null)
             {
                 sourceSecurityRight = sourceSecurity.Code;
@@ -214,20 +214,8 @@ namespace DatalistSyncUtil.Views
 
         private void PreviewUpdate_Click(object sender, EventArgs e)
         {
-            bool newscreenforlabels = false;
-            bool newscreenforrights = this.CheckRights();
-            newscreenforlabels = this.CheckLabels();
-            if (newscreenforlabels == true || newscreenforrights == true)
-            {
-                DataListSync sync = new DataListSync();
-
-                sync.ShowDialog();
-            }
-            else
-            {
-                MenuPreviewPage previewPage = new MenuPreviewPage(this.UpdateList, this.UpdateListItems);
-                previewPage.ShowDialog();
-            }
+           MenuPreviewPage previewPage = new MenuPreviewPage(this.UpdateList, this.UpdateListItems);
+           previewPage.ShowDialog();
         }
 
         private void BtnClose_Click_1(object sender, EventArgs e)
@@ -306,90 +294,129 @@ namespace DatalistSyncUtil.Views
                 {
                     this.UpdateListItems.Add(row.DataBoundItem as MenuItemModel);
                 }
-            }          
+            }
         }
 
-        private bool CheckRights()
-        {
-            bool right = false;
-            bool syncscreen = false;
-            CodeListModel modelListItem = null;
-            string str = null;
-            string securityRight = null;
-            if (this.UpdateList != null)
-            {
-                this.UpdateList.ForEach(f =>
-                {
-                    securityRight = this.Sourceitems.Find(c => c.ID == f.SecurityRightItemID).Code;
-                    right = this.Items.Any(a => a.Code == securityRight);
-                    if (!right)
-                    {
-                        syncscreen = true;
-                        modelListItem = this.Sourceitems.Where(a => a.ID == f.SecurityRightItemID).FirstOrDefault();
-                        str = str + " " + modelListItem.Code;
-                        right = false;
-                    }
-                    else
-                    {
-                        f.SecurityRightItemID = this.Items.Find(c => c.Code == securityRight).ID;
-                    }
-                     });
-            }
-
-            if (this.UpdateListItems != null)
-            {
-                this.UpdateListItems.ForEach(f =>
-                {
-                    securityRight = this.Sourceitems.Find(c => c.ID == f.SecurityRightItemID).Code;
-                    right = this.Items.Any(a => a.Code == securityRight);
-                    if (!right)
-                    {
-                        syncscreen = true;
-                        modelListItem = this.Sourceitems.Where(a => a.ID == f.SecurityRightItemID).FirstOrDefault();
-                        str = str + " " + modelListItem.Code;
-                        right = false;
-                    }
-                    else
-                    {
-                        f.SecurityRightItemID = this.Items.Find(c => c.Code == securityRight).ID;
-                    }
-                });
-            }
-
-            if (!right)
-            {
-                MessageBox.Show("The Security Right is not present : " + str, "Security Right", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
-            } 
-                     
-            return syncscreen;
-        }
-
-        private bool CheckLabels()
+        private bool CheckLabels(MenuItemModel menuitem)
         {
             bool right = false;
             bool syncscreen = false;
             CodeListModel modelListItem = null;
             string str = null;
             List<string> list = new List<string>();
-            if (this.UpdateListItems != null)
-            {
-                this.UpdateListItems.ForEach(f =>
-                {
-                    right = this.Items.Any(a => a.Code == f.LabelItemContentID);
+                    right = this.Items.Any(a => a.Code == menuitem.LabelItemContentID);
                     if (!right)
                     {
-                        syncscreen = true;
-                        modelListItem = this.Sourceitems.Where(a => a.Code == f.LabelItemContentID).FirstOrDefault();
-                        str = str + " " + modelListItem.Code;           
-                     }          
-                });
+                      syncscreen = true;
+                     modelListItem = this.Sourceitems.Where(a => a.Code == menuitem.LabelItemContentID).FirstOrDefault();
+                        str = str + " " + modelListItem.Code;
+                    }
+
                 if (!right)
                 {
                     MessageBox.Show("The Label is not present : " + str, "Label", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                 }
+
+            return syncscreen;
+        }
+
+        private void SelectColumn_Clicked(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = MenuItemNewGrid.Rows[rowIndex];
+            bool rightpresent = this.CheckRightsformenuitems(row.DataBoundItem as MenuItemModel);
+            bool labelpresent = this.CheckLabels(row.DataBoundItem as MenuItemModel);
+            if (rightpresent == true || labelpresent == true)
+            {
+                MenuItemNewGrid.Rows[rowIndex].ReadOnly = true;
+                MenuItemNewGrid.Rows[rowIndex].Cells[0].Selected = false;
+                MenuItemNewGrid.Rows[rowIndex].Cells[0].Value = false;
+            }
+        }
+
+        private bool CheckRightsformenuitems(MenuItemModel menuitem)
+        {
+            string securityRight = null;
+            bool right = false;
+            string str = null;
+            bool syncscreen = false;
+            CodeListModel modelListItem = null;
+            securityRight = this.Sourceitems.Find(c => c.ID == menuitem.SecurityRightItemID).Code;
+                right = this.Items.Any(a => a.Code == securityRight);
+                if (!right)
+                {
+                syncscreen = true;
+                modelListItem = this.Sourceitems.Where(a => a.ID == menuitem.SecurityRightItemID).FirstOrDefault();
+                    str = str + " " + modelListItem.Code;
+                    right = false;
+                }
+                else
+                {
+                menuitem.SecurityRightItemID = this.Items.Find(c => c.Code == securityRight).ID;
+                }
+
+            if (!right)
+            {
+                MessageBox.Show("The Security Right is not present : " + str, "Security Right", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
             }
 
-            return syncscreen;        
+            return syncscreen;
+        }
+
+        private void SelectColumnformenuitems_Clicked(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = MenuItemSrcUpdateGrid.Rows[rowIndex];
+            bool rightpresent = this.CheckRightsformenuitems(row.DataBoundItem as MenuItemModel);
+            bool labelpresent = this.CheckLabels(row.DataBoundItem as MenuItemModel);
+            if (rightpresent == true || labelpresent == true)
+            {
+                MenuItemSrcUpdateGrid.Rows[rowIndex].ReadOnly = true;
+                MenuItemSrcUpdateGrid.Rows[rowIndex].Cells[0].Selected = false;
+                MenuItemSrcUpdateGrid.Rows[rowIndex].Cells[0].Value = false;
+            }
+        }
+
+        private bool CheckRightsformenu(MenuListModel menu)
+        {
+            string securityRight = null;
+            bool right = false;
+            string str = null;
+            bool syncscreen = false;
+            CodeListModel modelListItem = null;
+            securityRight = this.Sourceitems.Find(c => c.ID == menu.SecurityRightItemID).Code;
+            right = this.Items.Any(a => a.Code == securityRight);
+            if (!right)
+            {
+                syncscreen = true;
+                modelListItem = this.Sourceitems.Where(a => a.ID == menu.SecurityRightItemID).FirstOrDefault();
+                str = str + " " + modelListItem.Code;
+                right = false;
+            }
+            else
+            {
+                menu.SecurityRightItemID = this.Items.Find(c => c.Code == securityRight).ID;
+            }
+
+            if (!right)
+            {
+                MessageBox.Show("The Security Right is not present : " + str, "Security Right", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+            }
+
+            return syncscreen;
+        }
+
+        private void SelectColumnforNewMenu_clicked(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = MenuListNewGrid.Rows[rowIndex];
+            bool rightpresent = this.CheckRightsformenu(row.DataBoundItem as MenuListModel);
+            if (rightpresent == true)
+            {
+                MenuListNewGrid.Rows[rowIndex].ReadOnly = true;
+                MenuListNewGrid.Rows[rowIndex].Cells[0].Selected = false;
+                MenuListNewGrid.Rows[rowIndex].Cells[0].Value = false;
+            }
         }
     }
 }
