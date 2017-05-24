@@ -38,8 +38,10 @@ namespace DatalistSyncUtil.DaoHelpers
                 TenantModuleAppSettingId = appSettingId,
                 ApplicationId = cmd.ApplicationId,
                 AppSettingKey = cmd.AppSettingKey,
-                SettingTypeItemKey = cmd.SettingTypeItemKey,                
-                Value = cmd.Value,
+                SettingTypeItemKey = cmd.SettingTypeItemKey,    
+                Description = cmd.Description,
+                LastModifiedTimeStamp = DateTime.UtcNow,
+                Value = cmd.TargetValue,
                 IsActive = cmd.IsActive,
                 OperatorID = cmd.OperatorID,
                 TenantModuleID = cmd.TenantModuleID
