@@ -4,10 +4,12 @@
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
 // Violators may be punished to the full extent of the law.
 //-----------------------------------------------------------------------------------------
+using DatalistSyncUtil.Domain;
 using DatalistSyncUtil.Views;
 using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
 using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
+using Microsoft.Practices.ObjectBuilder2;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -25,7 +27,7 @@ namespace DatalistSyncUtil
         private string rolesContentID = "Core.SecurityRoles";
         private string functionsContentID = "Core.SecurityFunctions";
         private string rightsContentID = "Core.SecurityRights";
-         private List<CodeLinkTable> sourceListlink = new List<CodeLinkTable>();
+        private List<CodeLinkTable> sourceListlink = new List<CodeLinkTable>();
         private List<CodeLinkTable> targetListlink = new List<CodeLinkTable>();
 
         public DatalistComparer()
@@ -45,7 +47,7 @@ namespace DatalistSyncUtil
             this.LoadSourceModules();
             this.Cachemanager = new RedisCacheManager();
         }
-  
+
         public ICacheManager Cachemanager { get; set; }
 
         public List<DataListMainModel> SourceList { get; set; }
@@ -60,6 +62,8 @@ namespace DatalistSyncUtil
 
         public List<HtmlBlockMainModel> SourceHtmlList { get; set; }
 
+        public List<HelpNodeModel> SourceHelpList { get; set; }
+
         public List<ImagesMainModel> SourceImagesList { get; set; }
 
         public List<DataListMainModel> TargetList { get; set; }
@@ -67,6 +71,8 @@ namespace DatalistSyncUtil
         public List<MenuListModel> TargetMenuList { get; set; }
 
         public List<HtmlBlockMainModel> TargetHtmlList { get; set; }
+
+        public List<HelpNodeModel> TargetHelpList { get; set; }
 
         public List<ImagesMainModel> TargetImagesList { get; set; }
 
@@ -85,7 +91,7 @@ namespace DatalistSyncUtil
         public List<DataListItemAttributeModel> SourceDataListItemAttributes { get; set; }
 
         public List<DataListItemAttributeModel> TargetDataListItemAttributes { get; set; }
-            
+
         private void BtnSourceFile_Click(object sender, EventArgs e)
         {
             DialogResult result = this.openDatalistFile.ShowDialog();
@@ -131,6 +137,10 @@ namespace DatalistSyncUtil
                         this.SourceImagesList = JsonConvert.DeserializeObject<List<ImagesMainModel>>(File.ReadAllText(file));
                         this.LoadImagesTreeView(this.sourceTreeList, this.SourceImagesList.OrderBy(o => o.ContentId).ToList());
                         break;
+                    case "Help":
+                        this.SourceHelpList = JsonConvert.DeserializeObject<List<HelpNodeModel>>(File.ReadAllText(file));
+                        this.LoadHelpTreeView(this.sourceTreeList, this.SourceHelpList.OrderBy(o => o.HelpNodeNM).ToList());
+                        break;
                     default:
                         break;
                 }
@@ -140,7 +150,7 @@ namespace DatalistSyncUtil
         private void LoadAppSettingTreeView(TreeView treeView, List<AppSettingsModel> lists)
         {
             TreeNode listNode = null;
-            List<TreeNode> appNodes = new List<TreeNode>();       
+            List<TreeNode> appNodes = new List<TreeNode>();
 
             try
             {
@@ -150,13 +160,13 @@ namespace DatalistSyncUtil
                     listNode = new TreeNode();
                     listNode = new TreeNode(list.AppSettingKey, appNodes.ToArray());
                     listNode = new TreeNode(list.Value, appNodes.ToArray());
-                    treeView.Nodes.Add(listNode);                  
+                    treeView.Nodes.Add(listNode);
                 }
             }
             finally
             {
                 listNode = null;
-                appNodes = null;               
+                appNodes = null;
             }
         }
 
@@ -265,7 +275,7 @@ namespace DatalistSyncUtil
                         langNode = new TreeNode(l.LocaleId + languageSeparator + l.Html);
                         langNodes.Add(langNode);
                     });
-                                        
+
                     listNode = new TreeNode(list.ContentId, langNodes.ToArray());
 
                     treeView.Nodes.Add(listNode);
@@ -303,6 +313,40 @@ namespace DatalistSyncUtil
                     });
 
                     listNode = new TreeNode(list.ContentId, langNodes.ToArray());
+
+                    treeView.Nodes.Add(listNode);
+                }
+            }
+            finally
+            {
+                listNode = null;
+                langNode = null;
+                langNodes = null;
+            }
+        }
+
+        private void LoadHelpTreeView(TreeView treeView, List<HelpNodeModel> lists)
+        {
+            TreeNode listNode = null;
+
+            TreeNode langNode = null;
+            List<TreeNode> langNodes = null;
+            string languageSeparator = " - ";
+
+            try
+            {
+                treeView.Nodes.Clear();
+
+                foreach (HelpNodeModel list in lists)
+                {
+                    langNodes = new List<TreeNode>();
+                    list.HelpContentLanguages.ForEach(l =>
+                    {
+                        langNode = new TreeNode(l.Language + languageSeparator + l.HtmlContent);
+                        langNodes.Add(langNode);
+                    });
+
+                    listNode = new TreeNode(list.HelpNodeNM, langNodes.ToArray());
 
                     treeView.Nodes.Add(listNode);
                 }
@@ -391,6 +435,23 @@ namespace DatalistSyncUtil
 
                     this.LoadImagesTreeView(this.targetTreeList, filteredImageList.OrderBy(o => o.ContentId).ToList());
                     break;
+                case "Help":
+
+                    this.TargetHelpList = this.LoadTargetHelplist();
+                    List<HelpNodeModel> filteredHelpList = null;
+
+                    if (tenantModuleId == Guid.Empty)
+                    {
+                        filteredHelpList = this.TargetHelpList;
+                    }
+                    else
+                    {
+                        filteredHelpList = this.TargetHelpList.Where(w => w.TenantModuleId == tenantModuleId).ToList();
+                    }
+
+                    this.TargetHelpList = filteredHelpList;
+                    this.LoadHelpTreeView(this.targetTreeList, filteredHelpList.OrderBy(o => o.HelpNodeNM).ToList());
+                    break;
                 default:
                     break;
             }
@@ -398,15 +459,15 @@ namespace DatalistSyncUtil
             Cursor.Current = Cursors.Default;
         }
 
-         private List<AppSettingsModel> LoadTargetAppSetting()
+        private List<AppSettingsModel> LoadTargetAppSetting()
         {
             List<AppSettingsModel> lists = null;
             List<AppSettingsModel> listsMain = new List<AppSettingsModel>();
             AppSettingsModel list1 = null;
-                       
+
             Guid tenantID = new Guid(this.tenantList.SelectedValue.ToString());
             lists = this.LoadHelper.GetAppSetting().Where(w => w.TenantID == tenantID).ToList();
-                                  
+
             foreach (AppSettingsModel list in lists)
             {
                 list1 = new AppSettingsModel()
@@ -509,6 +570,17 @@ namespace DatalistSyncUtil
             }
 
             return listsMain;
+        }
+
+        private List<HelpNodeModel> LoadTargetHelplist()
+        {
+            List<HelpNodeModel> lists = null;
+            List<HelpNodeModel> listsMain = new List<HelpNodeModel>();
+
+            Guid tenantID = new Guid(this.tenantList.SelectedValue.ToString());
+
+            lists = this.LoadHelper.GetHelpList().Where(w => w.TenantId == tenantID).ToList();
+            return lists;
         }
 
         private List<HtmlBlockMainModel> LoadTargetHTMLlist()
@@ -772,6 +844,18 @@ namespace DatalistSyncUtil
             }
 
             return listsMain;
+        }
+
+        private List<HelpNodeModel> LoadSourceHelplist()
+        {
+            List<HelpNodeModel> lists = null;
+            List<HelpNodeLocaleModel> listsMain = new List<HelpNodeLocaleModel>();
+
+            Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
+
+            lists = this.SourceLoadHelper.GetHelpList().Where(w => w.TenantId == tenantID).ToList();
+
+            return lists;
         }
 
         private List<HtmlBlockLanguage> GetHtmlLanguageListCustom(Guid id, List<HtmlBlockLanguagesModel> listItems)
@@ -1139,6 +1223,21 @@ namespace DatalistSyncUtil
 
                     this.LoadImagesTreeView(this.sourceTreeList, filteredImageList.OrderBy(o => o.ContentId).ToList());
                     break;
+                case "Help":
+                    this.SourceHelpList = this.LoadSourceHelplist();
+                    List<HelpNodeModel> filteredHelpList = null;
+
+                    if (tenantModuleId == Guid.Empty)
+                    {
+                        filteredHelpList = this.SourceHelpList;
+                    }
+                    else
+                    {
+                        filteredHelpList = this.SourceHelpList.Where(w => w.TenantModuleId == tenantModuleId).ToList();
+                    }
+
+                    this.LoadHelpTreeView(this.sourceTreeList, filteredHelpList.OrderBy(o => o.HelpNodeNM).ToList());
+                    break;
                 default:
                     break;
             }
@@ -1192,7 +1291,7 @@ namespace DatalistSyncUtil
 
         private void LoadSourceControls()
         {
-            List<string> controlNames = new List<string>(new string[] { "AppSetting", "Datalist", "HtmlBlock", "Image", "Menus", "Security" });
+            List<string> controlNames = new List<string>(new string[] { "AppSetting", "Datalist", "HtmlBlock", "Image", "Menus", "Security", "Help" });
             for (int i = 0; i <= controlNames.Count - 1; i++)
             {
                 this.SourceControlNames.Items.Add(controlNames[i]);
@@ -1203,7 +1302,7 @@ namespace DatalistSyncUtil
 
         private void LoadControls()
         {
-            List<string> controlNames = new List<string>(new string[] { "AppSetting", "Datalist", "HtmlBlock", "Image", "Menus", "Security" });
+            List<string> controlNames = new List<string>(new string[] { "AppSetting", "Datalist", "HtmlBlock", "Image", "Menus", "Security", "Help" });
             for (int i = 0; i <= controlNames.Count - 1; i++)
             {
                 this.TargetControlNames.Items.Add(controlNames[i]);
@@ -1311,7 +1410,7 @@ namespace DatalistSyncUtil
 
             lists = this.LoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID && (w.ContentID == this.functionsContentID || w.ContentID == this.rolesContentID || w.ContentID == this.rightsContentID)).ToList();
             listItems = this.LoadHelper.GetDataListItems().Where(w => w.TenantID == tenantID && (w.ContentID == this.functionsContentID || w.ContentID == this.rolesContentID || w.ContentID == this.rightsContentID)).OrderBy(o => o.ContentID).ToList();
-            targetDataListItemAttributes = this.LoadHelper.GetItemAttributeList().Where(a => a.ParentContentId == this.functionsContentID || a.ParentContentId == this.rolesContentID || a.ParentContentId == this.rightsContentID).OrderBy(o => o.ParentContentId).ToList(); 
+            targetDataListItemAttributes = this.LoadHelper.GetItemAttributeList().Where(a => a.ParentContentId == this.functionsContentID || a.ParentContentId == this.rolesContentID || a.ParentContentId == this.rightsContentID).OrderBy(o => o.ParentContentId).ToList();
             lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
 
             this.targetListlink = this.LoadHelper.GetDataListLinks("TargetDataListLinks");
@@ -1363,7 +1462,7 @@ namespace DatalistSyncUtil
             listItems = this.SourceLoadHelper.GetDataListItems().Where(t => t.TenantID == tenantID && (t.ContentID == this.functionsContentID || t.ContentID == this.rolesContentID || t.ContentID == this.rightsContentID)).OrderBy(o => o.ContentID).ToList();
             lists = this.SourceLoadHelper.GetAttributesList().Where(a => a.TenantID == tenantID && (a.ContentID == this.functionsContentID || a.ContentID == this.rolesContentID || a.ContentID == this.rightsContentID)).OrderBy(o => o.ContentID).ToList();
 
-            sourceDataListItemAttributes = this.SourceLoadHelper.GetItemAttributeList().Where(a => a.ParentContentId == this.functionsContentID || a.ParentContentId == this.rolesContentID || a.ParentContentId == this.rightsContentID).OrderBy(o => o.ParentContentId).ToList(); 
+            sourceDataListItemAttributes = this.SourceLoadHelper.GetItemAttributeList().Where(a => a.ParentContentId == this.functionsContentID || a.ParentContentId == this.rolesContentID || a.ParentContentId == this.rightsContentID).OrderBy(o => o.ParentContentId).ToList();
             lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
             this.sourceListlink = this.SourceLoadHelper.GetDataListLinks("SourceDataListLinks");
             foreach (DataList list in lists)
@@ -1425,6 +1524,18 @@ namespace DatalistSyncUtil
             if (this.SourceList != null)
             {
                 DatalistDiff diffPage = new DatalistDiff(new Guid(this.tenantList.SelectedValue.ToString()), "DATALIST", this.SourceList, this.TargetList);
+                diffPage.ShowDialog();
+            }
+
+            Cursor.Current = Cursors.Default;
+        }
+
+        private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            if (this.SourceHelpList != null)
+            {
+                HelpDiff diffPage = new HelpDiff(new Guid(this.tenantList.SelectedValue.ToString()), "ITEMS", this.SourceHelpList, this.TargetHelpList);
                 diffPage.ShowDialog();
             }
 

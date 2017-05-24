@@ -26,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,6 +36,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -53,8 +55,13 @@
       <HintPath>..\packages\Microsoft.IdentityModel.6.1.7600.16394\lib\net35\Microsoft.IdentityModel.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\..\Packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Microsoft.Practices.Unity, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Packages\Unity.3.5.1405-prerelease\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Oracle.DataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
@@ -88,11 +95,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\AddHelpContentCommand.cs" />
+    <Compile Include="Commands\UpdateHelpContentCommand.cs" />
     <Compile Include="Configs\DataListLinksReadOnly.cs" />
     <Compile Include="Configs\AppSettingsReadOnly.cs" />
     <Compile Include="Configs\DataListAttributesReadOnly.cs" />
     <Compile Include="Configs\HtmlBlockReadOnly.cs" />
     <Compile Include="Configs\ImagesReadOnly.cs" />
+    <Compile Include="Configs\HelpReadOnly.cs" />
     <Compile Include="Configs\LabelsCodeReadOnly.cs" />
     <Compile Include="Configs\MenusReadOnly.cs" />
     <Compile Include="Configs\MessageCodeReadOnly.cs" />
@@ -103,12 +113,16 @@
     <Compile Include="DaoHelpers\AddDataListDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataListItemLanguageDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataListItemDaoHelper.cs" />
+    <Compile Include="DaoHelpers\AddHelpLanguageDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddImageLanguageDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddImagesDaoHelper.cs" />
+    <Compile Include="DaoHelpers\AddHelpContentDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddMenuDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddMenuItemDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddHtmlBlockDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddHtmlBlockLanguageDaoHelper.cs" />
+    <Compile Include="DaoHelpers\GetHelpContentDaoHelper.cs" />
+    <Compile Include="DaoHelpers\GetHelpLanguagesDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateDataListLinkDaoHelper .cs" />
     <Compile Include="DaoHelpers\UpdateDataListAttributesDaoHelper.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
@@ -117,6 +131,19 @@
     <Compile Include="DaoHelpers\SearchAppSettingsDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateDataListItemLanguageDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateDataListItemDaoHelper.cs" />
+    <Compile Include="DaoHelpers\UpdateHelpContentDaoHelper.cs" />
+    <Compile Include="DaoHelpers\UpdateHelpLanguageDaoHelper.cs" />
+    <Compile Include="Models\AddHelpContentModel.cs" />
+    <Compile Include="Models\HelpContentLanguageModel.cs" />
+    <Compile Include="Models\HelpNodeModel.cs" />
+    <Compile Include="Models\HelpNodeLocaleModel.cs" />
+    <Compile Include="Entities\HelpDbContext.cs" />
+    <Compile Include="Entities\HelpMita.cs" />
+    <Compile Include="Entities\HelpNode.cs" />
+    <Compile Include="Entities\HelpNodeLink.cs" />
+    <Compile Include="Entities\HelpNodeLocale.cs" />
+    <Compile Include="Entities\IHelpDbContext.cs" />
+    <Compile Include="Entities\TenantModule.cs" />
     <Compile Include="DaoHelpers\UpdateImageLanguageDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateImagesDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateMenuDaoHelper.cs" />
@@ -131,6 +158,7 @@
     <Compile Include="Models\ItemAttribute.cs" />
     <Compile Include="Models\DatalistLinkModel.cs" />
     <Compile Include="Models\ItemDataListAttributeVal.cs" />
+    <Compile Include="Models\UpdateHelpContentModel.cs" />
     <Compile Include="security\AuthController.cs" />
     <Compile Include="security\ServiceApiFactory.cs" />
     <Compile Include="Service References\DataListService\Reference.cs">
@@ -140,8 +168,8 @@
     </Compile>
     <Compile Include="Models\CodeItemModel.cs" />
     <Compile Include="Views\DatalistComparer.cs">
-      <SubType>Form</SubType>
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\DatalistComparer.Designer.cs">
       <DependentUpon>DatalistComparer.cs</DependentUpon>
@@ -174,9 +202,15 @@
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Models\ItemLanguage.cs" />
+    <Compile Include="Views\HelpDiff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\HelpDiff.Designer.cs">
+      <DependentUpon>HelpDiff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\HtmlBlockDiff.cs">
       <SubType>Form</SubType>
-      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Views\HtmlBlockDiff.Designer.cs">
       <DependentUpon>HtmlBlockDiff.cs</DependentUpon>
@@ -243,6 +277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DataListSync.resx">
       <DependentUpon>DataListSync.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\HelpDiff.resx">
+      <DependentUpon>HelpDiff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\HtmlBlockDiff.resx">
       <DependentUpon>HtmlBlockDiff.cs</DependentUpon>
@@ -361,6 +398,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\DataListService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Domain\" />
   </ItemGroup>
   <!-- This import statement actually runs StyleCop, by configuring its targets to run automatically - so no explicit target call (if you are looking for one) -->
   <Import Project="$(StyleCopTargetFilePath)" Condition="Exists('$(StyleCopTargetFilePath)') and '$(Configuration)|$(Platform)' == 'Debug|AnyCPU'" />

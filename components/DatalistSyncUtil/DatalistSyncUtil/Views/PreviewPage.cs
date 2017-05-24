@@ -4,8 +4,10 @@
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
 // Violators may be punished to the full extent of the law.
 //-----------------------------------------------------------------------------------------
+using DatalistSyncUtil.Commands;
 using DatalistSyncUtil.Configs;
 using DatalistSyncUtil.DataListService;
+using DatalistSyncUtil.Domain;
 using DatalistSyncUtil.Security;
 using HP.HSP.UA3.Core.BAS.CQRS.Base;
 using HP.HSP.UA3.Core.BAS.CQRS.Caching;
@@ -57,6 +59,16 @@ namespace DatalistSyncUtil.Views
             this.LoadTreeView(this.PreviewTreeList, this.FinalHtmlBlks);
         }
 
+        public PreviewPage(List<HelpNodeModel> finalHelp, List<HelpContentLanguageModel> finalHelpLanguages)
+        {
+            this.InitializeComponent();
+            this.Cache = new RedisCacheManager();
+            this.FinalHelp = finalHelp;
+            this.FinalHelpLanguages = finalHelpLanguages;
+            this.LoadHelper = new TenantHelper();
+            this.LoadTreeView(this.PreviewTreeList, this.FinalHelp);
+        }
+
         public PreviewPage(List<AppSettingsModel> finalAppSetting)
         {
             this.InitializeComponent();
@@ -103,6 +115,10 @@ namespace DatalistSyncUtil.Views
 
         public List<HtmlBlockLanguage> FinalHtmlBlkLanguages { get; set; }
 
+        public List<HelpNodeModel> FinalHelp { get; set; }
+
+        public List<HelpContentLanguageModel> FinalHelpLanguages { get; set; }
+
         public List<ImagesMainModel> FinalImages { get; set; }
 
         public List<ImageLanguage> FinalImageLanguages { get; set; }
@@ -139,6 +155,16 @@ namespace DatalistSyncUtil.Views
                 if (this.FinalAppSetting != null)
                 {
                     this.SaveAppSettings();
+                }
+
+                if (this.FinalHelp != null)
+                {
+                    this.SaveHelp();
+                }
+
+                if (this.FinalHelpLanguages != null)
+                {
+                    this.SaveHelpLanguages();
                 }
                 else
                 {
@@ -277,6 +303,74 @@ namespace DatalistSyncUtil.Views
                         else
                         {
                             this.LoadHelper.UpdateHtmlBlkLanguage(f);
+                        }
+                    }
+                });
+
+                this.Cache.Remove("TargetHtmlLangs");
+            }
+        }
+
+        private void SaveHelp()
+        {
+            try
+            {
+                if (this.FinalHelp != null)
+                {
+                    List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+
+                    foreach (HelpNodeModel list in this.FinalHelp)
+                    {
+                        if (list.Status == "NEW")
+                        {
+                            AddHelpContentCommand addHelpContentCommand = new AddHelpContentCommand()
+                            {
+                                HelpNodeModel = list
+                            };
+                            this.LoadHelper.AddHelp(addHelpContentCommand);
+                           
+                            MessageBox.Show("Help Added successfully !!");
+                        }
+                        else
+                        {
+                            UpdateHelpContentCommand updateHelpContentCommand = new UpdateHelpContentCommand()
+                            {
+                                HelpNodeModel = list
+                            };
+                            this.LoadHelper.Updatehelp(updateHelpContentCommand);
+                            MessageBox.Show("Html Blocks successfully Updated !!");
+                        }
+                    }
+
+                    this.Cache.Remove("TargetHtmlBlock");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR:" + ex.Message);
+            }
+        }
+
+        private void SaveHelpLanguages()
+        {
+            List<HelpNodeModel> helpLangs = this.LoadHelper.GetHelpList();
+            HelpNodeModel lang = null;
+
+            if (this.FinalHelpLanguages != null)
+            {
+                this.FinalHelpLanguages.ForEach(f =>
+                {
+                    lang = helpLangs.Find(e => e.HelpNodeId == f.HelpNodeId);
+                    if (lang != null)
+                    {
+                        f.HelpNodeId = lang.HelpNodeId;
+                        if (f.Status == "LANG_NEW")
+                        {
+                            this.LoadHelper.AddHelpLanguage(f);
+                        }
+                        else
+                        {
+                            this.LoadHelper.UpdateHelpLanguage(f);
                         }
                     }
                 });
@@ -973,6 +1067,53 @@ namespace DatalistSyncUtil.Views
             }
         }
 
+        private void LoadTreeView(TreeView treeView, List<HelpNodeModel> lists)
+        {
+            TreeNode listNode = null;
+            List<TreeNode> langNodes = null;
+            TreeNode helpNode = null;
+            string helpNodeNM = string.Empty;
+
+            try
+            {
+                treeView.Nodes.Clear();
+                List<string> helpNodes = this.GetAllContentID();
+
+                helpNodes.ForEach(f =>
+                {
+                    langNodes = new List<TreeNode>();
+                    listNode = new TreeNode(f.Trim(), langNodes.ToArray());
+                    bool isParentModeAdded = false;
+                    if (this.FinalHelp != null)
+                    {
+                        if (this.FinalHelpLanguages != null)
+                        {
+                            this.GetTreeHelpLanguages(langNodes, f.Trim());
+                            listNode = new TreeNode(f.Trim(), langNodes.ToArray());
+                            if (langNodes.Count != 0)
+                            {
+                                treeView.Nodes.Add(listNode);
+                                isParentModeAdded = true;
+                            }
+                        }
+                    }
+
+                    if (!isParentModeAdded)
+                    {
+                        helpNode = new TreeNode(f.Trim());
+                        treeView.Nodes.Add(helpNode);
+                    }
+                });
+
+                treeView.ExpandAll();
+            }
+            finally
+            {
+                listNode = null;
+                langNodes = null;
+            }
+        }
+
         private void LoadTreeView(TreeView treeView, List<AppSettingsModel> lists)
         {
             TreeNode listNode = null;
@@ -1092,6 +1233,20 @@ namespace DatalistSyncUtil.Views
             items.ForEach(f =>
             {
                 node = new TreeNode(f.TargetValue);
+                langNodes.Add(node);
+            });
+        }
+
+        private void GetTreeHelpLanguages(List<TreeNode> langNodes, string helpNodeNM)
+        {
+            TreeNode node = null;
+            string languageSeparator = " - ";
+
+            List<HelpContentLanguageModel> items = this.FinalHelpLanguages.FindAll(f => f.HelpNodeNM.Trim() == helpNodeNM);
+
+            items.ForEach(f =>
+            {
+                node = new TreeNode(f.Language + languageSeparator + f.HtmlContent);
                 langNodes.Add(node);
             });
         }
@@ -1282,6 +1437,28 @@ namespace DatalistSyncUtil.Views
                     if (!listContents.Contains(f.ContentId.Trim()))
                     {
                         listContents.Add(f.ContentId.Trim());
+                    }
+                });
+            }
+
+            if (this.FinalHelp != null)
+            {
+                this.FinalHelp.ForEach(f =>
+                {
+                    if (!listContents.Contains(f.HelpNodeNM.Trim()))
+                    {
+                        listContents.Add(f.HelpNodeNM.Trim());
+                    }
+                });
+            }
+
+            if (this.FinalHelpLanguages != null)
+            {
+                this.FinalHelpLanguages.ForEach(f =>
+                {
+                    if (!listContents.Contains(f.HelpNodeNM.Trim()))
+                    {
+                        listContents.Add(f.HelpNodeNM.Trim());
                     }
                 });
             }

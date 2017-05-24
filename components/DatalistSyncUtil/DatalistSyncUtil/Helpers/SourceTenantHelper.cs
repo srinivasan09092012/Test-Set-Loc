@@ -5,6 +5,7 @@
 // Violators may be punished to the full extent of the law.
 //-----------------------------------------------------------------------------------------
 using DatalistSyncUtil.Configs;
+using DatalistSyncUtil.Domain;
 using HP.HSP.UA3.Core.BAS.CQRS.Base;
 using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Config.DAOHelpers;
@@ -20,6 +21,8 @@ namespace DatalistSyncUtil
 {
     public class SourceTenantHelper
     {
+        private const string SourceHelpCache = "SourceHelpNode";
+
         public SourceTenantHelper()
         {
             this.ConnectionString = ConfigurationManager.ConnectionStrings["SourceDataList"];
@@ -132,6 +135,26 @@ namespace DatalistSyncUtil
             else
             {
                 result = this.Cache.Get<List<HtmlBlockModel>>("SourceHtmlBlock").ToList();
+            }
+
+            return result;
+        }
+
+        public List<HelpNodeModel> GetHelpList()
+        {
+            List<HelpNodeModel> result = null;
+            if (!this.Cache.IsSet(SourceHelpCache))
+            {
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    result = new HelpReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").SearchHelp();
+                }
+
+                this.Cache.Set(SourceHelpCache, result.OrderBy(o => o.HelpNodeNM).ToList(), 1440);
+            }
+            else
+            {
+                result = this.Cache.Get<List<HelpNodeModel>>(SourceHelpCache).ToList();
             }
 
             return result;

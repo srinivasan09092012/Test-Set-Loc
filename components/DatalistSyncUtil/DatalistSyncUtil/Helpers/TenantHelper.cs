@@ -4,8 +4,11 @@
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
 // Violators may be punished to the full extent of the law.
 //-----------------------------------------------------------------------------------------
+using DatalistSyncUtil.Commands;
 using DatalistSyncUtil.Configs;
 using DatalistSyncUtil.DaoHelpers;
+using DatalistSyncUtil.Domain;
+using DatalistSyncUtil.Entities;
 using HP.HSP.UA3.Core.BAS.CQRS.Base;
 using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Config.DAOHelpers;
@@ -23,6 +26,9 @@ namespace DatalistSyncUtil
 {
     public class TenantHelper
     {
+        private const string TagrgetHelpCache = "TargetHelp";
+        private int cacheTimeout = int.Parse(ConfigurationManager.AppSettings["SkipNoOfDays"]);
+
         public TenantHelper()
         {
             this.ConnectionString = ConfigurationManager.ConnectionStrings["TargetDataList"];
@@ -50,7 +56,7 @@ namespace DatalistSyncUtil
                     result = new GetTenantDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
                 }
 
-                this.Cache.Set("TargetTenants", result.OrderBy(o => o.TenantName).ToList(), 1440);
+                this.Cache.Set("TargetTenants", result.OrderBy(o => o.TenantName).ToList(), this.cacheTimeout);
             }
             else
             {
@@ -70,7 +76,7 @@ namespace DatalistSyncUtil
                     result = new GetTenantModuleDaoHelper(new TenantModuleDbContext(session, true)).ExecuteProcedure();
                 }
 
-                this.Cache.Set("TargetTenantModules", result, 1440);
+                this.Cache.Set("TargetTenantModules", result, this.cacheTimeout);
             }
             else
             {
@@ -90,7 +96,7 @@ namespace DatalistSyncUtil
                     result = new SearchAppSettingsDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
                 }
 
-                this.Cache.Set("TargetAppSetting", result.OrderBy(o => o.AppSettingKey).ToList(), 1440);
+                this.Cache.Set("TargetAppSetting", result.OrderBy(o => o.AppSettingKey).ToList(), this.cacheTimeout);
             }
             else
             {
@@ -110,7 +116,7 @@ namespace DatalistSyncUtil
                     result = new SearchDataListDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
                 }
 
-                this.Cache.Set("TargetDataLists", result.OrderBy(o => o.ContentID).ToList(), 1440);
+                this.Cache.Set("TargetDataLists", result.OrderBy(o => o.ContentID).ToList(), this.cacheTimeout);
             }
             else
             {
@@ -130,11 +136,31 @@ namespace DatalistSyncUtil
                     result = new HtmlBlocksReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").SearchHtmlBlocks();
                 }
 
-                this.Cache.Set("TargetHtmlBlock", result.OrderBy(o => o.ContentId).ToList(), 1440);
+                this.Cache.Set("TargetHtmlBlock", result.OrderBy(o => o.ContentId).ToList(), this.cacheTimeout);
             }
             else
             {
                 result = this.Cache.Get<List<HtmlBlockModel>>("TargetHtmlBlock").ToList();
+            }
+
+            return result;
+        }
+
+        public List<HelpNodeModel> GetHelpList()
+        {
+            List<HelpNodeModel> result = null;
+            if (!this.Cache.IsSet(TagrgetHelpCache))
+            {
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    result = new HelpReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").SearchHelp();
+                }
+
+                this.Cache.Set(TagrgetHelpCache, result.OrderBy(o => o.HelpNodeNM).ToList(), this.cacheTimeout);
+            }
+            else
+            {
+                result = this.Cache.Get<List<HelpNodeModel>>(TagrgetHelpCache).ToList();
             }
 
             return result;
@@ -150,7 +176,7 @@ namespace DatalistSyncUtil
                     result = new ImagesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").SearchImages();
                 }
 
-                this.Cache.Set("TargetImages", result.OrderBy(o => o.ContentId).ToList(), 1440);
+                this.Cache.Set("TargetImages", result.OrderBy(o => o.ContentId).ToList(), this.cacheTimeout);
             }
             else
             {
@@ -211,7 +237,7 @@ namespace DatalistSyncUtil
             result.AddRange(resultmsg);
             result.AddRange(resultlbl);
             result.AddRange(resultsecrights);
-            this.Cache.Set("TargetDataListItems", result, 1440);
+            this.Cache.Set("TargetDataListItems", result, this.cacheTimeout);
 
             return result;
         }
@@ -227,7 +253,7 @@ namespace DatalistSyncUtil
                     resultmenu = new MenusReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").SearchMenus(true);
                 }
 
-                this.Cache.Set("TargetMenus", resultmenu, 1440);
+                this.Cache.Set("TargetMenus", resultmenu, this.cacheTimeout);
 
                 return resultmenu;
             }
@@ -301,7 +327,7 @@ namespace DatalistSyncUtil
                 x.HtmlBlockLanguages = languages.FindAll(c => c.ID == x.ID);
             });
 
-            this.Cache.Set("TargetHtmlLangs", result, 1440);
+            this.Cache.Set("TargetHtmlLangs", result, this.cacheTimeout);
 
             return languages;
         }
@@ -336,7 +362,7 @@ namespace DatalistSyncUtil
                 x.ImageLanguages = languages.FindAll(c => c.ID == x.ID);
             });
 
-            this.Cache.Set("TargetImageLangs", result, 1440);
+            this.Cache.Set("TargetImageLangs", result, this.cacheTimeout);
 
             return languages;
         }
@@ -480,6 +506,82 @@ namespace DatalistSyncUtil
                 try
                 {
                     new UpdateHtmlBlockLanguageDaoHelper(new HtmlBlockDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
+                }
+            }
+
+            return success;
+        }
+
+        public bool AddHelpLanguage(HelpContentLanguageModel cmd)
+        {
+            bool success = true;
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new AddHelpLanguageDaoHelper(new HelpDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
+                }
+            }
+
+            return success;
+        }
+
+        public bool UpdateHelpLanguage(HelpContentLanguageModel cmd)
+        {
+            bool success = true;
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new UpdateHelpLanguageDaoHelper(new HelpDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
+                }
+            }
+
+            return success;
+        }
+
+        public bool AddHelp(AddHelpContentCommand cmd)
+        {
+            bool success = true;
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new AddHelpContentDaoHelper(new HelpDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
+                }
+            }
+
+            return success;
+        }
+
+        public bool Updatehelp(UpdateHelpContentCommand cmd)
+        {
+            bool success = true;
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new UpdateHelpContentDaoHelper(new HelpDbContext(session, true)).ExecuteProcedure(cmd);
                 }
                 catch (Exception ex)
                 {
@@ -733,7 +835,7 @@ namespace DatalistSyncUtil
                 {
                     resultitems = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(string.Empty);
                     result = new DataListAttributesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "target").SearchCodeTables(resultitems);
-                    this.Cache.Set("TargetDataListAttributes", result, 1440);
+                    this.Cache.Set("TargetDataListAttributes", result, this.cacheTimeout);
                 }
             }
             else
@@ -752,7 +854,7 @@ namespace DatalistSyncUtil
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
                     resultitems = new DataListAttributesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").GetDataListItemAttributes();
-                    this.Cache.Set("TargetDataListItemAttributes", resultitems, 1440);
+                    this.Cache.Set("TargetDataListItemAttributes", resultitems, this.cacheTimeout);
                 }
             }
             else
@@ -775,7 +877,7 @@ namespace DatalistSyncUtil
                     resultitems = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(string.Empty);
 
                     result = new DataListLinksReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").SearchCodeTables(resultitems);
-                    this.Cache.Set(key, result, 1440);
+                    this.Cache.Set(key, result, this.cacheTimeout);
                 }
             }
             else
