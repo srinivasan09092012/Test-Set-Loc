@@ -27,7 +27,7 @@ namespace DatalistSyncUtil
     public class TenantHelper
     {
         private const string TagrgetHelpCache = "TargetHelp";
-        private int cacheTimeout = int.Parse(ConfigurationManager.AppSettings["SkipNoOfDays"]);
+        private int cacheTimeout = int.Parse(ConfigurationManager.AppSettings["CacheTimeOut"]);
 
         public TenantHelper()
         {
