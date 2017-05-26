@@ -104,11 +104,8 @@ namespace DatalistSyncUtil
         private void LoadImagelistDelta()
         {
             List<ImagesMainModel> newImagelists = null;
-            List<ImagesMainModel> updatedImagelists = null;
             this.newImagesView.AutoGenerateColumns = false;
             newImagelists = this.GetNewImageslist();
-            updatedImagelists = this.UpdatedImageslist();
-            newImagelists.AddRange(updatedImagelists);
             Guid tenantModuleId = (this.moduleList.SelectedItem as TenantModuleModel).TenantModuleId;
 
             if (tenantModuleId != Guid.Empty)
@@ -129,27 +126,6 @@ namespace DatalistSyncUtil
                 i.Status = "NEW";
             });
             return newImagelists.OrderBy(o => o.ContentId).ToList();
-        }
-
-        private List<ImagesMainModel> UpdatedImageslist()
-        {
-            List<ImagesMainModel> updatedImagelists = new List<ImagesMainModel>();
-            ImagesMainModel sourceImagelist = null;
-            ImagesMainModel targetImagelist = null;
-            List<string> images = this.SourceImagesList.Select(c => c.ContentId).Intersect(this.TargetImagesList.Select(c => c.ContentId)).ToList();
-            images.ForEach(f =>
-            {
-                sourceImagelist = this.SourceImagesList.Find(e => e.ContentId == f);
-                targetImagelist = this.TargetImagesList.Find(e => e.ContentId == f);
-
-                if (sourceImagelist.Description != targetImagelist.Description || sourceImagelist.IsActive != targetImagelist.IsActive)
-                {
-                    sourceImagelist.Status = "UPDATE";
-                    sourceImagelist.ImageId = targetImagelist.ImageId;
-                    updatedImagelists.Add(sourceImagelist);
-                }
-            });
-            return updatedImagelists.OrderBy(o => o.ContentId).ToList();
         }
 
         private void LoadUpdatedImages()

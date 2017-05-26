@@ -248,11 +248,8 @@ namespace DatalistSyncUtil
         private void LoadHtmllistDelta()
         {
             List<HtmlBlockMainModel> newHtmllists = null;
-            List<HtmlBlockMainModel> updatedHtmllists = null;
             this.newHtmlBlkView.AutoGenerateColumns = false;
             newHtmllists = this.GetNewHtmllist();
-            updatedHtmllists = this.UpdatedHtmllist();
-            newHtmllists.AddRange(updatedHtmllists);
             Guid tenantModuleId = (this.moduleList.SelectedItem as TenantModuleModel).TenantModuleId;
 
             if (tenantModuleId != Guid.Empty)
@@ -273,27 +270,6 @@ namespace DatalistSyncUtil
                 i.Status = "NEW";
             });
             return newhtmllists.OrderBy(o => o.ContentId).ToList();
-        }
-
-        private List<HtmlBlockMainModel> UpdatedHtmllist()
-        {
-            List<HtmlBlockMainModel> updatedHtmlists = new List<HtmlBlockMainModel>();
-            HtmlBlockMainModel sourceHtmllist = null;
-            HtmlBlockMainModel targetHtmllist = null;
-            List<string> htmlBlks = this.SourceHtmlList.Select(c => c.ContentId).Intersect(this.TargetHtmlList.Select(c => c.ContentId)).ToList();
-            htmlBlks.ForEach(f =>
-            {
-                sourceHtmllist = this.SourceHtmlList.Find(e => e.ContentId == f);
-                targetHtmllist = this.TargetHtmlList.Find(e => e.ContentId == f);
-
-                if (sourceHtmllist.Description != targetHtmllist.Description || sourceHtmllist.IsActive != targetHtmllist.IsActive)
-                {
-                    sourceHtmllist.Status = "UPDATE";
-                    sourceHtmllist.ID = targetHtmllist.ID;
-                    updatedHtmlists.Add(sourceHtmllist);
-                }
-            });
-            return updatedHtmlists.OrderBy(o => o.ContentId).ToList();
         }
 
         private void LoadUpdateHtmlBlks()

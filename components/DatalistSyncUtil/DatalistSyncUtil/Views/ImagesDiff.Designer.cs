@@ -37,12 +37,6 @@
             this.NewImages = new System.Windows.Forms.TabPage();
             this.NewImagesSelectAllCB = new System.Windows.Forms.CheckBox();
             this.newImagesView = new System.Windows.Forms.DataGridView();
-            this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ContentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.IsEditable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UpdatedImages = new System.Windows.Forms.TabPage();
             this.UpdateImagesSelectAllCB = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -69,16 +63,6 @@
             this.NewLangNewImageCB = new System.Windows.Forms.CheckBox();
             this.NewImageLangSelectAllCB = new System.Windows.Forms.CheckBox();
             this.newImageLangView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewCheckBoxColumn16 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ContentIDSrcNew = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SourceSrcNew = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WidthLang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HeightLang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ToolTipLang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LocaleIDLang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsActiveLang = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.IsEditableLang = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.StatusLang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UpdateLang = new System.Windows.Forms.TabPage();
             this.UpdateImageLangSelectAllCB = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -95,8 +79,6 @@
             this.IsEditableTgt = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.StatusTgt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sourceImageLangView = new System.Windows.Forms.DataGridView();
-            this.PreviewUpdate = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
             this.dataGridViewCheckBoxColumn7 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ContentIDSrc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SourceSrc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -112,6 +94,24 @@
             this.ToolTipModified = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StatusSrc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsActiveModifiedSrc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PreviewUpdate = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ContentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.IsEditable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn16 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ContentIDSrcNew = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SourceSrcNew = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WidthLang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HeightLang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ToolTipLang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LocaleIDLang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsActiveLang = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.IsEditableLang = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.StatusLang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.diffImages.SuspendLayout();
             this.Images.SuspendLayout();
             this.ImagesSubTab.SuspendLayout();
@@ -243,53 +243,6 @@
             this.newImagesView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.newImagesView.Size = new System.Drawing.Size(997, 403);
             this.newImagesView.TabIndex = 7;
-            // 
-            // Select
-            // 
-            this.Select.HeaderText = "";
-            this.Select.Name = "Select";
-            this.Select.Width = 25;
-            // 
-            // ContentID
-            // 
-            this.ContentID.DataPropertyName = "ContentID";
-            this.ContentID.HeaderText = "Content ID";
-            this.ContentID.Name = "ContentID";
-            this.ContentID.ReadOnly = true;
-            this.ContentID.Width = 400;
-            // 
-            // Description
-            // 
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            this.Description.Width = 300;
-            // 
-            // IsActive
-            // 
-            this.IsActive.DataPropertyName = "IsActive";
-            this.IsActive.HeaderText = "Active";
-            this.IsActive.Name = "IsActive";
-            this.IsActive.ReadOnly = true;
-            this.IsActive.Width = 60;
-            // 
-            // IsEditable
-            // 
-            this.IsEditable.DataPropertyName = "IsEditable";
-            this.IsEditable.HeaderText = "Editable";
-            this.IsEditable.Name = "IsEditable";
-            this.IsEditable.ReadOnly = true;
-            this.IsEditable.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IsEditable.Width = 70;
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            this.Status.Width = 60;
             // 
             // UpdatedImages
             // 
@@ -536,9 +489,9 @@
             this.NewLangExistingImageCB.Location = new System.Drawing.Point(318, 7);
             this.NewLangExistingImageCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewLangExistingImageCB.Name = "NewLangExistingImageCB";
-            this.NewLangExistingImageCB.Size = new System.Drawing.Size(220, 17);
+            this.NewLangExistingImageCB.Size = new System.Drawing.Size(211, 17);
             this.NewLangExistingImageCB.TabIndex = 31;
-            this.NewLangExistingImageCB.Text = "New Languages - Existing HtmlBlk";
+            this.NewLangExistingImageCB.Text = "New Languages - Existing Image";
             this.NewLangExistingImageCB.UseVisualStyleBackColor = false;
             this.NewLangExistingImageCB.CheckedChanged += new System.EventHandler(this.NewLangExistingImageCB_CheckedChanged);
             // 
@@ -550,9 +503,9 @@
             this.NewLangNewImageCB.Location = new System.Drawing.Point(100, 5);
             this.NewLangNewImageCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewLangNewImageCB.Name = "NewLangNewImageCB";
-            this.NewLangNewImageCB.Size = new System.Drawing.Size(201, 17);
+            this.NewLangNewImageCB.Size = new System.Drawing.Size(192, 17);
             this.NewLangNewImageCB.TabIndex = 30;
-            this.NewLangNewImageCB.Text = "New Languages - New HtmlBlk";
+            this.NewLangNewImageCB.Text = "New Languages - New Image";
             this.NewLangNewImageCB.UseVisualStyleBackColor = false;
             this.NewLangNewImageCB.CheckedChanged += new System.EventHandler(this.NewLangNewImageCB_CheckedChanged);
             // 
@@ -594,81 +547,6 @@
             this.newImageLangView.Size = new System.Drawing.Size(1194, 392);
             this.newImageLangView.TabIndex = 7;
             this.newImageLangView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.NewImageLangView_RowsAdded);
-            // 
-            // dataGridViewCheckBoxColumn16
-            // 
-            this.dataGridViewCheckBoxColumn16.HeaderText = "";
-            this.dataGridViewCheckBoxColumn16.Name = "dataGridViewCheckBoxColumn16";
-            this.dataGridViewCheckBoxColumn16.Width = 25;
-            // 
-            // ContentIDSrcNew
-            // 
-            this.ContentIDSrcNew.DataPropertyName = "ContentID";
-            this.ContentIDSrcNew.HeaderText = "Content ID";
-            this.ContentIDSrcNew.Name = "ContentIDSrcNew";
-            this.ContentIDSrcNew.ReadOnly = true;
-            this.ContentIDSrcNew.Width = 300;
-            // 
-            // SourceSrcNew
-            // 
-            this.SourceSrcNew.DataPropertyName = "Source";
-            this.SourceSrcNew.HeaderText = "Source";
-            this.SourceSrcNew.Name = "SourceSrcNew";
-            this.SourceSrcNew.ReadOnly = true;
-            this.SourceSrcNew.Width = 350;
-            // 
-            // WidthLang
-            // 
-            this.WidthLang.DataPropertyName = "Width";
-            this.WidthLang.HeaderText = "Width";
-            this.WidthLang.Name = "WidthLang";
-            this.WidthLang.Width = 60;
-            // 
-            // HeightLang
-            // 
-            this.HeightLang.DataPropertyName = "Height";
-            this.HeightLang.HeaderText = "Height";
-            this.HeightLang.Name = "HeightLang";
-            this.HeightLang.Width = 60;
-            // 
-            // ToolTipLang
-            // 
-            this.ToolTipLang.DataPropertyName = "Tooltip";
-            this.ToolTipLang.HeaderText = "ToolTip";
-            this.ToolTipLang.Name = "ToolTipLang";
-            // 
-            // LocaleIDLang
-            // 
-            this.LocaleIDLang.DataPropertyName = "LocaleID";
-            this.LocaleIDLang.HeaderText = "LocaleID";
-            this.LocaleIDLang.Name = "LocaleIDLang";
-            this.LocaleIDLang.ReadOnly = true;
-            // 
-            // IsActiveLang
-            // 
-            this.IsActiveLang.DataPropertyName = "IsActive";
-            this.IsActiveLang.HeaderText = "Active";
-            this.IsActiveLang.Name = "IsActiveLang";
-            this.IsActiveLang.ReadOnly = true;
-            this.IsActiveLang.Width = 60;
-            // 
-            // IsEditableLang
-            // 
-            this.IsEditableLang.DataPropertyName = "IsEditable";
-            this.IsEditableLang.HeaderText = "Editable";
-            this.IsEditableLang.Name = "IsEditableLang";
-            this.IsEditableLang.ReadOnly = true;
-            this.IsEditableLang.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IsEditableLang.Visible = false;
-            this.IsEditableLang.Width = 70;
-            // 
-            // StatusLang
-            // 
-            this.StatusLang.DataPropertyName = "Status";
-            this.StatusLang.HeaderText = "Status";
-            this.StatusLang.Name = "StatusLang";
-            this.StatusLang.ReadOnly = true;
-            this.StatusLang.Width = 90;
             // 
             // UpdateLang
             // 
@@ -854,30 +732,6 @@
             this.sourceImageLangView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.SourceImageLangView_RowAdded);
             this.sourceImageLangView.Scroll += new System.Windows.Forms.ScrollEventHandler(this.SourceImageLangView_Scroll);
             // 
-            // PreviewUpdate
-            // 
-            this.PreviewUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreviewUpdate.Location = new System.Drawing.Point(929, 574);
-            this.PreviewUpdate.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.PreviewUpdate.Name = "PreviewUpdate";
-            this.PreviewUpdate.Size = new System.Drawing.Size(132, 26);
-            this.PreviewUpdate.TabIndex = 37;
-            this.PreviewUpdate.Text = "Preview && Update";
-            this.PreviewUpdate.UseVisualStyleBackColor = true;
-            this.PreviewUpdate.Click += new System.EventHandler(this.PreviewUpdate_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(1072, 574);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(56, 26);
-            this.btnClose.TabIndex = 36;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click_1);
-            // 
             // dataGridViewCheckBoxColumn7
             // 
             this.dataGridViewCheckBoxColumn7.HeaderText = "";
@@ -990,6 +844,155 @@
             this.IsActiveModifiedSrc.Name = "IsActiveModifiedSrc";
             this.IsActiveModifiedSrc.Visible = false;
             // 
+            // PreviewUpdate
+            // 
+            this.PreviewUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PreviewUpdate.Location = new System.Drawing.Point(929, 574);
+            this.PreviewUpdate.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.PreviewUpdate.Name = "PreviewUpdate";
+            this.PreviewUpdate.Size = new System.Drawing.Size(132, 26);
+            this.PreviewUpdate.TabIndex = 37;
+            this.PreviewUpdate.Text = "Preview && Update";
+            this.PreviewUpdate.UseVisualStyleBackColor = true;
+            this.PreviewUpdate.Click += new System.EventHandler(this.PreviewUpdate_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(1072, 574);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(56, 26);
+            this.btnClose.TabIndex = 36;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click_1);
+            // 
+            // Select
+            // 
+            this.Select.HeaderText = "";
+            this.Select.Name = "Select";
+            this.Select.Width = 25;
+            // 
+            // ContentID
+            // 
+            this.ContentID.DataPropertyName = "ContentID";
+            this.ContentID.HeaderText = "Content ID";
+            this.ContentID.Name = "ContentID";
+            this.ContentID.ReadOnly = true;
+            this.ContentID.Width = 400;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            this.Description.Width = 300;
+            // 
+            // IsActive
+            // 
+            this.IsActive.DataPropertyName = "IsActive";
+            this.IsActive.HeaderText = "Active";
+            this.IsActive.Name = "IsActive";
+            this.IsActive.ReadOnly = true;
+            this.IsActive.Width = 60;
+            // 
+            // IsEditable
+            // 
+            this.IsEditable.DataPropertyName = "IsEditable";
+            this.IsEditable.HeaderText = "Editable";
+            this.IsEditable.Name = "IsEditable";
+            this.IsEditable.ReadOnly = true;
+            this.IsEditable.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IsEditable.Visible = false;
+            this.IsEditable.Width = 70;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            this.Status.Visible = false;
+            this.Status.Width = 60;
+            // 
+            // dataGridViewCheckBoxColumn16
+            // 
+            this.dataGridViewCheckBoxColumn16.HeaderText = "";
+            this.dataGridViewCheckBoxColumn16.Name = "dataGridViewCheckBoxColumn16";
+            this.dataGridViewCheckBoxColumn16.Width = 25;
+            // 
+            // ContentIDSrcNew
+            // 
+            this.ContentIDSrcNew.DataPropertyName = "ContentID";
+            this.ContentIDSrcNew.HeaderText = "Content ID";
+            this.ContentIDSrcNew.Name = "ContentIDSrcNew";
+            this.ContentIDSrcNew.ReadOnly = true;
+            this.ContentIDSrcNew.Width = 300;
+            // 
+            // SourceSrcNew
+            // 
+            this.SourceSrcNew.DataPropertyName = "Source";
+            this.SourceSrcNew.HeaderText = "Source";
+            this.SourceSrcNew.Name = "SourceSrcNew";
+            this.SourceSrcNew.ReadOnly = true;
+            this.SourceSrcNew.Width = 350;
+            // 
+            // WidthLang
+            // 
+            this.WidthLang.DataPropertyName = "Width";
+            this.WidthLang.HeaderText = "Width";
+            this.WidthLang.Name = "WidthLang";
+            this.WidthLang.Width = 60;
+            // 
+            // HeightLang
+            // 
+            this.HeightLang.DataPropertyName = "Height";
+            this.HeightLang.HeaderText = "Height";
+            this.HeightLang.Name = "HeightLang";
+            this.HeightLang.Width = 60;
+            // 
+            // ToolTipLang
+            // 
+            this.ToolTipLang.DataPropertyName = "Tooltip";
+            this.ToolTipLang.HeaderText = "ToolTip";
+            this.ToolTipLang.Name = "ToolTipLang";
+            // 
+            // LocaleIDLang
+            // 
+            this.LocaleIDLang.DataPropertyName = "LocaleID";
+            this.LocaleIDLang.HeaderText = "LocaleID";
+            this.LocaleIDLang.Name = "LocaleIDLang";
+            this.LocaleIDLang.ReadOnly = true;
+            // 
+            // IsActiveLang
+            // 
+            this.IsActiveLang.DataPropertyName = "IsActive";
+            this.IsActiveLang.HeaderText = "Active";
+            this.IsActiveLang.Name = "IsActiveLang";
+            this.IsActiveLang.ReadOnly = true;
+            this.IsActiveLang.Width = 60;
+            // 
+            // IsEditableLang
+            // 
+            this.IsEditableLang.DataPropertyName = "IsEditable";
+            this.IsEditableLang.HeaderText = "Editable";
+            this.IsEditableLang.Name = "IsEditableLang";
+            this.IsEditableLang.ReadOnly = true;
+            this.IsEditableLang.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IsEditableLang.Visible = false;
+            this.IsEditableLang.Width = 70;
+            // 
+            // StatusLang
+            // 
+            this.StatusLang.DataPropertyName = "Status";
+            this.StatusLang.HeaderText = "Status";
+            this.StatusLang.Name = "StatusLang";
+            this.StatusLang.ReadOnly = true;
+            this.StatusLang.Visible = false;
+            this.StatusLang.Width = 90;
+            // 
             // ImagesDiff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1065,28 +1068,12 @@
         private System.Windows.Forms.CheckBox UpdateImageLangSelectAllCB;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
-        private new System.Windows.Forms.DataGridViewCheckBoxColumn Select;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ContentID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn IsActive;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn IsEditable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn ContentIDUpd;
         private System.Windows.Forms.DataGridViewTextBoxColumn DescriptionUpd;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsActiveUpd;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsEditableUpd;
         private System.Windows.Forms.DataGridViewTextBoxColumn StatusUpd;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ContentIDSrcNew;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SourceSrcNew;
-        private System.Windows.Forms.DataGridViewTextBoxColumn WidthLang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HeightLang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ToolTipLang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LocaleIDLang;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn IsActiveLang;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn IsEditableLang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StatusLang;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn22;
         private System.Windows.Forms.DataGridViewTextBoxColumn ContentIDTgt;
         private System.Windows.Forms.DataGridViewTextBoxColumn SourceTgtLang;
@@ -1112,5 +1099,21 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ToolTipModified;
         private System.Windows.Forms.DataGridViewTextBoxColumn StatusSrc;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsActiveModifiedSrc;
+        private new System.Windows.Forms.DataGridViewCheckBoxColumn Select;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ContentID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsActive;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsEditable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ContentIDSrcNew;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SourceSrcNew;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WidthLang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HeightLang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ToolTipLang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LocaleIDLang;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsActiveLang;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsEditableLang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StatusLang;
     }
 }

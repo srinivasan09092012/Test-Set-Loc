@@ -367,7 +367,7 @@ namespace DatalistSyncUtil
 
         private void NewLangNewHtmlBlkCB_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in newHtmlLangView.Rows)
+            foreach (DataGridViewRow row in this.newHtmlLangView.Rows)
             {
                 string rowStatus = row.Cells[6].Value != null ? row.Cells[6].Value.ToString() : string.Empty;
 
