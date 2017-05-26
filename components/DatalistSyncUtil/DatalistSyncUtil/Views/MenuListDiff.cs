@@ -109,13 +109,6 @@ namespace DatalistSyncUtil.Views
             this.UpdatedMenuItems();
         }
 
-        private List<MenuItemModel> GetNewMenuItems()
-        {
-            List<string> menuitems = this.SourceMenuItem.Select(c => c.Name).Except(this.TargetMenuItem.Select(c => c.Name)).ToList();
-            List<MenuItemModel> newmenus = this.SourceMenuItem.Where(c => menuitems.Contains(c.Name)).ToList();
-            return newmenus.OrderBy(o => o.Name).ToList();
-        }
-
         private List<MenuItemModel> GetNewMenuItemsFromNewList()
         {
             List<MenuItemModel> newmenuitems = new List<MenuItemModel>();
@@ -142,7 +135,7 @@ namespace DatalistSyncUtil.Views
             });
             this.SourceMenuItem = sourceMenuItems;
             this.TargetMenuItem = targetMenuItems;
-            menuItems = this.SourceMenuItem.Where(a => !this.TargetMenuItem.Any(b => b.Name == a.Name && b.IsActive == a.IsActive)).ToList();
+            menuItems = this.SourceMenuItem.Where(a => !this.TargetMenuItem.Any(b => b.Name == a.Name)).ToList();
             if (menuItems != null && menuItems.Count > 0)
             {
                 newMenuItemsFromUpdateList.AddRange(menuItems);
@@ -189,7 +182,7 @@ namespace DatalistSyncUtil.Views
             string targetSecurityRight = null;
             sourceSecurity = this.Sourceitems.Where(c => c.ID == sourceSecurityRightID).FirstOrDefault();
             targetSecurity = this.Items.Where(c => c.ID == targetSecurityRightID).FirstOrDefault();
-            if (sourceSecurity != null || targetSecurity != null)
+            if (sourceSecurity != null && targetSecurity != null)
             {
                 sourceSecurityRight = sourceSecurity.Code;
                 targetSecurityRight = targetSecurity.Code;

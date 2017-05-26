@@ -412,7 +412,15 @@ namespace DatalistSyncUtil
                 case "Menus":
                     this.TargetMenuList = this.LoadTargetMenus();
                     List<MenuListModel> filteredDataList1 = null;
-                    filteredDataList1 = this.TargetMenuList;
+                    if (tenantModuleId == Guid.Empty)
+                    {
+                        filteredDataList1 = this.TargetMenuList;
+                    }
+                    else
+                    {
+                        filteredDataList1 = this.TargetMenuList.Where(w => w.TenantModuleID == tenantModuleId).ToList();
+                    }
+
                     this.LoadMenuTreeView(this.targetTreeList, filteredDataList1.OrderBy(w => w.Name).ToList());
                     break;
                 case "Security":
@@ -1200,7 +1208,15 @@ namespace DatalistSyncUtil
                 case "Menus":
                     this.SourceMenuList = this.LoadSourceMenus();
                     List<MenuListModel> filteredDataList1 = null;
-                    filteredDataList1 = this.SourceMenuList;
+                    if (tenantModuleId == Guid.Empty)
+                    {
+                        filteredDataList1 = this.SourceMenuList;
+                    }
+                    else
+                    {
+                        filteredDataList1 = this.SourceMenuList.Where(w => w.TenantModuleID == tenantModuleId).ToList();
+                    }
+
                     this.LoadMenuTreeView(this.sourceTreeList, filteredDataList1.OrderBy(w => w.Name).ToList());
                     break;
                 case "Security":
