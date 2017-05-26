@@ -35,7 +35,7 @@ namespace DatalistSyncUtil
             this.SourceHelpList = sourceList;
             this.TargetHelpList = targetList;
             this.LoadModules();
-            this.LoadDelta();
+            ////this.LoadDelta();
         }
 
         public TenantHelper LoadHelper { get; set; }
@@ -160,7 +160,7 @@ namespace DatalistSyncUtil
                 {
                     helpLangs.ForEach(l =>
                     {
-                        targetHelpLanguages = targetHelpLangs.Find(i => i.HelpNodeNM == l.HelpNodeNM).HelpContentLanguages;
+                        targetHelpLanguages = targetHelpLangs.Find(i => i.HelpNodeNM == l.HelpNodeNM && i.HelpNodeTypeCD == l.HelpNodeTypeCD).HelpContentLanguages;
                         finalHelpLanguages = l.HelpContentLanguages.Where(b => !targetHelpLanguages.Any(a => a.Language == b.Language)).ToList();
                         finalHelpLanguages.ForEach(h =>
                         {
@@ -249,11 +249,8 @@ namespace DatalistSyncUtil
         private void LoadHelplistDelta()
         {
             List<HelpNodeModel> newHelplists = null;
-            List<HelpNodeModel> updatedHelplists = null;
             this.newHelpView.AutoGenerateColumns = false;
             newHelplists = this.GetNewHelplist();
-            updatedHelplists = this.UpdatedHelplist();
-            newHelplists.AddRange(updatedHelplists);
             Guid tenantModuleId = (this.moduleList.SelectedItem as TenantModuleModel).TenantModuleId;
 
             if (tenantModuleId != Guid.Empty)
@@ -291,6 +288,7 @@ namespace DatalistSyncUtil
                 {
                     sourceHelpNodelist.Status = "UPDATE";
                     sourceHelpNodelist.HelpNodeId = targetHelpNodelist.HelpNodeId;
+                    sourceHelpNodelist.IsActive = targetHelpNodelist.IsActive;
                     updatedHelpists.Add(sourceHelpNodelist);
                 }
             });

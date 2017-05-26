@@ -176,8 +176,8 @@ namespace DatalistSyncUtil.Views
                 }
 
                 Cursor.Current = Cursors.Default;
-                PreviewPage.ActiveForm.Close();
-                ///MessageBox.Show("Saved Sucessfully");
+                MessageBox.Show("Saved Sucessfully");
+                this.Close();
             }
             catch (Exception ex)
             {
@@ -203,6 +203,7 @@ namespace DatalistSyncUtil.Views
                         }                       
                     }
 
+                    MessageBox.Show("AppSetting Added Successfully !! ");
                     this.Cache.Remove("TargetAppSetting");
                 }
             }
@@ -319,7 +320,7 @@ namespace DatalistSyncUtil.Views
                 if (this.FinalHelp != null)
                 {
                     List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
-
+                    this.FinalHelp = this.FinalHelp.OrderBy(x => x.NodeDepth).ToList();
                     foreach (HelpNodeModel list in this.FinalHelp)
                     {
                         if (list.Status == "NEW")
@@ -329,8 +330,6 @@ namespace DatalistSyncUtil.Views
                                 HelpNodeModel = list
                             };
                             this.LoadHelper.AddHelp(addHelpContentCommand);
-                           
-                            MessageBox.Show("Help Added successfully !!");
                         }
                         else
                         {
@@ -339,7 +338,6 @@ namespace DatalistSyncUtil.Views
                                 HelpNodeModel = list
                             };
                             this.LoadHelper.Updatehelp(updateHelpContentCommand);
-                            MessageBox.Show("Html Blocks successfully Updated !!");
                         }
                     }
 
@@ -403,13 +401,10 @@ namespace DatalistSyncUtil.Views
                                     }
                                 });
                             }
-
-                            MessageBox.Show("Image Added successfully !!");
                         }
                         else
                         {
                             this.LoadHelper.UpdateImage(list);
-                            MessageBox.Show("Images successfully Updated !!");
                         }
                     }
 

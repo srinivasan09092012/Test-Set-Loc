@@ -39,6 +39,13 @@ namespace DatalistSyncUtil
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DataListView = new System.Windows.Forms.DataGridView();
+            this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ContentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AppSettingKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HelpNodeNM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DataListLoad = new System.Windows.Forms.Button();
             this.SelectAllChkBox = new System.Windows.Forms.CheckBox();
             this.ModuleList = new System.Windows.Forms.ListBox();
@@ -54,13 +61,6 @@ namespace DatalistSyncUtil
             this.btnCompare = new System.Windows.Forms.Button();
             this.control_label = new System.Windows.Forms.Label();
             this.ControlName = new System.Windows.Forms.ComboBox();
-            this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ContentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AppSettingKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HelpNodeNM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DataListView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Age)).BeginInit();
             this.SuspendLayout();
@@ -111,6 +111,61 @@ namespace DatalistSyncUtil
             this.DataListView.TabIndex = 2;
             this.DataListView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataListView_CellDoubleClick);
             this.DataListView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataListView_CellValueChanged);
+            // 
+            // Select
+            // 
+            this.Select.HeaderText = "Select";
+            this.Select.Name = "Select";
+            this.Select.Width = 60;
+            // 
+            // ContentID
+            // 
+            this.ContentID.DataPropertyName = "ContentID";
+            this.ContentID.HeaderText = "Content ID";
+            this.ContentID.Name = "ContentID";
+            this.ContentID.ReadOnly = true;
+            this.ContentID.Visible = false;
+            this.ContentID.Width = 123;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Name";
+            this.Column1.HeaderText = "Name";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            this.Column1.Width = 87;
+            // 
+            // AppSettingKey
+            // 
+            this.AppSettingKey.DataPropertyName = "AppSettingKey";
+            this.AppSettingKey.HeaderText = "AppSettingKey";
+            this.AppSettingKey.Name = "AppSettingKey";
+            this.AppSettingKey.Visible = false;
+            this.AppSettingKey.Width = 151;
+            // 
+            // Value
+            // 
+            this.Value.DataPropertyName = "Value";
+            this.Value.HeaderText = "Value";
+            this.Value.Name = "Value";
+            this.Value.Visible = false;
+            this.Value.Width = 86;
+            // 
+            // HelpNodeNM
+            // 
+            this.HelpNodeNM.DataPropertyName = "HelpNodeNM";
+            this.HelpNodeNM.HeaderText = "Help Node Name";
+            this.HelpNodeNM.Name = "HelpNodeNM";
+            this.HelpNodeNM.Visible = false;
+            this.HelpNodeNM.Width = 166;
+            // 
+            // IsActive
+            // 
+            this.IsActive.DataPropertyName = "IsActive";
+            this.IsActive.HeaderText = "Active";
+            this.IsActive.Name = "IsActive";
+            this.IsActive.ReadOnly = true;
+            this.IsActive.Width = 58;
             // 
             // DataListLoad
             // 
@@ -277,61 +332,6 @@ namespace DatalistSyncUtil
             this.ControlName.TabIndex = 25;
             this.ControlName.ValueMember = "TenantID";
             this.ControlName.SelectedIndexChanged += new System.EventHandler(this.ControlName_SelectedIndexChanged);
-            // 
-            // Select
-            // 
-            this.Select.HeaderText = "Select";
-            this.Select.Name = "Select";
-            this.Select.Width = 60;
-            // 
-            // ContentID
-            // 
-            this.ContentID.DataPropertyName = "ContentID";
-            this.ContentID.HeaderText = "Content ID";
-            this.ContentID.Name = "ContentID";
-            this.ContentID.ReadOnly = true;
-            this.ContentID.Visible = false;
-            this.ContentID.Width = 123;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "Name";
-            this.Column1.HeaderText = "Name";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            this.Column1.Width = 87;
-            // 
-            // AppSettingKey
-            // 
-            this.AppSettingKey.DataPropertyName = "AppSettingKey";
-            this.AppSettingKey.HeaderText = "AppSettingKey";
-            this.AppSettingKey.Name = "AppSettingKey";
-            this.AppSettingKey.Visible = false;
-            this.AppSettingKey.Width = 151;
-            // 
-            // Value
-            // 
-            this.Value.DataPropertyName = "Value";
-            this.Value.HeaderText = "Value";
-            this.Value.Name = "Value";
-            this.Value.Visible = false;
-            this.Value.Width = 86;
-            // 
-            // HelpNodeNM
-            // 
-            this.HelpNodeNM.DataPropertyName = "HelpNodeNM";
-            this.HelpNodeNM.HeaderText = "Help Node Name";
-            this.HelpNodeNM.Name = "HelpNodeNM";
-            this.HelpNodeNM.Visible = false;
-            this.HelpNodeNM.Width = 166;
-            // 
-            // IsActive
-            // 
-            this.IsActive.DataPropertyName = "IsActive";
-            this.IsActive.HeaderText = "Active";
-            this.IsActive.Name = "IsActive";
-            this.IsActive.ReadOnly = true;
-            this.IsActive.Width = 58;
             // 
             // DataListSync
             // 

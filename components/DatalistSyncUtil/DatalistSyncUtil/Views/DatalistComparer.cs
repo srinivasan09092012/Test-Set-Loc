@@ -461,7 +461,6 @@ namespace DatalistSyncUtil
                         filteredHelpList = this.TargetHelpList.Where(w => w.TenantModuleId == tenantModuleId).ToList();
                     }
 
-                    this.TargetHelpList = filteredHelpList;
                     this.LoadHelpTreeView(this.targetTreeList, filteredHelpList.OrderBy(o => o.HelpNodeNM).ToList());
                     break;
                 default:

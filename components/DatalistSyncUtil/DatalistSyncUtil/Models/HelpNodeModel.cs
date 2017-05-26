@@ -26,6 +26,8 @@ namespace DatalistSyncUtil.Domain
 
         public string HelpNodeTypeCD { get; set; }
 
+        public int NodeDepth { get; set; }
+
         public Guid TenantModuleId { get; set; }
 
         public Guid TenantId { get; set; }
@@ -39,6 +41,8 @@ namespace DatalistSyncUtil.Domain
         public Guid ParentId { get; set; }
 
         public string ParentHelpNodeName { get; set; }
+
+        public string ParentHelpNodeTypeCD { get; set; }
 
         public string OperatorId { get; set; }
 

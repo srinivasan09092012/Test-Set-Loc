@@ -48,7 +48,7 @@ namespace DatalistSyncUtil.DaoHelpers
                 else
                 {
                     ////Add Topic
-                    this.ParentHelpNodeId = this.GetNodeId(cmd.HelpNodeModel.ParentHelpNodeName, cmd.HelpNodeModel.HelpNodeTypeCD);
+                    this.ParentHelpNodeId = this.GetNodeId(cmd.HelpNodeModel.ParentHelpNodeName, cmd.HelpNodeModel.ParentHelpNodeTypeCD);
                     Guid child = this.AddHelpNodeAndLocale(cmd.HelpNodeModel);
                     this.CreateRelation(cmd.HelpNodeModel, this.ParentHelpNodeId, child);
                 }
@@ -114,8 +114,7 @@ namespace DatalistSyncUtil.DaoHelpers
         private Guid GetNodeId(string helpNodeNM, string helpNodeTypeCD)
         {
             return (from helpNode in this.Context.HelpNode
-                    where helpNode.HelpNodeNM == helpNodeNM 
-                                && helpNode.HelpNodeTypeCD == helpNodeTypeCD
+                    where helpNode.HelpNodeNM == helpNodeNM && helpNode.HelpNodeTypeCD == helpNodeTypeCD
                     select helpNode.HelpNodeId).FirstOrDefault();
         }
 

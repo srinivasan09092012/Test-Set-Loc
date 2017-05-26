@@ -213,6 +213,7 @@ namespace DatalistSyncUtil
                     this.DataListView.Columns[2].Visible = false;
                     this.DataListView.Columns[3].Visible = true;
                     this.DataListView.Columns[4].Visible = true;
+                    this.DataListView.Columns[5].Visible = false;
                     this.BindAppSettings();
                     this.ModuleListSelectedAppSetting();
                     break;
@@ -406,7 +407,7 @@ namespace DatalistSyncUtil
         {
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
             List<HelpNodeLocaleModel> helpNodelist = new List<HelpNodeLocaleModel>();
-
+            this.DataListView.AutoGenerateColumns = false;
             if (this.SkipNoOfDays)
             {
                 this.DataListView.DataSource = new BindingList<HelpNodeModel>(this.SourceHelpNodeList.Where(w => w.TenantId == tenantID).ToList());
@@ -631,7 +632,7 @@ namespace DatalistSyncUtil
                 result = new HelpReadOnly(new DbSession(providerName, connectionString), "Source").SearchHelp();
             }
 
-            this.Cache.Set("HelpNode", result, 1440);
+            this.Cache.Set("HelpNode", result.OrderBy(x => x.HelpNodeNM).ToList(), 1440);
 
             return result;
         }
@@ -1471,40 +1472,10 @@ namespace DatalistSyncUtil
         private List<HelpNodeModel> ConvertToCustomHelp()
         {
             List<HelpNodeModel> helplists = null;
-            List<HelpNodeModel> filteredModuleList = null;
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
-            TenantModuleModel module = null;
             List<TenantModuleModel> selectedModules = new List<TenantModuleModel>();
             helplists = this.SourceHelpNodeList.Where(w => w.TenantId == tenantID).ToList();
-
-            if (this.ModuleList.SelectedItems.Count > 0)
-            {
-                foreach (object item in this.ModuleList.SelectedItems)
-                {
-                    module = item as TenantModuleModel;
-                    selectedModules.Add(module);
-                }
-            }
-
-            if (this.NoOfDays > 0)
-            {
-                var modulesQuery = from list in helplists
-                                   join modules in selectedModules
-                                   on list.TenantModuleId equals modules.TenantModuleId
-                                   where list.LastModifiedTS >= DateTime.UtcNow.AddDays(this.NoOfDays * -1)
-                                   select list;
-                filteredModuleList = modulesQuery.ToList();
-            }
-            else
-            {
-                var modulesQuery = from lists in helplists
-                                   join modules in selectedModules
-                                   on lists.TenantModuleId equals modules.TenantModuleId
-                                   select lists;
-                filteredModuleList = modulesQuery.ToList();
-            }
-
-            return filteredModuleList;
+            return helplists;
         }
 
         private List<ItemAttribute> ConverttoAttributes(List<DataListAttribute> list, string parentContentId, Guid tenantID, Guid dataListID)

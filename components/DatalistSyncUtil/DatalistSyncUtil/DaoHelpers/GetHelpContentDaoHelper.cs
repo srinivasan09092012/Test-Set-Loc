@@ -34,6 +34,7 @@ namespace DatalistSyncUtil.DaoHelpers
                               HelpNodeId = hn.HelpNodeId,
                               HelpNodeNM = hn.HelpNodeNM,
                               HelpNodeTypeCD = hn.HelpNodeTypeCD,
+                              NodeDepth = hn.HelpNodeNM.Length - hn.HelpNodeNM.Replace(".", string.Empty).Length,
                               IsActive = hn.IsActive,
                               LastModifiedTS = hn.LastModifiedTimeStamp,
                               TenantId = hn.TenantId,
@@ -47,17 +48,30 @@ namespace DatalistSyncUtil.DaoHelpers
             {
                 if (x.HelpNodeTypeCD != Module)
                 {
-                    x.ParentHelpNodeName = this.GetNodeName(x.ParentId);
+                    string ParentHelpNodeName, HelpNodeTypeCD;
+                    GetNodeNameAndType(x.ParentId, out ParentHelpNodeName, out HelpNodeTypeCD);
+                    x.ParentHelpNodeName = ParentHelpNodeName;
+                    x.ParentHelpNodeTypeCD = HelpNodeTypeCD;
                 }
             });
             return results;
         }
 
+        public void GetNodeNameAndType(Guid helpNodeId, out string helpNodeNM, out string helpNodeTypeCD)
+        {
+            var query = (from helpNode in this.Context.HelpNode
+                    where helpNode.HelpNodeId == helpNodeId
+                    select new { helpNodeName = helpNode.HelpNodeNM, helpNodeType = helpNode.HelpNodeTypeCD }).FirstOrDefault();
+            helpNodeNM = query.helpNodeName;
+            helpNodeTypeCD = query.helpNodeType;
+            return;
+        }
+
         public string GetNodeName(Guid helpNodeId)
         {
-            return (from helpNode in this.Context.HelpNode
-                    where helpNode.HelpNodeId == helpNodeId
-                    select helpNode.HelpNodeNM).FirstOrDefault();
+           return (from helpNode in this.Context.HelpNode
+             where helpNode.HelpNodeId == helpNodeId
+             select helpNode.HelpNodeNM).FirstOrDefault();
         }
 
         public IQueryable<AddHelpContentModel> GetNodeNameAndLanguages(Guid helpNodeId)
