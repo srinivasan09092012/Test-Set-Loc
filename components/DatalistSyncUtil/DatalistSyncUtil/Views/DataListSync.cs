@@ -60,6 +60,11 @@ namespace DatalistSyncUtil
 
         private readonly string dataListItemLinkAddUpdate = "DataListItemLinkAddUpdate";
 
+        //Security Item variables
+        private readonly string securityFunction = "Core.SecurityFunctions";
+        private readonly string securityRoles = "Core.SecurityRoles";
+        private readonly string securityRight = "Core.SecurityRights";
+
         public DataListSync()
         {
             this.InitializeComponent();
@@ -236,6 +241,7 @@ namespace DatalistSyncUtil
                     break;
                 case "Security":
                     this.SourceListItems = this.LoadDataListItems(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
+                    this.Resultitems = this.LoadDataListItemAttributes();
                     this.DataListView.Columns[1].Visible = true;
                     this.DataListView.Columns[2].Visible = false;
                     this.DataListView.Columns[3].Visible = false;
@@ -1696,7 +1702,7 @@ namespace DatalistSyncUtil
                 filteredModuleList = modulesQuery.ToList();
             }
 
-            this.DataListView.DataSource = new BindingList<DataList>(filteredModuleList.Where(w => w.TenantID == tenantID && (w.ContentID == "Core.SecurityFunctions" || w.ContentID == "Core.SecurityRoles" || w.ContentID == "Core.SecurityRights")).ToList());
+            this.DataListView.DataSource = new BindingList<DataList>(filteredModuleList.Where(w => w.TenantID == tenantID && (w.ContentID == this.securityFunction || w.ContentID == this.securityRoles || w.ContentID == this.securityRight)).ToList());
         }
 
         private List<DataListMainModel> ConvertToCustomSecurityDataList()
@@ -1707,7 +1713,7 @@ namespace DatalistSyncUtil
 
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
 
-            lists = this.SourceLists.Where(w => w.TenantID == tenantID && (w.ContentID == "Core.SecurityFunctions" || w.ContentID == "Core.SecurityRoles" || w.ContentID == "Core.SecurityRights")).ToList();
+            lists = this.SourceLists.Where(w => w.TenantID == tenantID && (w.ContentID == this.securityFunction || w.ContentID == this.securityRoles || w.ContentID == this.securityRight)).ToList();
             List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
             List<DataListAttribute> attributes = new List<DataListAttribute>();
             lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
