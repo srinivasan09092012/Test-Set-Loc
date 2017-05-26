@@ -176,6 +176,7 @@ namespace DatalistSyncUtil.Views
                 }
 
                 Cursor.Current = Cursors.Default;
+                PreviewPage.ActiveForm.Close();
                 ///MessageBox.Show("Saved Sucessfully");
             }
             catch (Exception ex)

@@ -159,19 +159,6 @@ namespace DatalistSyncUtil
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn44;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn45;
         private System.Windows.Forms.DataGridView NewAttributesView;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn38;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn41;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn50;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn52;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -195,17 +182,17 @@ namespace DatalistSyncUtil
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             this.diffTab = new System.Windows.Forms.TabControl();
             this.DatalistTabPage = new System.Windows.Forms.TabPage();
             this.DatalistSelectAllChkBox = new System.Windows.Forms.CheckBox();
@@ -338,6 +325,7 @@ namespace DatalistSyncUtil
             this.dataGridViewTextBoxColumn50 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn52 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TypeNameAttribute = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NewItemsAttributeSelectAllCB = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -450,6 +438,20 @@ namespace DatalistSyncUtil
             this.NewItemAtrrNewItemsCB = new System.Windows.Forms.CheckBox();
             this.NewItemAttrNewDataListCB = new System.Windows.Forms.CheckBox();
             this.NewItemAttributeView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewCheckBoxColumn21 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.DataListTypeNameItemAtrr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn109 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataListAttributeNameItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataListAtrributeValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataListItemIDItemAttribute = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataListTypeIDItemAttr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataListValueIDItemAttr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDItenAtrr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastModifiedDateItemAttr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StatusItemAttr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataListAttributeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataListTypeNameItemAttr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsEditableItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NewItemsAttrSelectAllCB = new System.Windows.Forms.CheckBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.checkBox17 = new System.Windows.Forms.CheckBox();
@@ -490,20 +492,6 @@ namespace DatalistSyncUtil
             this.PreviewUpdate = new System.Windows.Forms.Button();
             this.ModuleList = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.dataGridViewCheckBoxColumn21 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.DataListTypeNameItemAtrr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn109 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataListAttributeNameItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataListAtrributeValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataListItemIDItemAttribute = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataListTypeIDItemAttr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataListValueIDItemAttr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDItenAtrr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastModifiedDateItemAttr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StatusItemAttr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataListAttributeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataListTypeNameItemAttr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsEditableItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.diffTab.SuspendLayout();
             this.DatalistTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataListView)).BeginInit();
@@ -672,8 +660,8 @@ namespace DatalistSyncUtil
             // ItemsCount
             // 
             this.ItemsCount.DataPropertyName = "ItemsCount";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ItemsCount.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ItemsCount.DefaultCellStyle = dataGridViewCellStyle12;
             this.ItemsCount.HeaderText = "Items";
             this.ItemsCount.Name = "ItemsCount";
             this.ItemsCount.ReadOnly = true;
@@ -920,9 +908,9 @@ namespace DatalistSyncUtil
             // EffDate
             // 
             this.EffDate.DataPropertyName = "EffectiveStartDate";
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.EffDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle13.Format = "d";
+            dataGridViewCellStyle13.NullValue = null;
+            this.EffDate.DefaultCellStyle = dataGridViewCellStyle13;
             this.EffDate.HeaderText = "Eff Date";
             this.EffDate.Name = "EffDate";
             this.EffDate.ReadOnly = true;
@@ -931,9 +919,9 @@ namespace DatalistSyncUtil
             // EndDate
             // 
             this.EndDate.DataPropertyName = "EffectiveEndDate";
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.EndDate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle14.Format = "d";
+            dataGridViewCellStyle14.NullValue = null;
+            this.EndDate.DefaultCellStyle = dataGridViewCellStyle14;
             this.EndDate.HeaderText = "End Date";
             this.EndDate.Name = "EndDate";
             this.EndDate.ReadOnly = true;
@@ -1123,9 +1111,9 @@ namespace DatalistSyncUtil
             // dataGridViewTextBoxColumn16
             // 
             this.dataGridViewTextBoxColumn16.DataPropertyName = "EffectiveStartDate";
-            dataGridViewCellStyle4.Format = "d";
-            dataGridViewCellStyle4.NullValue = null;
-            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle15.Format = "d";
+            dataGridViewCellStyle15.NullValue = null;
+            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewTextBoxColumn16.HeaderText = "Eff Date";
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
             this.dataGridViewTextBoxColumn16.ReadOnly = true;
@@ -1134,9 +1122,9 @@ namespace DatalistSyncUtil
             // dataGridViewTextBoxColumn17
             // 
             this.dataGridViewTextBoxColumn17.DataPropertyName = "EffectiveEndDate";
-            dataGridViewCellStyle5.Format = "d";
-            dataGridViewCellStyle5.NullValue = null;
-            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle16.Format = "d";
+            dataGridViewCellStyle16.NullValue = null;
+            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewTextBoxColumn17.HeaderText = "End Date";
             this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
             this.dataGridViewTextBoxColumn17.ReadOnly = true;
@@ -1262,9 +1250,9 @@ namespace DatalistSyncUtil
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "EffectiveStartDate";
-            dataGridViewCellStyle6.Format = "d";
-            dataGridViewCellStyle6.NullValue = null;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle17.Format = "d";
+            dataGridViewCellStyle17.NullValue = null;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridViewTextBoxColumn6.HeaderText = "Eff Date";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
@@ -1273,9 +1261,9 @@ namespace DatalistSyncUtil
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.DataPropertyName = "EffectiveEndDate";
-            dataGridViewCellStyle7.Format = "d";
-            dataGridViewCellStyle7.NullValue = null;
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle18.Format = "d";
+            dataGridViewCellStyle18.NullValue = null;
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridViewTextBoxColumn7.HeaderText = "End Date";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
@@ -1884,6 +1872,7 @@ namespace DatalistSyncUtil
             this.dataGridViewTextBoxColumn50,
             this.dataGridViewTextBoxColumn52,
             this.Column4,
+            this.TypeNameAttribute,
             this.Column5});
             this.NewAttributesView.Location = new System.Drawing.Point(8, 40);
             this.NewAttributesView.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
@@ -1984,6 +1973,12 @@ namespace DatalistSyncUtil
             this.Column4.HeaderText = "DefaultTypeValue";
             this.Column4.Name = "Column4";
             this.Column4.Visible = false;
+            // 
+            // TypeNameAttribute
+            // 
+            this.TypeNameAttribute.DataPropertyName = "TypeName";
+            this.TypeNameAttribute.HeaderText = "TypeName";
+            this.TypeNameAttribute.Name = "TypeNameAttribute";
             // 
             // Column5
             // 
@@ -2268,7 +2263,6 @@ namespace DatalistSyncUtil
             this.tabpage3.TabIndex = 4;
             this.tabpage3.Text = "Links";
             this.tabpage3.UseVisualStyleBackColor = true;
-            this.tabpage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // btnLinkitem
             // 
@@ -3123,6 +3117,102 @@ namespace DatalistSyncUtil
             this.NewItemAttributeView.TabIndex = 6;
             this.NewItemAttributeView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.NewItemAttributeView_RowsAdded);
             // 
+            // dataGridViewCheckBoxColumn21
+            // 
+            this.dataGridViewCheckBoxColumn21.HeaderText = "";
+            this.dataGridViewCheckBoxColumn21.Name = "dataGridViewCheckBoxColumn21";
+            this.dataGridViewCheckBoxColumn21.Width = 20;
+            // 
+            // DataListTypeNameItemAtrr
+            // 
+            this.DataListTypeNameItemAtrr.DataPropertyName = "ParentContentID";
+            this.DataListTypeNameItemAtrr.HeaderText = "DataList";
+            this.DataListTypeNameItemAtrr.Name = "DataListTypeNameItemAtrr";
+            // 
+            // dataGridViewTextBoxColumn109
+            // 
+            this.dataGridViewTextBoxColumn109.DataPropertyName = "ItemCode";
+            this.dataGridViewTextBoxColumn109.HeaderText = "ItemCode";
+            this.dataGridViewTextBoxColumn109.Name = "dataGridViewTextBoxColumn109";
+            this.dataGridViewTextBoxColumn109.ReadOnly = true;
+            // 
+            // DataListAttributeNameItem
+            // 
+            this.DataListAttributeNameItem.DataPropertyName = "DataListAttributeName";
+            this.DataListAttributeNameItem.HeaderText = "DataListAttributeName";
+            this.DataListAttributeNameItem.Name = "DataListAttributeNameItem";
+            // 
+            // DataListAtrributeValue
+            // 
+            this.DataListAtrributeValue.DataPropertyName = "DataListAttributeValue";
+            this.DataListAtrributeValue.HeaderText = "DataListAttributeValue";
+            this.DataListAtrributeValue.Name = "DataListAtrributeValue";
+            // 
+            // DataListItemIDItemAttribute
+            // 
+            this.DataListItemIDItemAttribute.DataPropertyName = "DataListItemID";
+            this.DataListItemIDItemAttribute.HeaderText = "DataListItemID ";
+            this.DataListItemIDItemAttribute.Name = "DataListItemIDItemAttribute";
+            this.DataListItemIDItemAttribute.Visible = false;
+            // 
+            // DataListTypeIDItemAttr
+            // 
+            this.DataListTypeIDItemAttr.DataPropertyName = "DataListTypeID";
+            this.DataListTypeIDItemAttr.HeaderText = "DataListTypeID ";
+            this.DataListTypeIDItemAttr.Name = "DataListTypeIDItemAttr";
+            this.DataListTypeIDItemAttr.Visible = false;
+            // 
+            // DataListValueIDItemAttr
+            // 
+            this.DataListValueIDItemAttr.DataPropertyName = "DataListValueID";
+            this.DataListValueIDItemAttr.HeaderText = "DataListValueID ";
+            this.DataListValueIDItemAttr.Name = "DataListValueIDItemAttr";
+            this.DataListValueIDItemAttr.Visible = false;
+            // 
+            // IDItenAtrr
+            // 
+            this.IDItenAtrr.DataPropertyName = "ID";
+            this.IDItenAtrr.HeaderText = "ID";
+            this.IDItenAtrr.Name = "IDItenAtrr";
+            this.IDItenAtrr.Visible = false;
+            // 
+            // LastModifiedDateItemAttr
+            // 
+            this.LastModifiedDateItemAttr.DataPropertyName = "LastModifiedDate";
+            this.LastModifiedDateItemAttr.HeaderText = "LastModifiedDate ";
+            this.LastModifiedDateItemAttr.Name = "LastModifiedDateItemAttr";
+            this.LastModifiedDateItemAttr.Visible = false;
+            // 
+            // StatusItemAttr
+            // 
+            this.StatusItemAttr.DataPropertyName = "Status";
+            this.StatusItemAttr.HeaderText = "Status";
+            this.StatusItemAttr.Name = "StatusItemAttr";
+            this.StatusItemAttr.Visible = false;
+            // 
+            // DataListAttributeID
+            // 
+            this.DataListAttributeID.DataPropertyName = "DataListAttributeID";
+            this.DataListAttributeID.HeaderText = "DataListAttributeID";
+            this.DataListAttributeID.Name = "DataListAttributeID";
+            this.DataListAttributeID.Visible = false;
+            // 
+            // DataListTypeNameItemAttr
+            // 
+            this.DataListTypeNameItemAttr.DataPropertyName = "DataListTypeName";
+            this.DataListTypeNameItemAttr.HeaderText = "DataListTypeName";
+            this.DataListTypeNameItemAttr.Name = "DataListTypeNameItemAttr";
+            this.DataListTypeNameItemAttr.ReadOnly = true;
+            this.DataListTypeNameItemAttr.Visible = false;
+            this.DataListTypeNameItemAttr.Width = 400;
+            // 
+            // IsEditableItem
+            // 
+            this.IsEditableItem.DataPropertyName = "IsEditable";
+            this.IsEditableItem.HeaderText = "IsEditable";
+            this.IsEditableItem.Name = "IsEditableItem";
+            this.IsEditableItem.Visible = false;
+            // 
             // NewItemsAttrSelectAllCB
             // 
             this.NewItemsAttrSelectAllCB.AutoSize = true;
@@ -3247,9 +3337,9 @@ namespace DatalistSyncUtil
             // dataGridViewTextBoxColumn121
             // 
             this.dataGridViewTextBoxColumn121.DataPropertyName = "EffectiveStartDate";
-            dataGridViewCellStyle8.Format = "d";
-            dataGridViewCellStyle8.NullValue = null;
-            this.dataGridViewTextBoxColumn121.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle19.Format = "d";
+            dataGridViewCellStyle19.NullValue = null;
+            this.dataGridViewTextBoxColumn121.DefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridViewTextBoxColumn121.HeaderText = "Eff Date";
             this.dataGridViewTextBoxColumn121.Name = "dataGridViewTextBoxColumn121";
             this.dataGridViewTextBoxColumn121.ReadOnly = true;
@@ -3258,9 +3348,9 @@ namespace DatalistSyncUtil
             // dataGridViewTextBoxColumn122
             // 
             this.dataGridViewTextBoxColumn122.DataPropertyName = "EffectiveEndDate";
-            dataGridViewCellStyle9.Format = "d";
-            dataGridViewCellStyle9.NullValue = null;
-            this.dataGridViewTextBoxColumn122.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle20.Format = "d";
+            dataGridViewCellStyle20.NullValue = null;
+            this.dataGridViewTextBoxColumn122.DefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridViewTextBoxColumn122.HeaderText = "End Date";
             this.dataGridViewTextBoxColumn122.Name = "dataGridViewTextBoxColumn122";
             this.dataGridViewTextBoxColumn122.ReadOnly = true;
@@ -3384,9 +3474,9 @@ namespace DatalistSyncUtil
             // dataGridViewTextBoxColumn131
             // 
             this.dataGridViewTextBoxColumn131.DataPropertyName = "EffectiveStartDate";
-            dataGridViewCellStyle10.Format = "d";
-            dataGridViewCellStyle10.NullValue = null;
-            this.dataGridViewTextBoxColumn131.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle21.Format = "d";
+            dataGridViewCellStyle21.NullValue = null;
+            this.dataGridViewTextBoxColumn131.DefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridViewTextBoxColumn131.HeaderText = "Eff Date";
             this.dataGridViewTextBoxColumn131.Name = "dataGridViewTextBoxColumn131";
             this.dataGridViewTextBoxColumn131.ReadOnly = true;
@@ -3395,9 +3485,9 @@ namespace DatalistSyncUtil
             // dataGridViewTextBoxColumn132
             // 
             this.dataGridViewTextBoxColumn132.DataPropertyName = "EffectiveEndDate";
-            dataGridViewCellStyle11.Format = "d";
-            dataGridViewCellStyle11.NullValue = null;
-            this.dataGridViewTextBoxColumn132.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle22.Format = "d";
+            dataGridViewCellStyle22.NullValue = null;
+            this.dataGridViewTextBoxColumn132.DefaultCellStyle = dataGridViewCellStyle22;
             this.dataGridViewTextBoxColumn132.HeaderText = "End Date";
             this.dataGridViewTextBoxColumn132.Name = "dataGridViewTextBoxColumn132";
             this.dataGridViewTextBoxColumn132.ReadOnly = true;
@@ -3504,7 +3594,7 @@ namespace DatalistSyncUtil
             this.btnClose.Location = new System.Drawing.Point(1594, 920);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(84, 40);
+            this.btnClose.Size = new System.Drawing.Size(98, 40);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -3546,106 +3636,11 @@ namespace DatalistSyncUtil
             this.label4.TabIndex = 27;
             this.label4.Text = "Module:";
             // 
-            // dataGridViewCheckBoxColumn21
-            // 
-            this.dataGridViewCheckBoxColumn21.HeaderText = "";
-            this.dataGridViewCheckBoxColumn21.Name = "dataGridViewCheckBoxColumn21";
-            this.dataGridViewCheckBoxColumn21.Width = 20;
-            // 
-            // DataListTypeNameItemAtrr
-            // 
-            this.DataListTypeNameItemAtrr.DataPropertyName = "ParentContentID";
-            this.DataListTypeNameItemAtrr.HeaderText = "DataList";
-            this.DataListTypeNameItemAtrr.Name = "DataListTypeNameItemAtrr";
-            // 
-            // dataGridViewTextBoxColumn109
-            // 
-            this.dataGridViewTextBoxColumn109.DataPropertyName = "ItemCode";
-            this.dataGridViewTextBoxColumn109.HeaderText = "ItemCode";
-            this.dataGridViewTextBoxColumn109.Name = "dataGridViewTextBoxColumn109";
-            this.dataGridViewTextBoxColumn109.ReadOnly = true;
-            // 
-            // DataListAttributeNameItem
-            // 
-            this.DataListAttributeNameItem.DataPropertyName = "DataListAttributeName";
-            this.DataListAttributeNameItem.HeaderText = "DataListAttributeName";
-            this.DataListAttributeNameItem.Name = "DataListAttributeNameItem";
-            // 
-            // DataListAtrributeValue
-            // 
-            this.DataListAtrributeValue.DataPropertyName = "DataListAttributeValue";
-            this.DataListAtrributeValue.HeaderText = "DataListAttributeValue";
-            this.DataListAtrributeValue.Name = "DataListAtrributeValue";
-            // 
-            // DataListItemIDItemAttribute
-            // 
-            this.DataListItemIDItemAttribute.DataPropertyName = "DataListItemID";
-            this.DataListItemIDItemAttribute.HeaderText = "DataListItemID ";
-            this.DataListItemIDItemAttribute.Name = "DataListItemIDItemAttribute";
-            this.DataListItemIDItemAttribute.Visible = false;
-            // 
-            // DataListTypeIDItemAttr
-            // 
-            this.DataListTypeIDItemAttr.DataPropertyName = "DataListTypeID";
-            this.DataListTypeIDItemAttr.HeaderText = "DataListTypeID ";
-            this.DataListTypeIDItemAttr.Name = "DataListTypeIDItemAttr";
-            this.DataListTypeIDItemAttr.Visible = false;
-            // 
-            // DataListValueIDItemAttr
-            // 
-            this.DataListValueIDItemAttr.DataPropertyName = "DataListValueID";
-            this.DataListValueIDItemAttr.HeaderText = "DataListValueID ";
-            this.DataListValueIDItemAttr.Name = "DataListValueIDItemAttr";
-            this.DataListValueIDItemAttr.Visible = false;
-            // 
-            // IDItenAtrr
-            // 
-            this.IDItenAtrr.DataPropertyName = "ID";
-            this.IDItenAtrr.HeaderText = "ID";
-            this.IDItenAtrr.Name = "IDItenAtrr";
-            this.IDItenAtrr.Visible = false;
-            // 
-            // LastModifiedDateItemAttr
-            // 
-            this.LastModifiedDateItemAttr.DataPropertyName = "LastModifiedDate";
-            this.LastModifiedDateItemAttr.HeaderText = "LastModifiedDate ";
-            this.LastModifiedDateItemAttr.Name = "LastModifiedDateItemAttr";
-            this.LastModifiedDateItemAttr.Visible = false;
-            // 
-            // StatusItemAttr
-            // 
-            this.StatusItemAttr.DataPropertyName = "Status";
-            this.StatusItemAttr.HeaderText = "Status";
-            this.StatusItemAttr.Name = "StatusItemAttr";
-            this.StatusItemAttr.Visible = false;
-            // 
-            // DataListAttributeID
-            // 
-            this.DataListAttributeID.DataPropertyName = "DataListAttributeID";
-            this.DataListAttributeID.HeaderText = "DataListAttributeID";
-            this.DataListAttributeID.Name = "DataListAttributeID";
-            this.DataListAttributeID.Visible = false;
-            // 
-            // DataListTypeNameItemAttr
-            // 
-            this.DataListTypeNameItemAttr.DataPropertyName = "DataListTypeName";
-            this.DataListTypeNameItemAttr.HeaderText = "DataListTypeName";
-            this.DataListTypeNameItemAttr.Name = "DataListTypeNameItemAttr";
-            this.DataListTypeNameItemAttr.ReadOnly = true;
-            this.DataListTypeNameItemAttr.Visible = false;
-            this.DataListTypeNameItemAttr.Width = 400;
-            // 
-            // IsEditableItem
-            // 
-            this.IsEditableItem.DataPropertyName = "IsEditable";
-            this.IsEditableItem.HeaderText = "IsEditable";
-            this.IsEditableItem.Name = "IsEditableItem";
-            this.IsEditableItem.Visible = false;
-            // 
             // DatalistDiff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1804, 983);
             this.Controls.Add(this.ModuleList);
             this.Controls.Add(this.label4);
@@ -3656,7 +3651,6 @@ namespace DatalistSyncUtil
             this.MaximizeBox = false;
             this.Name = "DatalistDiff";
             this.Text = "Delta";
-            this.Load += new System.EventHandler(this.DatalistDiff_Load);
             this.diffTab.ResumeLayout(false);
             this.DatalistTabPage.ResumeLayout(false);
             this.DatalistTabPage.PerformLayout();
@@ -3865,5 +3859,19 @@ namespace DatalistSyncUtil
         private System.Windows.Forms.DataGridViewTextBoxColumn DataListAttributeID;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataListTypeNameItemAttr;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsEditableItem;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn38;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn41;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn50;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn52;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TypeNameAttribute;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

@@ -95,6 +95,10 @@ namespace DatalistSyncUtil
         private void BtnSourceFile_Click(object sender, EventArgs e)
         {
             DialogResult result = this.openDatalistFile.ShowDialog();
+            this.sourceTenantList.Enabled = false;
+            this.sourceModuleList.Enabled = false;
+            this.SourceControlNames.Enabled = false;
+            this.btnSourceLoad.Enabled = false;
 
             if (result == DialogResult.OK)
             {
@@ -1114,12 +1118,7 @@ namespace DatalistSyncUtil
             this.sourceModuleList.DisplayMember = "ModuleName";
             this.sourceModuleList.SelectAll();
         }
-
-        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+               
         private void DatalistToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -1130,7 +1129,7 @@ namespace DatalistSyncUtil
             }
 
             Cursor.Current = Cursors.Default;
-        }
+        }       
 
         private void DatalistItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1300,8 +1299,7 @@ namespace DatalistSyncUtil
             if (this.SourceMenuList != null)
             {
                 MenuListDiff menudiffPage = new MenuListDiff(new Guid(this.tenantList.SelectedValue.ToString()), "MENUS", this.SourceMenuList, this.TargetMenuList);
-                menudiffPage.ShowDialog();
-                this.Close();
+                menudiffPage.ShowDialog();              
             }
         }
 

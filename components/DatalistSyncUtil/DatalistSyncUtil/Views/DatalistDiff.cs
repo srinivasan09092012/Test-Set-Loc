@@ -1724,22 +1724,6 @@ namespace DatalistSyncUtil
         {
 
         }
-
-        private void dataGridView1_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void propertyGrid1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DatalistDiff_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void NewLinkSelectAllCB_CheckedChanged(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in this.LinkgridView.Rows)

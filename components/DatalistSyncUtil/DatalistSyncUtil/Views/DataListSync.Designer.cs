@@ -40,13 +40,10 @@ namespace DatalistSyncUtil
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DataListView = new System.Windows.Forms.DataGridView();
             this.DataListLoad = new System.Windows.Forms.Button();
-            this.Start = new System.Windows.Forms.Button();
             this.SelectAllChkBox = new System.Windows.Forms.CheckBox();
             this.ModuleList = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Close = new System.Windows.Forms.Button();
-            this.Preview = new System.Windows.Forms.Button();
-            this.Clear = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.Age = new System.Windows.Forms.NumericUpDown();
             this.BtnClearCache = new System.Windows.Forms.Button();
@@ -126,17 +123,6 @@ namespace DatalistSyncUtil
             this.DataListLoad.UseVisualStyleBackColor = true;
             this.DataListLoad.Click += new System.EventHandler(this.DataListLoad_Click);
             // 
-            // Start
-            // 
-            this.Start.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Start.Location = new System.Drawing.Point(16, 857);
-            this.Start.Name = "Start";
-            this.Start.Size = new System.Drawing.Size(195, 43);
-            this.Start.TabIndex = 5;
-            this.Start.Text = "Generate Script";
-            this.Start.UseVisualStyleBackColor = true;
-            this.Start.Click += new System.EventHandler(this.Start_Click);
-            // 
             // SelectAllChkBox
             // 
             this.SelectAllChkBox.AutoSize = true;
@@ -182,27 +168,6 @@ namespace DatalistSyncUtil
             this.Close.UseVisualStyleBackColor = true;
             this.Close.Click += new System.EventHandler(this.Close_Click);
             // 
-            // Preview
-            // 
-            this.Preview.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Preview.Location = new System.Drawing.Point(219, 857);
-            this.Preview.Name = "Preview";
-            this.Preview.Size = new System.Drawing.Size(102, 43);
-            this.Preview.TabIndex = 15;
-            this.Preview.Text = "Preview";
-            this.Preview.UseVisualStyleBackColor = true;
-            // 
-            // Clear
-            // 
-            this.Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Clear.Location = new System.Drawing.Point(327, 857);
-            this.Clear.Name = "Clear";
-            this.Clear.Size = new System.Drawing.Size(102, 43);
-            this.Clear.TabIndex = 16;
-            this.Clear.Text = "Clear";
-            this.Clear.UseVisualStyleBackColor = true;
-            this.Clear.Click += new System.EventHandler(this.Clear_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -223,9 +188,9 @@ namespace DatalistSyncUtil
             // BtnClearCache
             // 
             this.BtnClearCache.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnClearCache.Location = new System.Drawing.Point(996, 2);
+            this.BtnClearCache.Location = new System.Drawing.Point(972, 8);
             this.BtnClearCache.Name = "BtnClearCache";
-            this.BtnClearCache.Size = new System.Drawing.Size(123, 43);
+            this.BtnClearCache.Size = new System.Drawing.Size(147, 43);
             this.BtnClearCache.TabIndex = 19;
             this.BtnClearCache.Text = "Clear Cache";
             this.BtnClearCache.UseVisualStyleBackColor = true;
@@ -245,6 +210,7 @@ namespace DatalistSyncUtil
             // 
             // BtnDownloadToFile
             // 
+            this.BtnDownloadToFile.Enabled = false;
             this.BtnDownloadToFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDownloadToFile.Location = new System.Drawing.Point(819, 857);
             this.BtnDownloadToFile.Name = "BtnDownloadToFile";
@@ -382,14 +348,11 @@ namespace DatalistSyncUtil
             this.Controls.Add(this.BtnClearCache);
             this.Controls.Add(this.Age);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.Clear);
-            this.Controls.Add(this.Preview);
             this.Controls.Add(this.Close);
             this.Controls.Add(this.InactiveCB);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ModuleList);
             this.Controls.Add(this.SelectAllChkBox);
-            this.Controls.Add(this.Start);
             this.Controls.Add(this.DataListLoad);
             this.Controls.Add(this.DataListView);
             this.MaximizeBox = false;
@@ -406,13 +369,10 @@ namespace DatalistSyncUtil
 
         private System.Windows.Forms.DataGridView DataListView;
         private System.Windows.Forms.Button DataListLoad;
-        private System.Windows.Forms.Button Start;
         private System.Windows.Forms.CheckBox SelectAllChkBox;
         private System.Windows.Forms.ListBox ModuleList;
         private System.Windows.Forms.Label label1;
         private new System.Windows.Forms.Button Close;
-        private System.Windows.Forms.Button Preview;
-        private System.Windows.Forms.Button Clear;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown Age;
         private System.Windows.Forms.Button BtnClearCache;

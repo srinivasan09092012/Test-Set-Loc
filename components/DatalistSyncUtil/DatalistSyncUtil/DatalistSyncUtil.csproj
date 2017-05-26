@@ -204,9 +204,11 @@
     <Compile Include="Models\ItemLanguage.cs" />
     <Compile Include="Views\HelpDiff.cs">
       <SubType>Form</SubType>
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Views\HelpDiff.Designer.cs">
       <DependentUpon>HelpDiff.cs</DependentUpon>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Views\HtmlBlockDiff.cs">
       <SubType>Form</SubType>
@@ -298,6 +300,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Views\ListMenuItem.resx">
       <DependentUpon>ListMenuItem.cs</DependentUpon>

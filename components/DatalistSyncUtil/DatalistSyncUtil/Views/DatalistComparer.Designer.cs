@@ -130,10 +130,10 @@ namespace DatalistSyncUtil
             this.SourceControlNames.DisplayMember = "SourceControlNames";
             this.SourceControlNames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SourceControlNames.FormattingEnabled = true;
-            this.SourceControlNames.Location = new System.Drawing.Point(588, 42);
+            this.SourceControlNames.Location = new System.Drawing.Point(543, 42);
             this.SourceControlNames.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.SourceControlNames.Name = "SourceControlNames";
-            this.SourceControlNames.Size = new System.Drawing.Size(130, 28);
+            this.SourceControlNames.Size = new System.Drawing.Size(139, 28);
             this.SourceControlNames.Sorted = true;
             this.SourceControlNames.TabIndex = 36;
             this.SourceControlNames.ValueMember = "TenantID";
@@ -142,7 +142,7 @@ namespace DatalistSyncUtil
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(506, 48);
+            this.label7.Location = new System.Drawing.Point(475, 48);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 20);
             this.label7.TabIndex = 32;
@@ -153,10 +153,10 @@ namespace DatalistSyncUtil
             this.sourceModuleList.DisplayMember = "ModuleName";
             this.sourceModuleList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sourceModuleList.FormattingEnabled = true;
-            this.sourceModuleList.Location = new System.Drawing.Point(309, 42);
+            this.sourceModuleList.Location = new System.Drawing.Point(308, 41);
             this.sourceModuleList.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.sourceModuleList.Name = "sourceModuleList";
-            this.sourceModuleList.Size = new System.Drawing.Size(188, 28);
+            this.sourceModuleList.Size = new System.Drawing.Size(161, 28);
             this.sourceModuleList.Sorted = true;
             this.sourceModuleList.TabIndex = 31;
             this.sourceModuleList.ValueMember = "TenantModuleID";
@@ -175,7 +175,7 @@ namespace DatalistSyncUtil
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(238, 46);
+            this.label2.Location = new System.Drawing.Point(241, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 20);
             this.label2.TabIndex = 30;
@@ -194,10 +194,10 @@ namespace DatalistSyncUtil
             this.sourceTenantList.DisplayMember = "TenantName";
             this.sourceTenantList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sourceTenantList.FormattingEnabled = true;
-            this.sourceTenantList.Location = new System.Drawing.Point(72, 43);
+            this.sourceTenantList.Location = new System.Drawing.Point(80, 43);
             this.sourceTenantList.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.sourceTenantList.Name = "sourceTenantList";
-            this.sourceTenantList.Size = new System.Drawing.Size(158, 28);
+            this.sourceTenantList.Size = new System.Drawing.Size(155, 28);
             this.sourceTenantList.Sorted = true;
             this.sourceTenantList.TabIndex = 29;
             this.sourceTenantList.ValueMember = "TenantID";
@@ -215,19 +215,19 @@ namespace DatalistSyncUtil
             // 
             // txtSourceConnection
             // 
-            this.txtSourceConnection.Location = new System.Drawing.Point(86, 6);
+            this.txtSourceConnection.Location = new System.Drawing.Point(80, 3);
             this.txtSourceConnection.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtSourceConnection.Name = "txtSourceConnection";
             this.txtSourceConnection.ReadOnly = true;
-            this.txtSourceConnection.Size = new System.Drawing.Size(662, 26);
+            this.txtSourceConnection.Size = new System.Drawing.Size(653, 26);
             this.txtSourceConnection.TabIndex = 27;
             // 
             // btnSourceLoad
             // 
-            this.btnSourceLoad.Location = new System.Drawing.Point(726, 40);
+            this.btnSourceLoad.Location = new System.Drawing.Point(688, 43);
             this.btnSourceLoad.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnSourceLoad.Name = "btnSourceLoad";
-            this.btnSourceLoad.Size = new System.Drawing.Size(69, 38);
+            this.btnSourceLoad.Size = new System.Drawing.Size(100, 30);
             this.btnSourceLoad.TabIndex = 27;
             this.btnSourceLoad.Text = "Load";
             this.btnSourceLoad.UseVisualStyleBackColor = true;
@@ -235,10 +235,11 @@ namespace DatalistSyncUtil
             // 
             // btnSourceFile
             // 
-            this.btnSourceFile.Location = new System.Drawing.Point(754, 6);
+            this.btnSourceFile.Image = global::DatalistSyncUtil.Properties.Resources.FileExplorer;
+            this.btnSourceFile.Location = new System.Drawing.Point(739, 3);
             this.btnSourceFile.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnSourceFile.Name = "btnSourceFile";
-            this.btnSourceFile.Size = new System.Drawing.Size(36, 29);
+            this.btnSourceFile.Size = new System.Drawing.Size(49, 38);
             this.btnSourceFile.TabIndex = 2;
             this.btnSourceFile.UseVisualStyleBackColor = true;
             this.btnSourceFile.Click += new System.EventHandler(this.BtnSourceFile_Click);
@@ -266,10 +267,10 @@ namespace DatalistSyncUtil
             this.TargetControlNames.DisplayMember = "TargetControlNames";
             this.TargetControlNames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TargetControlNames.FormattingEnabled = true;
-            this.TargetControlNames.Location = new System.Drawing.Point(574, 42);
+            this.TargetControlNames.Location = new System.Drawing.Point(551, 40);
             this.TargetControlNames.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.TargetControlNames.Name = "TargetControlNames";
-            this.TargetControlNames.Size = new System.Drawing.Size(130, 28);
+            this.TargetControlNames.Size = new System.Drawing.Size(140, 28);
             this.TargetControlNames.Sorted = true;
             this.TargetControlNames.TabIndex = 35;
             this.TargetControlNames.ValueMember = "TenantID";
@@ -278,7 +279,7 @@ namespace DatalistSyncUtil
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(494, 48);
+            this.label8.Location = new System.Drawing.Point(473, 42);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(72, 20);
             this.label8.TabIndex = 34;
@@ -289,10 +290,10 @@ namespace DatalistSyncUtil
             this.moduleList.DisplayMember = "ModuleName";
             this.moduleList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.moduleList.FormattingEnabled = true;
-            this.moduleList.Location = new System.Drawing.Point(296, 42);
+            this.moduleList.Location = new System.Drawing.Point(293, 39);
             this.moduleList.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.moduleList.Name = "moduleList";
-            this.moduleList.Size = new System.Drawing.Size(190, 28);
+            this.moduleList.Size = new System.Drawing.Size(174, 28);
             this.moduleList.Sorted = true;
             this.moduleList.TabIndex = 26;
             this.moduleList.ValueMember = "TenantModuleID";
@@ -301,7 +302,7 @@ namespace DatalistSyncUtil
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(220, 48);
+            this.label4.Location = new System.Drawing.Point(226, 44);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 20);
             this.label4.TabIndex = 25;
@@ -312,10 +313,10 @@ namespace DatalistSyncUtil
             this.tenantList.DisplayMember = "TenantName";
             this.tenantList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tenantList.FormattingEnabled = true;
-            this.tenantList.Location = new System.Drawing.Point(72, 42);
+            this.tenantList.Location = new System.Drawing.Point(70, 40);
             this.tenantList.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.tenantList.Name = "tenantList";
-            this.tenantList.Size = new System.Drawing.Size(140, 28);
+            this.tenantList.Size = new System.Drawing.Size(150, 28);
             this.tenantList.Sorted = true;
             this.tenantList.TabIndex = 24;
             this.tenantList.ValueMember = "TenantID";
@@ -325,7 +326,7 @@ namespace DatalistSyncUtil
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(4, 46);
+            this.label3.Location = new System.Drawing.Point(4, 45);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 20);
             this.label3.TabIndex = 23;
@@ -333,10 +334,10 @@ namespace DatalistSyncUtil
             // 
             // btnLoadTarget
             // 
-            this.btnLoadTarget.Location = new System.Drawing.Point(712, 40);
+            this.btnLoadTarget.Location = new System.Drawing.Point(697, 37);
             this.btnLoadTarget.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnLoadTarget.Name = "btnLoadTarget";
-            this.btnLoadTarget.Size = new System.Drawing.Size(69, 38);
+            this.btnLoadTarget.Size = new System.Drawing.Size(87, 38);
             this.btnLoadTarget.TabIndex = 7;
             this.btnLoadTarget.Text = "Load";
             this.btnLoadTarget.UseVisualStyleBackColor = true;
@@ -362,11 +363,11 @@ namespace DatalistSyncUtil
             // 
             // txtTargetConnection
             // 
-            this.txtTargetConnection.Location = new System.Drawing.Point(87, 6);
+            this.txtTargetConnection.Location = new System.Drawing.Point(76, 5);
             this.txtTargetConnection.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtTargetConnection.Name = "txtTargetConnection";
             this.txtTargetConnection.ReadOnly = true;
-            this.txtTargetConnection.Size = new System.Drawing.Size(694, 26);
+            this.txtTargetConnection.Size = new System.Drawing.Size(705, 26);
             this.txtTargetConnection.TabIndex = 2;
             // 
             // openDatalistFile
@@ -480,7 +481,6 @@ namespace DatalistSyncUtil
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(138, 30);
             this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // DatalistComparer
             // 

@@ -172,9 +172,16 @@ namespace DatalistSyncUtil
 
         private void DataListLoad_Click(object sender, EventArgs e)
         {
+            if (this.ControlName.SelectedItem == null)
+            {
+                MessageBox.Show("Please select control name from the drop down");
+                return;
+            }
+
             Cursor.Current = Cursors.WaitCursor;
             this.LoadSearchCriteria();
             Cursor.Current = Cursors.Default;
+            this.BtnDownloadToFile.Enabled = true;
         }
 
         private List<ItemDataListItemAttributeVal> LoadDataListItemAttributes()
@@ -677,48 +684,8 @@ namespace DatalistSyncUtil
             }
 
             return linkers;
-        }
-
-        private void Start_Click(object sender, EventArgs e)
-        {
-            bool selected = false;
-            this.ListContents = new List<string>();
-            this.ListItemContents = new List<string>();
-            List<DataList> selectedDataList = null;
-            Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
-
-            foreach (DataGridViewRow row in this.DataListView.Rows)
-            {
-                selected = Convert.ToBoolean(row.Cells["Select"].Value);
-
-                if (selected)
-                {
-                    this.ListContents.Add(row.Cells["ContentID"].Value.ToString());
-                }
-            }
-
-            this.SourceLists = this.Cache.Get<List<DataList>>("DataLists");
-            this.SourceListItems = this.Cache.Get<List<CodeListModel>>("DataListItems");
-
-            ///this.SourceLinks = this.Cache.Get<List<CodeLinkTable>>("DataListItemLinks");
-            ///this.ListContents.Add("PlanManagement.DataList.SP29Test29123");
-            ///this.ListContents.Add("ProviderManagement.DataList.RateType");
-            ///this.ListContents.Add("ProviderManagement.DataList.RelationshipTypes");
-
-            selectedDataList = this.SourceLists.Where(w => this.ListContents.Contains(w.ContentID) && w.TenantID == tenantID).ToList();
-
-            File.WriteAllText(this.DataListsQueryPath + DateTime.UtcNow.Ticks + ".sql", this.GenerateDataList(selectedDataList));
-
-            File.WriteAllText(this.DataListItemsQueryPath + DateTime.UtcNow.Ticks + ".sql", this.GenerateDataListItems(selectedDataList));
-            if (MessageBox.Show("Datalist and Datalist Items SQL files generated successfully. Do you want to close?", "Success", MessageBoxButtons.OKCancel) == DialogResult.OK)
-            {
-                this.Close();
-            }
-
-            Process.Start("explorer.exe", this.QueryFilePath);
-            ////this.GenerateDataListItemLinks(selectedDataList);
-        }
-
+        } 
+             
         private string GenerateDataListItems(List<DataList> selectedDataList)
         {
             StringBuilder dataQuery = new StringBuilder();
@@ -1161,14 +1128,6 @@ namespace DatalistSyncUtil
             }
         }
 
-        private void Clear_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Do you want to clear items selected?", "Clear Items", MessageBoxButtons.OKCancel) == DialogResult.OK)
-            {
-                this.Cache.ClearPatternMatch("CodeList_*");
-            }
-        }
-
         private void BtnClearCache_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Do you want to clear cache?", "Cache Clear", MessageBoxButtons.OKCancel) == DialogResult.OK)
@@ -1179,43 +1138,51 @@ namespace DatalistSyncUtil
 
         private void BtnDownloadToFile_Click(object sender, EventArgs e)
         {
-            string caseSwitch = this.ControlName.SelectedItem.ToString();
-            switch (caseSwitch)
+            if (this.ControlName.SelectedItem != null)
             {
-                case "AppSetting":
-                    List<AppSettingsModel> listsAppSetting = this.ConvertToCustomAppSetting();
-                    File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(listsAppSetting));
-                    break;
-                case "Datalist":
-                    List<DataListMainModel> listsMain = this.ConvertToCustomDataList();
-                    File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(listsMain));
-                    break;
-                case "Menus":
-                    List<MenuListModel> listsMenu = this.ConvertToCustomMenus();
-                    File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(listsMenu));
-                    break;
-                case "HtmlBlock":
-                    List<HtmlBlockMainModel> htmlBlks = this.ConvertToCustomHtmlBlks();
-                    File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(htmlBlks));
-                    break;
-                case "Security":
-                    List<DataListMainModel> listsSecurityMain = this.ConvertToCustomSecurityDataList();
-                    File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(listsSecurityMain));
-                    break;
-                case "Image":
-                    List<ImagesMainModel> images = this.ConvertToCustomImages();
-                    File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(images));
-                    break;
-                case "Help":
-                    List<HelpNodeModel> helpNodes = this.ConvertToCustomHelp();
-                    File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(helpNodes));
-                    break;
-                default:
-                    break;
-            }
+                string caseSwitch = this.ControlName.SelectedItem.ToString();
+                switch (caseSwitch)
+                {
+                    case "AppSetting":
+                        List<AppSettingsModel> listsAppSetting = this.ConvertToCustomAppSetting();
+                        File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(listsAppSetting));
+                        break;
+                    case "Datalist":
+                        List<DataListMainModel> listsMain = this.ConvertToCustomDataList();
+                        File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(listsMain));
+                        break;
+                    case "Menus":
+                        List<MenuListModel> listsMenu = this.ConvertToCustomMenus();
+                        File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(listsMenu));
+                        break;
+                    case "HtmlBlock":
+                        List<HtmlBlockMainModel> htmlBlks = this.ConvertToCustomHtmlBlks();
+                        File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(htmlBlks));
+                        break;
+                    case "Security":
+                        List<DataListMainModel> listsSecurityMain = this.ConvertToCustomSecurityDataList();
+                        File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(listsSecurityMain));
+                        break;
+                    case "Image":
+                        List<ImagesMainModel> images = this.ConvertToCustomImages();
+                        File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(images));
+                        break;
+                    case "Help":
+                        List<HelpNodeModel> helpNodes = this.ConvertToCustomHelp();
+                        File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(helpNodes));
+                        break;
+                    default:
+                        break;
+                }
 
-            MessageBox.Show("Download completed!");
-            Process.Start("explorer.exe", this.QueryFilePath);
+                MessageBox.Show("Download completed!");
+                Process.Start("explorer.exe", this.QueryFilePath);
+            }
+            else
+            {
+                MessageBox.Show("Please select control name from the drop down");
+                return;
+            }
         }
 
         private List<AppSettingsModel> ConvertToCustomAppSetting()
@@ -1620,8 +1587,7 @@ namespace DatalistSyncUtil
         private void BtnCompare_Click(object sender, EventArgs e)
         {
             DatalistComparer compare = new DatalistComparer();
-            compare.ShowDialog();
-            this.Close();
+            compare.ShowDialog();        
         }
 
         private void ControlName_SelectedIndexChanged(object sender, EventArgs e)
