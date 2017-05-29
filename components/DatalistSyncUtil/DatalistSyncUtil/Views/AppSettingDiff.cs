@@ -144,7 +144,7 @@ namespace DatalistSyncUtil
             List<ApplicationModel> application = this.LoadHelper.LoadApplicationName();
 
             var modulesQuery = from lists in application
-                               where lists.ModuleId == moduleId
+                               where (lists.ModuleId == moduleId || lists.ModuleId == null)
                                select lists;
             finalapplication = modulesQuery.ToList();
 
