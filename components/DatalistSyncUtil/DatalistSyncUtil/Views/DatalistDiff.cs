@@ -2024,7 +2024,9 @@ namespace DatalistSyncUtil
                     {
                         ItemAttribute DataAttribute = new ItemAttribute();
                         targetDatalistItemAttributes = targetDatalistItems.Find(i => i.ContentID == l.ContentID && i.Code == l.Code && i.IsActive == l.IsActive).Attributes;
-                        finalDatalistItemAttributes = l.Attributes.Where(b => !targetDatalistItemAttributes.Any(a => a.DataListAttributeName == b.DataListAttributeName && a.DataListAttributeValue == b.DataListAttributeValue)).ToList();
+                        if (targetDatalistItemAttributes != null)
+                        { 
+                            finalDatalistItemAttributes = l.Attributes.Where(b => !targetDatalistItemAttributes.Any(a => a.DataListAttributeName == b.DataListAttributeName && a.DataListAttributeValue == b.DataListAttributeValue)).ToList();
                         finalDatalistItemAttributes.ForEach(h =>
                         {
                             h.Status = "EXISTINGITEM_NEW";
@@ -2043,6 +2045,7 @@ namespace DatalistSyncUtil
                             }
                             newDatalistItemAttributes.Add(h);
                         });
+                    }
                     });
                 }
             });
@@ -2135,31 +2138,35 @@ namespace DatalistSyncUtil
                 {
                     dataListItems.ForEach(l =>
                     {
-                        targetDatalistItemAttributes = targetDatalistItems.Find(i => i.ContentID == l.ContentID && i.Code == l.Code && i.IsActive == l.IsActive).Attributes;
-                        finalDatalistItemAttributes = l.Attributes.Where(b => targetDatalistItemAttributes.Any(a => a.DataListAttributeName == b.DataListAttributeName && a.DataListAttributeValue == b.DataListAttributeValue)).ToList();
-                        finalDatalistItemAttributes.ForEach(h =>
+                    targetDatalistItemAttributes = targetDatalistItems.Find(i => i.ContentID == l.ContentID && i.Code == l.Code && i.IsActive == l.IsActive).Attributes;
+                        if (targetDatalistItemAttributes != null)
                         {
-                            isChanged = false;
-                            targetDatalistItemAttribute = targetDatalistItemAttributes.Find(n => n.DataListAttributeName == h.DataListAttributeName && n.DataListAttributeValue == h.DataListAttributeValue);
-                            if (targetDatalistItemAttribute.DataListAttributeValue != null && targetDatalistItemAttribute.DataListAttributeValue.Trim() != h.DataListAttributeValue.Trim())
+                            finalDatalistItemAttributes = l.Attributes.Where(b => targetDatalistItemAttributes.Any(a => a.DataListAttributeName == b.DataListAttributeName && a.DataListAttributeValue == b.DataListAttributeValue)).ToList();
+                            finalDatalistItemAttributes.ForEach(h =>
                             {
-                                isChanged = true;
+                                isChanged = false;
+                                targetDatalistItemAttribute = targetDatalistItemAttributes.Find(n => n.DataListAttributeName == h.DataListAttributeName && n.DataListAttributeValue == h.DataListAttributeValue);
+                                if (targetDatalistItemAttribute.DataListAttributeValue != null && targetDatalistItemAttribute.DataListAttributeValue.Trim() != h.DataListAttributeValue.Trim())
+                                {
+                                    isChanged = true;
 
-                            }
+                                }
 
 
-                            if (isChanged)
-                            {
-                                h.Status = "UPDATE";
-                                h.ItemCode = l.Code;
-                                h.ParentContentId = l.ContentID;
-                                targetDatalistItemAttribute.ParentContentId = l.ContentID;
-                                targetDatalistItemAttribute.ItemCode = l.Code;
-                                updateSourceDatalistItemAttributes.Add(h);
-                                updateTargetDatalistItemAttributes.Add(targetDatalistItemAttribute);
-                            }
-                        });
+                                if (isChanged)
+                                {
+                                    h.Status = "UPDATE";
+                                    h.ItemCode = l.Code;
+                                    h.ParentContentId = l.ContentID;
+                                    targetDatalistItemAttribute.ParentContentId = l.ContentID;
+                                    targetDatalistItemAttribute.ItemCode = l.Code;
+                                    updateSourceDatalistItemAttributes.Add(h);
+                                    updateTargetDatalistItemAttributes.Add(targetDatalistItemAttribute);
+                                }
+                            });
+                        }
                     });
+                
                 }
             });
 

@@ -549,11 +549,11 @@ namespace DatalistSyncUtil
             this.diffTab.Controls.Add(this.tabpage3);
             this.diffTab.Controls.Add(this.ItemAttribute);
             this.diffTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.diffTab.Location = new System.Drawing.Point(16, 46);
-            this.diffTab.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.diffTab.Location = new System.Drawing.Point(11, 30);
+            this.diffTab.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.diffTab.Name = "diffTab";
             this.diffTab.SelectedIndex = 0;
-            this.diffTab.Size = new System.Drawing.Size(1676, 871);
+            this.diffTab.Size = new System.Drawing.Size(1117, 566);
             this.diffTab.TabIndex = 0;
             // 
             // DatalistTabPage
@@ -563,11 +563,11 @@ namespace DatalistSyncUtil
             this.DatalistTabPage.Controls.Add(this.btnListUpdate);
             this.DatalistTabPage.Controls.Add(this.DataListView);
             this.DatalistTabPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DatalistTabPage.Location = new System.Drawing.Point(4, 29);
-            this.DatalistTabPage.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.DatalistTabPage.Location = new System.Drawing.Point(4, 22);
+            this.DatalistTabPage.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.DatalistTabPage.Name = "DatalistTabPage";
-            this.DatalistTabPage.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.DatalistTabPage.Size = new System.Drawing.Size(1668, 838);
+            this.DatalistTabPage.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.DatalistTabPage.Size = new System.Drawing.Size(1109, 540);
             this.DatalistTabPage.TabIndex = 0;
             this.DatalistTabPage.Text = "Datalist";
             this.DatalistTabPage.UseVisualStyleBackColor = true;
@@ -577,10 +577,10 @@ namespace DatalistSyncUtil
             this.DatalistSelectAllChkBox.AutoSize = true;
             this.DatalistSelectAllChkBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.DatalistSelectAllChkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DatalistSelectAllChkBox.Location = new System.Drawing.Point(8, 9);
-            this.DatalistSelectAllChkBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.DatalistSelectAllChkBox.Location = new System.Drawing.Point(5, 6);
+            this.DatalistSelectAllChkBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.DatalistSelectAllChkBox.Name = "DatalistSelectAllChkBox";
-            this.DatalistSelectAllChkBox.Size = new System.Drawing.Size(111, 24);
+            this.DatalistSelectAllChkBox.Size = new System.Drawing.Size(80, 17);
             this.DatalistSelectAllChkBox.TabIndex = 7;
             this.DatalistSelectAllChkBox.Text = "Select All";
             this.DatalistSelectAllChkBox.UseVisualStyleBackColor = true;
@@ -588,10 +588,10 @@ namespace DatalistSyncUtil
             // 
             // btnListUpdate
             // 
-            this.btnListUpdate.Location = new System.Drawing.Point(0, 788);
-            this.btnListUpdate.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnListUpdate.Location = new System.Drawing.Point(0, 512);
+            this.btnListUpdate.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnListUpdate.Name = "btnListUpdate";
-            this.btnListUpdate.Size = new System.Drawing.Size(84, 40);
+            this.btnListUpdate.Size = new System.Drawing.Size(56, 26);
             this.btnListUpdate.TabIndex = 2;
             this.btnListUpdate.Text = "Include";
             this.btnListUpdate.UseVisualStyleBackColor = true;
@@ -610,12 +610,12 @@ namespace DatalistSyncUtil
             this.IsEditable,
             this.ItemsCount,
             this.Status});
-            this.DataListView.Location = new System.Drawing.Point(0, 45);
-            this.DataListView.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.DataListView.Location = new System.Drawing.Point(0, 29);
+            this.DataListView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.DataListView.Name = "DataListView";
             this.DataListView.RowTemplate.Height = 24;
             this.DataListView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.DataListView.Size = new System.Drawing.Size(1425, 735);
+            this.DataListView.Size = new System.Drawing.Size(950, 478);
             this.DataListView.TabIndex = 3;
             // 
             // Select
@@ -680,11 +680,11 @@ namespace DatalistSyncUtil
             this.itemTabPage.Controls.Add(this.panel1);
             this.itemTabPage.Controls.Add(this.btnUpdateItems);
             this.itemTabPage.Controls.Add(this.ItemsTab);
-            this.itemTabPage.Location = new System.Drawing.Point(4, 29);
-            this.itemTabPage.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.itemTabPage.Location = new System.Drawing.Point(4, 22);
+            this.itemTabPage.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.itemTabPage.Name = "itemTabPage";
-            this.itemTabPage.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.itemTabPage.Size = new System.Drawing.Size(1668, 838);
+            this.itemTabPage.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.itemTabPage.Size = new System.Drawing.Size(1109, 540);
             this.itemTabPage.TabIndex = 1;
             this.itemTabPage.Text = "Items";
             this.itemTabPage.UseVisualStyleBackColor = true;
@@ -698,20 +698,20 @@ namespace DatalistSyncUtil
             this.panel1.Controls.Add(this.ItemRightsCB);
             this.panel1.Controls.Add(this.ItemFunctionsCB);
             this.panel1.Controls.Add(this.ItemRolesCB);
-            this.panel1.Location = new System.Drawing.Point(10, 5);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.panel1.Location = new System.Drawing.Point(7, 3);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(620, 51);
+            this.panel1.Size = new System.Drawing.Size(413, 33);
             this.panel1.TabIndex = 13;
             // 
             // ItemDatalistCB
             // 
             this.ItemDatalistCB.AutoSize = true;
             this.ItemDatalistCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ItemDatalistCB.Location = new System.Drawing.Point(516, 14);
-            this.ItemDatalistCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ItemDatalistCB.Location = new System.Drawing.Point(344, 9);
+            this.ItemDatalistCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ItemDatalistCB.Name = "ItemDatalistCB";
-            this.ItemDatalistCB.Size = new System.Drawing.Size(97, 24);
+            this.ItemDatalistCB.Size = new System.Drawing.Size(69, 17);
             this.ItemDatalistCB.TabIndex = 14;
             this.ItemDatalistCB.Text = "Datalist";
             this.ItemDatalistCB.UseVisualStyleBackColor = true;
@@ -721,10 +721,10 @@ namespace DatalistSyncUtil
             // 
             this.ItemMessagesCB.AutoSize = true;
             this.ItemMessagesCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ItemMessagesCB.Location = new System.Drawing.Point(402, 14);
-            this.ItemMessagesCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ItemMessagesCB.Location = new System.Drawing.Point(268, 9);
+            this.ItemMessagesCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ItemMessagesCB.Name = "ItemMessagesCB";
-            this.ItemMessagesCB.Size = new System.Drawing.Size(116, 24);
+            this.ItemMessagesCB.Size = new System.Drawing.Size(82, 17);
             this.ItemMessagesCB.TabIndex = 13;
             this.ItemMessagesCB.Text = "Messages";
             this.ItemMessagesCB.UseVisualStyleBackColor = true;
@@ -734,10 +734,10 @@ namespace DatalistSyncUtil
             // 
             this.ItemLabelsCB.AutoSize = true;
             this.ItemLabelsCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ItemLabelsCB.Location = new System.Drawing.Point(308, 14);
-            this.ItemLabelsCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ItemLabelsCB.Location = new System.Drawing.Point(205, 9);
+            this.ItemLabelsCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ItemLabelsCB.Name = "ItemLabelsCB";
-            this.ItemLabelsCB.Size = new System.Drawing.Size(88, 24);
+            this.ItemLabelsCB.Size = new System.Drawing.Size(63, 17);
             this.ItemLabelsCB.TabIndex = 12;
             this.ItemLabelsCB.Text = "Labels";
             this.ItemLabelsCB.UseVisualStyleBackColor = true;
@@ -747,10 +747,10 @@ namespace DatalistSyncUtil
             // 
             this.ItemRightsCB.AutoSize = true;
             this.ItemRightsCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ItemRightsCB.Location = new System.Drawing.Point(214, 14);
-            this.ItemRightsCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ItemRightsCB.Location = new System.Drawing.Point(143, 9);
+            this.ItemRightsCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ItemRightsCB.Name = "ItemRightsCB";
-            this.ItemRightsCB.Size = new System.Drawing.Size(87, 24);
+            this.ItemRightsCB.Size = new System.Drawing.Size(62, 17);
             this.ItemRightsCB.TabIndex = 11;
             this.ItemRightsCB.Text = "Rights";
             this.ItemRightsCB.UseVisualStyleBackColor = true;
@@ -760,10 +760,10 @@ namespace DatalistSyncUtil
             // 
             this.ItemFunctionsCB.AutoSize = true;
             this.ItemFunctionsCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ItemFunctionsCB.Location = new System.Drawing.Point(96, 14);
-            this.ItemFunctionsCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ItemFunctionsCB.Location = new System.Drawing.Point(64, 9);
+            this.ItemFunctionsCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ItemFunctionsCB.Name = "ItemFunctionsCB";
-            this.ItemFunctionsCB.Size = new System.Drawing.Size(114, 24);
+            this.ItemFunctionsCB.Size = new System.Drawing.Size(81, 17);
             this.ItemFunctionsCB.TabIndex = 10;
             this.ItemFunctionsCB.Text = "Functions";
             this.ItemFunctionsCB.UseVisualStyleBackColor = true;
@@ -773,10 +773,10 @@ namespace DatalistSyncUtil
             // 
             this.ItemRolesCB.AutoSize = true;
             this.ItemRolesCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ItemRolesCB.Location = new System.Drawing.Point(9, 14);
-            this.ItemRolesCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ItemRolesCB.Location = new System.Drawing.Point(6, 9);
+            this.ItemRolesCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ItemRolesCB.Name = "ItemRolesCB";
-            this.ItemRolesCB.Size = new System.Drawing.Size(81, 24);
+            this.ItemRolesCB.Size = new System.Drawing.Size(58, 17);
             this.ItemRolesCB.TabIndex = 9;
             this.ItemRolesCB.Text = "Roles";
             this.ItemRolesCB.UseVisualStyleBackColor = true;
@@ -784,10 +784,10 @@ namespace DatalistSyncUtil
             // 
             // btnUpdateItems
             // 
-            this.btnUpdateItems.Location = new System.Drawing.Point(2, 802);
-            this.btnUpdateItems.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnUpdateItems.Location = new System.Drawing.Point(1, 521);
+            this.btnUpdateItems.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnUpdateItems.Name = "btnUpdateItems";
-            this.btnUpdateItems.Size = new System.Drawing.Size(84, 32);
+            this.btnUpdateItems.Size = new System.Drawing.Size(56, 21);
             this.btnUpdateItems.TabIndex = 1;
             this.btnUpdateItems.Text = "Include";
             this.btnUpdateItems.UseVisualStyleBackColor = true;
@@ -797,11 +797,11 @@ namespace DatalistSyncUtil
             // 
             this.ItemsTab.Controls.Add(this.NewItemsPage);
             this.ItemsTab.Controls.Add(this.UpdateItemsTab);
-            this.ItemsTab.Location = new System.Drawing.Point(6, 62);
-            this.ItemsTab.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ItemsTab.Location = new System.Drawing.Point(4, 40);
+            this.ItemsTab.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ItemsTab.Name = "ItemsTab";
             this.ItemsTab.SelectedIndex = 0;
-            this.ItemsTab.Size = new System.Drawing.Size(1658, 738);
+            this.ItemsTab.Size = new System.Drawing.Size(1105, 480);
             this.ItemsTab.TabIndex = 0;
             // 
             // NewItemsPage
@@ -810,11 +810,11 @@ namespace DatalistSyncUtil
             this.NewItemsPage.Controls.Add(this.NewListNewItemCB);
             this.NewItemsPage.Controls.Add(this.NewItemsView);
             this.NewItemsPage.Controls.Add(this.NewItemsSelectAllCB);
-            this.NewItemsPage.Location = new System.Drawing.Point(4, 29);
-            this.NewItemsPage.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.NewItemsPage.Location = new System.Drawing.Point(4, 22);
+            this.NewItemsPage.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewItemsPage.Name = "NewItemsPage";
-            this.NewItemsPage.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.NewItemsPage.Size = new System.Drawing.Size(1650, 705);
+            this.NewItemsPage.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.NewItemsPage.Size = new System.Drawing.Size(1097, 454);
             this.NewItemsPage.TabIndex = 0;
             this.NewItemsPage.Text = "New Items";
             this.NewItemsPage.UseVisualStyleBackColor = true;
@@ -824,10 +824,10 @@ namespace DatalistSyncUtil
             this.ExistingListNewItemCB.AutoSize = true;
             this.ExistingListNewItemCB.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ExistingListNewItemCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExistingListNewItemCB.Location = new System.Drawing.Point(402, 8);
-            this.ExistingListNewItemCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ExistingListNewItemCB.Location = new System.Drawing.Point(268, 5);
+            this.ExistingListNewItemCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ExistingListNewItemCB.Name = "ExistingListNewItemCB";
-            this.ExistingListNewItemCB.Size = new System.Drawing.Size(256, 24);
+            this.ExistingListNewItemCB.Size = new System.Drawing.Size(182, 17);
             this.ExistingListNewItemCB.TabIndex = 19;
             this.ExistingListNewItemCB.Text = "New Item - Existing Datalist";
             this.ExistingListNewItemCB.UseVisualStyleBackColor = false;
@@ -838,10 +838,10 @@ namespace DatalistSyncUtil
             this.NewListNewItemCB.AutoSize = true;
             this.NewListNewItemCB.BackColor = System.Drawing.Color.LightBlue;
             this.NewListNewItemCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewListNewItemCB.Location = new System.Drawing.Point(170, 8);
-            this.NewListNewItemCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.NewListNewItemCB.Location = new System.Drawing.Point(113, 5);
+            this.NewListNewItemCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewListNewItemCB.Name = "NewListNewItemCB";
-            this.NewListNewItemCB.Size = new System.Drawing.Size(227, 24);
+            this.NewListNewItemCB.Size = new System.Drawing.Size(163, 17);
             this.NewListNewItemCB.TabIndex = 18;
             this.NewListNewItemCB.Text = "New Item - New Datalist";
             this.NewListNewItemCB.UseVisualStyleBackColor = false;
@@ -866,12 +866,12 @@ namespace DatalistSyncUtil
             this.dataGridViewCheckBoxColumn2,
             this.dataGridViewCheckBoxColumn3,
             this.dataGridViewTextBoxColumn4});
-            this.NewItemsView.Location = new System.Drawing.Point(18, 42);
-            this.NewItemsView.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.NewItemsView.Location = new System.Drawing.Point(12, 27);
+            this.NewItemsView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewItemsView.Name = "NewItemsView";
             this.NewItemsView.RowTemplate.Height = 24;
             this.NewItemsView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.NewItemsView.Size = new System.Drawing.Size(1286, 652);
+            this.NewItemsView.Size = new System.Drawing.Size(857, 424);
             this.NewItemsView.TabIndex = 6;
             this.NewItemsView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.NewItemsView_RowsAdded);
             // 
@@ -990,10 +990,10 @@ namespace DatalistSyncUtil
             this.NewItemsSelectAllCB.AutoSize = true;
             this.NewItemsSelectAllCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.NewItemsSelectAllCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewItemsSelectAllCB.Location = new System.Drawing.Point(3, 8);
-            this.NewItemsSelectAllCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.NewItemsSelectAllCB.Location = new System.Drawing.Point(2, 5);
+            this.NewItemsSelectAllCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewItemsSelectAllCB.Name = "NewItemsSelectAllCB";
-            this.NewItemsSelectAllCB.Size = new System.Drawing.Size(111, 24);
+            this.NewItemsSelectAllCB.Size = new System.Drawing.Size(80, 17);
             this.NewItemsSelectAllCB.TabIndex = 8;
             this.NewItemsSelectAllCB.Text = "Select All";
             this.NewItemsSelectAllCB.UseVisualStyleBackColor = true;
@@ -1006,11 +1006,11 @@ namespace DatalistSyncUtil
             this.UpdateItemsTab.Controls.Add(this.label1);
             this.UpdateItemsTab.Controls.Add(this.UpdateTargetItemView);
             this.UpdateItemsTab.Controls.Add(this.UpdateSourceItemView);
-            this.UpdateItemsTab.Location = new System.Drawing.Point(4, 29);
-            this.UpdateItemsTab.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.UpdateItemsTab.Location = new System.Drawing.Point(4, 22);
+            this.UpdateItemsTab.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.UpdateItemsTab.Name = "UpdateItemsTab";
-            this.UpdateItemsTab.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.UpdateItemsTab.Size = new System.Drawing.Size(1650, 705);
+            this.UpdateItemsTab.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.UpdateItemsTab.Size = new System.Drawing.Size(1097, 454);
             this.UpdateItemsTab.TabIndex = 1;
             this.UpdateItemsTab.Text = "Update Items";
             this.UpdateItemsTab.UseVisualStyleBackColor = true;
@@ -1019,10 +1019,10 @@ namespace DatalistSyncUtil
             // 
             this.UpdateItemsSelectAllCB.AutoSize = true;
             this.UpdateItemsSelectAllCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateItemsSelectAllCB.Location = new System.Drawing.Point(98, 18);
-            this.UpdateItemsSelectAllCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.UpdateItemsSelectAllCB.Location = new System.Drawing.Point(65, 12);
+            this.UpdateItemsSelectAllCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.UpdateItemsSelectAllCB.Name = "UpdateItemsSelectAllCB";
-            this.UpdateItemsSelectAllCB.Size = new System.Drawing.Size(111, 24);
+            this.UpdateItemsSelectAllCB.Size = new System.Drawing.Size(80, 17);
             this.UpdateItemsSelectAllCB.TabIndex = 11;
             this.UpdateItemsSelectAllCB.Text = "Select All";
             this.UpdateItemsSelectAllCB.UseVisualStyleBackColor = true;
@@ -1032,9 +1032,10 @@ namespace DatalistSyncUtil
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1116, 20);
+            this.label2.Location = new System.Drawing.Point(744, 13);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 25);
+            this.label2.Size = new System.Drawing.Size(61, 17);
             this.label2.TabIndex = 10;
             this.label2.Text = "Target:";
             // 
@@ -1042,9 +1043,10 @@ namespace DatalistSyncUtil
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 18);
+            this.label1.Location = new System.Drawing.Point(5, 12);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 25);
+            this.label1.Size = new System.Drawing.Size(64, 17);
             this.label1.TabIndex = 9;
             this.label1.Text = "Source:";
             // 
@@ -1067,12 +1069,12 @@ namespace DatalistSyncUtil
             this.dataGridViewCheckBoxColumn8,
             this.dataGridViewCheckBoxColumn9,
             this.dataGridViewTextBoxColumn22});
-            this.UpdateTargetItemView.Location = new System.Drawing.Point(1119, 48);
-            this.UpdateTargetItemView.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.UpdateTargetItemView.Location = new System.Drawing.Point(746, 31);
+            this.UpdateTargetItemView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.UpdateTargetItemView.Name = "UpdateTargetItemView";
             this.UpdateTargetItemView.RowTemplate.Height = 24;
             this.UpdateTargetItemView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.UpdateTargetItemView.Size = new System.Drawing.Size(524, 698);
+            this.UpdateTargetItemView.Size = new System.Drawing.Size(349, 454);
             this.UpdateTargetItemView.TabIndex = 8;
             this.UpdateTargetItemView.Scroll += new System.Windows.Forms.ScrollEventHandler(this.UpdateTargetItemView_Scroll);
             // 
@@ -1207,12 +1209,12 @@ namespace DatalistSyncUtil
             this.dataGridViewCheckBoxColumn5,
             this.dataGridViewCheckBoxColumn6,
             this.dataGridViewTextBoxColumn12});
-            this.UpdateSourceItemView.Location = new System.Drawing.Point(4, 48);
-            this.UpdateSourceItemView.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.UpdateSourceItemView.Location = new System.Drawing.Point(3, 31);
+            this.UpdateSourceItemView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.UpdateSourceItemView.Name = "UpdateSourceItemView";
             this.UpdateSourceItemView.RowTemplate.Height = 24;
             this.UpdateSourceItemView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.UpdateSourceItemView.Size = new System.Drawing.Size(1114, 698);
+            this.UpdateSourceItemView.Size = new System.Drawing.Size(743, 454);
             this.UpdateSourceItemView.TabIndex = 7;
             this.UpdateSourceItemView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.UpdateSourceItemView_RowAdded);
             this.UpdateSourceItemView.Scroll += new System.Windows.Forms.ScrollEventHandler(this.UpdateSourceItemView_Scroll);
@@ -1332,11 +1334,11 @@ namespace DatalistSyncUtil
             this.ItemLanguages.Controls.Add(this.panel2);
             this.ItemLanguages.Controls.Add(this.btnUpdateLanguages);
             this.ItemLanguages.Controls.Add(this.tabControl1);
-            this.ItemLanguages.Location = new System.Drawing.Point(4, 29);
-            this.ItemLanguages.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ItemLanguages.Location = new System.Drawing.Point(4, 22);
+            this.ItemLanguages.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ItemLanguages.Name = "ItemLanguages";
-            this.ItemLanguages.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.ItemLanguages.Size = new System.Drawing.Size(1668, 838);
+            this.ItemLanguages.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ItemLanguages.Size = new System.Drawing.Size(1109, 540);
             this.ItemLanguages.TabIndex = 2;
             this.ItemLanguages.Text = "Languages";
             this.ItemLanguages.UseVisualStyleBackColor = true;
@@ -1350,20 +1352,20 @@ namespace DatalistSyncUtil
             this.panel2.Controls.Add(this.LangRightsCB);
             this.panel2.Controls.Add(this.LangFunctionsCB);
             this.panel2.Controls.Add(this.LangRolesCB);
-            this.panel2.Location = new System.Drawing.Point(8, 6);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.panel2.Location = new System.Drawing.Point(5, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(622, 51);
+            this.panel2.Size = new System.Drawing.Size(415, 33);
             this.panel2.TabIndex = 14;
             // 
             // LangDatalistCB
             // 
             this.LangDatalistCB.AutoSize = true;
             this.LangDatalistCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LangDatalistCB.Location = new System.Drawing.Point(524, 14);
-            this.LangDatalistCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.LangDatalistCB.Location = new System.Drawing.Point(349, 9);
+            this.LangDatalistCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.LangDatalistCB.Name = "LangDatalistCB";
-            this.LangDatalistCB.Size = new System.Drawing.Size(97, 24);
+            this.LangDatalistCB.Size = new System.Drawing.Size(69, 17);
             this.LangDatalistCB.TabIndex = 15;
             this.LangDatalistCB.Text = "Datalist";
             this.LangDatalistCB.UseVisualStyleBackColor = true;
@@ -1373,10 +1375,10 @@ namespace DatalistSyncUtil
             // 
             this.LangMessagesCB.AutoSize = true;
             this.LangMessagesCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LangMessagesCB.Location = new System.Drawing.Point(402, 14);
-            this.LangMessagesCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.LangMessagesCB.Location = new System.Drawing.Point(268, 9);
+            this.LangMessagesCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.LangMessagesCB.Name = "LangMessagesCB";
-            this.LangMessagesCB.Size = new System.Drawing.Size(116, 24);
+            this.LangMessagesCB.Size = new System.Drawing.Size(82, 17);
             this.LangMessagesCB.TabIndex = 13;
             this.LangMessagesCB.Text = "Messages";
             this.LangMessagesCB.UseVisualStyleBackColor = true;
@@ -1386,10 +1388,10 @@ namespace DatalistSyncUtil
             // 
             this.LangLabelsCB.AutoSize = true;
             this.LangLabelsCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LangLabelsCB.Location = new System.Drawing.Point(308, 14);
-            this.LangLabelsCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.LangLabelsCB.Location = new System.Drawing.Point(205, 9);
+            this.LangLabelsCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.LangLabelsCB.Name = "LangLabelsCB";
-            this.LangLabelsCB.Size = new System.Drawing.Size(88, 24);
+            this.LangLabelsCB.Size = new System.Drawing.Size(63, 17);
             this.LangLabelsCB.TabIndex = 12;
             this.LangLabelsCB.Text = "Labels";
             this.LangLabelsCB.UseVisualStyleBackColor = true;
@@ -1399,10 +1401,10 @@ namespace DatalistSyncUtil
             // 
             this.LangRightsCB.AutoSize = true;
             this.LangRightsCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LangRightsCB.Location = new System.Drawing.Point(214, 14);
-            this.LangRightsCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.LangRightsCB.Location = new System.Drawing.Point(143, 9);
+            this.LangRightsCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.LangRightsCB.Name = "LangRightsCB";
-            this.LangRightsCB.Size = new System.Drawing.Size(87, 24);
+            this.LangRightsCB.Size = new System.Drawing.Size(62, 17);
             this.LangRightsCB.TabIndex = 11;
             this.LangRightsCB.Text = "Rights";
             this.LangRightsCB.UseVisualStyleBackColor = true;
@@ -1412,10 +1414,10 @@ namespace DatalistSyncUtil
             // 
             this.LangFunctionsCB.AutoSize = true;
             this.LangFunctionsCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LangFunctionsCB.Location = new System.Drawing.Point(96, 14);
-            this.LangFunctionsCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.LangFunctionsCB.Location = new System.Drawing.Point(64, 9);
+            this.LangFunctionsCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.LangFunctionsCB.Name = "LangFunctionsCB";
-            this.LangFunctionsCB.Size = new System.Drawing.Size(114, 24);
+            this.LangFunctionsCB.Size = new System.Drawing.Size(81, 17);
             this.LangFunctionsCB.TabIndex = 10;
             this.LangFunctionsCB.Text = "Functions";
             this.LangFunctionsCB.UseVisualStyleBackColor = true;
@@ -1425,10 +1427,10 @@ namespace DatalistSyncUtil
             // 
             this.LangRolesCB.AutoSize = true;
             this.LangRolesCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LangRolesCB.Location = new System.Drawing.Point(9, 14);
-            this.LangRolesCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.LangRolesCB.Location = new System.Drawing.Point(6, 9);
+            this.LangRolesCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.LangRolesCB.Name = "LangRolesCB";
-            this.LangRolesCB.Size = new System.Drawing.Size(81, 24);
+            this.LangRolesCB.Size = new System.Drawing.Size(58, 17);
             this.LangRolesCB.TabIndex = 9;
             this.LangRolesCB.Text = "Roles";
             this.LangRolesCB.UseVisualStyleBackColor = true;
@@ -1436,10 +1438,10 @@ namespace DatalistSyncUtil
             // 
             // btnUpdateLanguages
             // 
-            this.btnUpdateLanguages.Location = new System.Drawing.Point(3, 798);
-            this.btnUpdateLanguages.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnUpdateLanguages.Location = new System.Drawing.Point(2, 519);
+            this.btnUpdateLanguages.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnUpdateLanguages.Name = "btnUpdateLanguages";
-            this.btnUpdateLanguages.Size = new System.Drawing.Size(84, 35);
+            this.btnUpdateLanguages.Size = new System.Drawing.Size(56, 23);
             this.btnUpdateLanguages.TabIndex = 1;
             this.btnUpdateLanguages.Text = "Include";
             this.btnUpdateLanguages.UseVisualStyleBackColor = true;
@@ -1449,11 +1451,11 @@ namespace DatalistSyncUtil
             // 
             this.tabControl1.Controls.Add(this.NewLangTab);
             this.tabControl1.Controls.Add(this.UpdateLangTab);
-            this.tabControl1.Location = new System.Drawing.Point(8, 60);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.tabControl1.Location = new System.Drawing.Point(5, 39);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1653, 729);
+            this.tabControl1.Size = new System.Drawing.Size(1102, 474);
             this.tabControl1.TabIndex = 0;
             // 
             // NewLangTab
@@ -1463,11 +1465,11 @@ namespace DatalistSyncUtil
             this.NewLangTab.Controls.Add(this.NewLangNewListCB);
             this.NewLangTab.Controls.Add(this.NewLangSelectAllCB);
             this.NewLangTab.Controls.Add(this.NewLangView);
-            this.NewLangTab.Location = new System.Drawing.Point(4, 29);
-            this.NewLangTab.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.NewLangTab.Location = new System.Drawing.Point(4, 22);
+            this.NewLangTab.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewLangTab.Name = "NewLangTab";
-            this.NewLangTab.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.NewLangTab.Size = new System.Drawing.Size(1645, 696);
+            this.NewLangTab.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.NewLangTab.Size = new System.Drawing.Size(1094, 448);
             this.NewLangTab.TabIndex = 0;
             this.NewLangTab.Text = "New";
             this.NewLangTab.UseVisualStyleBackColor = true;
@@ -1477,10 +1479,10 @@ namespace DatalistSyncUtil
             this.NewLangExistingItemCB.AutoSize = true;
             this.NewLangExistingItemCB.BackColor = System.Drawing.Color.WhiteSmoke;
             this.NewLangExistingItemCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewLangExistingItemCB.Location = new System.Drawing.Point(754, 9);
-            this.NewLangExistingItemCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.NewLangExistingItemCB.Location = new System.Drawing.Point(503, 6);
+            this.NewLangExistingItemCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewLangExistingItemCB.Name = "NewLangExistingItemCB";
-            this.NewLangExistingItemCB.Size = new System.Drawing.Size(292, 24);
+            this.NewLangExistingItemCB.Size = new System.Drawing.Size(207, 17);
             this.NewLangExistingItemCB.TabIndex = 27;
             this.NewLangExistingItemCB.Text = "New Languages - Existing Items";
             this.NewLangExistingItemCB.UseVisualStyleBackColor = false;
@@ -1491,10 +1493,10 @@ namespace DatalistSyncUtil
             this.NewLangNewItemCB.AutoSize = true;
             this.NewLangNewItemCB.BackColor = System.Drawing.Color.LightGray;
             this.NewLangNewItemCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewLangNewItemCB.Location = new System.Drawing.Point(484, 8);
-            this.NewLangNewItemCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.NewLangNewItemCB.Location = new System.Drawing.Point(323, 5);
+            this.NewLangNewItemCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewLangNewItemCB.Name = "NewLangNewItemCB";
-            this.NewLangNewItemCB.Size = new System.Drawing.Size(263, 24);
+            this.NewLangNewItemCB.Size = new System.Drawing.Size(188, 17);
             this.NewLangNewItemCB.TabIndex = 26;
             this.NewLangNewItemCB.Text = "New Languages - New Items";
             this.NewLangNewItemCB.UseVisualStyleBackColor = false;
@@ -1505,10 +1507,10 @@ namespace DatalistSyncUtil
             this.NewLangNewListCB.AutoSize = true;
             this.NewLangNewListCB.BackColor = System.Drawing.Color.LightBlue;
             this.NewLangNewListCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewLangNewListCB.Location = new System.Drawing.Point(186, 8);
-            this.NewLangNewListCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.NewLangNewListCB.Location = new System.Drawing.Point(124, 5);
+            this.NewLangNewListCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewLangNewListCB.Name = "NewLangNewListCB";
-            this.NewLangNewListCB.Size = new System.Drawing.Size(280, 24);
+            this.NewLangNewListCB.Size = new System.Drawing.Size(201, 17);
             this.NewLangNewListCB.TabIndex = 25;
             this.NewLangNewListCB.Text = "New Languages - New Datalist";
             this.NewLangNewListCB.UseVisualStyleBackColor = false;
@@ -1519,10 +1521,10 @@ namespace DatalistSyncUtil
             this.NewLangSelectAllCB.AutoSize = true;
             this.NewLangSelectAllCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.NewLangSelectAllCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewLangSelectAllCB.Location = new System.Drawing.Point(8, 8);
-            this.NewLangSelectAllCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.NewLangSelectAllCB.Location = new System.Drawing.Point(5, 5);
+            this.NewLangSelectAllCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewLangSelectAllCB.Name = "NewLangSelectAllCB";
-            this.NewLangSelectAllCB.Size = new System.Drawing.Size(111, 24);
+            this.NewLangSelectAllCB.Size = new System.Drawing.Size(80, 17);
             this.NewLangSelectAllCB.TabIndex = 12;
             this.NewLangSelectAllCB.Text = "Select All";
             this.NewLangSelectAllCB.UseVisualStyleBackColor = true;
@@ -1541,12 +1543,12 @@ namespace DatalistSyncUtil
             this.Desc,
             this.LongDescription,
             this.dataGridViewTextBoxColumn32});
-            this.NewLangView.Location = new System.Drawing.Point(8, 42);
-            this.NewLangView.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.NewLangView.Location = new System.Drawing.Point(5, 27);
+            this.NewLangView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewLangView.Name = "NewLangView";
             this.NewLangView.RowTemplate.Height = 24;
             this.NewLangView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.NewLangView.Size = new System.Drawing.Size(1630, 645);
+            this.NewLangView.Size = new System.Drawing.Size(1087, 419);
             this.NewLangView.TabIndex = 7;
             this.NewLangView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.NewLangView_RowsAdded);
             // 
@@ -1609,11 +1611,11 @@ namespace DatalistSyncUtil
             this.UpdateLangTab.Controls.Add(this.UpdateLangSelectAllCB);
             this.UpdateLangTab.Controls.Add(this.TargetUpdateLangView);
             this.UpdateLangTab.Controls.Add(this.SourceUpdateLangView);
-            this.UpdateLangTab.Location = new System.Drawing.Point(4, 29);
-            this.UpdateLangTab.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.UpdateLangTab.Location = new System.Drawing.Point(4, 22);
+            this.UpdateLangTab.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.UpdateLangTab.Name = "UpdateLangTab";
-            this.UpdateLangTab.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.UpdateLangTab.Size = new System.Drawing.Size(1645, 696);
+            this.UpdateLangTab.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.UpdateLangTab.Size = new System.Drawing.Size(1094, 448);
             this.UpdateLangTab.TabIndex = 1;
             this.UpdateLangTab.Text = "Update";
             this.UpdateLangTab.UseVisualStyleBackColor = true;
@@ -1623,10 +1625,10 @@ namespace DatalistSyncUtil
             this.UpdateLangSelectAllCB.AutoSize = true;
             this.UpdateLangSelectAllCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.UpdateLangSelectAllCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateLangSelectAllCB.Location = new System.Drawing.Point(8, 8);
-            this.UpdateLangSelectAllCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.UpdateLangSelectAllCB.Location = new System.Drawing.Point(5, 5);
+            this.UpdateLangSelectAllCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.UpdateLangSelectAllCB.Name = "UpdateLangSelectAllCB";
-            this.UpdateLangSelectAllCB.Size = new System.Drawing.Size(111, 24);
+            this.UpdateLangSelectAllCB.Size = new System.Drawing.Size(80, 17);
             this.UpdateLangSelectAllCB.TabIndex = 12;
             this.UpdateLangSelectAllCB.Text = "Select All";
             this.UpdateLangSelectAllCB.UseVisualStyleBackColor = true;
@@ -1643,12 +1645,12 @@ namespace DatalistSyncUtil
             this.dataGridViewTextBoxColumn35,
             this.dataGridViewTextBoxColumn36,
             this.dataGridViewTextBoxColumn37});
-            this.TargetUpdateLangView.Location = new System.Drawing.Point(1012, 35);
-            this.TargetUpdateLangView.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.TargetUpdateLangView.Location = new System.Drawing.Point(675, 23);
+            this.TargetUpdateLangView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TargetUpdateLangView.Name = "TargetUpdateLangView";
             this.TargetUpdateLangView.RowTemplate.Height = 24;
             this.TargetUpdateLangView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TargetUpdateLangView.Size = new System.Drawing.Size(621, 658);
+            this.TargetUpdateLangView.Size = new System.Drawing.Size(414, 428);
             this.TargetUpdateLangView.TabIndex = 9;
             this.TargetUpdateLangView.Scroll += new System.Windows.Forms.ScrollEventHandler(this.TargetUpdateLangView_Scroll);
             // 
@@ -1707,12 +1709,12 @@ namespace DatalistSyncUtil
             this.LongDescModified,
             this.dataGridViewTextBoxColumn29,
             this.dataGridViewTextBoxColumn30});
-            this.SourceUpdateLangView.Location = new System.Drawing.Point(8, 35);
-            this.SourceUpdateLangView.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.SourceUpdateLangView.Location = new System.Drawing.Point(5, 23);
+            this.SourceUpdateLangView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.SourceUpdateLangView.Name = "SourceUpdateLangView";
             this.SourceUpdateLangView.RowTemplate.Height = 24;
             this.SourceUpdateLangView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.SourceUpdateLangView.Size = new System.Drawing.Size(1006, 658);
+            this.SourceUpdateLangView.Size = new System.Drawing.Size(671, 428);
             this.SourceUpdateLangView.TabIndex = 8;
             this.SourceUpdateLangView.Scroll += new System.Windows.Forms.ScrollEventHandler(this.SourceUpdateLangView_Scroll);
             // 
@@ -1789,20 +1791,21 @@ namespace DatalistSyncUtil
             this.Attributes.Controls.Add(this.btnUpdateAttribute);
             this.Attributes.Controls.Add(this.tabControl2);
             this.Attributes.Controls.Add(this.panel3);
-            this.Attributes.Location = new System.Drawing.Point(4, 29);
+            this.Attributes.Location = new System.Drawing.Point(4, 22);
+            this.Attributes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Attributes.Name = "Attributes";
-            this.Attributes.Padding = new System.Windows.Forms.Padding(3);
-            this.Attributes.Size = new System.Drawing.Size(1668, 838);
+            this.Attributes.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Attributes.Size = new System.Drawing.Size(1109, 540);
             this.Attributes.TabIndex = 3;
             this.Attributes.Text = "Attributes";
             this.Attributes.UseVisualStyleBackColor = true;
             // 
             // btnUpdateAttribute
             // 
-            this.btnUpdateAttribute.Location = new System.Drawing.Point(18, 788);
-            this.btnUpdateAttribute.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnUpdateAttribute.Location = new System.Drawing.Point(12, 512);
+            this.btnUpdateAttribute.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnUpdateAttribute.Name = "btnUpdateAttribute";
-            this.btnUpdateAttribute.Size = new System.Drawing.Size(84, 35);
+            this.btnUpdateAttribute.Size = new System.Drawing.Size(56, 23);
             this.btnUpdateAttribute.TabIndex = 17;
             this.btnUpdateAttribute.Text = "Include";
             this.btnUpdateAttribute.UseVisualStyleBackColor = true;
@@ -1812,11 +1815,11 @@ namespace DatalistSyncUtil
             // 
             this.tabControl2.Controls.Add(this.tabPage1);
             this.tabControl2.Controls.Add(this.tabPage2);
-            this.tabControl2.Location = new System.Drawing.Point(8, 54);
-            this.tabControl2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.tabControl2.Location = new System.Drawing.Point(5, 35);
+            this.tabControl2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1653, 729);
+            this.tabControl2.Size = new System.Drawing.Size(1102, 474);
             this.tabControl2.TabIndex = 16;
             // 
             // tabPage1
@@ -1825,11 +1828,11 @@ namespace DatalistSyncUtil
             this.tabPage1.Controls.Add(this.lblTypeDataList);
             this.tabPage1.Controls.Add(this.NewAttributesView);
             this.tabPage1.Controls.Add(this.NewItemsAttributeSelectAllCB);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.tabPage1.Size = new System.Drawing.Size(1645, 696);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tabPage1.Size = new System.Drawing.Size(1094, 448);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "New";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1838,9 +1841,10 @@ namespace DatalistSyncUtil
             // 
             this.lblTypeDataListItem.AutoSize = true;
             this.lblTypeDataListItem.BackColor = System.Drawing.Color.LightGray;
-            this.lblTypeDataListItem.Location = new System.Drawing.Point(313, 12);
+            this.lblTypeDataListItem.Location = new System.Drawing.Point(209, 8);
+            this.lblTypeDataListItem.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTypeDataListItem.Name = "lblTypeDataListItem";
-            this.lblTypeDataListItem.Size = new System.Drawing.Size(185, 20);
+            this.lblTypeDataListItem.Size = new System.Drawing.Size(131, 13);
             this.lblTypeDataListItem.TabIndex = 15;
             this.lblTypeDataListItem.Text = "NewTypeDataListItem";
             // 
@@ -1848,9 +1852,10 @@ namespace DatalistSyncUtil
             // 
             this.lblTypeDataList.AutoSize = true;
             this.lblTypeDataList.BackColor = System.Drawing.Color.LightBlue;
-            this.lblTypeDataList.Location = new System.Drawing.Point(144, 12);
+            this.lblTypeDataList.Location = new System.Drawing.Point(96, 8);
+            this.lblTypeDataList.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTypeDataList.Name = "lblTypeDataList";
-            this.lblTypeDataList.Size = new System.Drawing.Size(149, 20);
+            this.lblTypeDataList.Size = new System.Drawing.Size(107, 13);
             this.lblTypeDataList.TabIndex = 14;
             this.lblTypeDataList.Text = "NewTypeDataList";
             // 
@@ -1874,12 +1879,12 @@ namespace DatalistSyncUtil
             this.Column4,
             this.TypeNameAttribute,
             this.Column5});
-            this.NewAttributesView.Location = new System.Drawing.Point(8, 40);
-            this.NewAttributesView.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.NewAttributesView.Location = new System.Drawing.Point(5, 26);
+            this.NewAttributesView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewAttributesView.Name = "NewAttributesView";
             this.NewAttributesView.RowTemplate.Height = 24;
             this.NewAttributesView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.NewAttributesView.Size = new System.Drawing.Size(1630, 645);
+            this.NewAttributesView.Size = new System.Drawing.Size(1087, 419);
             this.NewAttributesView.TabIndex = 13;
             this.NewAttributesView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.NewAttributeView_RowsAdded);
             // 
@@ -1992,10 +1997,10 @@ namespace DatalistSyncUtil
             this.NewItemsAttributeSelectAllCB.AutoSize = true;
             this.NewItemsAttributeSelectAllCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.NewItemsAttributeSelectAllCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewItemsAttributeSelectAllCB.Location = new System.Drawing.Point(8, 8);
-            this.NewItemsAttributeSelectAllCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.NewItemsAttributeSelectAllCB.Location = new System.Drawing.Point(5, 5);
+            this.NewItemsAttributeSelectAllCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewItemsAttributeSelectAllCB.Name = "NewItemsAttributeSelectAllCB";
-            this.NewItemsAttributeSelectAllCB.Size = new System.Drawing.Size(111, 24);
+            this.NewItemsAttributeSelectAllCB.Size = new System.Drawing.Size(80, 17);
             this.NewItemsAttributeSelectAllCB.TabIndex = 12;
             this.NewItemsAttributeSelectAllCB.Text = "Select All";
             this.NewItemsAttributeSelectAllCB.UseVisualStyleBackColor = true;
@@ -2005,11 +2010,11 @@ namespace DatalistSyncUtil
             this.tabPage2.Controls.Add(this.TargetUpdateAttributeView);
             this.tabPage2.Controls.Add(this.checkBox10);
             this.tabPage2.Controls.Add(this.SourceUpdateAttributeView);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.tabPage2.Size = new System.Drawing.Size(1645, 696);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tabPage2.Size = new System.Drawing.Size(1094, 448);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Update";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -2027,12 +2032,12 @@ namespace DatalistSyncUtil
             this.dataGridViewTextBoxColumn43,
             this.dataGridViewTextBoxColumn44,
             this.dataGridViewTextBoxColumn45});
-            this.TargetUpdateAttributeView.Location = new System.Drawing.Point(788, 35);
-            this.TargetUpdateAttributeView.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.TargetUpdateAttributeView.Location = new System.Drawing.Point(525, 23);
+            this.TargetUpdateAttributeView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TargetUpdateAttributeView.Name = "TargetUpdateAttributeView";
             this.TargetUpdateAttributeView.RowTemplate.Height = 24;
             this.TargetUpdateAttributeView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TargetUpdateAttributeView.Size = new System.Drawing.Size(836, 658);
+            this.TargetUpdateAttributeView.Size = new System.Drawing.Size(557, 428);
             this.TargetUpdateAttributeView.TabIndex = 13;
             // 
             // dataGridViewCheckBoxColumn14
@@ -2093,10 +2098,10 @@ namespace DatalistSyncUtil
             this.checkBox10.AutoSize = true;
             this.checkBox10.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox10.Location = new System.Drawing.Point(8, 8);
-            this.checkBox10.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.checkBox10.Location = new System.Drawing.Point(5, 5);
+            this.checkBox10.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(111, 24);
+            this.checkBox10.Size = new System.Drawing.Size(80, 17);
             this.checkBox10.TabIndex = 12;
             this.checkBox10.Text = "Select All";
             this.checkBox10.UseVisualStyleBackColor = true;
@@ -2114,12 +2119,12 @@ namespace DatalistSyncUtil
             this.dataGridViewTextBoxColumn48,
             this.dataGridViewTextBoxColumn49,
             this.dataGridViewTextBoxColumn53});
-            this.SourceUpdateAttributeView.Location = new System.Drawing.Point(8, 35);
-            this.SourceUpdateAttributeView.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.SourceUpdateAttributeView.Location = new System.Drawing.Point(5, 23);
+            this.SourceUpdateAttributeView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.SourceUpdateAttributeView.Name = "SourceUpdateAttributeView";
             this.SourceUpdateAttributeView.RowTemplate.Height = 24;
             this.SourceUpdateAttributeView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.SourceUpdateAttributeView.Size = new System.Drawing.Size(836, 658);
+            this.SourceUpdateAttributeView.Size = new System.Drawing.Size(557, 428);
             this.SourceUpdateAttributeView.TabIndex = 8;
             // 
             // dataGridViewCheckBoxColumn15
@@ -2183,20 +2188,20 @@ namespace DatalistSyncUtil
             this.panel3.Controls.Add(this.AttributesRightsCB);
             this.panel3.Controls.Add(this.AttributesFunctionCB);
             this.panel3.Controls.Add(this.AttributesRoleCB);
-            this.panel3.Location = new System.Drawing.Point(3, 8);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.panel3.Location = new System.Drawing.Point(2, 5);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(580, 51);
+            this.panel3.Size = new System.Drawing.Size(387, 33);
             this.panel3.TabIndex = 15;
             // 
             // AttributesDataListCB
             // 
             this.AttributesDataListCB.AutoSize = true;
             this.AttributesDataListCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AttributesDataListCB.Location = new System.Drawing.Point(452, 14);
-            this.AttributesDataListCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.AttributesDataListCB.Location = new System.Drawing.Point(301, 9);
+            this.AttributesDataListCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.AttributesDataListCB.Name = "AttributesDataListCB";
-            this.AttributesDataListCB.Size = new System.Drawing.Size(97, 24);
+            this.AttributesDataListCB.Size = new System.Drawing.Size(69, 17);
             this.AttributesDataListCB.TabIndex = 15;
             this.AttributesDataListCB.Text = "Datalist";
             this.AttributesDataListCB.UseVisualStyleBackColor = true;
@@ -2205,10 +2210,10 @@ namespace DatalistSyncUtil
             // 
             this.AttributesMsgCB.AutoSize = true;
             this.AttributesMsgCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AttributesMsgCB.Location = new System.Drawing.Point(316, 14);
-            this.AttributesMsgCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.AttributesMsgCB.Location = new System.Drawing.Point(211, 9);
+            this.AttributesMsgCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.AttributesMsgCB.Name = "AttributesMsgCB";
-            this.AttributesMsgCB.Size = new System.Drawing.Size(116, 24);
+            this.AttributesMsgCB.Size = new System.Drawing.Size(82, 17);
             this.AttributesMsgCB.TabIndex = 13;
             this.AttributesMsgCB.Text = "Messages";
             this.AttributesMsgCB.UseVisualStyleBackColor = true;
@@ -2217,10 +2222,10 @@ namespace DatalistSyncUtil
             // 
             this.AttributesRightsCB.AutoSize = true;
             this.AttributesRightsCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AttributesRightsCB.Location = new System.Drawing.Point(214, 14);
-            this.AttributesRightsCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.AttributesRightsCB.Location = new System.Drawing.Point(143, 9);
+            this.AttributesRightsCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.AttributesRightsCB.Name = "AttributesRightsCB";
-            this.AttributesRightsCB.Size = new System.Drawing.Size(87, 24);
+            this.AttributesRightsCB.Size = new System.Drawing.Size(62, 17);
             this.AttributesRightsCB.TabIndex = 11;
             this.AttributesRightsCB.Text = "Rights";
             this.AttributesRightsCB.UseVisualStyleBackColor = true;
@@ -2229,10 +2234,10 @@ namespace DatalistSyncUtil
             // 
             this.AttributesFunctionCB.AutoSize = true;
             this.AttributesFunctionCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AttributesFunctionCB.Location = new System.Drawing.Point(96, 14);
-            this.AttributesFunctionCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.AttributesFunctionCB.Location = new System.Drawing.Point(64, 9);
+            this.AttributesFunctionCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.AttributesFunctionCB.Name = "AttributesFunctionCB";
-            this.AttributesFunctionCB.Size = new System.Drawing.Size(114, 24);
+            this.AttributesFunctionCB.Size = new System.Drawing.Size(81, 17);
             this.AttributesFunctionCB.TabIndex = 10;
             this.AttributesFunctionCB.Text = "Functions";
             this.AttributesFunctionCB.UseVisualStyleBackColor = true;
@@ -2241,10 +2246,10 @@ namespace DatalistSyncUtil
             // 
             this.AttributesRoleCB.AutoSize = true;
             this.AttributesRoleCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AttributesRoleCB.Location = new System.Drawing.Point(9, 14);
-            this.AttributesRoleCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.AttributesRoleCB.Location = new System.Drawing.Point(6, 9);
+            this.AttributesRoleCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.AttributesRoleCB.Name = "AttributesRoleCB";
-            this.AttributesRoleCB.Size = new System.Drawing.Size(81, 24);
+            this.AttributesRoleCB.Size = new System.Drawing.Size(58, 17);
             this.AttributesRoleCB.TabIndex = 9;
             this.AttributesRoleCB.Text = "Roles";
             this.AttributesRoleCB.UseVisualStyleBackColor = true;
@@ -2255,21 +2260,20 @@ namespace DatalistSyncUtil
             this.tabpage3.Controls.Add(this.btnLinkitem);
             this.tabpage3.Controls.Add(this.tabControl3);
             this.tabpage3.Controls.Add(this.panel4);
-            this.tabpage3.Location = new System.Drawing.Point(4, 29);
-            this.tabpage3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabpage3.Location = new System.Drawing.Point(4, 22);
             this.tabpage3.Name = "tabpage3";
-            this.tabpage3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabpage3.Size = new System.Drawing.Size(1668, 838);
+            this.tabpage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabpage3.Size = new System.Drawing.Size(1109, 540);
             this.tabpage3.TabIndex = 4;
             this.tabpage3.Text = "Links";
             this.tabpage3.UseVisualStyleBackColor = true;
             // 
             // btnLinkitem
             // 
-            this.btnLinkitem.Location = new System.Drawing.Point(18, 798);
-            this.btnLinkitem.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnLinkitem.Location = new System.Drawing.Point(12, 519);
+            this.btnLinkitem.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnLinkitem.Name = "btnLinkitem";
-            this.btnLinkitem.Size = new System.Drawing.Size(84, 32);
+            this.btnLinkitem.Size = new System.Drawing.Size(56, 21);
             this.btnLinkitem.TabIndex = 18;
             this.btnLinkitem.Text = "Include";
             this.btnLinkitem.UseVisualStyleBackColor = true;
@@ -2279,11 +2283,11 @@ namespace DatalistSyncUtil
             // 
             this.tabControl3.Controls.Add(this.tabPage4);
             this.tabControl3.Controls.Add(this.tabPage5);
-            this.tabControl3.Location = new System.Drawing.Point(4, 51);
-            this.tabControl3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.tabControl3.Location = new System.Drawing.Point(3, 33);
+            this.tabControl3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabControl3.Name = "tabControl3";
             this.tabControl3.SelectedIndex = 0;
-            this.tabControl3.Size = new System.Drawing.Size(1653, 729);
+            this.tabControl3.Size = new System.Drawing.Size(1102, 474);
             this.tabControl3.TabIndex = 17;
             // 
             // tabPage4
@@ -2291,11 +2295,11 @@ namespace DatalistSyncUtil
             this.tabPage4.Controls.Add(this.LinkgridView);
             this.tabPage4.Controls.Add(this.NewLinkView);
             this.tabPage4.Controls.Add(this.NewLinkSelectAllCB);
-            this.tabPage4.Location = new System.Drawing.Point(4, 29);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.tabPage4.Size = new System.Drawing.Size(1645, 696);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tabPage4.Size = new System.Drawing.Size(1094, 448);
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "New";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -2321,12 +2325,12 @@ namespace DatalistSyncUtil
             this.dataGridViewTextBoxColumn105,
             this.dataGridViewTextBoxColumn106,
             this.dataGridViewTextBoxColumn107});
-            this.LinkgridView.Location = new System.Drawing.Point(-8, 38);
-            this.LinkgridView.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.LinkgridView.Location = new System.Drawing.Point(-5, 35);
+            this.LinkgridView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.LinkgridView.Name = "LinkgridView";
             this.LinkgridView.RowTemplate.Height = 24;
             this.LinkgridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.LinkgridView.Size = new System.Drawing.Size(1725, 642);
+            this.LinkgridView.Size = new System.Drawing.Size(1017, 407);
             this.LinkgridView.TabIndex = 15;
             // 
             // dataGridViewCheckBoxColumn16
@@ -2443,12 +2447,12 @@ namespace DatalistSyncUtil
             this.NewLinkView.AllowUserToAddRows = false;
             this.NewLinkView.AllowUserToDeleteRows = false;
             this.NewLinkView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.NewLinkView.Location = new System.Drawing.Point(-10, 54);
-            this.NewLinkView.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.NewLinkView.Location = new System.Drawing.Point(-7, 35);
+            this.NewLinkView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewLinkView.Name = "NewLinkView";
             this.NewLinkView.RowTemplate.Height = 24;
             this.NewLinkView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.NewLinkView.Size = new System.Drawing.Size(1652, 642);
+            this.NewLinkView.Size = new System.Drawing.Size(1101, 417);
             this.NewLinkView.TabIndex = 13;
             this.NewLinkView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
@@ -2457,10 +2461,10 @@ namespace DatalistSyncUtil
             this.NewLinkSelectAllCB.AutoSize = true;
             this.NewLinkSelectAllCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.NewLinkSelectAllCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewLinkSelectAllCB.Location = new System.Drawing.Point(8, 8);
-            this.NewLinkSelectAllCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.NewLinkSelectAllCB.Location = new System.Drawing.Point(5, 5);
+            this.NewLinkSelectAllCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewLinkSelectAllCB.Name = "NewLinkSelectAllCB";
-            this.NewLinkSelectAllCB.Size = new System.Drawing.Size(111, 24);
+            this.NewLinkSelectAllCB.Size = new System.Drawing.Size(80, 17);
             this.NewLinkSelectAllCB.TabIndex = 12;
             this.NewLinkSelectAllCB.Text = "Select All";
             this.NewLinkSelectAllCB.UseVisualStyleBackColor = true;
@@ -2473,11 +2477,11 @@ namespace DatalistSyncUtil
             this.tabPage5.Controls.Add(this.dataGridView2);
             this.tabPage5.Controls.Add(this.checkBox7);
             this.tabPage5.Controls.Add(this.dataGridView3);
-            this.tabPage5.Location = new System.Drawing.Point(4, 29);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.tabPage5.Size = new System.Drawing.Size(1645, 696);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tabPage5.Size = new System.Drawing.Size(1094, 448);
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "Update";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -2503,12 +2507,12 @@ namespace DatalistSyncUtil
             this.dataGridViewTextBoxColumn102,
             this.dataGridViewTextBoxColumn103,
             this.dataGridViewTextBoxColumn104});
-            this.TargetLinkView.Location = new System.Drawing.Point(722, 38);
-            this.TargetLinkView.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.TargetLinkView.Location = new System.Drawing.Point(481, 25);
+            this.TargetLinkView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TargetLinkView.Name = "TargetLinkView";
             this.TargetLinkView.RowTemplate.Height = 24;
             this.TargetLinkView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TargetLinkView.Size = new System.Drawing.Size(968, 642);
+            this.TargetLinkView.Size = new System.Drawing.Size(645, 417);
             this.TargetLinkView.TabIndex = 15;
             this.TargetLinkView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TargetLinkView_CellContentClick);
             // 
@@ -2642,12 +2646,12 @@ namespace DatalistSyncUtil
             this.dataGridViewTextBoxColumn88,
             this.dataGridViewTextBoxColumn89,
             this.dataGridViewTextBoxColumn90});
-            this.SourceLinkView.Location = new System.Drawing.Point(-16, 35);
-            this.SourceLinkView.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.SourceLinkView.Location = new System.Drawing.Point(-11, 23);
+            this.SourceLinkView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.SourceLinkView.Name = "SourceLinkView";
             this.SourceLinkView.RowTemplate.Height = 24;
             this.SourceLinkView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.SourceLinkView.Size = new System.Drawing.Size(1725, 642);
+            this.SourceLinkView.Size = new System.Drawing.Size(1150, 417);
             this.SourceLinkView.TabIndex = 14;
             // 
             // dataGridViewCheckBoxColumn19
@@ -2772,12 +2776,12 @@ namespace DatalistSyncUtil
             this.dataGridViewTextBoxColumn69,
             this.dataGridViewTextBoxColumn70,
             this.dataGridViewTextBoxColumn71});
-            this.dataGridView2.Location = new System.Drawing.Point(788, 35);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.dataGridView2.Location = new System.Drawing.Point(525, 23);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView2.Size = new System.Drawing.Size(836, 658);
+            this.dataGridView2.Size = new System.Drawing.Size(557, 428);
             this.dataGridView2.TabIndex = 13;
             // 
             // dataGridViewCheckBoxColumn17
@@ -2838,10 +2842,10 @@ namespace DatalistSyncUtil
             this.checkBox7.AutoSize = true;
             this.checkBox7.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox7.Location = new System.Drawing.Point(8, 8);
-            this.checkBox7.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.checkBox7.Location = new System.Drawing.Point(5, 5);
+            this.checkBox7.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(111, 24);
+            this.checkBox7.Size = new System.Drawing.Size(80, 17);
             this.checkBox7.TabIndex = 12;
             this.checkBox7.Text = "Select All";
             this.checkBox7.UseVisualStyleBackColor = true;
@@ -2859,12 +2863,12 @@ namespace DatalistSyncUtil
             this.dataGridViewTextBoxColumn75,
             this.dataGridViewTextBoxColumn76,
             this.dataGridViewTextBoxColumn77});
-            this.dataGridView3.Location = new System.Drawing.Point(8, 35);
-            this.dataGridView3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.dataGridView3.Location = new System.Drawing.Point(5, 23);
+            this.dataGridView3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowTemplate.Height = 24;
             this.dataGridView3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView3.Size = new System.Drawing.Size(836, 658);
+            this.dataGridView3.Size = new System.Drawing.Size(557, 428);
             this.dataGridView3.TabIndex = 8;
             // 
             // dataGridViewCheckBoxColumn18
@@ -2928,20 +2932,20 @@ namespace DatalistSyncUtil
             this.panel4.Controls.Add(this.checkBox3);
             this.panel4.Controls.Add(this.checkBox4);
             this.panel4.Controls.Add(this.checkBox5);
-            this.panel4.Location = new System.Drawing.Point(8, 5);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.panel4.Location = new System.Drawing.Point(5, 3);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(580, 51);
+            this.panel4.Size = new System.Drawing.Size(387, 33);
             this.panel4.TabIndex = 16;
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(452, 14);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.checkBox1.Location = new System.Drawing.Point(301, 9);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(97, 24);
+            this.checkBox1.Size = new System.Drawing.Size(69, 17);
             this.checkBox1.TabIndex = 15;
             this.checkBox1.Text = "Datalist";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -2950,10 +2954,10 @@ namespace DatalistSyncUtil
             // 
             this.checkBox2.AutoSize = true;
             this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(316, 14);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.checkBox2.Location = new System.Drawing.Point(211, 9);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(116, 24);
+            this.checkBox2.Size = new System.Drawing.Size(82, 17);
             this.checkBox2.TabIndex = 13;
             this.checkBox2.Text = "Messages";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -2962,10 +2966,10 @@ namespace DatalistSyncUtil
             // 
             this.checkBox3.AutoSize = true;
             this.checkBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox3.Location = new System.Drawing.Point(214, 14);
-            this.checkBox3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.checkBox3.Location = new System.Drawing.Point(143, 9);
+            this.checkBox3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(87, 24);
+            this.checkBox3.Size = new System.Drawing.Size(62, 17);
             this.checkBox3.TabIndex = 11;
             this.checkBox3.Text = "Rights";
             this.checkBox3.UseVisualStyleBackColor = true;
@@ -2974,10 +2978,10 @@ namespace DatalistSyncUtil
             // 
             this.checkBox4.AutoSize = true;
             this.checkBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox4.Location = new System.Drawing.Point(93, 14);
-            this.checkBox4.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.checkBox4.Location = new System.Drawing.Point(62, 9);
+            this.checkBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(114, 24);
+            this.checkBox4.Size = new System.Drawing.Size(81, 17);
             this.checkBox4.TabIndex = 10;
             this.checkBox4.Text = "Functions";
             this.checkBox4.UseVisualStyleBackColor = true;
@@ -2986,10 +2990,10 @@ namespace DatalistSyncUtil
             // 
             this.checkBox5.AutoSize = true;
             this.checkBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox5.Location = new System.Drawing.Point(0, 14);
-            this.checkBox5.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.checkBox5.Location = new System.Drawing.Point(0, 9);
+            this.checkBox5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(81, 24);
+            this.checkBox5.Size = new System.Drawing.Size(58, 17);
             this.checkBox5.TabIndex = 9;
             this.checkBox5.Text = "Roles";
             this.checkBox5.UseVisualStyleBackColor = true;
@@ -2999,10 +3003,11 @@ namespace DatalistSyncUtil
             this.ItemAttribute.Controls.Add(this.btnItemAttribute);
             this.ItemAttribute.Controls.Add(this.tabControl4);
             this.ItemAttribute.Controls.Add(this.panel5);
-            this.ItemAttribute.Location = new System.Drawing.Point(4, 29);
+            this.ItemAttribute.Location = new System.Drawing.Point(4, 22);
+            this.ItemAttribute.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ItemAttribute.Name = "ItemAttribute";
-            this.ItemAttribute.Padding = new System.Windows.Forms.Padding(3);
-            this.ItemAttribute.Size = new System.Drawing.Size(1668, 838);
+            this.ItemAttribute.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ItemAttribute.Size = new System.Drawing.Size(1109, 540);
             this.ItemAttribute.TabIndex = 5;
             this.ItemAttribute.Text = "ItemAttribute";
             this.ItemAttribute.UseVisualStyleBackColor = true;
@@ -3010,10 +3015,10 @@ namespace DatalistSyncUtil
             // btnItemAttribute
             // 
             this.btnItemAttribute.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnItemAttribute.Location = new System.Drawing.Point(12, 794);
-            this.btnItemAttribute.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnItemAttribute.Location = new System.Drawing.Point(8, 516);
+            this.btnItemAttribute.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnItemAttribute.Name = "btnItemAttribute";
-            this.btnItemAttribute.Size = new System.Drawing.Size(84, 40);
+            this.btnItemAttribute.Size = new System.Drawing.Size(56, 26);
             this.btnItemAttribute.TabIndex = 16;
             this.btnItemAttribute.Text = "Include";
             this.btnItemAttribute.UseVisualStyleBackColor = true;
@@ -3023,11 +3028,11 @@ namespace DatalistSyncUtil
             // 
             this.tabControl4.Controls.Add(this.tabPage7);
             this.tabControl4.Controls.Add(this.tabPage8);
-            this.tabControl4.Location = new System.Drawing.Point(5, 50);
-            this.tabControl4.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.tabControl4.Location = new System.Drawing.Point(3, 32);
+            this.tabControl4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabControl4.Name = "tabControl4";
             this.tabControl4.SelectedIndex = 0;
-            this.tabControl4.Size = new System.Drawing.Size(1658, 738);
+            this.tabControl4.Size = new System.Drawing.Size(1105, 480);
             this.tabControl4.TabIndex = 15;
             // 
             // tabPage7
@@ -3037,11 +3042,11 @@ namespace DatalistSyncUtil
             this.tabPage7.Controls.Add(this.NewItemAttrNewDataListCB);
             this.tabPage7.Controls.Add(this.NewItemAttributeView);
             this.tabPage7.Controls.Add(this.NewItemsAttrSelectAllCB);
-            this.tabPage7.Location = new System.Drawing.Point(4, 29);
-            this.tabPage7.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.tabPage7.Size = new System.Drawing.Size(1650, 705);
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tabPage7.Size = new System.Drawing.Size(1097, 454);
             this.tabPage7.TabIndex = 0;
             this.tabPage7.Text = "New Items";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -3051,10 +3056,10 @@ namespace DatalistSyncUtil
             this.NewItemAttrExitingItemsCB.AutoSize = true;
             this.NewItemAttrExitingItemsCB.BackColor = System.Drawing.Color.Silver;
             this.NewItemAttrExitingItemsCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewItemAttrExitingItemsCB.Location = new System.Drawing.Point(844, 10);
-            this.NewItemAttrExitingItemsCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.NewItemAttrExitingItemsCB.Location = new System.Drawing.Point(563, 6);
+            this.NewItemAttrExitingItemsCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewItemAttrExitingItemsCB.Name = "NewItemAttrExitingItemsCB";
-            this.NewItemAttrExitingItemsCB.Size = new System.Drawing.Size(318, 24);
+            this.NewItemAttrExitingItemsCB.Size = new System.Drawing.Size(223, 17);
             this.NewItemAttrExitingItemsCB.TabIndex = 28;
             this.NewItemAttrExitingItemsCB.Text = "New ItemAttributes - Existing Items";
             this.NewItemAttrExitingItemsCB.UseVisualStyleBackColor = false;
@@ -3065,10 +3070,10 @@ namespace DatalistSyncUtil
             this.NewItemAtrrNewItemsCB.AutoSize = true;
             this.NewItemAtrrNewItemsCB.BackColor = System.Drawing.Color.WhiteSmoke;
             this.NewItemAtrrNewItemsCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewItemAtrrNewItemsCB.Location = new System.Drawing.Point(491, 10);
-            this.NewItemAtrrNewItemsCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.NewItemAtrrNewItemsCB.Location = new System.Drawing.Point(327, 6);
+            this.NewItemAtrrNewItemsCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewItemAtrrNewItemsCB.Name = "NewItemAtrrNewItemsCB";
-            this.NewItemAtrrNewItemsCB.Size = new System.Drawing.Size(335, 24);
+            this.NewItemAtrrNewItemsCB.Size = new System.Drawing.Size(236, 17);
             this.NewItemAtrrNewItemsCB.TabIndex = 19;
             this.NewItemAtrrNewItemsCB.Text = "New ItemAttributes - Existing Datalist";
             this.NewItemAtrrNewItemsCB.UseVisualStyleBackColor = false;
@@ -3079,10 +3084,10 @@ namespace DatalistSyncUtil
             this.NewItemAttrNewDataListCB.AutoSize = true;
             this.NewItemAttrNewDataListCB.BackColor = System.Drawing.Color.LightBlue;
             this.NewItemAttrNewDataListCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewItemAttrNewDataListCB.Location = new System.Drawing.Point(170, 8);
-            this.NewItemAttrNewDataListCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.NewItemAttrNewDataListCB.Location = new System.Drawing.Point(113, 5);
+            this.NewItemAttrNewDataListCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewItemAttrNewDataListCB.Name = "NewItemAttrNewDataListCB";
-            this.NewItemAttrNewDataListCB.Size = new System.Drawing.Size(315, 24);
+            this.NewItemAttrNewDataListCB.Size = new System.Drawing.Size(223, 17);
             this.NewItemAttrNewDataListCB.TabIndex = 18;
             this.NewItemAttrNewDataListCB.Text = "New ItemAttributess - New Datalist";
             this.NewItemAttrNewDataListCB.UseVisualStyleBackColor = false;
@@ -3108,12 +3113,12 @@ namespace DatalistSyncUtil
             this.DataListAttributeID,
             this.DataListTypeNameItemAttr,
             this.IsEditableItem});
-            this.NewItemAttributeView.Location = new System.Drawing.Point(18, 42);
-            this.NewItemAttributeView.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.NewItemAttributeView.Location = new System.Drawing.Point(12, 27);
+            this.NewItemAttributeView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewItemAttributeView.Name = "NewItemAttributeView";
             this.NewItemAttributeView.RowTemplate.Height = 24;
             this.NewItemAttributeView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.NewItemAttributeView.Size = new System.Drawing.Size(1286, 652);
+            this.NewItemAttributeView.Size = new System.Drawing.Size(857, 424);
             this.NewItemAttributeView.TabIndex = 6;
             this.NewItemAttributeView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.NewItemAttributeView_RowsAdded);
             // 
@@ -3218,10 +3223,10 @@ namespace DatalistSyncUtil
             this.NewItemsAttrSelectAllCB.AutoSize = true;
             this.NewItemsAttrSelectAllCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.NewItemsAttrSelectAllCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewItemsAttrSelectAllCB.Location = new System.Drawing.Point(3, 8);
-            this.NewItemsAttrSelectAllCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.NewItemsAttrSelectAllCB.Location = new System.Drawing.Point(2, 5);
+            this.NewItemsAttrSelectAllCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewItemsAttrSelectAllCB.Name = "NewItemsAttrSelectAllCB";
-            this.NewItemsAttrSelectAllCB.Size = new System.Drawing.Size(111, 24);
+            this.NewItemsAttrSelectAllCB.Size = new System.Drawing.Size(80, 17);
             this.NewItemsAttrSelectAllCB.TabIndex = 8;
             this.NewItemsAttrSelectAllCB.Text = "Select All";
             this.NewItemsAttrSelectAllCB.UseVisualStyleBackColor = true;
@@ -3234,11 +3239,11 @@ namespace DatalistSyncUtil
             this.tabPage8.Controls.Add(this.label5);
             this.tabPage8.Controls.Add(this.UpdateTargetItemAttributeView);
             this.tabPage8.Controls.Add(this.UpdateSourceItemAttributeView);
-            this.tabPage8.Location = new System.Drawing.Point(4, 29);
-            this.tabPage8.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.tabPage8.Size = new System.Drawing.Size(1650, 705);
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tabPage8.Size = new System.Drawing.Size(1097, 454);
             this.tabPage8.TabIndex = 1;
             this.tabPage8.Text = "Update Items";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -3247,10 +3252,10 @@ namespace DatalistSyncUtil
             // 
             this.checkBox17.AutoSize = true;
             this.checkBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox17.Location = new System.Drawing.Point(98, 18);
-            this.checkBox17.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.checkBox17.Location = new System.Drawing.Point(65, 12);
+            this.checkBox17.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.checkBox17.Name = "checkBox17";
-            this.checkBox17.Size = new System.Drawing.Size(111, 24);
+            this.checkBox17.Size = new System.Drawing.Size(80, 17);
             this.checkBox17.TabIndex = 11;
             this.checkBox17.Text = "Select All";
             this.checkBox17.UseVisualStyleBackColor = true;
@@ -3259,9 +3264,10 @@ namespace DatalistSyncUtil
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1116, 20);
+            this.label3.Location = new System.Drawing.Point(744, 13);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 25);
+            this.label3.Size = new System.Drawing.Size(61, 17);
             this.label3.TabIndex = 10;
             this.label3.Text = "Target:";
             // 
@@ -3269,9 +3275,10 @@ namespace DatalistSyncUtil
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(8, 18);
+            this.label5.Location = new System.Drawing.Point(5, 12);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 25);
+            this.label5.Size = new System.Drawing.Size(64, 17);
             this.label5.TabIndex = 9;
             this.label5.Text = "Source:";
             // 
@@ -3294,12 +3301,12 @@ namespace DatalistSyncUtil
             this.dataGridViewCheckBoxColumn25,
             this.dataGridViewCheckBoxColumn26,
             this.dataGridViewTextBoxColumn127});
-            this.UpdateTargetItemAttributeView.Location = new System.Drawing.Point(1119, 48);
-            this.UpdateTargetItemAttributeView.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.UpdateTargetItemAttributeView.Location = new System.Drawing.Point(746, 31);
+            this.UpdateTargetItemAttributeView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.UpdateTargetItemAttributeView.Name = "UpdateTargetItemAttributeView";
             this.UpdateTargetItemAttributeView.RowTemplate.Height = 24;
             this.UpdateTargetItemAttributeView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.UpdateTargetItemAttributeView.Size = new System.Drawing.Size(524, 698);
+            this.UpdateTargetItemAttributeView.Size = new System.Drawing.Size(349, 454);
             this.UpdateTargetItemAttributeView.TabIndex = 8;
             // 
             // dataGridViewCheckBoxColumn24
@@ -3433,12 +3440,12 @@ namespace DatalistSyncUtil
             this.dataGridViewCheckBoxColumn28,
             this.dataGridViewCheckBoxColumn29,
             this.dataGridViewTextBoxColumn137});
-            this.UpdateSourceItemAttributeView.Location = new System.Drawing.Point(4, 48);
-            this.UpdateSourceItemAttributeView.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.UpdateSourceItemAttributeView.Location = new System.Drawing.Point(3, 31);
+            this.UpdateSourceItemAttributeView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.UpdateSourceItemAttributeView.Name = "UpdateSourceItemAttributeView";
             this.UpdateSourceItemAttributeView.RowTemplate.Height = 24;
             this.UpdateSourceItemAttributeView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.UpdateSourceItemAttributeView.Size = new System.Drawing.Size(1114, 698);
+            this.UpdateSourceItemAttributeView.Size = new System.Drawing.Size(743, 454);
             this.UpdateSourceItemAttributeView.TabIndex = 7;
             // 
             // dataGridViewCheckBoxColumn27
@@ -3556,20 +3563,20 @@ namespace DatalistSyncUtil
             this.panel5.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel5.Controls.Add(this.ItemAttributesDataListCB);
             this.panel5.Controls.Add(this.ItemAttributesMsgCB);
-            this.panel5.Location = new System.Drawing.Point(6, 8);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.panel5.Location = new System.Drawing.Point(4, 5);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(301, 51);
+            this.panel5.Size = new System.Drawing.Size(201, 33);
             this.panel5.TabIndex = 14;
             // 
             // ItemAttributesDataListCB
             // 
             this.ItemAttributesDataListCB.AutoSize = true;
             this.ItemAttributesDataListCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ItemAttributesDataListCB.Location = new System.Drawing.Point(128, 14);
-            this.ItemAttributesDataListCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ItemAttributesDataListCB.Location = new System.Drawing.Point(85, 9);
+            this.ItemAttributesDataListCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ItemAttributesDataListCB.Name = "ItemAttributesDataListCB";
-            this.ItemAttributesDataListCB.Size = new System.Drawing.Size(97, 24);
+            this.ItemAttributesDataListCB.Size = new System.Drawing.Size(69, 17);
             this.ItemAttributesDataListCB.TabIndex = 14;
             this.ItemAttributesDataListCB.Text = "Datalist";
             this.ItemAttributesDataListCB.UseVisualStyleBackColor = true;
@@ -3579,10 +3586,10 @@ namespace DatalistSyncUtil
             // 
             this.ItemAttributesMsgCB.AutoSize = true;
             this.ItemAttributesMsgCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ItemAttributesMsgCB.Location = new System.Drawing.Point(6, 14);
-            this.ItemAttributesMsgCB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ItemAttributesMsgCB.Location = new System.Drawing.Point(4, 9);
+            this.ItemAttributesMsgCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ItemAttributesMsgCB.Name = "ItemAttributesMsgCB";
-            this.ItemAttributesMsgCB.Size = new System.Drawing.Size(116, 24);
+            this.ItemAttributesMsgCB.Size = new System.Drawing.Size(82, 17);
             this.ItemAttributesMsgCB.TabIndex = 13;
             this.ItemAttributesMsgCB.Text = "Messages";
             this.ItemAttributesMsgCB.UseVisualStyleBackColor = true;
@@ -3591,8 +3598,8 @@ namespace DatalistSyncUtil
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(1594, 920);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnClose.Location = new System.Drawing.Point(1063, 598);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(98, 40);
             this.btnClose.TabIndex = 1;
@@ -3603,10 +3610,10 @@ namespace DatalistSyncUtil
             // PreviewUpdate
             // 
             this.PreviewUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreviewUpdate.Location = new System.Drawing.Point(1380, 920);
-            this.PreviewUpdate.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.PreviewUpdate.Location = new System.Drawing.Point(920, 598);
+            this.PreviewUpdate.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.PreviewUpdate.Name = "PreviewUpdate";
-            this.PreviewUpdate.Size = new System.Drawing.Size(198, 40);
+            this.PreviewUpdate.Size = new System.Drawing.Size(132, 26);
             this.PreviewUpdate.TabIndex = 2;
             this.PreviewUpdate.Text = "Preview && Update";
             this.PreviewUpdate.UseVisualStyleBackColor = true;
@@ -3617,10 +3624,10 @@ namespace DatalistSyncUtil
             this.ModuleList.DisplayMember = "ModuleName";
             this.ModuleList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ModuleList.FormattingEnabled = true;
-            this.ModuleList.Location = new System.Drawing.Point(87, 9);
-            this.ModuleList.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ModuleList.Location = new System.Drawing.Point(58, 6);
+            this.ModuleList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ModuleList.Name = "ModuleList";
-            this.ModuleList.Size = new System.Drawing.Size(312, 28);
+            this.ModuleList.Size = new System.Drawing.Size(209, 21);
             this.ModuleList.Sorted = true;
             this.ModuleList.TabIndex = 28;
             this.ModuleList.ValueMember = "TenantModuleID";
@@ -3630,15 +3637,16 @@ namespace DatalistSyncUtil
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 14);
+            this.label4.Location = new System.Drawing.Point(8, 9);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 20);
+            this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 27;
             this.label4.Text = "Module:";
             // 
             // DatalistDiff
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1804, 983);
@@ -3647,7 +3655,7 @@ namespace DatalistSyncUtil
             this.Controls.Add(this.PreviewUpdate);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.diffTab);
-            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MaximizeBox = false;
             this.Name = "DatalistDiff";
             this.Text = "Delta";

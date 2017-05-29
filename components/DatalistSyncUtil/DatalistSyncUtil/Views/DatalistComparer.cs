@@ -556,9 +556,8 @@ namespace DatalistSyncUtil
             listItems = this.LoadHelper.GetDataListItems();
             List<DataListAttribute> attributes = new List<DataListAttribute>();
             lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
-
             this.targetListlink = this.LoadHelper.GetDataListLinks("TargetDataListLinks");
-
+            
             foreach (DataList list in lists)
             {
                 list1 = new DataListMainModel()
@@ -792,15 +791,15 @@ namespace DatalistSyncUtil
             List<DataListMainModel> listsMain = new List<DataListMainModel>();
             List<ItemDataListItemAttributeVal> sourceDataListItemAttributes = new List<ItemDataListItemAttributeVal>();
             List<DataListAttribute> attributes = new List<DataListAttribute>();
-
-            DataListMainModel list1 = null;
+           DataListMainModel list1 = null;
             Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
             lists = this.SourceLoadHelper.GetDataList().Where(w => w.TenantID == tenantID).ToList();
             lists = this.SourceLoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID).ToList();
-            listItems = this.SourceLoadHelper.GetDataListItems();
+           listItems = this.SourceLoadHelper.GetDataListItems();
             sourceDataListItemAttributes = this.SourceLoadHelper.GetItemAttributeList();
             lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
             this.sourceListlink = this.SourceLoadHelper.GetDataListLinks("SourceDataListLinks");
+            
             foreach (DataList list in lists)
             {
                 list1 = new DataListMainModel()
@@ -1017,21 +1016,23 @@ namespace DatalistSyncUtil
         private List<ItemAttribute> ConverttoAttributes(List<DataListAttribute> list, string parentContentId, Guid tenantID, Guid dataListID)
         {
             List<ItemAttribute> item = new List<ItemAttribute>();
-
-            foreach (DataListAttribute listattribute in list)
+            if (list != null)
             {
-                ItemAttribute itemList = new ItemAttribute();
-                itemList.ContentID = listattribute.DataListTypeName;
-                itemList.Code = listattribute.DefaultTypeText;
-                itemList.ParentContentId = parentContentId;
-                itemList.IsActive = listattribute.IsActive;
-                itemList.DataListID = listattribute.DataListID;
-                itemList.DataListTypeID = listattribute.DataListTypeID;
-                itemList.ID = listattribute.ID;
-                itemList.TenantID = tenantID;
-                itemList.DefaultTypeValue = listattribute.DefaultTypeValue;
-                itemList.TypeName = listattribute.TypeName;
-                item.Add(itemList);
+                foreach (DataListAttribute listattribute in list)
+                {
+                    ItemAttribute itemList = new ItemAttribute();
+                    itemList.ContentID = listattribute.DataListTypeName;
+                    itemList.Code = listattribute.DefaultTypeText;
+                    itemList.ParentContentId = parentContentId;
+                    itemList.IsActive = listattribute.IsActive;
+                    itemList.DataListID = listattribute.DataListID;
+                    itemList.DataListTypeID = listattribute.DataListTypeID;
+                    itemList.ID = listattribute.ID;
+                    itemList.TenantID = tenantID;
+                    itemList.DefaultTypeValue = listattribute.DefaultTypeValue;
+                    itemList.TypeName = listattribute.TypeName;
+                    item.Add(itemList);
+                }
             }
 
             return item;
@@ -1478,6 +1479,7 @@ namespace DatalistSyncUtil
             sourceDataListItemAttributes = this.SourceLoadHelper.GetItemAttributeList().Where(a => a.ParentContentId == this.functionsContentID || a.ParentContentId == this.rolesContentID || a.ParentContentId == this.rightsContentID).OrderBy(o => o.ParentContentId).ToList();
             lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
             this.sourceListlink = this.SourceLoadHelper.GetDataListLinks("SourceDataListLinks");
+           
             foreach (DataList list in lists)
             {
                 list1 = new DataListMainModel()

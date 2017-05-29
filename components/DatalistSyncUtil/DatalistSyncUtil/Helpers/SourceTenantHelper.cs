@@ -357,11 +357,9 @@ namespace DatalistSyncUtil
                 {
                     using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                     {
-                        resultitems = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(string.Empty);
-
-                        result = new DataListLinksReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").SearchCodeTables(resultitems);
+                        result = new GetDataListItemLinksDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
                         this.Cache.Set(key, result, 1440);
-                    }
+                   }
                 }
                 else
                 {

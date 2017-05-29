@@ -157,22 +157,15 @@ namespace DatalistSyncUtil.Views
                     this.SaveAppSettings();
                 }
 
-                if (this.FinalHelp != null)
+                if (this.FinalListLinkItems != null)
                 {
-                    this.SaveHelp();
-                }
-
-                if (this.FinalHelpLanguages != null)
-                {
-                    this.SaveHelpLanguages();
+                    this.SaveDataItemLink();
                 }
                 else
                 {
                     this.SaveDataListWithDataListAttributes();
-                                       
-                    this.SaveDataListItemsWithAttributesValandLinks();
 
-                    this.SaveDataItemLink();
+                    this.SaveDataListItemsWithAttributesValandLinks();
                 }
 
                 Cursor.Current = Cursors.Default;
@@ -226,8 +219,6 @@ namespace DatalistSyncUtil.Views
                     childlist = dataList.Where(e => e.ContentID == f.ChildDataList && e.TenantID == f.TenantID).FirstOrDefault();
                     if (parentlist != null && childlist != null)
                     {
-                        f.ParentID = parentlist.ID;
-                        f.ChildID = childlist.ID;
                         if (f.Status == "DATALIST_NEW")
                         {
                             this.LoadHelper.AddDataListLink(f);
@@ -240,7 +231,7 @@ namespace DatalistSyncUtil.Views
                 });
             }
 
-          //  this.Cache.Remove("TargetDataListLinks");
+            this.Cache.Remove("TargetDataListLinks");
         }
 
         private void SaveHtmlBlks()
@@ -991,7 +982,6 @@ namespace DatalistSyncUtil.Views
                     {
                         this.GetTreeLinkItems(itemNodesAttribute, f.Trim());
                         parentlistNode = new TreeNode(f.Trim());
-                        treeView.Nodes.Add(listNode);
                         f = itemNodesAttribute[0].Text;
                         itemNodesAttribute.RemoveAt(0);
                         listNode = new TreeNode(f.Trim(), itemNodesAttribute.ToArray());
