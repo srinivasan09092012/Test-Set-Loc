@@ -36,6 +36,8 @@ namespace DatalistSyncUtil.Views
             this.LoadHelper = new TenantHelper();
             this.SourceLoadHelper = new SourceTenantHelper();
             this.TargetMenu = this.LoadHelper.GetMenu();
+            this.Items = this.LoadHelper.GetDataListItems();
+            this.Sourceitems = this.SourceLoadHelper.GetDataListItems();
             this.LoadTreeView(this.PreviewTreeList, this.FinalList);
         }
 
@@ -52,6 +54,8 @@ namespace DatalistSyncUtil.Views
         public TenantHelper LoadHelper { get; set; }
 
         public List<CodeListModel> Sourceitems { get; set; }
+
+        public List<CodeListModel> Items { get; set; }
 
         public SourceTenantHelper SourceLoadHelper { get; set; }
 
@@ -168,6 +172,9 @@ namespace DatalistSyncUtil.Views
                     foreach (MenuListModel list in this.FinalList)
                     {
                         list.TenantModuleID = modules.Find(f => f.TenantId == list.TenantId && f.TenantModuleId == list.TenantModuleID).TenantModuleId;
+                        string securityRight = null;
+                        securityRight = this.Sourceitems.Find(c => c.ID == list.SecurityRightItemID).Code;
+                        list.SecurityRightItemID = this.Items.Find(c => c.Code == securityRight).ID;
                         if (!this.MenuList.Any(a => a.Name == list.Name))
                         {
                             this.LoadHelper.AddMenus(list);
@@ -210,6 +217,9 @@ namespace DatalistSyncUtil.Views
                     if (list != null)
                     {
                         f.MenuID = list.ID;
+                        string securityRight = null;
+                        securityRight = this.Sourceitems.Find(c => c.ID == f.SecurityRightItemID).Code;
+                        f.SecurityRightItemID = this.Items.Find(c => c.Code == securityRight).ID;
                         if (!this.MenuItems.Any(a => a.Name == f.Name))
                         {
                             this.LoadHelper.AddMenuItem(f);

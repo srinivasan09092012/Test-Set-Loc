@@ -54,8 +54,6 @@ namespace DatalistSyncUtil
 
         public List<CodeLinkTable> SourceLink { get; set; }
 
-        public List<MenuListModel> SourceMenus { get; set; }
-
         public List<MenuListModel> SourceMenuList { get; set; }
 
         public List<MenuItemModel> SourceMenuItems { get; set; }
@@ -127,8 +125,8 @@ namespace DatalistSyncUtil
                         break;
 
                     case "Menus":
-                        this.SourceMenus = JsonConvert.DeserializeObject<List<MenuListModel>>(File.ReadAllText(file));
-                        this.LoadMenuTreeView(this.sourceTreeList, this.SourceMenus.OrderBy(o => o.Name).ToList());
+                        this.SourceMenuList = JsonConvert.DeserializeObject<List<MenuListModel>>(File.ReadAllText(file));
+                        this.LoadMenuTreeView(this.sourceTreeList, this.SourceMenuList.OrderBy(o => o.Name).ToList());
                         break;
                     case "HtmlBlock":
                         this.SourceHtmlList = JsonConvert.DeserializeObject<List<HtmlBlockMainModel>>(File.ReadAllText(file));
@@ -1296,11 +1294,14 @@ namespace DatalistSyncUtil
 
         private void MenusToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             if (this.SourceMenuList != null)
             {
                 MenuListDiff menudiffPage = new MenuListDiff(new Guid(this.tenantList.SelectedValue.ToString()), "MENUS", this.SourceMenuList, this.TargetMenuList);
                 menudiffPage.ShowDialog();              
             }
+
+            Cursor.Current = Cursors.Default;
         }
 
         private void LoadSourceControls()

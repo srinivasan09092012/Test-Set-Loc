@@ -116,7 +116,7 @@ namespace DatalistSyncUtil.Views
             List<MenuListModel> newmenus = this.SourceMenuList.Where(c => menuitems.Contains(c.Name)).ToList();
             newmenus.ForEach(f =>
             {
-                newmenuitems.AddRange(f.Children);
+                newmenuitems.AddRange(f.Children.Where(a => a.IsActive = true));
             });
             return newmenuitems.OrderBy(o => o.Name).ToList();
         }
@@ -138,7 +138,7 @@ namespace DatalistSyncUtil.Views
             menuItems = this.SourceMenuItem.Where(a => !this.TargetMenuItem.Any(b => b.Name == a.Name)).ToList();
             if (menuItems != null && menuItems.Count > 0)
             {
-                newMenuItemsFromUpdateList.AddRange(menuItems);
+                newMenuItemsFromUpdateList.AddRange(menuItems.Where(a => a.IsActive = true));
             }
 
             return newMenuItemsFromUpdateList.OrderBy(o => o.Name).ToList();
@@ -233,33 +233,87 @@ namespace DatalistSyncUtil.Views
 
         private void MenuSelectAllChkBox_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in this.MenuListNewGrid.Rows)
+            if (this.MenuSelectAllChkBox.Checked)
             {
-                row.Cells[0].Value = this.MenuSelectAllChkBox.Checked;
+                foreach (DataGridViewRow row in this.MenuListNewGrid.Rows)
+                {
+                    bool rightpresent = this.CheckRightsformenu(row.DataBoundItem as MenuListModel);
+                    if (rightpresent == true)
+                    {
+                        row.ReadOnly = true;
+                        row.Cells[0].Selected = false;
+                        row.Cells[0].Value = false;
+                    }
+                    else
+                    {
+                        row.Cells[0].Value = true;
+                    }
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow row in this.MenuListNewGrid.Rows)
+                {
+                    row.Cells[0].Value = false;
+                }
             }
         }
 
         private void MenuItemNewSelectAllChkBox_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in this.MenuItemNewGrid.Rows)
+            if (this.MenuItemNewSelectAllChkBox.Checked)
             {
-                row.Cells[0].Value = this.MenuItemNewSelectAllChkBox.Checked;
+                foreach (DataGridViewRow row in this.MenuItemNewGrid.Rows)
+                {
+                    bool rightpresent = this.CheckRightsformenuitems(row.DataBoundItem as MenuItemModel);
+                    bool labelpresent = this.CheckLabels(row.DataBoundItem as MenuItemModel);
+                    if (rightpresent == true || labelpresent == true)
+                    {
+                        row.ReadOnly = true;
+                        row.Cells[0].Selected = false;
+                        row.Cells[0].Value = false;
+                    }
+                    else
+                    {
+                        row.Cells[0].Value = true;
+                    }
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow row in this.MenuItemNewGrid.Rows)
+                {
+                    row.Cells[0].Value = false;
+                }
             }
         }
 
         private void MenuItemUpdateSrcSelectAllChkBox_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in this.MenuItemSrcUpdateGrid.Rows)
+            if (this.MenuItemUpdateSrcSelectAllChkBox.Checked)
             {
-                row.Cells[0].Value = this.MenuItemUpdateSrcSelectAllChkBox.Checked;
+                foreach (DataGridViewRow row in this.MenuItemSrcUpdateGrid.Rows)
+            {
+                bool rightpresent = this.CheckRightsformenuitems(row.DataBoundItem as MenuItemModel);
+                bool labelpresent = this.CheckLabels(row.DataBoundItem as MenuItemModel);
+                if (rightpresent == true || labelpresent == true)
+                {
+                    row.ReadOnly = true;
+                    row.Cells[0].Selected = false;
+                    row.Cells[0].Value = false;
+                }
+                else
+                {
+                    row.Cells[0].Value = true;
+                }
             }
-        }
-
-        private void MenuItemUpdateTgtSelectAllChkBox_CheckedChange(object sender, EventArgs e)
-        {
-            foreach (DataGridViewRow row in this.MenuItemTgtUpdateGrid.Rows)
+            }
+            else
             {
-                row.Cells[0].Value = this.MenuItemUpdateTgtSelectAllChkBox.Checked;
+                foreach (DataGridViewRow row in this.MenuItemSrcUpdateGrid.Rows)
+                {
+                    row.Cells[0].Value = false;
+                }
             }
         }
 
@@ -302,8 +356,8 @@ namespace DatalistSyncUtil.Views
                     {
                       syncscreen = true;
                      modelListItem = this.Sourceitems.Where(a => a.Code == menuitem.LabelItemContentID).FirstOrDefault();
-                        str = str + " " + modelListItem.Code;
-                    }
+                       str = str + " " + menuitem.LabelItemContentID;
+            }
 
                 if (!right)
                 {
@@ -317,13 +371,13 @@ namespace DatalistSyncUtil.Views
         {
             int rowIndex = e.RowIndex;
             DataGridViewRow row = MenuItemNewGrid.Rows[rowIndex];
-            bool rightpresent = this.CheckRightsformenuitems(row.DataBoundItem as MenuItemModel);
-            bool labelpresent = this.CheckLabels(row.DataBoundItem as MenuItemModel);
-            if (rightpresent == true || labelpresent == true)
-            {
-                MenuItemNewGrid.Rows[rowIndex].ReadOnly = true;
-                MenuItemNewGrid.Rows[rowIndex].Cells[0].Selected = false;
-                MenuItemNewGrid.Rows[rowIndex].Cells[0].Value = false;
+                bool rightpresent = this.CheckRightsformenuitems(row.DataBoundItem as MenuItemModel);
+                bool labelpresent = this.CheckLabels(row.DataBoundItem as MenuItemModel);
+                if (rightpresent == true || labelpresent == true)
+                {
+                    MenuItemNewGrid.Rows[rowIndex].ReadOnly = true;
+                    MenuItemNewGrid.Rows[rowIndex].Cells[0].Selected = false;
+                    MenuItemNewGrid.Rows[rowIndex].Cells[0].Value = false;
             }
         }
 
@@ -343,11 +397,7 @@ namespace DatalistSyncUtil.Views
                     str = str + " " + modelListItem.Code;
                     right = false;
                 }
-                else
-                {
-                menuitem.SecurityRightItemID = this.Items.Find(c => c.Code == securityRight).ID;
-                }
-
+              
             if (!right)
             {
                 MessageBox.Show("The Security Right is not present : " + str, "Security Right", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
