@@ -400,6 +400,7 @@ namespace DatalistSyncUtil
         {
             bool selected = false;
             this.UpdateImages = new List<ImagesMainModel>();
+            this.CheckForCheckedValue();
             foreach (DataGridViewRow row in this.newImagesView.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells["Select"].Value);
@@ -417,6 +418,100 @@ namespace DatalistSyncUtil
                 if (selected)
                 {
                     this.UpdateImages.Add(row.DataBoundItem as ImagesMainModel);
+                }
+            }
+        }
+
+        private void CheckForCheckedValue()
+        {
+            bool noRowsSelected = true;
+            if (diffImages.SelectedTab == diffImages.TabPages["Images"])
+            {
+                if (ImagesSubTab.SelectedTab == ImagesSubTab.TabPages["NewImages"])
+                {
+                    if (this.newImagesView.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in this.newImagesView.Rows)
+                        {
+                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                            if (temp != false)
+                            {
+                                noRowsSelected = false;
+                                break;
+                            }
+                        }
+
+                        if (noRowsSelected)
+                        {
+                            MessageBox.Show("You must select one or more rows");
+                        }
+                    }
+                }
+
+                if (ImagesSubTab.SelectedTab == ImagesSubTab.TabPages["UpdatedImages"])
+                {
+                    if (this.SourceImages.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in this.SourceImages.Rows)
+                        {
+                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                            if (temp != false)
+                            {
+                                noRowsSelected = false;
+                                break;
+                            }
+                        }
+
+                        if (noRowsSelected)
+                        {
+                            MessageBox.Show("You must select one or more rows");
+                        }
+                    }
+                }
+            }
+
+            if (diffImages.SelectedTab == diffImages.TabPages["ImageLanguages"])
+            {
+                if (ImageLangsSubTab.SelectedTab == ImageLangsSubTab.TabPages["NewLang"])
+                {
+                    if (this.newImageLangView.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in this.newImageLangView.Rows)
+                        {
+                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                            if (temp != false)
+                            {
+                                noRowsSelected = false;
+                                break;
+                            }
+                        }
+
+                        if (noRowsSelected)
+                        {
+                            MessageBox.Show("You must select one or more rows");
+                        }
+                    }
+                }
+
+                if (ImageLangsSubTab.SelectedTab == ImageLangsSubTab.TabPages["UpdateLang"])
+                {
+                    if (this.sourceImageLangView.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in this.sourceImageLangView.Rows)
+                        {
+                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                            if (temp != false)
+                            {
+                                noRowsSelected = false;
+                                break;
+                            }
+                        }
+
+                        if (noRowsSelected)
+                        {
+                            MessageBox.Show("You must select one or more rows");
+                        }
+                    }
                 }
             }
         }
@@ -525,7 +620,7 @@ namespace DatalistSyncUtil
         {
             bool selected = false;
             this.UpdateImageLanguages = new List<ImageLanguage>();
-
+            this.CheckForCheckedValue();
             foreach (DataGridViewRow row in this.newImageLangView.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells[0].Value);

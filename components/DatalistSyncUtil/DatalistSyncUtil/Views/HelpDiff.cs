@@ -407,6 +407,7 @@ namespace DatalistSyncUtil
         {
             bool selected = false;
             this.UpdateHelp = new List<HelpNodeModel>();
+            this.CheckForCheckedValue();
             foreach (DataGridViewRow row in this.newHelpView.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells["Select"].Value);
@@ -428,11 +429,105 @@ namespace DatalistSyncUtil
             }
         }
 
+        private void CheckForCheckedValue()
+        {
+            bool noRowsSelected = true;
+            if (diffHelpMain.SelectedTab == diffHelpMain.TabPages["Help"])
+            {
+                if (ItemsTab.SelectedTab == ItemsTab.TabPages["NewHelpPage"])
+                {
+                    if (this.newHelpView.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in this.newHelpView.Rows)
+                        {
+                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                            if (temp != false)
+                            {
+                                noRowsSelected = false;
+                                break;
+                            }
+                        }
+
+                        if (noRowsSelected)
+                        {
+                            MessageBox.Show("You must select one or more rows");
+                        }
+                    }
+                }
+
+                if (ItemsTab.SelectedTab == ItemsTab.TabPages["UpdateItemsTab"])
+                {
+                    if (this.SourceHelp.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in this.SourceHelp.Rows)
+                        {
+                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                            if (temp != false)
+                            {
+                                noRowsSelected = false;
+                                break;
+                            }
+                        }
+
+                        if (noRowsSelected)
+                        {
+                            MessageBox.Show("You must select one or more rows");
+                        }
+                    }
+                }
+            }
+
+            if (diffHelpMain.SelectedTab == diffHelpMain.TabPages["tabPage3"])
+            {
+                if (tabControl1.SelectedTab == tabControl1.TabPages["tabPage1"])
+                {
+                    if (this.newHelpLangView.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in this.newHelpLangView.Rows)
+                        {
+                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                            if (temp != false)
+                            {
+                                noRowsSelected = false;
+                                break;
+                            }
+                        }
+
+                        if (noRowsSelected)
+                        {
+                            MessageBox.Show("You must select one or more rows");
+                        }
+                    }
+                }
+
+                if (tabControl1.SelectedTab == tabControl1.TabPages["tabPage2"])
+                {
+                    if (this.sourceHelpLangView.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in this.sourceHelpLangView.Rows)
+                        {
+                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                            if (temp != false)
+                            {
+                                noRowsSelected = false;
+                                break;
+                            }
+                        }
+
+                        if (noRowsSelected)
+                        {
+                            MessageBox.Show("You must select one or more rows");
+                        }
+                    }
+                }
+            }
+        }
+
         private void BtnIncludeHelpLang_Click(object sender, EventArgs e)
         {
             bool selected = false;
             this.UpdateHelpLanguages = new List<HelpContentLanguageModel>();
-
+            this.CheckForCheckedValue();
             foreach (DataGridViewRow row in this.newHelpLangView.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells[0].Value);

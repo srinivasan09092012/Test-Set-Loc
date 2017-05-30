@@ -1073,6 +1073,7 @@ namespace DatalistSyncUtil
         {
             bool selected = false;
             this.UpdateList = new List<DataListMainModel>();
+            this.CheckForCheckedValue();
             foreach (DataGridViewRow row in this.DataListView.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells["Select"].Value);
@@ -1084,11 +1085,257 @@ namespace DatalistSyncUtil
             }
         }
 
+        private void CheckForCheckedValue()
+        {
+            bool noRowsSelected = true;
+            if (diffTab.SelectedTab == diffTab.TabPages["DatalistTabPage"])
+            {
+                if (this.DataListView.Rows.Count > 0)
+                {
+                    foreach (DataGridViewRow row in this.DataListView.Rows)
+                    {
+                        bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                        if (temp != false)
+                        {
+                            noRowsSelected = false;
+                            break;
+                        }
+                    }
+
+                    if (noRowsSelected)
+                    {
+                        MessageBox.Show("You must select one or more rows");
+                    }
+                }
+            }
+            if (diffTab.SelectedTab == diffTab.TabPages["itemTabPage"])
+            {
+                if (ItemsTab.SelectedTab == ItemsTab.TabPages["NewItemsPage"])
+                {
+                    if (this.NewItemsView.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in this.NewItemsView.Rows)
+                        {
+                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                            if (temp != false)
+                            {
+                                noRowsSelected = false;
+                                break;
+                            }
+                        }
+
+                        if (noRowsSelected)
+                        {
+                            MessageBox.Show("You must select one or more rows");
+                        }
+                    }
+                }
+                if (ItemsTab.SelectedTab == ItemsTab.TabPages["UpdateItemsTab"])
+                {
+                    if (this.UpdateSourceItemView.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in this.UpdateSourceItemView.Rows)
+                        {
+                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                            if (temp != false)
+                            {
+                                noRowsSelected = false;
+                                break;
+                            }
+                        }
+
+                        if (noRowsSelected)
+                        {
+                            MessageBox.Show("You must select one or more rows");
+                        }
+                    }
+                }
+            }
+            if (diffTab.SelectedTab == diffTab.TabPages["ItemLanguages"])
+            {
+                if(tabControl1.SelectedTab == tabControl1.TabPages["NewLangTab"])
+                {
+                    if (this.NewLangView.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in this.NewLangView.Rows)
+                        {
+                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                            if (temp != false)
+                            {
+                                noRowsSelected = false;
+                                break;
+                            }
+                        }
+
+                        if (noRowsSelected)
+                        {
+                            MessageBox.Show("You must select one or more rows");
+                        }
+                    }
+                }
+                if (tabControl1.SelectedTab == tabControl1.TabPages["UpdateLangTab"])
+                {
+                    if (this.SourceUpdateLangView.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in this.SourceUpdateLangView.Rows)
+                        {
+                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                            if (temp != false)
+                            {
+                                noRowsSelected = false;
+                                break;
+                            }
+                        }
+
+                        if (noRowsSelected)
+                        {
+                            MessageBox.Show("You must select one or more rows");
+                        }
+                    }
+                }
+            }
+            if (diffTab.SelectedTab == diffTab.TabPages["Attributes"])
+            {
+                if (tabControl2.SelectedTab == tabControl2.TabPages["tabPage1"])
+                {
+                    if (this.NewAttributesView.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in this.NewAttributesView.Rows)
+                        {
+                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                            if (temp != false)
+                            {
+                                noRowsSelected = false;
+                                break;
+                            }
+                        }
+
+                        if (noRowsSelected)
+                        {
+                            MessageBox.Show("You must select one or more rows");
+                        }
+                    }                   
+
+                }
+
+                if (tabControl2.SelectedTab == tabControl2.TabPages["tabPage2"])
+                {
+                    if (this.SourceUpdateAttributeView.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in this.SourceUpdateAttributeView.Rows)
+                        {
+                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                            if (temp != false)
+                            {
+                                noRowsSelected = false;
+                                break;
+                            }
+                        }
+
+                        if (noRowsSelected)
+                        {
+                            MessageBox.Show("You must select one or more rows");
+                        }
+                    }
+                }
+            }
+            if (diffTab.SelectedTab == diffTab.TabPages["tabpage3"])
+            {
+
+                if (tabControl3.SelectedTab == tabControl3.TabPages["tabPage4"])
+                {
+                    if (this.LinkgridView.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in this.LinkgridView.Rows)
+                        {
+                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                            if (temp != false)
+                            {
+                                noRowsSelected = false;
+                                break;
+                            }
+                        }
+
+                        if (noRowsSelected)
+                        {
+                            MessageBox.Show("You must select one or more rows");
+                        }
+                    }
+
+                }
+
+                if (tabControl2.SelectedTab == tabControl2.TabPages["tabPage5"])
+                {
+                    if (this.SourceLinkView.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in this.SourceLinkView.Rows)
+                        {
+                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                            if (temp != false)
+                            {
+                                noRowsSelected = false;
+                                break;
+                            }
+                        }
+
+                        if (noRowsSelected)
+                        {
+                            MessageBox.Show("You must select one or more rows");
+                        }
+                    }
+                }
+            }
+            if (diffTab.SelectedTab == diffTab.TabPages["ItemAttribute"])
+            {
+                if (tabControl4.SelectedTab == tabControl4.TabPages["tabPage7"])
+                {
+                    if (this.NewItemAttributeView.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in this.NewItemAttributeView.Rows)
+                        {
+                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                            if (temp != false)
+                            {
+                                noRowsSelected = false;
+                                break;
+                            }
+                        }
+
+                        if (noRowsSelected)
+                        {
+                            MessageBox.Show("You must select one or more rows");
+                        }
+                    }
+                }
+                if (tabControl4.SelectedTab == tabControl4.TabPages["tabPage8"])
+                {
+                    if (this.UpdateSourceItemAttributeView.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in this.UpdateSourceItemAttributeView.Rows)
+                        {
+                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                            if (temp != false)
+                            {
+                                noRowsSelected = false;
+                                break;
+                            }
+                        }
+
+                        if (noRowsSelected)
+                        {
+                            MessageBox.Show("You must select one or more rows");
+                        }
+                    }
+                }
+
+            }
+        }
+
         private void btnUpdateItems_Click(object sender, EventArgs e)
         {
             bool selected = false;
             this.UpdateListItems = new List<CodeItemModel>();
-
+            this.CheckForCheckedValue();
             foreach (DataGridViewRow row in this.NewItemsView.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells[0].Value);
@@ -1114,7 +1361,7 @@ namespace DatalistSyncUtil
         {
             bool selected = false;
             this.UpdateItemLanguages = new List<ItemLanguage>();
-
+            this.CheckForCheckedValue();
             foreach (DataGridViewRow row in this.NewLangView.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells[0].Value);
@@ -1688,7 +1935,7 @@ namespace DatalistSyncUtil
         {
             bool selected = false;
             this.UpdateAttribute = new List<ItemAttribute>();
-
+            this.CheckForCheckedValue();
             foreach (DataGridViewRow row in this.NewAttributesView.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells[0].Value);
@@ -1736,7 +1983,7 @@ namespace DatalistSyncUtil
         {
             bool selected = false;
             this.UpdateListLinkItems = new List<DataListItemLink>();
-
+            this.CheckForCheckedValue();
             foreach (DataGridViewRow row in this.LinkgridView.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells[0].Value);
@@ -1767,7 +2014,7 @@ namespace DatalistSyncUtil
         {
             bool selected = false;
             this.UpdateAttributeVal = new List<ItemDataListItemAttributeVal>();
-
+            this.CheckForCheckedValue();
             foreach (DataGridViewRow row in this.NewItemAttributeView.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells[0].Value);

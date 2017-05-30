@@ -125,6 +125,7 @@ namespace DatalistSyncUtil
             this.UpdateAppsetting = null;
             bool selected = false;
             this.NewAppsetting = new List<AppSettingsModel>();
+            this.CheckForCheckedValue();
             foreach (DataGridViewRow row in this.NewItemsView.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells[0].Value);
@@ -132,6 +133,27 @@ namespace DatalistSyncUtil
                 if (selected)
                 {
                     this.NewAppsetting.Add(row.DataBoundItem as AppSettingsModel);
+                }
+            }
+        }
+
+        private void CheckForCheckedValue()
+        {
+            bool noRowsSelected = true;
+            if (this.NewItemsView.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow row in this.NewItemsView.Rows)
+                {
+                    bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                    if (temp != false)
+                    {
+                        noRowsSelected = false;
+                        break;
+                    }
+                }
+                if (noRowsSelected)
+                {
+                    MessageBox.Show("You must select one or more rows");
                 }
             }
         }

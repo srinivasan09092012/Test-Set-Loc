@@ -220,6 +220,7 @@ namespace DatalistSyncUtil.Views
         {
             bool selected = false;
             this.UpdateList = new List<MenuListModel>();
+            this.CheckForCheckedValue();
             foreach (DataGridViewRow row in this.MenuListNewGrid.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells[0].Value);
@@ -227,6 +228,76 @@ namespace DatalistSyncUtil.Views
                 if (selected)
                 {
                     this.UpdateList.Add(row.DataBoundItem as MenuListModel);
+                }
+            }
+        }
+
+        private void CheckForCheckedValue()
+        {
+            bool noRowsSelected = true;
+            if (tabControl2.SelectedTab == tabControl2.TabPages["Menu"])
+            {
+                if (this.MenuListNewGrid.Rows.Count > 0)
+                {
+                    foreach (DataGridViewRow row in this.MenuListNewGrid.Rows)
+                    {
+                        bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                        if (temp != false)
+                        {
+                            noRowsSelected = false;
+                            break;
+                        }
+                    }
+
+                    if (noRowsSelected)
+                    {
+                        MessageBox.Show("You must select one or more rows");
+                    }
+                }
+            }
+
+            if (tabControl2.SelectedTab == tabControl2.TabPages["MenuItems"])
+            {
+                if (tabControl4.SelectedTab == tabControl4.TabPages["New"])
+                {
+                    if (this.MenuItemNewGrid.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in this.MenuItemNewGrid.Rows)
+                        {
+                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                            if (temp != false)
+                            {
+                                noRowsSelected = false;
+                                break;
+                            }
+                        }
+
+                        if (noRowsSelected)
+                        {
+                            MessageBox.Show("You must select one or more rows");
+                        }
+                    }
+                }
+
+                if (tabControl4.SelectedTab == tabControl4.TabPages["Update"])
+                {
+                    if (this.MenuItemSrcUpdateGrid.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in this.MenuItemSrcUpdateGrid.Rows)
+                        {
+                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
+                            if (temp != false)
+                            {
+                                noRowsSelected = false;
+                                break;
+                            }
+                        }
+
+                        if (noRowsSelected)
+                        {
+                            MessageBox.Show("You must select one or more rows");
+                        }
+                    }
                 }
             }
         }
@@ -343,7 +414,7 @@ namespace DatalistSyncUtil.Views
             bool selected = false;
             this.UpdateListItems = new List<MenuItemModel>();
             List<MenuItemModel> menuSecRght = new List<MenuItemModel>();
-
+            this.CheckForCheckedValue();
             foreach (DataGridViewRow row in this.MenuItemNewGrid.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells[0].Value);
