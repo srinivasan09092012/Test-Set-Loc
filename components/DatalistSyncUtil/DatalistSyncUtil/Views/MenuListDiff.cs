@@ -235,19 +235,26 @@ namespace DatalistSyncUtil.Views
         {
             if (this.MenuSelectAllChkBox.Checked)
             {
+                bool msg = false;
                 foreach (DataGridViewRow row in this.MenuListNewGrid.Rows)
                 {
-                    bool rightpresent = this.CheckRightsformenu(row.DataBoundItem as MenuListModel);
+                    bool rightpresent = this.CheckRightsforSelectAllmenu(row.DataBoundItem as MenuListModel);
                     if (rightpresent == true)
                     {
                         row.ReadOnly = true;
                         row.Cells[0].Selected = false;
                         row.Cells[0].Value = false;
+                        msg = true;
                     }
                     else
                     {
                         row.Cells[0].Value = true;
                     }
+                }
+
+                if (msg)
+                {
+                    MessageBox.Show("The Security Rights are not present  ", "Security Right", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                 }
             }
             else
@@ -263,20 +270,27 @@ namespace DatalistSyncUtil.Views
         {
             if (this.MenuItemNewSelectAllChkBox.Checked)
             {
+                bool msg = false;
                 foreach (DataGridViewRow row in this.MenuItemNewGrid.Rows)
                 {
-                    bool rightpresent = this.CheckRightsformenuitems(row.DataBoundItem as MenuItemModel);
-                    bool labelpresent = this.CheckLabels(row.DataBoundItem as MenuItemModel);
+                    bool rightpresent = this.CheckRightsforSelectAllmenuitems(row.DataBoundItem as MenuItemModel);
+                    bool labelpresent = this.CheckLabelsSelectAll(row.DataBoundItem as MenuItemModel);
                     if (rightpresent == true || labelpresent == true)
                     {
                         row.ReadOnly = true;
                         row.Cells[0].Selected = false;
                         row.Cells[0].Value = false;
+                        msg = true;
                     }
                     else
                     {
                         row.Cells[0].Value = true;
                     }
+                }
+
+                if (msg)
+                {
+                    MessageBox.Show("The Security Rights and Labels are not present  ", "Security Right", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                 }
             }
             else
@@ -290,23 +304,30 @@ namespace DatalistSyncUtil.Views
 
         private void MenuItemUpdateSrcSelectAllChkBox_CheckedChanged(object sender, EventArgs e)
         {
+            bool msg = false;
             if (this.MenuItemUpdateSrcSelectAllChkBox.Checked)
             {
                 foreach (DataGridViewRow row in this.MenuItemSrcUpdateGrid.Rows)
             {
-                bool rightpresent = this.CheckRightsformenuitems(row.DataBoundItem as MenuItemModel);
-                bool labelpresent = this.CheckLabels(row.DataBoundItem as MenuItemModel);
+                bool rightpresent = this.CheckRightsforSelectAllmenuitems(row.DataBoundItem as MenuItemModel);
+                bool labelpresent = this.CheckLabelsSelectAll(row.DataBoundItem as MenuItemModel);
                 if (rightpresent == true || labelpresent == true)
                 {
                     row.ReadOnly = true;
                     row.Cells[0].Selected = false;
                     row.Cells[0].Value = false;
+                        msg = true;
                 }
                 else
                 {
                     row.Cells[0].Value = true;
                 }
             }
+
+                if (msg)
+                {
+                    MessageBox.Show("The Security Rights and Labels are not present  ", "Security Right", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                }
             }
             else
             {
@@ -436,10 +457,6 @@ namespace DatalistSyncUtil.Views
                 str = str + " " + modelListItem.Code;
                 right = false;
             }
-            else
-            {
-                menu.SecurityRightItemID = this.Items.Find(c => c.Code == securityRight).ID;
-            }
 
             if (!right)
             {
@@ -460,6 +477,69 @@ namespace DatalistSyncUtil.Views
                 MenuListNewGrid.Rows[rowIndex].Cells[0].Selected = false;
                 MenuListNewGrid.Rows[rowIndex].Cells[0].Value = false;
             }
+        }
+
+        private bool CheckRightsforSelectAllmenu(MenuListModel menu)
+        {
+            string securityRight = null;
+            bool right = false;
+            string str = null;
+            bool syncscreen = false;
+            CodeListModel modelListItem = null;
+            securityRight = this.Sourceitems.Find(c => c.ID == menu.SecurityRightItemID).Code;
+            right = this.Items.Any(a => a.Code == securityRight);
+            if (!right)
+            {
+                syncscreen = true;
+                modelListItem = this.Sourceitems.Where(a => a.ID == menu.SecurityRightItemID).FirstOrDefault();
+                str = str + " " + modelListItem.Code;
+                right = false;
+            }
+
+            if (!right)
+            {
+                MessageBox.Show("The Security Right is not present ", "Security Right", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+            }
+
+            return syncscreen;
+        }
+
+        private bool CheckRightsforSelectAllmenuitems(MenuItemModel menuitem)
+        {
+            string securityRight = null;
+            bool right = false;
+            string str = null;
+            bool syncscreen = false;
+            CodeListModel modelListItem = null;
+            securityRight = this.Sourceitems.Find(c => c.ID == menuitem.SecurityRightItemID).Code;
+            right = this.Items.Any(a => a.Code == securityRight);
+            if (!right)
+            {
+                syncscreen = true;
+                modelListItem = this.Sourceitems.Where(a => a.ID == menuitem.SecurityRightItemID).FirstOrDefault();
+                str = str + " " + modelListItem.Code;
+                right = false;
+            }
+
+            return syncscreen;
+        }
+
+        private bool CheckLabelsSelectAll(MenuItemModel menuitem)
+        {
+            bool right = false;
+            bool syncscreen = false;
+            CodeListModel modelListItem = null;
+            string str = null;
+            List<string> list = new List<string>();
+            right = this.Items.Any(a => a.Code == menuitem.LabelItemContentID);
+            if (!right)
+            {
+                syncscreen = true;
+                modelListItem = this.Sourceitems.Where(a => a.Code == menuitem.LabelItemContentID).FirstOrDefault();
+                str = str + " " + menuitem.LabelItemContentID;
+            }
+
+            return syncscreen;
         }
     }
 }
