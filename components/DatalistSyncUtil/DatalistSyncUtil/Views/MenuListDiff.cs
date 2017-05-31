@@ -479,15 +479,20 @@ namespace DatalistSyncUtil.Views
             bool right = false;
             string str = null;
             bool syncscreen = false;
-            CodeListModel modelListItem = null;
-            securityRight = this.Sourceitems.Find(c => c.ID == menuitem.SecurityRightItemID).Code;
+            CodeListModel sourceSecurity = null;
+            sourceSecurity = this.Sourceitems.Where(c => c.ID == menuitem.SecurityRightItemID).FirstOrDefault();
+            if (sourceSecurity != null)
+            {
+                securityRight = sourceSecurity.Code;
+            }
+
+            ///securityRight = this.Sourceitems.Find(c => c.ID == menuitem.SecurityRightItemID).Code;
                 right = this.Items.Any(a => a.Code == securityRight);
                 if (!right)
                 {
                 syncscreen = true;
-                modelListItem = this.Sourceitems.Where(a => a.ID == menuitem.SecurityRightItemID).FirstOrDefault();
-                    str = str + " " + modelListItem.Code;
-                    right = false;
+                str = str + " " + securityRight;
+                 right = false;
                 }
               
             if (!right)
@@ -519,13 +524,19 @@ namespace DatalistSyncUtil.Views
             string str = null;
             bool syncscreen = false;
             CodeListModel modelListItem = null;
-            securityRight = this.Sourceitems.Find(c => c.ID == menu.SecurityRightItemID).Code;
+            CodeListModel sourceSecurity = null;
+            sourceSecurity = this.Sourceitems.Where(c => c.ID == menu.SecurityRightItemID).FirstOrDefault();
+            if (sourceSecurity != null)
+            {
+                securityRight = sourceSecurity.Code;
+            }
+
+            ///securityRight = this.Sourceitems.Find(c => c.ID == menu.SecurityRightItemID).Code;
             right = this.Items.Any(a => a.Code == securityRight);
             if (!right)
             {
                 syncscreen = true;
-                modelListItem = this.Sourceitems.Where(a => a.ID == menu.SecurityRightItemID).FirstOrDefault();
-                str = str + " " + modelListItem.Code;
+                str = str + " " + securityRight;
                 right = false;
             }
 
@@ -554,22 +565,20 @@ namespace DatalistSyncUtil.Views
         {
             string securityRight = null;
             bool right = false;
-            string str = null;
             bool syncscreen = false;
-            CodeListModel modelListItem = null;
-            securityRight = this.Sourceitems.Find(c => c.ID == menu.SecurityRightItemID).Code;
+            CodeListModel sourceSecurity = null;
+            sourceSecurity = this.Sourceitems.Where(c => c.ID == menu.SecurityRightItemID).FirstOrDefault();
+            if (sourceSecurity != null)
+            {
+                securityRight = sourceSecurity.Code;
+            }
+
+           /// securityRight = this.Sourceitems.Find(c => c.ID == menu.SecurityRightItemID).Code;
             right = this.Items.Any(a => a.Code == securityRight);
             if (!right)
             {
                 syncscreen = true;
-                modelListItem = this.Sourceitems.Where(a => a.ID == menu.SecurityRightItemID).FirstOrDefault();
-                str = str + " " + modelListItem.Code;
                 right = false;
-            }
-
-            if (!right)
-            {
-                MessageBox.Show("The Security Right is not present ", "Security Right", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
             }
 
             return syncscreen;
@@ -579,16 +588,19 @@ namespace DatalistSyncUtil.Views
         {
             string securityRight = null;
             bool right = false;
-            string str = null;
             bool syncscreen = false;
-            CodeListModel modelListItem = null;
-            securityRight = this.Sourceitems.Find(c => c.ID == menuitem.SecurityRightItemID).Code;
+            CodeListModel sourceSecurity = null;
+            sourceSecurity = this.Sourceitems.Where(c => c.ID == menuitem.SecurityRightItemID).FirstOrDefault();
+            if (sourceSecurity != null)
+            {
+                securityRight = sourceSecurity.Code;
+            }
+
+           /// securityRight = this.Sourceitems.Find(c => c.ID == menuitem.SecurityRightItemID).Code;
             right = this.Items.Any(a => a.Code == securityRight);
             if (!right)
             {
                 syncscreen = true;
-                modelListItem = this.Sourceitems.Where(a => a.ID == menuitem.SecurityRightItemID).FirstOrDefault();
-                str = str + " " + modelListItem.Code;
                 right = false;
             }
 
