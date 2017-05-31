@@ -500,7 +500,7 @@ namespace DatalistSyncUtil
                     }
                 }
 
-                if (tabControl1.SelectedTab == tabControl1.TabPages["tabPage2"])
+                if (tabControl1.SelectedTab == tabControl1.TabPages["tabPage4"])
                 {
                     if (this.sourceHelpLangView.Rows.Count > 0)
                     {
