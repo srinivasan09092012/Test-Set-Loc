@@ -157,6 +157,16 @@ namespace DatalistSyncUtil.Views
                     this.SaveAppSettings();
                 }
 
+                if (this.FinalHelp != null)
+                {
+                    this.SaveHelp();
+                }
+
+                if (this.FinalHelpLanguages != null)
+                {
+                    this.SaveHelpLanguages();
+                }
+
                 if (this.FinalListLinkItems != null)
                 {
                     this.SaveDataItemLink();

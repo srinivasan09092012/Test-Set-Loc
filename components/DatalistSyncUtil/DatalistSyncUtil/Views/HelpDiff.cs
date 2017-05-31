@@ -570,12 +570,12 @@ namespace DatalistSyncUtil
 
         private void SourceHelpLangView_Scroll(object sender, ScrollEventArgs e)
         {
-            this.targetHtmlBlkLangView.FirstDisplayedScrollingRowIndex = this.sourceHtmlBlkLangView.FirstDisplayedScrollingRowIndex;
+            this.targetHelpLangView.FirstDisplayedScrollingRowIndex = this.sourceHelpLangView.FirstDisplayedScrollingRowIndex;
         }
 
         private void TargetHelpLangView_Scroll(object sender, ScrollEventArgs e)
         {
-            this.sourceHtmlBlkLangView.FirstDisplayedScrollingRowIndex = this.targetHtmlBlkLangView.FirstDisplayedScrollingRowIndex;
+            this.sourceHelpLangView.FirstDisplayedScrollingRowIndex = this.targetHelpLangView.FirstDisplayedScrollingRowIndex;
         }
 
         private void SourceHelpLangView_RowAdded(object sender, DataGridViewRowsAddedEventArgs e)
