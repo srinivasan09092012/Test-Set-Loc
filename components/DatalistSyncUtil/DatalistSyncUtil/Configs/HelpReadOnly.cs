@@ -20,7 +20,6 @@ namespace DatalistSyncUtil.Configs
 {
     public class HelpReadOnly
     {
-        private Guid tenantID;
 
         private string helpTablesKey = "UtilityHelpTableKey";
         private string helpLanguageKey = "UtilityHelpLanguageTableKey";

@@ -375,6 +375,11 @@ namespace DatalistSyncUtil
 
         private void PreviewUpdate_Click(object sender, EventArgs e)
         {
+            if ((this.UpdateHtmlBlks == null) && (this.UpdateHtmlBlkLanguages == null))
+            {
+                MessageBox.Show("Error:Please include some rows before moving to preview screen");
+                return;
+            }
             PreviewPage previewPage = new PreviewPage(this.UpdateHtmlBlks, this.UpdateHtmlBlkLanguages);
             previewPage.ShowDialog();
         }

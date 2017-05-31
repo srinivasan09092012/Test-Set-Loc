@@ -224,10 +224,10 @@ namespace DatalistSyncUtil
             // 
             // btnSourceLoad
             // 
-            this.btnSourceLoad.Location = new System.Drawing.Point(688, 43);
+            this.btnSourceLoad.Location = new System.Drawing.Point(688, 37);
             this.btnSourceLoad.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnSourceLoad.Name = "btnSourceLoad";
-            this.btnSourceLoad.Size = new System.Drawing.Size(100, 30);
+            this.btnSourceLoad.Size = new System.Drawing.Size(100, 36);
             this.btnSourceLoad.TabIndex = 27;
             this.btnSourceLoad.Text = "Load";
             this.btnSourceLoad.UseVisualStyleBackColor = true;
@@ -239,7 +239,7 @@ namespace DatalistSyncUtil
             this.btnSourceFile.Location = new System.Drawing.Point(739, 3);
             this.btnSourceFile.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnSourceFile.Name = "btnSourceFile";
-            this.btnSourceFile.Size = new System.Drawing.Size(49, 38);
+            this.btnSourceFile.Size = new System.Drawing.Size(49, 30);
             this.btnSourceFile.TabIndex = 2;
             this.btnSourceFile.UseVisualStyleBackColor = true;
             this.btnSourceFile.Click += new System.EventHandler(this.BtnSourceFile_Click);
@@ -426,9 +426,13 @@ namespace DatalistSyncUtil
             this.deltaToolStripMenuItem.Name = "deltaToolStripMenuItem";
             this.deltaToolStripMenuItem.Size = new System.Drawing.Size(138, 30);
             this.deltaToolStripMenuItem.Text = "Delta";
+            this.deltaToolStripMenuItem.Click += new System.EventHandler(this.deltaToolStripMenuItem_Click);
+            this.deltaToolStripMenuItem.MouseHover += new System.EventHandler(this.deltaToolStripMenuItem_Click);
+            this.deltaToolStripMenuItem.MouseMove += new System.Windows.Forms.MouseEventHandler(this.deltaToolStripMenuItem_Click);
             // 
             // appSettingToolStripMenuItem
             // 
+            this.appSettingToolStripMenuItem.Enabled = false;
             this.appSettingToolStripMenuItem.Name = "appSettingToolStripMenuItem";
             this.appSettingToolStripMenuItem.Size = new System.Drawing.Size(187, 30);
             this.appSettingToolStripMenuItem.Text = "AppSetting";
@@ -436,6 +440,7 @@ namespace DatalistSyncUtil
             // 
             // datalistItemToolStripMenuItem
             // 
+            this.datalistItemToolStripMenuItem.Enabled = false;
             this.datalistItemToolStripMenuItem.Name = "datalistItemToolStripMenuItem";
             this.datalistItemToolStripMenuItem.Size = new System.Drawing.Size(187, 30);
             this.datalistItemToolStripMenuItem.Text = "Datalist";
@@ -443,6 +448,7 @@ namespace DatalistSyncUtil
             // 
             // htmlBlockToolStripMenuItem
             // 
+            this.htmlBlockToolStripMenuItem.Enabled = false;
             this.htmlBlockToolStripMenuItem.Name = "htmlBlockToolStripMenuItem";
             this.htmlBlockToolStripMenuItem.Size = new System.Drawing.Size(187, 30);
             this.htmlBlockToolStripMenuItem.Text = "HtmlBlock";
@@ -450,6 +456,7 @@ namespace DatalistSyncUtil
             // 
             // menusToolStripMenuItem
             // 
+            this.menusToolStripMenuItem.Enabled = false;
             this.menusToolStripMenuItem.Name = "menusToolStripMenuItem";
             this.menusToolStripMenuItem.Size = new System.Drawing.Size(187, 30);
             this.menusToolStripMenuItem.Text = "Menus";
@@ -457,6 +464,7 @@ namespace DatalistSyncUtil
             // 
             // securityToolStripMenuItem
             // 
+            this.securityToolStripMenuItem.Enabled = false;
             this.securityToolStripMenuItem.Name = "securityToolStripMenuItem";
             this.securityToolStripMenuItem.Size = new System.Drawing.Size(187, 30);
             this.securityToolStripMenuItem.Text = "Security";
@@ -464,13 +472,15 @@ namespace DatalistSyncUtil
             // 
             // imagesToolStripMenuItem
             // 
+            this.imagesToolStripMenuItem.Enabled = false;
             this.imagesToolStripMenuItem.Name = "imagesToolStripMenuItem";
             this.imagesToolStripMenuItem.Size = new System.Drawing.Size(187, 30);
-            this.imagesToolStripMenuItem.Text = "Images";
+            this.imagesToolStripMenuItem.Text = "Image";
             this.imagesToolStripMenuItem.Click += new System.EventHandler(this.ImagesToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
+            this.helpToolStripMenuItem.Enabled = false;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(187, 30);
             this.helpToolStripMenuItem.Text = "Help";

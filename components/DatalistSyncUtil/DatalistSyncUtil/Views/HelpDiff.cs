@@ -399,6 +399,11 @@ namespace DatalistSyncUtil
 
         private void PreviewUpdate_Click(object sender, EventArgs e)
         {
+            if ((this.UpdateHelp == null) && (this.UpdateHelpLanguages == null))
+            {
+                MessageBox.Show("Error:Please include select rows before moving to preview screen");
+                return;
+            }
             PreviewPage previewPage = new PreviewPage(this.UpdateHelp, this.UpdateHelpLanguages);
             previewPage.ShowDialog();
         }

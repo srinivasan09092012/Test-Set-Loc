@@ -133,6 +133,8 @@ namespace DatalistSyncUtil
 
         public List<ItemDataListItemAttributeVal> Resultitems { get; set; }
 
+        public List<CodeListModel> FilteredItems { get; set; }
+
         private void LoadTenants()
         {
             List<TenantModel> result = null;
@@ -592,7 +594,18 @@ namespace DatalistSyncUtil
             });
             result.AddRange(resultmsg);
             result.AddRange(resultlbl);
-            result.AddRange(resultsecrights);
+            List<CodeListModel> finalSecurity = new List<CodeListModel>();
+            resultsecrights.ForEach(x =>
+            {
+                CodeListModel list = result.Find(c => c.Code == x.Code && c.ContentID == x.ContentID);
+                if (list == null)
+                {
+                    finalSecurity.Add(x);
+                }
+            });
+
+
+            result.AddRange(finalSecurity);
 
             this.Cache.Set("DataListItems", result, 1440);
 
@@ -1557,8 +1570,19 @@ namespace DatalistSyncUtil
 
         private void BtnCompare_Click(object sender, EventArgs e)
         {
-            DatalistComparer compare = new DatalistComparer();
-            compare.ShowDialog();        
+            if (this.ControlName.SelectedItem != null)
+            {
+                string selectedvalue = this.ControlName.SelectedItem.ToString();
+                DatalistComparer compare = new DatalistComparer(selectedvalue);
+                compare.ShowDialog();
+            }
+
+            else
+            {
+                MessageBox.Show("Please select control name from the drop down");
+                return;
+            }
+                    
         }
 
         private void ControlName_SelectedIndexChanged(object sender, EventArgs e)

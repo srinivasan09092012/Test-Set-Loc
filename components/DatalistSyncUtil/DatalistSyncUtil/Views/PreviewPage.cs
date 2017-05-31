@@ -179,13 +179,12 @@ namespace DatalistSyncUtil.Views
                 }
 
                 Cursor.Current = Cursors.Default;
-                MessageBox.Show("Saved Sucessfully");
-                this.Close();
+                PreviewPage.ActiveForm.Close();
             }
             catch (Exception ex)
             {
                 Cursor.Current = Cursors.Default;
-                MessageBox.Show("Failed to Save");
+                MessageBox.Show("Failed to Save:" + Convert.ToString(ex.InnerException));
             }                
         }      
 
@@ -1312,7 +1311,7 @@ namespace DatalistSyncUtil.Views
             List<ItemAttribute> items = this.FinalAttributes.FindAll(f => f.ParentContentId.Trim() == contentID);
             items.ForEach(f =>
             {
-                node = new TreeNode(f.ContentID + separator + f.Code);
+                node = new TreeNode(f.ContentID + separator + f.TypeName);
                 itemNodes.Add(node);
             });
         }

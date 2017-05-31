@@ -228,8 +228,16 @@ namespace DatalistSyncUtil
             });
             result.AddRange(resultmsg);
             result.AddRange(resultlbl);
-            result.AddRange(resultsecrights);
-           
+            List<CodeListModel> finalSecurity = new List<CodeListModel>();
+            resultsecrights.ForEach(x =>
+            {
+                CodeListModel list = result.Find(c => c.Code == x.Code && c.ContentID == x.ContentID);
+                if (list == null)
+                {
+                    finalSecurity.Add(x);
+                }
+            });
+            result.AddRange(finalSecurity);
             this.Cache.Set("SourceDataListItems", result, 1440);
 
             return result;
@@ -351,7 +359,6 @@ namespace DatalistSyncUtil
         {
             {
                 List<CodeLinkTable> result = null;
-                List<CodeListModel> resultitems = null;
 
                 if (!this.Cache.IsSet(key))
                 {

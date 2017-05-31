@@ -29,8 +29,9 @@ namespace DatalistSyncUtil
         private string rightsContentID = "Core.SecurityRights";
         private List<CodeLinkTable> sourceListlink = new List<CodeLinkTable>();
         private List<CodeLinkTable> targetListlink = new List<CodeLinkTable>();
+        private string selectedControl = string.Empty;
 
-        public DatalistComparer()
+        public DatalistComparer(string controlSelected)
         {
             this.InitializeComponent();
             this.TargetConnectionString = ConfigurationManager.ConnectionStrings["TargetDataList"];
@@ -39,6 +40,7 @@ namespace DatalistSyncUtil
             this.SourceLoadHelper = new SourceTenantHelper(this.SourceConnectionString);
             this.txtTargetConnection.Text = this.GetDataSourceName(this.TargetConnectionString);
             this.txtSourceConnection.Text = this.GetDataSourceName(this.SourceConnectionString);
+            this.selectedControl = controlSelected;
             this.LoadTenant();
             this.LoadModules();
             this.LoadControls();
@@ -1127,7 +1129,7 @@ namespace DatalistSyncUtil
             }
 
             Cursor.Current = Cursors.Default;
-        }       
+        }
 
         private void DatalistItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1310,9 +1312,10 @@ namespace DatalistSyncUtil
             for (int i = 0; i <= controlNames.Count - 1; i++)
             {
                 this.SourceControlNames.Items.Add(controlNames[i]);
+        
             }
 
-            this.SourceControlNames.Text = "AppSetting";
+            this.SourceControlNames.Text = this.selectedControl;
         }
 
         private void LoadControls()
@@ -1321,9 +1324,10 @@ namespace DatalistSyncUtil
             for (int i = 0; i <= controlNames.Count - 1; i++)
             {
                 this.TargetControlNames.Items.Add(controlNames[i]);
+
             }
 
-            this.TargetControlNames.Text = "AppSetting";
+            this.TargetControlNames.Text = this.selectedControl;
         }
 
         private void HtmlBlockToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1557,5 +1561,46 @@ namespace DatalistSyncUtil
 
             Cursor.Current = Cursors.Default;
         }
+
+        private void deltaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (this.selectedControl == datalistItemToolStripMenuItem.Text)
+            {
+                this.datalistItemToolStripMenuItem.Enabled = true;
+
+            }
+
+            if (this.selectedControl == datalistItemToolStripMenuItem.Text)
+            {
+                this.datalistItemToolStripMenuItem.Enabled = true;
+            }
+
+            if (this.selectedControl == appSettingToolStripMenuItem.Text)
+            {
+                this.appSettingToolStripMenuItem.Enabled = true;
+            }
+            if (this.selectedControl == htmlBlockToolStripMenuItem.Text)
+            {
+                this.htmlBlockToolStripMenuItem.Enabled = true;
+            }
+            if (this.selectedControl == imagesToolStripMenuItem.Text)
+            {
+                this.imagesToolStripMenuItem.Enabled = true;
+            }
+            if (this.selectedControl == menusToolStripMenuItem.Text)
+            {
+                this.menusToolStripMenuItem.Enabled = true;
+            }
+            if (this.selectedControl == securityToolStripMenuItem.Text)
+            {
+                this.securityToolStripMenuItem.Enabled = true;
+            }
+            if (this.selectedControl == helpToolStripMenuItem.Text)
+            {
+                this.helpToolStripMenuItem.Enabled = true;
+            }
+        }
+
     }
 }

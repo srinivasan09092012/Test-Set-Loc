@@ -190,6 +190,12 @@ namespace DatalistSyncUtil
 
         private void PreviewUpdate_Click(object sender, EventArgs e)
         {
+            if (this.NewAppsetting ==null)
+            {
+                MessageBox.Show("Error:Please include some rows before preview screen");
+                return;
+            }
+
             PreviewPage AppSettingPreviewPage = new PreviewPage(this.NewAppsetting);
             AppSettingPreviewPage.ShowDialog();
         }

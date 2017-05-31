@@ -1385,6 +1385,12 @@ namespace DatalistSyncUtil
 
         private void PreviewUpdate_Click(object sender, EventArgs e)
         {
+            if ( (this.UpdateList == null) && (this.UpdateListItems == null) && (this.UpdateAttributeVal == null) && (this.UpdateAttribute == null) && (this.UpdateListLinkItems==null) && (this.UpdateItemLanguages == null))
+            {
+                MessageBox.Show("Error:Please include some rows before preview screen");
+                return;
+            }
+
             string ItemList = String.Empty;
             bool chkItems = false;
 
