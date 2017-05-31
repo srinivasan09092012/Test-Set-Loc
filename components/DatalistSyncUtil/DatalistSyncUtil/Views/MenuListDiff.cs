@@ -235,7 +235,7 @@ namespace DatalistSyncUtil.Views
         private void CheckForCheckedValue()
         {
             bool noRowsSelected = true;
-            if (tabControl2.SelectedTab == tabControl2.TabPages["Menu"])
+            if (tabControl2.SelectedTab == tabControl2.TabPages["tabPage3"])
             {
                 if (this.MenuListNewGrid.Rows.Count > 0)
                 {
@@ -256,9 +256,9 @@ namespace DatalistSyncUtil.Views
                 }
             }
 
-            if (tabControl2.SelectedTab == tabControl2.TabPages["MenuItems"])
+            if (tabControl2.SelectedTab == tabControl2.TabPages["tabPage6"])
             {
-                if (tabControl4.SelectedTab == tabControl4.TabPages["New"])
+                if (tabControl4.SelectedTab == tabControl4.TabPages["tabPage7"])
                 {
                     if (this.MenuItemNewGrid.Rows.Count > 0)
                     {
@@ -279,7 +279,7 @@ namespace DatalistSyncUtil.Views
                     }
                 }
 
-                if (tabControl4.SelectedTab == tabControl4.TabPages["Update"])
+                if (tabControl4.SelectedTab == tabControl4.TabPages["tabPage8"])
                 {
                     if (this.MenuItemSrcUpdateGrid.Rows.Count > 0)
                     {
