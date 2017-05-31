@@ -404,6 +404,7 @@ namespace DatalistSyncUtil
                 MessageBox.Show("Error:Please include select rows before moving to preview screen");
                 return;
             }
+
             PreviewPage previewPage = new PreviewPage(this.UpdateHelp, this.UpdateHelpLanguages);
             previewPage.ShowDialog();
         }

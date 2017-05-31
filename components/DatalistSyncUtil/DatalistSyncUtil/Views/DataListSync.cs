@@ -604,7 +604,6 @@ namespace DatalistSyncUtil
                 }
             });
 
-
             result.AddRange(finalSecurity);
 
             this.Cache.Set("DataListItems", result, 1440);
@@ -1576,13 +1575,11 @@ namespace DatalistSyncUtil
                 DatalistComparer compare = new DatalistComparer(selectedvalue);
                 compare.ShowDialog();
             }
-
             else
             {
                 MessageBox.Show("Please select control name from the drop down");
                 return;
-            }
-                    
+            }                    
         }
 
         private void ControlName_SelectedIndexChanged(object sender, EventArgs e)

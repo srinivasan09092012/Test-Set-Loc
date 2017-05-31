@@ -213,7 +213,7 @@ namespace DatalistSyncUtil.Views
                 this.FinalListItems.ForEach(f =>
                 {
                     string sourcemenuName = sourceMenuList.Find(e => e.ID == f.MenuID).Name;
-                    list = this.MenuList.Where(e => e.Name == sourcemenuName ).FirstOrDefault();
+                    list = this.MenuList.Where(e => e.Name == sourcemenuName).FirstOrDefault();
                     if (list != null)
                     {
                         f.MenuID = list.ID;

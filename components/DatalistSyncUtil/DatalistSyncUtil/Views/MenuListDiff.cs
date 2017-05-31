@@ -212,8 +212,9 @@ namespace DatalistSyncUtil.Views
                 MessageBox.Show("Error:Please include some rows before moving to preview screen");
                 return;
             }
+
             MenuPreviewPage previewPage = new MenuPreviewPage(this.UpdateList, this.UpdateListItems);
-           previewPage.ShowDialog();
+            previewPage.ShowDialog();
         }
 
         private void BtnClose_Click_1(object sender, EventArgs e)

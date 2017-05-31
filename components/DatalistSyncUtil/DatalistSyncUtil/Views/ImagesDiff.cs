@@ -397,6 +397,7 @@ namespace DatalistSyncUtil
                 MessageBox.Show("Error:Please include some rows before moving to preview screen");
                 return;
             }
+
             PreviewPage previewPage = new PreviewPage(this.UpdateImages, this.UpdateImageLanguages);
             previewPage.ShowDialog();
         }
