@@ -1217,8 +1217,7 @@ namespace DatalistSyncUtil
                     AppSettingKey = list.AppSettingKey,
                     Value = list.Value,
                     TargetValue = list.Value,
-                    SettingTypeItemKey = list.SettingTypeItemKey,
-                    ModuleName = modules.Find(f => f.TenantModuleId == list.TenantModuleID).ModuleName,
+                    SettingTypeItemKey = list.SettingTypeItemKey,                    
                     Description = list.Description,
                     TenantModuleID = list.TenantModuleID,
                     IsActive = list.IsActive
