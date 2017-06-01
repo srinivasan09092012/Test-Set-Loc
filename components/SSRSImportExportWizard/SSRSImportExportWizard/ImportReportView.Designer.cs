@@ -1,0 +1,72 @@
+﻿namespace SSRSImportExportWizard
+{
+    partial class ImportReportView
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.ImportTreeView = new System.Windows.Forms.TreeView();
+            this.btnImportReports = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // ImportTreeView
+            // 
+            this.ImportTreeView.Location = new System.Drawing.Point(8, 12);
+            this.ImportTreeView.Name = "ImportTreeView";
+            this.ImportTreeView.Size = new System.Drawing.Size(767, 566);
+            this.ImportTreeView.TabIndex = 2;
+            // 
+            // btnImportReports
+            // 
+            this.btnImportReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImportReports.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportReports.Location = new System.Drawing.Point(639, 586);
+            this.btnImportReports.Name = "btnImportReports";
+            this.btnImportReports.Size = new System.Drawing.Size(136, 38);
+            this.btnImportReports.TabIndex = 14;
+            this.btnImportReports.Text = "Import Reports";
+            this.btnImportReports.UseVisualStyleBackColor = true;
+            this.btnImportReports.Click += new System.EventHandler(this.btnImportReports_Click);
+            // 
+            // ImportReportView
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(787, 636);
+            this.Controls.Add(this.btnImportReports);
+            this.Controls.Add(this.ImportTreeView);
+            this.Name = "ImportReportView";
+            this.Text = "ImportReportView";
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.TreeView ImportTreeView;
+        private System.Windows.Forms.Button btnImportReports;
+    }
+}
