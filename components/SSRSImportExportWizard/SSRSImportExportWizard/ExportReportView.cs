@@ -1,4 +1,5 @@
-﻿using SSRSImportExportWizard.ReportServer2010;
+﻿using Newtonsoft.Json;
+using SSRSImportExportWizard.ReportServer2010;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -138,7 +139,7 @@ namespace SSRSImportExportWizard
                 {
                     if (node.Parent != null && node.Parent.Level > 0 && node.Parent.Checked == false)
                     {
-                        node.Parent.Checked = true;
+                        //node.Parent.Checked = true;
                         checkedList.Add(node.Parent);
                     }
 
@@ -175,10 +176,28 @@ namespace SSRSImportExportWizard
             byte[] rpt_def = null;
             XmlDocument doc = new XmlDocument();
             string sOutFile = "";
+            string dsOutFile = "";
 
             rpt_def = this.ReportServer.GetItemDefinition(item.Path);
-            MemoryStream stream = new MemoryStream(rpt_def);
+            List<DataSource> dataSrc = this.ReportServer.GetItemDataSources(item.Path).ToList();
+            List<ItemReferenceData> sharedSet = this.ReportServer.GetItemReferences(item.Path, "DataSet").ToList();
+            Dictionary<string, DataSourceReference> sharedDS = new Dictionary<string, DataSourceReference>();
+            Dictionary<string, ItemReferenceData> sharedDataSet = new Dictionary<string, ItemReferenceData>();
 
+            foreach (DataSource ds in dataSrc)
+            {
+                if(ds.Item is DataSourceReference)
+                {
+                    sharedDS.Add(ds.Name, ds.Item as DataSourceReference);
+                }
+            }
+
+            foreach (ItemReferenceData dset in sharedSet)
+            {
+                sharedDataSet.Add(dset.Name, dset);
+            }
+
+            MemoryStream stream = new MemoryStream(rpt_def);
             sOutFile = string.Format(@"{0}{1}.rdl", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
 
             if (!Directory.Exists(this.DownloadPath + item.Path.Replace(item.Name, string.Empty)))
@@ -189,6 +208,18 @@ namespace SSRSImportExportWizard
 
             doc.Load(stream);
             doc.Save(sOutFile);
+
+            if (sharedDS.Count > 0)
+            {
+                dsOutFile = string.Format(@"{0}{1}.ds", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
+                File.WriteAllText(dsOutFile, JsonConvert.SerializeObject(sharedDS, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings() { PreserveReferencesHandling = PreserveReferencesHandling.All }));
+            }
+
+            if (sharedDataSet.Count > 0)
+            {
+                dsOutFile = string.Format(@"{0}{1}.dataset", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
+                File.WriteAllText(dsOutFile, JsonConvert.SerializeObject(sharedDataSet, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings() { PreserveReferencesHandling = PreserveReferencesHandling.All }));
+            }
         }
 
         private void ExportTreeView_AfterCheck(object sender, TreeViewEventArgs e)

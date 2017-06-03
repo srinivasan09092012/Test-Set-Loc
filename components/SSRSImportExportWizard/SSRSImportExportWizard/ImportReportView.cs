@@ -1,4 +1,5 @@
-﻿using SSRSImportExportWizard.ReportServer2010;
+﻿using Newtonsoft.Json;
+using SSRSImportExportWizard.ReportServer2010;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,7 +44,7 @@ namespace SSRSImportExportWizard
 
         private void btnImportReports_Click(object sender, EventArgs e)
         {
-            //this.CreateFolders();
+            this.CreateFolders();
             this.CreateReports();
             //this.CreateSingleReports();
         }
@@ -90,6 +91,8 @@ namespace SSRSImportExportWizard
             DirectoryInfo reportDir = new DirectoryInfo(this.UploadPath + rootFolder);
             byte[] definition = null;
             Warning[] warnings = null;
+            List<DataSource> ds = null;
+            List<ItemReference> references = null;
 
             foreach (var di in reportDir.EnumerateDirectories("*", SearchOption.AllDirectories))
             {
@@ -103,81 +106,49 @@ namespace SSRSImportExportWizard
                         stream.Close();
                         string parent = string.Format(@"/{0}", di.FullName.Replace(this.UploadPath + "\\", string.Empty)).Replace("\\", "/");
                         this.ReportServer.CreateCatalogItem("Report", fi.Name, parent, true, definition, null, out warnings);
+
+                        if (File.Exists(fi.FullName.Replace(fi.Extension, ".ds")))
+                        {
+                            ds = new List<DataSource>();
+                            Dictionary<string, DataSourceReference> dataSource = JsonConvert.DeserializeObject<Dictionary<string, DataSourceReference>>(File.ReadAllText(fi.FullName.Replace(fi.Extension, ".ds")), new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.All });
+
+                            foreach (KeyValuePair<string, DataSourceReference> def in dataSource)
+                            {
+                                if (def.Value is DataSourceReference)
+                                {
+                                    ds.Add(new DataSource()
+                                    {
+                                        Item = def.Value,
+                                        Name = def.Key
+                                    });
+                                }
+                            }
+
+                            this.ReportServer.SetItemDataSources(parent + "/" + fi.Name, ds.ToArray());
+                        }
+
+                        if (File.Exists(fi.FullName.Replace(fi.Extension, ".dataset")))
+                        {
+                            references = new List<ItemReference>();
+                            Dictionary<string, ItemReferenceData> dataSource = JsonConvert.DeserializeObject<Dictionary<string, ItemReferenceData>>(File.ReadAllText(fi.FullName.Replace(fi.Extension, ".dataset")), new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.All });
+
+                            foreach (KeyValuePair<string, ItemReferenceData> def in dataSource)
+                            {
+                                references.Add(new ItemReference()
+                                {
+                                    Name = def.Key,
+                                    Reference = def.Value.Reference
+                                });
+                            }
+
+                            this.ReportServer.SetItemReferences(parent + "/" + fi.Name, references.ToArray());
+                        }
                     }
                 }
             }
 
             MessageBox.Show("Reports created successfully");
         }
-
-        //private void CreateSingleReports()
-        //{
-        //    string rootFolder = "\\Tenant 3 - Customer A";
-        //    DirectoryInfo reportDir = new DirectoryInfo(this.UploadPath + rootFolder);
-        //    byte[] definition = null;
-        //    Warning[] warnings = null;
-
-        //    foreach (var di in reportDir.EnumerateDirectories("*", SearchOption.AllDirectories))
-        //    {
-        //        if (di.Name != "Data Sources" && di.Name != "Datasets" && di.Name == "Test")
-        //        {
-        //            foreach (var fi in di.EnumerateFiles("*.rdl", SearchOption.TopDirectoryOnly))
-        //            {
-        //                FileStream stream = File.OpenRead(fi.FullName);
-        //                definition = new byte[stream.Length];
-        //                stream.Read(definition, 0, (int)stream.Length);
-        //                stream.Close();
-
-        //                string parent = string.Format(@"/{0}", di.FullName.Replace(this.UploadPath + "\\", string.Empty)).Replace("\\", "/");
-        //                this.ReportServer.CreateCatalogItem("Report", fi.Name, parent, true, definition, null, out warnings);
-
-        //                DataSource[] dataSources = this.ReportServer.GetItemDataSources(item.Path);
-                        
-
-        //                foreach (DataSource data in dataSources)
-        //                {
-        //                    if (data.Item.ToString().Contains("InvalidDataSourceReference"))
-        //                    {
-        //                        DataSourceDefinition[] dataSources = this.ImportReportSharedDataSource(fi.FullName);
-        //                    }
-        //                    else
-        //                    {
-        //                        DataSourceDefinition def = data.Item as DataSourceDefinition;
-        //                        if (def != null)
-        //                        {
-        //                            foreach (KeyValuePair<string, string> repString in replaceStrings)
-        //                            {
-        //                                if (def.ConnectString != null && def.ConnectString.Contains(repString.Key))
-        //                                {
-        //                                    validDataSource = true;
-        //                                    def.UseOriginalConnectString = false;
-        //                                    def.ConnectString = def.ConnectString.Replace(repString.Key, repString.Value);
-        //                                }
-        //                            }
-        //                        }
-        //                    }
-        //                }
-
-        //                if (validDataSource)
-        //                {
-        //                    try
-        //                    {
-        //                        this.ReportServer.SetItemDataSources(item.Path, dataSources);
-        //                    }
-        //                    catch (Exception ex)
-        //                    {
-        //                        errors.Add("FATAL ERROR" + item.Path + Environment.NewLine + ex.Message + Environment.NewLine);
-        //                    }
-        //                }
-
-                        
-
-        //            }
-        //        }
-        //    }
-
-        //    MessageBox.Show("Reports created successfully");
-        //}
 
         private DataSourceDefinition[] ImportReportSharedDataSource(string fullName)
         {
