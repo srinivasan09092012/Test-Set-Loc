@@ -62,7 +62,7 @@ namespace SSRSImportExportWizard
             this.ReportServer.Credentials = cred;
             try
             {
-                CatalogItem[] items = this.ReportServer.ListChildren(@"/", true);
+                CatalogItem[] items = this.ReportServer.ListChildren(@"/", false);
 
                 if (items.Length > 0)
                 {

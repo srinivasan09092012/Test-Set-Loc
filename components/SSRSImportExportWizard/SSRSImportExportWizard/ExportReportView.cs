@@ -29,8 +29,12 @@ namespace SSRSImportExportWizard
             this.Reports = new List<TreeNode>();
             this.DownloadPath = downloadPath;
             this.LoadExportReportFolder();
-            ExportTreeView.Nodes.Add(new TreeNode(this.ReportServer.Url, this.Reports.ToArray()));
-            ExportTreeView.ExpandAll();
+            ExportTreeView.CheckBoxes = true;
+            TreeNode rootNode = new TreeNode(this.ReportServer.Url, this.Reports.ToArray());
+            rootNode.Checked = true;
+            rootNode.Expand();
+            ExportTreeView.Nodes.Add(rootNode);
+            this.CheckTreeViewNode(rootNode, true);
         }
 
         public ReportingService2010 ReportServer { get; set; }
@@ -73,35 +77,76 @@ namespace SSRSImportExportWizard
 
         private void btnExportReports_Click(object sender, EventArgs e)
         {
+            List<TreeNode> checkedList = new List<TreeNode>();
+            this.LookupChecks(ExportTreeView.Nodes, checkedList);
+            Cursor.Current = Cursors.WaitCursor;
             btnExportReports.Enabled = false;
             CatalogItem[] items = this.ReportServer.ListChildren(@"/", true);
-            
-            foreach (CatalogItem item in items)
-            {
-                if (item.TypeName == "Folder")
-                {
-                    CatalogItem[] childItems = this.ReportServer.ListChildren((string.IsNullOrEmpty(item.Path) ? string.Format(@"/{0}", item.Path) : string.Format(@"{0}", item.Path)), false);
 
-                    foreach (CatalogItem childItem in childItems)
+            if (checkedList.Count > 0)
+            {
+                foreach (CatalogItem item in items)
+                {
+                    if (this.IsItemChecked(checkedList, item.Path, item.Name))
                     {
-                        if (childItem.TypeName == "Report")
+                        if (item.TypeName == "Folder")
                         {
-                            this.DownloadReports(childItem);
-                        }
-                        else if (childItem.TypeName == "DataSource")
-                        {
-                            this.DownloadDataSource(childItem);
-                        }
-                        else if (childItem.TypeName == "DataSet")
-                        {
-                            this.DownloadDataSource(childItem);
+                            CatalogItem[] childItems = this.ReportServer.ListChildren((string.IsNullOrEmpty(item.Path) ? string.Format(@"/{0}", item.Path) : string.Format(@"{0}", item.Path)), false);
+
+                            foreach (CatalogItem childItem in childItems)
+                            {
+                                if (this.IsItemChecked(checkedList, childItem.Path, childItem.Name))
+                                {
+                                    if (childItem.TypeName == "Report")
+                                    {
+                                        this.DownloadReports(childItem);
+                                    }
+                                    else if (childItem.TypeName == "DataSource")
+                                    {
+                                        this.DownloadDataSource(childItem);
+                                    }
+                                    else if (childItem.TypeName == "DataSet")
+                                    {
+                                        this.DownloadDataSource(childItem);
+                                    }
+                                }
+                            }
                         }
                     }
                 }
             }
+            else
+            {
+                MessageBox.Show("Items not selected");
+            }
 
+            Cursor.Current = Cursors.Default;
             MessageBox.Show("Reports downloaded successfully");
             btnExportReports.Enabled = true;
+        }
+
+        private bool IsItemChecked(List<TreeNode> checkedList, string path, string name)
+        {
+            return checkedList.Exists(f => f.Text.Equals(name) || f.Text.Equals(path));
+        }
+
+        private void LookupChecks(TreeNodeCollection nodes, List<TreeNode> checkedList)
+        {
+            foreach (TreeNode node in nodes)
+            {
+                if (node.Checked)
+                {
+                    if (node.Parent != null && node.Parent.Checked == false)
+                    {
+                        node.Parent.Checked = true;
+                        checkedList.Add(node.Parent);
+                    }
+
+                    checkedList.Add(node);
+                }
+
+                LookupChecks(node.Nodes, checkedList);
+            }
         }
 
         private void DownloadDataSource(CatalogItem item)
@@ -144,6 +189,48 @@ namespace SSRSImportExportWizard
 
             doc.Load(stream);
             doc.Save(sOutFile);
+        }
+
+        private void ExportTreeView_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+            this.CheckTreeViewNode(e.Node, e.Node.Checked);
+        }
+
+        private void SelectParents(TreeNode node, Boolean isChecked)
+        {
+            var parent = node.Parent;
+
+            if (parent == null)
+                return;
+
+            if (!isChecked && HasCheckedNode(parent))
+                return;
+
+            parent.Checked = isChecked;
+            SelectParents(parent, isChecked);
+        }
+
+        private bool HasCheckedNode(TreeNode node)
+        {
+            return node.Nodes.Cast<TreeNode>().Any(n => n.Checked);
+        }
+
+        private void CheckTreeViewNode(TreeNode node, Boolean isChecked)
+        {
+            foreach (TreeNode item in node.Nodes)
+            {
+                item.Checked = isChecked;
+                
+                if (item.Nodes.Count > 0)
+                {
+                    this.CheckTreeViewNode(item, isChecked);
+                }
+            }
+        }
+
+        private void ExportClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -15,6 +15,8 @@ namespace SSRSImportExportWizard
         public ImportExportMain()
         {
             InitializeComponent();
+            ImportExportPanel.Controls.Clear();
+            ImportExportPanel.Controls.Add(new ImportControl());
         }
 
         private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
