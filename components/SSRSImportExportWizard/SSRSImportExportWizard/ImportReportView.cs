@@ -29,7 +29,10 @@ namespace SSRSImportExportWizard
             this.Reports = new List<TreeNode>();
             this.UploadPath = importPath;
             this.LoadImportReportFolder();
-            ImportTreeView.Nodes.Add(new TreeNode(this.UploadPath, this.Reports.OrderByDescending(o => o.Name).ToArray()));
+            TreeNode rootNode = new TreeNode(this.UploadPath, this.Reports.OrderByDescending(o => o.Name).ToArray());
+            rootNode.Checked = true;
+            rootNode.Expand();
+            ImportTreeView.Nodes.Add(rootNode);
         }
 
         public ReportingService2010 ReportServer { get; set; }
@@ -41,7 +44,7 @@ namespace SSRSImportExportWizard
         private void btnImportReports_Click(object sender, EventArgs e)
         {
             //this.CreateFolders();
-            //this.CreateReports();
+            this.CreateReports();
             //this.CreateSingleReports();
         }
 
@@ -208,6 +211,9 @@ namespace SSRSImportExportWizard
             return dataSources;
         }
 
-
+        private void ImportClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

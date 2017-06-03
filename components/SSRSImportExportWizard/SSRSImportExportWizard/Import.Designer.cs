@@ -172,12 +172,12 @@
             // btnViewReportObjects
             // 
             this.btnViewReportObjects.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewReportObjects.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewReportObjects.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViewReportObjects.Location = new System.Drawing.Point(565, 570);
             this.btnViewReportObjects.Name = "btnViewReportObjects";
             this.btnViewReportObjects.Size = new System.Drawing.Size(136, 38);
             this.btnViewReportObjects.TabIndex = 14;
-            this.btnViewReportObjects.Text = "View Report Objects";
+            this.btnViewReportObjects.Text = "View Report Items";
             this.btnViewReportObjects.UseVisualStyleBackColor = true;
             this.btnViewReportObjects.Click += new System.EventHandler(this.btnViewReportObjects_Click);
             // 

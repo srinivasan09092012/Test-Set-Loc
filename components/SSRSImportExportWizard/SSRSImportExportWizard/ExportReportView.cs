@@ -136,7 +136,7 @@ namespace SSRSImportExportWizard
             {
                 if (node.Checked)
                 {
-                    if (node.Parent != null && node.Parent.Checked == false)
+                    if (node.Parent != null && node.Parent.Level > 0 && node.Parent.Checked == false)
                     {
                         node.Parent.Checked = true;
                         checkedList.Add(node.Parent);
