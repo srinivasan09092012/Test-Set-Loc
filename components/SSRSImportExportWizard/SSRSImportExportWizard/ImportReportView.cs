@@ -102,7 +102,7 @@ namespace SSRSImportExportWizard
                         string parent = string.Format(@"/{0}", di.FullName.Replace(this.UploadPath + "\\", string.Empty)).Replace("\\", "/");
                         this.ReportServer.CreateCatalogItem("Report", fi.Name, parent, true, definition, null, out warnings);
 
-                        if (File.Exists(fi.FullName.Replace(fi.Extension, ".ds")))
+                        if (File.Exists(fi.FullName.Replace(fi.Extension, ".rds")))
                         {
                             ds = new List<DataSource>();
                             Dictionary<string, DataSourceReference> dataSource = JsonConvert.DeserializeObject<Dictionary<string, DataSourceReference>>(File.ReadAllText(fi.FullName.Replace(fi.Extension, ".ds")), new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.All });
@@ -122,7 +122,7 @@ namespace SSRSImportExportWizard
                             this.ReportServer.SetItemDataSources(parent + "/" + fi.Name, ds.ToArray());
                         }
 
-                        if (File.Exists(fi.FullName.Replace(fi.Extension, ".dataset")))
+                        if (File.Exists(fi.FullName.Replace(fi.Extension, ".rsd")))
                         {
                             references = new List<ItemReference>();
                             Dictionary<string, ItemReferenceData> dataSource = JsonConvert.DeserializeObject<Dictionary<string, ItemReferenceData>>(File.ReadAllText(fi.FullName.Replace(fi.Extension, ".dataset")), new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.All });

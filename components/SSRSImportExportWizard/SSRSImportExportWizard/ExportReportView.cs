@@ -211,13 +211,13 @@ namespace SSRSImportExportWizard
 
             if (sharedDS.Count > 0)
             {
-                dsOutFile = string.Format(@"{0}{1}.ds", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
+                dsOutFile = string.Format(@"{0}{1}.rds", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
                 File.WriteAllText(dsOutFile, JsonConvert.SerializeObject(sharedDS, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings() { PreserveReferencesHandling = PreserveReferencesHandling.All }));
             }
 
             if (sharedDataSet.Count > 0)
             {
-                dsOutFile = string.Format(@"{0}{1}.dataset", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
+                dsOutFile = string.Format(@"{0}{1}.rsd", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
                 File.WriteAllText(dsOutFile, JsonConvert.SerializeObject(sharedDataSet, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings() { PreserveReferencesHandling = PreserveReferencesHandling.All }));
             }
         }
