@@ -39,9 +39,9 @@ namespace SSRSImportExportWizard
 
         private void btnImportReports_Click(object sender, EventArgs e)
         {
-            this.CreateFolders();
-            this.CreateReports();
-            //this.CreateSingleReports();
+            //this.CreateFolders();
+            this.CreateDataSource();
+            //this.CreateReports();
         }
 
         private void LoadImportReportFolder()
@@ -78,6 +78,40 @@ namespace SSRSImportExportWizard
             }
 
             MessageBox.Show("Folders created successfully");
+        }
+
+        private void CreateDataSource()
+        {
+            string rootFolder = "\\Tenant 3 - Customer A";
+            DirectoryInfo reportDir = new DirectoryInfo(this.UploadPath + rootFolder);
+            byte[] definition = null;
+            Warning[] warnings = null;
+
+            foreach (var di in reportDir.EnumerateDirectories("*", SearchOption.AllDirectories))
+            {
+                if (di.Name == "Data Sources")
+                {
+                    foreach (var fi in di.EnumerateFiles("*.rds", SearchOption.TopDirectoryOnly))
+                    {
+                        FileStream stream = File.OpenRead(fi.FullName);
+                        definition = new byte[stream.Length];
+                        stream.Read(definition, 0, (int)stream.Length);
+                        stream.Close();
+                        this.ReportServer.CreateCatalogItem("DataSource", fi.Name, "/Data Sources", true, definition, null, out warnings);
+                    }
+                }
+                else if (di.Name == "Datasets")
+                {
+                    foreach (var fi in di.EnumerateFiles("*.rds", SearchOption.TopDirectoryOnly))
+                    {
+                        FileStream stream = File.OpenRead(fi.FullName);
+                        definition = new byte[stream.Length];
+                        stream.Read(definition, 0, (int)stream.Length);
+                        stream.Close();
+                        this.ReportServer.CreateCatalogItem("DataSet", fi.Name, "/Datasets", true, definition, null, out warnings);
+                    }
+                }
+            }
         }
 
         private void CreateReports()
