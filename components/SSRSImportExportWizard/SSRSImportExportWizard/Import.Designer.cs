@@ -45,6 +45,8 @@
             this.ExportTitle = new System.Windows.Forms.Label();
             this.TargetURL = new System.Windows.Forms.TextBox();
             this.ExportBodyPanel = new System.Windows.Forms.Panel();
+            this.txtReportServerPath = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.ExportBodyPanel.SuspendLayout();
@@ -53,10 +55,10 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(10, 57);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 20);
+            this.label5.Size = new System.Drawing.Size(47, 17);
             this.label5.TabIndex = 13;
             this.label5.Text = "Path*";
             // 
@@ -118,7 +120,7 @@
             // 
             this.btnImportTestConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImportTestConnection.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImportTestConnection.Location = new System.Drawing.Point(200, 223);
+            this.btnImportTestConnection.Location = new System.Drawing.Point(200, 245);
             this.btnImportTestConnection.Name = "btnImportTestConnection";
             this.btnImportTestConnection.Size = new System.Drawing.Size(108, 32);
             this.btnImportTestConnection.TabIndex = 12;
@@ -129,10 +131,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(13, 85);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 20);
+            this.label1.Size = new System.Drawing.Size(62, 17);
             this.label1.TabIndex = 17;
             this.label1.Text = "Target*";
             // 
@@ -162,7 +164,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(14, 117);
+            this.groupBox1.Location = new System.Drawing.Point(14, 139);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(681, 100);
             this.groupBox1.TabIndex = 11;
@@ -210,6 +212,8 @@
             // 
             // ExportBodyPanel
             // 
+            this.ExportBodyPanel.Controls.Add(this.txtReportServerPath);
+            this.ExportBodyPanel.Controls.Add(this.label6);
             this.ExportBodyPanel.Controls.Add(this.txtDownloadPath);
             this.ExportBodyPanel.Controls.Add(this.label5);
             this.ExportBodyPanel.Controls.Add(this.lblTestSuccess);
@@ -219,6 +223,24 @@
             this.ExportBodyPanel.Name = "ExportBodyPanel";
             this.ExportBodyPanel.Size = new System.Drawing.Size(704, 498);
             this.ExportBodyPanel.TabIndex = 15;
+            // 
+            // txtReportServerPath
+            // 
+            this.txtReportServerPath.Location = new System.Drawing.Point(182, 96);
+            this.txtReportServerPath.Name = "txtReportServerPath";
+            this.txtReportServerPath.Size = new System.Drawing.Size(513, 22);
+            this.txtReportServerPath.TabIndex = 16;
+            this.txtReportServerPath.Text = "Tenant 3 - Customer A";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(10, 97);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(145, 17);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Report server path";
             // 
             // ImportControl
             // 
@@ -262,5 +284,7 @@
         private System.Windows.Forms.Label ExportTitle;
         private System.Windows.Forms.TextBox TargetURL;
         private System.Windows.Forms.Panel ExportBodyPanel;
+        private System.Windows.Forms.TextBox txtReportServerPath;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -66,7 +66,7 @@ namespace SSRSImportExportWizard
             {
                 if (this.ConnectReportServer())
                 {
-                    new ImportReportView(this.ReportServer, this.UploadPath).ShowDialog();
+                    new ImportReportView(this.ReportServer, this.UploadPath, this.txtReportServerPath.Text).ShowDialog();
                 }
             }
         }

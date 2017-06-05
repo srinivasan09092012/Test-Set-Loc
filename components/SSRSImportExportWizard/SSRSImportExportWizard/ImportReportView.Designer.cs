@@ -40,6 +40,7 @@
             this.ImportTreeView.Name = "ImportTreeView";
             this.ImportTreeView.Size = new System.Drawing.Size(767, 566);
             this.ImportTreeView.TabIndex = 2;
+            this.ImportTreeView.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.ImportTreeView_AfterCheck);
             // 
             // btnImportReports
             // 

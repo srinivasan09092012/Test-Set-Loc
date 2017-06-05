@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using HPE.HSP.UA3.Core.API.Logger;
+using Newtonsoft.Json;
 using SSRSImportExportWizard.ReportServer2010;
 using System;
 using System.Collections.Generic;
@@ -17,18 +18,20 @@ namespace SSRSImportExportWizard
             InitializeComponent();
         }
 
-        public ImportReportView(ReportingService2010 reportServer, string importPath)
+        public ImportReportView(ReportingService2010 reportServer, string importPath, string reportServerPath)
         {
             InitializeComponent();
 
             this.ReportServer = reportServer;
             this.Reports = new List<TreeNode>();
             this.UploadPath = importPath;
+            this.ReportServerPath = reportServerPath;
             this.LoadImportReportFolder();
             TreeNode rootNode = new TreeNode(this.UploadPath, this.Reports.OrderByDescending(o => o.Name).ToArray());
             rootNode.Checked = true;
             rootNode.Expand();
             ImportTreeView.Nodes.Add(rootNode);
+            this.CheckTreeViewNode(rootNode, true);
         }
 
         public ReportingService2010 ReportServer { get; set; }
@@ -37,11 +40,17 @@ namespace SSRSImportExportWizard
 
         public string UploadPath { get; set; }
 
+        public string ReportServerPath { get; set; }
+
         private void btnImportReports_Click(object sender, EventArgs e)
         {
-            //this.CreateFolders();
-            this.CreateDataSource();
-            //this.CreateReports();
+            List<TreeNode> checkedList = new List<TreeNode>();
+            this.LookupChecks(ImportTreeView.Nodes, checkedList);
+            Cursor.Current = Cursors.WaitCursor;
+            this.CreateFolders(checkedList);
+            this.CreateDataSource(checkedList);
+            this.CreateReports(checkedList);
+            Cursor.Current = Cursors.Default;
         }
 
         private void LoadImportReportFolder()
@@ -66,23 +75,33 @@ namespace SSRSImportExportWizard
             }
         }
 
-        private void CreateFolders()
+        private void CreateFolders(List<TreeNode> checkedList)
         {
-            string rootFolder = "\\Tenant 3 - Customer A";
+            string rootFolder = "\\" + this.ReportServerPath;
             DirectoryInfo reportDir = new DirectoryInfo(this.UploadPath + rootFolder);
 
             foreach (var di in reportDir.EnumerateDirectories("*", SearchOption.AllDirectories))
             {
                 string parent = string.Format(@"/{0}", di.Parent.FullName.Replace(this.UploadPath + "\\", string.Empty));
-                this.ReportServer.CreateFolder(di.Name, parent.Replace("\\", "/"), null);
+                if (this.IsItemChecked(checkedList, parent.Replace("\\", "/"), di.Name))
+                {
+                    try
+                    {
+                        this.ReportServer.CreateFolder(di.Name, parent.Replace("\\", "/"), null);
+                    }
+                    catch(Exception ex)
+                    {
+                        LoggerManager.Logger.LogWarning("Folder already exist", ex);
+                    }
+                }
             }
 
             MessageBox.Show("Folders created successfully");
         }
 
-        private void CreateDataSource()
+        private void CreateDataSource(List<TreeNode> checkedList)
         {
-            string rootFolder = "\\Tenant 3 - Customer A";
+            string rootFolder = "\\" + this.ReportServerPath;
             DirectoryInfo reportDir = new DirectoryInfo(this.UploadPath + rootFolder);
             byte[] definition = null;
             Warning[] warnings = null;
@@ -114,9 +133,9 @@ namespace SSRSImportExportWizard
             }
         }
 
-        private void CreateReports()
+        private void CreateReports(List<TreeNode> checkedList)
         {
-            string rootFolder = "\\Tenant 3 - Customer A";
+            string rootFolder = "\\" + this.ReportServerPath;
             DirectoryInfo reportDir = new DirectoryInfo(this.UploadPath + rootFolder);
             byte[] definition = null;
             Warning[] warnings = null;
@@ -163,11 +182,14 @@ namespace SSRSImportExportWizard
 
                             foreach (KeyValuePair<string, ItemReferenceData> def in dataSource)
                             {
-                                references.Add(new ItemReference()
+                                if (!string.IsNullOrEmpty(def.Value.Reference))
                                 {
-                                    Name = def.Key,
-                                    Reference = def.Value.Reference
-                                });
+                                    references.Add(new ItemReference()
+                                    {
+                                        Name = def.Key,
+                                        Reference = def.Value.Reference
+                                    });
+                                }
                             }
 
                             this.ReportServer.SetItemReferences(parent + "/" + fi.Name, references.ToArray());
@@ -177,6 +199,25 @@ namespace SSRSImportExportWizard
             }
 
             MessageBox.Show("Reports created successfully");
+        }
+
+        private void LookupChecks(TreeNodeCollection nodes, List<TreeNode> checkedList)
+        {
+            foreach (TreeNode node in nodes)
+            {
+                if (node.Checked)
+                {
+                    if (node.Parent != null && node.Parent.Level > 0 && node.Parent.Checked == false)
+                    {
+                        //node.Parent.Checked = true;
+                        checkedList.Add(node.Parent);
+                    }
+
+                    checkedList.Add(node);
+                }
+
+                LookupChecks(node.Nodes, checkedList);
+            }
         }
 
         private DataSourceDefinition[] ImportReportSharedDataSource(string fullName)
@@ -209,6 +250,29 @@ namespace SSRSImportExportWizard
             }
 
             return dataSources;
+        }
+
+        private bool IsItemChecked(List<TreeNode> checkedList, string path, string name)
+        {
+            return checkedList.Exists(f => f.Text.Contains(name) || f.Text.Contains(path));
+        }
+
+        private void ImportTreeView_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+            this.CheckTreeViewNode(e.Node, e.Node.Checked);
+        }
+
+        private void CheckTreeViewNode(TreeNode node, Boolean isChecked)
+        {
+            foreach (TreeNode item in node.Nodes)
+            {
+                item.Checked = isChecked;
+
+                if (item.Nodes.Count > 0)
+                {
+                    this.CheckTreeViewNode(item, isChecked);
+                }
+            }
         }
 
         private void ImportClose_Click(object sender, EventArgs e)

@@ -37,6 +37,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HPE.HSP.UA3.Core.API.Logger">
+      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.1.0.0\lib\net451\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.1.0.0\lib\net451\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
