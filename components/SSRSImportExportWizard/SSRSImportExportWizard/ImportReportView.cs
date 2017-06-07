@@ -139,6 +139,8 @@ namespace SSRSImportExportWizard
                     }
                 }
             }
+
+            MessageBox.Show("Data Sources created successfully");
         }
 
         private void CreateComponents(List<TreeNode> checkedList)
@@ -166,6 +168,8 @@ namespace SSRSImportExportWizard
                     }
                 }
             }
+
+            MessageBox.Show("Components created successfully");
         }
 
         private void CreateReports(List<TreeNode> checkedList)
