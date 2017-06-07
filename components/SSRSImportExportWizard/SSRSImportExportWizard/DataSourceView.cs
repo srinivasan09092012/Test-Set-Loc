@@ -152,11 +152,13 @@ namespace SSRSImportExportWizard
                                         validDataSource = true;
                                         def.UseOriginalConnectString = false;
                                         def.ConnectString = def.ConnectString.Replace(repString.Key, repString.Value);
-                                        if (def.ConnectString.ToLower().Contains("http"))
-                                        {
-                                            def.CredentialRetrieval = CredentialRetrievalEnum.None;
-                                        }
                                     }
+                                }
+
+                                if (def.Extension != null && def.Extension.ToLower().Equals("xml"))
+                                {
+                                    validDataSource = true;
+                                    def.CredentialRetrieval = CredentialRetrievalEnum.None;
                                 }
                             }
                         }

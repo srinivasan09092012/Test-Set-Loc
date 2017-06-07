@@ -139,7 +139,7 @@
             this.CurrentValue});
             this.DataSourceConnectionView.Location = new System.Drawing.Point(6, 25);
             this.DataSourceConnectionView.Name = "DataSourceConnectionView";
-            this.DataSourceConnectionView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.DataSourceConnectionView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.DataSourceConnectionView.RowTemplate.Height = 24;
             this.DataSourceConnectionView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DataSourceConnectionView.Size = new System.Drawing.Size(1298, 159);
@@ -185,7 +185,7 @@
             this.dataGridViewTextBoxColumn2});
             this.ReplaceStringDGV.Location = new System.Drawing.Point(6, 25);
             this.ReplaceStringDGV.Name = "ReplaceStringDGV";
-            this.ReplaceStringDGV.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.ReplaceStringDGV.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.ReplaceStringDGV.RowTemplate.Height = 24;
             this.ReplaceStringDGV.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.ReplaceStringDGV.Size = new System.Drawing.Size(1298, 114);

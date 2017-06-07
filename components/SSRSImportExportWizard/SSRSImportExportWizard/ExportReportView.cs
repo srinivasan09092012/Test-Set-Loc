@@ -197,26 +197,26 @@ namespace SSRSImportExportWizard
             byte[] rpt_def = null;
             XmlDocument doc = new XmlDocument();
             string sOutFile = "";
-            string dsOutFile = "";
+            //string dsOutFile = "";
 
             rpt_def = this.ReportServer.GetItemDefinition(item.Path);
-            List<DataSource> dataSrc = this.ReportServer.GetItemDataSources(item.Path).ToList();
-            List<ItemReferenceData> sharedSet = this.ReportServer.GetItemReferences(item.Path, "DataSet").ToList();
-            Dictionary<string, DataSourceReference> sharedDS = new Dictionary<string, DataSourceReference>();
-            Dictionary<string, ItemReferenceData> sharedDataSet = new Dictionary<string, ItemReferenceData>();
+            //List<DataSource> dataSrc = this.ReportServer.GetItemDataSources(item.Path).ToList();
+            //List<ItemReferenceData> sharedSet = this.ReportServer.GetItemReferences(item.Path, "DataSet").ToList();
+            //Dictionary<string, DataSourceReference> sharedDS = new Dictionary<string, DataSourceReference>();
+            //Dictionary<string, ItemReferenceData> sharedDataSet = new Dictionary<string, ItemReferenceData>();
 
-            foreach (DataSource ds in dataSrc)
-            {
-                if(ds.Item is DataSourceReference)
-                {
-                    sharedDS.Add(ds.Name, ds.Item as DataSourceReference);
-                }
-            }
+            //foreach (DataSource ds in dataSrc)
+            //{
+            //    if(ds.Item is DataSourceReference)
+            //    {
+            //        sharedDS.Add(ds.Name, ds.Item as DataSourceReference);
+            //    }
+            //}
 
-            foreach (ItemReferenceData dset in sharedSet)
-            {
-                sharedDataSet.Add(dset.Name, dset);
-            }
+            //foreach (ItemReferenceData dset in sharedSet)
+            //{
+            //    sharedDataSet.Add(dset.Name, dset);
+            //}
 
             MemoryStream stream = new MemoryStream(rpt_def);
             sOutFile = string.Format(@"{0}{1}.rdl", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
@@ -230,17 +230,17 @@ namespace SSRSImportExportWizard
             doc.Load(stream);
             doc.Save(sOutFile);
 
-            if (sharedDS.Count > 0)
-            {
-                dsOutFile = string.Format(@"{0}{1}.rds", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
-                File.WriteAllText(dsOutFile, JsonConvert.SerializeObject(sharedDS, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings() { PreserveReferencesHandling = PreserveReferencesHandling.All }));
-            }
+            //if (sharedDS.Count > 0)
+            //{
+            //    dsOutFile = string.Format(@"{0}{1}.rds", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
+            //    File.WriteAllText(dsOutFile, JsonConvert.SerializeObject(sharedDS, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings() { PreserveReferencesHandling = PreserveReferencesHandling.All }));
+            //}
 
-            if (sharedDataSet.Count > 0)
-            {
-                dsOutFile = string.Format(@"{0}{1}.rsd", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
-                File.WriteAllText(dsOutFile, JsonConvert.SerializeObject(sharedDataSet, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings() { PreserveReferencesHandling = PreserveReferencesHandling.All }));
-            }
+            //if (sharedDataSet.Count > 0)
+            //{
+            //    dsOutFile = string.Format(@"{0}{1}.rsd", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
+            //    File.WriteAllText(dsOutFile, JsonConvert.SerializeObject(sharedDataSet, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings() { PreserveReferencesHandling = PreserveReferencesHandling.All }));
+            //}
         }
 
         private void ExportTreeView_AfterCheck(object sender, TreeViewEventArgs e)

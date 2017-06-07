@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace SSRSImportExportWizard
 {
@@ -89,7 +90,7 @@ namespace SSRSImportExportWizard
                     {
                         this.ReportServer.CreateFolder(di.Name, parent.Replace("\\", "/"), null);
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         LoggerManager.Logger.LogWarning("Folder already exist", ex);
                     }
@@ -141,6 +142,10 @@ namespace SSRSImportExportWizard
             Warning[] warnings = null;
             List<DataSource> ds = null;
             List<ItemReference> references = null;
+            XmlDocument xmlDoc = new XmlDocument();
+            DataSourceReference reference = null;
+            string dataSourceFolder = @"/Data Sources/";
+            string dataSetFolder = @"/Datasets/";
 
             foreach (var di in reportDir.EnumerateDirectories("*", SearchOption.AllDirectories))
             {
@@ -154,6 +159,73 @@ namespace SSRSImportExportWizard
                         stream.Close();
                         string parent = string.Format(@"/{0}", di.FullName.Replace(this.UploadPath + "\\", string.Empty)).Replace("\\", "/");
                         this.ReportServer.CreateCatalogItem("Report", fi.Name, parent, true, definition, null, out warnings);
+                        xmlDoc.Load(fi.FullName);
+                        XmlNodeList dsReferenceList = xmlDoc.GetElementsByTagName("DataSource");
+                        XmlNodeList sharedDSReferenceList = xmlDoc.GetElementsByTagName("DataSet");
+
+                        if (dsReferenceList != null && dsReferenceList.Count > 0)
+                        {
+                            ds = new List<DataSource>();
+                            string dataSourceName = string.Empty;
+
+                            foreach (XmlNode node in dsReferenceList)
+                            {
+                                if (node.Attributes != null && node.Attributes.Count > 0)
+                                {
+                                    dataSourceName = node.Attributes["Name"].Value;
+                                }
+
+                                if (node["DataSourceReference"] != null)
+                                {
+                                    reference = new DataSourceReference();
+                                    reference.Reference = dataSourceFolder + node["DataSourceReference"].InnerText;
+                                    ds.Add(new DataSource()
+                                    {
+                                        Item = reference,
+                                        Name = dataSourceName
+                                    });
+                                }
+                            }
+
+                            if (ds.Count > 0)
+                            {
+                                this.ReportServer.SetItemDataSources(parent + "/" + fi.Name, ds.ToArray());
+                            }
+                        }
+
+                        if (sharedDSReferenceList != null && sharedDSReferenceList.Count > 0)
+                        {
+                            references = new List<ItemReference>();
+                            string dataSetName = string.Empty;
+
+                            foreach (XmlNode node in sharedDSReferenceList)
+                            {
+                                if (node.Attributes != null && node.Attributes.Count > 0)
+                                {
+                                    dataSetName = node.Attributes["Name"].Value;
+                                }
+
+                                foreach (XmlNode childNode in node.ChildNodes)
+                                {
+                                    if (childNode.Name == "SharedDataSet")
+                                    {
+                                        if (childNode.FirstChild != null && !string.IsNullOrEmpty(childNode.FirstChild.InnerText))
+                                        {
+                                            references.Add(new ItemReference()
+                                            {
+                                                Name = dataSetName,
+                                                Reference = dataSetFolder + childNode.FirstChild.InnerText
+                                            });
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (references.Count > 0)
+                            {
+                                this.ReportServer.SetItemReferences(parent + "/" + fi.Name, references.ToArray());
+                            }
+                        }
 
                         if (File.Exists(fi.FullName.Replace(fi.Extension, ".rds")))
                         {
