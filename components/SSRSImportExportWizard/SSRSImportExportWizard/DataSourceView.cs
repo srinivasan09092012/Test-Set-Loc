@@ -176,6 +176,40 @@ namespace SSRSImportExportWizard
                         }
                     }
                 }
+                else if (item.TypeName == "DataSource")
+                {
+                    DataSourceDefinition def = this.ReportServer.GetDataSourceContents(item.Path);
+                    if (def != null)
+                    {
+                        foreach (KeyValuePair<string, string> repString in replaceStrings)
+                        {
+                            if (def.ConnectString != null && def.ConnectString.Contains(repString.Key))
+                            {
+                                validDataSource = true;
+                                def.UseOriginalConnectString = false;
+                                def.ConnectString = def.ConnectString.Replace(repString.Key, repString.Value);
+                            }
+                        }
+
+                        if (def.Extension != null && def.Extension.ToLower().Equals("xml") && def.CredentialRetrieval != CredentialRetrievalEnum.None)
+                        {
+                            validDataSource = true;
+                            def.CredentialRetrieval = CredentialRetrievalEnum.None;
+                        }
+
+                        if (validDataSource)
+                        {
+                            try
+                            {
+                                this.ReportServer.SetDataSourceContents(item.Path, def);
+                            }
+                            catch (Exception ex)
+                            {
+                                errors.Add("FATAL ERROR" + item.Path + Environment.NewLine + ex.Message + Environment.NewLine);
+                            }
+                        }
+                    }
+                }
             }
 
             if(errors.Count > 0)

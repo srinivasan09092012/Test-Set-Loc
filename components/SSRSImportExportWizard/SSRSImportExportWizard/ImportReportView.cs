@@ -51,6 +51,7 @@ namespace SSRSImportExportWizard
             this.CreateFolders(checkedList);
             this.CreateDataSource(checkedList);
             this.CreateReports(checkedList);
+            this.CreateComponents(checkedList);
             Cursor.Current = Cursors.Default;
         }
 
@@ -62,7 +63,7 @@ namespace SSRSImportExportWizard
 
             foreach (var di in reportDir.EnumerateDirectories("*", SearchOption.AllDirectories))
             {
-                foreach (var fi in di.EnumerateFiles("*.rd*", SearchOption.TopDirectoryOnly))
+                foreach (var fi in di.EnumerateFiles("*", SearchOption.TopDirectoryOnly))
                 {
                     nodes.Add(new TreeNode(fi.Name));
                 }
@@ -113,22 +114,55 @@ namespace SSRSImportExportWizard
                 {
                     foreach (var fi in di.EnumerateFiles("*.rds", SearchOption.TopDirectoryOnly))
                     {
-                        FileStream stream = File.OpenRead(fi.FullName);
-                        definition = new byte[stream.Length];
-                        stream.Read(definition, 0, (int)stream.Length);
-                        stream.Close();
-                        this.ReportServer.CreateCatalogItem("DataSource", fi.Name, "/Data Sources", true, definition, null, out warnings);
+                        if (this.IsCatalogItemChecked(checkedList, fi.Name.Replace("\\", "/"), fi.Name))
+                        {
+                            FileStream stream = File.OpenRead(fi.FullName);
+                            definition = new byte[stream.Length];
+                            stream.Read(definition, 0, (int)stream.Length);
+                            stream.Close();
+                            this.ReportServer.CreateCatalogItem("DataSource", fi.Name, "/Data Sources", true, definition, null, out warnings);
+                        }
                     }
                 }
                 else if (di.Name == "Datasets")
                 {
                     foreach (var fi in di.EnumerateFiles("*.rds", SearchOption.TopDirectoryOnly))
                     {
-                        FileStream stream = File.OpenRead(fi.FullName);
-                        definition = new byte[stream.Length];
-                        stream.Read(definition, 0, (int)stream.Length);
-                        stream.Close();
-                        this.ReportServer.CreateCatalogItem("DataSet", fi.Name, "/Datasets", true, definition, null, out warnings);
+                        if (this.IsCatalogItemChecked(checkedList, fi.Name.Replace("\\", "/"), fi.Name))
+                        {
+                            FileStream stream = File.OpenRead(fi.FullName);
+                            definition = new byte[stream.Length];
+                            stream.Read(definition, 0, (int)stream.Length);
+                            stream.Close();
+                            this.ReportServer.CreateCatalogItem("DataSet", fi.Name, "/Datasets", true, definition, null, out warnings);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void CreateComponents(List<TreeNode> checkedList)
+        {
+            string rootFolder = "\\" + this.ReportServerPath;
+            DirectoryInfo reportDir = new DirectoryInfo(this.UploadPath + rootFolder);
+            byte[] definition = null;
+            Warning[] warnings = null;
+
+            foreach (var di in reportDir.EnumerateDirectories("*", SearchOption.AllDirectories))
+            {
+                if (this.IsItemChecked(checkedList, di.Name.Replace("\\", "/"), di.Name))
+                {
+                    foreach (var fi in di.EnumerateFiles("*.", SearchOption.TopDirectoryOnly))
+                    {
+                        if (this.IsCatalogItemChecked(checkedList, fi.Name.Replace("\\", "/"), fi.Name))
+                        {
+                            FileStream stream = File.OpenRead(fi.FullName);
+                            definition = new byte[stream.Length];
+                            stream.Read(definition, 0, (int)stream.Length);
+                            stream.Close();
+                            string parent = string.Format(@"/{0}", di.FullName.Replace(this.UploadPath + "\\", string.Empty)).Replace("\\", "/");
+                            this.ReportServer.CreateCatalogItem("Component", fi.Name, parent, true, definition, null, out warnings);
+                        }
                     }
                 }
             }
@@ -153,118 +187,121 @@ namespace SSRSImportExportWizard
                 {
                     foreach (var fi in di.EnumerateFiles("*.rdl", SearchOption.TopDirectoryOnly))
                     {
-                        FileStream stream = File.OpenRead(fi.FullName);
-                        definition = new byte[stream.Length];
-                        stream.Read(definition, 0, (int)stream.Length);
-                        stream.Close();
-                        string parent = string.Format(@"/{0}", di.FullName.Replace(this.UploadPath + "\\", string.Empty)).Replace("\\", "/");
-                        this.ReportServer.CreateCatalogItem("Report", fi.Name, parent, true, definition, null, out warnings);
-                        xmlDoc.Load(fi.FullName);
-                        XmlNodeList dsReferenceList = xmlDoc.GetElementsByTagName("DataSource");
-                        XmlNodeList sharedDSReferenceList = xmlDoc.GetElementsByTagName("DataSet");
-
-                        if (dsReferenceList != null && dsReferenceList.Count > 0)
+                        if (this.IsCatalogItemChecked(checkedList, fi.Name.Replace("\\", "/"), fi.Name))
                         {
-                            ds = new List<DataSource>();
-                            string dataSourceName = string.Empty;
+                            FileStream stream = File.OpenRead(fi.FullName);
+                            definition = new byte[stream.Length];
+                            stream.Read(definition, 0, (int)stream.Length);
+                            stream.Close();
+                            string parent = string.Format(@"/{0}", di.FullName.Replace(this.UploadPath + "\\", string.Empty)).Replace("\\", "/");
+                            this.ReportServer.CreateCatalogItem("Report", fi.Name, parent, true, definition, null, out warnings);
+                            xmlDoc.Load(fi.FullName);
+                            XmlNodeList dsReferenceList = xmlDoc.GetElementsByTagName("DataSource");
+                            XmlNodeList sharedDSReferenceList = xmlDoc.GetElementsByTagName("DataSet");
 
-                            foreach (XmlNode node in dsReferenceList)
+                            if (dsReferenceList != null && dsReferenceList.Count > 0)
                             {
-                                if (node.Attributes != null && node.Attributes.Count > 0)
-                                {
-                                    dataSourceName = node.Attributes["Name"].Value;
-                                }
+                                ds = new List<DataSource>();
+                                string dataSourceName = string.Empty;
 
-                                if (node["DataSourceReference"] != null)
+                                foreach (XmlNode node in dsReferenceList)
                                 {
-                                    reference = new DataSourceReference();
-                                    reference.Reference = dataSourceFolder + node["DataSourceReference"].InnerText;
-                                    ds.Add(new DataSource()
+                                    if (node.Attributes != null && node.Attributes.Count > 0)
                                     {
-                                        Item = reference,
-                                        Name = dataSourceName
-                                    });
-                                }
-                            }
+                                        dataSourceName = node.Attributes["Name"].Value;
+                                    }
 
-                            if (ds.Count > 0)
-                            {
-                                this.ReportServer.SetItemDataSources(parent + "/" + fi.Name, ds.ToArray());
-                            }
-                        }
-
-                        if (sharedDSReferenceList != null && sharedDSReferenceList.Count > 0)
-                        {
-                            references = new List<ItemReference>();
-                            string dataSetName = string.Empty;
-
-                            foreach (XmlNode node in sharedDSReferenceList)
-                            {
-                                if (node.Attributes != null && node.Attributes.Count > 0)
-                                {
-                                    dataSetName = node.Attributes["Name"].Value;
-                                }
-
-                                foreach (XmlNode childNode in node.ChildNodes)
-                                {
-                                    if (childNode.Name == "SharedDataSet")
+                                    if (node["DataSourceReference"] != null)
                                     {
-                                        if (childNode.FirstChild != null && !string.IsNullOrEmpty(childNode.FirstChild.InnerText))
+                                        reference = new DataSourceReference();
+                                        reference.Reference = dataSourceFolder + node["DataSourceReference"].InnerText;
+                                        ds.Add(new DataSource()
                                         {
-                                            references.Add(new ItemReference()
+                                            Item = reference,
+                                            Name = dataSourceName
+                                        });
+                                    }
+                                }
+
+                                if (ds.Count > 0)
+                                {
+                                    this.ReportServer.SetItemDataSources(parent + "/" + fi.Name, ds.ToArray());
+                                }
+                            }
+
+                            if (sharedDSReferenceList != null && sharedDSReferenceList.Count > 0)
+                            {
+                                references = new List<ItemReference>();
+                                string dataSetName = string.Empty;
+
+                                foreach (XmlNode node in sharedDSReferenceList)
+                                {
+                                    if (node.Attributes != null && node.Attributes.Count > 0)
+                                    {
+                                        dataSetName = node.Attributes["Name"].Value;
+                                    }
+
+                                    foreach (XmlNode childNode in node.ChildNodes)
+                                    {
+                                        if (childNode.Name == "SharedDataSet")
+                                        {
+                                            if (childNode.FirstChild != null && !string.IsNullOrEmpty(childNode.FirstChild.InnerText))
                                             {
-                                                Name = dataSetName,
-                                                Reference = dataSetFolder + childNode.FirstChild.InnerText
-                                            });
+                                                references.Add(new ItemReference()
+                                                {
+                                                    Name = dataSetName,
+                                                    Reference = dataSetFolder + childNode.FirstChild.InnerText
+                                                });
+                                            }
                                         }
                                     }
                                 }
+
+                                if (references.Count > 0)
+                                {
+                                    this.ReportServer.SetItemReferences(parent + "/" + fi.Name, references.ToArray());
+                                }
                             }
 
-                            if (references.Count > 0)
+                            if (File.Exists(fi.FullName.Replace(fi.Extension, ".rds")))
                             {
+                                ds = new List<DataSource>();
+                                Dictionary<string, DataSourceReference> dataSource = JsonConvert.DeserializeObject<Dictionary<string, DataSourceReference>>(File.ReadAllText(fi.FullName.Replace(fi.Extension, ".ds")), new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.All });
+
+                                foreach (KeyValuePair<string, DataSourceReference> def in dataSource)
+                                {
+                                    if (def.Value is DataSourceReference)
+                                    {
+                                        ds.Add(new DataSource()
+                                        {
+                                            Item = def.Value,
+                                            Name = def.Key
+                                        });
+                                    }
+                                }
+
+                                this.ReportServer.SetItemDataSources(parent + "/" + fi.Name, ds.ToArray());
+                            }
+
+                            if (File.Exists(fi.FullName.Replace(fi.Extension, ".rsd")))
+                            {
+                                references = new List<ItemReference>();
+                                Dictionary<string, ItemReferenceData> dataSource = JsonConvert.DeserializeObject<Dictionary<string, ItemReferenceData>>(File.ReadAllText(fi.FullName.Replace(fi.Extension, ".dataset")), new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.All });
+
+                                foreach (KeyValuePair<string, ItemReferenceData> def in dataSource)
+                                {
+                                    if (!string.IsNullOrEmpty(def.Value.Reference))
+                                    {
+                                        references.Add(new ItemReference()
+                                        {
+                                            Name = def.Key,
+                                            Reference = def.Value.Reference
+                                        });
+                                    }
+                                }
+
                                 this.ReportServer.SetItemReferences(parent + "/" + fi.Name, references.ToArray());
                             }
-                        }
-
-                        if (File.Exists(fi.FullName.Replace(fi.Extension, ".rds")))
-                        {
-                            ds = new List<DataSource>();
-                            Dictionary<string, DataSourceReference> dataSource = JsonConvert.DeserializeObject<Dictionary<string, DataSourceReference>>(File.ReadAllText(fi.FullName.Replace(fi.Extension, ".ds")), new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.All });
-
-                            foreach (KeyValuePair<string, DataSourceReference> def in dataSource)
-                            {
-                                if (def.Value is DataSourceReference)
-                                {
-                                    ds.Add(new DataSource()
-                                    {
-                                        Item = def.Value,
-                                        Name = def.Key
-                                    });
-                                }
-                            }
-
-                            this.ReportServer.SetItemDataSources(parent + "/" + fi.Name, ds.ToArray());
-                        }
-
-                        if (File.Exists(fi.FullName.Replace(fi.Extension, ".rsd")))
-                        {
-                            references = new List<ItemReference>();
-                            Dictionary<string, ItemReferenceData> dataSource = JsonConvert.DeserializeObject<Dictionary<string, ItemReferenceData>>(File.ReadAllText(fi.FullName.Replace(fi.Extension, ".dataset")), new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.All });
-
-                            foreach (KeyValuePair<string, ItemReferenceData> def in dataSource)
-                            {
-                                if (!string.IsNullOrEmpty(def.Value.Reference))
-                                {
-                                    references.Add(new ItemReference()
-                                    {
-                                        Name = def.Key,
-                                        Reference = def.Value.Reference
-                                    });
-                                }
-                            }
-
-                            this.ReportServer.SetItemReferences(parent + "/" + fi.Name, references.ToArray());
                         }
                     }
                 }
@@ -327,6 +364,11 @@ namespace SSRSImportExportWizard
         private bool IsItemChecked(List<TreeNode> checkedList, string path, string name)
         {
             return checkedList.Exists(f => f.Text.Contains(name) || f.Text.Contains(path));
+        }
+
+        private bool IsCatalogItemChecked(List<TreeNode> checkedList, string path, string name)
+        {
+            return checkedList.Exists(f => f.Text.Equals(name) || f.Text.Equals(path));
         }
 
         private void ImportTreeView_AfterCheck(object sender, TreeViewEventArgs e)
