@@ -207,7 +207,7 @@ namespace DatalistSyncUtil.Views
 
         private void PreviewUpdate_Click(object sender, EventArgs e)
         {
-            if ((this.UpdateList == null) && (this.UpdateListItems == null))
+            if ((this.UpdateList == null || this.UpdateList.Count() == 0) && (this.UpdateListItems == null || this.UpdateListItems.Count() == 0))
             {
                 MessageBox.Show("Error:Please include some rows before moving to preview screen");
                 return;
@@ -226,7 +226,6 @@ namespace DatalistSyncUtil.Views
         {
             bool selected = false;
             this.UpdateList = new List<MenuListModel>();
-            this.CheckForCheckedValue();
             foreach (DataGridViewRow row in this.MenuListNewGrid.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells[0].Value);
@@ -237,77 +236,7 @@ namespace DatalistSyncUtil.Views
                 }
             }
         }
-
-        private void CheckForCheckedValue()
-        {
-            bool noRowsSelected = true;
-            if (tabControl2.SelectedTab == tabControl2.TabPages["tabPage3"])
-            {
-                if (this.MenuListNewGrid.Rows.Count > 0)
-                {
-                    foreach (DataGridViewRow row in this.MenuListNewGrid.Rows)
-                    {
-                        bool temp = Convert.ToBoolean(row.Cells[0].Value);
-                        if (temp != false)
-                        {
-                            noRowsSelected = false;
-                            break;
-                        }
-                    }
-
-                    if (noRowsSelected)
-                    {
-                        MessageBox.Show("You must select one or more rows");
-                    }
-                }
-            }
-
-            if (tabControl2.SelectedTab == tabControl2.TabPages["tabPage6"])
-            {
-                if (tabControl4.SelectedTab == tabControl4.TabPages["tabPage7"])
-                {
-                    if (this.MenuItemNewGrid.Rows.Count > 0)
-                    {
-                        foreach (DataGridViewRow row in this.MenuItemNewGrid.Rows)
-                        {
-                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
-                            if (temp != false)
-                            {
-                                noRowsSelected = false;
-                                break;
-                            }
-                        }
-
-                        if (noRowsSelected)
-                        {
-                            MessageBox.Show("You must select one or more rows");
-                        }
-                    }
-                }
-
-                if (tabControl4.SelectedTab == tabControl4.TabPages["tabPage8"])
-                {
-                    if (this.MenuItemSrcUpdateGrid.Rows.Count > 0)
-                    {
-                        foreach (DataGridViewRow row in this.MenuItemSrcUpdateGrid.Rows)
-                        {
-                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
-                            if (temp != false)
-                            {
-                                noRowsSelected = false;
-                                break;
-                            }
-                        }
-
-                        if (noRowsSelected)
-                        {
-                            MessageBox.Show("You must select one or more rows");
-                        }
-                    }
-                }
-            }
-        }
-
+        
         private void MenuSelectAllChkBox_CheckedChanged(object sender, EventArgs e)
         {
             if (this.MenuSelectAllChkBox.Checked)
@@ -420,7 +349,6 @@ namespace DatalistSyncUtil.Views
             bool selected = false;
             this.UpdateListItems = new List<MenuItemModel>();
             List<MenuItemModel> menuSecRght = new List<MenuItemModel>();
-            this.CheckForCheckedValue();
             foreach (DataGridViewRow row in this.MenuItemNewGrid.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells[0].Value);

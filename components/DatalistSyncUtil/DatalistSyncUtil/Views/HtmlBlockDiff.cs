@@ -375,7 +375,7 @@ namespace DatalistSyncUtil
 
         private void PreviewUpdate_Click(object sender, EventArgs e)
         {
-            if ((this.UpdateHtmlBlks == null) && (this.UpdateHtmlBlkLanguages == null))
+            if ((this.UpdateHtmlBlks == null || this.UpdateHtmlBlks.Count() == 0) && (this.UpdateHtmlBlkLanguages == null || this.UpdateHtmlBlkLanguages.Count() == 0))
             {
                 MessageBox.Show("Error:Please include some rows before moving to preview screen");
                 return;
@@ -388,7 +388,6 @@ namespace DatalistSyncUtil
         {
             bool selected = false;
             this.UpdateHtmlBlks = new List<HtmlBlockMainModel>();
-            this.CheckForCheckedValue();
             foreach (DataGridViewRow row in this.newHtmlBlkView.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells["Select"].Value);
@@ -410,104 +409,10 @@ namespace DatalistSyncUtil
             }
         }
 
-        private void CheckForCheckedValue()
-        {
-            bool noRowsSelected = true;
-            if (diffHtmlBlk.SelectedTab == diffHtmlBlk.TabPages["HtmlBlk"])
-            {
-                if (ItemsTab.SelectedTab == ItemsTab.TabPages["NewItemsPage"])
-                {
-                    if (this.newHtmlBlkView.Rows.Count > 0)
-                    {
-                        foreach (DataGridViewRow row in this.newHtmlBlkView.Rows)
-                        {
-                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
-                            if (temp != false)
-                            {
-                                noRowsSelected = false;
-                                break;
-                            }
-                        }
-
-                        if (noRowsSelected)
-                        {
-                            MessageBox.Show("You must select one or more rows");
-                        }
-                    }
-                }
-
-                if (ItemsTab.SelectedTab == ItemsTab.TabPages["UpdateItemsTab"])
-                {
-                    if (this.SourceHtmlBlk.Rows.Count > 0)
-                    {
-                        foreach (DataGridViewRow row in this.SourceHtmlBlk.Rows)
-                        {
-                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
-                            if (temp != false)
-                            {
-                                noRowsSelected = false;
-                                break;
-                            }
-                        }
-
-                        if (noRowsSelected)
-                        {
-                            MessageBox.Show("You must select one or more rows");
-                        }
-                    }
-                }
-            }
-            if (diffHtmlBlk.SelectedTab == diffHtmlBlk.TabPages["HtmlBlkLang"])
-            {
-                if (tabControl1.SelectedTab == tabControl1.TabPages["tabNewLang"])
-                {
-                    if (this.newHtmlLangView.Rows.Count > 0)
-                    {
-                        foreach (DataGridViewRow row in this.newHtmlLangView.Rows)
-                        {
-                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
-                            if (temp != false)
-                            {
-                                noRowsSelected = false;
-                                break;
-                            }
-                        }
-
-                        if (noRowsSelected)
-                        {
-                            MessageBox.Show("You must select one or more rows");
-                        }
-                    }
-                }
-
-                if (tabControl1.SelectedTab == tabControl1.TabPages["tabUpdateLang"])
-                {
-                    if (this.sourceHtmlBlkLangView.Rows.Count > 0)
-                    {
-                        foreach (DataGridViewRow row in this.sourceHtmlBlkLangView.Rows)
-                        {
-                            bool temp = Convert.ToBoolean(row.Cells[0].Value);
-                            if (temp != false)
-                            {
-                                noRowsSelected = false;
-                                break;
-                            }
-                        }
-
-                        if (noRowsSelected)
-                        {
-                            MessageBox.Show("You must select one or more rows");
-                        }
-                    }
-                }
-            }
-        }
-
         private void BtnIncludeHtmlLang_Click(object sender, EventArgs e)
         {
             bool selected = false;
             this.UpdateHtmlBlkLanguages = new List<HtmlBlockLanguage>();
-            this.CheckForCheckedValue();
             foreach (DataGridViewRow row in this.newHtmlLangView.Rows)
             {
                 selected = Convert.ToBoolean(row.Cells[0].Value);

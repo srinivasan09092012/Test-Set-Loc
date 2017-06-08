@@ -1240,7 +1240,12 @@ namespace DatalistSyncUtil
             lists = this.SourceLists.Where(w => w.TenantID == tenantID).ToList();
             List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
             List<DataListAttribute> attributes = new List<DataListAttribute>();
-            lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
+            lists.ForEach(x => {
+                if (x.DataListAttributes != null)
+                {
+                    attributes.AddRange(x.DataListAttributes);
+                }
+            });
 
             foreach (DataList list in lists)
             {
