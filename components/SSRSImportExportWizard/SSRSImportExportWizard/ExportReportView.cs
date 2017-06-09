@@ -1,15 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using HPE.HSP.UA3.Core.API.Logger;
 using SSRSImportExportWizard.ReportServer2010;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -47,13 +40,32 @@ namespace SSRSImportExportWizard
         private void LoadExportReportFolder()
         {
             List<TreeNode> nodes = new List<TreeNode>();
-            CatalogItem[] items = this.ReportServer.ListChildren(@"/", true);
+            CatalogItem[] items = null;
+            CatalogItem[] childItems = null;
+
+            try
+            {
+                items = this.ReportServer.ListChildren(@"/", true);
+            }
+            catch (Exception ex)
+            {
+                LoggerManager.Logger.LogFatal("Error while displaying Reports", ex);
+                MessageBox.Show("Error while displaying Reports");
+                return;
+            }
 
             foreach (CatalogItem item in items)
             {
                 if (item.TypeName == "Folder")
                 {
-                    CatalogItem[] childItems = this.ReportServer.ListChildren((string.IsNullOrEmpty(item.Path) ? string.Format(@"/{0}", item.Path) : string.Format(@"{0}", item.Path)), false);
+                    try
+                    {
+                        childItems = this.ReportServer.ListChildren((string.IsNullOrEmpty(item.Path) ? string.Format(@"/{0}", item.Path) : string.Format(@"{0}", item.Path)), false);
+                    }
+                    catch (Exception ex)
+                    {
+                        LoggerManager.Logger.LogWarning("Error while displaying reports under folder", ex);
+                    }
 
                     foreach (CatalogItem childItem in childItems)
                     {
@@ -86,7 +98,19 @@ namespace SSRSImportExportWizard
             this.LookupChecks(ExportTreeView.Nodes, checkedList);
             Cursor.Current = Cursors.WaitCursor;
             btnExportReports.Enabled = false;
-            CatalogItem[] items = this.ReportServer.ListChildren(@"/", true);
+            CatalogItem[] items = null;
+            CatalogItem[] childItems = null;
+
+            try
+            {
+                items = this.ReportServer.ListChildren(@"/", true);
+            }
+            catch (Exception ex)
+            {
+                LoggerManager.Logger.LogFatal("Error while exporting Reports", ex);
+                MessageBox.Show("Error while exporting Report items");
+                return;
+            }
 
             if (checkedList.Count > 0)
             {
@@ -96,7 +120,14 @@ namespace SSRSImportExportWizard
                     {
                         if (item.TypeName == "Folder")
                         {
-                            CatalogItem[] childItems = this.ReportServer.ListChildren((string.IsNullOrEmpty(item.Path) ? string.Format(@"/{0}", item.Path) : string.Format(@"{0}", item.Path)), false);
+                            try
+                            {
+                                childItems = this.ReportServer.ListChildren((string.IsNullOrEmpty(item.Path) ? string.Format(@"/{0}", item.Path) : string.Format(@"{0}", item.Path)), false);
+                            }
+                            catch (Exception ex)
+                            {
+                                LoggerManager.Logger.LogWarning("Error while exporting reports under folder", ex);
+                            }
 
                             foreach (CatalogItem childItem in childItems)
                             {
@@ -164,19 +195,26 @@ namespace SSRSImportExportWizard
             XmlDocument doc = new XmlDocument();
             string sOutFile = "";
 
-            rpt_def = this.ReportServer.GetItemDefinition(item.Path);
-            MemoryStream stream = new MemoryStream(rpt_def);
+            try
+            {
+                rpt_def = this.ReportServer.GetItemDefinition(item.Path);
+                MemoryStream stream = new MemoryStream(rpt_def);
 
-            sOutFile = string.Format(@"{0}{1}.rds", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
+                sOutFile = string.Format(@"{0}{1}.rds", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
 
-            if (!Directory.Exists(this.DownloadPath + item.Path.Replace(item.Name, string.Empty)))
-                Directory.CreateDirectory(this.DownloadPath + item.Path.Replace(item.Name, string.Empty));
+                if (!Directory.Exists(this.DownloadPath + item.Path.Replace(item.Name, string.Empty)))
+                    Directory.CreateDirectory(this.DownloadPath + item.Path.Replace(item.Name, string.Empty));
 
-            if (File.Exists(sOutFile))
-                File.Delete(sOutFile);
+                if (File.Exists(sOutFile))
+                    File.Delete(sOutFile);
 
-            doc.Load(stream);
-            doc.Save(sOutFile);
+                doc.Load(stream);
+                doc.Save(sOutFile);
+            }
+            catch (Exception ex)
+            {
+                LoggerManager.Logger.LogWarning("Error while exporting datasource", ex);
+            }
         }
 
         private void DownloadDataSets(CatalogItem item)
@@ -185,19 +223,26 @@ namespace SSRSImportExportWizard
             XmlDocument doc = new XmlDocument();
             string sOutFile = "";
 
-            rpt_def = this.ReportServer.GetItemDefinition(item.Path);
-            MemoryStream stream = new MemoryStream(rpt_def);
+            try
+            {
+                rpt_def = this.ReportServer.GetItemDefinition(item.Path);
+                MemoryStream stream = new MemoryStream(rpt_def);
 
-            sOutFile = string.Format(@"{0}{1}.rsd", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
+                sOutFile = string.Format(@"{0}{1}.rsd", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
 
-            if (!Directory.Exists(this.DownloadPath + item.Path.Replace(item.Name, string.Empty)))
-                Directory.CreateDirectory(this.DownloadPath + item.Path.Replace(item.Name, string.Empty));
+                if (!Directory.Exists(this.DownloadPath + item.Path.Replace(item.Name, string.Empty)))
+                    Directory.CreateDirectory(this.DownloadPath + item.Path.Replace(item.Name, string.Empty));
 
-            if (File.Exists(sOutFile))
-                File.Delete(sOutFile);
+                if (File.Exists(sOutFile))
+                    File.Delete(sOutFile);
 
-            doc.Load(stream);
-            doc.Save(sOutFile);
+                doc.Load(stream);
+                doc.Save(sOutFile);
+            }
+            catch (Exception ex)
+            {
+                LoggerManager.Logger.LogWarning("Error while exporting datasets", ex);
+            }
         }
 
         private void DownloadComponents(CatalogItem item)
@@ -206,19 +251,26 @@ namespace SSRSImportExportWizard
             XmlDocument doc = new XmlDocument();
             string sOutFile = "";
 
-            rpt_def = this.ReportServer.GetItemDefinition(item.Path);
-            MemoryStream stream = new MemoryStream(rpt_def);
+            try
+            {
+                rpt_def = this.ReportServer.GetItemDefinition(item.Path);
+                MemoryStream stream = new MemoryStream(rpt_def);
 
-            sOutFile = string.Format(@"{0}{1}", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
+                sOutFile = string.Format(@"{0}{1}", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
 
-            if (!Directory.Exists(this.DownloadPath + item.Path.Replace(item.Name, string.Empty)))
-                Directory.CreateDirectory(this.DownloadPath + item.Path.Replace(item.Name, string.Empty));
+                if (!Directory.Exists(this.DownloadPath + item.Path.Replace(item.Name, string.Empty)))
+                    Directory.CreateDirectory(this.DownloadPath + item.Path.Replace(item.Name, string.Empty));
 
-            if (File.Exists(sOutFile))
-                File.Delete(sOutFile);
+                if (File.Exists(sOutFile))
+                    File.Delete(sOutFile);
 
-            doc.Load(stream);
-            doc.Save(sOutFile);
+                doc.Load(stream);
+                doc.Save(sOutFile);
+            }
+            catch (Exception ex)
+            {
+                LoggerManager.Logger.LogWarning("Error while exporting component", ex);
+            }
         }
 
         private void DownloadReports(CatalogItem item)
@@ -226,50 +278,26 @@ namespace SSRSImportExportWizard
             byte[] rpt_def = null;
             XmlDocument doc = new XmlDocument();
             string sOutFile = "";
-            //string dsOutFile = "";
 
-            rpt_def = this.ReportServer.GetItemDefinition(item.Path);
-            //List<DataSource> dataSrc = this.ReportServer.GetItemDataSources(item.Path).ToList();
-            //List<ItemReferenceData> sharedSet = this.ReportServer.GetItemReferences(item.Path, "DataSet").ToList();
-            //Dictionary<string, DataSourceReference> sharedDS = new Dictionary<string, DataSourceReference>();
-            //Dictionary<string, ItemReferenceData> sharedDataSet = new Dictionary<string, ItemReferenceData>();
+            try
+            {
+                rpt_def = this.ReportServer.GetItemDefinition(item.Path);
+                MemoryStream stream = new MemoryStream(rpt_def);
+                sOutFile = string.Format(@"{0}{1}.rdl", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
 
-            //foreach (DataSource ds in dataSrc)
-            //{
-            //    if(ds.Item is DataSourceReference)
-            //    {
-            //        sharedDS.Add(ds.Name, ds.Item as DataSourceReference);
-            //    }
-            //}
+                if (!Directory.Exists(this.DownloadPath + item.Path.Replace(item.Name, string.Empty)))
+                    Directory.CreateDirectory(this.DownloadPath + item.Path.Replace(item.Name, string.Empty));
 
-            //foreach (ItemReferenceData dset in sharedSet)
-            //{
-            //    sharedDataSet.Add(dset.Name, dset);
-            //}
+                if (File.Exists(sOutFile))
+                    File.Delete(sOutFile);
 
-            MemoryStream stream = new MemoryStream(rpt_def);
-            sOutFile = string.Format(@"{0}{1}.rdl", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
-
-            if (!Directory.Exists(this.DownloadPath + item.Path.Replace(item.Name, string.Empty)))
-                Directory.CreateDirectory(this.DownloadPath + item.Path.Replace(item.Name, string.Empty));
-
-            if (File.Exists(sOutFile))
-                File.Delete(sOutFile);
-
-            doc.Load(stream);
-            doc.Save(sOutFile);
-
-            //if (sharedDS.Count > 0)
-            //{
-            //    dsOutFile = string.Format(@"{0}{1}.rds", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
-            //    File.WriteAllText(dsOutFile, JsonConvert.SerializeObject(sharedDS, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings() { PreserveReferencesHandling = PreserveReferencesHandling.All }));
-            //}
-
-            //if (sharedDataSet.Count > 0)
-            //{
-            //    dsOutFile = string.Format(@"{0}{1}.rsd", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
-            //    File.WriteAllText(dsOutFile, JsonConvert.SerializeObject(sharedDataSet, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings() { PreserveReferencesHandling = PreserveReferencesHandling.All }));
-            //}
+                doc.Load(stream);
+                doc.Save(sOutFile);
+            }
+            catch (Exception ex)
+            {
+                LoggerManager.Logger.LogWarning("Error while exporting report", ex);
+            }
         }
 
         private void ExportTreeView_AfterCheck(object sender, TreeViewEventArgs e)

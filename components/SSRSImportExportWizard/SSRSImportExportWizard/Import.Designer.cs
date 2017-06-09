@@ -66,7 +66,7 @@
             // 
             this.lblTestSuccess.AutoSize = true;
             this.lblTestSuccess.ForeColor = System.Drawing.Color.Green;
-            this.lblTestSuccess.Location = new System.Drawing.Point(324, 231);
+            this.lblTestSuccess.Location = new System.Drawing.Point(324, 252);
             this.lblTestSuccess.Name = "lblTestSuccess";
             this.lblTestSuccess.Size = new System.Drawing.Size(0, 17);
             this.lblTestSuccess.TabIndex = 9;

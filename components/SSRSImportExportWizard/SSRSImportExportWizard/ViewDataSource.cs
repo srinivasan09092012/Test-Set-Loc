@@ -64,10 +64,14 @@ namespace SSRSImportExportWizard
             }
             else
             {
+                Cursor.Current = Cursors.WaitCursor;
+                btnDataSourceTestConnection.Enabled = false;
                 if (this.ConnectReportServer())
                 {
                     lblTestSuccess.Text = "Test succeeded!!!";
                 }
+                btnDataSourceTestConnection.Enabled = true;
+                Cursor.Current = Cursors.Default;
             }
         }
 
@@ -80,6 +84,7 @@ namespace SSRSImportExportWizard
             try
             {
                 CatalogItem[] items = this.ReportServer.ListChildren(@"/", true);
+                lblError.Text = string.Empty;
                 return true;
             }
             catch (SoapException)

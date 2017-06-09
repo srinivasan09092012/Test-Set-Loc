@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using SSRSImportExportWizard.ReportServer2010;
+﻿using SSRSImportExportWizard.ReportServer2010;
+using System;
 using System.Net;
 using System.Web.Services.Protocols;
+using System.Windows.Forms;
 
 namespace SSRSImportExportWizard
 {
@@ -50,8 +43,6 @@ namespace SSRSImportExportWizard
                     new ExportReportView(this.ReportServer, this.DownloadPath).ShowDialog();
                 }
             }
-
-            btnExportReports.Enabled = true;
         }
 
         private bool ConnectReportServer()
@@ -66,6 +57,7 @@ namespace SSRSImportExportWizard
 
                 if (items.Length > 0)
                 {
+                    lblError.Text = string.Empty;
                     return true;
                 }
             }
@@ -97,21 +89,21 @@ namespace SSRSImportExportWizard
             }
             else
             {
-                if(this.ConnectReportServer())
+                btnExportTestConnection.Enabled = false;
+                Cursor.Current = Cursors.WaitCursor;
+                if (this.ConnectReportServer())
                 {
                     lblTestSuccess.Text = "Test succeeded!!!";
+                    lblError.Text = string.Empty;
                 }
+                Cursor.Current = Cursors.Default;
+                btnExportTestConnection.Enabled = true;
             }
         }
 
         private void txtUserName_TextChanged(object sender, EventArgs e)
         {
             txtUserName.Text = string.Empty;
-        }
-
-        private void btnExportReports_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

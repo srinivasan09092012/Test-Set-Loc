@@ -45,7 +45,6 @@
             this.sourceURL = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblError = new System.Windows.Forms.Label();
-            this.btnExportReports = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.ExportBodyPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -116,7 +115,7 @@
             // 
             this.lblTestSuccess.AutoSize = true;
             this.lblTestSuccess.ForeColor = System.Drawing.Color.Green;
-            this.lblTestSuccess.Location = new System.Drawing.Point(314, 196);
+            this.lblTestSuccess.Location = new System.Drawing.Point(326, 231);
             this.lblTestSuccess.Name = "lblTestSuccess";
             this.lblTestSuccess.Size = new System.Drawing.Size(0, 17);
             this.lblTestSuccess.TabIndex = 9;
@@ -222,24 +221,10 @@
             this.lblError.Size = new System.Drawing.Size(0, 17);
             this.lblError.TabIndex = 9;
             // 
-            // btnExportReports
-            // 
-            this.btnExportReports.Enabled = false;
-            this.btnExportReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportReports.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportReports.Location = new System.Drawing.Point(423, 570);
-            this.btnExportReports.Name = "btnExportReports";
-            this.btnExportReports.Size = new System.Drawing.Size(136, 38);
-            this.btnExportReports.TabIndex = 12;
-            this.btnExportReports.Text = "Export Reports";
-            this.btnExportReports.UseVisualStyleBackColor = true;
-            this.btnExportReports.Click += new System.EventHandler(this.btnExportReports_Click);
-            // 
             // ExportControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnExportReports);
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.sourceURL);
             this.Controls.Add(this.label1);
@@ -276,7 +261,6 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.Label lblTestSuccess;
-        private System.Windows.Forms.Button btnExportReports;
         private System.Windows.Forms.TextBox txtDownloadPath;
         private System.Windows.Forms.Label label5;
     }

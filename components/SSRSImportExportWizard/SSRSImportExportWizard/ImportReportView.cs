@@ -47,11 +47,13 @@ namespace SSRSImportExportWizard
         {
             List<TreeNode> checkedList = new List<TreeNode>();
             this.LookupChecks(ImportTreeView.Nodes, checkedList);
+            btnImportReports.Enabled = false;
             Cursor.Current = Cursors.WaitCursor;
             this.CreateFolders(checkedList);
             this.CreateDataSource(checkedList);
             this.CreateReports(checkedList);
             this.CreateComponents(checkedList);
+            btnImportReports.Enabled = true;
             Cursor.Current = Cursors.Default;
         }
 
@@ -120,7 +122,14 @@ namespace SSRSImportExportWizard
                             definition = new byte[stream.Length];
                             stream.Read(definition, 0, (int)stream.Length);
                             stream.Close();
-                            this.ReportServer.CreateCatalogItem("DataSource", fi.Name, "/Data Sources", true, definition, null, out warnings);
+                            try
+                            {
+                                this.ReportServer.CreateCatalogItem("DataSource", fi.Name, "/Data Sources", true, definition, null, out warnings);
+                            }
+                            catch (Exception ex)
+                            {
+                                LoggerManager.Logger.LogWarning("Create DataSource error", ex);
+                            }
                         }
                     }
                 }
@@ -134,7 +143,14 @@ namespace SSRSImportExportWizard
                             definition = new byte[stream.Length];
                             stream.Read(definition, 0, (int)stream.Length);
                             stream.Close();
-                            this.ReportServer.CreateCatalogItem("DataSet", fi.Name, "/Datasets", true, definition, null, out warnings);
+                            try
+                            {
+                                this.ReportServer.CreateCatalogItem("DataSet", fi.Name, "/Datasets", true, definition, null, out warnings);
+                            }
+                            catch (Exception ex)
+                            {
+                                LoggerManager.Logger.LogWarning("Create DataSet error", ex);
+                            }
                         }
                     }
                 }
@@ -163,7 +179,15 @@ namespace SSRSImportExportWizard
                             stream.Read(definition, 0, (int)stream.Length);
                             stream.Close();
                             string parent = string.Format(@"/{0}", di.FullName.Replace(this.UploadPath + "\\", string.Empty)).Replace("\\", "/");
-                            this.ReportServer.CreateCatalogItem("Component", fi.Name, parent, true, definition, null, out warnings);
+
+                            try
+                            {
+                                this.ReportServer.CreateCatalogItem("Component", fi.Name, parent, true, definition, null, out warnings);
+                            }
+                            catch (Exception ex)
+                            {
+                                LoggerManager.Logger.LogWarning("Create Component error", ex);
+                            }
                         }
                     }
                 }
@@ -198,7 +222,16 @@ namespace SSRSImportExportWizard
                             stream.Read(definition, 0, (int)stream.Length);
                             stream.Close();
                             string parent = string.Format(@"/{0}", di.FullName.Replace(this.UploadPath + "\\", string.Empty)).Replace("\\", "/");
-                            this.ReportServer.CreateCatalogItem("Report", fi.Name, parent, true, definition, null, out warnings);
+
+                            try
+                            {
+                                this.ReportServer.CreateCatalogItem("Report", fi.Name, parent, true, definition, null, out warnings);
+                            }
+                            catch (Exception ex)
+                            {
+                                LoggerManager.Logger.LogWarning("Create Report error", ex);
+                            }
+
                             xmlDoc.Load(fi.FullName);
                             XmlNodeList dsReferenceList = xmlDoc.GetElementsByTagName("DataSource");
                             XmlNodeList sharedDSReferenceList = xmlDoc.GetElementsByTagName("DataSet");
@@ -229,7 +262,14 @@ namespace SSRSImportExportWizard
 
                                 if (ds.Count > 0)
                                 {
-                                    this.ReportServer.SetItemDataSources(parent + "/" + fi.Name, ds.ToArray());
+                                    try
+                                    {
+                                        this.ReportServer.SetItemDataSources(parent + "/" + fi.Name, ds.ToArray());
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        LoggerManager.Logger.LogWarning("Update Item DataSources error", ex);
+                                    }
                                 }
                             }
 
@@ -263,7 +303,14 @@ namespace SSRSImportExportWizard
 
                                 if (references.Count > 0)
                                 {
-                                    this.ReportServer.SetItemReferences(parent + "/" + fi.Name, references.ToArray());
+                                    try
+                                    {
+                                        this.ReportServer.SetItemReferences(parent + "/" + fi.Name, references.ToArray());
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        LoggerManager.Logger.LogWarning("Update Item References error", ex);
+                                    }
                                 }
                             }
 
@@ -284,7 +331,14 @@ namespace SSRSImportExportWizard
                                     }
                                 }
 
-                                this.ReportServer.SetItemDataSources(parent + "/" + fi.Name, ds.ToArray());
+                                try
+                                {
+                                    this.ReportServer.SetItemDataSources(parent + "/" + fi.Name, ds.ToArray());
+                                }
+                                catch (Exception ex)
+                                {
+                                    LoggerManager.Logger.LogWarning("Update Item DataSources error", ex);
+                                }
                             }
 
                             if (File.Exists(fi.FullName.Replace(fi.Extension, ".rsd")))
@@ -304,7 +358,14 @@ namespace SSRSImportExportWizard
                                     }
                                 }
 
-                                this.ReportServer.SetItemReferences(parent + "/" + fi.Name, references.ToArray());
+                                try
+                                {
+                                    this.ReportServer.SetItemReferences(parent + "/" + fi.Name, references.ToArray());
+                                }
+                                catch (Exception ex)
+                                {
+                                    LoggerManager.Logger.LogWarning("Update Item References error", ex);
+                                }
                             }
                         }
                     }
@@ -331,38 +392,6 @@ namespace SSRSImportExportWizard
 
                 LookupChecks(node.Nodes, checkedList);
             }
-        }
-
-        private DataSourceDefinition[] ImportReportSharedDataSource(string fullName)
-        {
-            DataSourceDefinition[] dataSources = null;
-
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(fullName);
-            XmlNode root = xmlDoc.DocumentElement;
-
-            foreach (XmlNode node in root.ChildNodes)
-            {
-                if (node.Name == "DataSources")
-                {
-                    foreach (XmlNode data in node.ChildNodes)
-                    {
-                        if (node.Name == "DataSource")
-                        {
-                            foreach (XmlNode data1 in node.ChildNodes)
-                            {
-                                if (node.Name == "DataSourceReference")
-                                {
-                                    dataSources[dataSources.Length + 1] = new DataSourceDefinition();
-                                    dataSources[dataSources.Length + 1] = this.ReportServer.GetDataSourceContents(node.Value);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            return dataSources;
         }
 
         private bool IsItemChecked(List<TreeNode> checkedList, string path, string name)
