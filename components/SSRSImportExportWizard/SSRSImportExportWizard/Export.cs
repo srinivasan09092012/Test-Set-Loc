@@ -105,5 +105,17 @@ namespace SSRSImportExportWizard
         {
             txtUserName.Text = string.Empty;
         }
+
+        private void btnExportFolderBrowser_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderDlg = new FolderBrowserDialog();
+            folderDlg.ShowNewFolderButton = true;
+            DialogResult result = folderDlg.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                txtDownloadPath.Text = folderDlg.SelectedPath;
+                Environment.SpecialFolder root = folderDlg.RootFolder;
+            }
+        }
     }
 }

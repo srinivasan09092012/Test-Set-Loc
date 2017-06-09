@@ -208,7 +208,6 @@
             this.txtRootPath.Name = "txtRootPath";
             this.txtRootPath.Size = new System.Drawing.Size(609, 22);
             this.txtRootPath.TabIndex = 16;
-            this.txtRootPath.Text = "Tenant 3 - Customer A";
             // 
             // label5
             // 

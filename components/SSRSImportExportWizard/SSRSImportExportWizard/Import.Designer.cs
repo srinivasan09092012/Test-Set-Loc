@@ -47,6 +47,7 @@
             this.ExportBodyPanel = new System.Windows.Forms.Panel();
             this.txtReportServerPath = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnImportFolderBrowser = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.ExportBodyPanel.SuspendLayout();
@@ -96,7 +97,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(183, 26);
             this.txtPassword.TabIndex = 7;
-            this.txtPassword.Text = "Password2015";
+            this.txtPassword.Text = "Password2017";
             // 
             // txtUserName
             // 
@@ -104,7 +105,7 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(183, 26);
             this.txtUserName.TabIndex = 5;
-            this.txtUserName.Text = "ua3dev\\hciadmin";
+            this.txtUserName.Text = "test\\hciadmin";
             // 
             // label3
             // 
@@ -150,11 +151,11 @@
             // 
             // txtDownloadPath
             // 
-            this.txtDownloadPath.Location = new System.Drawing.Point(91, 56);
+            this.txtDownloadPath.Location = new System.Drawing.Point(75, 56);
             this.txtDownloadPath.Name = "txtDownloadPath";
-            this.txtDownloadPath.Size = new System.Drawing.Size(604, 22);
+            this.txtDownloadPath.Size = new System.Drawing.Size(520, 22);
             this.txtDownloadPath.TabIndex = 14;
-            this.txtDownloadPath.Text = "C:\\UA3\\Reports\\SSRS_Reports";
+            this.txtDownloadPath.Text = "C:\\UA3\\Reports\\SSRS_Reports\\Azure Test Reports";
             // 
             // groupBox1
             // 
@@ -204,14 +205,15 @@
             // 
             // TargetURL
             // 
-            this.TargetURL.Location = new System.Drawing.Point(94, 82);
+            this.TargetURL.Location = new System.Drawing.Point(78, 82);
             this.TargetURL.Name = "TargetURL";
             this.TargetURL.Size = new System.Drawing.Size(604, 22);
             this.TargetURL.TabIndex = 18;
-            this.TargetURL.Text = "https://reports.dev.ua3.eslabs.ssn.hp.com/ReportServer/ReportService2010.asmx";
+            this.TargetURL.Text = "https://report.test.mapshc.com/ReportServer/ReportService2010.asmx";
             // 
             // ExportBodyPanel
             // 
+            this.ExportBodyPanel.Controls.Add(this.btnImportFolderBrowser);
             this.ExportBodyPanel.Controls.Add(this.txtReportServerPath);
             this.ExportBodyPanel.Controls.Add(this.label6);
             this.ExportBodyPanel.Controls.Add(this.txtDownloadPath);
@@ -226,11 +228,10 @@
             // 
             // txtReportServerPath
             // 
-            this.txtReportServerPath.Location = new System.Drawing.Point(182, 96);
+            this.txtReportServerPath.Location = new System.Drawing.Point(105, 97);
             this.txtReportServerPath.Name = "txtReportServerPath";
-            this.txtReportServerPath.Size = new System.Drawing.Size(513, 22);
+            this.txtReportServerPath.Size = new System.Drawing.Size(490, 22);
             this.txtReportServerPath.TabIndex = 16;
-            this.txtReportServerPath.Text = "Tenant 3 - Customer A";
             // 
             // label6
             // 
@@ -238,9 +239,21 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(10, 97);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(145, 17);
+            this.label6.Size = new System.Drawing.Size(93, 17);
             this.label6.TabIndex = 15;
-            this.label6.Text = "Report server path";
+            this.label6.Text = "Server path";
+            // 
+            // btnImportFolderBrowser
+            // 
+            this.btnImportFolderBrowser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnImportFolderBrowser.Font = new System.Drawing.Font("Calibri", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportFolderBrowser.Location = new System.Drawing.Point(599, 58);
+            this.btnImportFolderBrowser.Name = "btnImportFolderBrowser";
+            this.btnImportFolderBrowser.Size = new System.Drawing.Size(58, 21);
+            this.btnImportFolderBrowser.TabIndex = 17;
+            this.btnImportFolderBrowser.Text = "Browse";
+            this.btnImportFolderBrowser.UseVisualStyleBackColor = true;
+            this.btnImportFolderBrowser.Click += new System.EventHandler(this.btnImportFolderBrowser_Click);
             // 
             // ImportControl
             // 
@@ -286,5 +299,6 @@
         private System.Windows.Forms.Panel ExportBodyPanel;
         private System.Windows.Forms.TextBox txtReportServerPath;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnImportFolderBrowser;
     }
 }

@@ -83,10 +83,29 @@ namespace SSRSImportExportWizard
         {
             string rootFolder = "\\" + this.ReportServerPath;
             DirectoryInfo reportDir = new DirectoryInfo(this.UploadPath + rootFolder);
+            string parent = string.Empty;
+
+            if (this.ReportServerPath.Trim().Length > 0)
+            {
+                this.UploadPath = this.UploadPath + "\\";
+            }
 
             foreach (var di in reportDir.EnumerateDirectories("*", SearchOption.AllDirectories))
             {
-                string parent = string.Format(@"/{0}", di.Parent.FullName.Replace(this.UploadPath + "\\", string.Empty));
+                if (this.ReportServerPath.Trim().Length > 0)
+                {
+                    parent = string.Format(@"/{0}", di.Parent.FullName.Replace(this.UploadPath, string.Empty));
+                }
+                else
+                {
+                    parent = string.Format(@"{0}", di.Parent.FullName.Replace(this.UploadPath, string.Empty));
+                }
+
+                if(parent.Length == 0)
+                {
+                    parent = "/";
+                }
+
                 if (this.IsItemChecked(checkedList, parent.Replace("\\", "/"), di.Name))
                 {
                     try
@@ -124,7 +143,7 @@ namespace SSRSImportExportWizard
                             stream.Close();
                             try
                             {
-                                this.ReportServer.CreateCatalogItem("DataSource", fi.Name, "/Data Sources", true, definition, null, out warnings);
+                                this.ReportServer.CreateCatalogItem("DataSource", fi.Name.Replace(".rds", string.Empty), "/Data Sources", true, definition, null, out warnings);
                             }
                             catch (Exception ex)
                             {
@@ -135,7 +154,7 @@ namespace SSRSImportExportWizard
                 }
                 else if (di.Name == "Datasets")
                 {
-                    foreach (var fi in di.EnumerateFiles("*.rds", SearchOption.TopDirectoryOnly))
+                    foreach (var fi in di.EnumerateFiles("*.rsd", SearchOption.TopDirectoryOnly))
                     {
                         if (this.IsCatalogItemChecked(checkedList, fi.Name.Replace("\\", "/"), fi.Name))
                         {
@@ -145,7 +164,7 @@ namespace SSRSImportExportWizard
                             stream.Close();
                             try
                             {
-                                this.ReportServer.CreateCatalogItem("DataSet", fi.Name, "/Datasets", true, definition, null, out warnings);
+                                this.ReportServer.CreateCatalogItem("DataSet", fi.Name.Replace(".rsd", string.Empty), "/Datasets", true, definition, null, out warnings);
                             }
                             catch (Exception ex)
                             {
@@ -225,7 +244,7 @@ namespace SSRSImportExportWizard
 
                             try
                             {
-                                this.ReportServer.CreateCatalogItem("Report", fi.Name, parent, true, definition, null, out warnings);
+                                this.ReportServer.CreateCatalogItem("Report", fi.Name.Replace(".rdl", string.Empty), parent, true, definition, null, out warnings);
                             }
                             catch (Exception ex)
                             {
@@ -264,7 +283,7 @@ namespace SSRSImportExportWizard
                                 {
                                     try
                                     {
-                                        this.ReportServer.SetItemDataSources(parent + "/" + fi.Name, ds.ToArray());
+                                        this.ReportServer.SetItemDataSources(parent + "/" + fi.Name.Replace(".rdl", string.Empty), ds.ToArray());
                                     }
                                     catch (Exception ex)
                                     {
@@ -305,7 +324,7 @@ namespace SSRSImportExportWizard
                                 {
                                     try
                                     {
-                                        this.ReportServer.SetItemReferences(parent + "/" + fi.Name, references.ToArray());
+                                        this.ReportServer.SetItemReferences(parent + "/" + fi.Name.Replace(".rdl", string.Empty), references.ToArray());
                                     }
                                     catch (Exception ex)
                                     {
@@ -392,6 +411,11 @@ namespace SSRSImportExportWizard
 
                 LookupChecks(node.Nodes, checkedList);
             }
+        }
+
+        private bool IsFolderExistChecked(List<TreeNode> checkedList, string folderName)
+        {
+            return checkedList.Exists(f => f.Text.Contains(folderName));
         }
 
         private bool IsItemChecked(List<TreeNode> checkedList, string path, string name)
