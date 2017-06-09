@@ -566,7 +566,7 @@ namespace DatalistSyncUtil.Views
 
         private void SaveDataListItemsWithAttributesValandLinks()
         {
-            List<DataList> dataList = this.LoadHelper.GetDataList();
+            List<DataList> dataList = this.LoadHelper.GetNewDataList();
             DataList list = null;
             DataListItemAdded itemadded = new DataListItemAdded();
             DataListItemUpdated itemupdated = new DataListItemUpdated();
@@ -607,7 +607,7 @@ namespace DatalistSyncUtil.Views
                             }
                         });
 
-                        if (itemadded != null || itemupdated != null)
+                        if (itemadded.DataListItemId != null || itemupdated.DataListItemId != null)
                         {
                             MessageBox.Show("Data Added Successfully DataListItems/ItemAttribute");
                             this.Cache.Remove("TargetDataListItems");
@@ -662,7 +662,7 @@ namespace DatalistSyncUtil.Views
                             }
                         });
 
-                        if (itemadded != null || itemupdated != null)
+                        if (itemadded.DataListItemId != null || itemupdated.DataListItemId != null)
                         {
                             MessageBox.Show("Data Added Successfully DataListItems/ItemAttribute");
                             this.Cache.Remove("TargetDataListItems");
@@ -807,7 +807,7 @@ namespace DatalistSyncUtil.Views
                             }
                         }
 
-                        if (datalistadd != null || datalistupdated != null)
+                        if (datalistadd.DataListId != null || datalistupdated.DataListId != null)
                         {
                             MessageBox.Show("Data Added Successfully For DataList/DataListAttribute");
                             this.Cache.Remove("TargetDataList");
@@ -859,7 +859,7 @@ namespace DatalistSyncUtil.Views
                             }
                         }
 
-                        if (datalistadd != null || datalistupdated != null)
+                        if (datalistadd.DataListId != null || datalistupdated.DataListId != null)
                         {
                             MessageBox.Show("Data Added Successfully For DataLists/DataListAttribute");
                             this.Cache.Remove("TargetDataList");

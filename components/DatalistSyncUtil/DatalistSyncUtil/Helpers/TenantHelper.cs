@@ -883,5 +883,19 @@ namespace DatalistSyncUtil
 
             return result;
         }
+
+        public List<DataList> GetNewDataList()
+        {
+            List<DataList> result = null;
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                result = new SearchDataListDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
+            }
+           
+            return result;
+        }
+
+
+
     }
 }
