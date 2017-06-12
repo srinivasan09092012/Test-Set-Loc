@@ -128,6 +128,9 @@ namespace SSRSImportExportWizard
             DirectoryInfo reportDir = new DirectoryInfo(this.UploadPath + rootFolder);
             byte[] definition = null;
             Warning[] warnings = null;
+            string dataSourceURL = "/Data Sources/";
+            XmlDocument xmlDoc = new XmlDocument();
+            List<ItemReference> dataSourceReference = null;
 
             foreach (var di in reportDir.EnumerateDirectories("*", SearchOption.AllDirectories))
             {
@@ -152,7 +155,11 @@ namespace SSRSImportExportWizard
                         }
                     }
                 }
-                else if (di.Name == "Datasets")
+            }
+
+            foreach (var di in reportDir.EnumerateDirectories("*", SearchOption.AllDirectories))
+            {
+                if (di.Name == "Datasets")
                 {
                     foreach (var fi in di.EnumerateFiles("*.rsd", SearchOption.TopDirectoryOnly))
                     {
@@ -165,6 +172,21 @@ namespace SSRSImportExportWizard
                             try
                             {
                                 this.ReportServer.CreateCatalogItem("DataSet", fi.Name.Replace(".rsd", string.Empty), "/Datasets", true, definition, null, out warnings);
+                                ItemReferenceData[] references = this.ReportServer.GetItemReferences("/Datasets/" + fi.Name.Replace(".rsd", string.Empty), "DataSet");
+                                //Sets shared data source reference
+                                xmlDoc.Load(fi.FullName);
+                                XmlNodeList dsReferenceList = xmlDoc.GetElementsByTagName("DataSourceReference");
+                                if (dsReferenceList.Count > 0 && references.Length > 0)
+                                {
+                                    dataSourceReference = new List<ItemReference>();
+                                    dataSourceReference.Add(new ItemReference()
+                                    {
+                                        Name = references[0].Name,
+                                        Reference = dsReferenceList[0].InnerText.Contains(dataSourceURL) ? dsReferenceList[0].InnerText : dataSourceURL + dsReferenceList[0].InnerText
+                                    });
+
+                                    this.ReportServer.SetItemReferences("/Datasets/" + fi.Name.Replace(".rsd", string.Empty), dataSourceReference.ToArray());
+                                }
                             }
                             catch (Exception ex)
                             {
