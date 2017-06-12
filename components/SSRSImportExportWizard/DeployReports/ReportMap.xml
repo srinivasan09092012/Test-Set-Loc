@@ -1,14 +1,14 @@
-﻿<ReportModules>
+﻿<ReportModules SourcePath="C:\UA3\Source\" Branch="Dev" TargetPath="C:\UA3\Reports\">
   <Module Name="ProviderEnrollment">
-    <ReportProject Name="UIReports" ReportPath="HP.HSP.UA3.ProviderEnrollment.Reports" ServerReportPath="/HP.HSP.UA3.ProviderEnrollment.UIReports"></ReportProject>
+    <ReportProject Name="UIReports" ReportPath="\HP.HSP.UA3.ProviderEnrollment.Reports" ServerReportPath="\HP.HSP.UA3.ProviderEnrollment.UIReports"></ReportProject>
   </Module>
   <Module Name="ProviderManagement">
-    <ReportProject Name="Batch" ReportPath="\HP.HSP.UA3.ProviderManagement.Reports\HP.HSP.UA3.PM.BatchReports" ServerReportPath="/Base Report Definitions/Provider Management/Batch Reports"></ReportProject>
-    <ReportProject Name="NotificationLetters" ReportPath="\HP.HSP.UA3.ProviderManagement.Reports\HP.HSP.UA3.PM.NotificationLetters" ServerReportPath="//Base Report Definitions/Provider Management/Notification Letters"></ReportProject>
-    <ReportProject Name="UIReports" ReportPath="\HP.HSP.UA3.ProviderManagement.Reports\HP.HSP.UA3.PM.UIReports" ServerReportPath="/Base Report Definitions/Provider Management/UI Reports"></ReportProject>
-    <ReportProject Name="UIReports1" ReportPath="\HP.HSP.UA3.ProviderManagement.Reports\HP.HSP.UA3.ProviderManagement.UIReports" ServerReportPath="/HP.HSP.UA3.ProviderManagement.UIReports "></ReportProject>
+    <ReportProject Name="Batch" ReportPath="\HP.HSP.UA3.ProviderManagement.Reports\HP.HSP.UA3.PM.BatchReports" ServerReportPath="\Base Report Definitions\Provider Management\Batch Reports"></ReportProject>
+    <ReportProject Name="NotificationLetters" ReportPath="\HP.HSP.UA3.ProviderManagement.Reports\HP.HSP.UA3.PM.NotificationLetters" ServerReportPath="\Base Report Definitions\Provider Management\Notification Letters"></ReportProject>
+    <ReportProject Name="UIReports" ReportPath="\HP.HSP.UA3.ProviderManagement.Reports\HP.HSP.UA3.PM.UIReports" ServerReportPath="\Base Report Definitions\Provider Management\UI Reports"></ReportProject>
+    <ReportProject Name="UIReports1" ReportPath="\HP.HSP.UA3.ProviderManagement.Reports\HP.HSP.UA3.ProviderManagement.UIReports" ServerReportPath="\HP.HSP.UA3.ProviderManagement.UIReports "></ReportProject>
   </Module>
  <Module Name="ProgramIntegrity">
-    <ReportProject Name="UIReports" ReportPath="HPE.HSP.UA3.ProgramIntegrity.Reports" ServerReportPath="/HP.HSP.UA3.ProgramIntegrity.Reports"></ReportProject>
+    <ReportProject Name="UIReports" ReportPath="\HPE.HSP.UA3.ProgramIntegrity.Reports" ServerReportPath="\HP.HSP.UA3.ProgramIntegrity.Reports"></ReportProject>
   </Module>
 </ReportModules> 
