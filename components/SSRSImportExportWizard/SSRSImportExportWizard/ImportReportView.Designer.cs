@@ -41,6 +41,7 @@
             this.ImportTreeView.Size = new System.Drawing.Size(767, 566);
             this.ImportTreeView.TabIndex = 2;
             this.ImportTreeView.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.ImportTreeView_AfterCheck);
+            this.ImportTreeView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ImportTreeView_MouseDoubleClick);
             // 
             // btnImportReports
             // 

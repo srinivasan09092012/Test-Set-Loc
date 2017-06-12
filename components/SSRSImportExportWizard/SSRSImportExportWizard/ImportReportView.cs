@@ -1,4 +1,5 @@
 ﻿using HPE.HSP.UA3.Core.API.Logger;
+using Microsoft.XmlDiffPatch;
 using Newtonsoft.Json;
 using SSRSImportExportWizard.ReportServer2010;
 using System;
@@ -12,6 +13,13 @@ using System.Xml.Linq;
 
 namespace SSRSImportExportWizard
 {
+    public enum ReportUpdateType
+    {
+        New = 0,
+        Modified = 1,
+        None = 2
+    }
+
     public partial class ImportReportView : Form
     {
         public ImportReportView()
@@ -67,7 +75,23 @@ namespace SSRSImportExportWizard
             {
                 foreach (var fi in di.EnumerateFiles("*", SearchOption.TopDirectoryOnly))
                 {
-                    nodes.Add(new TreeNode(fi.Name));
+                    TreeNode reportNode = new TreeNode(fi.Name);
+                    string parent = string.Format(@"/{0}", di.FullName.Replace(this.UploadPath + "\\", string.Empty)).Replace("\\", "/");
+
+                    if (this.CompareReport(fi.FullName, fi.Name.Replace(".rdl", string.Empty), parent) == ReportUpdateType.New)
+                    {
+                        reportNode.BackColor = System.Drawing.Color.LightPink;
+                        nodes.Add(reportNode);
+                    }
+                    else if (this.CompareReport(fi.FullName, fi.Name.Replace(".rdl", string.Empty), parent) == ReportUpdateType.Modified)
+                    {
+                        reportNode.BackColor = System.Drawing.Color.LightSeaGreen;
+                        nodes.Add(reportNode);
+                    }
+                    else
+                    {
+                        nodes.Add(reportNode);
+                    }
                 }
 
                 if (nodes.Count > 0)
@@ -258,14 +282,14 @@ namespace SSRSImportExportWizard
                     {
                         if (this.IsCatalogItemChecked(checkedList, fi.Name.Replace("\\", "/"), fi.Name))
                         {
-                            FileStream stream = File.OpenRead(fi.FullName);
-                            definition = new byte[stream.Length];
-                            stream.Read(definition, 0, (int)stream.Length);
-                            stream.Close();
                             string parent = string.Format(@"/{0}", di.FullName.Replace(this.UploadPath + "\\", string.Empty)).Replace("\\", "/");
 
                             try
                             {
+                                FileStream stream = File.OpenRead(fi.FullName);
+                                definition = new byte[stream.Length];
+                                stream.Read(definition, 0, (int)stream.Length);
+                                stream.Close();
                                 this.ReportServer.CreateCatalogItem("Report", fi.Name.Replace(".rdl", string.Empty), parent, true, definition, null, out warnings);
                             }
                             catch (Exception ex)
@@ -416,6 +440,145 @@ namespace SSRSImportExportWizard
             MessageBox.Show("Reports created successfully");
         }
 
+        private ReportUpdateType CompareReport(string reportFullPath, string reportName, string parent, bool showCompare = false)
+        {
+            XmlDiff diff = new XmlDiff();
+            XmlDiffOptions diffOptions = new XmlDiffOptions();
+            XmlDocument doc = new XmlDocument();
+            string reportLayout = "<Report>{0}</Report>";
+            XmlDocument xmlDoc = new XmlDocument();
+            Random r = new Random();
+            int randonNumber = r.Next();
+            string tempFile1 = string.Empty, tempFile2 = string.Empty, file2 = string.Empty;
+            string startupPath = Application.StartupPath;
+            //output diff file.
+            string diffFile = startupPath + Path.DirectorySeparatorChar + "vxd.out";
+            XmlTextWriter tw = new XmlTextWriter(new StreamWriter(diffFile));
+            tw.Formatting =System.Xml.Formatting.Indented;
+
+            //This method sets the diff.Options property.
+            diff.Algorithm = XmlDiffAlgorithm.Auto;
+            diffOptions = diffOptions | XmlDiffOptions.IgnoreChildOrder;
+            diffOptions = diffOptions | XmlDiffOptions.IgnoreComments;
+            diffOptions = diffOptions | XmlDiffOptions.IgnoreDtd;
+            diffOptions = diffOptions | XmlDiffOptions.IgnoreWhitespace;
+            diffOptions = diffOptions | XmlDiffOptions.IgnoreXmlDecl;
+            diff.Options = diffOptions;
+            bool isEqual = false;
+            file2 = startupPath + Path.DirectorySeparatorChar + "file2.rdl";
+            //Now compare the two files.
+            try
+            {
+                xmlDoc.Load(reportFullPath);
+                XmlNodeList srcReportSections = xmlDoc.GetElementsByTagName("ReportSections");
+                if (srcReportSections != null && srcReportSections.Count > 0)
+                {
+                    tempFile1 = startupPath + Path.DirectorySeparatorChar + "file1.xml";
+                    File.WriteAllText(tempFile1, string.Format(reportLayout, srcReportSections[0].InnerXml));
+                }
+
+                if(!this.GetReport(reportName, parent))
+                {
+                    return ReportUpdateType.New;
+                }
+
+                xmlDoc.Load(file2);
+                XmlNodeList targetReportSections = xmlDoc.GetElementsByTagName("ReportSections");
+                if (targetReportSections != null && targetReportSections.Count > 0)
+                {
+                    tempFile2 = startupPath + Path.DirectorySeparatorChar + "file2.xml";
+                    File.WriteAllText(tempFile2, string.Format(reportLayout, targetReportSections[0].InnerXml));
+                }
+
+                isEqual = diff.Compare(tempFile1, tempFile2, false, tw);
+            }
+            catch (XmlException xe)
+            {
+                MessageBox.Show("An exception occured while comparing\n" + xe.StackTrace);
+            }
+            finally
+            {
+                tw.Close();
+            }
+
+            if (isEqual)
+            {
+                //This means the files were identical for given options.
+                //MessageBox.Show("Files Identical for the given options");
+                return ReportUpdateType.None; //dont need to show the differences.
+            }
+
+            //Files were not equal, so construct XmlDiffView.
+            XmlDiffView dv = new XmlDiffView();
+
+            //Load the original file again and the diff file.
+            XmlTextReader orig = new XmlTextReader(tempFile1);
+            XmlTextReader diffGram = new XmlTextReader(diffFile);
+            dv.Load(orig, diffGram);
+
+            //Wrap the HTML file with necessary html and 
+            //body tags and prepare it before passing it to the GetHtml method.
+
+            string tempFile = startupPath + Path.DirectorySeparatorChar + "diff" + randonNumber + ".htm";
+            StreamWriter sw1 = new StreamWriter(tempFile);
+
+            sw1.Write("<html><body><table width='100%'>");
+            //Write Legend.
+            sw1.Write("<tr><td colspan='2' align='center'><b>Legend:</b> <font style='background-color: yellow'" +
+                " color='black'>added</font>&nbsp;&nbsp;<font style='background-color: red'" +
+                " color='black'>removed</font>&nbsp;&nbsp;<font style='background-color: " +
+                "lightgreen' color='black'>changed</font>&nbsp;&nbsp;" +
+                "<font style='background-color: red' color='blue'>moved from</font>" +
+                "&nbsp;&nbsp;<font style='background-color: yellow' color='blue'>moved to" +
+                "</font>&nbsp;&nbsp;<font style='background-color: white' color='#AAAAAA'>" +
+                "ignored</font></td></tr>");
+
+            //This gets the differences but just has the 
+            //rows and columns of an HTML table
+            dv.GetHtml(sw1);
+
+            //Finish wrapping up the generated HTML and complete the file.
+            sw1.Write("</table></body></html>");
+
+            //HouseKeeping...close everything we dont want to lock.
+            sw1.Close();
+            dv = null;
+            orig.Close();
+            diffGram.Close();
+            File.Delete(diffFile);
+
+            if(showCompare)
+            {
+                ReportCompare browse = new ReportCompare(tempFile);
+                browse.Show(); //Display it!
+            }
+            return ReportUpdateType.Modified;
+        }
+
+        private bool GetReport(string reportName, string parent)
+        {
+            byte[] rpt_def = null;
+            XmlDocument doc = new XmlDocument();
+            string sOutFile = "";
+            string startupPath = Application.StartupPath;
+            //output diff file.
+            sOutFile = startupPath + Path.DirectorySeparatorChar + "file2.rdl";
+
+            try
+            {
+                rpt_def = this.ReportServer.GetItemDefinition(parent + "/" + reportName);
+                MemoryStream stream = new MemoryStream(rpt_def);
+                doc.Load(stream);
+                doc.Save(sOutFile);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LoggerManager.Logger.LogWarning("Error while exporting report", ex);
+                return false;
+            }
+        }
+
         private void LookupChecks(TreeNodeCollection nodes, List<TreeNode> checkedList)
         {
             foreach (TreeNode node in nodes)
@@ -471,6 +634,18 @@ namespace SSRSImportExportWizard
         private void ImportClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void ImportTreeView_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            TreeView node = sender as TreeView;
+            if(node.SelectedNode.BackColor == System.Drawing.Color.LightSeaGreen)
+            {
+                string fullName = node.SelectedNode.FullPath;
+                string reportName = node.SelectedNode.Text.Replace(".rdl", string.Empty);
+                string parent = node.SelectedNode.Parent.Text.Replace("\\", "/");
+                this.CompareReport(fullName, reportName, parent, true);
+            }
         }
     }
 }
