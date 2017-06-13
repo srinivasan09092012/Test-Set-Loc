@@ -96,6 +96,7 @@ namespace DatalistSyncUtil
             this.securityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.servicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.leftPanel.SuspendLayout();
             this.rightPanel.SuspendLayout();
@@ -410,7 +411,7 @@ namespace DatalistSyncUtil
             this.deltaToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(88, 29);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 22);
             this.optionsToolStripMenuItem.Text = "Options";
             // 
             // deltaToolStripMenuItem
@@ -422,19 +423,20 @@ namespace DatalistSyncUtil
             this.menusToolStripMenuItem,
             this.securityToolStripMenuItem,
             this.imagesToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.servicesToolStripMenuItem});
             this.deltaToolStripMenuItem.Name = "deltaToolStripMenuItem";
-            this.deltaToolStripMenuItem.Size = new System.Drawing.Size(138, 30);
+            this.deltaToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
             this.deltaToolStripMenuItem.Text = "Delta";
-            this.deltaToolStripMenuItem.Click += new System.EventHandler(this.deltaToolStripMenuItem_Click);
-            this.deltaToolStripMenuItem.MouseHover += new System.EventHandler(this.deltaToolStripMenuItem_Click);
-            this.deltaToolStripMenuItem.MouseMove += new System.Windows.Forms.MouseEventHandler(this.deltaToolStripMenuItem_Click);
+            this.deltaToolStripMenuItem.Click += new System.EventHandler(this.DeltaToolStripMenuItem_Click);
+            this.deltaToolStripMenuItem.MouseHover += new System.EventHandler(this.DeltaToolStripMenuItem_Click);
+            this.deltaToolStripMenuItem.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DeltaToolStripMenuItem_Click);
             // 
             // appSettingToolStripMenuItem
             // 
             this.appSettingToolStripMenuItem.Enabled = false;
             this.appSettingToolStripMenuItem.Name = "appSettingToolStripMenuItem";
-            this.appSettingToolStripMenuItem.Size = new System.Drawing.Size(187, 30);
+            this.appSettingToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.appSettingToolStripMenuItem.Text = "AppSetting";
             this.appSettingToolStripMenuItem.Click += new System.EventHandler(this.AppSettingToolStripMenuItem_Click);
             // 
@@ -442,7 +444,7 @@ namespace DatalistSyncUtil
             // 
             this.datalistItemToolStripMenuItem.Enabled = false;
             this.datalistItemToolStripMenuItem.Name = "datalistItemToolStripMenuItem";
-            this.datalistItemToolStripMenuItem.Size = new System.Drawing.Size(187, 30);
+            this.datalistItemToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.datalistItemToolStripMenuItem.Text = "Datalist";
             this.datalistItemToolStripMenuItem.Click += new System.EventHandler(this.DatalistItemToolStripMenuItem_Click);
             // 
@@ -450,7 +452,7 @@ namespace DatalistSyncUtil
             // 
             this.htmlBlockToolStripMenuItem.Enabled = false;
             this.htmlBlockToolStripMenuItem.Name = "htmlBlockToolStripMenuItem";
-            this.htmlBlockToolStripMenuItem.Size = new System.Drawing.Size(187, 30);
+            this.htmlBlockToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.htmlBlockToolStripMenuItem.Text = "HtmlBlock";
             this.htmlBlockToolStripMenuItem.Click += new System.EventHandler(this.HtmlBlockToolStripMenuItem_Click);
             // 
@@ -458,7 +460,7 @@ namespace DatalistSyncUtil
             // 
             this.menusToolStripMenuItem.Enabled = false;
             this.menusToolStripMenuItem.Name = "menusToolStripMenuItem";
-            this.menusToolStripMenuItem.Size = new System.Drawing.Size(187, 30);
+            this.menusToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.menusToolStripMenuItem.Text = "Menus";
             this.menusToolStripMenuItem.Click += new System.EventHandler(this.MenusToolStripMenuItem_Click);
             // 
@@ -466,7 +468,7 @@ namespace DatalistSyncUtil
             // 
             this.securityToolStripMenuItem.Enabled = false;
             this.securityToolStripMenuItem.Name = "securityToolStripMenuItem";
-            this.securityToolStripMenuItem.Size = new System.Drawing.Size(187, 30);
+            this.securityToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.securityToolStripMenuItem.Text = "Security";
             this.securityToolStripMenuItem.Click += new System.EventHandler(this.SecurityToolStripMenuItem_Click);
             // 
@@ -474,7 +476,7 @@ namespace DatalistSyncUtil
             // 
             this.imagesToolStripMenuItem.Enabled = false;
             this.imagesToolStripMenuItem.Name = "imagesToolStripMenuItem";
-            this.imagesToolStripMenuItem.Size = new System.Drawing.Size(187, 30);
+            this.imagesToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.imagesToolStripMenuItem.Text = "Image";
             this.imagesToolStripMenuItem.Click += new System.EventHandler(this.ImagesToolStripMenuItem_Click);
             // 
@@ -482,14 +484,22 @@ namespace DatalistSyncUtil
             // 
             this.helpToolStripMenuItem.Enabled = false;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(187, 30);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.HelpToolStripMenuItem_Click);
+            // 
+            // servicesToolStripMenuItem
+            // 
+            this.servicesToolStripMenuItem.Enabled = false;
+            this.servicesToolStripMenuItem.Name = "servicesToolStripMenuItem";
+            this.servicesToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.servicesToolStripMenuItem.Text = "Service";
+            this.servicesToolStripMenuItem.Click += new System.EventHandler(this.ServicesToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(138, 30);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // DatalistComparer
@@ -532,5 +542,6 @@ namespace DatalistSyncUtil
         private System.Windows.Forms.ToolStripMenuItem imagesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem appSettingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem servicesToolStripMenuItem;
     }
 }

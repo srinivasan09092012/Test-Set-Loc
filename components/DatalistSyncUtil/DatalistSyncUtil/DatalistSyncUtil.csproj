@@ -107,6 +107,7 @@
     <Compile Include="Configs\MenusReadOnly.cs" />
     <Compile Include="Configs\MessageCodeReadOnly.cs" />
     <Compile Include="Configs\SecurityCodeReadOnly.cs" />
+    <Compile Include="Configs\ServicesReadOnly.cs" />
     <Compile Include="DaoHelpers\AddAppSettingDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataListLinkDaoHelper.cs" />
     <Compile Include="DaoHelpers\AddDataAttributesDaoHelper.cs" />
@@ -123,6 +124,7 @@
     <Compile Include="DaoHelpers\AddHtmlBlockLanguageDaoHelper.cs" />
     <Compile Include="DaoHelpers\GetHelpContentDaoHelper.cs" />
     <Compile Include="DaoHelpers\GetHelpLanguagesDaoHelper.cs" />
+    <Compile Include="DaoHelpers\AddServicesDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateDataListLinkDaoHelper .cs" />
     <Compile Include="DaoHelpers\UpdateDataListAttributesDaoHelper.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
@@ -150,6 +152,7 @@
     <Compile Include="DaoHelpers\UpdateMenuItemDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateHtmlBlockDaoHelper.cs" />
     <Compile Include="DaoHelpers\UpdateHtmlBlockLanguageDaoHelper.cs" />
+    <Compile Include="DaoHelpers\UpdateServicesDaoHelper.cs" />
     <Compile Include="Helpers\SourceTenantHelper.cs" />
     <Compile Include="Models\ImageLanguage.cs" />
     <Compile Include="Models\HtmlBlockMainModel.cs" />
@@ -159,6 +162,7 @@
     <Compile Include="Models\DatalistLinkModel.cs" />
     <Compile Include="Models\ItemDataListAttributeVal.cs" />
     <Compile Include="Models\UpdateHelpContentModel.cs" />
+    <Compile Include="Models\ServicesMainModel.cs" />
     <Compile Include="security\AuthController.cs" />
     <Compile Include="security\ServiceApiFactory.cs" />
     <Compile Include="Service References\DataListService\Reference.cs">
@@ -168,8 +172,8 @@
     </Compile>
     <Compile Include="Models\CodeItemModel.cs" />
     <Compile Include="Views\DatalistComparer.cs">
-      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
       <SubType>Form</SubType>
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Views\DatalistComparer.Designer.cs">
       <DependentUpon>DatalistComparer.cs</DependentUpon>
@@ -212,7 +216,7 @@
     </Compile>
     <Compile Include="Views\HtmlBlockDiff.cs">
       <SubType>Form</SubType>
-      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Views\HtmlBlockDiff.Designer.cs">
       <DependentUpon>HtmlBlockDiff.cs</DependentUpon>
@@ -267,6 +271,14 @@
       <DependentUpon>PreviewPage.cs</DependentUpon>
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="Views\ServicesDiff.cs">
+      <SubType>Form</SubType>
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="Views\ServicesDiff.Designer.cs">
+      <DependentUpon>ServicesDiff.cs</DependentUpon>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <EmbeddedResource Include="Views\AppSettingDiff.resx">
       <DependentUpon>AppSettingDiff.cs</DependentUpon>
     </EmbeddedResource>
@@ -313,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\PreviewPage.resx">
       <DependentUpon>PreviewPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServicesDiff.resx">
+      <DependentUpon>ServicesDiff.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -186,6 +186,26 @@ namespace DatalistSyncUtil
             return result;
         }
 
+        public List<ServiceListModel> GetServicesList()
+        {
+            List<ServiceListModel> result = null;
+            if (!this.Cache.IsSet("TargetServices"))
+            {
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    result = new ServicesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").SearchServices();
+                }
+
+                this.Cache.Set("TargetServices", result.OrderBy(o => o.Name).ToList(), this.cacheTimeout);
+            }
+            else
+            {
+                result = this.Cache.Get<List<ServiceListModel>>("TargetServices").ToList();
+            }
+
+            return result;
+        }
+
         public List<CodeListModel> GetDataListItems()
         {
             if (this.Cache.IsSet("TargetDataListItems"))
@@ -239,6 +259,40 @@ namespace DatalistSyncUtil
             result.AddRange(resultsecrights);
             this.Cache.Set("TargetDataListItems", result, this.cacheTimeout);
 
+            return result;
+        }
+
+        public List<CodeListModel> GetSecRightsAndLabels()
+        {
+            List<Task> tasks = new List<Task>();
+            List<CodeListModel> result = new List<CodeListModel>();
+            List<CodeListModel> resultsecrights = new List<CodeListModel>();
+
+            if (!this.Cache.IsSet("TargetSecRightsAndLabels"))
+            {
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    tasks.Add(Task.Factory.StartNew(() =>
+                    {
+                        result = new LabelsCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Target").SearchLabels();
+                    }));
+
+                    tasks.Add(Task.Factory.StartNew(() =>
+                    {
+                        resultsecrights = new SecurityCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString)).SearchCodeTables("Target");
+                    }));
+                }
+
+                Task.WaitAll(tasks.ToArray());
+                result.AddRange(resultsecrights);
+
+                this.Cache.Set("TargetSecRightsAndLabels", result, 1440);
+            }
+            else
+            {
+                result = this.Cache.Get<List<CodeListModel>>("TargetSecRightsAndLabels");
+            }
+                
             return result;
         }
 
@@ -468,6 +522,44 @@ namespace DatalistSyncUtil
                 try
                 {
                     new UpdateHtmlBlockDaoHelper(new HtmlBlockDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
+                }
+            }
+
+            return success;
+        }
+
+        public bool AddServices(ServicesMainModel cmd)
+        {
+            bool success = true;
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new AddServicesDaoHelper(new ServiceDbContext(session, true)).ExecuteProcedure(cmd);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
+                }
+            }
+
+            return success;
+        }
+
+        public bool UpdateServices(ServicesMainModel cmd)
+        {
+            bool success = true;
+            using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+            {
+                try
+                {
+                    new UpdateServicesDaoHelper(new ServiceDbContext(session, true)).ExecuteProcedure(cmd);
                 }
                 catch (Exception ex)
                 {
@@ -894,8 +986,5 @@ namespace DatalistSyncUtil
            
             return result;
         }
-
-
-
     }
 }

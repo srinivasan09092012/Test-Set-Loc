@@ -180,6 +180,26 @@ namespace DatalistSyncUtil
             return result;
         }
 
+        public List<ServiceListModel> GetServicesList()
+        {
+            List<ServiceListModel> result = null;
+            if (!this.Cache.IsSet("SourceServices"))
+            {
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    result = new ServicesReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").SearchServices();
+                }
+
+                this.Cache.Set("SourceServices", result.OrderBy(o => o.Name).ToList(), 1440);
+            }
+            else
+            {
+                result = this.Cache.Get<List<ServiceListModel>>("SourceServices").ToList();
+            }
+
+            return result;
+        }
+
         public List<CodeListModel> GetDataListItems()
         {
             if (this.Cache.IsSet("SourceDataListItems"))
@@ -239,6 +259,40 @@ namespace DatalistSyncUtil
             });
             result.AddRange(finalSecurity);
             this.Cache.Set("SourceDataListItems", result, 1440);
+
+            return result;
+        }
+
+        public List<CodeListModel> GetSecRightsAndLabels()
+        {
+            List<Task> tasks = new List<Task>();
+            List<CodeListModel> result = new List<CodeListModel>();
+            List<CodeListModel> resultsecrights = new List<CodeListModel>();
+
+            if (!this.Cache.IsSet("SourceSecRightsAndLabels"))
+            {
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    tasks.Add(Task.Factory.StartNew(() =>
+                    {
+                        result = new LabelsCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString), "Source").SearchLabels();
+                    }));
+
+                    tasks.Add(Task.Factory.StartNew(() =>
+                    {
+                        resultsecrights = new SecurityCodeReadOnly(new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString)).SearchCodeTables("Source");
+                    }));
+                }
+
+                Task.WaitAll(tasks.ToArray());
+                result.AddRange(resultsecrights);
+
+                this.Cache.Set("SourceSecRightsAndLabels", result, 1440);
+            }
+            else
+            {
+                result = this.Cache.Get<List<CodeListModel>>("SourceSecRightsAndLabels");
+            }
 
             return result;
         }

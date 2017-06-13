@@ -66,6 +66,8 @@ namespace DatalistSyncUtil
 
         public List<ImagesMainModel> SourceImagesList { get; set; }
 
+        public List<ServicesMainModel> SourceServicesList { get; set; }
+
         public List<DataListMainModel> TargetList { get; set; }
 
         public List<MenuListModel> TargetMenuList { get; set; }
@@ -75,6 +77,8 @@ namespace DatalistSyncUtil
         public List<HelpNodeModel> TargetHelpList { get; set; }
 
         public List<ImagesMainModel> TargetImagesList { get; set; }
+
+        public List<ServicesMainModel> TargetServicesList { get; set; }
 
         public TenantHelper LoadHelper { get; set; }
 
@@ -107,9 +111,7 @@ namespace DatalistSyncUtil
                 string filename = Path.GetFileNameWithoutExtension(file);
                 try
                 {
-                    List<TenantModuleModel> targetModules = this.moduleList.DataSource as List<TenantModuleModel>;
-                    this.SourceList = JsonConvert.DeserializeObject<List<DataListMainModel>>(File.ReadAllText(file));
-                    List<DataListMainModel> sourceDataList = this.SourceList.Where(w => targetModules.Select(s => s.ModuleName).Contains(w.ModuleName)).ToList();
+                    List<TenantModuleModel> targetModules = this.moduleList.DataSource as List<TenantModuleModel>; 
                 }
                 catch (IOException)
                 {
@@ -123,6 +125,7 @@ namespace DatalistSyncUtil
                         break;
 
                     case "Datalist":
+                        this.SourceList = JsonConvert.DeserializeObject<List<DataListMainModel>>(File.ReadAllText(file));
                         this.LoadTreeView(this.sourceTreeList, this.SourceList.OrderBy(o => o.ContentID).ToList());
                         break;
 
@@ -135,6 +138,7 @@ namespace DatalistSyncUtil
                         this.LoadHtmlTreeView(this.sourceTreeList, this.SourceHtmlList.OrderBy(o => o.ContentId).ToList());
                         break;
                     case "Security":
+                        this.SourceList = JsonConvert.DeserializeObject<List<DataListMainModel>>(File.ReadAllText(file));
                         this.LoadTreeViewforSecurity(this.sourceTreeList, this.SourceList.OrderBy(x => x.ContentID).ToList());
                         break;
                     case "Image":
@@ -144,6 +148,10 @@ namespace DatalistSyncUtil
                     case "Help":
                         this.SourceHelpList = JsonConvert.DeserializeObject<List<HelpNodeModel>>(File.ReadAllText(file));
                         this.LoadHelpTreeView(this.sourceTreeList, this.SourceHelpList.OrderBy(o => o.HelpNodeNM).ToList());
+                        break;
+                    case "Service":
+                        this.SourceServicesList = JsonConvert.DeserializeObject<List<ServicesMainModel>>(File.ReadAllText(file));
+                        this.LoadServicesTreeView(this.sourceTreeList, this.SourceServicesList.OrderBy(o => o.Name).ToList());
                         break;
                     default:
                         break;
@@ -363,6 +371,36 @@ namespace DatalistSyncUtil
             }
         }
 
+        private void LoadServicesTreeView(TreeView treeView, List<ServicesMainModel> lists)
+        {
+            TreeNode listNode = null;
+            TreeNode langNode = null;
+            List<TreeNode> langNodes = null;
+            string iocContainer = "IOCContainer :  ";
+            string baseURL = ", BaseURL :  ";
+            string defaultText = ", DefaultText : ";
+
+            try
+            {
+                treeView.Nodes.Clear();
+
+                foreach (ServicesMainModel list in lists)
+                {
+                    langNodes = new List<TreeNode>();
+                    langNode = new TreeNode(iocContainer + list.IOCContainer + baseURL + list.BaseURL + defaultText + list.DefaultText);
+                    langNodes.Add(langNode);
+                    listNode = new TreeNode(list.Name, langNodes.ToArray());
+                    treeView.Nodes.Add(listNode);
+                }
+            }
+            finally
+            {
+                listNode = null;
+                langNode = null;
+                langNodes = null;
+            }
+        }
+
         private void BtnLoadTarget_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -462,6 +500,21 @@ namespace DatalistSyncUtil
                     }
 
                     this.LoadHelpTreeView(this.targetTreeList, filteredHelpList.OrderBy(o => o.HelpNodeNM).ToList());
+                    break;
+                case "Service":
+                    this.TargetServicesList = this.LoadTargetServicesList();
+                    List<ServicesMainModel> filteredServiceList = null;
+
+                    if (tenantModuleId == Guid.Empty)
+                    {
+                        filteredServiceList = this.TargetServicesList;
+                    }
+                    else
+                    {
+                        filteredServiceList = this.TargetServicesList.Where(w => w.TenantModuleID == tenantModuleId).ToList();
+                    }
+
+                    this.LoadServicesTreeView(this.targetTreeList, filteredServiceList.OrderBy(o => o.Name).ToList());
                     break;
                 default:
                     break;
@@ -704,6 +757,39 @@ namespace DatalistSyncUtil
             });
 
             return items;
+        }
+
+        private List<ServicesMainModel> LoadTargetServicesList()
+        {
+            List<ServiceListModel> lists = null;
+            List<ServicesMainModel> listsMain = new List<ServicesMainModel>();
+            ServicesMainModel list1 = null;
+
+            Guid tenantID = new Guid(this.tenantList.SelectedValue.ToString());
+
+            lists = this.LoadHelper.GetServicesList().Where(w => w.TenantId == tenantID).ToList();
+
+            foreach (ServiceListModel list in lists)
+            {
+                list1 = new ServicesMainModel()
+                {
+                    Name = list.Name,
+                    SecurityRightItemID = list.SecurityRightItemID,
+                    LabelItemKey = list.LabelContentID,
+                    ServiceID = list.ID,
+                    DefaultText = list.DefaultText,
+                    BaseURL = list.BaseURL,
+                    IOCContainer = list.IOCContainer,
+                    IsActive = list.IsActive,
+                    LastModifiedDate = list.LastModifiedDate,
+                    OperatorID = list.OperatorID,
+                    TenantModuleID = list.TenantModuleID
+                };
+
+                listsMain.Add(list1);
+            }
+
+            return listsMain;
         }
 
         private List<MenuListModel> LoadSourceMenus()
@@ -949,6 +1035,39 @@ namespace DatalistSyncUtil
             });
 
             return languages;
+        }
+
+        private List<ServicesMainModel> LoadSourceServiceslist()
+        {
+            List<ServiceListModel> lists = null;
+            List<ServicesMainModel> listsMain = new List<ServicesMainModel>();
+            ServicesMainModel list1 = null;
+
+            Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
+
+            lists = this.SourceLoadHelper.GetServicesList().Where(w => w.TenantId == tenantID).ToList();
+
+            foreach (ServiceListModel list in lists)
+            {
+                list1 = new ServicesMainModel()
+                {
+                    Name = list.Name,
+                    SecurityRightItemID = list.SecurityRightItemID,
+                    LabelItemKey = list.LabelContentID,
+                    ServiceID = list.ID,
+                    DefaultText = list.DefaultText,
+                    BaseURL = list.BaseURL,
+                    IOCContainer = list.IOCContainer,
+                    IsActive = list.IsActive,
+                    LastModifiedDate = list.LastModifiedDate,
+                    OperatorID = list.OperatorID,
+                    TenantModuleID = list.TenantModuleID
+                };
+
+                listsMain.Add(list1);
+            }
+
+            return listsMain;
         }
 
         private List<CodeItemModel> ConvertToCustomDataListItems(string contentID, Guid tenantID, List<CodeListModel> listItems, List<DataListAttribute> listattributes, List<ItemDataListItemAttributeVal> itemattributes, List<CodeLinkTable> listlink)
@@ -1253,6 +1372,21 @@ namespace DatalistSyncUtil
 
                     this.LoadHelpTreeView(this.sourceTreeList, filteredHelpList.OrderBy(o => o.HelpNodeNM).ToList());
                     break;
+                case "Service":
+                    this.SourceServicesList = this.LoadSourceServiceslist();
+                    List<ServicesMainModel> filteredServiceList = null;
+
+                    if (tenantModuleId == Guid.Empty)
+                    {
+                        filteredServiceList = this.SourceServicesList;
+                    }
+                    else
+                    {
+                        filteredServiceList = this.SourceServicesList.Where(w => w.TenantModuleID == tenantModuleId).ToList();
+                    }
+
+                    this.LoadServicesTreeView(this.sourceTreeList, filteredServiceList.OrderBy(o => o.Name).ToList());
+                    break;
                 default:
                     break;
             }
@@ -1308,7 +1442,7 @@ namespace DatalistSyncUtil
 
         private void LoadSourceControls()
         {
-            List<string> controlNames = new List<string>(new string[] { "AppSetting", "Datalist", "HtmlBlock", "Image", "Menus", "Security", "Help" });
+            List<string> controlNames = new List<string>(new string[] { "AppSetting", "Datalist", "HtmlBlock", "Image", "Menus", "Security", "Help", "Service" });
             for (int i = 0; i <= controlNames.Count - 1; i++)
             {
                 this.SourceControlNames.Items.Add(controlNames[i]);        
@@ -1319,7 +1453,8 @@ namespace DatalistSyncUtil
 
         private void LoadControls()
         {
-            List<string> controlNames = new List<string>(new string[] { "AppSetting", "Datalist", "HtmlBlock", "Image", "Menus", "Security", "Help" });
+            List<string> controlNames = new List<string>(new string[] { "AppSetting", "Datalist", "HtmlBlock", "Image", "Menus", "Security", "Help", "Service" });
+
             for (int i = 0; i <= controlNames.Count - 1; i++)
             {
                 this.TargetControlNames.Items.Add(controlNames[i]);
@@ -1560,7 +1695,7 @@ namespace DatalistSyncUtil
             Cursor.Current = Cursors.Default;
         }
 
-        private void deltaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DeltaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (this.selectedControl == datalistItemToolStripMenuItem.Text)
             {
@@ -1601,6 +1736,23 @@ namespace DatalistSyncUtil
             {
                 this.helpToolStripMenuItem.Enabled = true;
             }
+
+            if (this.selectedControl == servicesToolStripMenuItem.Text)
+            {
+                this.servicesToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        private void ServicesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            if (this.SourceServicesList != null)
+            {
+                ServicesDiff svcdiffPage = new ServicesDiff(new Guid(this.tenantList.SelectedValue.ToString()), "SERVICES", this.SourceServicesList, this.TargetServicesList);
+                svcdiffPage.ShowDialog();
+            }
+
+            Cursor.Current = Cursors.Default;
         }
     }
 }

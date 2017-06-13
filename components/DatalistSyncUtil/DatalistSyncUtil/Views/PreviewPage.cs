@@ -79,7 +79,19 @@ namespace DatalistSyncUtil.Views
             this.FinalAppSetting = finalAppSetting;           
             
             this.LoadTreeView(this.PreviewTreeList, this.FinalAppSetting);
-        }        
+        }   
+        
+        public PreviewPage(List<ServicesMainModel> finalServices)
+        {
+            this.InitializeComponent();
+            this.Cache = new RedisCacheManager();
+            this.FinalServices = finalServices;
+            this.LoadHelper = new TenantHelper();
+            this.SourceLoadHelper = new SourceTenantHelper();
+            this.SourceSecRights = this.SourceLoadHelper.GetSecRightsAndLabels();
+            this.TargetSecRights = this.LoadHelper.GetSecRightsAndLabels();
+            this.LoadTreeView(this.PreviewTreeList, this.FinalServices);
+        }
 
         public PreviewPage(List<ImagesMainModel> finalImages, List<ImageLanguage> finalImageLanguages)
         {
@@ -123,7 +135,15 @@ namespace DatalistSyncUtil.Views
 
         public List<ImageLanguage> FinalImageLanguages { get; set; }
 
+        public List<ServicesMainModel> FinalServices { get; set; }
+
+        public List<CodeListModel> SourceSecRights { get; set; }
+
+        public List<CodeListModel> TargetSecRights { get; set; }
+
         public TenantHelper LoadHelper { get; set; }
+
+        public SourceTenantHelper SourceLoadHelper { get; set; }
 
         public List<AppSettingsModel> TargetAppsetting { get; set; }    
                   
@@ -171,6 +191,11 @@ namespace DatalistSyncUtil.Views
                 {
                     this.SaveDataItemLink();
                 }
+
+                if (this.FinalServices != null)
+                {
+                    this.SaveServices();
+                }
                 else
                 {
                     this.SaveDataListWithDataListAttributes();
@@ -207,6 +232,40 @@ namespace DatalistSyncUtil.Views
 
                     MessageBox.Show("AppSetting Added Successfully !! ");
                     this.Cache.Remove("TargetAppSetting");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR:" + ex.Message);
+            }
+        }
+
+        private void SaveServices()
+        {
+            try
+            {
+                string securityRight = null;
+                if (this.FinalServices != null)
+                {
+                    List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+
+                    foreach (ServicesMainModel list in this.FinalServices)
+                    {
+                        list.TenantModuleID = modules.Find(f => f.TenantModuleId == list.TenantModuleID).TenantModuleId;
+                        securityRight = this.SourceSecRights.Find(c => c.ID == list.SecurityRightItemID).Code;
+                        list.SecurityRightItemID = this.TargetSecRights.Find(c => c.Code == securityRight).ID;
+                        if (list.Status == "NEW")
+                        {
+                            this.LoadHelper.AddServices(list);
+                        }
+                        else
+                        {
+                            this.LoadHelper.UpdateServices(list);
+                        }
+                    }
+
+                    MessageBox.Show("Services Successfully Updated in the Target Environment !! ");
+                    this.Cache.Remove("TargetServices");
                 }
             }
             catch (Exception ex)
@@ -1062,6 +1121,39 @@ namespace DatalistSyncUtil.Views
             }
         }
 
+        private void LoadTreeView(TreeView treeView, List<ServicesMainModel> lists)
+        {
+            TreeNode listNode = null;
+            List<TreeNode> svcNodes = null;
+
+            try
+            {
+                treeView.Nodes.Clear();
+                List<string> services = this.GetAllContentID();
+
+                services.ForEach(f =>
+                {
+                    svcNodes = new List<TreeNode>();
+                    if (this.FinalServices != null)
+                    {
+                        this.GetTreeServices(svcNodes, f.Trim());
+                        listNode = new TreeNode(f.Trim(), svcNodes.ToArray());
+                        if (svcNodes.Count != 0)
+                        {
+                            treeView.Nodes.Add(listNode);
+                        }
+                    }
+                });
+
+                treeView.ExpandAll();
+            }
+            finally
+            {
+                listNode = null;
+                svcNodes = null;
+            }
+        }
+
         private void LoadTreeView(TreeView treeView, List<HelpNodeModel> lists)
         {
             TreeNode listNode = null;
@@ -1229,6 +1321,19 @@ namespace DatalistSyncUtil.Views
             {
                 node = new TreeNode(f.TargetValue);
                 langNodes.Add(node);
+            });
+        }
+
+        private void GetTreeServices(List<TreeNode> svcNodes, string services)
+        {
+            TreeNode node = null;
+            string separator = " - ";
+            List<ServicesMainModel> svc = this.FinalServices.FindAll(f => f.Name.Trim() == services);
+
+            svc.ForEach(f =>
+            {
+                node = new TreeNode(f.Name + separator + " Base URL : " + f.BaseURL + separator + f.IsActive);
+                svcNodes.Add(node);
             });
         }
 
@@ -1484,6 +1589,17 @@ namespace DatalistSyncUtil.Views
                     if (!listContents.Contains(f.ContentId.Trim()))
                     {
                         listContents.Add(f.ContentId.Trim());
+                    }
+                });
+            }
+
+            if (this.FinalServices != null)
+            {
+                this.FinalServices.ForEach(f =>
+                {
+                    if (!listContents.Contains(f.Name.Trim()))
+                    {
+                        listContents.Add(f.Name.Trim());
                     }
                 });
             }
