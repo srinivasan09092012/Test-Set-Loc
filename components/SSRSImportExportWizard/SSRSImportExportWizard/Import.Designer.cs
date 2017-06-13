@@ -45,11 +45,11 @@
             this.ExportTitle = new System.Windows.Forms.Label();
             this.TargetURL = new System.Windows.Forms.TextBox();
             this.ExportBodyPanel = new System.Windows.Forms.Panel();
+            this.chkCompare = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnImportFolderBrowser = new System.Windows.Forms.Button();
             this.txtReportServerPath = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.chkCompare = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.ExportBodyPanel.SuspendLayout();
@@ -230,13 +230,32 @@
             this.ExportBodyPanel.Size = new System.Drawing.Size(704, 498);
             this.ExportBodyPanel.TabIndex = 15;
             // 
+            // chkCompare
+            // 
+            this.chkCompare.AutoSize = true;
+            this.chkCompare.Location = new System.Drawing.Point(105, 129);
+            this.chkCompare.Name = "chkCompare";
+            this.chkCompare.Size = new System.Drawing.Size(18, 17);
+            this.chkCompare.TabIndex = 19;
+            this.chkCompare.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(10, 128);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(81, 17);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Compare?";
+            // 
             // btnImportFolderBrowser
             // 
             this.btnImportFolderBrowser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnImportFolderBrowser.Font = new System.Drawing.Font("Calibri", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImportFolderBrowser.Location = new System.Drawing.Point(599, 58);
+            this.btnImportFolderBrowser.Location = new System.Drawing.Point(599, 54);
             this.btnImportFolderBrowser.Name = "btnImportFolderBrowser";
-            this.btnImportFolderBrowser.Size = new System.Drawing.Size(58, 21);
+            this.btnImportFolderBrowser.Size = new System.Drawing.Size(65, 27);
             this.btnImportFolderBrowser.TabIndex = 17;
             this.btnImportFolderBrowser.Text = "Browse";
             this.btnImportFolderBrowser.UseVisualStyleBackColor = true;
@@ -258,25 +277,6 @@
             this.label6.Size = new System.Drawing.Size(93, 17);
             this.label6.TabIndex = 15;
             this.label6.Text = "Server path";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(10, 128);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(81, 17);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "Compare?";
-            // 
-            // chkCompare
-            // 
-            this.chkCompare.AutoSize = true;
-            this.chkCompare.Location = new System.Drawing.Point(105, 127);
-            this.chkCompare.Name = "chkCompare";
-            this.chkCompare.Size = new System.Drawing.Size(18, 17);
-            this.chkCompare.TabIndex = 19;
-            this.chkCompare.UseVisualStyleBackColor = true;
             // 
             // ImportControl
             // 

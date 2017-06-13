@@ -53,6 +53,15 @@ namespace SSRSImportExportConsole
                             definition = new byte[stream.Length];
                             stream.Read(definition, 0, (int)stream.Length);
                             stream.Close();
+
+                            try
+                            {
+                                this.ReportServer.DeleteItem(parent + "/" + fi.Name.Replace(".rdl", string.Empty));
+                            }
+                            catch
+                            {
+                            }
+
                             this.ReportServer.CreateCatalogItem("Report", fi.Name.Replace(".rdl", string.Empty), parent, true, definition, null, out warnings);
                         }
                         catch (Exception ex)

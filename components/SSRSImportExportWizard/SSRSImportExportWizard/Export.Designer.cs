@@ -32,6 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.ExportBodyPanel = new System.Windows.Forms.Panel();
+            this.btnExportFolderBrowser = new System.Windows.Forms.Button();
             this.txtDownloadPath = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.lblTestSuccess = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@
             this.sourceURL = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblError = new System.Windows.Forms.Label();
-            this.btnExportFolderBrowser = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.ExportBodyPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -94,6 +94,18 @@
             this.ExportBodyPanel.Name = "ExportBodyPanel";
             this.ExportBodyPanel.Size = new System.Drawing.Size(704, 498);
             this.ExportBodyPanel.TabIndex = 8;
+            // 
+            // btnExportFolderBrowser
+            // 
+            this.btnExportFolderBrowser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnExportFolderBrowser.Font = new System.Drawing.Font("Calibri", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportFolderBrowser.Location = new System.Drawing.Point(590, 54);
+            this.btnExportFolderBrowser.Name = "btnExportFolderBrowser";
+            this.btnExportFolderBrowser.Size = new System.Drawing.Size(64, 27);
+            this.btnExportFolderBrowser.TabIndex = 15;
+            this.btnExportFolderBrowser.Text = "Browse";
+            this.btnExportFolderBrowser.UseVisualStyleBackColor = true;
+            this.btnExportFolderBrowser.Click += new System.EventHandler(this.btnExportFolderBrowser_Click);
             // 
             // txtDownloadPath
             // 
@@ -222,18 +234,6 @@
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(0, 17);
             this.lblError.TabIndex = 9;
-            // 
-            // btnExportFolderBrowser
-            // 
-            this.btnExportFolderBrowser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnExportFolderBrowser.Font = new System.Drawing.Font("Calibri", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportFolderBrowser.Location = new System.Drawing.Point(590, 57);
-            this.btnExportFolderBrowser.Name = "btnExportFolderBrowser";
-            this.btnExportFolderBrowser.Size = new System.Drawing.Size(58, 21);
-            this.btnExportFolderBrowser.TabIndex = 15;
-            this.btnExportFolderBrowser.Text = "Browse";
-            this.btnExportFolderBrowser.UseVisualStyleBackColor = true;
-            this.btnExportFolderBrowser.Click += new System.EventHandler(this.btnExportFolderBrowser_Click);
             // 
             // ExportControl
             // 
