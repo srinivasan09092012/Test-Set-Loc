@@ -31,6 +31,7 @@
             this.ImportTreeView = new System.Windows.Forms.TreeView();
             this.btnImportReports = new System.Windows.Forms.Button();
             this.ImportClose = new System.Windows.Forms.Button();
+            this.btnUpdateDS = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ImportTreeView
@@ -67,11 +68,24 @@
             this.ImportClose.UseVisualStyleBackColor = true;
             this.ImportClose.Click += new System.EventHandler(this.ImportClose_Click);
             // 
+            // btnUpdateDS
+            // 
+            this.btnUpdateDS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateDS.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateDS.Location = new System.Drawing.Point(150, 586);
+            this.btnUpdateDS.Name = "btnUpdateDS";
+            this.btnUpdateDS.Size = new System.Drawing.Size(152, 38);
+            this.btnUpdateDS.TabIndex = 16;
+            this.btnUpdateDS.Text = "View Data Source";
+            this.btnUpdateDS.UseVisualStyleBackColor = true;
+            this.btnUpdateDS.Click += new System.EventHandler(this.btnUpdateDS_Click);
+            // 
             // ImportReportView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(787, 636);
+            this.Controls.Add(this.btnUpdateDS);
             this.Controls.Add(this.ImportClose);
             this.Controls.Add(this.btnImportReports);
             this.Controls.Add(this.ImportTreeView);
@@ -86,5 +100,6 @@
         private System.Windows.Forms.TreeView ImportTreeView;
         private System.Windows.Forms.Button btnImportReports;
         private System.Windows.Forms.Button ImportClose;
+        private System.Windows.Forms.Button btnUpdateDS;
     }
 }

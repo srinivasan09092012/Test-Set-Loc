@@ -84,7 +84,7 @@ namespace SSRSImportExportWizard
                     TreeNode reportNode = new TreeNode(fi.Name);
                     string parent = string.Format(@"/{0}", di.FullName.Replace(this.UploadPath + "\\", string.Empty)).Replace("\\", "/");
 
-                    if(this.DoCompare)
+                    if (this.DoCompare)
                     {
                         reportType = this.CompareReport(fi.FullName, fi.Name.Replace(".rdl", string.Empty), parent);
                     }
@@ -136,7 +136,7 @@ namespace SSRSImportExportWizard
                     parent = string.Format(@"{0}", di.Parent.FullName.Replace(this.UploadPath, string.Empty));
                 }
 
-                if(parent.Length == 0)
+                if (parent.Length == 0)
                 {
                     parent = "/";
                 }
@@ -186,7 +186,7 @@ namespace SSRSImportExportWizard
                             };
 
                             XmlSerializer xs = new XmlSerializer(typeof(DataSourceDefinition), string.Empty);
-                            TextWriter tw = new StreamWriter(@"datasource.xml",false);
+                            TextWriter tw = new StreamWriter(@"datasource.xml", false);
                             xs.Serialize(tw, dsDef);
                             tw.Close();
 
@@ -317,6 +317,7 @@ namespace SSRSImportExportWizard
                                 definition = new byte[stream.Length];
                                 stream.Read(definition, 0, (int)stream.Length);
                                 stream.Close();
+                                this.ReportServer.DeleteItem(parent + "/" + fi.Name.Replace(".rdl", string.Empty));
                                 this.ReportServer.CreateCatalogItem("Report", fi.Name.Replace(".rdl", string.Empty), parent, true, definition, null, out warnings);
                             }
                             catch (Exception ex)
@@ -481,15 +482,18 @@ namespace SSRSImportExportWizard
             //output diff file.
             string diffFile = startupPath + Path.DirectorySeparatorChar + "vxd.out";
             XmlTextWriter tw = new XmlTextWriter(new StreamWriter(diffFile));
-            tw.Formatting =System.Xml.Formatting.Indented;
+            tw.Formatting = System.Xml.Formatting.Indented;
 
             //This method sets the diff.Options property.
-            diff.Algorithm = XmlDiffAlgorithm.Auto;
+            diff.Algorithm = XmlDiffAlgorithm.Precise;
             diffOptions = diffOptions | XmlDiffOptions.IgnoreChildOrder;
             diffOptions = diffOptions | XmlDiffOptions.IgnoreComments;
             diffOptions = diffOptions | XmlDiffOptions.IgnoreDtd;
             diffOptions = diffOptions | XmlDiffOptions.IgnoreWhitespace;
             diffOptions = diffOptions | XmlDiffOptions.IgnoreXmlDecl;
+            diffOptions = diffOptions | XmlDiffOptions.IgnorePI;
+            diffOptions = diffOptions | XmlDiffOptions.IgnorePrefixes;
+            diffOptions = diffOptions | XmlDiffOptions.IgnoreNamespaces;
             diff.Options = diffOptions;
             bool isEqual = false;
             file2 = startupPath + Path.DirectorySeparatorChar + "file2.rdl";
@@ -521,7 +525,13 @@ namespace SSRSImportExportWizard
             }
             catch (XmlException xe)
             {
-                MessageBox.Show("An exception occured while comparing\n" + xe.StackTrace);
+                //MessageBox.Show("An exception occured while comparing\n" + xe.StackTrace);
+                return ReportUpdateType.None;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("An exception occured while comparing\n" + ex.StackTrace);
+                return ReportUpdateType.None;
             }
             finally
             {
@@ -535,50 +545,52 @@ namespace SSRSImportExportWizard
                 return ReportUpdateType.None; //dont need to show the differences.
             }
 
-            //Files were not equal, so construct XmlDiffView.
-            XmlDiffView dv = new XmlDiffView();
-
-            //Load the original file again and the diff file.
-            XmlTextReader orig = new XmlTextReader(tempFile1);
-            XmlTextReader diffGram = new XmlTextReader(diffFile);
-            dv.Load(orig, diffGram);
-
-            //Wrap the HTML file with necessary html and 
-            //body tags and prepare it before passing it to the GetHtml method.
-
-            string tempFile = startupPath + Path.DirectorySeparatorChar + "diff" + randonNumber + ".htm";
-            StreamWriter sw1 = new StreamWriter(tempFile);
-
-            sw1.Write("<html><body><table width='100%'>");
-            //Write Legend.
-            sw1.Write("<tr><td colspan='2' align='center'><b>Legend:</b> <font style='background-color: yellow'" +
-                " color='black'>added</font>&nbsp;&nbsp;<font style='background-color: red'" +
-                " color='black'>removed</font>&nbsp;&nbsp;<font style='background-color: " +
-                "lightgreen' color='black'>changed</font>&nbsp;&nbsp;" +
-                "<font style='background-color: red' color='blue'>moved from</font>" +
-                "&nbsp;&nbsp;<font style='background-color: yellow' color='blue'>moved to" +
-                "</font>&nbsp;&nbsp;<font style='background-color: white' color='#AAAAAA'>" +
-                "ignored</font></td></tr>");
-
-            //This gets the differences but just has the 
-            //rows and columns of an HTML table
-            dv.GetHtml(sw1);
-
-            //Finish wrapping up the generated HTML and complete the file.
-            sw1.Write("</table></body></html>");
-
-            //HouseKeeping...close everything we dont want to lock.
-            sw1.Close();
-            dv = null;
-            orig.Close();
-            diffGram.Close();
-            File.Delete(diffFile);
-
-            if(showCompare)
+            if (showCompare)
             {
+                //Files were not equal, so construct XmlDiffView.
+                XmlDiffView dv = new XmlDiffView();
+
+                //Load the original file again and the diff file.
+                XmlTextReader orig = new XmlTextReader(tempFile1);
+                XmlTextReader diffGram = new XmlTextReader(diffFile);
+                dv.Load(orig, diffGram);
+
+                //Wrap the HTML file with necessary html and 
+                //body tags and prepare it before passing it to the GetHtml method.
+
+                string tempFile = startupPath + Path.DirectorySeparatorChar + "diff" + randonNumber + ".htm";
+                StreamWriter sw1 = new StreamWriter(tempFile);
+
+                sw1.Write("<html><body><table width='100%'>");
+                //Write Legend.
+                sw1.Write("<tr><td colspan='2' align='center'><b>Legend:</b> <font style='background-color: yellow'" +
+                    " color='black'>added</font>&nbsp;&nbsp;<font style='background-color: red'" +
+                    " color='black'>removed</font>&nbsp;&nbsp;<font style='background-color: " +
+                    "lightgreen' color='black'>changed</font>&nbsp;&nbsp;" +
+                    "<font style='background-color: red' color='blue'>moved from</font>" +
+                    "&nbsp;&nbsp;<font style='background-color: yellow' color='blue'>moved to" +
+                    "</font>&nbsp;&nbsp;<font style='background-color: white' color='#AAAAAA'>" +
+                    "ignored</font></td></tr>");
+
+                //This gets the differences but just has the 
+                //rows and columns of an HTML table
+                dv.GetHtml(sw1);
+
+                //Finish wrapping up the generated HTML and complete the file.
+                sw1.Write("</table></body></html>");
+
+                //HouseKeeping...close everything we dont want to lock.
+                sw1.Close();
+                dv = null;
+                orig.Close();
+                diffGram.Close();
+                File.Delete(diffFile);
+
+
                 ReportCompare browse = new ReportCompare(tempFile);
                 browse.Show(); //Display it!
             }
+
             return ReportUpdateType.Modified;
         }
 
@@ -601,7 +613,7 @@ namespace SSRSImportExportWizard
             }
             catch (Exception ex)
             {
-                LoggerManager.Logger.LogWarning("Error while exporting report", ex);
+                LoggerManager.Logger.LogWarning("Error while importing report", ex);
                 return false;
             }
         }
@@ -666,7 +678,7 @@ namespace SSRSImportExportWizard
         private void ImportTreeView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             TreeView node = sender as TreeView;
-            if(node.SelectedNode.BackColor == System.Drawing.Color.LightSeaGreen)
+            if (node.SelectedNode.BackColor == System.Drawing.Color.LightSeaGreen)
             {
                 string fullName = node.SelectedNode.FullPath;
                 string reportName = node.SelectedNode.Text.Replace(".rdl", string.Empty);
@@ -675,16 +687,12 @@ namespace SSRSImportExportWizard
             }
         }
 
-        private byte[] ObjectToByteArray(object obj)
+        private void btnUpdateDS_Click(object sender, EventArgs e)
         {
-            if (obj == null)
-                return null;
-            BinaryFormatter bf = new BinaryFormatter();
-            using (MemoryStream ms = new MemoryStream())
-            {
-                bf.Serialize(ms, obj);
-                return ms.ToArray();
-            }
+            this.Close();
+            Cursor.Current = Cursors.WaitCursor;
+            new DataSourceView(this.ReportServer, this.ReportServerPath).ShowDialog();
+            Cursor.Current = Cursors.Default;
         }
     }
 }
