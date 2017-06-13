@@ -34,10 +34,9 @@ namespace SSRSImportExportConsole
             }
             else
             {
-                Console.WriteLine("The target url, username, password and download path are required");
+                Console.WriteLine("The target url, username, password and download path are required. Process terminated");
                 return;
             }
-            
 
             if (string.IsNullOrEmpty(ReportURL) || string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(UploadPath))
             {

@@ -45,9 +45,11 @@
             this.ExportTitle = new System.Windows.Forms.Label();
             this.TargetURL = new System.Windows.Forms.TextBox();
             this.ExportBodyPanel = new System.Windows.Forms.Panel();
+            this.btnImportFolderBrowser = new System.Windows.Forms.Button();
             this.txtReportServerPath = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnImportFolderBrowser = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.chkCompare = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.ExportBodyPanel.SuspendLayout();
@@ -67,7 +69,7 @@
             // 
             this.lblTestSuccess.AutoSize = true;
             this.lblTestSuccess.ForeColor = System.Drawing.Color.Green;
-            this.lblTestSuccess.Location = new System.Drawing.Point(324, 252);
+            this.lblTestSuccess.Location = new System.Drawing.Point(324, 270);
             this.lblTestSuccess.Name = "lblTestSuccess";
             this.lblTestSuccess.Size = new System.Drawing.Size(0, 17);
             this.lblTestSuccess.TabIndex = 9;
@@ -121,7 +123,7 @@
             // 
             this.btnImportTestConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImportTestConnection.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImportTestConnection.Location = new System.Drawing.Point(200, 245);
+            this.btnImportTestConnection.Location = new System.Drawing.Point(200, 263);
             this.btnImportTestConnection.Name = "btnImportTestConnection";
             this.btnImportTestConnection.Size = new System.Drawing.Size(108, 32);
             this.btnImportTestConnection.TabIndex = 12;
@@ -165,7 +167,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(14, 139);
+            this.groupBox1.Location = new System.Drawing.Point(14, 157);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(681, 100);
             this.groupBox1.TabIndex = 11;
@@ -213,6 +215,8 @@
             // 
             // ExportBodyPanel
             // 
+            this.ExportBodyPanel.Controls.Add(this.chkCompare);
+            this.ExportBodyPanel.Controls.Add(this.label7);
             this.ExportBodyPanel.Controls.Add(this.btnImportFolderBrowser);
             this.ExportBodyPanel.Controls.Add(this.txtReportServerPath);
             this.ExportBodyPanel.Controls.Add(this.label6);
@@ -225,6 +229,18 @@
             this.ExportBodyPanel.Name = "ExportBodyPanel";
             this.ExportBodyPanel.Size = new System.Drawing.Size(704, 498);
             this.ExportBodyPanel.TabIndex = 15;
+            // 
+            // btnImportFolderBrowser
+            // 
+            this.btnImportFolderBrowser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnImportFolderBrowser.Font = new System.Drawing.Font("Calibri", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportFolderBrowser.Location = new System.Drawing.Point(599, 58);
+            this.btnImportFolderBrowser.Name = "btnImportFolderBrowser";
+            this.btnImportFolderBrowser.Size = new System.Drawing.Size(58, 21);
+            this.btnImportFolderBrowser.TabIndex = 17;
+            this.btnImportFolderBrowser.Text = "Browse";
+            this.btnImportFolderBrowser.UseVisualStyleBackColor = true;
+            this.btnImportFolderBrowser.Click += new System.EventHandler(this.btnImportFolderBrowser_Click);
             // 
             // txtReportServerPath
             // 
@@ -243,17 +259,24 @@
             this.label6.TabIndex = 15;
             this.label6.Text = "Server path";
             // 
-            // btnImportFolderBrowser
+            // label7
             // 
-            this.btnImportFolderBrowser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnImportFolderBrowser.Font = new System.Drawing.Font("Calibri", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImportFolderBrowser.Location = new System.Drawing.Point(599, 58);
-            this.btnImportFolderBrowser.Name = "btnImportFolderBrowser";
-            this.btnImportFolderBrowser.Size = new System.Drawing.Size(58, 21);
-            this.btnImportFolderBrowser.TabIndex = 17;
-            this.btnImportFolderBrowser.Text = "Browse";
-            this.btnImportFolderBrowser.UseVisualStyleBackColor = true;
-            this.btnImportFolderBrowser.Click += new System.EventHandler(this.btnImportFolderBrowser_Click);
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(10, 128);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(81, 17);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Compare?";
+            // 
+            // chkCompare
+            // 
+            this.chkCompare.AutoSize = true;
+            this.chkCompare.Location = new System.Drawing.Point(105, 127);
+            this.chkCompare.Name = "chkCompare";
+            this.chkCompare.Size = new System.Drawing.Size(18, 17);
+            this.chkCompare.TabIndex = 19;
+            this.chkCompare.UseVisualStyleBackColor = true;
             // 
             // ImportControl
             // 
@@ -300,5 +323,7 @@
         private System.Windows.Forms.TextBox txtReportServerPath;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnImportFolderBrowser;
+        private System.Windows.Forms.CheckBox chkCompare;
+        private System.Windows.Forms.Label label7;
     }
 }

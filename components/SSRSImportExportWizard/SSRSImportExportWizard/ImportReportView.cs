@@ -7,9 +7,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace SSRSImportExportWizard
 {
@@ -27,7 +29,7 @@ namespace SSRSImportExportWizard
             InitializeComponent();
         }
 
-        public ImportReportView(ReportingService2010 reportServer, string importPath, string reportServerPath)
+        public ImportReportView(ReportingService2010 reportServer, string importPath, string reportServerPath, bool doCompare)
         {
             InitializeComponent();
 
@@ -35,6 +37,7 @@ namespace SSRSImportExportWizard
             this.Reports = new List<TreeNode>();
             this.UploadPath = importPath;
             this.ReportServerPath = reportServerPath;
+            this.DoCompare = doCompare;
             this.LoadImportReportFolder();
             TreeNode rootNode = new TreeNode(this.UploadPath, this.Reports.OrderByDescending(o => o.Name).ToArray());
             rootNode.Checked = true;
@@ -50,6 +53,8 @@ namespace SSRSImportExportWizard
         public string UploadPath { get; set; }
 
         public string ReportServerPath { get; set; }
+
+        public bool DoCompare { get; set; }
 
         private void btnImportReports_Click(object sender, EventArgs e)
         {
@@ -70,6 +75,7 @@ namespace SSRSImportExportWizard
             DirectoryInfo reportDir = new DirectoryInfo(this.UploadPath);
             List<TreeNode> nodes = new List<TreeNode>();
             TreeNode node = null;
+            ReportUpdateType reportType = ReportUpdateType.None;
 
             foreach (var di in reportDir.EnumerateDirectories("*", SearchOption.AllDirectories))
             {
@@ -78,12 +84,17 @@ namespace SSRSImportExportWizard
                     TreeNode reportNode = new TreeNode(fi.Name);
                     string parent = string.Format(@"/{0}", di.FullName.Replace(this.UploadPath + "\\", string.Empty)).Replace("\\", "/");
 
-                    if (this.CompareReport(fi.FullName, fi.Name.Replace(".rdl", string.Empty), parent) == ReportUpdateType.New)
+                    if(this.DoCompare)
+                    {
+                        reportType = this.CompareReport(fi.FullName, fi.Name.Replace(".rdl", string.Empty), parent);
+                    }
+
+                    if (reportType == ReportUpdateType.New)
                     {
                         reportNode.BackColor = System.Drawing.Color.LightPink;
                         nodes.Add(reportNode);
                     }
-                    else if (this.CompareReport(fi.FullName, fi.Name.Replace(".rdl", string.Empty), parent) == ReportUpdateType.Modified)
+                    else if (reportType == ReportUpdateType.Modified)
                     {
                         reportNode.BackColor = System.Drawing.Color.LightSeaGreen;
                         nodes.Add(reportNode);
@@ -155,6 +166,7 @@ namespace SSRSImportExportWizard
             string dataSourceURL = "/Data Sources/";
             XmlDocument xmlDoc = new XmlDocument();
             List<ItemReference> dataSourceReference = null;
+            DataSourceDefinition dsDef = null;
 
             foreach (var di in reportDir.EnumerateDirectories("*", SearchOption.AllDirectories))
             {
@@ -164,10 +176,25 @@ namespace SSRSImportExportWizard
                     {
                         if (this.IsCatalogItemChecked(checkedList, fi.Name.Replace("\\", "/"), fi.Name))
                         {
-                            FileStream stream = File.OpenRead(fi.FullName);
+                            xmlDoc.Load(fi.FullName);
+                            dsDef = new DataSourceDefinition()
+                            {
+                                ConnectString = xmlDoc.GetElementsByTagName("ConnectString")[0].InnerText,
+                                CredentialRetrieval = CredentialRetrievalEnum.None,
+                                Enabled = true,
+                                Extension = xmlDoc.GetElementsByTagName("Extension")[0].InnerText
+                            };
+
+                            XmlSerializer xs = new XmlSerializer(typeof(DataSourceDefinition), string.Empty);
+                            TextWriter tw = new StreamWriter(@"datasource.xml",false);
+                            xs.Serialize(tw, dsDef);
+                            tw.Close();
+
+                            FileStream stream = File.OpenRead(@"datasource.xml");
                             definition = new byte[stream.Length];
                             stream.Read(definition, 0, (int)stream.Length);
                             stream.Close();
+
                             try
                             {
                                 this.ReportServer.CreateCatalogItem("DataSource", fi.Name.Replace(".rds", string.Empty), "/Data Sources", true, definition, null, out warnings);
@@ -469,17 +496,17 @@ namespace SSRSImportExportWizard
             //Now compare the two files.
             try
             {
+                if (!this.GetReport(reportName, parent))
+                {
+                    return ReportUpdateType.New;
+                }
+
                 xmlDoc.Load(reportFullPath);
                 XmlNodeList srcReportSections = xmlDoc.GetElementsByTagName("ReportSections");
                 if (srcReportSections != null && srcReportSections.Count > 0)
                 {
                     tempFile1 = startupPath + Path.DirectorySeparatorChar + "file1.xml";
                     File.WriteAllText(tempFile1, string.Format(reportLayout, srcReportSections[0].InnerXml));
-                }
-
-                if(!this.GetReport(reportName, parent))
-                {
-                    return ReportUpdateType.New;
                 }
 
                 xmlDoc.Load(file2);
@@ -645,6 +672,18 @@ namespace SSRSImportExportWizard
                 string reportName = node.SelectedNode.Text.Replace(".rdl", string.Empty);
                 string parent = node.SelectedNode.Parent.Text.Replace("\\", "/");
                 this.CompareReport(fullName, reportName, parent, true);
+            }
+        }
+
+        private byte[] ObjectToByteArray(object obj)
+        {
+            if (obj == null)
+                return null;
+            BinaryFormatter bf = new BinaryFormatter();
+            using (MemoryStream ms = new MemoryStream())
+            {
+                bf.Serialize(ms, obj);
+                return ms.ToArray();
             }
         }
     }

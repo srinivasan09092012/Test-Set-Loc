@@ -30,6 +30,8 @@ namespace SSRSImportExportWizard
 
         public string UploadPath { get; set; }
 
+        public bool DoCompare { get; set; }
+
         public ReportingService2010 ReportServer { get; set; }
 
         private void btnImportTestConnection_Click(object sender, EventArgs e)
@@ -63,6 +65,7 @@ namespace SSRSImportExportWizard
             this.UserName = txtUserName.Text.Trim();
             this.Password = txtPassword.Text;
             this.UploadPath = txtDownloadPath.Text;
+            this.DoCompare = chkCompare.Checked;
 
             if (string.IsNullOrEmpty(this.ReportURL) || string.IsNullOrEmpty(this.UserName) || string.IsNullOrEmpty(this.Password) || string.IsNullOrEmpty(this.UploadPath))
             {
@@ -72,7 +75,7 @@ namespace SSRSImportExportWizard
             {
                 if (this.ConnectReportServer())
                 {
-                    new ImportReportView(this.ReportServer, this.UploadPath, this.txtReportServerPath.Text).ShowDialog();
+                    new ImportReportView(this.ReportServer, this.UploadPath, this.txtReportServerPath.Text, this.DoCompare).ShowDialog();
                 }
             }
         }
