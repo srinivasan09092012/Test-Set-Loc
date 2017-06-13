@@ -547,7 +547,7 @@ namespace DatalistSyncUtil.Views
 
         private void PreviewUpdate_Click(object sender, EventArgs e)
         {
-            if (this.UpdateServices == null)
+            if (this.UpdateServices == null || this.UpdateServices.Count() == 0)
             {
                 MessageBox.Show("Error:Please include some rows before moving to preview screen");
                 return;
