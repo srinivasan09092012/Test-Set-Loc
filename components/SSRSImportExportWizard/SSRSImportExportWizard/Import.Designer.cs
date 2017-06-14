@@ -94,7 +94,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(111, 62);
+            this.txtPassword.Location = new System.Drawing.Point(117, 62);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(183, 26);
@@ -103,7 +103,7 @@
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(111, 30);
+            this.txtUserName.Location = new System.Drawing.Point(117, 30);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(183, 26);
             this.txtUserName.TabIndex = 7;
@@ -157,7 +157,7 @@
             this.txtDownloadPath.Name = "txtDownloadPath";
             this.txtDownloadPath.Size = new System.Drawing.Size(520, 22);
             this.txtDownloadPath.TabIndex = 2;
-            this.txtDownloadPath.Text = "C:\\UA3\\Reports\\SSRS_Reports\\Azure Test Reports";
+            this.txtDownloadPath.Text = "C:\\UA3\\Reports";
             // 
             // groupBox1
             // 

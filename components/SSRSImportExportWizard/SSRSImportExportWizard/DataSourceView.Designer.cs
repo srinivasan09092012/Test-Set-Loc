@@ -45,6 +45,7 @@
             this.connectionStringDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.extensionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataSourceItemModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lblUpdateProgress = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataSourceGridView)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -115,7 +116,7 @@
             // 
             this.btnReplaceDataSource.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReplaceDataSource.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReplaceDataSource.Location = new System.Drawing.Point(942, 603);
+            this.btnReplaceDataSource.Location = new System.Drawing.Point(942, 622);
             this.btnReplaceDataSource.Name = "btnReplaceDataSource";
             this.btnReplaceDataSource.Size = new System.Drawing.Size(136, 38);
             this.btnReplaceDataSource.TabIndex = 13;
@@ -153,7 +154,7 @@
             // 
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(12, 607);
+            this.btnCancel.Location = new System.Drawing.Point(12, 626);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(136, 38);
             this.btnCancel.TabIndex = 14;
@@ -215,11 +216,22 @@
             // 
             this.dataSourceItemModelBindingSource.DataSource = typeof(SSRSImportExportWizard.Models.DataSourceItemModel);
             // 
+            // lblUpdateProgress
+            // 
+            this.lblUpdateProgress.AutoSize = true;
+            this.lblUpdateProgress.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUpdateProgress.ForeColor = System.Drawing.Color.Green;
+            this.lblUpdateProgress.Location = new System.Drawing.Point(15, 603);
+            this.lblUpdateProgress.Name = "lblUpdateProgress";
+            this.lblUpdateProgress.Size = new System.Drawing.Size(0, 17);
+            this.lblUpdateProgress.TabIndex = 18;
+            // 
             // DataSourceView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1097, 661);
+            this.ClientSize = new System.Drawing.Size(1097, 672);
+            this.Controls.Add(this.lblUpdateProgress);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnReplaceDataSource);
@@ -236,6 +248,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ReplaceStringDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSourceItemModelBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -257,5 +270,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn connectionStringDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn extensionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CurrentValue;
+        private System.Windows.Forms.Label lblUpdateProgress;
     }
 }

@@ -216,7 +216,7 @@
             this.sourceURL.Name = "sourceURL";
             this.sourceURL.Size = new System.Drawing.Size(564, 22);
             this.sourceURL.TabIndex = 1;
-            this.sourceURL.Text = "https://reports.test.ua3.eslabs.ssn.hp.com/ReportServer/ReportService2010.asmx";
+            this.sourceURL.Text = "https://report.dev.mapshc.com/ReportServer/ReportService2010.asmx";
             // 
             // label1
             // 

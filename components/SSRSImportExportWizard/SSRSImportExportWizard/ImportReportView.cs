@@ -8,6 +8,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
@@ -68,6 +69,8 @@ namespace SSRSImportExportWizard
             this.CreateComponents(checkedList);
             btnImportReports.Enabled = true;
             Cursor.Current = Cursors.Default;
+            lblImportProgress.Text = "Reports imported successfully";
+            lblImportProgress.Refresh();
         }
 
         private void LoadImportReportFolder()
@@ -153,8 +156,10 @@ namespace SSRSImportExportWizard
                     }
                 }
             }
-
-            MessageBox.Show("Folders created successfully");
+            
+            lblImportProgress.Text = "Folders created successfully";
+            lblImportProgress.Refresh();
+            Thread.Sleep(3000);
         }
 
         private void CreateDataSource(List<TreeNode> checkedList)
@@ -203,6 +208,9 @@ namespace SSRSImportExportWizard
                             {
                                 LoggerManager.Logger.LogWarning("Create DataSource error", ex);
                             }
+
+                            lblImportProgress.Text = "Data Source " + fi.Name.Replace(".rds", string.Empty) + " created";
+                            lblImportProgress.Refresh();
                         }
                     }
                 }
@@ -243,12 +251,17 @@ namespace SSRSImportExportWizard
                             {
                                 LoggerManager.Logger.LogWarning("Create DataSet error", ex);
                             }
+
+                            lblImportProgress.Text = "Dataset " + fi.Name.Replace(".rsd", string.Empty) + " created";
+                            lblImportProgress.Refresh();
                         }
                     }
                 }
             }
 
-            MessageBox.Show("Data Sources created successfully");
+            lblImportProgress.Text = "Data Sources created successfully";
+            lblImportProgress.Refresh();
+            Thread.Sleep(3000);
         }
 
         private void CreateComponents(List<TreeNode> checkedList)
@@ -285,7 +298,8 @@ namespace SSRSImportExportWizard
                 }
             }
 
-            MessageBox.Show("Components created successfully");
+            lblImportProgress.Text = "Components created successfully";
+            lblImportProgress.Refresh();
         }
 
         private void CreateReports(List<TreeNode> checkedList)
@@ -415,65 +429,16 @@ namespace SSRSImportExportWizard
                                 }
                             }
 
-                            if (File.Exists(fi.FullName.Replace(fi.Extension, ".rds")))
-                            {
-                                ds = new List<DataSource>();
-                                Dictionary<string, DataSourceReference> dataSource = JsonConvert.DeserializeObject<Dictionary<string, DataSourceReference>>(File.ReadAllText(fi.FullName.Replace(fi.Extension, ".ds")), new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.All });
-
-                                foreach (KeyValuePair<string, DataSourceReference> def in dataSource)
-                                {
-                                    if (def.Value is DataSourceReference)
-                                    {
-                                        ds.Add(new DataSource()
-                                        {
-                                            Item = def.Value,
-                                            Name = def.Key
-                                        });
-                                    }
-                                }
-
-                                try
-                                {
-                                    this.ReportServer.SetItemDataSources(parent + "/" + fi.Name, ds.ToArray());
-                                }
-                                catch (Exception ex)
-                                {
-                                    LoggerManager.Logger.LogWarning("Update Item DataSources error", ex);
-                                }
-                            }
-
-                            if (File.Exists(fi.FullName.Replace(fi.Extension, ".rsd")))
-                            {
-                                references = new List<ItemReference>();
-                                Dictionary<string, ItemReferenceData> dataSource = JsonConvert.DeserializeObject<Dictionary<string, ItemReferenceData>>(File.ReadAllText(fi.FullName.Replace(fi.Extension, ".dataset")), new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.All });
-
-                                foreach (KeyValuePair<string, ItemReferenceData> def in dataSource)
-                                {
-                                    if (!string.IsNullOrEmpty(def.Value.Reference))
-                                    {
-                                        references.Add(new ItemReference()
-                                        {
-                                            Name = def.Key,
-                                            Reference = def.Value.Reference
-                                        });
-                                    }
-                                }
-
-                                try
-                                {
-                                    this.ReportServer.SetItemReferences(parent + "/" + fi.Name, references.ToArray());
-                                }
-                                catch (Exception ex)
-                                {
-                                    LoggerManager.Logger.LogWarning("Update Item References error", ex);
-                                }
-                            }
+                            lblImportProgress.Text = "Report " + fi.Name.Replace(".rdl", string.Empty) + " created";
+                            lblImportProgress.Refresh();
                         }
                     }
                 }
             }
 
-            MessageBox.Show("Reports created successfully");
+            lblImportProgress.Text = "Reports created successfully";
+            lblImportProgress.Refresh();
+            Thread.Sleep(3000);
         }
 
         private ReportUpdateType CompareReport(string reportFullPath, string reportName, string parent, bool showCompare = false)
@@ -533,12 +498,12 @@ namespace SSRSImportExportWizard
             }
             catch (XmlException xe)
             {
-                //MessageBox.Show("An exception occured while comparing\n" + xe.StackTrace);
+                LoggerManager.Logger.LogWarning("An XmlException occured while comparing", xe);
                 return ReportUpdateType.None;
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("An exception occured while comparing\n" + ex.StackTrace);
+                LoggerManager.Logger.LogWarning("An exception occured while comparing", ex);
                 return ReportUpdateType.None;
             }
             finally

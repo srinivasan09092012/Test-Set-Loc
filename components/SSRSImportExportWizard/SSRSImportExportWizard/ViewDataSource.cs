@@ -87,11 +87,14 @@ namespace SSRSImportExportWizard
                 lblError.Text = string.Empty;
                 return true;
             }
-            catch (SoapException)
+            catch (SoapException ex)
             {
+                lblTestSuccess.Text = string.Empty;
+                lblError.Text = ex.Message;
             }
             catch (Exception ex)
             {
+                lblTestSuccess.Text = string.Empty;
                 lblError.Text = ex.Message;
             }
 

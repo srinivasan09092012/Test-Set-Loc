@@ -180,6 +180,8 @@ namespace SSRSImportExportWizard
                             try
                             {
                                 this.ReportServer.SetItemDataSources(item.Path, dataSources);
+                                lblUpdateProgress.Text = "DataSource " + item.Path + " updated successfully";
+                                lblUpdateProgress.Refresh();
                             }
                             catch (Exception ex)
                             {
@@ -214,6 +216,8 @@ namespace SSRSImportExportWizard
                                 try
                                 {
                                     this.ReportServer.SetDataSourceContents(item.Path, def);
+                                    lblUpdateProgress.Text = "Shared DataSource " + item.Path + " updated successfully";
+                                    lblUpdateProgress.Refresh();
                                 }
                                 catch (Exception ex)
                                 {
@@ -237,11 +241,13 @@ namespace SSRSImportExportWizard
             if (errors.Count > 0)
             {
                 File.WriteAllLines(@"C:\UA3\Reports\ErroredReports.txt", errors.ToArray());
-                MessageBox.Show(@"DataSource updated with error. Please see error log in C:\UA3\Reports folder");
+                lblUpdateProgress.Text = @"DataSource updated with error. Please see error log in C:\UA3\Reports folder";
+                lblUpdateProgress.Refresh();
             }
             else
             {
-                MessageBox.Show(@"DataSource updated successfully");
+                lblUpdateProgress.Text = @"DataSource updated successfully";
+                lblUpdateProgress.Refresh();
             }
         }
 
