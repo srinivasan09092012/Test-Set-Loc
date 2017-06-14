@@ -33,12 +33,12 @@
             this.ExportMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ImportMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.UpdateDSMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.replacementStringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.targetURLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ImportExportPanel = new System.Windows.Forms.Panel();
-            this.ExitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,6 +88,13 @@
             this.UpdateDSMenu.Text = "Update DataSource";
             this.UpdateDSMenu.Click += new System.EventHandler(this.exitToolStripMenuItem_Click_1);
             // 
+            // ExitMenu
+            // 
+            this.ExitMenu.Name = "ExitMenu";
+            this.ExitMenu.Size = new System.Drawing.Size(214, 26);
+            this.ExitMenu.Text = "Exit";
+            this.ExitMenu.Click += new System.EventHandler(this.ExitMenu_Click);
+            // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -120,27 +127,20 @@
             this.ImportExportPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ImportExportPanel.Location = new System.Drawing.Point(12, 43);
             this.ImportExportPanel.Name = "ImportExportPanel";
-            this.ImportExportPanel.Size = new System.Drawing.Size(721, 647);
+            this.ImportExportPanel.Size = new System.Drawing.Size(721, 445);
             this.ImportExportPanel.TabIndex = 1;
-            // 
-            // ExitMenu
-            // 
-            this.ExitMenu.Name = "ExitMenu";
-            this.ExitMenu.Size = new System.Drawing.Size(214, 26);
-            this.ExitMenu.Text = "Exit";
-            this.ExitMenu.Click += new System.EventHandler(this.ExitMenu_Click);
             // 
             // ImportExportMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(741, 702);
+            this.ClientSize = new System.Drawing.Size(741, 499);
             this.Controls.Add(this.ImportExportPanel);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "ImportExportMain";
-            this.Text = "Import Export Wizard";
+            this.Text = "Report Import Export Wizard";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

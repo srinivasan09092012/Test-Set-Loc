@@ -73,12 +73,13 @@
             // button1
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(565, 570);
+            this.button1.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(571, 367);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(136, 38);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "View Report Objects";
+            this.button1.TabIndex = 8;
+            this.button1.TabStop = false;
+            this.button1.Text = "View Reports";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -92,8 +93,9 @@
             this.ExportBodyPanel.Controls.Add(this.groupBox1);
             this.ExportBodyPanel.Location = new System.Drawing.Point(3, 66);
             this.ExportBodyPanel.Name = "ExportBodyPanel";
-            this.ExportBodyPanel.Size = new System.Drawing.Size(704, 498);
+            this.ExportBodyPanel.Size = new System.Drawing.Size(704, 295);
             this.ExportBodyPanel.TabIndex = 8;
+            this.ExportBodyPanel.TabStop = true;
             // 
             // btnExportFolderBrowser
             // 
@@ -102,7 +104,7 @@
             this.btnExportFolderBrowser.Location = new System.Drawing.Point(590, 54);
             this.btnExportFolderBrowser.Name = "btnExportFolderBrowser";
             this.btnExportFolderBrowser.Size = new System.Drawing.Size(64, 27);
-            this.btnExportFolderBrowser.TabIndex = 15;
+            this.btnExportFolderBrowser.TabIndex = 3;
             this.btnExportFolderBrowser.Text = "Browse";
             this.btnExportFolderBrowser.UseVisualStyleBackColor = true;
             this.btnExportFolderBrowser.Click += new System.EventHandler(this.btnExportFolderBrowser_Click);
@@ -112,7 +114,7 @@
             this.txtDownloadPath.Location = new System.Drawing.Point(131, 56);
             this.txtDownloadPath.Name = "txtDownloadPath";
             this.txtDownloadPath.Size = new System.Drawing.Size(456, 22);
-            this.txtDownloadPath.TabIndex = 14;
+            this.txtDownloadPath.TabIndex = 2;
             this.txtDownloadPath.Text = "C:\\UA3\\Reports";
             // 
             // label5
@@ -137,11 +139,11 @@
             // btnExportTestConnection
             // 
             this.btnExportTestConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportTestConnection.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportTestConnection.Location = new System.Drawing.Point(200, 223);
+            this.btnExportTestConnection.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportTestConnection.Location = new System.Drawing.Point(188, 223);
             this.btnExportTestConnection.Name = "btnExportTestConnection";
-            this.btnExportTestConnection.Size = new System.Drawing.Size(108, 32);
-            this.btnExportTestConnection.TabIndex = 12;
+            this.btnExportTestConnection.Size = new System.Drawing.Size(120, 32);
+            this.btnExportTestConnection.TabIndex = 7;
             this.btnExportTestConnection.Text = "Test connection";
             this.btnExportTestConnection.UseVisualStyleBackColor = true;
             this.btnExportTestConnection.Click += new System.EventHandler(this.btnExportTestConnection_Click);
@@ -157,7 +159,7 @@
             this.groupBox1.Location = new System.Drawing.Point(14, 117);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(681, 100);
-            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Authentication";
             // 
@@ -176,7 +178,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(183, 26);
-            this.txtPassword.TabIndex = 7;
+            this.txtPassword.TabIndex = 6;
             this.txtPassword.Text = "Password2015";
             // 
             // txtUserName
@@ -213,7 +215,7 @@
             this.sourceURL.Location = new System.Drawing.Point(134, 82);
             this.sourceURL.Name = "sourceURL";
             this.sourceURL.Size = new System.Drawing.Size(564, 22);
-            this.sourceURL.TabIndex = 10;
+            this.sourceURL.TabIndex = 1;
             this.sourceURL.Text = "https://reports.test.ua3.eslabs.ssn.hp.com/ReportServer/ReportService2010.asmx";
             // 
             // label1
@@ -230,7 +232,7 @@
             // 
             this.lblError.AutoSize = true;
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(8, 578);
+            this.lblError.Location = new System.Drawing.Point(8, 372);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(0, 17);
             this.lblError.TabIndex = 9;
@@ -246,7 +248,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Name = "ExportControl";
-            this.Size = new System.Drawing.Size(710, 611);
+            this.Size = new System.Drawing.Size(710, 420);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ExportBodyPanel.ResumeLayout(false);

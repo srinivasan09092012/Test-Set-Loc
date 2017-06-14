@@ -78,7 +78,7 @@
             // 
             this.lblError.AutoSize = true;
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(8, 578);
+            this.lblError.Location = new System.Drawing.Point(8, 383);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(0, 17);
             this.lblError.TabIndex = 16;
@@ -98,7 +98,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(183, 26);
-            this.txtPassword.TabIndex = 7;
+            this.txtPassword.TabIndex = 8;
             this.txtPassword.Text = "Password2017";
             // 
             // txtUserName
@@ -106,7 +106,7 @@
             this.txtUserName.Location = new System.Drawing.Point(111, 30);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(183, 26);
-            this.txtUserName.TabIndex = 5;
+            this.txtUserName.TabIndex = 7;
             this.txtUserName.Text = "test\\hciadmin";
             // 
             // label3
@@ -122,11 +122,11 @@
             // btnImportTestConnection
             // 
             this.btnImportTestConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImportTestConnection.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImportTestConnection.Location = new System.Drawing.Point(200, 263);
+            this.btnImportTestConnection.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportTestConnection.Location = new System.Drawing.Point(186, 263);
             this.btnImportTestConnection.Name = "btnImportTestConnection";
-            this.btnImportTestConnection.Size = new System.Drawing.Size(108, 32);
-            this.btnImportTestConnection.TabIndex = 12;
+            this.btnImportTestConnection.Size = new System.Drawing.Size(122, 32);
+            this.btnImportTestConnection.TabIndex = 9;
             this.btnImportTestConnection.Text = "Test connection";
             this.btnImportTestConnection.UseVisualStyleBackColor = true;
             this.btnImportTestConnection.Click += new System.EventHandler(this.btnImportTestConnection_Click);
@@ -135,7 +135,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 85);
+            this.label1.Location = new System.Drawing.Point(11, 85);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 17);
             this.label1.TabIndex = 17;
@@ -156,7 +156,7 @@
             this.txtDownloadPath.Location = new System.Drawing.Point(75, 56);
             this.txtDownloadPath.Name = "txtDownloadPath";
             this.txtDownloadPath.Size = new System.Drawing.Size(520, 22);
-            this.txtDownloadPath.TabIndex = 14;
+            this.txtDownloadPath.TabIndex = 2;
             this.txtDownloadPath.Text = "C:\\UA3\\Reports\\SSRS_Reports\\Azure Test Reports";
             // 
             // groupBox1
@@ -170,7 +170,7 @@
             this.groupBox1.Location = new System.Drawing.Point(14, 157);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(681, 100);
-            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Authentication";
             // 
@@ -178,11 +178,12 @@
             // 
             this.btnViewReportObjects.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewReportObjects.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewReportObjects.Location = new System.Drawing.Point(565, 570);
+            this.btnViewReportObjects.Location = new System.Drawing.Point(571, 378);
             this.btnViewReportObjects.Name = "btnViewReportObjects";
             this.btnViewReportObjects.Size = new System.Drawing.Size(136, 38);
-            this.btnViewReportObjects.TabIndex = 14;
-            this.btnViewReportObjects.Text = "View Report Items";
+            this.btnViewReportObjects.TabIndex = 10;
+            this.btnViewReportObjects.TabStop = false;
+            this.btnViewReportObjects.Text = "View Reports";
             this.btnViewReportObjects.UseVisualStyleBackColor = true;
             this.btnViewReportObjects.Click += new System.EventHandler(this.btnViewReportObjects_Click);
             // 
@@ -194,6 +195,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(704, 58);
             this.panel1.TabIndex = 13;
+            this.panel1.TabStop = true;
             // 
             // ExportTitle
             // 
@@ -210,7 +212,7 @@
             this.TargetURL.Location = new System.Drawing.Point(78, 82);
             this.TargetURL.Name = "TargetURL";
             this.TargetURL.Size = new System.Drawing.Size(604, 22);
-            this.TargetURL.TabIndex = 18;
+            this.TargetURL.TabIndex = 1;
             this.TargetURL.Text = "https://report.test.mapshc.com/ReportServer/ReportService2010.asmx";
             // 
             // ExportBodyPanel
@@ -227,8 +229,9 @@
             this.ExportBodyPanel.Controls.Add(this.groupBox1);
             this.ExportBodyPanel.Location = new System.Drawing.Point(3, 66);
             this.ExportBodyPanel.Name = "ExportBodyPanel";
-            this.ExportBodyPanel.Size = new System.Drawing.Size(704, 498);
+            this.ExportBodyPanel.Size = new System.Drawing.Size(704, 309);
             this.ExportBodyPanel.TabIndex = 15;
+            this.ExportBodyPanel.TabStop = true;
             // 
             // chkCompare
             // 
@@ -236,7 +239,7 @@
             this.chkCompare.Location = new System.Drawing.Point(105, 129);
             this.chkCompare.Name = "chkCompare";
             this.chkCompare.Size = new System.Drawing.Size(18, 17);
-            this.chkCompare.TabIndex = 19;
+            this.chkCompare.TabIndex = 5;
             this.chkCompare.UseVisualStyleBackColor = true;
             // 
             // label7
@@ -256,7 +259,7 @@
             this.btnImportFolderBrowser.Location = new System.Drawing.Point(599, 54);
             this.btnImportFolderBrowser.Name = "btnImportFolderBrowser";
             this.btnImportFolderBrowser.Size = new System.Drawing.Size(65, 27);
-            this.btnImportFolderBrowser.TabIndex = 17;
+            this.btnImportFolderBrowser.TabIndex = 3;
             this.btnImportFolderBrowser.Text = "Browse";
             this.btnImportFolderBrowser.UseVisualStyleBackColor = true;
             this.btnImportFolderBrowser.Click += new System.EventHandler(this.btnImportFolderBrowser_Click);
@@ -266,7 +269,7 @@
             this.txtReportServerPath.Location = new System.Drawing.Point(105, 97);
             this.txtReportServerPath.Name = "txtReportServerPath";
             this.txtReportServerPath.Size = new System.Drawing.Size(490, 22);
-            this.txtReportServerPath.TabIndex = 16;
+            this.txtReportServerPath.TabIndex = 4;
             // 
             // label6
             // 
@@ -289,7 +292,7 @@
             this.Controls.Add(this.TargetURL);
             this.Controls.Add(this.ExportBodyPanel);
             this.Name = "ImportControl";
-            this.Size = new System.Drawing.Size(710, 611);
+            this.Size = new System.Drawing.Size(710, 420);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);

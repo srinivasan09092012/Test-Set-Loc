@@ -55,7 +55,7 @@
             this.TargetURL.Location = new System.Drawing.Point(89, 82);
             this.TargetURL.Name = "TargetURL";
             this.TargetURL.Size = new System.Drawing.Size(609, 22);
-            this.TargetURL.TabIndex = 24;
+            this.TargetURL.TabIndex = 1;
             this.TargetURL.Text = "https://reports.dev.ua3.eslabs.ssn.hp.com/ReportServer/ReportService2010.asmx";
             // 
             // lblTestSuccess
@@ -71,10 +71,11 @@
             // 
             this.btnViewDataSourceObjects.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewDataSourceObjects.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewDataSourceObjects.Location = new System.Drawing.Point(565, 570);
+            this.btnViewDataSourceObjects.Location = new System.Drawing.Point(574, 316);
             this.btnViewDataSourceObjects.Name = "btnViewDataSourceObjects";
             this.btnViewDataSourceObjects.Size = new System.Drawing.Size(136, 38);
-            this.btnViewDataSourceObjects.TabIndex = 20;
+            this.btnViewDataSourceObjects.TabIndex = 7;
+            this.btnViewDataSourceObjects.TabStop = false;
             this.btnViewDataSourceObjects.Text = "View DataSource";
             this.btnViewDataSourceObjects.UseVisualStyleBackColor = true;
             this.btnViewDataSourceObjects.Click += new System.EventHandler(this.btnViewDataSourceObjects_Click);
@@ -111,21 +112,21 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(13, 85);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 20);
+            this.label1.Size = new System.Drawing.Size(56, 18);
             this.label1.TabIndex = 23;
-            this.label1.Text = "Target*";
+            this.label1.Text = "Target";
             // 
             // btnDataSourceTestConnection
             // 
             this.btnDataSourceTestConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDataSourceTestConnection.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDataSourceTestConnection.Location = new System.Drawing.Point(195, 205);
+            this.btnDataSourceTestConnection.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDataSourceTestConnection.Location = new System.Drawing.Point(182, 205);
             this.btnDataSourceTestConnection.Name = "btnDataSourceTestConnection";
-            this.btnDataSourceTestConnection.Size = new System.Drawing.Size(108, 32);
-            this.btnDataSourceTestConnection.TabIndex = 12;
+            this.btnDataSourceTestConnection.Size = new System.Drawing.Size(121, 32);
+            this.btnDataSourceTestConnection.TabIndex = 6;
             this.btnDataSourceTestConnection.Text = "Test connection";
             this.btnDataSourceTestConnection.UseVisualStyleBackColor = true;
             this.btnDataSourceTestConnection.Click += new System.EventHandler(this.btnDataSourceTestConnection_Click);
@@ -136,7 +137,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(183, 26);
-            this.txtPassword.TabIndex = 7;
+            this.txtPassword.TabIndex = 5;
             this.txtPassword.Text = "Password2015";
             // 
             // txtUserName
@@ -144,7 +145,7 @@
             this.txtUserName.Location = new System.Drawing.Point(111, 30);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(183, 26);
-            this.txtUserName.TabIndex = 5;
+            this.txtUserName.TabIndex = 4;
             this.txtUserName.Text = "ua3dev\\hciadmin";
             // 
             // label3
@@ -168,7 +169,7 @@
             this.groupBox1.Location = new System.Drawing.Point(9, 99);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(681, 100);
-            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Authentication";
             // 
@@ -185,7 +186,7 @@
             // 
             this.lblError.AutoSize = true;
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(8, 578);
+            this.lblError.Location = new System.Drawing.Point(8, 319);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(0, 17);
             this.lblError.TabIndex = 22;
@@ -199,25 +200,26 @@
             this.ExportBodyPanel.Controls.Add(this.groupBox1);
             this.ExportBodyPanel.Location = new System.Drawing.Point(3, 66);
             this.ExportBodyPanel.Name = "ExportBodyPanel";
-            this.ExportBodyPanel.Size = new System.Drawing.Size(704, 498);
+            this.ExportBodyPanel.Size = new System.Drawing.Size(704, 244);
             this.ExportBodyPanel.TabIndex = 21;
+            this.ExportBodyPanel.TabStop = true;
             // 
             // txtRootPath
             // 
             this.txtRootPath.Location = new System.Drawing.Point(86, 54);
             this.txtRootPath.Name = "txtRootPath";
             this.txtRootPath.Size = new System.Drawing.Size(609, 22);
-            this.txtRootPath.TabIndex = 16;
+            this.txtRootPath.TabIndex = 2;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(10, 53);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 20);
+            this.label5.Size = new System.Drawing.Size(42, 18);
             this.label5.TabIndex = 15;
-            this.label5.Text = "Root*";
+            this.label5.Text = "Path";
             // 
             // ViewDataSource
             // 
@@ -230,7 +232,7 @@
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.ExportBodyPanel);
             this.Name = "ViewDataSource";
-            this.Size = new System.Drawing.Size(710, 611);
+            this.Size = new System.Drawing.Size(710, 420);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
