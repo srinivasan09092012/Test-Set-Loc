@@ -88,6 +88,7 @@ namespace SSRSImportExportConsole
                             try
                             {
                                 this.ReportServer.SetItemDataSources(item.Path, dataSources);
+                                Console.WriteLine("Report DataSource " + item.Path + " created successfully");
                             }
                             catch (Exception ex)
                             {
@@ -121,6 +122,7 @@ namespace SSRSImportExportConsole
                                 try
                                 {
                                     this.ReportServer.SetDataSourceContents(item.Path, def);
+                                    Console.WriteLine("Shared DataSource " + item.Path + " created successfully");
                                 }
                                 catch (Exception ex)
                                 {

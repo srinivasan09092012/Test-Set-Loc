@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SSRSImportExportConsole.ReportServer2010;
 using System.IO;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace SSRSImportExportConsole
 {
@@ -20,6 +21,7 @@ namespace SSRSImportExportConsole
         {
             this.ReportServer = reportServer;
             this.UploadPath = uploadPath;
+            this.ReportServerPath = string.Empty;
 
             this.CreateFolders();
             this.CreateDataSource();
@@ -38,6 +40,7 @@ namespace SSRSImportExportConsole
             DataSourceReference reference = null;
             string dataSourceFolder = @"/Data Sources/";
             string dataSetFolder = @"/Datasets/";
+            StringBuilder sb = new StringBuilder();
 
             foreach (var di in reportDir.EnumerateDirectories("*", SearchOption.AllDirectories))
             {
@@ -150,6 +153,8 @@ namespace SSRSImportExportConsole
                                 }
                             }
                         }
+
+                        Console.WriteLine("Report " + fi.Name.Replace(".rdl", string.Empty) + " created successfully");
                     }
                 }
             }
@@ -164,6 +169,7 @@ namespace SSRSImportExportConsole
             string dataSourceURL = "/Data Sources/";
             XmlDocument xmlDoc = new XmlDocument();
             List<ItemReference> dataSourceReference = null;
+            DataSourceDefinition dsDef = null;
 
             foreach (var di in reportDir.EnumerateDirectories("*", SearchOption.AllDirectories))
             {
@@ -171,13 +177,29 @@ namespace SSRSImportExportConsole
                 {
                     foreach (var fi in di.EnumerateFiles("*.rds", SearchOption.TopDirectoryOnly))
                     {
-                        FileStream stream = File.OpenRead(fi.FullName);
+                        xmlDoc.Load(fi.FullName);
+                        dsDef = new DataSourceDefinition()
+                        {
+                            ConnectString = xmlDoc.GetElementsByTagName("ConnectString")[0].InnerText,
+                            CredentialRetrieval = CredentialRetrievalEnum.None,
+                            Enabled = true,
+                            Extension = xmlDoc.GetElementsByTagName("Extension")[0].InnerText
+                        };
+
+                        XmlSerializer xs = new XmlSerializer(typeof(DataSourceDefinition), string.Empty);
+                        TextWriter tw = new StreamWriter(@"datasource.xml", false);
+                        xs.Serialize(tw, dsDef);
+                        tw.Close();
+
+                        FileStream stream = File.OpenRead(@"datasource.xml");
                         definition = new byte[stream.Length];
                         stream.Read(definition, 0, (int)stream.Length);
                         stream.Close();
+
                         try
                         {
                             this.ReportServer.CreateCatalogItem("DataSource", fi.Name.Replace(".rds", string.Empty), "/Data Sources", true, definition, null, out warnings);
+                            Console.WriteLine("Data Source " + fi.Name.Replace(".rds", string.Empty) + " created successfully");
                         }
                         catch (Exception ex)
                         {
@@ -215,6 +237,8 @@ namespace SSRSImportExportConsole
 
                                 this.ReportServer.SetItemReferences("/Datasets/" + fi.Name.Replace(".rsd", string.Empty), dataSourceReference.ToArray());
                             }
+
+                            Console.WriteLine("Dataset " + fi.Name.Replace(".rsd", string.Empty) + " created successfully");
                         }
                         catch (Exception ex)
                         {
@@ -255,6 +279,7 @@ namespace SSRSImportExportConsole
                 try
                 {
                     this.ReportServer.CreateFolder(di.Name, parent.Replace("\\", "/"), null);
+                    Console.WriteLine("Folder " + di.Name + " created successfully");
                 }
                 catch
                 {

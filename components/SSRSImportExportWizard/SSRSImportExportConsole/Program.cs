@@ -46,7 +46,7 @@ namespace SSRSImportExportConsole
             {
                 if (ConnectReportServer())
                 {
-                    //new ImportReportItems(ReportServer, UploadPath);
+                    new ImportReportItems(ReportServer, UploadPath);
                     new UpdateDataSource(ReportServer, string.Empty);
                 }
             }
