@@ -283,7 +283,7 @@ namespace SSRSImportExportConsole
                 }
                 catch
                 {
-                    Console.WriteLine("Folder already exists");
+                    Console.WriteLine(di.Name + " folder already exist");
                 }
             }
         }

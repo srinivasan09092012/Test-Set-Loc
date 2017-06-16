@@ -27,9 +27,10 @@
     <ReportProject Name="UIReports" ReportPath="\HP.HSP.UA3.TPLPolicy.Reports\HP.HSP.UA3.TPLPolicy.UIReports" ServerReportPath="\Base Report Definitions\TPL Policy\UI Reports"></ReportProject>
   </Module>
 <ReplaceStrings>
-  <ReplaceString OldValue="206.122.21.171" NewValue="10.3.0.16"></ReplaceString>
-  <ReplaceString OldValue="206.122.21.177" NewValue="10.3.0.16"></ReplaceString>
-  <ReplaceString OldValue="130.175.189.231" NewValue="10.3.0.16"></ReplaceString>
+  <ReplaceString OldValue="206.122.21.171" NewValue="bas.test.mapshc.com"></ReplaceString>
+  <ReplaceString OldValue="206.122.21.177" NewValue="bas.test.mapshc.com"></ReplaceString>
+  <ReplaceString OldValue="10.3.0.16" NewValue="bas.test.mapshc.com"></ReplaceString>
+  <ReplaceString OldValue="130.175.189.231" NewValue="bas.test.mapshc.com"></ReplaceString>
   <ReplaceString OldValue="R1.0" NewValue="R6.0"></ReplaceString>
 </ReplaceStrings>
 </ReportModules>
