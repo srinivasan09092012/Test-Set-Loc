@@ -264,7 +264,6 @@ namespace DatalistSyncUtil.Views
                         }
                     }
 
-                    MessageBox.Show("Services Successfully Updated in the Target Environment !! ");
                     this.Cache.Remove("TargetServices");
                 }
             }

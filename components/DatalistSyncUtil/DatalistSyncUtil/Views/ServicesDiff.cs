@@ -207,12 +207,11 @@ namespace DatalistSyncUtil.Views
 
             this.SourceServices.AutoGenerateColumns = this.TargetServices.AutoGenerateColumns = false;
             Guid tenantModuleId = (this.moduleList.SelectedItem as TenantModuleModel).TenantModuleId;
-            string moduleName = (this.moduleList.SelectedItem as TenantModuleModel).ModuleName;
 
             if (tenantModuleId != Guid.Empty)
             {
-                updateSourceServices = updateSourceServices.Where(w => w.Name.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
-                updateTargetServices = updateTargetServices.Where(w => w.Name.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
+                updateSourceServices = updateSourceServices.Where(w => w.TenantModuleID == tenantModuleId).ToList();
+                updateTargetServices = updateTargetServices.Where(w => w.TenantModuleID == tenantModuleId).ToList();
             }
 
             this.UpdateNewService = updateSourceServices;
