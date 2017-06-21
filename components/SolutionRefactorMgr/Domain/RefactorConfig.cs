@@ -11,13 +11,29 @@ namespace SolutionRefactorMgr.Domain
         [XmlAttribute("editMode")]
         public Enumerations.EditModeTypes EditMode { get; set; }
 
+        [XmlAttribute("includeFolderNames")]
+        public bool IncludeFolderNames { get; set; }
+
+        [XmlAttribute("includeFileNames")]
+        public bool IncludeFileNames { get; set; }
+
+        [XmlAttribute("includeFileContents")]
+        public bool IncludeFileContents { get; set; }
+
         public string SourceDir { get; set; }
 
+        [XmlArrayItem("FileType")]
+        public List<string> FileTypes { get; set; }
+
         public List<ModuleConfig> ModuleConfigs { get; set; }
+
+        public List<PackageConfig> PackageConfigs { get; set; }
 
         public List<LineDelete> LineDeletes { get; set; }
 
         public List<ReplacementString> ReplacementStrings { get; set; }
+
+        public string TfsServer { get; set; }
 
         public void Validate()
         {
@@ -38,6 +54,11 @@ namespace SolutionRefactorMgr.Domain
                 }
             }
 
+            if (this.EditMode == Enumerations.EditModeTypes.Inline && string.IsNullOrWhiteSpace(this.TfsServer))
+            {
+                throw new ArgumentNullException("Inline edit mode requires that you specify the TFS source control server.");
+            }
+
             if (this.ModuleConfigs != null && this.ModuleConfigs.Count > 0)
             {
                 foreach (ModuleConfig module in this.ModuleConfigs)
@@ -45,9 +66,13 @@ namespace SolutionRefactorMgr.Domain
                     module.Validate();
                 }
             }
-            else
+
+            if (this.PackageConfigs != null && this.PackageConfigs.Count > 0)
             {
-                throw new ArgumentNullException("No module configurations have been specified.");
+                foreach (PackageConfig package in this.PackageConfigs)
+                {
+                    package.Validate();
+                }
             }
 
             if (this.LineDeletes != null && this.LineDeletes.Count > 0)
@@ -65,69 +90,6 @@ namespace SolutionRefactorMgr.Domain
                     replacement.Validate();
                 }
             }
-        }
-
-        public string RefactorFileName(string origValue)
-        {
-            string newValue = origValue;
-
-            foreach (ReplacementString replacement in this.ReplacementStrings)
-            {
-                newValue = newValue.Replace(replacement.Original, replacement.New);
-            }
-
-            return newValue;
-        }
-
-        public string RefactorFileContents(string filePath)
-        {
-            string newValue = string.Empty;
-
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    using (StreamWriter writer = new StreamWriter(ms))
-                    {
-                        string line = null;
-                        while ((line = reader.ReadLine()) != null)
-                        {
-                            bool deleteLine = false;
-                            foreach (LineDelete lineDelete in this.LineDeletes)
-                            {
-                                if (line.Contains(lineDelete.Contains))
-                                {
-                                    deleteLine = true;
-                                    break;
-                                }
-                            }
-
-                            if(!deleteLine)
-                            {
-                                writer.WriteLine(line);
-                            }
-                        }
-                        writer.Flush();
-                        ms.Position = 0;
-                        using (StreamReader sr = new StreamReader(ms))
-                        {
-                            newValue = sr.ReadToEnd();
-                        }
-                    }
-                }
-            }
-
-            foreach (ReplacementString replacement in this.ReplacementStrings)
-            {
-                newValue = newValue.Replace(replacement.Original, replacement.New);
-            }
-
-            foreach (ReplacementString replacement in this.ReplacementStrings)
-            {
-                newValue = newValue.Replace(replacement.Original, replacement.New);
-            }
-
-            return newValue;
         }
     }
 }

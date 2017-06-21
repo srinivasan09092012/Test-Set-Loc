@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace SolutionRefactorMgr.Domain
@@ -11,7 +10,7 @@ namespace SolutionRefactorMgr.Domain
         public string Name { get; set; }
 
         [XmlAttribute("branch")]
-        public Enumerations.BranchTypes Branch { get; set; }
+        public string Branch { get; set; }
 
         [XmlAttribute("types")]
         public Enumerations.ProjectTypes Type { get; set; }

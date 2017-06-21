@@ -1,0 +1,1 @@
+﻿Copy the target xml configuration to the root directory and rename it to "RefactorConfig.xml".

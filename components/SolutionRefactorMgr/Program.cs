@@ -1,4 +1,6 @@
-﻿using HPE.HSP.UA3.Core.API.Logger.Loggers;
+﻿using Microsoft.TeamFoundation.Client;
+using Microsoft.TeamFoundation.VersionControl.Client;
+using HPE.HSP.UA3.Core.API.Logger.Loggers;
 using SolutionRefactorMgr.Domain;
 using SolutionRefactorMgr.Utilities;
 using System;
@@ -10,6 +12,8 @@ namespace SolutionRefactorMgr
     {
         private static CoreLogger logger = new CoreLogger();
         private static RefactorConfig refactorConfig = null;
+        private static TfsTeamProjectCollection tpc = null;
+        private static Workspace workspace = null;
 
         public static void Main(string[] args)
         {
@@ -17,7 +21,8 @@ namespace SolutionRefactorMgr
             {
                 LogMessage(0, "Process started");
                 LoadConfigration();
-                ProcessConfiguration();
+                InitializeTfs();
+                Refactor();
                 LogMessage(0, "Process complete");
             }
             catch (Exception ex)
@@ -26,8 +31,50 @@ namespace SolutionRefactorMgr
             }
             finally
             {
+                FinalizeTfs();
                 Console.Write("Press any key to close");
                 Console.ReadKey();
+            }
+        }
+
+        private static void FinalizeTfs()
+        {
+            if (workspace != null)
+            {
+                workspace = null;
+            }
+        }
+
+        private static bool IsBinaryFile(string fileContents)
+        {
+            bool isBinary = false;
+
+            for (int i = 0; i < fileContents.Length; i++)
+            {
+                // 169 is the copyright "©" symbol (That's in all files)
+                if (fileContents[i] > 127 & fileContents[i] != 169)
+                {
+                    isBinary = true;
+                    break;
+                }
+            }
+
+            return isBinary;
+        }
+
+        private static void InitializeTfs()
+        {
+            if (!string.IsNullOrWhiteSpace(refactorConfig.TfsServer))
+            {
+                LogMessage(0, string.Format("Initializing connection to TFS..."));
+                tpc = new TfsTeamProjectCollection(new Uri(refactorConfig.TfsServer));
+                VersionControlServer versionControl = tpc.GetService<VersionControlServer>();
+                versionControl.NonFatalError += OnNonFatalError;
+                versionControl.Getting += OnGetting;
+                versionControl.BeforeCheckinPendingChange += OnBeforeCheckinPendingChange;
+                versionControl.NewPendingChange += OnNewPendingChange;
+                workspace = versionControl.QueryWorkspaces(null, versionControl.AuthorizedUser, Environment.MachineName)[0];
+                LogMessage(0, string.Format("Successfully connected to TFS"));
             }
         }
 
@@ -62,7 +109,34 @@ namespace SolutionRefactorMgr
             Console.WriteLine(tabs + msg);
         }
 
-        private static void ProcessConfiguration()
+        private static void OnNonFatalError(Object sender, ExceptionEventArgs e)
+        {
+            if (e.Exception != null)
+            {
+                LogMessage(1, "Non-fatal exception: " + e.Exception.Message);
+            }
+            else
+            {
+                LogMessage(1, "Non-fatal failure: " + e.Failure.Message);
+            }
+        }
+
+        private static void OnGetting(Object sender, GettingEventArgs e)
+        {
+            LogMessage(1, "Getting: " + e.TargetLocalItem + ", status: " + e.Status);
+        }
+
+        private static void OnBeforeCheckinPendingChange(Object sender, ProcessingChangeEventArgs e)
+        {
+            LogMessage(1, "Checking in " + e.PendingChange.LocalItem);
+        }
+
+        private static void OnNewPendingChange(Object sender, PendingChangeEventArgs e)
+        {
+            LogMessage(1, "Pending " + PendingChange.GetLocalizedStringForChangeType(e.PendingChange.ChangeType) + " on " + e.PendingChange.LocalItem);
+        }
+
+        private static void Refactor()
         {
             foreach (ModuleConfig module in refactorConfig.ModuleConfigs)
             {
@@ -81,54 +155,84 @@ namespace SolutionRefactorMgr
                         break;
                 }
             }
+
+            foreach (PackageConfig package in refactorConfig.PackageConfigs)
+            {
+                LogMessage(0, string.Format("Refactoring started for packages starting with: '{0}'.", package.QualifierPrefix));
+                RefactorPackages(package, refactorConfig.SourceDir + "Packages\\_Source\\");
+                RefactorPackages(package, refactorConfig.SourceDir + "Packages\\");
+            }
         }
 
         private static void RefactorDirectory(string source, string origDest, string newDest, bool recursive, int level)
         {
-            LogMessage(level, string.Format("Refactoring directory '{0}' to '{1}'", source, origDest));
-            level++;
-
-            if (refactorConfig.EditMode == Enumerations.EditModeTypes.Copy)
+            if(Directory.Exists(source))
             {
-                if (Directory.Exists(newDest))
+                bool processDirectory = true;
+                LogMessage(level, string.Format("Refactoring directory '{0}' to '{1}'", source, origDest));
+                level++;
+
+                if (refactorConfig.EditMode == Enumerations.EditModeTypes.Copy)
                 {
-                    Directory.Delete(newDest, true);
-                }
-                Directory.CreateDirectory(newDest);
-            }
-            else
-            {
-                if (string.Compare(origDest, newDest, false) != 0)
-                {
-                    //Rename directory in TFS
-                }
-            }
-
-            DirectoryInfo dir = new DirectoryInfo(source);
-            DirectoryInfo[] dirs = dir.GetDirectories();
-
-            FileInfo[] files = dir.GetFiles();
-            foreach (FileInfo file in files)
-            {
-                RefactorFile(file, newDest, level);
-            }
-
-            if (recursive)
-            {
-                foreach (DirectoryInfo subdir in dirs)
-                {
-                    LogMessage(level, string.Format("Refactoring subdirectory '{0}'", subdir.Name));
-                    if (!subdir.Name.Contains("bin") 
-                        && !subdir.Name.Contains("obj") 
-                        && !subdir.Name.Contains(".vs") 
-                        && !subdir.Name.Contains("TestResults") 
-                        && !subdir.Name.Contains("Packages")
-                        )
+                    if (string.Compare(source, newDest, false) != 0)
                     {
-                        string newDirName = refactorConfig.RefactorFileName(subdir.Name);
-                        string origSubDirDest = Path.Combine(newDest, subdir.Name);
-                        string newSubDirDest = Path.Combine(newDest, newDirName);
-                        RefactorDirectory(subdir.FullName, origSubDirDest, newSubDirDest, recursive, level);
+                        if (Directory.Exists(newDest))
+                        {
+                            TfsUndo(newDest);
+                            Directory.Delete(newDest, true);
+                        }
+                        Directory.CreateDirectory(newDest);
+                        TfsPendAdd(newDest);
+                    }
+                    else
+                    {
+                        processDirectory = false;
+                        LogMessage(level, string.Format("Skipping copy for dir '{0}' to '{1}' due to same name.", origDest, newDest));
+                    }
+                }
+                else
+                {
+                    if (string.Compare(origDest, newDest, false) != 0)
+                    {
+                        TfsPendRename(origDest, newDest);
+                        source = newDest;
+                    }
+                }
+
+                if (processDirectory)
+                {
+                    DirectoryInfo dir = new DirectoryInfo(source);
+                    DirectoryInfo[] dirs = dir.GetDirectories();
+
+                    FileInfo[] files = dir.GetFiles();
+                    foreach (FileInfo file in files)
+                    {
+                        RefactorFile(file, newDest, level);
+                    }
+
+                    if (recursive)
+                    {
+                        foreach (DirectoryInfo subdir in dirs)
+                        {
+                            LogMessage(level, string.Format("Refactoring subdirectory '{0}'", subdir.Name));
+                            if (!subdir.Name.Contains("bin")
+                                && !subdir.Name.Contains("obj")
+                                && !subdir.Name.Contains(".vs")
+                                && !subdir.Name.Contains("TestResults")
+                                && !subdir.Name.Contains("Packages")
+                                )
+                            {
+                                string newDirName = subdir.Name;
+                                if (refactorConfig.IncludeFolderNames)
+                                {
+                                    newDirName = RefactorFileName(subdir.Name);
+                                }
+
+                                string origSubDirDest = Path.Combine(newDest, subdir.Name);
+                                string newSubDirDest = Path.Combine(newDest, newDirName);
+                                RefactorDirectory(subdir.FullName, origSubDirDest, newSubDirDest, recursive, level);
+                            }
+                        }
                     }
                 }
             }
@@ -136,88 +240,132 @@ namespace SolutionRefactorMgr
 
         private static void RefactorFile(FileInfo file, string dest, int level)
         {
-            if (file.Extension.ToLower() != ".cache"
-                && file.Extension.ToLower() != ".vspscc"
-                && file.Extension.ToLower() != ".vssscc"
-                )
+            LogMessage(level, string.Format("Refactoring file '{0}'", file.Name));
+            bool fileQualifies = refactorConfig.FileTypes.Find(f => f == file.Extension.ToLower()) != null;
+            if (fileQualifies)
             {
-                LogMessage(level, string.Format("Refactoring file '{0}'", file.Name));
                 string fileName = file.Name;
-                string fileContents = File.ReadAllText(file.FullName);
-                string newFileName = string.Empty;
-                string newFileContents = string.Empty;
-                bool fileQualifies = false;
-                switch (file.Extension.ToLower())
+                string newFileName = fileName;
+                if (refactorConfig.IncludeFileNames)
                 {
-                    case ".asax":
-                    case ".aspx":
-                    case ".bat":
-                    case ".cd":
-                    case ".classdiagram":
-                    case ".cmd":
-                    case ".config":
-                    case ".cs":
-                    case ".cshtml":
-                    case ".csproj":
-                    case ".css":
-                    case ".disco":
-                    case ".js":
-                    case ".layerdiagram":
-                    case ".modelproj":
-                    case ".runsettings":
-                    case ".pubxml":
-                    case ".settings":
-                    case ".sln":
-                    case ".snk":
-                    case ".svc":
-                    case ".svcinfo":
-                    case ".svcmap":
-                    case ".testsettings":
-                    case ".uml":
-                    case ".user":
-                    case ".wsdl":
-                    case ".xsd":
-                    case ".xml":
-                        fileQualifies = true;
-                        break;
+                    newFileName = RefactorFileName(file.Name);
                 }
 
-                if (fileQualifies)
-                {
-                    newFileName = refactorConfig.RefactorFileName(file.Name);
-                    string newPath = Path.Combine(dest, newFileName);
-                    newFileContents = refactorConfig.RefactorFileContents(file.FullName);
+                string origPath = Path.Combine(dest, file.Name);
+                string newPath = Path.Combine(dest, newFileName);
 
-                    if (refactorConfig.EditMode == Enumerations.EditModeTypes.Copy)
+                string fileContents = File.ReadAllText(file.FullName);
+                string newFileContents = fileContents;
+                bool isBinary = IsBinaryFile(fileContents);
+                bool contentsChanged = false;
+                if (refactorConfig.IncludeFileContents && !isBinary)
+                {
+                    contentsChanged = RefactorFileContents(file.FullName, out newFileContents);
+                }
+
+                if (refactorConfig.EditMode == Enumerations.EditModeTypes.Copy)
+                {
+                    if (!contentsChanged)
+                    {
+                        File.Copy(file.FullName, newPath);
+                    }
+                    else
                     {
                         File.WriteAllText(newPath, newFileContents);
                         File.SetAttributes(newPath, File.GetAttributes(newPath) & ~FileAttributes.ReadOnly);
                     }
-                    else
-                    {
-                        //Check out file from TFS
-
-                        if (string.Compare(fileName, newFileName, true) != 0)
-                        {
-                            //Rename the file in TFS
-                        }
-
-                        if (string.Compare(fileContents, newFileContents, false) != 0)
-                        {
-                            File.WriteAllText(newFileName, newFileContents);
-                        }
-                    }
+                    TfsPendAdd(newPath);
                 }
                 else
                 {
-                    if (refactorConfig.EditMode == Enumerations.EditModeTypes.Copy)
+                    if (string.Compare(fileName, newFileName, true) != 0)
                     {
-                        string newPath = Path.Combine(dest, file.Name);
-                        File.WriteAllText(newPath, fileContents);
-                        File.SetAttributes(newPath, File.GetAttributes(file.FullName) & ~FileAttributes.ReadOnly);
+                        TfsPendRename(origPath, newPath);
+                    }
+
+                    if (contentsChanged)
+                    {
+                        TfsPendEdit(newPath);
+                        File.WriteAllText(newPath, newFileContents);
                     }
                 }
             }
+            else
+            {
+                if (refactorConfig.EditMode == Enumerations.EditModeTypes.Copy)
+                {
+                    string newPath = Path.Combine(dest, file.Name);
+                    File.Copy(file.FullName, newPath);
+                    TfsPendAdd(newPath);
+                }
+            }
+        }
+
+        private static bool RefactorFileContents(string filePath, out string refactoredFileContents)
+        {
+            bool contentsChanged = false;
+            refactoredFileContents = string.Empty;
+
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (StreamWriter writer = new StreamWriter(ms))
+                    {
+                        string line = null;
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            bool deleteLine = false;
+                            foreach (LineDelete lineDelete in refactorConfig.LineDeletes)
+                            {
+                                if (line.Contains(lineDelete.Contains))
+                                {
+                                    deleteLine = true;
+                                    contentsChanged = true;
+                                    break;
+                                }
+                            }
+
+                            if (!deleteLine)
+                            {
+                                foreach (ReplacementString replacement in refactorConfig.ReplacementStrings)
+                                {
+                                    if (line.Contains(replacement.Qualifier))
+                                    {
+                                        line = line.Replace(replacement.From, replacement.To);
+                                        contentsChanged = true;
+                                    }
+                                }
+
+                                writer.WriteLine(line);
+                            }
+                        }
+                        writer.Flush();
+                        ms.Position = 0;
+                        using (StreamReader sr = new StreamReader(ms))
+                        {
+                            refactoredFileContents = sr.ReadToEnd();
+                        }
+                    }
+                }
+            }
+
+            return contentsChanged;
+        }
+
+        private static string RefactorFileName(string origValue)
+        {
+            string newValue = origValue;
+
+            foreach (ReplacementString replacement in refactorConfig.ReplacementStrings)
+            {
+                if (newValue.Contains(replacement.Qualifier))
+                {
+                    newValue = newValue.Replace(replacement.From, replacement.To);
+                }
+            }
+
+            return newValue;
         }
 
         private static void RefactorModule(ModuleConfig module, Enumerations.ProjectTypes type)
@@ -227,9 +375,71 @@ namespace SolutionRefactorMgr
             string destPath = sourcePath;
             if (refactorConfig.EditMode == Enumerations.EditModeTypes.Copy)
             {
-                destPath = refactorConfig.SourceDir + module.Name + "\\" + module.Branch + "_Copy\\" + type.ToString();
+                destPath = refactorConfig.SourceDir + module.Name + "\\" + module.Branch + "\\" + type.ToString();
             }
             RefactorDirectory(sourcePath, destPath, destPath, true, 2);
+        }
+
+        private static void RefactorPackages(PackageConfig package, string sourcePath)
+        {
+            LogMessage(1, string.Format("Refactoring started for path: '{0}'", sourcePath));
+            string destPath = sourcePath;
+
+            DirectoryInfo dir = new DirectoryInfo(sourcePath);
+            DirectoryInfo[] dirs = dir.GetDirectories();
+            foreach (DirectoryInfo subdir in dirs)
+            {
+                if(subdir.Name.ToLower().StartsWith(package.QualifierPrefix.ToLower()))
+                {
+                    string newDirName = subdir.Name;
+                    if (refactorConfig.IncludeFolderNames)
+                    {
+                        newDirName = RefactorFileName(subdir.Name);
+                    }
+
+                    RefactorDirectory(subdir.FullName, destPath + newDirName, destPath + newDirName, true, 2);
+                }
+            }
+        }
+
+        private static void TfsPendAdd(string path)
+        {
+            if(workspace != null)
+            {
+                workspace.PendAdd(path);
+            }
+        }
+
+        private static void TfsPendDelete(string path)
+        {
+            if (workspace != null)
+            {
+                workspace.PendDelete(path);
+            }
+        }
+
+        private static void TfsPendEdit(string path)
+        {
+            if (workspace != null)
+            {
+                workspace.PendEdit(path);
+            }
+        }
+
+        private static void TfsPendRename(string oldPath, string newPath)
+        {
+            if (workspace != null)
+            {
+                workspace.PendRename(oldPath, newPath);
+            }
+        }
+
+        private static void TfsUndo(string path)
+        {
+            if (workspace != null)
+            {
+                workspace.Undo(path);
+            }
         }
     }
 }

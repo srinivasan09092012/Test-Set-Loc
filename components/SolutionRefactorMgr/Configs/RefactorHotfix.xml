@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true">
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+    <ModuleConfig name="Administration" branch="036" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="036" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="036" types="All" />
+    <ModuleConfig name="Core" branch="036" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="036" types="All" />
+    <ModuleConfig name="DrugRebate" branch="036" types="All" />
+    <ModuleConfig name="EDI" branch="036" types="All" />
+    <ModuleConfig name="eID" branch="036" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="036" types="All" />
+    <ModuleConfig name="FileTransfer" branch="036" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="036" types="All" />
+    <ModuleConfig name="KansasOnly" branch="036" types="All" />
+    <ModuleConfig name="ManagedCare" branch="036" types="All" />
+    <ModuleConfig name="MemberManagement" branch="036" types="All" />
+    <ModuleConfig name="MemberPortal" branch="036" types="All" />
+    <ModuleConfig name="Notifications" branch="036" types="All" />
+    <ModuleConfig name="PlanManagement" branch="036" types="All" />
+    <ModuleConfig name="ProDUR" branch="036" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="036" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="036" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="036" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="036" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="036" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="036" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="036" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="036" types="All" />
+    <ModuleConfig name="Utilities" branch="036" types="All" />
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes>
+    <FileType>.config</FileType>
+    <FileType>.cs</FileType>
+    <FileType>.csproj</FileType>
+  </FileTypes>
+  <LineDeletes />
+  <ReplacementStrings>
+    <!-- Assembly Versions in Assembly Info file -->
+    <ReplacementString qualifier="AssemblyFileVersion(" from="17.36.2.0" to="17.36.2.1" />
+  </ReplacementStrings>
+  <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
+</RefactorConfig>

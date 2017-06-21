@@ -4,13 +4,6 @@ namespace SolutionRefactorMgr.Domain
 {
     public class Enumerations
     {
-        [Serializable]
-        public enum BranchTypes
-        {
-            Dev,
-            Main
-        }
-
         public enum EditModeTypes
         {
             Copy,

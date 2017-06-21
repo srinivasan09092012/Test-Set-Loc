@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Inline" includeFolderNames="true" includeFileNames="true" includeFileContents="true">
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+    <ModuleConfig name="Administration" branch="036" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="036" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="036" types="All" />
+    <ModuleConfig name="Core" branch="036" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="036" types="All" />
+    <ModuleConfig name="DrugRebate" branch="036" types="All" />
+    <ModuleConfig name="EDI" branch="036" types="All" />
+    <ModuleConfig name="eID" branch="036" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="036" types="All" />
+    <ModuleConfig name="FileTransfer" branch="036" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="036" types="All" />
+    <ModuleConfig name="KansasOnly" branch="036" types="All" />
+    <ModuleConfig name="ManagedCare" branch="036" types="All" />
+    <ModuleConfig name="MemberManagement" branch="036" types="All" />
+    <ModuleConfig name="MemberPortal" branch="036" types="All" />
+    <ModuleConfig name="Notifications" branch="036" types="All" />
+    <ModuleConfig name="PlanManagement" branch="036" types="All" />
+    <ModuleConfig name="ProDUR" branch="036" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="036" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="036" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="036" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="036" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="036" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="036" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="036" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="036" types="All" />
+    <ModuleConfig name="Utilities" branch="036" types="All" />
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes>
+    <FileType>.asax</FileType>
+    <FileType>.aspx</FileType>
+    <FileType>.bat</FileType>
+    <FileType>.cd</FileType>
+    <FileType>.classdiagram</FileType>
+    <FileType>.cmd</FileType>
+    <FileType>.config</FileType>
+    <FileType>.cs</FileType>
+    <FileType>.cshtml</FileType>
+    <FileType>.csproj</FileType>
+    <FileType>.css</FileType>
+    <FileType>.disco</FileType>
+    <FileType>.js</FileType>
+    <FileType>.layerdiagram</FileType>
+    <FileType>.modelproj</FileType>
+    <FileType>.runsettings</FileType>
+    <FileType>.pubxml</FileType>
+    <FileType>.settings</FileType>
+    <FileType>.sln</FileType>
+    <FileType>.snk</FileType>
+    <FileType>.svc</FileType>
+    <FileType>.svcinfo</FileType>
+    <FileType>.svcmap</FileType>
+    <FileType>.testsettings</FileType>
+    <FileType>.uml</FileType>
+    <FileType>.user</FileType>
+    <FileType>.vssscc</FileType>
+    <FileType>.vspscc</FileType>
+    <FileType>.wsdl</FileType>
+    <FileType>.xsd</FileType>
+    <FileType>.xml</FileType>
+  </FileTypes>
+  <LineDeletes>
+    <LineDelete contains="[GeneratedCodeAttribute(" />
+    <LineDelete contains="[XmlType(Namespace" />
+    <LineDelete contains="[XmlRoot(Namespace" />
+    <LineDelete contains="[ServiceContract(Namespace" />
+  </LineDeletes>
+  <ReplacementStrings>
+    <!-- Copyrights -->
+    <ReplacementString qualifier="Hewlett Packard Enterprise" from="Hewlett Packard Enterprise" to="DXC Technology" />
+    <ReplacementString qualifier="Hewlett-Packard Enterprise" from="Hewlett-Packard Enterprise" to="DXC Technology" />
+    <ReplacementString qualifier="Copyright © Microsoft 2016" from="Copyright © Microsoft 2016" to="Copyright © DXC Technology 2017" />
+    <ReplacementString qualifier="Copyright © Hewlett-Packard Enterprise 2016" from="Copyright © Hewlett-Packard Enterprise 2016" to="Copyright © DXC Technology 2017" />
+    <ReplacementString qualifier="Copyright (c) 2016" from="2016" to="2017" />
+    <ReplacementString qualifier="AssemblyCompany(" from="Microsoft" to="DXC Technology" />
+
+    <!-- Namespaces -->
+    <ReplacementString qualifier="HP.HSP.UA." from="HP.HSP.UA." to="HSP.MAPS." />
+    <ReplacementString qualifier="HP.HSP.UA3." from="HP.HSP.UA3." to="HSP.MAPS." />
+    <ReplacementString qualifier="HP.HSP." from="HP.HSP." to="HSP.MAPS." />
+    <ReplacementString qualifier="HP.U3." from="HP.U3." to="HSP.MAPS." />
+    <ReplacementString qualifier="HP.UA." from="HP.UA." to="HSP.MAPS." />
+    <ReplacementString qualifier="HP.UA3." from="HP.UA3." to="HSP.MAPS." />
+    <ReplacementString qualifier="HP." from="HP." to="HSP." />
+
+    <ReplacementString qualifier="hp.hsp.ua." from="hp.hsp.ua." to="hsp.maps." />
+    <ReplacementString qualifier="hp.hsp.ua3." from="hp.hsp.ua3." to="hsp.maps." />
+    <ReplacementString qualifier="hp.hsp." from="hp.hsp." to="hsp.maps." />
+    <ReplacementString qualifier="hp.u3." from="hp.u3." to="hsp.maps." />
+    <ReplacementString qualifier="hp.ua." from="hp.ua." to="hsp.maps." />
+    <ReplacementString qualifier="hp.ua3." from="hp.ua3." to="hsp.maps." />
+
+    <ReplacementString qualifier="HPE.HSP.UA." from="HPE.HSP.UA." to="HSP.MAPS." />
+    <ReplacementString qualifier="HPE.HSP.UA3." from="HPE.HSP.UA3." to="HSP.MAPS." />
+    <ReplacementString qualifier="HPE.HSP." from="HPE.HSP." to="HSP.MAPS." />
+    <ReplacementString qualifier="HPE.U3." from="HPE.U3." to="HSP.MAPS." />
+    <ReplacementString qualifier="HPE.UA." from="HPE.UA." to="HSP.MAPS." />
+    <ReplacementString qualifier="HPE.UA3." from="HPE.UA3." to="HSP.MAPS." />
+    <ReplacementString qualifier="HPE." from="HPE." to="HSP." />
+
+    <ReplacementString qualifier="hpe.hsp.ua." from="hpe.hsp.ua." to="hsp.maps." />
+    <ReplacementString qualifier="hpe.hsp.ua3." from="hpe.hsp.ua3." to="hsp.maps." />
+    <ReplacementString qualifier="hpe.hsp." from="hpe.hsp." to="hsp.maps." />
+    <ReplacementString qualifier="hpe.u3." from="hpe.u3." to="hsp.maps." />
+    <ReplacementString qualifier="hpe.ua." from="hpe.ua." to="hsp.maps." />
+    <ReplacementString qualifier="hpe.ua3." from="hpe.ua3." to="hsp.maps." />
+
+    <ReplacementString qualifier="HSP.U3." from="HSP.U3." to="HSP.MAPS." />
+    <ReplacementString qualifier="HSP.UA." from="HSP.UA." to="HSP.MAPS." />
+    <ReplacementString qualifier="HSP.UA3." from="HSP.UA3." to="HSP.MAPS." />
+
+    <ReplacementString qualifier="hsp.u3." from="hsp.u3." to="hsp.maps." />
+    <ReplacementString qualifier="hsp.uA." from="hsp.uA." to="hsp.maps." />
+    <ReplacementString qualifier="hsp.ua3." from="hsp.ua3." to="hsp.maps." />
+
+    <ReplacementString qualifier="urn:hpe.ua3" from="urn:hpe.ua3" to="urn:hps.maps" />
+    <ReplacementString qualifier="urn:hp.ua3" from="urn:hp.ua3" to="urn:hps.maps" />
+
+    <ReplacementString qualifier="IndexOf(&quot;UA3.&quot;) + 4" from="+ 4" to="+ 5" />
+
+    <!-- NuGet Package Source -->
+    <ReplacementString qualifier="HP UA3 Package Source" from="HP UA3 Package Source" to="HSP MAPS Package Source" />
+
+    <!-- Solution & Project Attributes -->
+    <ReplacementString qualifier="&gt;SAK&lt;" from="&gt;SAK&lt;" to="&gt;&lt;" />
+    <ReplacementString qualifier="&lt;TargetFrameworkVersion&gt;v4.5.1&lt;/TargetFrameworkVersion&gt;" from="v4.5.1&lt;" to="v4.5.2&lt;" />
+    <ReplacementString qualifier="&lt;TargetFrameworkVersion&gt;v4.5&lt;/TargetFrameworkVersion&gt;" from="v4.5&lt;" to="v4.5.2&lt;" />
+    <ReplacementString qualifier="&lt;TargetFrameworkVersion&gt;v4.0&lt;/TargetFrameworkVersion&gt;" from="v4.0&lt;" to="v4.5.2&lt;" />
+
+    <!-- Miscellaneous -->
+    <ReplacementString qualifier="HP.*.dll" from="HP.*.dll" to="HSP.*.dll" />
+    <ReplacementString qualifier="hpeDbConnection" from="hpeDbConnection" to="hpsDbConnection" />
+  </ReplacementStrings>
+  <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
+</RefactorConfig>
