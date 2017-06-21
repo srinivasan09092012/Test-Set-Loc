@@ -595,7 +595,7 @@ namespace DatalistSyncUtil
             this.btnListUpdate.TabIndex = 2;
             this.btnListUpdate.Text = "Include";
             this.btnListUpdate.UseVisualStyleBackColor = true;
-            this.btnListUpdate.Click += new System.EventHandler(this.btnListUpdate_Click);
+            this.btnListUpdate.Click += new System.EventHandler(this.BtnListUpdate_Click);
             // 
             // DataListView
             // 
@@ -791,7 +791,7 @@ namespace DatalistSyncUtil
             this.btnUpdateItems.TabIndex = 1;
             this.btnUpdateItems.Text = "Include";
             this.btnUpdateItems.UseVisualStyleBackColor = true;
-            this.btnUpdateItems.Click += new System.EventHandler(this.btnUpdateItems_Click);
+            this.btnUpdateItems.Click += new System.EventHandler(this.BtnUpdateItems_Click);
             // 
             // ItemsTab
             // 
@@ -1443,7 +1443,7 @@ namespace DatalistSyncUtil
             this.btnUpdateLanguages.TabIndex = 1;
             this.btnUpdateLanguages.Text = "Include";
             this.btnUpdateLanguages.UseVisualStyleBackColor = true;
-            this.btnUpdateLanguages.Click += new System.EventHandler(this.btnUpdateLanguages_Click);
+            this.btnUpdateLanguages.Click += new System.EventHandler(this.BtnUpdateLanguages_Click);
             // 
             // tabControl1
             // 
@@ -1806,7 +1806,7 @@ namespace DatalistSyncUtil
             this.btnUpdateAttribute.TabIndex = 17;
             this.btnUpdateAttribute.Text = "Include";
             this.btnUpdateAttribute.UseVisualStyleBackColor = true;
-            this.btnUpdateAttribute.Click += new System.EventHandler(this.btnUpdateAttribute_Click);
+            this.btnUpdateAttribute.Click += new System.EventHandler(this.BtnUpdateAttribute_Click);
             // 
             // tabControl2
             // 
@@ -2273,7 +2273,7 @@ namespace DatalistSyncUtil
             this.btnLinkitem.TabIndex = 18;
             this.btnLinkitem.Text = "Include";
             this.btnLinkitem.UseVisualStyleBackColor = true;
-            this.btnLinkitem.Click += new System.EventHandler(this.btnLinkitem_Click);
+            this.btnLinkitem.Click += new System.EventHandler(this.BtnLinkitem_Click);
             // 
             // tabControl3
             // 
@@ -2450,7 +2450,7 @@ namespace DatalistSyncUtil
             this.NewLinkView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.NewLinkView.Size = new System.Drawing.Size(1652, 642);
             this.NewLinkView.TabIndex = 13;
-            this.NewLinkView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            this.NewLinkView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick_1);
             // 
             // NewLinkSelectAllCB
             // 
@@ -3017,7 +3017,7 @@ namespace DatalistSyncUtil
             this.btnItemAttribute.TabIndex = 16;
             this.btnItemAttribute.Text = "Include";
             this.btnItemAttribute.UseVisualStyleBackColor = true;
-            this.btnItemAttribute.Click += new System.EventHandler(this.btnItemAttribute_Click);
+            this.btnItemAttribute.Click += new System.EventHandler(this.BtnItemAttribute_Click);
             // 
             // tabControl4
             // 
@@ -3598,7 +3598,7 @@ namespace DatalistSyncUtil
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // PreviewUpdate
             // 

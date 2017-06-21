@@ -182,7 +182,7 @@
     <Compile Include="Models\DataListMainModel.cs" />
     <Compile Include="Views\DatalistDiff.cs">
       <SubType>Form</SubType>
-      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Views\DatalistDiff.designer.cs">
       <DependentUpon>DatalistDiff.cs</DependentUpon>
@@ -191,7 +191,7 @@
     <Compile Include="Models\AppSettingsModel.cs" />
     <Compile Include="Views\AppSettingDiff.cs">
       <SubType>Form</SubType>
-      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Views\AppSettingDiff.Designer.cs">
       <DependentUpon>AppSettingDiff.cs</DependentUpon>

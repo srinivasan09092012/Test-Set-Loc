@@ -18,8 +18,9 @@ namespace DatalistSyncUtil
     {
         public AppSettingDiff()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
+
         public AppSettingDiff(Guid tenantID, string type, List<AppSettingsModel> sourceAppsetting, List<AppSettingsModel> targetAppsetting)
         {
             this.InitializeComponent();
@@ -31,8 +32,8 @@ namespace DatalistSyncUtil
             this.SourceAppsetting = sourceAppsetting;
             this.TargetAppsetting = targetAppsetting;
             this.LoadModules();
-            //this.LoadApplicationNames();            
         }
+
         public ConnectionStringSettings TargetConnectionString { get; set; }
 
         public Guid TenantID { get; set; }
@@ -40,9 +41,11 @@ namespace DatalistSyncUtil
         public string DeltaType { get; set; }
 
         public ConnectionStringSettings SourceConnectionString { get; set; }
+
         public SourceTenantHelper LoadHelper { get; set; }
 
         public List<AppSettingsModel> NewAppsetting { get; set; }
+
         public List<AppSettingsModel> UpdateAppsetting { get; set; }
 
         public List<AppSettingsModel> SourceAppsetting { get; set; }
@@ -58,9 +61,10 @@ namespace DatalistSyncUtil
                 {
                     ModuleName = "---All Modules---",
                     TenantModuleId = Guid.Empty,
-                    TenantId = TenantID
+                    TenantId = this.TenantID
                 });
-            this.ModuleList.DataSource = modules.Where(w => w.TenantId == TenantID).GroupBy(i => i.ModuleName)
+
+            this.ModuleList.DataSource = modules.Where(w => w.TenantId == this.TenantID).GroupBy(i => i.ModuleName)
                   .Select(group =>
                         new
                         {
@@ -71,41 +75,14 @@ namespace DatalistSyncUtil
             this.ModuleList.DisplayMember = "ModuleName";
             this.ModuleList.SelectAll();
         }
-        //private void LoadDelta()
-        //{
-        //    switch (this.DeltaType.ToUpper())
-        //    {
-        //        case "APPSETTINGS":
-        //            this.LoadAppSettingDelta();                 
-        //            break;
-
-        //        default:
-        //            break;
-        //    }
-        //}
-        //private void LoadAppSettingDelta()
-        //{
-        //    List<AppSettingsModel> newAppsettings = null;          
-        //    this.NewItemsView.AutoGenerateColumns = false;
-        //    newAppsettings = this.GetAppsettings();            
-        //    Guid tenantModuleId = (this.ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
-        //    if (tenantModuleId != Guid.Empty)
-        //    {
-        //        newAppsettings = newAppsettings.Where(w => w.TenantModuleID == tenantModuleId).ToList();
-        //    }
-        //    this.NewItemsView.DataSource = new BindingList<AppSettingsModel>(newAppsettings);
-        //    this.NewItemsView.EditMode = DataGridViewEditMode.EditOnEnter;
-
-        //}
-        List<TenantModuleModel> selectedModules = new List<TenantModuleModel>();
 
         private bool CheckUpdateItemChanged(ref AppSettingsModel t, ref AppSettingsModel targetSetting)
         {
             bool itemChanged = false;
             if (t.ModuleName == "File Transfer")
             {
-
             }
+
             if (t.LastModifiedTimeStamp.Value != targetSetting.LastModifiedTimeStamp.Value)
             {
                 if (t.SettingTypeItemKey != "IOC" && t.AppSettingKey != "DefaultConnectionString")
@@ -116,11 +93,12 @@ namespace DatalistSyncUtil
                         t.EffectiveStartDateModified = targetSetting.EffectiveStartDateModified = true;
                     }
                 }
-
             }
+
             return itemChanged;
         }
-        private void btnListUpdate_Click(object sender, EventArgs e)
+
+        private void BtnListUpdate_Click(object sender, EventArgs e)
         {
             this.UpdateAppsetting = null;
             bool selected = false;
@@ -174,11 +152,11 @@ namespace DatalistSyncUtil
                 return;
             }
 
-            PreviewPage AppSettingPreviewPage = new PreviewPage(this.NewAppsetting);
-            AppSettingPreviewPage.ShowDialog();
+            PreviewPage appSettingPreviewPage = new PreviewPage(this.NewAppsetting);
+            appSettingPreviewPage.ShowDialog();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -199,9 +177,9 @@ namespace DatalistSyncUtil
             }
         }
 
-        private void drpApplication_SelectedIndexChanged(object sender, EventArgs e)
+        private void DrpApplication_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(drpApplication.SelectedIndex != 0)
+            if (drpApplication.SelectedIndex != 0)
             {
                 Guid applicationId = (this.drpApplication.SelectedItem as ApplicationModel).ApplicationId;
                 Guid tenantModuleId = (this.ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
@@ -212,7 +190,7 @@ namespace DatalistSyncUtil
                 var modulesQuery = from source in this.SourceAppsetting                                                                    
                                    where source.TenantModuleID == tenantModuleId
                                    where source.ApplicationId == applicationId                                   
-                                   where source.IsActive= true 
+                                   where source.IsActive = true 
                                    select source;
                 finalSource = modulesQuery.ToList();
 
@@ -229,8 +207,7 @@ namespace DatalistSyncUtil
                 newhtmllists.OrderBy(o => o.AppSettingKey).ToList();
                 this.NewItemsView.DataSource = new BindingList<AppSettingsModel>(newhtmllists);
                 this.NewItemsView.EditMode = DataGridViewEditMode.EditOnEnter;
-            }           
-            
+            }
         }
     }    
 }

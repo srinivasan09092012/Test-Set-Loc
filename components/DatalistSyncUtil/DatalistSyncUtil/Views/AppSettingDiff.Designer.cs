@@ -102,7 +102,7 @@
             this.btnClose.TabIndex = 35;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // AppSetting
             // 
@@ -148,7 +148,7 @@
             this.btnListUpdate.TabIndex = 34;
             this.btnListUpdate.Text = "Include";
             this.btnListUpdate.UseVisualStyleBackColor = true;
-            this.btnListUpdate.Click += new System.EventHandler(this.btnListUpdate_Click);
+            this.btnListUpdate.Click += new System.EventHandler(this.BtnListUpdate_Click);
             // 
             // NewItemsView
             // 
@@ -254,7 +254,7 @@
             this.drpApplication.Sorted = true;
             this.drpApplication.TabIndex = 38;
             this.drpApplication.ValueMember = "TenantModuleID";
-            this.drpApplication.SelectedIndexChanged += new System.EventHandler(this.drpApplication_SelectedIndexChanged);
+            this.drpApplication.SelectedIndexChanged += new System.EventHandler(this.DrpApplication_SelectedIndexChanged);
             // 
             // label1
             // 

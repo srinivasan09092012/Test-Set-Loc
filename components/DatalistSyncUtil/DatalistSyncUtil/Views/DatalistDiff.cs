@@ -15,7 +15,6 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-
 namespace DatalistSyncUtil
 {
     public partial class DatalistDiff : Form
@@ -36,8 +35,6 @@ namespace DatalistSyncUtil
             this.SourceList = sourceList;
             this.TargetList = targetList;
             this.LoadModules();
-           // this.LoadDelta();
-
         }
 
         public TenantHelper LoadHelper { get; set; }
@@ -79,6 +76,7 @@ namespace DatalistSyncUtil
         public List<ItemAttribute> UpdatedTargetAttribute { get; set; }
 
         public List<ItemAttribute> UpdateItemAttributes { get; set; }
+
         public List<DataListItemLink> NewLinkItem { get; set; }
 
         public List<DataListItemLink> UpdateListLinkItems { get; set; }
@@ -92,7 +90,6 @@ namespace DatalistSyncUtil
         public List<ItemDataListItemAttributeVal> NewItemAttributeVal { get; set; }
 
         public List<ItemDataListItemAttributeVal> UpdateAttributeVal { get; set; }
-
 
         public List<ItemDataListItemAttributeVal> UpdateTargetItemAttributes { get; set; }
 
@@ -125,7 +122,7 @@ namespace DatalistSyncUtil
                        ModuleName = "---All Modules---",
                        TenantModuleId = Guid.Empty,
                        TenantId = this.TenantID
-                   });          
+                   });
             this.ModuleList.DataSource = modules.Where(w => w.TenantId == this.TenantID).GroupBy(i => i.ModuleName)
                   .Select(group =>
                         new
@@ -134,7 +131,6 @@ namespace DatalistSyncUtil
                             Items = group.OrderByDescending(x => x.ModuleName)
                         })
                   .Select(g => g.Items.First()).OrderBy(o => o.ModuleName).ToList();
-
             this.ModuleList.DisplayMember = "ModuleName";
             this.ModuleList.SelectAll();
         }
@@ -226,8 +222,8 @@ namespace DatalistSyncUtil
             CodeItemModel dataListItemsLink = new CodeItemModel();
             List<CodeItemModel> sourceDatalistItems = null;
             List<CodeItemModel> targetDatalistItems = null;
-            List<DataListItemLink> SourcenewLinkItem = new List<DataListItemLink>();
-            List<DataListItemLink> TargetnewLinkItem = new List<DataListItemLink>();
+            List<DataListItemLink> sourcenewLinkItem = new List<DataListItemLink>();
+            List<DataListItemLink> targetnewLinkItem = new List<DataListItemLink>();
             List<DataListItemLink> updatedLink = new List<DataListItemLink>();
             List<DataListItemLink> updatedTargetLink = new List<DataListItemLink>();
             List<string> dataLists = this.SourceList.Select(c => c.ContentID).Intersect(this.TargetList.Select(c => c.ContentID)).ToList();
@@ -240,22 +236,23 @@ namespace DatalistSyncUtil
                     newDatalistItemsFromUpdateList = this.NewLinkItemList(sourceDatalistItems, targetDatalistItems);
                     newDatalistItemsLink.AddRange(newDatalistItemsFromUpdateList);
                 }
-
-
             });
+
             for (int i = 0; i < sourceDatalistItems.Count(); i++)
             {
-                SourcenewLinkItem = sourceDatalistItems[i].DataListLink;
+                sourcenewLinkItem = sourceDatalistItems[i].DataListLink;
                 if (i < targetDatalistItems.Count())
-                    TargetnewLinkItem = targetDatalistItems[i].DataListLink;
-                if (TargetnewLinkItem.Count() == SourcenewLinkItem.Count())
+                {
+                    targetnewLinkItem = targetDatalistItems[i].DataListLink;
+                }
+                    
+                if (targetnewLinkItem.Count() == sourcenewLinkItem.Count())
                 {
                     KeyValuePair<List<DataListItemLink>, List<DataListItemLink>> result = this.LoadUpdateLinkItem(sourceDatalistItems, targetDatalistItems);
                     updatedLink.AddRange(result.Key);
                     updatedTargetLink.AddRange(result.Value);
                 }
             }
-
 
             Guid tenantModuleId = (this.ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
             string moduleName = (this.ModuleList.SelectedItem as TenantModuleModel).ModuleName;
@@ -264,7 +261,7 @@ namespace DatalistSyncUtil
             {
                 newDatalistItemsLink = newDatalistItemsLink.Where(w => w.ContentID.StartsWith(moduleName.Replace(" ", string.Empty))).ToList();
             }
-            // newDatalistItemsLink = newDatalistItemsLink.Select(x => new DataListItemLink() {ParentCode = x.ParentCode.ToString(), ParentDataList=x.ParentDataList.ToString(),ChildDataList=x.ChildDataList.ToString(), Description=x.Description.ToString()}).OrderBy(o=>o.Code).ToList();
+            
             newDatalistItemsLink = newDatalistItemsLink.OrderBy(o => o.Code).ToList();
             this.NewLinkItem = newDatalistItemsLink;
             this.LinkgridView.AutoGenerateColumns = false;
@@ -282,12 +279,8 @@ namespace DatalistSyncUtil
             this.UpdatedTargetLink = updatedTargetLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
             this.SourceLinkView.DataSource = new BindingList<DataListItemLink>(updatedLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
             this.TargetLinkView.DataSource = new BindingList<DataListItemLink>(updatedTargetLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
-
-
-
-
-
         }
+
         private List<CodeItemModel> GetNewDatalistItemsFromExistingList()
         {
             List<CodeItemModel> newDatalistItemsFromUpdateList = new List<CodeItemModel>();
@@ -302,8 +295,6 @@ namespace DatalistSyncUtil
                 targetDatalistItems = this.TargetList.Find(e => e.ContentID == f).Items;
                 DataListMainModel List = this.TargetList.Find(e => e.ContentID == f);
 
-
-
                 dataListItems = sourceDatalistItems.Where(b => !targetDatalistItems.Any(a => a.ContentID == b.ContentID && a.Code == b.Code && a.IsActive == b.IsActive)).ToList();
 
                 if (dataListItems != null && dataListItems.Count > 0)
@@ -314,7 +305,6 @@ namespace DatalistSyncUtil
                         t.DatalistID = List.ID;
                         newDatalistItemsFromUpdateList.Add(t);
                     });
-
                 }
             });
 
@@ -333,10 +323,12 @@ namespace DatalistSyncUtil
             {
                 sourceLink = sourceDatalistItems[i].DataListLink;
                 if (i < targetDatalistItems.Count())
+                {
                     targetLink = targetDatalistItems[i].DataListLink;
+                }
+                    
                 if (sourceLink.Count > 0)
                 {
-
                     if (targetLink.Count() == sourceLink.Count())
                     {
                         sourceLink.ForEach(t =>
@@ -348,55 +340,50 @@ namespace DatalistSyncUtil
                                 t.Status = "Update";
                                 updatedLink.Add(t);
                                 updatedTargetLink.Add(targetItemLink);
-
                             }
                         });
-
-
                     }
                 }
             }
 
             return new KeyValuePair<List<DataListItemLink>, List<DataListItemLink>>(updatedLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList(), updatedTargetLink.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList());
         }
+
         private List<DataListItemLink> NewLinkItemList(List<CodeItemModel> sourceDatalistItems, List<CodeItemModel> targetDatalistItems)
         {
-            List<DataListItemLink> SourcenewLinkItem = new List<DataListItemLink>();
-            List<DataListItemLink> TargetnewLinkItem = new List<DataListItemLink>();
-            List<DataListItemLink> LinkResult = new List<DataListItemLink>();
-            List<DataListItemLink> LinkItem = new List<DataListItemLink>();
+            List<DataListItemLink> sourcenewLinkItem = new List<DataListItemLink>();
+            List<DataListItemLink> targetnewLinkItem = new List<DataListItemLink>();
+            List<DataListItemLink> linkResult = new List<DataListItemLink>();
+            List<DataListItemLink> linkItem = new List<DataListItemLink>();
             sourceDatalistItems = sourceDatalistItems.Where(t => t.IsActive == true).ToList();
             targetDatalistItems = targetDatalistItems.Where(t => t.IsActive == true).ToList();
             if (sourceDatalistItems.Count() == targetDatalistItems.Count())
             {
                 for (int i = 0; i < sourceDatalistItems.Count(); i++)
                 {
-                    SourcenewLinkItem = sourceDatalistItems[i].DataListLink;
-                    TargetnewLinkItem = targetDatalistItems[i].DataListLink;
-                    if (TargetnewLinkItem.Count() < SourcenewLinkItem.Count())
+                    sourcenewLinkItem = sourceDatalistItems[i].DataListLink;
+                    targetnewLinkItem = targetDatalistItems[i].DataListLink;
+                    if (targetnewLinkItem.Count() < sourcenewLinkItem.Count())
                     {
-                        LinkResult = SourcenewLinkItem.Where(b => !TargetnewLinkItem.Any(a => a.ParentID == b.ParentID && a.ChildID == b.ChildID && a.IsActive == b.IsActive)).ToList();
+                        linkResult = sourcenewLinkItem.Where(b => !targetnewLinkItem.Any(a => a.ParentID == b.ParentID && a.ChildID == b.ChildID && a.IsActive == b.IsActive)).ToList();
 
-                        if (LinkResult != null && LinkResult.Count > 0)
+                        if (linkResult != null && linkResult.Count > 0)
                         {
-                            LinkResult.ForEach(h =>
+                            linkResult.ForEach(h =>
                             {
                                 h.Status = "DATALIST_NEW";
-                                LinkItem.Add(h);
+                                linkItem.Add(h);
                             });
                         }
-
-
                     }
                 }
             }
             else
             {
-
-                //  MessageBox.Show("Insert Data List");
+//  MessageBox.Show("Insert Data List");
             }
 
-            return LinkItem.OrderBy(o => o.ParentID).ThenBy(t => t.ChildID).ToList();
+            return linkItem.OrderBy(o => o.ParentID).ThenBy(t => t.ChildID).ToList();
         }
 
         private void UpdatedDatalistItems()
@@ -652,8 +639,6 @@ namespace DatalistSyncUtil
             dataLists = this.SourceList.Select(c => c.ContentID).Except(this.TargetList.Select(c => c.ContentID)).ToList();
             List<DataListMainModel> newDatalists = this.SourceList.Where(c => dataLists.Contains(c.ContentID)).ToList();
 
-
-
             newDatalists.ForEach(i =>
             {
                 i.DataListAttributes.ForEach(f =>
@@ -676,14 +661,11 @@ namespace DatalistSyncUtil
                         {
                             f.Status = "DEFAULTITEM_NEW";
                         }
-
                     }
                     else
                     {
                         f.Status = "TYPEDATALIST_NEW";
                     }
-
-
 
                     newDatalistAttributes.Add(f);
                 });
@@ -762,14 +744,11 @@ namespace DatalistSyncUtil
             List<ItemAttribute> targetDatalistItems = new List<ItemAttribute>();
             List<ItemAttribute> dataListAttributes = new List<ItemAttribute>();
 
-
             List<string> dataLists = this.SourceList.Select(c => c.ContentID).Intersect(this.TargetList.Select(c => c.ContentID)).ToList();
             dataLists.ForEach(f =>
             {
                 sourceDatalistItems = this.SourceList.Find(e => e.ContentID == f).DataListAttributes;
                 targetDatalistItems = this.TargetList.Find(e => e.ContentID == f).DataListAttributes;
-
-
 
                 dataListAttributes = sourceDatalistItems.Where(b => !targetDatalistItems.Any(a => a.ContentID == b.ContentID && a.Code == b.Code)).ToList();
 
@@ -795,19 +774,15 @@ namespace DatalistSyncUtil
                             {
                                 h.Status = "DEFAULTITEM_NEW";
                             }
-
                         }
                         else
                         {
                             h.Status = "TYPEDATALIST_NEW";
                         }
+
                         newDataListAttribute.Add(h);
-
                     });
-
-
                 }
-
             });
 
             return newDataListAttribute.OrderBy(o => o.ContentID).ThenBy(t => t.Code).ToList();
@@ -871,7 +846,7 @@ namespace DatalistSyncUtil
             throw new NotImplementedException();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -896,7 +871,6 @@ namespace DatalistSyncUtil
                 {
                     row.DefaultCellStyle.BackColor = Color.LightBlue;
                     row.DefaultCellStyle.ForeColor = Color.Black;
-                    //row.ReadOnly = true;
                 }
                 else
                 {
@@ -1070,7 +1044,7 @@ namespace DatalistSyncUtil
             }
         }
 
-        private void btnListUpdate_Click(object sender, EventArgs e)
+        private void BtnListUpdate_Click(object sender, EventArgs e)
         {
             bool selected = false;
             this.UpdateList = new List<DataListMainModel>();
@@ -1085,7 +1059,7 @@ namespace DatalistSyncUtil
             }
         }
            
-        private void btnUpdateItems_Click(object sender, EventArgs e)
+        private void BtnUpdateItems_Click(object sender, EventArgs e)
         {
             bool selected = false;
             this.UpdateListItems = new List<CodeItemModel>();
@@ -1110,7 +1084,7 @@ namespace DatalistSyncUtil
             }
         }
 
-        private void btnUpdateLanguages_Click(object sender, EventArgs e)
+        private void BtnUpdateLanguages_Click(object sender, EventArgs e)
         {
             bool selected = false;
             this.UpdateItemLanguages = new List<ItemLanguage>();
@@ -1137,16 +1111,16 @@ namespace DatalistSyncUtil
 
         private void PreviewUpdate_Click(object sender, EventArgs e)
         {
-            if ( (this.UpdateList == null || this.UpdateList.Count() == 0) && (this.UpdateListItems == null || this.UpdateListItems.Count == 0) &&
+            if ((this.UpdateList == null || this.UpdateList.Count() == 0) && (this.UpdateListItems == null || this.UpdateListItems.Count == 0) &&
                 (this.UpdateAttributeVal == null || this.UpdateAttributeVal.Count() == 0) && (this.UpdateAttribute == null || this.UpdateAttribute.Count() == 0)
-                && (this.UpdateListLinkItems==null || this.UpdateListLinkItems.Count() == 0) 
+                && (this.UpdateListLinkItems == null || this.UpdateListLinkItems.Count() == 0) 
                 && (this.UpdateItemLanguages == null || this.UpdateItemLanguages.Count() == 0))
             {
                 MessageBox.Show("Error:Please include some rows before preview screen");
                 return;
             }
 
-            string ItemList = String.Empty;
+            string itemList = string.Empty;
             bool chkItems = false;
 
             if (this.UpdateList != null)
@@ -1159,11 +1133,12 @@ namespace DatalistSyncUtil
                 this.UpdateListItems.ForEach(x => x.Attributes = null);
             }
 
-
             if (this.UpdateAttributeVal != null)
             {
                 if (this.UpdateListItems == null)
+                {
                     this.UpdateListItems = new List<CodeItemModel>();
+                } 
 
                 this.UpdateAttributeVal.ForEach(x =>
                 {
@@ -1173,35 +1148,39 @@ namespace DatalistSyncUtil
                         {
                             CodeItemModel list = this.UpdateListItems.Find(c => c.ID == x.DataListItemID);
                             if (list == null)
+                            {
                                 chkItems = true;
+                            }     
                         }
                         else
                         {
                             chkItems = true;
                         }
-                        ItemList = ItemList + x.ItemCode + Environment.NewLine;
+
+                        itemList = itemList + x.ItemCode + Environment.NewLine;
                     }
                 });
 
                 if (chkItems)
                 {
-                    MessageBox.Show("Error:Please include following related DataListItems from Items tabs " + ItemList);
+                    MessageBox.Show("Error:Please include following related DataListItems from Items tabs " + itemList);
                     return;
-
                 }
                 else
                 {
-                    List<string> DataListContentID = this.UpdateAttributeVal.Select(c => c.ParentContentId).Distinct().ToList();
+                    List<string> dataListContentID = this.UpdateAttributeVal.Select(c => c.ParentContentId).Distinct().ToList();
                     List<CodeItemModel> items = new List<CodeItemModel>();
 
-                    DataListContentID.ForEach(x =>
+                    dataListContentID.ForEach(x =>
                     {
-                       
                         items = this.TargetList.Find(t => t.ContentID == x).Items;
 
-                        List<CodeItemModel> listFinalItems = this.UpdateListItems.Where(t => t.ContentID == x &&( t.Status == "DATALIST_NEW" || t.Status == "NEW")).ToList();
+                        List<CodeItemModel> listFinalItems = this.UpdateListItems.Where(t => t.ContentID == x && (t.Status == "DATALIST_NEW" || t.Status == "NEW")).ToList();
                         if (listFinalItems != null)
-                        items.AddRange(listFinalItems);
+                        {
+                            items.AddRange(listFinalItems);
+                        }
+                        
                         items.ForEach(t =>
                         {
                             List<ItemDataListItemAttributeVal> itematrributes = this.UpdateAttributeVal.Where(f => f.ParentContentId == x && f.ItemCode == t.Code).ToList();
@@ -1212,28 +1191,23 @@ namespace DatalistSyncUtil
                             }
                             else
                             {
-
                                 t.Attributes = itematrributes;
                                 UpdateListItems.Add(t);
                             }
                         });
-
-
                     });
-
                 }
             }
-
-
-
-
 
             bool chkAttributes = false;
             if (this.UpdateAttribute != null)
             {
                 if (this.UpdateList == null)
+                {
                     this.UpdateList = new List<DataListMainModel>();
-                string List = String.Empty;
+                }
+                    
+                string list = string.Empty;
 
                 this.UpdateAttribute.ForEach(x =>
                 {
@@ -1241,30 +1215,31 @@ namespace DatalistSyncUtil
                     {
                         if (this.UpdateList != null)
                         {
-                            DataListMainModel list = this.UpdateList.Find(c => c.ContentID == x.ParentContentId);
-                            if (list == null)
+                            DataListMainModel lists = this.UpdateList.Find(c => c.ContentID == x.ParentContentId);
+                            if (lists == null)
+                            {
                                 chkAttributes = true;
+                            }        
                         }
                         else
                         {
                             chkAttributes = true;
                         }
-                        List = ItemList + x.ParentContentId + Environment.NewLine;
+
+                        list = itemList + x.ParentContentId + Environment.NewLine;
                     }
                 });
 
                 if (chkAttributes)
                 {
-                    MessageBox.Show("Error:Please include following related DataList from Datalist Tab " + List);
+                    MessageBox.Show("Error:Please include following related DataList from Datalist Tab " + list);
                     return;
-
                 }
                 else
                 {
-                    List<string> DataListItem = this.UpdateAttribute.Select(c => c.ParentContentId).Distinct().ToList();
-                    DataListItem.ForEach(x =>
+                    List<string> dataListItem = this.UpdateAttribute.Select(c => c.ParentContentId).Distinct().ToList();
+                    dataListItem.ForEach(x =>
                     {
-
                         DataListMainModel DataList = new DataListMainModel();
                         List<ItemAttribute> attribute = this.UpdateAttribute.Where(c => c.ParentContentId == x).ToList();
 
@@ -1278,14 +1253,9 @@ namespace DatalistSyncUtil
                             DataList.DataListAttributes = attribute;
                             UpdateList.Add(DataList);
                         }
-
-
-
                     });
                 }
             }
-
-
 
             if (!chkItems)
             {
@@ -1692,7 +1662,7 @@ namespace DatalistSyncUtil
             return itemChanged;
         }
 
-        private void btnUpdateAttribute_Click(object sender, EventArgs e)
+        private void BtnUpdateAttribute_Click(object sender, EventArgs e)
         {
             bool selected = false;
             this.UpdateAttribute = new List<ItemAttribute>();
@@ -1717,20 +1687,10 @@ namespace DatalistSyncUtil
             }
         }
 
-        private void tabPage3_Click(object sender, EventArgs e)
+        private void DataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
         private void NewLinkSelectAllCB_CheckedChanged(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in this.LinkgridView.Rows)
@@ -1739,7 +1699,7 @@ namespace DatalistSyncUtil
             }
         }
 
-        private void btnLinkitem_Click(object sender, EventArgs e)
+        private void BtnLinkitem_Click(object sender, EventArgs e)
         {
             bool selected = false;
             this.UpdateListLinkItems = new List<DataListItemLink>();
@@ -1766,10 +1726,9 @@ namespace DatalistSyncUtil
 
         private void TargetLinkView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
-        private void btnItemAttribute_Click(object sender, EventArgs e)
+        private void BtnItemAttribute_Click(object sender, EventArgs e)
         {
             bool selected = false;
             this.UpdateAttributeVal = new List<ItemDataListItemAttributeVal>();
@@ -1805,7 +1764,6 @@ namespace DatalistSyncUtil
                     row.Cells[0].Value = this.NewItemAttrNewDataListCB.Checked;
                 }
             }
-
         }
 
         private void NewItemAtrrNewItemsCB_CheckedChanged(object sender, EventArgs e)
@@ -1832,8 +1790,8 @@ namespace DatalistSyncUtil
                     row.Cells[0].Value = this.NewItemAttrExitingItemsCB.Checked;
                 }
             }
-
         }
+
         private void NewItemAttributeView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             foreach (DataGridViewRow row in this.NewItemAttributeView.Rows)
@@ -1855,24 +1813,21 @@ namespace DatalistSyncUtil
                     row.ReadOnly = isEditable;
                 }
 
-
                 if (rowStatus == "DATALISTITEM_NEW")
                 {
                     row.DefaultCellStyle.BackColor = Color.LightGray;
                     row.DefaultCellStyle.ForeColor = Color.Black;
                     row.ReadOnly = isEditable;
                 }
-
-
             }
         }
+
         private void NewItemsAttrSelectAllCB_CheckedChanged(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in this.NewItemAttributeView.Rows)
             {
                 row.Cells[0].Value = this.NewItemsAttrSelectAllCB.Checked;
             }
-
         }
 
         private void ItemAttributesDataListCB_CheckedChanged(object sender, EventArgs e)
@@ -1888,7 +1843,6 @@ namespace DatalistSyncUtil
             string msgContentID = ".Msg";
             string datalistContentID = ".DataList";
             bool isChecked = false;
-
 
             if (this.ItemAttributesMsgCB.Checked)
             {
@@ -1940,7 +1894,6 @@ namespace DatalistSyncUtil
 
         private void LoadDataListItemAttributes()
         {
-
             List<ItemDataListItemAttributeVal> newDatalistitemAttributes = new List<ItemDataListItemAttributeVal>();
             List<ItemDataListItemAttributeVal> newDatalistitemAttributesExisting = new List<ItemDataListItemAttributeVal>();
             List<ItemDataListItemAttributeVal> newDataListItemAttriuteFromNewItems = new List<ItemDataListItemAttributeVal>();
@@ -1951,7 +1904,6 @@ namespace DatalistSyncUtil
             List<CodeItemModel> codeitem = new List<CodeItemModel>();
             List<ItemAttribute> attributes = new List<ItemAttribute>();
             this.TargetList.ForEach(t => { attributes.AddRange(t.DataListAttributes); });
-
 
             newDatalists.ForEach(i =>
             {
@@ -1973,9 +1925,8 @@ namespace DatalistSyncUtil
                         }
                         else
                         {  
-                            f.IsEditable=true;
+                            f.IsEditable = true;
                         }
-
 
                         newDatalistitemAttributes.Add(x);
                     });
@@ -1987,7 +1938,6 @@ namespace DatalistSyncUtil
 
             newDatalistitemAttributesExisting = this.GetNewItemAttributesFromExistingItems();
             newDatalistitemAttributes.AddRange(newDatalistitemAttributesExisting);
-
 
             Guid tenantModuleId = (this.ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
             string moduleName = (this.ModuleList.SelectedItem as TenantModuleModel).ModuleName;
@@ -2003,7 +1953,6 @@ namespace DatalistSyncUtil
             this.NewItemAttributeView.DataSource = new BindingList<ItemDataListItemAttributeVal>(newDatalistitemAttributes);
             this.LoadUpdateItemAttributeFromExistingItems();
         }
-
 
         private List<ItemDataListItemAttributeVal> GetNewItemAttributesFromExistingItems()
         {
@@ -2048,6 +1997,7 @@ namespace DatalistSyncUtil
                             {
                                 h.IsEditable = true;
                             }
+
                             newDatalistItemAttributes.Add(h);
                         });
                     }
@@ -2056,7 +2006,6 @@ namespace DatalistSyncUtil
             });
 
             return newDatalistItemAttributes.OrderBy(o => o.ParentContentId).ThenBy(t => t.ItemCode).ToList();
-
         }
 
         private List<ItemDataListItemAttributeVal> GetNewItemAttributesFromNewItems()
@@ -2064,26 +2013,23 @@ namespace DatalistSyncUtil
             List<ItemDataListItemAttributeVal> newDataListItemAttribute = new List<ItemDataListItemAttributeVal>();
             List<CodeItemModel> sourceDatalistItems = new List<CodeItemModel>();
             List<CodeItemModel> targetDatalistItems = new List<CodeItemModel>();
-            List<CodeItemModel> ExitingDatalistItems = new List<CodeItemModel>();
+            List<CodeItemModel> exitingDatalistItems = new List<CodeItemModel>();
             List<ItemDataListItemAttributeVal> dataListAttributes = new List<ItemDataListItemAttributeVal>();
             List<ItemAttribute> attributes = new List<ItemAttribute>();
             this.TargetList.ForEach(t => { attributes.AddRange(t.DataListAttributes); });
-
 
             List<string> dataLists = this.SourceList.Select(c => c.ContentID).Intersect(this.TargetList.Select(c => c.ContentID)).ToList();
 
             dataLists.ForEach(f =>
             {
-
                 sourceDatalistItems = this.SourceList.Find(e => e.ContentID == f).Items;
                 targetDatalistItems = this.TargetList.Find(e => e.ContentID == f).Items;
 
+                exitingDatalistItems = sourceDatalistItems.Where(b => !targetDatalistItems.Any(a => a.ContentID == b.ContentID && a.Code == b.Code && a.IsActive == b.IsActive)).ToList();
 
-                ExitingDatalistItems = sourceDatalistItems.Where(b => !targetDatalistItems.Any(a => a.ContentID == b.ContentID && a.Code == b.Code && a.IsActive == b.IsActive)).ToList();
-
-                if (ExitingDatalistItems != null && ExitingDatalistItems.Count > 0)
+                if (exitingDatalistItems != null && exitingDatalistItems.Count > 0)
                 {
-                    ExitingDatalistItems.ForEach(l =>
+                    exitingDatalistItems.ForEach(l =>
                     {
                         l.Attributes.ForEach(h =>
                         {
@@ -2101,13 +2047,12 @@ namespace DatalistSyncUtil
                             else
                             {
                                 h.IsEditable = true;
-
                             }
+
                             newDataListItemAttribute.Add(h);
                         });
                     });
                 }
-
             });
 
             return newDataListItemAttribute.OrderBy(o => o.DataListAttributeName).ToList();
@@ -2116,7 +2061,6 @@ namespace DatalistSyncUtil
         private void ItemAttributesMsgCB_CheckedChanged(object sender, EventArgs e)
         {
             this.FilterDataListItemAttributes();
-
         }
 
         private void LoadUpdateItemAttributeFromExistingItems()
@@ -2154,9 +2098,7 @@ namespace DatalistSyncUtil
                                 if (targetDatalistItemAttribute.DataListAttributeValue != null && targetDatalistItemAttribute.DataListAttributeValue.Trim() != h.DataListAttributeValue.Trim())
                                 {
                                     isChanged = true;
-
                                 }
-
 
                                 if (isChanged)
                                 {
@@ -2171,7 +2113,6 @@ namespace DatalistSyncUtil
                             });
                         }
                     });
-                
                 }
             });
 
@@ -2187,8 +2128,8 @@ namespace DatalistSyncUtil
 
             this.UpdateSourceItemAttributeVal = updateSourceDatalistItemAttributes;
             this.UpdateTargetItemAttributes = updateTargetDatalistItemAttributes;
-            this.UpdateSourceItemAttributeView.DataSource = new BindingList<ItemDataListItemAttributeVal>(UpdateSourceItemAttributeVal.OrderBy(o => o.ParentContentId).ToList());
-            this.UpdateTargetItemAttributeView.DataSource = new BindingList<ItemDataListItemAttributeVal>(UpdateTargetItemAttributes.OrderBy(o => o.ParentContentId).ToList());
+            this.UpdateSourceItemAttributeView.DataSource = new BindingList<ItemDataListItemAttributeVal>(this.UpdateSourceItemAttributeVal.OrderBy(o => o.ParentContentId).ToList());
+            this.UpdateTargetItemAttributeView.DataSource = new BindingList<ItemDataListItemAttributeVal>(this.UpdateTargetItemAttributes.OrderBy(o => o.ParentContentId).ToList());
         }
 
         private void NewAttributeView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -2216,7 +2157,6 @@ namespace DatalistSyncUtil
                     row.DefaultCellStyle.BackColor = Color.WhiteSmoke;
                     row.DefaultCellStyle.ForeColor = Color.Black;
                     row.ReadOnly = false;
-
                 }
             }
         }
