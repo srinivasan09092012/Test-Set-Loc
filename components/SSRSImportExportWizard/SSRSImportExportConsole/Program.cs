@@ -45,8 +45,12 @@ namespace SSRSImportExportConsole
             {
                 if (ConnectReportServer())
                 {
+                    LoggerManager.Logger.LogInformational("Report Import process started");
                     new ImportReportItems(ReportServer, UploadPath);
+                    LoggerManager.Logger.LogInformational("Report Import process ended");
+                    LoggerManager.Logger.LogInformational("Datasource update process started");
                     new UpdateDataSource(ReportServer, string.Empty, ConfigFileName);
+                    LoggerManager.Logger.LogInformational("Datasource update process ended");
                     LoggerManager.Logger.LogInformational("Report Import completed successfully");
                 }
             }
