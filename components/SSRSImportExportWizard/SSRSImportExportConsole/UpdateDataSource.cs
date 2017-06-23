@@ -1,11 +1,10 @@
-﻿using SSRSImportExportConsole.ReportServer2010;
+﻿using HPE.HSP.UA3.Core.API.Logger;
+using SSRSImportExportConsole.ReportServer2010;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace SSRSImportExportConsole
@@ -88,11 +87,11 @@ namespace SSRSImportExportConsole
                             try
                             {
                                 this.ReportServer.SetItemDataSources(item.Path, dataSources);
-                                Console.WriteLine("Report DataSource " + item.Path + " created successfully");
+                                LoggerManager.Logger.LogInformational("Report DataSource " + item.Path + " created successfully");
                             }
                             catch (Exception ex)
                             {
-                                Console.WriteLine("FATAL ERROR: " + item.Path + " : " + ex.ToString());
+                                LoggerManager.Logger.LogFatal("FATAL ERROR: " + item.Path + " : " + ex.ToString());
                             }
                         }
                     }
@@ -122,11 +121,11 @@ namespace SSRSImportExportConsole
                                 try
                                 {
                                     this.ReportServer.SetDataSourceContents(item.Path, def);
-                                    Console.WriteLine("Shared DataSource " + item.Path + " created successfully");
+                                    LoggerManager.Logger.LogInformational("Shared DataSource " + item.Path + " created successfully");
                                 }
                                 catch (Exception ex)
                                 {
-                                    Console.WriteLine("FATAL ERROR: " + item.Path + " : " + ex.ToString());
+                                    LoggerManager.Logger.LogFatal("FATAL ERROR: " + item.Path + " : " + ex.ToString());
                                 }
                             }
                         }
@@ -135,7 +134,7 @@ namespace SSRSImportExportConsole
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error while updating Report DataSources: " + ex.ToString());
+                LoggerManager.Logger.LogFatal("Error while updating Report DataSources: " + ex.ToString());
             }
         }
 

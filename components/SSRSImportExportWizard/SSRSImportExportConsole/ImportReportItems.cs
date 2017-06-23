@@ -7,6 +7,7 @@ using SSRSImportExportConsole.ReportServer2010;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
+using HPE.HSP.UA3.Core.API.Logger;
 
 namespace SSRSImportExportConsole
 {
@@ -69,7 +70,7 @@ namespace SSRSImportExportConsole
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine("Create Report error: " + ex.ToString());
+                            LoggerManager.Logger.LogFatal("Create Report error: " + ex.ToString());
                         }
 
                         xmlDoc.Load(fi.FullName);
@@ -108,7 +109,7 @@ namespace SSRSImportExportConsole
                                 }
                                 catch (Exception ex)
                                 {
-                                    Console.WriteLine("Update Item DataSources error: " + ex.ToString());
+                                    LoggerManager.Logger.LogFatal("Update Item DataSources error: " + ex.ToString());
                                 }
                             }
                         }
@@ -149,12 +150,12 @@ namespace SSRSImportExportConsole
                                 }
                                 catch (Exception ex)
                                 {
-                                    Console.WriteLine("Update Item References error: " + ex.ToString());
+                                    LoggerManager.Logger.LogFatal("Update Item References error: " + ex.ToString());
                                 }
                             }
                         }
 
-                        Console.WriteLine("Report " + fi.Name.Replace(".rdl", string.Empty) + " created successfully");
+                        LoggerManager.Logger.LogInformational("Report " + fi.Name.Replace(".rdl", string.Empty) + " created successfully");
                     }
                 }
             }
@@ -199,11 +200,11 @@ namespace SSRSImportExportConsole
                         try
                         {
                             this.ReportServer.CreateCatalogItem("DataSource", fi.Name.Replace(".rds", string.Empty), "/Data Sources", true, definition, null, out warnings);
-                            Console.WriteLine("Data Source " + fi.Name.Replace(".rds", string.Empty) + " created successfully");
+                            LoggerManager.Logger.LogInformational("Data Source " + fi.Name.Replace(".rds", string.Empty) + " created successfully");
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine("Create DataSource error: " + ex.ToString());
+                            LoggerManager.Logger.LogFatal("Create DataSource error: " + ex.ToString());
                         }
                     }
                 }
@@ -238,11 +239,11 @@ namespace SSRSImportExportConsole
                                 this.ReportServer.SetItemReferences("/Datasets/" + fi.Name.Replace(".rsd", string.Empty), dataSourceReference.ToArray());
                             }
 
-                            Console.WriteLine("Dataset " + fi.Name.Replace(".rsd", string.Empty) + " created successfully");
+                            LoggerManager.Logger.LogInformational("Dataset " + fi.Name.Replace(".rsd", string.Empty) + " created successfully");
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine("Create DataSet error: " + ex.ToString());
+                            LoggerManager.Logger.LogFatal("Create DataSet error: " + ex.ToString());
                         }
                     }
                 }
@@ -279,11 +280,11 @@ namespace SSRSImportExportConsole
                 try
                 {
                     this.ReportServer.CreateFolder(di.Name, parent.Replace("\\", "/"), null);
-                    Console.WriteLine("Folder " + di.Name + " created successfully");
+                    LoggerManager.Logger.LogInformational("Folder " + di.Name + " created successfully");
                 }
                 catch
                 {
-                    Console.WriteLine(di.Name + " folder already exist");
+                    LoggerManager.Logger.LogWarning(di.Name + " folder already exist");
                 }
             }
         }

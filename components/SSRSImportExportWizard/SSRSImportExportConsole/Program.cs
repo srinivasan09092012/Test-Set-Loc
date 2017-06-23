@@ -1,11 +1,7 @@
-﻿using SSRSImportExportConsole.ReportServer2010;
+﻿using HPE.HSP.UA3.Core.API.Logger;
+using SSRSImportExportConsole.ReportServer2010;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Services.Protocols;
 
 namespace SSRSImportExportConsole
@@ -34,13 +30,13 @@ namespace SSRSImportExportConsole
             }
             else
             {
-                Console.WriteLine("The target url, username, password and download path are required. Process terminated");
+                LoggerManager.Logger.LogFatal("The target url, username, password and download path are required. Process terminated");
                 return;
             }
 
             if (string.IsNullOrEmpty(ReportURL) || string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(UploadPath))
             {
-                Console.WriteLine("The target url, username, password and download path are required");
+                LoggerManager.Logger.LogFatal("The target url, username, password and download path are required");
             }
             else
             {
@@ -68,7 +64,7 @@ namespace SSRSImportExportConsole
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error while connecting:" + ex.ToString());
+                LoggerManager.Logger.LogFatal("Error while connecting:" + ex.ToString());
             }
 
             return returnFlag;
