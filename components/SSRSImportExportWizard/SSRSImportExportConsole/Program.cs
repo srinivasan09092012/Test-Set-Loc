@@ -16,16 +16,19 @@ namespace SSRSImportExportConsole
 
         public static string UploadPath { get; set; }
 
+        public static string ConfigFileName { get; set; }
+
         public static ReportingService2010 ReportServer { get; set; }
 
         static void Main(string[] args)
         {
-            if(args.Length == 4)
+            if(args.Length == 5)
             {
                 ReportURL = args[0].Trim();
                 UserName = args[1].Trim();
                 Password = args[2].Trim();
                 UploadPath = args[3].Trim();
+                ConfigFileName = args[4].Trim();
                 ReportServer = new ReportingService2010();
             }
             else
@@ -43,7 +46,8 @@ namespace SSRSImportExportConsole
                 if (ConnectReportServer())
                 {
                     new ImportReportItems(ReportServer, UploadPath);
-                    new UpdateDataSource(ReportServer, string.Empty);
+                    new UpdateDataSource(ReportServer, string.Empty, ConfigFileName);
+                    LoggerManager.Logger.LogInformational("Report Import completed successfully");
                 }
             }
         }

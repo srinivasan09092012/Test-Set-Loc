@@ -15,10 +15,13 @@ namespace SSRSImportExportConsole
 
         public string RootPath { get; set; }
 
-        public UpdateDataSource(ReportingService2010 reportServer, string rootPath)
+        public string ConfigFileName { get; set; }
+
+        public UpdateDataSource(ReportingService2010 reportServer, string rootPath, string configFileName)
         {
             this.ReportServer = reportServer;
             this.RootPath = rootPath;
+            this.ConfigFileName = configFileName;
             this.SetReportDataSources();
         }
 
@@ -29,7 +32,8 @@ namespace SSRSImportExportConsole
 
             try
             {
-                XElement xelement = GetFromResources(@"Reports.xml");
+                //XElement xelement = GetFromResources(@"Reports.xml");
+                XElement xelement = XElement.Load(this.ConfigFileName);
                 var strings = from nm in xelement.Elements("ReplaceStrings")
                              select nm;
 
