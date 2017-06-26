@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true">
+<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useTfs="true">
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs>
     <ModuleConfig name="Administration" branch="036" types="All" />
@@ -39,29 +39,7 @@
   <LineDeletes />
   <ReplacementStrings>
     <!-- Assembly Versions in Assembly Info file -->
-    <ReplacementString qualifier="AssemblyVersion(" from="1.0.0.0" to="17.36.2.0" />
-    <ReplacementString qualifier="AssemblyFileVersion(" from="1.0.0.0" to="17.36.2.0" />
-
-    <!-- Assembly Versions in Project Files -->
-    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.BatchProcessingFactory" from="Version=1.0.0.0" to="Version=17.36.2.0" />
-    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.Core" from="Version=1.0.0.0" to="Version=17.36.2.0" />
-    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.ClaimsManagement" from="Version=1.0.0.0" to="Version=17.36.2.0" />
-    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.Core" from="Version=1.0.0.0" to="Version=17.36.2.0" />
-
-    <!-- Package Names in Copy Assemblies Batch Files -->
-    <ReplacementString qualifier="1.0.0\lib" from="1.0.0" to="17.36.2" />
-
-    <!-- Package Names in Project Files -->
-    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.BatchProcessingFactory" from="1.0.0" to="17.36.2" />
-    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.Core" from="1.0.0" to="17.36.2" />
-    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.ClaimsManagement" from="1.0.0" to="17.36.2" />
-    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.Core" from="1.0.0" to="17.36.2" />
-
-    <!-- Package Names in Packages.config Files -->
-    <ReplacementString qualifier="package id=&quot;HP.HSP.UA3.BatchProcessingFactory" from="1.0.0" to="17.36.2" />
-    <ReplacementString qualifier="package id=&quot;HP.HSP.UA3.Core" from="1.0.0" to="17.36.2" />
-    <ReplacementString qualifier="package id=&quot;HPE.HSP.UA3.ClaimsManagement" from="1.0.0" to="17.36.2" />
-    <ReplacementString qualifier="package id=&quot;HPE.HSP.UA3.Core" from="1.0.0" to="17.36.2" />
+    <ReplacementString qualifier="AssemblyFileVersion(" from="17.36.2.0" to="17.36.2.1" />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
 </RefactorConfig>

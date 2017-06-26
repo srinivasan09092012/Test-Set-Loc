@@ -3,7 +3,33 @@
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs>
     <ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />
+    <ModuleConfig name="Administration" branch="Dev" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
     <ModuleConfig name="Core" branch="Dev" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
+    <ModuleConfig name="EDI" branch="Dev" types="All" />
+    <ModuleConfig name="eID" branch="Dev" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
+    <ModuleConfig name="KansasOnly" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
+    <ModuleConfig name="MemberManagement" branch="Dev" types="All" />
+    <ModuleConfig name="MemberPortal" branch="Dev" types="All" />
+    <ModuleConfig name="Notifications" branch="Dev" types="All" />
+    <ModuleConfig name="PlanManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProDUR" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="Dev" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
+    <ModuleConfig name="Utilities" branch="Dev" types="All" />
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>

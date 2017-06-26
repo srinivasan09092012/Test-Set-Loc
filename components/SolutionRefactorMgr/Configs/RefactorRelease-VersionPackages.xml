@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Copy" includeFolderNames="true" includeFileNames="true" includeFileContents="true" useSourceControl="true">
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs />
+  <PackageConfigs>
+    <PackageConfig qualifierPrefix="HP.HSP" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP" rebuildPackage="true" reformatSource="true" />
+  </PackageConfigs>
+  <FileTypes>
+    <FileType>.nupkg</FileType>
+    <FileType>.nuspec</FileType>
+  </FileTypes>
+  <LineDeletes />
+  <ReplacementStrings>
+    <ReplacementString qualifier="&lt;version&gt;1.0.0&lt;/version&gt;" from="1.0.0" to="17.4.43" />
+    <ReplacementString qualifier="HP.HSP.UA3" from="1.0.0" to="17.4.43" />
+    <ReplacementString qualifier="HPE.HSP.UA3" from="1.0.0" to="17.4.43" />
+  </ReplacementStrings>
+  <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
+</RefactorConfig>

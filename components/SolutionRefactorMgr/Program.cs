@@ -5,6 +5,10 @@ using SolutionRefactorMgr.Domain;
 using SolutionRefactorMgr.Utilities;
 using System;
 using System.IO;
+using System.Xml;
+using nuget = NuGet;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace SolutionRefactorMgr
 {
@@ -64,7 +68,7 @@ namespace SolutionRefactorMgr
 
         private static void InitializeTfs()
         {
-            if (!string.IsNullOrWhiteSpace(refactorConfig.TfsServer))
+            if (refactorConfig.UseSourceControl)
             {
                 LogMessage(0, string.Format("Initializing connection to TFS..."));
                 tpc = new TfsTeamProjectCollection(new Uri(refactorConfig.TfsServer));
@@ -192,9 +196,9 @@ namespace SolutionRefactorMgr
                 }
                 else
                 {
-                    if (string.Compare(origDest, newDest, false) != 0)
+                    if (string.Compare(source, newDest, false) != 0)
                     {
-                        TfsPendRename(origDest, newDest);
+                        TfsPendRename(source, newDest);
                         source = newDest;
                     }
                 }
@@ -272,8 +276,8 @@ namespace SolutionRefactorMgr
                     else
                     {
                         File.WriteAllText(newPath, newFileContents);
-                        File.SetAttributes(newPath, File.GetAttributes(newPath) & ~FileAttributes.ReadOnly);
                     }
+                    File.SetAttributes(newPath, File.GetAttributes(newPath) & ~FileAttributes.ReadOnly);
                     TfsPendAdd(newPath);
                 }
                 else
@@ -296,6 +300,7 @@ namespace SolutionRefactorMgr
                 {
                     string newPath = Path.Combine(dest, file.Name);
                     File.Copy(file.FullName, newPath);
+                    File.SetAttributes(newPath, File.GetAttributes(newPath) & ~FileAttributes.ReadOnly);
                     TfsPendAdd(newPath);
                 }
             }
@@ -398,8 +403,98 @@ namespace SolutionRefactorMgr
                     }
 
                     RefactorDirectory(subdir.FullName, destPath + newDirName, destPath + newDirName, true, 2);
+                    DirectoryInfo newPackageDir = new DirectoryInfo(destPath + newDirName);
+                    if (package.ReformatSource)
+                    {
+                        ReformatPackageSource(newPackageDir, 2);
+                    }
+
+                    if (package.RebuildPackage)
+                    {
+                        RebuildNugetPackage(newPackageDir, 2);
+                    }
                 }
             }
+        }
+
+        private static void RebuildNugetPackage(DirectoryInfo packageDir, int level)
+        {
+            LogMessage(level, string.Format("Rebuilding package source: '{0}'", packageDir.FullName));
+            FileInfo nuspecFile;
+            FileInfo nupkgFile;
+            FileInfo[] files = packageDir.GetFiles("*.nuspec");
+            if (files.Length == 1)
+            {
+                nuspecFile = files[0];
+            }
+            else
+            {
+                throw new ApplicationException(string.Format("Unable to find nuspec file for package '{0}'.", packageDir.FullName));
+            }
+
+            files = packageDir.GetFiles("*.nupkg");
+            if (files.Length == 1)
+            {
+                nupkgFile = files[0];
+            }
+            else
+            {
+                throw new ApplicationException(string.Format("Unable to find nupkg file for package '{0}'.", packageDir.FullName));
+            }
+            TfsPendEdit(nupkgFile.FullName);
+
+            string command = string.Format("pack {0}", nuspecFile.FullName);
+            using (Process cmd = new Process())
+            {
+                cmd.StartInfo.FileName = "NuGet.exe";
+                cmd.StartInfo.Arguments = command;
+                cmd.StartInfo.RedirectStandardInput = true;
+                cmd.StartInfo.RedirectStandardOutput = true;
+                cmd.StartInfo.CreateNoWindow = true;
+                cmd.StartInfo.UseShellExecute = false;
+                cmd.Start();
+                cmd.StandardInput.Flush();
+                cmd.StandardInput.Close();
+                cmd.WaitForExit();
+                LogMessage(level, cmd.StandardOutput.ReadToEnd());
+            }
+            string sourcePkg = string.Format("{0}\\{1}", Directory.GetCurrentDirectory(), nuspecFile.Name.Replace(".nuspec", ".nupkg"));
+            if (File.Exists(nupkgFile.FullName))
+            {
+                File.Delete(nupkgFile.FullName);
+            }
+
+            File.Move(sourcePkg, nupkgFile.FullName);
+        }
+
+        private static void ReformatPackageSource(DirectoryInfo packageDir, int level)
+        {
+            LogMessage(level, string.Format("Reformating package source: '{0}'", packageDir.FullName));
+            FileInfo nuspecFile;
+            FileInfo[] files = packageDir.GetFiles("*.nuspec");
+            if (files.Length == 1)
+            {
+                nuspecFile = files[0];
+            }
+            else
+            {
+                throw new ApplicationException(string.Format("Unable to find nuspec file for package '{0}'.", packageDir.FullName));
+            }
+            TfsPendEdit(nuspecFile.FullName);
+
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(nuspecFile.FullName);
+            XmlNamespaceManager nsmgr = new XmlNamespaceManager(xmlDoc.NameTable);
+            nsmgr.AddNamespace("ms", "http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd");
+            XmlNodeList assemblyFiles = xmlDoc.SelectNodes("//ms:file", nsmgr);
+            if (assemblyFiles != null && assemblyFiles.Count > 0)
+            {
+                foreach(XmlNode assemblyFile in assemblyFiles)
+                {
+                    assemblyFile.Attributes["src"].Value = assemblyFile.Attributes["target"].Value;
+                }
+            }
+            xmlDoc.Save(nuspecFile.FullName);
         }
 
         private static void TfsPendAdd(string path)

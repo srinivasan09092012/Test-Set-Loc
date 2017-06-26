@@ -20,6 +20,9 @@ namespace SolutionRefactorMgr.Domain
         [XmlAttribute("includeFileContents")]
         public bool IncludeFileContents { get; set; }
 
+        [XmlAttribute("useSourceControl")]
+        public bool UseSourceControl { get; set; }
+
         public string SourceDir { get; set; }
 
         [XmlArrayItem("FileType")]
@@ -54,9 +57,9 @@ namespace SolutionRefactorMgr.Domain
                 }
             }
 
-            if (this.EditMode == Enumerations.EditModeTypes.Inline && string.IsNullOrWhiteSpace(this.TfsServer))
+            if (this.UseSourceControl && string.IsNullOrWhiteSpace(this.TfsServer))
             {
-                throw new ArgumentNullException("Inline edit mode requires that you specify the TFS source control server.");
+                throw new ArgumentNullException("Source control requires that you specify the TFS source control server.");
             }
 
             if (this.ModuleConfigs != null && this.ModuleConfigs.Count > 0)

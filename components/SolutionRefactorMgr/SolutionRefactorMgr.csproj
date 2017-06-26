@@ -79,6 +79,14 @@
       <HintPath>..\..\..\Packages\Microsoft.TeamFoundation.VersionControl.All.12.0.30723.2\lib\net45\Microsoft.TeamFoundation.VersionControl.UIFeatures.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Web.XmlTransform">
+      <HintPath>..\..\..\Packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.Core">
+      <HintPath>..\..\..\Packages\NuGet.Core.2.14.0\lib\net40-Client\NuGet.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -103,10 +111,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="Configs\RefactorCopyright.xml" />
     <Content Include="Configs\RefactorNamespaces.xml" />
-    <Content Include="Configs\RefactorRelease-Part1.xml" />
-    <Content Include="Configs\RefactorRelease-Part2.xml" />
-    <Content Include="Configs\RefactorHotfix.xml" />
+    <Content Include="Configs\RefactorRelease-VersionPackages.xml" />
+    <Content Include="Configs\RefactorRelease-VersionModules.xml" />
+    <Content Include="Configs\RefactorHotfix-IncrementFileVersion.xml" />
     <None Include="nuget.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -121,7 +130,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /f /r /y "$(SolutionDir)RefactorConfig.xml" "$(SolutionDir)$(OutDir)"
+    <PostBuildEvent>xcopy /f /r /y "$(SolutionDir)NuGet.exe" "$(SolutionDir)$(OutDir)"
+xcopy /f /r /y "$(SolutionDir)RefactorConfig.xml" "$(SolutionDir)$(OutDir)"
 </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
