@@ -12,9 +12,9 @@
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
-    <ReplacementString qualifier="&lt;version&gt;1.0.0&lt;/version&gt;" from="1.0.0" to="17.4.43" />
-    <ReplacementString qualifier="HP.HSP.UA3" from="1.0.0" to="17.4.43" />
-    <ReplacementString qualifier="HPE.HSP.UA3" from="1.0.0" to="17.4.43" />
+    <ReplacementString qualifier="&lt;version&gt;1.0.0&lt;/version&gt;" from="1.0.0" to="17.3.39" />
+    <ReplacementString qualifier="HP.HSP.UA3" from="1.0.0" to="17.3.39" />
+    <ReplacementString qualifier="HPE.HSP.UA3" from="1.0.0" to="17.3.39" />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
 </RefactorConfig>
