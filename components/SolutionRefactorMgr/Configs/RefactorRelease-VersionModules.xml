@@ -10,7 +10,6 @@
     <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
     <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
     <ModuleConfig name="EDI" branch="Dev" types="All" />
-    <ModuleConfig name="eID" branch="Dev" types="All" />
     <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
     <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
     <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
@@ -29,7 +28,6 @@
     <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
     <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
     <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
-    <ModuleConfig name="Utilities" branch="Dev" types="All" />
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
