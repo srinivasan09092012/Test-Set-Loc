@@ -40,9 +40,13 @@
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
+    <!-- UX application settings version -->
+    <ReplacementString qualifier="add key=&quot;AppVersion&quot; value=&quot;1.0.0.0&quot;" from="1.0.0.0" to="17.3.39.0" />
+
     <!-- Assembly Versions in Assembly Info file -->
     <ReplacementString qualifier="AssemblyVersion(" from="1.0.0.0" to="17.3.39.0" />
     <ReplacementString qualifier="AssemblyFileVersion(" from="1.0.0.0" to="17.3.39.0" />
+    
 
     <!-- Assembly Versions in Project Files -->
     <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.BatchProcessingFactory" from="Version=1.0.0.0" to="Version=17.3.39.0" />
