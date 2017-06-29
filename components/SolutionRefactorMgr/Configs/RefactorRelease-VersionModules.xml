@@ -28,6 +28,7 @@
     <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
     <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
     <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
+    <ModuleConfig name="Utilities" branch="Dev" types="All" />
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
@@ -53,7 +54,7 @@
     <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.Core" from="Version=1.0.0.0" to="Version=17.3.39.0" />
 
     <!-- Package Names in Copy Assemblies Batch Files -->
-    <ReplacementString qualifier="1.0.0\lib" from="1.0.0" to="17.3.39" />
+    <ReplacementString qualifier="xcopy /f /r /y" from="1.0.0\lib" to="17.3.39\lib" />
 
     <!-- Package Names in Project Files -->
     <ReplacementString qualifier="id=&quot;HP.HSP.UA3.BatchProcessingFactory" from="1.0.0" to="17.3.39" />
@@ -62,10 +63,10 @@
     <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.Core" from="1.0.0" to="17.3.39" />
 
     <!-- Package Names in Packages.config Files -->
-    <ReplacementString qualifier="package id=&quot;HP.HSP.UA3.BatchProcessingFactory" from="1.0.0" to="17.3.39" />
-    <ReplacementString qualifier="package id=&quot;HP.HSP.UA3.Core" from="1.0.0" to="17.3.39" />
-    <ReplacementString qualifier="package id=&quot;HPE.HSP.UA3.ClaimsManagement" from="1.0.0" to="17.3.39" />
-    <ReplacementString qualifier="package id=&quot;HPE.HSP.UA3.Core" from="1.0.0" to="17.3.39" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.BatchProcessingFactory" from="1.0.0" to="17.3.39" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.Core" from="1.0.0" to="17.3.39" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.ClaimsManagement" from="1.0.0" to="17.3.39" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.Core" from="1.0.0" to="17.3.39" />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
 </RefactorConfig>

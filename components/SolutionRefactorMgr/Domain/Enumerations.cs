@@ -17,6 +17,7 @@ namespace SolutionRefactorMgr.Domain
             API,
             BAS,
             Batch,
+            EAI,
             UX
         }
     }

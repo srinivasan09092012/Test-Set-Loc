@@ -151,6 +151,7 @@ namespace SolutionRefactorMgr
                         RefactorModule(module, Enumerations.ProjectTypes.API);
                         RefactorModule(module, Enumerations.ProjectTypes.BAS);
                         RefactorModule(module, Enumerations.ProjectTypes.Batch);
+                        RefactorModule(module, Enumerations.ProjectTypes.EAI);
                         RefactorModule(module, Enumerations.ProjectTypes.UX);
                         break;
 
@@ -244,7 +245,6 @@ namespace SolutionRefactorMgr
 
         private static void RefactorFile(FileInfo file, string dest, int level)
         {
-            LogMessage(level, string.Format("Refactoring file '{0}'", file.Name));
             bool fileQualifies = refactorConfig.FileTypes.Find(f => f == file.Extension.ToLower()) != null;
             if (fileQualifies)
             {
@@ -272,10 +272,12 @@ namespace SolutionRefactorMgr
                     if (!contentsChanged)
                     {
                         File.Copy(file.FullName, newPath);
+                        LogMessage(level, string.Format("Copying file '{0}'", file.Name));
                     }
                     else
                     {
                         File.WriteAllText(newPath, newFileContents);
+                        LogMessage(level, string.Format("Refactoring file '{0}'", file.Name));
                     }
                     File.SetAttributes(newPath, File.GetAttributes(newPath) & ~FileAttributes.ReadOnly);
                     TfsPendAdd(newPath);
@@ -285,12 +287,14 @@ namespace SolutionRefactorMgr
                     if (string.Compare(fileName, newFileName, true) != 0)
                     {
                         TfsPendRename(origPath, newPath);
+                        LogMessage(level, string.Format("Renaming file '{0}'", file.Name));
                     }
 
                     if (contentsChanged)
                     {
                         TfsPendEdit(newPath);
                         File.WriteAllText(newPath, newFileContents);
+                        LogMessage(level, string.Format("Refactoring file '{0}'", file.Name));
                     }
                 }
             }
@@ -302,6 +306,11 @@ namespace SolutionRefactorMgr
                     File.Copy(file.FullName, newPath);
                     File.SetAttributes(newPath, File.GetAttributes(newPath) & ~FileAttributes.ReadOnly);
                     TfsPendAdd(newPath);
+                    LogMessage(level, string.Format("Copying file '{0}'", file.Name));
+                }
+                else
+                {
+                    LogMessage(level, string.Format("Skipping file '{0}'", file.Name));
                 }
             }
         }
@@ -335,7 +344,7 @@ namespace SolutionRefactorMgr
                             {
                                 foreach (ReplacementString replacement in refactorConfig.ReplacementStrings)
                                 {
-                                    if (line.Contains(replacement.Qualifier))
+                                    if (line.Contains(replacement.Qualifier) && line.Contains(replacement.From))
                                     {
                                         line = line.Replace(replacement.From, replacement.To);
                                         contentsChanged = true;
@@ -364,7 +373,7 @@ namespace SolutionRefactorMgr
 
             foreach (ReplacementString replacement in refactorConfig.ReplacementStrings)
             {
-                if (newValue.Contains(replacement.Qualifier))
+                if (newValue.Contains(replacement.Qualifier) && newValue.Contains(replacement.From))
                 {
                     newValue = newValue.Replace(replacement.From, replacement.To);
                 }
