@@ -1280,6 +1280,7 @@ namespace DatalistSyncUtil
             if (this.ControlName.SelectedItem != null)
             {
                 string caseSwitch = this.ControlName.SelectedItem.ToString();
+                this.CheckPathExist(this.QueryFilePath);
                 switch (caseSwitch)
                 {
                     case "AppSetting":
@@ -1864,6 +1865,14 @@ namespace DatalistSyncUtil
             }
 
             return listsMain;
+        }
+
+        private void CheckPathExist(string filepath)
+        {
+            if (!Directory.Exists(filepath))
+            {
+                Directory.CreateDirectory(filepath);
+            }
         }
     }
 }

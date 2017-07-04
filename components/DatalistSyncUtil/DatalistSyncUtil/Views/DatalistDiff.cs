@@ -711,7 +711,6 @@ namespace DatalistSyncUtil
                     {
                         if (t.IsActive != targetItem.IsActive)
                         {
-                            // t.ID=ta
                             updatedAttributes.Add(t);
                             updatedTargetAttributes.Add(targetItem);
                         }
@@ -1567,12 +1566,6 @@ namespace DatalistSyncUtil
                 this.GetFilteredDataListAttributes(ref filteredNewDatalistAttributes, ref filteredUpdatedNewDatalistAttributes, ref filteredUpdatedDatalistAttributes, rightsContentID);
             }
 
-            if (this.AttributesMsgCB.Checked)
-            {
-                isChecked = true;
-                this.GetFilteredDataListAttributes(ref filteredNewDatalistAttributes, ref filteredUpdatedNewDatalistAttributes, ref filteredUpdatedDatalistAttributes, msgContentID);
-            }
-
             if (this.AttributesDataListCB.Checked)
             {
                 isChecked = true;
@@ -1603,16 +1596,22 @@ namespace DatalistSyncUtil
                 filteredNewDataAttributes.AddRange(itemattributes);
             }
 
-            itemattributes = this.UpdateAttribute.Where(f => f.ContentID.Contains(contentID)).ToList();
-            if (itemattributes != null && itemattributes.Count > 0)
+            if (this.UpdateAttribute != null)
             {
-                filteredUpdatedNewAttributes.AddRange(itemattributes);
+                itemattributes = this.UpdateAttribute.Where(f => f.ContentID.Contains(contentID)).ToList();
+                if (itemattributes != null && itemattributes.Count > 0)
+                {
+                    filteredUpdatedNewAttributes.AddRange(itemattributes);
+                }
             }
 
-            itemattributes = this.UpdatedTargetAttribute.Where(f => f.ContentID.Contains(contentID)).ToList();
-            if (itemattributes != null && itemattributes.Count > 0)
+            if (this.UpdatedTargetAttribute != null)
             {
-                filteredUpdatedAttributes.AddRange(itemattributes);
+                itemattributes = this.UpdatedTargetAttribute.Where(f => f.ContentID.Contains(contentID)).ToList();
+                if (itemattributes != null && itemattributes.Count > 0)
+                {
+                    filteredUpdatedAttributes.AddRange(itemattributes);
+                }
             }
         }
 
@@ -1840,21 +1839,7 @@ namespace DatalistSyncUtil
             List<ItemDataListItemAttributeVal> filteredNewDatalistAttributes = new List<ItemDataListItemAttributeVal>();
             List<ItemDataListItemAttributeVal> filteredUpdatedNewDatalistAttributes = new List<ItemDataListItemAttributeVal>();
             List<ItemDataListItemAttributeVal> filteredUpdatedDatalistAttributes = new List<ItemDataListItemAttributeVal>();
-            string msgContentID = ".Msg";
-            string datalistContentID = ".DataList";
             bool isChecked = false;
-
-            if (this.ItemAttributesMsgCB.Checked)
-            {
-                isChecked = true;
-                this.GetFilteredDataListItemAttributes(ref filteredNewDatalistAttributes, ref filteredUpdatedNewDatalistAttributes, ref filteredUpdatedDatalistAttributes, msgContentID);
-            }
-
-            if (this.ItemAttributesDataListCB.Checked)
-            {
-                isChecked = true;
-                this.GetFilteredDataListItemAttributes(ref filteredNewDatalistAttributes, ref filteredUpdatedNewDatalistAttributes, ref filteredUpdatedDatalistAttributes, datalistContentID);
-            }
 
             if (isChecked)
             {
@@ -2157,6 +2142,38 @@ namespace DatalistSyncUtil
                     row.DefaultCellStyle.BackColor = Color.WhiteSmoke;
                     row.DefaultCellStyle.ForeColor = Color.Black;
                     row.ReadOnly = false;
+                }
+            }
+        }
+
+        private void TargetUpdateLangView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            foreach (DataGridViewRow row in this.TargetUpdateLangView.Rows)
+            {
+                bool descModified = row.Cells[4].Value != null ? Convert.ToBoolean(row.Cells[4].Value) : false;
+
+                if (descModified)
+                {
+                    row.Cells[4].Style.BackColor = Color.LightBlue;
+                    row.Cells[4].Style.ForeColor = Color.Black;
+                }
+                else
+                {
+                    row.Cells[4].Style.BackColor = Color.White;
+                    row.Cells[4].Style.ForeColor = Color.Black;
+                }
+
+                bool longDescModified = row.Cells[6].Value != null ? Convert.ToBoolean(row.Cells[6].Value) : false;
+
+                if (longDescModified)
+                {
+                    row.Cells[6].Style.BackColor = Color.LightBlue;
+                    row.Cells[6].Style.ForeColor = Color.Black;
+                }
+                else
+                {
+                    row.Cells[6].Style.BackColor = Color.White;
+                    row.Cells[6].Style.ForeColor = Color.Black;
                 }
             }
         }
