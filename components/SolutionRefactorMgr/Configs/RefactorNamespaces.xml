@@ -19,7 +19,6 @@
     <ModuleConfig name="MemberPortal" branch="Dev" types="All" />
     <ModuleConfig name="Notifications" branch="Dev" types="All" />
     <ModuleConfig name="PlanManagement" branch="Dev" types="All" />
-    <ModuleConfig name="ProDUR" branch="Dev" types="All" />
     <ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
     <ModuleConfig name="ProviderCredentialing" branch="Dev" types="All" />
     <ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
