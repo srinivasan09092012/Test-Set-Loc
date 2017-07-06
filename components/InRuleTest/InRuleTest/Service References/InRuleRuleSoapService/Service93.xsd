@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/InRule.Runtime.Service.Response" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/InRule.Runtime.Service.Response" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://bre1.dev.ua3.elabs.svcs.hpe.com/InRuleRuleEngineService/Service.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/InRule.Runtime" />
+  <xs:import schemaLocation="http://bre1.dev.ua3.elabs.svcs.hpe.com/InRuleRuleEngineService/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfRuleEngineServiceResponse.Override">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RuleEngineServiceResponse.Override" type="tns:RuleEngineServiceResponse.Override" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRuleEngineServiceResponse.Override" nillable="true" type="tns:ArrayOfRuleEngineServiceResponse.Override" />
+  <xs:complexType name="RuleEngineServiceResponse.Override">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/InRule.Runtime" name="OverrideType" type="q1:OverrideType" />
+      <xs:element name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RuleEngineServiceResponse.Override" nillable="true" type="tns:RuleEngineServiceResponse.Override" />
+</xs:schema>

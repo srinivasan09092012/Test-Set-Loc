@@ -1,0 +1,1039 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://www.inrule.com/XmlSchema/Schema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://bre1.dev.ua3.elabs.svcs.hpe.com/InRuleRuleEngineService/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://bre1.dev.ua3.elabs.svcs.hpe.com/InRuleRuleEngineService/Service.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://bre1.dev.ua3.elabs.svcs.hpe.com/InRuleRuleEngineService/Service.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/InRule.Common.Xml.Schema.Xsd" />
+  <xs:import schemaLocation="http://bre1.dev.ua3.elabs.svcs.hpe.com/InRuleRuleEngineService/Service.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/InRule.Repository" />
+  <xs:import schemaLocation="http://bre1.dev.ua3.elabs.svcs.hpe.com/InRuleRuleEngineService/Service.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/InRule.Runtime.Service.Response" />
+  <xs:import schemaLocation="http://bre1.dev.ua3.elabs.svcs.hpe.com/InRuleRuleEngineService/Service.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/InRule.Common.DataStructures.Stack" />
+  <xs:import schemaLocation="http://bre1.dev.ua3.elabs.svcs.hpe.com/InRuleRuleEngineService/Service.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/InRule.Common.DataStructures.Dictionary" />
+  <xs:element name="ExecuteRuleEngineRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="request" nillable="true" type="q1:RuleEngineServiceRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="RuleEngineServiceRequest">
+    <xs:sequence>
+      <xs:element name="MessageVersion" type="xs:int" />
+      <xs:element minOccurs="0" name="RequestId" type="ser:guid" />
+      <xs:element xmlns:q2="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="RuleApp" nillable="true" type="q2:RuleApp" />
+      <xs:element xmlns:q3="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="RuleEngineServiceOptions" nillable="true" type="q3:RuleEngineServiceOptions" />
+      <xs:element xmlns:q4="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="RuleEngineServiceOutputTypes" nillable="true" type="q4:RuleEngineServiceOutputTypes" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q5="http://www.inrule.com/XmlSchema/Schema" name="RuleEngineServiceRequest" nillable="true" type="q5:RuleEngineServiceRequest" />
+  <xs:complexType name="RuleApp">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element xmlns:q6="http://www.inrule.com/XmlSchema/Schema" name="RuleApp" nillable="true" type="q6:RuleApp" />
+  <xs:complexType name="RepositoryRuleApp">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://www.inrule.com/XmlSchema/Schema" base="q7:RuleApp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CacheTimeout" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ConnTimeout" nillable="true" type="xs:string" />
+          <xs:element name="IsRepositoryValidated" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RepositoryRuleAppRevisionSpec" nillable="true" type="q7:RepositoryRuleAppRevisionSpec" />
+          <xs:element minOccurs="0" name="RepositoryServiceUri" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sender" nillable="true" type="xs:string" />
+          <xs:element name="UseIntegratedSecurity" type="xs:boolean" />
+          <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q8="http://www.inrule.com/XmlSchema/Schema" name="RepositoryRuleApp" nillable="true" type="q8:RepositoryRuleApp" />
+  <xs:complexType name="RepositoryRuleAppRevisionSpec">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Guid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Label" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Revision" type="xs:int" />
+      <xs:element minOccurs="0" name="RuleApplicationName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q9="http://www.inrule.com/XmlSchema/Schema" name="RepositoryRuleAppRevisionSpec" nillable="true" type="q9:RepositoryRuleAppRevisionSpec" />
+  <xs:complexType name="FileSystemRuleApp">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q10="http://www.inrule.com/XmlSchema/Schema" base="q10:RuleApp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FilePath" nillable="true" type="xs:string" />
+          <xs:element name="IsRepositoryValidated" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q11="http://www.inrule.com/XmlSchema/Schema" name="FileSystemRuleApp" nillable="true" type="q11:FileSystemRuleApp" />
+  <xs:complexType name="InMemoryRuleApp">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q12="http://www.inrule.com/XmlSchema/Schema" base="q12:RuleApp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CacheAndRevisionKey" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RuleApplicationDef" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q13="http://www.inrule.com/XmlSchema/Schema" name="InMemoryRuleApp" nillable="true" type="q13:InMemoryRuleApp" />
+  <xs:complexType name="RuleEngineServiceOptions">
+    <xs:sequence>
+      <xs:element xmlns:q14="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="DataElementDefCollection" nillable="true" type="q14:ArrayOfDataElementDef" />
+      <xs:element xmlns:q15="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="EndPointDefCollection" nillable="true" type="q15:ArrayOfEndPointDef" />
+      <xs:element minOccurs="0" name="InheritedSessionId" type="ser:guid" />
+      <xs:element xmlns:q16="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="RuleExecutionSettings" nillable="true" type="q16:RuleExecutionSettings" />
+      <xs:element minOccurs="0" name="SessionId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q17="http://www.inrule.com/XmlSchema/Schema" name="RuleEngineServiceOptions" nillable="true" type="q17:RuleEngineServiceOptions" />
+  <xs:complexType name="ArrayOfDataElementDef">
+    <xs:sequence>
+      <xs:element xmlns:q18="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" maxOccurs="unbounded" name="DataElementDef" nillable="true" type="q18:DataElementDef" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q19="http://www.inrule.com/XmlSchema/Schema" name="ArrayOfDataElementDef" nillable="true" type="q19:ArrayOfDataElementDef" />
+  <xs:complexType name="DataElementDef">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q20="http://www.inrule.com/XmlSchema/Schema" base="q20:RuleRepositoryDefBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q21="http://www.inrule.com/XmlSchema/Schema" name="DataElementDef" nillable="true" type="q21:DataElementDef" />
+  <xs:complexType name="RuleRepositoryDefBase">
+    <xs:sequence>
+      <xs:element xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AssignedCategories" nillable="true" type="q22:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Attributes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AuthoringIsExpanded" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AuthoringUseNameForElementTreeName" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Comments" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Guid" type="ser:guid" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IncludeInBusinessLanguage" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PublicRevision" type="xs:int" />
+      <xs:element minOccurs="0" name="RepositoryAssemblyFileVersion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Revision" type="xs:int" />
+      <xs:element xmlns:q23="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="SecurityPermissions" nillable="true" type="q23:ArrayOfSecurityPermission" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q24="http://www.inrule.com/XmlSchema/Schema" name="RuleRepositoryDefBase" nillable="true" type="q24:RuleRepositoryDefBase" />
+  <xs:complexType name="ArrayOfSecurityPermission">
+    <xs:sequence>
+      <xs:element xmlns:q25="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" maxOccurs="unbounded" name="SecurityPermission" nillable="true" type="q25:SecurityPermission" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q26="http://www.inrule.com/XmlSchema/Schema" name="ArrayOfSecurityPermission" nillable="true" type="q26:ArrayOfSecurityPermission" />
+  <xs:complexType name="SecurityPermission">
+    <xs:sequence>
+      <xs:element name="Allow" type="xs:boolean" />
+      <xs:element name="Permission" type="xs:int" />
+      <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q27="http://www.inrule.com/XmlSchema/Schema" name="SecurityPermission" nillable="true" type="q27:SecurityPermission" />
+  <xs:complexType name="XmlDocumentDef">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q28="http://www.inrule.com/XmlSchema/Schema" base="q28:DataElementDef">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Settings" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q29="http://www.inrule.com/XmlSchema/Schema" name="XmlDocumentDef" nillable="true" type="q29:XmlDocumentDef" />
+  <xs:complexType name="TableDef">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q30="http://www.inrule.com/XmlSchema/Schema" base="q30:DataElementDef">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TableSettings" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q31="http://www.inrule.com/XmlSchema/Schema" name="TableDef" nillable="true" type="q31:TableDef" />
+  <xs:complexType name="InlineValueListDef">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q32="http://www.inrule.com/XmlSchema/Schema" base="q32:ValueListDef">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Items" nillable="true" type="q32:ArrayOfValueListItemDef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q33="http://www.inrule.com/XmlSchema/Schema" name="InlineValueListDef" nillable="true" type="q33:InlineValueListDef" />
+  <xs:complexType name="ValueListDef">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q34="http://www.inrule.com/XmlSchema/Schema" base="q34:DataElementDef">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+          <xs:element name="SortDirection" type="q34:ValueListSortDirection" />
+          <xs:element name="SortMode" type="q34:ValueListSortMode" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q35="http://www.inrule.com/XmlSchema/Schema" name="ValueListDef" nillable="true" type="q35:ValueListDef" />
+  <xs:simpleType name="ValueListSortDirection">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ascending" />
+      <xs:enumeration value="Descending" />
+      <xs:enumeration value="None" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q36="http://www.inrule.com/XmlSchema/Schema" name="ValueListSortDirection" nillable="true" type="q36:ValueListSortDirection" />
+  <xs:simpleType name="ValueListSortMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="ValueColumnAsNumeric" />
+      <xs:enumeration value="ValueColumnAsText" />
+      <xs:enumeration value="ValueColumnAsDate" />
+      <xs:enumeration value="DisplayColumn" />
+      <xs:enumeration value="SortColumnAsNumeric" />
+      <xs:enumeration value="SortColumnAsText" />
+      <xs:enumeration value="SortColumnAsDate" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q37="http://www.inrule.com/XmlSchema/Schema" name="ValueListSortMode" nillable="true" type="q37:ValueListSortMode" />
+  <xs:complexType name="SqlValueListDef">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q38="http://www.inrule.com/XmlSchema/Schema" base="q38:ValueListDef">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DisplayNameColumnName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Parameters" nillable="true" type="q38:ArrayOfSqlValueListParameterDef" />
+          <xs:element minOccurs="0" name="SourceDataElementName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ValueColumnName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q39="http://www.inrule.com/XmlSchema/Schema" name="SqlValueListDef" nillable="true" type="q39:SqlValueListDef" />
+  <xs:complexType name="ArrayOfSqlValueListParameterDef">
+    <xs:sequence>
+      <xs:element xmlns:q40="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" maxOccurs="unbounded" name="SqlValueListParameterDef" nillable="true" type="q40:SqlValueListParameterDef" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q41="http://www.inrule.com/XmlSchema/Schema" name="ArrayOfSqlValueListParameterDef" nillable="true" type="q41:ArrayOfSqlValueListParameterDef" />
+  <xs:complexType name="SqlValueListParameterDef">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q42="http://www.inrule.com/XmlSchema/Schema" base="q42:RuleRepositoryDefBase">
+        <xs:sequence>
+          <xs:element name="Passthru" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q43="http://www.inrule.com/XmlSchema/Schema" name="SqlValueListParameterDef" nillable="true" type="q43:SqlValueListParameterDef" />
+  <xs:complexType name="DataFolderDef">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q44="http://www.inrule.com/XmlSchema/Schema" base="q44:DataElementDef">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q45="http://www.inrule.com/XmlSchema/Schema" name="DataFolderDef" nillable="true" type="q45:DataFolderDef" />
+  <xs:complexType name="ListDef">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q46="http://www.inrule.com/XmlSchema/Schema" base="q46:DataElementDef">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ListSettings" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q47="http://www.inrule.com/XmlSchema/Schema" name="ListDef" nillable="true" type="q47:ListDef" />
+  <xs:complexType name="SqlQueryDef">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q48="http://www.inrule.com/XmlSchema/Schema" base="q48:DataElementDef">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SqlQuerySettings" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q49="http://www.inrule.com/XmlSchema/Schema" name="SqlQueryDef" nillable="true" type="q49:SqlQueryDef" />
+  <xs:complexType name="XPathQueryDef">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q50="http://www.inrule.com/XmlSchema/Schema" base="q50:DataElementDef">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="XPathQuerySettings" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q51="http://www.inrule.com/XmlSchema/Schema" name="XPathQueryDef" nillable="true" type="q51:XPathQueryDef" />
+  <xs:complexType name="DatabaseConnection">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q52="http://www.inrule.com/XmlSchema/Schema" base="q52:EndPointDef">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ConnectionString" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q53="http://www.inrule.com/XmlSchema/Schema" name="DatabaseConnection" nillable="true" type="q53:DatabaseConnection" />
+  <xs:complexType name="EndPointDef">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q54="http://www.inrule.com/XmlSchema/Schema" base="q54:RuleRepositoryDefBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q55="http://www.inrule.com/XmlSchema/Schema" name="EndPointDef" nillable="true" type="q55:EndPointDef" />
+  <xs:complexType name="WebServiceDef">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q56="http://www.inrule.com/XmlSchema/Schema" base="q56:EndPointDef">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EmbeddedWsdl" nillable="true" type="q56:EmbeddedXmlSchema" />
+          <xs:element minOccurs="0" name="Operations" nillable="true" type="q56:ArrayOfOperationDef" />
+          <xs:element minOccurs="0" name="PortName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ServiceUriOverride" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UseEmbeddedWsdl" type="xs:boolean" />
+          <xs:element minOccurs="0" name="WsdlUri" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q57="http://www.inrule.com/XmlSchema/Schema" name="WebServiceDef" nillable="true" type="q57:WebServiceDef" />
+  <xs:complexType name="EmbeddedXmlSchema">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OriginalSchemaLocation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Schema" nillable="true" type="xs:string" />
+      <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/InRule.Common.Xml.Schema.Xsd" minOccurs="0" name="Type" type="q58:EmbeddedXmlSchema.SchemaType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q59="http://www.inrule.com/XmlSchema/Schema" name="EmbeddedXmlSchema" nillable="true" type="q59:EmbeddedXmlSchema" />
+  <xs:complexType name="ArrayOfOperationDef">
+    <xs:sequence>
+      <xs:element xmlns:q60="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" maxOccurs="unbounded" name="OperationDef" nillable="true" type="q60:OperationDef" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q61="http://www.inrule.com/XmlSchema/Schema" name="ArrayOfOperationDef" nillable="true" type="q61:ArrayOfOperationDef" />
+  <xs:complexType name="OperationDef">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="X509Certificate" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q62="http://www.inrule.com/XmlSchema/Schema" name="OperationDef" nillable="true" type="q62:OperationDef" />
+  <xs:complexType name="RestServiceDef">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q63="http://www.inrule.com/XmlSchema/Schema" base="q63:EndPointDef">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllowUntrustedCertificates" type="xs:boolean" />
+          <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/InRule.Repository" minOccurs="0" name="AuthenticationType" type="q64:RestServiceAuthenticationType" />
+          <xs:element minOccurs="0" name="Domain" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RootUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="X509Certificate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="X509CertificatePassword" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q65="http://www.inrule.com/XmlSchema/Schema" name="RestServiceDef" nillable="true" type="q65:RestServiceDef" />
+  <xs:complexType name="SendMailServerDef">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q66="http://www.inrule.com/XmlSchema/Schema" base="q66:EndPointDef">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ServerAddress" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q67="http://www.inrule.com/XmlSchema/Schema" name="SendMailServerDef" nillable="true" type="q67:SendMailServerDef" />
+  <xs:complexType name="XmlDocumentPathDef">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q68="http://www.inrule.com/XmlSchema/Schema" base="q68:EndPointDef">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="XmlPath" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q69="http://www.inrule.com/XmlSchema/Schema" name="XmlDocumentPathDef" nillable="true" type="q69:XmlDocumentPathDef" />
+  <xs:complexType name="XmlSchemaDef">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q70="http://www.inrule.com/XmlSchema/Schema" base="q70:EndPointDef">
+        <xs:sequence>
+          <xs:element name="AllowGetXmlWithDupInstances" type="xs:boolean" />
+          <xs:element minOccurs="0" name="DefaultImportEntityDataType" nillable="true" type="xs:string" />
+          <xs:element name="EnableXsdValidation" type="xs:boolean" />
+          <xs:element name="IsInternal" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LastImportedFileName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SchemaIsActivated" type="xs:boolean" />
+          <xs:element name="UseEmbeddedXsd" type="xs:boolean" />
+          <xs:element minOccurs="0" name="XsdPath" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q71="http://www.inrule.com/XmlSchema/Schema" name="XmlSchemaDef" nillable="true" type="q71:XmlSchemaDef" />
+  <xs:complexType name="ArrayOfValueListItemDef">
+    <xs:sequence>
+      <xs:element xmlns:q72="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" maxOccurs="unbounded" name="ValueListItemDef" nillable="true" type="q72:ValueListItemDef" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q73="http://www.inrule.com/XmlSchema/Schema" name="ArrayOfValueListItemDef" nillable="true" type="q73:ArrayOfValueListItemDef" />
+  <xs:complexType name="ValueListItemDef">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DisplayText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SortValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q74="http://www.inrule.com/XmlSchema/Schema" name="ValueListItemDef" nillable="true" type="q74:ValueListItemDef" />
+  <xs:complexType name="ArrayOfEndPointDef">
+    <xs:sequence>
+      <xs:element xmlns:q75="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" maxOccurs="unbounded" name="EndPointDef" nillable="true" type="q75:EndPointDef" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q76="http://www.inrule.com/XmlSchema/Schema" name="ArrayOfEndPointDef" nillable="true" type="q76:ArrayOfEndPointDef" />
+  <xs:complexType name="RuleExecutionSettings">
+    <xs:sequence>
+      <xs:element name="CurrentDateOverride" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ExecutionTimeoutOverride" type="ser:duration" />
+      <xs:element name="MaxEvaluationCyclesOverride" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q77="http://www.inrule.com/XmlSchema/Schema" name="RuleExecutionSettings" nillable="true" type="q77:RuleExecutionSettings" />
+  <xs:complexType name="RuleEngineServiceOutputTypes">
+    <xs:sequence>
+      <xs:element name="ActiveNotifications" type="xs:boolean" />
+      <xs:element name="ActiveValidations" type="xs:boolean" />
+      <xs:element name="EntityState" type="xs:boolean" />
+      <xs:element name="Overrides" type="xs:boolean" />
+      <xs:element name="RuleExecutionLog" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q78="http://www.inrule.com/XmlSchema/Schema" name="RuleEngineServiceOutputTypes" nillable="true" type="q78:RuleEngineServiceOutputTypes" />
+  <xs:complexType name="ApplyRulesRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q79="http://www.inrule.com/XmlSchema/Schema" base="q79:EntityStateRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EntityId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q80="http://www.inrule.com/XmlSchema/Schema" name="ApplyRulesRequest" nillable="true" type="q80:ApplyRulesRequest" />
+  <xs:complexType name="EntityStateRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q81="http://www.inrule.com/XmlSchema/Schema" base="q81:RuleEngineServiceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EntityState" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q82="http://www.inrule.com/XmlSchema/Schema" name="EntityStateRequest" nillable="true" type="q82:EntityStateRequest" />
+  <xs:complexType name="ExecuteRuleSetRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q83="http://www.inrule.com/XmlSchema/Schema" base="q83:EntityStateRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EntityId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RuleSetId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RuleSetName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q84="http://www.inrule.com/XmlSchema/Schema" name="ExecuteRuleSetRequest" nillable="true" type="q84:ExecuteRuleSetRequest" />
+  <xs:complexType name="ExecuteIndependentRuleSetRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q85="http://www.inrule.com/XmlSchema/Schema" base="q85:EntityStateRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EntityStateFieldName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RuleSetId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RuleSetName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q86="http://www.inrule.com/XmlSchema/Schema" name="ExecuteIndependentRuleSetRequest" nillable="true" type="q86:ExecuteIndependentRuleSetRequest" />
+  <xs:element name="ExecuteRuleEngineRequestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q87="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="ExecuteRuleEngineRequestResult" nillable="true" type="q87:RuleEngineServiceResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="RuleEngineServiceResponse">
+    <xs:sequence>
+      <xs:element xmlns:q88="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="ActiveNotifications" nillable="true" type="q88:ArrayOfNotification" />
+      <xs:element xmlns:q89="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="ActiveValidations" nillable="true" type="q89:ArrayOfValidation" />
+      <xs:element minOccurs="0" name="EntityState" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HasRuntimeErrors" type="xs:boolean" />
+      <xs:element xmlns:q90="http://schemas.datacontract.org/2004/07/InRule.Runtime.Service.Response" minOccurs="0" name="Overrides" nillable="true" type="q90:ArrayOfRuleEngineServiceResponse.Override" />
+      <xs:element minOccurs="0" name="RequestId" type="ser:guid" />
+      <xs:element xmlns:q91="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="RuleExecutionLog" nillable="true" type="q91:RuleExecutionLog" />
+      <xs:element minOccurs="0" name="RuleSessionState" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SessionId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q92="http://www.inrule.com/XmlSchema/Schema" name="RuleEngineServiceResponse" nillable="true" type="q92:RuleEngineServiceResponse" />
+  <xs:complexType name="ArrayOfNotification">
+    <xs:sequence>
+      <xs:element xmlns:q93="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" maxOccurs="unbounded" name="Notification" nillable="true" type="q93:Notification" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q94="http://www.inrule.com/XmlSchema/Schema" name="ArrayOfNotification" nillable="true" type="q94:ArrayOfNotification" />
+  <xs:complexType name="Notification">
+    <xs:sequence>
+      <xs:element name="Changed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ElementId" nillable="true" type="xs:string" />
+      <xs:element xmlns:q95="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FiredBy" nillable="true" type="q95:ArrayOfstring" />
+      <xs:element name="IsActive" type="xs:boolean" />
+      <xs:element name="ManagedByRuleEngine" type="xs:boolean" />
+      <xs:element name="MarkedForRemoval" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NotificationType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q96="http://www.inrule.com/XmlSchema/Schema" name="Notification" nillable="true" type="q96:Notification" />
+  <xs:complexType name="ArrayOfValidation">
+    <xs:sequence>
+      <xs:element xmlns:q97="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" maxOccurs="unbounded" name="Validation" nillable="true" type="q97:Validation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q98="http://www.inrule.com/XmlSchema/Schema" name="ArrayOfValidation" nillable="true" type="q98:ArrayOfValidation" />
+  <xs:complexType name="Validation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ElementIdentifier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InvalidMessageText" nillable="true" type="xs:string" />
+      <xs:element name="IsValid" type="xs:boolean" />
+      <xs:element xmlns:q99="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="Reasons" nillable="true" type="q99:ArrayOfValidationReason" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q100="http://www.inrule.com/XmlSchema/Schema" name="Validation" nillable="true" type="q100:Validation" />
+  <xs:complexType name="ArrayOfValidationReason">
+    <xs:sequence>
+      <xs:element xmlns:q101="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" maxOccurs="unbounded" name="ValidationReason" nillable="true" type="q101:ValidationReason" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q102="http://www.inrule.com/XmlSchema/Schema" name="ArrayOfValidationReason" nillable="true" type="q102:ArrayOfValidationReason" />
+  <xs:complexType name="ValidationReason">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FiringRuleId" nillable="true" type="xs:string" />
+      <xs:element name="ManagedByRuleEngine" type="xs:boolean" />
+      <xs:element name="MarkedForRemoval" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MessageText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OwningRuleId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q103="http://www.inrule.com/XmlSchema/Schema" name="ValidationReason" nillable="true" type="q103:ValidationReason" />
+  <xs:complexType name="RuleExecutionLog">
+    <xs:sequence>
+      <xs:element name="CalcsEvaluatedCount" type="xs:long" />
+      <xs:element xmlns:q104="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="Messages" nillable="true" type="q104:ArrayOfRuleExecutionLogMessage" />
+      <xs:element name="PerformedIncrementalEvaluation" type="xs:boolean" />
+      <xs:element name="RulesEvaluatedCount" type="xs:long" />
+      <xs:element name="RulesEvaluatedTrueCount" type="xs:long" />
+      <xs:element name="TotalEvaluationCycles" type="xs:long" />
+      <xs:element minOccurs="0" name="TotalExecutionTime" type="ser:duration" />
+      <xs:element minOccurs="0" name="TotalTraceFrames" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q105="http://www.inrule.com/XmlSchema/Schema" name="RuleExecutionLog" nillable="true" type="q105:RuleExecutionLog" />
+  <xs:complexType name="ArrayOfRuleExecutionLogMessage">
+    <xs:sequence>
+      <xs:element xmlns:q106="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" maxOccurs="unbounded" name="RuleExecutionLogMessage" nillable="true" type="q106:RuleExecutionLogMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q107="http://www.inrule.com/XmlSchema/Schema" name="ArrayOfRuleExecutionLogMessage" nillable="true" type="q107:ArrayOfRuleExecutionLogMessage" />
+  <xs:complexType name="RuleExecutionLogMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q108="http://www.inrule.com/XmlSchema/Schema" name="RuleExecutionLogMessage" nillable="true" type="q108:RuleExecutionLogMessage" />
+  <xs:complexType name="CollectionChangedMessage">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q109="http://www.inrule.com/XmlSchema/Schema" base="q109:RuleExecutionLogMessage">
+        <xs:sequence>
+          <xs:element name="ChangeType" type="q109:CollectionChangeType" />
+          <xs:element name="CollectionCount" type="xs:int" />
+          <xs:element minOccurs="0" name="CollectionId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MemberId" nillable="true" type="xs:string" />
+          <xs:element name="MemberIndex" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q110="http://www.inrule.com/XmlSchema/Schema" name="CollectionChangedMessage" nillable="true" type="q110:CollectionChangedMessage" />
+  <xs:simpleType name="CollectionChangeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Added" />
+      <xs:enumeration value="Removed" />
+      <xs:enumeration value="Cleared" />
+      <xs:enumeration value="Sorted" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q111="http://www.inrule.com/XmlSchema/Schema" name="CollectionChangeType" nillable="true" type="q111:CollectionChangeType" />
+  <xs:complexType name="RuleSetActivationChangeMessage">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q112="http://www.inrule.com/XmlSchema/Schema" base="q112:RuleExecutionLogMessage">
+        <xs:sequence>
+          <xs:element name="IsActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="RulePath" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q113="http://www.inrule.com/XmlSchema/Schema" name="RuleSetActivationChangeMessage" nillable="true" type="q113:RuleSetActivationChangeMessage" />
+  <xs:complexType name="ErrorMessage">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q114="http://www.inrule.com/XmlSchema/Schema" base="q114:RuleExecutionLogMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BaseMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CodeAndInnerDetails" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ElementStateId" nillable="true" type="xs:string" />
+          <xs:element name="ErrorCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SourceDefGuid" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SourceRulePath" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q115="http://www.inrule.com/XmlSchema/Schema" name="ErrorMessage" nillable="true" type="q115:ErrorMessage" />
+  <xs:complexType name="NotificationChangeMessage">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q116="http://www.inrule.com/XmlSchema/Schema" base="q116:RuleExecutionLogMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ElementId" nillable="true" type="xs:string" />
+          <xs:element name="IsActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+          <xs:element name="NotificationType" type="q116:NotificationChangeType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q117="http://www.inrule.com/XmlSchema/Schema" name="NotificationChangeMessage" nillable="true" type="q117:NotificationChangeMessage" />
+  <xs:simpleType name="NotificationChangeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Informational" />
+      <xs:enumeration value="Warning" />
+      <xs:enumeration value="Error" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q118="http://www.inrule.com/XmlSchema/Schema" name="NotificationChangeType" nillable="true" type="q118:NotificationChangeType" />
+  <xs:complexType name="RuleValueChangeMessage">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q119="http://www.inrule.com/XmlSchema/Schema" base="q119:ValueChangeMessage">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q120="http://www.inrule.com/XmlSchema/Schema" name="RuleValueChangeMessage" nillable="true" type="q120:RuleValueChangeMessage" />
+  <xs:complexType name="ValueChangeMessage">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q121="http://www.inrule.com/XmlSchema/Schema" base="q121:RuleExecutionLogMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ElementStateId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ValueType" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q122="http://www.inrule.com/XmlSchema/Schema" name="ValueChangeMessage" nillable="true" type="q122:ValueChangeMessage" />
+  <xs:complexType name="TextFeedbackMessage">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q123="http://www.inrule.com/XmlSchema/Schema" base="q123:RuleExecutionLogMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FeedbackText" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q124="http://www.inrule.com/XmlSchema/Schema" name="TextFeedbackMessage" nillable="true" type="q124:TextFeedbackMessage" />
+  <xs:complexType name="ValidationChangeMessage">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q125="http://www.inrule.com/XmlSchema/Schema" base="q125:RuleExecutionLogMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ElementStateId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InvalidMessageText" nillable="true" type="xs:string" />
+          <xs:element name="IsValid" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q126="http://www.inrule.com/XmlSchema/Schema" name="ValidationChangeMessage" nillable="true" type="q126:ValidationChangeMessage" />
+  <xs:complexType name="ServiceFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CLRPointerSize" type="xs:int" />
+      <xs:element minOccurs="0" name="CLRVersion" nillable="true" type="xs:string" />
+      <xs:element xmlns:q127="http://schemas.datacontract.org/2004/07/InRule.Common.DataStructures.Stack" minOccurs="0" name="CatchTrace" nillable="true" type="q127:SerializableStackOfstring" />
+      <xs:element xmlns:q128="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="InnerFault" nillable="true" type="q128:ServiceFault" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OSVersion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProcessID" type="xs:int" />
+      <xs:element minOccurs="0" name="ProcessorCount" type="xs:int" />
+      <xs:element minOccurs="0" name="QualifiedName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServerSide" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Source" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StackTrace" nillable="true" type="xs:string" />
+      <xs:element xmlns:q129="http://schemas.datacontract.org/2004/07/InRule.Common.DataStructures.Dictionary" minOccurs="0" name="State" nillable="true" type="q129:SerializableDictionaryOfstringstring" />
+      <xs:element minOccurs="0" name="ThreadCultureLCID" type="xs:int" />
+      <xs:element minOccurs="0" name="ThreadID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q130="http://www.inrule.com/XmlSchema/Schema" name="ServiceFault" nillable="true" type="q130:ServiceFault" />
+  <xs:element name="GetRuleRepositoryServiceUri">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRuleRepositoryServiceUriResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetRuleRepositoryServiceUriResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRuleApplicationDef">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q131="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="request" nillable="true" type="q131:RuleApplicationDefRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="RuleApplicationDefRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q132="http://www.inrule.com/XmlSchema/Schema" base="q132:RuleApplicationRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RuleApp" nillable="true" type="q132:RuleApp" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q133="http://www.inrule.com/XmlSchema/Schema" name="RuleApplicationDefRequest" nillable="true" type="q133:RuleApplicationDefRequest" />
+  <xs:complexType name="RuleApplicationRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CachedClientRevisionKey" nillable="true" type="xs:string" />
+      <xs:element xmlns:q134="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="EndPointOverrides" nillable="true" type="q134:ArrayOfEndPointDef" />
+      <xs:element minOccurs="0" name="RuleApplicationCacheKey" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q135="http://www.inrule.com/XmlSchema/Schema" name="RuleApplicationRequest" nillable="true" type="q135:RuleApplicationRequest" />
+  <xs:complexType name="RuleApplicationInfoRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q136="http://www.inrule.com/XmlSchema/Schema" base="q136:RuleApplicationRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RuleApp" nillable="true" type="q136:RuleApp" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q137="http://www.inrule.com/XmlSchema/Schema" name="RuleApplicationInfoRequest" nillable="true" type="q137:RuleApplicationInfoRequest" />
+  <xs:element name="GetRuleApplicationDefResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q138="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="GetRuleApplicationDefResult" nillable="true" type="q138:RuleApplicationDefResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="RuleApplicationDefResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q139="http://www.inrule.com/XmlSchema/Schema" base="q139:RuleApplicationResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CompileErrors" nillable="true" type="q139:ArrayOfCompilerErrorInfo" />
+          <xs:element minOccurs="0" name="RuleApplicationDef" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q140="http://www.inrule.com/XmlSchema/Schema" name="RuleApplicationDefResponse" nillable="true" type="q140:RuleApplicationDefResponse" />
+  <xs:complexType name="RuleApplicationResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="UpdatedRevisionKey" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q141="http://www.inrule.com/XmlSchema/Schema" name="RuleApplicationResponse" nillable="true" type="q141:RuleApplicationResponse" />
+  <xs:complexType name="ArrayOfCompilerErrorInfo">
+    <xs:sequence>
+      <xs:element xmlns:q142="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" maxOccurs="unbounded" name="CompilerErrorInfo" nillable="true" type="q142:CompilerErrorInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q143="http://www.inrule.com/XmlSchema/Schema" name="ArrayOfCompilerErrorInfo" nillable="true" type="q143:ArrayOfCompilerErrorInfo" />
+  <xs:complexType name="CompilerErrorInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodeAndInnerDetails" nillable="true" type="xs:string" />
+      <xs:element xmlns:q144="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="ErrorCode" type="q144:RuleEngineErrorCode" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RulePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SourceDefGuid" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q145="http://www.inrule.com/XmlSchema/Schema" name="CompilerErrorInfo" nillable="true" type="q145:CompilerErrorInfo" />
+  <xs:simpleType name="RuleEngineErrorCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UnclassifiedError" />
+      <xs:enumeration value="CantLoadObjectAssembly" />
+      <xs:enumeration value="CantSetExtStateValue" />
+      <xs:enumeration value="CantGetStateValue" />
+      <xs:enumeration value="CantSetStateValue" />
+      <xs:enumeration value="DataTypeConversionError" />
+      <xs:enumeration value="DivideBy0" />
+      <xs:enumeration value="ExecutionHalted" />
+      <xs:enumeration value="ExpressionParseError" />
+      <xs:enumeration value="ExtEventHandlerError" />
+      <xs:enumeration value="ExtAssemblyAmbiguousMethod" />
+      <xs:enumeration value="ExtAssemblyInvokeError" />
+      <xs:enumeration value="ExtAssemblyIsVoidMethod" />
+      <xs:enumeration value="ExpressionEvaluationError" />
+      <xs:enumeration value="FormatParseError" />
+      <xs:enumeration value="IncorrectNbrFunctionArgs" />
+      <xs:enumeration value="LookupFailedWithNoDefaultValue" />
+      <xs:enumeration value="InternalError" />
+      <xs:enumeration value="InvalidUnderAutoRuleSet" />
+      <xs:enumeration value="IsNotBooleanExpression" />
+      <xs:enumeration value="IsNotNumberExpression" />
+      <xs:enumeration value="IsNotDateExpression" />
+      <xs:enumeration value="IsNotCollection" />
+      <xs:enumeration value="IsNotDataItem" />
+      <xs:enumeration value="IsNotEntityOrField" />
+      <xs:enumeration value="IsNotEntityField" />
+      <xs:enumeration value="IsNotField" />
+      <xs:enumeration value="IsNotFieldOrVariable" />
+      <xs:enumeration value="IsNotEntity" />
+      <xs:enumeration value="IsNotNamedParameter" />
+      <xs:enumeration value="IsNotRuleSetOrAction" />
+      <xs:enumeration value="IsNotAction" />
+      <xs:enumeration value="IsNotRule" />
+      <xs:enumeration value="IsNotUIContainer" />
+      <xs:enumeration value="IsNotTable" />
+      <xs:enumeration value="IsNotAttribute" />
+      <xs:enumeration value="IsNotIntegerExpression" />
+      <xs:enumeration value="IsNotEndpoint" />
+      <xs:enumeration value="MaxCycleCountExceeded" />
+      <xs:enumeration value="MissingRequiredAppSetting" />
+      <xs:enumeration value="MissingRequiredFunctionArg" />
+      <xs:enumeration value="RequiredParamIsBlankOrNull" />
+      <xs:enumeration value="SqlError" />
+      <xs:enumeration value="RuleAppNotFound" />
+      <xs:enumeration value="RuleAppValidationError" />
+      <xs:enumeration value="TimeoutExceeded" />
+      <xs:enumeration value="UnknownFunction">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">47</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ValidateCompileError">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">48</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="XmlParseError">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">49</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="XPathNotFound">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">50</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="InvalidDataType">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">51</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UnknownDirective">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">52</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UnsupportedEvaluationMode">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">53</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ExtAssemblyMethodNotFound">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">54</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IsNotExplicitlyCallableRuleSet">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">55</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RemoveSelfNotAllowed">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">56</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IsNotColumn">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">57</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UnsupportedUsage">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">58</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IsNotXmlDocument">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">59</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ExpectedSingleReturnRow">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">60</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UnsupportedXmlNodeType">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">61</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FunctionSyntaxError">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">62</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IsNotEntityOrComplex">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">63</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ExecutionHaltedByAuthoredRule">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">64</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ExtAssemblyCantInstantiateType">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">65</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IsNotValueList">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">66</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RecursiveRuleEvaluation">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">67</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AutoMemberLimitExceeded">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">68</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UserDefinedFunctionError">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">69</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RuleSetStackOverflow">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">70</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ExtAssemblyMethodReturnTypeNotBoundEntity">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">71</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q146="http://www.inrule.com/XmlSchema/Schema" name="RuleEngineErrorCode" nillable="true" type="q146:RuleEngineErrorCode" />
+  <xs:element name="GetRuleApplicationInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q147="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="request" nillable="true" type="q147:RuleApplicationInfoRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRuleApplicationInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q148="http://www.inrule.com/XmlSchema/Schema" minOccurs="0" name="GetRuleApplicationInfoResult" nillable="true" type="q148:RuleApplicationInfoResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="RuleApplicationInfoResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q149="http://www.inrule.com/XmlSchema/Schema" base="q149:RuleApplicationResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RuleApplicationTrackingKey" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q150="http://www.inrule.com/XmlSchema/Schema" name="RuleApplicationInfoResponse" nillable="true" type="q150:RuleApplicationInfoResponse" />
+  <xs:element name="GetMaxItemsInObjectGraph">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMaxItemsInObjectGraphResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetMaxItemsInObjectGraphResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
