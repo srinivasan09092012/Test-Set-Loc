@@ -194,12 +194,15 @@ namespace DatalistSyncUtil
                                    select source;
                 finalSource = modulesQuery.ToList();
 
-                var modulesQuery1 = from target in this.TargetAppsetting
-                                   where target.TenantModuleID == tenantModuleId
-                                   where target.ApplicationId == applicationId
-                                   where target.IsActive = true
-                                   select target;
-                finalTarget = modulesQuery1.ToList();
+                if (this.TargetAppsetting != null)
+                 {
+                    var modulesQuery1 = from target in this.TargetAppsetting
+                                          where target.TenantModuleID == tenantModuleId
+                                          where target.ApplicationId == applicationId
+                                          where target.IsActive = true
+                                          select target;
+                    finalTarget = modulesQuery1.ToList();
+                }              
 
                 List<string> appSettingLists = finalSource.Select(c => c.AppSettingKey.ToString()).Except(finalTarget.Select(c => c.AppSettingKey.ToString())).ToList();
                 newhtmllists = finalSource.Where(c => appSettingLists.Contains(c.AppSettingKey.ToString())).ToList();
