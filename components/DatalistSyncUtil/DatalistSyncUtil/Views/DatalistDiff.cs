@@ -645,6 +645,7 @@ namespace DatalistSyncUtil
                 {
                     f.Status = "NEW";
                     f.DataListID = i.ID;
+                    f.IsEditable = true;
                     DataListMainModel DataListTypeName = new DataListMainModel();
                     CodeItemModel DataListItem = new CodeItemModel();
                     DataListTypeName = this.TargetList.Where(c => c.ContentID == f.ContentID).FirstOrDefault();
@@ -659,12 +660,14 @@ namespace DatalistSyncUtil
                         }
                         else
                         {
-                            f.Status = "DEFAULTITEM_NEW";
+                           // f.Status = "DEFAULTITEM_NEW";
+                            f.IsEditable = false;
                         }
                     }
                     else
                     {
-                        f.Status = "TYPEDATALIST_NEW";
+                        //f.Status = "TYPEDATALIST_NEW";
+                        f.IsEditable = false;
                     }
 
                     newDatalistAttributes.Add(f);
@@ -758,6 +761,7 @@ namespace DatalistSyncUtil
                         h.Status = "DATALIST_NEW";
                         DataListMainModel DataListTypeName = new DataListMainModel();
                         CodeItemModel DataListItem = new CodeItemModel();
+                        h.IsEditable = true;
                         DataListTypeName = this.TargetList.Where(c => c.ContentID == h.ContentID).FirstOrDefault();
 
                         if (DataListTypeName != null)
@@ -771,12 +775,12 @@ namespace DatalistSyncUtil
                             }
                             else
                             {
-                                h.Status = "DEFAULTITEM_NEW";
+                                h.IsEditable = false;
                             }
                         }
                         else
                         {
-                            h.Status = "TYPEDATALIST_NEW";
+                            h.IsEditable = false;
                         }
 
                         newDataListAttribute.Add(h);
@@ -1541,36 +1545,7 @@ namespace DatalistSyncUtil
             List<ItemAttribute> filteredNewDatalistAttributes = new List<ItemAttribute>();
             List<ItemAttribute> filteredUpdatedNewDatalistAttributes = new List<ItemAttribute>();
             List<ItemAttribute> filteredUpdatedDatalistAttributes = new List<ItemAttribute>();
-            string rolesContentID = "Core.SecurityRoles";
-            string functionsContentID = "Core.SecurityFunctions";
-            string rightsContentID = "Core.SecurityRights";
-            string msgContentID = ".Msg";
-            string datalistContentID = ".DataList";
-            bool isChecked = false;
-
-            if (this.AttributesRoleCB.Checked)
-            {
-                isChecked = true;
-                this.GetFilteredDataListAttributes(ref filteredNewDatalistAttributes, ref filteredUpdatedNewDatalistAttributes, ref filteredUpdatedDatalistAttributes, rolesContentID);
-            }
-
-            if (this.AttributesFunctionCB.Checked)
-            {
-                isChecked = true;
-                this.GetFilteredDataListAttributes(ref filteredNewDatalistAttributes, ref filteredUpdatedNewDatalistAttributes, ref filteredUpdatedDatalistAttributes, functionsContentID);
-            }
-
-            if (this.AttributesRoleCB.Checked)
-            {
-                isChecked = true;
-                this.GetFilteredDataListAttributes(ref filteredNewDatalistAttributes, ref filteredUpdatedNewDatalistAttributes, ref filteredUpdatedDatalistAttributes, rightsContentID);
-            }
-
-            if (this.AttributesDataListCB.Checked)
-            {
-                isChecked = true;
-                this.GetFilteredDataListAttributes(ref filteredNewDatalistAttributes, ref filteredUpdatedNewDatalistAttributes, ref filteredUpdatedDatalistAttributes, datalistContentID);
-            }
+            bool isChecked = false;        
 
             if (isChecked)
             {
@@ -2122,27 +2097,28 @@ namespace DatalistSyncUtil
             foreach (DataGridViewRow row in this.NewAttributesView.Rows)
             {
                 string rowStatus = row.Cells[5].Value != null ? row.Cells[5].Value.ToString() : string.Empty;
+                bool rowEditable = (bool)row.Cells[14].Value;
 
-                if (rowStatus == "TYPEDATALIST_NEW")
+                if (rowStatus == "NEW")
                 {
                     row.DefaultCellStyle.BackColor = Color.LightBlue;
                     row.DefaultCellStyle.ForeColor = Color.Black;
-                    row.ReadOnly = true;
+                    row.ReadOnly = rowEditable;
                 }
 
-                if (rowStatus == "DEFAULTITEM_NEW")
+                if (rowStatus == "DATALIST_NEW")
                 {
                     row.DefaultCellStyle.BackColor = Color.LightGray;
                     row.DefaultCellStyle.ForeColor = Color.Black;
-                    row.ReadOnly = true;
+                    row.ReadOnly = rowEditable;
                 }
 
-                if (rowStatus == "DATALIST_NEW" || rowStatus == "NEW")
-                {
-                    row.DefaultCellStyle.BackColor = Color.WhiteSmoke;
-                    row.DefaultCellStyle.ForeColor = Color.Black;
-                    row.ReadOnly = false;
-                }
+                //if (rowStatus == "DATALIST_NEW" || rowStatus == "NEW")
+                //{
+                //    row.DefaultCellStyle.BackColor = Color.WhiteSmoke;
+                //    row.DefaultCellStyle.ForeColor = Color.Black;
+                //    row.ReadOnly = false;
+                //}
             }
         }
 

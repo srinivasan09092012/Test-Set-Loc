@@ -162,16 +162,18 @@ namespace DatalistSyncUtil
         private void LoadAppSettingTreeView(TreeView treeView, List<AppSettingsModel> lists)
         {
             TreeNode listNode = null;
-            List<TreeNode> appNodes = new List<TreeNode>();
+            List<TreeNode> appNodes = null;
+            List<TreeNode> appNodesvalues = new List<TreeNode>();
 
             try
             {
                 treeView.Nodes.Clear();
                 foreach (AppSettingsModel list in lists)
                 {
-                    listNode = new TreeNode();
-                    listNode = new TreeNode(list.AppSettingKey, appNodes.ToArray());
-                    listNode = new TreeNode(list.Value, appNodes.ToArray());
+                    appNodes = new List<TreeNode>();
+                    listNode = new TreeNode(list.Value);
+                    appNodes.Add(listNode);
+                    listNode = new TreeNode(list.AppSettingKey + "-" + list.ModuleName, appNodes.ToArray());
                     treeView.Nodes.Add(listNode);
                 }
             }

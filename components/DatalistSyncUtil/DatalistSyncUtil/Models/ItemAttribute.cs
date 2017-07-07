@@ -34,5 +34,7 @@ namespace DatalistSyncUtil
         public Guid TenantID { get; set; }
 
         public string TypeName { get; set; }
+
+        public bool IsEditable { get; set; }
     }
 }
