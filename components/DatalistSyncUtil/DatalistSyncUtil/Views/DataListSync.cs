@@ -1281,46 +1281,59 @@ namespace DatalistSyncUtil
             {
                 string caseSwitch = this.ControlName.SelectedItem.ToString();
                 this.CheckPathExist(this.QueryFilePath);
+                bool dataAvailable = true;
                 switch (caseSwitch)
                 {
                     case "AppSetting":
                         List<AppSettingsModel> listsAppSetting = this.ConvertToCustomAppSetting();
+                        dataAvailable = listsAppSetting == null ? false : true;
                         File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(listsAppSetting));
                         break;
                     case "Datalist":
                         List<DataListMainModel> listsMain = this.ConvertToCustomDataList();
+                        dataAvailable = listsMain == null ? false : true;
                         File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(listsMain));
                         break;
                     case "Menus":
                         List<MenuListModel> listsMenu = this.ConvertToCustomMenus();
+                        dataAvailable = listsMenu == null ? false : true;
                         File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(listsMenu));
                         break;
                     case "HtmlBlock":
                         List<HtmlBlockMainModel> htmlBlks = this.ConvertToCustomHtmlBlks();
+                        dataAvailable = htmlBlks == null ? false : true;
                         File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(htmlBlks));
                         break;
                     case "Security":
                         List<DataListMainModel> listsSecurityMain = this.ConvertToCustomSecurityDataList();
+                        dataAvailable = listsSecurityMain == null ? false : true;
                         File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(listsSecurityMain));
                         break;
                     case "Image":
                         List<ImagesMainModel> images = this.ConvertToCustomImages();
+                        dataAvailable = images == null ? false : true;
                         File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(images));
                         break;
                     case "Help":
                         List<HelpNodeModel> helpNodes = this.ConvertToCustomHelp();
+                        dataAvailable = helpNodes == null ? false : true;
                         File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(helpNodes));
                         break;
                     case "Service":
                         List<ServicesMainModel> services = this.ConvertToCustomServices();
+                        dataAvailable = services == null ? false : true;
                         File.WriteAllText(this.QueryFilePath + "\\" + caseSwitch + ".list", JsonConvert.SerializeObject(services));
                         break;
                     default:
                         break;
                 }
 
-                MessageBox.Show("Download completed!");
-                Process.Start("explorer.exe", this.QueryFilePath);
+                if (dataAvailable)
+                {
+                    MessageBox.Show("Download completed!");
+                    BtnDownloadToFile.Enabled = false;
+                    Process.Start("explorer.exe", this.QueryFilePath);
+                }
             }
             else
             {
@@ -1336,25 +1349,28 @@ namespace DatalistSyncUtil
             AppSettingsModel list1 = null;
 
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
-
-            lists = this.SourceAppSettings.Where(w => w.TenantID == tenantID).ToList();
-            List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
-            foreach (AppSettingsModel list in lists)
+            if (this.SourceAppSettings != null)
             {
-                list1 = new AppSettingsModel()
+                lists = this.SourceAppSettings.Where(w => w.TenantID == tenantID).ToList();
+                List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
+                foreach (AppSettingsModel list in lists)
                 {
-                    TenantModuleAppSettingId = list.TenantModuleAppSettingId,
-                    ApplicationId = list.ApplicationId,
-                    AppSettingKey = list.AppSettingKey,
-                    Value = list.Value,
-                    TargetValue = list.Value,
-                    SettingTypeItemKey = list.SettingTypeItemKey,                    
-                    Description = list.Description,
-                    TenantModuleID = list.TenantModuleID,
-                    IsActive = list.IsActive
-                };
+                    list1 = new AppSettingsModel()
+                    {
+                        TenantModuleAppSettingId = list.TenantModuleAppSettingId,
+                        ApplicationId = list.ApplicationId,
+                        AppSettingKey = list.AppSettingKey,
+                        Value = list.Value,
+                        TargetValue = list.Value,
+                        SettingTypeItemKey = list.SettingTypeItemKey,
+                        Description = list.Description,
+                        TenantModuleID = list.TenantModuleID,
+                        IsActive = list.IsActive,
+                        ModuleName = list.ModuleName
+                    };
 
-                listsMain.Add(list1);
+                    listsMain.Add(list1);
+                }
             }
 
             return listsMain;
@@ -1368,35 +1384,38 @@ namespace DatalistSyncUtil
 
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
 
-            lists = this.SourceLists.Where(w => w.TenantID == tenantID).ToList();
-            List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
-            List<DataListAttribute> attributes = new List<DataListAttribute>();
-            lists.ForEach(x => 
+            if (this.SourceLists != null)
             {
-                if (x.DataListAttributes != null)
+                lists = this.SourceLists.Where(w => w.TenantID == tenantID).ToList();
+                List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
+                List<DataListAttribute> attributes = new List<DataListAttribute>();
+                lists.ForEach(x =>
                 {
-                    attributes.AddRange(x.DataListAttributes);
+                    if (x.DataListAttributes != null)
+                    {
+                        attributes.AddRange(x.DataListAttributes);
+                    }
+                });
+
+                foreach (DataList list in lists)
+                {
+                    list1 = new DataListMainModel()
+                    {
+                        ContentID = list.ContentID,
+                        Description = list.Description,
+                        IsActive = list.IsActive,
+                        IsEditable = list.IsEditable,
+                        ReleaseStatus = list.ReleaseStatus,
+                        ModuleName = modules.Find(f => f.TenantModuleId == list.TenantModuleID).ModuleName,
+                        Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID, this.SourceListItems, attributes),
+                        DataListAttributes = this.ConverttoAttributes(list.DataListAttributes, list.ContentID, list.TenantID, list.ID),
+                        TenantID = list.TenantID,
+                        Name = list.DataListsName,
+                        TenantModuleID = list.TenantModuleID
+                    };
+
+                    listsMain.Add(list1);
                 }
-            });
-
-            foreach (DataList list in lists)
-            {
-                list1 = new DataListMainModel()
-                {
-                    ContentID = list.ContentID,
-                    Description = list.Description,
-                    IsActive = list.IsActive,
-                    IsEditable = list.IsEditable,
-                    ReleaseStatus = list.ReleaseStatus,
-                    ModuleName = modules.Find(f => f.TenantModuleId == list.TenantModuleID).ModuleName,
-                    Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID, this.SourceListItems, attributes),
-                    DataListAttributes = this.ConverttoAttributes(list.DataListAttributes, list.ContentID, list.TenantID, list.ID),
-                    TenantID = list.TenantID,
-                    Name = list.DataListsName,
-                    TenantModuleID = list.TenantModuleID
-                };
-
-                listsMain.Add(list1);
             }
 
             return listsMain;
@@ -1410,6 +1429,8 @@ namespace DatalistSyncUtil
             List<HtmlBlockLanguagesModel> htmlLangs = new List<HtmlBlockLanguagesModel>();
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
 
+            if (this.SourceHtmlListItems != null)
+            { 
             lists = this.SourceHtmlListItems.Where(w => w.TenantId == tenantID).ToList();
             List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
 
@@ -1432,6 +1453,7 @@ namespace DatalistSyncUtil
                 };
 
                 listsMain.Add(list1);
+                }
             }
 
             return listsMain;
@@ -1469,28 +1491,31 @@ namespace DatalistSyncUtil
             List<ImageLanguagesModel> imageLangs = new List<ImageLanguagesModel>();
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
 
-            lists = this.SourceImagesList.Where(w => w.TenantId == tenantID).ToList();
-            List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
-
-            this.SourceImagesList.ForEach(x =>
+            if (this.SourceImagesList != null)
             {
-                imageLangs.AddRange(x.ImageLanguages.ToList());
-            });
+                lists = this.SourceImagesList.Where(w => w.TenantId == tenantID).ToList();
+                List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
 
-            foreach (ImageListModel list in lists)
-            {
-                list1 = new ImagesMainModel()
+                this.SourceImagesList.ForEach(x =>
                 {
-                    ContentId = list.ContentId,
-                    Description = list.Description,
-                    ImageId = list.ID,
-                    ImageLanguages = this.ConvertToCustomImageLang(list.ContentId, list.ID, imageLangs),
-                    LastModifiedTS = list.LastModifiedTS,
-                    OperatorId = list.OperatorId,
-                    TenantModuleId = list.TenantModuleId
-                };
+                    imageLangs.AddRange(x.ImageLanguages.ToList());
+                });
 
-                listsMain.Add(list1);
+                foreach (ImageListModel list in lists)
+                {
+                    list1 = new ImagesMainModel()
+                    {
+                        ContentId = list.ContentId,
+                        Description = list.Description,
+                        ImageId = list.ID,
+                        ImageLanguages = this.ConvertToCustomImageLang(list.ContentId, list.ID, imageLangs),
+                        LastModifiedTS = list.LastModifiedTS,
+                        OperatorId = list.OperatorId,
+                        TenantModuleId = list.TenantModuleId
+                    };
+
+                    listsMain.Add(list1);
+                }
             }
 
             return listsMain;
@@ -1552,27 +1577,30 @@ namespace DatalistSyncUtil
             
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
 
-            lists = this.SourceServicesList.Where(w => w.TenantId == tenantID).ToList();
-            List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
-
-            foreach (ServiceListModel list in lists)
+            if (this.SourceServicesList != null)
             {
-                list1 = new ServicesMainModel()
-                {
-                    Name = list.Name,
-                    SecurityRightItemID = list.SecurityRightItemID,
-                    LabelItemKey = list.LabelContentID,
-                    ServiceID = list.ID,
-                    DefaultText = list.DefaultText,
-                    BaseURL = list.BaseURL,
-                    IOCContainer = list.IOCContainer,
-                    IsActive = list.IsActive,
-                    LastModifiedDate = list.LastModifiedDate,
-                    OperatorID = list.OperatorID,
-                    TenantModuleID = list.TenantModuleID
-                };
+                lists = this.SourceServicesList.Where(w => w.TenantId == tenantID).ToList();
+                List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
 
-                listsMain.Add(list1);
+                foreach (ServiceListModel list in lists)
+                {
+                    list1 = new ServicesMainModel()
+                    {
+                        Name = list.Name,
+                        SecurityRightItemID = list.SecurityRightItemID,
+                        LabelItemKey = list.LabelContentID,
+                        ServiceID = list.ID,
+                        DefaultText = list.DefaultText,
+                        BaseURL = list.BaseURL,
+                        IOCContainer = list.IOCContainer,
+                        IsActive = list.IsActive,
+                        LastModifiedDate = list.LastModifiedDate,
+                        OperatorID = list.OperatorID,
+                        TenantModuleID = list.TenantModuleID
+                    };
+
+                    listsMain.Add(list1);
+                }
             }
 
             return listsMain;
@@ -1586,25 +1614,28 @@ namespace DatalistSyncUtil
 
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
 
-            lists = this.SourceMenus.Where(w => w.TenantId == tenantID).ToList();
-            List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
-            foreach (MenuListModel list in lists)
+            if (this.SourceMenus != null)
             {
-                list1 = new MenuListModel()
+                lists = this.SourceMenus.Where(w => w.TenantId == tenantID).ToList();
+                List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
+                foreach (MenuListModel list in lists)
                 {
-                    ID = list.ID,
-                    TenantModuleID = list.TenantModuleID,
-                    IsActive = list.IsActive,
-                    Name = list.Name,
-                    SecurityRightItemID = list.SecurityRightItemID,
-                    DisplaySize = list.DisplaySize,
-                    OperatorID = list.OperatorID,
-                    Level = list.Level,
-                    TenantId = list.TenantId,
-                    Children = this.ConvertToCustomMenuListItems(list.ID),
-                };
+                    list1 = new MenuListModel()
+                    {
+                        ID = list.ID,
+                        TenantModuleID = list.TenantModuleID,
+                        IsActive = list.IsActive,
+                        Name = list.Name,
+                        SecurityRightItemID = list.SecurityRightItemID,
+                        DisplaySize = list.DisplaySize,
+                        OperatorID = list.OperatorID,
+                        Level = list.Level,
+                        TenantId = list.TenantId,
+                        Children = this.ConvertToCustomMenuListItems(list.ID),
+                    };
 
-                listsMain.Add(list1);
+                    listsMain.Add(list1);
+                }
             }
 
             return listsMain;
@@ -1656,7 +1687,11 @@ namespace DatalistSyncUtil
             List<HelpNodeModel> helplists = null;
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
             List<TenantModuleModel> selectedModules = new List<TenantModuleModel>();
-            helplists = this.SourceHelpNodeList.Where(w => w.TenantId == tenantID).ToList();
+            if (this.SourceHelpNodeList != null)
+            {
+                helplists = this.SourceHelpNodeList.Where(w => w.TenantId == tenantID).ToList();
+            }
+
             return helplists;
         }
 
@@ -1755,6 +1790,7 @@ namespace DatalistSyncUtil
         private void ControlName_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.LoadModules();
+            BtnDownloadToFile.Enabled = false;
         }
 
         private void LoadControls()
@@ -1841,27 +1877,30 @@ namespace DatalistSyncUtil
 
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
 
-            lists = this.SourceLists.Where(w => w.TenantID == tenantID && (w.ContentID == this.securityFunction || w.ContentID == this.securityRoles || w.ContentID == this.securityRight)).ToList();
-            List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
-            List<DataListAttribute> attributes = new List<DataListAttribute>();
-            lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
-
-            foreach (DataList list in lists)
+            if (this.SourceLists != null)
             {
-                list1 = new DataListMainModel()
-                {
-                    ContentID = list.ContentID,
-                    Description = list.Description,
-                    IsActive = list.IsActive,
-                    IsEditable = list.IsEditable,
-                    ReleaseStatus = list.ReleaseStatus,
-                    ModuleName = modules.Find(f => f.TenantModuleId == list.TenantModuleID).ModuleName,
-                    Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID, this.SourceListItems, attributes),
-                    DataListAttributes = this.ConverttoAttributes(list.DataListAttributes, list.ContentID, list.TenantID, list.ID),
-                    TenantID = list.TenantID
-                };
+                lists = this.SourceLists.Where(w => w.TenantID == tenantID && (w.ContentID == this.securityFunction || w.ContentID == this.securityRoles || w.ContentID == this.securityRight)).ToList();
+                List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
+                List<DataListAttribute> attributes = new List<DataListAttribute>();
+                lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
 
-                listsMain.Add(list1);
+                foreach (DataList list in lists)
+                {
+                    list1 = new DataListMainModel()
+                    {
+                        ContentID = list.ContentID,
+                        Description = list.Description,
+                        IsActive = list.IsActive,
+                        IsEditable = list.IsEditable,
+                        ReleaseStatus = list.ReleaseStatus,
+                        ModuleName = modules.Find(f => f.TenantModuleId == list.TenantModuleID).ModuleName,
+                        Items = this.ConvertToCustomDataListItems(list.ContentID, list.TenantID, this.SourceListItems, attributes),
+                        DataListAttributes = this.ConverttoAttributes(list.DataListAttributes, list.ContentID, list.TenantID, list.ID),
+                        TenantID = list.TenantID
+                    };
+
+                    listsMain.Add(list1);
+                }
             }
 
             return listsMain;
