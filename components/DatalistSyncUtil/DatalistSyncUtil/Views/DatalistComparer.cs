@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -30,8 +31,9 @@ namespace DatalistSyncUtil
         private List<CodeLinkTable> sourceListlink = new List<CodeLinkTable>();
         private List<CodeLinkTable> targetListlink = new List<CodeLinkTable>();
         private string selectedControl = string.Empty;
+        private string selectedTenant = string.Empty;
 
-        public DatalistComparer(string controlSelected)
+        public DatalistComparer(string controlSelected, string tenantSelected)
         {
             this.InitializeComponent();
             this.TargetConnectionString = ConfigurationManager.ConnectionStrings["TargetDataList"];
@@ -41,6 +43,7 @@ namespace DatalistSyncUtil
             this.txtTargetConnection.Text = this.GetDataSourceName(this.TargetConnectionString);
             this.txtSourceConnection.Text = this.GetDataSourceName(this.SourceConnectionString);
             this.selectedControl = controlSelected;
+            this.selectedTenant = tenantSelected;
             this.LoadTenant();
             this.LoadModules();
             this.LoadControls();
@@ -48,9 +51,12 @@ namespace DatalistSyncUtil
             this.LoadSourceTenant();
             this.LoadSourceModules();
             this.Cachemanager = new RedisCacheManager();
+            this.QueryFilePath = ConfigurationManager.AppSettings["QueryFilePath"];
         }
 
         public ICacheManager Cachemanager { get; set; }
+
+        public string QueryFilePath { get; set; }
 
         public List<DataListMainModel> SourceList { get; set; }
 
@@ -120,36 +126,42 @@ namespace DatalistSyncUtil
                 switch (filename)
                 {
                     case "AppSetting":
+                    case "AppSettingTarget":
                         this.SourceAppSetting = JsonConvert.DeserializeObject<List<AppSettingsModel>>(File.ReadAllText(file));
                         this.LoadAppSettingTreeView(this.sourceTreeList, this.SourceAppSetting.OrderBy(o => o.AppSettingKey).ToList());
                         break;
-
                     case "Datalist":
+                    case "DatalistTarget":
                         this.SourceList = JsonConvert.DeserializeObject<List<DataListMainModel>>(File.ReadAllText(file));
                         this.LoadTreeView(this.sourceTreeList, this.SourceList.OrderBy(o => o.ContentID).ToList());
                         break;
-
                     case "Menus":
+                    case "MenusTarget":
                         this.SourceMenuList = JsonConvert.DeserializeObject<List<MenuListModel>>(File.ReadAllText(file));
                         this.LoadMenuTreeView(this.sourceTreeList, this.SourceMenuList.OrderBy(o => o.Name).ToList());
                         break;
                     case "HtmlBlock":
+                    case "HtmlBlockTarget":
                         this.SourceHtmlList = JsonConvert.DeserializeObject<List<HtmlBlockMainModel>>(File.ReadAllText(file));
                         this.LoadHtmlTreeView(this.sourceTreeList, this.SourceHtmlList.OrderBy(o => o.ContentId).ToList());
                         break;
                     case "Security":
+                    case "SecurityTarget":
                         this.SourceList = JsonConvert.DeserializeObject<List<DataListMainModel>>(File.ReadAllText(file));
                         this.LoadTreeViewforSecurity(this.sourceTreeList, this.SourceList.OrderBy(x => x.ContentID).ToList());
                         break;
                     case "Image":
+                    case "ImageTarget":
                         this.SourceImagesList = JsonConvert.DeserializeObject<List<ImagesMainModel>>(File.ReadAllText(file));
                         this.LoadImagesTreeView(this.sourceTreeList, this.SourceImagesList.OrderBy(o => o.ContentId).ToList());
                         break;
                     case "Help":
+                    case "HelpTarget":
                         this.SourceHelpList = JsonConvert.DeserializeObject<List<HelpNodeModel>>(File.ReadAllText(file));
                         this.LoadHelpTreeView(this.sourceTreeList, this.SourceHelpList.OrderBy(o => o.HelpNodeNM).ToList());
                         break;
                     case "Service":
+                    case "ServiceTarget":
                         this.SourceServicesList = JsonConvert.DeserializeObject<List<ServicesMainModel>>(File.ReadAllText(file));
                         this.LoadServicesTreeView(this.sourceTreeList, this.SourceServicesList.OrderBy(o => o.Name).ToList());
                         break;
@@ -1184,6 +1196,7 @@ namespace DatalistSyncUtil
         {
             this.tenantList.DataSource = this.LoadHelper.GetTenants().ToList();
             this.tenantList.DisplayMember = "TenantName";
+            this.tenantList.Text = this.selectedTenant;
         }
 
         private void LoadModules()
@@ -1214,6 +1227,7 @@ namespace DatalistSyncUtil
         {
             this.sourceTenantList.DataSource = this.SourceLoadHelper.GetTenants().ToList();
             this.sourceTenantList.DisplayMember = "TenantName";
+            this.sourceTenantList.Text = this.selectedTenant;
         }
 
         private void LoadSourceModules()
@@ -1702,46 +1716,49 @@ namespace DatalistSyncUtil
             if (this.selectedControl == datalistItemToolStripMenuItem.Text)
             {
                 this.datalistItemToolStripMenuItem.Enabled = true;
-            }
-
-            if (this.selectedControl == datalistItemToolStripMenuItem.Text)
-            {
-                this.datalistItemToolStripMenuItem.Enabled = true;
+                this.datalistToolStripMenuItem.Enabled = true;
             }
 
             if (this.selectedControl == appSettingToolStripMenuItem.Text)
             {
                 this.appSettingToolStripMenuItem.Enabled = true;
+                this.appSettingToolStripMenuItem1.Enabled = true;
             }
 
             if (this.selectedControl == htmlBlockToolStripMenuItem.Text)
             {
                 this.htmlBlockToolStripMenuItem.Enabled = true;
+                this.htmlBlockToolStripMenuItem1.Enabled = true;
             }
 
             if (this.selectedControl == imagesToolStripMenuItem.Text)
             {
                 this.imagesToolStripMenuItem.Enabled = true;
+                this.imageToolStripMenuItem.Enabled = true;
             }
 
             if (this.selectedControl == menusToolStripMenuItem.Text)
             {
                 this.menusToolStripMenuItem.Enabled = true;
+                this.menusToolStripMenuItem1.Enabled = true;
             }
 
             if (this.selectedControl == securityToolStripMenuItem.Text)
             {
                 this.securityToolStripMenuItem.Enabled = true;
+                this.securityToolStripMenuItem1.Enabled = true;
             }
 
             if (this.selectedControl == helpToolStripMenuItem.Text)
             {
                 this.helpToolStripMenuItem.Enabled = true;
+                this.helpToolStripMenuItem1.Enabled = true;
             }
 
             if (this.selectedControl == servicesToolStripMenuItem.Text)
             {
                 this.servicesToolStripMenuItem.Enabled = true;
+                this.serviceToolStripMenuItem.Enabled = true;
             }
         }
 
@@ -1755,6 +1772,71 @@ namespace DatalistSyncUtil
             }
 
             Cursor.Current = Cursors.Default;
+        }
+
+        private void SaveToFile(object controlList, string controlName)
+        {
+            File.WriteAllText(this.QueryFilePath + "\\" + controlName + "Target" + ".list", JsonConvert.SerializeObject(controlList));
+            Cursor.Current = Cursors.Default;
+            MessageBox.Show("BackUp of Target " + controlName + "List Downloaded !!");
+            Process.Start("explorer.exe", this.QueryFilePath);
+        }
+
+        private void ImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            List<ImagesMainModel> images = this.LoadTargetImagesList();
+            this.SaveToFile(images, imageToolStripMenuItem.Text);
+        }
+
+        private void AppSettingToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            List<AppSettingsModel> appSettings = this.LoadTargetAppSetting();
+            this.SaveToFile(appSettings, appSettingToolStripMenuItem1.Text);
+        }
+
+        private void DatalistToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            List<DataListMainModel> datalists = this.LoadTargetDatalist();
+            this.SaveToFile(datalists, datalistToolStripMenuItem.Text);
+        }
+
+        private void HtmlBlockToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            List<HtmlBlockMainModel> htmlBlks = this.LoadTargetHTMLlist();
+            this.SaveToFile(htmlBlks, htmlBlockToolStripMenuItem1.Text);
+        }
+
+        private void MenusToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            List<MenuListModel> menus = this.LoadTargetMenus();
+            this.SaveToFile(menus, menusToolStripMenuItem1.Text);
+        }
+
+        private void SecurityToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            Guid tenantModuleId = (this.moduleList.SelectedItem as TenantModuleModel).TenantModuleId;
+            List<DataListMainModel> security = this.LoadTargetSecurityDatalist(tenantModuleId);
+            this.SaveToFile(security, securityToolStripMenuItem1.Text);
+        }
+
+        private void HelpToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            List<HelpNodeModel> helpNodes = this.LoadTargetHelplist();
+            this.SaveToFile(helpNodes, helpToolStripMenuItem1.Text);
+        }
+
+        private void ServiceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            List<ServicesMainModel> services = this.LoadTargetServicesList();
+            this.SaveToFile(services, serviceToolStripMenuItem.Text);
         }
     }
 }

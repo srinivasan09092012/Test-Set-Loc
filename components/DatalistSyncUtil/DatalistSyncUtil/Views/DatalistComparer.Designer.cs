@@ -97,6 +97,15 @@ namespace DatalistSyncUtil
             this.imagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.servicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backUpTargetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appSettingToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.datalistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.htmlBlockToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menusToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.securityToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.imageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.serviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.leftPanel.SuspendLayout();
             this.rightPanel.SuspendLayout();
@@ -120,10 +129,10 @@ namespace DatalistSyncUtil
             this.leftPanel.Controls.Add(this.txtSourceConnection);
             this.leftPanel.Controls.Add(this.btnSourceLoad);
             this.leftPanel.Controls.Add(this.btnSourceFile);
-            this.leftPanel.Location = new System.Drawing.Point(0, 5);
-            this.leftPanel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.leftPanel.Location = new System.Drawing.Point(0, 3);
+            this.leftPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.leftPanel.Name = "leftPanel";
-            this.leftPanel.Size = new System.Drawing.Size(807, 1035);
+            this.leftPanel.Size = new System.Drawing.Size(538, 673);
             this.leftPanel.TabIndex = 0;
             // 
             // SourceControlNames
@@ -131,10 +140,10 @@ namespace DatalistSyncUtil
             this.SourceControlNames.DisplayMember = "SourceControlNames";
             this.SourceControlNames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SourceControlNames.FormattingEnabled = true;
-            this.SourceControlNames.Location = new System.Drawing.Point(543, 42);
-            this.SourceControlNames.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.SourceControlNames.Location = new System.Drawing.Point(362, 27);
+            this.SourceControlNames.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.SourceControlNames.Name = "SourceControlNames";
-            this.SourceControlNames.Size = new System.Drawing.Size(139, 28);
+            this.SourceControlNames.Size = new System.Drawing.Size(94, 21);
             this.SourceControlNames.Sorted = true;
             this.SourceControlNames.TabIndex = 36;
             this.SourceControlNames.ValueMember = "TenantID";
@@ -143,9 +152,10 @@ namespace DatalistSyncUtil
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(475, 48);
+            this.label7.Location = new System.Drawing.Point(317, 31);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(72, 20);
+            this.label7.Size = new System.Drawing.Size(51, 13);
             this.label7.TabIndex = 32;
             this.label7.Text = "Control:";
             // 
@@ -154,10 +164,10 @@ namespace DatalistSyncUtil
             this.sourceModuleList.DisplayMember = "ModuleName";
             this.sourceModuleList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sourceModuleList.FormattingEnabled = true;
-            this.sourceModuleList.Location = new System.Drawing.Point(308, 41);
-            this.sourceModuleList.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.sourceModuleList.Location = new System.Drawing.Point(205, 27);
+            this.sourceModuleList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.sourceModuleList.Name = "sourceModuleList";
-            this.sourceModuleList.Size = new System.Drawing.Size(161, 28);
+            this.sourceModuleList.Size = new System.Drawing.Size(109, 21);
             this.sourceModuleList.Sorted = true;
             this.sourceModuleList.TabIndex = 31;
             this.sourceModuleList.ValueMember = "TenantModuleID";
@@ -166,9 +176,10 @@ namespace DatalistSyncUtil
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(3, 9);
+            this.label5.Location = new System.Drawing.Point(2, 6);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 20);
+            this.label5.Size = new System.Drawing.Size(51, 13);
             this.label5.TabIndex = 28;
             this.label5.Text = "Source:";
             // 
@@ -176,18 +187,19 @@ namespace DatalistSyncUtil
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(241, 47);
+            this.label2.Location = new System.Drawing.Point(161, 31);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 20);
+            this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 30;
             this.label2.Text = "Module:";
             // 
             // sourceTreeList
             // 
-            this.sourceTreeList.Location = new System.Drawing.Point(-2, 80);
-            this.sourceTreeList.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.sourceTreeList.Location = new System.Drawing.Point(-1, 52);
+            this.sourceTreeList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.sourceTreeList.Name = "sourceTreeList";
-            this.sourceTreeList.Size = new System.Drawing.Size(799, 952);
+            this.sourceTreeList.Size = new System.Drawing.Size(534, 620);
             this.sourceTreeList.TabIndex = 5;
             // 
             // sourceTenantList
@@ -195,10 +207,10 @@ namespace DatalistSyncUtil
             this.sourceTenantList.DisplayMember = "TenantName";
             this.sourceTenantList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sourceTenantList.FormattingEnabled = true;
-            this.sourceTenantList.Location = new System.Drawing.Point(80, 43);
-            this.sourceTenantList.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.sourceTenantList.Location = new System.Drawing.Point(53, 28);
+            this.sourceTenantList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.sourceTenantList.Name = "sourceTenantList";
-            this.sourceTenantList.Size = new System.Drawing.Size(155, 28);
+            this.sourceTenantList.Size = new System.Drawing.Size(105, 21);
             this.sourceTenantList.Sorted = true;
             this.sourceTenantList.TabIndex = 29;
             this.sourceTenantList.ValueMember = "TenantID";
@@ -208,27 +220,28 @@ namespace DatalistSyncUtil
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 48);
+            this.label6.Location = new System.Drawing.Point(2, 31);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 20);
+            this.label6.Size = new System.Drawing.Size(51, 13);
             this.label6.TabIndex = 28;
             this.label6.Text = "Tenant:";
             // 
             // txtSourceConnection
             // 
-            this.txtSourceConnection.Location = new System.Drawing.Point(80, 3);
-            this.txtSourceConnection.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtSourceConnection.Location = new System.Drawing.Point(53, 2);
+            this.txtSourceConnection.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtSourceConnection.Name = "txtSourceConnection";
             this.txtSourceConnection.ReadOnly = true;
-            this.txtSourceConnection.Size = new System.Drawing.Size(653, 26);
+            this.txtSourceConnection.Size = new System.Drawing.Size(437, 20);
             this.txtSourceConnection.TabIndex = 27;
             // 
             // btnSourceLoad
             // 
-            this.btnSourceLoad.Location = new System.Drawing.Point(688, 37);
-            this.btnSourceLoad.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnSourceLoad.Location = new System.Drawing.Point(459, 24);
+            this.btnSourceLoad.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnSourceLoad.Name = "btnSourceLoad";
-            this.btnSourceLoad.Size = new System.Drawing.Size(100, 36);
+            this.btnSourceLoad.Size = new System.Drawing.Size(67, 23);
             this.btnSourceLoad.TabIndex = 27;
             this.btnSourceLoad.Text = "Load";
             this.btnSourceLoad.UseVisualStyleBackColor = true;
@@ -237,10 +250,10 @@ namespace DatalistSyncUtil
             // btnSourceFile
             // 
             this.btnSourceFile.Image = global::DatalistSyncUtil.Properties.Resources.FileExplorer;
-            this.btnSourceFile.Location = new System.Drawing.Point(739, 3);
-            this.btnSourceFile.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnSourceFile.Location = new System.Drawing.Point(493, 2);
+            this.btnSourceFile.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnSourceFile.Name = "btnSourceFile";
-            this.btnSourceFile.Size = new System.Drawing.Size(49, 30);
+            this.btnSourceFile.Size = new System.Drawing.Size(33, 19);
             this.btnSourceFile.TabIndex = 2;
             this.btnSourceFile.UseVisualStyleBackColor = true;
             this.btnSourceFile.Click += new System.EventHandler(this.BtnSourceFile_Click);
@@ -257,10 +270,10 @@ namespace DatalistSyncUtil
             this.rightPanel.Controls.Add(this.targetTreeList);
             this.rightPanel.Controls.Add(this.label1);
             this.rightPanel.Controls.Add(this.txtTargetConnection);
-            this.rightPanel.Location = new System.Drawing.Point(3, 5);
-            this.rightPanel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.rightPanel.Location = new System.Drawing.Point(2, 3);
+            this.rightPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.rightPanel.Name = "rightPanel";
-            this.rightPanel.Size = new System.Drawing.Size(784, 1032);
+            this.rightPanel.Size = new System.Drawing.Size(523, 671);
             this.rightPanel.TabIndex = 1;
             // 
             // TargetControlNames
@@ -268,10 +281,10 @@ namespace DatalistSyncUtil
             this.TargetControlNames.DisplayMember = "TargetControlNames";
             this.TargetControlNames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TargetControlNames.FormattingEnabled = true;
-            this.TargetControlNames.Location = new System.Drawing.Point(551, 40);
-            this.TargetControlNames.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.TargetControlNames.Location = new System.Drawing.Point(367, 26);
+            this.TargetControlNames.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TargetControlNames.Name = "TargetControlNames";
-            this.TargetControlNames.Size = new System.Drawing.Size(140, 28);
+            this.TargetControlNames.Size = new System.Drawing.Size(95, 21);
             this.TargetControlNames.Sorted = true;
             this.TargetControlNames.TabIndex = 35;
             this.TargetControlNames.ValueMember = "TenantID";
@@ -280,9 +293,10 @@ namespace DatalistSyncUtil
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(473, 42);
+            this.label8.Location = new System.Drawing.Point(315, 27);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 20);
+            this.label8.Size = new System.Drawing.Size(51, 13);
             this.label8.TabIndex = 34;
             this.label8.Text = "Control:";
             // 
@@ -291,10 +305,10 @@ namespace DatalistSyncUtil
             this.moduleList.DisplayMember = "ModuleName";
             this.moduleList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.moduleList.FormattingEnabled = true;
-            this.moduleList.Location = new System.Drawing.Point(293, 39);
-            this.moduleList.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.moduleList.Location = new System.Drawing.Point(195, 25);
+            this.moduleList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.moduleList.Name = "moduleList";
-            this.moduleList.Size = new System.Drawing.Size(174, 28);
+            this.moduleList.Size = new System.Drawing.Size(117, 21);
             this.moduleList.Sorted = true;
             this.moduleList.TabIndex = 26;
             this.moduleList.ValueMember = "TenantModuleID";
@@ -303,9 +317,10 @@ namespace DatalistSyncUtil
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(226, 44);
+            this.label4.Location = new System.Drawing.Point(151, 29);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 20);
+            this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 25;
             this.label4.Text = "Module:";
             // 
@@ -314,10 +329,10 @@ namespace DatalistSyncUtil
             this.tenantList.DisplayMember = "TenantName";
             this.tenantList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tenantList.FormattingEnabled = true;
-            this.tenantList.Location = new System.Drawing.Point(70, 40);
-            this.tenantList.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.tenantList.Location = new System.Drawing.Point(47, 26);
+            this.tenantList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tenantList.Name = "tenantList";
-            this.tenantList.Size = new System.Drawing.Size(150, 28);
+            this.tenantList.Size = new System.Drawing.Size(101, 21);
             this.tenantList.Sorted = true;
             this.tenantList.TabIndex = 24;
             this.tenantList.ValueMember = "TenantID";
@@ -327,18 +342,19 @@ namespace DatalistSyncUtil
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(4, 45);
+            this.label3.Location = new System.Drawing.Point(3, 29);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 20);
+            this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 23;
             this.label3.Text = "Tenant:";
             // 
             // btnLoadTarget
             // 
-            this.btnLoadTarget.Location = new System.Drawing.Point(697, 37);
-            this.btnLoadTarget.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnLoadTarget.Location = new System.Drawing.Point(465, 24);
+            this.btnLoadTarget.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnLoadTarget.Name = "btnLoadTarget";
-            this.btnLoadTarget.Size = new System.Drawing.Size(87, 38);
+            this.btnLoadTarget.Size = new System.Drawing.Size(58, 25);
             this.btnLoadTarget.TabIndex = 7;
             this.btnLoadTarget.Text = "Load";
             this.btnLoadTarget.UseVisualStyleBackColor = true;
@@ -346,29 +362,30 @@ namespace DatalistSyncUtil
             // 
             // targetTreeList
             // 
-            this.targetTreeList.Location = new System.Drawing.Point(3, 80);
-            this.targetTreeList.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.targetTreeList.Location = new System.Drawing.Point(2, 52);
+            this.targetTreeList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.targetTreeList.Name = "targetTreeList";
-            this.targetTreeList.Size = new System.Drawing.Size(780, 952);
+            this.targetTreeList.Size = new System.Drawing.Size(521, 620);
             this.targetTreeList.TabIndex = 6;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 9);
+            this.label1.Location = new System.Drawing.Point(3, 6);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 20);
+            this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Target:";
             // 
             // txtTargetConnection
             // 
-            this.txtTargetConnection.Location = new System.Drawing.Point(76, 5);
-            this.txtTargetConnection.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtTargetConnection.Location = new System.Drawing.Point(51, 3);
+            this.txtTargetConnection.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtTargetConnection.Name = "txtTargetConnection";
             this.txtTargetConnection.ReadOnly = true;
-            this.txtTargetConnection.Size = new System.Drawing.Size(705, 26);
+            this.txtTargetConnection.Size = new System.Drawing.Size(471, 20);
             this.txtTargetConnection.TabIndex = 2;
             // 
             // openDatalistFile
@@ -378,8 +395,8 @@ namespace DatalistSyncUtil
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Location = new System.Drawing.Point(14, 34);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.splitContainer1.Location = new System.Drawing.Point(9, 22);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -389,8 +406,9 @@ namespace DatalistSyncUtil
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.rightPanel);
-            this.splitContainer1.Size = new System.Drawing.Size(1602, 1049);
-            this.splitContainer1.SplitterDistance = 791;
+            this.splitContainer1.Size = new System.Drawing.Size(1068, 682);
+            this.splitContainer1.SplitterDistance = 527;
+            this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 5;
             // 
             // menuStrip1
@@ -400,8 +418,8 @@ namespace DatalistSyncUtil
             this.optionsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1604, 33);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(1069, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -409,6 +427,7 @@ namespace DatalistSyncUtil
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deltaToolStripMenuItem,
+            this.backUpTargetToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 22);
@@ -426,7 +445,7 @@ namespace DatalistSyncUtil
             this.helpToolStripMenuItem,
             this.servicesToolStripMenuItem});
             this.deltaToolStripMenuItem.Name = "deltaToolStripMenuItem";
-            this.deltaToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.deltaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.deltaToolStripMenuItem.Text = "Delta";
             this.deltaToolStripMenuItem.Click += new System.EventHandler(this.DeltaToolStripMenuItem_Click);
             this.deltaToolStripMenuItem.MouseHover += new System.EventHandler(this.DeltaToolStripMenuItem_Click);
@@ -496,22 +515,101 @@ namespace DatalistSyncUtil
             this.servicesToolStripMenuItem.Text = "Service";
             this.servicesToolStripMenuItem.Click += new System.EventHandler(this.ServicesToolStripMenuItem_Click);
             // 
+            // backUpTargetToolStripMenuItem
+            // 
+            this.backUpTargetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.appSettingToolStripMenuItem1,
+            this.datalistToolStripMenuItem,
+            this.htmlBlockToolStripMenuItem1,
+            this.menusToolStripMenuItem1,
+            this.securityToolStripMenuItem1,
+            this.imageToolStripMenuItem,
+            this.helpToolStripMenuItem1,
+            this.serviceToolStripMenuItem});
+            this.backUpTargetToolStripMenuItem.Name = "backUpTargetToolStripMenuItem";
+            this.backUpTargetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.backUpTargetToolStripMenuItem.Text = "BackUp Target";
+            // 
+            // appSettingToolStripMenuItem1
+            //
+            this.appSettingToolStripMenuItem1.Enabled = false;
+            this.appSettingToolStripMenuItem1.Name = "appSettingToolStripMenuItem1";
+            this.appSettingToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.appSettingToolStripMenuItem1.Text = "AppSetting";
+            this.appSettingToolStripMenuItem1.Click += new System.EventHandler(this.AppSettingToolStripMenuItem1_Click);
+            // 
+            // datalistToolStripMenuItem
+            //
+            this.datalistToolStripMenuItem.Enabled = false; 
+            this.datalistToolStripMenuItem.Name = "datalistToolStripMenuItem";
+            this.datalistToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.datalistToolStripMenuItem.Text = "Datalist";
+            this.datalistToolStripMenuItem.Click += new System.EventHandler(this.DatalistToolStripMenuItem_Click_1);
+            // 
+            // htmlBlockToolStripMenuItem1
+            //
+            this.htmlBlockToolStripMenuItem1.Enabled = false;
+            this.htmlBlockToolStripMenuItem1.Name = "htmlBlockToolStripMenuItem1";
+            this.htmlBlockToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.htmlBlockToolStripMenuItem1.Text = "HtmlBlock";
+            this.htmlBlockToolStripMenuItem1.Click += new System.EventHandler(this.HtmlBlockToolStripMenuItem1_Click);
+            // 
+            // menusToolStripMenuItem1
+            //
+            this.menusToolStripMenuItem1.Enabled = false;
+            this.menusToolStripMenuItem1.Name = "menusToolStripMenuItem1";
+            this.menusToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.menusToolStripMenuItem1.Text = "Menus";
+            this.menusToolStripMenuItem1.Click += new System.EventHandler(this.MenusToolStripMenuItem1_Click);
+            // 
+            // securityToolStripMenuItem1
+            //
+            this.securityToolStripMenuItem1.Enabled = false;
+            this.securityToolStripMenuItem1.Name = "securityToolStripMenuItem1";
+            this.securityToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.securityToolStripMenuItem1.Text = "Security";
+            this.securityToolStripMenuItem1.Click += new System.EventHandler(this.SecurityToolStripMenuItem1_Click);
+            // 
+            // imageToolStripMenuItem
+            //
+            this.imageToolStripMenuItem.Enabled = false;
+            this.imageToolStripMenuItem.Name = "imageToolStripMenuItem";
+            this.imageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.imageToolStripMenuItem.Text = "Image";
+            this.imageToolStripMenuItem.Click += new System.EventHandler(this.ImageToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem1
+            //
+            this.helpToolStripMenuItem1.Enabled = false;
+            this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.helpToolStripMenuItem1.Text = "Help";
+            this.helpToolStripMenuItem1.Click += new System.EventHandler(this.HelpToolStripMenuItem1_Click);
+            // 
+            // serviceToolStripMenuItem
+            //
+            this.serviceToolStripMenuItem.Enabled = false;
+            this.serviceToolStripMenuItem.Name = "serviceToolStripMenuItem";
+            this.serviceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.serviceToolStripMenuItem.Text = "Service";
+            this.serviceToolStripMenuItem.Click += new System.EventHandler(this.ServiceToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // DatalistComparer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1604, 882);
+            this.ClientSize = new System.Drawing.Size(1069, 573);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MaximizeBox = false;
             this.Name = "DatalistComparer";
             this.Text = "Datalist Comparer";
@@ -543,5 +641,14 @@ namespace DatalistSyncUtil
         private System.Windows.Forms.ToolStripMenuItem appSettingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem servicesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backUpTargetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem imageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem appSettingToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem datalistToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem htmlBlockToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem menusToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem securityToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem serviceToolStripMenuItem;
     }
 }

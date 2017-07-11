@@ -1777,7 +1777,8 @@ namespace DatalistSyncUtil
             if (this.ControlName.SelectedItem != null)
             {
                 string selectedvalue = this.ControlName.SelectedItem.ToString();
-                DatalistComparer compare = new DatalistComparer(selectedvalue);
+                string selectedTenant = this.TenantList.Text.ToString();
+                DatalistComparer compare = new DatalistComparer(selectedvalue, selectedTenant);
                 compare.ShowDialog();
             }
             else
