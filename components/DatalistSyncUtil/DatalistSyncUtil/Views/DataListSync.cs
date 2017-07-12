@@ -1366,7 +1366,9 @@ namespace DatalistSyncUtil
                         Description = list.Description,
                         TenantModuleID = list.TenantModuleID,
                         IsActive = list.IsActive,
-                        ModuleName = list.ModuleName
+                        ModuleName = list.ModuleName,
+                        TenantID = list.TenantID,
+                        OperatorID = Environment.UserName
                     };
 
                     listsMain.Add(list1);

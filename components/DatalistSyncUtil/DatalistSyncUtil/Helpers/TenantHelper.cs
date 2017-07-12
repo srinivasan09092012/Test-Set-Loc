@@ -461,6 +461,7 @@ namespace DatalistSyncUtil
 
         public bool AddAppSetting(AppSettingsModel cmd)
         {
+            bool success = true;
             using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
             {
                 try
@@ -470,10 +471,11 @@ namespace DatalistSyncUtil
                 catch (Exception ex)
                 {
                     MessageBox.Show("ERROR:" + ex.Message);
+                    success = false;
                 }
             }
 
-            return true;
+            return success;
         }      
 
         public bool AddMenus(MenuListModel cmd)
@@ -984,6 +986,26 @@ namespace DatalistSyncUtil
                 result = new SearchDataListDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
             }
            
+            return result;
+        }
+
+        public List<ApplicationModel> LoadApplicationName()
+        {
+            List<ApplicationModel> result = null;
+            if (!this.Cache.IsSet("TargetTenantApplication"))
+            {
+                using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
+                {
+                    result = new GetApplicationDaoHelper(new ApplicationDbContext(session, true)).ExecuteProcedure();
+                }
+
+                this.Cache.Set("TargetTenantApplication", result, 1440);
+            }
+            else
+            {
+                result = this.Cache.Get<List<ApplicationModel>>("TargetTenantApplication").ToList();
+            }
+
             return result;
         }
     }

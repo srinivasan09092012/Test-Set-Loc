@@ -73,7 +73,6 @@ namespace DatalistSyncUtil
                         })
                   .Select(g => g.Items.First()).OrderBy(o => o.ModuleName).ToList();
             this.ModuleList.DisplayMember = "ModuleName";
-            this.ModuleList.SelectAll();
         }
 
         private bool CheckUpdateItemChanged(ref AppSettingsModel t, ref AppSettingsModel targetSetting)
@@ -179,14 +178,14 @@ namespace DatalistSyncUtil
 
         private void DrpApplication_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (drpApplication.SelectedIndex != 0)
-            {
                 Guid applicationId = (this.drpApplication.SelectedItem as ApplicationModel).ApplicationId;
                 Guid tenantModuleId = (this.ModuleList.SelectedItem as TenantModuleModel).TenantModuleId;
                 this.NewItemsView.AutoGenerateColumns = false;                
                 List<AppSettingsModel> newhtmllists = null;
                 List<AppSettingsModel> finalSource = null;
                 List<AppSettingsModel> finalTarget = null;
+                Guid tenantModuleIDTarget = this.GetTenantModuleTarget((this.ModuleList.SelectedItem as TenantModuleModel).ModuleName);
+                Guid tenantAppIDTarget = this.GetAppIDTarget((this.drpApplication.SelectedItem as ApplicationModel).ApplicationName);
                 var modulesQuery = from source in this.SourceAppsetting                                                                    
                                    where source.TenantModuleID == tenantModuleId
                                    where source.ApplicationId == applicationId                                   
@@ -197,10 +196,10 @@ namespace DatalistSyncUtil
                 if (this.TargetAppsetting != null)
                  {
                     var modulesQuery1 = from target in this.TargetAppsetting
-                                          where target.TenantModuleID == tenantModuleId
-                                          where target.ApplicationId == applicationId
-                                          where target.IsActive = true
-                                          select target;
+                                        where target.TenantModuleID == tenantModuleIDTarget
+                                        where target.ApplicationId == applicationId    
+                                        where target.IsActive = true
+                                        select target;
                     finalTarget = modulesQuery1.ToList();
                 }              
 
@@ -210,7 +209,37 @@ namespace DatalistSyncUtil
                 newhtmllists.OrderBy(o => o.AppSettingKey).ToList();
                 this.NewItemsView.DataSource = new BindingList<AppSettingsModel>(newhtmllists);
                 this.NewItemsView.EditMode = DataGridViewEditMode.EditOnEnter;
+        }
+
+        private Guid GetAppIDTarget(string applicationName)
+        {
+            TenantHelper targetHelper = new TenantHelper(this.TargetConnectionString);
+            List<ApplicationModel> application = targetHelper.LoadApplicationName();
+            List<TenantModuleModel> modules = targetHelper.LoadModules();
+            Guid moduleID = modules.Find(x => x.ModuleName == (this.ModuleList.SelectedItem as TenantModuleModel).ModuleName).ModuleId;
+            Guid applicationID = new Guid();
+            if (applicationName != "---All Applications---")
+            {
+                ApplicationModel filterapp = new ApplicationModel();
+                filterapp = application.Find(w => w.ApplicationName == applicationName && w.ModuleId == moduleID);
+
+                if (filterapp == null)
+                {
+                    filterapp = application.Find(w => w.ApplicationName == applicationName);
+                }
+
+                applicationID = filterapp.ApplicationId;
             }
+
+            return applicationID;
+        }
+
+        private Guid GetTenantModuleTarget(string moduleName)
+        {
+            TenantHelper targetHelper = new TenantHelper(this.TargetConnectionString);
+            List<TenantModuleModel> modules = targetHelper.LoadModules();
+            Guid tenantModuleID = modules.Find(w => w.TenantId == this.TenantID && w.ModuleName == moduleName).TenantModuleId;
+            return tenantModuleID;
         }
     }    
 }

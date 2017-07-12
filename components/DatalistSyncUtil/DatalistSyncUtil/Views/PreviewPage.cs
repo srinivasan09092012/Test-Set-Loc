@@ -204,7 +204,7 @@ namespace DatalistSyncUtil.Views
                 }
 
                 Cursor.Current = Cursors.Default;
-                PreviewPage.ActiveForm.Close();
+                this.Close();
             }
             catch (Exception ex)
             {
@@ -216,6 +216,7 @@ namespace DatalistSyncUtil.Views
        private void SaveAppSettings()
         {
             this.Applist = this.LoadHelper.GetAppSetting();
+            bool success = false;
             try
             {
                 List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
@@ -226,12 +227,19 @@ namespace DatalistSyncUtil.Views
                         list.TenantModuleID = modules.Find(f => f.TenantId == list.TenantID && f.ModuleName == list.ModuleName).TenantModuleId;
                         if (!this.Applist.Any(a => a.TenantModuleAppSettingId == list.TenantModuleAppSettingId))
                         {
-                            this.LoadHelper.AddAppSetting(list);                            
+                            success = this.LoadHelper.AddAppSetting(list);                            
                         }                       
                     }
 
-                    MessageBox.Show("AppSetting Added Successfully !! ");
-                    this.Cache.Remove("TargetAppSetting");
+                    if (success)
+                    {
+                        MessageBox.Show("AppSetting Added Successfully !! ");
+                        this.Cache.Remove("TargetAppSetting");
+                    }
+                    else
+                    {
+                        MessageBox.Show("AppSetting Insertion Failed !! ");
+                    }
                 }
             }
             catch (Exception ex)
