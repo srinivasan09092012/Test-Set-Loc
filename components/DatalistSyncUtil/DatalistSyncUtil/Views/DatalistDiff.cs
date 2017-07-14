@@ -1594,7 +1594,10 @@ namespace DatalistSyncUtil
         {
             foreach (DataGridViewRow row in this.NewAttributesView.Rows)
             {
-                row.Cells[0].Value = this.NewItemsAttributeSelectAllCB.Checked;
+                if (!row.ReadOnly)
+                {
+                    row.Cells[0].Value = this.NewItemsAttributeSelectAllCB.Checked;
+                }
             }
         }
 
