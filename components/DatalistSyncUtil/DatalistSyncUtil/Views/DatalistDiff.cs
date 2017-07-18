@@ -1735,9 +1735,9 @@ namespace DatalistSyncUtil
         {
             foreach (DataGridViewRow row in NewItemAttributeView.Rows)
             {
-                string rowStatus = row.Cells[11].Value != null ? row.Cells[11].Value.ToString() : string.Empty;
+                string rowStatus = row.Cells[10].Value != null ? row.Cells[10].Value.ToString() : string.Empty;
 
-                if (rowStatus == "DATALIST_NEW")
+                if (rowStatus == "NEW")
                 {
                     row.Cells[0].Value = this.NewItemAttrNewDataListCB.Checked;
                 }
@@ -1748,7 +1748,7 @@ namespace DatalistSyncUtil
         {
             foreach (DataGridViewRow row in this.NewItemAttributeView.Rows)
             {
-                string rowStatus = row.Cells[11].Value != null ? row.Cells[11].Value.ToString() : string.Empty;
+                string rowStatus = row.Cells[10].Value != null ? row.Cells[10].Value.ToString() : string.Empty;
 
                 if (rowStatus == "DATALISTITEM_NEW")
                 {
@@ -1761,9 +1761,9 @@ namespace DatalistSyncUtil
         {
             foreach (DataGridViewRow row in this.NewItemAttributeView.Rows)
             {
-                string rowStatus = row.Cells[11].Value != null ? row.Cells[11].Value.ToString() : string.Empty;
+                string rowStatus = row.Cells[10].Value != null ? row.Cells[10].Value.ToString() : string.Empty;
 
-                if (rowStatus == "ITEMATTRIBUTE_NEW")
+                if (rowStatus == "EXISTINGITEM_NEW")
                 {
                     row.Cells[0].Value = this.NewItemAttrExitingItemsCB.Checked;
                 }
