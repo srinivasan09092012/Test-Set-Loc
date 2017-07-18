@@ -408,6 +408,7 @@ namespace DatalistSyncUtil
 
                     if (targetItem != null)
                     {
+                        t.ID = targetItem.ID;
                         itemChanged = this.CheckUpdateItemChanged(ref t, ref targetItem);
 
                         if (itemChanged)

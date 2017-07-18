@@ -160,7 +160,12 @@ namespace DatalistSyncUtil
                 {
                     helpLangs.ForEach(l =>
                     {
-                        targetHelpLanguages = targetHelpLangs.Find(i => i.HelpNodeNM == l.HelpNodeNM && i.HelpNodeTypeCD == l.HelpNodeTypeCD).HelpContentLanguages;
+                        HelpNodeModel targetdata = targetHelpLangs.Find(i => i.HelpNodeNM == l.HelpNodeNM && i.HelpNodeTypeCD == l.HelpNodeTypeCD);
+                        if (targetdata != null)
+                        {
+                            targetHelpLanguages = targetdata.HelpContentLanguages;
+                        }
+
                         finalHelpLanguages = l.HelpContentLanguages.Where(b => !targetHelpLanguages.Any(a => a.Language == b.Language)).ToList();
                         finalHelpLanguages.ForEach(h =>
                         {

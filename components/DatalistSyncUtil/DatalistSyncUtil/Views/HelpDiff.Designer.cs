@@ -38,15 +38,15 @@ namespace DatalistSyncUtil
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.moduleList = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.Help = new System.Windows.Forms.TabPage();
@@ -68,6 +68,9 @@ namespace DatalistSyncUtil
             this.UpdateHelpSelectAllCB = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.SourceHelp = new System.Windows.Forms.DataGridView();
+            this.dataGridViewCheckBoxColumn13 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -83,14 +86,6 @@ namespace DatalistSyncUtil
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.sourceHelpLangView = new System.Windows.Forms.DataGridView();
             this.targetHelpLangView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewCheckBoxColumn15 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn39 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn41 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn28 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn29 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn48 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UpdateHelpLangSelectAllCB = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -191,9 +186,14 @@ namespace DatalistSyncUtil
             this.TitleModified = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn44 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn13 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn15 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn39 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn41 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn28 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn29 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn48 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Help.SuspendLayout();
             this.ItemsTab.SuspendLayout();
             this.NewHelpPage.SuspendLayout();
@@ -222,10 +222,10 @@ namespace DatalistSyncUtil
             this.moduleList.DisplayMember = "ModuleName";
             this.moduleList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.moduleList.FormattingEnabled = true;
-            this.moduleList.Location = new System.Drawing.Point(77, 12);
-            this.moduleList.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.moduleList.Location = new System.Drawing.Point(103, 15);
+            this.moduleList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.moduleList.Name = "moduleList";
-            this.moduleList.Size = new System.Drawing.Size(209, 21);
+            this.moduleList.Size = new System.Drawing.Size(277, 24);
             this.moduleList.Sorted = true;
             this.moduleList.TabIndex = 30;
             this.moduleList.ValueMember = "TenantModuleID";
@@ -235,10 +235,9 @@ namespace DatalistSyncUtil
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(14, 15);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(19, 18);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 15);
+            this.label4.Size = new System.Drawing.Size(68, 18);
             this.label4.TabIndex = 29;
             this.label4.Text = "Module:";
             // 
@@ -246,21 +245,21 @@ namespace DatalistSyncUtil
             // 
             this.Help.Controls.Add(this.btnIncludeHelp);
             this.Help.Controls.Add(this.ItemsTab);
-            this.Help.Location = new System.Drawing.Point(4, 22);
-            this.Help.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Help.Location = new System.Drawing.Point(4, 25);
+            this.Help.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Help.Name = "Help";
-            this.Help.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.Help.Size = new System.Drawing.Size(1271, 513);
+            this.Help.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Help.Size = new System.Drawing.Size(1697, 634);
             this.Help.TabIndex = 1;
             this.Help.Text = "Help";
             this.Help.UseVisualStyleBackColor = true;
             // 
             // btnIncludeHelp
             // 
-            this.btnIncludeHelp.Location = new System.Drawing.Point(4, 482);
-            this.btnIncludeHelp.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnIncludeHelp.Location = new System.Drawing.Point(5, 593);
+            this.btnIncludeHelp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnIncludeHelp.Name = "btnIncludeHelp";
-            this.btnIncludeHelp.Size = new System.Drawing.Size(72, 25);
+            this.btnIncludeHelp.Size = new System.Drawing.Size(96, 31);
             this.btnIncludeHelp.TabIndex = 19;
             this.btnIncludeHelp.Text = "Include";
             this.btnIncludeHelp.UseVisualStyleBackColor = true;
@@ -270,22 +269,22 @@ namespace DatalistSyncUtil
             // 
             this.ItemsTab.Controls.Add(this.NewHelpPage);
             this.ItemsTab.Controls.Add(this.UpdateItemsTab);
-            this.ItemsTab.Location = new System.Drawing.Point(4, 6);
-            this.ItemsTab.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ItemsTab.Location = new System.Drawing.Point(5, 7);
+            this.ItemsTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ItemsTab.Name = "ItemsTab";
             this.ItemsTab.SelectedIndex = 0;
-            this.ItemsTab.Size = new System.Drawing.Size(1215, 473);
+            this.ItemsTab.Size = new System.Drawing.Size(1620, 582);
             this.ItemsTab.TabIndex = 0;
             // 
             // NewHelpPage
             // 
             this.NewHelpPage.Controls.Add(this.newHelpView);
             this.NewHelpPage.Controls.Add(this.NewHelpSelectAllCB);
-            this.NewHelpPage.Location = new System.Drawing.Point(4, 22);
-            this.NewHelpPage.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.NewHelpPage.Location = new System.Drawing.Point(4, 25);
+            this.NewHelpPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NewHelpPage.Name = "NewHelpPage";
-            this.NewHelpPage.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.NewHelpPage.Size = new System.Drawing.Size(1207, 447);
+            this.NewHelpPage.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.NewHelpPage.Size = new System.Drawing.Size(1612, 553);
             this.NewHelpPage.TabIndex = 0;
             this.NewHelpPage.Text = "New Help";
             this.NewHelpPage.UseVisualStyleBackColor = true;
@@ -299,12 +298,12 @@ namespace DatalistSyncUtil
             this.Select,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewCheckBoxColumn2});
-            this.newHelpView.Location = new System.Drawing.Point(12, 27);
-            this.newHelpView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.newHelpView.Location = new System.Drawing.Point(16, 33);
+            this.newHelpView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.newHelpView.Name = "newHelpView";
             this.newHelpView.RowTemplate.Height = 24;
             this.newHelpView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.newHelpView.Size = new System.Drawing.Size(997, 414);
+            this.newHelpView.Size = new System.Drawing.Size(1329, 510);
             this.newHelpView.TabIndex = 6;
             // 
             // Select
@@ -334,10 +333,10 @@ namespace DatalistSyncUtil
             this.NewHelpSelectAllCB.AutoSize = true;
             this.NewHelpSelectAllCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.NewHelpSelectAllCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewHelpSelectAllCB.Location = new System.Drawing.Point(2, 5);
-            this.NewHelpSelectAllCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.NewHelpSelectAllCB.Location = new System.Drawing.Point(3, 6);
+            this.NewHelpSelectAllCB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NewHelpSelectAllCB.Name = "NewHelpSelectAllCB";
-            this.NewHelpSelectAllCB.Size = new System.Drawing.Size(80, 17);
+            this.NewHelpSelectAllCB.Size = new System.Drawing.Size(98, 21);
             this.NewHelpSelectAllCB.TabIndex = 8;
             this.NewHelpSelectAllCB.Text = "Select All";
             this.NewHelpSelectAllCB.UseVisualStyleBackColor = true;
@@ -352,11 +351,11 @@ namespace DatalistSyncUtil
             this.UpdateItemsTab.Controls.Add(this.label2);
             this.UpdateItemsTab.Controls.Add(this.label7);
             this.UpdateItemsTab.Controls.Add(this.label1);
-            this.UpdateItemsTab.Location = new System.Drawing.Point(4, 22);
-            this.UpdateItemsTab.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.UpdateItemsTab.Location = new System.Drawing.Point(4, 25);
+            this.UpdateItemsTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.UpdateItemsTab.Name = "UpdateItemsTab";
-            this.UpdateItemsTab.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.UpdateItemsTab.Size = new System.Drawing.Size(1207, 447);
+            this.UpdateItemsTab.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.UpdateItemsTab.Size = new System.Drawing.Size(1612, 553);
             this.UpdateItemsTab.TabIndex = 1;
             this.UpdateItemsTab.Text = "Update Help";
             this.UpdateItemsTab.UseVisualStyleBackColor = true;
@@ -372,12 +371,12 @@ namespace DatalistSyncUtil
             this.dataGridViewCheckBoxColumn20,
             this.dataGridViewCheckBoxColumn21,
             this.dataGridViewTextBoxColumn33});
-            this.TargetHelp.Location = new System.Drawing.Point(427, 28);
-            this.TargetHelp.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.TargetHelp.Location = new System.Drawing.Point(569, 34);
+            this.TargetHelp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TargetHelp.Name = "TargetHelp";
             this.TargetHelp.RowTemplate.Height = 24;
             this.TargetHelp.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TargetHelp.Size = new System.Drawing.Size(474, 414);
+            this.TargetHelp.Size = new System.Drawing.Size(632, 510);
             this.TargetHelp.TabIndex = 16;
             // 
             // dataGridViewCheckBoxColumn19
@@ -426,10 +425,10 @@ namespace DatalistSyncUtil
             // 
             this.UpdateHelpSelectAllCB.AutoSize = true;
             this.UpdateHelpSelectAllCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateHelpSelectAllCB.Location = new System.Drawing.Point(64, 5);
-            this.UpdateHelpSelectAllCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.UpdateHelpSelectAllCB.Location = new System.Drawing.Point(85, 6);
+            this.UpdateHelpSelectAllCB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.UpdateHelpSelectAllCB.Name = "UpdateHelpSelectAllCB";
-            this.UpdateHelpSelectAllCB.Size = new System.Drawing.Size(80, 17);
+            this.UpdateHelpSelectAllCB.Size = new System.Drawing.Size(98, 21);
             this.UpdateHelpSelectAllCB.TabIndex = 15;
             this.UpdateHelpSelectAllCB.Text = "Select All";
             this.UpdateHelpSelectAllCB.UseVisualStyleBackColor = true;
@@ -439,10 +438,9 @@ namespace DatalistSyncUtil
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(621, 5);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(828, 6);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 17);
+            this.label6.Size = new System.Drawing.Size(69, 20);
             this.label6.TabIndex = 14;
             this.label6.Text = "Target:";
             // 
@@ -455,32 +453,51 @@ namespace DatalistSyncUtil
             this.dataGridViewCheckBoxColumn13,
             this.dataGridViewTextBoxColumn19,
             this.Active});
-            this.SourceHelp.Location = new System.Drawing.Point(4, 28);
-            this.SourceHelp.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.SourceHelp.Location = new System.Drawing.Point(5, 34);
+            this.SourceHelp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.SourceHelp.Name = "SourceHelp";
             this.SourceHelp.RowTemplate.Height = 24;
             this.SourceHelp.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.SourceHelp.Size = new System.Drawing.Size(420, 414);
+            this.SourceHelp.Size = new System.Drawing.Size(560, 510);
             this.SourceHelp.TabIndex = 12;
+            // 
+            // dataGridViewCheckBoxColumn13
+            // 
+            this.dataGridViewCheckBoxColumn13.HeaderText = "";
+            this.dataGridViewCheckBoxColumn13.Name = "dataGridViewCheckBoxColumn13";
+            this.dataGridViewCheckBoxColumn13.Width = 25;
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.DataPropertyName = "HelpNodeNM";
+            this.dataGridViewTextBoxColumn19.HeaderText = "HelpNodeNM";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            this.dataGridViewTextBoxColumn19.ReadOnly = true;
+            this.dataGridViewTextBoxColumn19.Width = 250;
+            // 
+            // Active
+            // 
+            this.Active.DataPropertyName = "IsActive";
+            this.Active.HeaderText = "Active";
+            this.Active.Name = "Active";
+            this.Active.ReadOnly = true;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(744, 13);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(992, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 17);
+            this.label2.Size = new System.Drawing.Size(0, 20);
             this.label2.TabIndex = 10;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(4, 5);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(5, 6);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 17);
+            this.label7.Size = new System.Drawing.Size(74, 20);
             this.label7.TabIndex = 13;
             this.label7.Text = "Source:";
             // 
@@ -488,10 +505,9 @@ namespace DatalistSyncUtil
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(5, 12);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(7, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 17);
+            this.label1.Size = new System.Drawing.Size(0, 20);
             this.label1.TabIndex = 9;
             // 
             // diffHelpMain
@@ -499,31 +515,32 @@ namespace DatalistSyncUtil
             this.diffHelpMain.Controls.Add(this.Help);
             this.diffHelpMain.Controls.Add(this.tabPage3);
             this.diffHelpMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.diffHelpMain.Location = new System.Drawing.Point(17, 39);
-            this.diffHelpMain.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.diffHelpMain.Location = new System.Drawing.Point(23, 48);
+            this.diffHelpMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.diffHelpMain.Name = "diffHelpMain";
             this.diffHelpMain.SelectedIndex = 0;
-            this.diffHelpMain.Size = new System.Drawing.Size(1279, 539);
+            this.diffHelpMain.Size = new System.Drawing.Size(1705, 663);
             this.diffHelpMain.TabIndex = 33;
             // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.btnIncludeHelpLang);
             this.tabPage3.Controls.Add(this.tabControl1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage3.Size = new System.Drawing.Size(1271, 513);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage3.Size = new System.Drawing.Size(1697, 634);
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "HelpLanguage";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // btnIncludeHelpLang
             // 
-            this.btnIncludeHelpLang.Location = new System.Drawing.Point(2, 488);
-            this.btnIncludeHelpLang.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnIncludeHelpLang.Location = new System.Drawing.Point(3, 601);
+            this.btnIncludeHelpLang.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnIncludeHelpLang.Name = "btnIncludeHelpLang";
-            this.btnIncludeHelpLang.Size = new System.Drawing.Size(72, 25);
+            this.btnIncludeHelpLang.Size = new System.Drawing.Size(96, 31);
             this.btnIncludeHelpLang.TabIndex = 20;
             this.btnIncludeHelpLang.Text = "Include";
             this.btnIncludeHelpLang.UseVisualStyleBackColor = true;
@@ -533,11 +550,11 @@ namespace DatalistSyncUtil
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(3, 19);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tabControl1.Location = new System.Drawing.Point(4, 23);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1263, 466);
+            this.tabControl1.Size = new System.Drawing.Size(1684, 574);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -546,11 +563,11 @@ namespace DatalistSyncUtil
             this.tabPage1.Controls.Add(this.NewLangNewHelpCB);
             this.tabPage1.Controls.Add(this.newHelpLangView);
             this.tabPage1.Controls.Add(this.NewHelpLangSelectAllCB);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage1.Size = new System.Drawing.Size(1255, 440);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage1.Size = new System.Drawing.Size(1676, 545);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "New Lang";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -560,10 +577,10 @@ namespace DatalistSyncUtil
             this.NewLangExistingHelpCB.AutoSize = true;
             this.NewLangExistingHelpCB.BackColor = System.Drawing.Color.WhiteSmoke;
             this.NewLangExistingHelpCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewLangExistingHelpCB.Location = new System.Drawing.Point(313, 6);
-            this.NewLangExistingHelpCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.NewLangExistingHelpCB.Location = new System.Drawing.Point(417, 7);
+            this.NewLangExistingHelpCB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NewLangExistingHelpCB.Name = "NewLangExistingHelpCB";
-            this.NewLangExistingHelpCB.Size = new System.Drawing.Size(233, 17);
+            this.NewLangExistingHelpCB.Size = new System.Drawing.Size(293, 21);
             this.NewLangExistingHelpCB.TabIndex = 28;
             this.NewLangExistingHelpCB.Text = "New Languages - Existing HelpNode";
             this.NewLangExistingHelpCB.UseVisualStyleBackColor = false;
@@ -574,10 +591,10 @@ namespace DatalistSyncUtil
             this.NewLangNewHelpCB.AutoSize = true;
             this.NewLangNewHelpCB.BackColor = System.Drawing.Color.LightBlue;
             this.NewLangNewHelpCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewLangNewHelpCB.Location = new System.Drawing.Point(95, 4);
-            this.NewLangNewHelpCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.NewLangNewHelpCB.Location = new System.Drawing.Point(127, 5);
+            this.NewLangNewHelpCB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NewLangNewHelpCB.Name = "NewLangNewHelpCB";
-            this.NewLangNewHelpCB.Size = new System.Drawing.Size(214, 17);
+            this.NewLangNewHelpCB.Size = new System.Drawing.Size(267, 21);
             this.NewLangNewHelpCB.TabIndex = 26;
             this.NewLangNewHelpCB.Text = "New Languages - New HelpNode";
             this.NewLangNewHelpCB.UseVisualStyleBackColor = false;
@@ -597,12 +614,12 @@ namespace DatalistSyncUtil
             this.dataGridViewCheckBoxColumn3,
             this.dataGridViewCheckBoxColumn14,
             this.dataGridViewTextBoxColumn21});
-            this.newHelpLangView.Location = new System.Drawing.Point(4, 28);
-            this.newHelpLangView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.newHelpLangView.Location = new System.Drawing.Point(5, 34);
+            this.newHelpLangView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.newHelpLangView.Name = "newHelpLangView";
             this.newHelpLangView.RowTemplate.Height = 24;
             this.newHelpLangView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.newHelpLangView.Size = new System.Drawing.Size(1013, 424);
+            this.newHelpLangView.Size = new System.Drawing.Size(1351, 522);
             this.newHelpLangView.TabIndex = 6;
             this.newHelpLangView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.NewHelpLangView_RowsAdded);
             // 
@@ -611,10 +628,10 @@ namespace DatalistSyncUtil
             this.NewHelpLangSelectAllCB.AutoSize = true;
             this.NewHelpLangSelectAllCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.NewHelpLangSelectAllCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewHelpLangSelectAllCB.Location = new System.Drawing.Point(2, 5);
-            this.NewHelpLangSelectAllCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.NewHelpLangSelectAllCB.Location = new System.Drawing.Point(3, 6);
+            this.NewHelpLangSelectAllCB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NewHelpLangSelectAllCB.Name = "NewHelpLangSelectAllCB";
-            this.NewHelpLangSelectAllCB.Size = new System.Drawing.Size(80, 17);
+            this.NewHelpLangSelectAllCB.Size = new System.Drawing.Size(98, 21);
             this.NewHelpLangSelectAllCB.TabIndex = 8;
             this.NewHelpLangSelectAllCB.Text = "Select All";
             this.NewHelpLangSelectAllCB.UseVisualStyleBackColor = true;
@@ -627,11 +644,11 @@ namespace DatalistSyncUtil
             this.tabPage4.Controls.Add(this.UpdateHelpLangSelectAllCB);
             this.tabPage4.Controls.Add(this.label8);
             this.tabPage4.Controls.Add(this.label9);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage4.Size = new System.Drawing.Size(1255, 440);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage4.Size = new System.Drawing.Size(1676, 545);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Update Lang";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -651,12 +668,11 @@ namespace DatalistSyncUtil
             this.TitleModified,
             this.dataGridViewTextBoxColumn44,
             this.IsActive});
-            this.sourceHelpLangView.Location = new System.Drawing.Point(2, 32);
-            this.sourceHelpLangView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.sourceHelpLangView.Location = new System.Drawing.Point(3, 39);
+            this.sourceHelpLangView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sourceHelpLangView.Name = "sourceHelpLangView";
             this.sourceHelpLangView.RowTemplate.Height = 24;
-            this.sourceHelpLangView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.sourceHelpLangView.Size = new System.Drawing.Size(627, 424);
+            this.sourceHelpLangView.Size = new System.Drawing.Size(819, 510);
             this.sourceHelpLangView.TabIndex = 14;
             this.sourceHelpLangView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.SourceHelpLangView_RowAdded);
             this.sourceHelpLangView.Scroll += new System.Windows.Forms.ScrollEventHandler(this.SourceHelpLangView_Scroll);
@@ -675,87 +691,22 @@ namespace DatalistSyncUtil
             this.dataGridViewCheckBoxColumn28,
             this.dataGridViewCheckBoxColumn29,
             this.dataGridViewTextBoxColumn48});
-            this.targetHelpLangView.Location = new System.Drawing.Point(632, 32);
-            this.targetHelpLangView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.targetHelpLangView.Location = new System.Drawing.Point(818, 39);
+            this.targetHelpLangView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.targetHelpLangView.Name = "targetHelpLangView";
             this.targetHelpLangView.RowTemplate.Height = 24;
-            this.targetHelpLangView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.targetHelpLangView.Size = new System.Drawing.Size(627, 424);
+            this.targetHelpLangView.Size = new System.Drawing.Size(560, 510);
             this.targetHelpLangView.TabIndex = 13;
             this.targetHelpLangView.Scroll += new System.Windows.Forms.ScrollEventHandler(this.TargetHelpLangView_Scroll);
-            // 
-            // dataGridViewCheckBoxColumn15
-            // 
-            this.dataGridViewCheckBoxColumn15.HeaderText = "";
-            this.dataGridViewCheckBoxColumn15.Name = "dataGridViewCheckBoxColumn15";
-            this.dataGridViewCheckBoxColumn15.Visible = false;
-            this.dataGridViewCheckBoxColumn15.Width = 25;
-            // 
-            // dataGridViewTextBoxColumn38
-            // 
-            this.dataGridViewTextBoxColumn38.DataPropertyName = "HelpNodeNM";
-            this.dataGridViewTextBoxColumn38.HeaderText = "HelpNodeNM";
-            this.dataGridViewTextBoxColumn38.Name = "dataGridViewTextBoxColumn38";
-            this.dataGridViewTextBoxColumn38.ReadOnly = true;
-            this.dataGridViewTextBoxColumn38.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn39
-            // 
-            this.dataGridViewTextBoxColumn39.DataPropertyName = "Title";
-            this.dataGridViewTextBoxColumn39.HeaderText = "Title";
-            this.dataGridViewTextBoxColumn39.Name = "dataGridViewTextBoxColumn39";
-            // 
-            // dataGridViewTextBoxColumn40
-            // 
-            this.dataGridViewTextBoxColumn40.DataPropertyName = "HtmlContent";
-            this.dataGridViewTextBoxColumn40.HeaderText = "HtmlContent";
-            this.dataGridViewTextBoxColumn40.Name = "dataGridViewTextBoxColumn40";
-            this.dataGridViewTextBoxColumn40.ReadOnly = true;
-            this.dataGridViewTextBoxColumn40.Width = 250;
-            // 
-            // dataGridViewTextBoxColumn41
-            // 
-            this.dataGridViewTextBoxColumn41.DataPropertyName = "Language";
-            this.dataGridViewTextBoxColumn41.HeaderText = "Language";
-            this.dataGridViewTextBoxColumn41.Name = "dataGridViewTextBoxColumn41";
-            this.dataGridViewTextBoxColumn41.ReadOnly = true;
-            this.dataGridViewTextBoxColumn41.Width = 50;
-            // 
-            // dataGridViewCheckBoxColumn28
-            // 
-            this.dataGridViewCheckBoxColumn28.DataPropertyName = "IsActive";
-            this.dataGridViewCheckBoxColumn28.HeaderText = "Active";
-            this.dataGridViewCheckBoxColumn28.Name = "dataGridViewCheckBoxColumn28";
-            this.dataGridViewCheckBoxColumn28.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn28.Width = 60;
-            // 
-            // dataGridViewCheckBoxColumn29
-            // 
-            this.dataGridViewCheckBoxColumn29.DataPropertyName = "IsEditable";
-            this.dataGridViewCheckBoxColumn29.HeaderText = "Editable";
-            this.dataGridViewCheckBoxColumn29.Name = "dataGridViewCheckBoxColumn29";
-            this.dataGridViewCheckBoxColumn29.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn29.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCheckBoxColumn29.Visible = false;
-            this.dataGridViewCheckBoxColumn29.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn48
-            // 
-            this.dataGridViewTextBoxColumn48.DataPropertyName = "Status";
-            this.dataGridViewTextBoxColumn48.HeaderText = "Status";
-            this.dataGridViewTextBoxColumn48.Name = "dataGridViewTextBoxColumn48";
-            this.dataGridViewTextBoxColumn48.ReadOnly = true;
-            this.dataGridViewTextBoxColumn48.Visible = false;
-            this.dataGridViewTextBoxColumn48.Width = 60;
             // 
             // UpdateHelpLangSelectAllCB
             // 
             this.UpdateHelpLangSelectAllCB.AutoSize = true;
             this.UpdateHelpLangSelectAllCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateHelpLangSelectAllCB.Location = new System.Drawing.Point(65, 12);
-            this.UpdateHelpLangSelectAllCB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.UpdateHelpLangSelectAllCB.Location = new System.Drawing.Point(87, 15);
+            this.UpdateHelpLangSelectAllCB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.UpdateHelpLangSelectAllCB.Name = "UpdateHelpLangSelectAllCB";
-            this.UpdateHelpLangSelectAllCB.Size = new System.Drawing.Size(80, 17);
+            this.UpdateHelpLangSelectAllCB.Size = new System.Drawing.Size(98, 21);
             this.UpdateHelpLangSelectAllCB.TabIndex = 11;
             this.UpdateHelpLangSelectAllCB.Text = "Select All";
             this.UpdateHelpLangSelectAllCB.UseVisualStyleBackColor = true;
@@ -765,10 +716,9 @@ namespace DatalistSyncUtil
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(629, 12);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(839, 15);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(61, 17);
+            this.label8.Size = new System.Drawing.Size(69, 20);
             this.label8.TabIndex = 10;
             this.label8.Text = "Target:";
             // 
@@ -776,10 +726,9 @@ namespace DatalistSyncUtil
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(5, 12);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Location = new System.Drawing.Point(7, 15);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(64, 17);
+            this.label9.Size = new System.Drawing.Size(74, 20);
             this.label9.TabIndex = 9;
             this.label9.Text = "Source:";
             // 
@@ -809,34 +758,34 @@ namespace DatalistSyncUtil
             // 
             this.SourceUpdateLangView.AllowUserToAddRows = false;
             this.SourceUpdateLangView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle37.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle37.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SourceUpdateLangView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SourceUpdateLangView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.SourceUpdateLangView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle38.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle38.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.SourceUpdateLangView.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.SourceUpdateLangView.DefaultCellStyle = dataGridViewCellStyle2;
             this.SourceUpdateLangView.Location = new System.Drawing.Point(5, 23);
             this.SourceUpdateLangView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.SourceUpdateLangView.Name = "SourceUpdateLangView";
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SourceUpdateLangView.RowHeadersDefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SourceUpdateLangView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.SourceUpdateLangView.RowTemplate.Height = 24;
             this.SourceUpdateLangView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.SourceUpdateLangView.Size = new System.Drawing.Size(671, 428);
@@ -914,34 +863,34 @@ namespace DatalistSyncUtil
             // 
             this.TargetUpdateLangView.AllowUserToAddRows = false;
             this.TargetUpdateLangView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle40.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle40.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle40.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TargetUpdateLangView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TargetUpdateLangView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.TargetUpdateLangView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle41.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle41.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle41.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TargetUpdateLangView.DefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.TargetUpdateLangView.DefaultCellStyle = dataGridViewCellStyle5;
             this.TargetUpdateLangView.Location = new System.Drawing.Point(675, 23);
             this.TargetUpdateLangView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TargetUpdateLangView.Name = "TargetUpdateLangView";
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle42.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TargetUpdateLangView.RowHeadersDefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TargetUpdateLangView.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.TargetUpdateLangView.RowTemplate.Height = 24;
             this.TargetUpdateLangView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.TargetUpdateLangView.Size = new System.Drawing.Size(414, 428);
@@ -1015,34 +964,34 @@ namespace DatalistSyncUtil
             // 
             this.NewLangView.AllowUserToAddRows = false;
             this.NewLangView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle43.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle43.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle43.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.NewLangView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle43;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.NewLangView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.NewLangView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle44.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle44.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle44.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.NewLangView.DefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.NewLangView.DefaultCellStyle = dataGridViewCellStyle8;
             this.NewLangView.Location = new System.Drawing.Point(5, 27);
             this.NewLangView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NewLangView.Name = "NewLangView";
-            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle45.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle45.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle45.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle45.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.NewLangView.RowHeadersDefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.NewLangView.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.NewLangView.RowTemplate.Height = 24;
             this.NewLangView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.NewLangView.Size = new System.Drawing.Size(1087, 419);
@@ -1255,10 +1204,10 @@ namespace DatalistSyncUtil
             // PreviewUpdate
             // 
             this.PreviewUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreviewUpdate.Location = new System.Drawing.Point(928, 584);
-            this.PreviewUpdate.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.PreviewUpdate.Location = new System.Drawing.Point(1237, 719);
+            this.PreviewUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.PreviewUpdate.Name = "PreviewUpdate";
-            this.PreviewUpdate.Size = new System.Drawing.Size(132, 26);
+            this.PreviewUpdate.Size = new System.Drawing.Size(176, 32);
             this.PreviewUpdate.TabIndex = 35;
             this.PreviewUpdate.Text = "Preview && Update";
             this.PreviewUpdate.UseVisualStyleBackColor = true;
@@ -1267,10 +1216,10 @@ namespace DatalistSyncUtil
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(1071, 584);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnClose.Location = new System.Drawing.Point(1428, 719);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(56, 26);
+            this.btnClose.Size = new System.Drawing.Size(75, 32);
             this.btnClose.TabIndex = 34;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -1639,6 +1588,7 @@ namespace DatalistSyncUtil
             this.dataGridViewCheckBoxColumn3.HeaderText = "Active";
             this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
             this.dataGridViewCheckBoxColumn3.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn3.Visible = false;
             this.dataGridViewCheckBoxColumn3.Width = 60;
             // 
             // dataGridViewCheckBoxColumn14
@@ -1727,39 +1677,85 @@ namespace DatalistSyncUtil
             this.IsActive.ReadOnly = true;
             this.IsActive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.IsActive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.IsActive.Visible = false;
             this.IsActive.Width = 60;
             // 
-            // dataGridViewCheckBoxColumn13
+            // dataGridViewCheckBoxColumn15
             // 
-            this.dataGridViewCheckBoxColumn13.HeaderText = "";
-            this.dataGridViewCheckBoxColumn13.Name = "dataGridViewCheckBoxColumn13";
-            this.dataGridViewCheckBoxColumn13.Width = 25;
+            this.dataGridViewCheckBoxColumn15.HeaderText = "";
+            this.dataGridViewCheckBoxColumn15.Name = "dataGridViewCheckBoxColumn15";
+            this.dataGridViewCheckBoxColumn15.Visible = false;
+            this.dataGridViewCheckBoxColumn15.Width = 25;
             // 
-            // dataGridViewTextBoxColumn19
+            // dataGridViewTextBoxColumn38
             // 
-            this.dataGridViewTextBoxColumn19.DataPropertyName = "HelpNodeNM";
-            this.dataGridViewTextBoxColumn19.HeaderText = "HelpNodeNM";
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            this.dataGridViewTextBoxColumn19.ReadOnly = true;
-            this.dataGridViewTextBoxColumn19.Width = 250;
+            this.dataGridViewTextBoxColumn38.DataPropertyName = "HelpNodeNM";
+            this.dataGridViewTextBoxColumn38.HeaderText = "HelpNodeNM";
+            this.dataGridViewTextBoxColumn38.Name = "dataGridViewTextBoxColumn38";
+            this.dataGridViewTextBoxColumn38.ReadOnly = true;
+            this.dataGridViewTextBoxColumn38.Width = 200;
             // 
-            // Active
+            // dataGridViewTextBoxColumn39
             // 
-            this.Active.DataPropertyName = "IsActive";
-            this.Active.HeaderText = "Active";
-            this.Active.Name = "Active";
-            this.Active.ReadOnly = true;
+            this.dataGridViewTextBoxColumn39.DataPropertyName = "Title";
+            this.dataGridViewTextBoxColumn39.HeaderText = "Title";
+            this.dataGridViewTextBoxColumn39.Name = "dataGridViewTextBoxColumn39";
+            // 
+            // dataGridViewTextBoxColumn40
+            // 
+            this.dataGridViewTextBoxColumn40.DataPropertyName = "HtmlContent";
+            this.dataGridViewTextBoxColumn40.HeaderText = "HtmlContent";
+            this.dataGridViewTextBoxColumn40.Name = "dataGridViewTextBoxColumn40";
+            this.dataGridViewTextBoxColumn40.ReadOnly = true;
+            this.dataGridViewTextBoxColumn40.Width = 250;
+            // 
+            // dataGridViewTextBoxColumn41
+            // 
+            this.dataGridViewTextBoxColumn41.DataPropertyName = "Language";
+            this.dataGridViewTextBoxColumn41.HeaderText = "Language";
+            this.dataGridViewTextBoxColumn41.Name = "dataGridViewTextBoxColumn41";
+            this.dataGridViewTextBoxColumn41.ReadOnly = true;
+            this.dataGridViewTextBoxColumn41.Width = 50;
+            // 
+            // dataGridViewCheckBoxColumn28
+            // 
+            this.dataGridViewCheckBoxColumn28.DataPropertyName = "IsActive";
+            this.dataGridViewCheckBoxColumn28.HeaderText = "Active";
+            this.dataGridViewCheckBoxColumn28.Name = "dataGridViewCheckBoxColumn28";
+            this.dataGridViewCheckBoxColumn28.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn28.Visible = false;
+            this.dataGridViewCheckBoxColumn28.Width = 60;
+            // 
+            // dataGridViewCheckBoxColumn29
+            // 
+            this.dataGridViewCheckBoxColumn29.DataPropertyName = "IsEditable";
+            this.dataGridViewCheckBoxColumn29.HeaderText = "Editable";
+            this.dataGridViewCheckBoxColumn29.Name = "dataGridViewCheckBoxColumn29";
+            this.dataGridViewCheckBoxColumn29.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn29.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCheckBoxColumn29.Visible = false;
+            this.dataGridViewCheckBoxColumn29.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn48
+            // 
+            this.dataGridViewTextBoxColumn48.DataPropertyName = "Status";
+            this.dataGridViewTextBoxColumn48.HeaderText = "Status";
+            this.dataGridViewTextBoxColumn48.Name = "dataGridViewTextBoxColumn48";
+            this.dataGridViewTextBoxColumn48.ReadOnly = true;
+            this.dataGridViewTextBoxColumn48.Visible = false;
+            this.dataGridViewTextBoxColumn48.Width = 60;
             // 
             // HelpDiff
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1069, 573);
+            this.ClientSize = new System.Drawing.Size(1425, 705);
             this.Controls.Add(this.PreviewUpdate);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.diffHelpMain);
             this.Controls.Add(this.moduleList);
             this.Controls.Add(this.label4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "HelpDiff";
             this.Text = "HelpDiff";
             this.Help.ResumeLayout(false);
@@ -1906,20 +1902,15 @@ namespace DatalistSyncUtil
         private System.Windows.Forms.CheckBox UpdateHelpLangSelectAllCB;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn38;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn39;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn40;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn41;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn28;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn29;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn48;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn19;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn20;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn21;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
         private System.Windows.Forms.DataGridView sourceHelpLangView;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Active;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Title1;
@@ -1937,8 +1928,13 @@ namespace DatalistSyncUtil
         private System.Windows.Forms.DataGridViewTextBoxColumn TitleModified;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn44;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsActive;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Active;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn38;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn39;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn40;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn41;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn28;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn48;
     }
 }

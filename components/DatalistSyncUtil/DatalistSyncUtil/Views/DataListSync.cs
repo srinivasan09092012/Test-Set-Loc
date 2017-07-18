@@ -1247,6 +1247,8 @@ namespace DatalistSyncUtil
                 case "AppSetting":
                     break;
                 case "Datalist":
+                    ListItems dataListitemsPage = new ListItems((DataListView.Rows[e.RowIndex].DataBoundItem as DataList).ContentID, this.NoOfDays);
+                    dataListitemsPage.ShowDialog();
                     break;
                 case "Security":
                     ListItems itemsPage = new ListItems((this.DataListView.Rows[e.RowIndex].DataBoundItem as DataList).ContentID, this.NoOfDays);
@@ -1914,6 +1916,33 @@ namespace DatalistSyncUtil
             if (!Directory.Exists(filepath))
             {
                 Directory.CreateDirectory(filepath);
+            }
+        }
+
+        private void InactiveCB_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in this.DataListView.Rows)
+            {
+                bool visible = Convert.ToBoolean(row.Cells["IsActive"].Value);
+                CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[DataListView.DataSource];
+                currencyManager1.SuspendBinding();
+                if (InactiveCB.Checked)
+                {
+                    if (!visible)
+                    {
+                        DataListView.Rows[row.Index].Visible = true; 
+                    }
+                    else
+                    {
+                        DataListView.Rows[row.Index].Visible = false;
+                    }
+                }
+                else
+                {
+                    DataListView.Rows[row.Index].Visible = true;
+                }
+
+                currencyManager1.ResumeBinding();
             }
         }
     }
