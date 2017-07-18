@@ -66,9 +66,6 @@ namespace DatalistSyncUtil.Views
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.SourceServices = new System.Windows.Forms.DataGridView();
-            this.PreviewUpdate = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnIncludeServices = new System.Windows.Forms.Button();
             this.dataGridViewCheckBoxColumn13 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.srcSecurityRightItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,6 +82,9 @@ namespace DatalistSyncUtil.Views
             this.srcIsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewCheckBoxColumn15 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PreviewUpdate = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnIncludeServices = new System.Windows.Forms.Button();
             this.diffServices.SuspendLayout();
             this.newSvc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newServicesView)).BeginInit();
@@ -126,7 +126,7 @@ namespace DatalistSyncUtil.Views
             this.diffServices.Location = new System.Drawing.Point(12, 48);
             this.diffServices.Name = "diffServices";
             this.diffServices.SelectedIndex = 0;
-            this.diffServices.Size = new System.Drawing.Size(1531, 459);
+            this.diffServices.Size = new System.Drawing.Size(1416, 459);
             this.diffServices.TabIndex = 35;
             // 
             // newSvc
@@ -136,7 +136,7 @@ namespace DatalistSyncUtil.Views
             this.newSvc.Location = new System.Drawing.Point(4, 22);
             this.newSvc.Name = "newSvc";
             this.newSvc.Padding = new System.Windows.Forms.Padding(3);
-            this.newSvc.Size = new System.Drawing.Size(1523, 433);
+            this.newSvc.Size = new System.Drawing.Size(1408, 433);
             this.newSvc.TabIndex = 0;
             this.newSvc.Text = "New Services";
             this.newSvc.UseVisualStyleBackColor = true;
@@ -162,7 +162,7 @@ namespace DatalistSyncUtil.Views
             this.newServicesView.Name = "newServicesView";
             this.newServicesView.RowTemplate.Height = 24;
             this.newServicesView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.newServicesView.Size = new System.Drawing.Size(1334, 398);
+            this.newServicesView.Size = new System.Drawing.Size(1297, 398);
             this.newServicesView.TabIndex = 10;
             this.newServicesView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SelectColumn_Clicked);
             // 
@@ -265,7 +265,7 @@ namespace DatalistSyncUtil.Views
             this.updSvc.Location = new System.Drawing.Point(4, 22);
             this.updSvc.Name = "updSvc";
             this.updSvc.Padding = new System.Windows.Forms.Padding(3);
-            this.updSvc.Size = new System.Drawing.Size(1523, 433);
+            this.updSvc.Size = new System.Drawing.Size(1408, 433);
             this.updSvc.TabIndex = 1;
             this.updSvc.Text = "Updated Services";
             this.updSvc.UseVisualStyleBackColor = true;
@@ -286,12 +286,11 @@ namespace DatalistSyncUtil.Views
             this.dataGridViewCheckBoxColumn20,
             this.dataGridViewCheckBoxColumn21,
             this.dataGridViewTextBoxColumn33});
-            this.TargetServices.Location = new System.Drawing.Point(832, 31);
+            this.TargetServices.Location = new System.Drawing.Point(717, 31);
             this.TargetServices.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TargetServices.Name = "TargetServices";
             this.TargetServices.RowTemplate.Height = 24;
-            this.TargetServices.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TargetServices.Size = new System.Drawing.Size(676, 396);
+            this.TargetServices.Size = new System.Drawing.Size(681, 396);
             this.TargetServices.TabIndex = 19;
             this.TargetServices.Scroll += new System.Windows.Forms.ScrollEventHandler(this.TargetServices_Scroll);
             // 
@@ -430,48 +429,11 @@ namespace DatalistSyncUtil.Views
             this.SourceServices.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.SourceServices.Name = "SourceServices";
             this.SourceServices.RowTemplate.Height = 24;
-            this.SourceServices.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.SourceServices.Size = new System.Drawing.Size(841, 396);
+            this.SourceServices.Size = new System.Drawing.Size(717, 396);
             this.SourceServices.TabIndex = 13;
             this.SourceServices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SelectUpdateServices_Clicked);
             this.SourceServices.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.SourceServices_RowAdded);
             this.SourceServices.Scroll += new System.Windows.Forms.ScrollEventHandler(this.SourceServices_Scroll);
-            // 
-            // PreviewUpdate
-            // 
-            this.PreviewUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreviewUpdate.Location = new System.Drawing.Point(904, 509);
-            this.PreviewUpdate.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.PreviewUpdate.Name = "PreviewUpdate";
-            this.PreviewUpdate.Size = new System.Drawing.Size(132, 26);
-            this.PreviewUpdate.TabIndex = 37;
-            this.PreviewUpdate.Text = "Preview && Update";
-            this.PreviewUpdate.UseVisualStyleBackColor = true;
-            this.PreviewUpdate.Click += new System.EventHandler(this.PreviewUpdate_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(1047, 509);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(56, 26);
-            this.btnClose.TabIndex = 36;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
-            // 
-            // btnIncludeServices
-            // 
-            this.btnIncludeServices.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIncludeServices.Location = new System.Drawing.Point(12, 513);
-            this.btnIncludeServices.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnIncludeServices.Name = "btnIncludeServices";
-            this.btnIncludeServices.Size = new System.Drawing.Size(72, 25);
-            this.btnIncludeServices.TabIndex = 38;
-            this.btnIncludeServices.Text = "Include";
-            this.btnIncludeServices.UseVisualStyleBackColor = true;
-            this.btnIncludeServices.Click += new System.EventHandler(this.BtnIncludeServices_Click);
             // 
             // dataGridViewCheckBoxColumn13
             // 
@@ -590,11 +552,47 @@ namespace DatalistSyncUtil.Views
             this.dataGridViewTextBoxColumn21.Visible = false;
             this.dataGridViewTextBoxColumn21.Width = 60;
             // 
+            // PreviewUpdate
+            // 
+            this.PreviewUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PreviewUpdate.Location = new System.Drawing.Point(904, 509);
+            this.PreviewUpdate.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.PreviewUpdate.Name = "PreviewUpdate";
+            this.PreviewUpdate.Size = new System.Drawing.Size(132, 26);
+            this.PreviewUpdate.TabIndex = 37;
+            this.PreviewUpdate.Text = "Preview && Update";
+            this.PreviewUpdate.UseVisualStyleBackColor = true;
+            this.PreviewUpdate.Click += new System.EventHandler(this.PreviewUpdate_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(1047, 509);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(56, 26);
+            this.btnClose.TabIndex = 36;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            // 
+            // btnIncludeServices
+            // 
+            this.btnIncludeServices.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncludeServices.Location = new System.Drawing.Point(12, 513);
+            this.btnIncludeServices.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnIncludeServices.Name = "btnIncludeServices";
+            this.btnIncludeServices.Size = new System.Drawing.Size(72, 25);
+            this.btnIncludeServices.TabIndex = 38;
+            this.btnIncludeServices.Text = "Include";
+            this.btnIncludeServices.UseVisualStyleBackColor = true;
+            this.btnIncludeServices.Click += new System.EventHandler(this.BtnIncludeServices_Click);
+            // 
             // ServicesDiff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1369, 539);
+            this.ClientSize = new System.Drawing.Size(1451, 539);
             this.Controls.Add(this.btnIncludeServices);
             this.Controls.Add(this.PreviewUpdate);
             this.Controls.Add(this.btnClose);

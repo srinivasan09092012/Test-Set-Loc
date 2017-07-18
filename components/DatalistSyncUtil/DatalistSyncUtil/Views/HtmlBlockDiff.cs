@@ -279,6 +279,8 @@ namespace DatalistSyncUtil
             List<HtmlBlockMainModel> updatedHtmlists = new List<HtmlBlockMainModel>();
             HtmlBlockMainModel sourceHtmllist = null;
             HtmlBlockMainModel targetHtmllist = null;
+            bool isChanged = false;
+
             List<string> htmlBlks = this.SourceHtmlList.Select(c => c.ContentId).Intersect(this.TargetHtmlList.Select(c => c.ContentId)).ToList();
             htmlBlks.ForEach(f =>
             {
@@ -287,10 +289,25 @@ namespace DatalistSyncUtil
 
                 if (sourceHtmllist.Description != targetHtmllist.Description || sourceHtmllist.IsActive != targetHtmllist.IsActive)
                 {
-                    sourceHtmllist.Status = "UPDATE";
-                    sourceHtmllist.ID = targetHtmllist.ID;
-                    updateSourceHtmlBlks.Add(sourceHtmllist);
-                    updateTargetHtmlBlks.Add(targetHtmllist);
+                    if (sourceHtmllist.Description != targetHtmllist.Description)
+                    {
+                        isChanged = true;
+                        sourceHtmllist.DescriptionModified = true;
+                    }
+
+                    if (sourceHtmllist.IsActive != targetHtmllist.IsActive)
+                    {
+                        isChanged = true;
+                        sourceHtmllist.ActiveModified = true;
+                    }
+
+                    if (isChanged)
+                    {
+                        sourceHtmllist.Status = "UPDATE";
+                        sourceHtmllist.ID = targetHtmllist.ID;
+                        updateSourceHtmlBlks.Add(sourceHtmllist);
+                        updateTargetHtmlBlks.Add(targetHtmllist);
+                    }     
                 }
             });
 
@@ -492,6 +509,38 @@ namespace DatalistSyncUtil
                 {
                     row.Cells[4].Style.BackColor = Color.White;
                     row.Cells[4].Style.ForeColor = Color.Black;
+                }
+            }
+        }
+
+        private void SourceHtmlBlk_RowAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            foreach (DataGridViewRow row in this.SourceHtmlBlk.Rows)
+            {
+                bool htmlModified = row.Cells[3].Value != null ? Convert.ToBoolean(row.Cells[3].Value) : false;
+
+                if (htmlModified == true)
+                {
+                    row.Cells[2].Style.BackColor = Color.LightBlue;
+                    row.Cells[2].Style.ForeColor = Color.Black;
+                }
+                else
+                {
+                    row.Cells[2].Style.BackColor = Color.White;
+                    row.Cells[2].Style.ForeColor = Color.Black;
+                }
+
+                bool isActiveModified = row.Cells[4].Value != null ? Convert.ToBoolean(row.Cells[4].Value) : false;
+
+                if (isActiveModified == true)
+                {
+                    row.Cells[5].Style.BackColor = Color.LightBlue;
+                    row.Cells[5].Style.ForeColor = Color.Black;
+                }
+                else
+                {
+                    row.Cells[5].Style.BackColor = Color.White;
+                    row.Cells[5].Style.ForeColor = Color.Black;
                 }
             }
         }

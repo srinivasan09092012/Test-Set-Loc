@@ -135,6 +135,8 @@ namespace DatalistSyncUtil
             List<ImagesMainModel> updatedImages = new List<ImagesMainModel>();
             ImagesMainModel sourceImagelist = null;
             ImagesMainModel targetImagelist = null;
+            bool isChanged = false;
+
             List<string> images = this.SourceImagesList.Select(c => c.ContentId).Intersect(this.TargetImagesList.Select(c => c.ContentId)).ToList();
             images.ForEach(f =>
             {
@@ -143,10 +145,25 @@ namespace DatalistSyncUtil
 
                 if (sourceImagelist.Description != targetImagelist.Description || sourceImagelist.IsActive != targetImagelist.IsActive)
                 {
-                    sourceImagelist.Status = "UPDATE";
-                    sourceImagelist.ImageId = targetImagelist.ImageId;
-                    updateSourceImages.Add(sourceImagelist);
-                    updateTargetImages.Add(targetImagelist);
+                    if (sourceImagelist.Description != targetImagelist.Description)
+                    {
+                        isChanged = true;
+                        sourceImagelist.DescriptionModified = true;
+                    }
+
+                    if (sourceImagelist.IsActive != targetImagelist.IsActive)
+                    {
+                        isChanged = true;
+                        sourceImagelist.ActiveModified = true;
+                    }
+
+                    if (isChanged)
+                    {
+                        sourceImagelist.Status = "UPDATE";
+                        sourceImagelist.ImageId = targetImagelist.ImageId;
+                        updateSourceImages.Add(sourceImagelist);
+                        updateTargetImages.Add(targetImagelist);
+                    }
                 }
             });
 
@@ -504,6 +521,38 @@ namespace DatalistSyncUtil
                 {
                     row.Cells[7].Style.BackColor = Color.White;
                     row.Cells[7].Style.ForeColor = Color.Black;
+                }
+            }
+        }
+
+        private void SourceImages_RowAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            foreach (DataGridViewRow row in this.SourceImages.Rows)
+            {
+                bool descModified = row.Cells[3].Value != null ? Convert.ToBoolean(row.Cells[3].Value) : false;
+
+                if (descModified == true)
+                {
+                    row.Cells[2].Style.BackColor = Color.LightBlue;
+                    row.Cells[2].Style.ForeColor = Color.Black;
+                }
+                else
+                {
+                    row.Cells[2].Style.BackColor = Color.White;
+                    row.Cells[2].Style.ForeColor = Color.Black;
+                }
+
+                bool activeModified = row.Cells[4].Value != null ? Convert.ToBoolean(row.Cells[4].Value) : false;
+
+                if (activeModified == true)
+                {
+                    row.Cells[5].Style.BackColor = Color.LightBlue;
+                    row.Cells[5].Style.ForeColor = Color.Black;
+                }
+                else
+                {
+                    row.Cells[5].Style.BackColor = Color.White;
+                    row.Cells[5].Style.ForeColor = Color.Black;
                 }
             }
         }

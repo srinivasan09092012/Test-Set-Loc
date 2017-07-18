@@ -29,6 +29,8 @@ namespace DatalistSyncUtil
 
         public bool IsActive { get; set; }
 
+        public bool ActiveModified { get; set; }
+
         public string OperatorId { get; set; }
 
         public DateTime LastModifiedTS { get; set; }
