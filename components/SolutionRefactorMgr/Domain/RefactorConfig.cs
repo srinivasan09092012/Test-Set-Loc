@@ -38,6 +38,8 @@ namespace SolutionRefactorMgr.Domain
 
         public string TfsServer { get; set; }
 
+        public string TfsWorkspace { get; set; }
+
         public void Validate()
         {
             if (string.IsNullOrWhiteSpace(this.SourceDir))
@@ -60,6 +62,11 @@ namespace SolutionRefactorMgr.Domain
             if (this.UseSourceControl && string.IsNullOrWhiteSpace(this.TfsServer))
             {
                 throw new ArgumentNullException("Source control requires that you specify the TFS source control server.");
+            }
+
+            if (string.IsNullOrWhiteSpace(this.TfsWorkspace))
+            {
+                this.TfsWorkspace = null;
             }
 
             if (this.ModuleConfigs != null && this.ModuleConfigs.Count > 0)

@@ -6,9 +6,7 @@ using SolutionRefactorMgr.Utilities;
 using System;
 using System.IO;
 using System.Xml;
-using nuget = NuGet;
 using System.Diagnostics;
-using System.Reflection;
 
 namespace SolutionRefactorMgr
 {
@@ -77,8 +75,8 @@ namespace SolutionRefactorMgr
                 versionControl.Getting += OnGetting;
                 versionControl.BeforeCheckinPendingChange += OnBeforeCheckinPendingChange;
                 versionControl.NewPendingChange += OnNewPendingChange;
-                LogMessage(0, string.Format("NOTE: DEFAULT WORKSPACE=UA3 (first parm below) - IF YOU GET A MSG THAT YOU DON'T HAVE PERMISSIONS TO CHECKOUT, CHANGE THE PARM TO YOUR UA3 WORKSPACE NAME"));
-                workspace = versionControl.QueryWorkspaces("UA3", versionControl.AuthorizedUser, Environment.MachineName)[0];
+                LogMessage(0, string.Format("NOTE: IF YOU GET A MSG THAT YOU DON'T HAVE PERMISSIONS TO CHECKOUT, CHANGE THE TFSWORKSPACE ELEMENT IN THE REFACTOR.CONFIG TO YOUR UA3 WORKSPACE NAME."));
+                workspace = versionControl.QueryWorkspaces(refactorConfig.TfsWorkspace, versionControl.AuthorizedUser, Environment.MachineName)[0];
                 LogMessage(0, string.Format("Successfully connected to TFS"));
             }
         }

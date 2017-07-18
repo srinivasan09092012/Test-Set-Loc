@@ -136,4 +136,5 @@
     <ReplacementString qualifier="hpeDbConnection" from="hpeDbConnection" to="hpsDbConnection" />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
+  <TfsWorkspace></TfsWorkspace>
 </RefactorConfig>

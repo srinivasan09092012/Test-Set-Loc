@@ -46,4 +46,5 @@
     <ReplacementString qualifier="Copyright (c) 2016" from="2016" to="2017" />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
+  <TfsWorkspace></TfsWorkspace>
 </RefactorConfig>

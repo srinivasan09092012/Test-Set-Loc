@@ -69,4 +69,5 @@
     <ReplacementString qualifier="\Packages\HPE.HSP.UA3.Core" from="1.0.0" to="17.3.39" />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
+  <TfsWorkspace></TfsWorkspace>
 </RefactorConfig>
