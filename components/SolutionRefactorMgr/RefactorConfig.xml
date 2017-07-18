@@ -1,43 +1,86 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true">
-  <SourceDir>C:\UA3\Source</SourceDir>
-  <ModuleConfigs>
-    <ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />
-    <ModuleConfig name="Administration" branch="Dev" types="All" />
-    <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
-    <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
-    <ModuleConfig name="Core" branch="Dev" types="All" />
-    <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
-    <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
-    <ModuleConfig name="EDI" branch="Dev" types="All" />
-    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
-    <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
-    <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
-    <ModuleConfig name="KansasOnly" branch="Dev" types="All" />
-    <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
-    <ModuleConfig name="MemberManagement" branch="Dev" types="All" />
-    <ModuleConfig name="MemberPortal" branch="Dev" types="All" />
-    <ModuleConfig name="Notifications" branch="Dev" types="All" />
-    <ModuleConfig name="PlanManagement" branch="Dev" types="All" />
-    <ModuleConfig name="ProDUR" branch="Dev" types="All" />
-    <ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
-    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="All" />
-    <ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
-    <ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
-    <ModuleConfig name="ProviderPortal" branch="Dev" types="All" />
-    <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
-    <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
-    <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
-    <ModuleConfig name="Utilities" branch="Dev" types="All" />
-  </ModuleConfigs>
-  <PackageConfigs />
-  <FileTypes>
-    <FileType>.config</FileType>
-  </FileTypes>
-  <LineDeletes />
-  <ReplacementStrings>
-    <ReplacementString qualifier="HPE_TENANT_TXN_SVC_WRK" from="HPE_TENANT_TXN_SVC_WRK" to="AWRK_PDBB" />
-    <ReplacementString qualifier="HPE_TENANT_TXN_SVC_DEV" from="HPE_TENANT_TXN_SVC_DEV" to="ADEV_PDBB" />
-  </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
+    <SourceDir>C:\UA3\Source</SourceDir>
+    <ModuleConfigs>
+        <ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />
+        <ModuleConfig name="Administration" branch="Dev" types="All" />
+        <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
+        <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
+        <ModuleConfig name="Core" branch="Dev" types="All" />
+        <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
+        <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
+        <ModuleConfig name="EDI" branch="Dev" types="All" />
+        <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
+        <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
+        <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
+        <ModuleConfig name="KansasOnly" branch="Dev" types="All" />
+        <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
+        <ModuleConfig name="MemberManagement" branch="Dev" types="All" />
+        <ModuleConfig name="MemberPortal" branch="Dev" types="All" />
+        <ModuleConfig name="Notifications" branch="Dev" types="All" />
+        <ModuleConfig name="PlanManagement" branch="Dev" types="All" />
+        <ModuleConfig name="ProDUR" branch="Dev" types="All" />
+        <ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
+        <ModuleConfig name="ProviderCredentialing" branch="Dev" types="All" />
+        <ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
+        <ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
+        <ModuleConfig name="ProviderPortal" branch="Dev" types="All" />
+        <ModuleConfig name="Test" branch="Dev" types="All" />
+        <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
+        <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
+        <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
+        <ModuleConfig name="Utilities" branch="Dev" types="All" />
+    </ModuleConfigs>
+    <PackageConfigs />
+    <FileTypes>
+        <FileType>.config</FileType>
+    </FileTypes>
+    <LineDeletes />
+    <ReplacementStrings>
+        <!--WRK-->
+        <ReplacementString qualifier="Data Source=HPE_CLAIMS_SVC_WRK" from="HPE_CLAIMS_SVC_WRK" to="AWRK_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_CORRESPONDENCE_MGMT_SVC_WRK" from="HPE_CORRESPONDENCE_MGMT_SVC_WRK" to="AWRK_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_DRUG_REBATE_SVC_WRK" from="HPE_DRUG_REBATE_SVC_WRK" to="AWRK_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_EDI_SVC_WRK" from="HPE_EDI_SVC_WRK" to="AWRK_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_EMPLOYEE_SVC_WRK" from="HPE_EMPLOYEE_SVC_WRK" to="AWRK_PDBA" />
+        <ReplacementString qualifier="Data Source=HPE_INTEGRATION_SVC_WRK" from="HPE_INTEGRATION_SVC_WRK" to="AWRK_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_MANAGED_CARE_SVC_WRK" from="HPE_MANAGED_CARE_SVC_WRK" to="AWRK_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_MEMBER_SVC_WRK" from="HPE_MEMBER_SVC_WRK" to="AWRK_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_NOTIFICATIONS_SVC_WRK" from="HPE_NOTIFICATIONS_SVC_WRK" to="AWRK_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_PIUM_SVC_WRK" from="HPE_PIUM_SVC_WRK" to="AWRK_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_PLAN_MGMT_SVC_WRK" from="HPE_PLAN_MGMT_SVC_WRK" to="AWRK_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_PROVIDER_SVC_WRK" from="HPE_PROVIDER_SVC_WRK" to="AWRK_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_PROVIDER_CRDNTL_SVC_WRK" from="HPE_PROVIDER_CRDNTL_SVC_WRK" to="AWRK_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_PROVIDER_ENROLL_SVC_WRK" from="HPE_PROVIDER_ENROLL_SVC_WRK" to="AWRK_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_TENANT_SVC_WRK" from="HPE_TENANT_SVC_WRK"  to="AWRK_PDBA" />
+        <ReplacementString qualifier="Data Source=HPE_TENANT_TXN_SVC_WRK" from="HPE_TENANT_TXN_SVC_WRK" to="AWRK_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_TPL_CASE_SVC_WRK" from="HPE_TPL_CASE_SVC_WRK" to="AWRK_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_TPL_POLICY_SVC_WRK" from="HPE_TPL_POLICY_SVC_WRK" to="AWRK_PDBB" />
+        <ReplacementString qualifier="HOST=206.122.21.94" from="206.122.21.94" to="mapsdevdbv02.dev.mapshc.com" />
+        <ReplacementString qualifier="Password=MUIP_3AU" from="MUIP_3AU" to="MUIP_3AU;ConnectionLoadBalance=true" />
+        <!--DEV-->
+        <ReplacementString qualifier="Data Source=HPE_CLAIMS_SVC_DEV" from="HPE_CLAIMS_SVC_DEV" to="ADEV_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_CORRESPONDENCE_MGMT_SVC_DEV" from="HPE_CORRESPONDENCE_MGMT_SVC_DEV" to="ADEV_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_DRUG_REBATE_SVC_DEV" from="HPE_DRUG_REBATE_SVC_DEV" to="ADEV_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_EDI_SVC_DEV" from="HPE_EDI_SVC_DEV" to="ADEV_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_EMPLOYEE_SVC_DEV" from="HPE_EMPLOYEE_SVC_DEV" to="ADEV_PDBA" />
+        <ReplacementString qualifier="Data Source=INTEGRATION_DEV" from="INTEGRATION_DEV" to="ADEV_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_MANAGED_CARE_SVC_DEV" from="HPE_MANAGED_CARE_SVC_DEV" to="ADEV_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_MEMBER_SVC_DEV" from="HPE_MEMBER_SVC_DEV" to="ADEV_PDBB" />
+        <ReplacementString qualifier="Data Source=NOTIFICATIONS_DEV" from="NOTIFICATIONS_DEV" to="ADEV_PDBB" />
+        <ReplacementString qualifier="Data Source=PIUM_DEV" from="PIUM_DEV" to="ADEV_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_PLAN_MGMT_SVC_DEV" from="HPE_PLAN_MGMT_SVC_DEV" to="ADEV_PDBB" />
+        <ReplacementString qualifier="Data Source=PROVIDER_DEV" from="PROVIDER_DEV" to="ADEV_PDBB" />
+        <ReplacementString qualifier="Data Source=PROVIDER_CRDNTL_DEV" from="PROVIDER_CRDNTL_DEV" to="ADEV_PDBB" />
+        <ReplacementString qualifier="Data Source=PROVIDER_ENROLL_DEV" from="PROVIDER_ENROLL_DEV" to="ADEV_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_READONLY_MT_SVC_DEV" from="HPE_READONLY_MT_SVC_DEV" to="ADEV_PDBA" />
+        <ReplacementString qualifier="Data Source=HPE_READONLY_T1_SVC_DEV" from="HPE_READONLY_T1_SVC_DEV" to="ADEV_PDBB" />
+        <ReplacementString qualifier="Data Source=TENANT_DEV" from="TENANT_DEV"  to="ADEV_PDBA" />
+        <ReplacementString qualifier="Data Source=HPE_TENANT_TXN_SVC_DEV" from="HPE_TENANT_TXN_SVC_DEV" to="ADEV_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_TPL_CASE_SVC_DEV" from="HPE_TPL_CASE_SVC_DEV" to="ADEV_PDBB" />
+        <ReplacementString qualifier="Data Source=HPE_TPL_POLICY_SVC_DEV" from="HPE_TPL_POLICY_SVC_DEV" to="ADEV_PDBB" />
+        <ReplacementString qualifier="HOST=130.175.204.76" from="130.175.204.76" to="mapsdevdbv01.dev.mapshc.com" />
+        <ReplacementString qualifier="Password=Vertica7" from="Vertica7" to="Vertica7;ConnectionLoadBalance=true" />
+    </ReplacementStrings>
+    <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
 </RefactorConfig>

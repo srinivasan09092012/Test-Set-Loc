@@ -77,7 +77,8 @@ namespace SolutionRefactorMgr
                 versionControl.Getting += OnGetting;
                 versionControl.BeforeCheckinPendingChange += OnBeforeCheckinPendingChange;
                 versionControl.NewPendingChange += OnNewPendingChange;
-                workspace = versionControl.QueryWorkspaces(null, versionControl.AuthorizedUser, Environment.MachineName)[0];
+                LogMessage(0, string.Format("NOTE: DEFAULT WORKSPACE=UA3 (first parm below) - IF YOU GET A MSG THAT YOU DON'T HAVE PERMISSIONS TO CHECKOUT, CHANGE THE PARM TO YOUR UA3 WORKSPACE NAME"));
+                workspace = versionControl.QueryWorkspaces("UA3", versionControl.AuthorizedUser, Environment.MachineName)[0];
                 LogMessage(0, string.Format("Successfully connected to TFS"));
             }
         }
