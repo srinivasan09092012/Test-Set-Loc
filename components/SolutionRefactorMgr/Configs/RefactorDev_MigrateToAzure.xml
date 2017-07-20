@@ -81,7 +81,27 @@
     <ReplacementString qualifier="Data Source=HPE_TPL_POLICY_SVC_DEV" from="HPE_TPL_POLICY_SVC_DEV" to="ADEV_PDBB" />
     <ReplacementString qualifier="HOST=130.175.204.76" from="130.175.204.76" to="mapsdevdbv01.dev.mapshc.com" />
     <ReplacementString qualifier="Password=Vertica7" from="Vertica7" to="Vertica7;ConnectionLoadBalance=true" />
+      <!--WRK USER/PWDS-->
+      <ReplacementString qualifier="CLAIMS_WRK" from="CLAIMS_WRK" to="UA3_CLAIMS" />
+      <ReplacementString qualifier="CORRESPONDENCE_MGMT_WRK" from="CORRESPONDENCE_MGMT_WRK" to="UA3_CORRESPONDENCE_MGMT" />
+      <ReplacementString qualifier="DRUG_REBATE_WRK" from="DRUG_REBATE_WRK" to="UA3_DRUG_REBATE" />
+      <ReplacementString qualifier="EDI_WRK" from="EDI_WRK" to="UA3_EDI" />
+      <ReplacementString qualifier="EMPLOYEE_WRK" from="EMPLOYEE_WRK" to="UA3_EMPLOYEE" />
+      <ReplacementString qualifier="INTEGRATION_WRK" from="INTEGRATION_WRK" to="UA3_INTEGRATION" />
+      <ReplacementString qualifier="MANAGED_CARE_WRK" from="MANAGED_CARE_WRK" to="UA3_MANAGED_CARE" />
+      <ReplacementString qualifier="MEMBER_WRK" from="MEMBER_WRK" to="UA3_MEMBER" />
+      <ReplacementString qualifier="NOTIFICATIONS_WRK" from="NOTIFICATIONS_WRK" to="UA3_NOTIFICATIONS" />
+      <ReplacementString qualifier="PIUM_WRK" from="PIUM_WRK" to="UA3_PIUM" />
+      <ReplacementString qualifier="PLAN_MGMT_WRK" from="PLAN_MGMT_WRK" to="UA3_PLAN_MGMT" />
+      <ReplacementString qualifier="PRO_DUR_WRK" from="PRO_DUR_WRK" to="UA3_PRO_DUR" />
+      <ReplacementString qualifier="PROVIDER_WRK" from="PROVIDER_WRK" to="UA3_PROVIDER" />
+      <ReplacementString qualifier="PROVIDER_CRDNTL_WRK" from="PROVIDER_CRDNTL_WRK" to="UA3_PROVIDER_CRDNTL" />
+      <ReplacementString qualifier="PROVIDER_ENROLL_WRK" from="PROVIDER_ENROLL_WRK" to="UA3_PROVIDER_ENROLL" />
+      <ReplacementString qualifier="TENANT_WRK" from="TENANT_WRK" to="UA3_TENANT" />
+      <ReplacementString qualifier="TENANT_TXN_WRK" from="TENANT_TXN_WRK" to="UA3_TENANT_TXN" />
+      <ReplacementString qualifier="TPL_CASE_WRK" from="TPL_CASE_WRK" to="UA3_TPL_CASE" />
+      <ReplacementString qualifier="TPL_POLICY_WRK" from="TPL_POLICY_WRK" to="UA3_TPL_POLICY" />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
-  <TfsWorkspace></TfsWorkspace>
+  <TfsWorkspace>UA3</TfsWorkspace>
 </RefactorConfig>
