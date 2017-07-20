@@ -95,8 +95,8 @@ namespace DatalistSyncUtil
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DataListView.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DataListView.Location = new System.Drawing.Point(14, 135);
-            this.DataListView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DataListView.Location = new System.Drawing.Point(10, 110);
+            this.DataListView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DataListView.Name = "DataListView";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -108,7 +108,7 @@ namespace DatalistSyncUtil
             this.DataListView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DataListView.RowTemplate.Height = 24;
             this.DataListView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.DataListView.Size = new System.Drawing.Size(981, 540);
+            this.DataListView.Size = new System.Drawing.Size(736, 439);
             this.DataListView.TabIndex = 2;
             this.DataListView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataListView_CellDoubleClick);
             this.DataListView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataListView_CellValueChanged);
@@ -117,7 +117,7 @@ namespace DatalistSyncUtil
             // 
             this.Select.HeaderText = "Select";
             this.Select.Name = "Select";
-            this.Select.Width = 53;
+            this.Select.Width = 43;
             // 
             // ContentID
             // 
@@ -166,15 +166,15 @@ namespace DatalistSyncUtil
             this.IsActive.HeaderText = "Active";
             this.IsActive.Name = "IsActive";
             this.IsActive.ReadOnly = true;
-            this.IsActive.Width = 52;
+            this.IsActive.Width = 43;
             // 
             // DataListLoad
             // 
             this.DataListLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DataListLoad.Location = new System.Drawing.Point(923, 100);
-            this.DataListLoad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DataListLoad.Location = new System.Drawing.Point(692, 81);
+            this.DataListLoad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DataListLoad.Name = "DataListLoad";
-            this.DataListLoad.Size = new System.Drawing.Size(75, 34);
+            this.DataListLoad.Size = new System.Drawing.Size(56, 28);
             this.DataListLoad.TabIndex = 4;
             this.DataListLoad.Text = "Load";
             this.DataListLoad.UseVisualStyleBackColor = true;
@@ -184,10 +184,10 @@ namespace DatalistSyncUtil
             // 
             this.SelectAllChkBox.AutoSize = true;
             this.SelectAllChkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SelectAllChkBox.Location = new System.Drawing.Point(61, 108);
-            this.SelectAllChkBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SelectAllChkBox.Location = new System.Drawing.Point(46, 88);
+            this.SelectAllChkBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SelectAllChkBox.Name = "SelectAllChkBox";
-            this.SelectAllChkBox.Size = new System.Drawing.Size(98, 21);
+            this.SelectAllChkBox.Size = new System.Drawing.Size(80, 17);
             this.SelectAllChkBox.TabIndex = 6;
             this.SelectAllChkBox.Text = "Select All";
             this.SelectAllChkBox.UseVisualStyleBackColor = true;
@@ -198,31 +198,31 @@ namespace DatalistSyncUtil
             this.ModuleList.DisplayMember = "ModuleName";
             this.ModuleList.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ModuleList.FormattingEnabled = true;
-            this.ModuleList.ItemHeight = 16;
-            this.ModuleList.Location = new System.Drawing.Point(371, 12);
-            this.ModuleList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ModuleList.Location = new System.Drawing.Point(278, 10);
+            this.ModuleList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ModuleList.Name = "ModuleList";
             this.ModuleList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.ModuleList.Size = new System.Drawing.Size(319, 84);
+            this.ModuleList.Size = new System.Drawing.Size(240, 69);
             this.ModuleList.TabIndex = 7;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(301, 26);
+            this.label1.Location = new System.Drawing.Point(226, 21);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 17);
+            this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 8;
             this.label1.Text = "Module:";
             // 
             // Close
             // 
             this.Close.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Close.Location = new System.Drawing.Point(907, 686);
-            this.Close.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Close.Location = new System.Drawing.Point(680, 557);
+            this.Close.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Close.Name = "Close";
-            this.Close.Size = new System.Drawing.Size(91, 34);
+            this.Close.Size = new System.Drawing.Size(68, 28);
             this.Close.TabIndex = 14;
             this.Close.Text = "Close";
             this.Close.UseVisualStyleBackColor = true;
@@ -232,27 +232,28 @@ namespace DatalistSyncUtil
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(691, 12);
+            this.label4.Location = new System.Drawing.Point(518, 10);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 17);
+            this.label4.Size = new System.Drawing.Size(85, 13);
             this.label4.TabIndex = 17;
             this.label4.Text = "Age (in days):";
             // 
             // Age
             // 
-            this.Age.Location = new System.Drawing.Point(795, 14);
-            this.Age.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Age.Location = new System.Drawing.Point(596, 11);
+            this.Age.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Age.Name = "Age";
-            this.Age.Size = new System.Drawing.Size(64, 22);
+            this.Age.Size = new System.Drawing.Size(48, 20);
             this.Age.TabIndex = 18;
             // 
             // BtnClearCache
             // 
             this.BtnClearCache.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnClearCache.Location = new System.Drawing.Point(864, 6);
-            this.BtnClearCache.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnClearCache.Location = new System.Drawing.Point(648, 5);
+            this.BtnClearCache.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BtnClearCache.Name = "BtnClearCache";
-            this.BtnClearCache.Size = new System.Drawing.Size(131, 34);
+            this.BtnClearCache.Size = new System.Drawing.Size(98, 28);
             this.BtnClearCache.TabIndex = 19;
             this.BtnClearCache.Text = "Clear Cache";
             this.BtnClearCache.UseVisualStyleBackColor = true;
@@ -263,10 +264,10 @@ namespace DatalistSyncUtil
             this.InactiveCB.AutoSize = true;
             this.InactiveCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.InactiveCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InactiveCB.Location = new System.Drawing.Point(691, 54);
-            this.InactiveCB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.InactiveCB.Location = new System.Drawing.Point(518, 44);
+            this.InactiveCB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.InactiveCB.Name = "InactiveCB";
-            this.InactiveCB.Size = new System.Drawing.Size(86, 21);
+            this.InactiveCB.Size = new System.Drawing.Size(72, 17);
             this.InactiveCB.TabIndex = 13;
             this.InactiveCB.Text = "Inactive";
             this.InactiveCB.UseVisualStyleBackColor = true;
@@ -276,10 +277,10 @@ namespace DatalistSyncUtil
             // 
             this.BtnDownloadToFile.Enabled = false;
             this.BtnDownloadToFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnDownloadToFile.Location = new System.Drawing.Point(728, 686);
-            this.BtnDownloadToFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnDownloadToFile.Location = new System.Drawing.Point(546, 557);
+            this.BtnDownloadToFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BtnDownloadToFile.Name = "BtnDownloadToFile";
-            this.BtnDownloadToFile.Size = new System.Drawing.Size(173, 34);
+            this.BtnDownloadToFile.Size = new System.Drawing.Size(130, 28);
             this.BtnDownloadToFile.TabIndex = 20;
             this.BtnDownloadToFile.Text = "Download to File";
             this.BtnDownloadToFile.UseVisualStyleBackColor = true;
@@ -289,9 +290,10 @@ namespace DatalistSyncUtil
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 26);
+            this.label2.Location = new System.Drawing.Point(9, 21);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 17);
+            this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 21;
             this.label2.Text = "Tenant:";
             // 
@@ -300,10 +302,10 @@ namespace DatalistSyncUtil
             this.TenantList.DisplayMember = "TenantName";
             this.TenantList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TenantList.FormattingEnabled = true;
-            this.TenantList.Location = new System.Drawing.Point(83, 23);
-            this.TenantList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TenantList.Location = new System.Drawing.Point(62, 19);
+            this.TenantList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TenantList.Name = "TenantList";
-            this.TenantList.Size = new System.Drawing.Size(201, 24);
+            this.TenantList.Size = new System.Drawing.Size(152, 21);
             this.TenantList.Sorted = true;
             this.TenantList.TabIndex = 22;
             this.TenantList.ValueMember = "TenantID";
@@ -312,10 +314,10 @@ namespace DatalistSyncUtil
             // btnCompare
             // 
             this.btnCompare.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCompare.Location = new System.Drawing.Point(632, 686);
-            this.btnCompare.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCompare.Location = new System.Drawing.Point(474, 557);
+            this.btnCompare.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCompare.Name = "btnCompare";
-            this.btnCompare.Size = new System.Drawing.Size(91, 34);
+            this.btnCompare.Size = new System.Drawing.Size(68, 28);
             this.btnCompare.TabIndex = 23;
             this.btnCompare.Text = "Compare";
             this.btnCompare.UseVisualStyleBackColor = true;
@@ -325,10 +327,9 @@ namespace DatalistSyncUtil
             // 
             this.control_label.AutoSize = true;
             this.control_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.control_label.Location = new System.Drawing.Point(12, 75);
-            this.control_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.control_label.Location = new System.Drawing.Point(9, 61);
             this.control_label.Name = "control_label";
-            this.control_label.Size = new System.Drawing.Size(65, 17);
+            this.control_label.Size = new System.Drawing.Size(51, 13);
             this.control_label.TabIndex = 24;
             this.control_label.Text = "Control:";
             // 
@@ -337,10 +338,10 @@ namespace DatalistSyncUtil
             this.ControlName.DisplayMember = "ControlName";
             this.ControlName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ControlName.FormattingEnabled = true;
-            this.ControlName.Location = new System.Drawing.Point(83, 71);
-            this.ControlName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ControlName.Location = new System.Drawing.Point(62, 58);
+            this.ControlName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ControlName.Name = "ControlName";
-            this.ControlName.Size = new System.Drawing.Size(201, 24);
+            this.ControlName.Size = new System.Drawing.Size(152, 21);
             this.ControlName.Sorted = true;
             this.ControlName.TabIndex = 25;
             this.ControlName.ValueMember = "TenantID";
@@ -348,10 +349,10 @@ namespace DatalistSyncUtil
             // 
             // DataListSync
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1010, 729);
+            this.ClientSize = new System.Drawing.Size(758, 592);
             this.Controls.Add(this.control_label);
             this.Controls.Add(this.btnCompare);
             this.Controls.Add(this.TenantList);
@@ -368,10 +369,10 @@ namespace DatalistSyncUtil
             this.Controls.Add(this.SelectAllChkBox);
             this.Controls.Add(this.DataListLoad);
             this.Controls.Add(this.DataListView);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "DataListSync";
-            this.Text = "Datalist Utility";
+            this.Text = "Tenant Config Management Tool";
             ((System.ComponentModel.ISupportInitialize)(this.DataListView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Age)).EndInit();
             this.ResumeLayout(false);

@@ -445,7 +445,7 @@ namespace DatalistSyncUtil
             this.helpToolStripMenuItem,
             this.servicesToolStripMenuItem});
             this.deltaToolStripMenuItem.Name = "deltaToolStripMenuItem";
-            this.deltaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deltaToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.deltaToolStripMenuItem.Text = "Delta";
             this.deltaToolStripMenuItem.Click += new System.EventHandler(this.DeltaToolStripMenuItem_Click);
             this.deltaToolStripMenuItem.MouseHover += new System.EventHandler(this.DeltaToolStripMenuItem_Click);
@@ -527,77 +527,77 @@ namespace DatalistSyncUtil
             this.helpToolStripMenuItem1,
             this.serviceToolStripMenuItem});
             this.backUpTargetToolStripMenuItem.Name = "backUpTargetToolStripMenuItem";
-            this.backUpTargetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.backUpTargetToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.backUpTargetToolStripMenuItem.Text = "BackUp Target";
             // 
             // appSettingToolStripMenuItem1
-            //
+            // 
             this.appSettingToolStripMenuItem1.Enabled = false;
             this.appSettingToolStripMenuItem1.Name = "appSettingToolStripMenuItem1";
-            this.appSettingToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.appSettingToolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
             this.appSettingToolStripMenuItem1.Text = "AppSetting";
             this.appSettingToolStripMenuItem1.Click += new System.EventHandler(this.AppSettingToolStripMenuItem1_Click);
             // 
             // datalistToolStripMenuItem
-            //
-            this.datalistToolStripMenuItem.Enabled = false; 
+            // 
+            this.datalistToolStripMenuItem.Enabled = false;
             this.datalistToolStripMenuItem.Name = "datalistToolStripMenuItem";
-            this.datalistToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.datalistToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.datalistToolStripMenuItem.Text = "Datalist";
             this.datalistToolStripMenuItem.Click += new System.EventHandler(this.DatalistToolStripMenuItem_Click_1);
             // 
             // htmlBlockToolStripMenuItem1
-            //
+            // 
             this.htmlBlockToolStripMenuItem1.Enabled = false;
             this.htmlBlockToolStripMenuItem1.Name = "htmlBlockToolStripMenuItem1";
-            this.htmlBlockToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.htmlBlockToolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
             this.htmlBlockToolStripMenuItem1.Text = "HtmlBlock";
             this.htmlBlockToolStripMenuItem1.Click += new System.EventHandler(this.HtmlBlockToolStripMenuItem1_Click);
             // 
             // menusToolStripMenuItem1
-            //
+            // 
             this.menusToolStripMenuItem1.Enabled = false;
             this.menusToolStripMenuItem1.Name = "menusToolStripMenuItem1";
-            this.menusToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.menusToolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
             this.menusToolStripMenuItem1.Text = "Menus";
             this.menusToolStripMenuItem1.Click += new System.EventHandler(this.MenusToolStripMenuItem1_Click);
             // 
             // securityToolStripMenuItem1
-            //
+            // 
             this.securityToolStripMenuItem1.Enabled = false;
             this.securityToolStripMenuItem1.Name = "securityToolStripMenuItem1";
-            this.securityToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.securityToolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
             this.securityToolStripMenuItem1.Text = "Security";
             this.securityToolStripMenuItem1.Click += new System.EventHandler(this.SecurityToolStripMenuItem1_Click);
             // 
             // imageToolStripMenuItem
-            //
+            // 
             this.imageToolStripMenuItem.Enabled = false;
             this.imageToolStripMenuItem.Name = "imageToolStripMenuItem";
-            this.imageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.imageToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.imageToolStripMenuItem.Text = "Image";
             this.imageToolStripMenuItem.Click += new System.EventHandler(this.ImageToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem1
-            //
+            // 
             this.helpToolStripMenuItem1.Enabled = false;
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
             this.helpToolStripMenuItem1.Text = "Help";
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.HelpToolStripMenuItem1_Click);
             // 
             // serviceToolStripMenuItem
-            //
+            // 
             this.serviceToolStripMenuItem.Enabled = false;
             this.serviceToolStripMenuItem.Name = "serviceToolStripMenuItem";
-            this.serviceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.serviceToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.serviceToolStripMenuItem.Text = "Service";
             this.serviceToolStripMenuItem.Click += new System.EventHandler(this.ServiceToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // DatalistComparer
@@ -612,7 +612,7 @@ namespace DatalistSyncUtil
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MaximizeBox = false;
             this.Name = "DatalistComparer";
-            this.Text = "Datalist Comparer";
+            this.Text = "Tenant Config Comparer";
             this.leftPanel.ResumeLayout(false);
             this.leftPanel.PerformLayout();
             this.rightPanel.ResumeLayout(false);
