@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ServiceConfiguration>
+  <BaseAddress>http://130.175.189.231:8010</BaseAddress>
+  <ServiceUrls>
+    <ServiceAddress>/HP.HSP.UA3.User/R1.0/UserNoteService.svc</ServiceAddress>
+    <ServiceAddress>/HP.HSP.UA3.User/R1.0/UserNoteQueryService.svc</ServiceAddress>
+    <ServiceAddress>/HP.HSP.UA3.DataLists/R1.0/DataListsService.svc</ServiceAddress>
+    <ServiceAddress>/HP.HSP.UA3.DataLists/R1.0/DataListsQueryService.svc</ServiceAddress>
+    <ServiceAddress>/HP.HSP.UA3.ProviderMgmt/R1.0/ProvidersQueryService.svc</ServiceAddress>
+    <ServiceAddress>/HP.HSP.UA3.ProviderMgmt/R1.0/ProviderService.svc</ServiceAddress>
+    <ServiceAddress>/HP.HSP.UA3.ProviderMgmt/R1.0/ProviderEventService.svc</ServiceAddress>
+    <ServiceAddress>/HP.HSP.UA3.ProviderMgmt/R1.0/ProviderBatchService.svc</ServiceAddress>
+    <ServiceAddress>/HP.HSP.UA3.ProviderEnrollmentServices/R1.0/EnrollmentService.svc</ServiceAddress>
+    <ServiceAddress>/HP.HSP.UA3.ProviderEnrollmentServices/R1.0/EnrollmentQueryService.svc</ServiceAddress>
+    <ServiceAddress>/HP.HSP.UA3.ProviderEnrollmentServices/R1.0/EnrollmentEventService.svc</ServiceAddress>
+  </ServiceUrls>
+</ServiceConfiguration>
+
