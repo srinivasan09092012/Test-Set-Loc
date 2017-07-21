@@ -1,78 +1,22 @@
 ﻿using HPE.HSP.UA3.Core.API.BusinessRules.Providers.Tests.Domain;
-using HP.HSP.UA3.Core.UX.Common.Utilities;
-using InRuleTest.InRuleRuleSoapService;
+using InRuleRestLibrary;
+using Newtonsoft.Json;
 using System;
-using System.ServiceModel;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace InRuleTest
 {
     public class Program
     {
-        static void Main(string[] args)
-        {
-            //ProcessRestRequest();
-            ProcessSoapRequest();
-        }
-
-        private static void ProcessRestRequest()
+        public static void Main(string[] args)
         {
             try
             {
-                // Get RuleApp as defined in the config (RepositoryRuleApp or FileSystemRuleApp)
-                RepositoryRuleApp rules = new RepositoryRuleApp()
-                {
-                    RepositoryServiceUri = "http://bre1.dev.ua3.elabs.svcs.hpe.com/InRuleCatalogService/Service.svc",
-                    RepositoryRuleAppRevisionSpec = new RepositoryRuleAppRevisionSpec()
-                    {
-                        RuleApplicationName = "BREApiTestApplication",
-                        Label = null
-                    },
-                    UserName = "BASConsumer",
-                    Password = "Password2015"
-                };
-
-                // Create new request
-                ExecuteIndependentRuleSetRequest request = new ExecuteIndependentRuleSetRequest()
-                {
-                    RuleApp = rules,
-                    RuleEngineServiceOutputTypes = new RuleEngineServiceOutputTypes()
-                    {
-                        ActiveNotifications = true,
-                        ActiveValidations = true,
-                        EntityState = true,
-                        RuleExecutionLog = true
-                    },
-                    RuleSetName = "IndependentValidation",
-                    EntityStateFieldName = "TestModel"
-                };
-                request.EntityState = BuildEntityState();
-                Console.WriteLine("");
-                Console.WriteLine("Request data:");
-                Console.WriteLine(request.EntityState);
-
-                // Execute REST call
-                HttpResponseMessage webResponse = ProcessRESTCall(request);
-
-                // Analyze output
-                //Console.WriteLine("");
-                //Console.WriteLine("Active Notifications:");
-                //foreach (Notification notification in response.ActiveNotifications)
-                //{
-                //    Console.WriteLine(notification.NotificationType + ": " + notification.Message);
-                //}
-
-                //Console.WriteLine("");
-                //Console.WriteLine("Active Validations:");
-                //foreach (Validation validation in response.ActiveValidations)
-                //{
-                //    Console.WriteLine(validation.InvalidMessageText);
-                //}
-
-                //Console.WriteLine("");
-                //Console.WriteLine("Output State:");
-                //Console.WriteLine(response.EntityState);
+                ProcessRESTRequest();
             }
             catch (Exception ex)
             {
@@ -85,104 +29,96 @@ namespace InRuleTest
             }
         }
 
-        private static HttpResponseMessage ProcessRESTCall(ExecuteIndependentRuleSetRequest request)
+        private async static void ProcessRESTRequest()
+        {
+            // Create rule application
+            RuleApp ruleApp = new RuleApp()
+            {
+                RepositoryServiceUri = "http://bre1.dev.ua3.elabs.svcs.hpe.com/InRuleCatalogService/Service.svc",
+                RepositoryRuleAppRevisionSpec = new RepositoryRuleAppRevisionSpec()
+                {
+                    RuleApplicationName = "BREApiTestApplication",
+                    Label = string.Empty
+                },
+                UserName = "BASConsumer",
+                Password = "Password2015"
+            };
+
+            // Create new request
+            ExecuteIndependentRuleSetRequest request = new ExecuteIndependentRuleSetRequest()
+            {
+                RequestId = Guid.NewGuid().ToString("n"),
+                RuleApp = ruleApp,
+                RuleEngineServiceOutputTypes = new RuleEngineServiceOutputTypes()
+                {
+                    ActiveNotifications = true,
+                    ActiveValidations = true,
+                    EntityState = true,
+                    RuleExecutionLog = true,
+                    Overrides = true
+                },
+                RuleSetName = "IndependentValidation",
+                EntityStateFieldName = "ParmTestModel",
+                EntityState = JsonConvert.SerializeObject(new TestModel("Informational", 1))
+            };
+
+            Console.WriteLine("");
+            Console.WriteLine("Entity State:");
+            Console.WriteLine(request.EntityState);
+
+            string serializedRequest = JsonConvert.SerializeObject(request);
+            Console.WriteLine("");
+            Console.WriteLine("Request:");
+            Console.WriteLine(serializedRequest);
+
+            // Execute REST call
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
+            HttpResponseMessage webResponse = await ProcessRESTCall(serializedRequest);
+            string response = await webResponse.Content.ReadAsStringAsync();
+            timer.Stop();
+            Console.WriteLine("");
+            Console.WriteLine("Response:");
+            Console.WriteLine(response);
+            webResponse.EnsureSuccessStatusCode();
+
+            // Analyze output
+            ExecuteIndependentRuleSetResponse rulesetResponse = JsonConvert.DeserializeObject<ExecuteIndependentRuleSetResponse>(response);
+            TestModel responseModel = JsonConvert.DeserializeObject<TestModel>(rulesetResponse.EntityState);
+
+            Console.WriteLine("");
+            Console.WriteLine("Status: SUCCESS");
+
+            Console.WriteLine("");
+            Console.WriteLine("Active Notifications:");
+            foreach (ActiveNotification notification in rulesetResponse.ActiveNotifications)
+            {
+                Console.WriteLine(notification.NotificationType + ": " + notification.Message);
+            }
+
+            Console.WriteLine("");
+            Console.WriteLine("Active Validations:");
+            foreach (ActiveValidation validation in rulesetResponse.ActiveValidations)
+            {
+                Console.WriteLine(validation.InvalidMessageText);
+            }
+
+            Console.WriteLine("");
+            Console.WriteLine("Execution: " + timer.ElapsedMilliseconds + "ms");
+        }
+
+        private static async Task<HttpResponseMessage> ProcessRESTCall(string request)
         {
             HttpResponseMessage response = null;
             using (HttpClient client = new HttpClient())
             {
-                //client.BaseAddress = new Uri("http://bre1.dev.ua3.elabs.svcs.hpe.com/InRuleRuleEngineService/HttpService.svc");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                response = client.PostAsJsonAsync("http://bre1.dev.ua3.elabs.svcs.hpe.com/InRuleRuleEngineService/HttpService.svc/ExecuteIndependentRuleSet", request).Result;
-                response.EnsureSuccessStatusCode();
+                response = await client.PostAsync("http://bre1.dev.ua3.elabs.svcs.hpe.com/InRuleRuleEngineService/HttpService.svc/ExecuteIndependentRuleSet",
+                      new StringContent(request, Encoding.UTF8, "application/json"));
             }
 
             return response;
-        }
-
-        private static void ProcessSoapRequest()
-        {
-            using (RuleEngineServiceClient proxy = new RuleEngineServiceClient())
-            {
-                try
-                {
-                    // Set endpoint and binding
-                    BasicHttpBinding binding = new BasicHttpBinding();
-                    EndpointAddress endpoint = new EndpointAddress("http://bre1.dev.ua3.elabs.svcs.hpe.com/InRuleRuleEngineService/Service.svc");
-                    ChannelFactory<IRuleEngineServiceChannel> channelFactory = new ChannelFactory<IRuleEngineServiceChannel>(binding, endpoint);
-
-                    // Get RuleApp as defined in the config (RepositoryRuleApp or FileSystemRuleApp)
-                    RepositoryRuleApp rules = new RepositoryRuleApp()
-                    {
-                        RepositoryServiceUri = "http://bre1.dev.ua3.elabs.svcs.hpe.com/InRuleCatalogService/Service.svc",
-                        RepositoryRuleAppRevisionSpec = new RepositoryRuleAppRevisionSpec()
-                        {
-                            RuleApplicationName = "BREApiTestApplication",
-                            Label = null
-                        },
-                        UserName = "BASConsumer",
-                        Password = "Password2015"
-                    };
-
-                    // Create new request
-                    ExecuteIndependentRuleSetRequest request = new ExecuteIndependentRuleSetRequest()
-                    {
-                        RuleApp = rules,
-                        RuleEngineServiceOutputTypes = new RuleEngineServiceOutputTypes()
-                        {
-                            ActiveNotifications = true,
-                            ActiveValidations = true,
-                            EntityState = true,
-                            RuleExecutionLog = true
-                        },
-                        RuleSetName = "IndependentValidation",
-                        EntityStateFieldName = "TestModel"
-                    };
-                    request.EntityState = BuildEntityState();
-                    Console.WriteLine("");
-                    Console.WriteLine("Request data:");
-                    Console.WriteLine(request.EntityState);
-
-                    // Submit Request
-                    Console.WriteLine("");
-                    Console.WriteLine("- Calling ApplyRules() from RuleEngineService...");
-                    RuleEngineServiceResponse response = proxy.ExecuteRuleEngineRequest(request);
-
-                    // Analyze output
-                    Console.WriteLine("");
-                    Console.WriteLine("Active Notifications:");
-                    foreach (Notification notification in response.ActiveNotifications)
-                    {
-                        Console.WriteLine(notification.NotificationType + ": " + notification.Message);
-                    }
-
-                    Console.WriteLine("");
-                    Console.WriteLine("Active Validations:");
-                    foreach (Validation validation in response.ActiveValidations)
-                    {
-                        Console.WriteLine(validation.InvalidMessageText);
-                    }
-
-                    Console.WriteLine("");
-                    Console.WriteLine("Output State:");
-                    Console.WriteLine(response.EntityState);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("");
-                    Console.WriteLine("Unknown exception occurred during RuleEngineService SOAP request: " + ex.ToString());
-                }
-                finally
-                {
-                    Console.ReadKey();
-                }
-            }
-        }
-
-        private static string BuildEntityState()
-        {
-            return Serializer.XmlSerialize<TestModel>(new TestModel("Informational", 1));
-            //return "<TestModel><Name>Name</Name><Priority>1</Priority><Validation>0</Validation><Rules><Validation><AuditMessages /><FieldMessages /><Messages /></Validation></Rules></TestModel>";
         }
     }
 }
