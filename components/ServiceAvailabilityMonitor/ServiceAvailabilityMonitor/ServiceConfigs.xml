@@ -2,17 +2,57 @@
 <ServiceConfiguration>
   <BaseAddress>http://130.175.189.231:8010</BaseAddress>
   <ServiceUrls>
-    <ServiceAddress>/HP.HSP.UA3.User/R1.0/UserNoteService.svc</ServiceAddress>
-    <ServiceAddress>/HP.HSP.UA3.User/R1.0/UserNoteQueryService.svc</ServiceAddress>
-    <ServiceAddress>/HP.HSP.UA3.DataLists/R1.0/DataListsService.svc</ServiceAddress>
-    <ServiceAddress>/HP.HSP.UA3.DataLists/R1.0/DataListsQueryService.svc</ServiceAddress>
-    <ServiceAddress>/HP.HSP.UA3.ProviderMgmt/R1.0/ProvidersQueryService.svc</ServiceAddress>
-    <ServiceAddress>/HP.HSP.UA3.ProviderMgmt/R1.0/ProviderService.svc</ServiceAddress>
-    <ServiceAddress>/HP.HSP.UA3.ProviderMgmt/R1.0/ProviderEventService.svc</ServiceAddress>
-    <ServiceAddress>/HP.HSP.UA3.ProviderMgmt/R1.0/ProviderBatchService.svc</ServiceAddress>
-    <ServiceAddress>/HP.HSP.UA3.ProviderEnrollmentServices/R1.0/EnrollmentService.svc</ServiceAddress>
-    <ServiceAddress>/HP.HSP.UA3.ProviderEnrollmentServices/R1.0/EnrollmentQueryService.svc</ServiceAddress>
-    <ServiceAddress>/HP.HSP.UA3.ProviderEnrollmentServices/R1.0/EnrollmentEventService.svc</ServiceAddress>
+    <!--
+    Service address properties:
+      Address: relative address for service endpoint.  Required Node
+      ErrorMessage: Any message to be writen to the log on error.  This is in addition to Exception messges.  Required Node
+      BaseAddressOverride: Use a base address other than the default.  This node is optional and can be empty or removed
+    -->
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.User/R1.0/UserNoteService.svc</Address>
+      <ErrorMessage>Impacts ability for user to save and read profile notes</ErrorMessage>
+      <BaseAddressOverride></BaseAddressOverride>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.User/R1.0/UserNoteQueryService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.DataLists/R1.0/DataListsService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.DataLists/R1.0/DataListsQueryService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.ProviderMgmt/R1.0/ProvidersQueryService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.ProviderMgmt/R1.0/ProviderService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.ProviderMgmt/R1.0/ProviderEventService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.ProviderMgmt/R1.0/ProviderBatchService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.ProviderEnrollmentServices/R1.0/EnrollmentService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.ProviderEnrollmentServices/R1.0/EnrollmentQueryService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.ProviderEnrollmentServices/R1.0/EnrollmentEventService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
   </ServiceUrls>
 </ServiceConfiguration>
 

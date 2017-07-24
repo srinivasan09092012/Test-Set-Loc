@@ -29,28 +29,28 @@ namespace ServiceAvailabilityMonitor
 
             var urls = GetServiceUrls();
 
-            foreach(string url in urls)
+            foreach(Config url in urls)
             {
                 try
                 {
                     if(WsdlOnlyCheck())
                     {
-                        GetMetaDataFromWsdl(url);
+                        GetMetaDataFromWsdl(url.WsdlAddress);
                     }
                     else
                     {
-                        InvokeIsAvailableOperation(url);
+                        InvokeIsAvailableOperation(url.SvcAddress);
                     }
 
                     if (LogSuccess())
                     {
-                        WriteSuccess(url);
+                        WriteSuccess(url.SvcAddress);
                     }
 
                 }
                 catch(Exception ex)
                 {
-                    WriteError(url, ex);
+                    WriteError(url.SvcAddress, ex, url.Message);
                 }
             }
 
@@ -83,7 +83,7 @@ namespace ServiceAvailabilityMonitor
             return result;
         }
 
-        public static List<string> GetServiceUrls()
+        public static List<Config> GetServiceUrls()
         {
             string ServiceConfigFile = "ServiceConfigs.xml";
             XDocument xml = XDocument.Load(ServiceConfigFile);
@@ -91,13 +91,29 @@ namespace ServiceAvailabilityMonitor
             var baseAddress = (from n in xml.Descendants("ServiceConfiguration")
                                select n.Element("BaseAddress").Value).First();
 
-            var URLName = (from n in xml.Descendants("ServiceUrls")
-                           select n.Elements("ServiceAddress")).First()
-                           .Select( x => x.Value);
+            //var URLName = (from n in xml.Descendants("ServiceUrls")
+            //               select n.Elements("ServiceAddress")).First()
+            //               .Select( x => x.Value);
 
-            var fullURLPath = URLName.ToList().Select(svcPath => svcPath = baseAddress + svcPath + @"?wsdl");
 
-            return fullURLPath.ToList();
+            var URLConfig = (from n in xml.Descendants("ServiceAddress")
+                           select new Config
+                           {
+                               Address = (n.Element("Address")).Value,
+                               Message = (n.Element("ErrorMessage")).Value,
+                               BaseAddress = n.Elements("BaseAddressOverride").Any() ? n.Element("BaseAddressOverride").Value : string.Empty
+                           }).ToList();
+
+            URLConfig.ForEach(config =>
+            {
+                if (string.IsNullOrEmpty(config.BaseAddress))
+                {
+                    config.BaseAddress = baseAddress;
+                }
+            });
+
+
+            return URLConfig;
         }
 
         public static void WriteSuccess(string url)
@@ -105,12 +121,13 @@ namespace ServiceAvailabilityMonitor
             logger.Info(url + ": OK");
         }
 
-        public static void WriteError(string url, Exception ex)
+        public static void WriteError(string url, Exception ex, string message = "")
         {
             string innerMessage = ex.InnerException != null ? ex.InnerException.Message : string.Empty;
 
             logger.Error(Environment.NewLine + 
                 url + ":ERROR Service Unavailable" +
+                Environment.NewLine + message +
                 Environment.NewLine + ex.Message + innerMessage);
         }
 
