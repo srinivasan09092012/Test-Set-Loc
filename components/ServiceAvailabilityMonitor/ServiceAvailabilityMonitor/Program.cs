@@ -27,6 +27,7 @@ namespace ServiceAvailabilityMonitor
         {
             XmlConfigurator.Configure();
 
+            Console.WriteLine("Checking ...");
             var urls = GetServiceUrls();
 
             foreach(Config url in urls)
@@ -54,6 +55,7 @@ namespace ServiceAvailabilityMonitor
                 }
             }
 
+            Console.WriteLine("Complete...");
             StopConsole();
         }
 
@@ -126,7 +128,7 @@ namespace ServiceAvailabilityMonitor
             string innerMessage = ex.InnerException != null ? ex.InnerException.Message : string.Empty;
 
             logger.Error(Environment.NewLine + 
-                url + ":ERROR Service Unavailable" +
+                url + " :ERROR Service Unavailable" +
                 Environment.NewLine + message +
                 Environment.NewLine + ex.Message + innerMessage);
         }

@@ -9,6 +9,70 @@
       BaseAddressOverride: Use a base address other than the default.  This node is optional and can be empty or removed
     -->
     <ServiceAddress>
+      <Address>/HP.HSP.UA3.Audit/R1.0/AuditQueryService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.Audit/R1.0/AuditService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.AuthDetermination/R1.0/AuthorizationService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.AuthMgmt/R1.0/ReferralService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.AuthMgmt/R1.0/ReferralQueryService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.BroadcastMessage/R1.0/BroadcastMessageQueryService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.BroadcastMessage/R1.0/BroadcastMessageService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.CaseTrackingReportSvc/R1.0/CaseTrackingReportSvcQueryService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.ClaimsMgmt/R1.0/ClaimsManagementService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.ClaimsMgmt/R1.0/ClaimsManagementQueryService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.ClaimsMgmt/R1.0/ClaimsManagementAPIQueryService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.CLIA/R1.0/CLIAQueryService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.CLIAProcessServices/R1.0/CLIAProcessQueryService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.CLIAProcessServices/R1.0/CLIAProcessService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.CodeInformation/R1.0/CodeInformationQueryService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
+      <Address>/HP.HSP.UA3.CodeInformation/R1.0/CodeInformationService.svc</Address>
+      <ErrorMessage>Add message</ErrorMessage>
+    </ServiceAddress>
+    <ServiceAddress>
       <Address>/HP.HSP.UA3.User/R1.0/UserNoteService.svc</Address>
       <ErrorMessage>Impacts ability for user to save and read profile notes</ErrorMessage>
       <BaseAddressOverride></BaseAddressOverride>
