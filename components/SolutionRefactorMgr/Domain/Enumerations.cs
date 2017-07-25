@@ -18,6 +18,7 @@ namespace SolutionRefactorMgr.Domain
             BAS,
             Batch,
             EAI,
+            NA,
             UX
         }
     }

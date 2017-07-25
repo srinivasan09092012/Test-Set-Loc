@@ -384,11 +384,19 @@ namespace SolutionRefactorMgr
         private static void RefactorModule(ModuleConfig module, Enumerations.ProjectTypes type)
         {
             LogMessage(1, string.Format("Refactoring started for type: '{0}'", type.ToString()));
-            string sourcePath = refactorConfig.SourceDir + module.Name + "\\" + module.Branch + "\\" + type.ToString();
+            string sourcePath = refactorConfig.SourceDir + module.Name + "\\" + module.Branch;
+            if (type != Enumerations.ProjectTypes.NA)
+            {
+                sourcePath += "\\" + type.ToString();
+            }
             string destPath = sourcePath;
             if (refactorConfig.EditMode == Enumerations.EditModeTypes.Copy)
             {
-                destPath = refactorConfig.SourceDir + module.Name + "\\" + module.Branch + "\\" + type.ToString();
+                destPath = refactorConfig.SourceDir + module.Name + "\\" + module.Branch;
+                if (type != Enumerations.ProjectTypes.NA)
+                {
+                    destPath += "\\" + type.ToString();
+                }
             }
             RefactorDirectory(sourcePath, destPath, destPath, true, 2);
         }
