@@ -27,7 +27,7 @@
     <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
     <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
     <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
-    <ModuleConfig name="Utilities" branch="Dev" types="All" />
+    <ModuleConfig name="Utilities" branch="Dev" types="NA" />
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
@@ -41,6 +41,7 @@
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
+    <ReplacementString qualifier="Hewlett Packard Enterprise" from="Hewlett Packard Enterprise" to="DXC Technology" />
     <ReplacementString qualifier="DXC Technology" from="2016" to="2017" />
     <ReplacementString qualifier="Copyright © 2016" from="2016" to="2017" />
     <ReplacementString qualifier="Copyright (c) 2016" from="2016" to="2017" />

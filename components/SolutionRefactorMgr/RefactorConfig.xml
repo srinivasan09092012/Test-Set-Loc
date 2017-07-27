@@ -1,73 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true">
+<RefactorConfig editMode="Copy" includeFolderNames="true" includeFileNames="true" includeFileContents="true" useSourceControl="true">
   <SourceDir>C:\UA3\Source</SourceDir>
-  <ModuleConfigs>
-    <ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />
-    <ModuleConfig name="Administration" branch="Dev" types="All" />
-    <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
-    <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
-    <ModuleConfig name="Core" branch="Dev" types="All" />
-    <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
-    <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
-    <ModuleConfig name="EDI" branch="Dev" types="All" />
-    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
-    <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
-    <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
-    <ModuleConfig name="KansasOnly" branch="Dev" types="All" />
-    <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
-    <ModuleConfig name="MemberManagement" branch="Dev" types="All" />
-    <ModuleConfig name="MemberPortal" branch="Dev" types="All" />
-    <ModuleConfig name="Notifications" branch="Dev" types="All" />
-    <ModuleConfig name="PlanManagement" branch="Dev" types="All" />
-    <ModuleConfig name="ProDUR" branch="Dev" types="All" />
-    <ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
-    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="All" />
-    <ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
-    <ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
-    <ModuleConfig name="ProviderPortal" branch="Dev" types="All" />
-    <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
-    <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
-    <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
-    <ModuleConfig name="Utilities" branch="Dev" types="NA" />
-  </ModuleConfigs>
-  <PackageConfigs />
+  <ModuleConfigs />
+  <PackageConfigs>
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.BatchProcessingFactory" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.Core" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.ClaimsManagement" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.Core" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.NCPDP" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X212" rebuildPackage="true" reformatSource="true" />
+  </PackageConfigs>
   <FileTypes>
-    <FileType>.bat</FileType>
-    <FileType>.config</FileType>
-    <FileType>.cs</FileType>
-    <FileType>.csproj</FileType>
+    <FileType>.nupkg</FileType>
+    <FileType>.nuspec</FileType>
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
-    <!-- UX application settings version -->
-    <ReplacementString qualifier="add key=&quot;AppVersion&quot; value=&quot;1.0.0.0&quot;" from="1.0.0.0" to="17.3.39.0" />
-
-    <!-- Assembly Versions in Assembly Info file -->
-    <ReplacementString qualifier="AssemblyVersion(" from="1.0.0.0" to="17.3.39.0" />
-    <ReplacementString qualifier="AssemblyFileVersion(" from="1.0.0.0" to="17.3.39.0" />
-
-
-    <!-- Assembly Versions in Project Files -->
-    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.BatchProcessingFactory" from="Version=1.0.0.0" to="Version=17.3.39.0" />
-    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.Core" from="Version=1.0.0.0" to="Version=17.3.39.0" />
-    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.ClaimsManagement" from="Version=1.0.0.0" to="Version=17.3.39.0" />
-    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.Core" from="Version=1.0.0.0" to="Version=17.3.39.0" />
-
-    <!-- Package Names in Copy Assemblies Batch Files -->
-    <ReplacementString qualifier="xcopy /f /r /y" from="1.0.0\lib" to="17.3.39\lib" />
-
-    <!-- Package Names in Project Files -->
-    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.BatchProcessingFactory" from="1.0.0" to="17.3.39" />
-    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.Core" from="1.0.0" to="17.3.39" />
-    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.ClaimsManagement" from="1.0.0" to="17.3.39" />
-    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.Core" from="1.0.0" to="17.3.39" />
-
-    <!-- Package Names in Packages.config Files -->
-    <ReplacementString qualifier="\Packages\HP.HSP.UA3.BatchProcessingFactory" from="1.0.0" to="17.3.39" />
-    <ReplacementString qualifier="\Packages\HP.HSP.UA3.Core" from="1.0.0" to="17.3.39" />
-    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.ClaimsManagement" from="1.0.0" to="17.3.39" />
-    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.Core" from="1.0.0" to="17.3.39" />
+    <ReplacementString qualifier="&lt;version&gt;17.3.39&lt;/version&gt;" from="17.3.39" to="17.4.43" />
+    <ReplacementString qualifier="HP.HSP.UA3" from="17.3.39" to="17.4.43" />
+    <ReplacementString qualifier="HPE.HSP.UA3" from="17.3.39" to="17.4.43" />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
-  <TfsWorkspace></TfsWorkspace>
+  <TfsWorkspace>adix1</TfsWorkspace>
 </RefactorConfig>

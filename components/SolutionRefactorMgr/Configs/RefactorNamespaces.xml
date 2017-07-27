@@ -27,7 +27,7 @@
     <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
     <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
     <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
-    <ModuleConfig name="Utilities" branch="Dev" types="All" />
+    <ModuleConfig name="Utilities" branch="Dev" types="NA" />
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>

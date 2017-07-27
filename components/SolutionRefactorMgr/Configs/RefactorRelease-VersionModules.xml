@@ -28,7 +28,7 @@
     <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
     <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
     <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
-    <ModuleConfig name="Utilities" branch="Dev" types="All" />
+    <ModuleConfig name="Utilities" branch="Dev" types="NA" />
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
@@ -40,33 +40,39 @@
   <LineDeletes />
   <ReplacementStrings>
     <!-- UX application settings version -->
-    <ReplacementString qualifier="add key=&quot;AppVersion&quot; value=&quot;1.0.0.0&quot;" from="1.0.0.0" to="17.3.39.0" />
+    <ReplacementString qualifier="add key=&quot;AppVersion&quot; value=&quot;17.3.39.0&quot;" from="17.3.39.0" to="17.4.43.0" />
 
     <!-- Assembly Versions in Assembly Info file -->
-    <ReplacementString qualifier="AssemblyVersion(" from="1.0.0.0" to="17.3.39.0" />
-    <ReplacementString qualifier="AssemblyFileVersion(" from="1.0.0.0" to="17.3.39.0" />
+    <ReplacementString qualifier="AssemblyVersion(" from="17.3.39.0" to="17.4.43.0" />
+    <ReplacementString qualifier="AssemblyFileVersion(" from="17.3.39.0" to="17.4.43.0" />
     
 
     <!-- Assembly Versions in Project Files -->
-    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.BatchProcessingFactory" from="Version=1.0.0.0" to="Version=17.3.39.0" />
-    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.Core" from="Version=1.0.0.0" to="Version=17.3.39.0" />
-    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.ClaimsManagement" from="Version=1.0.0.0" to="Version=17.3.39.0" />
-    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.Core" from="Version=1.0.0.0" to="Version=17.3.39.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.BatchProcessingFactory" from="Version=17.3.39.0" to="Version=17.4.43.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.Core" from="Version=17.3.39.0" to="Version=17.4.43.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.ClaimsManagement" from="Version=17.3.39.0" to="Version=17.4.43.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.Core" from="Version=17.3.39.0" to="Version=17.4.43.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.NCPDP" from="Version=17.3.39.0" to="Version=17.4.43.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.X212" from="Version=17.3.39.0" to="Version=17.4.43.0" />
 
     <!-- Package Names in Copy Assemblies Batch Files -->
-    <ReplacementString qualifier="xcopy /f /r /y" from="1.0.0\lib" to="17.3.39\lib" />
+    <ReplacementString qualifier="xcopy /f /r /y" from="17.3.39\lib" to="17.4.43\lib" />
 
     <!-- Package Names in Project Files -->
-    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.BatchProcessingFactory" from="1.0.0" to="17.3.39" />
-    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.Core" from="1.0.0" to="17.3.39" />
-    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.ClaimsManagement" from="1.0.0" to="17.3.39" />
-    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.Core" from="1.0.0" to="17.3.39" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.BatchProcessingFactory" from="17.3.39" to="17.4.43" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.Core" from="17.3.39" to="17.4.43" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.ClaimsManagement" from="17.3.39" to="17.4.43" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.Core" from="17.3.39" to="17.4.43" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.NCPDP" from="17.3.39" to="17.4.43" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.X212" from="17.3.39" to="17.4.43" />
 
     <!-- Package Names in Packages.config Files -->
-    <ReplacementString qualifier="\Packages\HP.HSP.UA3.BatchProcessingFactory" from="1.0.0" to="17.3.39" />
-    <ReplacementString qualifier="\Packages\HP.HSP.UA3.Core" from="1.0.0" to="17.3.39" />
-    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.ClaimsManagement" from="1.0.0" to="17.3.39" />
-    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.Core" from="1.0.0" to="17.3.39" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.BatchProcessingFactory" from="17.3.39" to="17.4.43" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.Core" from="17.3.39" to="17.4.43" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.ClaimsManagement" from="17.3.39" to="17.4.43" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.Core" from="17.3.39" to="17.4.43" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.NCPDP" from="17.3.39" to="17.4.43" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.X212" from="17.3.39" to="17.4.43" />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
   <TfsWorkspace></TfsWorkspace>
