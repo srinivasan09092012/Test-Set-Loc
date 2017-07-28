@@ -162,7 +162,8 @@ namespace SolutionRefactorMgr
 
             foreach (PackageConfig package in refactorConfig.PackageConfigs)
             {
-                LogMessage(0, string.Format("Refactoring started for packages starting with: '{0}'.", package.QualifierPrefix));
+                string version = string.IsNullOrEmpty(package.QualifierVersion) ? string.Empty : string.Format("' version: '{0}", package.QualifierVersion);
+                LogMessage(0, string.Format("Refactoring started for packages starting with: '{0}'.", package.QualifierPrefix + version));
                 RefactorPackages(package, refactorConfig.SourceDir + "Packages\\_Source\\");
                 RefactorPackages(package, refactorConfig.SourceDir + "Packages\\");
             }
@@ -410,7 +411,8 @@ namespace SolutionRefactorMgr
             DirectoryInfo[] dirs = dir.GetDirectories();
             foreach (DirectoryInfo subdir in dirs)
             {
-                if(subdir.Name.ToLower().StartsWith(package.QualifierPrefix.ToLower()))
+                if(subdir.Name.ToLower().StartsWith(package.QualifierPrefix.ToLower()) &&
+                    (string.IsNullOrEmpty(package.QualifierVersion) || subdir.Name.ToLower().Contains(package.QualifierVersion)))
                 {
                     string newDirName = subdir.Name;
                     if (refactorConfig.IncludeFolderNames)

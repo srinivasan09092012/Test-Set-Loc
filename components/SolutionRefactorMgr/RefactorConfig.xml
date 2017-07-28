@@ -3,7 +3,12 @@
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs />
   <PackageConfigs>
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X12" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.BatchProcessingFactory" qualifierVersion="17.3.39" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.Core" qualifierVersion="17.3.39" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.ClaimsManagement" qualifierVersion="17.3.39" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.Core" qualifierVersion="17.3.39" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.NCPDP" qualifierVersion="17.3.39" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X212" qualifierVersion="17.3.39" rebuildPackage="true" reformatSource="true" />
   </PackageConfigs>
   <FileTypes>
     <FileType>.nupkg</FileType>

@@ -9,6 +9,9 @@ namespace SolutionRefactorMgr.Domain
         [XmlAttribute("qualifierPrefix")]
         public string QualifierPrefix { get; set; }
 
+        [XmlAttribute("qualifierVersion")]
+        public string QualifierVersion { get; set; }
+
         [XmlAttribute("rebuildPackage")]
         public bool RebuildPackage { get; set; }
 
