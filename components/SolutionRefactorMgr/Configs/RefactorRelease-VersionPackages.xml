@@ -9,6 +9,7 @@
     <PackageConfig qualifierPrefix="HPE.HSP.UA3.Core" rebuildPackage="true" reformatSource="true" />
     <PackageConfig qualifierPrefix="HPE.HSP.UA3.NCPDP" rebuildPackage="true" reformatSource="true" />
     <PackageConfig qualifierPrefix="HPE.HSP.UA3.X212" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X12" rebuildPackage="true" reformatSource="true" />
   </PackageConfigs>
   <FileTypes>
     <FileType>.nupkg</FileType>

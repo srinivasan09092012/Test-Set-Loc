@@ -54,6 +54,7 @@
     <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.Core" from="Version=17.3.39.0" to="Version=17.4.43.0" />
     <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.NCPDP" from="Version=17.3.39.0" to="Version=17.4.43.0" />
     <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.X212" from="Version=17.3.39.0" to="Version=17.4.43.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.X12" from="Version=17.3.39.0" to="Version=17.4.43.0" />
 
     <!-- Package Names in Copy Assemblies Batch Files -->
     <ReplacementString qualifier="xcopy /f /r /y" from="17.3.39\lib" to="17.4.43\lib" />
@@ -65,6 +66,7 @@
     <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.Core" from="17.3.39" to="17.4.43" />
     <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.NCPDP" from="17.3.39" to="17.4.43" />
     <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.X212" from="17.3.39" to="17.4.43" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.X12" from="17.3.39" to="17.4.43" />
 
     <!-- Package Names in Packages.config Files -->
     <ReplacementString qualifier="\Packages\HP.HSP.UA3.BatchProcessingFactory" from="17.3.39" to="17.4.43" />
@@ -73,6 +75,7 @@
     <ReplacementString qualifier="\Packages\HPE.HSP.UA3.Core" from="17.3.39" to="17.4.43" />
     <ReplacementString qualifier="\Packages\HPE.HSP.UA3.NCPDP" from="17.3.39" to="17.4.43" />
     <ReplacementString qualifier="\Packages\HPE.HSP.UA3.X212" from="17.3.39" to="17.4.43" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.X12" from="17.3.39" to="17.4.43" />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
   <TfsWorkspace></TfsWorkspace>
