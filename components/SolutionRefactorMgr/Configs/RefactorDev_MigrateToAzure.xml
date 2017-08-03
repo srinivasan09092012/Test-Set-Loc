@@ -15,6 +15,7 @@
         <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
         <ModuleConfig name="KansasOnly" branch="Dev" types="All" />
         <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
+        <ModuleConfig name="ManagedCarePortal" branch="Dev" types="All" />
         <ModuleConfig name="MemberManagement" branch="Dev" types="All" />
         <ModuleConfig name="MemberPortal" branch="Dev" types="All" />
         <ModuleConfig name="Notifications" branch="Dev" types="All" />
