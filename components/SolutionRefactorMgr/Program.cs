@@ -51,15 +51,19 @@ namespace SolutionRefactorMgr
         {
             bool isBinary = false;
 
-            for (int i = 0; i < fileContents.Length; i++)
-            {
-                // 169 is the copyright "©" symbol (That's in all files)
-                if (fileContents[i] > 127 & fileContents[i] != 169)
-                {
-                    isBinary = true;
-                    break;
-                }
-            }
+            ////Skip check due to unknown special character types to exclude and the file type configuration should 
+            //// limit chanegs to non-binary files.
+
+            ////for (int i = 0; i < fileContents.Length; i++)
+            ////{
+            ////    // 160 is some sort of alternative space
+            ////    // 169 is the copyright "©" symbol (That's in all files)
+            ////    if (fileContents[i] > 127 & fileContents[i] != 160 & fileContents[i] != 169 & fileContents[i] != 8211)
+            ////    {
+            ////        isBinary = true;
+            ////        break;
+            ////    }
+            ////}
 
             return isBinary;
         }
