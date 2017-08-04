@@ -38,7 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HPE.HSP.UA3.Core.API.Logger">
-      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.17.3.39\lib\net451\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
+      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.17.4.43\lib\net451\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="log4net">
@@ -118,7 +118,9 @@
     <Content Include="Configs\RefactorRelease-VersionModules.xml" />
     <Content Include="Configs\RefactorHotfix-IncrementFileVersion.xml" />
     <None Include="nuget.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
