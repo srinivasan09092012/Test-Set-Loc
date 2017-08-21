@@ -24,11 +24,12 @@ namespace DatalistSyncUtil.DaoHelpers
 
         public HelpDbContext Context { get; set; }
 
-        public List<HelpNodeModel> ExecuteProcedure()
+        public List<HelpNodeModel> ExecuteProcedure(Guid tenantID)
         {
             var result = from hn in this.Context.HelpNode
                           join helpNodeLink_List in this.Context.Set<HelpNodeLink>() on hn.HelpNodeId equals helpNodeLink_List.ChildNodeId into hps
                           from hhi in hps.DefaultIfEmpty()
+                            where hn.TenantId.Equals(tenantID)
                           select new HelpNodeModel()
                           {
                               HelpNodeId = hn.HelpNodeId,

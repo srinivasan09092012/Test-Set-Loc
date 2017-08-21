@@ -66,7 +66,7 @@ namespace DatalistSyncUtil
 
         private void LoadModules()
         {
-            List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+            List<TenantModuleModel> modules = this.LoadHelper.LoadModules(this.TenantID);
             modules.Insert(
                    0,
                    new TenantModuleModel()
@@ -75,7 +75,7 @@ namespace DatalistSyncUtil
                        TenantModuleId = Guid.Empty,
                        TenantId = this.TenantID
                    });
-            this.moduleList.DataSource = modules.Where(w => w.TenantId == this.TenantID).GroupBy(i => i.ModuleName)
+            this.moduleList.DataSource = modules.GroupBy(i => i.ModuleName)
                   .Select(group =>
                         new
                         {
@@ -540,7 +540,7 @@ namespace DatalistSyncUtil
 
         private void NewLangNewHelpCB_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in newHelpLangView.Rows)
+            foreach (DataGridViewRow row in this.newHelpLangView.Rows)
             {
                 string rowStatus = row.Cells[7].Value != null ? row.Cells[7].Value.ToString() : string.Empty;
 

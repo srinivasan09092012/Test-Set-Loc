@@ -33,7 +33,7 @@ namespace DatalistSyncUtil.Views
             this.InitializeComponent();
         }
 
-        public PreviewPage(List<DataListMainModel> finalList, List<CodeItemModel> finalListItems, List<ItemLanguage> finalLanguages, List<ItemAttribute> finalAttributes, List<DataListItemLink> finalLinkList, List<ItemDataListItemAttributeVal> finalItemAttributes)
+        public PreviewPage(Guid tenantID, List<DataListMainModel> finalList, List<CodeItemModel> finalListItems, List<ItemLanguage> finalLanguages, List<ItemAttribute> finalAttributes, List<DataListItemLink> finalLinkList, List<ItemDataListItemAttributeVal> finalItemAttributes)
         {
             this.InitializeComponent();
 
@@ -45,7 +45,8 @@ namespace DatalistSyncUtil.Views
             this.FinalListLinkItems = finalLinkList;
             this.FinalItemAttributes = finalItemAttributes;
             this.LoadHelper = new TenantHelper();
-            this.TargetDataList = this.LoadHelper.GetDataList();
+            this.TenantID = tenantID;
+            this.TargetDataList = this.LoadHelper.GetDataList(tenantID);
             this.LoadTreeView(this.PreviewTreeList, this.FinalList);
         }
 
@@ -75,7 +76,7 @@ namespace DatalistSyncUtil.Views
             this.target = new AppSettingsReadOnly();
             this.Cache = new RedisCacheManager();
             this.LoadHelper = new TenantHelper();
-            this.TargetAppsetting = this.LoadHelper.GetAppSetting();
+            this.TargetAppsetting = this.LoadHelper.GetAppSetting(this.TenantID);
             this.FinalAppSetting = finalAppSetting;           
             
             this.LoadTreeView(this.PreviewTreeList, this.FinalAppSetting);
@@ -88,8 +89,8 @@ namespace DatalistSyncUtil.Views
             this.FinalServices = finalServices;
             this.LoadHelper = new TenantHelper();
             this.SourceLoadHelper = new SourceTenantHelper();
-            this.SourceSecRights = this.SourceLoadHelper.GetSecRightsAndLabels();
-            this.TargetSecRights = this.LoadHelper.GetSecRightsAndLabels();
+            this.SourceSecRights = this.SourceLoadHelper.GetSecRightsAndLabels(this.TenantID);
+            this.TargetSecRights = this.LoadHelper.GetSecRightsAndLabels(this.TenantID);
             this.LoadTreeView(this.PreviewTreeList, this.FinalServices);
         }
 
@@ -120,6 +121,8 @@ namespace DatalistSyncUtil.Views
         public List<ItemAttribute> FinalAttributes { get; set; }
 
         public List<ItemDataListItemAttributeVal> FinalItemAttributes { get; set; }
+
+        public Guid TenantID { get; set; }
 
         public List<DataList> TargetDataList { get; set; }
 
@@ -215,16 +218,16 @@ namespace DatalistSyncUtil.Views
 
        private void SaveAppSettings()
         {
-            this.Applist = this.LoadHelper.GetAppSetting();
+            this.Applist = this.LoadHelper.GetAppSetting(this.TenantID);
             bool success = false;
             try
             {
-                List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+                List<TenantModuleModel> modules = this.LoadHelper.LoadModules(this.TenantID);
                 if (this.FinalAppSetting != null)
                 {
                     foreach (AppSettingsModel list in this.FinalAppSetting)
                     {
-                        list.TenantModuleID = modules.Find(f => f.TenantId == list.TenantID && f.ModuleName == list.ModuleName).TenantModuleId;
+                        list.TenantModuleID = modules.Find(f => f.ModuleName == list.ModuleName).TenantModuleId;
                         if (!this.Applist.Any(a => a.TenantModuleAppSettingId == list.TenantModuleAppSettingId))
                         {
                             success = this.LoadHelper.AddAppSetting(list);                            
@@ -234,7 +237,7 @@ namespace DatalistSyncUtil.Views
                     if (success)
                     {
                         MessageBox.Show("AppSetting Added Successfully !! ");
-                        this.Cache.Remove("TargetAppSetting");
+                        this.Cache.Remove("TargetAppSetting" + this.TenantID.ToString());
                     }
                     else
                     {
@@ -255,7 +258,7 @@ namespace DatalistSyncUtil.Views
                 string securityRight = null;
                 if (this.FinalServices != null)
                 {
-                    List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+                    List<TenantModuleModel> modules = this.LoadHelper.LoadModules(this.TenantID);
 
                     foreach (ServicesMainModel list in this.FinalServices)
                     {
@@ -283,15 +286,15 @@ namespace DatalistSyncUtil.Views
 
         private void SaveDataItemLink()
         {
-            List<DataList> dataList = this.LoadHelper.GetDataList();
+            List<DataList> dataList = this.LoadHelper.GetDataList(this.TenantID);
             DataList parentlist = null;
             DataList childlist = null;
             if (this.FinalListLinkItems != null)
             {
                 this.FinalListLinkItems.ForEach(f =>
                 {
-                    parentlist = dataList.Where(e => e.ContentID == f.ParentDataList && e.TenantID == f.TenantID).FirstOrDefault();
-                    childlist = dataList.Where(e => e.ContentID == f.ChildDataList && e.TenantID == f.TenantID).FirstOrDefault();
+                    parentlist = dataList.Where(e => e.ContentID == f.ParentDataList).FirstOrDefault();
+                    childlist = dataList.Where(e => e.ContentID == f.ChildDataList).FirstOrDefault();
                     if (parentlist != null && childlist != null)
                     {
                         if (f.Status == "DATALIST_NEW")
@@ -306,7 +309,7 @@ namespace DatalistSyncUtil.Views
                 });
             }
 
-            this.Cache.Remove("TargetDataListLinks");
+            this.Cache.Remove("TargetDataListLinks" + this.TenantID.ToString());
         }
 
         private void SaveHtmlBlks()
@@ -315,7 +318,7 @@ namespace DatalistSyncUtil.Views
             {
                 if (this.FinalHtmlBlks != null)
                 {
-                    List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+                    List<TenantModuleModel> modules = this.LoadHelper.LoadModules(this.TenantID);
 
                     foreach (HtmlBlockMainModel list in this.FinalHtmlBlks)
                     {
@@ -342,7 +345,7 @@ namespace DatalistSyncUtil.Views
                         }
                     }
 
-                    this.Cache.Remove("TargetHtmlBlock");
+                    this.Cache.Remove("TargetHtmlBlock" + this.TenantID.ToString());
                 }
             }
             catch (Exception ex)
@@ -353,7 +356,7 @@ namespace DatalistSyncUtil.Views
 
         private void SaveHtmlBlkLanguages()
         {
-            List<HtmlBlockModel> htmlBlkLangs = this.LoadHelper.GetHTMLList();
+            List<HtmlBlockModel> htmlBlkLangs = this.LoadHelper.GetHTMLList(this.TenantID);
             HtmlBlockModel lang = null;
 
             if (this.FinalHtmlBlkLanguages != null)
@@ -375,7 +378,7 @@ namespace DatalistSyncUtil.Views
                     }
                 });
 
-                this.Cache.Remove("TargetHtmlLangs");
+                this.Cache.Remove("TargetHtmlLangs" + this.TenantID.ToString());
             }
         }
 
@@ -385,7 +388,7 @@ namespace DatalistSyncUtil.Views
             {
                 if (this.FinalHelp != null)
                 {
-                    List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+                    List<TenantModuleModel> modules = this.LoadHelper.LoadModules(this.TenantID);
                     this.FinalHelp = this.FinalHelp.OrderBy(x => x.NodeDepth).ToList();
                     foreach (HelpNodeModel list in this.FinalHelp)
                     {
@@ -407,7 +410,7 @@ namespace DatalistSyncUtil.Views
                         }
                     }
 
-                    this.Cache.Remove("TargetHtmlBlock");
+                    this.Cache.Remove("TargetHtmlBlock" + this.TenantID.ToString());
                 }
             }
             catch (Exception ex)
@@ -418,7 +421,7 @@ namespace DatalistSyncUtil.Views
 
         private void SaveHelpLanguages()
         {
-            List<HelpNodeModel> helpLangs = this.LoadHelper.GetHelpList();
+            List<HelpNodeModel> helpLangs = this.LoadHelper.GetHelpList(this.TenantID);
             HelpNodeModel lang = null;
 
             if (this.FinalHelpLanguages != null)
@@ -440,7 +443,7 @@ namespace DatalistSyncUtil.Views
                     }
                 });
 
-                this.Cache.Remove("TargetHtmlLangs");
+                this.Cache.Remove("TargetHtmlLangs" + this.TenantID.ToString());
             }
         }
 
@@ -450,7 +453,7 @@ namespace DatalistSyncUtil.Views
             {
                 if (this.FinalImages != null)
                 {
-                    List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+                    List<TenantModuleModel> modules = this.LoadHelper.LoadModules(this.TenantID);
 
                     foreach (ImagesMainModel list in this.FinalImages)
                     {
@@ -474,7 +477,7 @@ namespace DatalistSyncUtil.Views
                         }
                     }
 
-                    this.Cache.Remove("TargetImages");
+                    this.Cache.Remove("TargetImages" + this.TenantID.ToString());
                 }
             }
             catch (Exception ex)
@@ -485,7 +488,7 @@ namespace DatalistSyncUtil.Views
 
         private void SaveImageLanguages()
         {
-            List<ImageListModel> imageLangs = this.LoadHelper.GetImagesList();
+            List<ImageListModel> imageLangs = this.LoadHelper.GetImagesList(this.TenantID);
             ImageListModel lang = null;
 
             if (this.FinalImageLanguages != null)
@@ -507,19 +510,19 @@ namespace DatalistSyncUtil.Views
                     }
                 });
 
-                this.Cache.Remove("TargetImageLangs");
+                this.Cache.Remove("TargetImageLangs" + this.TenantID.ToString());
             }
         }
 
         private void SaveDataListAttributes()
         {
-            List<DataList> dataList = this.LoadHelper.GetDataList();
+            List<DataList> dataList = this.LoadHelper.GetDataList(this.TenantID);
             DataList list = null;
             if (this.FinalAttributes != null)
             {
                 this.FinalAttributes.ForEach(f =>
                 {
-                    list = dataList.Where(e => e.ContentID == f.ParentContentId && e.TenantID == f.TenantID).FirstOrDefault();
+                    list = dataList.Where(e => e.ContentID == f.ParentContentId).FirstOrDefault();
                     if (list != null)
                     {
                         f.DataListID = list.ID;
@@ -536,21 +539,21 @@ namespace DatalistSyncUtil.Views
                 });
             }
 
-           // this.Cache.Remove("TargetUtilityDataAttrKey");
-           // this.Cache.Remove("TargetUtilityDataListItemAttrKey");
-           // this.Cache.Remove("TargetUtilityCombineAttributes");
+            // this.Cache.Remove("TargetUtilityDataAttrKey" + this.TenantID.ToString());
+            // this.Cache.Remove("TargetUtilityDataListItemAttrKey" + this.TenantID.ToString());
+            // this.Cache.Remove("TargetUtilityCombineAttributes" + this.TenantID.ToString());
         }
 
         private void SaveDatalistItems()
         {
-            List<DataList> dataList = this.LoadHelper.GetDataList();
+            List<DataList> dataList = this.LoadHelper.GetDataList(this.TenantID);
             DataList list = null;
 
             if (this.FinalListItems != null)
             {
                 this.FinalListItems.ForEach(f =>
                 {
-                    list = dataList.Where(e => e.ContentID == f.ContentID && e.TenantID == f.TenantID).FirstOrDefault();
+                    list = dataList.Where(e => e.ContentID == f.ContentID).FirstOrDefault();
                     if (list != null)
                     {
                         f.DatalistID = list.ID;
@@ -565,13 +568,13 @@ namespace DatalistSyncUtil.Views
                     }
                 });
 
-                this.Cache.Remove("TargetDataListItems");
+                this.Cache.Remove("TargetDataListItems" + this.TenantID.ToString());
             }
         }
 
         private void SaveDatalistItemLanguages()
         {
-            List<CodeListModel> dataListItems = this.LoadHelper.GetDataListItems();
+            List<CodeListModel> dataListItems = this.LoadHelper.GetDataListItems(this.TenantID);
             CodeListModel item = null;
 
             if (this.FinalItemLanguages != null)
@@ -593,10 +596,10 @@ namespace DatalistSyncUtil.Views
                     }
                 });
 
-              //  this.Cache.Remove("TargetDataListItems");
-              //  this.Cache.Remove("TargetUtilityDataAttrKey");
-              //  this.Cache.Remove("TargetUtilityDataListItemAttrKey");
-              //  this.Cache.Remove("TargetUtilityCombineAttributes");
+                //  this.Cache.Remove("TargetDataListItems" + this.TenantID.ToString());
+                //  this.Cache.Remove("TargetUtilityDataAttrKey" + this.TenantID.ToString());
+                //  this.Cache.Remove("TargetUtilityDataListItemAttrKey" + this.TenantID.ToString());
+                //  this.Cache.Remove("TargetUtilityCombineAttributes" + this.TenantID.ToString());
             }
         }
 
@@ -606,11 +609,11 @@ namespace DatalistSyncUtil.Views
             {
                 if (this.FinalList != null)
                 {
-                    List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+                    List<TenantModuleModel> modules = this.LoadHelper.LoadModules(this.TenantID);
 
                     foreach (DataListMainModel list in this.FinalList)
                     {
-                        list.TenantModuleID = modules.Find(f => f.TenantId == list.TenantID && f.ModuleName == list.ModuleName).TenantModuleId;
+                        list.TenantModuleID = modules.Find(f => f.ModuleName == list.ModuleName).TenantModuleId;
                         if (list.ID == null || list.ID == Guid.Empty)
                         {
                             this.LoadHelper.AddDatalist(list);
@@ -621,7 +624,7 @@ namespace DatalistSyncUtil.Views
                         }
                     }
 
-                  //  this.Cache.Remove("TargetDataLists");
+                    //  this.Cache.Remove("TargetDataLists" + this.TenantID.ToString());
                 }
             }
             catch (Exception ex)
@@ -632,7 +635,7 @@ namespace DatalistSyncUtil.Views
 
         private void SaveDataListItemsWithAttributesValandLinks()
         {
-            List<DataList> dataList = this.LoadHelper.GetNewDataList();
+            List<DataList> dataList = this.LoadHelper.GetDataList(this.TenantID);
             DataList list = null;
             DataListItemAdded itemadded = new DataListItemAdded();
             DataListItemUpdated itemupdated = new DataListItemUpdated();
@@ -676,12 +679,12 @@ namespace DatalistSyncUtil.Views
                         if (itemadded.DataListItemId != null || itemupdated.DataListItemId != null)
                         {
                             MessageBox.Show("Data Added Successfully DataListItems/ItemAttribute");
-                            this.Cache.Remove("TargetDataListItems");
-                            this.Cache.Remove("UtilityDataItemLinkerKeytarget");
-                            this.Cache.Remove("UtilityDataAttrKeytarget");
-                            this.Cache.Remove("UtilityDataListItemAttrKeytarget");
-                            this.Cache.Remove("UtilityCombineAttributestarget");
-                            this.Cache.Remove("TargetDataListItemAttributes");
+                            this.Cache.Remove("TargetDataListItems" + this.TenantID.ToString());
+                            this.Cache.Remove("UtilityDataItemLinkerKeytarget" + this.TenantID.ToString());
+                            this.Cache.Remove("UtilityDataAttrKeytarget" + this.TenantID.ToString());
+                            this.Cache.Remove("UtilityDataListItemAttrKeytarget" + this.TenantID.ToString());
+                            this.Cache.Remove("UtilityCombineAttributestarget" + this.TenantID.ToString());
+                            this.Cache.Remove("TargetDataListItemAttributes" + this.TenantID.ToString());
                         }
                     }
                 }
@@ -703,7 +706,7 @@ namespace DatalistSyncUtil.Views
                         var objService = serviceApi.GetService<IDataListsService>(fed2007Binding);
                         this.FinalListItems.ForEach(f =>
                         {
-                            list = dataList.Where(e => e.ContentID == f.ContentID && e.TenantID == f.TenantID).FirstOrDefault();
+                            list = dataList.Where(e => e.ContentID == f.ContentID).FirstOrDefault();
                             if (list != null)
                             {
                                 RequestorModel requestObject = new RequestorModel() { TenantId = list.TenantID.ToString() };
@@ -730,13 +733,13 @@ namespace DatalistSyncUtil.Views
 
                         if (itemadded.DataListItemId != null || itemupdated.DataListItemId != null)
                         {
-                            MessageBox.Show("Data Added Successfully DataListItems/ItemAttribute");
-                            this.Cache.Remove("TargetDataListItems");
-                            this.Cache.Remove("UtilityDataItemLinkerKeytarget");
-                            this.Cache.Remove("UtilityDataAttrKeytarget");
-                            this.Cache.Remove("UtilityDataListItemAttrKeytarget");
-                            this.Cache.Remove("UtilityCombineAttributestarget");
-                            this.Cache.Remove("TargetDataListItemAttributes");
+                            MessageBox.Show("Data Added Successfully DataListItems/ItemAttribute" + this.TenantID.ToString());
+                            this.Cache.Remove("TargetDataListItems" + this.TenantID.ToString());
+                            this.Cache.Remove("UtilityDataItemLinkerKeytarget" + this.TenantID.ToString());
+                            this.Cache.Remove("UtilityDataAttrKeytarget" + this.TenantID.ToString());
+                            this.Cache.Remove("UtilityDataListItemAttrKeytarget" + this.TenantID.ToString());
+                            this.Cache.Remove("UtilityCombineAttributestarget" + this.TenantID.ToString());
+                            this.Cache.Remove("TargetDataListItemAttributes" + this.TenantID.ToString());
                         }
                     }
                 }
@@ -853,10 +856,10 @@ namespace DatalistSyncUtil.Views
                         DataListsUpdated datalistupdated = new DataListsUpdated();
                         foreach (DataListMainModel list in this.FinalList)
                         {
-                            List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+                            List<TenantModuleModel> modules = this.LoadHelper.LoadModules(this.TenantID);
 
                             RequestorModel requestObject = new RequestorModel() { TenantId = list.TenantID.ToString() };
-                            list.TenantModuleID = modules.Find(f => f.TenantId == list.TenantID && f.ModuleName == list.ModuleName).TenantModuleId;
+                            list.TenantModuleID = modules.Find(f => f.ModuleName == list.ModuleName).TenantModuleId;
                             if (list.Status == "NEW")
                             {
                                 AddDataListCommand addList = new AddDataListCommand();
@@ -875,13 +878,13 @@ namespace DatalistSyncUtil.Views
 
                         if (datalistadd.DataListId != null || datalistupdated.DataListId != null)
                         {
-                            MessageBox.Show("Data Added Successfully For DataList/DataListAttribute");
-                            this.Cache.Remove("TargetDataList");
-                            this.Cache.Remove("UtilityDataItemLinkerKeytarget");
-                            this.Cache.Remove("UtilityDataAttrKeytarget");
-                            this.Cache.Remove("UtilityDataListItemAttrKeytarget");
-                            this.Cache.Remove("UtilityCombineAttributestarget");
-                            this.Cache.Remove("TargetDataListAttributes");
+                            MessageBox.Show("Data Added Successfully For DataList/DataListAttribute" + this.TenantID.ToString());
+                            this.Cache.Remove("TargetDataList" + this.TenantID.ToString());
+                            this.Cache.Remove("UtilityDataItemLinkerKeytarget" + this.TenantID.ToString());
+                            this.Cache.Remove("UtilityDataAttrKeytarget" + this.TenantID.ToString());
+                            this.Cache.Remove("UtilityDataListItemAttrKeytarget" + this.TenantID.ToString());
+                            this.Cache.Remove("UtilityCombineAttributestarget" + this.TenantID.ToString());
+                            this.Cache.Remove("TargetDataListAttributes" + this.TenantID.ToString());
                         }
                     }
                 }
@@ -905,35 +908,35 @@ namespace DatalistSyncUtil.Views
                         DataListsUpdated datalistupdated = new DataListsUpdated();
                         foreach (DataListMainModel list in this.FinalList)
                         {
-                            List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+                            List<TenantModuleModel> modules = this.LoadHelper.LoadModules(this.TenantID);
 
-                            RequestorModel requestObject = new RequestorModel() { TenantId = list.TenantID.ToString() };
-                            list.TenantModuleID = modules.Find(f => f.TenantId == list.TenantID && f.ModuleName == list.ModuleName).TenantModuleId;
-                            if (list.Status == "NEW")
-                            {
-                                AddDataListCommand addList = new AddDataListCommand();
-                                addList.Requestor = requestObject;
-                                addList.AddDataList = this.ConvertAddServiceDataList(list);
-                                datalistadd = objService.AddDataList(addList);
-                            }
-                            else
-                            {
-                                UpdateDataListCommand updatelist = new UpdateDataListCommand();
-                                updatelist.Requestor = requestObject;
-                                updatelist.UpdateDataList = (UpdateDataList)this.ConvertServiceUpdateDataList(list);
-                                datalistupdated = objService.UpdateDataList(updatelist);
-                            }
+                        RequestorModel requestObject = new RequestorModel() { TenantId = list.TenantID.ToString() };
+                        list.TenantModuleID = modules.Find(f => f.ModuleName == list.ModuleName).TenantModuleId;
+                        if (list.ID == null || list.ID == Guid.Empty)
+                        {
+                            AddDataListCommand addList = new AddDataListCommand();                    
+                            addList.Requestor = requestObject;
+                            addList.AddDataList = this.ConvertAddServiceDataList(list);
+                            datalistadd = objService.AddDataList(addList);
                         }
+                        else
+                        {
+                            UpdateDataListCommand updatelist = new UpdateDataListCommand();
+                            updatelist.Requestor = requestObject;
+                            updatelist.UpdateDataList = (UpdateDataList)this.ConvertServiceUpdateDataList(list);
+                            datalistupdated = objService.UpdateDataList(updatelist);
+                        }
+                    }
 
                         if (datalistadd.DataListId != null || datalistupdated.DataListId != null)
                         {
-                            MessageBox.Show("Data Added Successfully For DataLists/DataListAttribute");
-                            this.Cache.Remove("TargetDataList");
-                            this.Cache.Remove("UtilityDataItemLinkerKeytarget");
-                            this.Cache.Remove("UtilityDataAttrKeytarget");
-                            this.Cache.Remove("UtilityDataListItemAttrKeytarget");
-                            this.Cache.Remove("UtilityCombineAttributestarget");
-                            this.Cache.Remove("TargetDataListAttributes");
+                            MessageBox.Show("Data Added Successfully For DataLists/DataListAttribute" + this.TenantID.ToString());
+                            this.Cache.Remove("TargetDataList" + this.TenantID.ToString());
+                            this.Cache.Remove("UtilityDataItemLinkerKeytarget" + this.TenantID.ToString());
+                            this.Cache.Remove("UtilityDataAttrKeytarget" + this.TenantID.ToString());
+                            this.Cache.Remove("UtilityDataListItemAttrKeytarget" + this.TenantID.ToString());
+                            this.Cache.Remove("UtilityCombineAttributestarget" + this.TenantID.ToString());
+                            this.Cache.Remove("TargetDataListAttributes" + this.TenantID.ToString());
                         }
                     }
                 }

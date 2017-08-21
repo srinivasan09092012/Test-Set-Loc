@@ -544,7 +544,7 @@ namespace DatalistSyncUtil
             AppSettingsModel list1 = null;
 
             Guid tenantID = new Guid(this.tenantList.SelectedValue.ToString());
-            lists = this.LoadHelper.GetAppSetting().Where(w => w.TenantID == tenantID).ToList();
+            lists = this.LoadHelper.GetAppSetting(tenantID).ToList();
 
             foreach (AppSettingsModel list in lists)
             {
@@ -578,8 +578,8 @@ namespace DatalistSyncUtil
             MenuListModel list1 = null;
             List<MenuItemModel> childMenuItems = new List<MenuItemModel>();
 
-            Guid tenantID = new Guid(this.tenantList.SelectedValue.ToString());
-            lists = this.LoadHelper.GetMenu().Where(w => w.TenantId == tenantID).ToList();
+            Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
+            lists = this.LoadHelper.GetMenu(tenantID).ToList();
             lists.ForEach(x =>
             {
                 childMenuItems.AddRange(x.Children.ToList());
@@ -617,14 +617,15 @@ namespace DatalistSyncUtil
             List<ItemDataListItemAttributeVal> targetDataListItemAttributes = new List<ItemDataListItemAttributeVal>();
 
             Guid tenantID = new Guid(this.tenantList.SelectedValue.ToString());
-            targetDataListItemAttributes = this.LoadHelper.GetItemAttributeList();
-            lists = this.LoadHelper.GetDataList().Where(w => w.TenantID == tenantID).ToList();
-            lists = this.LoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID).ToList();
-            listItems = this.LoadHelper.GetDataListItems();
+            targetDataListItemAttributes = this.LoadHelper.GetItemAttributeList(tenantID);
+            lists = this.LoadHelper.GetDataList(tenantID);
+            lists = this.LoadHelper.GetAttributesList(tenantID);
+            listItems = this.LoadHelper.GetDataListItems(tenantID);
             List<DataListAttribute> attributes = new List<DataListAttribute>();
             lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
-            this.targetListlink = this.LoadHelper.GetDataListLinks("TargetDataListLinks");
-            
+
+            this.targetListlink = this.LoadHelper.GetDataListLinks("TargetDataListLinks", tenantID);
+
             foreach (DataList list in lists)
             {
                 list1 = new DataListMainModel()
@@ -656,7 +657,7 @@ namespace DatalistSyncUtil
 
             Guid tenantID = new Guid(this.tenantList.SelectedValue.ToString());
 
-            lists = this.LoadHelper.GetHelpList().Where(w => w.TenantId == tenantID).ToList();
+            lists = this.LoadHelper.GetHelpList(tenantID).ToList();
             return lists;
         }
 
@@ -669,8 +670,8 @@ namespace DatalistSyncUtil
 
             Guid tenantID = new Guid(this.tenantList.SelectedValue.ToString());
 
-            lists = this.LoadHelper.GetHTMLList().Where(w => w.TenantId == tenantID).ToList();
-            listItems = this.LoadHelper.GetHtmlListLangs();
+            lists = this.LoadHelper.GetHTMLList(tenantID).ToList();
+            listItems = this.LoadHelper.GetHtmlListLangs(tenantID);
 
             foreach (HtmlBlockModel list in lists)
             {
@@ -724,8 +725,8 @@ namespace DatalistSyncUtil
 
             Guid tenantID = new Guid(this.tenantList.SelectedValue.ToString());
 
-            lists = this.LoadHelper.GetImagesList().Where(w => w.TenantId == tenantID).ToList();
-            listItems = this.LoadHelper.GetImageLangs();
+            lists = this.LoadHelper.GetImagesList(tenantID).ToList();
+            listItems = this.LoadHelper.GetImageLangs(tenantID);
 
             foreach (ImageListModel list in lists)
             {
@@ -781,7 +782,7 @@ namespace DatalistSyncUtil
 
             Guid tenantID = new Guid(this.tenantList.SelectedValue.ToString());
 
-            lists = this.LoadHelper.GetServicesList().Where(w => w.TenantId == tenantID).ToList();
+            lists = this.LoadHelper.GetServicesList(tenantID).ToList();
 
             foreach (ServiceListModel list in lists)
             {
@@ -814,7 +815,7 @@ namespace DatalistSyncUtil
             List<MenuItemModel> childMenuItems = new List<MenuItemModel>();
 
             Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
-            lists = this.SourceLoadHelper.GetMenu().ToList();
+            lists = this.SourceLoadHelper.GetMenu(tenantID).ToList();
             lists.ForEach(x =>
             {
                 childMenuItems.AddRange(x.Children.ToList());
@@ -891,15 +892,15 @@ namespace DatalistSyncUtil
             List<DataListMainModel> listsMain = new List<DataListMainModel>();
             List<ItemDataListItemAttributeVal> sourceDataListItemAttributes = new List<ItemDataListItemAttributeVal>();
             List<DataListAttribute> attributes = new List<DataListAttribute>();
-           DataListMainModel list1 = null;
+            DataListMainModel list1 = null;
             Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
-            lists = this.SourceLoadHelper.GetDataList().Where(w => w.TenantID == tenantID).ToList();
-            lists = this.SourceLoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID).ToList();
-           listItems = this.SourceLoadHelper.GetDataListItems();
-            sourceDataListItemAttributes = this.SourceLoadHelper.GetItemAttributeList();
+            lists = this.SourceLoadHelper.GetDataList(tenantID).ToList();
+            lists = this.SourceLoadHelper.GetAttributesList(tenantID).ToList();
+            listItems = this.SourceLoadHelper.GetDataListItems(tenantID);
+            sourceDataListItemAttributes = this.SourceLoadHelper.GetItemAttributeList(tenantID);
             lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
-            this.sourceListlink = this.SourceLoadHelper.GetDataListLinks("SourceDataListLinks");
-            
+            this.sourceListlink = this.SourceLoadHelper.GetDataListLinks(tenantID, "SourceDataListLinks");
+
             foreach (DataList list in lists)
             {
                 list1 = new DataListMainModel()
@@ -933,8 +934,8 @@ namespace DatalistSyncUtil
 
             Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
 
-            lists = this.SourceLoadHelper.GetHTMLList().Where(w => w.TenantId == tenantID).ToList();
-            listItems = this.SourceLoadHelper.GetHtmlListLangs();
+            lists = this.SourceLoadHelper.GetHTMLList(tenantID).ToList();
+            listItems = this.SourceLoadHelper.GetHtmlListLangs(tenantID);
 
             foreach (HtmlBlockModel list in lists)
             {
@@ -963,7 +964,7 @@ namespace DatalistSyncUtil
 
             Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
 
-            lists = this.SourceLoadHelper.GetHelpList().Where(w => w.TenantId == tenantID).ToList();
+            lists = this.SourceLoadHelper.GetHelpList(tenantID).ToList();
 
             return lists;
         }
@@ -1001,8 +1002,8 @@ namespace DatalistSyncUtil
 
             Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
 
-            lists = this.SourceLoadHelper.GetImagesList().Where(w => w.TenantId == tenantID).ToList();
-            listItems = this.SourceLoadHelper.GetImageLangs();
+            lists = this.SourceLoadHelper.GetImagesList(tenantID).ToList();
+            listItems = this.SourceLoadHelper.GetImageLangs(tenantID);
 
             foreach (ImageListModel list in lists)
             {
@@ -1059,7 +1060,7 @@ namespace DatalistSyncUtil
 
             Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
 
-            lists = this.SourceLoadHelper.GetServicesList().Where(w => w.TenantId == tenantID).ToList();
+            lists = this.SourceLoadHelper.GetServicesList(tenantID).ToList();
 
             foreach (ServiceListModel list in lists)
             {
@@ -1089,7 +1090,7 @@ namespace DatalistSyncUtil
             List<CodeItemModel> items = new List<CodeItemModel>();
             List<CodeListModel> itemList = new List<CodeListModel>();
             CodeItemModel item = null;
-            itemList = listItems.Where(w => w.ContentID == contentID && w.TenantID == tenantID).ToList();
+            itemList = listItems.Where(w => w.ContentID == contentID).ToList();
 
             itemList.ForEach(e =>
             {
@@ -1202,7 +1203,7 @@ namespace DatalistSyncUtil
         private void LoadModules()
         {
             Guid tenantID = (this.tenantList.SelectedItem as TenantModel).TenantID;
-            List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+            List<TenantModuleModel> modules = this.LoadHelper.LoadModules(tenantID);
             modules.Insert(
                     0,
                     new TenantModuleModel()
@@ -1211,7 +1212,7 @@ namespace DatalistSyncUtil
                         TenantModuleId = Guid.Empty,
                         TenantId = tenantID
                     });
-            this.moduleList.DataSource = modules.Where(w => w.TenantId == tenantID).GroupBy(i => i.ModuleName)
+            this.moduleList.DataSource = modules.GroupBy(i => i.ModuleName)
                   .Select(group =>
                         new
                         {
@@ -1233,16 +1234,16 @@ namespace DatalistSyncUtil
         private void LoadSourceModules()
         {
             Guid tenantID = (this.sourceTenantList.SelectedItem as TenantModel).TenantID;
-            List<TenantModuleModel> modules = this.SourceLoadHelper.LoadModules();
+            List<TenantModuleModel> modules = this.SourceLoadHelper.LoadModules(tenantID);
             modules.Insert(
                 0,
                 new TenantModuleModel()
-                {
-                    ModuleName = "---All Modules---",
-                    TenantModuleId = Guid.Empty,
-                    TenantId = tenantID
-                });
-            this.sourceModuleList.DataSource = modules.Where(w => w.TenantId == tenantID).GroupBy(i => i.ModuleName)
+                 {
+                   ModuleName = "---All Modules---",
+                   TenantModuleId = Guid.Empty,
+                   TenantId = tenantID
+                  });
+            this.sourceModuleList.DataSource = modules.GroupBy(i => i.ModuleName)
                   .Select(group =>
                         new
                         {
@@ -1417,7 +1418,7 @@ namespace DatalistSyncUtil
             AppSettingsModel list1 = null;
 
             Guid tenantID = new Guid(this.sourceTenantList.SelectedValue.ToString());
-            lists = this.SourceLoadHelper.GetAppSetting().Where(w => w.TenantID == tenantID).ToList();
+            lists = this.SourceLoadHelper.GetAppSetting(tenantID).ToList();
 
             foreach (AppSettingsModel list in lists)
             {
@@ -1569,19 +1570,19 @@ namespace DatalistSyncUtil
 
             if (tenantModuleId == Guid.Empty)
             {
-                lists = this.LoadHelper.GetDataList().Where(w => w.TenantID == tenantID && (w.ContentID == this.functionsContentID || w.ContentID == this.rolesContentID || w.ContentID == this.rightsContentID)).OrderBy(o => o.ContentID).ToList();
+                lists = this.LoadHelper.GetDataList(tenantID).Where(w => (w.ContentID == this.functionsContentID || w.ContentID == this.rolesContentID || w.ContentID == this.rightsContentID)).OrderBy(o => o.ContentID).ToList();
             }
             else
             {
-                lists = this.LoadHelper.GetDataList().Where(w => w.TenantID == tenantID && w.TenantModuleID == tenantModuleId && (w.ContentID == this.functionsContentID || w.ContentID == this.rolesContentID || w.ContentID == this.rightsContentID)).OrderBy(o => o.ContentID).ToList();
+                lists = this.LoadHelper.GetDataList(tenantID).Where(w => w.TenantModuleID == tenantModuleId && (w.ContentID == this.functionsContentID || w.ContentID == this.rolesContentID || w.ContentID == this.rightsContentID)).OrderBy(o => o.ContentID).ToList();
             }
 
-            lists = this.LoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID && (w.ContentID == this.functionsContentID || w.ContentID == this.rolesContentID || w.ContentID == this.rightsContentID)).ToList();
-            listItems = this.LoadHelper.GetDataListItems().Where(w => w.TenantID == tenantID && (w.ContentID == this.functionsContentID || w.ContentID == this.rolesContentID || w.ContentID == this.rightsContentID)).OrderBy(o => o.ContentID).ToList();
-            targetDataListItemAttributes = this.LoadHelper.GetItemAttributeList().Where(a => a.ParentContentId == this.functionsContentID || a.ParentContentId == this.rolesContentID || a.ParentContentId == this.rightsContentID).OrderBy(o => o.ParentContentId).ToList();
+            lists = this.LoadHelper.GetAttributesList(tenantID).Where(w => (w.ContentID == this.functionsContentID || w.ContentID == this.rolesContentID || w.ContentID == this.rightsContentID)).ToList();
+            listItems = this.LoadHelper.GetDataListItems(tenantID).Where(w => (w.ContentID == this.functionsContentID || w.ContentID == this.rolesContentID || w.ContentID == this.rightsContentID)).OrderBy(o => o.ContentID).ToList();
+            targetDataListItemAttributes = this.LoadHelper.GetItemAttributeList(tenantID).Where(a => a.ParentContentId == this.functionsContentID || a.ParentContentId == this.rolesContentID || a.ParentContentId == this.rightsContentID).OrderBy(o => o.ParentContentId).ToList();
             lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
 
-            this.targetListlink = this.LoadHelper.GetDataListLinks("TargetDataListLinks");
+            this.targetListlink = this.LoadHelper.GetDataListLinks("TargetDataListLinks", tenantID);
 
             foreach (DataList list in lists)
             {
@@ -1619,21 +1620,20 @@ namespace DatalistSyncUtil
 
             if (tenantModuleId == Guid.Empty)
             {
-                lists = this.SourceLoadHelper.GetDataList().Where(w => w.TenantID == tenantID && (w.ContentID == this.functionsContentID || w.ContentID == this.rolesContentID || w.ContentID == this.rightsContentID)).OrderBy(o => o.ContentID).ToList();
+                lists = this.SourceLoadHelper.GetDataList(tenantID).Where(w => (w.ContentID == this.functionsContentID || w.ContentID == this.rolesContentID || w.ContentID == this.rightsContentID)).OrderBy(o => o.ContentID).ToList();
             }
             else
             {
-                lists = this.SourceLoadHelper.GetDataList().Where(w => w.TenantID == tenantID && w.TenantModuleID == tenantModuleId && (w.ContentID == this.functionsContentID || w.ContentID == this.rolesContentID || w.ContentID == this.rightsContentID)).OrderBy(o => o.ContentID).ToList();
+                lists = this.SourceLoadHelper.GetDataList(tenantID).Where(w => w.TenantModuleID == tenantModuleId && (w.ContentID == this.functionsContentID || w.ContentID == this.rolesContentID || w.ContentID == this.rightsContentID)).OrderBy(o => o.ContentID).ToList();
             }
 
-            lists = this.SourceLoadHelper.GetAttributesList().Where(w => w.TenantID == tenantID && (w.ContentID == this.functionsContentID || w.ContentID == this.rolesContentID || w.ContentID == this.rightsContentID)).ToList();
-            listItems = this.SourceLoadHelper.GetDataListItems().Where(t => t.TenantID == tenantID && (t.ContentID == this.functionsContentID || t.ContentID == this.rolesContentID || t.ContentID == this.rightsContentID)).OrderBy(o => o.ContentID).ToList();
-            lists = this.SourceLoadHelper.GetAttributesList().Where(a => a.TenantID == tenantID && (a.ContentID == this.functionsContentID || a.ContentID == this.rolesContentID || a.ContentID == this.rightsContentID)).OrderBy(o => o.ContentID).ToList();
+            lists = this.SourceLoadHelper.GetAttributesList(tenantID).Where(w => (w.ContentID == this.functionsContentID || w.ContentID == this.rolesContentID || w.ContentID == this.rightsContentID)).ToList();
+            listItems = this.SourceLoadHelper.GetDataListItems(tenantID).Where(t => (t.ContentID == this.functionsContentID || t.ContentID == this.rolesContentID || t.ContentID == this.rightsContentID)).OrderBy(o => o.ContentID).ToList();
+            lists = this.SourceLoadHelper.GetAttributesList(tenantID).Where(a => (a.ContentID == this.functionsContentID || a.ContentID == this.rolesContentID || a.ContentID == this.rightsContentID)).OrderBy(o => o.ContentID).ToList();
 
-            sourceDataListItemAttributes = this.SourceLoadHelper.GetItemAttributeList().Where(a => a.ParentContentId == this.functionsContentID || a.ParentContentId == this.rolesContentID || a.ParentContentId == this.rightsContentID).OrderBy(o => o.ParentContentId).ToList();
+            sourceDataListItemAttributes = this.SourceLoadHelper.GetItemAttributeList(tenantID).Where(a => a.ParentContentId == this.functionsContentID || a.ParentContentId == this.rolesContentID || a.ParentContentId == this.rightsContentID).OrderBy(o => o.ParentContentId).ToList();
             lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
-            this.sourceListlink = this.SourceLoadHelper.GetDataListLinks("SourceDataListLinks");
-           
+            this.sourceListlink = this.SourceLoadHelper.GetDataListLinks(tenantID, "SourceDataListLinks");
             foreach (DataList list in lists)
             {
                 list1 = new DataListMainModel()

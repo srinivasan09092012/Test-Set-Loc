@@ -35,8 +35,8 @@ namespace DatalistSyncUtil.Views
             this.SourceLoadHelper = new SourceTenantHelper();
             this.SourceMenuList = sourceList;
             this.TargetMenuList = targetList;
-            this.Items = this.LoadHelper.GetDataListItems();
-            this.Sourceitems = this.SourceLoadHelper.GetDataListItems();
+            this.Items = this.LoadHelper.GetDataListItems(tenantID);
+            this.Sourceitems = this.SourceLoadHelper.GetDataListItems(tenantID);
             this.LoadDelta();
         }
 
@@ -213,7 +213,7 @@ namespace DatalistSyncUtil.Views
                 return;
             }
 
-            MenuPreviewPage previewPage = new MenuPreviewPage(this.UpdateList, this.UpdateListItems);
+            MenuPreviewPage previewPage = new MenuPreviewPage(this.TenantID, this.UpdateList, this.UpdateListItems);
             previewPage.ShowDialog();
         }
 

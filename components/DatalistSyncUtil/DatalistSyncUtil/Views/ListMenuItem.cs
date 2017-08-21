@@ -18,7 +18,7 @@ namespace DatalistSyncUtil.Views
 {
     public partial class ListMenuItem : Form
     {
-        public ListMenuItem(string name, int numberOfDays)
+        public ListMenuItem(Guid tenantID, string name, int numberOfDays)
         {
             this.InitializeComponent();
             this.Name = name;
@@ -26,6 +26,7 @@ namespace DatalistSyncUtil.Views
             this.Cache = new RedisCacheManager();
             this.GetMenuItems(name);
             this.menulabel.Text = this.Name;
+            this.TenantID = tenantID;
             this.LoadDataListItems();
         }
 
@@ -41,9 +42,11 @@ namespace DatalistSyncUtil.Views
 
         public string ContentID { get; set; }
 
+        public Guid TenantID { get; set; }
+
         private void GetMenuItems(string name)
         {
-            this.SourceMenu = this.Cache.Get<List<MenuListModel>>("Menus");
+            this.SourceMenu = this.Cache.Get<List<MenuListModel>>("Menus" + this.TenantID.ToString());
             this.SourceMenu.ForEach(f =>
             {
                 if (f.Name == name)

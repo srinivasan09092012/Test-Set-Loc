@@ -5,9 +5,10 @@
 // Violators may be punished to the full extent of the law.
 //-----------------------------------------------------------------------------------------
 
+using HP.HSP.UA3.Core.BAS.CQRS.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using HP.HSP.UA3.Core.BAS.CQRS.Domain;
 
 namespace DatalistSyncUtil.DaoHelpers
 {
@@ -20,7 +21,7 @@ namespace DatalistSyncUtil.DaoHelpers
 
         public DataListsDbContext DataListItemContext { get; set; }
 
-        public List<AppSettingsModel> ExecuteProcedure()
+        public List<AppSettingsModel> ExecuteProcedure(Guid tenantID)
         {            
             var results = from tenanantModule in this.DataListItemContext.TenantModules
                           join appSetting_List in this.DataListItemContext.AppSettings on tenanantModule.TenantModuleId equals appSetting_List.TenantModuleID
@@ -28,6 +29,7 @@ namespace DatalistSyncUtil.DaoHelpers
                           join application in this.DataListItemContext.Applications on appSetting_List.ApplicationId equals application.ApplicationId
                           join tenant in this.DataListItemContext.Tenants on tenanantModule.TenantId equals tenant.TenantID
                           where appSetting_List.IsActive == true
+                            && tenant.TenantID.Equals(tenantID)
                           select new AppSettingsModel()
                           {
                               TenantModuleAppSettingId = appSetting_List.TenantModuleAppSettingId,

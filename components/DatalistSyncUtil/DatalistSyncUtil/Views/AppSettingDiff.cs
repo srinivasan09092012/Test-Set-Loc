@@ -55,7 +55,7 @@ namespace DatalistSyncUtil
 
         private void LoadModules()
         {
-            List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+            List<TenantModuleModel> modules = this.LoadHelper.LoadModules(this.TenantID);
             modules.Insert(
                 0,
                 new TenantModuleModel()
@@ -64,8 +64,7 @@ namespace DatalistSyncUtil
                     TenantModuleId = Guid.Empty,
                     TenantId = this.TenantID
                 });
-
-            this.ModuleList.DataSource = modules.Where(w => w.TenantId == this.TenantID).GroupBy(i => i.ModuleName)
+            this.ModuleList.DataSource = modules.GroupBy(i => i.ModuleName)
                   .Select(group =>
                         new
                         {
@@ -226,7 +225,7 @@ namespace DatalistSyncUtil
         {
             TenantHelper targetHelper = new TenantHelper(this.TargetConnectionString);
             List<ApplicationModel> application = targetHelper.LoadApplicationName();
-            List<TenantModuleModel> modules = targetHelper.LoadModules();
+            List<TenantModuleModel> modules = targetHelper.LoadModules(this.TenantID);
             Guid moduleID = new Guid();
             if ((this.ModuleList.SelectedItem as TenantModuleModel).ModuleName != "---All Modules---")
             {
@@ -253,7 +252,7 @@ namespace DatalistSyncUtil
         private Guid GetTenantModuleTarget(string moduleName)
         {
             TenantHelper targetHelper = new TenantHelper(this.TargetConnectionString);
-            List<TenantModuleModel> modules = targetHelper.LoadModules();
+            List<TenantModuleModel> modules = targetHelper.LoadModules(this.TenantID);
             Guid tenantModuleID = new Guid();
             if (moduleName != "---All Modules---")
             {

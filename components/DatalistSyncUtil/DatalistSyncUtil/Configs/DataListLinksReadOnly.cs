@@ -8,6 +8,7 @@ using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Config.DAOHelpers;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
 using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -37,49 +38,49 @@ namespace DatalistSyncUtil.Configs
 
         public ConnectionStringSettings ConnectionString { get; set; }
 
-        public virtual List<CodeLinkTable> SearchCodeTables(List<CodeListModel> items)
+        public virtual List<CodeLinkTable> SearchCodeTables(List<CodeListModel> items, Guid tenantID)
         {
             List<CodeListModel> result = new List<CodeListModel>();
             List<Task> tasks = new List<Task>();
             List<CodeLinkTable> listLink = new List<CodeLinkTable>();
             List<DataList> resultdatalist = new List<DataList>();
 
-            if (!this.Cachemanager.IsSet(this.dataListLinkCombineKey))
+            if (!this.Cachemanager.IsSet(this.dataListLinkCombineKey + tenantID.ToString()))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
                     tasks.Add(Task.Factory.StartNew(() =>
                     {
-                        listLink = this.GetDataListItemLinks();
+                        listLink = this.GetDataListItemLinks(tenantID);
                     }));
                     Task.WaitAll(tasks.ToArray());
                     tasks.Clear();
                 }
 
-                 this.Cachemanager.Set(this.dataListLinkCombineKey, listLink, this.cacheTimeInMins);
+                 this.Cachemanager.Set(this.dataListLinkCombineKey + tenantID.ToString(), listLink, this.cacheTimeInMins);
             }
             else
             {
-                resultdatalist = this.Cachemanager.Get<List<DataList>>(this.dataListLinkCombineKey).ToList();
+                resultdatalist = this.Cachemanager.Get<List<DataList>>(this.dataListLinkCombineKey + tenantID.ToString()).ToList();
             }
           
             return listLink;
              }
 
-        private List<CodeLinkTable> GetDataListItemLinks()
+        private List<CodeLinkTable> GetDataListItemLinks(Guid tenantID)
         {
             List<CodeLinkTable> result = new List<CodeLinkTable>();
-            if (!this.Cachemanager.IsSet(this.dataListLinkKey))
+            if (!this.Cachemanager.IsSet(this.dataListLinkKey + tenantID.ToString()))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
-                    result = new GetDataListItemLinksDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
-                    this.Cachemanager.Set(this.dataListLinkKey, result, this.cacheTimeInMins);
+                    result = new GetDataListItemLinksDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(tenantID);
+                    this.Cachemanager.Set(this.dataListLinkKey + tenantID.ToString(), result, this.cacheTimeInMins);
                 }
             }
             else
             {
-                result = this.Cachemanager.Get<List<CodeLinkTable>>(this.dataListLinkKey);
+                result = this.Cachemanager.Get<List<CodeLinkTable>>(this.dataListLinkKey + tenantID.ToString());
             }
 
             return result.Select(x => x).Distinct().ToList();

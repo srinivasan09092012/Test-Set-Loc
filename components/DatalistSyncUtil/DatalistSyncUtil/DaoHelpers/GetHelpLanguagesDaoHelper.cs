@@ -8,6 +8,7 @@ using DatalistSyncUtil.Domain;
 using DatalistSyncUtil.Entities;
 using HP.HSP.UA3.Core.BAS.CQRS.DataAccess.Entities;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,10 +23,11 @@ namespace DatalistSyncUtil.DaoHelpers
 
         public HelpDbContext Context { get; set; }
 
-        public List<HelpContentLanguageModel> ExecuteProcedure()
+        public List<HelpContentLanguageModel> ExecuteProcedure(Guid tenantID)
         {
             var results = from help in this.Context.HelpNode
                           join hnl in this.Context.HelpNodeLocale on help.HelpNodeId equals hnl.HelpNodeId
+                          where help.TenantId == tenantID
                           select new HelpContentLanguageModel()
                           {
                               HelpNodeId = hnl.HelpNodeId,

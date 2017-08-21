@@ -54,7 +54,7 @@ namespace LoadReferenceData
                     }
                     else
                     {
-                        return false;
+                        throw new Exception(response.ReasonPhrase);
                     }
                 }
             }

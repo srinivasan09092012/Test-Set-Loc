@@ -9,6 +9,7 @@ using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Config.DAOHelpers;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
 using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -33,24 +34,24 @@ namespace DatalistSyncUtil.Configs
 
         public ICacheManager Cachemanager { get; set; }
 
-        public List<CodeListModel> SearchLabels(string contentID = null, string tenantID = null)
+        public List<CodeListModel> SearchLabels(Guid tenantID, string contentID = null)
         {
             List<CodeListModel> result = new List<CodeListModel>();
             List<Task> tasks = new List<Task>();
             List<Languages> languages = new List<Languages>();
 
-            if (!this.Cachemanager.IsSet(this.labelsCacheKey))
+            if (!this.Cachemanager.IsSet(this.labelsCacheKey + tenantID.ToString()))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
                     tasks.Add(Task.Factory.StartNew(() =>
                     {
-                        result = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteLabelProcedure();
+                        result = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteLabelProcedure(tenantID);
                     }));
 
                     tasks.Add(Task.Factory.StartNew(() =>
                     {
-                        languages = new SearchDataListLanguagesDaoHelper(new DataListsDbContext(session, true)).ExecuteLabelProcedure();
+                        languages = new SearchDataListLanguagesDaoHelper(new DataListsDbContext(session, true)).ExecuteLabelProcedure(tenantID);
                     }));
 
                     Task.WaitAll(tasks.ToArray());
@@ -59,17 +60,15 @@ namespace DatalistSyncUtil.Configs
 
                 result.ForEach(x => x.LanguageList = languages.FindAll(c => c.CodeID == x.ID));
 
-                this.Cachemanager.Set(this.labelsCacheKey, result, this.cacheTimeInMins);
+                this.Cachemanager.Set(this.labelsCacheKey + tenantID.ToString(), result, this.cacheTimeInMins);
 
-                result = result.Where(x => (string.IsNullOrEmpty(contentID) || x.ContentID == contentID)
-                                        && (string.IsNullOrEmpty(tenantID) || x.TenantID.ToString() == tenantID))
+                result = result.Where(x => (string.IsNullOrEmpty(contentID) || x.ContentID == contentID))
                                 .ToList();
             }
             else
             {
-                result = this.Cachemanager.Get<List<CodeListModel>>(this.labelsCacheKey)
-                    .Where(x => (string.IsNullOrEmpty(contentID) || x.ContentID == contentID)
-                             && (string.IsNullOrEmpty(tenantID) || x.TenantID.ToString() == tenantID))
+                result = this.Cachemanager.Get<List<CodeListModel>>(this.labelsCacheKey + tenantID.ToString())
+                    .Where(x => (string.IsNullOrEmpty(contentID) || x.ContentID == contentID))
                     .ToList();
             }
 

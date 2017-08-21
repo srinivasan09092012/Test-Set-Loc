@@ -219,7 +219,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
 
         private void RefreshCache(string cacheKey, string reloadCache = "true", string cacheType = "Menu")
         {
-            string objDataQuery = string.Format("CacheRefreshTable(CacheKey='{0}',ReloadCache={1},CacheType='{2}')", cacheKey, reloadCache, cacheType);
+            string objDataQuery = string.Format("CacheRefreshTable(CacheKey='{0}',ReloadCache={1},CacheType='{2}', TenantID={3})", cacheKey, reloadCache, cacheType, this.MainForm.TenantId);
             string baseUrl = MainForm.ODataEndpointAddress;
 
             HttpClient client = new HttpClient();

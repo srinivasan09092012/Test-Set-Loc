@@ -26,7 +26,7 @@ namespace DatalistSyncUtil.Views
             this.InitializeComponent();
         }
 
-        public MenuPreviewPage(List<MenuListModel> finalList, List<MenuItemModel> finalListItems)
+        public MenuPreviewPage(Guid tenantID, List<MenuListModel> finalList, List<MenuItemModel> finalListItems)
         {
             this.InitializeComponent();
 
@@ -35,9 +35,10 @@ namespace DatalistSyncUtil.Views
             this.FinalListItems = finalListItems;
             this.LoadHelper = new TenantHelper();
             this.SourceLoadHelper = new SourceTenantHelper();
-            this.TargetMenu = this.LoadHelper.GetMenu();
-            this.Items = this.LoadHelper.GetDataListItems();
-            this.Sourceitems = this.SourceLoadHelper.GetDataListItems();
+            this.TenantID = tenantID;
+            this.TargetMenu = this.LoadHelper.GetMenu(tenantID);
+            this.Items = this.LoadHelper.GetDataListItems(tenantID);
+            this.Sourceitems = this.SourceLoadHelper.GetDataListItems(tenantID);
             this.LoadTreeView(this.PreviewTreeList, this.FinalList);
         }
 
@@ -60,6 +61,8 @@ namespace DatalistSyncUtil.Views
         public SourceTenantHelper SourceLoadHelper { get; set; }
 
         public List<MenuListModel> TargetMenu { get; set; }
+
+        public Guid TenantID { get; set; }
 
         private void LoadTreeView(TreeView treeView, List<MenuListModel> lists)
         {
@@ -162,16 +165,16 @@ namespace DatalistSyncUtil.Views
 
         private void SaveMenus()
         {
-            this.MenuList = this.LoadHelper.GetMenu();
+            this.MenuList = this.LoadHelper.GetMenu(this.TenantID);
             try
             {
                 if (this.FinalList != null)
                 {
-                    List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+                    List<TenantModuleModel> modules = this.LoadHelper.LoadModules(this.TenantID);
 
                     foreach (MenuListModel list in this.FinalList)
                     {
-                        list.TenantModuleID = modules.Find(f => f.TenantId == list.TenantId && f.TenantModuleId == list.TenantModuleID).TenantModuleId;
+                        list.TenantModuleID = modules.Find(f => f.TenantModuleId == list.TenantModuleID).TenantModuleId;
                         string securityRight = null;
                         securityRight = this.Sourceitems.Find(c => c.ID == list.SecurityRightItemID).Code;
                         list.SecurityRightItemID = this.Items.Find(c => c.Code == securityRight).ID;
@@ -185,7 +188,7 @@ namespace DatalistSyncUtil.Views
                         }
                     }
 
-                    this.Cache.Remove("TargetMenus");
+                    this.Cache.Remove("TargetMenus" + this.TenantID.ToString());
                 }
             }
             catch (Exception ex)
@@ -198,8 +201,8 @@ namespace DatalistSyncUtil.Views
         {
             List<MenuItemModel> childMenuItems = new List<MenuItemModel>();
             MenuListModel list = null;
-            this.MenuList = this.LoadHelper.GetMenu();
-            List<MenuListModel> sourceMenuList = this.SourceLoadHelper.GetMenu();
+            this.MenuList = this.LoadHelper.GetMenu(this.TenantID);
+            List<MenuListModel> sourceMenuList = this.SourceLoadHelper.GetMenu(this.TenantID);
 
             this.MenuList.ForEach(x =>
             {

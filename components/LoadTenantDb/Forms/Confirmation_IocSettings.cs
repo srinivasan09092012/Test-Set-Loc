@@ -215,7 +215,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         {
             bool exists = false;
             int retryCount = 0;
-            string objDataQuery = string.Format("AppSetting?$filter=ApplicationId%20eq%20{0}%20and%20TenantModuleID%20eq%20{1}%20and%20AppSettingKey%20eq%20%27{2}%27%20", item.ApplicationId, item.TenantModuleId, AdministrationConstants.IocConfig);
+            string objDataQuery = string.Format("AppSetting(TenantID={3})?$filter=ApplicationId%20eq%20{0}%20and%20TenantModuleID%20eq%20{1}%20and%20AppSettingKey%20eq%20%27{2}%27%20", item.ApplicationId, item.TenantModuleId, AdministrationConstants.IocConfig, this.MainForm.TenantId);
             string baseUrl = MainForm.ODataEndpointAddress;
 
             HttpClient client = new HttpClient();
@@ -263,7 +263,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
         private void RefreshCache(string cacheKey, bool reloadCache = true, string cacheType = "AppSetting")
         {
             string objDataQuery =
-                string.Format("CacheRefreshTable(CacheKey='{0}',ReloadCache={1},CacheType='{2}')", cacheKey, reloadCache.ToString().ToLower(), cacheType);
+                string.Format("CacheRefreshTable(CacheKey='{0}',ReloadCache={1},CacheType='{2}', TenantID={3})", cacheKey, reloadCache.ToString().ToLower(), cacheType, this.MainForm.TenantId);
             string baseUrl = MainForm.ODataEndpointAddress;
 
             HttpClient client = new HttpClient();

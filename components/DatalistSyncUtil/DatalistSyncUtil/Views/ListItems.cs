@@ -19,19 +19,22 @@ namespace DatalistSyncUtil
     public partial class ListItems : Form
     {
         private readonly string listKeyword = "CodeList_";
-
-        public ListItems(string contentID, int numberOfDays)
+    
+        public ListItems(Guid tenantID, string contentID, int numberOfDays)
         {
             this.InitializeComponent();
             this.ContentID = contentID;
             this.NoOfDays = numberOfDays;
+            this.TenantID = tenantID;
             this.Cache = new RedisCacheManager();
-            this.SourceListItems = this.Cache.Get<List<CodeListModel>>("DataListItems");
+            this.SourceListItems = this.Cache.Get<List<CodeListModel>>("DataListItems" + tenantID.ToString());
             this.lblContentID.Text = this.ContentID;
             this.LoadDataListItems(numberOfDays);
         }
 
         public int NoOfDays { get; set; }
+
+        public Guid TenantID { get; set; }
 
         public List<CodeListModel> SourceListItems { get; set; }
 
@@ -41,7 +44,7 @@ namespace DatalistSyncUtil
 
         private void LoadDataListItems(int numberOfDays)
         {
-            string key = this.listKeyword + this.ContentID;
+            string key = this.listKeyword + this.TenantID + this.ContentID;
             List<SelectedItem> items = null;
             this.ListItemView.AutoGenerateColumns = false;
 
@@ -107,13 +110,13 @@ namespace DatalistSyncUtil
                 items.Add(itemSelected);
             }
 
-            this.Cache.Set(this.listKeyword + this.ContentID, items, 1440);
+            this.Cache.Set(this.listKeyword + this.TenantID + this.ContentID, items, 1440);
             this.Close();
         }
 
         private void Clear_Click(object sender, EventArgs e)
         {
-            this.Cache.Remove(this.listKeyword + this.ContentID);
+            this.Cache.Remove(this.listKeyword + this.TenantID + this.ContentID);
             this.LoadDataListItems(this.NoOfDays);
         }
 

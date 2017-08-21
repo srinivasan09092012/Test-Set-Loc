@@ -41,25 +41,25 @@ namespace DatalistSyncUtil.Configs
         /// Searches the Help Table.
         /// </summary>
         /// <returns>List<HelpModel></returns>
-        public List<HelpNodeModel> SearchHelp()
+        public List<HelpNodeModel> SearchHelp(Guid tenantID)
         {
             List<HelpNodeModel> result = null;
 
-            if (!this.Cachemanager.IsSet(this.helpTablesKey))
+            if (!this.Cachemanager.IsSet(this.helpTablesKey + tenantID.ToString()))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
-                    result = new GetHelpContentDaoHelper(new HelpDbContext(session, true)).ExecuteProcedure();
+                    result = new GetHelpContentDaoHelper(new HelpDbContext(session, true)).ExecuteProcedure(tenantID);
                 }
 
-                this.Cachemanager.Set(this.helpTablesKey, result, this.cacheTimeInMins);
+                this.Cachemanager.Set(this.helpTablesKey + tenantID.ToString(), result, this.cacheTimeInMins);
             }
             else
             {
-                result = this.Cachemanager.Get<List<HelpNodeModel>>(this.helpTablesKey).ToList();
+                result = this.Cachemanager.Get<List<HelpNodeModel>>(this.helpTablesKey + tenantID.ToString()).ToList();
             }
            
-            List<HelpContentLanguageModel> languages = this.GetHelpLanguages();
+            List<HelpContentLanguageModel> languages = this.GetHelpLanguages(tenantID);
             result.ForEach(x => x.HelpContentLanguages = this.FindLanguages(x, languages));
 
             return result;
@@ -70,22 +70,22 @@ namespace DatalistSyncUtil.Configs
             return languages.FindAll(x => x.HelpNodeId.Equals(toExpand.HelpNodeId));
         }
 
-        public List<HelpContentLanguageModel> GetHelpLanguages()
+        public List<HelpContentLanguageModel> GetHelpLanguages(Guid tenantID)
         {
             List<HelpContentLanguageModel> languages = null;
 
-            if (!this.Cachemanager.IsSet(this.helpLanguageKey))
+            if (!this.Cachemanager.IsSet(this.helpLanguageKey + tenantID.ToString()))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
-                    languages = new GetHelpLanguagesDaoHelper(new HelpDbContext(session, true)).ExecuteProcedure();
+                    languages = new GetHelpLanguagesDaoHelper(new HelpDbContext(session, true)).ExecuteProcedure(tenantID);
                 }
 
-                this.Cachemanager.Set(this.helpLanguageKey, languages, this.cacheTimeInMins);
+                this.Cachemanager.Set(this.helpLanguageKey + tenantID.ToString(), languages, this.cacheTimeInMins);
             }
             else
             {
-                languages = this.Cachemanager.Get<List<HelpContentLanguageModel>>(this.helpLanguageKey);
+                languages = this.Cachemanager.Get<List<HelpContentLanguageModel>>(this.helpLanguageKey + tenantID.ToString());
             }
 
             return languages;

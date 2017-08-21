@@ -34,8 +34,8 @@ namespace DatalistSyncUtil.Views
             this.SourceLoadHelper = new SourceTenantHelper();
             this.SourceServicesList = sourceList;
             this.TargetServicesList = targetList;
-            this.TargetSecItems = this.LoadHelper.GetSecRightsAndLabels();
-            this.SourceSecItems = this.SourceLoadHelper.GetSecRightsAndLabels();
+            this.TargetSecItems = this.LoadHelper.GetSecRightsAndLabels(this.TenantID);
+            this.SourceSecItems = this.SourceLoadHelper.GetSecRightsAndLabels(this.TenantID);
             this.LoadModules();
             this.LoadDelta();
         }
@@ -66,7 +66,7 @@ namespace DatalistSyncUtil.Views
 
         private void LoadModules()
         {
-            List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+            List<TenantModuleModel> modules = this.LoadHelper.LoadModules(this.TenantID);
             modules.Insert(
                    0,
                    new TenantModuleModel()
@@ -75,7 +75,7 @@ namespace DatalistSyncUtil.Views
                        TenantModuleId = Guid.Empty,
                        TenantId = this.TenantID
                    });
-            this.moduleList.DataSource = modules.Where(w => w.TenantId == this.TenantID).GroupBy(i => i.ModuleName)
+            this.moduleList.DataSource = modules.GroupBy(i => i.ModuleName)
                   .Select(group =>
                         new
                         {

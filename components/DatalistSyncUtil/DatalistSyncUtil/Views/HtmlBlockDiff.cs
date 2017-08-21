@@ -65,7 +65,7 @@ namespace DatalistSyncUtil
 
         private void LoadModules()
         {
-            List<TenantModuleModel> modules = this.LoadHelper.LoadModules();
+            List<TenantModuleModel> modules = this.LoadHelper.LoadModules(this.TenantID);
             modules.Insert(
                    0,
                    new TenantModuleModel()
@@ -74,7 +74,7 @@ namespace DatalistSyncUtil
                        TenantModuleId = Guid.Empty,
                        TenantId = this.TenantID
                    });
-            this.moduleList.DataSource = modules.Where(w => w.TenantId == this.TenantID).GroupBy(i => i.ModuleName)
+            this.moduleList.DataSource = modules.GroupBy(i => i.ModuleName)
                   .Select(group =>
                         new
                         {

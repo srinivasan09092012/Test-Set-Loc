@@ -158,13 +158,13 @@ namespace DatalistSyncUtil
         private void LoadModules()
         {
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
-            if (!this.Cache.IsSet("TenantModules"))
+            if (!this.Cache.IsSet("TenantModules" + tenantID.ToString()))
             {
-                this.TenantModules = this.GetTenantModules(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
-                this.Cache.Set("TenantModules", this.TenantModules, 1440);
+                this.TenantModules = this.GetTenantModules(tenantID, this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
+                this.Cache.Set("TenantModules" + tenantID.ToString(), this.TenantModules, 1440);
             }
 
-            this.ModuleList.DataSource = this.Cache.Get<List<TenantModuleModel>>("TenantModules").Where(w => w.TenantId == tenantID).GroupBy(i => i.ModuleName)
+            this.ModuleList.DataSource = this.Cache.Get<List<TenantModuleModel>>("TenantModules" + tenantID.ToString()).GroupBy(i => i.ModuleName)
                   .Select(group =>
                         new
                         {
@@ -188,19 +188,19 @@ namespace DatalistSyncUtil
             this.BtnDownloadToFile.Enabled = true;
         }
 
-        private List<ItemDataListItemAttributeVal> LoadDataListItemAttributes()
+        private List<ItemDataListItemAttributeVal> LoadDataListItemAttributes(Guid tenantID)
         {
-            if (!this.Cache.IsSet("SourceSyncDataListItemAttributes"))
+            if (!this.Cache.IsSet("SourceSyncDataListItemAttributes" + tenantID.ToString()))
             {
                 using (IDbSession session = new DbSession(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString))
                 {
-                    this.Resultitems = new DataListAttributesReadOnly(new DbSession(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString), "Source").GetDataListItemAttributes();
-                    this.Cache.Set("SourceDataListItemAttributes", this.Resultitems, 1440);
+                    this.Resultitems = new DataListAttributesReadOnly(new DbSession(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString), "Source").GetDataListItemAttributes(tenantID);
+                    this.Cache.Set("SourceDataListItemAttributes" + tenantID.ToString(), this.Resultitems, 1440);
                 }
             }
             else
             {
-                this.Resultitems = this.Cache.Get<List<ItemDataListItemAttributeVal>>("SourceSyncDataListItemAttributes");
+                this.Resultitems = this.Cache.Get<List<ItemDataListItemAttributeVal>>("SourceSyncDataListItemAttributes" + tenantID.ToString());
             }
 
             return this.Resultitems;
@@ -208,6 +208,7 @@ namespace DatalistSyncUtil
 
         private void LoadSearchCriteria()
         {
+            Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
             this.NoOfDays = (int)this.Age.Value;
             string caseSwitch = this.ControlName.SelectedItem.ToString();
             switch (caseSwitch)
@@ -222,8 +223,8 @@ namespace DatalistSyncUtil
                     this.ModuleListSelectedAppSetting();
                     break;
                 case "Datalist":
-                    this.SourceListItems = this.LoadDataListItems(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
-                    this.Resultitems = this.LoadDataListItemAttributes();
+                    this.SourceListItems = this.LoadDataListItems(tenantID, this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
+                    this.Resultitems = this.LoadDataListItemAttributes(tenantID);
                     this.DataListView.Columns[1].Visible = true;
                     this.DataListView.Columns[2].Visible = false;
                     this.DataListView.Columns[3].Visible = false;
@@ -242,7 +243,7 @@ namespace DatalistSyncUtil
                     this.ModuleMenuListSelectedItems();
                     break;
                 case "HtmlBlock":
-                    this.SourceHtmlListItems = this.LoadHTMLBlocks(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
+                    this.SourceHtmlListItems = this.LoadHTMLBlocks(tenantID, this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
                     this.DataListView.Columns[1].Visible = true;
                     this.DataListView.Columns[2].Visible = false;
                     this.DataListView.Columns[3].Visible = false;
@@ -252,8 +253,8 @@ namespace DatalistSyncUtil
                     this.ModuleHtmlListSelectedItems();
                     break;
                 case "Security":
-                    this.SourceListItems = this.LoadDataListItems(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
-                    this.Resultitems = this.LoadDataListItemAttributes();
+                    this.SourceListItems = this.LoadDataListItems(tenantID, this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
+                    this.Resultitems = this.LoadDataListItemAttributes(tenantID);
                     this.DataListView.Columns[1].Visible = true;
                     this.DataListView.Columns[2].Visible = false;
                     this.DataListView.Columns[3].Visible = false;
@@ -263,7 +264,7 @@ namespace DatalistSyncUtil
                     this.ModuleListSelectedSecurityItems();
                     break;
                 case "Image":
-                    this.SourceImagesList = this.LoadImages(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
+                    this.SourceImagesList = this.LoadImages(tenantID, this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
                     this.DataListView.Columns[1].Visible = true;
                     this.DataListView.Columns[2].Visible = false;
                     this.DataListView.Columns[3].Visible = false;
@@ -278,12 +279,12 @@ namespace DatalistSyncUtil
                     this.DataListView.Columns[3].Visible = false;
                     this.DataListView.Columns[4].Visible = false;
                     this.DataListView.Columns[5].Visible = true;
-                    this.SourceHelpNodeList = this.LoadHelpNodeLocale(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
+                    this.SourceHelpNodeList = this.LoadHelpNodeLocale(tenantID, this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
                     this.BindHelpNode();
                     this.ModuleHelpListSelectedItems();
                     break;
                 case "Service":
-                    this.SourceServicesList = this.LoadServices(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
+                    this.SourceServicesList = this.LoadServices(tenantID, this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
                     this.DataListView.Columns[1].Visible = false;
                     this.DataListView.Columns[2].Visible = true;
                     this.DataListView.Columns[3].Visible = false;
@@ -301,48 +302,48 @@ namespace DatalistSyncUtil
         {
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
 
-            if (!this.Cache.IsSet("Appsettings"))
+            if (!this.Cache.IsSet("Appsettings" + tenantID.ToString()))
             {
-                this.SourceAppSettings = this.LoadAppSetting(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
+                this.SourceAppSettings = this.LoadAppSetting(tenantID, this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
             }
             else
             {
-                this.SourceAppSettings = this.Cache.Get<List<AppSettingsModel>>("Appsettings");
+                this.SourceAppSettings = this.Cache.Get<List<AppSettingsModel>>("Appsettings" + tenantID.ToString());
             }
 
             this.DataListView.AutoGenerateColumns = false;
 
             if (this.SkipNoOfDays)
             {
-                this.DataListView.DataSource = new BindingList<AppSettingsModel>(this.SourceAppSettings.Where(w => w.TenantID == tenantID).ToList());
+                this.DataListView.DataSource = new BindingList<AppSettingsModel>(this.SourceAppSettings.ToList());
             }
             else
             {
-                this.DataListView.DataSource = new BindingList<AppSettingsModel>(this.SourceAppSettings.Where(w => w.TenantID == tenantID && w.LastModifiedTimeStamp.Value >= DateTime.UtcNow.AddDays(this.NoOfDays)).ToList());
+                this.DataListView.DataSource = new BindingList<AppSettingsModel>(this.SourceAppSettings.Where(w => w.LastModifiedTimeStamp.Value >= DateTime.UtcNow.AddDays(this.NoOfDays)).ToList());
             }
         }
 
-        private List<AppSettingsModel> LoadAppSetting(string providerName, string connectionString)
+        private List<AppSettingsModel> LoadAppSetting(Guid tenantID, string providerName, string connectionString)
         {
             List<AppSettingsModel> result = null;
 
             using (IDbSession session = new DbSession(providerName, connectionString))
             {
-                result = new Configs.AppSettingsReadOnly(new DbSession(providerName, connectionString), "Source").SearchAppSetting();
+                result = new Configs.AppSettingsReadOnly(new DbSession(providerName, connectionString), "Source").SearchAppSetting(tenantID);
             }
 
-            this.Cache.Set("Appsettings", result.ToList(), 1440);
+            this.Cache.Set("Appsettings" + tenantID.ToString(), result.ToList(), 1440);
 
             return result;
         }
 
-        private List<TenantModuleModel> GetTenantModules(string providerName, string connectionString)
+        private List<TenantModuleModel> GetTenantModules(Guid tenantID, string providerName, string connectionString)
         {
             List<TenantModuleModel> result = null;
 
             using (IDbSession session = new DbSession(providerName, connectionString))
             {
-                result = new GetTenantModuleDaoHelper(new TenantModuleDbContext(session, true)).ExecuteProcedure();
+                result = new GetTenantModuleDaoHelper(new TenantModuleDbContext(session, true)).ExecuteProcedure(tenantID);
             }
 
             return result;
@@ -352,49 +353,49 @@ namespace DatalistSyncUtil
         {
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
             List<DataListAttribute> datalistattribute = new List<DataListAttribute>();
-            if (!this.Cache.IsSet("DataLists"))
+            if (!this.Cache.IsSet("DataLists" + tenantID.ToString()))
             {
-                this.SourceLists = this.LoadDataList(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
-
-                if (!this.Cache.IsSet("SourceDataSyncAttributeList"))
+                this.SourceLists = this.LoadDataList(tenantID, this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
+               
+                if (!this.Cache.IsSet("SourceDataSyncAttributeList" + tenantID.ToString()))
                 {
                     using (IDbSession session = new DbSession(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString))
                     {
-                        datalistattribute = new GetDataListAttributesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
-                        this.Cache.Set("SourceDataSyncAttributeList", datalistattribute, 1440);
+                        datalistattribute = new GetDataListAttributesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(tenantID);
+                        this.Cache.Set("SourceDataSyncAttributeList" + tenantID.ToString(), datalistattribute, 1440);
                     }
                 }
                 else
                 {
-                    datalistattribute = this.Cache.Get<List<DataListAttribute>>("SourceDataSyncAttributeList");
+                    datalistattribute = this.Cache.Get<List<DataListAttribute>>("SourceDataSyncAttributeList" + tenantID.ToString());
                 }
 
                 this.SourceLists.ForEach(x => x.DataListAttributes = datalistattribute.FindAll(c => c.DataListID == x.ID));
                 this.SourceLists.ForEach(x => x.DataListAttributes.ForEach(y => y.DataListTypeName = this.SourceLists.Find(p => p.ID == y.DataListTypeID).ContentID));
                 this.SourceLists.ForEach(x => x.DataListAttributes.ForEach(y => y.DefaultTypeText = this.SourceListItems.Find(c => c.ID == y.DefaultTypeValue).Code));
-                this.Cache.Set("DataLists", this.SourceLists, 1440);
+                this.Cache.Set("DataLists" + tenantID.ToString(), this.SourceLists, 1440);
             }
             else
             {
-                this.SourceLists = this.Cache.Get<List<DataList>>("DataLists");
+                this.SourceLists = this.Cache.Get<List<DataList>>("DataLists" + tenantID.ToString());
             }
 
             this.DataListView.AutoGenerateColumns = false;
 
-            if (this.SkipNoOfDays)
-            {
-                this.DataListView.DataSource = new BindingList<DataList>(this.SourceLists.Where(w => w.TenantID == tenantID).ToList());
+                if (this.SkipNoOfDays)
+                {
+                    this.DataListView.DataSource = new BindingList<DataList>(this.SourceLists.ToList());
+                }
+                else
+                {
+                    this.DataListView.DataSource = new BindingList<DataList>(this.SourceLists.Where(w => w.LastModified.Value >= DateTime.UtcNow.AddDays(this.NoOfDays)).ToList());
+                }
             }
-            else
-            {
-                this.DataListView.DataSource = new BindingList<DataList>(this.SourceLists.Where(w => w.TenantID == tenantID && w.LastModified.Value >= DateTime.UtcNow.AddDays(this.NoOfDays)).ToList());
-            }
-        }
 
         private void BindMenus()
         {
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
-            this.SourceMenus = this.LoadMenu(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
+            this.SourceMenus = this.LoadMenu(tenantID, this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
             List<MenuItemModel> childMenuItems = new List<MenuItemModel>();
             List<MenuListModel> childMenuItem1 = new List<MenuListModel>();
             this.SourceMenus.ForEach(x =>
@@ -437,52 +438,52 @@ namespace DatalistSyncUtil
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
             List<HtmlBlockModel> htmlblocklist = new List<HtmlBlockModel>();
             List<HtmlBlockLanguagesModel> htmlBlockLangs = new List<HtmlBlockLanguagesModel>();
-            if (!this.Cache.IsSet("HtmlBlock"))
+            if (!this.Cache.IsSet("HtmlBlock" + tenantID.ToString()))
             {
-                this.SourceHtmlListItems = this.LoadHTMLBlockList(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
+                this.SourceHtmlListItems = this.LoadHTMLBlockList(tenantID, this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
 
-                if (!this.Cache.IsSet("HtmlBlock"))
+                if (!this.Cache.IsSet("HtmlBlock" + tenantID.ToString()))
                 {
                     using (IDbSession session = new DbSession(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString))
                     {
-                        htmlblocklist = new HtmlBlocksReadOnly(new DbSession(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString), "Source").SearchHtmlBlocks(true);
-                        this.Cache.Set("HtmlBlock", htmlblocklist, 1440);
+                        htmlblocklist = new HtmlBlocksReadOnly(new DbSession(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString), "Source").SearchHtmlBlocks(tenantID, true);
+                        this.Cache.Set("HtmlBlock" + tenantID.ToString(), htmlblocklist, 1440);
                     }
                 }
                 else
                 {
-                    htmlblocklist = this.Cache.Get<List<HtmlBlockModel>>("HtmlBlock");
+                    htmlblocklist = this.Cache.Get<List<HtmlBlockModel>>("HtmlBlock" + tenantID.ToString());
                 }
 
-                this.Cache.Set("HtmlBlock", this.SourceHtmlListItems, 1440);
+                this.Cache.Set("HtmlBlock" + tenantID.ToString(), this.SourceHtmlListItems, 1440);
             }
             else
             {
-                this.SourceHtmlListItems = this.Cache.Get<List<HtmlBlockModel>>("HtmlBlock");
+                this.SourceHtmlListItems = this.Cache.Get<List<HtmlBlockModel>>("HtmlBlock" + tenantID.ToString());
             }
 
             this.DataListView.AutoGenerateColumns = false;
 
             if (this.SkipNoOfDays)
             {
-                this.DataListView.DataSource = new BindingList<HtmlBlockModel>(this.SourceHtmlListItems.Where(w => w.TenantId == tenantID).ToList());
+                this.DataListView.DataSource = new BindingList<HtmlBlockModel>(this.SourceHtmlListItems.ToList());
             }
             else
             {
-                this.DataListView.DataSource = new BindingList<HtmlBlockModel>(this.SourceHtmlListItems.Where(w => w.TenantId == tenantID && w.LastModifiedTS >= DateTime.UtcNow.AddDays(this.NoOfDays)).ToList());
+                this.DataListView.DataSource = new BindingList<HtmlBlockModel>(this.SourceHtmlListItems.Where(w => w.LastModifiedTS >= DateTime.UtcNow.AddDays(this.NoOfDays)).ToList());
             }
         }
 
-        private List<HtmlBlockModel> LoadHTMLBlockList(string providerName, string connectionString)
+        private List<HtmlBlockModel> LoadHTMLBlockList(Guid tenantID, string providerName, string connectionString)
         {
             List<HtmlBlockModel> result = null;
 
             using (IDbSession session = new DbSession(providerName, connectionString))
             {
-                result = new HtmlBlocksReadOnly(new DbSession(providerName, connectionString), "Source").SearchHtmlBlocks(true);
+                result = new HtmlBlocksReadOnly(new DbSession(providerName, connectionString), "Source").SearchHtmlBlocks(tenantID, true);
             }
 
-            this.Cache.Set("HTMLBlocks", result.OrderBy(o => o.ID).ToList(), 1440);
+            this.Cache.Set("HTMLBlocks" + tenantID.ToString(), result.OrderBy(o => o.ID).ToList(), 1440);
 
             return result;
         }
@@ -492,52 +493,52 @@ namespace DatalistSyncUtil
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
             List<ImageListModel> imagesList = new List<ImageListModel>();
             List<ImageLanguagesModel> imageLangs = new List<ImageLanguagesModel>();
-            if (!this.Cache.IsSet("Images"))
+            if (!this.Cache.IsSet("Images" + tenantID.ToString()))
             {
-                this.SourceImagesList = this.LoadImagesList(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
+                this.SourceImagesList = this.LoadImagesList(tenantID, this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
 
-                if (!this.Cache.IsSet("Images"))
+                if (!this.Cache.IsSet("Images" + tenantID.ToString()))
                 {
                     using (IDbSession session = new DbSession(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString))
                     {
-                        imagesList = new ImagesReadOnly(new DbSession(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString), "Source").SearchImages(true);
-                        this.Cache.Set("Images", imagesList, 1440);
+                        imagesList = new ImagesReadOnly(new DbSession(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString), "Source").SearchImages(tenantID, true);
+                        this.Cache.Set("Images" + tenantID.ToString(), imagesList, 1440);
                     }
                 }
                 else
                 {
-                    imagesList = this.Cache.Get<List<ImageListModel>>("Images");
+                    imagesList = this.Cache.Get<List<ImageListModel>>("Images" + tenantID.ToString());
                 }
 
-                this.Cache.Set("Images", this.SourceImagesList, 1440);
+                this.Cache.Set("Images" + tenantID.ToString(), this.SourceImagesList, 1440);
             }
             else
             {
-                this.SourceImagesList = this.Cache.Get<List<ImageListModel>>("Images");
+                this.SourceImagesList = this.Cache.Get<List<ImageListModel>>("Images" + tenantID.ToString());
             }
 
             this.DataListView.AutoGenerateColumns = false;
 
             if (this.SkipNoOfDays)
             {
-                this.DataListView.DataSource = new BindingList<ImageListModel>(this.SourceImagesList.Where(w => w.TenantId == tenantID).ToList());
+                this.DataListView.DataSource = new BindingList<ImageListModel>(this.SourceImagesList.ToList());
             }
             else
             {
-                this.DataListView.DataSource = new BindingList<ImageListModel>(this.SourceImagesList.Where(w => w.TenantId == tenantID && w.LastModifiedTS >= DateTime.UtcNow.AddDays(this.NoOfDays)).ToList());
+                this.DataListView.DataSource = new BindingList<ImageListModel>(this.SourceImagesList.Where(w => w.LastModifiedTS >= DateTime.UtcNow.AddDays(this.NoOfDays)).ToList());
             }
         }
 
-        private List<ImageListModel> LoadImagesList(string providerName, string connectionString)
+        private List<ImageListModel> LoadImagesList(Guid tenantID, string providerName, string connectionString)
         {
             List<ImageListModel> result = null;
 
             using (IDbSession session = new DbSession(providerName, connectionString))
             {
-                result = new ImagesReadOnly(new DbSession(providerName, connectionString), "Source").SearchImages(true);
+                result = new ImagesReadOnly(new DbSession(providerName, connectionString), "Source").SearchImages(tenantID, true);
             }
 
-            this.Cache.Set("Images", result.OrderBy(o => o.ID).ToList(), 1440);
+            this.Cache.Set("Images" + tenantID.ToString(), result.OrderBy(o => o.ID).ToList(), 1440);
 
             return result;
         }
@@ -548,13 +549,13 @@ namespace DatalistSyncUtil
             List<ServiceListModel> servicesList = new List<ServiceListModel>();
             if (!this.Cache.IsSet("Services"))
             {
-                this.SourceServicesList = this.LoadServicesList(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
+                this.SourceServicesList = this.LoadServicesList(tenantID, this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString);
 
                 if (!this.Cache.IsSet("Services"))
                 {
                     using (IDbSession session = new DbSession(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString))
                     {
-                        servicesList = new ServicesReadOnly(new DbSession(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString), "Source").SearchServices();
+                        servicesList = new ServicesReadOnly(new DbSession(this.SourceConnectionString.ProviderName, this.SourceConnectionString.ConnectionString), "Source").SearchServices(tenantID);
                         this.Cache.Set("Services", servicesList, 1440);
                     }
                 }
@@ -582,39 +583,39 @@ namespace DatalistSyncUtil
             }
         }
 
-        private List<ServiceListModel> LoadServicesList(string providerName, string connectionString)
+        private List<ServiceListModel> LoadServicesList(Guid tenantID, string providerName, string connectionString)
         {
             List<ServiceListModel> result = null;
 
             using (IDbSession session = new DbSession(providerName, connectionString))
             {
-                result = new ServicesReadOnly(new DbSession(providerName, connectionString), "Source").SearchServices();
+                result = new ServicesReadOnly(new DbSession(providerName, connectionString), "Source").SearchServices(tenantID);
             }
 
-            this.Cache.Set("Services", result.OrderBy(o => o.ID).ToList(), 1440);
+            this.Cache.Set("Services" + tenantID.ToString(), result.OrderBy(o => o.ID).ToList(), 1440);
 
             return result;
         }
 
-        private List<DataList> LoadDataList(string providerName, string connectionString)
+        private List<DataList> LoadDataList(Guid tenantID, string providerName, string connectionString)
         {
             List<DataList> result = null;
 
             using (IDbSession session = new DbSession(providerName, connectionString))
             {
-                result = new SearchDataListDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
+                result = new SearchDataListDaoHelper(new DataListsDbContext(session, true)).ExecuteDataListsProcedure(tenantID);
             }
 
-            this.Cache.Set("DataLists", result.OrderBy(o => o.ContentID).ToList(), 1440);
+            this.Cache.Set("DataLists" + tenantID.ToString(), result.OrderBy(o => o.ContentID).ToList(), 1440);
 
             return result;
         }
 
-        private List<CodeListModel> LoadDataListItems(string providerName, string connectionString)
+        private List<CodeListModel> LoadDataListItems(Guid tenantID, string providerName, string connectionString)
         {
-            if (this.Cache.IsSet("DataListItems"))
+            if (this.Cache.IsSet("DataListItems" + tenantID.ToString()))
             {
-                return this.Cache.Get<List<CodeListModel>>("DataListItems");
+                return this.Cache.Get<List<CodeListModel>>("DataListItems" + tenantID.ToString());
             }
 
             List<Task> tasks = new List<Task>();
@@ -629,27 +630,27 @@ namespace DatalistSyncUtil
             {
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    result = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(string.Empty);
+                    result = new SearchDataListItemsDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(tenantID, string.Empty);
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    languages = new SearchDataListLanguagesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
+                    languages = new SearchDataListLanguagesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(tenantID);
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    resultmsg = new MessageCodeReadOnly(new DbSession(providerName, connectionString), "Source").SearchMessages();
+                    resultmsg = new MessageCodeReadOnly(new DbSession(providerName, connectionString), "Source").SearchMessages(tenantID);
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    resultlbl = new LabelsCodeReadOnly(new DbSession(providerName, connectionString), "Source").SearchLabels();
+                    resultlbl = new LabelsCodeReadOnly(new DbSession(providerName, connectionString), "Source").SearchLabels(tenantID);
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
-                    resultsecrights = new SecurityCodeReadOnly(new DbSession(providerName, connectionString)).SearchCodeTables("Source");
+                    resultsecrights = new SecurityCodeReadOnly(new DbSession(providerName, connectionString)).SearchCodeTables(tenantID, "Source");
                 }));
             }
 
@@ -671,114 +672,114 @@ namespace DatalistSyncUtil
             });
 
             result.AddRange(finalSecurity);
-
-            this.Cache.Set("DataListItems", result, 1440);
+    
+            this.Cache.Set("DataListItems" + tenantID.ToString(), result, 1440);
 
             return result;
         }
 
-        private List<MenuListModel> LoadMenu(string providerName, string connectionString)
+        private List<MenuListModel> LoadMenu(Guid tenantID, string providerName, string connectionString)
         {
-            if (this.Cache.IsSet("Menus"))
+            if (this.Cache.IsSet("Menus" + tenantID.ToString()))
             {
-                return this.Cache.Get<List<MenuListModel>>("Menus");
+                return this.Cache.Get<List<MenuListModel>>("Menus" + tenantID.ToString());
             }
 
             List<MenuListModel> resultmenu = new List<MenuListModel>();
 
             using (IDbSession session = new DbSession(providerName, connectionString))
             {
-                resultmenu = new MenusReadOnly(new DbSession(providerName, connectionString), "Source").SearchMenus(true);
+                resultmenu = new MenusReadOnly(new DbSession(providerName, connectionString), "Source").SearchMenus(tenantID, true);
             }
 
-            this.Cache.Set("Menus", resultmenu, 1440);
+            this.Cache.Set("Menus" + tenantID.ToString(), resultmenu, 1440);
 
             return resultmenu;
         }
 
-        private List<HelpNodeModel> LoadHelpNodeLocale(string providerName, string connectionString)
+        private List<HelpNodeModel> LoadHelpNodeLocale(Guid tenantID, string providerName, string connectionString)
         {
-            if (this.Cache.IsSet("HelpNode"))
+            if (this.Cache.IsSet("HelpNode" + tenantID.ToString()))
             {
-                return this.Cache.Get<List<HelpNodeModel>>("HelpNode");
+                return this.Cache.Get<List<HelpNodeModel>>("HelpNode" + tenantID.ToString());
             }
 
             List<HelpNodeModel> result = null;
 
             using (IDbSession session = new DbSession(providerName, connectionString))
             {
-                result = new HelpReadOnly(new DbSession(providerName, connectionString), "Source").SearchHelp();
+                result = new HelpReadOnly(new DbSession(providerName, connectionString), "Source").SearchHelp(tenantID);
             }
 
-            this.Cache.Set("HelpNode", result.OrderBy(x => x.HelpNodeNM).ToList(), 1440);
+            this.Cache.Set("HelpNode" + tenantID.ToString(), result.OrderBy(x => x.HelpNodeNM).ToList(), 1440);
 
             return result;
         }
 
-        private List<HtmlBlockModel> LoadHTMLBlocks(string providerName, string connectionString)
+        private List<HtmlBlockModel> LoadHTMLBlocks(Guid tenantID, string providerName, string connectionString)
         {
-            if (this.Cache.IsSet("HtmlBlock"))
+            if (this.Cache.IsSet("HtmlBlock" + tenantID.ToString()))
             {
-                return this.Cache.Get<List<HtmlBlockModel>>("HtmlBlock");
+                return this.Cache.Get<List<HtmlBlockModel>>("HtmlBlock" + tenantID.ToString());
             }
 
             List<HtmlBlockModel> result = null;
 
             using (IDbSession session = new DbSession(providerName, connectionString))
             {
-                result = new HtmlBlocksReadOnly(new DbSession(providerName, connectionString), "Source").SearchHtmlBlocks(true);
+                result = new HtmlBlocksReadOnly(new DbSession(providerName, connectionString), "Source").SearchHtmlBlocks(tenantID, true);
             }
 
-            this.Cache.Set("HTMLBlock", result, 1440);
+            this.Cache.Set("HTMLBlock" + tenantID.ToString(), result, 1440);
 
             return result;
         }
 
-        private List<ImageListModel> LoadImages(string providerName, string connectionString)
+        private List<ImageListModel> LoadImages(Guid tenantID, string providerName, string connectionString)
         {
-            if (this.Cache.IsSet("Images"))
+            if (this.Cache.IsSet("Images" + tenantID.ToString()))
             {
-                return this.Cache.Get<List<ImageListModel>>("Images");
+                return this.Cache.Get<List<ImageListModel>>("Images" + tenantID.ToString());
             }
 
             List<ImageListModel> result = null;
 
             using (IDbSession session = new DbSession(providerName, connectionString))
             {
-                result = new ImagesReadOnly(new DbSession(providerName, connectionString), "Source").SearchImages(true);
+                result = new ImagesReadOnly(new DbSession(providerName, connectionString), "Source").SearchImages(tenantID, true);
             }
 
-            this.Cache.Set("Images", result, 1440);
+            this.Cache.Set("Images" + tenantID.ToString(), result, 1440);
 
             return result;
         }
 
-        private List<ServiceListModel> LoadServices(string providerName, string connectionString)
+        private List<ServiceListModel> LoadServices(Guid tenantID, string providerName, string connectionString)
         {
-            if (this.Cache.IsSet("Services"))
+            if (this.Cache.IsSet("Services" + tenantID.ToString()))
             {
-                return this.Cache.Get<List<ServiceListModel>>("Services");
+                return this.Cache.Get<List<ServiceListModel>>("Services" + tenantID.ToString());
             }
 
             List<ServiceListModel> result = null;
 
             using (IDbSession session = new DbSession(providerName, connectionString))
             {
-                result = new ServicesReadOnly(new DbSession(providerName, connectionString), "Source").SearchServices();
+                result = new ServicesReadOnly(new DbSession(providerName, connectionString), "Source").SearchServices(tenantID);
             }
 
-            this.Cache.Set("Services", result, 1440);
+            this.Cache.Set("Services" + tenantID.ToString(), result, 1440);
 
             return result;
         }
 
-        private List<CodeLinkTable> GetDataListItemLinks(string providerName, string connectionString)
+        private List<CodeLinkTable> GetDataListItemLinks(Guid tenantID, string providerName, string connectionString)
         {
             List<CodeLinkTable> linkers = null;
 
             using (IDbSession session = new DbSession(providerName, connectionString))
             {
-                linkers = new GetDataListItemLinksDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure();
+                linkers = new GetDataListItemLinksDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(tenantID);
             }
 
             return linkers;
@@ -1029,7 +1030,7 @@ namespace DatalistSyncUtil
                 filteredModuleList = modulesQuery.ToList();
             }
 
-            this.DataListView.DataSource = new BindingList<DataList>(filteredModuleList.Where(w => w.TenantID == tenantID).ToList());
+                            this.DataListView.DataSource = new BindingList<DataList>(filteredModuleList.ToList());              
         }
 
         private void ModuleMenuListSelectedItems()
@@ -1054,7 +1055,7 @@ namespace DatalistSyncUtil
                                select lists;
             filteredModuleList1 = modulesQuery.ToList();
 
-            this.DataListView.DataSource = new BindingList<MenuListModel>(filteredModuleList1.Where(w => w.TenantId == tenantID).ToList());
+            this.DataListView.DataSource = new BindingList<MenuListModel>(filteredModuleList1.ToList());
         }
 
         private void ModuleHelpListSelectedItems()
@@ -1131,7 +1132,7 @@ namespace DatalistSyncUtil
                 filteredModuleList = modulesQuery.ToList();
             }
 
-            this.DataListView.DataSource = new BindingList<HtmlBlockModel>(filteredModuleList.Where(w => w.TenantId == tenantID).ToList());
+            this.DataListView.DataSource = new BindingList<HtmlBlockModel>(filteredModuleList.ToList());
         }
 
         private void ModuleImageListSelectedItems()
@@ -1241,21 +1242,22 @@ namespace DatalistSyncUtil
 
         private void DataListView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
             string caseSwitch = this.ControlName.SelectedItem.ToString();
             switch (caseSwitch)
             {
                 case "AppSetting":
                     break;
                 case "Datalist":
-                    ListItems dataListitemsPage = new ListItems((DataListView.Rows[e.RowIndex].DataBoundItem as DataList).ContentID, this.NoOfDays);
+                    ListItems dataListitemsPage = new ListItems(tenantID, (DataListView.Rows[e.RowIndex].DataBoundItem as DataList).ContentID, this.NoOfDays);
                     dataListitemsPage.ShowDialog();
                     break;
                 case "Security":
-                    ListItems itemsPage = new ListItems((this.DataListView.Rows[e.RowIndex].DataBoundItem as DataList).ContentID, this.NoOfDays);
+                    ListItems itemsPage = new ListItems(tenantID, (this.DataListView.Rows[e.RowIndex].DataBoundItem as DataList).ContentID, this.NoOfDays);
                     itemsPage.ShowDialog();
                     break;
                 case "Menus":
-                    ListMenuItem menusPage = new ListMenuItem((this.DataListView.Rows[e.RowIndex].DataBoundItem as MenuListModel).Name, this.NoOfDays);
+                    ListMenuItem menusPage = new ListMenuItem(tenantID, (this.DataListView.Rows[e.RowIndex].DataBoundItem as MenuListModel).Name, this.NoOfDays);
                     menusPage.ShowDialog();
                     break;
                 case "HtmlBlock":
@@ -1351,10 +1353,11 @@ namespace DatalistSyncUtil
             AppSettingsModel list1 = null;
 
             Guid tenantID = new Guid(this.TenantList.SelectedValue.ToString());
+
             if (this.SourceAppSettings != null)
             {
-                lists = this.SourceAppSettings.Where(w => w.TenantID == tenantID).ToList();
-                List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
+                lists = this.SourceAppSettings.ToList();
+                List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules" + tenantID.ToString());
                 foreach (AppSettingsModel list in lists)
                 {
                     list1 = new AppSettingsModel()
@@ -1390,10 +1393,10 @@ namespace DatalistSyncUtil
 
             if (this.SourceLists != null)
             {
-                lists = this.SourceLists.Where(w => w.TenantID == tenantID).ToList();
-                List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
+                lists = this.SourceLists.ToList();
+                List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules" + tenantID.ToString());
                 List<DataListAttribute> attributes = new List<DataListAttribute>();
-                lists.ForEach(x =>
+                lists.ForEach(x => 
                 {
                     if (x.DataListAttributes != null)
                     {
@@ -1435,28 +1438,28 @@ namespace DatalistSyncUtil
 
             if (this.SourceHtmlListItems != null)
             { 
-            lists = this.SourceHtmlListItems.Where(w => w.TenantId == tenantID).ToList();
-            List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
+                lists = this.SourceHtmlListItems.ToList();
+                List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules" + tenantID.ToString());
 
-            this.SourceHtmlListItems.ForEach(x =>
-            {
-                htmlLangs.AddRange(x.HtmlBlockLanguages.ToList());
-            });
-
-            foreach (HtmlBlockModel list in lists)
-            {
-                list1 = new HtmlBlockMainModel()
+                this.SourceHtmlListItems.ForEach(x =>
                 {
-                    ContentId = list.ContentId,
-                    Description = list.Description,
-                    ID = list.ID,
-                    HtmlBlockLanguages = this.ConvertToCustomHtmlLang(list.ContentId, list.ID, htmlLangs),
-                    LastModifiedTS = list.LastModifiedTS,
-                    OperatorId = list.OperatorId,
-                    TenantModuleId = list.TenantModuleId
-                };
+                    htmlLangs.AddRange(x.HtmlBlockLanguages.ToList());
+                });
 
-                listsMain.Add(list1);
+                foreach (HtmlBlockModel list in lists)
+                {
+                    list1 = new HtmlBlockMainModel()
+                    {
+                        ContentId = list.ContentId,
+                        Description = list.Description,
+                        ID = list.ID,
+                        HtmlBlockLanguages = this.ConvertToCustomHtmlLang(list.ContentId, list.ID, htmlLangs),
+                        LastModifiedTS = list.LastModifiedTS,
+                        OperatorId = list.OperatorId,
+                        TenantModuleId = list.TenantModuleId
+                    };
+
+                    listsMain.Add(list1);
                 }
             }
 
@@ -1497,8 +1500,8 @@ namespace DatalistSyncUtil
 
             if (this.SourceImagesList != null)
             {
-                lists = this.SourceImagesList.Where(w => w.TenantId == tenantID).ToList();
-                List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
+                lists = this.SourceImagesList.ToList();
+                List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules" + tenantID.ToString());
 
                 this.SourceImagesList.ForEach(x =>
                 {
@@ -1620,8 +1623,8 @@ namespace DatalistSyncUtil
 
             if (this.SourceMenus != null)
             {
-                lists = this.SourceMenus.Where(w => w.TenantId == tenantID).ToList();
-                List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
+                lists = this.SourceMenus.ToList();
+                List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules" + tenantID.ToString());
                 foreach (MenuListModel list in lists)
                 {
                     list1 = new MenuListModel()
@@ -1693,7 +1696,7 @@ namespace DatalistSyncUtil
             List<TenantModuleModel> selectedModules = new List<TenantModuleModel>();
             if (this.SourceHelpNodeList != null)
             {
-                helplists = this.SourceHelpNodeList.Where(w => w.TenantId == tenantID).ToList();
+                helplists = this.SourceHelpNodeList.ToList();
             }
 
             return helplists;
@@ -1727,7 +1730,7 @@ namespace DatalistSyncUtil
             List<CodeListModel> listItems = null;
             List<CodeItemModel> items = new List<CodeItemModel>();
             CodeItemModel item = null;
-            listItems = this.SourceListItems.Where(w => w.ContentID == contentID && w.TenantID == tenantID).ToList();
+            listItems = this.SourceListItems.Where(w => w.ContentID == contentID).ToList();
 
             listItems.ForEach(e =>
             {
@@ -1884,8 +1887,8 @@ namespace DatalistSyncUtil
 
             if (this.SourceLists != null)
             {
-                lists = this.SourceLists.Where(w => w.TenantID == tenantID && (w.ContentID == this.securityFunction || w.ContentID == this.securityRoles || w.ContentID == this.securityRight)).ToList();
-                List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules");
+                lists = this.SourceLists.Where(w => (w.ContentID == this.securityFunction || w.ContentID == this.securityRoles || w.ContentID == this.securityRight)).ToList();
+                List<TenantModuleModel> modules = this.Cache.Get<List<TenantModuleModel>>("TenantModules" + tenantID.ToString());
                 List<DataListAttribute> attributes = new List<DataListAttribute>();
                 lists.ForEach(x => { attributes.AddRange(x.DataListAttributes); });
 

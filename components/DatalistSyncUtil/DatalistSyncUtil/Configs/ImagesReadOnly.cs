@@ -10,6 +10,7 @@ using HP.HSP.UA3.Core.BAS.CQRS.Config.DAOHelpers;
 using HP.HSP.UA3.Core.BAS.CQRS.DataAccess.Entities;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
 using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -40,41 +41,40 @@ namespace DatalistSyncUtil.Configs
         /// Searches the Images Table.
         /// </summary>
         /// <returns>List<ImageListModel></returns>
-        public List<ImageListModel> SearchImages(bool expandImageLanguages = false)
+        public List<ImageListModel> SearchImages(Guid tenantID, bool expandImageLanguages = false)
         {
             List<ImageListModel> result = null;
-            if (!this.Cachemanager.IsSet(this.imageTablesKey))
+            if (!this.Cachemanager.IsSet(this.imageTablesKey + tenantID.ToString()))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
                     result = new GetImageDaoHelper(
                         new ImageDbContext(session, true),
-                        new DataListsDbContext(session, true),
-                        this.Cachemanager).ExecuteProcedure();
+                        this.Cachemanager).ExecuteProcedure(tenantID);
                 }
 
-                this.Cachemanager.Set(this.imageTablesKey, result, this.cacheTimeInMins);
+                this.Cachemanager.Set(this.imageTablesKey + tenantID.ToString(), result, this.cacheTimeInMins);
             }
             else
             {
-                result = this.Cachemanager.Get<List<ImageListModel>>(this.imageTablesKey).ToList();
+                result = this.Cachemanager.Get<List<ImageListModel>>(this.imageTablesKey + tenantID.ToString()).ToList();
             }
 
             if (expandImageLanguages)
             {
                 List<ImageLanguagesModel> languages = null;
-                if (!this.Cachemanager.IsSet(this.imageLanguageKey))
+                if (!this.Cachemanager.IsSet(this.imageLanguageKey + tenantID.ToString()))
                 {
                     using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                     {
-                        languages = new GetImageLanguagesDaoHelper(new ImageDbContext(session, true)).ExecuteProcedure();
+                        languages = new GetImageLanguagesDaoHelper(new ImageDbContext(session, true)).ExecuteProcedure(tenantID);
                     }
 
-                    this.Cachemanager.Set(this.imageLanguageKey, languages, this.cacheTimeInMins);
+                    this.Cachemanager.Set(this.imageLanguageKey + tenantID.ToString(), languages, this.cacheTimeInMins);
                 }
                 else
                 {
-                    languages = this.Cachemanager.Get<List<ImageLanguagesModel>>(this.imageLanguageKey);
+                    languages = this.Cachemanager.Get<List<ImageLanguagesModel>>(this.imageLanguageKey + tenantID.ToString());
                 }
 
                 result.ForEach(x => x.ImageLanguages = this.ExpandImageLanguages(x, languages));
@@ -88,22 +88,22 @@ namespace DatalistSyncUtil.Configs
             return languages.FindAll(x => x.ID.Equals(toExpand.ID));
         }
 
-        public List<ImageLanguagesModel> GetImageLanguages()
+        public List<ImageLanguagesModel> GetImageLanguages(Guid tenantID)
         {
             List<ImageLanguagesModel> languages = null;
 
-            if (!this.Cachemanager.IsSet(this.imageLanguageKey))
+            if (!this.Cachemanager.IsSet(this.imageLanguageKey + tenantID.ToString()))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
-                    languages = new GetImageLanguagesDaoHelper(new ImageDbContext(session, true)).ExecuteProcedure();
+                    languages = new GetImageLanguagesDaoHelper(new ImageDbContext(session, true)).ExecuteProcedure(tenantID);
                 }
 
-                this.Cachemanager.Set(this.imageLanguageKey, languages, this.cacheTimeInMins);
+                this.Cachemanager.Set(this.imageLanguageKey + tenantID.ToString(), languages, this.cacheTimeInMins);
             }
             else
             {
-                languages = this.Cachemanager.Get<List<ImageLanguagesModel>>(this.imageLanguageKey);
+                languages = this.Cachemanager.Get<List<ImageLanguagesModel>>(this.imageLanguageKey + tenantID.ToString());
             }
 
             return languages;

@@ -148,7 +148,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
         public string GetDataListItem(Datalist datalist, DatalistItem dataListItem)
         {
             int retryCount = 0;
-            string objDataQuery = string.Format("ReferenceCodes?$filter=ContentID%20eq%20%27{0}%27%20and%20Code%20eq%20%27{1}%27&$expand=Children,Attributes", datalist.ContentId, dataListItem.Key);
+            string objDataQuery = string.Format("ReferenceCodes({2})?$filter=ContentID%20eq%20%27{0}%27%20and%20Code%20eq%20%27{1}%27&$expand=Children,Attributes", datalist.ContentId, dataListItem.Key, this.MainForm.TenantId);
             string baseUrl = this.MainForm.ODataEndpointAddress;
 
             HttpClient client = new HttpClient();
@@ -449,7 +449,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
         {
             string objDataQuery = string.Empty;
 
-            objDataQuery = string.Format("CacheRefresh(CacheKey='{0}',ClearAllCodeTableCache={1},ReloadCache={2},ReloadAllCodeTableCache={3})", cacheKey, clearAllCodeTableCacheFlag, reloadCache, reloadAllCodeTableCache);
+            objDataQuery = string.Format("CacheRefresh(CacheKey='{0}',ClearAllCodeTableCache={1},ReloadCache={2},ReloadAllCodeTableCache={3}, TenantID={4})", cacheKey, clearAllCodeTableCacheFlag, reloadCache, reloadAllCodeTableCache, this.MainForm.TenantId);
             string baseUrl = MainForm.ODataEndpointAddress;
 
             HttpClient client = new HttpClient();

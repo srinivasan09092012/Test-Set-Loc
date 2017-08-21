@@ -10,6 +10,7 @@ using HP.HSP.UA3.Core.BAS.CQRS.Config.DAOHelpers;
 using HP.HSP.UA3.Core.BAS.CQRS.DataAccess.Entities;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
 using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -40,29 +41,28 @@ namespace DatalistSyncUtil.Configs
         /// Searches the HtmlBlock Table.
         /// </summary>
         /// <returns>List<HtmlBlockModel></returns>
-        public List<HtmlBlockModel> SearchHtmlBlocks(bool expandHtmlBlockLanguages = false)
+        public List<HtmlBlockModel> SearchHtmlBlocks(Guid tenantID, bool expandHtmlBlockLanguages = false)
         {
             List<HtmlBlockModel> result = null;
-            if (!this.Cachemanager.IsSet(this.htmlBlockTablesKey))
+            if (!this.Cachemanager.IsSet(this.htmlBlockTablesKey + tenantID.ToString()))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
                       result = new GetHtmlBlockDaoHelper(
                           new HtmlBlockDbContext(session, true),
-                          new DataListsDbContext(session, true),
-                          this.Cachemanager).ExecuteProcedure();
+                          this.Cachemanager).ExecuteProcedure(tenantID);
                 }
 
-                this.Cachemanager.Set(this.htmlBlockTablesKey, result, this.cacheTimeInMins);
+                this.Cachemanager.Set(this.htmlBlockTablesKey + tenantID.ToString(), result, this.cacheTimeInMins);
             }
             else
             {
-                result = this.Cachemanager.Get<List<HtmlBlockModel>>(this.htmlBlockTablesKey).ToList();
+                result = this.Cachemanager.Get<List<HtmlBlockModel>>(this.htmlBlockTablesKey + tenantID.ToString()).ToList();
             }
 
             if (expandHtmlBlockLanguages)
             {
-                List<HtmlBlockLanguagesModel> languages = this.GetHtmlBlockLanguages();
+                List<HtmlBlockLanguagesModel> languages = this.GetHtmlBlockLanguages(tenantID);
                 result.ForEach(x => x.HtmlBlockLanguages = this.ExpandHtmlBlockLanguages(x, languages));
             }
 
@@ -74,22 +74,22 @@ namespace DatalistSyncUtil.Configs
             return languages.FindAll(x => x.ID.Equals(toExpand.ID));
         }
 
-        public List<HtmlBlockLanguagesModel> GetHtmlBlockLanguages()
+        public List<HtmlBlockLanguagesModel> GetHtmlBlockLanguages(Guid tenantID)
         {
             List<HtmlBlockLanguagesModel> languages = null;
 
-            if (!this.Cachemanager.IsSet(this.htmlBlockLanguageKey))
+            if (!this.Cachemanager.IsSet(this.htmlBlockLanguageKey + tenantID.ToString()))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
-                    languages = new GetHtmlBlockLanguagesDaoHelper(new HtmlBlockDbContext(session, true)).ExecuteProcedure();
+                    languages = new GetHtmlBlockLanguagesDaoHelper(new HtmlBlockDbContext(session, true)).ExecuteProcedure(tenantID);
                 }
 
-                this.Cachemanager.Set(this.htmlBlockLanguageKey, languages, this.cacheTimeInMins);
+                this.Cachemanager.Set(this.htmlBlockLanguageKey + tenantID.ToString(), languages, this.cacheTimeInMins);
             }
             else
             {
-                languages = this.Cachemanager.Get<List<HtmlBlockLanguagesModel>>(this.htmlBlockLanguageKey);
+                languages = this.Cachemanager.Get<List<HtmlBlockLanguagesModel>>(this.htmlBlockLanguageKey + tenantID.ToString());
             }
 
             return languages;

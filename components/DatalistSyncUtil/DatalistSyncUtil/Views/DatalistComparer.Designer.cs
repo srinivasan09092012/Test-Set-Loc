@@ -636,7 +636,7 @@ namespace DatalistSyncUtil
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox SourceControlNames;
         private System.Windows.Forms.ToolStripMenuItem htmlBlockToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem securityToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem securityToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem imagesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem appSettingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;

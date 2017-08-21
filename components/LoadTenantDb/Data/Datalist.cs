@@ -165,7 +165,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             GetDataListId(dataList);
 
             int retryCount = 0;
-            string objDataQuery = string.Format("DataList?$filter=ContentID%20eq%20%27{0}%27", dataList.ContentId);
+            string objDataQuery = string.Format("DataList(TenantID={1})?$filter=ContentID%20eq%20%27{0}%27", dataList.ContentId, this.MainForm.TenantId);
             string baseUrl = MainForm.ODataEndpointAddress;
 
             HttpClient client = new HttpClient();
@@ -372,7 +372,7 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
         {
             string objDataQuery = string.Empty;
 
-            objDataQuery = string.Format("CacheRefresh(CacheKey='{0}',ClearAllCodeTableCache={1},ReloadCache={2},ReloadAllCodeTableCache={3})", cacheKey, clearAllCodeTableCacheFlag, reloadCache, reloadAllCodeTableCache);
+            objDataQuery = string.Format("CacheRefresh(CacheKey='{0}',ClearAllCodeTableCache={1},ReloadCache={2},ReloadAllCodeTableCache={3},TenantID={4})", cacheKey, clearAllCodeTableCacheFlag, reloadCache, reloadAllCodeTableCache, this.MainForm.TenantId);
             string baseUrl = MainForm.ODataEndpointAddress;
 
             HttpClient client = new HttpClient();

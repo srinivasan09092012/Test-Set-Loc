@@ -41,48 +41,47 @@ namespace DatalistSyncUtil.Configs
         /// Searches the Menu Table.
         /// </summary>
         /// <returns>List<MenuListModel></returns>
-        public List<MenuListModel> SearchMenus(bool expandChildren)
+        public List<MenuListModel> SearchMenus(Guid tenantID, bool expandChildren)
         {
             List<MenuListModel> result = null;
-            if (!this.cachemanager.IsSet(this.menuTableKey))
+            if (!this.cachemanager.IsSet(this.menuTableKey + tenantID.ToString()))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
                     result = new GetMenuDaoHelper(
                         new MenuDbContext(session, true),
-                         new DataListsDbContext(session, true),
-                         this.cachemanager).ExecuteProcedure();
+                         this.cachemanager).ExecuteProcedure(tenantID);
                 }
 
-                this.cachemanager.Set(this.menuTableKey, result, this.cacheTimeInMins);
+                this.cachemanager.Set(this.menuTableKey + tenantID.ToString(), result, this.cacheTimeInMins);
             }
             else
             {
-                result = this.cachemanager.Get<List<MenuListModel>>(this.menuTableKey).ToList();
+                result = this.cachemanager.Get<List<MenuListModel>>(this.menuTableKey + tenantID.ToString()).ToList();
             }
 
             if (expandChildren)
             {
                 List<MenuItemModel> languages = null;
-                if (!this.cachemanager.IsSet(this.menuItemTableKey))
+                if (!this.cachemanager.IsSet(this.menuItemTableKey + tenantID.ToString()))
                 {
                     using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                     {
-                        languages = new GetMenuItemDaoHelper(new MenuDbContext(session, true)).ExecuteProcedure();
+                        languages = new GetMenuItemDaoHelper(new MenuDbContext(session, true)).ExecuteProcedure(tenantID);
                     }
 
-                    this.cachemanager.Set(this.menuItemTableKey, languages, this.cacheTimeInMins);
+                    this.cachemanager.Set(this.menuItemTableKey + tenantID.ToString(), languages, this.cacheTimeInMins);
                 }
                 else
                 {
-                    languages = this.cachemanager.Get<List<MenuItemModel>>(this.menuItemTableKey);
+                    languages = this.cachemanager.Get<List<MenuItemModel>>(this.menuItemTableKey + tenantID.ToString());
                 }
 
                 result.ForEach(x => x.Children = this.ExpandChildren(x, languages));
             }
 
-            this.ManageODataCache(this.menuTableKey, false);
-            this.ManageODataCache(this.menuItemTableKey, false);
+            this.ManageODataCache(tenantID, this.menuTableKey, false);
+            this.ManageODataCache(tenantID, this.menuItemTableKey, false);
             return result;
             ///return languages;
         }
@@ -96,17 +95,17 @@ namespace DatalistSyncUtil.Configs
             return toExpand.Children.ToList();
         }
 
-        public bool ManageODataCache(string cacheKey, bool reloadCache = false)
+        public bool ManageODataCache(Guid tenantID, string cacheKey, bool reloadCache = false)
         {
             bool result = false;
 
-            if (!string.IsNullOrEmpty(cacheKey))
+            if (!string.IsNullOrEmpty(cacheKey + tenantID.ToString()))
             {
-                this.cachemanager.Remove(cacheKey);
+                this.cachemanager.Remove(cacheKey + tenantID.ToString());
 
                 if (reloadCache)
                 {
-                    this.ReloadCache(cacheKey);
+                    this.ReloadCache(tenantID, cacheKey);
                 }
 
                 return true;
@@ -115,12 +114,12 @@ namespace DatalistSyncUtil.Configs
             return result;
         }
 
-        private void ReloadCache(string cacheKey)
+        private void ReloadCache(Guid tenantID, string cacheKey)
         {
-            if (cacheKey.ToLower().Equals(this.menuTableKey.ToLower()))
+            if (cacheKey.ToLower().Equals(this.menuTableKey.ToLower() + tenantID.ToString()))
             {
-                this.cachemanager.Remove(this.menuItemTableKey);
-                this.SearchMenus(true);
+                this.cachemanager.Remove(this.menuItemTableKey + tenantID.ToString());
+                this.SearchMenus(tenantID, true);
             }
         }
 

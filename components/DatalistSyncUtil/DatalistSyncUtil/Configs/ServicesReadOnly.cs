@@ -10,6 +10,7 @@ using HP.HSP.UA3.Core.BAS.CQRS.Config.DAOHelpers;
 using HP.HSP.UA3.Core.BAS.CQRS.DataAccess.Entities;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
 using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -37,24 +38,23 @@ namespace DatalistSyncUtil.Configs
         /// Searches the Service Table.
         /// </summary>
         /// <returns>List<ServiceListModel></returns>
-        public List<ServiceListModel> SearchServices()
+        public List<ServiceListModel> SearchServices(Guid tenantID)
         {
             List<ServiceListModel> result = null;
-            if (!this.Cachemanager.IsSet(this.serviceTableKey))
+            if (!this.Cachemanager.IsSet(this.serviceTableKey + tenantID.ToString()))
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
                     result = new GetServiceDaoHelper(
                         new ServiceDbContext(session, true),
-                        new DataListsDbContext(session, true),
-                        this.Cachemanager).ExecuteProcedure();
+                        this.Cachemanager).ExecuteProcedure(tenantID);
                 }
 
-                this.Cachemanager.Set(this.serviceTableKey, result, this.cacheTimeInMins);
+                this.Cachemanager.Set(this.serviceTableKey + tenantID.ToString(), result, this.cacheTimeInMins);
             }
             else
             {
-                result = this.Cachemanager.Get<List<ServiceListModel>>(this.serviceTableKey).ToList();
+                result = this.Cachemanager.Get<List<ServiceListModel>>(this.serviceTableKey + tenantID.ToString()).ToList();
             }
 
             return result;
