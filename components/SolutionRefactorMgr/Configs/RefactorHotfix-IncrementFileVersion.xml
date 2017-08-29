@@ -8,6 +8,7 @@
     <ModuleConfig name="Core" branch="036" types="All" />
     <ModuleConfig name="CorrespondenceMgmt" branch="036" types="All" />
     <ModuleConfig name="DrugRebate" branch="036" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="036" types="All" />
     <ModuleConfig name="EDI" branch="036" types="All" />
     <ModuleConfig name="eID" branch="036" types="All" />
     <ModuleConfig name="EmployeeMgmt" branch="036" types="All" />
