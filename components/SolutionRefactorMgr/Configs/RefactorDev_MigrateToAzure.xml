@@ -68,7 +68,6 @@
     <ReplacementString qualifier="HPE_TPL_CASE_SVC_WRK" from="HPE_TPL_CASE_SVC_WRK" to="AWRK_PDBB" />
     <ReplacementString qualifier="HPE_TPL_POLICY_SVC_WRK" from="HPE_TPL_POLICY_SVC_WRK" to="AWRK_PDBB" />
     <ReplacementString qualifier="206.122.21.94" from="206.122.21.94" to="mapsdevdbv02.dev.mapshc.com" />
-    <ReplacementString qualifier="MUIP_3AU" from="MUIP_3AU" to="MUIP_3AU;ConnectionLoadBalance=true" />
     <!--DEV DB-->
     <ReplacementString qualifier="HPE_CLAIMS_SVC_DEV" from="HPE_CLAIMS_SVC_DEV" to="ADEV_PDBB" />
     <ReplacementString qualifier="HPE_CORRESPONDENCE_MGMT_SVC_DEV" from="HPE_CORRESPONDENCE_MGMT_SVC_DEV" to="ADEV_PDBB" />
@@ -91,7 +90,6 @@
     <ReplacementString qualifier="HPE_TPL_CASE_SVC_DEV" from="HPE_TPL_CASE_SVC_DEV" to="ADEV_PDBB" />
     <ReplacementString qualifier="HPE_TPL_POLICY_SVC_DEV" from="HPE_TPL_POLICY_SVC_DEV" to="ADEV_PDBB" />
     <ReplacementString qualifier="130.175.204.76" from="130.175.204.76" to="mapsdevdbv01.dev.mapshc.com" />
-    <ReplacementString qualifier="Vertica7" from="Vertica7" to="Vertica7;ConnectionLoadBalance=true" />
     <!--WRK USER/PWDS-->
     <ReplacementString qualifier="CLAIMS_WRK" from="CLAIMS_WRK" to="UA3_CLAIMS" />
     <ReplacementString qualifier="CORRESPONDENCE_MGMT_WRK" from="CORRESPONDENCE_MGMT_WRK" to="UA3_CORRESPONDENCE_MGMT" />
