@@ -110,6 +110,8 @@
     <ReplacementString qualifier="TENANT_TXN_WRK" from="TENANT_TXN_WRK" to="UA3_TENANT_TXN" />
     <ReplacementString qualifier="TPL_CASE_WRK" from="TPL_CASE_WRK" to="UA3_TPL_CASE" />
     <ReplacementString qualifier="TPL_POLICY_WRK" from="TPL_POLICY_WRK" to="UA3_TPL_POLICY" />
+    <ReplacementString qualifier="pium51_k60" from="pium51_k60" to="pium51_k" />
+    <ReplacementString qualifier="DATABASE=UA3_PIUM" from="DATABASE=UA3_PIUM" to="DATABASE=medicaid" />      
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
   <TfsWorkspace>UA3</TfsWorkspace>
