@@ -88,6 +88,8 @@ namespace LoadReferenceData
                 }
             };
 
+            LoadQuery("Tenants", "Tenants");
+
             tasks.Add(Task.Factory.StartNew(() =>
             {
                 LoadQuery("HtmlBlock(TenantID=" + tenantID + ")?$expand=HtmlBlockLanguages", "HtmlBlock");
