@@ -911,14 +911,14 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                                     {
                                         prop.Id = prop.Id.ToLower();
 
-                                        if (prop.EditRestrictionSecurityRightId != null)
+                                        if (prop.EditSecurityRightContentId != null)
                                         {
-                                            prop.EditRestrictionSecurityRightId = prop.EditRestrictionSecurityRightId.ToLower();
+                                            prop.EditSecurityRightContentId = prop.EditSecurityRightContentId.ToLower();
                                         }
 
-                                        if (prop.ViewRestrictionSecurityRightId != null)
+                                        if (prop.ViewSecurityRightContentId != null)
                                         {
-                                            prop.ViewRestrictionSecurityRightId = prop.ViewRestrictionSecurityRightId.ToLower();
+                                            prop.ViewSecurityRightContentId = prop.ViewSecurityRightContentId.ToLower();
                                         }
                                     }
                                 }
@@ -1611,7 +1611,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         private void ShowModelProperties(string id)
         {
             ModelDefinitionModel model = _tenantConfig.Modules[0].ModelDefinitionConfiguration.Find(i => i.Id == id);
-
             ModelPropertyForm form = new ModelPropertyForm()
             {
                 BusinessModule = _businessModuleName,

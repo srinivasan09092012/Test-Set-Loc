@@ -346,6 +346,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             if (IsValidModelPropertyItems())
             {
                 this.Model.ModelProperties = _modelProperties;
+                this.Model.ModelProperties.ForEach(item =>
+                {
+                    item.EditSecurityRightContentIdSpecified = string.IsNullOrEmpty(item.EditSecurityRightContentId) ? false : true;
+                    item.ViewSecurityRightContentIdSpecified = string.IsNullOrEmpty(item.ViewSecurityRightContentId) ? false : true;
+                });
                 isSaved = true;
                 ToggleDirtyData(false);
                 this.HasDataChanged = true;

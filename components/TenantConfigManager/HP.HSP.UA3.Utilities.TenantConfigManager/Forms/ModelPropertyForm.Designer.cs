@@ -69,6 +69,8 @@
             this.defaultTextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hintTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accessKeyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ViewSecurityRightContentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditSecurityRightContentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ModelPropertiesGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelPropertiesBindingSource)).BeginInit();
@@ -220,7 +222,9 @@
             this.labelContentIdDataGridViewButtonColumn,
             this.defaultTextDataGridViewTextBoxColumn,
             this.hintTypeDataGridViewTextBoxColumn,
-            this.accessKeyDataGridViewTextBoxColumn});
+            this.accessKeyDataGridViewTextBoxColumn,
+            this.ViewSecurityRightContentId,
+            this.EditSecurityRightContentId});
             this.ModelPropertiesGridView.DataSource = this.modelPropertiesBindingSource;
             this.ModelPropertiesGridView.Location = new System.Drawing.Point(12, 90);
             this.ModelPropertiesGridView.Name = "ModelPropertiesGridView";
@@ -394,6 +398,20 @@
             this.accessKeyDataGridViewTextBoxColumn.Name = "accessKeyDataGridViewTextBoxColumn";
             this.accessKeyDataGridViewTextBoxColumn.Width = 81;
             // 
+            // ViewSecurityRightContentId
+            // 
+            this.ViewSecurityRightContentId.DataPropertyName = "ViewSecurityRightContentId";
+            this.ViewSecurityRightContentId.HeaderText = "View Security Right Content Id";
+            this.ViewSecurityRightContentId.Name = "ViewSecurityRightContentId";
+            this.ViewSecurityRightContentId.Width = 200;
+            // 
+            // EditSecurityRightContentId
+            // 
+            this.EditSecurityRightContentId.DataPropertyName = "EditSecurityRightContentId";
+            this.EditSecurityRightContentId.HeaderText = "Edit Security Right Content Id";
+            this.EditSecurityRightContentId.Name = "EditSecurityRightContentId";
+            this.EditSecurityRightContentId.Width = 200;
+            // 
             // ModelPropertyForm
             // 
             this.AcceptButton = this.SaveButton;
@@ -457,6 +475,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn defaultTextDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hintTypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn accessKeyDataGridViewTextBoxColumn;
-
+        private System.Windows.Forms.DataGridViewTextBoxColumn ViewSecurityRightContentId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EditSecurityRightContentId;
     }
 }

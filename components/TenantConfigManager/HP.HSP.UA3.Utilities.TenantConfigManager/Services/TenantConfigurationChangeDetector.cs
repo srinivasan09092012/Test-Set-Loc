@@ -242,8 +242,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Services
                     p => p.DataType,
                     p => p.DefaultText,
                     p => p.DisplayType,
-                    p => p.EditRestrictionSecurityRightId,
-                    p => p.EditRestrictionSecurityRightIdSpecified,
+                    p => p.EditSecurityRightContentId,
+                    p => p.EditSecurityRightContentIdSpecified,
                     p => p.Height,
                     p => p.HintType,
                     p => p.IgnoreDirtyData,
@@ -251,8 +251,8 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Services
                     p => p.LabelContentId,
                     p => p.MaxLength,
                     p => p.Name,
-                    p => p.ViewRestrictionSecurityRightId,
-                    p => p.ViewRestrictionSecurityRightIdSpecified
+                    p => p.ViewSecurityRightContentId,
+                    p => p.ViewSecurityRightContentIdSpecified
                 });
         }
 
