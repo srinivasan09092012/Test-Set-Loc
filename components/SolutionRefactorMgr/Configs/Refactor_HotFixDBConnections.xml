@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Inline" includeFolderNames="true" includeFileNames="true" includeFileContents="true" useSourceControl="true">
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+    <ModuleConfig name="Administration" branch="039" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="039" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="039" types="All" />
+    <ModuleConfig name="Core" branch="039" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="039" types="All" />
+    <ModuleConfig name="DrugRebate" branch="039" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="039" types="All" />
+    <ModuleConfig name="EDI" branch="039" types="All" />
+    <ModuleConfig name="eID" branch="039" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="039" types="All" />
+    <ModuleConfig name="FileTransfer" branch="039" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="039" types="All" />
+    <ModuleConfig name="KansasOnly" branch="039" types="All" />
+    <ModuleConfig name="ManagedCare" branch="039" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="039" types="All" />
+    <ModuleConfig name="MemberManagement" branch="039" types="All" />
+    <ModuleConfig name="MemberPortal" branch="039" types="All" />
+    <ModuleConfig name="Notifications" branch="039" types="All" />
+    <ModuleConfig name="PlanManagement" branch="039" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="039" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="039" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="039" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="039" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="039" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="039" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="039" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="039" types="All" />
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes>
+    <FileType>.config</FileType>
+  </FileTypes>
+  <LineDeletes>
+  </LineDeletes>
+  <ReplacementStrings>
+    <ReplacementString qualifier="ADEV_PDBA" from="ADEV_PDBA" to="AST1_PDBA" />
+    <ReplacementString qualifier="ADEV_PDBB" from="ADEV_PDBB" to="AST1_PDBB" />
+    <ReplacementString qualifier="clm_RwPbe62" from="clm_RwPbe62" to="Clm_hmonU66" />
+    <ReplacementString qualifier="CrrSPNDNc_Mgmt_65" from="CrrSPNDNc_Mgmt_65" to="Cmg_raTDo62" />
+    <ReplacementString qualifier="drb_nEMUP54" from="drb_nEMUP54" to="Drb_LHUBY43" />
+    <ReplacementString qualifier="Ua3edi_17" from="Ua3edi_17" to="Edi_zTOwt47" />
+    <ReplacementString qualifier="em_Ple91" from="em_Ple91" to="Emp_VeWpt59" />
+    <ReplacementString qualifier="ntgrtn_i1" from="ntgrtn_i1" to="Int_acqmU84" />
+    <ReplacementString qualifier="Mgr_CreD11116" from="Mgr_CreD11116" to="Mgc_lZdEG34" />
+    <ReplacementString qualifier="mBr_74" from="mBr_74" to="Mbr_ozNyz16" />
+    <ReplacementString qualifier="ntfctns_o34" from="ntfctns_o34" to="Ntf_mCWlc23" />
+    <ReplacementString qualifier="pm51_k" from="pm51_k" to="Piu_ZLmez35" />
+    <ReplacementString qualifier="PLanmGmT786" from="PLanmGmT786" to="Pmg_WYXgQ76" />
+    <ReplacementString qualifier="pdr_uUxQo51" from="pdr_uUxQo51" to="Pdr_onTcv87" />
+    <ReplacementString qualifier="prvdr_o3" from="prvdr_o3" to="Pvd_eCQKc25" />
+    <ReplacementString qualifier="prvdr_crdntl_pe3" from="prvdr_crdntl_pe3" to="Pct_NSCJq16" />
+    <ReplacementString qualifier="prvdr_nrll_y3" from="prvdr_nrll_y3" to="Pnr_YwhyF57" />
+    <ReplacementString qualifier="tnnt_tst_e2" from="tnnt_tst_e2" to="Tnt_hjOop18" />
+    <ReplacementString qualifier="txn_qZpbv96" from="txn_qZpbv96" to="Ttx_KFeHx94" />
+    <ReplacementString qualifier="Ua3tplKs_11" from="Ua3tplKs_11" to="Tcs_FzsgN93" />
+    <ReplacementString qualifier="tPlpCy_y6" from="tPlpCy_y6" to="Tpl_aMvvx10" />
+  </ReplacementStrings>
+  <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
+  <TfsWorkspace></TfsWorkspace>
+</RefactorConfig>

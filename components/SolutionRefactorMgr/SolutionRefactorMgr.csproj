@@ -126,6 +126,7 @@
     <Folder Include="Common\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Configs\Refactor_HotFixDBConnections.xml" />
     <Content Include="Configs\_ReadMe.txt" />
     <Content Include="Configs\_RefactorTemplate.xml" />
     <Content Include="RefactorConfig.xml">
