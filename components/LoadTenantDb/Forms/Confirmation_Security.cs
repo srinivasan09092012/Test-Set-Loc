@@ -658,10 +658,10 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Forms
 
             parentDatalist = datalist;
 
-            //Assumption here is that if Core.DataList.Attributes.type exists then no need to 
+            //Assumption here is that if Core.DataList.Attributes.RightTypes exists then no need to 
             //create attributes
             Datalist checkAttributeDatalist = new Datalist();
-            string contentIdAttribute = "Core.DataList.Attributes.type";
+            string contentIdAttribute = "Core.DataList.Attributes.RightTypes";
             bool createAttribute = false;
             if (!checkAttributeDatalist.DoesDataListExistsDirect(contentIdAttribute))
             {
