@@ -350,6 +350,7 @@ namespace SolutionRefactorMgr
                                 {
                                     if (line.Contains(replacement.Qualifier) && line.Contains(replacement.From))
                                     {
+                                        replacement.To = replacement.To.Replace("[NEWLINE]", Environment.NewLine);
                                         line = line.Replace(replacement.From, replacement.To);
                                         contentsChanged = true;
                                     }
