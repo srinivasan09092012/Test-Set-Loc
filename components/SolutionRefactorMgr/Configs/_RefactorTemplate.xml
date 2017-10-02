@@ -49,10 +49,11 @@ RefactorConfig - Base processing parameters:
   ReplacementStrings - List of ReplacementString elements used to update files and folders.  ReplacementString parameters:
     qualifier: any string value, if a line contains this string, the line will be updated based on from/to values.
     from: any string value, the string to be replaced with the 'to' value.
-    to: any string value, the string to replace the 'from' value.
+    to: any string value, the string to replace the 'from' value.  Use [NEWLINE] to create a new line as part of the replacement string.
   -->
   <ReplacementStrings>
     <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.Core" from="Version=17.3.39.0" to="Version=17.4.43.0" />
+    <ReplacementString qualifier="&lt;httpRuntime targetFramework=&quot;4.5&quot; /&gt;" from="&lt;httpRuntime targetFramework=&quot;4.5&quot; /&gt;" to="&lt;httpRuntime targetFramework=&quot;4.5&quot; enableVersionHeader=&quot;false&quot; /&gt;[NEWLINE]    &lt;httpCookies httpOnlyCookies=&quot;true&quot; /&gt;" />
   </ReplacementStrings>
   <!--
    TfsServer - Location of the TFS server used by these files.

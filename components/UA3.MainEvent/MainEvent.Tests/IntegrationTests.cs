@@ -1,4 +1,4 @@
-﻿//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
 // This code is the property of Hewlett Packard Enterprise, Copyright (c) 2016. All rights reserved.
 //
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
@@ -26,7 +26,7 @@ namespace MainEvent.Tests
         public void Integration_Test()
         {
             BasLoader loader = new BasLoader();
-            var loadResult = loader.Load(@"C:\inetpub\wwwroot\HP.HSP.UA3.EmployeeServices\R1.0", new StatusTracker());
+            var loadResult = loader.Load(@"C:\inetpub\wwwroot\HP.HSP.UA3.EmployeeServices\R6.0", new StatusTracker());
 
             var configuratorType = loadResult.CreateReflector().GetConfiguratorType();
             IModuleConfigurator configurator = null;
@@ -84,7 +84,7 @@ namespace MainEvent.Tests
             this.AssertEmployeeNotLoaded();
 
             BasLoader loader = new BasLoader();
-            var loadResult = loader.Load(@"C:\inetpub\wwwroot\HP.HSP.UA3.EmployeeServices\R1.0", new StatusTracker());
+            var loadResult = loader.Load(@"C:\inetpub\wwwroot\HP.HSP.UA3.EmployeeServices\R6.0", new StatusTracker());
 
             this.AssertEmployeeLoaded();
 

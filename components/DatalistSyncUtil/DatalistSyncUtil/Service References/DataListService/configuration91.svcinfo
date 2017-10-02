@@ -243,10 +243,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="WS2007FederationHttpBinding_IDataListsService" contract="DataListService.IDataListsService" bindingType="ws2007FederationHttpBinding" address="https://bas.dev.ua3.eslabs.ssn.hp.com/HP.HSP.UA3.DataLists/R1.0/DataListsService.svc" bindingConfiguration="WS2007FederationHttpBinding_IDataListsService">
+    <endpoint name="WS2007FederationHttpBinding_IDataListsService" contract="DataListService.IDataListsService" bindingType="ws2007FederationHttpBinding" address="https://bas.dev.mapshc.com/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc" bindingConfiguration="WS2007FederationHttpBinding_IDataListsService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>https://bas.dev.ua3.eslabs.ssn.hp.com/HP.HSP.UA3.DataLists/R1.0/DataListsService.svc</serializedValue>
+          <serializedValue>https://bas.dev.mapshc.com/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

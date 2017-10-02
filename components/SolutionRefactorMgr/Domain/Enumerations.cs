@@ -19,6 +19,7 @@ namespace SolutionRefactorMgr.Domain
             Batch,
             EAI,
             NA,
+            Reports,
             UX
         }
     }

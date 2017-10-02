@@ -243,10 +243,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="WS2007FederationHttpBinding_IMenuService" contract="MenuService.IMenuService" bindingType="ws2007FederationHttpBinding" address="https://bas.dev.ua3.eslabs.ssn.hp.com/HP.HSP.UA3.TenantConfiguration/R1.0/MenuService.svc" bindingConfiguration="WS2007FederationHttpBinding_IMenuService">
+    <endpoint name="WS2007FederationHttpBinding_IMenuService" contract="MenuService.IMenuService" bindingType="ws2007FederationHttpBinding" address="https://bas.dev.mapshc.com/HP.HSP.UA3.TenantConfiguration/R6.0/MenuService.svc" bindingConfiguration="WS2007FederationHttpBinding_IMenuService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>https://bas.dev.ua3.eslabs.ssn.hp.com/HP.HSP.UA3.TenantConfiguration/R1.0/MenuService.svc</serializedValue>
+          <serializedValue>https://bas.dev.mapshc.com/HP.HSP.UA3.TenantConfiguration/R6.0/MenuService.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

@@ -19,19 +19,19 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/ServiceService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/ServiceService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ServiceService.disco" MetadataType="Disco" ID="2cb213a6-4c82-4573-b77c-5b494f3ad343" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/ServiceService.svc?disco" />
-    <MetadataFile FileName="ServiceService.wsdl" MetadataType="Wsdl" ID="8db90af4-984b-4243-86c6-afe99e886048" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/ServiceService.svc?wsdl" />
-    <MetadataFile FileName="ServiceService.xsd" MetadataType="Schema" ID="ddbbc52d-c80e-43f2-a42a-2732744afa9d" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/ServiceService.svc?xsd=xsd2" />
-    <MetadataFile FileName="ServiceService1.xsd" MetadataType="Schema" ID="a5dea136-9506-4a43-887d-5f4865c25b6d" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/ServiceService.svc?xsd=xsd3" />
-    <MetadataFile FileName="ServiceService2.xsd" MetadataType="Schema" ID="1f7ecd27-fd96-4b76-b0f5-f2f197cc9ee9" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/ServiceService.svc?xsd=xsd4" />
-    <MetadataFile FileName="ServiceService3.xsd" MetadataType="Schema" ID="0b1054a6-86ff-4b69-aff9-5c1e64075da4" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/ServiceService.svc?xsd=xsd5" />
-    <MetadataFile FileName="ServiceService4.xsd" MetadataType="Schema" ID="4cdf38e1-65f2-4add-98f1-17170df9b2c1" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/ServiceService.svc?xsd=xsd6" />
-    <MetadataFile FileName="ServiceService5.xsd" MetadataType="Schema" ID="f440ae51-8dc7-4c7e-8379-d3990b18b67a" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/ServiceService.svc?xsd=xsd7" />
-    <MetadataFile FileName="ServiceService6.xsd" MetadataType="Schema" ID="113a8f51-50db-4b34-8289-db2f849771ef" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/ServiceService.svc?xsd=xsd1" />
-    <MetadataFile FileName="ServiceService7.xsd" MetadataType="Schema" ID="407793d9-d4b6-4a9e-a6fc-8a421d9f573f" SourceId="1" SourceUrl="http://206.122.21.177:8010/HP.HSP.UA3.TenantConfiguration/R1.0/ServiceService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceService.disco" MetadataType="Disco" ID="2cb213a6-4c82-4573-b77c-5b494f3ad343" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/ServiceService.svc?disco" />
+    <MetadataFile FileName="ServiceService.wsdl" MetadataType="Wsdl" ID="8db90af4-984b-4243-86c6-afe99e886048" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/ServiceService.svc?wsdl" />
+    <MetadataFile FileName="ServiceService.xsd" MetadataType="Schema" ID="ddbbc52d-c80e-43f2-a42a-2732744afa9d" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/ServiceService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServiceService1.xsd" MetadataType="Schema" ID="a5dea136-9506-4a43-887d-5f4865c25b6d" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/ServiceService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ServiceService2.xsd" MetadataType="Schema" ID="1f7ecd27-fd96-4b76-b0f5-f2f197cc9ee9" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/ServiceService.svc?xsd=xsd4" />
+    <MetadataFile FileName="ServiceService3.xsd" MetadataType="Schema" ID="0b1054a6-86ff-4b69-aff9-5c1e64075da4" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/ServiceService.svc?xsd=xsd5" />
+    <MetadataFile FileName="ServiceService4.xsd" MetadataType="Schema" ID="4cdf38e1-65f2-4add-98f1-17170df9b2c1" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/ServiceService.svc?xsd=xsd6" />
+    <MetadataFile FileName="ServiceService5.xsd" MetadataType="Schema" ID="f440ae51-8dc7-4c7e-8379-d3990b18b67a" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/ServiceService.svc?xsd=xsd7" />
+    <MetadataFile FileName="ServiceService6.xsd" MetadataType="Schema" ID="113a8f51-50db-4b34-8289-db2f849771ef" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/ServiceService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServiceService7.xsd" MetadataType="Schema" ID="407793d9-d4b6-4a9e-a6fc-8a421d9f573f" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/ServiceService.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

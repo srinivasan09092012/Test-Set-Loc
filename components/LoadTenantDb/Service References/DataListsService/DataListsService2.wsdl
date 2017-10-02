@@ -25,7 +25,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsdl:import namespace="HP.HSP.DataLists" location="http://206.122.21.177:8010/HP.HSP.UA3.DataLists/R1.0/DataListsService.svc?wsdl=wsdl0" />
+  <wsdl:import namespace="HP.HSP.DataLists" location="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?wsdl=wsdl0" />
   <wsdl:types />
   <wsdl:binding name="BasicHttpBinding_IDataListsService" type="i0:IDataListsService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -132,10 +132,10 @@
   </wsdl:binding>
   <wsdl:service name="DataListsService">
     <wsdl:port name="BasicHttpBinding_IDataListsService" binding="tns:BasicHttpBinding_IDataListsService">
-      <soap:address location="http://206.122.21.177:8010/HP.HSP.UA3.DataLists/R1.0/DataListsService.svc" />
+      <soap:address location="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc" />
     </wsdl:port>
     <wsdl:port name="BasicHttpsBinding_IDataListsService" binding="tns:BasicHttpsBinding_IDataListsService">
-      <soap:address location="https://bas.dev.ua3.eslabs.ssn.hp.com/HP.HSP.UA3.DataLists/R1.0/DataListsService.svc" />
+      <soap:address location="https://bas.dev.mapshc.com/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

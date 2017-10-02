@@ -1,4 +1,4 @@
-﻿//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
 // This code is the property of Hewlett Packard Enterprise, Copyright (c) 2016. All rights reserved.
 //
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
@@ -13,7 +13,7 @@ namespace MainEvent.Tests.Core.Services
     [TestClass]
     public class BasLoaderTests
     {
-        public const string Path = @"C:\inetpub\wwwroot\HP.HSP.UA3.EmployeeServices\R1.0";
+        public const string Path = @"C:\inetpub\wwwroot\HP.HSP.UA3.EmployeeServices\R6.0";
 
         [TestMethod]
         [TestCategory("IgnoreOnBuild")]

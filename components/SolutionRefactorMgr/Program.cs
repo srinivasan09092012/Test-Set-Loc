@@ -155,6 +155,7 @@ namespace SolutionRefactorMgr
                         RefactorModule(module, Enumerations.ProjectTypes.BAS);
                         RefactorModule(module, Enumerations.ProjectTypes.Batch);
                         RefactorModule(module, Enumerations.ProjectTypes.EAI);
+                        RefactorModule(module, Enumerations.ProjectTypes.Reports);
                         RefactorModule(module, Enumerations.ProjectTypes.UX);
                         break;
 

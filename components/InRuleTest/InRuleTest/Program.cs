@@ -1,4 +1,4 @@
-﻿using HPE.HSP.UA3.Core.API.BusinessRules.Providers.Tests.Domain;
+using HPE.HSP.UA3.Core.API.BusinessRules.Providers.Tests.Domain;
 using InRuleRestLibrary;
 using Newtonsoft.Json;
 using System;
@@ -34,7 +34,7 @@ namespace InRuleTest
             // Create rule application
             RuleApp ruleApp = new RuleApp()
             {
-                RepositoryServiceUri = "http://bre1.dev.ua3.elabs.svcs.hpe.com/InRuleCatalogService/Service.svc",
+                RepositoryServiceUri = "http://bre.dev.mapshc.com/InRuleCatalogService/Service.svc",
                 RepositoryRuleAppRevisionSpec = new RepositoryRuleAppRevisionSpec()
                 {
                     RuleApplicationName = "BREApiTestApplication",
@@ -114,7 +114,7 @@ namespace InRuleTest
             {
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                response = await client.PostAsync("http://bre1.dev.ua3.elabs.svcs.hpe.com/InRuleRuleEngineService/HttpService.svc/ExecuteIndependentRuleSet",
+                response = await client.PostAsync("http://bre.dev.mapshc.com/InRuleRuleEngineService/HttpService.svc/ExecuteIndependentRuleSet",
                       new StringContent(request, Encoding.UTF8, "application/json"));
             }
 
