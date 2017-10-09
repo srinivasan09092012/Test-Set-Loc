@@ -1,78 +1,71 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="true" includeFileContents="true" useSourceControl="true">
-  <SourceDir>C:\UA3\Source</SourceDir>
-  <ModuleConfigs>
-    <ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />
-    <ModuleConfig name="Administration" branch="Dev" types="All" />
-    <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
-    <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
-    <ModuleConfig name="Core" branch="Dev" types="All" />
-    <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
-    <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
-    <ModuleConfig name="DrugRebatePortal" branch="Dev" types="All" />
-    <ModuleConfig name="EDI" branch="Dev" types="All" />
-    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
-    <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
-    <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
-    <ModuleConfig name="KansasOnly" branch="Dev" types="All" />
-    <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
-    <ModuleConfig name="ManagedCarePortal" branch="Dev" types="All" />
-    <ModuleConfig name="MemberManagement" branch="Dev" types="All" />
-    <ModuleConfig name="MemberPortal" branch="Dev" types="All" />
-    <ModuleConfig name="Notifications" branch="Dev" types="All" />
-    <ModuleConfig name="PlanManagement" branch="Dev" types="All" />
-    <ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
-    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="All" />
-    <ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
-    <ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
-    <ModuleConfig name="ProviderPortal" branch="Dev" types="All" />
-    <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
-    <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
-    <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
-    <ModuleConfig name="Utilities" branch="Dev" types="NA" />
-  </ModuleConfigs>
-  <PackageConfigs />
-  <FileTypes>
-    <FileType>.config</FileType>
-    <FileType>.debug.config</FileType>
-    <FileType>.release.config</FileType>
-    <FileType>.cs</FileType>
-    <FileType>.disco</FileType>
-    <FileType>.map</FileType>
-    <FileType>.pubxml</FileType>
-    <!--<FileType>.rdl</FileType>-->
-    <!--<FileType>.rptproj</FileType>-->
-    <FileType>.settings</FileType>
-    <FileType>.svcinfo</FileType>
-    <FileType>.svcmap</FileType>
-    <FileType>.wsdl</FileType>
-    <FileType>.xsd</FileType>
-  </FileTypes>
-  <LineDeletes />
-  <ReplacementStrings>
-    <ReplacementString qualifier="/R1.0" from="/R1.0" to="/R6.0" />
-    <ReplacementString qualifier="\R1.0" from="\R1.0" to="\R6.0" />
-    <ReplacementString qualifier="/r1.0" from="/r1.0" to="/R6.0" />
-    <ReplacementString qualifier="\r1.0" from="\r1.0" to="\R6.0" />
-    <ReplacementString qualifier="206.122.21.171" from="206.122.21.171" to="bas.dev.mapshc.com" />
-    <ReplacementString qualifier="206.122.21.177" from="206.122.21.177" to="bas.dev.mapshc.com" />
-    <ReplacementString qualifier="15.56.18.178" from="15.56.18.178" to="bas.dev.mapshc.com" />
-    <ReplacementString qualifier="130.175.189.231" from="130.175.189.231" to="bas.dev.mapshc.com" />
-    <ReplacementString qualifier="uspnsvulm432.ua3dev.local" from="uspnsvulm432.ua3dev.local" to="bas.dev.mapshc.com" />
-    <ReplacementString qualifier="bas.dev.ua3.eslabs.ssn.hp.com" from="bas.dev.ua3.eslabs.ssn.hp.com" to="bas.dev.mapshc.com" />
-    <ReplacementString qualifier="bas.test.ua3.eslabs.ssn.hp.com" from="bas.test.ua3.eslabs.ssn.hp.com" to="bas.test.mapshc.com" />
-    <!-- tests fail with new url. -->
-    <!-- <ReplacementString qualifier="bre1.dev.ua3.elabs.svcs.hpe.com" from="bre1.dev.ua3.elabs.svcs.hpe.com" to="bre.dev.mapshc.com" />-->
-    <!-- no longer used, but Core/API/CM tests fail with invalid tests with old and new url. -->
-    <!-- <ReplacementString qualifier="cm1.dev.ua3.elabs.svcs.hpe.com" from="cm1.dev.ua3.elabs.svcs.hpe.com" to="cm1.dev.mapshc.com" />-->
-    <!-- Rename report server - needed to change domain/id/pwd too -->
-    <!-- <ReplacementString qualifier="reports.dev.ua3.eslabs.ssn.hp.com" from="reports.dev.ua3.eslabs.ssn.hp.com" to="report.dev.mapshc.com" /> -->
-    <!-- Rename k2 workflow server - needed to change domain/id/pwd/report folders too -->
-    <!-- <ReplacementString qualifier="k2.dev.ua3.elabs.svcs.hpe.com" from="k2.dev.ua3.elabs.svcs.hpe.com" to="k2.dev.mapshc.com" /> -->
-    <!-- Rename elabs pubxml file to Azure pubxml file with Azure url  Note RefactorConfig parameter is includeFileNames="true" -->
-    <ReplacementString qualifier="ELabs.pubxml" from="ELabs.pubxml" to="Azure.pubxml" />
-    <ReplacementString qualifier="DevELabsApp.config" from="DevELabsApp.config" to="DevAzureApp.config" />
-  </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
-  <TfsWorkspace>ADIX1</TfsWorkspace>
+<RefactorConfig editMode="Inline" includeFolderNames="true" includeFileNames="true" includeFileContents="true" useSourceControl="true">
+    <SourceDir>C:\UA3\Source</SourceDir>
+    <ModuleConfigs>
+        <ModuleConfig name="Administration" branch="039" types="All" />
+        <ModuleConfig name="AuthDetermination" branch="039" types="All" />
+        <ModuleConfig name="ClaimsManagement" branch="039" types="All" />
+        <ModuleConfig name="Core" branch="039" types="All" />
+        <ModuleConfig name="CorrespondenceMgmt" branch="039" types="All" />
+        <ModuleConfig name="DrugRebate" branch="039" types="All" />
+        <ModuleConfig name="DrugRebatePortal" branch="039" types="All" />
+        <ModuleConfig name="EDI" branch="039" types="All" />
+        <ModuleConfig name="eID" branch="039" types="All" />
+        <ModuleConfig name="EmployeeMgmt" branch="039" types="All" />
+        <ModuleConfig name="FileTransfer" branch="039" types="All" />
+        <ModuleConfig name="IdentityManagement" branch="039" types="All" />
+        <ModuleConfig name="KansasOnly" branch="039" types="All" />
+        <ModuleConfig name="ManagedCare" branch="039" types="All" />
+        <ModuleConfig name="ManagedCarePortal" branch="039" types="All" />
+        <ModuleConfig name="MemberManagement" branch="039" types="All" />
+        <ModuleConfig name="MemberPortal" branch="039" types="All" />
+        <ModuleConfig name="Notifications" branch="039" types="All" />
+        <ModuleConfig name="PlanManagement" branch="039" types="All" />
+        <ModuleConfig name="ProgramIntegrity" branch="039" types="All" />
+        <ModuleConfig name="ProviderCredentialing" branch="039" types="All" />
+        <ModuleConfig name="ProviderEnrollment" branch="039" types="All" />
+        <ModuleConfig name="ProviderManagement" branch="039" types="All" />
+        <ModuleConfig name="ProviderPortal" branch="039" types="All" />
+        <ModuleConfig name="ThirdPartySource" branch="039" types="All" />
+        <ModuleConfig name="TPLCaseTracking" branch="039" types="All" />
+        <ModuleConfig name="TPLPolicy" branch="039" types="All" />
+    </ModuleConfigs>
+    <PackageConfigs />
+    <FileTypes>
+        <FileType>.config</FileType>
+    </FileTypes>
+    <LineDeletes>
+    </LineDeletes>
+    <!--VERTICA: DONT NEED TO CHANGE THE STG1 USR/PWD BECAUSE ITS SAME IN STG1 and DEV ONLY HOST IS DIFFERENT-->
+    <!--ORACLE: DONT NEED TO CHANGE THE A39W USER/PWD BECAUSE A39W SAME AS IN WRK ONLY HOST IS DIFFERENT-->
+    <ReplacementStrings>
+        <ReplacementString qualifier="HOST=mapsdevdbv02.dev.mapshc.com" from="HOST=mapsdevdbv02.dev.mapshc.com" to="HOST=mapsstg1dbv01.staging-1.mapshc.com" />
+        <ReplacementString qualifier="HOST=mapsdevdbv01.dev.mapshc.com" from="HOST=mapsdevdbv01.dev.mapshc.com" to="HOST=mapsstg1dbv01.staging-1.mapshc.com" />
+        <ReplacementString qualifier="USER=UA3_PIUM;Password=MUIP_3AU" from="USER=UA3_PIUM;Password=MUIP_3AU" to="USER=A_PIUM;Password=MUIP_A" />
+        <ReplacementString qualifier="AWRK_PDBA" from="AWRK_PDBA" to="A39W_PDBA" />
+        <ReplacementString qualifier="AWRK_PDBB" from="AWRK_PDBB" to="A39W_PDBB" />
+        <ReplacementString qualifier="ADEV_PDBA" from="ADEV_PDBA" to="AST1_PDBA" />
+        <ReplacementString qualifier="ADEV_PDBB" from="ADEV_PDBB" to="AST1_PDBB" />
+        <ReplacementString qualifier="clm_RwPbe62" from="clm_RwPbe62" to="Clm_hmonU66" />
+        <ReplacementString qualifier="CrrSPNDNc_Mgmt_65" from="CrrSPNDNc_Mgmt_65" to="Cmg_raTDo62" />
+        <ReplacementString qualifier="drb_nEMUP54" from="drb_nEMUP54" to="Drb_LHUBY43" />
+        <ReplacementString qualifier="Ua3edi_17" from="Ua3edi_17" to="Edi_zTOwt47" />
+        <ReplacementString qualifier="em_Ple91" from="em_Ple91" to="Emp_VeWpt59" />
+        <ReplacementString qualifier="ntgrtn_i1" from="ntgrtn_i1" to="Int_acqmU84" />
+        <ReplacementString qualifier="Mgr_CreD11116" from="Mgr_CreD11116" to="Mgc_lZdEG34" />
+        <ReplacementString qualifier="mBr_74" from="mBr_74" to="Mbr_ozNyz16" />
+        <ReplacementString qualifier="ntfctns_o34" from="ntfctns_o34" to="Ntf_mCWlc23" />
+        <ReplacementString qualifier="pm51_k" from="pm51_k" to="Piu_ZLmez35" />
+        <ReplacementString qualifier="PLanmGmT786" from="PLanmGmT786" to="Pmg_WYXgQ76" />
+        <ReplacementString qualifier="pdr_uUxQo51" from="pdr_uUxQo51" to="Pdr_onTcv87" />
+        <ReplacementString qualifier="prvdr_o3" from="prvdr_o3" to="Pvd_eCQKc25" />
+        <ReplacementString qualifier="prvdr_crdntl_pe3" from="prvdr_crdntl_pe3" to="Pct_NSCJq16" />
+        <ReplacementString qualifier="prvdr_nrll_y3" from="prvdr_nrll_y3" to="Pnr_YwhyF57" />
+        <ReplacementString qualifier="tnnt_tst_e2" from="tnnt_tst_e2" to="Tnt_hjOop18" />
+        <ReplacementString qualifier="txn_qZpbv96" from="txn_qZpbv96" to="Ttx_KFeHx94" />
+        <ReplacementString qualifier="Ua3tplKs_11" from="Ua3tplKs_11" to="Tcs_FzsgN93" />
+        <ReplacementString qualifier="tPlpCy_y6" from="tPlpCy_y6" to="Tpl_aMvvx10" />
+    </ReplacementStrings>
+    <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
+    <TfsWorkspace>UA3</TfsWorkspace>
 </RefactorConfig>

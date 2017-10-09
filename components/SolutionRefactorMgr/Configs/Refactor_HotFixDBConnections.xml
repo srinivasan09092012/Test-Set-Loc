@@ -36,7 +36,14 @@
   </FileTypes>
   <LineDeletes>
   </LineDeletes>
+    <!--VERTICA: DONT NEED TO CHANGE THE STG1 USR/PWD BECAUSE ITS SAME IN STG1 and DEV ONLY HOST IS DIFFERENT-->
+    <!--ORACLE: DONT NEED TO CHANGE THE A39W USER/PWD BECAUSE A39W SAME AS IN WRK ONLY HOST IS DIFFERENT-->
   <ReplacementStrings>
+    <ReplacementString qualifier="HOST=mapsdevdbv02.dev.mapshc.com" from="HOST=mapsdevdbv02.dev.mapshc.com" to="HOST=mapsstg1dbv01.staging-1.mapshc.com" />
+    <ReplacementString qualifier="HOST=mapsdevdbv01.dev.mapshc.com" from="HOST=mapsdevdbv01.dev.mapshc.com" to="HOST=mapsstg1dbv01.staging-1.mapshc.com" />
+    <ReplacementString qualifier="USER=UA3_PIUM;Password=MUIP_3AU" from="USER=UA3_PIUM;Password=MUIP_3AU" to="USER=A_PIUM;Password=MUIP_A" />      
+    <ReplacementString qualifier="AWRK_PDBA" from="AWRK_PDBA" to="A39W_PDBA" />
+    <ReplacementString qualifier="AWRK_PDBB" from="AWRK_PDBB" to="A39W_PDBB" />      
     <ReplacementString qualifier="ADEV_PDBA" from="ADEV_PDBA" to="AST1_PDBA" />
     <ReplacementString qualifier="ADEV_PDBB" from="ADEV_PDBB" to="AST1_PDBB" />
     <ReplacementString qualifier="clm_RwPbe62" from="clm_RwPbe62" to="Clm_hmonU66" />
@@ -60,5 +67,5 @@
     <ReplacementString qualifier="tPlpCy_y6" from="tPlpCy_y6" to="Tpl_aMvvx10" />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
-  <TfsWorkspace></TfsWorkspace>
+  <TfsWorkspace>UA3 </TfsWorkspace>
 </RefactorConfig>
