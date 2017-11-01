@@ -111,6 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="Configs\RefactorKendo-Version.xml" />
     <Content Include="Configs\RefactorCopyright.xml" />
     <Content Include="Configs\RefactorDev_MigrateToAzure.xml" />
     <Content Include="Configs\RefactorNamespaces.xml" />
