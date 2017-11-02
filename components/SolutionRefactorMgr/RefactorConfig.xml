@@ -1,71 +1,83 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<RefactorConfig editMode="Inline" includeFolderNames="true" includeFileNames="true" includeFileContents="true" useSourceControl="true">
-    <SourceDir>C:\UA3\Source</SourceDir>
-    <ModuleConfigs>
-        <ModuleConfig name="Administration" branch="039" types="All" />
-        <ModuleConfig name="AuthDetermination" branch="039" types="All" />
-        <ModuleConfig name="ClaimsManagement" branch="039" types="All" />
-        <ModuleConfig name="Core" branch="039" types="All" />
-        <ModuleConfig name="CorrespondenceMgmt" branch="039" types="All" />
-        <ModuleConfig name="DrugRebate" branch="039" types="All" />
-        <ModuleConfig name="DrugRebatePortal" branch="039" types="All" />
-        <ModuleConfig name="EDI" branch="039" types="All" />
-        <ModuleConfig name="eID" branch="039" types="All" />
-        <ModuleConfig name="EmployeeMgmt" branch="039" types="All" />
-        <ModuleConfig name="FileTransfer" branch="039" types="All" />
-        <ModuleConfig name="IdentityManagement" branch="039" types="All" />
-        <ModuleConfig name="KansasOnly" branch="039" types="All" />
-        <ModuleConfig name="ManagedCare" branch="039" types="All" />
-        <ModuleConfig name="ManagedCarePortal" branch="039" types="All" />
-        <ModuleConfig name="MemberManagement" branch="039" types="All" />
-        <ModuleConfig name="MemberPortal" branch="039" types="All" />
-        <ModuleConfig name="Notifications" branch="039" types="All" />
-        <ModuleConfig name="PlanManagement" branch="039" types="All" />
-        <ModuleConfig name="ProgramIntegrity" branch="039" types="All" />
-        <ModuleConfig name="ProviderCredentialing" branch="039" types="All" />
-        <ModuleConfig name="ProviderEnrollment" branch="039" types="All" />
-        <ModuleConfig name="ProviderManagement" branch="039" types="All" />
-        <ModuleConfig name="ProviderPortal" branch="039" types="All" />
-        <ModuleConfig name="ThirdPartySource" branch="039" types="All" />
-        <ModuleConfig name="TPLCaseTracking" branch="039" types="All" />
-        <ModuleConfig name="TPLPolicy" branch="039" types="All" />
-    </ModuleConfigs>
-    <PackageConfigs />
-    <FileTypes>
-        <FileType>.config</FileType>
-    </FileTypes>
-    <LineDeletes>
-    </LineDeletes>
-    <!--VERTICA: DONT NEED TO CHANGE THE STG1 USR/PWD BECAUSE ITS SAME IN STG1 and DEV ONLY HOST IS DIFFERENT-->
-    <!--ORACLE: DONT NEED TO CHANGE THE A39W USER/PWD BECAUSE A39W SAME AS IN WRK ONLY HOST IS DIFFERENT-->
-    <ReplacementStrings>
-        <ReplacementString qualifier="HOST=mapsdevdbv02.dev.mapshc.com" from="HOST=mapsdevdbv02.dev.mapshc.com" to="HOST=mapsstg1dbv01.staging-1.mapshc.com" />
-        <ReplacementString qualifier="HOST=mapsdevdbv01.dev.mapshc.com" from="HOST=mapsdevdbv01.dev.mapshc.com" to="HOST=mapsstg1dbv01.staging-1.mapshc.com" />
-        <ReplacementString qualifier="USER=UA3_PIUM;Password=MUIP_3AU" from="USER=UA3_PIUM;Password=MUIP_3AU" to="USER=A_PIUM;Password=MUIP_A" />
-        <ReplacementString qualifier="AWRK_PDBA" from="AWRK_PDBA" to="A39W_PDBA" />
-        <ReplacementString qualifier="AWRK_PDBB" from="AWRK_PDBB" to="A39W_PDBB" />
-        <ReplacementString qualifier="ADEV_PDBA" from="ADEV_PDBA" to="AST1_PDBA" />
-        <ReplacementString qualifier="ADEV_PDBB" from="ADEV_PDBB" to="AST1_PDBB" />
-        <ReplacementString qualifier="clm_RwPbe62" from="clm_RwPbe62" to="Clm_hmonU66" />
-        <ReplacementString qualifier="CrrSPNDNc_Mgmt_65" from="CrrSPNDNc_Mgmt_65" to="Cmg_raTDo62" />
-        <ReplacementString qualifier="drb_nEMUP54" from="drb_nEMUP54" to="Drb_LHUBY43" />
-        <ReplacementString qualifier="Ua3edi_17" from="Ua3edi_17" to="Edi_zTOwt47" />
-        <ReplacementString qualifier="em_Ple91" from="em_Ple91" to="Emp_VeWpt59" />
-        <ReplacementString qualifier="ntgrtn_i1" from="ntgrtn_i1" to="Int_acqmU84" />
-        <ReplacementString qualifier="Mgr_CreD11116" from="Mgr_CreD11116" to="Mgc_lZdEG34" />
-        <ReplacementString qualifier="mBr_74" from="mBr_74" to="Mbr_ozNyz16" />
-        <ReplacementString qualifier="ntfctns_o34" from="ntfctns_o34" to="Ntf_mCWlc23" />
-        <ReplacementString qualifier="pm51_k" from="pm51_k" to="Piu_ZLmez35" />
-        <ReplacementString qualifier="PLanmGmT786" from="PLanmGmT786" to="Pmg_WYXgQ76" />
-        <ReplacementString qualifier="pdr_uUxQo51" from="pdr_uUxQo51" to="Pdr_onTcv87" />
-        <ReplacementString qualifier="prvdr_o3" from="prvdr_o3" to="Pvd_eCQKc25" />
-        <ReplacementString qualifier="prvdr_crdntl_pe3" from="prvdr_crdntl_pe3" to="Pct_NSCJq16" />
-        <ReplacementString qualifier="prvdr_nrll_y3" from="prvdr_nrll_y3" to="Pnr_YwhyF57" />
-        <ReplacementString qualifier="tnnt_tst_e2" from="tnnt_tst_e2" to="Tnt_hjOop18" />
-        <ReplacementString qualifier="txn_qZpbv96" from="txn_qZpbv96" to="Ttx_KFeHx94" />
-        <ReplacementString qualifier="Ua3tplKs_11" from="Ua3tplKs_11" to="Tcs_FzsgN93" />
-        <ReplacementString qualifier="tPlpCy_y6" from="tPlpCy_y6" to="Tpl_aMvvx10" />
-    </ReplacementStrings>
-    <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
-    <TfsWorkspace>UA3</TfsWorkspace>
+<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true">
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+    <ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />
+    <ModuleConfig name="Administration" branch="Dev" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Core" branch="Dev" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="Dev" types="All" />
+    <ModuleConfig name="EDI" branch="Dev" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
+    <ModuleConfig name="KansasOnly" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="Dev" types="All" />
+    <ModuleConfig name="MemberManagement" branch="Dev" types="All" />
+    <ModuleConfig name="MemberPortal" branch="Dev" types="All" />
+    <ModuleConfig name="Notifications" branch="Dev" types="All" />
+    <ModuleConfig name="PlanManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="Dev" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
+    <ModuleConfig name="Utilities" branch="Dev" types="NA" />
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes>
+    <FileType>.bat</FileType>
+    <FileType>.config</FileType>
+    <FileType>.cs</FileType>
+    <FileType>.csproj</FileType>
+  </FileTypes>
+  <LineDeletes />
+  <ReplacementStrings>
+    <!-- UX application settings version -->
+    <ReplacementString qualifier="add key=&quot;AppVersion&quot; value=&quot;17.4.43.0&quot;" from="17.4.43.0" to="18.1.47.0" />
+
+    <!-- Assembly Versions in Assembly Info file -->
+    <ReplacementString qualifier="AssemblyVersion(" from="17.4.43.0" to="18.1.47.0" />
+    <ReplacementString qualifier="AssemblyFileVersion(" from="17.4.43.0" to="18.1.47.0" />
+
+
+    <!-- Assembly Versions in Project Files -->
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.BatchProcessingFactory" from="Version=17.4.43.0" to="Version=18.1.47.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.Core" from="Version=17.4.43.0" to="Version=18.1.47.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.ClaimsManagement" from="Version=17.4.43.0" to="Version=18.1.47.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.Core" from="Version=17.4.43.0" to="Version=18.1.47.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.NCPDP" from="Version=17.4.43.0" to="Version=18.1.47.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.X212" from="Version=17.4.43.0" to="Version=18.1.47.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.X12" from="Version=17.4.43.0" to="Version=18.1.47.0" />
+
+    <!-- Package Names in Copy Assemblies Batch Files -->
+    <ReplacementString qualifier="xcopy /f /r /y" from="17.4.43\lib" to="18.1.47\lib" />
+
+    <!-- Package Names in Project Files -->
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.BatchProcessingFactory" from="17.4.43" to="18.1.47" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.Core" from="17.4.43" to="18.1.47" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.ClaimsManagement" from="17.4.43" to="18.1.47" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.Core" from="17.4.43" to="18.1.47" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.NCPDP" from="17.4.43" to="18.1.47" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.X212" from="17.4.43" to="18.1.47" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.X12" from="17.4.43" to="18.1.47" />
+
+    <!-- Package Names in Packages.config Files -->
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.BatchProcessingFactory" from="17.4.43" to="18.1.47" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.Core" from="17.4.43" to="18.1.47" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.ClaimsManagement" from="17.4.43" to="18.1.47" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.Core" from="17.4.43" to="18.1.47" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.NCPDP" from="17.4.43" to="18.1.47" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.X212" from="17.4.43" to="18.1.47" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.X12" from="17.4.43" to="18.1.47" />
+  </ReplacementStrings>
+  <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
+  <TfsWorkspace></TfsWorkspace>
 </RefactorConfig>

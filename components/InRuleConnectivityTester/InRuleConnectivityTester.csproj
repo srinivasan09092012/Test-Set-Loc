@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -38,27 +38,27 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HPE.HSP.UA3.Core.API.BusinessRules.Interface">
-      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.BusinessRules.17.4.43\lib\net451\HPE.HSP.UA3.Core.API.BusinessRules.Interface.dll</HintPath>
+      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.BusinessRules.18.1.47\lib\net451\HPE.HSP.UA3.Core.API.BusinessRules.Interface.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="HPE.HSP.UA3.Core.API.BusinessRules.Providers">
-      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.BusinessRules.17.4.43\lib\net451\HPE.HSP.UA3.Core.API.BusinessRules.Providers.dll</HintPath>
+      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.BusinessRules.18.1.47\lib\net451\HPE.HSP.UA3.Core.API.BusinessRules.Providers.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="HPE.HSP.UA3.Core.API.Logger">
-      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.17.4.43\lib\net451\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
+      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.18.1.47\lib\net451\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="InRule.Common">
-      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.BusinessRules.17.4.43\lib\net451\InRule.Common.dll</HintPath>
+      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.BusinessRules.18.1.47\lib\net451\InRule.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="InRule.Repository">
-      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.BusinessRules.17.4.43\lib\net451\InRule.Repository.dll</HintPath>
+      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.BusinessRules.18.1.47\lib\net451\InRule.Repository.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="InRule.Runtime">
-      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.BusinessRules.17.4.43\lib\net451\InRule.Runtime.dll</HintPath>
+      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.BusinessRules.18.1.47\lib\net451\InRule.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

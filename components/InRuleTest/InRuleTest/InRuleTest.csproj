@@ -37,11 +37,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HPE.HSP.UA3.Core.API.BusinessRules.Interface, Version=17.4.43.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="HPE.HSP.UA3.Core.API.BusinessRules.Interface, Version=18.1.47.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\HPE.HSP.UA3.Core.API.BusinessRules.Interface.dll</HintPath>
     </Reference>
-    <Reference Include="HPE.HSP.UA3.Core.API.BusinessRules.Tests, Version=17.4.43.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="HPE.HSP.UA3.Core.API.BusinessRules.Tests, Version=18.1.47.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\HPE.HSP.UA3.Core.API.BusinessRules.Tests.dll</HintPath>
     </Reference>
