@@ -100,6 +100,7 @@
   <ItemGroup>
     <Compile Include="Domain\Constants.cs" />
     <Compile Include="Domain\Enumerations.cs" />
+    <Compile Include="Domain\FileType.cs" />
     <Compile Include="Domain\LineDelete.cs" />
     <Compile Include="Domain\ModuleConfig.cs" />
     <Compile Include="Domain\PackageConfig.cs" />
@@ -111,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="Configs\RefactorAppSettings.xml" />
     <Content Include="Configs\RefactorInRule-Version.xml" />
     <Content Include="Configs\RefactorKendo-Version.xml" />
     <Content Include="Configs\RefactorCopyright.xml" />
@@ -130,6 +132,7 @@
   <ItemGroup>
     <Content Include="Configs\RefactorURLs.xml" />
     <Content Include="Configs\Refactor_HotFixDBConnections.xml" />
+    <Content Include="Configs\RemoveAppSettings.xml" />
     <Content Include="Configs\_ReadMe.txt" />
     <Content Include="Configs\_RefactorTemplate.xml" />
     <Content Include="RefactorConfig.xml">

@@ -250,7 +250,18 @@ namespace SolutionRefactorMgr
 
         private static void RefactorFile(FileInfo file, string dest, int level)
         {
-            bool fileQualifies = refactorConfig.FileTypes.Find(f => f == file.Extension.ToLower()) != null;
+            Domain.FileType fileType = refactorConfig.FileTypes.Find(f => f.Extension.ToLower() == file.Extension.ToLower());
+            bool fileQualifies = fileType != null;
+            if (fileQualifies && !string.IsNullOrWhiteSpace(fileType.QualifyIfPathContains))
+            {
+                fileQualifies = file.DirectoryName.ToLower().Contains(fileType.QualifyIfPathContains.ToLower());
+            }
+
+            if (fileQualifies && !string.IsNullOrWhiteSpace(fileType.IgnoreIfPathContains))
+            {
+                fileQualifies = !file.DirectoryName.ToLower().Contains(fileType.IgnoreIfPathContains.ToLower());
+            }
+
             if (fileQualifies)
             {
                 string fileName = file.Name;

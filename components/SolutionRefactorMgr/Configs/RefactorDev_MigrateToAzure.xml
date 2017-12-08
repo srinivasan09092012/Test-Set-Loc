@@ -30,12 +30,13 @@
     <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
     <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
     <ModuleConfig name="Utilities" branch="Dev" types="NA" />
+    <ModuleConfig name="WorkflowManagement" branch="Dev" types="All" />
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
-    <FileType>.config</FileType>
-    <FileType>.csproj</FileType>
-    <FileType>.xml</FileType>
+    <FileType ext=".config" />
+    <FileType ext=".csproj" />
+    <FileType ext=".xml" />
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>

@@ -12,8 +12,8 @@
     <PackageConfig qualifierPrefix="HPE.HSP.UA3.X212" rebuildPackage="true" reformatSource="true" />
   </PackageConfigs>
   <FileTypes>
-    <FileType>.nupkg</FileType>
-    <FileType>.nuspec</FileType>
+    <FileType ext=".nupkg" />
+    <FileType ext=".nuspec" />
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>

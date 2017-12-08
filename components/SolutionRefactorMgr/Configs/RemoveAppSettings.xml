@@ -11,7 +11,6 @@
     <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
     <ModuleConfig name="DrugRebatePortal" branch="Dev" types="All" />
     <ModuleConfig name="EDI" branch="Dev" types="All" />
-    <ModuleConfig name="eID" branch="Dev" types="All" />
     <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
     <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
     <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
@@ -34,19 +33,12 @@
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
-    <FileType ext=".config" />
-    <FileType ext=".csproj" />
+    <FileType ext=".config" ignoreIfPathContains=".Test" />
   </FileTypes>
-  <LineDeletes />
-  <ReplacementStrings>
-    <ReplacementString qualifier="InRule.5.0.13" from="InRule.5.0.13" to="InRule.5.0.25" />
-    <ReplacementString qualifier="id=&quot;InRule&quot; version=&quot;5.0.13&quot;" from="5.0.13" to="5.0.25" />
-    <ReplacementString qualifier="InRule.Common, Version=5.0.13.39" from="5.0.13.39" to="5.0.25.101" />
-    <ReplacementString qualifier="InRule.Repository, Version=5.0.13.39" from="5.0.13.39" to="5.0.25.101" />
-    <ReplacementString qualifier="InRule.Runtime, Version=5.0.13.39" from="5.0.13.39" to="5.0.25.101" />
-  </ReplacementStrings>
+  <LineDeletes>
+    <LineDelete contains="&lt;add key=&quot;InRule."/>
+  </LineDeletes>
+  <ReplacementStrings />
   <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
-  <TfsWorkspace></TfsWorkspace>
+  <TfsWorkspace>BIBWOS1ISV_1</TfsWorkspace>
 </RefactorConfig>
-
-

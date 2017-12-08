@@ -19,7 +19,7 @@ RefactorConfig - Base processing parameters:
     types: enum values All/API/BAS/Batch/EAI/NA/UX - specific module subfolder to process, NA indicates module does not have the standard subfolders (i.e. Utilities)
   -->
   <ModuleConfigs>
-    <ModuleConfig name="Administration" branch="Dev" types="All" />
+    <ModuleConfig name="Administration" branch="DevX" types="All" />
   </ModuleConfigs>
   <!--
   PackageConfigs - List of PackageConfig elements indicating the packages to be reviewed for changes.  PackageConfig parameters:
@@ -34,9 +34,12 @@ RefactorConfig - Base processing parameters:
   <!--
   FileTypes - List of FileTypes elements indicating what file types are to be reviewed for changes.  
     See existing XML configuration files for sample file types used for the various types of updates.
+    ext: File will be modified if it matches the specific extension string value.
+    qualifyIfPathContains: (optional) File will only be modified if the path of the file contains the specified string value.
+    ignoreIfPathContains: (optional) File will NOT be modified if the path of the file contains the specified string value.
   -->
   <FileTypes>
-    <FileType>.cs</FileType>
+    <FileType ext=".cs" qualifyIfPathContains="" ignoreIfPathContains="" />
   </FileTypes>
   <!--
   LineDeletes - List of LineDelete elements used to delete lines of a file.  LineDelete parameters:

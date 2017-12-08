@@ -29,10 +29,11 @@
     <ModuleConfig name="ThirdPartySource" branch="043" types="All" />
     <ModuleConfig name="TPLCaseTracking" branch="043" types="All" />
     <ModuleConfig name="TPLPolicy" branch="043" types="All" />
+    <ModuleConfig name="WorkflowManagement" branch="043" types="All" />
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
-    <FileType>.config</FileType>
+    <FileType ext=".config" />
   </FileTypes>
   <LineDeletes>
   </LineDeletes>
@@ -67,5 +68,5 @@
     <ReplacementString qualifier="tPlpCy_y6" from="tPlpCy_y6" to="Tpl_iDKzo13" />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
-  <TfsWorkspace>UA3</TfsWorkspace>
+  <TfsWorkspace>BIBWOS1ISV_1</TfsWorkspace>
 </RefactorConfig>

@@ -30,23 +30,24 @@
     <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
     <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
     <ModuleConfig name="Utilities" branch="Dev" types="NA" />
+    <ModuleConfig name="WorkflowManagement" branch="Dev" types="All" />
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
-    <FileType>.config</FileType>
-    <FileType>.debug.config</FileType>
-    <FileType>.release.config</FileType>
-    <FileType>.cs</FileType>
-    <FileType>.disco</FileType>
-    <FileType>.map</FileType>
-    <FileType>.pubxml</FileType>
-    <!--<FileType>.rdl</FileType>-->
-    <!--<FileType>.rptproj</FileType>-->
-    <FileType>.settings</FileType>
-    <FileType>.svcinfo</FileType>
-    <FileType>.svcmap</FileType>
-    <FileType>.wsdl</FileType>
-    <FileType>.xsd</FileType>
+    <FileType ext=".config" />
+    <FileType ext=".debug.config" />
+    <FileType ext=".release.config" />
+    <FileType ext=".cs" />
+    <FileType ext=".disco" />
+    <FileType ext=".map" />
+    <FileType ext=".pubxml" />
+    <!--<FileType ext=".rdl" />-->
+    <!--<FileType ext=".rptproj" />-->
+    <FileType ext=".settings" />
+    <FileType ext=".svcinfo" />
+    <FileType ext=".svcmap" />
+    <FileType ext=".wsdl" />
+    <FileType ext=".xsd" />
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>

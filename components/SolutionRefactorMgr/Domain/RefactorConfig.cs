@@ -26,7 +26,7 @@ namespace SolutionRefactorMgr.Domain
         public string SourceDir { get; set; }
 
         [XmlArrayItem("FileType")]
-        public List<string> FileTypes { get; set; }
+        public List<FileType>  FileTypes { get; set; }
 
         public List<ModuleConfig> ModuleConfigs { get; set; }
 

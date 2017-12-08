@@ -30,16 +30,17 @@
     <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
     <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
     <ModuleConfig name="Utilities" branch="Dev" types="NA" />
+    <ModuleConfig name="WorkflowManagement" branch="Dev" types="All" />
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
-    <FileType>.asax</FileType>
-    <FileType>.aspx</FileType>
-    <FileType>.config</FileType>
-    <FileType>.cs</FileType>
-    <FileType>.cshtml</FileType>
-    <FileType>.css</FileType>
-    <FileType>.js</FileType>
+    <FileType ext=".asax" />
+    <FileType ext=".aspx" />
+    <FileType ext=".config" />
+    <FileType ext=".cs" />
+    <FileType ext=".cshtml" />
+    <FileType ext=".css" />
+    <FileType ext=".js" />
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>

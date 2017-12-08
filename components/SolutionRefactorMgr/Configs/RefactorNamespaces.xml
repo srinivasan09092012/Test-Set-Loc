@@ -30,40 +30,41 @@
     <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
     <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
     <ModuleConfig name="Utilities" branch="Dev" types="NA" />
+    <ModuleConfig name="WorkflowManagement" branch="Dev" types="All" />
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
-    <FileType>.asax</FileType>
-    <FileType>.aspx</FileType>
-    <FileType>.bat</FileType>
-    <FileType>.cd</FileType>
-    <FileType>.classdiagram</FileType>
-    <FileType>.cmd</FileType>
-    <FileType>.config</FileType>
-    <FileType>.cs</FileType>
-    <FileType>.cshtml</FileType>
-    <FileType>.csproj</FileType>
-    <FileType>.css</FileType>
-    <FileType>.disco</FileType>
-    <FileType>.js</FileType>
-    <FileType>.layerdiagram</FileType>
-    <FileType>.modelproj</FileType>
-    <FileType>.runsettings</FileType>
-    <FileType>.pubxml</FileType>
-    <FileType>.settings</FileType>
-    <FileType>.sln</FileType>
-    <FileType>.snk</FileType>
-    <FileType>.svc</FileType>
-    <FileType>.svcinfo</FileType>
-    <FileType>.svcmap</FileType>
-    <FileType>.testsettings</FileType>
-    <FileType>.uml</FileType>
-    <FileType>.user</FileType>
-    <FileType>.vssscc</FileType>
-    <FileType>.vspscc</FileType>
-    <FileType>.wsdl</FileType>
-    <FileType>.xsd</FileType>
-    <FileType>.xml</FileType>
+    <FileType ext=".asax" />
+    <FileType ext=".aspx" />
+    <FileType ext=".bat" />
+    <FileType ext=".cd" />
+    <FileType ext=".classdiagram" />
+    <FileType ext=".cmd" />
+    <FileType ext=".config" />
+    <FileType ext=".cs" />
+    <FileType ext=".cshtml" />
+    <FileType ext=".csproj" />
+    <FileType ext=".css" />
+    <FileType ext=".disco" />
+    <FileType ext=".js" />
+    <FileType ext=".layerdiagram" />
+    <FileType ext=".modelproj" />
+    <FileType ext=".runsettings" />
+    <FileType ext=".pubxml" />
+    <FileType ext=".settings" />
+    <FileType ext=".sln" />
+    <FileType ext=".snk" />
+    <FileType ext=".svc" />
+    <FileType ext=".svcinfo" />
+    <FileType ext=".svcmap" />
+    <FileType ext=".testsettings" />
+    <FileType ext=".uml" />
+    <FileType ext=".user" />
+    <FileType ext=".vssscc" />
+    <FileType ext=".vspscc" />
+    <FileType ext=".wsdl" />
+    <FileType ext=".xsd" />
+    <FileType ext=".xml" />
   </FileTypes>
   <LineDeletes>
     <LineDelete contains="[GeneratedCodeAttribute(" />
