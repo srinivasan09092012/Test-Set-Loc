@@ -12,6 +12,11 @@ namespace SolutionRefactorMgr
 {
     public class Program
     {
+        private static int pendAddCount = 0;
+        private static int pendDeleteCount = 0;
+        private static int pendEditCount = 0;
+        private static int pendRenameCount = 0;
+
         private static CoreLogger logger = new CoreLogger();
         private static RefactorConfig refactorConfig = null;
         private static TfsTeamProjectCollection tpc = null;
@@ -25,6 +30,7 @@ namespace SolutionRefactorMgr
                 LoadConfigration();
                 InitializeTfs();
                 Refactor();
+                ReportCounts();
                 LogMessage(0, "Process complete");
             }
             catch (Exception ex)
@@ -452,6 +458,20 @@ namespace SolutionRefactorMgr
             }
         }
 
+        private static void ReportCounts()
+        {
+            LogMessage(0, "");
+            LogMessage(0, "===========================================================================");
+            LogMessage(0, "Processing Summary");
+            LogMessage(0, "===========================================================================");
+            LogMessage(0, string.Format("Pending Adds:    {0}", pendAddCount.ToString("#,##0")));
+            LogMessage(0, string.Format("Pending Edits:   {0}", pendEditCount.ToString("#,##0")));
+            LogMessage(0, string.Format("Pending Deletes: {0}", pendDeleteCount.ToString("#,##0")));
+            LogMessage(0, string.Format("Pending Renames: {0}", pendRenameCount.ToString("#,##0")));
+            LogMessage(0, "");
+            LogMessage(0, "");
+        }
+
         private static void RebuildNugetPackage(DirectoryInfo packageDir, int level)
         {
             LogMessage(level, string.Format("Rebuilding package source: '{0}'", packageDir.FullName));
@@ -537,6 +557,7 @@ namespace SolutionRefactorMgr
             if(workspace != null)
             {
                 workspace.PendAdd(path);
+                pendAddCount++;
             }
         }
 
@@ -545,6 +566,7 @@ namespace SolutionRefactorMgr
             if (workspace != null)
             {
                 workspace.PendDelete(path);
+                pendDeleteCount++;
             }
         }
 
@@ -553,6 +575,7 @@ namespace SolutionRefactorMgr
             if (workspace != null)
             {
                 workspace.PendEdit(path);
+                pendEditCount++;
             }
         }
 
@@ -561,6 +584,7 @@ namespace SolutionRefactorMgr
             if (workspace != null)
             {
                 workspace.PendRename(oldPath, newPath);
+                pendRenameCount++;
             }
         }
 
