@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="HP.HSP.User" elementFormDefault="qualified" targetNamespace="HP.HSP.User" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Commands" />
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" />
+  <xs:element name="AddUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Commands" minOccurs="0" name="command" nillable="true" type="q1:AddUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" minOccurs="0" name="AddUserResult" nillable="true" type="q2:UserAdded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddProfile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Commands" minOccurs="0" name="command" nillable="true" type="q3:AddProfile" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddProfileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" minOccurs="0" name="AddProfileResult" nillable="true" type="q4:ProfileAdded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateProfile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Commands" minOccurs="0" name="command" nillable="true" type="q5:UpdateProfile" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateProfileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" minOccurs="0" name="UpdateProfileResult" nillable="true" type="q6:ProfileUpdated" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserDelegate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Commands" minOccurs="0" name="command" nillable="true" type="q7:AddUserDelegateCommand" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserDelegateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" minOccurs="0" name="AddUserDelegateResult" nillable="true" type="q8:UserDelegateAdded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddRegisteredUserXref">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Commands" minOccurs="0" name="command" nillable="true" type="q9:AddRegisteredUserXrefCommand" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddRegisteredUserXrefResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" minOccurs="0" name="AddRegisteredUserXrefResult" nillable="true" type="q10:RegisteredUserXrefAdded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateRegisteredUserXref">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Commands" minOccurs="0" name="command" nillable="true" type="q11:UpdateRegisteredUserXrefCommand" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateRegisteredUserXrefResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" minOccurs="0" name="UpdateRegisteredUserXrefResult" nillable="true" type="q12:RegisteredUserXrefUpdated" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserDelegate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Commands" minOccurs="0" name="command" nillable="true" type="q13:UpdateUserDelegateCommand" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserDelegateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" minOccurs="0" name="UpdateUserDelegateResult" nillable="true" type="q14:UserDelegateUpdated" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserRoles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Commands" minOccurs="0" name="command" nillable="true" type="q15:AddUserRoles" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserRolesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" minOccurs="0" name="AddUserRolesResult" nillable="true" type="q16:UserRoleAdded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveUserRoles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Commands" minOccurs="0" name="command" nillable="true" type="q17:RemoveUserRoles" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveUserRolesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" minOccurs="0" name="RemoveUserRolesResult" nillable="true" type="q18:UserRoleRemoved" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserPreferences">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Commands" minOccurs="0" name="command" nillable="true" type="q19:AddUserPreferences" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserPreferencesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" minOccurs="0" name="AddUserPreferencesResult" nillable="true" type="q20:UserPreferencesAdded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveUserPreferences">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Commands" minOccurs="0" name="command" nillable="true" type="q21:RemoveUserPreferences" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveUserPreferencesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" minOccurs="0" name="RemoveUserPreferencesResult" nillable="true" type="q22:UserPreferencesRemoved" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserProfileMemberFocusHistory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Commands" minOccurs="0" name="command" nillable="true" type="q23:AddUserProfileMemberFocusHistory" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserProfileMemberFocusHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" minOccurs="0" name="AddUserProfileMemberFocusHistoryResult" nillable="true" type="q24:UserProfileMemberFocusHistoryAdded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

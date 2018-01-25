@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="UserProfileModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BrowserInfo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateOfBirth" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EMail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GenericIdentifier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IPAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsAccountVerified" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastLogonTS" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LocalId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Preferences" nillable="true" type="tns:ArrayOfKeyValuePair" />
+      <xs:element minOccurs="0" name="RelationshipCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Roles" nillable="true" type="tns:ArrayOfRole" />
+      <xs:element minOccurs="0" name="SessionId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TenantId" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserProfileId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserProfileModel" nillable="true" type="tns:UserProfileModel" />
+  <xs:complexType name="ArrayOfKeyValuePair">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValuePair" nillable="true" type="tns:KeyValuePair" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValuePair" nillable="true" type="tns:ArrayOfKeyValuePair" />
+  <xs:complexType name="KeyValuePair">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KeyValuePair" nillable="true" type="tns:KeyValuePair" />
+  <xs:complexType name="ArrayOfRole">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Role" nillable="true" type="tns:Role" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRole" nillable="true" type="tns:ArrayOfRole" />
+  <xs:complexType name="Role">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Role" nillable="true" type="tns:Role" />
+  <xs:complexType name="InvitationQualifiers">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthenticationConfigId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExpirationTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GenericIdentifierTypeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InvitationCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsValid" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RequiresDateOfBirth" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RequiresFirstName" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RequiresIdentifier" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RequiresLastName" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TenantID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InvitationQualifiers" nillable="true" type="tns:InvitationQualifiers" />
+  <xs:complexType name="QualifierVerificationResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsVerified" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QualifierVerificationResult" nillable="true" type="tns:QualifierVerificationResult" />
+  <xs:complexType name="ArrayOfUserProfileModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserProfileModel" nillable="true" type="tns:UserProfileModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserProfileModel" nillable="true" type="tns:ArrayOfUserProfileModel" />
+  <xs:complexType name="ArrayOfUserIdentity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserIdentity" nillable="true" type="tns:UserIdentity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserIdentity" nillable="true" type="tns:ArrayOfUserIdentity" />
+  <xs:complexType name="UserIdentity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserIdentity" nillable="true" type="tns:UserIdentity" />
+  <xs:simpleType name="Enumerations.UserSearchFieldType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DisplayName" />
+      <xs:enumeration value="EmailAddress" />
+      <xs:enumeration value="FirstName" />
+      <xs:enumeration value="LastName" />
+      <xs:enumeration value="UserName" />
+      <xs:enumeration value="RoleName" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Enumerations.UserSearchFieldType" nillable="true" type="tns:Enumerations.UserSearchFieldType" />
+  <xs:simpleType name="Enumerations.SearchModeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EqualTo" />
+      <xs:enumeration value="Contains" />
+      <xs:enumeration value="StartsWith" />
+      <xs:enumeration value="EndsWith" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Enumerations.SearchModeType" nillable="true" type="tns:Enumerations.SearchModeType" />
+  <xs:complexType name="ArrayOfUserDelegateModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserDelegateModel" nillable="true" type="tns:UserDelegateModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserDelegateModel" nillable="true" type="tns:ArrayOfUserDelegateModel" />
+  <xs:complexType name="UserDelegateModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DelegateProfileId" type="ser:guid" />
+      <xs:element minOccurs="0" name="DelegateUserId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EMail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RelationshipCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="XREFId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserDelegateModel" nillable="true" type="tns:UserDelegateModel" />
+  <xs:complexType name="ArrayOfUserDelegateDetailsModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserDelegateDetailsModel" nillable="true" type="tns:UserDelegateDetailsModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserDelegateDetailsModel" nillable="true" type="tns:ArrayOfUserDelegateDetailsModel" />
+  <xs:complexType name="UserDelegateDetailsModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DelegateAssociations" nillable="true" type="tns:ArrayOfUserDelegateAssociation" />
+      <xs:element minOccurs="0" name="UserDelegate" nillable="true" type="tns:UserDelegateModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserDelegateDetailsModel" nillable="true" type="tns:UserDelegateDetailsModel" />
+  <xs:complexType name="ArrayOfUserDelegateAssociation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserDelegateAssociation" nillable="true" type="tns:UserDelegateAssociation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserDelegateAssociation" nillable="true" type="tns:ArrayOfUserDelegateAssociation" />
+  <xs:complexType name="UserDelegateAssociation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssociatedFunctions" nillable="true" type="tns:ArrayOfUserDelegateSecurityFunction" />
+      <xs:element minOccurs="0" name="AssociationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UserProfileXrefAssocId" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserProfileXrefId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserDelegateAssociation" nillable="true" type="tns:UserDelegateAssociation" />
+  <xs:complexType name="ArrayOfUserDelegateSecurityFunction">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserDelegateSecurityFunction" nillable="true" type="tns:UserDelegateSecurityFunction" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserDelegateSecurityFunction" nillable="true" type="tns:ArrayOfUserDelegateSecurityFunction" />
+  <xs:complexType name="UserDelegateSecurityFunction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SecurityFunctionId" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserProfileXrefAssocId" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserProfileXrefSecFuncId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserDelegateSecurityFunction" nillable="true" type="tns:UserDelegateSecurityFunction" />
+  <xs:complexType name="ArrayOfUserXRefRelationshipModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserXRefRelationshipModel" nillable="true" type="tns:UserXRefRelationshipModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserXRefRelationshipModel" nillable="true" type="tns:ArrayOfUserXRefRelationshipModel" />
+  <xs:complexType name="UserXRefRelationshipModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssociationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserProfileId" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserProfileXrefAssocId" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserProfileXrefId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserXRefRelationshipModel" nillable="true" type="tns:UserXRefRelationshipModel" />
+  <xs:complexType name="ArrayOfUserProfileMemberFocusHistoryDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserProfileMemberFocusHistoryDetail" nillable="true" type="tns:UserProfileMemberFocusHistoryDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserProfileMemberFocusHistoryDetail" nillable="true" type="tns:ArrayOfUserProfileMemberFocusHistoryDetail" />
+  <xs:complexType name="UserProfileMemberFocusHistoryDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BirthDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedTS" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastModifiedTS" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MemberFirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MemberID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MemberLastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MemberMiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserProfileMemberFocusHistoryDetail" nillable="true" type="tns:UserProfileMemberFocusHistoryDetail" />
+</xs:schema>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="40843507-1f5b-4516-b4da-15e67ebce3ea" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="UserService.xsd" MetadataType="Schema" ID="f1405639-3ffc-4145-9980-6b8b6c260f53" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc?xsd=xsd2" />
+    <MetadataFile FileName="UserService1.xsd" MetadataType="Schema" ID="9fae6103-be81-406e-afc6-8a9f9b632e47" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc?xsd=xsd5" />
+    <MetadataFile FileName="UserService.wsdl" MetadataType="Wsdl" ID="cfa1c064-80ca-4ea8-9995-0d4f0f681804" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc?wsdl" />
+    <MetadataFile FileName="UserService2.xsd" MetadataType="Schema" ID="9b27c636-953e-495f-b051-87786234d901" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc?xsd=xsd7" />
+    <MetadataFile FileName="UserService3.xsd" MetadataType="Schema" ID="77e5d070-ce73-4c3d-b900-b85d5a776bea" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc?xsd=xsd0" />
+    <MetadataFile FileName="UserService4.xsd" MetadataType="Schema" ID="3698843f-a608-4aec-b64c-2bb11fefe0bf" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc?xsd=xsd3" />
+    <MetadataFile FileName="UserService.disco" MetadataType="Disco" ID="53f0af4a-a2f4-43da-8b36-10bb0f86025b" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc?disco" />
+    <MetadataFile FileName="UserService1.wsdl" MetadataType="Wsdl" ID="8132d76e-5079-477c-a1ea-0c3ba46c1320" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="UserService5.xsd" MetadataType="Schema" ID="09534dca-1afa-4737-b4ab-48ac50bf8197" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc?xsd=xsd1" />
+    <MetadataFile FileName="UserService6.xsd" MetadataType="Schema" ID="fa7b10df-183d-4af7-8bbc-059106ea58eb" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc?xsd=xsd4" />
+    <MetadataFile FileName="UserService7.xsd" MetadataType="Schema" ID="2fff21a1-c837-4796-8bdd-cec98a3ad6f4" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc?xsd=xsd6" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

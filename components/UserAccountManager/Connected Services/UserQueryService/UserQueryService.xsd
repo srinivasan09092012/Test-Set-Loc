@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" />
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries.Parameters" />
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
+  <xs:complexType name="UserProfileQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q1:Query">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="QueryResult" nillable="true" type="q2:UserProfileModel" />
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries.Parameters" minOccurs="0" name="Where" nillable="true" type="q3:UserIdParms" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserProfileQuery" nillable="true" type="tns:UserProfileQuery" />
+  <xs:complexType name="UserIdAvailabilityQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q4:Query">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryResult" type="xs:boolean" />
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries.Parameters" minOccurs="0" name="Where" nillable="true" type="q5:UserIdParms" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserIdAvailabilityQuery" nillable="true" type="tns:UserIdAvailabilityQuery" />
+  <xs:complexType name="InvitationQualifiersQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q6:Query">
+        <xs:sequence>
+          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="QueryResult" nillable="true" type="q7:InvitationQualifiers" />
+          <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries.Parameters" minOccurs="0" name="Where" nillable="true" type="q8:InvitationParms" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InvitationQualifiersQuery" nillable="true" type="tns:InvitationQualifiersQuery" />
+  <xs:complexType name="QualifierVerificationQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q9:Query">
+        <xs:sequence>
+          <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="QueryResults" nillable="true" type="q10:QualifierVerificationResult" />
+          <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries.Parameters" minOccurs="0" name="Where" nillable="true" type="q11:VerifyInvitationParms" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QualifierVerificationQuery" nillable="true" type="tns:QualifierVerificationQuery" />
+  <xs:complexType name="UserGroupQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q12="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q12:Query">
+        <xs:sequence>
+          <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="QueryResult" nillable="true" type="q13:ArrayOfUserProfileModel" />
+          <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries.Parameters" minOccurs="0" name="Where" nillable="true" type="q14:UserGroupParms" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserGroupQuery" nillable="true" type="tns:UserGroupQuery" />
+  <xs:complexType name="UsersQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q15="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q15:QueryOfUserIdentitycp1reAtb">
+        <xs:sequence>
+          <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries.Parameters" minOccurs="0" name="Where" nillable="true" type="q16:SearchUsersParms" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UsersQuery" nillable="true" type="tns:UsersQuery" />
+  <xs:complexType name="UserIdExistsQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q17="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q17:QueryOfUserExistsResults3DkRihYP">
+        <xs:sequence>
+          <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries.Parameters" minOccurs="0" name="Where" nillable="true" type="q18:UserIdParms" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserIdExistsQuery" nillable="true" type="tns:UserIdExistsQuery" />
+  <xs:complexType name="UserDelegateQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q19="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q19:QueryOfUserDelegateModelcp1reAtb">
+        <xs:sequence>
+          <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries.Parameters" minOccurs="0" name="Where" nillable="true" type="q20:UserDelegateParms" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserDelegateQuery" nillable="true" type="tns:UserDelegateQuery" />
+  <xs:complexType name="UserDelegateDetailsQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q21="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q21:QueryOfUserDelegateDetailsModelcp1reAtb">
+        <xs:sequence>
+          <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries.Parameters" minOccurs="0" name="Where" nillable="true" type="q22:UserDelegateDetailParms" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserDelegateDetailsQuery" nillable="true" type="tns:UserDelegateDetailsQuery" />
+  <xs:complexType name="UserXRefRelationshipQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q23="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q23:QueryOfUserXRefRelationshipModelcp1reAtb">
+        <xs:sequence>
+          <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries.Parameters" minOccurs="0" name="Where" nillable="true" type="q24:UserXRefRelationshipParms" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserXRefRelationshipQuery" nillable="true" type="tns:UserXRefRelationshipQuery" />
+  <xs:complexType name="RegisteredUserXrefQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q25="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q25:QueryOfUserProfileModelcp1reAtb">
+        <xs:sequence>
+          <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries.Parameters" minOccurs="0" name="Where" nillable="true" type="q26:RegisteredUserXrefParms" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RegisteredUserXrefQuery" nillable="true" type="tns:RegisteredUserXrefQuery" />
+  <xs:complexType name="UserProfileMembeFocusHistoryQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q27="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q27:QueryOfUserProfileMemberFocusHistoryDetailcp1reAtb">
+        <xs:sequence>
+          <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="QueryResult" nillable="true" type="q28:ArrayOfUserProfileMemberFocusHistoryDetail" />
+          <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries.Parameters" minOccurs="0" name="Where" nillable="true" type="q29:UserProfileMembeFocusHistoryParms" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserProfileMembeFocusHistoryQuery" nillable="true" type="tns:UserProfileMembeFocusHistoryQuery" />
+</xs:schema>
