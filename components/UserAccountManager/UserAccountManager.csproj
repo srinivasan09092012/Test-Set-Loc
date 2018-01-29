@@ -78,11 +78,24 @@
     <Compile Include="Domain\Environment.cs" />
     <Compile Include="Domain\EnvironmentsConfig.cs" />
     <Compile Include="Domain\UserService.cs" />
+    <Compile Include="Forms\CloneToEnvironment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CloneToEnvironment.Designer.cs">
+      <DependentUpon>CloneToEnvironment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormHelper.cs" />
     <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ResetPassword.Designer.cs">
+      <DependentUpon>ResetPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\UserAccount.cs">
       <SubType>Form</SubType>
@@ -96,8 +109,14 @@
     <Compile Include="Providers\UserQueryServiceProvider.cs" />
     <Compile Include="Providers\UserServiceProvider.cs" />
     <Compile Include="Utilities\Serializer.cs" />
+    <EmbeddedResource Include="Forms\CloneToEnvironment.resx">
+      <DependentUpon>CloneToEnvironment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ResetPassword.resx">
+      <DependentUpon>ResetPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserAccount.resx">
       <DependentUpon>UserAccount.cs</DependentUpon>
@@ -253,6 +272,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="UserAccountManager.Domain.Environment.datasource" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

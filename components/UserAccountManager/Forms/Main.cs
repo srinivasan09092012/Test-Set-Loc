@@ -25,23 +25,19 @@ namespace UserAccountManager.Forms
             InitializeComponent();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-        }
-
         private void MainForm_Shown(object sender, EventArgs e)
         {
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                this.StatusStripLabel.Text = "Initializing application...";
+                this.StatusStripLabel.Text = "Initializing...";
                 Application.DoEvents();
                 LoadConfigration();
                 this.InitializeForm();
             }
             catch (Exception ex)
             {
-                this.DisplayMessage(ex);
+                FormHelper.DisplayMessage(ex);
             }
             finally
             {
@@ -57,22 +53,27 @@ namespace UserAccountManager.Forms
 
         private void UserNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            ToggleSeachButton();
+            ToggleUserSearchButton();
+        }
+
+        private void UserRolesComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ToggleUserSearchButton();
         }
 
         private void FirstNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            ToggleSeachButton();
+            ToggleUserSearchButton();
         }
 
         private void LastNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            ToggleSeachButton();
+            ToggleUserSearchButton();
         }
 
         private void EmailTextBox_TextChanged(object sender, EventArgs e)
         {
-            ToggleSeachButton();
+            ToggleUserSearchButton();
         }
 
         private void UserNameTextBox_Leave(object sender, EventArgs e)
@@ -95,27 +96,12 @@ namespace UserAccountManager.Forms
             EmailTextBox.Text = EmailTextBox.Text.Trim();
         }
 
-        private void SearchButton_Click(object sender, EventArgs e)
+        private void UserSearchButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                this.Cursor = Cursors.WaitCursor;
-                this.StatusStripLabel.Text = "Searching user accounts...";
-                Application.DoEvents();
-                this.SearchUserAccounts();
-            }
-            catch (Exception ex)
-            {
-                this.DisplayMessage(ex);
-            }
-            finally
-            {
-                this.StatusStripLabel.Text = defaultStatus;
-                this.Cursor = Cursors.Default;
-            }
+            this.SearchUserAccounts();
         }
 
-        private void AddButton_Click(object sender, EventArgs e)
+        private void UserAddButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -123,10 +109,11 @@ namespace UserAccountManager.Forms
                 this.StatusStripLabel.Text = "Adding new user account...";
                 Application.DoEvents();
                 this.AddUserAccount();
+                this.SearchUserAccounts();
             }
             catch (Exception ex)
             {
-                this.DisplayMessage(ex);
+                FormHelper.DisplayMessage(ex);
             }
             finally
             {
@@ -142,25 +129,35 @@ namespace UserAccountManager.Forms
                 if (EnvComboBox.SelectedIndex >= 0)
                 {
                     this.Cursor = Cursors.WaitCursor;
-                    this.StatusStripLabel.Text = "Loading environment variables...";
+                    this.StatusStripLabel.Text = "Initializing environment...";
                     Application.DoEvents();
-                    this.ClearSearchResults();
+                    this.ClearUserSearchResults();
                     this.InitializeEnvironment(EnvComboBox.Text);
-                    this.SearchGroupBox.Enabled = true;
-                    this.OtherActionsGroupBox.Enabled = true;
-                    this.ResultsGroupBox.Enabled = true;
-                    this.UserNameTextBox.Focus();
-                    this.UserNameTextBox.SelectAll();
+                    this.TabControl.Enabled = true;
+                    switch (this.TabControl.SelectedIndex)
+                    {
+                        case 0:
+                            this.UserNameTextBox.Focus();
+                            this.UserNameTextBox.SelectAll();
+                            break;
+
+                        case 1:
+                            break;
+
+                        default:
+                            break;
+                    }
                 }
                 else
                 {
-                    this.ClearSearchResults();
+                    this.ClearUserSearchResults();
+                    this.TabControl.Enabled = false;
                 }
             }
             catch (Exception ex)
             {
                 EnvComboBox.SelectedIndex = -1;
-                this.DisplayMessage(ex);
+                FormHelper.DisplayMessage(ex);
             }
             finally
             {
@@ -169,7 +166,7 @@ namespace UserAccountManager.Forms
             }
         }
 
-        private void ResultsDataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        private void UserResultsDataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             try
             {
@@ -179,7 +176,7 @@ namespace UserAccountManager.Forms
                 if (currentEnvConfig.IsDeleteAllowed)
                 {
                     string userName = e.Row.Cells[0].Value.ToString();
-                    DialogResult result = this.DisplayMessage(string.Format("Are you sure you want to delete user account '{0}'?\r\n\r\nThe action is permanent and connot be undone.", userName), MessageBoxIcon.Question);
+                    DialogResult result = FormHelper.DisplayMessage(string.Format("Are you sure you want to delete user account '{0}'?\r\n\r\nThe action is permanent and connot be undone.", userName), MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
                         this.DeleteUserAccount(userName);
@@ -191,14 +188,14 @@ namespace UserAccountManager.Forms
                 }
                 else
                 {
-                    this.DisplayMessage("Deletes are not allowed in this environment.", MessageBoxIcon.Warning);
+                    FormHelper.DisplayMessage("Deletes are not allowed in this environment.", MessageBoxIcon.Warning);
                     e.Cancel = true;
                 }
             }
             catch (Exception ex)
             {
                 e.Cancel = true;
-                this.DisplayMessage(ex);
+                FormHelper.DisplayMessage(ex);
             }
             finally
             {
@@ -207,18 +204,53 @@ namespace UserAccountManager.Forms
             }
         }
 
-        private void ResultsDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void UserResultsDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (UserResultsDataGridView.Rows.Count > 0)
+            {
+                //if (e.RowIndex == -1 && e.ColumnIndex > 0)
+                //{
+                //    UserResultsDataGridView.Sort(UserResultsDataGridView.Columns[e.ColumnIndex], System.ComponentModel.ListSortDirection.Ascending);
+                //}
+            }
+        }
+
+        private void UserResultsDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                this.Cursor = Cursors.WaitCursor;
-                this.StatusStripLabel.Text = "Loading user account...";
-                Application.DoEvents();
-                this.LoadUserAccount(ResultsDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString());
+                if (UserResultsDataGridView.Rows.Count > 0)
+                {
+                    if (e.RowIndex == -1)
+                    {
+                        if (e.ColumnIndex == 0)
+                        {
+                            UserResultsDataGridView.ClearSelection();
+                            UserResultsDataGridView.CurrentCell = null;
+                            DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)UserResultsDataGridView.Rows[0].Cells[0];
+                            bool isSelected = (chk.Value == chk.TrueValue);
+                            for (int i = 0; i < UserResultsDataGridView.Rows.Count; i++)
+                            {
+                                chk = (DataGridViewCheckBoxCell)UserResultsDataGridView.Rows[i].Cells[0];
+                                chk.Value = isSelected ? chk.FalseValue : chk.TrueValue;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (e.RowIndex >= 0)
+                        {
+                            this.Cursor = Cursors.WaitCursor;
+                            this.StatusStripLabel.Text = "Loading user account...";
+                            Application.DoEvents();
+                            this.LoadUserAccount(UserResultsDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString());
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
-                this.DisplayMessage(ex);
+                FormHelper.DisplayMessage(ex);
             }
             finally
             {
@@ -244,10 +276,11 @@ namespace UserAccountManager.Forms
             }
         }
 
-        private void ClearSearchResults()
+        private void ClearUserSearchResults()
         {
             this.UserAccountsBindingSource.Clear();
-            this.ResultsDataGridView.Refresh();
+            this.UserResultsDataGridView.Refresh();
+            this.UserResultsGroupBox.Enabled = false;
         }
 
         private void DeleteUserAccount(string userName)
@@ -255,49 +288,19 @@ namespace UserAccountManager.Forms
             adManagementProvider.DeleteUser(userName);
         }
 
-        private void DisplaySearchResults(List<UserIdentity> users)
+        private void DisplayUserSearchResults(List<UserIdentity> users)
         {
             if (users != null && users.Count > 0)
             {
                 this.UserAccountsBindingSource.DataSource = users;
-                ResultsDataGridView.Focus();
+                this.UserResultsGroupBox.Enabled = true;
+                UserResultsDataGridView.Focus();
             }
             else
             {
-                this.DisplayMessage("No accounts found", MessageBoxIcon.Information);
+                FormHelper.DisplayMessage("No accounts found", MessageBoxIcon.Information);
                 UserNameTextBox.Focus();
             }
-        }
-
-        private DialogResult DisplayMessage(string msg, MessageBoxIcon type)
-        {
-            DialogResult result = new DialogResult();
-
-            switch (type)
-            {
-                case MessageBoxIcon.Error:
-                    MessageBox.Show(msg, "Error", MessageBoxButtons.OK, type);
-                    break;
-
-                case MessageBoxIcon.Warning:
-                    MessageBox.Show(msg, "Warning", MessageBoxButtons.OK, type);
-                    break;
-
-                case MessageBoxIcon.Question:
-                    result = MessageBox.Show(msg, "Question", MessageBoxButtons.YesNo, type);
-                    break;
-
-                default:
-                    MessageBox.Show(msg, "Information", MessageBoxButtons.OK, type);
-                    break;
-            }
-
-            return result;
-        }
-
-        private void DisplayMessage(Exception ex)
-        {
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void InitializeEnvironment(string envName)
@@ -313,15 +316,6 @@ namespace UserAccountManager.Forms
                 {
                     Page = 1,
                     RowsPerPage = 200
-                },
-                SearchFields = new List<RoleSearchField>()
-                {
-                    new RoleSearchField()
-                    {
-                        FieldName = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.RoleSearchFieldType.RoleName,
-                        FieldValue = Constants.RolePrefix,
-                        SearchMode = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.SearchModeType.StartsWith
-                    }
                 }
             };
 
@@ -329,6 +323,23 @@ namespace UserAccountManager.Forms
             if (response != null && response.RowCount > 0)
             {
                 envRoles = response.Roles;
+            }
+
+            this.UserRolesComboBox.Items.Clear();
+            this.UserRolesComboBox.Items.Add(string.Empty);
+            if (envRoles != null && envRoles.Count > 0)
+            {
+                envRoles.Sort(
+                    delegate (Role r1, Role r2)
+                    {
+                        return r1.Name.CompareTo(r2.Name);
+                    }
+                );
+
+                foreach (Role role in envRoles)
+                {
+                    this.UserRolesComboBox.Items.Add(role.Name);
+                }
             }
         }
 
@@ -390,93 +401,252 @@ namespace UserAccountManager.Forms
                 form.Text = "User Account - " + userName;
                 this.StatusStripLabel.Text = defaultStatus;
                 form.ShowDialog();
+                if (!form.IsCanceled)
+                {
+                    this.SearchUserAccounts();
+                }
             }
         }
 
         private void SearchUserAccounts()
         {
-            this.ClearSearchResults();
-
-            SearchUsersRequest request = new SearchUsersRequest()
+            try
             {
-                PagingCriteria = new PagingCriteria()
-                {
-                    Page = 1,
-                    RowsPerPage = 100
-                },
+                this.Cursor = Cursors.WaitCursor;
+                this.StatusStripLabel.Text = "Searching user accounts...";
+                Application.DoEvents();
+                this.ClearUserSearchResults();
 
-                SortCriteria = new List<UserSortCriteria>()
-            {
-                new UserSortCriteria()
+                SearchUsersRequest request = new SearchUsersRequest()
                 {
-                    SortDirection = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.SortDirectionType.Ascending,
-                    SortField = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.UserSortFieldType.UserName,
-                    SortPriority = 1
+                    PagingCriteria = new PagingCriteria()
+                    {
+                        Page = 1,
+                        RowsPerPage = 100
+                    },
+
+                    SortCriteria = new List<UserSortCriteria>()
+                    {
+                        new UserSortCriteria()
+                        {
+                            SortDirection = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.SortDirectionType.Ascending,
+                            SortField = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.UserSortFieldType.UserName,
+                            SortPriority = 1
+                        }
+                    }
+                };
+
+                if (!string.IsNullOrWhiteSpace(UserNameTextBox.Text))
+                {
+                    request.SearchFields.Add(
+                        new UserSearchField()
+                        {
+                            FieldName = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.UserSearchFieldType.UserName,
+                            FieldValue = UserNameTextBox.Text,
+                            SearchMode = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.SearchModeType.Contains
+                        });
                 }
-            }
-            };
 
-            if (!string.IsNullOrWhiteSpace(UserNameTextBox.Text))
+                if (UserRolesComboBox.SelectedIndex > 0)
+                {
+                    request.SearchFields.Add(
+                        new UserSearchField()
+                        {
+                            FieldName = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.UserSearchFieldType.RoleName,
+                            FieldValue = UserRolesComboBox.SelectedItem.ToString(),
+                            SearchMode = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.SearchModeType.EqualTo
+                        });
+                }
+
+                if (!string.IsNullOrWhiteSpace(FirstNameTextBox.Text))
+                {
+                    request.SearchFields.Add(
+                        new UserSearchField()
+                        {
+                            FieldName = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.UserSearchFieldType.FirstName,
+                            FieldValue = FirstNameTextBox.Text,
+                            SearchMode = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.SearchModeType.Contains
+                        });
+                }
+
+                if (!string.IsNullOrWhiteSpace(LastNameTextBox.Text))
+                {
+                    request.SearchFields.Add(
+                        new UserSearchField()
+                        {
+                            FieldName = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.UserSearchFieldType.LastName,
+                            FieldValue = LastNameTextBox.Text,
+                            SearchMode = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.SearchModeType.Contains
+                        });
+                }
+
+                if (!string.IsNullOrWhiteSpace(EmailTextBox.Text))
+                {
+                    request.SearchFields.Add(
+                        new UserSearchField()
+                        {
+                            FieldName = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.UserSearchFieldType.EmailAddress,
+                            FieldValue = EmailTextBox.Text,
+                            SearchMode = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.SearchModeType.Contains
+                        });
+                }
+
+                SearchUsersResponse response = adQueryProvider.SearchUsers(request);
+                this.DisplayUserSearchResults(response.Users);
+            }
+            catch (Exception ex)
             {
-                request.SearchFields.Add(
-                    new UserSearchField()
-                    {
-                        FieldName = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.UserSearchFieldType.UserName,
-                        FieldValue = UserNameTextBox.Text,
-                        SearchMode = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.SearchModeType.Contains
-                    });
+                FormHelper.DisplayMessage(ex);
             }
-
-            if (!string.IsNullOrWhiteSpace(FirstNameTextBox.Text))
+            finally
             {
-                request.SearchFields.Add(
-                    new UserSearchField()
-                    {
-                        FieldName = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.UserSearchFieldType.FirstName,
-                        FieldValue = FirstNameTextBox.Text,
-                        SearchMode = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.SearchModeType.Contains
-                    });
+                this.StatusStripLabel.Text = defaultStatus;
+                this.Cursor = Cursors.Default;
             }
-
-            if (!string.IsNullOrWhiteSpace(LastNameTextBox.Text))
-            {
-                request.SearchFields.Add(
-                    new UserSearchField()
-                    {
-                        FieldName = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.UserSearchFieldType.LastName,
-                        FieldValue = LastNameTextBox.Text,
-                        SearchMode = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.SearchModeType.Contains
-                    });
-            }
-
-            if (!string.IsNullOrWhiteSpace(EmailTextBox.Text))
-            {
-                request.SearchFields.Add(
-                    new UserSearchField()
-                    {
-                        FieldName = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.UserSearchFieldType.EmailAddress,
-                        FieldValue = EmailTextBox.Text,
-                        SearchMode = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.SearchModeType.Contains
-                    });
-            }
-
-            SearchUsersResponse response = adQueryProvider.SearchUsers(request);
-            this.DisplaySearchResults(response.Users);
         }
 
         private void InitializeForm()
         {
-            this.AcceptButton = SearchButton;
+            this.AcceptButton = UserSearchButton;
             this.EnvComboBox.Focus();
         }
 
-        private void ToggleSeachButton()
+        private void ToggleUserSearchButton()
         {
-            SearchButton.Enabled = (EnvComboBox.Text.Length > 0) &&
+            UserSearchButton.Enabled = (EnvComboBox.Text.Length > 0) &&
                 (UserNameTextBox.Text.Trim().Length > 0
+                || UserRolesComboBox.SelectedIndex > 0
                 || FirstNameTextBox.Text.Trim().Length > 0
                 || LastNameTextBox.Text.Trim().Length > 0
                 || EmailTextBox.Text.Trim().Length > 0);
+        }
+
+        private List<DataGridViewRow> ReturnSelectedUsers()
+        {
+            List<DataGridViewRow> selectedRows = new List<DataGridViewRow>();
+            foreach (DataGridViewRow row in UserResultsDataGridView.Rows)
+            {
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
+                if (chk.Value == chk.TrueValue)
+                {
+                    selectedRows.Add(row);
+                }
+            }
+            return selectedRows;
+        }
+
+        private void UserResetPasswordButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                this.StatusStripLabel.Text = "Resetting user account password(s)...";
+                Application.DoEvents();
+                List<DataGridViewRow> selectedRows = this.ReturnSelectedUsers();
+                if (selectedRows == null || selectedRows.Count == 0)
+                {
+                    FormHelper.DisplayMessage("Select 1 or more user accounts and try again.", MessageBoxIcon.Error);
+                }
+                else
+                {
+                    List<string> selectedUserNames = new List<string>();
+                    foreach (DataGridViewRow row in selectedRows)
+                    {
+                        selectedUserNames.Add(row.Cells[1].Value.ToString());
+                    }
+                    ResetPasswordForm form = new ResetPasswordForm();
+                    form.SelectedUserNames = selectedUserNames;
+                    form.EnvConfig = currentEnvConfig;
+                    form.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                FormHelper.DisplayMessage(ex);
+            }
+            finally
+            {
+                this.StatusStripLabel.Text = defaultStatus;
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void UserDeleteButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                this.StatusStripLabel.Text = "Deleting user account(s)...";
+                Application.DoEvents();
+                List<DataGridViewRow> selectedRows = this.ReturnSelectedUsers();
+                if (selectedRows == null || selectedRows.Count == 0)
+                {
+                    FormHelper.DisplayMessage("Select 1 or more user accounts and try again.", MessageBoxIcon.Error);
+                }
+                else if (!currentEnvConfig.IsDeleteAllowed)
+                {
+                    FormHelper.DisplayMessage("Deletes are not allowed in this environment.", MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    DialogResult result = FormHelper.DisplayMessage(string.Format("Are you sure you want to delete the {0} selected user account(s)?\r\n\r\nThe action is permanent and connot be undone.", selectedRows.Count.ToString("#,##0")), MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        foreach (DataGridViewRow row in selectedRows)
+                        {
+                            this.DeleteUserAccount(row.Cells[1].Value.ToString());
+                        }
+                        this.SearchUserAccounts();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                FormHelper.DisplayMessage(ex);
+            }
+            finally
+            {
+                this.StatusStripLabel.Text = defaultStatus;
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void UserCloneButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                this.StatusStripLabel.Text = "Cloning user account(s)...";
+                Application.DoEvents();
+                List<DataGridViewRow> selectedRows = this.ReturnSelectedUsers();
+                if (selectedRows == null || selectedRows.Count == 0)
+                {
+                    FormHelper.DisplayMessage("Select 1 or more user accounts and try again.", MessageBoxIcon.Error);
+                }
+                else
+                {
+                    List<string> selectedUserNames = new List<string>();
+                    foreach (DataGridViewRow row in selectedRows)
+                    {
+                        selectedUserNames.Add(row.Cells[1].Value.ToString());
+                    }
+                    CloneToEnvironmentForm form = new CloneToEnvironmentForm();
+                    form.SelectedUserNames = selectedUserNames;
+                    form.EnvConfigs = envConfigs;
+                    form.SourceEnvConfig = currentEnvConfig;
+                    form.SourceEnvRoles = envRoles;
+                    form.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                FormHelper.DisplayMessage(ex);
+            }
+            finally
+            {
+                this.StatusStripLabel.Text = defaultStatus;
+                this.Cursor = Cursors.Default;
+            }
         }
     }
 }

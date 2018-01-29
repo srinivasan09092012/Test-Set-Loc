@@ -24,9 +24,9 @@ namespace UserAccountManager.Providers
                 ContactNumber = userProfile.PhoneNumber,
                 EmailAddress = userProfile.EmailAddress,
                 FirstName = userProfile.FirstName,
+                //GenericIdentifer = userProfile.ExternalId,
                 LastName = userProfile.LastName,
                 LocaleId = userProfile.LocaleId,
-                //MiddleName = userProfile.MiddleName,
                 TenantId = userProfile.TenantId.ToString("D"),
                 UserId = userProfile.UserName//,
                 //VosTags = userProfile.VosTags
@@ -47,9 +47,9 @@ namespace UserAccountManager.Providers
                 ContactNumber = userProfile.PhoneNumber,
                 EmailAddress = userProfile.EmailAddress,
                 FirstName = userProfile.FirstName,
+                //GenericIdentifer = userProfile.ExternalId,
                 LastName = userProfile.LastName,
                 LocaleId = userProfile.LocaleId,
-                //MiddleName = userProfile.MiddleName,
                 TenantId = userProfile.TenantId.ToString("D"),
                 UserId = userProfile.UserName//,
                 //VosTags = userProfile.VosTags

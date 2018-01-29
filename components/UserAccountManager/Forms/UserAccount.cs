@@ -26,6 +26,8 @@ namespace UserAccountManager.Forms
 
         public IUserManagementProvider adManagementProvider { get; set; }
 
+        public bool IsCanceled { get; set; }
+
         private static string defaultStatus = "Enter the user account details and click Save.";
 
         public UserAccountForm()
@@ -48,15 +50,23 @@ namespace UserAccountManager.Forms
                 {
                     this.LoadUserAccount();
                 }
-
-                if (this.EditMode == EditModeType.Edit && this.UserProfile.ProfileId.ToString().CompareTo(Constants.InitializedGuid) == 0)
+                if (this.EditMode == EditModeType.Add)
                 {
-                    this.DisplayMessage("This user does not have a profile. One will be created when you Save.", MessageBoxIcon.Warning);
+                    CreateUserProfileCheckBox.Enabled = true;
+                }
+                else if (this.EditMode == EditModeType.Edit && this.UserProfile.ProfileId.ToString().CompareTo(Constants.InitializedGuid) == 0)
+                {
+                    CreateUserProfileCheckBox.Enabled = true;
+                    FormHelper.DisplayMessage("This user does not have a profile. Check the 'Create user profile' checkbox to create one on Save.", MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    CreateUserProfileCheckBox.Checked = true;
                 }
             }
             catch (Exception ex)
             {
-                this.DisplayMessage(ex);
+                FormHelper.DisplayMessage(ex);
             }
             finally
             {
@@ -72,18 +82,13 @@ namespace UserAccountManager.Forms
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.IsCanceled = true;
+            this.Hide();
         }
 
         private void LoadAvailableRoles()
         {
             RolesListBox.Items.Clear();
-            this.UserRoles.Sort(
-                delegate (Role r1, Role r2)
-                {
-                    return r1.Name.CompareTo(r2.Name);
-                }
-            );
             if (this.UserRoles != null && this.UserRoles.Count > 0)
             {
                 foreach (Role role in this.UserRoles)
@@ -102,7 +107,6 @@ namespace UserAccountManager.Forms
             {
                 LastNameTextBox.Text = "Account";
             }
-            LocaleTextBox.Text = this.UserProfile.LocaleId;
             DisplayNameTextBox.Text = this.UserAccount.Identity.DisplayName;
             EmailTextBox.Text = this.UserAccount.Identity.EmailAddress;
             if (string.IsNullOrEmpty(EmailTextBox.Text))
@@ -125,6 +129,8 @@ namespace UserAccountManager.Forms
                 }
             }
 
+            LocaleTextBox.Text = this.UserProfile.LocaleId;
+            ExternalIdTtextBox.Text = this.UserProfile.ExternalId;
             if (this.UserProfile.VosTags.Count > 0)
             {
                 StringBuilder vosTags = new StringBuilder();
@@ -161,16 +167,16 @@ namespace UserAccountManager.Forms
                 UserAccount userAccount = adQueryProvider.GetUser(UserNameTextBox.Text);
                 if (userAccount != null)
                 {
-                    this.DisplayMessage("UserName already taken.", MessageBoxIcon.Warning);
+                    FormHelper.DisplayMessage("UserName already taken.", MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    this.DisplayMessage("UserName is available.", MessageBoxIcon.Information);
+                    FormHelper.DisplayMessage("UserName is available.", MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                this.DisplayMessage(ex);
+                FormHelper.DisplayMessage(ex);
             }
             finally
             {
@@ -196,49 +202,19 @@ namespace UserAccountManager.Forms
                 if (this.IsUserAccountValid())
                 {
                     this.SaveUserAccount();
+                    this.IsCanceled = false;
                     this.Close();
                 }
             }
             catch (Exception ex)
             {
-                this.DisplayMessage(ex);
+                FormHelper.DisplayMessage(ex);
             }
             finally
             {
                 this.StatusStripLabel.Text = defaultStatus;
                 this.Cursor = Cursors.Default;
             }
-        }
-
-        private DialogResult DisplayMessage(string msg, MessageBoxIcon type)
-        {
-            DialogResult result = new DialogResult();
-
-            switch (type)
-            {
-                case MessageBoxIcon.Error:
-                    MessageBox.Show(msg, "Error", MessageBoxButtons.OK, type);
-                    break;
-
-                case MessageBoxIcon.Warning:
-                    MessageBox.Show(msg, "Warning", MessageBoxButtons.OK, type);
-                    break;
-
-                case MessageBoxIcon.Question:
-                    result = MessageBox.Show(msg, "Question", MessageBoxButtons.YesNo, type);
-                    break;
-
-                default:
-                    MessageBox.Show(msg, "Information", MessageBoxButtons.OK, type);
-                    break;
-            }
-
-            return result;
-        }
-
-        private void DisplayMessage(Exception ex)
-        {
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void InitializeForm()
@@ -258,6 +234,7 @@ namespace UserAccountManager.Forms
                 this.CheckAvailableButton.Visible = false;
             }
 
+            this.IsCanceled = true;
             this.LoadAvailableRoles();
             this.AcceptButton = SaveButton;
             this.FirstNameTextBox.Focus();
@@ -270,42 +247,35 @@ namespace UserAccountManager.Forms
 
             if (string.IsNullOrEmpty(FirstNameTextBox.Text))
             {
-                this.DisplayMessage("First Name is required.", MessageBoxIcon.Error);
+                FormHelper.DisplayMessage("First Name is required.", MessageBoxIcon.Error);
                 FirstNameTextBox.Focus();
                 return false;
             }
 
             if (string.IsNullOrEmpty(LastNameTextBox.Text))
             {
-                this.DisplayMessage("Last Name is required.", MessageBoxIcon.Error);
+                FormHelper.DisplayMessage("Last Name is required.", MessageBoxIcon.Error);
                 LastNameTextBox.Focus();
                 return false;
             }
 
             if (string.IsNullOrEmpty(DisplayNameTextBox.Text))
             {
-                this.DisplayMessage("Display Name is required.", MessageBoxIcon.Error);
+                FormHelper.DisplayMessage("Display Name is required.", MessageBoxIcon.Error);
                 DisplayNameTextBox.Focus();
-                return false;
-            }
-
-            if (string.IsNullOrEmpty(LocaleTextBox.Text))
-            {
-                this.DisplayMessage("Locale is required.", MessageBoxIcon.Error);
-                LocaleTextBox.Focus();
                 return false;
             }
 
             if (string.IsNullOrEmpty(EmailTextBox.Text))
             {
-                this.DisplayMessage("Email is required.", MessageBoxIcon.Error);
+                FormHelper.DisplayMessage("Email is required.", MessageBoxIcon.Error);
                 EmailTextBox.Focus();
                 return false;
             }
 
             if (string.IsNullOrEmpty(UserNameTextBox.Text))
             {
-                this.DisplayMessage("User Name is required.", MessageBoxIcon.Error);
+                FormHelper.DisplayMessage("User Name is required.", MessageBoxIcon.Error);
                 UserNameTextBox.Focus();
                 return false;
             }
@@ -315,7 +285,7 @@ namespace UserAccountManager.Forms
                 UserAccount userAccount = adQueryProvider.GetUser(UserNameTextBox.Text);
                 if (userAccount != null)
                 {
-                    this.DisplayMessage("UserName already taken.", MessageBoxIcon.Error);
+                    FormHelper.DisplayMessage("UserName already taken.", MessageBoxIcon.Error);
                     UserNameTextBox.Focus();
                     UserNameTextBox.SelectAll();
                     return false;
@@ -323,21 +293,21 @@ namespace UserAccountManager.Forms
 
                 if (string.IsNullOrEmpty(PasswordTextBox.Text))
                 {
-                    this.DisplayMessage("Password is required.", MessageBoxIcon.Error);
+                    FormHelper.DisplayMessage("Password is required.", MessageBoxIcon.Error);
                     PasswordTextBox.Focus();
                     return false;
                 }
 
                 if (string.IsNullOrEmpty(ConfirmPasswordTextBox.Text))
                 {
-                    this.DisplayMessage("Confirm Password is required.", MessageBoxIcon.Error);
+                    FormHelper.DisplayMessage("Confirm Password is required.", MessageBoxIcon.Error);
                     ConfirmPasswordTextBox.Focus();
                     return false;
                 }
 
                 if (PasswordTextBox.Text.CompareTo(ConfirmPasswordTextBox.Text) != 0)
                 {
-                    this.DisplayMessage("Password and Confirm Password must match.", MessageBoxIcon.Error);
+                    FormHelper.DisplayMessage("Password and Confirm Password must match.", MessageBoxIcon.Error);
                     PasswordTextBox.Focus();
                     PasswordTextBox.SelectAll();
                     return false;
@@ -349,7 +319,7 @@ namespace UserAccountManager.Forms
                 {
                     if (string.IsNullOrEmpty(PasswordTextBox.Text))
                     {
-                        this.DisplayMessage("Password is required.", MessageBoxIcon.Error);
+                        FormHelper.DisplayMessage("Password is required.", MessageBoxIcon.Error);
                         PasswordTextBox.Focus();
                         PasswordTextBox.SelectAll();
                         return false;
@@ -357,7 +327,7 @@ namespace UserAccountManager.Forms
 
                     if (string.IsNullOrEmpty(ConfirmPasswordTextBox.Text))
                     {
-                        this.DisplayMessage("Confirm Password is required.", MessageBoxIcon.Error);
+                        FormHelper.DisplayMessage("Confirm Password is required.", MessageBoxIcon.Error);
                         ConfirmPasswordTextBox.Focus();
                         ConfirmPasswordTextBox.SelectAll();
                         return false;
@@ -365,7 +335,7 @@ namespace UserAccountManager.Forms
 
                     if (PasswordTextBox.Text.CompareTo(ConfirmPasswordTextBox.Text) != 0)
                     {
-                        this.DisplayMessage("Password and Confirm Password must match.", MessageBoxIcon.Error);
+                        FormHelper.DisplayMessage("Password and Confirm Password must match.", MessageBoxIcon.Error);
                         PasswordTextBox.Focus();
                         PasswordTextBox.SelectAll();
                         return false;
@@ -375,9 +345,19 @@ namespace UserAccountManager.Forms
 
             if (RolesListBox.SelectedIndices.Count == 0)
             {
-                this.DisplayMessage("A minimum of one Role must be selected.", MessageBoxIcon.Error);
+                FormHelper.DisplayMessage("A minimum of one Role must be selected.", MessageBoxIcon.Error);
                 RolesListBox.Focus();
                 return false;
+            }
+
+            if (this.CreateUserProfileCheckBox.Checked)
+            {
+                if (string.IsNullOrEmpty(LocaleTextBox.Text))
+                {
+                    FormHelper.DisplayMessage("Locale is required.", MessageBoxIcon.Error);
+                    LocaleTextBox.Focus();
+                    return false;
+                }
             }
 
             return isValid;
@@ -385,21 +365,6 @@ namespace UserAccountManager.Forms
 
         private void SaveUserAccount()
         {
-            UserProfile newUserProfile = new UserProfile()
-            {
-                ProfileId = this.UserProfile.ProfileId,
-                DisplayName = DisplayNameTextBox.Text.Trim(),
-                EmailAddress = EmailTextBox.Text.Trim(),
-                FirstName = FirstNameTextBox.Text.Trim(),
-                LastName = LastNameTextBox.Text.Trim(),
-                LocaleId = LocaleTextBox.Text.Trim(),
-                MiddleName = MiddleNameTextBox.Text.Trim(),
-                PhoneNumber = PhoneTextBox.Text.Trim(),
-                TenantId = Guid.Parse(EnvConfig.TenantId),
-                UserName = UserNameTextBox.Text.Trim(),
-                VosTags = new List<string>(VosTagsTextBox.Text.Trim().Split(','))
-            };
-
             UserAccount newUserAccount = new UserAccount()
             {
                 Identity = new UserIdentity()
@@ -427,33 +392,43 @@ namespace UserAccountManager.Forms
                 newUserAccount.Password = PasswordTextBox.Text;
             }
 
+            UserProfile newUserProfile = new UserProfile()
+            {
+                ProfileId = this.UserProfile.ProfileId,
+                DisplayName = DisplayNameTextBox.Text.Trim(),
+                EmailAddress = EmailTextBox.Text.Trim(),
+                ExternalId = ExternalIdTtextBox.Text.Trim(),
+                FirstName = FirstNameTextBox.Text.Trim(),
+                LastName = LastNameTextBox.Text.Trim(),
+                LocaleId = LocaleTextBox.Text.Trim(),
+                MiddleName = MiddleNameTextBox.Text.Trim(),
+                PhoneNumber = PhoneTextBox.Text.Trim(),
+                TenantId = Guid.Parse(EnvConfig.TenantId),
+                UserName = UserNameTextBox.Text.Trim(),
+                VosTags = new List<string>(VosTagsTextBox.Text.Trim().Split(','))
+            };
+
             UserQueryServiceProvider qryProvider = new UserQueryServiceProvider(this.EnvConfig);
             UserServiceProvider cmdProvider = new UserServiceProvider(this.EnvConfig);
             if (this.EditMode == EditModeType.Add)
             {
-                UserProfile existingUserProfile = qryProvider.LoadUserProfile(newUserProfile.UserName);
-                if (existingUserProfile != null)
-                {
-                    newUserProfile.ProfileId = existingUserProfile.ProfileId;
-                    cmdProvider.UpdateProfile(newUserProfile);
-                }
-                else
-                {
-                    cmdProvider.AddProfile(newUserProfile);
-                }
                 adManagementProvider.AddUser(newUserAccount);
+                if (CreateUserProfileCheckBox.Checked)
+                {
+                    UserProfile existingUserProfile = qryProvider.LoadUserProfile(newUserProfile.UserName);
+                    if (existingUserProfile != null)
+                    {
+                        newUserProfile.ProfileId = existingUserProfile.ProfileId;
+                        cmdProvider.UpdateProfile(newUserProfile);
+                    }
+                    else
+                    {
+                        cmdProvider.AddProfile(newUserProfile);
+                    }
+                }
             }
             else
             {
-                if (this.UserProfile.ProfileId.ToString().CompareTo(Constants.InitializedGuid) == 0)
-                {
-                    cmdProvider.AddProfile(newUserProfile);
-                }
-                else
-                {
-                    cmdProvider.UpdateProfile(newUserProfile);
-                }
-
                 adManagementProvider.UpdateUser(newUserAccount.Identity);
 
                 if (!string.IsNullOrEmpty(newUserAccount.Password))
@@ -480,7 +455,24 @@ namespace UserAccountManager.Forms
                         adManagementProvider.AddUserToRole(newUserAccount.Identity.UserName, newRole);
                     }
                 }
+
+                if (CreateUserProfileCheckBox.Checked)
+                {
+                    if (this.UserProfile.ProfileId.ToString().CompareTo(Constants.InitializedGuid) == 0)
+                    {
+                        cmdProvider.AddProfile(newUserProfile);
+                    }
+                    else
+                    {
+                        cmdProvider.UpdateProfile(newUserProfile);
+                    }
+                }
             }
+        }
+
+        private void CreateUserProfileCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            ProfileGroupBox.Enabled = CreateUserProfileCheckBox.Checked;
         }
     }
 }

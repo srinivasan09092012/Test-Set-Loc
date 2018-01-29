@@ -12,6 +12,8 @@ namespace UserAccountManager.Domain
 
         public Guid ProfileId { get; set; }
 
+        public string ExternalId { get; set; }
+
         public string FirstName { get; set; }
 
         public string MiddleName { get; set; }

@@ -32,9 +32,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.LocaleTextBox = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.IdenttyGroupBox = new System.Windows.Forms.GroupBox();
             this.PhoneTextBox = new System.Windows.Forms.MaskedTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.DisplayNameTextBox = new System.Windows.Forms.TextBox();
@@ -47,9 +45,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.FirstNameTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.LocaleTextBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.UserNameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.SecurityGroupBox = new System.Windows.Forms.GroupBox();
             this.CheckAvailableButton = new System.Windows.Forms.Button();
             this.ConfirmPasswordTextBox = new System.Windows.Forms.TextBox();
             this.ConfirmPasswordLabel = new System.Windows.Forms.Label();
@@ -57,17 +57,21 @@
             this.label9 = new System.Windows.Forms.Label();
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
             this.PasswordLabel = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ProfileGroupBox = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.ExternalIdTtextBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.VosTagsTextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.SaveButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusStripLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.CreateUserProfileCheckBox = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.IdenttyGroupBox.SuspendLayout();
+            this.SecurityGroupBox.SuspendLayout();
+            this.ProfileGroupBox.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,48 +106,26 @@
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // groupBox1
+            // IdenttyGroupBox
             // 
-            this.groupBox1.Controls.Add(this.LocaleTextBox);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.PhoneTextBox);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.DisplayNameTextBox);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.MiddleNameTextBox);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.EmailTextBox);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.LastNameTextBox);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.FirstNameTextBox);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 40);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(760, 175);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Identity";
-            // 
-            // LocaleTextBox
-            // 
-            this.LocaleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LocaleTextBox.Location = new System.Drawing.Point(329, 65);
-            this.LocaleTextBox.Name = "LocaleTextBox";
-            this.LocaleTextBox.Size = new System.Drawing.Size(75, 20);
-            this.LocaleTextBox.TabIndex = 9;
-            this.LocaleTextBox.Text = "en-US";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.SystemColors.Control;
-            this.label10.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label10.Location = new System.Drawing.Point(281, 67);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(39, 13);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "Locale";
+            this.IdenttyGroupBox.Controls.Add(this.PhoneTextBox);
+            this.IdenttyGroupBox.Controls.Add(this.label7);
+            this.IdenttyGroupBox.Controls.Add(this.DisplayNameTextBox);
+            this.IdenttyGroupBox.Controls.Add(this.label6);
+            this.IdenttyGroupBox.Controls.Add(this.MiddleNameTextBox);
+            this.IdenttyGroupBox.Controls.Add(this.label5);
+            this.IdenttyGroupBox.Controls.Add(this.EmailTextBox);
+            this.IdenttyGroupBox.Controls.Add(this.label4);
+            this.IdenttyGroupBox.Controls.Add(this.LastNameTextBox);
+            this.IdenttyGroupBox.Controls.Add(this.label3);
+            this.IdenttyGroupBox.Controls.Add(this.FirstNameTextBox);
+            this.IdenttyGroupBox.Controls.Add(this.label2);
+            this.IdenttyGroupBox.Location = new System.Drawing.Point(12, 40);
+            this.IdenttyGroupBox.Name = "IdenttyGroupBox";
+            this.IdenttyGroupBox.Size = new System.Drawing.Size(760, 175);
+            this.IdenttyGroupBox.TabIndex = 1;
+            this.IdenttyGroupBox.TabStop = false;
+            this.IdenttyGroupBox.Text = "Identity";
             // 
             // PhoneTextBox
             // 
@@ -253,6 +235,26 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "First Name";
             // 
+            // LocaleTextBox
+            // 
+            this.LocaleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LocaleTextBox.Location = new System.Drawing.Point(110, 28);
+            this.LocaleTextBox.Name = "LocaleTextBox";
+            this.LocaleTextBox.Size = new System.Drawing.Size(75, 20);
+            this.LocaleTextBox.TabIndex = 1;
+            this.LocaleTextBox.Text = "en-US";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.SystemColors.Control;
+            this.label10.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label10.Location = new System.Drawing.Point(9, 30);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(39, 13);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Locale";
+            // 
             // UserNameTextBox
             // 
             this.UserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -273,23 +275,23 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "UserName";
             // 
-            // groupBox2
+            // SecurityGroupBox
             // 
-            this.groupBox2.Controls.Add(this.CheckAvailableButton);
-            this.groupBox2.Controls.Add(this.ConfirmPasswordTextBox);
-            this.groupBox2.Controls.Add(this.ConfirmPasswordLabel);
-            this.groupBox2.Controls.Add(this.RolesListBox);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.PasswordTextBox);
-            this.groupBox2.Controls.Add(this.PasswordLabel);
-            this.groupBox2.Controls.Add(this.UserNameTextBox);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 233);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(760, 175);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Security";
+            this.SecurityGroupBox.Controls.Add(this.CheckAvailableButton);
+            this.SecurityGroupBox.Controls.Add(this.ConfirmPasswordTextBox);
+            this.SecurityGroupBox.Controls.Add(this.ConfirmPasswordLabel);
+            this.SecurityGroupBox.Controls.Add(this.RolesListBox);
+            this.SecurityGroupBox.Controls.Add(this.label9);
+            this.SecurityGroupBox.Controls.Add(this.PasswordTextBox);
+            this.SecurityGroupBox.Controls.Add(this.PasswordLabel);
+            this.SecurityGroupBox.Controls.Add(this.UserNameTextBox);
+            this.SecurityGroupBox.Controls.Add(this.label1);
+            this.SecurityGroupBox.Location = new System.Drawing.Point(12, 233);
+            this.SecurityGroupBox.Name = "SecurityGroupBox";
+            this.SecurityGroupBox.Size = new System.Drawing.Size(760, 175);
+            this.SecurityGroupBox.TabIndex = 2;
+            this.SecurityGroupBox.TabStop = false;
+            this.SecurityGroupBox.Text = "Security";
             // 
             // CheckAvailableButton
             // 
@@ -328,7 +330,7 @@
             this.RolesListBox.Location = new System.Drawing.Point(432, 28);
             this.RolesListBox.Name = "RolesListBox";
             this.RolesListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.RolesListBox.Size = new System.Drawing.Size(236, 132);
+            this.RolesListBox.Size = new System.Drawing.Size(313, 132);
             this.RolesListBox.TabIndex = 8;
             // 
             // label9
@@ -359,51 +361,86 @@
             this.PasswordLabel.TabIndex = 3;
             this.PasswordLabel.Text = "Password";
             // 
-            // groupBox3
+            // ProfileGroupBox
             // 
-            this.groupBox3.Controls.Add(this.VosTagsTextBox);
-            this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Enabled = false;
-            this.groupBox3.Location = new System.Drawing.Point(12, 423);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(760, 100);
-            this.groupBox3.TabIndex = 3;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Tags";
+            this.ProfileGroupBox.Controls.Add(this.label12);
+            this.ProfileGroupBox.Controls.Add(this.ExternalIdTtextBox);
+            this.ProfileGroupBox.Controls.Add(this.label8);
+            this.ProfileGroupBox.Controls.Add(this.LocaleTextBox);
+            this.ProfileGroupBox.Controls.Add(this.label10);
+            this.ProfileGroupBox.Controls.Add(this.VosTagsTextBox);
+            this.ProfileGroupBox.Controls.Add(this.label11);
+            this.ProfileGroupBox.Enabled = false;
+            this.ProfileGroupBox.Location = new System.Drawing.Point(12, 454);
+            this.ProfileGroupBox.Name = "ProfileGroupBox";
+            this.ProfileGroupBox.Size = new System.Drawing.Size(760, 152);
+            this.ProfileGroupBox.TabIndex = 4;
+            this.ProfileGroupBox.TabStop = false;
+            this.ProfileGroupBox.Text = "Profile";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Enabled = false;
+            this.label12.Location = new System.Drawing.Point(7, 113);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(97, 13);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "(comma separated)";
+            // 
+            // ExternalIdTtextBox
+            // 
+            this.ExternalIdTtextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ExternalIdTtextBox.Location = new System.Drawing.Point(110, 63);
+            this.ExternalIdTtextBox.Name = "ExternalIdTtextBox";
+            this.ExternalIdTtextBox.Size = new System.Drawing.Size(247, 20);
+            this.ExternalIdTtextBox.TabIndex = 3;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(9, 63);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(88, 13);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "External Identifier";
             // 
             // VosTagsTextBox
             // 
             this.VosTagsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.VosTagsTextBox.Location = new System.Drawing.Point(13, 45);
+            this.VosTagsTextBox.Enabled = false;
+            this.VosTagsTextBox.Location = new System.Drawing.Point(110, 100);
+            this.VosTagsTextBox.Multiline = true;
             this.VosTagsTextBox.Name = "VosTagsTextBox";
-            this.VosTagsTextBox.Size = new System.Drawing.Size(729, 20);
-            this.VosTagsTextBox.TabIndex = 1;
+            this.VosTagsTextBox.Size = new System.Drawing.Size(638, 36);
+            this.VosTagsTextBox.TabIndex = 6;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(10, 29);
+            this.label11.Enabled = false;
+            this.label11.Location = new System.Drawing.Point(7, 100);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(167, 13);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "Comma separated list of VOS tags";
+            this.label11.Size = new System.Drawing.Size(56, 13);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "VOS Tags";
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(616, 540);
+            this.SaveButton.Location = new System.Drawing.Point(616, 624);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(75, 23);
-            this.SaveButton.TabIndex = 4;
+            this.SaveButton.TabIndex = 5;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(697, 540);
+            this.CancelButton.Location = new System.Drawing.Point(697, 624);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 5;
+            this.CancelButton.TabIndex = 6;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
@@ -412,10 +449,10 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusStripLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 574);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 659);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(784, 22);
-            this.statusStrip1.TabIndex = 6;
+            this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // StatusStripLabel
@@ -424,22 +461,36 @@
             this.StatusStripLabel.Size = new System.Drawing.Size(144, 17);
             this.StatusStripLabel.Text = "Initializing user account....";
             // 
+            // CreateUserProfileCheckBox
+            // 
+            this.CreateUserProfileCheckBox.AutoSize = true;
+            this.CreateUserProfileCheckBox.Enabled = false;
+            this.CreateUserProfileCheckBox.Location = new System.Drawing.Point(12, 428);
+            this.CreateUserProfileCheckBox.Name = "CreateUserProfileCheckBox";
+            this.CreateUserProfileCheckBox.Size = new System.Drawing.Size(120, 17);
+            this.CreateUserProfileCheckBox.TabIndex = 3;
+            this.CreateUserProfileCheckBox.Text = "Create a &user profile";
+            this.CreateUserProfileCheckBox.UseVisualStyleBackColor = true;
+            this.CreateUserProfileCheckBox.CheckedChanged += new System.EventHandler(this.CreateUserProfileCheckBox_CheckedChanged);
+            // 
             // UserAccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 596);
+            this.ClientSize = new System.Drawing.Size(784, 681);
+            this.Controls.Add(this.CreateUserProfileCheckBox);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.SaveButton);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.ProfileGroupBox);
+            this.Controls.Add(this.SecurityGroupBox);
+            this.Controls.Add(this.IdenttyGroupBox);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(800, 720);
             this.Name = "UserAccountForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "User Account";
@@ -447,12 +498,12 @@
             this.Shown += new System.EventHandler(this.UserAccountForm_Shown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.IdenttyGroupBox.ResumeLayout(false);
+            this.IdenttyGroupBox.PerformLayout();
+            this.SecurityGroupBox.ResumeLayout(false);
+            this.SecurityGroupBox.PerformLayout();
+            this.ProfileGroupBox.ResumeLayout(false);
+            this.ProfileGroupBox.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -466,7 +517,7 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox IdenttyGroupBox;
         private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox LastNameTextBox;
@@ -481,14 +532,14 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox DisplayNameTextBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox SecurityGroupBox;
         private System.Windows.Forms.TextBox ConfirmPasswordTextBox;
         private System.Windows.Forms.Label ConfirmPasswordLabel;
         private System.Windows.Forms.ListBox RolesListBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox PasswordTextBox;
         private System.Windows.Forms.Label PasswordLabel;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox ProfileGroupBox;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.StatusStrip statusStrip1;
@@ -498,5 +549,9 @@
         private System.Windows.Forms.Button CheckAvailableButton;
         private System.Windows.Forms.TextBox LocaleTextBox;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox ExternalIdTtextBox;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox CreateUserProfileCheckBox;
     }
 }
