@@ -60,12 +60,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\UserQueryService\Reference.cs">
+    <Compile Include="Connected Services\UserQueryService1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\UserService\Reference.cs">
+    <Compile Include="Connected Services\UserQueryService2\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\UserService1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\UserService2\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -78,6 +88,7 @@
     <Compile Include="Domain\Environment.cs" />
     <Compile Include="Domain\EnvironmentsConfig.cs" />
     <Compile Include="Domain\UserService.cs" />
+    <Compile Include="Domain\UserVOSTag.cs" />
     <Compile Include="Forms\CloneToEnvironment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,9 +116,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\BaseProvider.cs" />
-    <Compile Include="Providers\UserQueryServiceProvider.cs" />
-    <Compile Include="Providers\UserServiceProvider.cs" />
+    <Compile Include="Providers\BaseServiceDataProvider.cs" />
+    <Compile Include="Providers\IUserQueryServiceProvider.cs" />
+    <Compile Include="Providers\IUserServiceProvider.cs" />
+    <Compile Include="Providers\UserQueryServiceProvider1.cs" />
+    <Compile Include="Providers\UserQueryServiceProvider2.cs" />
+    <Compile Include="Providers\UserServiceProvider1.cs" />
+    <Compile Include="Providers\UserServiceProvider2.cs" />
     <Compile Include="Utilities\Serializer.cs" />
     <EmbeddedResource Include="Forms\CloneToEnvironment.resx">
       <DependentUpon>CloneToEnvironment.cs</DependentUpon>
@@ -131,134 +146,267 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Connected Services\UserQueryService\UserAccountManager.UserQueryService.InvitationQualifiersQuery.datasource">
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.InvitationQualifiersQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserQueryService\UserAccountManager.UserQueryService.QualifierVerificationQuery.datasource">
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.QualifierVerificationQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserQueryService\UserAccountManager.UserQueryService.RegisteredUserXrefQuery.datasource">
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.RegisteredUserXrefQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserQueryService\UserAccountManager.UserQueryService.UserDelegateDetailsQuery.datasource">
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UserDelegateDetailsQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserQueryService\UserAccountManager.UserQueryService.UserDelegateQuery.datasource">
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UserDelegateQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserQueryService\UserAccountManager.UserQueryService.UserGroupQuery.datasource">
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UserGroupQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserQueryService\UserAccountManager.UserQueryService.UserIdAvailabilityQuery.datasource">
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UserIdAvailabilityQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserQueryService\UserAccountManager.UserQueryService.UserIdExistsQuery.datasource">
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UserIdExistsQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserQueryService\UserAccountManager.UserQueryService.UserProfileMembeFocusHistoryQuery.datasource">
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UserProfileMembeFocusHistoryQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserQueryService\UserAccountManager.UserQueryService.UserProfileQuery.datasource">
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UserProfileQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserQueryService\UserAccountManager.UserQueryService.UsersQuery.datasource">
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UsersQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserQueryService\UserAccountManager.UserQueryService.UserXRefRelationshipQuery.datasource">
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UserXRefRelationshipQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserQueryService\UserQueryService.wsdl" />
-    <None Include="Connected Services\UserQueryService\UserQueryService.xsd">
+    <None Include="Connected Services\UserQueryService1\UserQueryService.wsdl" />
+    <None Include="Connected Services\UserQueryService1\UserQueryService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserQueryService\UserQueryService1.wsdl" />
-    <None Include="Connected Services\UserQueryService\UserQueryService1.xsd">
+    <None Include="Connected Services\UserQueryService1\UserQueryService1.wsdl" />
+    <None Include="Connected Services\UserQueryService1\UserQueryService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserQueryService\UserQueryService2.xsd">
+    <None Include="Connected Services\UserQueryService1\UserQueryService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserQueryService\UserQueryService3.xsd">
+    <None Include="Connected Services\UserQueryService1\UserQueryService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserQueryService\UserQueryService4.xsd">
+    <None Include="Connected Services\UserQueryService1\UserQueryService4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserQueryService\UserQueryService5.xsd">
+    <None Include="Connected Services\UserQueryService1\UserQueryService5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserQueryService\UserQueryService6.xsd">
+    <None Include="Connected Services\UserQueryService1\UserQueryService6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserQueryService\UserQueryService7.xsd">
+    <None Include="Connected Services\UserQueryService1\UserQueryService7.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserQueryService\UserQueryService8.xsd">
+    <None Include="Connected Services\UserQueryService1\UserQueryService8.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserQueryService\UserQueryService9.xsd">
+    <None Include="Connected Services\UserQueryService1\UserQueryService9.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserService\UserAccountManager.UserService.ProfileAdded.datasource">
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.InvitationQualifiersQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserService\UserAccountManager.UserService.ProfileUpdated.datasource">
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.QualifierVerificationQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserService\UserAccountManager.UserService.RegisteredUserXrefAdded.datasource">
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.RegisteredUserXrefQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserService\UserAccountManager.UserService.RegisteredUserXrefUpdated.datasource">
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.SearchUserProfilesQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserService\UserAccountManager.UserService.UserAdded.datasource">
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UserDelegateDetailsQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserService\UserAccountManager.UserService.UserDelegateAdded.datasource">
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UserDelegateQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserService\UserAccountManager.UserService.UserDelegateUpdated.datasource">
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UserGroupQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserService\UserAccountManager.UserService.UserPreferencesAdded.datasource">
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UserIdAvailabilityQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserService\UserAccountManager.UserService.UserPreferencesRemoved.datasource">
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UserIdExistsQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserService\UserAccountManager.UserService.UserProfileMemberFocusHistoryAdded.datasource">
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UserProfileMembeFocusHistoryQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserService\UserAccountManager.UserService.UserRoleAdded.datasource">
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UserProfileQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserService\UserAccountManager.UserService.UserRoleRemoved.datasource">
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UsersQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserService\UserService.wsdl" />
-    <None Include="Connected Services\UserService\UserService.xsd">
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UserXRefRelationshipQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserQueryService.wsdl" />
+    <None Include="Connected Services\UserQueryService2\UserQueryService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserService\UserService1.wsdl" />
-    <None Include="Connected Services\UserService\UserService1.xsd">
+    <None Include="Connected Services\UserQueryService2\UserQueryService1.wsdl" />
+    <None Include="Connected Services\UserQueryService2\UserQueryService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserService\UserService2.xsd">
+    <None Include="Connected Services\UserQueryService2\UserQueryService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserService\UserService3.xsd">
+    <None Include="Connected Services\UserQueryService2\UserQueryService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserService\UserService4.xsd">
+    <None Include="Connected Services\UserQueryService2\UserQueryService4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserService\UserService5.xsd">
+    <None Include="Connected Services\UserQueryService2\UserQueryService5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserService\UserService6.xsd">
+    <None Include="Connected Services\UserQueryService2\UserQueryService6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserService\UserService7.xsd">
+    <None Include="Connected Services\UserQueryService2\UserQueryService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserQueryService8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserQueryService9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.ProfileAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.ProfileUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.RegisteredUserXrefAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.RegisteredUserXrefUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserDelegateAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserPreferencesAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserPreferencesRemoved.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserProfileMemberFocusHistoryAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserRoleAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserRoleRemoved.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserService.wsdl" />
+    <None Include="Connected Services\UserService1\UserService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService1\UserService1.wsdl" />
+    <None Include="Connected Services\UserService1\UserService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService1\UserService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService1\UserService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService1\UserService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService1\UserService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService1\UserService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService1\UserService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.ProfileActivated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.ProfileAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.ProfileInactivated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.ProfileUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.RegisteredUserXrefAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.RegisteredUserXrefUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.UserAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.UserDelegateAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.UserPreferencesAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.UserPreferencesRemoved.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.UserProfileMemberFocusHistoryAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.UserVOSTagsAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.UserVOSTagUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserService.wsdl" />
+    <None Include="Connected Services\UserService2\UserService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService2\UserService1.wsdl" />
+    <None Include="Connected Services\UserService2\UserService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService2\UserService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService2\UserService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService2\UserService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService2\UserService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService2\UserService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService2\UserService7.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="nuget.config" />
@@ -273,16 +421,28 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="UserAccountManager.Domain.Environment.datasource" />
+    <None Include="UserAccountManager.Domain.UserVOSTag.datasource" />
+    <None Include="UserAccountManager.UserQueryService.UserVOSTagListModel.datasource" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\UserQueryService\UserQueryService.disco" />
-    <None Include="Connected Services\UserService\UserService.disco" />
-    <None Include="Connected Services\UserService\configuration91.svcinfo" />
-    <None Include="Connected Services\UserService\configuration.svcinfo" />
-    <None Include="Connected Services\UserService\Reference.svcmap">
+    <None Include="Connected Services\UserService2\configuration91.svcinfo" />
+    <None Include="Connected Services\UserService2\configuration.svcinfo" />
+    <None Include="Connected Services\UserService2\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\UserQueryService1\configuration91.svcinfo" />
+    <None Include="Connected Services\UserQueryService1\configuration.svcinfo" />
+    <None Include="Connected Services\UserQueryService1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\UserService1\configuration91.svcinfo" />
+    <None Include="Connected Services\UserService1\configuration.svcinfo" />
+    <None Include="Connected Services\UserService1\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -294,17 +454,19 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\UserQueryService\" />
-    <WCFMetadataStorage Include="Connected Services\UserService\" />
+    <WCFMetadataStorage Include="Connected Services\UserQueryService1\" />
+    <WCFMetadataStorage Include="Connected Services\UserQueryService2\" />
+    <WCFMetadataStorage Include="Connected Services\UserService1\" />
+    <WCFMetadataStorage Include="Connected Services\UserService2\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\UserQueryService\configuration91.svcinfo" />
+    <None Include="Connected Services\UserQueryService2\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\UserQueryService\configuration.svcinfo" />
+    <None Include="Connected Services\UserQueryService2\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\UserQueryService\Reference.svcmap">
+    <None Include="Connected Services\UserQueryService2\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

@@ -17,11 +17,11 @@ namespace UserAccountManager.Forms
 
         public Domain.Environment SourceEnvConfig { get; set; }
 
-        public List<Role> SourceEnvRoles { get; set; }
+        public List<Group> SourceEnvGroups { get; set; }
 
         private static IUserQueryProvider adQueryProvider = null;
         private static IUserManagementProvider adManagementProvider = null;
-        private static List<Role> targetEnvRoles = null;
+        private static List<Group> targetEnvGroups = null;
         private static Domain.Environment targetEnvConfig = null;
         private string defaultStatus = "Select environment and password and click Clone.";
 
@@ -60,7 +60,7 @@ namespace UserAccountManager.Forms
                 if (EnvComboBox.SelectedIndex > 0)
                 {
                     targetEnvConfig = this.EnvConfigs.Environments.Find(ec => ec.Name == EnvComboBox.Text);
-                    targetEnvRoles = this.LoadEnvRoles(targetEnvConfig);
+                    targetEnvGroups = this.LoadEnvGroups(targetEnvConfig);
                 }
             }
             catch (Exception ex)
@@ -74,10 +74,10 @@ namespace UserAccountManager.Forms
             }
         }
 
-        private List<Role> LoadEnvRoles(Domain.Environment envConfig)
+        private List<Group> LoadEnvGroups(Domain.Environment envConfig)
         {
             adQueryProvider = new ActiveDirectoryQueryProvider(envConfig.ADServer, envConfig.ADUser, envConfig.ADPassword, envConfig.ADContainer);
-            SearchRolesRequest rolesRequest = new SearchRolesRequest()
+            SearchGroupsRequest rolesRequest = new SearchGroupsRequest()
             {
                 PagingCriteria = new PagingCriteria()
                 {
@@ -85,8 +85,8 @@ namespace UserAccountManager.Forms
                     RowsPerPage = 200
                 }
             };
-            SearchRolesResponse rolesResponse = adQueryProvider.SearchRoles(rolesRequest);
-            return rolesResponse.Roles;
+            SearchGroupsResponse rolesResponse = adQueryProvider.SearchGroups(rolesRequest);
+            return rolesResponse.Groups;
         }
 
         private void CloneButton_Click(object sender, EventArgs e)
@@ -145,7 +145,7 @@ namespace UserAccountManager.Forms
 
                 if (targetUserAccount == null)
                 {
-                    // Add target user account (bypass roles that do not exist in target)
+                    // Add target user account
                     targetUserAccount = sourceUserAccount;
                     if (string.IsNullOrEmpty(targetUserAccount.Identity.DisplayName))
                     {
@@ -156,31 +156,15 @@ namespace UserAccountManager.Forms
                         targetUserAccount.Identity.EmailAddress = "maps_" + targetUserAccount.Identity.UserName + "@dxc.com";
                     }
                     targetUserAccount.Password = PasswordTextBox.Text;
-                    List<string> rolesToRemove = new List<string>();
-                    foreach (string roleName in targetUserAccount.Roles)
+                    foreach (string groupName in targetUserAccount.Groups)
                     {
-                        if (targetEnvRoles.Find(r => r.Name.CompareTo(roleName) == 0) == null)
+                        if (targetEnvGroups.Find(r => r.Name.CompareTo(groupName) == 0) == null)
                         {
-                            rolesToRemove.Add(roleName);
+                            adManagementProvider.AddGroup(groupName);
                         }
                     }
 
-                    if (rolesToRemove.Count > 0)
-                    {
-                        foreach (string roleName in rolesToRemove)
-                        {
-                            targetUserAccount.Roles.Remove(roleName);
-                        }
-                    }
-
-                    if (targetUserAccount.Roles.Count == 0)
-                    {
-                        FormHelper.DisplayMessage(string.Format("User {0} was not cloned. No matching roles exist in target environment.", userName), MessageBoxIcon.Warning);
-                    }
-                    else
-                    {
-                        adManagementProvider.AddUser(targetUserAccount);
-                    }
+                    adManagementProvider.AddUser(targetUserAccount);
                 }
             }
             else
@@ -192,22 +176,69 @@ namespace UserAccountManager.Forms
 
         private void CloneUserProfile(string userName)
         {
+            IUserQueryServiceProvider srcQryProvider = null;
+            if (this.SourceEnvConfig.ServiceVersion == 1)
+            {
+                srcQryProvider = new UserQueryServiceProvider1(this.SourceEnvConfig);
+            }
+            else
+            {
+                srcQryProvider = new UserQueryServiceProvider2(this.SourceEnvConfig);
+            }
+
+            IUserQueryServiceProvider trgQryProvider = null;
+            IUserServiceProvider trgCmdProvider = null;
+            if (targetEnvConfig.ServiceVersion == 1)
+            {
+                trgQryProvider = new UserQueryServiceProvider1(targetEnvConfig);
+                trgCmdProvider = new UserServiceProvider1(targetEnvConfig);
+            }
+            else
+            {
+                trgQryProvider = new UserQueryServiceProvider2(targetEnvConfig);
+                trgCmdProvider = new UserServiceProvider2(targetEnvConfig);
+            }
+
             // Get source user profile
-            UserQueryServiceProvider qryProvider = new UserQueryServiceProvider(this.SourceEnvConfig);
-            UserProfile sourceUserProfile = qryProvider.LoadUserProfile(userName);
+            UserProfile sourceUserProfile = srcQryProvider.LoadUserProfile(userName);
             if (sourceUserProfile != null)
             {
                 // Check for target user profile
-                qryProvider = new UserQueryServiceProvider(targetEnvConfig);
-                UserProfile targetUserProfile = qryProvider.LoadUserProfile(userName);
+                UserProfile targetUserProfile = trgQryProvider.LoadUserProfile(userName);
                 if (targetUserProfile == null)
                 {
+                    //Copy source profile and wipe out profile ID
                     targetUserProfile = sourceUserProfile;
                     targetUserProfile.ProfileId = Guid.Empty;
 
                     // Add target user profile
-                    UserServiceProvider cmdProvider = new UserServiceProvider(targetEnvConfig);
-                    cmdProvider.AddProfile(targetUserProfile);
+                    trgCmdProvider.AddProfile(targetUserProfile);
+                }
+                else
+                {
+                    //Copy source profile and save off original profile ID
+                    targetUserProfile.DisplayName = sourceUserProfile.DisplayName;
+                    targetUserProfile.EmailAddress = sourceUserProfile.EmailAddress;
+                    targetUserProfile.FirstName = sourceUserProfile.FirstName;
+                    targetUserProfile.GeneralId = sourceUserProfile.GeneralId;
+                    targetUserProfile.IsAccountVerified = sourceUserProfile.IsAccountVerified;
+                    targetUserProfile.IsActive = sourceUserProfile.IsActive;
+                    targetUserProfile.LastName = sourceUserProfile.LastName;
+                    targetUserProfile.MiddleName = sourceUserProfile.MiddleName;
+                    targetUserProfile.PhoneNumber = sourceUserProfile.PhoneNumber;
+                    targetUserProfile.TenantId = sourceUserProfile.TenantId;
+                    targetUserProfile.UserName = sourceUserProfile.UserName;
+
+                    foreach (UserVOSTag tag in sourceUserProfile.VOSTags)
+                    {
+                        if (targetUserProfile.VOSTags.Find(t => t.Code.ToLower() == tag.Code.ToLower() && t.TypeCode.ToLower() == tag.TypeCode.ToLower() && t.EffectiveDate.CompareTo(tag.EffectiveDate) == 0 && t.EndDate.CompareTo(tag.EndDate) == 0) == null)
+                        {
+                            targetUserProfile.VOSTags.Add(new UserVOSTag(Guid.Empty, tag.Code, tag.TypeCode, tag.EffectiveDate, tag.EndDate));
+                        }
+                    }
+
+                    // Update target user profile
+                    trgCmdProvider.UpdateProfile(targetUserProfile);
                 }
             }
         }

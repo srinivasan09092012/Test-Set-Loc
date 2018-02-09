@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -53,16 +54,21 @@
             this.CheckAvailableButton = new System.Windows.Forms.Button();
             this.ConfirmPasswordTextBox = new System.Windows.Forms.TextBox();
             this.ConfirmPasswordLabel = new System.Windows.Forms.Label();
-            this.RolesListBox = new System.Windows.Forms.ListBox();
+            this.GroupsListBox = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.ProfileGroupBox = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.ExternalIdTtextBox = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.VosTagsTextBox = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.VOSTagsDataGridView = new System.Windows.Forms.DataGridView();
+            this.userVOSTagIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.effectiveDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VOSTagsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.GeneralIdTtextBox = new System.Windows.Forms.TextBox();
+            this.GeneralIdLabel = new System.Windows.Forms.Label();
+            this.VOSTagsLabel = new System.Windows.Forms.Label();
             this.SaveButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -72,6 +78,8 @@
             this.IdenttyGroupBox.SuspendLayout();
             this.SecurityGroupBox.SuspendLayout();
             this.ProfileGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VOSTagsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VOSTagsBindingSource)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -280,7 +288,7 @@
             this.SecurityGroupBox.Controls.Add(this.CheckAvailableButton);
             this.SecurityGroupBox.Controls.Add(this.ConfirmPasswordTextBox);
             this.SecurityGroupBox.Controls.Add(this.ConfirmPasswordLabel);
-            this.SecurityGroupBox.Controls.Add(this.RolesListBox);
+            this.SecurityGroupBox.Controls.Add(this.GroupsListBox);
             this.SecurityGroupBox.Controls.Add(this.label9);
             this.SecurityGroupBox.Controls.Add(this.PasswordTextBox);
             this.SecurityGroupBox.Controls.Add(this.PasswordLabel);
@@ -288,7 +296,7 @@
             this.SecurityGroupBox.Controls.Add(this.label1);
             this.SecurityGroupBox.Location = new System.Drawing.Point(12, 233);
             this.SecurityGroupBox.Name = "SecurityGroupBox";
-            this.SecurityGroupBox.Size = new System.Drawing.Size(760, 175);
+            this.SecurityGroupBox.Size = new System.Drawing.Size(760, 138);
             this.SecurityGroupBox.TabIndex = 2;
             this.SecurityGroupBox.TabStop = false;
             this.SecurityGroupBox.Text = "Security";
@@ -323,15 +331,15 @@
             this.ConfirmPasswordLabel.TabIndex = 5;
             this.ConfirmPasswordLabel.Text = "Confirm Password";
             // 
-            // RolesListBox
+            // GroupsListBox
             // 
-            this.RolesListBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.RolesListBox.FormattingEnabled = true;
-            this.RolesListBox.Location = new System.Drawing.Point(432, 28);
-            this.RolesListBox.Name = "RolesListBox";
-            this.RolesListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.RolesListBox.Size = new System.Drawing.Size(313, 132);
-            this.RolesListBox.TabIndex = 8;
+            this.GroupsListBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.GroupsListBox.FormattingEnabled = true;
+            this.GroupsListBox.Location = new System.Drawing.Point(432, 28);
+            this.GroupsListBox.Name = "GroupsListBox";
+            this.GroupsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.GroupsListBox.Size = new System.Drawing.Size(313, 93);
+            this.GroupsListBox.TabIndex = 8;
             // 
             // label9
             // 
@@ -339,9 +347,9 @@
             this.label9.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label9.Location = new System.Drawing.Point(392, 28);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(34, 13);
+            this.label9.Size = new System.Drawing.Size(41, 13);
             this.label9.TabIndex = 7;
-            this.label9.Text = "Roles";
+            this.label9.Text = "Groups";
             // 
             // PasswordTextBox
             // 
@@ -363,71 +371,104 @@
             // 
             // ProfileGroupBox
             // 
-            this.ProfileGroupBox.Controls.Add(this.label12);
-            this.ProfileGroupBox.Controls.Add(this.ExternalIdTtextBox);
-            this.ProfileGroupBox.Controls.Add(this.label8);
+            this.ProfileGroupBox.Controls.Add(this.VOSTagsDataGridView);
+            this.ProfileGroupBox.Controls.Add(this.GeneralIdTtextBox);
+            this.ProfileGroupBox.Controls.Add(this.GeneralIdLabel);
             this.ProfileGroupBox.Controls.Add(this.LocaleTextBox);
             this.ProfileGroupBox.Controls.Add(this.label10);
-            this.ProfileGroupBox.Controls.Add(this.VosTagsTextBox);
-            this.ProfileGroupBox.Controls.Add(this.label11);
+            this.ProfileGroupBox.Controls.Add(this.VOSTagsLabel);
             this.ProfileGroupBox.Enabled = false;
-            this.ProfileGroupBox.Location = new System.Drawing.Point(12, 454);
+            this.ProfileGroupBox.Location = new System.Drawing.Point(12, 411);
             this.ProfileGroupBox.Name = "ProfileGroupBox";
-            this.ProfileGroupBox.Size = new System.Drawing.Size(760, 152);
+            this.ProfileGroupBox.Size = new System.Drawing.Size(760, 254);
             this.ProfileGroupBox.TabIndex = 4;
             this.ProfileGroupBox.TabStop = false;
             this.ProfileGroupBox.Text = "Profile";
             // 
-            // label12
+            // VOSTagsDataGridView
             // 
-            this.label12.AutoSize = true;
-            this.label12.Enabled = false;
-            this.label12.Location = new System.Drawing.Point(7, 113);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(97, 13);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "(comma separated)";
+            this.VOSTagsDataGridView.AllowUserToDeleteRows = false;
+            this.VOSTagsDataGridView.AllowUserToResizeRows = false;
+            this.VOSTagsDataGridView.AutoGenerateColumns = false;
+            this.VOSTagsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.VOSTagsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.userVOSTagIdDataGridViewTextBoxColumn,
+            this.codeDataGridViewTextBoxColumn,
+            this.typeCodeDataGridViewTextBoxColumn,
+            this.effectiveDateDataGridViewTextBoxColumn,
+            this.endDateDataGridViewTextBoxColumn});
+            this.VOSTagsDataGridView.DataSource = this.VOSTagsBindingSource;
+            this.VOSTagsDataGridView.Location = new System.Drawing.Point(12, 125);
+            this.VOSTagsDataGridView.Name = "VOSTagsDataGridView";
+            this.VOSTagsDataGridView.Size = new System.Drawing.Size(733, 123);
+            this.VOSTagsDataGridView.TabIndex = 5;
             // 
-            // ExternalIdTtextBox
+            // userVOSTagIdDataGridViewTextBoxColumn
             // 
-            this.ExternalIdTtextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ExternalIdTtextBox.Location = new System.Drawing.Point(110, 63);
-            this.ExternalIdTtextBox.Name = "ExternalIdTtextBox";
-            this.ExternalIdTtextBox.Size = new System.Drawing.Size(247, 20);
-            this.ExternalIdTtextBox.TabIndex = 3;
+            this.userVOSTagIdDataGridViewTextBoxColumn.DataPropertyName = "UserVOSTagId";
+            this.userVOSTagIdDataGridViewTextBoxColumn.HeaderText = "UserVOSTagId";
+            this.userVOSTagIdDataGridViewTextBoxColumn.Name = "userVOSTagIdDataGridViewTextBoxColumn";
+            this.userVOSTagIdDataGridViewTextBoxColumn.Visible = false;
             // 
-            // label8
+            // codeDataGridViewTextBoxColumn
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 63);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(88, 13);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "External Identifier";
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            this.codeDataGridViewTextBoxColumn.Width = 200;
             // 
-            // VosTagsTextBox
+            // typeCodeDataGridViewTextBoxColumn
             // 
-            this.VosTagsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.VosTagsTextBox.Enabled = false;
-            this.VosTagsTextBox.Location = new System.Drawing.Point(110, 100);
-            this.VosTagsTextBox.Multiline = true;
-            this.VosTagsTextBox.Name = "VosTagsTextBox";
-            this.VosTagsTextBox.Size = new System.Drawing.Size(638, 36);
-            this.VosTagsTextBox.TabIndex = 6;
+            this.typeCodeDataGridViewTextBoxColumn.DataPropertyName = "TypeCode";
+            this.typeCodeDataGridViewTextBoxColumn.HeaderText = "Type Code";
+            this.typeCodeDataGridViewTextBoxColumn.Name = "typeCodeDataGridViewTextBoxColumn";
+            this.typeCodeDataGridViewTextBoxColumn.Width = 200;
             // 
-            // label11
+            // effectiveDateDataGridViewTextBoxColumn
             // 
-            this.label11.AutoSize = true;
-            this.label11.Enabled = false;
-            this.label11.Location = new System.Drawing.Point(7, 100);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(56, 13);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "VOS Tags";
+            this.effectiveDateDataGridViewTextBoxColumn.DataPropertyName = "EffectiveDate";
+            this.effectiveDateDataGridViewTextBoxColumn.HeaderText = "Effective Date";
+            this.effectiveDateDataGridViewTextBoxColumn.Name = "effectiveDateDataGridViewTextBoxColumn";
+            // 
+            // endDateDataGridViewTextBoxColumn
+            // 
+            this.endDateDataGridViewTextBoxColumn.DataPropertyName = "EndDate";
+            this.endDateDataGridViewTextBoxColumn.HeaderText = "End Date";
+            this.endDateDataGridViewTextBoxColumn.Name = "endDateDataGridViewTextBoxColumn";
+            // 
+            // VOSTagsBindingSource
+            // 
+            this.VOSTagsBindingSource.DataSource = typeof(UserAccountManager.Domain.UserVOSTag);
+            // 
+            // GeneralIdTtextBox
+            // 
+            this.GeneralIdTtextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.GeneralIdTtextBox.Location = new System.Drawing.Point(110, 63);
+            this.GeneralIdTtextBox.Name = "GeneralIdTtextBox";
+            this.GeneralIdTtextBox.Size = new System.Drawing.Size(247, 20);
+            this.GeneralIdTtextBox.TabIndex = 3;
+            // 
+            // GeneralIdLabel
+            // 
+            this.GeneralIdLabel.AutoSize = true;
+            this.GeneralIdLabel.Location = new System.Drawing.Point(9, 63);
+            this.GeneralIdLabel.Name = "GeneralIdLabel";
+            this.GeneralIdLabel.Size = new System.Drawing.Size(87, 13);
+            this.GeneralIdLabel.TabIndex = 2;
+            this.GeneralIdLabel.Text = "General Identifier";
+            // 
+            // VOSTagsLabel
+            // 
+            this.VOSTagsLabel.AutoSize = true;
+            this.VOSTagsLabel.Location = new System.Drawing.Point(7, 100);
+            this.VOSTagsLabel.Name = "VOSTagsLabel";
+            this.VOSTagsLabel.Size = new System.Drawing.Size(56, 13);
+            this.VOSTagsLabel.TabIndex = 4;
+            this.VOSTagsLabel.Text = "VOS Tags";
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(616, 624);
+            this.SaveButton.Location = new System.Drawing.Point(616, 671);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(75, 23);
             this.SaveButton.TabIndex = 5;
@@ -437,7 +478,7 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(697, 624);
+            this.CancelButton.Location = new System.Drawing.Point(697, 671);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
             this.CancelButton.TabIndex = 6;
@@ -449,7 +490,7 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusStripLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 659);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 699);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(784, 22);
             this.statusStrip1.TabIndex = 7;
@@ -465,7 +506,7 @@
             // 
             this.CreateUserProfileCheckBox.AutoSize = true;
             this.CreateUserProfileCheckBox.Enabled = false;
-            this.CreateUserProfileCheckBox.Location = new System.Drawing.Point(12, 428);
+            this.CreateUserProfileCheckBox.Location = new System.Drawing.Point(12, 388);
             this.CreateUserProfileCheckBox.Name = "CreateUserProfileCheckBox";
             this.CreateUserProfileCheckBox.Size = new System.Drawing.Size(120, 17);
             this.CreateUserProfileCheckBox.TabIndex = 3;
@@ -477,7 +518,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 681);
+            this.ClientSize = new System.Drawing.Size(784, 721);
             this.Controls.Add(this.CreateUserProfileCheckBox);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.CancelButton);
@@ -490,7 +531,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(800, 720);
+            this.MinimumSize = new System.Drawing.Size(800, 760);
             this.Name = "UserAccountForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "User Account";
@@ -504,6 +545,8 @@
             this.SecurityGroupBox.PerformLayout();
             this.ProfileGroupBox.ResumeLayout(false);
             this.ProfileGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VOSTagsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VOSTagsBindingSource)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -535,7 +578,7 @@
         private System.Windows.Forms.GroupBox SecurityGroupBox;
         private System.Windows.Forms.TextBox ConfirmPasswordTextBox;
         private System.Windows.Forms.Label ConfirmPasswordLabel;
-        private System.Windows.Forms.ListBox RolesListBox;
+        private System.Windows.Forms.ListBox GroupsListBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox PasswordTextBox;
         private System.Windows.Forms.Label PasswordLabel;
@@ -544,14 +587,19 @@
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel StatusStripLabel;
-        private System.Windows.Forms.TextBox VosTagsTextBox;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label VOSTagsLabel;
         private System.Windows.Forms.Button CheckAvailableButton;
         private System.Windows.Forms.TextBox LocaleTextBox;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox ExternalIdTtextBox;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox GeneralIdTtextBox;
+        private System.Windows.Forms.Label GeneralIdLabel;
         private System.Windows.Forms.CheckBox CreateUserProfileCheckBox;
+        private System.Windows.Forms.DataGridView VOSTagsDataGridView;
+        private System.Windows.Forms.BindingSource VOSTagsBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userVOSTagIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeCodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn effectiveDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn endDateDataGridViewTextBoxColumn;
     }
 }

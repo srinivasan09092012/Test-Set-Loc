@@ -35,7 +35,7 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserSearchGroupBox = new System.Windows.Forms.GroupBox();
-            this.UserRolesComboBox = new System.Windows.Forms.ComboBox();
+            this.UserGroupsComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.UserSearchButton = new System.Windows.Forms.Button();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
@@ -114,7 +114,7 @@
             // 
             // UserSearchGroupBox
             // 
-            this.UserSearchGroupBox.Controls.Add(this.UserRolesComboBox);
+            this.UserSearchGroupBox.Controls.Add(this.UserGroupsComboBox);
             this.UserSearchGroupBox.Controls.Add(this.label6);
             this.UserSearchGroupBox.Controls.Add(this.UserSearchButton);
             this.UserSearchGroupBox.Controls.Add(this.EmailTextBox);
@@ -133,14 +133,14 @@
             this.UserSearchGroupBox.TabStop = false;
             this.UserSearchGroupBox.Text = "Search";
             // 
-            // UserRolesComboBox
+            // UserGroupsComboBox
             // 
-            this.UserRolesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.UserRolesComboBox.Location = new System.Drawing.Point(320, 31);
-            this.UserRolesComboBox.Name = "UserRolesComboBox";
-            this.UserRolesComboBox.Size = new System.Drawing.Size(149, 21);
-            this.UserRolesComboBox.TabIndex = 3;
-            this.UserRolesComboBox.SelectedIndexChanged += new System.EventHandler(this.UserRolesComboBox_SelectedIndexChanged);
+            this.UserGroupsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.UserGroupsComboBox.Location = new System.Drawing.Point(320, 31);
+            this.UserGroupsComboBox.Name = "UserGroupsComboBox";
+            this.UserGroupsComboBox.Size = new System.Drawing.Size(149, 21);
+            this.UserGroupsComboBox.TabIndex = 3;
+            this.UserGroupsComboBox.SelectedIndexChanged += new System.EventHandler(this.UserGroupsComboBox_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -149,7 +149,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(29, 13);
             this.label6.TabIndex = 2;
-            this.label6.Text = "Role";
+            this.label6.Text = "Group";
             // 
             // UserSearchButton
             // 
@@ -541,7 +541,7 @@
         private System.Windows.Forms.TabControl TabControl;
         private System.Windows.Forms.TabPage UserAccountTab;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox UserRolesComboBox;
+        private System.Windows.Forms.ComboBox UserGroupsComboBox;
         private System.Windows.Forms.Button UserCloneButton;
         private System.Windows.Forms.Button UserDeleteButton;
         private System.Windows.Forms.DataGridViewCheckBoxColumn SelColumn;

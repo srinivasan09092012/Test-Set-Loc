@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UserAccountManager.UserService {
+namespace UserAccountManager.UserService2 {
     using System.Runtime.Serialization;
     using System;
     
@@ -17,25 +17,26 @@ namespace UserAccountManager.UserService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Command", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.AddProfile))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.UpdateProfile))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.AddUserDelegateCommand))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.AddRegisteredUserXrefCommand))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.UpdateRegisteredUserXrefCommand))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.UpdateUserDelegateCommand))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.AddUserRoles))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.RemoveUserRoles))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.AddUserPreferences))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.RemoveUserPreferences))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.AddUserProfileMemberFocusHistory))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.AddUser))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.UpdateProfile))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.ActivateProfile))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.InactivateProfile))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.AddUserDelegateCommand))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.AddRegisteredUserXrefCommand))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.UpdateRegisteredUserXrefCommand))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.AddUserPreferences))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.RemoveUserPreferences))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.AddUserProfileMemberFocusHistory))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.AddUserVOSTags))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.UpdateUserVOSTag))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.AddUser))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.AddProfile))]
     public partial class Command : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountManager.UserService.RequestorModel RequestorField;
+        private UserAccountManager.UserService2.RequestorModel RequestorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime ViewTimeStampField;
@@ -51,7 +52,7 @@ namespace UserAccountManager.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountManager.UserService.RequestorModel Requestor {
+        public UserAccountManager.UserService2.RequestorModel Requestor {
             get {
                 return this.RequestorField;
             }
@@ -90,7 +91,7 @@ namespace UserAccountManager.UserService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="RequestorModel", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta")]
     [System.SerializableAttribute()]
-    public partial class RequestorModel : UserAccountManager.UserService.BaseModel {
+    public partial class RequestorModel : UserAccountManager.UserService2.BaseModel {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ApplicationNameField;
@@ -105,7 +106,7 @@ namespace UserAccountManager.UserService {
         private string IdentifierIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountManager.UserService.CoreEnumerationsMessagingIdentifierIdType IdentifierIdTypeField;
+        private UserAccountManager.UserService2.CoreEnumerationsMessagingIdentifierIdType IdentifierIdTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string IpAddressField;
@@ -172,7 +173,7 @@ namespace UserAccountManager.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountManager.UserService.CoreEnumerationsMessagingIdentifierIdType IdentifierIdType {
+        public UserAccountManager.UserService2.CoreEnumerationsMessagingIdentifierIdType IdentifierIdType {
             get {
                 return this.IdentifierIdTypeField;
             }
@@ -239,10 +240,10 @@ namespace UserAccountManager.UserService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="AddProfile", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
+    [System.Runtime.Serialization.DataContractAttribute(Name="UpdateProfile", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
         "ds")]
     [System.SerializableAttribute()]
-    public partial class AddProfile : UserAccountManager.UserService.Command {
+    public partial class UpdateProfile : UserAccountManager.UserService2.Command {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ContactNumberField;
@@ -252,6 +253,15 @@ namespace UserAccountManager.UserService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GenericIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsAccountVerifiedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsActiveField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LastNameField;
@@ -300,6 +310,45 @@ namespace UserAccountManager.UserService {
                 if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
                     this.FirstNameField = value;
                     this.RaisePropertyChanged("FirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string GenericId {
+            get {
+                return this.GenericIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GenericIdField, value) != true)) {
+                    this.GenericIdField = value;
+                    this.RaisePropertyChanged("GenericId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsAccountVerified {
+            get {
+                return this.IsAccountVerifiedField;
+            }
+            set {
+                if ((this.IsAccountVerifiedField.Equals(value) != true)) {
+                    this.IsAccountVerifiedField = value;
+                    this.RaisePropertyChanged("IsAccountVerified");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((this.IsActiveField.Equals(value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
                 }
             }
         }
@@ -359,25 +408,10 @@ namespace UserAccountManager.UserService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UpdateProfile", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
+    [System.Runtime.Serialization.DataContractAttribute(Name="ActivateProfile", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
         "ds")]
     [System.SerializableAttribute()]
-    public partial class UpdateProfile : UserAccountManager.UserService.Command {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ContactNumberField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EmailAddressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LocaleIdField;
+    public partial class ActivateProfile : UserAccountManager.UserService2.Command {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TenantIdField;
@@ -386,69 +420,44 @@ namespace UserAccountManager.UserService {
         private string UserIdField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ContactNumber {
+        public string TenantId {
             get {
-                return this.ContactNumberField;
+                return this.TenantIdField;
             }
             set {
-                if ((object.ReferenceEquals(this.ContactNumberField, value) != true)) {
-                    this.ContactNumberField = value;
-                    this.RaisePropertyChanged("ContactNumber");
+                if ((object.ReferenceEquals(this.TenantIdField, value) != true)) {
+                    this.TenantIdField = value;
+                    this.RaisePropertyChanged("TenantId");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string EmailAddress {
+        public string UserId {
             get {
-                return this.EmailAddressField;
+                return this.UserIdField;
             }
             set {
-                if ((object.ReferenceEquals(this.EmailAddressField, value) != true)) {
-                    this.EmailAddressField = value;
-                    this.RaisePropertyChanged("EmailAddress");
+                if ((object.ReferenceEquals(this.UserIdField, value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
                 }
             }
         }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="InactivateProfile", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
+        "ds")]
+    [System.SerializableAttribute()]
+    public partial class InactivateProfile : UserAccountManager.UserService2.Command {
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstName {
-            get {
-                return this.FirstNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
-                    this.FirstNameField = value;
-                    this.RaisePropertyChanged("FirstName");
-                }
-            }
-        }
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TenantIdField;
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LastName {
-            get {
-                return this.LastNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
-                    this.LastNameField = value;
-                    this.RaisePropertyChanged("LastName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LocaleId {
-            get {
-                return this.LocaleIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LocaleIdField, value) != true)) {
-                    this.LocaleIdField = value;
-                    this.RaisePropertyChanged("LocaleId");
-                }
-            }
-        }
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserIdField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string TenantId {
@@ -482,7 +491,7 @@ namespace UserAccountManager.UserService {
     [System.Runtime.Serialization.DataContractAttribute(Name="AddUserDelegateCommand", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
         "ds")]
     [System.SerializableAttribute()]
-    public partial class AddUserDelegateCommand : UserAccountManager.UserService.Command {
+    public partial class AddUserDelegateCommand : UserAccountManager.UserService2.Command {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsActiveField;
@@ -570,10 +579,10 @@ namespace UserAccountManager.UserService {
     [System.Runtime.Serialization.DataContractAttribute(Name="AddRegisteredUserXrefCommand", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
         "ds")]
     [System.SerializableAttribute()]
-    public partial class AddRegisteredUserXrefCommand : UserAccountManager.UserService.Command {
+    public partial class AddRegisteredUserXrefCommand : UserAccountManager.UserService2.Command {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountManager.UserService.RegisteredUserXrefAssociation[] DelegateAssociationsField;
+        private UserAccountManager.UserService2.RegisteredUserXrefAssociation[] DelegateAssociationsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DelegateProfileIdField;
@@ -588,7 +597,7 @@ namespace UserAccountManager.UserService {
         private string UserProfileIdField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountManager.UserService.RegisteredUserXrefAssociation[] DelegateAssociations {
+        public UserAccountManager.UserService2.RegisteredUserXrefAssociation[] DelegateAssociations {
             get {
                 return this.DelegateAssociationsField;
             }
@@ -658,10 +667,10 @@ namespace UserAccountManager.UserService {
     [System.Runtime.Serialization.DataContractAttribute(Name="UpdateRegisteredUserXrefCommand", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
         "ds")]
     [System.SerializableAttribute()]
-    public partial class UpdateRegisteredUserXrefCommand : UserAccountManager.UserService.Command {
+    public partial class UpdateRegisteredUserXrefCommand : UserAccountManager.UserService2.Command {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountManager.UserService.RegisteredUserXrefAssociation[] DelegateAssociationsField;
+        private UserAccountManager.UserService2.RegisteredUserXrefAssociation[] DelegateAssociationsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsActiveField;
@@ -670,7 +679,7 @@ namespace UserAccountManager.UserService {
         private string UserProfileXrefIdField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountManager.UserService.RegisteredUserXrefAssociation[] DelegateAssociations {
+        public UserAccountManager.UserService2.RegisteredUserXrefAssociation[] DelegateAssociations {
             get {
                 return this.DelegateAssociationsField;
             }
@@ -711,171 +720,19 @@ namespace UserAccountManager.UserService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UpdateUserDelegateCommand", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
-        "ds")]
-    [System.SerializableAttribute()]
-    public partial class UpdateUserDelegateCommand : UserAccountManager.UserService.Command {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsActiveField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] SecurityFunctionsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserProfileXrefAssocIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserProfileXrefIDField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsActive {
-            get {
-                return this.IsActiveField;
-            }
-            set {
-                if ((this.IsActiveField.Equals(value) != true)) {
-                    this.IsActiveField = value;
-                    this.RaisePropertyChanged("IsActive");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] SecurityFunctions {
-            get {
-                return this.SecurityFunctionsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SecurityFunctionsField, value) != true)) {
-                    this.SecurityFunctionsField = value;
-                    this.RaisePropertyChanged("SecurityFunctions");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserProfileXrefAssocID {
-            get {
-                return this.UserProfileXrefAssocIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserProfileXrefAssocIDField, value) != true)) {
-                    this.UserProfileXrefAssocIDField = value;
-                    this.RaisePropertyChanged("UserProfileXrefAssocID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserProfileXrefID {
-            get {
-                return this.UserProfileXrefIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserProfileXrefIDField, value) != true)) {
-                    this.UserProfileXrefIDField = value;
-                    this.RaisePropertyChanged("UserProfileXrefID");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="AddUserRoles", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
-        "ds")]
-    [System.SerializableAttribute()]
-    public partial class AddUserRoles : UserAccountManager.UserService.Command {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] RolesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserProfileIDField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] Roles {
-            get {
-                return this.RolesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RolesField, value) != true)) {
-                    this.RolesField = value;
-                    this.RaisePropertyChanged("Roles");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserProfileID {
-            get {
-                return this.UserProfileIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserProfileIDField, value) != true)) {
-                    this.UserProfileIDField = value;
-                    this.RaisePropertyChanged("UserProfileID");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RemoveUserRoles", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
-        "ds")]
-    [System.SerializableAttribute()]
-    public partial class RemoveUserRoles : UserAccountManager.UserService.Command {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] RolesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserProfileIDField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] Roles {
-            get {
-                return this.RolesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RolesField, value) != true)) {
-                    this.RolesField = value;
-                    this.RaisePropertyChanged("Roles");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserProfileID {
-            get {
-                return this.UserProfileIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserProfileIDField, value) != true)) {
-                    this.UserProfileIDField = value;
-                    this.RaisePropertyChanged("UserProfileID");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="AddUserPreferences", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
         "ds")]
     [System.SerializableAttribute()]
-    public partial class AddUserPreferences : UserAccountManager.UserService.Command {
+    public partial class AddUserPreferences : UserAccountManager.UserService2.Command {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountManager.UserService.KeyValuePair[] PreferencesField;
+        private UserAccountManager.UserService2.KeyValuePair[] PreferencesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserProfileIDField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountManager.UserService.KeyValuePair[] Preferences {
+        public UserAccountManager.UserService2.KeyValuePair[] Preferences {
             get {
                 return this.PreferencesField;
             }
@@ -906,7 +763,7 @@ namespace UserAccountManager.UserService {
     [System.Runtime.Serialization.DataContractAttribute(Name="RemoveUserPreferences", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
         "ds")]
     [System.SerializableAttribute()]
-    public partial class RemoveUserPreferences : UserAccountManager.UserService.Command {
+    public partial class RemoveUserPreferences : UserAccountManager.UserService2.Command {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string[] PreferencesKeysField;
@@ -946,7 +803,7 @@ namespace UserAccountManager.UserService {
     [System.Runtime.Serialization.DataContractAttribute(Name="AddUserProfileMemberFocusHistory", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
         "ds")]
     [System.SerializableAttribute()]
-    public partial class AddUserProfileMemberFocusHistory : UserAccountManager.UserService.Command {
+    public partial class AddUserProfileMemberFocusHistory : UserAccountManager.UserService2.Command {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CityField;
@@ -1159,10 +1016,122 @@ namespace UserAccountManager.UserService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AddUserVOSTags", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
+        "ds")]
+    [System.SerializableAttribute()]
+    public partial class AddUserVOSTags : UserAccountManager.UserService2.Command {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TenantIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserProfileIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UserAccountManager.UserService2.UserVOSTagListModel UserVOSTagsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TenantID {
+            get {
+                return this.TenantIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TenantIDField, value) != true)) {
+                    this.TenantIDField = value;
+                    this.RaisePropertyChanged("TenantID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserProfileID {
+            get {
+                return this.UserProfileIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserProfileIDField, value) != true)) {
+                    this.UserProfileIDField = value;
+                    this.RaisePropertyChanged("UserProfileID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UserAccountManager.UserService2.UserVOSTagListModel UserVOSTags {
+            get {
+                return this.UserVOSTagsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserVOSTagsField, value) != true)) {
+                    this.UserVOSTagsField = value;
+                    this.RaisePropertyChanged("UserVOSTags");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UpdateUserVOSTag", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
+        "ds")]
+    [System.SerializableAttribute()]
+    public partial class UpdateUserVOSTag : UserAccountManager.UserService2.Command {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TenantIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserProfileIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UserAccountManager.UserService2.UserVOSTagModel UserVOSTagField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TenantID {
+            get {
+                return this.TenantIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TenantIDField, value) != true)) {
+                    this.TenantIDField = value;
+                    this.RaisePropertyChanged("TenantID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserProfileID {
+            get {
+                return this.UserProfileIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserProfileIDField, value) != true)) {
+                    this.UserProfileIDField = value;
+                    this.RaisePropertyChanged("UserProfileID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UserAccountManager.UserService2.UserVOSTagModel UserVOSTag {
+            get {
+                return this.UserVOSTagField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserVOSTagField, value) != true)) {
+                    this.UserVOSTagField = value;
+                    this.RaisePropertyChanged("UserVOSTag");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="AddUser", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
         "ds")]
     [System.SerializableAttribute()]
-    public partial class AddUser : UserAccountManager.UserService.Command {
+    public partial class AddUser : UserAccountManager.UserService2.Command {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ContactNumberField;
@@ -1359,9 +1328,201 @@ namespace UserAccountManager.UserService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AddProfile", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
+        "ds")]
+    [System.SerializableAttribute()]
+    public partial class AddProfile : UserAccountManager.UserService2.Command {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContactNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailAddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GenericIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsAccountVerifiedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LocaleIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TenantIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UserAccountManager.UserService2.UserVOSTagListModel UserVOSTagsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ContactNumber {
+            get {
+                return this.ContactNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContactNumberField, value) != true)) {
+                    this.ContactNumberField = value;
+                    this.RaisePropertyChanged("ContactNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EmailAddress {
+            get {
+                return this.EmailAddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailAddressField, value) != true)) {
+                    this.EmailAddressField = value;
+                    this.RaisePropertyChanged("EmailAddress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FirstName {
+            get {
+                return this.FirstNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
+                    this.FirstNameField = value;
+                    this.RaisePropertyChanged("FirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string GenericId {
+            get {
+                return this.GenericIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GenericIdField, value) != true)) {
+                    this.GenericIdField = value;
+                    this.RaisePropertyChanged("GenericId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsAccountVerified {
+            get {
+                return this.IsAccountVerifiedField;
+            }
+            set {
+                if ((this.IsAccountVerifiedField.Equals(value) != true)) {
+                    this.IsAccountVerifiedField = value;
+                    this.RaisePropertyChanged("IsAccountVerified");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((this.IsActiveField.Equals(value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LastName {
+            get {
+                return this.LastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
+                    this.LastNameField = value;
+                    this.RaisePropertyChanged("LastName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LocaleId {
+            get {
+                return this.LocaleIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LocaleIdField, value) != true)) {
+                    this.LocaleIdField = value;
+                    this.RaisePropertyChanged("LocaleId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TenantId {
+            get {
+                return this.TenantIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TenantIdField, value) != true)) {
+                    this.TenantIdField = value;
+                    this.RaisePropertyChanged("TenantId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserIdField, value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UserAccountManager.UserService2.UserVOSTagListModel UserVOSTags {
+            get {
+                return this.UserVOSTagsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserVOSTagsField, value) != true)) {
+                    this.UserVOSTagsField = value;
+                    this.RaisePropertyChanged("UserVOSTags");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="UserVOSTagListModel", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" +
+        "", ItemName="UserVOSTag")]
+    [System.SerializableAttribute()]
+    public class UserVOSTagListModel : System.Collections.Generic.List<UserAccountManager.UserService2.UserVOSTagModel> {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseModel", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.RequestorModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.RequestorModel))]
     public partial class BaseModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -1556,22 +1717,133 @@ namespace UserAccountManager.UserService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserVOSTagModel", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class UserVOSTagModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime EffectiveDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime EndDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TypeCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid UserVOSTagIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Code {
+            get {
+                return this.CodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CodeField, value) != true)) {
+                    this.CodeField = value;
+                    this.RaisePropertyChanged("Code");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime EffectiveDate {
+            get {
+                return this.EffectiveDateField;
+            }
+            set {
+                if ((this.EffectiveDateField.Equals(value) != true)) {
+                    this.EffectiveDateField = value;
+                    this.RaisePropertyChanged("EffectiveDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime EndDate {
+            get {
+                return this.EndDateField;
+            }
+            set {
+                if ((this.EndDateField.Equals(value) != true)) {
+                    this.EndDateField = value;
+                    this.RaisePropertyChanged("EndDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TypeCode {
+            get {
+                return this.TypeCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TypeCodeField, value) != true)) {
+                    this.TypeCodeField = value;
+                    this.RaisePropertyChanged("TypeCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid UserVOSTagId {
+            get {
+                return this.UserVOSTagIdField;
+            }
+            set {
+                if ((this.UserVOSTagIdField.Equals(value) != true)) {
+                    this.UserVOSTagIdField = value;
+                    this.RaisePropertyChanged("UserVOSTagId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Event", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.UserRoleAdded))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.UserRoleRemoved))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.UserMemberFocusHistoryEvent))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.UserProfileMemberFocusHistoryAdded))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.UserEvents))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.ProfileAdded))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.ProfileUpdated))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.UserDelegateAdded))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.RegisteredUserXrefAdded))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.RegisteredUserXrefUpdated))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.UserDelegateUpdated))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.UserPreferencesAdded))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.UserPreferencesRemoved))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.UserAdded))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.UserMemberFocusHistoryEvent))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.UserProfileMemberFocusHistoryAdded))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.UserEvents))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.ProfileUpdated))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.ProfileActivated))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.ProfileInactivated))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.UserDelegateAdded))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.RegisteredUserXrefAdded))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.RegisteredUserXrefUpdated))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.UserPreferencesAdded))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.UserPreferencesRemoved))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.UserVOSTagsAdded))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.UserVOSTagUpdated))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.UserAdded))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.ProfileAdded))]
     public partial class Event : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -1711,91 +1983,11 @@ namespace UserAccountManager.UserService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserRoleAdded", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
-        "")]
-    [System.SerializableAttribute()]
-    public partial class UserRoleAdded : UserAccountManager.UserService.Event {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] RolesAddedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserProfileIDField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] RolesAdded {
-            get {
-                return this.RolesAddedField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RolesAddedField, value) != true)) {
-                    this.RolesAddedField = value;
-                    this.RaisePropertyChanged("RolesAdded");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserProfileID {
-            get {
-                return this.UserProfileIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserProfileIDField, value) != true)) {
-                    this.UserProfileIDField = value;
-                    this.RaisePropertyChanged("UserProfileID");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserRoleRemoved", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
-        "")]
-    [System.SerializableAttribute()]
-    public partial class UserRoleRemoved : UserAccountManager.UserService.Event {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] RolesRemovedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserProfileIDField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] RolesRemoved {
-            get {
-                return this.RolesRemovedField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RolesRemovedField, value) != true)) {
-                    this.RolesRemovedField = value;
-                    this.RaisePropertyChanged("RolesRemoved");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserProfileID {
-            get {
-                return this.UserProfileIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserProfileIDField, value) != true)) {
-                    this.UserProfileIDField = value;
-                    this.RaisePropertyChanged("UserProfileID");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="UserMemberFocusHistoryEvent", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
         "")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.UserProfileMemberFocusHistoryAdded))]
-    public partial class UserMemberFocusHistoryEvent : UserAccountManager.UserService.Event {
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.UserProfileMemberFocusHistoryAdded))]
+    public partial class UserMemberFocusHistoryEvent : UserAccountManager.UserService2.Event {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1803,7 +1995,7 @@ namespace UserAccountManager.UserService {
     [System.Runtime.Serialization.DataContractAttribute(Name="UserProfileMemberFocusHistoryAdded", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
         "")]
     [System.SerializableAttribute()]
-    public partial class UserProfileMemberFocusHistoryAdded : UserAccountManager.UserService.UserMemberFocusHistoryEvent {
+    public partial class UserProfileMemberFocusHistoryAdded : UserAccountManager.UserService2.UserMemberFocusHistoryEvent {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string MemberIDField;
@@ -1827,24 +2019,27 @@ namespace UserAccountManager.UserService {
     [System.Runtime.Serialization.DataContractAttribute(Name="UserEvents", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
         "")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.ProfileAdded))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.ProfileUpdated))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.UserDelegateAdded))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.RegisteredUserXrefAdded))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.RegisteredUserXrefUpdated))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.UserDelegateUpdated))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.UserPreferencesAdded))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.UserPreferencesRemoved))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService.UserAdded))]
-    public partial class UserEvents : UserAccountManager.UserService.Event {
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.ProfileUpdated))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.ProfileActivated))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.ProfileInactivated))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.UserDelegateAdded))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.RegisteredUserXrefAdded))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.RegisteredUserXrefUpdated))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.UserPreferencesAdded))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.UserPreferencesRemoved))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.UserVOSTagsAdded))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.UserVOSTagUpdated))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.UserAdded))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService2.ProfileAdded))]
+    public partial class UserEvents : UserAccountManager.UserService2.Event {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ProfileAdded", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProfileUpdated", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
         "")]
     [System.SerializableAttribute()]
-    public partial class ProfileAdded : UserAccountManager.UserService.UserEvents {
+    public partial class ProfileUpdated : UserAccountManager.UserService2.UserEvents {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TenantIDField;
@@ -1897,10 +2092,66 @@ namespace UserAccountManager.UserService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ProfileUpdated", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProfileActivated", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
         "")]
     [System.SerializableAttribute()]
-    public partial class ProfileUpdated : UserAccountManager.UserService.UserEvents {
+    public partial class ProfileActivated : UserAccountManager.UserService2.UserEvents {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TenantIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserId1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserProfileIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TenantID {
+            get {
+                return this.TenantIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TenantIDField, value) != true)) {
+                    this.TenantIDField = value;
+                    this.RaisePropertyChanged("TenantID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="UserId")]
+        public string UserId1 {
+            get {
+                return this.UserId1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserId1Field, value) != true)) {
+                    this.UserId1Field = value;
+                    this.RaisePropertyChanged("UserId1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserProfileId {
+            get {
+                return this.UserProfileIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserProfileIdField, value) != true)) {
+                    this.UserProfileIdField = value;
+                    this.RaisePropertyChanged("UserProfileId");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProfileInactivated", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class ProfileInactivated : UserAccountManager.UserService2.UserEvents {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TenantIDField;
@@ -1956,7 +2207,7 @@ namespace UserAccountManager.UserService {
     [System.Runtime.Serialization.DataContractAttribute(Name="UserDelegateAdded", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
         "")]
     [System.SerializableAttribute()]
-    public partial class UserDelegateAdded : UserAccountManager.UserService.UserEvents {
+    public partial class UserDelegateAdded : UserAccountManager.UserService2.UserEvents {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsActiveField;
@@ -2060,10 +2311,10 @@ namespace UserAccountManager.UserService {
     [System.Runtime.Serialization.DataContractAttribute(Name="RegisteredUserXrefAdded", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
         "")]
     [System.SerializableAttribute()]
-    public partial class RegisteredUserXrefAdded : UserAccountManager.UserService.UserEvents {
+    public partial class RegisteredUserXrefAdded : UserAccountManager.UserService2.UserEvents {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountManager.UserService.RegisteredUserXrefAssociation[] DelegateAssociationsField;
+        private UserAccountManager.UserService2.RegisteredUserXrefAssociation[] DelegateAssociationsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DelegateProfileIdField;
@@ -2078,7 +2329,7 @@ namespace UserAccountManager.UserService {
         private string UserProfileIdField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountManager.UserService.RegisteredUserXrefAssociation[] DelegateAssociations {
+        public UserAccountManager.UserService2.RegisteredUserXrefAssociation[] DelegateAssociations {
             get {
                 return this.DelegateAssociationsField;
             }
@@ -2148,10 +2399,10 @@ namespace UserAccountManager.UserService {
     [System.Runtime.Serialization.DataContractAttribute(Name="RegisteredUserXrefUpdated", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
         "")]
     [System.SerializableAttribute()]
-    public partial class RegisteredUserXrefUpdated : UserAccountManager.UserService.UserEvents {
+    public partial class RegisteredUserXrefUpdated : UserAccountManager.UserService2.UserEvents {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountManager.UserService.RegisteredUserXrefAssociation[] DelegateAssociationsField;
+        private UserAccountManager.UserService2.RegisteredUserXrefAssociation[] DelegateAssociationsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsActiveField;
@@ -2160,7 +2411,7 @@ namespace UserAccountManager.UserService {
         private string UserProfileXrefIdField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountManager.UserService.RegisteredUserXrefAssociation[] DelegateAssociations {
+        public UserAccountManager.UserService2.RegisteredUserXrefAssociation[] DelegateAssociations {
             get {
                 return this.DelegateAssociationsField;
             }
@@ -2201,107 +2452,19 @@ namespace UserAccountManager.UserService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserDelegateUpdated", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
-        "")]
-    [System.SerializableAttribute()]
-    public partial class UserDelegateUpdated : UserAccountManager.UserService.UserEvents {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsActiveField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SecondaryUserProfileIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] SecurityFunctionsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserProfileXrefAssocIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserProfileXrefIDField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsActive {
-            get {
-                return this.IsActiveField;
-            }
-            set {
-                if ((this.IsActiveField.Equals(value) != true)) {
-                    this.IsActiveField = value;
-                    this.RaisePropertyChanged("IsActive");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SecondaryUserProfileId {
-            get {
-                return this.SecondaryUserProfileIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SecondaryUserProfileIdField, value) != true)) {
-                    this.SecondaryUserProfileIdField = value;
-                    this.RaisePropertyChanged("SecondaryUserProfileId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] SecurityFunctions {
-            get {
-                return this.SecurityFunctionsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SecurityFunctionsField, value) != true)) {
-                    this.SecurityFunctionsField = value;
-                    this.RaisePropertyChanged("SecurityFunctions");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserProfileXrefAssocID {
-            get {
-                return this.UserProfileXrefAssocIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserProfileXrefAssocIDField, value) != true)) {
-                    this.UserProfileXrefAssocIDField = value;
-                    this.RaisePropertyChanged("UserProfileXrefAssocID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserProfileXrefID {
-            get {
-                return this.UserProfileXrefIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserProfileXrefIDField, value) != true)) {
-                    this.UserProfileXrefIDField = value;
-                    this.RaisePropertyChanged("UserProfileXrefID");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="UserPreferencesAdded", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
         "")]
     [System.SerializableAttribute()]
-    public partial class UserPreferencesAdded : UserAccountManager.UserService.UserEvents {
+    public partial class UserPreferencesAdded : UserAccountManager.UserService2.UserEvents {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountManager.UserService.KeyValuePair[] PreferencesField;
+        private UserAccountManager.UserService2.KeyValuePair[] PreferencesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserProfileIDField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountManager.UserService.KeyValuePair[] Preferences {
+        public UserAccountManager.UserService2.KeyValuePair[] Preferences {
             get {
                 return this.PreferencesField;
             }
@@ -2332,7 +2495,7 @@ namespace UserAccountManager.UserService {
     [System.Runtime.Serialization.DataContractAttribute(Name="UserPreferencesRemoved", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
         "")]
     [System.SerializableAttribute()]
-    public partial class UserPreferencesRemoved : UserAccountManager.UserService.UserEvents {
+    public partial class UserPreferencesRemoved : UserAccountManager.UserService2.UserEvents {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string[] PreferencesField;
@@ -2369,10 +2532,122 @@ namespace UserAccountManager.UserService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserVOSTagsAdded", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class UserVOSTagsAdded : UserAccountManager.UserService2.UserEvents {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TenantIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserProfileIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UserAccountManager.UserService2.UserVOSTagListModel UserVOSTagsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TenantID {
+            get {
+                return this.TenantIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TenantIDField, value) != true)) {
+                    this.TenantIDField = value;
+                    this.RaisePropertyChanged("TenantID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserProfileID {
+            get {
+                return this.UserProfileIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserProfileIDField, value) != true)) {
+                    this.UserProfileIDField = value;
+                    this.RaisePropertyChanged("UserProfileID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UserAccountManager.UserService2.UserVOSTagListModel UserVOSTags {
+            get {
+                return this.UserVOSTagsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserVOSTagsField, value) != true)) {
+                    this.UserVOSTagsField = value;
+                    this.RaisePropertyChanged("UserVOSTags");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserVOSTagUpdated", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class UserVOSTagUpdated : UserAccountManager.UserService2.UserEvents {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TenantIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserProfileIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UserAccountManager.UserService2.UserVOSTagModel UserVOSTagField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TenantID {
+            get {
+                return this.TenantIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TenantIDField, value) != true)) {
+                    this.TenantIDField = value;
+                    this.RaisePropertyChanged("TenantID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserProfileID {
+            get {
+                return this.UserProfileIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserProfileIDField, value) != true)) {
+                    this.UserProfileIDField = value;
+                    this.RaisePropertyChanged("UserProfileID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UserAccountManager.UserService2.UserVOSTagModel UserVOSTag {
+            get {
+                return this.UserVOSTagField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserVOSTagField, value) != true)) {
+                    this.UserVOSTagField = value;
+                    this.RaisePropertyChanged("UserVOSTag");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="UserAdded", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
         "")]
     [System.SerializableAttribute()]
-    public partial class UserAdded : UserAccountManager.UserService.UserEvents {
+    public partial class UserAdded : UserAccountManager.UserService2.UserEvents {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TenantIDField;
@@ -2425,6 +2700,62 @@ namespace UserAccountManager.UserService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProfileAdded", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class ProfileAdded : UserAccountManager.UserService2.UserEvents {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TenantIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserId1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserProfileIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TenantID {
+            get {
+                return this.TenantIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TenantIDField, value) != true)) {
+                    this.TenantIDField = value;
+                    this.RaisePropertyChanged("TenantID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="UserId")]
+        public string UserId1 {
+            get {
+                return this.UserId1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserId1Field, value) != true)) {
+                    this.UserId1Field = value;
+                    this.RaisePropertyChanged("UserId1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserProfileId {
+            get {
+                return this.UserProfileIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserProfileIdField, value) != true)) {
+                    this.UserProfileIdField = value;
+                    this.RaisePropertyChanged("UserProfileId");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
     [System.SerializableAttribute()]
     public partial class ServiceException : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -2433,7 +2764,7 @@ namespace UserAccountManager.UserService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountManager.UserService.ServiceException.StatusCodeType ErrorCodeField;
+        private UserAccountManager.UserService2.ServiceException.StatusCodeType ErrorCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string[] ErrorMessagesField;
@@ -2449,7 +2780,7 @@ namespace UserAccountManager.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountManager.UserService.ServiceException.StatusCodeType ErrorCode {
+        public UserAccountManager.UserService2.ServiceException.StatusCodeType ErrorCode {
             get {
                 return this.ErrorCodeField;
             }
@@ -2520,7 +2851,7 @@ namespace UserAccountManager.UserService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountManager.UserService.BusinessExceptionMessage[] BusinessMessagesField;
+        private UserAccountManager.UserService2.BusinessExceptionMessage[] BusinessMessagesField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -2533,7 +2864,7 @@ namespace UserAccountManager.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountManager.UserService.BusinessExceptionMessage[] BusinessMessages {
+        public UserAccountManager.UserService2.BusinessExceptionMessage[] BusinessMessages {
             get {
                 return this.BusinessMessagesField;
             }
@@ -2574,7 +2905,7 @@ namespace UserAccountManager.UserService {
         private string MessageKeyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountManager.UserService.BusinessExceptionMessage.MessageTypes MessageTypeField;
+        private UserAccountManager.UserService2.BusinessExceptionMessage.MessageTypes MessageTypeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -2626,7 +2957,7 @@ namespace UserAccountManager.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountManager.UserService.BusinessExceptionMessage.MessageTypes MessageType {
+        public UserAccountManager.UserService2.BusinessExceptionMessage.MessageTypes MessageType {
             get {
                 return this.MessageTypeField;
             }
@@ -2663,105 +2994,128 @@ namespace UserAccountManager.UserService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="HP.HSP.User", ConfigurationName="UserService.IUserService")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="HP.HSP.UserService", ConfigurationName="UserService2.IUserService")]
     public interface IUserService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/AddUser", ReplyAction="HP.HSP.User/IUserService/AddUserResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService.ServiceException), Action="HP.HSP.User/IUserService/AddUserServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
-        UserAccountManager.UserService.UserAdded AddUser(UserAccountManager.UserService.AddUser command);
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/AddProfile", ReplyAction="HP.HSP.UserService/IUserService/AddProfileResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.ServiceException), Action="HP.HSP.UserService/IUserService/AddProfileServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.BusinessValidationException), Action="HP.HSP.UserService/IUserService/AddProfileBusinessValidationExceptionFault", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        UserAccountManager.UserService2.ProfileAdded AddProfile(UserAccountManager.UserService2.AddProfile command);
         
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/AddUser", ReplyAction="HP.HSP.User/IUserService/AddUserResponse")]
-        System.Threading.Tasks.Task<UserAccountManager.UserService.UserAdded> AddUserAsync(UserAccountManager.UserService.AddUser command);
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/AddProfile", ReplyAction="HP.HSP.UserService/IUserService/AddProfileResponse")]
+        System.Threading.Tasks.Task<UserAccountManager.UserService2.ProfileAdded> AddProfileAsync(UserAccountManager.UserService2.AddProfile command);
         
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/AddProfile", ReplyAction="HP.HSP.User/IUserService/AddProfileResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService.ServiceException), Action="HP.HSP.User/IUserService/AddProfileServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
-        UserAccountManager.UserService.ProfileAdded AddProfile(UserAccountManager.UserService.AddProfile command);
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/UpdateProfile", ReplyAction="HP.HSP.UserService/IUserService/UpdateProfileResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.ServiceException), Action="HP.HSP.UserService/IUserService/UpdateProfileServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.BusinessValidationException), Action="HP.HSP.UserService/IUserService/UpdateProfileBusinessValidationExceptionFault", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        UserAccountManager.UserService2.ProfileUpdated UpdateProfile(UserAccountManager.UserService2.UpdateProfile command);
         
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/AddProfile", ReplyAction="HP.HSP.User/IUserService/AddProfileResponse")]
-        System.Threading.Tasks.Task<UserAccountManager.UserService.ProfileAdded> AddProfileAsync(UserAccountManager.UserService.AddProfile command);
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/UpdateProfile", ReplyAction="HP.HSP.UserService/IUserService/UpdateProfileResponse")]
+        System.Threading.Tasks.Task<UserAccountManager.UserService2.ProfileUpdated> UpdateProfileAsync(UserAccountManager.UserService2.UpdateProfile command);
         
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/UpdateProfile", ReplyAction="HP.HSP.User/IUserService/UpdateProfileResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService.ServiceException), Action="HP.HSP.User/IUserService/UpdateProfileServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
-        UserAccountManager.UserService.ProfileUpdated UpdateProfile(UserAccountManager.UserService.UpdateProfile command);
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/ActivateProfile", ReplyAction="HP.HSP.UserService/IUserService/ActivateProfileResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.ServiceException), Action="HP.HSP.UserService/IUserService/ActivateProfileServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.BusinessValidationException), Action="HP.HSP.UserService/IUserService/ActivateProfileBusinessValidationExceptionFault", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        UserAccountManager.UserService2.ProfileActivated ActivateProfile(UserAccountManager.UserService2.ActivateProfile command);
         
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/UpdateProfile", ReplyAction="HP.HSP.User/IUserService/UpdateProfileResponse")]
-        System.Threading.Tasks.Task<UserAccountManager.UserService.ProfileUpdated> UpdateProfileAsync(UserAccountManager.UserService.UpdateProfile command);
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/ActivateProfile", ReplyAction="HP.HSP.UserService/IUserService/ActivateProfileResponse")]
+        System.Threading.Tasks.Task<UserAccountManager.UserService2.ProfileActivated> ActivateProfileAsync(UserAccountManager.UserService2.ActivateProfile command);
         
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/AddUserDelegate", ReplyAction="HP.HSP.User/IUserService/AddUserDelegateResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService.ServiceException), Action="HP.HSP.User/IUserService/AddUserDelegateServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
-        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService.BusinessValidationException), Action="HP.HSP.User/IUserService/AddUserDelegateBusinessValidationExceptionFault", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
-        UserAccountManager.UserService.UserDelegateAdded AddUserDelegate(UserAccountManager.UserService.AddUserDelegateCommand command);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/AddUserDelegate", ReplyAction="HP.HSP.User/IUserService/AddUserDelegateResponse")]
-        System.Threading.Tasks.Task<UserAccountManager.UserService.UserDelegateAdded> AddUserDelegateAsync(UserAccountManager.UserService.AddUserDelegateCommand command);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/AddRegisteredUserXref", ReplyAction="HP.HSP.User/IUserService/AddRegisteredUserXrefResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService.ServiceException), Action="HP.HSP.User/IUserService/AddRegisteredUserXrefServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
-        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService.BusinessValidationException), Action="HP.HSP.User/IUserService/AddRegisteredUserXrefBusinessValidationExceptionFault", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
-        UserAccountManager.UserService.RegisteredUserXrefAdded AddRegisteredUserXref(UserAccountManager.UserService.AddRegisteredUserXrefCommand command);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/AddRegisteredUserXref", ReplyAction="HP.HSP.User/IUserService/AddRegisteredUserXrefResponse")]
-        System.Threading.Tasks.Task<UserAccountManager.UserService.RegisteredUserXrefAdded> AddRegisteredUserXrefAsync(UserAccountManager.UserService.AddRegisteredUserXrefCommand command);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/UpdateRegisteredUserXref", ReplyAction="HP.HSP.User/IUserService/UpdateRegisteredUserXrefResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService.ServiceException), Action="HP.HSP.User/IUserService/UpdateRegisteredUserXrefServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
-        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService.BusinessValidationException), Action="HP.HSP.User/IUserService/UpdateRegisteredUserXrefBusinessValidationExceptionFault" +
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/InactivateProfile", ReplyAction="HP.HSP.UserService/IUserService/InactivateProfileResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.ServiceException), Action="HP.HSP.UserService/IUserService/InactivateProfileServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.BusinessValidationException), Action="HP.HSP.UserService/IUserService/InactivateProfileBusinessValidationExceptionFault" +
             "", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
-        UserAccountManager.UserService.RegisteredUserXrefUpdated UpdateRegisteredUserXref(UserAccountManager.UserService.UpdateRegisteredUserXrefCommand command);
+        UserAccountManager.UserService2.ProfileInactivated InactivateProfile(UserAccountManager.UserService2.InactivateProfile command);
         
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/UpdateRegisteredUserXref", ReplyAction="HP.HSP.User/IUserService/UpdateRegisteredUserXrefResponse")]
-        System.Threading.Tasks.Task<UserAccountManager.UserService.RegisteredUserXrefUpdated> UpdateRegisteredUserXrefAsync(UserAccountManager.UserService.UpdateRegisteredUserXrefCommand command);
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/InactivateProfile", ReplyAction="HP.HSP.UserService/IUserService/InactivateProfileResponse")]
+        System.Threading.Tasks.Task<UserAccountManager.UserService2.ProfileInactivated> InactivateProfileAsync(UserAccountManager.UserService2.InactivateProfile command);
         
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/UpdateUserDelegate", ReplyAction="HP.HSP.User/IUserService/UpdateUserDelegateResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService.ServiceException), Action="HP.HSP.User/IUserService/UpdateUserDelegateServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
-        UserAccountManager.UserService.UserDelegateUpdated UpdateUserDelegate(UserAccountManager.UserService.UpdateUserDelegateCommand command);
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/AddUserDelegate", ReplyAction="HP.HSP.UserService/IUserService/AddUserDelegateResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.ServiceException), Action="HP.HSP.UserService/IUserService/AddUserDelegateServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.BusinessValidationException), Action="HP.HSP.UserService/IUserService/AddUserDelegateBusinessValidationExceptionFault", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        UserAccountManager.UserService2.UserDelegateAdded AddUserDelegate(UserAccountManager.UserService2.AddUserDelegateCommand command);
         
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/UpdateUserDelegate", ReplyAction="HP.HSP.User/IUserService/UpdateUserDelegateResponse")]
-        System.Threading.Tasks.Task<UserAccountManager.UserService.UserDelegateUpdated> UpdateUserDelegateAsync(UserAccountManager.UserService.UpdateUserDelegateCommand command);
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/AddUserDelegate", ReplyAction="HP.HSP.UserService/IUserService/AddUserDelegateResponse")]
+        System.Threading.Tasks.Task<UserAccountManager.UserService2.UserDelegateAdded> AddUserDelegateAsync(UserAccountManager.UserService2.AddUserDelegateCommand command);
         
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/AddUserRoles", ReplyAction="HP.HSP.User/IUserService/AddUserRolesResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService.ServiceException), Action="HP.HSP.User/IUserService/AddUserRolesServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
-        UserAccountManager.UserService.UserRoleAdded AddUserRoles(UserAccountManager.UserService.AddUserRoles command);
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/AddRegisteredUserXref", ReplyAction="HP.HSP.UserService/IUserService/AddRegisteredUserXrefResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.ServiceException), Action="HP.HSP.UserService/IUserService/AddRegisteredUserXrefServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.BusinessValidationException), Action="HP.HSP.UserService/IUserService/AddRegisteredUserXrefBusinessValidationExceptionF" +
+            "ault", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        UserAccountManager.UserService2.RegisteredUserXrefAdded AddRegisteredUserXref(UserAccountManager.UserService2.AddRegisteredUserXrefCommand command);
         
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/AddUserRoles", ReplyAction="HP.HSP.User/IUserService/AddUserRolesResponse")]
-        System.Threading.Tasks.Task<UserAccountManager.UserService.UserRoleAdded> AddUserRolesAsync(UserAccountManager.UserService.AddUserRoles command);
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/AddRegisteredUserXref", ReplyAction="HP.HSP.UserService/IUserService/AddRegisteredUserXrefResponse")]
+        System.Threading.Tasks.Task<UserAccountManager.UserService2.RegisteredUserXrefAdded> AddRegisteredUserXrefAsync(UserAccountManager.UserService2.AddRegisteredUserXrefCommand command);
         
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/RemoveUserRoles", ReplyAction="HP.HSP.User/IUserService/RemoveUserRolesResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService.ServiceException), Action="HP.HSP.User/IUserService/RemoveUserRolesServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
-        UserAccountManager.UserService.UserRoleRemoved RemoveUserRoles(UserAccountManager.UserService.RemoveUserRoles command);
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/UpdateRegisteredUserXref", ReplyAction="HP.HSP.UserService/IUserService/UpdateRegisteredUserXrefResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.ServiceException), Action="HP.HSP.UserService/IUserService/UpdateRegisteredUserXrefServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.BusinessValidationException), Action="HP.HSP.UserService/IUserService/UpdateRegisteredUserXrefBusinessValidationExcepti" +
+            "onFault", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        UserAccountManager.UserService2.RegisteredUserXrefUpdated UpdateRegisteredUserXref(UserAccountManager.UserService2.UpdateRegisteredUserXrefCommand command);
         
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/RemoveUserRoles", ReplyAction="HP.HSP.User/IUserService/RemoveUserRolesResponse")]
-        System.Threading.Tasks.Task<UserAccountManager.UserService.UserRoleRemoved> RemoveUserRolesAsync(UserAccountManager.UserService.RemoveUserRoles command);
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/UpdateRegisteredUserXref", ReplyAction="HP.HSP.UserService/IUserService/UpdateRegisteredUserXrefResponse")]
+        System.Threading.Tasks.Task<UserAccountManager.UserService2.RegisteredUserXrefUpdated> UpdateRegisteredUserXrefAsync(UserAccountManager.UserService2.UpdateRegisteredUserXrefCommand command);
         
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/AddUserPreferences", ReplyAction="HP.HSP.User/IUserService/AddUserPreferencesResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService.ServiceException), Action="HP.HSP.User/IUserService/AddUserPreferencesServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
-        UserAccountManager.UserService.UserPreferencesAdded AddUserPreferences(UserAccountManager.UserService.AddUserPreferences command);
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/AddUserPreferences", ReplyAction="HP.HSP.UserService/IUserService/AddUserPreferencesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.ServiceException), Action="HP.HSP.UserService/IUserService/AddUserPreferencesServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.BusinessValidationException), Action="HP.HSP.UserService/IUserService/AddUserPreferencesBusinessValidationExceptionFaul" +
+            "t", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        UserAccountManager.UserService2.UserPreferencesAdded AddUserPreferences(UserAccountManager.UserService2.AddUserPreferences command);
         
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/AddUserPreferences", ReplyAction="HP.HSP.User/IUserService/AddUserPreferencesResponse")]
-        System.Threading.Tasks.Task<UserAccountManager.UserService.UserPreferencesAdded> AddUserPreferencesAsync(UserAccountManager.UserService.AddUserPreferences command);
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/AddUserPreferences", ReplyAction="HP.HSP.UserService/IUserService/AddUserPreferencesResponse")]
+        System.Threading.Tasks.Task<UserAccountManager.UserService2.UserPreferencesAdded> AddUserPreferencesAsync(UserAccountManager.UserService2.AddUserPreferences command);
         
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/RemoveUserPreferences", ReplyAction="HP.HSP.User/IUserService/RemoveUserPreferencesResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService.ServiceException), Action="HP.HSP.User/IUserService/RemoveUserPreferencesServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
-        UserAccountManager.UserService.UserPreferencesRemoved RemoveUserPreferences(UserAccountManager.UserService.RemoveUserPreferences command);
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/RemoveUserPreferences", ReplyAction="HP.HSP.UserService/IUserService/RemoveUserPreferencesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.ServiceException), Action="HP.HSP.UserService/IUserService/RemoveUserPreferencesServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.BusinessValidationException), Action="HP.HSP.UserService/IUserService/RemoveUserPreferencesBusinessValidationExceptionF" +
+            "ault", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        UserAccountManager.UserService2.UserPreferencesRemoved RemoveUserPreferences(UserAccountManager.UserService2.RemoveUserPreferences command);
         
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/RemoveUserPreferences", ReplyAction="HP.HSP.User/IUserService/RemoveUserPreferencesResponse")]
-        System.Threading.Tasks.Task<UserAccountManager.UserService.UserPreferencesRemoved> RemoveUserPreferencesAsync(UserAccountManager.UserService.RemoveUserPreferences command);
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/RemoveUserPreferences", ReplyAction="HP.HSP.UserService/IUserService/RemoveUserPreferencesResponse")]
+        System.Threading.Tasks.Task<UserAccountManager.UserService2.UserPreferencesRemoved> RemoveUserPreferencesAsync(UserAccountManager.UserService2.RemoveUserPreferences command);
         
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/AddUserProfileMemberFocusHistory", ReplyAction="HP.HSP.User/IUserService/AddUserProfileMemberFocusHistoryResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService.ServiceException), Action="HP.HSP.User/IUserService/AddUserProfileMemberFocusHistoryServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
-        UserAccountManager.UserService.UserProfileMemberFocusHistoryAdded AddUserProfileMemberFocusHistory(UserAccountManager.UserService.AddUserProfileMemberFocusHistory command);
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/AddUserProfileMemberFocusHistory", ReplyAction="HP.HSP.UserService/IUserService/AddUserProfileMemberFocusHistoryResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.ServiceException), Action="HP.HSP.UserService/IUserService/AddUserProfileMemberFocusHistoryServiceExceptionF" +
+            "ault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.BusinessValidationException), Action="HP.HSP.UserService/IUserService/AddUserProfileMemberFocusHistoryBusinessValidatio" +
+            "nExceptionFault", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        UserAccountManager.UserService2.UserProfileMemberFocusHistoryAdded AddUserProfileMemberFocusHistory(UserAccountManager.UserService2.AddUserProfileMemberFocusHistory command);
         
-        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.User/IUserService/AddUserProfileMemberFocusHistory", ReplyAction="HP.HSP.User/IUserService/AddUserProfileMemberFocusHistoryResponse")]
-        System.Threading.Tasks.Task<UserAccountManager.UserService.UserProfileMemberFocusHistoryAdded> AddUserProfileMemberFocusHistoryAsync(UserAccountManager.UserService.AddUserProfileMemberFocusHistory command);
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/AddUserProfileMemberFocusHistory", ReplyAction="HP.HSP.UserService/IUserService/AddUserProfileMemberFocusHistoryResponse")]
+        System.Threading.Tasks.Task<UserAccountManager.UserService2.UserProfileMemberFocusHistoryAdded> AddUserProfileMemberFocusHistoryAsync(UserAccountManager.UserService2.AddUserProfileMemberFocusHistory command);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/AddUserVOSTags", ReplyAction="HP.HSP.UserService/IUserService/AddUserVOSTagsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.ServiceException), Action="HP.HSP.UserService/IUserService/AddUserVOSTagsServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.BusinessValidationException), Action="HP.HSP.UserService/IUserService/AddUserVOSTagsBusinessValidationExceptionFault", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        UserAccountManager.UserService2.UserVOSTagsAdded AddUserVOSTags(UserAccountManager.UserService2.AddUserVOSTags command);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/AddUserVOSTags", ReplyAction="HP.HSP.UserService/IUserService/AddUserVOSTagsResponse")]
+        System.Threading.Tasks.Task<UserAccountManager.UserService2.UserVOSTagsAdded> AddUserVOSTagsAsync(UserAccountManager.UserService2.AddUserVOSTags command);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/UpdateUserVOSTag", ReplyAction="HP.HSP.UserService/IUserService/UpdateUserVOSTagResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.ServiceException), Action="HP.HSP.UserService/IUserService/UpdateUserVOSTagServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.BusinessValidationException), Action="HP.HSP.UserService/IUserService/UpdateUserVOSTagBusinessValidationExceptionFault", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        UserAccountManager.UserService2.UserVOSTagUpdated UpdateUserVOSTag(UserAccountManager.UserService2.UpdateUserVOSTag command);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/UpdateUserVOSTag", ReplyAction="HP.HSP.UserService/IUserService/UpdateUserVOSTagResponse")]
+        System.Threading.Tasks.Task<UserAccountManager.UserService2.UserVOSTagUpdated> UpdateUserVOSTagAsync(UserAccountManager.UserService2.UpdateUserVOSTag command);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/AddUser", ReplyAction="HP.HSP.UserService/IUserService/AddUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.ServiceException), Action="HP.HSP.UserService/IUserService/AddUserServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService2.BusinessValidationException), Action="HP.HSP.UserService/IUserService/AddUserBusinessValidationExceptionFault", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        UserAccountManager.UserService2.UserAdded AddUser(UserAccountManager.UserService2.AddUser command);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/AddUser", ReplyAction="HP.HSP.UserService/IUserService/AddUserResponse")]
+        System.Threading.Tasks.Task<UserAccountManager.UserService2.UserAdded> AddUserAsync(UserAccountManager.UserService2.AddUser command);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IUserServiceChannel : UserAccountManager.UserService.IUserService, System.ServiceModel.IClientChannel {
+    public interface IUserServiceChannel : UserAccountManager.UserService2.IUserService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class UserServiceClient : System.ServiceModel.ClientBase<UserAccountManager.UserService.IUserService>, UserAccountManager.UserService.IUserService {
+    public partial class UserServiceClient : System.ServiceModel.ClientBase<UserAccountManager.UserService2.IUserService>, UserAccountManager.UserService2.IUserService {
         
         public UserServiceClient() {
         }
@@ -2782,100 +3136,108 @@ namespace UserAccountManager.UserService {
                 base(binding, remoteAddress) {
         }
         
-        public UserAccountManager.UserService.UserAdded AddUser(UserAccountManager.UserService.AddUser command) {
-            return base.Channel.AddUser(command);
-        }
-        
-        public System.Threading.Tasks.Task<UserAccountManager.UserService.UserAdded> AddUserAsync(UserAccountManager.UserService.AddUser command) {
-            return base.Channel.AddUserAsync(command);
-        }
-        
-        public UserAccountManager.UserService.ProfileAdded AddProfile(UserAccountManager.UserService.AddProfile command) {
+        public UserAccountManager.UserService2.ProfileAdded AddProfile(UserAccountManager.UserService2.AddProfile command) {
             return base.Channel.AddProfile(command);
         }
         
-        public System.Threading.Tasks.Task<UserAccountManager.UserService.ProfileAdded> AddProfileAsync(UserAccountManager.UserService.AddProfile command) {
+        public System.Threading.Tasks.Task<UserAccountManager.UserService2.ProfileAdded> AddProfileAsync(UserAccountManager.UserService2.AddProfile command) {
             return base.Channel.AddProfileAsync(command);
         }
         
-        public UserAccountManager.UserService.ProfileUpdated UpdateProfile(UserAccountManager.UserService.UpdateProfile command) {
+        public UserAccountManager.UserService2.ProfileUpdated UpdateProfile(UserAccountManager.UserService2.UpdateProfile command) {
             return base.Channel.UpdateProfile(command);
         }
         
-        public System.Threading.Tasks.Task<UserAccountManager.UserService.ProfileUpdated> UpdateProfileAsync(UserAccountManager.UserService.UpdateProfile command) {
+        public System.Threading.Tasks.Task<UserAccountManager.UserService2.ProfileUpdated> UpdateProfileAsync(UserAccountManager.UserService2.UpdateProfile command) {
             return base.Channel.UpdateProfileAsync(command);
         }
         
-        public UserAccountManager.UserService.UserDelegateAdded AddUserDelegate(UserAccountManager.UserService.AddUserDelegateCommand command) {
+        public UserAccountManager.UserService2.ProfileActivated ActivateProfile(UserAccountManager.UserService2.ActivateProfile command) {
+            return base.Channel.ActivateProfile(command);
+        }
+        
+        public System.Threading.Tasks.Task<UserAccountManager.UserService2.ProfileActivated> ActivateProfileAsync(UserAccountManager.UserService2.ActivateProfile command) {
+            return base.Channel.ActivateProfileAsync(command);
+        }
+        
+        public UserAccountManager.UserService2.ProfileInactivated InactivateProfile(UserAccountManager.UserService2.InactivateProfile command) {
+            return base.Channel.InactivateProfile(command);
+        }
+        
+        public System.Threading.Tasks.Task<UserAccountManager.UserService2.ProfileInactivated> InactivateProfileAsync(UserAccountManager.UserService2.InactivateProfile command) {
+            return base.Channel.InactivateProfileAsync(command);
+        }
+        
+        public UserAccountManager.UserService2.UserDelegateAdded AddUserDelegate(UserAccountManager.UserService2.AddUserDelegateCommand command) {
             return base.Channel.AddUserDelegate(command);
         }
         
-        public System.Threading.Tasks.Task<UserAccountManager.UserService.UserDelegateAdded> AddUserDelegateAsync(UserAccountManager.UserService.AddUserDelegateCommand command) {
+        public System.Threading.Tasks.Task<UserAccountManager.UserService2.UserDelegateAdded> AddUserDelegateAsync(UserAccountManager.UserService2.AddUserDelegateCommand command) {
             return base.Channel.AddUserDelegateAsync(command);
         }
         
-        public UserAccountManager.UserService.RegisteredUserXrefAdded AddRegisteredUserXref(UserAccountManager.UserService.AddRegisteredUserXrefCommand command) {
+        public UserAccountManager.UserService2.RegisteredUserXrefAdded AddRegisteredUserXref(UserAccountManager.UserService2.AddRegisteredUserXrefCommand command) {
             return base.Channel.AddRegisteredUserXref(command);
         }
         
-        public System.Threading.Tasks.Task<UserAccountManager.UserService.RegisteredUserXrefAdded> AddRegisteredUserXrefAsync(UserAccountManager.UserService.AddRegisteredUserXrefCommand command) {
+        public System.Threading.Tasks.Task<UserAccountManager.UserService2.RegisteredUserXrefAdded> AddRegisteredUserXrefAsync(UserAccountManager.UserService2.AddRegisteredUserXrefCommand command) {
             return base.Channel.AddRegisteredUserXrefAsync(command);
         }
         
-        public UserAccountManager.UserService.RegisteredUserXrefUpdated UpdateRegisteredUserXref(UserAccountManager.UserService.UpdateRegisteredUserXrefCommand command) {
+        public UserAccountManager.UserService2.RegisteredUserXrefUpdated UpdateRegisteredUserXref(UserAccountManager.UserService2.UpdateRegisteredUserXrefCommand command) {
             return base.Channel.UpdateRegisteredUserXref(command);
         }
         
-        public System.Threading.Tasks.Task<UserAccountManager.UserService.RegisteredUserXrefUpdated> UpdateRegisteredUserXrefAsync(UserAccountManager.UserService.UpdateRegisteredUserXrefCommand command) {
+        public System.Threading.Tasks.Task<UserAccountManager.UserService2.RegisteredUserXrefUpdated> UpdateRegisteredUserXrefAsync(UserAccountManager.UserService2.UpdateRegisteredUserXrefCommand command) {
             return base.Channel.UpdateRegisteredUserXrefAsync(command);
         }
         
-        public UserAccountManager.UserService.UserDelegateUpdated UpdateUserDelegate(UserAccountManager.UserService.UpdateUserDelegateCommand command) {
-            return base.Channel.UpdateUserDelegate(command);
-        }
-        
-        public System.Threading.Tasks.Task<UserAccountManager.UserService.UserDelegateUpdated> UpdateUserDelegateAsync(UserAccountManager.UserService.UpdateUserDelegateCommand command) {
-            return base.Channel.UpdateUserDelegateAsync(command);
-        }
-        
-        public UserAccountManager.UserService.UserRoleAdded AddUserRoles(UserAccountManager.UserService.AddUserRoles command) {
-            return base.Channel.AddUserRoles(command);
-        }
-        
-        public System.Threading.Tasks.Task<UserAccountManager.UserService.UserRoleAdded> AddUserRolesAsync(UserAccountManager.UserService.AddUserRoles command) {
-            return base.Channel.AddUserRolesAsync(command);
-        }
-        
-        public UserAccountManager.UserService.UserRoleRemoved RemoveUserRoles(UserAccountManager.UserService.RemoveUserRoles command) {
-            return base.Channel.RemoveUserRoles(command);
-        }
-        
-        public System.Threading.Tasks.Task<UserAccountManager.UserService.UserRoleRemoved> RemoveUserRolesAsync(UserAccountManager.UserService.RemoveUserRoles command) {
-            return base.Channel.RemoveUserRolesAsync(command);
-        }
-        
-        public UserAccountManager.UserService.UserPreferencesAdded AddUserPreferences(UserAccountManager.UserService.AddUserPreferences command) {
+        public UserAccountManager.UserService2.UserPreferencesAdded AddUserPreferences(UserAccountManager.UserService2.AddUserPreferences command) {
             return base.Channel.AddUserPreferences(command);
         }
         
-        public System.Threading.Tasks.Task<UserAccountManager.UserService.UserPreferencesAdded> AddUserPreferencesAsync(UserAccountManager.UserService.AddUserPreferences command) {
+        public System.Threading.Tasks.Task<UserAccountManager.UserService2.UserPreferencesAdded> AddUserPreferencesAsync(UserAccountManager.UserService2.AddUserPreferences command) {
             return base.Channel.AddUserPreferencesAsync(command);
         }
         
-        public UserAccountManager.UserService.UserPreferencesRemoved RemoveUserPreferences(UserAccountManager.UserService.RemoveUserPreferences command) {
+        public UserAccountManager.UserService2.UserPreferencesRemoved RemoveUserPreferences(UserAccountManager.UserService2.RemoveUserPreferences command) {
             return base.Channel.RemoveUserPreferences(command);
         }
         
-        public System.Threading.Tasks.Task<UserAccountManager.UserService.UserPreferencesRemoved> RemoveUserPreferencesAsync(UserAccountManager.UserService.RemoveUserPreferences command) {
+        public System.Threading.Tasks.Task<UserAccountManager.UserService2.UserPreferencesRemoved> RemoveUserPreferencesAsync(UserAccountManager.UserService2.RemoveUserPreferences command) {
             return base.Channel.RemoveUserPreferencesAsync(command);
         }
         
-        public UserAccountManager.UserService.UserProfileMemberFocusHistoryAdded AddUserProfileMemberFocusHistory(UserAccountManager.UserService.AddUserProfileMemberFocusHistory command) {
+        public UserAccountManager.UserService2.UserProfileMemberFocusHistoryAdded AddUserProfileMemberFocusHistory(UserAccountManager.UserService2.AddUserProfileMemberFocusHistory command) {
             return base.Channel.AddUserProfileMemberFocusHistory(command);
         }
         
-        public System.Threading.Tasks.Task<UserAccountManager.UserService.UserProfileMemberFocusHistoryAdded> AddUserProfileMemberFocusHistoryAsync(UserAccountManager.UserService.AddUserProfileMemberFocusHistory command) {
+        public System.Threading.Tasks.Task<UserAccountManager.UserService2.UserProfileMemberFocusHistoryAdded> AddUserProfileMemberFocusHistoryAsync(UserAccountManager.UserService2.AddUserProfileMemberFocusHistory command) {
             return base.Channel.AddUserProfileMemberFocusHistoryAsync(command);
+        }
+        
+        public UserAccountManager.UserService2.UserVOSTagsAdded AddUserVOSTags(UserAccountManager.UserService2.AddUserVOSTags command) {
+            return base.Channel.AddUserVOSTags(command);
+        }
+        
+        public System.Threading.Tasks.Task<UserAccountManager.UserService2.UserVOSTagsAdded> AddUserVOSTagsAsync(UserAccountManager.UserService2.AddUserVOSTags command) {
+            return base.Channel.AddUserVOSTagsAsync(command);
+        }
+        
+        public UserAccountManager.UserService2.UserVOSTagUpdated UpdateUserVOSTag(UserAccountManager.UserService2.UpdateUserVOSTag command) {
+            return base.Channel.UpdateUserVOSTag(command);
+        }
+        
+        public System.Threading.Tasks.Task<UserAccountManager.UserService2.UserVOSTagUpdated> UpdateUserVOSTagAsync(UserAccountManager.UserService2.UpdateUserVOSTag command) {
+            return base.Channel.UpdateUserVOSTagAsync(command);
+        }
+        
+        public UserAccountManager.UserService2.UserAdded AddUser(UserAccountManager.UserService2.AddUser command) {
+            return base.Channel.AddUser(command);
+        }
+        
+        public System.Threading.Tasks.Task<UserAccountManager.UserService2.UserAdded> AddUserAsync(UserAccountManager.UserService2.AddUser command) {
+            return base.Channel.AddUserAsync(command);
         }
     }
 }

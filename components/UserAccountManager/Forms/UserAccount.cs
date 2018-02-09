@@ -2,7 +2,6 @@
 using HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 using UserAccountManager.Domain;
 using UserAccountManager.Providers;
@@ -18,7 +17,7 @@ namespace UserAccountManager.Forms
 
         public UserProfile UserProfile { get; set; }
 
-        public List<Role> UserRoles { get; set; }
+        public List<Group> UserGroups { get; set; }
 
         public EditModeType EditMode { get; set; }
 
@@ -46,6 +45,11 @@ namespace UserAccountManager.Forms
                 this.Cursor = Cursors.WaitCursor;
                 this.StatusStripLabel.Text = "Initializing user account...";
                 this.InitializeForm();
+                this.VOSTagsBindingSource.DataSource = this.UserProfile.VOSTags;
+                this.GeneralIdLabel.Enabled = this.EnvConfig.ServiceVersion > 1;
+                this.GeneralIdTtextBox.Enabled = this.EnvConfig.ServiceVersion > 1;
+                this.VOSTagsLabel.Enabled = this.EnvConfig.ServiceVersion > 1;
+                this.VOSTagsDataGridView.Enabled = this.EnvConfig.ServiceVersion > 1;
                 if (this.EditMode == EditModeType.Edit)
                 {
                     this.LoadUserAccount();
@@ -86,14 +90,14 @@ namespace UserAccountManager.Forms
             this.Hide();
         }
 
-        private void LoadAvailableRoles()
+        private void LoadAvailableGroups()
         {
-            RolesListBox.Items.Clear();
-            if (this.UserRoles != null && this.UserRoles.Count > 0)
+            GroupsListBox.Items.Clear();
+            if (this.UserGroups != null && this.UserGroups.Count > 0)
             {
-                foreach (Role role in this.UserRoles)
+                foreach (Group role in this.UserGroups)
                 {
-                    RolesListBox.Items.Add(role.Name);
+                    GroupsListBox.Items.Add(role.Name);
                 }
             }
         }
@@ -117,34 +121,20 @@ namespace UserAccountManager.Forms
             UserNameTextBox.Text = this.UserAccount.Identity.UserName;
             PasswordTextBox.Text = string.Empty;
             ConfirmPasswordTextBox.Text = string.Empty;
-            foreach (string role in this.UserAccount.Roles)
+            foreach (string role in this.UserAccount.Groups)
             {
-                for (int i = 0; i < RolesListBox.Items.Count; i++)
+                for (int i = 0; i < GroupsListBox.Items.Count; i++)
                 {
-                    string item = RolesListBox.Items[i].ToString();
+                    string item = GroupsListBox.Items[i].ToString();
                     if (item.ToString().Equals(role))
                     {
-                        RolesListBox.SetSelected(i, true);
+                        GroupsListBox.SetSelected(i, true);
                     }
                 }
             }
 
             LocaleTextBox.Text = this.UserProfile.LocaleId;
-            ExternalIdTtextBox.Text = this.UserProfile.ExternalId;
-            if (this.UserProfile.VosTags.Count > 0)
-            {
-                StringBuilder vosTags = new StringBuilder();
-                foreach (string tag in this.UserProfile.VosTags)
-                {
-                    if (vosTags.Length > 0)
-                    {
-                        vosTags.Append(", ");
-                    }
-                    vosTags.Append(tag);
-                }
-
-                VosTagsTextBox.Text = vosTags.ToString();
-            }
+            GeneralIdTtextBox.Text = this.UserProfile.GeneralId;
         }
 
         private void UserNameTextBox_TextChanged(object sender, EventArgs e)
@@ -235,7 +225,7 @@ namespace UserAccountManager.Forms
             }
 
             this.IsCanceled = true;
-            this.LoadAvailableRoles();
+            this.LoadAvailableGroups();
             this.AcceptButton = SaveButton;
             this.FirstNameTextBox.Focus();
             this.FirstNameTextBox.SelectAll();
@@ -343,10 +333,10 @@ namespace UserAccountManager.Forms
                 }
             }
 
-            if (RolesListBox.SelectedIndices.Count == 0)
+            if (GroupsListBox.SelectedIndices.Count == 0)
             {
-                FormHelper.DisplayMessage("A minimum of one Role must be selected.", MessageBoxIcon.Error);
-                RolesListBox.Focus();
+                FormHelper.DisplayMessage("A minimum of one Group must be selected.", MessageBoxIcon.Error);
+                GroupsListBox.Focus();
                 return false;
             }
 
@@ -357,6 +347,51 @@ namespace UserAccountManager.Forms
                     FormHelper.DisplayMessage("Locale is required.", MessageBoxIcon.Error);
                     LocaleTextBox.Focus();
                     return false;
+                }
+
+                if (VOSTagsDataGridView.Enabled)
+                {
+                    int idx = 1;
+                    List<UserVOSTag> gridTags = (List<UserVOSTag>)VOSTagsBindingSource.DataSource;
+                    foreach (UserVOSTag tag in gridTags)
+                    {
+                        if (string.IsNullOrEmpty(tag.Code))
+                        {
+                            FormHelper.DisplayMessage(string.Format("VOS Tag Code {0} is required.", idx.ToString()), MessageBoxIcon.Error);
+                            VOSTagsDataGridView.Focus();
+                            return false;
+                        }
+
+                        if (string.IsNullOrEmpty(tag.TypeCode))
+                        {
+                            FormHelper.DisplayMessage(string.Format("VOS Tag Type Code {0} is required.", idx.ToString()), MessageBoxIcon.Error);
+                            VOSTagsDataGridView.Focus();
+                            return false;
+                        }
+
+                        if (tag.EffectiveDate == DateTime.MinValue)
+                        {
+                            FormHelper.DisplayMessage(string.Format("VOS Tag Effective Date {0} is required.", idx.ToString()), MessageBoxIcon.Error);
+                            VOSTagsDataGridView.Focus();
+                            return false;
+                        }
+
+                        if (tag.EndDate == DateTime.MinValue)
+                        {
+                            FormHelper.DisplayMessage(string.Format("VOS Tag End Date {0} is required.", idx.ToString()), MessageBoxIcon.Error);
+                            VOSTagsDataGridView.Focus();
+                            return false;
+                        }
+
+                        if (tag.EndDate.CompareTo(tag.EffectiveDate) < 0)
+                        {
+                            FormHelper.DisplayMessage(string.Format("VOS Tag End Date {0} must come after Effective Date {0}.", idx.ToString()), MessageBoxIcon.Error);
+                            VOSTagsDataGridView.Focus();
+                            return false;
+                        }
+
+                        idx++;
+                    }
                 }
             }
 
@@ -375,16 +410,16 @@ namespace UserAccountManager.Forms
                     LastName = LastNameTextBox.Text.Trim(),
                     MiddleName = string.IsNullOrEmpty(MiddleNameTextBox.Text) ? null : MiddleNameTextBox.Text.Trim(),
                     PhoneNumber = string.IsNullOrEmpty(PhoneTextBox.Text) ? null : PhoneTextBox.Text.Trim(),
-                    UserName = UserNameTextBox.Text.Trim(),
+                    UserName = UserNameTextBox.Text.Trim()
                 },
                 IsEnabled = true,
                 PasswordNeverExpires = true,
-                Roles = new List<string>()
+                Groups = new List<string>()
             };
 
-            foreach (var item in RolesListBox.SelectedItems)
+            foreach (var item in GroupsListBox.SelectedItems)
             {
-                newUserAccount.Roles.Add(item.ToString());
+                newUserAccount.Groups.Add(item.ToString());
             }
 
             if (!string.IsNullOrEmpty(PasswordTextBox.Text))
@@ -397,19 +432,33 @@ namespace UserAccountManager.Forms
                 ProfileId = this.UserProfile.ProfileId,
                 DisplayName = DisplayNameTextBox.Text.Trim(),
                 EmailAddress = EmailTextBox.Text.Trim(),
-                ExternalId = ExternalIdTtextBox.Text.Trim(),
                 FirstName = FirstNameTextBox.Text.Trim(),
+                GeneralId = GeneralIdTtextBox.Text.Trim(),
+                IsAccountVerified = true,
+                IsActive = true,
                 LastName = LastNameTextBox.Text.Trim(),
                 LocaleId = LocaleTextBox.Text.Trim(),
                 MiddleName = MiddleNameTextBox.Text.Trim(),
                 PhoneNumber = PhoneTextBox.Text.Trim(),
                 TenantId = Guid.Parse(EnvConfig.TenantId),
                 UserName = UserNameTextBox.Text.Trim(),
-                VosTags = new List<string>(VosTagsTextBox.Text.Trim().Split(','))
+                VOSTags = (List<UserVOSTag>)VOSTagsBindingSource.DataSource
             };
 
-            UserQueryServiceProvider qryProvider = new UserQueryServiceProvider(this.EnvConfig);
-            UserServiceProvider cmdProvider = new UserServiceProvider(this.EnvConfig);
+            IUserQueryServiceProvider qryProvider = null;
+            IUserServiceProvider cmdProvider = null;
+
+            if (this.EnvConfig.ServiceVersion == 1)
+            {
+                qryProvider = new UserQueryServiceProvider1(this.EnvConfig);
+                cmdProvider = new UserServiceProvider1(this.EnvConfig);
+            }
+            else
+            {
+                qryProvider = new UserQueryServiceProvider2(this.EnvConfig);
+                cmdProvider = new UserServiceProvider2(this.EnvConfig);
+            }
+
             if (this.EditMode == EditModeType.Add)
             {
                 adManagementProvider.AddUser(newUserAccount);
@@ -437,22 +486,19 @@ namespace UserAccountManager.Forms
                     adManagementProvider.UnlockUser(newUserAccount.Identity.UserName);
                 }
 
-                foreach (string curRole in this.UserAccount.Roles)
+                foreach (string curGroup in this.UserAccount.Groups)
                 {
-                    if (curRole.StartsWith(Constants.RolePrefix))
+                    if (!newUserAccount.Groups.Contains(curGroup))
                     {
-                        if (!newUserAccount.Roles.Contains(curRole))
-                        {
-                            adManagementProvider.RemoveUserFromRole(newUserAccount.Identity.UserName, curRole);
-                        }
+                        adManagementProvider.RemoveUserFromGroup(newUserAccount.Identity.UserName, curGroup);
                     }
                 }
 
-                foreach (string newRole in newUserAccount.Roles)
+                foreach (string newGroup in newUserAccount.Groups)
                 {
-                    if (!this.UserAccount.Roles.Contains(newRole))
+                    if (!this.UserAccount.Groups.Contains(newGroup))
                     {
-                        adManagementProvider.AddUserToRole(newUserAccount.Identity.UserName, newRole);
+                        adManagementProvider.AddUserToGroup(newUserAccount.Identity.UserName, newGroup);
                     }
                 }
 

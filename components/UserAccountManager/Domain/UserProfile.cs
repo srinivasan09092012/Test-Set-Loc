@@ -12,8 +12,6 @@ namespace UserAccountManager.Domain
 
         public Guid ProfileId { get; set; }
 
-        public string ExternalId { get; set; }
-
         public string FirstName { get; set; }
 
         public string MiddleName { get; set; }
@@ -24,6 +22,12 @@ namespace UserAccountManager.Domain
 
         public string EmailAddress { get; set; }
 
+        public string GeneralId { get; set; }
+
+        public bool IsActive { get; set; }
+
+        public bool IsAccountVerified { get; set; }
+
         public string LocaleId { get; set; }
 
         public string PhoneNumber { get; set; }
@@ -32,11 +36,12 @@ namespace UserAccountManager.Domain
 
         public Guid TenantId { get; set; }
 
-        public List<string> VosTags { get; set; }
+        public List<UserVOSTag> VOSTags { get; set; }
 
         public void Initialize()
         {
-            this.VosTags = new List<string>();
+            this.IsActive = true;
+            this.VOSTags = new List<UserVOSTag>();
         }
     }
 }

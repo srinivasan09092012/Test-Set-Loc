@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Net;
-using UserAccountManager.UserService;
+using svc = UserAccountManager.UserService1;
 using UserAccountManager.Domain;
 
 namespace UserAccountManager.Providers
 {
-    public class UserServiceProvider : BaseServiceDataProvider
+    public class UserServiceProvider1 : BaseServiceDataProvider, IUserServiceProvider
     {
-        public UserServiceProvider(Domain.Environment envConfig)
+        public UserServiceProvider1(Domain.Environment envConfig)
             : base(
                   envConfig.UserService.BehaviorConfiguration,
                   envConfig.UserService.Binding,
@@ -18,13 +18,13 @@ namespace UserAccountManager.Providers
 
         public void AddProfile(UserProfile userProfile)
         {
-            AddProfile cmd = new AddProfile()
+            svc.AddProfile cmd = new svc.AddProfile()
             {
                 Requestor = this.BuildRequestor(),
                 ContactNumber = userProfile.PhoneNumber,
                 EmailAddress = userProfile.EmailAddress,
                 FirstName = userProfile.FirstName,
-                //GenericIdentifer = userProfile.ExternalId,
+                //GenericId = userProfile.GeneralId,
                 LastName = userProfile.LastName,
                 LocaleId = userProfile.LocaleId,
                 TenantId = userProfile.TenantId.ToString("D"),
@@ -32,22 +32,22 @@ namespace UserAccountManager.Providers
                 //VosTags = userProfile.VosTags
             };
 
-            using (var channelFactory = this.InitializeChannelFactory<IUserService>())
+            using (var channelFactory = this.InitializeChannelFactory<svc.IUserService>())
             {
-                var svcProxy = this.CreateChannel<UserService.IUserService>(channelFactory);
+                var svcProxy = this.CreateChannel<svc.IUserService>(channelFactory);
                 var svcResponse = svcProxy.AddProfile(cmd);
             }
         }
 
         public void UpdateProfile(UserProfile userProfile)
         {
-            UpdateProfile cmd = new UpdateProfile()
+            svc.UpdateProfile cmd = new svc.UpdateProfile()
             {
                 Requestor = this.BuildRequestor(),
                 ContactNumber = userProfile.PhoneNumber,
                 EmailAddress = userProfile.EmailAddress,
                 FirstName = userProfile.FirstName,
-                //GenericIdentifer = userProfile.ExternalId,
+                //GenericId = userProfile.GeneralId,
                 LastName = userProfile.LastName,
                 LocaleId = userProfile.LocaleId,
                 TenantId = userProfile.TenantId.ToString("D"),
@@ -55,21 +55,31 @@ namespace UserAccountManager.Providers
                 //VosTags = userProfile.VosTags
             };
 
-            using (var channelFactory = this.InitializeChannelFactory<IUserService>())
+            using (var channelFactory = this.InitializeChannelFactory<svc.IUserService>())
             {
-                var svcProxy = this.CreateChannel<UserService.IUserService>(channelFactory);
+                var svcProxy = this.CreateChannel<svc.IUserService>(channelFactory);
                 var svcResponse = svcProxy.UpdateProfile(cmd);
             }
         }
 
-        private RequestorModel BuildRequestor()
+        public void ActiveProfile(string userId)
         {
-            return new RequestorModel()
+            throw new NotImplementedException("This operation is not available in this environment.");
+        }
+
+        public void InactiveProfile(string userId)
+        {
+            throw new NotImplementedException("This operation is not available in this environment.");
+        }
+
+        private svc.RequestorModel BuildRequestor()
+        {
+            return new svc.RequestorModel()
             {
                 ApplicationName = Constants.AppName,
                 CorrelationId = Guid.NewGuid().ToString("n"),
                 IdentifierId = System.Security.Principal.WindowsIdentity.GetCurrent().Name,
-                IdentifierIdType = CoreEnumerationsMessagingIdentifierIdType.User,
+                IdentifierIdType = svc.CoreEnumerationsMessagingIdentifierIdType.User,
                 IpAddress = Dns.GetHostEntry(Dns.GetHostName()).AddressList[0].ToString(),
                 RequestDate = DateTime.UtcNow,
                 TenantId = base.tenantId

@@ -16,6 +16,9 @@ namespace UserAccountManager.Domain
 
         [XmlAttribute("tenantId")]
         public string TenantId { get; set; }
+        
+        [XmlAttribute("serviceVersion")]
+        public int ServiceVersion { get; set; }
 
         [XmlAttribute("isDeleteAllowed")]
         public bool IsDeleteAllowed { get; set; }

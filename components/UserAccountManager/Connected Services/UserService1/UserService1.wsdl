@@ -75,15 +75,6 @@
   <wsdl:message name="IUserService_UpdateRegisteredUserXref_BusinessValidationExceptionFault_FaultMessage">
     <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q9:BusinessValidationException" />
   </wsdl:message>
-  <wsdl:message name="IUserService_UpdateUserDelegate_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateUserDelegate" />
-  </wsdl:message>
-  <wsdl:message name="IUserService_UpdateUserDelegate_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateUserDelegateResponse" />
-  </wsdl:message>
-  <wsdl:message name="IUserService_UpdateUserDelegate_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q10:ServiceException" />
-  </wsdl:message>
   <wsdl:message name="IUserService_AddUserRoles_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUserRoles" />
   </wsdl:message>
@@ -91,7 +82,7 @@
     <wsdl:part name="parameters" element="tns:AddUserRolesResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_AddUserRoles_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q11:ServiceException" />
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q10:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IUserService_RemoveUserRoles_InputMessage">
     <wsdl:part name="parameters" element="tns:RemoveUserRoles" />
@@ -100,7 +91,7 @@
     <wsdl:part name="parameters" element="tns:RemoveUserRolesResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_RemoveUserRoles_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q12:ServiceException" />
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q11:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IUserService_AddUserPreferences_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUserPreferences" />
@@ -109,7 +100,7 @@
     <wsdl:part name="parameters" element="tns:AddUserPreferencesResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_AddUserPreferences_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q13:ServiceException" />
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q12:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IUserService_RemoveUserPreferences_InputMessage">
     <wsdl:part name="parameters" element="tns:RemoveUserPreferences" />
@@ -118,7 +109,7 @@
     <wsdl:part name="parameters" element="tns:RemoveUserPreferencesResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_RemoveUserPreferences_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q14:ServiceException" />
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q13:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IUserService_AddUserProfileMemberFocusHistory_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUserProfileMemberFocusHistory" />
@@ -127,7 +118,7 @@
     <wsdl:part name="parameters" element="tns:AddUserProfileMemberFocusHistoryResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_AddUserProfileMemberFocusHistory_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q15:ServiceException" />
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q14:ServiceException" />
   </wsdl:message>
   <wsdl:portType name="IUserService">
     <wsdl:operation name="AddUser">
@@ -162,11 +153,6 @@
       <wsdl:output wsaw:Action="HP.HSP.User/IUserService/UpdateRegisteredUserXrefResponse" message="tns:IUserService_UpdateRegisteredUserXref_OutputMessage" />
       <wsdl:fault wsaw:Action="HP.HSP.User/IUserService/UpdateRegisteredUserXrefServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserService_UpdateRegisteredUserXref_ServiceExceptionFault_FaultMessage" />
       <wsdl:fault wsaw:Action="HP.HSP.User/IUserService/UpdateRegisteredUserXrefBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IUserService_UpdateRegisteredUserXref_BusinessValidationExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateUserDelegate">
-      <wsdl:input wsaw:Action="HP.HSP.User/IUserService/UpdateUserDelegate" message="tns:IUserService_UpdateUserDelegate_InputMessage" />
-      <wsdl:output wsaw:Action="HP.HSP.User/IUserService/UpdateUserDelegateResponse" message="tns:IUserService_UpdateUserDelegate_OutputMessage" />
-      <wsdl:fault wsaw:Action="HP.HSP.User/IUserService/UpdateUserDelegateServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserService_UpdateUserDelegate_ServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddUserRoles">
       <wsdl:input wsaw:Action="HP.HSP.User/IUserService/AddUserRoles" message="tns:IUserService_AddUserRoles_InputMessage" />

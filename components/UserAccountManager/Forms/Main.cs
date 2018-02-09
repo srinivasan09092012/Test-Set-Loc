@@ -17,7 +17,7 @@ namespace UserAccountManager.Forms
         private static Domain.Environment currentEnvConfig = null;
         private static IUserQueryProvider adQueryProvider = null;
         private static IUserManagementProvider adManagementProvider = null;
-        private static List<Role> envRoles = null;
+        private static List<Group> envGroups = null;
         private static string defaultStatus = "Select an environment, enter search fields, and click Search. To delete an account, select the row and click Delete.";
 
         public MainForm()
@@ -56,7 +56,7 @@ namespace UserAccountManager.Forms
             ToggleUserSearchButton();
         }
 
-        private void UserRolesComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void UserGroupsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ToggleUserSearchButton();
         }
@@ -266,7 +266,7 @@ namespace UserAccountManager.Forms
                 form.EnvConfig = currentEnvConfig;
                 form.adManagementProvider = adManagementProvider;
                 form.adQueryProvider = adQueryProvider;
-                form.UserRoles = envRoles;
+                form.UserGroups = envGroups;
                 form.UserAccount = new UserAccount();
                 form.UserProfile = new UserProfile();
                 form.EditMode = Domain.Enumerations.EditModeType.Add;
@@ -286,6 +286,25 @@ namespace UserAccountManager.Forms
         private void DeleteUserAccount(string userName)
         {
             adManagementProvider.DeleteUser(userName);
+
+            IUserQueryServiceProvider qryProvider = null;
+            IUserServiceProvider cmdProvider = null;
+
+            if (currentEnvConfig.ServiceVersion == 1)
+            {
+                qryProvider = new UserQueryServiceProvider1(currentEnvConfig);
+                cmdProvider = new UserServiceProvider1(currentEnvConfig);
+            }
+            else
+            {
+                qryProvider = new UserQueryServiceProvider2(currentEnvConfig);
+                cmdProvider = new UserServiceProvider2(currentEnvConfig);
+            }
+
+            if (qryProvider.LoadUserProfile(userName) != null)
+            {
+                cmdProvider.InactiveProfile(userName);
+            }
         }
 
         private void DisplayUserSearchResults(List<UserIdentity> users)
@@ -305,12 +324,12 @@ namespace UserAccountManager.Forms
 
         private void InitializeEnvironment(string envName)
         {
-            envRoles = new List<Role>();
+            envGroups = new List<Group>();
             currentEnvConfig = envConfigs.Environments.Find(o => o.Name == envName);
             adQueryProvider = new ActiveDirectoryQueryProvider(currentEnvConfig.ADServer, currentEnvConfig.ADUser, currentEnvConfig.ADPassword, currentEnvConfig.ADContainer);
             adManagementProvider = new ActiveDirectoryProvider(currentEnvConfig.ADServer, currentEnvConfig.ADUser, currentEnvConfig.ADPassword, currentEnvConfig.ADContainer);
 
-            SearchRolesRequest request = new SearchRolesRequest()
+            SearchGroupsRequest request = new SearchGroupsRequest()
             {
                 PagingCriteria = new PagingCriteria()
                 {
@@ -319,26 +338,26 @@ namespace UserAccountManager.Forms
                 }
             };
 
-            SearchRolesResponse response = adQueryProvider.SearchRoles(request);
+            SearchGroupsResponse response = adQueryProvider.SearchGroups(request);
             if (response != null && response.RowCount > 0)
             {
-                envRoles = response.Roles;
+                envGroups = response.Groups;
             }
 
-            this.UserRolesComboBox.Items.Clear();
-            this.UserRolesComboBox.Items.Add(string.Empty);
-            if (envRoles != null && envRoles.Count > 0)
+            this.UserGroupsComboBox.Items.Clear();
+            this.UserGroupsComboBox.Items.Add(string.Empty);
+            if (envGroups != null && envGroups.Count > 0)
             {
-                envRoles.Sort(
-                    delegate (Role r1, Role r2)
+                envGroups.Sort(
+                    delegate (Group r1, Group r2)
                     {
                         return r1.Name.CompareTo(r2.Name);
                     }
                 );
 
-                foreach (Role role in envRoles)
+                foreach (Group role in envGroups)
                 {
-                    this.UserRolesComboBox.Items.Add(role.Name);
+                    this.UserGroupsComboBox.Items.Add(role.Name);
                 }
             }
         }
@@ -381,9 +400,19 @@ namespace UserAccountManager.Forms
 
         private void LoadUserAccount(string userName)
         {
-            UserQueryServiceProvider svcProvider = new UserQueryServiceProvider(currentEnvConfig);
+            IUserQueryServiceProvider qrySvcProvider = null;
+
+            if (currentEnvConfig.ServiceVersion == 1)
+            {
+                qrySvcProvider = new UserQueryServiceProvider1(currentEnvConfig);
+            }
+            else
+            {
+                qrySvcProvider = new UserQueryServiceProvider2(currentEnvConfig);
+            }
+
             UserAccount userAccount = adQueryProvider.GetUser(userName);
-            UserProfile userProfile = svcProvider.LoadUserProfile(userName);
+            UserProfile userProfile = qrySvcProvider.LoadUserProfile(userName);
             if (userProfile == null)
             {
                 userProfile = new UserProfile();
@@ -394,7 +423,7 @@ namespace UserAccountManager.Forms
                 form.EnvConfig = currentEnvConfig;
                 form.adManagementProvider = adManagementProvider;
                 form.adQueryProvider = adQueryProvider;
-                form.UserRoles = envRoles;
+                form.UserGroups = envGroups;
                 form.UserAccount = userAccount;
                 form.UserProfile = userProfile;
                 form.EditMode = Domain.Enumerations.EditModeType.Edit;
@@ -447,13 +476,13 @@ namespace UserAccountManager.Forms
                         });
                 }
 
-                if (UserRolesComboBox.SelectedIndex > 0)
+                if (UserGroupsComboBox.SelectedIndex > 0)
                 {
                     request.SearchFields.Add(
                         new UserSearchField()
                         {
-                            FieldName = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.UserSearchFieldType.RoleName,
-                            FieldValue = UserRolesComboBox.SelectedItem.ToString(),
+                            FieldName = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.UserSearchFieldType.GroupName,
+                            FieldValue = UserGroupsComboBox.SelectedItem.ToString(),
                             SearchMode = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.SearchModeType.EqualTo
                         });
                 }
@@ -515,7 +544,7 @@ namespace UserAccountManager.Forms
         {
             UserSearchButton.Enabled = (EnvComboBox.Text.Length > 0) &&
                 (UserNameTextBox.Text.Trim().Length > 0
-                || UserRolesComboBox.SelectedIndex > 0
+                || UserGroupsComboBox.SelectedIndex > 0
                 || FirstNameTextBox.Text.Trim().Length > 0
                 || LastNameTextBox.Text.Trim().Length > 0
                 || EmailTextBox.Text.Trim().Length > 0);
@@ -634,7 +663,7 @@ namespace UserAccountManager.Forms
                     form.SelectedUserNames = selectedUserNames;
                     form.EnvConfigs = envConfigs;
                     form.SourceEnvConfig = currentEnvConfig;
-                    form.SourceEnvRoles = envRoles;
+                    form.SourceEnvGroups = envGroups;
                     form.ShowDialog();
                 }
             }
