@@ -154,22 +154,10 @@ namespace DatalistSyncUtil.Views
                     sourceServicelist.BaseURLModified = true;
                 }
 
-                if (sourceServicelist.SecurityRightItemID != null && targetServicelist.SecurityRightItemID != null)
+                if (sourceServicelist.SecurityRightItemContentID != targetServicelist.SecurityRightItemContentID)
                 {
-                    sourceSecurity = this.SourceSecItems.Where(c => c.ID == sourceServicelist.SecurityRightItemID).FirstOrDefault();
-                    targetSecurity = this.TargetSecItems.Where(c => c.ID == targetServicelist.SecurityRightItemID).FirstOrDefault();
-
-                    if (sourceSecurity != null && targetSecurity != null)
-                    {
-                        sourceSecurityRight = sourceSecurity.Code;
-                        targetSecurityRight = targetSecurity.Code;
-
-                        if (sourceSecurityRight != targetSecurityRight)
-                        {
-                            isChanged = true;
-                            sourceServicelist.SecRightItemModified = true;
-                        }
-                    }
+                    isChanged = true;
+                    sourceServicelist.SecRightItemModified = true;
                 }
 
                 if (sourceServicelist.LabelItemKey != targetServicelist.LabelItemKey)
@@ -253,33 +241,27 @@ namespace DatalistSyncUtil.Views
 
         private bool CheckIfSecRightPresentAtTarget(ServicesMainModel service, bool selectAll)
         {
-            CodeListModel strSecurityRight = null;
             bool present = true;
-            string secRight = null;
-            strSecurityRight = this.SourceSecItems.Where(a => a.ID == service.SecurityRightItemID).FirstOrDefault();
-            if (strSecurityRight == null)
-            {
-                MessageBox.Show("The Security Right is not yet added to the Source Cache. Please Refresh the cache !! ");
-                present = false;
-            }
-            else
-            {
-                present = this.TargetSecItems.Any(a => a.Code == strSecurityRight.Code);
+            string right = null;
+            List<string> list = new List<string>();
 
+            if (service.LabelItemKey != null)
+            {
+                present = this.TargetSecItems.Any(a => a.Code == service.LabelItemKey);
                 if (present == false && selectAll == false)
                 {
-                    secRight = secRight + strSecurityRight.Code;
-                    MessageBox.Show("The Security Right: " + secRight + " is not present in the Target environment", "Security Right", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                    right = right + service.SecurityRightItemContentID;
+                    MessageBox.Show("The Security Right: " + right + " is not present in the Target Environment", "Security Right", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                     present = false;
                 }
 
                 if (present == false && selectAll == true)
                 {
-                    secRight = secRight + strSecurityRight.Code;
+                    right = right + service.SecurityRightItemContentID;
                     present = false;
                 }
             }
-            
+
             return present;
         }
 

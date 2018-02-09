@@ -263,8 +263,6 @@ namespace DatalistSyncUtil.Views
                     foreach (ServicesMainModel list in this.FinalServices)
                     {
                         list.TenantModuleID = modules.Find(f => f.TenantModuleId == list.TenantModuleID).TenantModuleId;
-                        securityRight = this.SourceSecRights.Find(c => c.ID == list.SecurityRightItemID).Code;
-                        list.SecurityRightItemID = this.TargetSecRights.Find(c => c.Code == securityRight).ID;
                         if (list.Status == "NEW")
                         {
                             this.LoadHelper.AddServices(list);

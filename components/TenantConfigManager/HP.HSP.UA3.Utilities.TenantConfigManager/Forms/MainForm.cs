@@ -882,7 +882,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                             foreach (MenuModel menu in module.Menus)
                             {
                                 menu.Id = menu.Id.ToLower();
-                                menu.SecurityRightId = menu.SecurityRightId.ToLower();
+                                menu.SecurityRightContentId = menu.SecurityRightContentId.ToLower();
 
                                 if(menu.Items != null && menu.Items.Count > 0)
                                 {
@@ -890,9 +890,9 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                                     {
                                         item.Id = item.Id.ToLower();
 
-                                        if (item.SecurityRightId != null)
+                                        if (item.SecurityRightContentId != null)
                                         {
-                                            item.SecurityRightId = item.SecurityRightId.ToLower();
+                                            item.SecurityRightContentId = item.SecurityRightContentId.ToLower();
                                         }
                                     }
                                 }
@@ -931,9 +931,9 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                             {
                                 service.Id = service.Id.ToLower();
 
-                                if (service.SecurityRightId != null)
+                                if (service.SecurityRightContentId != null)
                                 {
-                                    service.SecurityRightId = service.SecurityRightId.ToLower();
+                                    service.SecurityRightContentId = service.SecurityRightContentId.ToLower();
                                 }
                             }
                         }

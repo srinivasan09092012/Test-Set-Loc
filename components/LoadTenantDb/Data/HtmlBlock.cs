@@ -8,6 +8,7 @@
 using HP.HSP.UA3.Administration.UX.Common;
 using HP.HSP.UA3.Core.BAS.CQRS.Base;
 using HP.HSP.UA3.Core.BAS.CQRS.DataAccess.Entities;
+using HP.HSP.UA3.Core.BAS.CQRS.Domain;
 using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
 using HP.HSP.UA3.Utilities.LoadTenantDb.Forms;
 using System;
@@ -50,9 +51,9 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             this.ConnectionStringSettings = ConfigurationManager.ConnectionStrings["DefaultConnection"];
             using (this.session = new DbSession(this.ConnectionStringSettings.ProviderName, this.ConnectionStringSettings.ConnectionString))
             {
-                HtmlBlockDbContext htmlBlockDbContext = new HtmlBlockDbContext(this.session);
+                DataListsDbContext dataListsDbContext = new DataListsDbContext(this.session);
 
-                var htmBlockId = (from hb in htmlBlockDbContext.Set<HP.HSP.UA3.Core.BAS.CQRS.DataAccess.Entities.HtmlBlock>() where hb.ContentId == htmlBlock.ContentId select hb.HtmlBlockId).FirstOrDefault();
+                var htmBlockId = (from hb in dataListsDbContext.Set<HP.HSP.UA3.Core.BAS.CQRS.DataAccess.Entities.HtmlBlock>() where hb.ContentId == htmlBlock.ContentId select hb.HtmlBlockId).FirstOrDefault();
 
                 if (htmBlockId.Equals(new Guid("{00000000-0000-0000-0000-000000000000}")))
                 {
@@ -75,9 +76,9 @@ namespace HP.HSP.UA3.Utilities.LoadTenantDb.Data
             using (this.session = new DbSession(this.ConnectionStringSettings.ProviderName, this.ConnectionStringSettings.ConnectionString))
             {
 
-                HtmlBlockDbContext htmlBlockDbContext = new HtmlBlockDbContext(this.session);
+                DataListsDbContext dataListsDbContext = new DataListsDbContext(this.session);
 
-                localList = (from hb in htmlBlockDbContext.Set<HP.HSP.UA3.Core.BAS.CQRS.DataAccess.Entities.HtmlBlockLanguages>()
+                localList = (from hb in dataListsDbContext.Set<HP.HSP.UA3.Core.BAS.CQRS.DataAccess.Entities.HtmlBlockLanguages>()
                                  where hb.HtmlBlockId == new Guid(htmlBlockId)
                                  select new { hb.LocaleId }).ToList<Object>();
             }
