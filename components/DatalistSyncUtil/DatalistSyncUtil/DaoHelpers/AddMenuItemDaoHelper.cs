@@ -37,7 +37,7 @@ namespace DatalistSyncUtil.DaoHelpers
                 MenuItemID = menuItemID,
                 MenuID = cmd.MenuID,
                 ParentMenuItemID = cmd.ParentMenuItemID,
-                SecurityRightItemID = cmd.SecurityRightItemID,
+                SecurityRightItemKey = cmd.SecurityRightItemContentID,
                 Name = cmd.Name,
                 OrderIndex = Convert.ToInt16(cmd.OrderIndex),
                 IsVisible = cmd.IsVisible,

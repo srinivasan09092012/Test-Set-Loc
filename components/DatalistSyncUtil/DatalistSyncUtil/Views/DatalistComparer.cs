@@ -594,7 +594,7 @@ namespace DatalistSyncUtil
                     TenantModuleID = list.TenantModuleID,
                     IsActive = list.IsActive,
                     Name = list.Name,
-                    SecurityRightItemID = list.SecurityRightItemID,
+                    SecurityRightItemContentID = list.SecurityRightItemContentID,
                     DisplaySize = list.DisplaySize,
                     OperatorID = list.OperatorID,
                     Level = list.Level,
@@ -789,7 +789,7 @@ namespace DatalistSyncUtil
                 list1 = new ServicesMainModel()
                 {
                     Name = list.Name,
-                    SecurityRightItemID = list.SecurityRightItemID,
+                    SecurityRightItemContentID = list.SecurityRightItemContentID,
                     LabelItemKey = list.LabelContentID,
                     ServiceID = list.ID,
                     DefaultText = list.DefaultText,
@@ -830,7 +830,7 @@ namespace DatalistSyncUtil
                     TenantModuleID = list.TenantModuleID,
                     IsActive = list.IsActive,
                     Name = list.Name,
-                    SecurityRightItemID = list.SecurityRightItemID,
+                    SecurityRightItemContentID = list.SecurityRightItemContentID,
                     DisplaySize = list.DisplaySize,
                     OperatorID = list.OperatorID,
                     Level = list.Level,
@@ -861,7 +861,7 @@ namespace DatalistSyncUtil
                     ParentMenuItemID = e.ParentMenuItemID,
                     Name = e.Name,
                     OrderIndex = e.OrderIndex,
-                    SecurityRightItemID = e.SecurityRightItemID,
+                    SecurityRightItemContentID = e.SecurityRightItemContentID,
                     LabelItemContentID = e.LabelItemContentID,
                     DefaultText = e.DefaultText,
                     BaseURL = e.BaseURL,
@@ -1067,7 +1067,7 @@ namespace DatalistSyncUtil
                 list1 = new ServicesMainModel()
                 {
                     Name = list.Name,
-                    SecurityRightItemID = list.SecurityRightItemID,
+                    SecurityRightItemContentID = list.SecurityRightItemContentID,
                     LabelItemKey = list.LabelContentID,
                     ServiceID = list.ID,
                     DefaultText = list.DefaultText,

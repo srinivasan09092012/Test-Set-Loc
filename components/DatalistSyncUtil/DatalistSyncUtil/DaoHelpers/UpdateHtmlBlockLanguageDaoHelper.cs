@@ -5,20 +5,20 @@
 // Violators may be punished to the full extent of the law.
 //--------------------------------------------------------------------------------------------------
 
-using System;
 using HP.HSP.UA3.Core.BAS.CQRS.DataAccess.Entities;
+using HP.HSP.UA3.Core.BAS.CQRS.Domain;
 using System.Data.Entity;
 
 namespace DatalistSyncUtil.DaoHelpers
 {
     public class UpdateHtmlBlockLanguageDaoHelper
     {
-        public UpdateHtmlBlockLanguageDaoHelper(HtmlBlockDbContext context)
+        public UpdateHtmlBlockLanguageDaoHelper(DataListsDbContext context)
         {
             this.Context = context;
         }
 
-        public HtmlBlockDbContext Context { get; set; }
+        public DataListsDbContext Context { get; set; }
 
         public bool ExecuteProcedure(HtmlBlockLanguage cmd)
         {

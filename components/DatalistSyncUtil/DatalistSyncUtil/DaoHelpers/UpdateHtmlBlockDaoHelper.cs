@@ -13,12 +13,12 @@ namespace DatalistSyncUtil.DaoHelpers
 {
     public class UpdateHtmlBlockDaoHelper
     {
-        public UpdateHtmlBlockDaoHelper(HtmlBlockDbContext context)
+        public UpdateHtmlBlockDaoHelper(DataListsDbContext context)
         {
             this.Context = context;
         }
 
-        public HtmlBlockDbContext Context { get; set; }
+        public DataListsDbContext Context { get; set; }
 
         public bool ExecuteProcedure(HtmlBlockMainModel cmd)
         {

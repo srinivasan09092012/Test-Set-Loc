@@ -23,7 +23,7 @@ namespace DatalistSyncUtil.DaoHelpers
             Service serviceUpdated = new Service()
             {
                 Name = cmd.Name,
-                SecurityRightItemID = cmd.SecurityRightItemID,
+                SecurityRightItemKey = cmd.SecurityRightItemContentID,
                 LabelItemKey = cmd.LabelItemKey,
                 ServiceID = cmd.ServiceID,
                 DefaultText = cmd.DefaultText,

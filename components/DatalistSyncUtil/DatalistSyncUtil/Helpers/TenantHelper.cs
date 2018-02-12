@@ -504,7 +504,7 @@ namespace DatalistSyncUtil
             {
                 try
                 {
-                    new AddHtmlBlockDaoHelper(new HtmlBlockDbContext(session, true)).ExecuteProcedure(cmd);
+                    new AddHtmlBlockDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
                 }
                 catch (Exception ex)
                 {
@@ -523,7 +523,7 @@ namespace DatalistSyncUtil
             {
                 try
                 {
-                    new UpdateHtmlBlockDaoHelper(new HtmlBlockDbContext(session, true)).ExecuteProcedure(cmd);
+                    new UpdateHtmlBlockDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
                 }
                 catch (Exception ex)
                 {
@@ -580,7 +580,7 @@ namespace DatalistSyncUtil
             {
                 try
                 {
-                    new AddHtmlBlockLanguageDaoHelper(new HtmlBlockDbContext(session, true)).ExecuteProcedure(cmd);
+                    new AddHtmlBlockLanguageDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
                 }
                 catch (Exception ex)
                 {
@@ -599,7 +599,7 @@ namespace DatalistSyncUtil
             {
                 try
                 {
-                    new UpdateHtmlBlockLanguageDaoHelper(new HtmlBlockDbContext(session, true)).ExecuteProcedure(cmd);
+                    new UpdateHtmlBlockLanguageDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(cmd);
                 }
                 catch (Exception ex)
                 {

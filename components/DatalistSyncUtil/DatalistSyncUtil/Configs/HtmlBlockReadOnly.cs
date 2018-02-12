@@ -7,7 +7,6 @@
 using HP.HSP.UA3.Core.BAS.CQRS.Base;
 using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Config.DAOHelpers;
-using HP.HSP.UA3.Core.BAS.CQRS.DataAccess.Entities;
 using HP.HSP.UA3.Core.BAS.CQRS.Domain;
 using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
 using System;
@@ -49,7 +48,7 @@ namespace DatalistSyncUtil.Configs
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
                       result = new GetHtmlBlockDaoHelper(
-                          new HtmlBlockDbContext(session, true),
+                          new DataListsDbContext(session, true),
                           this.Cachemanager).ExecuteProcedure(tenantID);
                 }
 
@@ -82,7 +81,7 @@ namespace DatalistSyncUtil.Configs
             {
                 using (IDbSession session = new DbSession(this.ConnectionString.ProviderName, this.ConnectionString.ConnectionString))
                 {
-                    languages = new GetHtmlBlockLanguagesDaoHelper(new HtmlBlockDbContext(session, true)).ExecuteProcedure(tenantID);
+                    languages = new GetHtmlBlockLanguagesDaoHelper(new DataListsDbContext(session, true)).ExecuteProcedure(tenantID);
                 }
 
                 this.Cachemanager.Set(this.htmlBlockLanguageKey + tenantID.ToString(), languages, this.cacheTimeInMins);

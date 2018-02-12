@@ -25,7 +25,7 @@ namespace DatalistSyncUtil.DaoHelpers
             this.Context.Service.Add(new Service()
             {
                 Name = cmd.Name,
-                SecurityRightItemID = cmd.SecurityRightItemID,
+                SecurityRightItemKey = cmd.SecurityRightItemContentID,
                 LabelItemKey = cmd.LabelItemKey,
                 ServiceID = serviceID,
                 DefaultText = cmd.DefaultText,

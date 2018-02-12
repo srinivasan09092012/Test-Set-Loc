@@ -175,9 +175,6 @@ namespace DatalistSyncUtil.Views
                     foreach (MenuListModel list in this.FinalList)
                     {
                         list.TenantModuleID = modules.Find(f => f.TenantModuleId == list.TenantModuleID).TenantModuleId;
-                        string securityRight = null;
-                        securityRight = this.Sourceitems.Find(c => c.ID == list.SecurityRightItemID).Code;
-                        list.SecurityRightItemID = this.Items.Find(c => c.Code == securityRight).ID;
                         if (!this.MenuList.Any(a => a.Name == list.Name))
                         {
                             this.LoadHelper.AddMenus(list);
@@ -220,9 +217,6 @@ namespace DatalistSyncUtil.Views
                     if (list != null)
                     {
                         f.MenuID = list.ID;
-                        string securityRight = null;
-                        securityRight = this.Sourceitems.Find(c => c.ID == f.SecurityRightItemID).Code;
-                        f.SecurityRightItemID = this.Items.Find(c => c.Code == securityRight).ID;
                         if (!this.MenuItems.Any(a => a.Name == f.Name))
                         {
                             this.LoadHelper.AddMenuItem(f);

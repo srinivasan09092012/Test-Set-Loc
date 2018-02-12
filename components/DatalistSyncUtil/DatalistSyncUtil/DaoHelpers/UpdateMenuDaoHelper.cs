@@ -31,7 +31,7 @@ namespace DatalistSyncUtil.DaoHelpers
                 ID = cmd.ID,
                 TenantModuleID = cmd.TenantModuleID,
                 Name = cmd.Name,
-                SecurityRightItemID = cmd.SecurityRightItemID,
+                SecurityRightItemContentID = cmd.SecurityRightItemContentID,
                 IsActive = cmd.IsActive,
                 DisplaySize = cmd.DisplaySize,
                 OperatorID = cmd.OperatorID,

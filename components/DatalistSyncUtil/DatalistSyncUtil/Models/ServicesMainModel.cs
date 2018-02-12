@@ -21,7 +21,7 @@ namespace DatalistSyncUtil
 
         public string Name { get; set; }
 
-        public Guid SecurityRightItemID { get; set; }
+        public string SecurityRightItemContentID { get; set; }
 
         public bool SecRightItemModified { get; set; }
 
