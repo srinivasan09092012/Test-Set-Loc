@@ -57,6 +57,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.BatchGroupBox = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.DeleteBatchButton = new System.Windows.Forms.Button();
             this.BatchDropdown = new System.Windows.Forms.ComboBox();
             this.CreateBatchButton = new System.Windows.Forms.Button();
@@ -305,6 +306,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             // 
             this.BatchGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.BatchGroupBox.Controls.Add(this.label6);
             this.BatchGroupBox.Controls.Add(this.DeleteBatchButton);
             this.BatchGroupBox.Controls.Add(this.BatchDropdown);
             this.BatchGroupBox.Controls.Add(this.CreateBatchButton);
@@ -316,11 +318,20 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.BatchGroupBox.TabStop = false;
             this.BatchGroupBox.Text = "Batch Services (Batch)";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(22, 31);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(282, 13);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Use the checklist for How to Create a new Batch Solution.";
+            // 
             // DeleteBatchButton
             // 
             this.DeleteBatchButton.Enabled = false;
             this.DeleteBatchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteBatchButton.Location = new System.Drawing.Point(296, 34);
+            this.DeleteBatchButton.Location = new System.Drawing.Point(296, 54);
             this.DeleteBatchButton.Name = "DeleteBatchButton";
             this.DeleteBatchButton.Size = new System.Drawing.Size(75, 23);
             this.DeleteBatchButton.TabIndex = 2;
@@ -334,7 +345,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.BatchDropdown.Enabled = false;
             this.BatchDropdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BatchDropdown.FormattingEnabled = true;
-            this.BatchDropdown.Location = new System.Drawing.Point(70, 36);
+            this.BatchDropdown.Location = new System.Drawing.Point(70, 56);
             this.BatchDropdown.Name = "BatchDropdown";
             this.BatchDropdown.Size = new System.Drawing.Size(220, 21);
             this.BatchDropdown.TabIndex = 0;
@@ -344,7 +355,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             // 
             this.CreateBatchButton.Enabled = false;
             this.CreateBatchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CreateBatchButton.Location = new System.Drawing.Point(377, 34);
+            this.CreateBatchButton.Location = new System.Drawing.Point(377, 54);
             this.CreateBatchButton.Name = "CreateBatchButton";
             this.CreateBatchButton.Size = new System.Drawing.Size(75, 23);
             this.CreateBatchButton.TabIndex = 3;
@@ -355,7 +366,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 36);
+            this.label3.Location = new System.Drawing.Point(22, 56);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 0;
@@ -499,6 +510,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
         private System.Windows.Forms.ComboBox ApiDropdown;
         private System.Windows.Forms.Button CreateApiButton;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 

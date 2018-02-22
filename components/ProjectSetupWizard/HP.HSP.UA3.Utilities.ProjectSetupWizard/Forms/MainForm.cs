@@ -264,7 +264,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             BASGroupBox.Enabled = enabled;
             BatchGroupBox.Enabled = enabled;
             CreateBASButton.Enabled = enabled;
-            CreateBatchButton.Enabled = enabled;
+            ////CreateBatchButton.Enabled = enabled;
             CreateApiButton.Enabled = enabled;
             LoadBASServices();
             LoadBatchServices();
@@ -454,7 +454,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
 
             foreach (DirectoryInfo cdi in di.GetDirectories())
             {
-                if (cdi.Name == "Data")
+                if (cdi.Name.Contains(".BAS.") || cdi.Name.Contains(".Batch."))
                 {
                     isValid = true;
                     break;
@@ -675,6 +675,9 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
                 BASDropdown.Items.Clear();
                 BatchDropdown.Items.Clear();
                 ApiDropdown.Items.Clear();
+                BASDropdown.Enabled = false;
+                BatchDropdown.Enabled = false;
+                ApiDropdown.Enabled = false;
             }
             DetailsGroupBox.Enabled = enabled;
         }
