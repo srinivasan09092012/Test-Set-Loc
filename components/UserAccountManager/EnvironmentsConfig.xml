@@ -2,7 +2,7 @@
 <EnvironmentsConfig>
   <Environments>
     <Environment name="Dev" tenantId="081e354b-2184-47fe-b69d-3c5229d8bccf" serviceVersion="2" isDeleteAllowed="true">
-      <ADContainer>DC=dev,DC=mapshc,DC=com</ADContainer>
+      <ADContainer>CN=Users,DC=dev,DC=mapshc,DC=com</ADContainer>
       <ADServer>ad.dev.mapshc.com</ADServer>
       <ADUser>adService</ADUser>
       <ADPassword>Password2017</ADPassword>
@@ -10,7 +10,7 @@
       <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
     </Environment>
     <Environment name="Demo" tenantId="081e354b-2184-47fe-b69d-3c5229d8bccf" serviceVersion="1" isDeleteAllowed="true">
-      <ADContainer>DC=demo,DC=mapshc,DC=com</ADContainer>
+      <ADContainer>CN=Users,DC=demo,DC=mapshc,DC=com</ADContainer>
       <ADServer>ad.demo.mapshc.com</ADServer>
       <ADUser>adService</ADUser>
       <ADPassword>Password2017</ADPassword>
@@ -18,7 +18,7 @@
       <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.demo.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
     </Environment>
     <Environment name="Performance" tenantId="081e354b-2184-47fe-b69d-3c5229d8bccf" serviceVersion="1" isDeleteAllowed="true">
-      <ADContainer>DC=performance,DC=mapshc,DC=com</ADContainer>
+      <ADContainer>CN=Users,DC=performance,DC=mapshc,DC=com</ADContainer>
       <ADServer>ad.performance.mapshc.com</ADServer>
       <ADUser>adService</ADUser>
       <ADPassword>Password2017</ADPassword>
@@ -26,7 +26,7 @@
       <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.performance.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
     </Environment>
     <Environment name="Staging" tenantId="081e354b-2184-47fe-b69d-3c5229d8bccf" serviceVersion="1" isDeleteAllowed="true">
-      <ADContainer>DC=staging,DC=mapshc,DC=com</ADContainer>
+      <ADContainer>CN=Users,DC=staging,DC=mapshc,DC=com</ADContainer>
       <ADServer>ad.staging.mapshc.com</ADServer>
       <ADUser>adService</ADUser>
       <ADPassword>Password2017</ADPassword>
@@ -34,7 +34,7 @@
       <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.staging.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
     </Environment>
     <Environment name="Staging-1" tenantId="081e354b-2184-47fe-b69d-3c5229d8bccf" serviceVersion="1" isDeleteAllowed="true">
-      <ADContainer>DC=staging-1,DC=mapshc,DC=com</ADContainer>
+      <ADContainer>CN=Users,DC=staging-1,DC=mapshc,DC=com</ADContainer>
       <ADServer>ad.staging-1.mapshc.com</ADServer>
       <ADUser>adService</ADUser>
       <ADPassword>Password2017</ADPassword>
@@ -42,7 +42,7 @@
       <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.staging-1.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
     </Environment>
     <Environment name="Test" tenantId="081e354b-2184-47fe-b69d-3c5229d8bccf" serviceVersion="2" isDeleteAllowed="true">
-      <ADContainer>DC=test,DC=mapshc,DC=com</ADContainer>
+      <ADContainer>CN=Users,DC=test,DC=mapshc,DC=com</ADContainer>
       <ADServer>ad.test.mapshc.com</ADServer>
       <ADUser>adService</ADUser>
       <ADPassword>Password2017</ADPassword>
@@ -51,7 +51,7 @@
     </Environment>
     <!--
     <Environment name="Work" tenantId="081e354b-2184-47fe-b69d-3c5229d8bccf" serviceVersion="2" isDeleteAllowed="true">
-      <ADContainer>DC=dev,DC=mapshc,DC=com</ADContainer>
+      <ADContainer>CN=Users,DC=dev,DC=mapshc,DC=com</ADContainer>
       <ADServer>ad.dev.mapshc.com</ADServer>
       <ADUser>adService</ADUser>
       <ADPassword>Password2017</ADPassword>

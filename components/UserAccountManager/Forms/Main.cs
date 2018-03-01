@@ -109,7 +109,10 @@ namespace UserAccountManager.Forms
                 this.StatusStripLabel.Text = "Adding new user account...";
                 Application.DoEvents();
                 this.AddUserAccount();
-                this.SearchUserAccounts();
+                if (UserSearchButton.Enabled)
+                {
+                    this.SearchUserAccounts();
+                }
             }
             catch (Exception ex)
             {
@@ -432,7 +435,10 @@ namespace UserAccountManager.Forms
                 form.ShowDialog();
                 if (!form.IsCanceled)
                 {
-                    this.SearchUserAccounts();
+                    if (UserSearchButton.Enabled)
+                    {
+                        this.SearchUserAccounts();
+                    }
                 }
             }
         }
@@ -625,7 +631,10 @@ namespace UserAccountManager.Forms
                         {
                             this.DeleteUserAccount(row.Cells[1].Value.ToString());
                         }
-                        this.SearchUserAccounts();
+                        if (UserSearchButton.Enabled)
+                        {
+                            this.SearchUserAccounts();
+                        }
                     }
                 }
             }
