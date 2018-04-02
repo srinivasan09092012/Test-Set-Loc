@@ -69,7 +69,7 @@
             this.tbFileName.Margin = new System.Windows.Forms.Padding(2);
             this.tbFileName.Name = "tbFileName";
             this.tbFileName.ReadOnly = true;
-            this.tbFileName.Size = new System.Drawing.Size(938, 24);
+            this.tbFileName.Size = new System.Drawing.Size(938, 33);
             this.tbFileName.TabIndex = 0;
             // 
             // btnBrowse
@@ -96,7 +96,7 @@
             this.label1.Location = new System.Drawing.Point(8, 3);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 18);
+            this.label1.Size = new System.Drawing.Size(213, 29);
             this.label1.TabIndex = 2;
             this.label1.Text = "Event Payload File";
             // 
@@ -119,11 +119,11 @@
             // tabPayload
             // 
             this.tabPayload.Controls.Add(this.wbXML);
-            this.tabPayload.Location = new System.Drawing.Point(4, 29);
+            this.tabPayload.Location = new System.Drawing.Point(4, 38);
             this.tabPayload.Margin = new System.Windows.Forms.Padding(2);
             this.tabPayload.Name = "tabPayload";
             this.tabPayload.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPayload.Size = new System.Drawing.Size(1039, 575);
+            this.tabPayload.Size = new System.Drawing.Size(1039, 566);
             this.tabPayload.TabIndex = 0;
             this.tabPayload.Text = "Payload";
             this.tabPayload.UseVisualStyleBackColor = true;
@@ -133,16 +133,16 @@
             this.wbXML.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wbXML.Location = new System.Drawing.Point(2, 2);
             this.wbXML.Name = "wbXML";
-            this.wbXML.Size = new System.Drawing.Size(1035, 571);
+            this.wbXML.Size = new System.Drawing.Size(1035, 562);
             this.wbXML.TabIndex = 0;
             // 
             // tbErrors
             // 
             this.tbErrors.Controls.Add(this.tbError);
-            this.tbErrors.Location = new System.Drawing.Point(4, 29);
+            this.tbErrors.Location = new System.Drawing.Point(4, 38);
             this.tbErrors.Name = "tbErrors";
             this.tbErrors.Padding = new System.Windows.Forms.Padding(3);
-            this.tbErrors.Size = new System.Drawing.Size(1039, 575);
+            this.tbErrors.Size = new System.Drawing.Size(1039, 566);
             this.tbErrors.TabIndex = 1;
             this.tbErrors.Text = "Logs";
             this.tbErrors.UseVisualStyleBackColor = true;
@@ -156,7 +156,7 @@
             this.tbError.Multiline = true;
             this.tbError.Name = "tbError";
             this.tbError.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbError.Size = new System.Drawing.Size(1033, 569);
+            this.tbError.Size = new System.Drawing.Size(1033, 560);
             this.tbError.TabIndex = 1;
             // 
             // tabPage1
@@ -165,10 +165,10 @@
             this.tabPage1.Controls.Add(this.tbPayloadContent);
             this.tabPage1.Controls.Add(this.btnCancel);
             this.tabPage1.Controls.Add(this.btnSave);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Location = new System.Drawing.Point(4, 38);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1039, 575);
+            this.tabPage1.Size = new System.Drawing.Size(1039, 566);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "XML";
             // 
@@ -180,7 +180,7 @@
             this.tbPayloadContent.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPayloadContent.Location = new System.Drawing.Point(1, 0);
             this.tbPayloadContent.Name = "tbPayloadContent";
-            this.tbPayloadContent.Size = new System.Drawing.Size(1035, 534);
+            this.tbPayloadContent.Size = new System.Drawing.Size(1035, 525);
             this.tbPayloadContent.TabIndex = 12;
             this.tbPayloadContent.Text = "";
             this.tbPayloadContent.WordWrap = false;
@@ -189,7 +189,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(905, 539);
+            this.btnCancel.Location = new System.Drawing.Point(905, 530);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 31);
@@ -202,7 +202,7 @@
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(984, 539);
+            this.btnSave.Location = new System.Drawing.Point(984, 530);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(50, 31);
@@ -223,7 +223,7 @@
             this.cbEndpoint.Location = new System.Drawing.Point(164, 666);
             this.cbEndpoint.Margin = new System.Windows.Forms.Padding(2);
             this.cbEndpoint.Name = "cbEndpoint";
-            this.cbEndpoint.Size = new System.Drawing.Size(894, 26);
+            this.cbEndpoint.Size = new System.Drawing.Size(894, 37);
             this.cbEndpoint.TabIndex = 4;
             this.cbEndpoint.ValueMember = "Value";
             // 
@@ -252,7 +252,7 @@
             this.label2.Location = new System.Drawing.Point(13, 669);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 18);
+            this.label2.Size = new System.Drawing.Size(147, 29);
             this.label2.TabIndex = 6;
             this.label2.Text = "Service URL";
             // 
@@ -265,7 +265,7 @@
             this.label3.Location = new System.Drawing.Point(15, 707);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 18);
+            this.label3.Size = new System.Drawing.Size(144, 29);
             this.label3.TabIndex = 7;
             this.label3.Text = "Event Name";
             // 
@@ -281,7 +281,7 @@
             this.cbEventName.Margin = new System.Windows.Forms.Padding(2);
             this.cbEventName.MaxDropDownItems = 25;
             this.cbEventName.Name = "cbEventName";
-            this.cbEventName.Size = new System.Drawing.Size(409, 26);
+            this.cbEventName.Size = new System.Drawing.Size(409, 37);
             this.cbEventName.TabIndex = 8;
             this.cbEventName.ValueMember = "Value";
             // 
@@ -303,9 +303,9 @@
             // 
             // numericUpDownEventsNumbers
             // 
-            this.numericUpDownEventsNumbers.Location = new System.Drawing.Point(971, 766);
+            this.numericUpDownEventsNumbers.Location = new System.Drawing.Point(985, 766);
             this.numericUpDownEventsNumbers.Name = "numericUpDownEventsNumbers";
-            this.numericUpDownEventsNumbers.Size = new System.Drawing.Size(87, 24);
+            this.numericUpDownEventsNumbers.Size = new System.Drawing.Size(73, 32);
             this.numericUpDownEventsNumbers.TabIndex = 9;
             this.numericUpDownEventsNumbers.Value = new decimal(new int[] {
             10,
@@ -317,9 +317,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(827, 772);
+            this.label4.Location = new System.Drawing.Point(874, 716);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 18);
+            this.label4.Size = new System.Drawing.Size(180, 26);
             this.label4.TabIndex = 10;
             this.label4.Text = "Events Numbers:";
             // 
@@ -328,7 +328,7 @@
             this.labelProgess.AutoSize = true;
             this.labelProgess.Location = new System.Drawing.Point(605, 709);
             this.labelProgess.Name = "labelProgess";
-            this.labelProgess.Size = new System.Drawing.Size(0, 18);
+            this.labelProgess.Size = new System.Drawing.Size(0, 26);
             this.labelProgess.TabIndex = 11;
             // 
             // MainForm
