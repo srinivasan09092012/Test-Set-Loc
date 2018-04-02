@@ -237,7 +237,7 @@
             this.buttonPressureTest.Location = new System.Drawing.Point(464, 758);
             this.buttonPressureTest.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPressureTest.Name = "buttonPressureTest";
-            this.buttonPressureTest.Size = new System.Drawing.Size(342, 47);
+            this.buttonPressureTest.Size = new System.Drawing.Size(322, 47);
             this.buttonPressureTest.TabIndex = 5;
             this.buttonPressureTest.Text = "Pressure Test";
             this.buttonPressureTest.UseVisualStyleBackColor = true;
@@ -295,7 +295,7 @@
             this.buttonNormalTest.Location = new System.Drawing.Point(18, 758);
             this.buttonNormalTest.Margin = new System.Windows.Forms.Padding(2);
             this.buttonNormalTest.Name = "buttonNormalTest";
-            this.buttonNormalTest.Size = new System.Drawing.Size(369, 47);
+            this.buttonNormalTest.Size = new System.Drawing.Size(359, 47);
             this.buttonNormalTest.TabIndex = 5;
             this.buttonNormalTest.Text = "Normal Test (Single Request)";
             this.buttonNormalTest.UseVisualStyleBackColor = true;
@@ -303,9 +303,9 @@
             // 
             // numericUpDownEventsNumbers
             // 
-            this.numericUpDownEventsNumbers.Location = new System.Drawing.Point(985, 766);
+            this.numericUpDownEventsNumbers.Location = new System.Drawing.Point(1002, 766);
             this.numericUpDownEventsNumbers.Name = "numericUpDownEventsNumbers";
-            this.numericUpDownEventsNumbers.Size = new System.Drawing.Size(73, 32);
+            this.numericUpDownEventsNumbers.Size = new System.Drawing.Size(56, 32);
             this.numericUpDownEventsNumbers.TabIndex = 9;
             this.numericUpDownEventsNumbers.Value = new decimal(new int[] {
             10,
@@ -316,8 +316,10 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(874, 716);
+            this.label4.Location = new System.Drawing.Point(816, 769);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(180, 26);
             this.label4.TabIndex = 10;
