@@ -1,4 +1,4 @@
-﻿using ProviderManagement.EnrollmentTestClient.EventDistribution;
+﻿using BASEventsTestingUtil.EventDistribution;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace ProviderManagement.EnrollmentTestClient
+namespace BASEventsTestingUtil
 {
     public partial class MainForm : Form
     {

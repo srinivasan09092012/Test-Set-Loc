@@ -7,8 +7,8 @@
     <ProjectGuid>{86141E13-E897-40AA-9C5C-23087673B6B8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProviderManagement.EnrollmentTestClient</RootNamespace>
-    <AssemblyName>ProviderManagement.EnrollmentTestClient</AssemblyName>
+    <RootNamespace>BASEventsTestingUtil</RootNamespace>
+    <AssemblyName>BASEventsTestingUtil</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -78,6 +78,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

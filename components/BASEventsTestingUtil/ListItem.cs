@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 
-namespace ProviderManagement.EnrollmentTestClient
+namespace BASEventsTestingUtil
 {
     public class ListItem
     {

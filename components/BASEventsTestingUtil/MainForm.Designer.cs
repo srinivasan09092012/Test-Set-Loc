@@ -1,4 +1,4 @@
-﻿namespace ProviderManagement.EnrollmentTestClient
+﻿namespace BASEventsTestingUtil
 {
     partial class MainForm
     {

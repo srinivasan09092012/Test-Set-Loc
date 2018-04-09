@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ProviderManagement.EnrollmentTestClient")]
+[assembly: AssemblyTitle("BASEventsTestingUtil")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("ProviderManagement.EnrollmentTestClient")]
+[assembly: AssemblyProduct("BASEventsTestingUtil")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("18.1.47.0")]
-[assembly: AssemblyFileVersion("18.1.47.0")]
+[assembly: AssemblyVersion("17.4.43.0")]
+[assembly: AssemblyFileVersion("17.4.43.0")]

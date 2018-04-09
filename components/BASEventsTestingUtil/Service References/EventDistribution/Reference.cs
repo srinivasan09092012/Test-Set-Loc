@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProviderManagement.EnrollmentTestClient.EventDistribution {
+namespace BASEventsTestingUtil.EventDistribution {
     using System.Runtime.Serialization;
     using System;
     
@@ -228,7 +228,7 @@ namespace ProviderManagement.EnrollmentTestClient.EventDistribution {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ProviderManagement.EnrollmentTestClient.EventDistribution.ServiceException.StatusCodeType ErrorCodeField;
+        private BASEventsTestingUtil.EventDistribution.ServiceException.StatusCodeType ErrorCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Collections.Generic.List<string> ErrorMessagesField;
@@ -244,7 +244,7 @@ namespace ProviderManagement.EnrollmentTestClient.EventDistribution {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ProviderManagement.EnrollmentTestClient.EventDistribution.ServiceException.StatusCodeType ErrorCode {
+        public BASEventsTestingUtil.EventDistribution.ServiceException.StatusCodeType ErrorCode {
             get {
                 return this.ErrorCodeField;
             }
@@ -310,17 +310,17 @@ namespace ProviderManagement.EnrollmentTestClient.EventDistribution {
     public interface IEventDistribution {
         
         [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UA3.Eventing/IEventDistribution/ProcessEvent", ReplyAction="HP.HSP.UA3.Eventing/IEventDistribution/ProcessEventResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(ProviderManagement.EnrollmentTestClient.EventDistribution.ServiceException), Action="HP.HSP.UA3.Eventing/IEventDistribution/ProcessEventServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
-        void ProcessEvent(ProviderManagement.EnrollmentTestClient.EventDistribution.EventMessage @event);
+        [System.ServiceModel.FaultContractAttribute(typeof(BASEventsTestingUtil.EventDistribution.ServiceException), Action="HP.HSP.UA3.Eventing/IEventDistribution/ProcessEventServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        void ProcessEvent(BASEventsTestingUtil.EventDistribution.EventMessage @event);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IEventDistributionChannel : ProviderManagement.EnrollmentTestClient.EventDistribution.IEventDistribution, System.ServiceModel.IClientChannel {
+    public interface IEventDistributionChannel : BASEventsTestingUtil.EventDistribution.IEventDistribution, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class EventDistributionClient : System.ServiceModel.ClientBase<ProviderManagement.EnrollmentTestClient.EventDistribution.IEventDistribution>, ProviderManagement.EnrollmentTestClient.EventDistribution.IEventDistribution {
+    public partial class EventDistributionClient : System.ServiceModel.ClientBase<BASEventsTestingUtil.EventDistribution.IEventDistribution>, BASEventsTestingUtil.EventDistribution.IEventDistribution {
         
         public EventDistributionClient() {
         }
@@ -341,7 +341,7 @@ namespace ProviderManagement.EnrollmentTestClient.EventDistribution {
                 base(binding, remoteAddress) {
         }
         
-        public void ProcessEvent(ProviderManagement.EnrollmentTestClient.EventDistribution.EventMessage @event) {
+        public void ProcessEvent(BASEventsTestingUtil.EventDistribution.EventMessage @event) {
             base.Channel.ProcessEvent(@event);
         }
     }
