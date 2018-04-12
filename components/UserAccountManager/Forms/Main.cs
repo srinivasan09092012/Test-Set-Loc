@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using UserAccountManager.Domain;
 using UserAccountManager.Providers;
 using UserAccountManager.Utilities;
+using api = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain;
 
 namespace UserAccountManager.Forms
 {
@@ -419,6 +420,14 @@ namespace UserAccountManager.Forms
             if (userProfile == null)
             {
                 userProfile = new UserProfile();
+            }
+
+            if (userAccount.RegistrationQualifiers != null && userAccount.RegistrationQualifiers.Count > 0)
+            {
+                foreach (api.RegistrationQualifier qualifier in userAccount.RegistrationQualifiers)
+                {
+                    userProfile.RegQualifiers.Add(new Domain.RegistrationQualifier(qualifier.Key, qualifier.Value));
+                }
             }
 
             using (UserAccountForm form = new UserAccountForm())

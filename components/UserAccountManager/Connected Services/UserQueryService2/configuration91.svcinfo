@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="KeUe3KyQioINN3/VPbDhwObUL/U=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="zFGXTnu9BhfdYaIhZNQMdi5pTKM=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IUserQueryService">
       <properties>
@@ -110,10 +110,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpsBinding_IUserQueryService1">
+    <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpsBinding_IUserQueryService2">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpsBinding_IUserQueryService1</serializedValue>
+          <serializedValue>BasicHttpsBinding_IUserQueryService2</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -221,7 +221,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IUserQueryService" contract="UserQueryService2.IUserQueryService" bindingType="basicHttpBinding" address="http://mapsdevapp01.dev.mapshc.com:8010/HP.HSP.UA3.User/R6.0/UserQueryService.svc" bindingConfiguration="BasicHttpBinding_IUserQueryService">
+    <endpoint name="BasicHttpBinding_IUserQueryService1" contract="UserQueryService2.IUserQueryService" bindingType="basicHttpBinding" address="http://mapsdevapp01.dev.mapshc.com:8010/HP.HSP.UA3.User/R6.0/UserQueryService.svc" bindingConfiguration="BasicHttpBinding_IUserQueryService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://mapsdevapp01.dev.mapshc.com:8010/HP.HSP.UA3.User/R6.0/UserQueryService.svc</serializedValue>
@@ -296,7 +296,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_IUserQueryService</serializedValue>
+          <serializedValue>BasicHttpBinding_IUserQueryService1</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -306,7 +306,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="BasicHttpsBinding_IUserQueryService" contract="UserQueryService2.IUserQueryService" bindingType="basicHttpBinding" address="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" bindingConfiguration="BasicHttpsBinding_IUserQueryService1">
+    <endpoint name="BasicHttpsBinding_IUserQueryService1" contract="UserQueryService2.IUserQueryService" bindingType="basicHttpBinding" address="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" bindingConfiguration="BasicHttpsBinding_IUserQueryService2">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc</serializedValue>
@@ -318,7 +318,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpsBinding_IUserQueryService1</serializedValue>
+          <serializedValue>BasicHttpsBinding_IUserQueryService2</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>UserQueryService2.IUserQueryService</serializedValue>
@@ -381,7 +381,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpsBinding_IUserQueryService</serializedValue>
+          <serializedValue>BasicHttpsBinding_IUserQueryService1</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

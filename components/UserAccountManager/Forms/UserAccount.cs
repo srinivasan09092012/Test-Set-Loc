@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using UserAccountManager.Domain;
 using UserAccountManager.Providers;
 using static UserAccountManager.Domain.Enumerations;
+using api = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain;
 
 namespace UserAccountManager.Forms
 {
@@ -53,6 +54,7 @@ namespace UserAccountManager.Forms
                 if (this.EditMode == EditModeType.Edit)
                 {
                     this.LoadUserAccount();
+                    this.RegQualifiersBindingSource.DataSource = this.UserProfile.RegQualifiers;
                 }
                 if (this.EditMode == EditModeType.Add)
                 {
@@ -340,6 +342,27 @@ namespace UserAccountManager.Forms
                 return false;
             }
 
+            int idx = 1;
+            List<Domain.RegistrationQualifier> qualifiers = (List<Domain.RegistrationQualifier>)RegQualifiersBindingSource.DataSource;
+            foreach (Domain.RegistrationQualifier qualifier in qualifiers)
+            {
+                if (string.IsNullOrEmpty(qualifier.Key))
+                {
+                    FormHelper.DisplayMessage(string.Format("Reg Qualifier Key {0} is required.", idx.ToString()), MessageBoxIcon.Error);
+                    RegQualifiersDataGridView.Focus();
+                    return false;
+                }
+
+                if (string.IsNullOrEmpty(qualifier.Value))
+                {
+                    FormHelper.DisplayMessage(string.Format("Reg Qualifier Value {0} is required.", idx.ToString()), MessageBoxIcon.Error);
+                    RegQualifiersDataGridView.Focus();
+                    return false;
+                }
+
+                idx++;
+            }
+
             if (this.CreateUserProfileCheckBox.Checked)
             {
                 if (string.IsNullOrEmpty(LocaleTextBox.Text))
@@ -351,7 +374,7 @@ namespace UserAccountManager.Forms
 
                 if (VOSTagsDataGridView.Enabled)
                 {
-                    int idx = 1;
+                    idx = 1;
                     List<UserVOSTag> gridTags = (List<UserVOSTag>)VOSTagsBindingSource.DataSource;
                     foreach (UserVOSTag tag in gridTags)
                     {
@@ -400,6 +423,13 @@ namespace UserAccountManager.Forms
 
         private void SaveUserAccount()
         {
+            List<api.RegistrationQualifier> accountQualifiers = new List<api.RegistrationQualifier>();
+            List<Domain.RegistrationQualifier> profileQualifiers = ((List<Domain.RegistrationQualifier>)RegQualifiersBindingSource.DataSource);
+            foreach (Domain.RegistrationQualifier qualifier in profileQualifiers)
+            {
+                accountQualifiers.Add(new api.RegistrationQualifier() { Key = qualifier.Key, Value = qualifier.Value });
+            }
+
             UserAccount newUserAccount = new UserAccount()
             {
                 Identity = new UserIdentity()
@@ -414,7 +444,8 @@ namespace UserAccountManager.Forms
                 },
                 IsEnabled = true,
                 PasswordNeverExpires = true,
-                Groups = new List<string>()
+                Groups = new List<string>(),
+                RegistrationQualifiers = accountQualifiers
             };
 
             foreach (var item in GroupsListBox.SelectedItems)
@@ -442,7 +473,8 @@ namespace UserAccountManager.Forms
                 PhoneNumber = PhoneTextBox.Text.Trim(),
                 TenantId = Guid.Parse(EnvConfig.TenantId),
                 UserName = UserNameTextBox.Text.Trim(),
-                VOSTags = (List<UserVOSTag>)VOSTagsBindingSource.DataSource
+                RegQualifiers = profileQualifiers,
+                VOSTags = (List<UserVOSTag>)VOSTagsBindingSource.DataSource                
             };
 
             IUserQueryServiceProvider qryProvider = null;
@@ -479,6 +511,7 @@ namespace UserAccountManager.Forms
             else
             {
                 adManagementProvider.UpdateUser(newUserAccount.Identity);
+                adManagementProvider.UpdateUserRegistrationQualifiers(newUserAccount.Identity.UserName, newUserAccount.RegistrationQualifiers);
 
                 if (!string.IsNullOrEmpty(newUserAccount.Password))
                 {

@@ -60,12 +60,6 @@
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.ProfileGroupBox = new System.Windows.Forms.GroupBox();
             this.VOSTagsDataGridView = new System.Windows.Forms.DataGridView();
-            this.userVOSTagIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.effectiveDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VOSTagsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.GeneralIdTtextBox = new System.Windows.Forms.TextBox();
             this.GeneralIdLabel = new System.Windows.Forms.Label();
             this.VOSTagsLabel = new System.Windows.Forms.Label();
@@ -74,13 +68,27 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusStripLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.CreateUserProfileCheckBox = new System.Windows.Forms.CheckBox();
+            this.RegQualifiersGroupBox = new System.Windows.Forms.GroupBox();
+            this.RegQualifiersDataGridView = new System.Windows.Forms.DataGridView();
+            this.keyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RegQualifiersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.userVOSTagIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.effectiveDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VOSTagsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             this.IdenttyGroupBox.SuspendLayout();
             this.SecurityGroupBox.SuspendLayout();
             this.ProfileGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VOSTagsDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VOSTagsBindingSource)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            this.RegQualifiersGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RegQualifiersDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RegQualifiersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VOSTagsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -378,10 +386,10 @@
             this.ProfileGroupBox.Controls.Add(this.label10);
             this.ProfileGroupBox.Controls.Add(this.VOSTagsLabel);
             this.ProfileGroupBox.Enabled = false;
-            this.ProfileGroupBox.Location = new System.Drawing.Point(12, 411);
+            this.ProfileGroupBox.Location = new System.Drawing.Point(12, 539);
             this.ProfileGroupBox.Name = "ProfileGroupBox";
             this.ProfileGroupBox.Size = new System.Drawing.Size(760, 254);
-            this.ProfileGroupBox.TabIndex = 4;
+            this.ProfileGroupBox.TabIndex = 5;
             this.ProfileGroupBox.TabStop = false;
             this.ProfileGroupBox.Text = "Profile";
             // 
@@ -402,6 +410,122 @@
             this.VOSTagsDataGridView.Name = "VOSTagsDataGridView";
             this.VOSTagsDataGridView.Size = new System.Drawing.Size(733, 123);
             this.VOSTagsDataGridView.TabIndex = 5;
+            // 
+            // GeneralIdTtextBox
+            // 
+            this.GeneralIdTtextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.GeneralIdTtextBox.Location = new System.Drawing.Point(110, 63);
+            this.GeneralIdTtextBox.Name = "GeneralIdTtextBox";
+            this.GeneralIdTtextBox.Size = new System.Drawing.Size(247, 20);
+            this.GeneralIdTtextBox.TabIndex = 3;
+            // 
+            // GeneralIdLabel
+            // 
+            this.GeneralIdLabel.AutoSize = true;
+            this.GeneralIdLabel.Location = new System.Drawing.Point(9, 63);
+            this.GeneralIdLabel.Name = "GeneralIdLabel";
+            this.GeneralIdLabel.Size = new System.Drawing.Size(87, 13);
+            this.GeneralIdLabel.TabIndex = 2;
+            this.GeneralIdLabel.Text = "General Identifier";
+            // 
+            // VOSTagsLabel
+            // 
+            this.VOSTagsLabel.AutoSize = true;
+            this.VOSTagsLabel.Location = new System.Drawing.Point(7, 100);
+            this.VOSTagsLabel.Name = "VOSTagsLabel";
+            this.VOSTagsLabel.Size = new System.Drawing.Size(56, 13);
+            this.VOSTagsLabel.TabIndex = 4;
+            this.VOSTagsLabel.Text = "VOS Tags";
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.Location = new System.Drawing.Point(616, 799);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveButton.TabIndex = 6;
+            this.SaveButton.Text = "Save";
+            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // CancelButton
+            // 
+            this.CancelButton.Location = new System.Drawing.Point(697, 799);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.TabIndex = 7;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.StatusStripLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 826);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(784, 22);
+            this.statusStrip1.TabIndex = 8;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // StatusStripLabel
+            // 
+            this.StatusStripLabel.Name = "StatusStripLabel";
+            this.StatusStripLabel.Size = new System.Drawing.Size(144, 17);
+            this.StatusStripLabel.Text = "Initializing user account....";
+            // 
+            // CreateUserProfileCheckBox
+            // 
+            this.CreateUserProfileCheckBox.AutoSize = true;
+            this.CreateUserProfileCheckBox.Enabled = false;
+            this.CreateUserProfileCheckBox.Location = new System.Drawing.Point(12, 516);
+            this.CreateUserProfileCheckBox.Name = "CreateUserProfileCheckBox";
+            this.CreateUserProfileCheckBox.Size = new System.Drawing.Size(120, 17);
+            this.CreateUserProfileCheckBox.TabIndex = 4;
+            this.CreateUserProfileCheckBox.Text = "Create a &user profile";
+            this.CreateUserProfileCheckBox.UseVisualStyleBackColor = true;
+            this.CreateUserProfileCheckBox.CheckedChanged += new System.EventHandler(this.CreateUserProfileCheckBox_CheckedChanged);
+            // 
+            // RegQualifiersGroupBox
+            // 
+            this.RegQualifiersGroupBox.Controls.Add(this.RegQualifiersDataGridView);
+            this.RegQualifiersGroupBox.Location = new System.Drawing.Point(12, 389);
+            this.RegQualifiersGroupBox.Name = "RegQualifiersGroupBox";
+            this.RegQualifiersGroupBox.Size = new System.Drawing.Size(760, 108);
+            this.RegQualifiersGroupBox.TabIndex = 3;
+            this.RegQualifiersGroupBox.TabStop = false;
+            this.RegQualifiersGroupBox.Text = "Registration Qualifiers";
+            // 
+            // RegQualifiersDataGridView
+            // 
+            this.RegQualifiersDataGridView.AllowUserToResizeRows = false;
+            this.RegQualifiersDataGridView.AutoGenerateColumns = false;
+            this.RegQualifiersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.RegQualifiersDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.keyDataGridViewTextBoxColumn,
+            this.valueDataGridViewTextBoxColumn});
+            this.RegQualifiersDataGridView.DataSource = this.RegQualifiersBindingSource;
+            this.RegQualifiersDataGridView.Location = new System.Drawing.Point(9, 21);
+            this.RegQualifiersDataGridView.Name = "RegQualifiersDataGridView";
+            this.RegQualifiersDataGridView.Size = new System.Drawing.Size(733, 81);
+            this.RegQualifiersDataGridView.TabIndex = 0;
+            // 
+            // keyDataGridViewTextBoxColumn
+            // 
+            this.keyDataGridViewTextBoxColumn.DataPropertyName = "Key";
+            this.keyDataGridViewTextBoxColumn.HeaderText = "Key";
+            this.keyDataGridViewTextBoxColumn.Name = "keyDataGridViewTextBoxColumn";
+            this.keyDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // valueDataGridViewTextBoxColumn
+            // 
+            this.valueDataGridViewTextBoxColumn.DataPropertyName = "Value";
+            this.valueDataGridViewTextBoxColumn.HeaderText = "Value";
+            this.valueDataGridViewTextBoxColumn.Name = "valueDataGridViewTextBoxColumn";
+            this.valueDataGridViewTextBoxColumn.Width = 300;
+            // 
+            // RegQualifiersBindingSource
+            // 
+            this.RegQualifiersBindingSource.DataSource = typeof(UserAccountManager.Domain.RegistrationQualifier);
             // 
             // userVOSTagIdDataGridViewTextBoxColumn
             // 
@@ -440,85 +564,12 @@
             // 
             this.VOSTagsBindingSource.DataSource = typeof(UserAccountManager.Domain.UserVOSTag);
             // 
-            // GeneralIdTtextBox
-            // 
-            this.GeneralIdTtextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.GeneralIdTtextBox.Location = new System.Drawing.Point(110, 63);
-            this.GeneralIdTtextBox.Name = "GeneralIdTtextBox";
-            this.GeneralIdTtextBox.Size = new System.Drawing.Size(247, 20);
-            this.GeneralIdTtextBox.TabIndex = 3;
-            // 
-            // GeneralIdLabel
-            // 
-            this.GeneralIdLabel.AutoSize = true;
-            this.GeneralIdLabel.Location = new System.Drawing.Point(9, 63);
-            this.GeneralIdLabel.Name = "GeneralIdLabel";
-            this.GeneralIdLabel.Size = new System.Drawing.Size(87, 13);
-            this.GeneralIdLabel.TabIndex = 2;
-            this.GeneralIdLabel.Text = "General Identifier";
-            // 
-            // VOSTagsLabel
-            // 
-            this.VOSTagsLabel.AutoSize = true;
-            this.VOSTagsLabel.Location = new System.Drawing.Point(7, 100);
-            this.VOSTagsLabel.Name = "VOSTagsLabel";
-            this.VOSTagsLabel.Size = new System.Drawing.Size(56, 13);
-            this.VOSTagsLabel.TabIndex = 4;
-            this.VOSTagsLabel.Text = "VOS Tags";
-            // 
-            // SaveButton
-            // 
-            this.SaveButton.Location = new System.Drawing.Point(616, 671);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(75, 23);
-            this.SaveButton.TabIndex = 5;
-            this.SaveButton.Text = "Save";
-            this.SaveButton.UseVisualStyleBackColor = true;
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
-            // 
-            // CancelButton
-            // 
-            this.CancelButton.Location = new System.Drawing.Point(697, 671);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 6;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.StatusStripLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 699);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(784, 22);
-            this.statusStrip1.TabIndex = 7;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // StatusStripLabel
-            // 
-            this.StatusStripLabel.Name = "StatusStripLabel";
-            this.StatusStripLabel.Size = new System.Drawing.Size(144, 17);
-            this.StatusStripLabel.Text = "Initializing user account....";
-            // 
-            // CreateUserProfileCheckBox
-            // 
-            this.CreateUserProfileCheckBox.AutoSize = true;
-            this.CreateUserProfileCheckBox.Enabled = false;
-            this.CreateUserProfileCheckBox.Location = new System.Drawing.Point(12, 388);
-            this.CreateUserProfileCheckBox.Name = "CreateUserProfileCheckBox";
-            this.CreateUserProfileCheckBox.Size = new System.Drawing.Size(120, 17);
-            this.CreateUserProfileCheckBox.TabIndex = 3;
-            this.CreateUserProfileCheckBox.Text = "Create a &user profile";
-            this.CreateUserProfileCheckBox.UseVisualStyleBackColor = true;
-            this.CreateUserProfileCheckBox.CheckedChanged += new System.EventHandler(this.CreateUserProfileCheckBox_CheckedChanged);
-            // 
             // UserAccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 721);
+            this.ClientSize = new System.Drawing.Size(784, 848);
+            this.Controls.Add(this.RegQualifiersGroupBox);
             this.Controls.Add(this.CreateUserProfileCheckBox);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.CancelButton);
@@ -546,9 +597,12 @@
             this.ProfileGroupBox.ResumeLayout(false);
             this.ProfileGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VOSTagsDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VOSTagsBindingSource)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.RegQualifiersGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.RegQualifiersDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RegQualifiersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VOSTagsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -601,5 +655,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn typeCodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn effectiveDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn endDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.GroupBox RegQualifiersGroupBox;
+        private System.Windows.Forms.DataGridView RegQualifiersDataGridView;
+        private System.Windows.Forms.BindingSource RegQualifiersBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn keyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valueDataGridViewTextBoxColumn;
     }
 }

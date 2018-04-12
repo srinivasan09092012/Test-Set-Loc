@@ -49,6 +49,7 @@ namespace UserAccountManager.Providers
                         PhoneNumber = svcResponse.QueryResult.ContactNumber,
                         TenantId = svcResponse.QueryResult.TenantId,
                         UserName = svcResponse.QueryResult.UserId,
+                        RegQualifiers = new List<RegistrationQualifier>(),
                         VOSTags = new List<UserVOSTag>()
                     };
 

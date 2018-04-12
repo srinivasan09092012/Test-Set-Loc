@@ -2,16 +2,16 @@
 <wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="HP.HSP.UserQueryService" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="HP.HSP.UserQueryService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xsd:schema targetNamespace="HP.HSP.UserQueryService/Imports">
-      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd0" namespace="HP.HSP.UserQueryService" />
-      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
-      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries" />
-      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta" />
-      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" />
-      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries.Parameters" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd6" namespace="HP.HSP.UserQueryService" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries.Parameters" />
       <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd7" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.ViewDto" />
-      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Common" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Common" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.ViewDto" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserQueryService_GetUserProfile_InputMessage">
@@ -23,59 +23,20 @@
   <wsdl:message name="IUserQueryService_GetUserProfile_ServiceExceptionFault_FaultMessage">
     <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q1:ServiceException" />
   </wsdl:message>
-  <wsdl:message name="IUserQueryService_GetUserIdAvailability_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserIdAvailability" />
+  <wsdl:message name="IUserQueryService_GetUserProfile_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q2:BusinessValidationException" />
   </wsdl:message>
-  <wsdl:message name="IUserQueryService_GetUserIdAvailability_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserIdAvailabilityResponse" />
+  <wsdl:message name="IUserQueryService_SearchUserProfiles_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchUserProfiles" />
   </wsdl:message>
-  <wsdl:message name="IUserQueryService_GetUserIdAvailability_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q2:ServiceException" />
+  <wsdl:message name="IUserQueryService_SearchUserProfiles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchUserProfilesResponse" />
   </wsdl:message>
-  <wsdl:message name="IUserQueryService_GetInvitationQualifiers_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetInvitationQualifiers" />
-  </wsdl:message>
-  <wsdl:message name="IUserQueryService_GetInvitationQualifiers_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetInvitationQualifiersResponse" />
-  </wsdl:message>
-  <wsdl:message name="IUserQueryService_GetInvitationQualifiers_ServiceExceptionFault_FaultMessage">
+  <wsdl:message name="IUserQueryService_SearchUserProfiles_ServiceExceptionFault_FaultMessage">
     <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q3:ServiceException" />
   </wsdl:message>
-  <wsdl:message name="IUserQueryService_GetQualifierVerification_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetQualifierVerification" />
-  </wsdl:message>
-  <wsdl:message name="IUserQueryService_GetQualifierVerification_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetQualifierVerificationResponse" />
-  </wsdl:message>
-  <wsdl:message name="IUserQueryService_GetQualifierVerification_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q4:ServiceException" />
-  </wsdl:message>
-  <wsdl:message name="IUserQueryService_GetAllUsers_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllUsers" />
-  </wsdl:message>
-  <wsdl:message name="IUserQueryService_GetAllUsers_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
-  </wsdl:message>
-  <wsdl:message name="IUserQueryService_GetAllUsers_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q5:ServiceException" />
-  </wsdl:message>
-  <wsdl:message name="IUserQueryService_SearchUsers_InputMessage">
-    <wsdl:part name="parameters" element="tns:SearchUsers" />
-  </wsdl:message>
-  <wsdl:message name="IUserQueryService_SearchUsers_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SearchUsersResponse" />
-  </wsdl:message>
-  <wsdl:message name="IUserQueryService_SearchUsers_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q6:ServiceException" />
-  </wsdl:message>
-  <wsdl:message name="IUserQueryService_GerUserIdExists_InputMessage">
-    <wsdl:part name="parameters" element="tns:GerUserIdExists" />
-  </wsdl:message>
-  <wsdl:message name="IUserQueryService_GerUserIdExists_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GerUserIdExistsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IUserQueryService_GerUserIdExists_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q7:ServiceException" />
+  <wsdl:message name="IUserQueryService_SearchUserProfiles_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q4:BusinessValidationException" />
   </wsdl:message>
   <wsdl:message name="IUserQueryService_GetUserDelegates_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUserDelegates" />
@@ -84,7 +45,10 @@
     <wsdl:part name="parameters" element="tns:GetUserDelegatesResponse" />
   </wsdl:message>
   <wsdl:message name="IUserQueryService_GetUserDelegates_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q8:ServiceException" />
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q5:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetUserDelegates_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q6:BusinessValidationException" />
   </wsdl:message>
   <wsdl:message name="IUserQueryService_GetUserDelegateDetails_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUserDelegateDetails" />
@@ -93,7 +57,22 @@
     <wsdl:part name="parameters" element="tns:GetUserDelegateDetailsResponse" />
   </wsdl:message>
   <wsdl:message name="IUserQueryService_GetUserDelegateDetails_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q7:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetUserDelegateDetails_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q8:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetUserXRefAssociatedRelationships_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserXRefAssociatedRelationships" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetUserXRefAssociatedRelationships_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserXRefAssociatedRelationshipsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetUserXRefAssociatedRelationships_ServiceExceptionFault_FaultMessage">
     <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q9:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetUserXRefAssociatedRelationships_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q10:BusinessValidationException" />
   </wsdl:message>
   <wsdl:message name="IUserQueryService_GetUserXRefRelationships_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUserXRefRelationships" />
@@ -102,7 +81,10 @@
     <wsdl:part name="parameters" element="tns:GetUserXRefRelationshipsResponse" />
   </wsdl:message>
   <wsdl:message name="IUserQueryService_GetUserXRefRelationships_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q10:ServiceException" />
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q11:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetUserXRefRelationships_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q12:BusinessValidationException" />
   </wsdl:message>
   <wsdl:message name="IUserQueryService_ValidateRegisteredUserXref_InputMessage">
     <wsdl:part name="parameters" element="tns:ValidateRegisteredUserXref" />
@@ -111,10 +93,10 @@
     <wsdl:part name="parameters" element="tns:ValidateRegisteredUserXrefResponse" />
   </wsdl:message>
   <wsdl:message name="IUserQueryService_ValidateRegisteredUserXref_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q11:ServiceException" />
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q13:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IUserQueryService_ValidateRegisteredUserXref_BusinessValidationExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q12:BusinessValidationException" />
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q14:BusinessValidationException" />
   </wsdl:message>
   <wsdl:message name="IUserQueryService_SearchUserProfileMemberFocusHistory_InputMessage">
     <wsdl:part name="parameters" element="tns:SearchUserProfileMemberFocusHistory" />
@@ -123,58 +105,131 @@
     <wsdl:part name="parameters" element="tns:SearchUserProfileMemberFocusHistoryResponse" />
   </wsdl:message>
   <wsdl:message name="IUserQueryService_SearchUserProfileMemberFocusHistory_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q13:ServiceException" />
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q15:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_SearchUserProfileMemberFocusHistory_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q16:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_SearchVOSUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchVOSUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_SearchVOSUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchVOSUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_SearchVOSUser_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q17:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_SearchVOSUser_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q18:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetUserIdAvailability_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserIdAvailability" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetUserIdAvailability_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserIdAvailabilityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetUserIdAvailability_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q19:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetUserIdAvailability_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q20:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetInvitationQualifiers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvitationQualifiers" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetInvitationQualifiers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvitationQualifiersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetInvitationQualifiers_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q21:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetInvitationQualifiers_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q22:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetQualifierVerification_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQualifierVerification" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetQualifierVerification_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQualifierVerificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetQualifierVerification_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q23="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q23:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetQualifierVerification_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q24="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q24:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetAllUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsers" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetAllUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetAllUsers_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q25="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q25:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GetAllUsers_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q26="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q26:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_SearchUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchUsers" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_SearchUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_SearchUsers_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q27="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q27:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_SearchUsers_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q28="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q28:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GerUserIdExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:GerUserIdExists" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GerUserIdExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GerUserIdExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GerUserIdExists_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q29="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q29:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IUserQueryService_GerUserIdExists_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q30="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q30:BusinessValidationException" />
   </wsdl:message>
   <wsdl:portType name="IUserQueryService">
     <wsdl:operation name="GetUserProfile">
       <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserProfile" message="tns:IUserQueryService_GetUserProfile_InputMessage" />
       <wsdl:output wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserProfileResponse" message="tns:IUserQueryService_GetUserProfile_OutputMessage" />
       <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserProfileServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserQueryService_GetUserProfile_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserProfileBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IUserQueryService_GetUserProfile_BusinessValidationExceptionFault_FaultMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetUserIdAvailability">
-      <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserIdAvailability" message="tns:IUserQueryService_GetUserIdAvailability_InputMessage" />
-      <wsdl:output wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserIdAvailabilityResponse" message="tns:IUserQueryService_GetUserIdAvailability_OutputMessage" />
-      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserIdAvailabilityServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserQueryService_GetUserIdAvailability_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetInvitationQualifiers">
-      <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetInvitationQualifiers" message="tns:IUserQueryService_GetInvitationQualifiers_InputMessage" />
-      <wsdl:output wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetInvitationQualifiersResponse" message="tns:IUserQueryService_GetInvitationQualifiers_OutputMessage" />
-      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetInvitationQualifiersServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserQueryService_GetInvitationQualifiers_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetQualifierVerification">
-      <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetQualifierVerification" message="tns:IUserQueryService_GetQualifierVerification_InputMessage" />
-      <wsdl:output wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetQualifierVerificationResponse" message="tns:IUserQueryService_GetQualifierVerification_OutputMessage" />
-      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetQualifierVerificationServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserQueryService_GetQualifierVerification_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAllUsers">
-      <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetAllUsers" message="tns:IUserQueryService_GetAllUsers_InputMessage" />
-      <wsdl:output wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetAllUsersResponse" message="tns:IUserQueryService_GetAllUsers_OutputMessage" />
-      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetAllUsersServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserQueryService_GetAllUsers_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SearchUsers">
-      <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/SearchUsers" message="tns:IUserQueryService_SearchUsers_InputMessage" />
-      <wsdl:output wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/SearchUsersResponse" message="tns:IUserQueryService_SearchUsers_OutputMessage" />
-      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/SearchUsersServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserQueryService_SearchUsers_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GerUserIdExists">
-      <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GerUserIdExists" message="tns:IUserQueryService_GerUserIdExists_InputMessage" />
-      <wsdl:output wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GerUserIdExistsResponse" message="tns:IUserQueryService_GerUserIdExists_OutputMessage" />
-      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GerUserIdExistsServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserQueryService_GerUserIdExists_ServiceExceptionFault_FaultMessage" />
+    <wsdl:operation name="SearchUserProfiles">
+      <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/SearchUserProfiles" message="tns:IUserQueryService_SearchUserProfiles_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/SearchUserProfilesResponse" message="tns:IUserQueryService_SearchUserProfiles_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/SearchUserProfilesServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserQueryService_SearchUserProfiles_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/SearchUserProfilesBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IUserQueryService_SearchUserProfiles_BusinessValidationExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUserDelegates">
       <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserDelegates" message="tns:IUserQueryService_GetUserDelegates_InputMessage" />
       <wsdl:output wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserDelegatesResponse" message="tns:IUserQueryService_GetUserDelegates_OutputMessage" />
       <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserDelegatesServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserQueryService_GetUserDelegates_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserDelegatesBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IUserQueryService_GetUserDelegates_BusinessValidationExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUserDelegateDetails">
       <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserDelegateDetails" message="tns:IUserQueryService_GetUserDelegateDetails_InputMessage" />
       <wsdl:output wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserDelegateDetailsResponse" message="tns:IUserQueryService_GetUserDelegateDetails_OutputMessage" />
       <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserDelegateDetailsServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserQueryService_GetUserDelegateDetails_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserDelegateDetailsBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IUserQueryService_GetUserDelegateDetails_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserXRefAssociatedRelationships">
+      <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefAssociatedRelationships" message="tns:IUserQueryService_GetUserXRefAssociatedRelationships_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefAssociatedRelationshipsResponse" message="tns:IUserQueryService_GetUserXRefAssociatedRelationships_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefAssociatedRelationshipsServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserQueryService_GetUserXRefAssociatedRelationships_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefAssociatedRelationshipsBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IUserQueryService_GetUserXRefAssociatedRelationships_BusinessValidationExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUserXRefRelationships">
       <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefRelationships" message="tns:IUserQueryService_GetUserXRefRelationships_InputMessage" />
       <wsdl:output wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefRelationshipsResponse" message="tns:IUserQueryService_GetUserXRefRelationships_OutputMessage" />
       <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefRelationshipsServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserQueryService_GetUserXRefRelationships_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefRelationshipsBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IUserQueryService_GetUserXRefRelationships_BusinessValidationExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="ValidateRegisteredUserXref">
       <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/ValidateRegisteredUserXref" message="tns:IUserQueryService_ValidateRegisteredUserXref_InputMessage" />
@@ -186,6 +241,49 @@
       <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/SearchUserProfileMemberFocusHistory" message="tns:IUserQueryService_SearchUserProfileMemberFocusHistory_InputMessage" />
       <wsdl:output wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/SearchUserProfileMemberFocusHistoryResponse" message="tns:IUserQueryService_SearchUserProfileMemberFocusHistory_OutputMessage" />
       <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/SearchUserProfileMemberFocusHistoryServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserQueryService_SearchUserProfileMemberFocusHistory_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/SearchUserProfileMemberFocusHistoryBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IUserQueryService_SearchUserProfileMemberFocusHistory_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchVOSUser">
+      <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/SearchVOSUser" message="tns:IUserQueryService_SearchVOSUser_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/SearchVOSUserResponse" message="tns:IUserQueryService_SearchVOSUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/SearchVOSUserServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserQueryService_SearchVOSUser_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/SearchVOSUserBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IUserQueryService_SearchVOSUser_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserIdAvailability">
+      <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserIdAvailability" message="tns:IUserQueryService_GetUserIdAvailability_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserIdAvailabilityResponse" message="tns:IUserQueryService_GetUserIdAvailability_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserIdAvailabilityServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserQueryService_GetUserIdAvailability_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetUserIdAvailabilityBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IUserQueryService_GetUserIdAvailability_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvitationQualifiers">
+      <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetInvitationQualifiers" message="tns:IUserQueryService_GetInvitationQualifiers_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetInvitationQualifiersResponse" message="tns:IUserQueryService_GetInvitationQualifiers_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetInvitationQualifiersServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserQueryService_GetInvitationQualifiers_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetInvitationQualifiersBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IUserQueryService_GetInvitationQualifiers_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQualifierVerification">
+      <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetQualifierVerification" message="tns:IUserQueryService_GetQualifierVerification_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetQualifierVerificationResponse" message="tns:IUserQueryService_GetQualifierVerification_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetQualifierVerificationServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserQueryService_GetQualifierVerification_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetQualifierVerificationBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IUserQueryService_GetQualifierVerification_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetAllUsers" message="tns:IUserQueryService_GetAllUsers_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetAllUsersResponse" message="tns:IUserQueryService_GetAllUsers_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetAllUsersServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserQueryService_GetAllUsers_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GetAllUsersBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IUserQueryService_GetAllUsers_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchUsers">
+      <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/SearchUsers" message="tns:IUserQueryService_SearchUsers_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/SearchUsersResponse" message="tns:IUserQueryService_SearchUsers_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/SearchUsersServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserQueryService_SearchUsers_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/SearchUsersBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IUserQueryService_SearchUsers_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GerUserIdExists">
+      <wsdl:input wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GerUserIdExists" message="tns:IUserQueryService_GerUserIdExists_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GerUserIdExistsResponse" message="tns:IUserQueryService_GerUserIdExists_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GerUserIdExistsServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserQueryService_GerUserIdExists_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserQueryService/IUserQueryService/GerUserIdExistsBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IUserQueryService_GerUserIdExists_BusinessValidationExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

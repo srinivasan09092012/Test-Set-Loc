@@ -36,11 +36,14 @@ namespace UserAccountManager.Domain
 
         public Guid TenantId { get; set; }
 
+        public List<RegistrationQualifier> RegQualifiers { get; set; }
+
         public List<UserVOSTag> VOSTags { get; set; }
 
         public void Initialize()
         {
             this.IsActive = true;
+            this.RegQualifiers = new List<RegistrationQualifier>();
             this.VOSTags = new List<UserVOSTag>();
         }
     }

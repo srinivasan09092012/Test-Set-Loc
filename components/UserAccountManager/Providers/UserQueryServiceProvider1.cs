@@ -25,8 +25,7 @@ namespace UserAccountManager.Providers
                 Requestor = this.BuildRequestor(),
                 Where = new svc.UserIdParms()
                 {
-                    UserId = userName,
-                    TenantId = base.tenantId
+                    UserId = userName
                 }
             };
 
@@ -40,8 +39,8 @@ namespace UserAccountManager.Providers
                     {
                         ProfileId = svcResponse.QueryResult.UserProfileId,
                         DisplayName = svcResponse.QueryResult.FirstName + " " + svcResponse.QueryResult.LastName,
-                        EmailAddress = svcResponse.QueryResult.EMail,
-                        GeneralId = svcResponse.QueryResult.GenericIdentifier,
+                        EmailAddress = svcResponse.QueryResult.EmailAddress,
+                        GeneralId = svcResponse.QueryResult.GenericId,
                         FirstName = svcResponse.QueryResult.FirstName,
                         IsAccountVerified = svcResponse.QueryResult.IsAccountVerified.HasValue ? svcResponse.QueryResult.IsAccountVerified.Value : true,
                         IsActive = true,
@@ -50,6 +49,7 @@ namespace UserAccountManager.Providers
                         PhoneNumber = svcResponse.QueryResult.ContactNumber,
                         TenantId = svcResponse.QueryResult.TenantId,
                         UserName = svcResponse.QueryResult.UserId,
+                        RegQualifiers = new List<RegistrationQualifier>(),
                         VOSTags = new List<UserVOSTag>()
                     };
                 }

@@ -53,6 +53,13 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserDelegateDetailParms" nillable="true" type="tns:UserDelegateDetailParms" />
+  <xs:complexType name="UserXRefAssociatedRelationshipParms">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DelegateFilters" nillable="true" type="tns:ArrayOfUserDelegateFilter" />
+      <xs:element minOccurs="0" name="DelegateProfileId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserXRefAssociatedRelationshipParms" nillable="true" type="tns:UserXRefAssociatedRelationshipParms" />
   <xs:complexType name="UserXRefRelationshipParms">
     <xs:sequence>
       <xs:element minOccurs="0" name="DelegateFilters" nillable="true" type="tns:ArrayOfUserDelegateFilter" />
@@ -74,6 +81,30 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserProfileMembeFocusHistoryParms" nillable="true" type="tns:UserProfileMembeFocusHistoryParms" />
+  <xs:complexType name="SearchVOSUserParms">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q4:SerializableBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EffectiveDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="EffectiveDateFilterMode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="EndDateFilterMode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IncludeInactives" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserIdFilterMode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserNameFilterMode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserVOSTagCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserVOSTagCodeFilterMode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserVOSTagTypeCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserVOSTagTypeCodeFilterMode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SearchVOSUserParms" nillable="true" type="tns:SearchVOSUserParms" />
   <xs:complexType name="InvitationParms">
     <xs:sequence>
       <xs:element minOccurs="0" name="InvitationCode" nillable="true" type="xs:string" />
@@ -92,7 +123,7 @@
   <xs:element name="VerifyInvitationParms" nillable="true" type="tns:VerifyInvitationParms" />
   <xs:complexType name="UserGroupParms">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q4:SerializableBase">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q5:SerializableBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="GroupName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="TenantId" nillable="true" type="xs:string" />
@@ -115,9 +146,9 @@
   <xs:element name="ArrayOfSearchUserParms" nillable="true" type="tns:ArrayOfSearchUserParms" />
   <xs:complexType name="SearchUserParms">
     <xs:sequence>
-      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="FieldName" type="q5:Enumerations.UserSearchFieldType" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="FieldName" type="q6:Enumerations.UserSearchFieldType" />
       <xs:element minOccurs="0" name="FieldValue" nillable="true" type="xs:string" />
-      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="SearchMode" type="q6:Enumerations.SearchModeType" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="SearchMode" type="q7:Enumerations.SearchModeType" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SearchUserParms" nillable="true" type="tns:SearchUserParms" />

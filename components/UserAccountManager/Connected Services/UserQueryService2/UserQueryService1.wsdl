@@ -89,6 +89,21 @@
         <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="GetUserXRefAssociatedRelationships">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefAssociatedRelationships" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="GetUserXRefRelationships">
       <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefRelationships" style="document" />
       <wsdl:input>
@@ -121,6 +136,21 @@
     </wsdl:operation>
     <wsdl:operation name="SearchUserProfileMemberFocusHistory">
       <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/SearchUserProfileMemberFocusHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchVOSUser">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/SearchVOSUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -288,6 +318,21 @@
         <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="GetUserXRefAssociatedRelationships">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefAssociatedRelationships" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="GetUserXRefRelationships">
       <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefRelationships" style="document" />
       <wsdl:input>
@@ -320,6 +365,21 @@
     </wsdl:operation>
     <wsdl:operation name="SearchUserProfileMemberFocusHistory">
       <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/SearchUserProfileMemberFocusHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchVOSUser">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/SearchVOSUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

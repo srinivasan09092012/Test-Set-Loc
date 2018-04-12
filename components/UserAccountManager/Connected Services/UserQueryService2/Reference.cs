@@ -24,10 +24,14 @@ namespace UserAccountManager.UserQueryService2 {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.UserDelegateQuery))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.QueryOfUserDelegateDetailsModelcp1reAtb))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.UserDelegateDetailsQuery))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.QueryOfUserXRefAssociatedRelationshipModelcp1reAtb))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.UserXRefAssociatedRelationshipQuery))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.QueryOfUserXRefRelationshipModelcp1reAtb))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.UserXRefRelationshipQuery))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.QueryOfUserProfileMemberFocusHistoryDetailcp1reAtb))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.UserProfileMembeFocusHistoryQuery))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.QueryOfUserVOSProfileModelcp1reAtb))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.SearchVOSUserQuery))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.QueryOfUserIdentitycp1reAtb))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.UsersQuery))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.QueryOfUserExistsResults3DkRihYP))]
@@ -510,6 +514,70 @@ namespace UserAccountManager.UserQueryService2 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="QueryOfUserXRefAssociatedRelationshipModelcp1reAtb", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.UserXRefAssociatedRelationshipQuery))]
+    public partial class QueryOfUserXRefAssociatedRelationshipModelcp1reAtb : UserAccountManager.UserQueryService2.Query {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UserAccountManager.UserQueryService2.UserXRefAssociatedRelationshipModel[] ResultsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UserAccountManager.UserQueryService2.SortCriteria[] SortCriteriaField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UserAccountManager.UserQueryService2.UserXRefAssociatedRelationshipModel[] Results {
+            get {
+                return this.ResultsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResultsField, value) != true)) {
+                    this.ResultsField = value;
+                    this.RaisePropertyChanged("Results");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UserAccountManager.UserQueryService2.SortCriteria[] SortCriteria {
+            get {
+                return this.SortCriteriaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SortCriteriaField, value) != true)) {
+                    this.SortCriteriaField = value;
+                    this.RaisePropertyChanged("SortCriteria");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserXRefAssociatedRelationshipQuery", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Querie" +
+        "s")]
+    [System.SerializableAttribute()]
+    public partial class UserXRefAssociatedRelationshipQuery : UserAccountManager.UserQueryService2.QueryOfUserXRefAssociatedRelationshipModelcp1reAtb {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UserAccountManager.UserQueryService2.UserXRefAssociatedRelationshipParms WhereField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UserAccountManager.UserQueryService2.UserXRefAssociatedRelationshipParms Where {
+            get {
+                return this.WhereField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WhereField, value) != true)) {
+                    this.WhereField = value;
+                    this.RaisePropertyChanged("Where");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="QueryOfUserXRefRelationshipModelcp1reAtb", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.UserXRefRelationshipQuery))]
@@ -640,6 +708,70 @@ namespace UserAccountManager.UserQueryService2 {
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public UserAccountManager.UserQueryService2.UserProfileMembeFocusHistoryParms Where {
+            get {
+                return this.WhereField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WhereField, value) != true)) {
+                    this.WhereField = value;
+                    this.RaisePropertyChanged("Where");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="QueryOfUserVOSProfileModelcp1reAtb", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.SearchVOSUserQuery))]
+    public partial class QueryOfUserVOSProfileModelcp1reAtb : UserAccountManager.UserQueryService2.Query {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UserAccountManager.UserQueryService2.UserVOSProfileModel[] ResultsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UserAccountManager.UserQueryService2.SortCriteria[] SortCriteriaField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UserAccountManager.UserQueryService2.UserVOSProfileModel[] Results {
+            get {
+                return this.ResultsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResultsField, value) != true)) {
+                    this.ResultsField = value;
+                    this.RaisePropertyChanged("Results");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UserAccountManager.UserQueryService2.SortCriteria[] SortCriteria {
+            get {
+                return this.SortCriteriaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SortCriteriaField, value) != true)) {
+                    this.SortCriteriaField = value;
+                    this.RaisePropertyChanged("SortCriteria");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SearchVOSUserQuery", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Querie" +
+        "s")]
+    [System.SerializableAttribute()]
+    public partial class SearchVOSUserQuery : UserAccountManager.UserQueryService2.QueryOfUserVOSProfileModelcp1reAtb {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UserAccountManager.UserQueryService2.SearchVOSUserParms WhereField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UserAccountManager.UserQueryService2.SearchVOSUserParms Where {
             get {
                 return this.WhereField;
             }
@@ -2199,6 +2331,12 @@ namespace UserAccountManager.UserQueryService2 {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         StartsWith = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        GreaterThanOrEqualTo = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        LessThanOrEqualTo = 5,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2483,6 +2621,210 @@ namespace UserAccountManager.UserQueryService2 {
                 if ((object.ReferenceEquals(this.UserProfileXrefIdField, value) != true)) {
                     this.UserProfileXrefIdField = value;
                     this.RaisePropertyChanged("UserProfileXrefId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserXRefAssociatedRelationshipModel", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class UserXRefAssociatedRelationshipModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GenericIdentifierField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid UserProfileIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid UserProfileXrefIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FirstName {
+            get {
+                return this.FirstNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
+                    this.FirstNameField = value;
+                    this.RaisePropertyChanged("FirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string GenericIdentifier {
+            get {
+                return this.GenericIdentifierField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GenericIdentifierField, value) != true)) {
+                    this.GenericIdentifierField = value;
+                    this.RaisePropertyChanged("GenericIdentifier");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((this.IsActiveField.Equals(value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LastName {
+            get {
+                return this.LastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
+                    this.LastNameField = value;
+                    this.RaisePropertyChanged("LastName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid UserProfileId {
+            get {
+                return this.UserProfileIdField;
+            }
+            set {
+                if ((this.UserProfileIdField.Equals(value) != true)) {
+                    this.UserProfileIdField = value;
+                    this.RaisePropertyChanged("UserProfileId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid UserProfileXrefId {
+            get {
+                return this.UserProfileXrefIdField;
+            }
+            set {
+                if ((this.UserProfileXrefIdField.Equals(value) != true)) {
+                    this.UserProfileXrefIdField = value;
+                    this.RaisePropertyChanged("UserProfileXrefId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserXRefAssociatedRelationshipParms", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Querie" +
+        "s.Parameters")]
+    [System.SerializableAttribute()]
+    public partial class UserXRefAssociatedRelationshipParms : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UserAccountManager.UserQueryService2.UserDelegateFilter[] DelegateFiltersField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DelegateProfileIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UserAccountManager.UserQueryService2.UserDelegateFilter[] DelegateFilters {
+            get {
+                return this.DelegateFiltersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DelegateFiltersField, value) != true)) {
+                    this.DelegateFiltersField = value;
+                    this.RaisePropertyChanged("DelegateFilters");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DelegateProfileId {
+            get {
+                return this.DelegateProfileIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DelegateProfileIdField, value) != true)) {
+                    this.DelegateProfileIdField = value;
+                    this.RaisePropertyChanged("DelegateProfileId");
                 }
             }
         }
@@ -2987,6 +3329,500 @@ namespace UserAccountManager.UserQueryService2 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserVOSProfileModel", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class UserVOSProfileModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime EffectiveDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime EndDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserVOSTagCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserVOSTagTypeCodeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime EffectiveDate {
+            get {
+                return this.EffectiveDateField;
+            }
+            set {
+                if ((this.EffectiveDateField.Equals(value) != true)) {
+                    this.EffectiveDateField = value;
+                    this.RaisePropertyChanged("EffectiveDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime EndDate {
+            get {
+                return this.EndDateField;
+            }
+            set {
+                if ((this.EndDateField.Equals(value) != true)) {
+                    this.EndDateField = value;
+                    this.RaisePropertyChanged("EndDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FirstName {
+            get {
+                return this.FirstNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
+                    this.FirstNameField = value;
+                    this.RaisePropertyChanged("FirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LastName {
+            get {
+                return this.LastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
+                    this.LastNameField = value;
+                    this.RaisePropertyChanged("LastName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserIdField, value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserVOSTagCode {
+            get {
+                return this.UserVOSTagCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserVOSTagCodeField, value) != true)) {
+                    this.UserVOSTagCodeField = value;
+                    this.RaisePropertyChanged("UserVOSTagCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserVOSTagTypeCode {
+            get {
+                return this.UserVOSTagTypeCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserVOSTagTypeCodeField, value) != true)) {
+                    this.UserVOSTagTypeCodeField = value;
+                    this.RaisePropertyChanged("UserVOSTagTypeCode");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SearchVOSUserParms", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Querie" +
+        "s.Parameters")]
+    [System.SerializableAttribute()]
+    public partial class SearchVOSUserParms : UserAccountManager.UserQueryService2.SerializableBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> EffectiveDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EffectiveDateFilterModeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> EndDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EndDateFilterModeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IncludeInactivesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserIdFilterModeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameFilterModeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserVOSTagCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserVOSTagCodeFilterModeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserVOSTagTypeCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserVOSTagTypeCodeFilterModeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> EffectiveDate {
+            get {
+                return this.EffectiveDateField;
+            }
+            set {
+                if ((this.EffectiveDateField.Equals(value) != true)) {
+                    this.EffectiveDateField = value;
+                    this.RaisePropertyChanged("EffectiveDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EffectiveDateFilterMode {
+            get {
+                return this.EffectiveDateFilterModeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EffectiveDateFilterModeField, value) != true)) {
+                    this.EffectiveDateFilterModeField = value;
+                    this.RaisePropertyChanged("EffectiveDateFilterMode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> EndDate {
+            get {
+                return this.EndDateField;
+            }
+            set {
+                if ((this.EndDateField.Equals(value) != true)) {
+                    this.EndDateField = value;
+                    this.RaisePropertyChanged("EndDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EndDateFilterMode {
+            get {
+                return this.EndDateFilterModeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EndDateFilterModeField, value) != true)) {
+                    this.EndDateFilterModeField = value;
+                    this.RaisePropertyChanged("EndDateFilterMode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FirstName {
+            get {
+                return this.FirstNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
+                    this.FirstNameField = value;
+                    this.RaisePropertyChanged("FirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IncludeInactives {
+            get {
+                return this.IncludeInactivesField;
+            }
+            set {
+                if ((this.IncludeInactivesField.Equals(value) != true)) {
+                    this.IncludeInactivesField = value;
+                    this.RaisePropertyChanged("IncludeInactives");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LastName {
+            get {
+                return this.LastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
+                    this.LastNameField = value;
+                    this.RaisePropertyChanged("LastName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserIdField, value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserIdFilterMode {
+            get {
+                return this.UserIdFilterModeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserIdFilterModeField, value) != true)) {
+                    this.UserIdFilterModeField = value;
+                    this.RaisePropertyChanged("UserIdFilterMode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserNameFilterMode {
+            get {
+                return this.UserNameFilterModeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameFilterModeField, value) != true)) {
+                    this.UserNameFilterModeField = value;
+                    this.RaisePropertyChanged("UserNameFilterMode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserVOSTagCode {
+            get {
+                return this.UserVOSTagCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserVOSTagCodeField, value) != true)) {
+                    this.UserVOSTagCodeField = value;
+                    this.RaisePropertyChanged("UserVOSTagCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserVOSTagCodeFilterMode {
+            get {
+                return this.UserVOSTagCodeFilterModeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserVOSTagCodeFilterModeField, value) != true)) {
+                    this.UserVOSTagCodeFilterModeField = value;
+                    this.RaisePropertyChanged("UserVOSTagCodeFilterMode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserVOSTagTypeCode {
+            get {
+                return this.UserVOSTagTypeCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserVOSTagTypeCodeField, value) != true)) {
+                    this.UserVOSTagTypeCodeField = value;
+                    this.RaisePropertyChanged("UserVOSTagTypeCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserVOSTagTypeCodeFilterMode {
+            get {
+                return this.UserVOSTagTypeCodeFilterModeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserVOSTagTypeCodeFilterModeField, value) != true)) {
+                    this.UserVOSTagTypeCodeFilterModeField = value;
+                    this.RaisePropertyChanged("UserVOSTagTypeCodeFilterMode");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SerializableBase", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.UserIdParms))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.UserGroupParms))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.SearchVOSUserParms))]
+    public partial class SerializableBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserGroupParms", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Querie" +
+        "s.Parameters")]
+    [System.SerializableAttribute()]
+    public partial class UserGroupParms : UserAccountManager.UserQueryService2.SerializableBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GroupNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TenantIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string GroupName {
+            get {
+                return this.GroupNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GroupNameField, value) != true)) {
+                    this.GroupNameField = value;
+                    this.RaisePropertyChanged("GroupName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TenantId {
+            get {
+                return this.TenantIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TenantIdField, value) != true)) {
+                    this.TenantIdField = value;
+                    this.RaisePropertyChanged("TenantId");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="UserIdentity", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" +
         "")]
     [System.SerializableAttribute()]
@@ -3319,77 +4155,6 @@ namespace UserAccountManager.UserQueryService2 {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SerializableBase", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.UserGroupParms))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserQueryService2.UserIdParms))]
-    public partial class SerializableBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserGroupParms", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Querie" +
-        "s.Parameters")]
-    [System.SerializableAttribute()]
-    public partial class UserGroupParms : UserAccountManager.UserQueryService2.SerializableBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string GroupNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TenantIdField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string GroupName {
-            get {
-                return this.GroupNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.GroupNameField, value) != true)) {
-                    this.GroupNameField = value;
-                    this.RaisePropertyChanged("GroupName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string TenantId {
-            get {
-                return this.TenantIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TenantIdField, value) != true)) {
-                    this.TenantIdField = value;
-                    this.RaisePropertyChanged("TenantId");
-                }
             }
         }
     }
@@ -4067,6 +4832,18 @@ namespace UserAccountManager.UserQueryService2 {
         [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserQueryService/IUserQueryService/GetUserDelegateDetails", ReplyAction="HP.HSP.UserQueryService/IUserQueryService/GetUserDelegateDetailsResponse")]
         System.Threading.Tasks.Task<UserAccountManager.UserQueryService2.UserDelegateDetailsQuery> GetUserDelegateDetailsAsync(UserAccountManager.UserQueryService2.UserDelegateDetailsQuery query);
         
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefAssociatedRelationships", ReplyAction="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefAssociatedRelationshipsRespo" +
+            "nse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserQueryService2.ServiceException), Action="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefAssociatedRelationshipsServi" +
+            "ceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserQueryService2.BusinessValidationException), Action="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefAssociatedRelationshipsBusin" +
+            "essValidationExceptionFault", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        UserAccountManager.UserQueryService2.UserXRefAssociatedRelationshipQuery GetUserXRefAssociatedRelationships(UserAccountManager.UserQueryService2.UserXRefAssociatedRelationshipQuery query);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefAssociatedRelationships", ReplyAction="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefAssociatedRelationshipsRespo" +
+            "nse")]
+        System.Threading.Tasks.Task<UserAccountManager.UserQueryService2.UserXRefAssociatedRelationshipQuery> GetUserXRefAssociatedRelationshipsAsync(UserAccountManager.UserQueryService2.UserXRefAssociatedRelationshipQuery query);
+        
         [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefRelationships", ReplyAction="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefRelationshipsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserQueryService2.ServiceException), Action="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefRelationshipsServiceExceptio" +
             "nFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
@@ -4098,6 +4875,15 @@ namespace UserAccountManager.UserQueryService2 {
         [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserQueryService/IUserQueryService/SearchUserProfileMemberFocusHistory", ReplyAction="HP.HSP.UserQueryService/IUserQueryService/SearchUserProfileMemberFocusHistoryResp" +
             "onse")]
         System.Threading.Tasks.Task<UserAccountManager.UserQueryService2.UserProfileMembeFocusHistoryQuery> SearchUserProfileMemberFocusHistoryAsync(UserAccountManager.UserQueryService2.UserProfileMembeFocusHistoryQuery query);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserQueryService/IUserQueryService/SearchVOSUser", ReplyAction="HP.HSP.UserQueryService/IUserQueryService/SearchVOSUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserQueryService2.ServiceException), Action="HP.HSP.UserQueryService/IUserQueryService/SearchVOSUserServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserQueryService2.BusinessValidationException), Action="HP.HSP.UserQueryService/IUserQueryService/SearchVOSUserBusinessValidationExceptio" +
+            "nFault", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        UserAccountManager.UserQueryService2.SearchVOSUserQuery SearchVOSUser(UserAccountManager.UserQueryService2.SearchVOSUserQuery query);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserQueryService/IUserQueryService/SearchVOSUser", ReplyAction="HP.HSP.UserQueryService/IUserQueryService/SearchVOSUserResponse")]
+        System.Threading.Tasks.Task<UserAccountManager.UserQueryService2.SearchVOSUserQuery> SearchVOSUserAsync(UserAccountManager.UserQueryService2.SearchVOSUserQuery query);
         
         [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserQueryService/IUserQueryService/GetUserIdAvailability", ReplyAction="HP.HSP.UserQueryService/IUserQueryService/GetUserIdAvailabilityResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserQueryService2.ServiceException), Action="HP.HSP.UserQueryService/IUserQueryService/GetUserIdAvailabilityServiceExceptionFa" +
@@ -4216,6 +5002,14 @@ namespace UserAccountManager.UserQueryService2 {
             return base.Channel.GetUserDelegateDetailsAsync(query);
         }
         
+        public UserAccountManager.UserQueryService2.UserXRefAssociatedRelationshipQuery GetUserXRefAssociatedRelationships(UserAccountManager.UserQueryService2.UserXRefAssociatedRelationshipQuery query) {
+            return base.Channel.GetUserXRefAssociatedRelationships(query);
+        }
+        
+        public System.Threading.Tasks.Task<UserAccountManager.UserQueryService2.UserXRefAssociatedRelationshipQuery> GetUserXRefAssociatedRelationshipsAsync(UserAccountManager.UserQueryService2.UserXRefAssociatedRelationshipQuery query) {
+            return base.Channel.GetUserXRefAssociatedRelationshipsAsync(query);
+        }
+        
         public UserAccountManager.UserQueryService2.UserXRefRelationshipQuery GetUserXRefRelationships(UserAccountManager.UserQueryService2.UserXRefRelationshipQuery query) {
             return base.Channel.GetUserXRefRelationships(query);
         }
@@ -4238,6 +5032,14 @@ namespace UserAccountManager.UserQueryService2 {
         
         public System.Threading.Tasks.Task<UserAccountManager.UserQueryService2.UserProfileMembeFocusHistoryQuery> SearchUserProfileMemberFocusHistoryAsync(UserAccountManager.UserQueryService2.UserProfileMembeFocusHistoryQuery query) {
             return base.Channel.SearchUserProfileMemberFocusHistoryAsync(query);
+        }
+        
+        public UserAccountManager.UserQueryService2.SearchVOSUserQuery SearchVOSUser(UserAccountManager.UserQueryService2.SearchVOSUserQuery query) {
+            return base.Channel.SearchVOSUser(query);
+        }
+        
+        public System.Threading.Tasks.Task<UserAccountManager.UserQueryService2.SearchVOSUserQuery> SearchVOSUserAsync(UserAccountManager.UserQueryService2.SearchVOSUserQuery query) {
+            return base.Channel.SearchVOSUserAsync(query);
         }
         
         public UserAccountManager.UserQueryService2.UserIdAvailabilityQuery GetUserIdAvailability(UserAccountManager.UserQueryService2.UserIdAvailabilityQuery query) {

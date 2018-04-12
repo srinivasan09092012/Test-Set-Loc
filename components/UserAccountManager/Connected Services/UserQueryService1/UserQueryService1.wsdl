@@ -40,9 +40,12 @@
       <wsdl:fault name="ServiceExceptionFault">
         <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
-    <wsdl:operation name="GetUserIdAvailability">
-      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetUserIdAvailability" style="document" />
+    <wsdl:operation name="SearchUserProfiles">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/SearchUserProfiles" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -52,65 +55,8 @@
       <wsdl:fault name="ServiceExceptionFault">
         <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
       </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GetInvitationQualifiers">
-      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetInvitationQualifiers" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GetQualifierVerification">
-      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetQualifierVerification" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllUsers">
-      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetAllUsers" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="SearchUsers">
-      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/SearchUsers" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GerUserIdExists">
-      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GerUserIdExists" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetUserDelegates">
@@ -124,6 +70,9 @@
       <wsdl:fault name="ServiceExceptionFault">
         <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetUserDelegateDetails">
       <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetUserDelegateDetails" style="document" />
@@ -136,6 +85,24 @@
       <wsdl:fault name="ServiceExceptionFault">
         <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserXRefAssociatedRelationships">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefAssociatedRelationships" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetUserXRefRelationships">
       <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefRelationships" style="document" />
@@ -147,6 +114,9 @@
       </wsdl:output>
       <wsdl:fault name="ServiceExceptionFault">
         <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="ValidateRegisteredUserXref">
@@ -174,6 +144,114 @@
       </wsdl:output>
       <wsdl:fault name="ServiceExceptionFault">
         <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchVOSUser">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/SearchVOSUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserIdAvailability">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetUserIdAvailability" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvitationQualifiers">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetInvitationQualifiers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetQualifierVerification">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetQualifierVerification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetAllUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchUsers">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/SearchUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GerUserIdExists">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GerUserIdExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
@@ -191,9 +269,12 @@
       <wsdl:fault name="ServiceExceptionFault">
         <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
-    <wsdl:operation name="GetUserIdAvailability">
-      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetUserIdAvailability" style="document" />
+    <wsdl:operation name="SearchUserProfiles">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/SearchUserProfiles" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -203,65 +284,8 @@
       <wsdl:fault name="ServiceExceptionFault">
         <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
       </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GetInvitationQualifiers">
-      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetInvitationQualifiers" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GetQualifierVerification">
-      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetQualifierVerification" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllUsers">
-      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetAllUsers" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="SearchUsers">
-      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/SearchUsers" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GerUserIdExists">
-      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GerUserIdExists" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetUserDelegates">
@@ -275,6 +299,9 @@
       <wsdl:fault name="ServiceExceptionFault">
         <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetUserDelegateDetails">
       <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetUserDelegateDetails" style="document" />
@@ -287,6 +314,24 @@
       <wsdl:fault name="ServiceExceptionFault">
         <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
       </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserXRefAssociatedRelationships">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefAssociatedRelationships" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetUserXRefRelationships">
       <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetUserXRefRelationships" style="document" />
@@ -298,6 +343,9 @@
       </wsdl:output>
       <wsdl:fault name="ServiceExceptionFault">
         <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="ValidateRegisteredUserXref">
@@ -325,6 +373,114 @@
       </wsdl:output>
       <wsdl:fault name="ServiceExceptionFault">
         <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchVOSUser">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/SearchVOSUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserIdAvailability">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetUserIdAvailability" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvitationQualifiers">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetInvitationQualifiers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetQualifierVerification">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetQualifierVerification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GetAllUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchUsers">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/SearchUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GerUserIdExists">
+      <soap:operation soapAction="HP.HSP.UserQueryService/IUserQueryService/GerUserIdExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>

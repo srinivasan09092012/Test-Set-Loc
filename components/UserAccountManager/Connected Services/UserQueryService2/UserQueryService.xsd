@@ -177,6 +177,24 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="QueryOfUserDelegateDetailsModelcp1reAtb" nillable="true" type="tns:QueryOfUserDelegateDetailsModelcp1reAtb" />
+  <xs:complexType name="QueryOfUserXRefAssociatedRelationshipModelcp1reAtb">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UserXRefAssociatedRelationshipModel" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Query">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="Results" nillable="true" type="q6:ArrayOfUserXRefAssociatedRelationshipModel" />
+          <xs:element minOccurs="0" name="SortCriteria" nillable="true" type="tns:ArrayOfSortCriteria" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryOfUserXRefAssociatedRelationshipModelcp1reAtb" nillable="true" type="tns:QueryOfUserXRefAssociatedRelationshipModelcp1reAtb" />
   <xs:complexType name="QueryOfUserXRefRelationshipModelcp1reAtb">
     <xs:annotation>
       <xs:appinfo>
@@ -188,7 +206,7 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:Query">
         <xs:sequence>
-          <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="Results" nillable="true" type="q6:ArrayOfUserXRefRelationshipModel" />
+          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="Results" nillable="true" type="q7:ArrayOfUserXRefRelationshipModel" />
           <xs:element minOccurs="0" name="SortCriteria" nillable="true" type="tns:ArrayOfSortCriteria" />
         </xs:sequence>
       </xs:extension>
@@ -206,13 +224,31 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:Query">
         <xs:sequence>
-          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="Results" nillable="true" type="q7:ArrayOfUserProfileMemberFocusHistoryDetail" />
+          <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="Results" nillable="true" type="q8:ArrayOfUserProfileMemberFocusHistoryDetail" />
           <xs:element minOccurs="0" name="SortCriteria" nillable="true" type="tns:ArrayOfSortCriteria" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="QueryOfUserProfileMemberFocusHistoryDetailcp1reAtb" nillable="true" type="tns:QueryOfUserProfileMemberFocusHistoryDetailcp1reAtb" />
+  <xs:complexType name="QueryOfUserVOSProfileModelcp1reAtb">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UserVOSProfileModel" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Query">
+        <xs:sequence>
+          <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="Results" nillable="true" type="q9:ArrayOfUserVOSProfileModel" />
+          <xs:element minOccurs="0" name="SortCriteria" nillable="true" type="tns:ArrayOfSortCriteria" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryOfUserVOSProfileModelcp1reAtb" nillable="true" type="tns:QueryOfUserVOSProfileModelcp1reAtb" />
   <xs:complexType name="QueryOfUserIdentitycp1reAtb">
     <xs:annotation>
       <xs:appinfo>
@@ -224,7 +260,7 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:Query">
         <xs:sequence>
-          <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="Results" nillable="true" type="q8:ArrayOfUserIdentity" />
+          <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="Results" nillable="true" type="q10:ArrayOfUserIdentity" />
           <xs:element minOccurs="0" name="SortCriteria" nillable="true" type="tns:ArrayOfSortCriteria" />
         </xs:sequence>
       </xs:extension>
@@ -242,7 +278,7 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:Query">
         <xs:sequence>
-          <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.ViewDto" minOccurs="0" name="Results" nillable="true" type="q9:ArrayOfUserExistsResults" />
+          <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.ViewDto" minOccurs="0" name="Results" nillable="true" type="q11:ArrayOfUserExistsResults" />
           <xs:element minOccurs="0" name="SortCriteria" nillable="true" type="tns:ArrayOfSortCriteria" />
         </xs:sequence>
       </xs:extension>

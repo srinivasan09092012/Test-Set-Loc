@@ -81,6 +81,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Domain\BaseService.cs" />
+    <Compile Include="Domain\RegistrationQualifier.cs" />
     <Compile Include="Domain\UserProfile.cs" />
     <Compile Include="Domain\UserQueryService.cs" />
     <Compile Include="Domain\Constants.cs" />
@@ -155,6 +156,12 @@
     <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.RegisteredUserXrefQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.SearchUserProfilesQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.SearchVOSUserQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UserDelegateDetailsQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -177,6 +184,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UsersQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UserXRefAssociatedRelationshipQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UserXRefRelationshipQuery.datasource">
@@ -226,6 +236,9 @@
     <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.SearchUserProfilesQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.SearchVOSUserQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UserDelegateDetailsQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -248,6 +261,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UsersQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UserXRefAssociatedRelationshipQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UserXRefRelationshipQuery.datasource">
@@ -285,7 +301,13 @@
     <None Include="Connected Services\UserQueryService2\UserQueryService9.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.ProfileActivated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\UserService1\UserAccountManager.UserService1.ProfileAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.ProfileInactivated.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\UserService1\UserAccountManager.UserService1.ProfileUpdated.datasource">
@@ -300,9 +322,6 @@
     <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserAdded.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserDelegateAdded.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserPreferencesAdded.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -312,10 +331,10 @@
     <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserProfileMemberFocusHistoryAdded.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserRoleAdded.datasource">
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserVOSTagsAdded.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserRoleRemoved.datasource">
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserVOSTagUpdated.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\UserService1\UserService.wsdl" />
@@ -363,9 +382,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\UserService2\UserAccountManager.UserService2.UserAdded.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.UserDelegateAdded.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\UserService2\UserAccountManager.UserService2.UserPreferencesAdded.datasource">
@@ -421,6 +437,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="UserAccountManager.Domain.Environment.datasource" />
+    <None Include="UserAccountManager.Domain.UserRegQualifier.datasource" />
     <None Include="UserAccountManager.Domain.UserVOSTag.datasource" />
     <None Include="UserAccountManager.UserQueryService.UserVOSTagListModel.datasource" />
   </ItemGroup>

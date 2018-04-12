@@ -1,9 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfstring">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" />
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc?xsd=xsd7" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ProfileAdded">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UserEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TenantID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserProfileId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProfileAdded" nillable="true" type="tns:ProfileAdded" />
+  <xs:complexType name="UserEvents">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q1:Event">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserEvents" nillable="true" type="tns:UserEvents" />
+  <xs:complexType name="ProfileUpdated">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UserEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TenantID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserProfileId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProfileUpdated" nillable="true" type="tns:ProfileUpdated" />
+  <xs:complexType name="ProfileActivated">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UserEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TenantID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserProfileId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProfileActivated" nillable="true" type="tns:ProfileActivated" />
+  <xs:complexType name="ProfileInactivated">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UserEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TenantID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserProfileId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProfileInactivated" nillable="true" type="tns:ProfileInactivated" />
+  <xs:complexType name="RegisteredUserXrefAdded">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UserEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AssociationsAdded" nillable="true" type="tns:ArrayOfRegisteredUserXrefAssociationAdded" />
+          <xs:element minOccurs="0" name="DelegateProfileId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DelegateUserId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsValid" type="xs:boolean" />
+          <xs:element minOccurs="0" name="UserProfileId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserProfileXrefId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RegisteredUserXrefAdded" nillable="true" type="tns:RegisteredUserXrefAdded" />
+  <xs:complexType name="ArrayOfRegisteredUserXrefAssociationAdded">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RegisteredUserXrefAssociationAdded" nillable="true" type="tns:RegisteredUserXrefAssociationAdded" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring" />
+  <xs:element name="ArrayOfRegisteredUserXrefAssociationAdded" nillable="true" type="tns:ArrayOfRegisteredUserXrefAssociationAdded" />
+  <xs:complexType name="RegisteredUserXrefAssociationAdded">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UserEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AssociationId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsValid" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SecurityFunctionsAdded" nillable="true" type="tns:ArrayOfRegisteredUserXrefSecurityFunctionAdded" />
+          <xs:element minOccurs="0" name="UserProfileXrefAssocId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserProfileXrefId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RegisteredUserXrefAssociationAdded" nillable="true" type="tns:RegisteredUserXrefAssociationAdded" />
+  <xs:complexType name="ArrayOfRegisteredUserXrefSecurityFunctionAdded">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RegisteredUserXrefSecurityFunctionAdded" nillable="true" type="tns:RegisteredUserXrefSecurityFunctionAdded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRegisteredUserXrefSecurityFunctionAdded" nillable="true" type="tns:ArrayOfRegisteredUserXrefSecurityFunctionAdded" />
+  <xs:complexType name="RegisteredUserXrefSecurityFunctionAdded">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UserEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsValid" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SecurityFunctionId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserProfileXrefAssocId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserProfileXrefSecFuncId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RegisteredUserXrefSecurityFunctionAdded" nillable="true" type="tns:RegisteredUserXrefSecurityFunctionAdded" />
+  <xs:complexType name="RegisteredUserXrefUpdated">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UserEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AssociationsAdded" nillable="true" type="tns:ArrayOfRegisteredUserXrefAssociationAdded" />
+          <xs:element minOccurs="0" name="AssociationsUpdated" nillable="true" type="tns:ArrayOfRegisteredUserXrefAssociationUpdated" />
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="DelegateAssociations" nillable="true" type="q2:ArrayOfRegisteredUserXrefAssociation" />
+          <xs:element minOccurs="0" name="DelegateProfileId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DelegateUserId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsValid" type="xs:boolean" />
+          <xs:element minOccurs="0" name="UserProfileId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserProfileXrefId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RegisteredUserXrefUpdated" nillable="true" type="tns:RegisteredUserXrefUpdated" />
+  <xs:complexType name="ArrayOfRegisteredUserXrefAssociationUpdated">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RegisteredUserXrefAssociationUpdated" nillable="true" type="tns:RegisteredUserXrefAssociationUpdated" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRegisteredUserXrefAssociationUpdated" nillable="true" type="tns:ArrayOfRegisteredUserXrefAssociationUpdated" />
+  <xs:complexType name="RegisteredUserXrefAssociationUpdated">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UserEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AssociationId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsValid" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SecurityFunctionsAdded" nillable="true" type="tns:ArrayOfRegisteredUserXrefSecurityFunctionAdded" />
+          <xs:element minOccurs="0" name="SecurityFunctionsUpdated" nillable="true" type="tns:ArrayOfRegisteredUserXrefSecurityFunctionUpdated" />
+          <xs:element minOccurs="0" name="UserProfileXrefAssocId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserProfileXrefId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RegisteredUserXrefAssociationUpdated" nillable="true" type="tns:RegisteredUserXrefAssociationUpdated" />
+  <xs:complexType name="ArrayOfRegisteredUserXrefSecurityFunctionUpdated">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RegisteredUserXrefSecurityFunctionUpdated" nillable="true" type="tns:RegisteredUserXrefSecurityFunctionUpdated" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRegisteredUserXrefSecurityFunctionUpdated" nillable="true" type="tns:ArrayOfRegisteredUserXrefSecurityFunctionUpdated" />
+  <xs:complexType name="RegisteredUserXrefSecurityFunctionUpdated">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UserEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsValid" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SecurityFunctionId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserProfileXrefAssocId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserProfileXrefSecFuncId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RegisteredUserXrefSecurityFunctionUpdated" nillable="true" type="tns:RegisteredUserXrefSecurityFunctionUpdated" />
+  <xs:complexType name="UserPreferencesAdded">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UserEvents">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="Preferences" nillable="true" type="q3:ArrayOfKeyValuePair" />
+          <xs:element minOccurs="0" name="UserProfileID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserPreferencesAdded" nillable="true" type="tns:UserPreferencesAdded" />
+  <xs:complexType name="UserPreferencesRemoved">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UserEvents">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Preferences" nillable="true" type="q4:ArrayOfstring" />
+          <xs:element minOccurs="0" name="UserProfileID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserPreferencesRemoved" nillable="true" type="tns:UserPreferencesRemoved" />
+  <xs:complexType name="UserProfileMemberFocusHistoryAdded">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UserMemberFocusHistoryEvent">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MemberID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserProfileMemberFocusHistoryAdded" nillable="true" type="tns:UserProfileMemberFocusHistoryAdded" />
+  <xs:complexType name="UserMemberFocusHistoryEvent">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q5:Event">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserMemberFocusHistoryEvent" nillable="true" type="tns:UserMemberFocusHistoryEvent" />
+  <xs:complexType name="UserVOSTagsAdded">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UserEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TenantID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserProfileID" nillable="true" type="xs:string" />
+          <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="UserVOSTags" nillable="true" type="q6:UserVOSTagListModel" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserVOSTagsAdded" nillable="true" type="tns:UserVOSTagsAdded" />
+  <xs:complexType name="UserVOSTagUpdated">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UserEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TenantID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserProfileID" nillable="true" type="xs:string" />
+          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="UserVOSTag" nillable="true" type="q7:UserVOSTagModel" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserVOSTagUpdated" nillable="true" type="tns:UserVOSTagUpdated" />
+  <xs:complexType name="UserAdded">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UserEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TenantID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserProfileId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserAdded" nillable="true" type="tns:UserAdded" />
 </xs:schema>
