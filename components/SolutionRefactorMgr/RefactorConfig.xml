@@ -14,6 +14,7 @@
     <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
     <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
     <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Integration" branch="Dev" types="All" />
     <ModuleConfig name="KansasOnly" branch="Dev" types="All" />
     <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
     <ModuleConfig name="ManagedCarePortal" branch="Dev" types="All" />
@@ -26,22 +27,68 @@
     <ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
     <ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
     <ModuleConfig name="ProviderPortal" branch="Dev" types="All" />
+    <ModuleConfig name="TaskManagement" branch="Dev" types="All" />
     <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
     <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
     <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
-    <ModuleConfig name="WorkflowManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Utilities" branch="Dev" types="NA" />
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
+    <FileType ext=".bat" />
     <FileType ext=".config" />
+    <FileType ext=".cs" />
+    <FileType ext=".csproj" />
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
-    <ReplacementString qualifier="key=$quot;InRule.UserName" from="BASConsumer" to="irBASConsumer" />
-    <ReplacementString qualifier="key=$quot;InRule.UserName" from="username" to="irBASConsumer" />
-    <ReplacementString qualifier="key=$quot;InRule.Password" from="Password2015" to="Password2017" />
-    <ReplacementString qualifier="key=$quot;InRule.Password" from="password" to="Password2017" />
+    <!-- UX application settings version -->
+    <ReplacementString qualifier="add key=&quot;AppVersion&quot; value=&quot;18.1.47.0&quot;" from="18.1.47.0" to="18.2.52.0" />
+
+    <!-- Assembly Versions in Assembly Info file -->
+    <ReplacementString qualifier="AssemblyVersion(" from="18.1.47.0" to="18.2.52.0" />
+    <ReplacementString qualifier="AssemblyFileVersion(" from="18.1.47.0" to="18.2.52.0" />
+
+
+    <!-- Assembly Versions in Project Files -->
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.Administration" from="Version=18.1.47.0" to="Version=18.2.52.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.BatchProcessingFactory" from="Version=18.1.47.0" to="Version=18.2.52.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.Core" from="Version=18.1.47.0" to="Version=18.2.52.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.DrugRebate" from="Version=18.1.47.0" to="Version=18.2.52.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.ClaimsManagement" from="Version=18.1.47.0" to="Version=18.2.52.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.Core" from="Version=18.1.47.0" to="Version=18.2.52.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.NCPDP" from="Version=18.1.47.0" to="Version=18.2.52.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.TestAutomation" from="Version=18.1.47.0" to="Version=18.2.52.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.X212" from="Version=18.1.47.0" to="Version=18.2.52.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.X12" from="Version=18.1.47.0" to="Version=18.2.52.0" />
+
+    <!-- Package Names in Copy Assemblies Batch Files -->
+    <ReplacementString qualifier="xcopy /f /r /y" from="18.1.47\lib" to="18.2.52\lib" />
+
+    <!-- Package Names in Project Files -->
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.Administration" from="18.1.47" to="18.2.52" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.BatchProcessingFactory" from="18.1.47" to="18.2.52" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.Core" from="18.1.47" to="18.2.52" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.DrugRebate" from="18.1.47" to="18.2.52" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.ClaimsManagement" from="18.1.47" to="18.2.52" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.Core" from="18.1.47" to="18.2.52" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.NCPDP" from="18.1.47" to="18.2.52" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.TestAutomation" from="18.1.47" to="18.2.52" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.X212" from="18.1.47" to="18.2.52" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.X12" from="18.1.47" to="18.2.52" />
+
+    <!-- Package Names in Packages.config Files -->
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.Administration" from="18.1.47" to="18.2.52" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.BatchProcessingFactory" from="18.1.47" to="18.2.52" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.Core" from="18.1.47" to="18.2.52" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.DrugRebate" from="18.1.47" to="18.2.52" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.ClaimsManagement" from="18.1.47" to="18.2.52" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.Core" from="18.1.47" to="18.2.52" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.NCPDP" from="18.1.47" to="18.2.52" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.TestAutomation" from="18.1.47" to="18.2.52" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.X212" from="18.1.47" to="18.2.52" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.X12" from="18.1.47" to="18.2.52" />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
-  <TfsWorkspace>BIBWOS1ISV_1</TfsWorkspace>
+  <TfsWorkspace></TfsWorkspace>
 </RefactorConfig>
