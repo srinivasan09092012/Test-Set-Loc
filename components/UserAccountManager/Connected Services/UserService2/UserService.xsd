@@ -173,9 +173,20 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="UpdateUserVOSTag" nillable="true" type="tns:UpdateUserVOSTag" />
-  <xs:complexType name="AddUser">
+  <xs:complexType name="InvalidateUserVOSTag">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q21="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q21:Command">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="InvalidateReasonCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserVOSTagId" type="ser:guid" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InvalidateUserVOSTag" nillable="true" type="tns:InvalidateUserVOSTag" />
+  <xs:complexType name="AddUser">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q22="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q22:Command">
         <xs:sequence>
           <xs:element minOccurs="0" name="ContactNumber" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="DateOfBirth" nillable="true" type="xs:dateTime" />

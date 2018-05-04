@@ -28,6 +28,7 @@ namespace UserAccountManager.UserService1 {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService1.AddUserProfileMemberFocusHistory))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService1.AddUserVOSTags))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService1.UpdateUserVOSTag))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService1.InvalidateUserVOSTag))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService1.AddUser))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService1.AddProfile))]
     public partial class Command : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1128,6 +1129,46 @@ namespace UserAccountManager.UserService1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="InvalidateUserVOSTag", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
+        "ds")]
+    [System.SerializableAttribute()]
+    public partial class InvalidateUserVOSTag : UserAccountManager.UserService1.Command {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvalidateReasonCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid UserVOSTagIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvalidateReasonCode {
+            get {
+                return this.InvalidateReasonCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvalidateReasonCodeField, value) != true)) {
+                    this.InvalidateReasonCodeField = value;
+                    this.RaisePropertyChanged("InvalidateReasonCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid UserVOSTagId {
+            get {
+                return this.UserVOSTagIdField;
+            }
+            set {
+                if ((this.UserVOSTagIdField.Equals(value) != true)) {
+                    this.UserVOSTagIdField = value;
+                    this.RaisePropertyChanged("UserVOSTagId");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="AddUser", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
         "ds")]
     [System.SerializableAttribute()]
@@ -1845,6 +1886,7 @@ namespace UserAccountManager.UserService1 {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService1.UserPreferencesRemoved))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService1.UserVOSTagsAdded))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService1.UserVOSTagUpdated))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService1.UserVOSTagInvalidated))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService1.UserAdded))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService1.ProfileAdded))]
     public partial class Event : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -2067,6 +2109,7 @@ namespace UserAccountManager.UserService1 {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService1.UserPreferencesRemoved))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService1.UserVOSTagsAdded))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService1.UserVOSTagUpdated))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService1.UserVOSTagInvalidated))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService1.UserAdded))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountManager.UserService1.ProfileAdded))]
     public partial class UserEvents : UserAccountManager.UserService1.Event {
@@ -3010,6 +3053,30 @@ namespace UserAccountManager.UserService1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserVOSTagInvalidated", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class UserVOSTagInvalidated : UserAccountManager.UserService1.UserEvents {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid UserVOSTagIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid UserVOSTagId {
+            get {
+                return this.UserVOSTagIdField;
+            }
+            set {
+                if ((this.UserVOSTagIdField.Equals(value) != true)) {
+                    this.UserVOSTagIdField = value;
+                    this.RaisePropertyChanged("UserVOSTagId");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="UserAdded", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
         "")]
     [System.SerializableAttribute()]
@@ -3466,6 +3533,15 @@ namespace UserAccountManager.UserService1 {
         [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/UpdateUserVOSTag", ReplyAction="HP.HSP.UserService/IUserService/UpdateUserVOSTagResponse")]
         System.Threading.Tasks.Task<UserAccountManager.UserService1.UserVOSTagUpdated> UpdateUserVOSTagAsync(UserAccountManager.UserService1.UpdateUserVOSTag command);
         
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/InvalidateUserVOSTag", ReplyAction="HP.HSP.UserService/IUserService/InvalidateUserVOSTagResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService1.ServiceException), Action="HP.HSP.UserService/IUserService/InvalidateUserVOSTagServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService1.BusinessValidationException), Action="HP.HSP.UserService/IUserService/InvalidateUserVOSTagBusinessValidationExceptionFa" +
+            "ult", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        UserAccountManager.UserService1.UserVOSTagInvalidated InvalidateUserVOSTag(UserAccountManager.UserService1.InvalidateUserVOSTag command);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/InvalidateUserVOSTag", ReplyAction="HP.HSP.UserService/IUserService/InvalidateUserVOSTagResponse")]
+        System.Threading.Tasks.Task<UserAccountManager.UserService1.UserVOSTagInvalidated> InvalidateUserVOSTagAsync(UserAccountManager.UserService1.InvalidateUserVOSTag command);
+        
         [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/AddUser", ReplyAction="HP.HSP.UserService/IUserService/AddUserResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService1.ServiceException), Action="HP.HSP.UserService/IUserService/AddUserServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
         [System.ServiceModel.FaultContractAttribute(typeof(UserAccountManager.UserService1.BusinessValidationException), Action="HP.HSP.UserService/IUserService/AddUserBusinessValidationExceptionFault", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
@@ -3596,6 +3672,14 @@ namespace UserAccountManager.UserService1 {
         
         public System.Threading.Tasks.Task<UserAccountManager.UserService1.UserVOSTagUpdated> UpdateUserVOSTagAsync(UserAccountManager.UserService1.UpdateUserVOSTag command) {
             return base.Channel.UpdateUserVOSTagAsync(command);
+        }
+        
+        public UserAccountManager.UserService1.UserVOSTagInvalidated InvalidateUserVOSTag(UserAccountManager.UserService1.InvalidateUserVOSTag command) {
+            return base.Channel.InvalidateUserVOSTag(command);
+        }
+        
+        public System.Threading.Tasks.Task<UserAccountManager.UserService1.UserVOSTagInvalidated> InvalidateUserVOSTagAsync(UserAccountManager.UserService1.InvalidateUserVOSTag command) {
+            return base.Channel.InvalidateUserVOSTagAsync(command);
         }
         
         public UserAccountManager.UserService1.UserAdded AddUser(UserAccountManager.UserService1.AddUser command) {

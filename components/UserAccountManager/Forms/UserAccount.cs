@@ -51,10 +51,10 @@ namespace UserAccountManager.Forms
                 this.GeneralIdTtextBox.Enabled = this.EnvConfig.ServiceVersion > 1;
                 this.VOSTagsLabel.Enabled = this.EnvConfig.ServiceVersion > 1;
                 this.VOSTagsDataGridView.Enabled = this.EnvConfig.ServiceVersion > 1;
+                this.RegQualifiersBindingSource.DataSource = this.UserProfile.RegQualifiers;
                 if (this.EditMode == EditModeType.Edit)
                 {
                     this.LoadUserAccount();
-                    this.RegQualifiersBindingSource.DataSource = this.UserProfile.RegQualifiers;
                 }
                 if (this.EditMode == EditModeType.Add)
                 {

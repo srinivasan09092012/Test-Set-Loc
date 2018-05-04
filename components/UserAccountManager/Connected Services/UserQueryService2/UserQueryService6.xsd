@@ -197,6 +197,8 @@
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserProfileId" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserProfileVOSId" type="ser:guid" />
       <xs:element minOccurs="0" name="UserVOSTagCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UserVOSTagTypeCode" nillable="true" type="xs:string" />
     </xs:sequence>

@@ -1456,6 +1456,9 @@ namespace UserAccountManager.UserQueryService1 {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserIdField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid UserProfileVOSIdField;
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string UserId {
             get {
@@ -1465,6 +1468,19 @@ namespace UserAccountManager.UserQueryService1 {
                 if ((object.ReferenceEquals(this.UserIdField, value) != true)) {
                     this.UserIdField = value;
                     this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid UserProfileVOSId {
+            get {
+                return this.UserProfileVOSIdField;
+            }
+            set {
+                if ((this.UserProfileVOSIdField.Equals(value) != true)) {
+                    this.UserProfileVOSIdField = value;
+                    this.RaisePropertyChanged("UserProfileVOSId");
                 }
             }
         }
@@ -3359,6 +3375,12 @@ namespace UserAccountManager.UserQueryService1 {
         private string UserNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid UserProfileIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid UserProfileVOSIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserVOSTagCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -3461,6 +3483,32 @@ namespace UserAccountManager.UserQueryService1 {
                 if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
                     this.UserNameField = value;
                     this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid UserProfileId {
+            get {
+                return this.UserProfileIdField;
+            }
+            set {
+                if ((this.UserProfileIdField.Equals(value) != true)) {
+                    this.UserProfileIdField = value;
+                    this.RaisePropertyChanged("UserProfileId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid UserProfileVOSId {
+            get {
+                return this.UserProfileVOSIdField;
+            }
+            set {
+                if ((this.UserProfileVOSIdField.Equals(value) != true)) {
+                    this.UserProfileVOSIdField = value;
+                    this.RaisePropertyChanged("UserProfileVOSId");
                 }
             }
         }

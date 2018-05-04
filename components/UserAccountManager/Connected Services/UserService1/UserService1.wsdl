@@ -156,6 +156,18 @@
   <wsdl:message name="IUserService_UpdateUserVOSTag_BusinessValidationExceptionFault_FaultMessage">
     <wsdl:part xmlns:q24="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q24:BusinessValidationException" />
   </wsdl:message>
+  <wsdl:message name="IUserService_InvalidateUserVOSTag_InputMessage">
+    <wsdl:part name="parameters" element="tns:InvalidateUserVOSTag" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_InvalidateUserVOSTag_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InvalidateUserVOSTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_InvalidateUserVOSTag_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q25="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q25:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_InvalidateUserVOSTag_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q26="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q26:BusinessValidationException" />
+  </wsdl:message>
   <wsdl:message name="IUserService_AddUser_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUser" />
   </wsdl:message>
@@ -163,10 +175,10 @@
     <wsdl:part name="parameters" element="tns:AddUserResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_AddUser_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q25="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q25:ServiceException" />
+    <wsdl:part xmlns:q27="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q27:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IUserService_AddUser_BusinessValidationExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q26="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q26:BusinessValidationException" />
+    <wsdl:part xmlns:q28="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q28:BusinessValidationException" />
   </wsdl:message>
   <wsdl:portType name="IUserService">
     <wsdl:operation name="AddProfile">
@@ -240,6 +252,12 @@
       <wsdl:output wsaw:Action="HP.HSP.UserService/IUserService/UpdateUserVOSTagResponse" message="tns:IUserService_UpdateUserVOSTag_OutputMessage" />
       <wsdl:fault wsaw:Action="HP.HSP.UserService/IUserService/UpdateUserVOSTagServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserService_UpdateUserVOSTag_ServiceExceptionFault_FaultMessage" />
       <wsdl:fault wsaw:Action="HP.HSP.UserService/IUserService/UpdateUserVOSTagBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IUserService_UpdateUserVOSTag_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateUserVOSTag">
+      <wsdl:input wsaw:Action="HP.HSP.UserService/IUserService/InvalidateUserVOSTag" message="tns:IUserService_InvalidateUserVOSTag_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.UserService/IUserService/InvalidateUserVOSTagResponse" message="tns:IUserService_InvalidateUserVOSTag_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserService/IUserService/InvalidateUserVOSTagServiceExceptionFault" name="ServiceExceptionFault" message="tns:IUserService_InvalidateUserVOSTag_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.UserService/IUserService/InvalidateUserVOSTagBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IUserService_InvalidateUserVOSTag_BusinessValidationExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddUser">
       <wsdl:input wsaw:Action="HP.HSP.UserService/IUserService/AddUser" message="tns:IUserService_AddUser_InputMessage" />

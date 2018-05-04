@@ -170,17 +170,31 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="InvalidateUserVOSTag">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Commands" minOccurs="0" name="command" nillable="true" type="q25:InvalidateUserVOSTag" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InvalidateUserVOSTagResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" minOccurs="0" name="InvalidateUserVOSTagResult" nillable="true" type="q26:UserVOSTagInvalidated" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="AddUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Commands" minOccurs="0" name="command" nillable="true" type="q25:AddUser" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Commands" minOccurs="0" name="command" nillable="true" type="q27:AddUser" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" minOccurs="0" name="AddUserResult" nillable="true" type="q26:UserAdded" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" minOccurs="0" name="AddUserResult" nillable="true" type="q28:UserAdded" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
