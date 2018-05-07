@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("DXC Technology")]
 [assembly: AssemblyProduct("SolutionRefactorMgr")]
-[assembly: AssemblyCopyright("Copyright © DXC Technology 2017")]
+[assembly: AssemblyCopyright("Copyright © DXC Technology 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

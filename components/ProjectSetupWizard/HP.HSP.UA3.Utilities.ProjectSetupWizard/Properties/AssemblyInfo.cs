@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------------------------
-// This code is the property of Hewlett Packard Enterprise, Copyright (c) 2016. All rights reserved. 
+// This code is the property of DXC Technology, Copyright (c) 2018. All rights reserved. 
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
 // Violators may be punished to the full extent of the law.
 //--------------------------------------------------------------------------------------------------
@@ -13,9 +13,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("HP.HSP.UA3.Utilities.ProjectSetupWizard")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Hewlett Packard Enterprises")]
+[assembly: AssemblyCompany("DXC Technologys")]
 [assembly: AssemblyProduct("HP.HSP.UA3.Utilities.ProjectSetupWizard")]
-[assembly: AssemblyCopyright("Copyright © Hewlett Packard Enterprise 2016")]
+[assembly: AssemblyCopyright("Copyright © DXC Technology 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

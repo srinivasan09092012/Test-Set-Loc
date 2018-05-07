@@ -1,4 +1,4 @@
-﻿namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
+namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 {
     partial class AboutForm
     {
@@ -54,7 +54,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(219, 13);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Copyright © Hewlett-Packard Company 2015";
+            this.label3.Text = "Copyright © DXC Technology 2018";
             // 
             // VersionLabel
             // 

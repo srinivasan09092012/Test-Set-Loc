@@ -1,5 +1,5 @@
-﻿//--------------------------------------------------------------------------------------------------
-// This code is the property of Hewlett Packard Enterprise, Copyright (c) 2016. All rights reserved. 
+//--------------------------------------------------------------------------------------------------
+// This code is the property of DXC Technology, Copyright (c) 2018. All rights reserved. 
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
 // Violators may be punished to the full extent of the law.
 //--------------------------------------------------------------------------------------------------
@@ -78,7 +78,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(219, 13);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Copyright © Hewlett-Packard Company 2015";
+            this.label3.Text = "Copyright © DXC Technology 2018";
             // 
             // OKButton
             // 

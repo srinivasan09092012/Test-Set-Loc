@@ -49,17 +49,33 @@
     <ReplacementString qualifier="Hewlett Packard Enterprise" from="Hewlett Packard Enterprise" to="DXC Technology" />
     <ReplacementString qualifier="Hewlett-Packard Enterprise" from="Hewlett-Packard Enterprise" to="DXC Technology" />
     <ReplacementString qualifier="Hewlett-Packard-Enterprise" from="Hewlett-Packard-Enterprise" to="DXC Technology" />
+
     <ReplacementString qualifier="hewlett packard enterprise" from="hewlett packard enterprise" to="DXC Technology" />
     <ReplacementString qualifier="hewlett-packard enterprise" from="hewlett-packard enterprise" to="DXC Technology" />
     <ReplacementString qualifier="hewlett-packard-enterprise" from="hewlett-packard-enterprise" to="DXC Technology" />
+
+    <ReplacementString qualifier="Hewlett Packard Company" from="Hewlett Packard Company" to="DXC Technology" />
+    <ReplacementString qualifier="Hewlett-Packard Company" from="Hewlett-Packard Company" to="DXC Technology" />
+    <ReplacementString qualifier="Hewlett-Packard-Company" from="Hewlett-Packard-Company" to="DXC Technology" />
+
+    <ReplacementString qualifier="hewlett packard company" from="hewlett packard company" to="DXC Technology" />
+    <ReplacementString qualifier="hewlett-packard company" from="hewlett-packard company" to="DXC Technology" />
+    <ReplacementString qualifier="hewlett-packard-company" from="hewlett-packard-company" to="DXC Technology" />
+
     <ReplacementString qualifier="Hewlett Packard" from="Hewlett Packard" to="DXC Technology" />
     <ReplacementString qualifier="Hewlett-Packard" from="Hewlett-Packard" to="DXC Technology" />
+
+    <ReplacementString qualifier="hewlett packard" from="hewlett packard" to="DXC Technology" />
+    <ReplacementString qualifier="hewlett-packard" from="hewlett-packard" to="DXC Technology" />
+
     <ReplacementString qualifier="DXC Technology" from="2015" to="2018" />
     <ReplacementString qualifier="DXC Technology" from="2016" to="2018" />
     <ReplacementString qualifier="DXC Technology" from="2017" to="2018" />
+
     <ReplacementString qualifier="Copyright © 2015" from="2015" to="2018" />
     <ReplacementString qualifier="Copyright © 2016" from="2016" to="2018" />
     <ReplacementString qualifier="Copyright © 2017" from="2017" to="2018" />
+
     <ReplacementString qualifier="Copyright (c) 2015" from="2015" to="2018" />
     <ReplacementString qualifier="Copyright (c) 2016" from="2016" to="2018" />
     <ReplacementString qualifier="Copyright (c) 2017" from="2017" to="2018" />
