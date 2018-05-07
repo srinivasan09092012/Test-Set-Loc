@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<RefactorConfig editMode="Inline" includeFolderNames="true" includeFileNames="true" includeFileContents="true" useSourceControl="true">
+<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true">
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs>
+    <ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />
     <ModuleConfig name="Administration" branch="Dev" types="All" />
     <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
     <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
@@ -10,10 +11,10 @@
     <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
     <ModuleConfig name="DrugRebatePortal" branch="Dev" types="All" />
     <ModuleConfig name="EDI" branch="Dev" types="All" />
-    <ModuleConfig name="eID" branch="Dev" types="All" />
     <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
     <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
     <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Integration" branch="Dev" types="All" />
     <ModuleConfig name="KansasOnly" branch="Dev" types="All" />
     <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
     <ModuleConfig name="ManagedCarePortal" branch="Dev" types="All" />
@@ -26,11 +27,12 @@
     <ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
     <ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
     <ModuleConfig name="ProviderPortal" branch="Dev" types="All" />
+    <ModuleConfig name="TaskManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Test" branch="Dev" types="All" />
     <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
     <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
     <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
-    <ModuleConfig name="Utilities" branch="Dev" types="NA" />
-    <ModuleConfig name="WorkflowManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Utilities" branch="Dev" types="All" />
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
@@ -45,10 +47,23 @@
   <LineDeletes />
   <ReplacementStrings>
     <ReplacementString qualifier="Hewlett Packard Enterprise" from="Hewlett Packard Enterprise" to="DXC Technology" />
-    <ReplacementString qualifier="DXC Technology" from="2016" to="2017" />
-    <ReplacementString qualifier="Copyright © 2016" from="2016" to="2017" />
-    <ReplacementString qualifier="Copyright (c) 2016" from="2016" to="2017" />
+    <ReplacementString qualifier="Hewlett-Packard Enterprise" from="Hewlett-Packard Enterprise" to="DXC Technology" />
+    <ReplacementString qualifier="Hewlett-Packard-Enterprise" from="Hewlett-Packard-Enterprise" to="DXC Technology" />
+    <ReplacementString qualifier="hewlett packard enterprise" from="hewlett packard enterprise" to="DXC Technology" />
+    <ReplacementString qualifier="hewlett-packard enterprise" from="hewlett-packard enterprise" to="DXC Technology" />
+    <ReplacementString qualifier="hewlett-packard-enterprise" from="hewlett-packard-enterprise" to="DXC Technology" />
+    <ReplacementString qualifier="Hewlett Packard" from="Hewlett Packard" to="DXC Technology" />
+    <ReplacementString qualifier="Hewlett-Packard" from="Hewlett-Packard" to="DXC Technology" />
+    <ReplacementString qualifier="DXC Technology" from="2015" to="2018" />
+    <ReplacementString qualifier="DXC Technology" from="2016" to="2018" />
+    <ReplacementString qualifier="DXC Technology" from="2017" to="2018" />
+    <ReplacementString qualifier="Copyright © 2015" from="2015" to="2018" />
+    <ReplacementString qualifier="Copyright © 2016" from="2016" to="2018" />
+    <ReplacementString qualifier="Copyright © 2017" from="2017" to="2018" />
+    <ReplacementString qualifier="Copyright (c) 2015" from="2015" to="2018" />
+    <ReplacementString qualifier="Copyright (c) 2016" from="2016" to="2018" />
+    <ReplacementString qualifier="Copyright (c) 2017" from="2017" to="2018" />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
-  <TfsWorkspace></TfsWorkspace>
+  <TfsWorkspace>BIBWOS1ISV_1</TfsWorkspace>
 </RefactorConfig>
