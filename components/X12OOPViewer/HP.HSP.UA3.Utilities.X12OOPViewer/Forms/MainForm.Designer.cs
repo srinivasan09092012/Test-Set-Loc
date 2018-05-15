@@ -47,97 +47,110 @@
             this.parseGroupBox.SuspendLayout();
             this.optionsGroupBox.SuspendLayout();
             this.SuspendLayout();
-            //
+            // 
             // menuStrip1
-            //
+            // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fIleToolStripMenuItem,
             this.hELPToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1131, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1006, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            //
+            // 
             // fIleToolStripMenuItem
-            //
+            // 
             this.fIleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.fIleToolStripMenuItem.Name = "fIleToolStripMenuItem";
             this.fIleToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.fIleToolStripMenuItem.Text = "&FILE";
-            //
+            // 
             // exitToolStripMenuItem
-            //
+            // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.X)));
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
-            //
+            // 
             // hELPToolStripMenuItem
-            //
+            // 
             this.hELPToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutX12OOPViewerToolStripMenuItem});
             this.hELPToolStripMenuItem.Name = "hELPToolStripMenuItem";
             this.hELPToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.hELPToolStripMenuItem.Text = "HELP";
-            //
+            // 
             // aboutX12OOPViewerToolStripMenuItem
-            //
+            // 
             this.aboutX12OOPViewerToolStripMenuItem.Name = "aboutX12OOPViewerToolStripMenuItem";
             this.aboutX12OOPViewerToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.aboutX12OOPViewerToolStripMenuItem.Text = "A&bout X12 OOP Viewer";
             this.aboutX12OOPViewerToolStripMenuItem.Click += new System.EventHandler(this.AboutX12OOPViewerToolStripMenuItem_Click);
-            //
+            // 
             // sourceGroupBox
-            //
-            this.sourceGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            // 
+            this.sourceGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.sourceGroupBox.AutoSize = true;
             this.sourceGroupBox.Controls.Add(this.sourceTextBox);
             this.sourceGroupBox.Location = new System.Drawing.Point(12, 27);
             this.sourceGroupBox.Name = "sourceGroupBox";
-            this.sourceGroupBox.Size = new System.Drawing.Size(1107, 120);
+            this.sourceGroupBox.Size = new System.Drawing.Size(982, 120);
             this.sourceGroupBox.TabIndex = 1;
             this.sourceGroupBox.TabStop = false;
             this.sourceGroupBox.Text = "X12 String";
-            //
+            // 
             // sourceTextBox
-            //
+            // 
             this.sourceTextBox.AcceptsReturn = true;
             this.sourceTextBox.AcceptsTab = true;
             this.sourceTextBox.AllowDrop = true;
+            this.sourceTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.sourceTextBox.Location = new System.Drawing.Point(6, 19);
             this.sourceTextBox.MaxLength = 0;
             this.sourceTextBox.Multiline = true;
             this.sourceTextBox.Name = "sourceTextBox";
             this.sourceTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.sourceTextBox.Size = new System.Drawing.Size(1095, 95);
+            this.sourceTextBox.Size = new System.Drawing.Size(976, 95);
             this.sourceTextBox.TabIndex = 0;
-            //
+            // 
             // parseButton
-            //
-            this.parseButton.Location = new System.Drawing.Point(1038, 171);
+            // 
+            this.parseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.parseButton.Location = new System.Drawing.Point(919, 171);
             this.parseButton.Name = "parseButton";
             this.parseButton.Size = new System.Drawing.Size(75, 23);
             this.parseButton.TabIndex = 2;
             this.parseButton.Text = "Parse";
             this.parseButton.UseVisualStyleBackColor = true;
             this.parseButton.Click += new System.EventHandler(this.ParseButton_Click);
-            //
+            // 
             // parseGroupBox
-            //
+            // 
+            this.parseGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.parseGroupBox.AutoSize = true;
             this.parseGroupBox.Controls.Add(this.parseTextBox);
             this.parseGroupBox.Location = new System.Drawing.Point(12, 207);
             this.parseGroupBox.Name = "parseGroupBox";
-            this.parseGroupBox.Size = new System.Drawing.Size(1107, 384);
+            this.parseGroupBox.Size = new System.Drawing.Size(982, 340);
             this.parseGroupBox.TabIndex = 3;
             this.parseGroupBox.TabStop = false;
             this.parseGroupBox.Text = "Parsed X12 String";
-            //
+            // 
             // parseTextBox
-            //
+            // 
+            this.parseTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.parseTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.parseTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.parseTextBox.Location = new System.Drawing.Point(6, 19);
             this.parseTextBox.MaxLength = 0;
@@ -145,11 +158,11 @@
             this.parseTextBox.Name = "parseTextBox";
             this.parseTextBox.ReadOnly = true;
             this.parseTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.parseTextBox.Size = new System.Drawing.Size(1095, 359);
+            this.parseTextBox.Size = new System.Drawing.Size(976, 311);
             this.parseTextBox.TabIndex = 0;
-            //
+            // 
             // optionsGroupBox
-            //
+            // 
             this.optionsGroupBox.Controls.Add(this.xmlncRadioButton);
             this.optionsGroupBox.Controls.Add(this.xmlcRadioButton);
             this.optionsGroupBox.Controls.Add(this.x12wsRadioButton);
@@ -159,9 +172,9 @@
             this.optionsGroupBox.TabIndex = 4;
             this.optionsGroupBox.TabStop = false;
             this.optionsGroupBox.Text = "Options";
-            //
+            // 
             // xmlncRadioButton
-            //
+            // 
             this.xmlncRadioButton.AutoSize = true;
             this.xmlncRadioButton.Location = new System.Drawing.Point(325, 17);
             this.xmlncRadioButton.Name = "xmlncRadioButton";
@@ -170,9 +183,9 @@
             this.xmlncRadioButton.TabStop = true;
             this.xmlncRadioButton.Text = "XML with No Comments";
             this.xmlncRadioButton.UseVisualStyleBackColor = true;
-            //
+            // 
             // xmlcRadioButton
-            //
+            // 
             this.xmlcRadioButton.AutoSize = true;
             this.xmlcRadioButton.Location = new System.Drawing.Point(170, 15);
             this.xmlcRadioButton.Name = "xmlcRadioButton";
@@ -181,9 +194,9 @@
             this.xmlcRadioButton.TabStop = true;
             this.xmlcRadioButton.Text = "XML with Comments";
             this.xmlcRadioButton.UseVisualStyleBackColor = true;
-            //
+            // 
             // x12wsRadioButton
-            //
+            // 
             this.x12wsRadioButton.AutoSize = true;
             this.x12wsRadioButton.Checked = true;
             this.x12wsRadioButton.Location = new System.Drawing.Point(7, 17);
@@ -193,12 +206,12 @@
             this.x12wsRadioButton.TabStop = true;
             this.x12wsRadioButton.Text = "X12 with White Space";
             this.x12wsRadioButton.UseVisualStyleBackColor = true;
-            //
+            // 
             // MainForm
-            //
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1131, 603);
+            this.ClientSize = new System.Drawing.Size(1006, 559);
             this.Controls.Add(this.optionsGroupBox);
             this.Controls.Add(this.parseGroupBox);
             this.Controls.Add(this.parseButton);

@@ -103,7 +103,6 @@ namespace HP.HSP.UA3.Utilities.X12OOPViewer.Forms
             AboutForm form = new AboutForm();
             form.ShowDialog();
         }
-        #endregion
 
         private void ParseButton_Click(object sender, EventArgs e)
         {
@@ -136,5 +135,6 @@ namespace HP.HSP.UA3.Utilities.X12OOPViewer.Forms
                 }
             }
         }
+        #endregion
     }
 }
