@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <EnvironmentsConfig>
   <Environments>
-    <Environment name="Dev" tenantId="081e354b-2184-47fe-b69d-3c5229d8bccf" serviceVersion="2" isDeleteAllowed="true">
+    <Environment name="Dev" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="2" isDeleteAllowed="true">
       <ADContainer>CN=Users,DC=dev,DC=mapshc,DC=com</ADContainer>
       <ADServer>ad.dev.mapshc.com</ADServer>
       <ADUser>adService</ADUser>
@@ -41,7 +41,7 @@
       <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas.staging-1.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
       <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.staging-1.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
     </Environment>
-    <Environment name="Test" tenantId="081e354b-2184-47fe-b69d-3c5229d8bccf" serviceVersion="2" isDeleteAllowed="true">
+    <Environment name="Test" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="2" isDeleteAllowed="true">
       <ADContainer>CN=Users,DC=test,DC=mapshc,DC=com</ADContainer>
       <ADServer>ad.test.mapshc.com</ADServer>
       <ADUser>adService</ADUser>
@@ -50,7 +50,7 @@
       <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.test.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
     </Environment>
     <!--
-    <Environment name="Work" tenantId="081e354b-2184-47fe-b69d-3c5229d8bccf" serviceVersion="2" isDeleteAllowed="true">
+    <Environment name="Work" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="2" isDeleteAllowed="true">
       <ADContainer>CN=Users,DC=dev,DC=mapshc,DC=com</ADContainer>
       <ADServer>ad.dev.mapshc.com</ADServer>
       <ADUser>adService</ADUser>
