@@ -73,7 +73,8 @@ namespace InRuleConnectivityTester
         private void InitializeConfiguration()
         {
             this.ProcessingModeComboBox.Text = ConfigurationManager.AppSettings["InRule.ProcessingMode"].ToString();
-            this.ServiceUrlTextBox.Text = ConfigurationManager.AppSettings["InRule.ServiceUrl"].ToString();
+            this.CatalogServiceUrlTextBox.Text = ConfigurationManager.AppSettings["InRule.CatalogServiceUrl"].ToString();
+            this.RuleEngineServiceUrlTextBox.Text = ConfigurationManager.AppSettings["InRule.RuleEngineServiceUrl"].ToString();
             this.UserNameTextBox.Text = ConfigurationManager.AppSettings["InRule.UserName"].ToString();
             this.PasswordTextBox.Text = ConfigurationManager.AppSettings["InRule.Password"].ToString();
             this.ApplicationTextBox.Text = ConfigurationManager.AppSettings["InRule.ApplicationId"].ToString();
@@ -98,11 +99,11 @@ namespace InRuleConnectivityTester
                 switch (processingMode)
                 {
                     case "InProcess":
-                        provider = new InRuleInProcessProvider(this.ServiceUrlTextBox.Text, this.UserNameTextBox.Text, this.PasswordTextBox.Text, this.ApplicationTextBox.Text);
+                        provider = new InRuleInProcessProvider(this.CatalogServiceUrlTextBox.Text, this.RuleEngineServiceUrlTextBox.Text, this.UserNameTextBox.Text, this.PasswordTextBox.Text, this.ApplicationTextBox.Text);
                         break;
 
                     default:
-                        provider = new InRuleRemoteServiceProvider(this.ServiceUrlTextBox.Text, this.UserNameTextBox.Text, this.PasswordTextBox.Text, this.ApplicationTextBox.Text);
+                        provider = new InRuleRemoteServiceProvider(this.CatalogServiceUrlTextBox.Text, this.RuleEngineServiceUrlTextBox.Text, this.UserNameTextBox.Text, this.PasswordTextBox.Text, this.ApplicationTextBox.Text);
                         break;
                 }
                 perfTimer.Start();
@@ -151,6 +152,11 @@ namespace InRuleConnectivityTester
         {
             this.ResultsTextBox.Text = ex.ToString();
             this.logger.LogFatal(ex.Message, ex);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

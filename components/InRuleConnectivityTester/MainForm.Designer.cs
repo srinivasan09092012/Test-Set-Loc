@@ -41,7 +41,7 @@
             this.ProcessingModeComboBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.ServiceUrlTextBox = new System.Windows.Forms.TextBox();
+            this.CatalogServiceUrlTextBox = new System.Windows.Forms.TextBox();
             this.ResultsGroupBox = new System.Windows.Forms.GroupBox();
             this.ResultsTextBox = new System.Windows.Forms.TextBox();
             this.ExecutionTimeLabel = new System.Windows.Forms.Label();
@@ -52,6 +52,8 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label9 = new System.Windows.Forms.Label();
+            this.RuleEngineServiceUrlTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.ResultsGroupBox.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -59,6 +61,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.RuleEngineServiceUrlTextBox);
             this.groupBox1.Controls.Add(this.TenantIdTextBox);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.ExecuteButton);
@@ -71,12 +75,12 @@
             this.groupBox1.Controls.Add(this.ProcessingModeComboBox);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.ServiceUrlTextBox);
+            this.groupBox1.Controls.Add(this.CatalogServiceUrlTextBox);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(760, 199);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.Size = new System.Drawing.Size(760, 252);
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Configuration";
             // 
@@ -84,29 +88,29 @@
             // 
             this.TenantIdTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TenantIdTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TenantIdTextBox.Location = new System.Drawing.Point(112, 167);
+            this.TenantIdTextBox.Location = new System.Drawing.Point(112, 195);
             this.TenantIdTextBox.Name = "TenantIdTextBox";
             this.TenantIdTextBox.ReadOnly = true;
             this.TenantIdTextBox.Size = new System.Drawing.Size(261, 20);
-            this.TenantIdTextBox.TabIndex = 9;
+            this.TenantIdTextBox.TabIndex = 13;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(42, 169);
+            this.label8.Location = new System.Drawing.Point(42, 197);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 13);
-            this.label8.TabIndex = 10;
+            this.label8.TabIndex = 12;
             this.label8.Text = "Tenant ID";
             // 
             // ExecuteButton
             // 
             this.ExecuteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExecuteButton.Location = new System.Drawing.Point(679, 170);
+            this.ExecuteButton.Location = new System.Drawing.Point(679, 223);
             this.ExecuteButton.Name = "ExecuteButton";
             this.ExecuteButton.Size = new System.Drawing.Size(75, 23);
-            this.ExecuteButton.TabIndex = 5;
+            this.ExecuteButton.TabIndex = 14;
             this.ExecuteButton.Text = "Execute";
             this.ExecuteButton.UseVisualStyleBackColor = true;
             this.ExecuteButton.Click += new System.EventHandler(this.ExecuteButton_Click);
@@ -115,58 +119,58 @@
             // 
             this.ApplicationTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ApplicationTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ApplicationTextBox.Location = new System.Drawing.Point(112, 141);
+            this.ApplicationTextBox.Location = new System.Drawing.Point(112, 169);
             this.ApplicationTextBox.Name = "ApplicationTextBox";
             this.ApplicationTextBox.ReadOnly = true;
             this.ApplicationTextBox.Size = new System.Drawing.Size(261, 20);
-            this.ApplicationTextBox.TabIndex = 4;
+            this.ApplicationTextBox.TabIndex = 11;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(17, 141);
+            this.label5.Location = new System.Drawing.Point(17, 169);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 13);
-            this.label5.TabIndex = 8;
+            this.label5.TabIndex = 10;
             this.label5.Text = "Rule Application";
             // 
             // PasswordTextBox
             // 
             this.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PasswordTextBox.Location = new System.Drawing.Point(112, 115);
+            this.PasswordTextBox.Location = new System.Drawing.Point(112, 143);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.Size = new System.Drawing.Size(121, 20);
-            this.PasswordTextBox.TabIndex = 3;
+            this.PasswordTextBox.TabIndex = 9;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(49, 115);
+            this.label4.Location = new System.Drawing.Point(49, 143);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 13);
-            this.label4.TabIndex = 6;
+            this.label4.TabIndex = 8;
             this.label4.Text = "Password";
             // 
             // UserNameTextBox
             // 
             this.UserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UserNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UserNameTextBox.Location = new System.Drawing.Point(112, 89);
+            this.UserNameTextBox.Location = new System.Drawing.Point(112, 117);
             this.UserNameTextBox.Name = "UserNameTextBox";
             this.UserNameTextBox.Size = new System.Drawing.Size(121, 20);
-            this.UserNameTextBox.TabIndex = 2;
+            this.UserNameTextBox.TabIndex = 7;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(42, 89);
+            this.label3.Location = new System.Drawing.Point(42, 117);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 13);
-            this.label3.TabIndex = 4;
+            this.label3.TabIndex = 6;
             this.label3.Text = "User Name";
             // 
             // ProcessingModeComboBox
@@ -180,7 +184,7 @@
             this.ProcessingModeComboBox.Location = new System.Drawing.Point(112, 34);
             this.ProcessingModeComboBox.Name = "ProcessingModeComboBox";
             this.ProcessingModeComboBox.Size = new System.Drawing.Size(121, 21);
-            this.ProcessingModeComboBox.TabIndex = 0;
+            this.ProcessingModeComboBox.TabIndex = 1;
             // 
             // label2
             // 
@@ -189,27 +193,28 @@
             this.label2.Location = new System.Drawing.Point(13, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 13);
-            this.label2.TabIndex = 2;
+            this.label2.TabIndex = 0;
             this.label2.Text = "Processing Mode";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 63);
+            this.label1.Location = new System.Drawing.Point(29, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Base Service URL";
+            this.label1.Size = new System.Drawing.Size(68, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Catalog URL";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // ServiceUrlTextBox
+            // CatalogServiceUrlTextBox
             // 
-            this.ServiceUrlTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ServiceUrlTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ServiceUrlTextBox.Location = new System.Drawing.Point(112, 63);
-            this.ServiceUrlTextBox.Name = "ServiceUrlTextBox";
-            this.ServiceUrlTextBox.Size = new System.Drawing.Size(570, 20);
-            this.ServiceUrlTextBox.TabIndex = 1;
+            this.CatalogServiceUrlTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CatalogServiceUrlTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CatalogServiceUrlTextBox.Location = new System.Drawing.Point(112, 63);
+            this.CatalogServiceUrlTextBox.Name = "CatalogServiceUrlTextBox";
+            this.CatalogServiceUrlTextBox.Size = new System.Drawing.Size(570, 20);
+            this.CatalogServiceUrlTextBox.TabIndex = 3;
             // 
             // ResultsGroupBox
             // 
@@ -221,10 +226,10 @@
             this.ResultsGroupBox.Controls.Add(this.label7);
             this.ResultsGroupBox.Controls.Add(this.label6);
             this.ResultsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ResultsGroupBox.Location = new System.Drawing.Point(12, 251);
+            this.ResultsGroupBox.Location = new System.Drawing.Point(12, 297);
             this.ResultsGroupBox.Name = "ResultsGroupBox";
-            this.ResultsGroupBox.Size = new System.Drawing.Size(760, 265);
-            this.ResultsGroupBox.TabIndex = 1;
+            this.ResultsGroupBox.Size = new System.Drawing.Size(760, 274);
+            this.ResultsGroupBox.TabIndex = 2;
             this.ResultsGroupBox.TabStop = false;
             this.ResultsGroupBox.Text = "Results";
             // 
@@ -239,8 +244,8 @@
             this.ResultsTextBox.Multiline = true;
             this.ResultsTextBox.Name = "ResultsTextBox";
             this.ResultsTextBox.ReadOnly = true;
-            this.ResultsTextBox.Size = new System.Drawing.Size(748, 196);
-            this.ResultsTextBox.TabIndex = 10;
+            this.ResultsTextBox.Size = new System.Drawing.Size(748, 205);
+            this.ResultsTextBox.TabIndex = 3;
             // 
             // ExecutionTimeLabel
             // 
@@ -250,7 +255,7 @@
             this.ExecutionTimeLabel.Location = new System.Drawing.Point(96, 25);
             this.ExecutionTimeLabel.Name = "ExecutionTimeLabel";
             this.ExecutionTimeLabel.Size = new System.Drawing.Size(29, 13);
-            this.ExecutionTimeLabel.TabIndex = 9;
+            this.ExecutionTimeLabel.TabIndex = 1;
             this.ExecutionTimeLabel.Text = "0 ms";
             // 
             // label7
@@ -260,7 +265,7 @@
             this.label7.Location = new System.Drawing.Point(6, 25);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 13);
-            this.label7.TabIndex = 8;
+            this.label7.TabIndex = 0;
             this.label7.Text = "Execution Time:";
             // 
             // label6
@@ -270,17 +275,17 @@
             this.label6.Location = new System.Drawing.Point(6, 47);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(55, 13);
-            this.label6.TabIndex = 7;
+            this.label6.TabIndex = 2;
             this.label6.Text = "Response";
             // 
             // ExitButton
             // 
             this.ExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ExitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.ExitButton.Location = new System.Drawing.Point(697, 527);
+            this.ExitButton.Location = new System.Drawing.Point(697, 582);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(75, 23);
-            this.ExitButton.TabIndex = 7;
+            this.ExitButton.TabIndex = 3;
             this.ExitButton.Text = "E&xit";
             this.ExitButton.UseVisualStyleBackColor = true;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
@@ -292,7 +297,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(784, 24);
-            this.menuStrip1.TabIndex = 8;
+            this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
@@ -316,13 +321,32 @@
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(7, 91);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(90, 13);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Rule Engine URL";
+            // 
+            // RuleEngineServiceUrlTextBox
+            // 
+            this.RuleEngineServiceUrlTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.RuleEngineServiceUrlTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RuleEngineServiceUrlTextBox.Location = new System.Drawing.Point(112, 91);
+            this.RuleEngineServiceUrlTextBox.Name = "RuleEngineServiceUrlTextBox";
+            this.RuleEngineServiceUrlTextBox.Size = new System.Drawing.Size(570, 20);
+            this.RuleEngineServiceUrlTextBox.TabIndex = 5;
+            // 
             // MainForm
             // 
             this.AcceptButton = this.ExecuteButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.ExitButton;
-            this.ClientSize = new System.Drawing.Size(784, 562);
+            this.ClientSize = new System.Drawing.Size(784, 617);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.ResultsGroupBox);
             this.Controls.Add(this.groupBox1);
@@ -348,7 +372,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox ServiceUrlTextBox;
+        private System.Windows.Forms.TextBox CatalogServiceUrlTextBox;
         private System.Windows.Forms.TextBox UserNameTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox ProcessingModeComboBox;
@@ -371,6 +395,8 @@
         private System.Windows.Forms.TextBox TenantIdTextBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox ResultsTextBox;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox RuleEngineServiceUrlTextBox;
     }
 }
 
