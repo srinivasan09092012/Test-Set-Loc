@@ -2,34 +2,37 @@
 <RefactorConfig editMode="Inline" includeFolderNames="true" includeFileNames="true" includeFileContents="true" useSourceControl="true">
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs>
-    <ModuleConfig name="Administration" branch="043" types="All" />
-    <ModuleConfig name="AuthDetermination" branch="043" types="All" />
-    <ModuleConfig name="ClaimsManagement" branch="043" types="All" />
-    <ModuleConfig name="Core" branch="043" types="All" />
-    <ModuleConfig name="CorrespondenceMgmt" branch="043" types="All" />
-    <ModuleConfig name="DrugRebate" branch="043" types="All" />
-    <ModuleConfig name="DrugRebatePortal" branch="043" types="All" />
-    <ModuleConfig name="EDI" branch="043" types="All" />
-    <ModuleConfig name="eID" branch="043" types="All" />
-    <ModuleConfig name="EmployeeMgmt" branch="043" types="All" />
-    <ModuleConfig name="FileTransfer" branch="043" types="All" />
-    <ModuleConfig name="IdentityManagement" branch="043" types="All" />
-    <ModuleConfig name="KansasOnly" branch="043" types="All" />
-    <ModuleConfig name="ManagedCare" branch="043" types="All" />
-    <ModuleConfig name="ManagedCarePortal" branch="043" types="All" />
-    <ModuleConfig name="MemberManagement" branch="043" types="All" />
-    <ModuleConfig name="MemberPortal" branch="043" types="All" />
-    <ModuleConfig name="Notifications" branch="043" types="All" />
-    <ModuleConfig name="PlanManagement" branch="043" types="All" />
-    <ModuleConfig name="ProgramIntegrity" branch="043" types="All" />
-    <ModuleConfig name="ProviderCredentialing" branch="043" types="All" />
-    <ModuleConfig name="ProviderEnrollment" branch="043" types="All" />
-    <ModuleConfig name="ProviderManagement" branch="043" types="All" />
-    <ModuleConfig name="ProviderPortal" branch="043" types="All" />
-    <ModuleConfig name="ThirdPartySource" branch="043" types="All" />
-    <ModuleConfig name="TPLCaseTracking" branch="043" types="All" />
-    <ModuleConfig name="TPLPolicy" branch="043" types="All" />
-    <ModuleConfig name="WorkflowManagement" branch="043" types="All" />
+    <!-- <ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />  NO CHANGE-->
+    <ModuleConfig name="Administration" branch="047" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="047" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="047" types="All" />
+    <ModuleConfig name="Core" branch="047" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="047" types="All" />
+    <ModuleConfig name="DrugRebate" branch="047" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="047" types="All" />
+    <ModuleConfig name="EDI" branch="047" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="047" types="All" />
+    <ModuleConfig name="FileTransfer" branch="047" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="047" types="All" />
+    <ModuleConfig name="Integration" branch="047" types="All" />
+    <ModuleConfig name="KansasOnly" branch="047" types="All" />
+    <ModuleConfig name="ManagedCare" branch="047" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="047" types="All" />
+    <ModuleConfig name="MemberManagement" branch="047" types="All" />
+    <ModuleConfig name="MemberPortal" branch="047" types="All" />
+    <ModuleConfig name="Notifications" branch="047" types="All" />
+    <ModuleConfig name="PlanManagement" branch="047" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="047" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="047" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="047" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="047" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="047" types="All" />
+    <ModuleConfig name="TaskManagement" branch="047" types="All" />
+    <ModuleConfig name="Test" branch="047" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="047" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="047" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="047" types="All" />
+    <!--  <ModuleConfig name="Utilities" branch="047" types="All" /> NO CHANGE-->
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
@@ -37,36 +40,42 @@
   </FileTypes>
   <LineDeletes>
   </LineDeletes>
-    <!--VERTICA: DONT NEED TO CHANGE THE STG1 USR/PWD BECAUSE ITS SAME IN STG1 and DEV ONLY HOST IS DIFFERENT-->
-    <!--ORACLE: DONT NEED TO CHANGE THE A39W USER/PWD BECAUSE A39W SAME AS IN WRK ONLY HOST IS DIFFERENT-->
   <ReplacementStrings>
+    <!-- change Vertica WRK and DEV hosts to point to STG host-->
     <ReplacementString qualifier="HOST=mapsdevdbv02.dev.mapshc.com" from="HOST=mapsdevdbv02.dev.mapshc.com" to="HOST=mapsstgdbv01.staging.mapshc.com" />
     <ReplacementString qualifier="HOST=mapsdevdbv01.dev.mapshc.com" from="HOST=mapsdevdbv01.dev.mapshc.com" to="HOST=mapsstgdbv01.staging.mapshc.com" />
-    <ReplacementString qualifier="USER=UA3_PIUM;Password=MUIP_3AU" from="USER=UA3_PIUM;Password=MUIP_3AU" to="USER=A_PIUM;Password=MUIP_A" />      
-    <ReplacementString qualifier="AWRK_PDBA" from="AWRK_PDBA" to="A43W_PDBA" />
-    <ReplacementString qualifier="AWRK_PDBB" from="AWRK_PDBB" to="A43W_PDBB" />      
-    <ReplacementString qualifier="ADEV_PDBA" from="ADEV_PDBA" to="ASTG_PDBA" />
-    <ReplacementString qualifier="ADEV_PDBB" from="ADEV_PDBB" to="ASTG_PDBB" />
-    <ReplacementString qualifier="clm_RwPbe62" from="clm_RwPbe62" to="Clm_exHAK44" />
-    <ReplacementString qualifier="CrrSPNDNc_Mgmt_65" from="CrrSPNDNc_Mgmt_65" to="Cmg_KiiqM79" />
-    <ReplacementString qualifier="drb_nEMUP54" from="drb_nEMUP54" to="Drb_nRiET7" />
-    <ReplacementString qualifier="Ua3edi_17" from="Ua3edi_17" to="Edi_bdQgj15" />
-    <ReplacementString qualifier="em_Ple91" from="em_Ple91" to="Emp_DVMIc86" />
-    <ReplacementString qualifier="ntgrtn_i1" from="ntgrtn_i1" to="Int_lhlHF62" />
-    <ReplacementString qualifier="Mgr_CreD11116" from="Mgr_CreD11116" to="Mgc_NLqyT33" />
-    <ReplacementString qualifier="mBr_74" from="mBr_74" to="Mbr_iJWPD94" />
-    <ReplacementString qualifier="ntfctns_o34" from="ntfctns_o34" to="Ntf_kqURQ66" />
-    <ReplacementString qualifier="pm51_k" from="pm51_k" to="Piu_CcHzL93" />
-    <ReplacementString qualifier="pium51_k" from="pium51_k" to="Piu_CcHzL93" />            
-    <ReplacementString qualifier="PLanmGmT786" from="PLanmGmT786" to="Pmg_CYEfX48" />
-    <ReplacementString qualifier="prvdr_o3" from="prvdr_o3" to="Pvd_XiSUJ75" />
-    <ReplacementString qualifier="prvdr_crdntl_pe3" from="prvdr_crdntl_pe3" to="Pct_QvPTx32" />
-    <ReplacementString qualifier="prvdr_nrll_y3" from="prvdr_nrll_y3" to="Pnr_VBcYC75" />
-    <ReplacementString qualifier="tnnt_tst_e2" from="tnnt_tst_e2" to="Tnt_FZhrn28" />
-    <ReplacementString qualifier="txn_qZpbv96" from="txn_qZpbv96" to="Ttx_IIPEb27" />
-    <ReplacementString qualifier="Ua3tplKs_11" from="Ua3tplKs_11" to="Tcs_TdHGR33" />
-    <ReplacementString qualifier="tPlpCy_y6" from="tPlpCy_y6" to="Tpl_iDKzo13" />
+    <!-- change Vertica user/pwds from WRK to point to STG user/pwds; DEV users/pwds should match-->
+    <ReplacementString qualifier="USER=UA3_PIUM;Password=MUIP_3AU" from="USER=UA3_PIUM;Password=MUIP_3AU" to="USER=A_PIUM;Password=MUIP_A"/>
+    <ReplacementString qualifier="USER=B_UA3_PIUM;Password=MUIP_3AU_B" from="USER=B_UA3_PIUM;Password=MUIP_3AU_B" to="USER=B_PIUM;Password=MUIP_B"/>
+    <ReplacementString qualifier="USER=E_UA3_PIUM;Password=MUIP_3AU_E" from="USER=E_UA3_PIUM;Password=MUIP_3AU_E" to="USER=E_PIUM;Password=MUIP_E"/>
+    <!-- change ORACLE WRK and DEV hosts to point to STG host-->
+    <ReplacementString qualifier="mapsdevdbo01.dev.mapshc.com" from="mapsdevdbo01.dev.mapshc.com" to="mapsstgdbo01.staging.mapshc.com" />
+    <!-- change Oralce WRK and DEV hosts to point to STG host-->
+    <ReplacementString qualifier="AWRK_PDBA" from="AWRK_PDBA" to="A47W_PDBA" />
+    <ReplacementString qualifier="AWRK_PDBB" from="AWRK_PDBB" to="A47W_PDBB" />
+    <ReplacementString qualifier="ADEV_PDBA" from="ADEV_PDBA" to="ASTH_PDBA" />
+    <ReplacementString qualifier="ADEV_PDBB" from="ADEV_PDBB" to="ASTH_PDBB" />
+    <!-- change Oracle pwds from DEV to point to STH pwds - don't need "Password=" because password values are not same as UserId values-->
+    <ReplacementString qualifier="clm_RwPbe62" from="clm_RwPbe62" to="clm_TBB19" />
+    <ReplacementString qualifier="CrrSPNDNc_Mgmt_65" from="CrrSPNDNc_Mgmt_65" to="CORR_vFL13" />
+    <ReplacementString qualifier="drb_nEMUP54" from="drb_nEMUP54" to="Drgrb_kgS64" />
+    <ReplacementString qualifier="Ua3edi_17" from="Ua3edi_17" to="UaEdi_wHUOv54" />
+    <ReplacementString qualifier="em_Ple91" from="em_Ple91" to="emp_BdGyK33" />
+    <ReplacementString qualifier="ntgrtn_i1" from="ntgrtn_i1" to="INTEG_XBVe0" />
+    <ReplacementString qualifier="Mgr_CreD11116" from="Mgr_CreD11116" to="MngdC_dMUO3" />
+    <ReplacementString qualifier="mBr_74" from="mBr_74" to="MBr_vjA55" />
+    <ReplacementString qualifier="ntfctns_o34" from="ntfctns_o34" to="Notn_zqe15" />
+    <ReplacementString qualifier="pm51_k" from="pm51_k" to="Pium_Nq63" />
+    <ReplacementString qualifier="PLanmGmT786" from="PLanmGmT786" to="PLGmT767" />
+    <ReplacementString qualifier="prvdr_o3" from="prvdr_o3" to="Prvdr_KOZ50" />
+    <ReplacementString qualifier="prvdr_crdntl_pe3" from="prvdr_crdntl_pe3" to="prdr_crdl_pe23" />
+    <ReplacementString qualifier="prvdr_nrll_y3" from="prvdr_nrll_y3" to="Prvdr_en_Ifd37" />
+    <ReplacementString qualifier="tsk_BaDqL60" from="tsk_BaDqL60" to="Task_Rlf55" />
+    <ReplacementString qualifier="tnnt_tst_e2" from="tnnt_tst_e2" to="tnnt_tzLQM71" />
+    <ReplacementString qualifier="txn_qZpbv96" from="txn_qZpbv96" to="txn_qZv96" />
+    <ReplacementString qualifier="Ua3tplKs_11" from="Ua3tplKs_11" to="tplKs_ngf11" />
+    <ReplacementString qualifier="tPlpCy_y6" from="tPlpCy_y6" to="tPl_pCy_wey36" />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
-  <TfsWorkspace>BIBWOS1ISV_1</TfsWorkspace>
+  <TfsWorkspace>UA3</TfsWorkspace>
 </RefactorConfig>
