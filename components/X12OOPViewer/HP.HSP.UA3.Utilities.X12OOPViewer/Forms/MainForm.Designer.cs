@@ -36,15 +36,16 @@
             this.sourceGroupBox = new System.Windows.Forms.GroupBox();
             this.sourceTextBox = new System.Windows.Forms.TextBox();
             this.parseButton = new System.Windows.Forms.Button();
-            this.parseGroupBox = new System.Windows.Forms.GroupBox();
-            this.parseTextBox = new System.Windows.Forms.TextBox();
             this.optionsGroupBox = new System.Windows.Forms.GroupBox();
             this.xmlncRadioButton = new System.Windows.Forms.RadioButton();
             this.xmlcRadioButton = new System.Windows.Forms.RadioButton();
             this.x12wsRadioButton = new System.Windows.Forms.RadioButton();
+            this.parseRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.findTextBox = new System.Windows.Forms.TextBox();
+            this.findButton = new System.Windows.Forms.Button();
+            this.findCountLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.sourceGroupBox.SuspendLayout();
-            this.parseGroupBox.SuspendLayout();
             this.optionsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,36 +132,6 @@
             this.parseButton.UseVisualStyleBackColor = true;
             this.parseButton.Click += new System.EventHandler(this.ParseButton_Click);
             // 
-            // parseGroupBox
-            // 
-            this.parseGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.parseGroupBox.AutoSize = true;
-            this.parseGroupBox.Controls.Add(this.parseTextBox);
-            this.parseGroupBox.Location = new System.Drawing.Point(12, 207);
-            this.parseGroupBox.Name = "parseGroupBox";
-            this.parseGroupBox.Size = new System.Drawing.Size(982, 340);
-            this.parseGroupBox.TabIndex = 3;
-            this.parseGroupBox.TabStop = false;
-            this.parseGroupBox.Text = "Parsed X12 String";
-            // 
-            // parseTextBox
-            // 
-            this.parseTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.parseTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.parseTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.parseTextBox.Location = new System.Drawing.Point(6, 19);
-            this.parseTextBox.MaxLength = 0;
-            this.parseTextBox.Multiline = true;
-            this.parseTextBox.Name = "parseTextBox";
-            this.parseTextBox.ReadOnly = true;
-            this.parseTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.parseTextBox.Size = new System.Drawing.Size(976, 311);
-            this.parseTextBox.TabIndex = 0;
-            // 
             // optionsGroupBox
             // 
             this.optionsGroupBox.Controls.Add(this.xmlncRadioButton);
@@ -207,13 +178,57 @@
             this.x12wsRadioButton.Text = "X12 with White Space";
             this.x12wsRadioButton.UseVisualStyleBackColor = true;
             // 
+            // parseRichTextBox
+            // 
+            this.parseRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.parseRichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.parseRichTextBox.Location = new System.Drawing.Point(12, 245);
+            this.parseRichTextBox.Name = "parseRichTextBox";
+            this.parseRichTextBox.ReadOnly = true;
+            this.parseRichTextBox.Size = new System.Drawing.Size(982, 302);
+            this.parseRichTextBox.TabIndex = 5;
+            this.parseRichTextBox.Text = "";
+            // 
+            // findTextBox
+            // 
+            this.findTextBox.Location = new System.Drawing.Point(18, 219);
+            this.findTextBox.Name = "findTextBox";
+            this.findTextBox.Size = new System.Drawing.Size(228, 20);
+            this.findTextBox.TabIndex = 6;
+            // 
+            // findButton
+            // 
+            this.findButton.Location = new System.Drawing.Point(253, 219);
+            this.findButton.Name = "findButton";
+            this.findButton.Size = new System.Drawing.Size(75, 23);
+            this.findButton.TabIndex = 7;
+            this.findButton.Text = "Find";
+            this.findButton.UseVisualStyleBackColor = true;
+            this.findButton.Click += new System.EventHandler(this.FindButton_Click);
+            // 
+            // findCountLabel
+            // 
+            this.findCountLabel.AutoSize = true;
+            this.findCountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.findCountLabel.ForeColor = System.Drawing.Color.Red;
+            this.findCountLabel.Location = new System.Drawing.Point(334, 224);
+            this.findCountLabel.Name = "findCountLabel";
+            this.findCountLabel.Size = new System.Drawing.Size(94, 15);
+            this.findCountLabel.TabIndex = 10;
+            this.findCountLabel.Text = " 0 entries found.";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1006, 559);
+            this.Controls.Add(this.findCountLabel);
+            this.Controls.Add(this.findButton);
+            this.Controls.Add(this.findTextBox);
+            this.Controls.Add(this.parseRichTextBox);
             this.Controls.Add(this.optionsGroupBox);
-            this.Controls.Add(this.parseGroupBox);
             this.Controls.Add(this.parseButton);
             this.Controls.Add(this.sourceGroupBox);
             this.Controls.Add(this.menuStrip1);
@@ -230,8 +245,6 @@
             this.menuStrip1.PerformLayout();
             this.sourceGroupBox.ResumeLayout(false);
             this.sourceGroupBox.PerformLayout();
-            this.parseGroupBox.ResumeLayout(false);
-            this.parseGroupBox.PerformLayout();
             this.optionsGroupBox.ResumeLayout(false);
             this.optionsGroupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -249,12 +262,14 @@
         private System.Windows.Forms.GroupBox sourceGroupBox;
         private System.Windows.Forms.TextBox sourceTextBox;
         private System.Windows.Forms.Button parseButton;
-        private System.Windows.Forms.GroupBox parseGroupBox;
-        private System.Windows.Forms.TextBox parseTextBox;
         private System.Windows.Forms.GroupBox optionsGroupBox;
         private System.Windows.Forms.RadioButton xmlncRadioButton;
         private System.Windows.Forms.RadioButton xmlcRadioButton;
         private System.Windows.Forms.RadioButton x12wsRadioButton;
+        private System.Windows.Forms.RichTextBox parseRichTextBox;
+        private System.Windows.Forms.TextBox findTextBox;
+        private System.Windows.Forms.Button findButton;
+        private System.Windows.Forms.Label findCountLabel;
     }
 }
 

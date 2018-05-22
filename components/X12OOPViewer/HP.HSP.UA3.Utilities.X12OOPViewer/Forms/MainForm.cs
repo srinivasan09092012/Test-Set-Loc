@@ -1,6 +1,7 @@
 ﻿using OopFactory.X12.Parsing;
 using OopFactory.X12.Parsing.Model;
 using System;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,8 @@ namespace HP.HSP.UA3.Utilities.X12OOPViewer.Forms
     /// </summary>
     public partial class MainForm : Form
     {
+        private string parsedX12Text = string.Empty;
+
         #region Main Form Events
         public MainForm()
         {
@@ -96,6 +99,9 @@ namespace HP.HSP.UA3.Utilities.X12OOPViewer.Forms
         #region Private Methods
         private void InitializeForm()
         {
+            this.findTextBox.Enabled = false;
+            this.findButton.Enabled = false;
+            this.findCountLabel.Visible = false;
         }
 
         private void ShowAbout()
@@ -111,23 +117,31 @@ namespace HP.HSP.UA3.Utilities.X12OOPViewer.Forms
             {
                 try
                 {
+                    this.findCountLabel.Visible = false;
+
                     string parsedText = string.Empty;
                     X12Parser parser = new X12Parser();
                     Interchange interchange = parser.ParseMultiple(new MemoryStream(Encoding.ASCII.GetBytes(sourceText))).First();
-                    if (x12wsRadioButton.Checked)
+                    if (this.x12wsRadioButton.Checked)
                     {
                         parsedText = interchange.SerializeToX12(true);
                     }
-                    else if (xmlcRadioButton.Checked)
+                    else if (this.xmlcRadioButton.Checked)
                     {
                         parsedText = interchange.Serialize(false);
                     }
-                    else if (xmlncRadioButton.Checked)
+                    else if (this.xmlncRadioButton.Checked)
                     {
                         parsedText = interchange.Serialize(true);
                     }
 
-                    this.parseTextBox.Text = parsedText;
+                    this.parsedX12Text = parsedText;
+                    this.parseRichTextBox.Text = this.parsedX12Text;
+
+                    this.findTextBox.Enabled = true;
+                    this.findButton.Enabled = true;
+
+                    this.parseRichTextBox.Focus();
                 }
                 catch (Exception ex)
                 {
@@ -136,5 +150,61 @@ namespace HP.HSP.UA3.Utilities.X12OOPViewer.Forms
             }
         }
         #endregion
+
+        private void FindButton_Click(object sender, EventArgs e)
+        {
+            int findCount = 0;
+
+            string findText = this.findTextBox.Text.Trim();
+            if (!string.IsNullOrEmpty(findText))
+            {
+                if (!string.IsNullOrEmpty(this.parseRichTextBox.Text))
+                {
+                    this.findCountLabel.Visible = true;
+
+                    this.parseRichTextBox.Clear();
+                    this.parseRichTextBox.Text = this.parsedX12Text;
+                    this.parseRichTextBox.SelectionStart = 0;
+                    findCount = this.SelectFindText(findText);
+                }
+            }
+
+            findCountLabel.Text = findCount == 1 ? findCount.ToString() + " entry found." : findCount.ToString() + " entries found.";
+        }
+
+        private int SelectFindText(string findText)
+        {
+            int cnt = 0;
+
+            int firstPos = this.parseRichTextBox.Find(findText, 0, RichTextBoxFinds.None);
+
+            if (firstPos >= 0)
+            {
+                cnt++;
+                this.parseRichTextBox.SelectionStart = firstPos;
+                this.parseRichTextBox.SelectionLength = findText.Length;
+                this.parseRichTextBox.SelectionBackColor = Color.Red;
+
+                for (int ix = firstPos + findText.Length; ;)
+                {
+                    int jx = this.parseRichTextBox.Find(findText, ix, RichTextBoxFinds.None);
+                    if (jx < 0) break;
+
+                    cnt++;
+                    this.parseRichTextBox.SelectionStart = jx;
+                    this.parseRichTextBox.SelectionLength = findText.Length;
+                    this.parseRichTextBox.SelectionBackColor = Color.Red;
+
+                    ix = jx + findText.Length;
+                }
+
+                this.parseRichTextBox.SelectionStart = firstPos;
+                this.parseRichTextBox.SelectionLength = 0;
+                this.parseRichTextBox.Focus();
+                this.parseRichTextBox.ScrollToCaret();
+            }
+
+            return cnt;
+        }
     }
 }
