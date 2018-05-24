@@ -1,5 +1,6 @@
 ﻿using OopFactory.X12.Parsing;
 using OopFactory.X12.Parsing.Model;
+using OopFactory.X12.Transformations;
 using System;
 using System.Drawing;
 using System.IO;
@@ -112,6 +113,7 @@ namespace HP.HSP.UA3.Utilities.X12OOPViewer.Forms
 
         private void ParseButton_Click(object sender, EventArgs e)
         {
+            this.parsedX12Text = string.Empty;
             string sourceText = this.sourceTextBox.Text;
             if (!string.IsNullOrEmpty(sourceText))
             {
@@ -119,29 +121,54 @@ namespace HP.HSP.UA3.Utilities.X12OOPViewer.Forms
                 {
                     this.findCountLabel.Visible = false;
 
-                    string parsedText = string.Empty;
                     X12Parser parser = new X12Parser();
-                    Interchange interchange = parser.ParseMultiple(new MemoryStream(Encoding.ASCII.GetBytes(sourceText))).First();
-                    if (this.x12wsRadioButton.Checked)
+                    if (this.x12wsRadioButton.Checked || this.xmlcRadioButton.Checked || this.xmlncRadioButton.Checked)
                     {
-                        parsedText = interchange.SerializeToX12(true);
+                        Interchange interchange = parser.ParseMultiple(new MemoryStream(Encoding.ASCII.GetBytes(sourceText))).First();
+                        if (this.x12wsRadioButton.Checked)
+                        {
+                            this.parsedX12Text = interchange.SerializeToX12(true);
+                        }
+                        else if (this.xmlcRadioButton.Checked)
+                        {
+                            this.parsedX12Text = interchange.Serialize(false);
+                        }
+                        else if (this.xmlncRadioButton.Checked)
+                        {
+                            this.parsedX12Text = interchange.Serialize(true);
+                        }
+
+                        this.parseRichTextBox.Text = this.parsedX12Text;
+                        this.parsedWebBrowser.Visible = false;
+                        this.parseRichTextBox.Visible = true;
+
+                        this.findTextBox.Enabled = true;
+                        this.findButton.Enabled = true;
+                        this.findTextBox.Visible = true;
+                        this.findButton.Visible = true;
+
+                        this.findTextBox.Text = string.Empty;
+                        findCountLabel.Visible = false;
+
+                        this.parseRichTextBox.Focus();
                     }
-                    else if (this.xmlcRadioButton.Checked)
+                    else if (this.htmlRadioButton.Checked)
                     {
-                        parsedText = interchange.Serialize(false);
+                        this.parseRichTextBox.Text = string.Empty;
+                        this.parseRichTextBox.Visible = false;
+
+                        this.findTextBox.Text = string.Empty;
+                        this.findTextBox.Visible = false;
+                        this.findButton.Visible = false;
+                        findCountLabel.Visible = false;
+
+                        var service = new X12HtmlTransformationService(new X12EdiParsingService(false, parser));
+                        this.parsedX12Text = service.Transform(sourceText);
+                        this.parsedWebBrowser.DocumentText = this.parsedX12Text;
+                        this.parsedWebBrowser.Visible = true;
+
+                        this.parsedWebBrowser.Focus();
                     }
-                    else if (this.xmlncRadioButton.Checked)
-                    {
-                        parsedText = interchange.Serialize(true);
-                    }
-
-                    this.parsedX12Text = parsedText;
-                    this.parseRichTextBox.Text = this.parsedX12Text;
-
-                    this.findTextBox.Enabled = true;
-                    this.findButton.Enabled = true;
-
-                    this.parseRichTextBox.Focus();
                 }
                 catch (Exception ex)
                 {
@@ -169,7 +196,7 @@ namespace HP.HSP.UA3.Utilities.X12OOPViewer.Forms
                 }
             }
 
-            findCountLabel.Text = findCount == 1 ? findCount.ToString() + " entry found." : findCount.ToString() + " entries found.";
+            findCountLabel.Text = findCount == 1 ? findCount.ToString() + " match found." : findCount.ToString() + " matches found.";
         }
 
         private int SelectFindText(string findText)

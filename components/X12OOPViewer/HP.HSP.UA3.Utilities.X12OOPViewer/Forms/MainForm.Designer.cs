@@ -37,6 +37,7 @@
             this.sourceTextBox = new System.Windows.Forms.TextBox();
             this.parseButton = new System.Windows.Forms.Button();
             this.optionsGroupBox = new System.Windows.Forms.GroupBox();
+            this.htmlRadioButton = new System.Windows.Forms.RadioButton();
             this.xmlncRadioButton = new System.Windows.Forms.RadioButton();
             this.xmlcRadioButton = new System.Windows.Forms.RadioButton();
             this.x12wsRadioButton = new System.Windows.Forms.RadioButton();
@@ -44,6 +45,7 @@
             this.findTextBox = new System.Windows.Forms.TextBox();
             this.findButton = new System.Windows.Forms.Button();
             this.findCountLabel = new System.Windows.Forms.Label();
+            this.parsedWebBrowser = new System.Windows.Forms.WebBrowser();
             this.menuStrip1.SuspendLayout();
             this.sourceGroupBox.SuspendLayout();
             this.optionsGroupBox.SuspendLayout();
@@ -134,15 +136,27 @@
             // 
             // optionsGroupBox
             // 
+            this.optionsGroupBox.Controls.Add(this.htmlRadioButton);
             this.optionsGroupBox.Controls.Add(this.xmlncRadioButton);
             this.optionsGroupBox.Controls.Add(this.xmlcRadioButton);
             this.optionsGroupBox.Controls.Add(this.x12wsRadioButton);
             this.optionsGroupBox.Location = new System.Drawing.Point(12, 154);
             this.optionsGroupBox.Name = "optionsGroupBox";
-            this.optionsGroupBox.Size = new System.Drawing.Size(555, 47);
+            this.optionsGroupBox.Size = new System.Drawing.Size(576, 47);
             this.optionsGroupBox.TabIndex = 4;
             this.optionsGroupBox.TabStop = false;
             this.optionsGroupBox.Text = "Options";
+            // 
+            // htmlRadioButton
+            // 
+            this.htmlRadioButton.AutoSize = true;
+            this.htmlRadioButton.Location = new System.Drawing.Point(490, 17);
+            this.htmlRadioButton.Name = "htmlRadioButton";
+            this.htmlRadioButton.Size = new System.Drawing.Size(55, 17);
+            this.htmlRadioButton.TabIndex = 3;
+            this.htmlRadioButton.TabStop = true;
+            this.htmlRadioButton.Text = "HTML";
+            this.htmlRadioButton.UseVisualStyleBackColor = true;
             // 
             // xmlncRadioButton
             // 
@@ -215,9 +229,24 @@
             this.findCountLabel.ForeColor = System.Drawing.Color.Red;
             this.findCountLabel.Location = new System.Drawing.Point(334, 224);
             this.findCountLabel.Name = "findCountLabel";
-            this.findCountLabel.Size = new System.Drawing.Size(94, 15);
+            this.findCountLabel.Size = new System.Drawing.Size(104, 15);
             this.findCountLabel.TabIndex = 10;
-            this.findCountLabel.Text = " 0 entries found.";
+            this.findCountLabel.Text = " 0 matches found.";
+            // 
+            // parsedWebBrowser
+            // 
+            this.parsedWebBrowser.AllowNavigation = false;
+            this.parsedWebBrowser.AllowWebBrowserDrop = false;
+            this.parsedWebBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.parsedWebBrowser.Location = new System.Drawing.Point(12, 219);
+            this.parsedWebBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.parsedWebBrowser.Name = "parsedWebBrowser";
+            this.parsedWebBrowser.Size = new System.Drawing.Size(981, 328);
+            this.parsedWebBrowser.TabIndex = 11;
+            this.parsedWebBrowser.Visible = false;
+            this.parsedWebBrowser.WebBrowserShortcutsEnabled = false;
             // 
             // MainForm
             // 
@@ -232,6 +261,7 @@
             this.Controls.Add(this.parseButton);
             this.Controls.Add(this.sourceGroupBox);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.parsedWebBrowser);
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(1022, 597);
@@ -270,6 +300,8 @@
         private System.Windows.Forms.TextBox findTextBox;
         private System.Windows.Forms.Button findButton;
         private System.Windows.Forms.Label findCountLabel;
+        private System.Windows.Forms.RadioButton htmlRadioButton;
+        private System.Windows.Forms.WebBrowser parsedWebBrowser;
     }
 }
 
