@@ -42,18 +42,10 @@ namespace BASEventsTestingUtil
 
             this.numericUpDownEventsNumbers.Value = int.Parse(ConfigurationManager.AppSettings["ThreadCount"].ToString());
 
-            ListItemSection eventSection = ConfigurationManager.GetSection("myEvents") as ListItemSection;
-            for (int i = 0; i < eventSection.Values.Count; i++)
-            {
-                this.cbEventName.Items.Add(new ListItem()
-                {
-                    Name = eventSection.Values[i].Name,
-                    Value = eventSection.Values[i].Value
-                }
-                );
-            }
+            var allowMultiple = bool.Parse(ConfigurationManager.AppSettings["AllowMultiple"]);
 
-            this.cbEventName.SelectedIndex = 0;
+            buttonPressureTest.Visible = allowMultiple;
+            numericUpDownEventsNumbers.Visible = allowMultiple;
         }
 
         private void LoadPayload(string filePath)
@@ -107,7 +99,15 @@ namespace BASEventsTestingUtil
             EventMessage em = new EventMessage();
             string serviceUrl = ConfigurationManager.AppSettings["ServiceUrlOverride"];
             serviceUrl = InitializeEvents(em, serviceUrl);
-            AsyncProcessEvents(em, serviceUrl, 1);
+            var cursor = this.Cursor;
+            Cursor.Current = Cursors.WaitCursor;
+            var message = ProcessEvents(em, serviceUrl, false);
+            Cursor.Current = cursor;
+
+            MessageBox.Show(message.Item1, "Event Result", MessageBoxButtons.OK, (message.Item2) ? MessageBoxIcon.Information : MessageBoxIcon.Error);
+            tbError.Text = message.Item1;
+            buttonNormalTest.Enabled = true;
+            buttonPressureTest.Enabled = true;
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -173,15 +173,18 @@ namespace BASEventsTestingUtil
         {
             var ui = TaskScheduler.FromCurrentSynchronizationContext();
 
+            Cursor.Current = Cursors.WaitCursor;
             Task.Factory.StartNew(() =>
             {
                 SubmitEventsParallel(em, serviceUrl, eventsCount, ui);
 
             }).ContinueWith((ante) =>
             {
-                MessageBox.Show (eventsCount + " Event(s) submitted, please see details in \"Logs\"!");
+                MessageBox.Show (eventsCount + " Event(s) submitted, please see details in \"Logs\"!", "Events Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 buttonNormalTest.Enabled = true;
                 buttonPressureTest.Enabled = true;
+
+                Cursor.Current = Cursors.AppStarting;
             }, ui);
         }
 
@@ -190,7 +193,7 @@ namespace BASEventsTestingUtil
             List<Task<string>> tasks = new List<Task<string>>();
             for (int i = 0; i < eventsCount; i++)
             {
-                tasks.Add(Task.Factory.StartNew(() => ProcessEvents(em, serviceUrl)));
+                tasks.Add(Task.Factory.StartNew(() => ProcessEvents(em, serviceUrl, true).Item1));
             }
             var finalTask = Task.Factory.ContinueWhenAll(tasks.ToArray(), submitEventsTasks =>
             {
@@ -245,17 +248,14 @@ namespace BASEventsTestingUtil
             buttonNormalTest.Enabled = false;
             buttonPressureTest.Enabled = false;
 
-            string state = "initializing event message properties";
-
             StringBuilder sb = new StringBuilder();
             var settings = new XmlWriterSettings();
             settings.Indent = true;
             settings.IndentChars = "  ";
             settings.Encoding = Encoding.Unicode;
 
-            state = "formatting payload into binary";
-
-
+            var eventNameAttribute = ConfigurationManager.AppSettings["EventNameAttribute"];
+            var eventNameSpaceAttribute = ConfigurationManager.AppSettings["EventNameSpaceAttribute"];
 
             em.TenantID = ConfigurationManager.AppSettings["TenantId"];
             if (string.IsNullOrWhiteSpace(em.TenantID))
@@ -266,13 +266,17 @@ namespace BASEventsTestingUtil
             em.EventType = ConfigurationManager.AppSettings["EventNameOverride"];
             if (string.IsNullOrWhiteSpace(em.EventType))
             {
-                em.EventType = ((ListItem)this.cbEventName.SelectedItem).Name;
+                var nm = this.payloadDocument.FirstChild.Attributes[eventNameAttribute].Value;
+                nm = nm.Substring(nm.LastIndexOf(':') + 1);
+                em.EventType = nm;
             }
 
             em.EventNamespace = ConfigurationManager.AppSettings["EventNamespaceOverride"];
             if (string.IsNullOrWhiteSpace(em.EventNamespace))
             {
-                em.EventNamespace = ((ListItem)this.cbEventName.SelectedItem).Value;
+                var nm = this.payloadDocument.FirstChild.Attributes[eventNameSpaceAttribute].Value;
+                nm = nm.Substring(nm.LastIndexOf('/') + 1);
+                em.EventNamespace = nm;
             }
 
             using (var writer = XmlWriter.Create(sb, settings))
@@ -290,47 +294,62 @@ namespace BASEventsTestingUtil
             return serviceUrl;
         }
 
-        private string ProcessEvents(EventMessage em, string serviceUrl)
+        private Tuple<string, bool> ProcessEvents(EventMessage em, string serviceUrl, bool multipleThreads)
         {
-            string state = string.Empty;
+            StringBuilder builder = new StringBuilder();
+            bool isSucceed = false;
             try
             {
-                state = "initializing remote client";
                 using (EventDistributionClient client = new EventDistributionClient())
                 {
-                    state = "setting remote url" + System.Environment.NewLine;
                     client.Endpoint.Address = new System.ServiceModel.EndpointAddress(serviceUrl);
 
-                    state += "opening remote client" + System.Environment.NewLine;
                     client.Open();
 
-                    state += "invoking event distribution service" + System.Environment.NewLine;
-
                     client.ProcessEvent(em);
-                    return "Succeed: Event submitted successfully in the thread#: '"+Thread.CurrentThread.ManagedThreadId+"'."+System.Environment.NewLine;
+
+                    if (multipleThreads)
+                        builder.Append("Succeed: Event submitted successfully in the thread#: '" + Thread.CurrentThread.ManagedThreadId + "'." + System.Environment.NewLine);
+                    else
+                        builder.Append("Event submitted successfully." + System.Environment.NewLine);
+
+                    isSucceed = true;
                 }
             }
             catch (FaultException<EventDistribution.ServiceException> svcEx)
             {
-                StringBuilder builder = new StringBuilder();
+                builder.Append("Event failed" + System.Environment.NewLine);
                 foreach (string message in svcEx.Detail.ErrorMessages)
                 {
                     builder.Append(message + Environment.NewLine);
                 }
-                svcEx.Data["ThreadID"] = Thread.CurrentThread.ManagedThreadId;
-                throw svcEx;
+
+                if (multipleThreads)
+                {
+                    svcEx.Data["ThreadID"] = Thread.CurrentThread.ManagedThreadId;
+
+                    throw svcEx;
+                }
             }
             catch (Exception ex)
             {
-                ex.Data["ThreadID"] = Thread.CurrentThread.ManagedThreadId;
-                throw ex;
+                builder.Append("Event failed" + System.Environment.NewLine);
+                builder.Append(ex.Message + System.Environment.NewLine);
+
+                if (multipleThreads)
+                {
+                    ex.Data["ThreadID"] = Thread.CurrentThread.ManagedThreadId;
+
+                    throw ex;
+                }
             }
+
+            return new Tuple<string, bool>(builder.ToString(), isSucceed);
         }
 
         private void numericUpDownEventsNumbers_ValueChanged(object sender, EventArgs e)
         {
             threadCount = (int)this.numericUpDownEventsNumbers.Value;
-            this.buttonPressureTest.Text = "Pressure Test (" + threadCount + ") Requests";
         }
     }
 }
