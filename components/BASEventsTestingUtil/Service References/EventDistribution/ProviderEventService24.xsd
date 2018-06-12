@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:40520/EmployeeEventService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:import schemaLocation="http://localhost:40520/EmployeeEventService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="https://localhost:44396/ProviderEventService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="https://localhost:44396/ProviderEventService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="ServiceException">
     <xs:sequence>
       <xs:element minOccurs="0" name="ErrorCode" type="tns:ServiceException.StatusCodeType" />
@@ -57,4 +57,33 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="ServiceException.StatusCodeType" nillable="true" type="tns:ServiceException.StatusCodeType" />
+  <xs:complexType name="BusinessValidationException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BusinessMessages" nillable="true" type="tns:ArrayOfBusinessExceptionMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BusinessValidationException" nillable="true" type="tns:BusinessValidationException" />
+  <xs:complexType name="ArrayOfBusinessExceptionMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BusinessExceptionMessage" nillable="true" type="tns:BusinessExceptionMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBusinessExceptionMessage" nillable="true" type="tns:ArrayOfBusinessExceptionMessage" />
+  <xs:complexType name="BusinessExceptionMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FieldName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageDefault" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageType" type="tns:BusinessExceptionMessage.MessageTypes" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BusinessExceptionMessage" nillable="true" type="tns:BusinessExceptionMessage" />
+  <xs:simpleType name="BusinessExceptionMessage.MessageTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Informational" />
+      <xs:enumeration value="Warning" />
+      <xs:enumeration value="Error" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BusinessExceptionMessage.MessageTypes" nillable="true" type="tns:BusinessExceptionMessage.MessageTypes" />
 </xs:schema>

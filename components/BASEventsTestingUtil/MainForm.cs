@@ -300,13 +300,13 @@ namespace BASEventsTestingUtil
             bool isSucceed = false;
             try
             {
-                using (EventDistributionClient client = new EventDistributionClient())
+                BasicHttpBinding binding = new BasicHttpBinding();
+                binding.Security.Mode = BasicHttpSecurityMode.Transport;
+                EndpointAddress address = new EndpointAddress(serviceUrl);
+                using (ChannelFactory<IEventDistribution> factory = new ChannelFactory<IEventDistribution>(binding, address))
                 {
-                    client.Endpoint.Address = new System.ServiceModel.EndpointAddress(serviceUrl);
-
-                    client.Open();
-
-                    client.ProcessEvent(em);
+                    EventDistribution.IEventDistribution proxy = factory.CreateChannel();
+                    proxy.ProcessEvent(em);
 
                     if (multipleThreads)
                         builder.Append("Succeed: Event submitted successfully in the thread#: '" + Thread.CurrentThread.ManagedThreadId + "'." + System.Environment.NewLine);
@@ -315,6 +315,22 @@ namespace BASEventsTestingUtil
 
                     isSucceed = true;
                 }
+
+                ////using (EventDistributionClient client = new EventDistributionClient())
+                ////{
+                ////    client.Endpoint.Address = new System.ServiceModel.EndpointAddress(serviceUrl);
+
+                ////    client.Open();
+
+                ////    client.ProcessEvent(em);
+
+                ////    if (multipleThreads)
+                ////        builder.Append("Succeed: Event submitted successfully in the thread#: '" + Thread.CurrentThread.ManagedThreadId + "'." + System.Environment.NewLine);
+                ////    else
+                ////        builder.Append("Event submitted successfully." + System.Environment.NewLine);
+
+                ////    isSucceed = true;
+                ////}
             }
             catch (FaultException<EventDistribution.ServiceException> svcEx)
             {
@@ -329,6 +345,21 @@ namespace BASEventsTestingUtil
                     svcEx.Data["ThreadID"] = Thread.CurrentThread.ManagedThreadId;
 
                     throw svcEx;
+                }
+            }
+            catch (FaultException<EventDistribution.BusinessValidationException> busEx)
+            {
+                builder.Append("Event failed" + System.Environment.NewLine);
+                foreach (var message in busEx.Detail.BusinessMessages)
+                {
+                    builder.Append(string.Format("Business Error: {0}; Message Key: {1}" + Environment.NewLine, message.MessageDefault, message.MessageKey) + Environment.NewLine);
+                }
+
+                if (multipleThreads)
+                {
+                    busEx.Data["ThreadID"] = Thread.CurrentThread.ManagedThreadId;
+
+                    throw busEx;
                 }
             }
             catch (Exception ex)

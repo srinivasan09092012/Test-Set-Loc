@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="HP.HSP.UA3.Eventing" elementFormDefault="qualified" targetNamespace="HP.HSP.UA3.Eventing" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:40520/EmployeeEventService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Eventing" />
+  <xs:import schemaLocation="https://localhost:44396/ProviderEventService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Eventing" />
   <xs:element name="ProcessEvent">
     <xs:complexType>
       <xs:sequence>

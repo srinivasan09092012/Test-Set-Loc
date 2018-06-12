@@ -44,6 +44,9 @@ namespace BASEventsTestingUtil.EventDistribution {
         private string EventTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ModuleNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SequenceNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -152,6 +155,19 @@ namespace BASEventsTestingUtil.EventDistribution {
                 if ((object.ReferenceEquals(this.EventTypeField, value) != true)) {
                     this.EventTypeField = value;
                     this.RaisePropertyChanged("EventType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ModuleName {
+            get {
+                return this.ModuleNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ModuleNameField, value) != true)) {
+                    this.ModuleNameField = value;
+                    this.RaisePropertyChanged("ModuleName");
                 }
             }
         }
@@ -305,12 +321,166 @@ namespace BASEventsTestingUtil.EventDistribution {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+    [System.SerializableAttribute()]
+    public partial class BusinessValidationException : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<BASEventsTestingUtil.EventDistribution.BusinessExceptionMessage> BusinessMessagesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<BASEventsTestingUtil.EventDistribution.BusinessExceptionMessage> BusinessMessages {
+            get {
+                return this.BusinessMessagesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BusinessMessagesField, value) != true)) {
+                    this.BusinessMessagesField = value;
+                    this.RaisePropertyChanged("BusinessMessages");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BusinessExceptionMessage", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+    [System.SerializableAttribute()]
+    public partial class BusinessExceptionMessage : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FieldNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageDefaultField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageKeyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BASEventsTestingUtil.EventDistribution.BusinessExceptionMessage.MessageTypes MessageTypeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FieldName {
+            get {
+                return this.FieldNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FieldNameField, value) != true)) {
+                    this.FieldNameField = value;
+                    this.RaisePropertyChanged("FieldName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MessageDefault {
+            get {
+                return this.MessageDefaultField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageDefaultField, value) != true)) {
+                    this.MessageDefaultField = value;
+                    this.RaisePropertyChanged("MessageDefault");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MessageKey {
+            get {
+                return this.MessageKeyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageKeyField, value) != true)) {
+                    this.MessageKeyField = value;
+                    this.RaisePropertyChanged("MessageKey");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BASEventsTestingUtil.EventDistribution.BusinessExceptionMessage.MessageTypes MessageType {
+            get {
+                return this.MessageTypeField;
+            }
+            set {
+                if ((this.MessageTypeField.Equals(value) != true)) {
+                    this.MessageTypeField = value;
+                    this.RaisePropertyChanged("MessageType");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="BusinessExceptionMessage.MessageTypes", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        public enum MessageTypes : int {
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Informational = 0,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Warning = 1,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Error = 2,
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="HP.HSP.UA3.Eventing", ConfigurationName="EventDistribution.IEventDistribution")]
     public interface IEventDistribution {
         
         [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UA3.Eventing/IEventDistribution/ProcessEvent", ReplyAction="HP.HSP.UA3.Eventing/IEventDistribution/ProcessEventResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(BASEventsTestingUtil.EventDistribution.ServiceException), Action="HP.HSP.UA3.Eventing/IEventDistribution/ProcessEventServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BASEventsTestingUtil.EventDistribution.BusinessValidationException), Action="HP.HSP.UA3.Eventing/IEventDistribution/ProcessEventBusinessValidationExceptionFau" +
+            "lt", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
         void ProcessEvent(BASEventsTestingUtil.EventDistribution.EventMessage @event);
     }
     

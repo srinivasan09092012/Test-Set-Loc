@@ -9,6 +9,7 @@
       <xs:element minOccurs="0" name="EventNamespace" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="EventPayLoad" nillable="true" type="xs:base64Binary" />
       <xs:element minOccurs="0" name="EventType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModuleName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SequenceNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TenantID" nillable="true" type="xs:string" />

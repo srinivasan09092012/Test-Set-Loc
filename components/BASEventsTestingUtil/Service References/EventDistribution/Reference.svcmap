@@ -20,17 +20,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:40520/EmployeeEventService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://localhost:44396/ProviderEventService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="EmployeeEventService3.xsd" MetadataType="Schema" ID="fac82bb9-c8ea-4386-8360-411bc10a3650" SourceId="1" SourceUrl="http://localhost:40520/EmployeeEventService.svc?xsd=xsd1" />
-    <MetadataFile FileName="EmployeeEventService31.xsd" MetadataType="Schema" ID="4f9f5f81-26a1-4a7c-8cac-8846c66e5ad5" SourceId="1" SourceUrl="http://localhost:40520/EmployeeEventService.svc?xsd=xsd4" />
-    <MetadataFile FileName="EmployeeEventService2.wsdl" MetadataType="Wsdl" ID="0a3b2b00-64a3-4248-84a8-d6c282bd7428" SourceId="1" SourceUrl="http://localhost:40520/EmployeeEventService.svc?wsdl=wsdl0" />
-    <MetadataFile FileName="EmployeeEventService32.xsd" MetadataType="Schema" ID="6acbd3a5-51e7-4318-b313-89b6476f3592" SourceId="1" SourceUrl="http://localhost:40520/EmployeeEventService.svc?xsd=xsd3" />
-    <MetadataFile FileName="EmployeeEventService33.xsd" MetadataType="Schema" ID="1ea45cc8-ffdc-4ccc-a656-f5d3569adf2b" SourceId="1" SourceUrl="http://localhost:40520/EmployeeEventService.svc?xsd=xsd0" />
-    <MetadataFile FileName="EmployeeEventService21.wsdl" MetadataType="Wsdl" ID="8bc0d648-64f3-4c06-9159-ee9e78a971aa" SourceId="1" SourceUrl="http://localhost:40520/EmployeeEventService.svc?wsdl" />
-    <MetadataFile FileName="EmployeeEventService1.disco" MetadataType="Disco" ID="bdfe6f44-6fff-4e7f-be6f-ab56ee59fa9b" SourceId="1" SourceUrl="http://localhost:40520/EmployeeEventService.svc?disco" />
-    <MetadataFile FileName="EmployeeEventService34.xsd" MetadataType="Schema" ID="8c98d9e0-9a90-40c2-898b-235de0a0eac2" SourceId="1" SourceUrl="http://localhost:40520/EmployeeEventService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ProviderEventService8.wsdl" MetadataType="Wsdl" ID="edf67fc6-993d-4562-babf-bcc6967b1802" SourceId="1" SourceUrl="https://localhost:44396/ProviderEventService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="ProviderEventService20.xsd" MetadataType="Schema" ID="0a58c24d-e7de-4142-bcd1-831bbde679be" SourceId="1" SourceUrl="https://localhost:44396/ProviderEventService.svc?xsd=xsd4" />
+    <MetadataFile FileName="ProviderEventService21.xsd" MetadataType="Schema" ID="e4abfdec-600b-4d25-9aa8-71ed70514408" SourceId="1" SourceUrl="https://localhost:44396/ProviderEventService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ProviderEventService4.disco" MetadataType="Disco" ID="de31dfb4-5d60-4bb3-a151-a8f8be5ba3df" SourceId="1" SourceUrl="https://localhost:44396/ProviderEventService.svc?disco" />
+    <MetadataFile FileName="ProviderEventService22.xsd" MetadataType="Schema" ID="ddca2ee9-5b9f-4bf0-904b-69fba53f4c7a" SourceId="1" SourceUrl="https://localhost:44396/ProviderEventService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ProviderEventService9.wsdl" MetadataType="Wsdl" ID="7eb225b1-9306-4c2f-b69e-29000bc55b1e" SourceId="1" SourceUrl="https://localhost:44396/ProviderEventService.svc?wsdl" />
+    <MetadataFile FileName="ProviderEventService23.xsd" MetadataType="Schema" ID="17a74078-f462-430d-94a2-5d114384c425" SourceId="1" SourceUrl="https://localhost:44396/ProviderEventService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ProviderEventService24.xsd" MetadataType="Schema" ID="c242a366-29fc-4f3e-97ff-71e8666a49c3" SourceId="1" SourceUrl="https://localhost:44396/ProviderEventService.svc?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

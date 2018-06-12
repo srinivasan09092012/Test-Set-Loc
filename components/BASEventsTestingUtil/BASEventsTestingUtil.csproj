@@ -106,21 +106,72 @@
     <None Include="Service References\EventDistribution\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\EventDistribution\EmployeeEventService2.wsdl" />
-    <None Include="Service References\EventDistribution\EmployeeEventService21.wsdl" />
-    <None Include="Service References\EventDistribution\EmployeeEventService3.xsd">
+    <None Include="Service References\EventDistribution\ProviderEventService10.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EventDistribution\EmployeeEventService31.xsd">
+    <None Include="Service References\EventDistribution\ProviderEventService11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EventDistribution\EmployeeEventService32.xsd">
+    <None Include="Service References\EventDistribution\ProviderEventService12.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EventDistribution\EmployeeEventService33.xsd">
+    <None Include="Service References\EventDistribution\ProviderEventService13.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EventDistribution\EmployeeEventService34.xsd">
+    <None Include="Service References\EventDistribution\ProviderEventService14.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\ProviderEventService15.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\ProviderEventService16.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\ProviderEventService17.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\ProviderEventService18.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\ProviderEventService19.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\ProviderEventService2.wsdl" />
+    <None Include="Service References\EventDistribution\ProviderEventService20.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\ProviderEventService21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\ProviderEventService22.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\ProviderEventService23.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\ProviderEventService24.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\ProviderEventService3.wsdl" />
+    <None Include="Service References\EventDistribution\ProviderEventService4.wsdl" />
+    <None Include="Service References\EventDistribution\ProviderEventService5.wsdl" />
+    <None Include="Service References\EventDistribution\ProviderEventService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\ProviderEventService6.wsdl" />
+    <None Include="Service References\EventDistribution\ProviderEventService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\ProviderEventService7.wsdl" />
+    <None Include="Service References\EventDistribution\ProviderEventService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\ProviderEventService8.wsdl" />
+    <None Include="Service References\EventDistribution\ProviderEventService8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\ProviderEventService9.wsdl" />
+    <None Include="Service References\EventDistribution\ProviderEventService9.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\EventDistribution\Reference.svcmap">
@@ -129,7 +180,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\EventDistribution\EmployeeEventService1.disco" />
+    <None Include="Service References\EventDistribution\ProviderEventService1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EventDistribution\ProviderEventService2.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EventDistribution\ProviderEventService3.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EventDistribution\ProviderEventService4.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
