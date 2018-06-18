@@ -111,7 +111,8 @@ namespace HP.HSP.UA3.Administration.BAS.DataLists.DataAccess.Entities
                 .Property(e => e.Description)
                 .IsUnicode(false);
 
-            modelBuilder.HasDefaultSchema(ConfigurationManager.AppSettings["SchemaName"].ToString());
+            string schema = this.GetSchemaName(string.Empty);
+            modelBuilder.HasDefaultSchema(schema);
         }
     }
 }
