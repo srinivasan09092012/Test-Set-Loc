@@ -102,7 +102,7 @@ namespace LoadReferenceData
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
-                LoadQuery("ReferenceCodes(" + tenantID + ")?$expand=Children,Attributes", "ReferenceCodes");
+                LoadQuery("GetDataListItems(TenantID=" + tenantID + ",ContentID='Core.DataList.ApplicationLocales')/?$expand=Children,Attributes", "ReferenceCodes");
             }).ContinueWith(c => action("ReferenceCodes", c)));
 
             tasks.Add(Task.Factory.StartNew(() =>
