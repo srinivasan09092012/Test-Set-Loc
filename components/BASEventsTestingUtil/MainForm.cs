@@ -301,6 +301,8 @@ namespace BASEventsTestingUtil
             try
             {
                 BasicHttpBinding binding = new BasicHttpBinding();
+                binding.ReceiveTimeout = new TimeSpan(0, 20, 0);
+                binding.SendTimeout = new TimeSpan(0, 20, 0);
                 binding.Security.Mode = BasicHttpSecurityMode.Transport;
                 EndpointAddress address = new EndpointAddress(serviceUrl);
                 using (ChannelFactory<IEventDistribution> factory = new ChannelFactory<IEventDistribution>(binding, address))
