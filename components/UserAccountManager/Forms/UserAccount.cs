@@ -121,6 +121,9 @@ namespace UserAccountManager.Forms
             }
             PhoneTextBox.Text = this.UserAccount.Identity.PhoneNumber;
             UserNameTextBox.Text = this.UserAccount.Identity.UserName;
+            ExpiredCheckbox.Checked = this.UserAccount.IsExpired;
+            LockedCheckbox.Checked = this.UserAccount.IsLockedOut;
+
             PasswordTextBox.Text = string.Empty;
             ConfirmPasswordTextBox.Text = string.Empty;
             foreach (string role in this.UserAccount.Groups)

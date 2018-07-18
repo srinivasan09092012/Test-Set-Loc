@@ -79,6 +79,8 @@
             this.effectiveDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VOSTagsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.LockedCheckbox = new System.Windows.Forms.CheckBox();
+            this.ExpiredCheckbox = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.IdenttyGroupBox.SuspendLayout();
             this.SecurityGroupBox.SuspendLayout();
@@ -124,6 +126,8 @@
             // 
             // IdenttyGroupBox
             // 
+            this.IdenttyGroupBox.Controls.Add(this.ExpiredCheckbox);
+            this.IdenttyGroupBox.Controls.Add(this.LockedCheckbox);
             this.IdenttyGroupBox.Controls.Add(this.PhoneTextBox);
             this.IdenttyGroupBox.Controls.Add(this.label7);
             this.IdenttyGroupBox.Controls.Add(this.DisplayNameTextBox);
@@ -564,6 +568,28 @@
             // 
             this.VOSTagsBindingSource.DataSource = typeof(UserAccountManager.Domain.UserVOSTag);
             // 
+            // LockedCheckbox
+            // 
+            this.LockedCheckbox.AutoSize = true;
+            this.LockedCheckbox.Enabled = false;
+            this.LockedCheckbox.Location = new System.Drawing.Point(549, 101);
+            this.LockedCheckbox.Name = "LockedCheckbox";
+            this.LockedCheckbox.Size = new System.Drawing.Size(105, 17);
+            this.LockedCheckbox.TabIndex = 14;
+            this.LockedCheckbox.Text = "Account Locked";
+            this.LockedCheckbox.UseVisualStyleBackColor = true;
+            // 
+            // ExpiredCheckbox
+            // 
+            this.ExpiredCheckbox.AutoSize = true;
+            this.ExpiredCheckbox.Enabled = false;
+            this.ExpiredCheckbox.Location = new System.Drawing.Point(549, 124);
+            this.ExpiredCheckbox.Name = "ExpiredCheckbox";
+            this.ExpiredCheckbox.Size = new System.Drawing.Size(104, 17);
+            this.ExpiredCheckbox.TabIndex = 15;
+            this.ExpiredCheckbox.Text = "Account Expired";
+            this.ExpiredCheckbox.UseVisualStyleBackColor = true;
+            // 
             // UserAccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -660,5 +686,7 @@
         private System.Windows.Forms.BindingSource RegQualifiersBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn keyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.CheckBox ExpiredCheckbox;
+        private System.Windows.Forms.CheckBox LockedCheckbox;
     }
 }

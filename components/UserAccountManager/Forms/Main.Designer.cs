@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserSearchGroupBox = new System.Windows.Forms.GroupBox();
+            this.PhoneNumberTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.UserGroupsComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.UserSearchButton = new System.Windows.Forms.Button();
@@ -55,6 +57,14 @@
             this.UserCloneButton = new System.Windows.Forms.Button();
             this.UserResultsDataGridView = new System.Windows.Forms.DataGridView();
             this.SelColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.StatusStripLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.UserAddButton = new System.Windows.Forms.Button();
+            this.UserOtherActionsGroupBox = new System.Windows.Forms.GroupBox();
+            this.TabControl = new System.Windows.Forms.TabControl();
+            this.UserAccountTab = new System.Windows.Forms.TabPage();
+            this.LockedOutCheckbox = new System.Windows.Forms.CheckBox();
+            this.AccountExpiredCheckbox = new System.Windows.Forms.CheckBox();
             this.UserNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MiddleNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,22 +73,16 @@
             this.EmailAddressColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhoneNumberColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserAccountsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.StatusStripLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.UserAddButton = new System.Windows.Forms.Button();
-            this.UserOtherActionsGroupBox = new System.Windows.Forms.GroupBox();
-            this.TabControl = new System.Windows.Forms.TabControl();
-            this.UserAccountTab = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
             this.UserSearchGroupBox.SuspendLayout();
             this.UserResultsGroupBox.SuspendLayout();
             this.UserResultActionsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserResultsDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserAccountsBindingSource)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.UserOtherActionsGroupBox.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.UserAccountTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UserAccountsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -114,6 +118,10 @@
             // 
             // UserSearchGroupBox
             // 
+            this.UserSearchGroupBox.Controls.Add(this.AccountExpiredCheckbox);
+            this.UserSearchGroupBox.Controls.Add(this.LockedOutCheckbox);
+            this.UserSearchGroupBox.Controls.Add(this.PhoneNumberTextBox);
+            this.UserSearchGroupBox.Controls.Add(this.label7);
             this.UserSearchGroupBox.Controls.Add(this.UserGroupsComboBox);
             this.UserSearchGroupBox.Controls.Add(this.label6);
             this.UserSearchGroupBox.Controls.Add(this.UserSearchButton);
@@ -128,10 +136,31 @@
             this.UserSearchGroupBox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.UserSearchGroupBox.Location = new System.Drawing.Point(6, 6);
             this.UserSearchGroupBox.Name = "UserSearchGroupBox";
-            this.UserSearchGroupBox.Size = new System.Drawing.Size(578, 140);
+            this.UserSearchGroupBox.Size = new System.Drawing.Size(578, 168);
             this.UserSearchGroupBox.TabIndex = 0;
             this.UserSearchGroupBox.TabStop = false;
             this.UserSearchGroupBox.Text = "Search";
+            // 
+            // PhoneNumberTextBox
+            // 
+            this.PhoneNumberTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PhoneNumberTextBox.Location = new System.Drawing.Point(94, 84);
+            this.PhoneNumberTextBox.Mask = "(999) 000-0000";
+            this.PhoneNumberTextBox.Name = "PhoneNumberTextBox";
+            this.PhoneNumberTextBox.Size = new System.Drawing.Size(137, 20);
+            this.PhoneNumberTextBox.TabIndex = 9;
+            this.PhoneNumberTextBox.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.PhoneNumberTextBox.TextChanged += new System.EventHandler(this.PhoneNumberTextBox_TextChanged);
+            this.PhoneNumberTextBox.Leave += new System.EventHandler(this.PhoneNumberTextBox_Leave);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(13, 84);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 13);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Phone Number";
             // 
             // UserGroupsComboBox
             // 
@@ -147,17 +176,17 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(250, 31);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 13);
+            this.label6.Size = new System.Drawing.Size(36, 13);
             this.label6.TabIndex = 2;
             this.label6.Text = "Group";
             // 
             // UserSearchButton
             // 
             this.UserSearchButton.Enabled = false;
-            this.UserSearchButton.Location = new System.Drawing.Point(488, 101);
+            this.UserSearchButton.Location = new System.Drawing.Point(497, 136);
             this.UserSearchButton.Name = "UserSearchButton";
             this.UserSearchButton.Size = new System.Drawing.Size(75, 23);
-            this.UserSearchButton.TabIndex = 10;
+            this.UserSearchButton.TabIndex = 15;
             this.UserSearchButton.Text = "&Search";
             this.UserSearchButton.UseVisualStyleBackColor = true;
             this.UserSearchButton.Click += new System.EventHandler(this.UserSearchButton_Click);
@@ -165,26 +194,26 @@
             // EmailTextBox
             // 
             this.EmailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.EmailTextBox.Location = new System.Drawing.Point(94, 101);
+            this.EmailTextBox.Location = new System.Drawing.Point(94, 110);
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(375, 20);
-            this.EmailTextBox.TabIndex = 9;
+            this.EmailTextBox.TabIndex = 11;
             this.EmailTextBox.TextChanged += new System.EventHandler(this.EmailTextBox_TextChanged);
             this.EmailTextBox.Leave += new System.EventHandler(this.EmailTextBox_Leave);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 101);
+            this.label4.Location = new System.Drawing.Point(13, 110);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 13);
-            this.label4.TabIndex = 8;
+            this.label4.TabIndex = 10;
             this.label4.Text = "Email";
             // 
             // LastNameTextBox
             // 
             this.LastNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LastNameTextBox.Location = new System.Drawing.Point(320, 65);
+            this.LastNameTextBox.Location = new System.Drawing.Point(320, 58);
             this.LastNameTextBox.Name = "LastNameTextBox";
             this.LastNameTextBox.Size = new System.Drawing.Size(149, 20);
             this.LastNameTextBox.TabIndex = 7;
@@ -194,7 +223,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(250, 65);
+            this.label3.Location = new System.Drawing.Point(250, 58);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 6;
@@ -203,7 +232,7 @@
             // FirstNameTextBox
             // 
             this.FirstNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FirstNameTextBox.Location = new System.Drawing.Point(95, 65);
+            this.FirstNameTextBox.Location = new System.Drawing.Point(94, 58);
             this.FirstNameTextBox.Name = "FirstNameTextBox";
             this.FirstNameTextBox.Size = new System.Drawing.Size(137, 20);
             this.FirstNameTextBox.TabIndex = 5;
@@ -213,7 +242,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 65);
+            this.label2.Location = new System.Drawing.Point(14, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 4;
@@ -222,7 +251,7 @@
             // UserNameTextBox
             // 
             this.UserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.UserNameTextBox.Location = new System.Drawing.Point(95, 31);
+            this.UserNameTextBox.Location = new System.Drawing.Point(94, 31);
             this.UserNameTextBox.Name = "UserNameTextBox";
             this.UserNameTextBox.Size = new System.Drawing.Size(137, 20);
             this.UserNameTextBox.TabIndex = 1;
@@ -265,9 +294,9 @@
             this.UserResultsGroupBox.Controls.Add(this.UserResultActionsGroupBox);
             this.UserResultsGroupBox.Controls.Add(this.UserResultsDataGridView);
             this.UserResultsGroupBox.Enabled = false;
-            this.UserResultsGroupBox.Location = new System.Drawing.Point(6, 152);
+            this.UserResultsGroupBox.Location = new System.Drawing.Point(6, 180);
             this.UserResultsGroupBox.Name = "UserResultsGroupBox";
-            this.UserResultsGroupBox.Size = new System.Drawing.Size(979, 322);
+            this.UserResultsGroupBox.Size = new System.Drawing.Size(979, 363);
             this.UserResultsGroupBox.TabIndex = 1;
             this.UserResultsGroupBox.TabStop = false;
             this.UserResultsGroupBox.Text = "Results";
@@ -278,7 +307,7 @@
             this.UserResultActionsGroupBox.Controls.Add(this.UserResetPasswordButton);
             this.UserResultActionsGroupBox.Controls.Add(this.UserDeleteButton);
             this.UserResultActionsGroupBox.Controls.Add(this.UserCloneButton);
-            this.UserResultActionsGroupBox.Location = new System.Drawing.Point(616, 264);
+            this.UserResultActionsGroupBox.Location = new System.Drawing.Point(616, 305);
             this.UserResultActionsGroupBox.Name = "UserResultActionsGroupBox";
             this.UserResultActionsGroupBox.Size = new System.Drawing.Size(364, 56);
             this.UserResultActionsGroupBox.TabIndex = 1;
@@ -341,7 +370,7 @@
             this.UserResultsDataGridView.MultiSelect = false;
             this.UserResultsDataGridView.Name = "UserResultsDataGridView";
             this.UserResultsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.UserResultsDataGridView.Size = new System.Drawing.Size(973, 242);
+            this.UserResultsDataGridView.Size = new System.Drawing.Size(973, 283);
             this.UserResultsDataGridView.TabIndex = 0;
             this.UserResultsDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UserResultsDataGridView_CellContentClick);
             this.UserResultsDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UserResultsDataGridView_CellDoubleClick);
@@ -356,6 +385,90 @@
             this.SelColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.SelColumn.TrueValue = "true";
             this.SelColumn.Width = 35;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.StatusStripLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 668);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1024, 22);
+            this.statusStrip1.TabIndex = 4;
+            this.statusStrip1.Text = "StatusStrip";
+            // 
+            // StatusStripLabel
+            // 
+            this.StatusStripLabel.Name = "StatusStripLabel";
+            this.StatusStripLabel.Size = new System.Drawing.Size(132, 17);
+            this.StatusStripLabel.Text = "Initializing application...";
+            // 
+            // UserAddButton
+            // 
+            this.UserAddButton.Location = new System.Drawing.Point(17, 31);
+            this.UserAddButton.Name = "UserAddButton";
+            this.UserAddButton.Size = new System.Drawing.Size(125, 23);
+            this.UserAddButton.TabIndex = 10;
+            this.UserAddButton.Text = "&Add New Account";
+            this.UserAddButton.UseVisualStyleBackColor = true;
+            this.UserAddButton.Click += new System.EventHandler(this.UserAddButton_Click);
+            // 
+            // UserOtherActionsGroupBox
+            // 
+            this.UserOtherActionsGroupBox.Controls.Add(this.UserAddButton);
+            this.UserOtherActionsGroupBox.Location = new System.Drawing.Point(590, 6);
+            this.UserOtherActionsGroupBox.Name = "UserOtherActionsGroupBox";
+            this.UserOtherActionsGroupBox.Size = new System.Drawing.Size(395, 168);
+            this.UserOtherActionsGroupBox.TabIndex = 1;
+            this.UserOtherActionsGroupBox.TabStop = false;
+            this.UserOtherActionsGroupBox.Text = "User Actions";
+            // 
+            // TabControl
+            // 
+            this.TabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TabControl.Controls.Add(this.UserAccountTab);
+            this.TabControl.Enabled = false;
+            this.TabControl.Location = new System.Drawing.Point(12, 80);
+            this.TabControl.Name = "TabControl";
+            this.TabControl.SelectedIndex = 0;
+            this.TabControl.Size = new System.Drawing.Size(1000, 575);
+            this.TabControl.TabIndex = 3;
+            // 
+            // UserAccountTab
+            // 
+            this.UserAccountTab.Controls.Add(this.UserSearchGroupBox);
+            this.UserAccountTab.Controls.Add(this.UserOtherActionsGroupBox);
+            this.UserAccountTab.Controls.Add(this.UserResultsGroupBox);
+            this.UserAccountTab.Location = new System.Drawing.Point(4, 22);
+            this.UserAccountTab.Name = "UserAccountTab";
+            this.UserAccountTab.Padding = new System.Windows.Forms.Padding(3);
+            this.UserAccountTab.Size = new System.Drawing.Size(992, 549);
+            this.UserAccountTab.TabIndex = 0;
+            this.UserAccountTab.Text = "User Accounts";
+            this.UserAccountTab.UseVisualStyleBackColor = true;
+            // 
+            // LockedOutCheckbox
+            // 
+            this.LockedOutCheckbox.AutoSize = true;
+            this.LockedOutCheckbox.Location = new System.Drawing.Point(95, 136);
+            this.LockedOutCheckbox.Name = "LockedOutCheckbox";
+            this.LockedOutCheckbox.Size = new System.Drawing.Size(82, 17);
+            this.LockedOutCheckbox.TabIndex = 13;
+            this.LockedOutCheckbox.Text = "Locked Out";
+            this.LockedOutCheckbox.UseVisualStyleBackColor = true;
+            this.LockedOutCheckbox.CheckedChanged += new System.EventHandler(this.LockedOutCheckbox_CheckedChanged);
+            // 
+            // AccountExpiredCheckbox
+            // 
+            this.AccountExpiredCheckbox.AutoSize = true;
+            this.AccountExpiredCheckbox.Location = new System.Drawing.Point(204, 136);
+            this.AccountExpiredCheckbox.Name = "AccountExpiredCheckbox";
+            this.AccountExpiredCheckbox.Size = new System.Drawing.Size(104, 17);
+            this.AccountExpiredCheckbox.TabIndex = 14;
+            this.AccountExpiredCheckbox.Text = "Account Expired";
+            this.AccountExpiredCheckbox.UseVisualStyleBackColor = true;
+            this.AccountExpiredCheckbox.CheckedChanged += new System.EventHandler(this.AccountExpiredCheckbox_CheckedChanged);
             // 
             // UserNameColumn
             // 
@@ -405,9 +518,9 @@
             // PhoneNumberColumn
             // 
             this.PhoneNumberColumn.DataPropertyName = "PhoneNumber";
-            dataGridViewCellStyle2.Format = "(###) ###-####";
-            dataGridViewCellStyle2.NullValue = null;
-            this.PhoneNumberColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "(###) ###-####";
+            dataGridViewCellStyle1.NullValue = null;
+            this.PhoneNumberColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.PhoneNumberColumn.HeaderText = "Phone Number";
             this.PhoneNumberColumn.Name = "PhoneNumberColumn";
             this.PhoneNumberColumn.ReadOnly = true;
@@ -417,73 +530,11 @@
             // 
             this.UserAccountsBindingSource.DataSource = typeof(HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.UserIdentity);
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.StatusStripLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 599);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1024, 22);
-            this.statusStrip1.TabIndex = 4;
-            this.statusStrip1.Text = "StatusStrip";
-            // 
-            // StatusStripLabel
-            // 
-            this.StatusStripLabel.Name = "StatusStripLabel";
-            this.StatusStripLabel.Size = new System.Drawing.Size(132, 17);
-            this.StatusStripLabel.Text = "Initializing application...";
-            // 
-            // UserAddButton
-            // 
-            this.UserAddButton.Location = new System.Drawing.Point(17, 31);
-            this.UserAddButton.Name = "UserAddButton";
-            this.UserAddButton.Size = new System.Drawing.Size(125, 23);
-            this.UserAddButton.TabIndex = 10;
-            this.UserAddButton.Text = "&Add New Account";
-            this.UserAddButton.UseVisualStyleBackColor = true;
-            this.UserAddButton.Click += new System.EventHandler(this.UserAddButton_Click);
-            // 
-            // UserOtherActionsGroupBox
-            // 
-            this.UserOtherActionsGroupBox.Controls.Add(this.UserAddButton);
-            this.UserOtherActionsGroupBox.Location = new System.Drawing.Point(590, 6);
-            this.UserOtherActionsGroupBox.Name = "UserOtherActionsGroupBox";
-            this.UserOtherActionsGroupBox.Size = new System.Drawing.Size(395, 140);
-            this.UserOtherActionsGroupBox.TabIndex = 1;
-            this.UserOtherActionsGroupBox.TabStop = false;
-            this.UserOtherActionsGroupBox.Text = "User Actions";
-            // 
-            // TabControl
-            // 
-            this.TabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TabControl.Controls.Add(this.UserAccountTab);
-            this.TabControl.Enabled = false;
-            this.TabControl.Location = new System.Drawing.Point(12, 80);
-            this.TabControl.Name = "TabControl";
-            this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(1000, 506);
-            this.TabControl.TabIndex = 3;
-            // 
-            // UserAccountTab
-            // 
-            this.UserAccountTab.Controls.Add(this.UserSearchGroupBox);
-            this.UserAccountTab.Controls.Add(this.UserOtherActionsGroupBox);
-            this.UserAccountTab.Controls.Add(this.UserResultsGroupBox);
-            this.UserAccountTab.Location = new System.Drawing.Point(4, 22);
-            this.UserAccountTab.Name = "UserAccountTab";
-            this.UserAccountTab.Padding = new System.Windows.Forms.Padding(3);
-            this.UserAccountTab.Size = new System.Drawing.Size(992, 480);
-            this.UserAccountTab.TabIndex = 0;
-            this.UserAccountTab.Text = "User Accounts";
-            this.UserAccountTab.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 621);
+            this.ClientSize = new System.Drawing.Size(1024, 690);
             this.Controls.Add(this.TabControl);
             this.Controls.Add(this.EnvComboBox);
             this.Controls.Add(this.label5);
@@ -502,12 +553,12 @@
             this.UserResultsGroupBox.ResumeLayout(false);
             this.UserResultActionsGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UserResultsDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserAccountsBindingSource)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.UserOtherActionsGroupBox.ResumeLayout(false);
             this.TabControl.ResumeLayout(false);
             this.UserAccountTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.UserAccountsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -554,6 +605,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNumberColumn;
         private System.Windows.Forms.GroupBox UserResultActionsGroupBox;
         private System.Windows.Forms.Button UserResetPasswordButton;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.MaskedTextBox PhoneNumberTextBox;
+        private System.Windows.Forms.CheckBox AccountExpiredCheckbox;
+        private System.Windows.Forms.CheckBox LockedOutCheckbox;
     }
 }
 

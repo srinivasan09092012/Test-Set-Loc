@@ -72,6 +72,11 @@ namespace UserAccountManager.Forms
             ToggleUserSearchButton();
         }
 
+        private void PhoneNumberTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ToggleUserSearchButton();
+        }
+
         private void EmailTextBox_TextChanged(object sender, EventArgs e)
         {
             ToggleUserSearchButton();
@@ -92,9 +97,29 @@ namespace UserAccountManager.Forms
             LastNameTextBox.Text = LastNameTextBox.Text.Trim();
         }
 
+        private void PhoneNumberTextBox_Leave(object sender, EventArgs e)
+        {
+            PhoneNumberTextBox.Text = PhoneNumberTextBox.Text.Trim();
+        }
+
         private void EmailTextBox_Leave(object sender, EventArgs e)
         {
             EmailTextBox.Text = EmailTextBox.Text.Trim();
+        }
+
+        private void AccountExpiredCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            ToggleUserSearchButton();
+        }
+
+        private void DisabledCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            ToggleUserSearchButton();
+        }
+
+        private void LockedOutCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            ToggleUserSearchButton();
         }
 
         private void UserSearchButton_Click(object sender, EventArgs e)
@@ -524,6 +549,17 @@ namespace UserAccountManager.Forms
                         });
                 }
 
+                if (!string.IsNullOrWhiteSpace(PhoneNumberTextBox.Text))
+                {
+                    request.SearchFields.Add(
+                        new UserSearchField()
+                        {
+                            FieldName = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.UserSearchFieldType.PhoneNumber,
+                            FieldValue = PhoneNumberTextBox.Text,
+                            SearchMode = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.SearchModeType.StartsWith
+                        });
+                }
+
                 if (!string.IsNullOrWhiteSpace(EmailTextBox.Text))
                 {
                     request.SearchFields.Add(
@@ -535,8 +571,35 @@ namespace UserAccountManager.Forms
                         });
                 }
 
+                if (AccountExpiredCheckbox.Checked)
+                {
+                    request.SearchFields.Add(
+                        new UserSearchField()
+                        {
+                            FieldName = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.UserSearchFieldType.IsAccountExpired,
+                            FieldValue = "true",
+                            SearchMode = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.SearchModeType.EqualTo
+                        });
+                }
+
+                if (LockedOutCheckbox.Checked)
+                {
+                    request.SearchFields.Add(
+                        new UserSearchField()
+                        {
+                            FieldName = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.UserSearchFieldType.IsAccountLocked,
+                            FieldValue = "true",
+                            SearchMode = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain.Enumerations.SearchModeType.EqualTo
+                        });
+                }
+
                 SearchUsersResponse response = adQueryProvider.SearchUsers(request);
-                this.DisplayUserSearchResults(response.Users);
+                List<UserIdentity> identities = new List<UserIdentity>();
+                foreach(UserAccount account in response.Users)
+                {
+                    identities.Add(account.Identity);
+                }
+                this.DisplayUserSearchResults(identities);
             }
             catch (Exception ex)
             {
@@ -562,7 +625,10 @@ namespace UserAccountManager.Forms
                 || UserGroupsComboBox.SelectedIndex > 0
                 || FirstNameTextBox.Text.Trim().Length > 0
                 || LastNameTextBox.Text.Trim().Length > 0
-                || EmailTextBox.Text.Trim().Length > 0);
+                || PhoneNumberTextBox.Text.Trim().Length > 0
+                || EmailTextBox.Text.Trim().Length > 0
+                || LockedOutCheckbox.Checked
+                || AccountExpiredCheckbox.Checked);
         }
 
         private List<DataGridViewRow> ReturnSelectedUsers()
