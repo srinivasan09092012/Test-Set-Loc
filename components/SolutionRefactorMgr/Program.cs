@@ -110,16 +110,22 @@ namespace SolutionRefactorMgr
 
         private static void LogMessage(int level, string msg)
         {
-            string tabs = new string(' ', level * 2);
-            logger.LogInformational(tabs + msg);
-            Console.WriteLine(tabs + msg);
+            if (!string.IsNullOrEmpty(msg))
+            {
+                string tabs = new string(' ', level * 2);
+                logger.LogInformational(tabs + msg);
+                Console.WriteLine(tabs + msg);
+            }
         }
 
         private static void LogMessage(int level, string msg, Exception ex)
         {
-            string tabs = new string(' ', level * 2);
-            logger.LogFatal(tabs + msg, ex);
-            Console.WriteLine(tabs + msg);
+            if (!string.IsNullOrEmpty(msg) || ex != null)
+            {
+                string tabs = new string(' ', level * 2);
+                logger.LogFatal(tabs + msg, ex);
+                Console.WriteLine(tabs + msg);
+            }
         }
 
         private static void OnNonFatalError(Object sender, ExceptionEventArgs e)

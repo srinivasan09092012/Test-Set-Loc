@@ -113,6 +113,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <Content Include="Configs\RefactorAppSettings.xml" />
+    <Content Include="Configs\RefactorBASThumbprints.xml" />
     <Content Include="Configs\RefactorInRule-Version.xml" />
     <Content Include="Configs\RefactorKendo-Version.xml" />
     <Content Include="Configs\RefactorCopyright.xml" />
