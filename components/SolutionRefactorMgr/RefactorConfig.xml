@@ -1,46 +1,32 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true">
+<RefactorConfig editMode="Copy" includeFolderNames="true" includeFileNames="true" includeFileContents="true" useSourceControl="true">
   <SourceDir>C:\UA3\Source</SourceDir>
-  <ModuleConfigs>
-    <ModuleConfig name="_ProjectTemplate" branch="Main" types="BAS" />
-    <ModuleConfig name="Administration" branch="Dev" types="BAS" />
-    <ModuleConfig name="AuthDetermination" branch="Dev" types="BAS" />
-    <ModuleConfig name="ClaimsManagement" branch="Dev" types="BAS" />
-    <ModuleConfig name="Core" branch="Dev" types="BAS" />
-    <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="BAS" />
-    <ModuleConfig name="DrugRebate" branch="Dev" types="BAS" />
-    <ModuleConfig name="DrugRebatePortal" branch="Dev" types="BAS" />
-    <ModuleConfig name="EDI" branch="Dev" types="BAS" />
-    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="BAS" />
-    <ModuleConfig name="FileTransfer" branch="Dev" types="BAS" />
-    <ModuleConfig name="FinancialManagement" branch="Dev" types="BAS" />
-    <ModuleConfig name="IdentityManagement" branch="Dev" types="BAS" />
-    <ModuleConfig name="Integration" branch="Dev" types="BAS" />
-    <ModuleConfig name="KansasOnly" branch="Dev" types="BAS" />
-    <ModuleConfig name="ManagedCare" branch="Dev" types="BAS" />
-    <ModuleConfig name="ManagedCarePortal" branch="Dev" types="BAS" />
-    <ModuleConfig name="MemberManagement" branch="Dev" types="BAS" />
-    <ModuleConfig name="MemberPortal" branch="Dev" types="BAS" />
-    <ModuleConfig name="Notifications" branch="Dev" types="BAS" />
-    <ModuleConfig name="PlanManagement" branch="Dev" types="BAS" />
-    <ModuleConfig name="ProgramIntegrity" branch="Dev" types="BAS" />
-    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="BAS" />
-    <ModuleConfig name="ProviderEnrollment" branch="Dev" types="BAS" />
-    <ModuleConfig name="ProviderManagement" branch="Dev" types="BAS" />
-    <ModuleConfig name="ProviderPortal" branch="Dev" types="BAS" />
-    <ModuleConfig name="TaskManagement" branch="Dev" types="BAS" />
-    <ModuleConfig name="ThirdPartySource" branch="Dev" types="BAS" />
-    <ModuleConfig name="TPLCaseTracking" branch="Dev" types="BAS" />
-    <ModuleConfig name="TPLPolicy" branch="Dev" types="BAS" />
-  </ModuleConfigs>
-  <PackageConfigs />
+  <ModuleConfigs />
+  <PackageConfigs>
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.Administration" qualifierVersion="18.1.47" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.AuthDetermination" qualifierVersion="18.1.47" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.BatchProcessingFactory" qualifierVersion="18.1.47" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ClaimsManagement" qualifierVersion="18.1.47" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.Core" qualifierVersion="18.1.47" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.DrugRebate" qualifierVersion="18.1.47" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.ClaimsManagement" qualifierVersion="18.1.47" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.Core" qualifierVersion="18.1.47" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.NCPDP" qualifierVersion="18.1.47" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.TestAutomation" qualifierVersion="18.1.47" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X12" qualifierVersion="18.1.47" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X212" qualifierVersion="18.1.47" rebuildPackage="true" reformatSource="true" />
+  </PackageConfigs>
   <FileTypes>
-    <FileType ext=".config" />
+    <FileType ext=".dll" />
+    <FileType ext=".nupkg" />
+    <FileType ext=".nuspec" />
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
-    <ReplacementString qualifier="thumbprint=&quot;4c1bb7b90fdb123dcbe30efa38ccae44fcf355ad&quot; /&gt;" from="thumbprint=&quot;4c1bb7b90fdb123dcbe30efa38ccae44fcf355ad&quot; /&gt;" thumbprint="thumbprint=&quot;4c1bb7b90fdb123dcbe30efa38ccae44fcf355ad&quot; /&gt;" to="thumbprint=&quot;4c1bb7b90fdb123dcbe30efa38ccae44fcf355ad&quot; /&gt;[NEWLINE]              &lt;add name=&quot;DXC Technology HPP Assertion Signing Certificate&quot; thumbprint=&quot;aa2ab8f7dd5dc738a5bb8ddad64ecc4e4a80ac8d&quot; /&gt;" />
+    <ReplacementString qualifier="&lt;version&gt;18.1.47&lt;/version&gt;" from="18.1.47" to="18.2.52" />
+    <ReplacementString qualifier="HP.HSP.UA3" from="18.1.47" to="18.2.52" />
+    <ReplacementString qualifier="HPE.HSP.UA3" from="18.1.47" to="18.2.52" />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
-  <TfsWorkspace>USCND6195CFQ</TfsWorkspace>
+  <TfsWorkspace></TfsWorkspace>
 </RefactorConfig>
