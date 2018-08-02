@@ -13,6 +13,7 @@
     <ModuleConfig name="EDI" branch="Dev" types="All" />
     <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
     <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="Dev" types="All" />
     <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
     <ModuleConfig name="Integration" branch="Dev" types="All" />
     <ModuleConfig name="KansasOnly" branch="Dev" types="All" />
