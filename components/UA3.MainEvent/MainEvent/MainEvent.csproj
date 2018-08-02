@@ -111,7 +111,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="HP.HSP.UA3.Core.BAS.CQRS">
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.18.2.52\lib\net45\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.18.3.56\lib\net45\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
