@@ -34,6 +34,10 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.IdenttyGroupBox = new System.Windows.Forms.GroupBox();
+            this.AccountExpirationDateTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.ExpiredCheckbox = new System.Windows.Forms.CheckBox();
+            this.LockedCheckbox = new System.Windows.Forms.CheckBox();
             this.PhoneTextBox = new System.Windows.Forms.MaskedTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.DisplayNameTextBox = new System.Windows.Forms.TextBox();
@@ -79,8 +83,6 @@
             this.effectiveDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VOSTagsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.LockedCheckbox = new System.Windows.Forms.CheckBox();
-            this.ExpiredCheckbox = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.IdenttyGroupBox.SuspendLayout();
             this.SecurityGroupBox.SuspendLayout();
@@ -126,6 +128,8 @@
             // 
             // IdenttyGroupBox
             // 
+            this.IdenttyGroupBox.Controls.Add(this.AccountExpirationDateTextBox);
+            this.IdenttyGroupBox.Controls.Add(this.label8);
             this.IdenttyGroupBox.Controls.Add(this.ExpiredCheckbox);
             this.IdenttyGroupBox.Controls.Add(this.LockedCheckbox);
             this.IdenttyGroupBox.Controls.Add(this.PhoneTextBox);
@@ -147,6 +151,48 @@
             this.IdenttyGroupBox.TabStop = false;
             this.IdenttyGroupBox.Text = "Identity";
             // 
+            // AccountExpirationDateTextBox
+            // 
+            this.AccountExpirationDateTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AccountExpirationDateTextBox.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            this.AccountExpirationDateTextBox.Location = new System.Drawing.Point(549, 133);
+            this.AccountExpirationDateTextBox.Mask = "00/00/0000";
+            this.AccountExpirationDateTextBox.Name = "AccountExpirationDateTextBox";
+            this.AccountExpirationDateTextBox.Size = new System.Drawing.Size(84, 20);
+            this.AccountExpirationDateTextBox.TabIndex = 15;
+            this.AccountExpirationDateTextBox.ValidatingType = typeof(System.DateTime);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(421, 133);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(122, 13);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Account Expiration Date";
+            // 
+            // ExpiredCheckbox
+            // 
+            this.ExpiredCheckbox.AutoSize = true;
+            this.ExpiredCheckbox.Enabled = false;
+            this.ExpiredCheckbox.Location = new System.Drawing.Point(549, 104);
+            this.ExpiredCheckbox.Name = "ExpiredCheckbox";
+            this.ExpiredCheckbox.Size = new System.Drawing.Size(104, 17);
+            this.ExpiredCheckbox.TabIndex = 13;
+            this.ExpiredCheckbox.Text = "Account Expired";
+            this.ExpiredCheckbox.UseVisualStyleBackColor = true;
+            // 
+            // LockedCheckbox
+            // 
+            this.LockedCheckbox.AutoSize = true;
+            this.LockedCheckbox.Enabled = false;
+            this.LockedCheckbox.Location = new System.Drawing.Point(549, 81);
+            this.LockedCheckbox.Name = "LockedCheckbox";
+            this.LockedCheckbox.Size = new System.Drawing.Size(105, 17);
+            this.LockedCheckbox.TabIndex = 12;
+            this.LockedCheckbox.Text = "Account Locked";
+            this.LockedCheckbox.UseVisualStyleBackColor = true;
+            // 
             // PhoneTextBox
             // 
             this.PhoneTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -154,7 +200,7 @@
             this.PhoneTextBox.Mask = "(999) 000-0000";
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.Size = new System.Drawing.Size(84, 20);
-            this.PhoneTextBox.TabIndex = 13;
+            this.PhoneTextBox.TabIndex = 11;
             this.PhoneTextBox.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // label7
@@ -163,7 +209,7 @@
             this.label7.Location = new System.Drawing.Point(6, 135);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(38, 13);
-            this.label7.TabIndex = 12;
+            this.label7.TabIndex = 10;
             this.label7.Text = "Phone";
             // 
             // DisplayNameTextBox
@@ -206,8 +252,8 @@
             this.EmailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.EmailTextBox.Location = new System.Drawing.Point(91, 98);
             this.EmailTextBox.Name = "EmailTextBox";
-            this.EmailTextBox.Size = new System.Drawing.Size(375, 20);
-            this.EmailTextBox.TabIndex = 11;
+            this.EmailTextBox.Size = new System.Drawing.Size(324, 20);
+            this.EmailTextBox.TabIndex = 9;
             // 
             // label4
             // 
@@ -216,7 +262,7 @@
             this.label4.Location = new System.Drawing.Point(6, 98);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 13);
-            this.label4.TabIndex = 10;
+            this.label4.TabIndex = 8;
             this.label4.Text = "Email";
             // 
             // LastNameTextBox
@@ -309,7 +355,7 @@
             this.SecurityGroupBox.Location = new System.Drawing.Point(12, 233);
             this.SecurityGroupBox.Name = "SecurityGroupBox";
             this.SecurityGroupBox.Size = new System.Drawing.Size(760, 138);
-            this.SecurityGroupBox.TabIndex = 2;
+            this.SecurityGroupBox.TabIndex = 0;
             this.SecurityGroupBox.TabStop = false;
             this.SecurityGroupBox.Text = "Security";
             // 
@@ -465,7 +511,7 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusStripLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 826);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 829);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(784, 22);
             this.statusStrip1.TabIndex = 8;
@@ -568,33 +614,11 @@
             // 
             this.VOSTagsBindingSource.DataSource = typeof(UserAccountManager.Domain.UserVOSTag);
             // 
-            // LockedCheckbox
-            // 
-            this.LockedCheckbox.AutoSize = true;
-            this.LockedCheckbox.Enabled = false;
-            this.LockedCheckbox.Location = new System.Drawing.Point(549, 101);
-            this.LockedCheckbox.Name = "LockedCheckbox";
-            this.LockedCheckbox.Size = new System.Drawing.Size(105, 17);
-            this.LockedCheckbox.TabIndex = 14;
-            this.LockedCheckbox.Text = "Account Locked";
-            this.LockedCheckbox.UseVisualStyleBackColor = true;
-            // 
-            // ExpiredCheckbox
-            // 
-            this.ExpiredCheckbox.AutoSize = true;
-            this.ExpiredCheckbox.Enabled = false;
-            this.ExpiredCheckbox.Location = new System.Drawing.Point(549, 124);
-            this.ExpiredCheckbox.Name = "ExpiredCheckbox";
-            this.ExpiredCheckbox.Size = new System.Drawing.Size(104, 17);
-            this.ExpiredCheckbox.TabIndex = 15;
-            this.ExpiredCheckbox.Text = "Account Expired";
-            this.ExpiredCheckbox.UseVisualStyleBackColor = true;
-            // 
             // UserAccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 848);
+            this.ClientSize = new System.Drawing.Size(784, 851);
             this.Controls.Add(this.RegQualifiersGroupBox);
             this.Controls.Add(this.CreateUserProfileCheckBox);
             this.Controls.Add(this.statusStrip1);
@@ -688,5 +712,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn valueDataGridViewTextBoxColumn;
         private System.Windows.Forms.CheckBox ExpiredCheckbox;
         private System.Windows.Forms.CheckBox LockedCheckbox;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.MaskedTextBox AccountExpirationDateTextBox;
     }
 }

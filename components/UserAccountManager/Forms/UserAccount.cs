@@ -113,13 +113,20 @@ namespace UserAccountManager.Forms
             {
                 LastNameTextBox.Text = "Account";
             }
+
             DisplayNameTextBox.Text = this.UserAccount.Identity.DisplayName;
             EmailTextBox.Text = this.UserAccount.Identity.EmailAddress;
             if (string.IsNullOrEmpty(EmailTextBox.Text))
             {
                 EmailTextBox.Text = string.Format("maps_{0}@dxc.com", this.UserAccount.Identity.UserName);
             }
+
             PhoneTextBox.Text = this.UserAccount.Identity.PhoneNumber;
+            if (this.UserAccount.AccountExpirationDate.HasValue)
+            {
+                AccountExpirationDateTextBox.Text = this.UserAccount.AccountExpirationDate.Value.ToLocalTime().ToString("MM/dd/yyyy");
+            }
+
             UserNameTextBox.Text = this.UserAccount.Identity.UserName;
             ExpiredCheckbox.Checked = this.UserAccount.IsExpired;
             LockedCheckbox.Checked = this.UserAccount.IsLockedOut;
@@ -275,7 +282,27 @@ namespace UserAccountManager.Forms
                 return false;
             }
 
-            if(this.EditMode == EditModeType.Add)
+            if (!string.IsNullOrEmpty(PhoneTextBox.Text) && PhoneTextBox.Text.Length != 10)
+            {
+                FormHelper.DisplayMessage("Phone number must be 10 digits.", MessageBoxIcon.Error);
+                UserNameTextBox.Focus();
+                return false;
+            }
+
+            if (AccountExpirationDateTextBox.Text != "  /  /")
+            {
+                DateTime accountExpirationDate;
+                bool isDateValid = DateTime.TryParse(AccountExpirationDateTextBox.Text, out accountExpirationDate);
+
+                if (!isDateValid)
+                {
+                    FormHelper.DisplayMessage("Account expiration date must be a valid date.", MessageBoxIcon.Error);
+                    UserNameTextBox.Focus();
+                    return false;
+                }
+            }
+
+            if (this.EditMode == EditModeType.Add)
             {
                 UserAccount userAccount = adQueryProvider.GetUser(UserNameTextBox.Text);
                 if (userAccount != null)
@@ -433,6 +460,13 @@ namespace UserAccountManager.Forms
                 accountQualifiers.Add(new api.RegistrationQualifier() { Key = qualifier.Key, Value = qualifier.Value });
             }
 
+            DateTime? accountExpirationDate = null;
+            if (AccountExpirationDateTextBox.Text != "  /  /")
+            {
+                DateTime date = Convert.ToDateTime(AccountExpirationDateTextBox.Text);
+                accountExpirationDate = DateTime.SpecifyKind(date, DateTimeKind.Local);
+            }
+
             UserAccount newUserAccount = new UserAccount()
             {
                 Identity = new UserIdentity()
@@ -445,6 +479,7 @@ namespace UserAccountManager.Forms
                     PhoneNumber = string.IsNullOrEmpty(PhoneTextBox.Text) ? null : PhoneTextBox.Text.Trim(),
                     UserName = UserNameTextBox.Text.Trim()
                 },
+                AccountExpirationDate = accountExpirationDate,
                 IsEnabled = true,
                 PasswordNeverExpires = true,
                 Groups = new List<string>(),
@@ -513,8 +548,7 @@ namespace UserAccountManager.Forms
             }
             else
             {
-                adManagementProvider.UpdateUser(newUserAccount.Identity);
-                adManagementProvider.UpdateUserRegistrationQualifiers(newUserAccount.Identity.UserName, newUserAccount.RegistrationQualifiers);
+                adManagementProvider.UpdateUser(newUserAccount.Identity, newUserAccount.RegistrationQualifiers, accountExpirationDate);
 
                 if (!string.IsNullOrEmpty(newUserAccount.Password))
                 {
