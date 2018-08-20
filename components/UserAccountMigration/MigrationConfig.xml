@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MigrationConfig>
+  <!--
+  Environment - Contains environment specific configuration settings.  Environment parameters:
+    tenantId:      A unique identifer for the tenant (GUID).
+    defaultLocale: The default lcoale used when creating a new user profile.
+    
+    ADContainer: The Active Direectory container where the user accountsare to be stored.
+    ADServer:    The Active Directory server name or IP address.
+    ADUser:      The admin user name that has administrative privileges to add and modify user accounts in AD.
+    ADPassword:  The admin user password that has administrative privileges to add and modify user accounts in AD.
+    
+    UserQueryService: The binding and endpoint configuration to be used for querying user profiles. Must match the service configuration.
+    UserService:      The binding and endpoint configuration to be used for updating user profiles. Must match the service configuration.
+  -->
+  <Environment tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" defaultLocale="en-US">
+    <ADContainer>CN=Users,DC=dev,DC=mapshc,DC=com</ADContainer>
+    <ADServer>ad.dev.mapshc.com</ADServer>
+    <ADUser>adService</ADUser>
+    <ADPassword>Password2017</ADPassword>
+    <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+    <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
+  </Environment>
+  <!--
+  Processes - Defines 1 or more processes to be executed in the the current execution of the utility.
+  
+  Each process has the following properties:
+    name:        A unique name for the process (i.e. ExportProviders).
+    processType: The types of process (Valid values: Export, Import).
+    filePath:    A physical file path where the input or output file is located. This can be relative (Imports\) or a full path (C:\temp\ or \\server\share).
+    fileName:    The name of the input or output file.
+    fileFormat:  The format of the input or output file (supported types include: CSV)
+    processUserProfile: Boolean value that determines if a user profile should also be processed in addition to the AD use account. Only used for imports.
+    maxThreads:  The maximum number of threads to use whiel processing. Only used for imports.
+    Examples:
+    ==========================================================
+    <Process name="ExportProviders" processType="Export" userGroupFilter="MapsProviders" filePath="Exports\" fileName="Providers.csv" fileFormat="CSV" />
+    <Process name="ImportProviders" processType="Import" filePath="Imports\" fileName="Providers.csv" fileFormat="CSV" processUserProfile="true" maxThreads="10" />
+  -->
+  <Processes>
+    <Process name="ImportProviders" processType="Import" filePath="Imports\" fileName="Providers.csv" fileFormat="CSV" processUserProfile="true" maxThreads="10" />
+  </Processes>
+</MigrationConfig>

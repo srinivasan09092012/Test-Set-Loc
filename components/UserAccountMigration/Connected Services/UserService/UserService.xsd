@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Commands" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Commands" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" />
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc?xsd=xsd7" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="AddProfile">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q1:Command">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContactNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GenericId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsAccountVerified" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LocaleId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TenantId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="UserVOSTags" nillable="true" type="q2:UserVOSTagListModel" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddProfile" nillable="true" type="tns:AddProfile" />
+  <xs:complexType name="UpdateProfile">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q3:Command">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContactNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GenericId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsAccountVerified" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LocaleId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TenantId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateProfile" nillable="true" type="tns:UpdateProfile" />
+  <xs:complexType name="ActivateProfile">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q4:Command">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TenantId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActivateProfile" nillable="true" type="tns:ActivateProfile" />
+  <xs:complexType name="InactivateProfile">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q5:Command">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TenantId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InactivateProfile" nillable="true" type="tns:InactivateProfile" />
+  <xs:complexType name="AddUserDelegateCommand">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q6:Command">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+          <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SecurityFunctions" nillable="true" type="q7:ArrayOfstring" />
+          <xs:element minOccurs="0" name="UserProfileRelationShipCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="XrefAssocID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="XrefLastName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddUserDelegateCommand" nillable="true" type="tns:AddUserDelegateCommand" />
+  <xs:complexType name="AddRegisteredUserXrefCommand">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q8:Command">
+        <xs:sequence>
+          <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="DelegateAssociations" nillable="true" type="q9:ArrayOfRegisteredUserXrefAssociation" />
+          <xs:element minOccurs="0" name="DelegateProfileId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DelegateUserId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="UserProfileId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddRegisteredUserXrefCommand" nillable="true" type="tns:AddRegisteredUserXrefCommand" />
+  <xs:complexType name="UpdateRegisteredUserXrefCommand">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q10:Command">
+        <xs:sequence>
+          <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="DelegateAssociations" nillable="true" type="q11:ArrayOfRegisteredUserXrefAssociation" />
+          <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="UserProfileXrefId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateRegisteredUserXrefCommand" nillable="true" type="tns:UpdateRegisteredUserXrefCommand" />
+  <xs:complexType name="AddUserPreferences">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q12="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q12:Command">
+        <xs:sequence>
+          <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="Preferences" nillable="true" type="q13:ArrayOfKeyValuePair" />
+          <xs:element minOccurs="0" name="UserProfileID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddUserPreferences" nillable="true" type="tns:AddUserPreferences" />
+  <xs:complexType name="RemoveUserPreferences">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q14="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q14:Command">
+        <xs:sequence>
+          <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PreferencesKeys" nillable="true" type="q15:ArrayOfstring" />
+          <xs:element minOccurs="0" name="UserProfileID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RemoveUserPreferences" nillable="true" type="tns:RemoveUserPreferences" />
+  <xs:complexType name="AddUserProfileMemberFocusHistory">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q16="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q16:Command">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DateOfBirth" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MaxMembersRetained" type="xs:int" />
+          <xs:element minOccurs="0" name="MemberId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OperatorId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PostalCd" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserProfileId" type="ser:guid" />
+          <xs:element minOccurs="0" name="UserProfileMbrFcsHstId" type="ser:guid" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddUserProfileMemberFocusHistory" nillable="true" type="tns:AddUserProfileMemberFocusHistory" />
+  <xs:complexType name="AddUserVOSTags">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q17="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q17:Command">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TenantID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserProfileID" nillable="true" type="xs:string" />
+          <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="UserVOSTags" nillable="true" type="q18:UserVOSTagListModel" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddUserVOSTags" nillable="true" type="tns:AddUserVOSTags" />
+  <xs:complexType name="UpdateUserVOSTag">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q19="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q19:Command">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TenantID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserProfileID" nillable="true" type="xs:string" />
+          <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="UserVOSTag" nillable="true" type="q20:UserVOSTagModel" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateUserVOSTag" nillable="true" type="tns:UpdateUserVOSTag" />
+  <xs:complexType name="InvalidateUserVOSTag">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q21="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q21:Command">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="InvalidateReasonCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserVOSTagId" type="ser:guid" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InvalidateUserVOSTag" nillable="true" type="tns:InvalidateUserVOSTag" />
+</xs:schema>
