@@ -34,6 +34,7 @@
             this.hELPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutX12OOPViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sourceGroupBox = new System.Windows.Forms.GroupBox();
+            this.ClearButton = new System.Windows.Forms.Button();
             this.sourceTextBox = new System.Windows.Forms.TextBox();
             this.parseButton = new System.Windows.Forms.Button();
             this.optionsGroupBox = new System.Windows.Forms.GroupBox();
@@ -46,9 +47,17 @@
             this.findButton = new System.Windows.Forms.Button();
             this.findCountLabel = new System.Windows.Forms.Label();
             this.parsedWebBrowser = new System.Windows.Forms.WebBrowser();
+            this.ValidateButton = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.ParseTabPage = new System.Windows.Forms.TabPage();
+            this.ValidationTabPage = new System.Windows.Forms.TabPage();
+            this.validateRichTextBox = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.sourceGroupBox.SuspendLayout();
             this.optionsGroupBox.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.ParseTabPage.SuspendLayout();
+            this.ValidationTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -98,14 +107,25 @@
             // 
             this.sourceGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sourceGroupBox.AutoSize = true;
+            this.sourceGroupBox.Controls.Add(this.ClearButton);
             this.sourceGroupBox.Controls.Add(this.sourceTextBox);
             this.sourceGroupBox.Location = new System.Drawing.Point(12, 27);
             this.sourceGroupBox.Name = "sourceGroupBox";
-            this.sourceGroupBox.Size = new System.Drawing.Size(982, 120);
+            this.sourceGroupBox.Size = new System.Drawing.Size(991, 214);
             this.sourceGroupBox.TabIndex = 1;
             this.sourceGroupBox.TabStop = false;
             this.sourceGroupBox.Text = "X12 String";
+            // 
+            // ClearButton
+            // 
+            this.ClearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ClearButton.Location = new System.Drawing.Point(904, 8);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(75, 23);
+            this.ClearButton.TabIndex = 1;
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // sourceTextBox
             // 
@@ -115,18 +135,18 @@
             this.sourceTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sourceTextBox.Location = new System.Drawing.Point(6, 19);
+            this.sourceTextBox.Location = new System.Drawing.Point(9, 37);
             this.sourceTextBox.MaxLength = 0;
             this.sourceTextBox.Multiline = true;
             this.sourceTextBox.Name = "sourceTextBox";
             this.sourceTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.sourceTextBox.Size = new System.Drawing.Size(976, 95);
+            this.sourceTextBox.Size = new System.Drawing.Size(973, 171);
             this.sourceTextBox.TabIndex = 0;
             // 
             // parseButton
             // 
             this.parseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.parseButton.Location = new System.Drawing.Point(919, 171);
+            this.parseButton.Location = new System.Drawing.Point(892, 14);
             this.parseButton.Name = "parseButton";
             this.parseButton.Size = new System.Drawing.Size(75, 23);
             this.parseButton.TabIndex = 2;
@@ -140,9 +160,9 @@
             this.optionsGroupBox.Controls.Add(this.xmlncRadioButton);
             this.optionsGroupBox.Controls.Add(this.xmlcRadioButton);
             this.optionsGroupBox.Controls.Add(this.x12wsRadioButton);
-            this.optionsGroupBox.Location = new System.Drawing.Point(12, 154);
+            this.optionsGroupBox.Location = new System.Drawing.Point(9, 3);
             this.optionsGroupBox.Name = "optionsGroupBox";
-            this.optionsGroupBox.Size = new System.Drawing.Size(576, 47);
+            this.optionsGroupBox.Size = new System.Drawing.Size(564, 47);
             this.optionsGroupBox.TabIndex = 4;
             this.optionsGroupBox.TabStop = false;
             this.optionsGroupBox.Text = "Options";
@@ -198,23 +218,23 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.parseRichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.parseRichTextBox.Location = new System.Drawing.Point(12, 245);
+            this.parseRichTextBox.Location = new System.Drawing.Point(6, 85);
             this.parseRichTextBox.Name = "parseRichTextBox";
             this.parseRichTextBox.ReadOnly = true;
-            this.parseRichTextBox.Size = new System.Drawing.Size(982, 302);
+            this.parseRichTextBox.Size = new System.Drawing.Size(961, 373);
             this.parseRichTextBox.TabIndex = 5;
             this.parseRichTextBox.Text = "";
             // 
             // findTextBox
             // 
-            this.findTextBox.Location = new System.Drawing.Point(18, 219);
+            this.findTextBox.Location = new System.Drawing.Point(6, 56);
             this.findTextBox.Name = "findTextBox";
             this.findTextBox.Size = new System.Drawing.Size(228, 20);
             this.findTextBox.TabIndex = 6;
             // 
             // findButton
             // 
-            this.findButton.Location = new System.Drawing.Point(253, 219);
+            this.findButton.Location = new System.Drawing.Point(250, 56);
             this.findButton.Name = "findButton";
             this.findButton.Size = new System.Drawing.Size(75, 23);
             this.findButton.TabIndex = 7;
@@ -227,7 +247,7 @@
             this.findCountLabel.AutoSize = true;
             this.findCountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.findCountLabel.ForeColor = System.Drawing.Color.Red;
-            this.findCountLabel.Location = new System.Drawing.Point(334, 224);
+            this.findCountLabel.Location = new System.Drawing.Point(331, 64);
             this.findCountLabel.Name = "findCountLabel";
             this.findCountLabel.Size = new System.Drawing.Size(104, 15);
             this.findCountLabel.TabIndex = 10;
@@ -240,28 +260,86 @@
             this.parsedWebBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.parsedWebBrowser.Location = new System.Drawing.Point(12, 219);
+            this.parsedWebBrowser.Location = new System.Drawing.Point(9, 85);
             this.parsedWebBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.parsedWebBrowser.Name = "parsedWebBrowser";
-            this.parsedWebBrowser.Size = new System.Drawing.Size(981, 328);
+            this.parsedWebBrowser.Size = new System.Drawing.Size(958, 383);
             this.parsedWebBrowser.TabIndex = 11;
             this.parsedWebBrowser.Visible = false;
             this.parsedWebBrowser.WebBrowserShortcutsEnabled = false;
+            // 
+            // ValidateButton
+            // 
+            this.ValidateButton.Location = new System.Drawing.Point(892, 6);
+            this.ValidateButton.Name = "ValidateButton";
+            this.ValidateButton.Size = new System.Drawing.Size(75, 23);
+            this.ValidateButton.TabIndex = 12;
+            this.ValidateButton.Text = "Validate";
+            this.ValidateButton.UseVisualStyleBackColor = true;
+            this.ValidateButton.Click += new System.EventHandler(this.ValidateButton_Click);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.ParseTabPage);
+            this.tabControl1.Controls.Add(this.ValidationTabPage);
+            this.tabControl1.Location = new System.Drawing.Point(18, 250);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(981, 490);
+            this.tabControl1.TabIndex = 13;
+            // 
+            // ParseTabPage
+            // 
+            this.ParseTabPage.Controls.Add(this.parseRichTextBox);
+            this.ParseTabPage.Controls.Add(this.findCountLabel);
+            this.ParseTabPage.Controls.Add(this.parseButton);
+            this.ParseTabPage.Controls.Add(this.findButton);
+            this.ParseTabPage.Controls.Add(this.parsedWebBrowser);
+            this.ParseTabPage.Controls.Add(this.optionsGroupBox);
+            this.ParseTabPage.Controls.Add(this.findTextBox);
+            this.ParseTabPage.Location = new System.Drawing.Point(4, 22);
+            this.ParseTabPage.Name = "ParseTabPage";
+            this.ParseTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ParseTabPage.Size = new System.Drawing.Size(973, 464);
+            this.ParseTabPage.TabIndex = 0;
+            this.ParseTabPage.Text = "Parse";
+            this.ParseTabPage.UseVisualStyleBackColor = true;
+            // 
+            // ValidationTabPage
+            // 
+            this.ValidationTabPage.Controls.Add(this.validateRichTextBox);
+            this.ValidationTabPage.Controls.Add(this.ValidateButton);
+            this.ValidationTabPage.Location = new System.Drawing.Point(4, 22);
+            this.ValidationTabPage.Name = "ValidationTabPage";
+            this.ValidationTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ValidationTabPage.Size = new System.Drawing.Size(973, 464);
+            this.ValidationTabPage.TabIndex = 1;
+            this.ValidationTabPage.Text = "Validate";
+            this.ValidationTabPage.UseVisualStyleBackColor = true;
+            // 
+            // validateRichTextBox
+            // 
+            this.validateRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.validateRichTextBox.Location = new System.Drawing.Point(6, 35);
+            this.validateRichTextBox.Name = "validateRichTextBox";
+            this.validateRichTextBox.ReadOnly = true;
+            this.validateRichTextBox.Size = new System.Drawing.Size(961, 423);
+            this.validateRichTextBox.TabIndex = 13;
+            this.validateRichTextBox.Text = "";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1006, 559);
-            this.Controls.Add(this.findCountLabel);
-            this.Controls.Add(this.findButton);
-            this.Controls.Add(this.findTextBox);
-            this.Controls.Add(this.parseRichTextBox);
-            this.Controls.Add(this.optionsGroupBox);
-            this.Controls.Add(this.parseButton);
+            this.ClientSize = new System.Drawing.Size(1006, 752);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.sourceGroupBox);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.parsedWebBrowser);
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(1022, 597);
@@ -277,6 +355,10 @@
             this.sourceGroupBox.PerformLayout();
             this.optionsGroupBox.ResumeLayout(false);
             this.optionsGroupBox.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.ParseTabPage.ResumeLayout(false);
+            this.ParseTabPage.PerformLayout();
+            this.ValidationTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -302,6 +384,12 @@
         private System.Windows.Forms.Label findCountLabel;
         private System.Windows.Forms.RadioButton htmlRadioButton;
         private System.Windows.Forms.WebBrowser parsedWebBrowser;
+        private System.Windows.Forms.Button ValidateButton;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage ParseTabPage;
+        private System.Windows.Forms.TabPage ValidationTabPage;
+        private System.Windows.Forms.RichTextBox validateRichTextBox;
+        private System.Windows.Forms.Button ClearButton;
     }
 }
 
