@@ -31,15 +31,11 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Services
             DetectChanges(original, changed, "Tenant configuration setting", results, _order++, p => p.TenantId,
                 new Func<TenantConfigurationModel, object>[]
                 {
-                    p => p.IsDefault,
-                    p => p.Name,
                     p => p.TenantId
                 },
                 (o, c) =>
                 {
-                    _tenant = o.Name;
                     _module = null;
-                    DetectChanges(o.Contacts, c.Contacts, results, _order++);
                     DetectChanges(o.Modules, c.Modules, results, _order++);
                 });
 

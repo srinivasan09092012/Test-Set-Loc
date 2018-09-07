@@ -133,8 +133,19 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                         }
                         LoadDisplaySizes();
                     }
-                    TenantDropdown.Enabled = true;
-                    TenantDropdown.Focus();
+
+                    if (_tenantConfigs.Keys.Count == 1)
+                    {
+                        TenantLabel.Visible = false;
+                        TenantDropdown.Visible = false;
+                        TenantDropdown.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        TenantLabel.Visible = true;
+                        TenantDropdown.Visible = true;
+                        TenantDropdown.Focus();
+                    }
                 }
                 else
                 {
@@ -406,252 +417,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         }
         #endregion
 
-         #region Localization DataLists Tab Events
-        private void LocaleDropdown_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-                if (LocaleDropdown.SelectedValue != null)
-                {
-                    LoadLocaleConfiguration(LocaleDropdown.SelectedValue);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
-        }
-
-        private void DataListsGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-                e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
-                e.Row.Cells[1].Value = LocaleDropdown.SelectedValue;
-                e.Row.Cells[3].Value = BusinessModuleDropdown.Text + ".DataList.";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
-        }
-
-        private void DataListsGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-                e.Cancel = !ConfirmDeleteRow(e.Row.Cells[3].Value.ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
-        }
-
-        private void dataListBindingSource_CurrentItemChanged(object sender, EventArgs e)
-        {
-            if (_tenantConfigs != null && _tenantConfigs.Count > 0)
-            {
-                ToggleDirtyData(true);
-            }
-        }
-        #endregion
-
-        #region Localization EmailTemplates Tab Events
-        private void EmailTemplatesGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex == EmailTemplatesGridView.NewRowIndex)
-            {
-                if (EmailTemplatesGridView.CurrentCell.EditType == typeof(DataGridViewTextBoxEditingControl))
-                {
-                    EmailTemplatesGridView.BeginEdit(false);
-                    TextBox textBox = (TextBox)EmailTemplatesGridView.EditingControl;
-                    textBox.SelectionStart = textBox.Text.Length;
-                }
-            }
-        }
-
-        private void emailTemplatesBindingSource_CurrentItemChanged(object sender, EventArgs e)
-        {
-            if (_tenantConfigs != null && _tenantConfigs.Count > 0)
-            {
-                ToggleDirtyData(true);
-            }
-        }
-
-        private void EmailTemplatesGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-                e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
-                e.Row.Cells[1].Value = LocaleDropdown.SelectedValue;
-                e.Row.Cells[2].Value = BusinessModuleDropdown.Text + ".EmailTemplate.";
-                e.Row.Cells[5].Value = "Normal";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
-        }
-
-        private void EmailTemplatesGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-                e.Cancel = !ConfirmDeleteRow(e.Row.Cells[2].Value.ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
-        }
-
-        private void EmailTemplatesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-                if (e.ColumnIndex == 6)
-                {
-                    string id = Convert.ToString(EmailTemplatesGridView.Rows[e.RowIndex].Cells[0].Value);
-                    ShowEmailTemplateEditor(id);
-                }
-                else if (e.ColumnIndex == 9)
-                {
-                    string id = Convert.ToString(EmailTemplatesGridView.Rows[e.RowIndex].Cells[0].Value);
-                    ShowEmailTemplateAddresses(id);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
-        }
-        #endregion
-
- 
-
-        #region Localization Labels Tab Events
-        private void labelBindingSource_CurrentItemChanged(object sender, EventArgs e)
-        {
-            if (_tenantConfigs != null && _tenantConfigs.Count > 0)
-            {
-                ToggleDirtyData(true);
-            }
-        }
-
-        private void LabelsGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-                e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
-                e.Row.Cells[1].Value = LocaleDropdown.SelectedValue;
-                e.Row.Cells[2].Value = BusinessModuleDropdown.Text + ".Label.";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
-        }
-
-        private void LabelsGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-                e.Cancel = !ConfirmDeleteRow(e.Row.Cells[2].Value.ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
-        }
-        #endregion
-
-        #region Localization Messages Tab Events
-        private void messagesBindingSource_CurrentItemChanged(object sender, EventArgs e)
-        {
-            if (_tenantConfigs != null && _tenantConfigs.Count > 0)
-            {
-                ToggleDirtyData(true);
-            }
-        }
-
-        private void MessagesGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-                e.Row.Cells[0].Value = Common.Utilities.GenerateNewID();
-                e.Row.Cells[1].Value = LocaleDropdown.SelectedValue;
-                e.Row.Cells[2].Value = BusinessModuleDropdown.Text + ".Msg.";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
-        }
-
-        private void MessagesGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-                e.Cancel = !ConfirmDeleteRow(e.Row.Cells[2].Value.ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
-        }
-        #endregion
-
         #region Model Definition Tab Events
         private void AutoGenModelButton_Click(object sender, EventArgs e)
         {
@@ -750,7 +515,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         }
         #endregion
 
-          #region Private Methods
+        #region Private Methods
         private bool AreTenantConfigsLoaded(string module)
         {
             _tenantConfigs.Clear();
@@ -759,7 +524,7 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             TenantConfigurationModel tenantConfig = 
                 Serializer.XmlDeserialize<TenantConfigurationModel>(File.ReadAllText(_moduleConfigs[module]), CoreConstants.Xml.NamespacePrefixCore);
 
-            _tenantConfigs.Add(tenantConfig.Name, tenantConfig);
+            _tenantConfigs.Add(tenantConfig.TenantId, tenantConfig);
             _originalTenantConfigs.Add(tenantConfig.TenantId, tenantConfig.Clone() as TenantConfigurationModel);
 
             //Load core tenant config
@@ -773,7 +538,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         private void ClearEditor()
         {
             TenantConfigurationModel tenantConfig = new TenantConfigurationModel();
-            tenantConfig.Contacts = new List<Core.UX.Data.Common.ContactModel>();
             tenantConfig.Modules = new List<ModuleConfigurationModel>();
             tenantConfig.Modules.Add(
                 new ModuleConfigurationModel()
@@ -790,7 +554,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             tenantConfig.Modules[0].LocalizationConfiguration.Locales = new List<LocaleConfigurationModel>();
 
             LoadTenantConfiguration(tenantConfig);
-            LocalizationTabControl.SelectTab(0);
             TenantConfigTabControl.SelectTab(0);
         }
 
@@ -973,7 +736,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
 
         private void InitializeDataGrids()
         {
-            ((DataGridViewComboBoxColumn)EmailTemplatesGridView.Columns[5]).DataSource = Enum.GetValues(typeof(CoreEnumerations.Notifications.PriorityType));
         }
 
         private void InitializeForm()
@@ -1156,144 +918,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             return true;
         }
 
-        private bool IsValidLocalization()
-        {
-            int idx = 0;
-            foreach (LocaleConfigurationModel item in _tenantConfig.Modules[0].LocalizationConfiguration.Locales)
-            {
-                if (!IsValidLocalizationEmailTemplates(item.LocaleEmailTemplates, idx))
-                {
-                    return false;
-                }
-
-                idx++;
-            }
-            return true;
-        }
-
-        private bool IsValidLocalizationEmailTemplates(List<LocaleConfigurationEmailTemplateModel> items, int localeIdx)
-        {
-            int idx = 0;
-            foreach (LocaleConfigurationEmailTemplateModel item in items)
-            {
-                //Check for ID value
-                if (string.IsNullOrEmpty(item.Id))
-                {
-                    ShowIdsCheckBox.Checked = true;
-                    ToggleShowIds(true);
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[1];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[0];
-                    EmailTemplatesGridView.CurrentCell = EmailTemplatesGridView.Rows[idx].Cells[0];
-                    EmailTemplatesGridView.Rows[idx].Cells[0].Selected = true;
-                    MessageBox.Show("ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for unique ID value
-                if (_tenantConfig.Modules[0].LocalizationConfiguration.Locales[localeIdx].LocaleEmailTemplates.FindAll(i => string.Compare(i.Id, item.Id, true) == 0).Count > 1)
-                {
-                    ShowIdsCheckBox.Checked = true;
-                    ToggleShowIds(true);
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[1];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[0];
-                    EmailTemplatesGridView.CurrentCell = EmailTemplatesGridView.Rows[idx].Cells[0];
-                    EmailTemplatesGridView.Rows[idx].Cells[0].Selected = true;
-                    MessageBox.Show(string.Format("ID must be a unqiue value. There are more than 1 rows with a name value of '{0}'.", item.Id), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for content id
-                if (string.IsNullOrEmpty(item.ContentId))
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[1];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[0];
-                    EmailTemplatesGridView.CurrentCell = EmailTemplatesGridView.Rows[idx].Cells[2];
-                    EmailTemplatesGridView.Rows[idx].Cells[2].Selected = true;
-                    MessageBox.Show("Content ID is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for proper named content id
-                string prefix = BusinessModuleDropdown.Text + ".EmailTemplate.";
-                if (!item.ContentId.StartsWith(prefix))
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[1];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[0];
-                    EmailTemplatesGridView.CurrentCell = EmailTemplatesGridView.Rows[idx].Cells[2];
-                    EmailTemplatesGridView.Rows[idx].Cells[2].Selected = true;
-                    MessageBox.Show(string.Format("Content ID must start with the prefix '{0}'.", prefix), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for unique content id
-                if (items.FindAll(i => string.Compare(i.ContentId, item.ContentId, true) == 0).Count > 1)
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[1];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[0];
-                    EmailTemplatesGridView.CurrentCell = EmailTemplatesGridView.Rows[idx].Cells[2];
-                    EmailTemplatesGridView.Rows[idx].Cells[2].Selected = true;
-                    MessageBox.Show(string.Format("Content ID must be a unqiue value. There are more than 1 rows with a content ID value of '{0}'.", item.ContentId), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for name
-                if (string.IsNullOrEmpty(item.Name))
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[1];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[0];
-                    EmailTemplatesGridView.CurrentCell = EmailTemplatesGridView.Rows[idx].Cells[3];
-                    EmailTemplatesGridView.Rows[idx].Cells[3].Selected = true;
-                    MessageBox.Show("Name is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for subject
-                if (string.IsNullOrEmpty(item.Subject))
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[1];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[0];
-                    EmailTemplatesGridView.CurrentCell = EmailTemplatesGridView.Rows[idx].Cells[4];
-                    EmailTemplatesGridView.Rows[idx].Cells[4].Selected = true;
-                    MessageBox.Show("Subject is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for body
-                if (string.IsNullOrEmpty(item.BodyString))
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[1];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[0];
-                    EmailTemplatesGridView.CurrentCell = EmailTemplatesGridView.Rows[idx].Cells[6];
-                    EmailTemplatesGridView.Rows[idx].Cells[6].Selected = true;
-                    MessageBox.Show("Body is a required field.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                //Check for start date less than end date
-                if(DateTime.Compare(item.StartDate, item.EndDate) > 0)
-                {
-                    TenantConfigTabControl.SelectedTab = TenantConfigTabControl.TabPages[1];
-                    LocaleDropdown.SelectedIndex = localeIdx;
-                    LocalizationTabControl.SelectedTab = LocalizationTabControl.TabPages[0];
-                    EmailTemplatesGridView.CurrentCell = EmailTemplatesGridView.Rows[idx].Cells[8];
-                    EmailTemplatesGridView.Rows[idx].Cells[8].Selected = true;
-                    MessageBox.Show("Start date must be before or on end date.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                idx++;
-            }
-            return true;
-        }  
-        
         private bool IsValidModelDefinitions()
         {
             int idx = 0;
@@ -1360,11 +984,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         private bool IsValidTenantConfigData()
         {
             if (!IsValidDisplaySizes())
-            {
-                return false;
-            }
-
-            if (!IsValidLocalization())
             {
                 return false;
             }
@@ -1439,11 +1058,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
             //Display Sizes
             displaySizeBindingSource.DataSource = tenantConfig.Modules[0].DisplayConfiguration.DisplaySizes;
 
-            //Localization
-            LocaleDropdown.DataSource = tenantConfig.Modules[0].LocalizationConfiguration.Locales;
-            LocaleDropdown.DisplayMember = "Name";
-            LocaleDropdown.ValueMember = "LocaleId";
-
             //Model Definitions
             modelDefsBindingSource.DataSource = tenantConfig.Modules[0].ModelDefinitionConfiguration;
 
@@ -1487,81 +1101,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
                 modelDefsBindingSource.ResetBindings(false);
                 ToggleDirtyData(true);
                 MessageBox.Show("Model definition successfully generated.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            form.Dispose();
-        }
-
-        private void ShowDataListItems(string id)
-        {
-            object selectedLocaleId = LocaleDropdown.SelectedValue;
-            string localeId = selectedLocaleId.ToString();
-            if (selectedLocaleId != null && selectedLocaleId is LocaleConfigurationModel)
-            {
-                localeId = ((LocaleConfigurationModel)selectedLocaleId).LocaleId;
-            }
-            LocaleConfigurationModel locale = _tenantConfig.Modules[0].LocalizationConfiguration.Locales.Find(i => i.LocaleId == localeId);
-            LocaleConfigurationDataListModel dataList = locale.LocaleDataLists.Find(i => i.Id == id);
-
-            DataListItemsForm form = new DataListItemsForm()
-            {
-                BusinessModule = _businessModuleName,
-                DataList = dataList,
-                ShowIds = ShowIdsCheckBox.Checked
-            };
-            form.ShowDialog();
-            if (form.HasDataChanged)
-            {
-                ToggleDirtyData(true);
-            }
-            form.Dispose();
-        }
-
-        private void ShowEmailTemplateEditor(string id)
-        {
-            object selectedLocaleId = LocaleDropdown.SelectedValue;
-            string localeId = selectedLocaleId.ToString();
-            if (selectedLocaleId != null && selectedLocaleId is LocaleConfigurationModel)
-            {
-                localeId = ((LocaleConfigurationModel)selectedLocaleId).LocaleId;
-            }
-            LocaleConfigurationModel locale = _tenantConfig.Modules[0].LocalizationConfiguration.Locales.Find(i => i.LocaleId == localeId);
-            LocaleConfigurationEmailTemplateModel emailTemplate = locale.LocaleEmailTemplates.Find(i => i.Id == id);
-
-            XmlEditorForm form = new XmlEditorForm()
-            {
-                ContentId = emailTemplate.ContentId,
-                EditorText = emailTemplate.BodyString
-            };
-            form.ShowDialog();
-            if (form.HasDataChanged)
-            {
-                emailTemplate.BodyString = form.EditorText;
-                ToggleDirtyData(true);
-            }
-            form.Dispose();
-        }
-
-        private void ShowEmailTemplateAddresses(string id)
-        {
-            object selectedLocaleId = LocaleDropdown.SelectedValue;
-            string localeId = selectedLocaleId.ToString();
-            if (selectedLocaleId != null && selectedLocaleId is LocaleConfigurationModel)
-            {
-                localeId = ((LocaleConfigurationModel)selectedLocaleId).LocaleId;
-            }
-            LocaleConfigurationModel locale = _tenantConfig.Modules[0].LocalizationConfiguration.Locales.Find(i => i.LocaleId == localeId);
-            LocaleConfigurationEmailTemplateModel emailTemplate = locale.LocaleEmailTemplates.Find(i => i.Id == id);
-
-            EmailTemplateAddressForm form = new EmailTemplateAddressForm()
-            {
-                BusinessModule = _businessModuleName,
-                EmailTemplate = emailTemplate,
-                ShowIds = ShowIdsCheckBox.Checked
-            };
-            form.ShowDialog();
-            if (form.HasDataChanged)
-            {
-                ToggleDirtyData(true);
             }
             form.Dispose();
         }
@@ -1817,8 +1356,6 @@ namespace HP.HSP.UA3.Utilities.TenantConfigManager.Forms
         private void ToggleShowIds(bool showIds)
         {
             DisplaySizesGridView.Columns[0].Visible = showIds;
-
-            EmailTemplatesGridView.Columns[0].Visible = showIds;
 
             ModelDefinitionsGridView.Columns[0].Visible = showIds;
             
