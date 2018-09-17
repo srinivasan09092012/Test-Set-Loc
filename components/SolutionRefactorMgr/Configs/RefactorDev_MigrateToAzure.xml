@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true">
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs>
@@ -112,6 +112,6 @@
     <ReplacementString qualifier="pium51_k60" from="pium51_k60" to="pm51_k" />
     <ReplacementString qualifier="DATABASE=UA3_PIUM" from="DATABASE=UA3_PIUM" to="DATABASE=medicaid" />      
   </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
-  <TfsWorkspace>UA3</TfsWorkspace>
+  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
+  <TfsWorkspace></TfsWorkspace>
 </RefactorConfig>
