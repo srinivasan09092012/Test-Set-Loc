@@ -16,22 +16,36 @@ namespace SolutionRefactorMgr
         private static int pendDeleteCount = 0;
         private static int pendEditCount = 0;
         private static int pendRenameCount = 0;
+        private static int exceptionsWritten = 0;
+        private static int retryCount = 10;
 
         private static CoreLogger logger = new CoreLogger();
         private static RefactorConfig refactorConfig = null;
         private static TfsTeamProjectCollection tpc = null;
         private static Workspace workspace = null;
+        private static TextWriter tw = null;
 
         public static void Main(string[] args)
         {
+            string exceptionSummaryDirectory = Directory.GetCurrentDirectory() + "\\Logs";
+            string exceptionSummaryFile = Directory.GetCurrentDirectory() + "\\Logs\\ExceptionSummary.txt";
+
+            if (!Directory.Exists(exceptionSummaryDirectory))
+            {
+                Directory.CreateDirectory(exceptionSummaryDirectory);
+            }
+
+            tw = new StreamWriter(exceptionSummaryFile);
+
             try
             {
                 LogMessage(0, "Process started");
-                LoadConfigration();
+                LoadConfiguration();
                 InitializeTfs();
                 Refactor();
                 ReportCounts();
                 LogMessage(0, "Process complete");
+                LogMessage(0, " ");
             }
             catch (Exception ex)
             {
@@ -40,6 +54,7 @@ namespace SolutionRefactorMgr
             finally
             {
                 FinalizeTfs();
+                tw.Close();
                 Console.Write("Press any key to close");
                 Console.ReadKey();
             }
@@ -85,13 +100,16 @@ namespace SolutionRefactorMgr
                 versionControl.Getting += OnGetting;
                 versionControl.BeforeCheckinPendingChange += OnBeforeCheckinPendingChange;
                 versionControl.NewPendingChange += OnNewPendingChange;
+
                 LogMessage(0, string.Format("NOTE: IF YOU GET A MSG THAT YOU DON'T HAVE PERMISSIONS TO CHECKOUT, CHANGE THE TFSWORKSPACE ELEMENT IN THE REFACTOR.CONFIG TO YOUR UA3 WORKSPACE NAME."));
+
                 workspace = versionControl.QueryWorkspaces(refactorConfig.TfsWorkspace, versionControl.AuthorizedUser, Environment.MachineName)[0];
+                Workstation.Current.EnsureUpdateWorkspaceInfoCache(versionControl, versionControl.AuthorizedUser);
                 LogMessage(0, string.Format("Successfully connected to TFS"));
             }
         }
 
-        private static void LoadConfigration()
+        private static void LoadConfiguration()
         {
             LogMessage(0, "Loading configuration");
             string filePath = AppDomain.CurrentDomain.BaseDirectory + Constants.ConfigFile;
@@ -264,6 +282,7 @@ namespace SolutionRefactorMgr
         {
             Domain.FileType fileType = refactorConfig.FileTypes.Find(f => f.Extension.ToLower() == file.Extension.ToLower());
             bool fileQualifies = fileType != null;
+
             if (fileQualifies && !string.IsNullOrWhiteSpace(fileType.QualifyIfPathContains))
             {
                 fileQualifies = file.DirectoryName.ToLower().Contains(fileType.QualifyIfPathContains.ToLower());
@@ -278,6 +297,7 @@ namespace SolutionRefactorMgr
             {
                 string fileName = file.Name;
                 string newFileName = fileName;
+
                 if (refactorConfig.IncludeFileNames)
                 {
                     newFileName = RefactorFileName(file.Name);
@@ -290,6 +310,7 @@ namespace SolutionRefactorMgr
                 string newFileContents = fileContents;
                 bool isBinary = IsBinaryFile(fileContents);
                 bool contentsChanged = false;
+
                 if (refactorConfig.IncludeFileContents && !isBinary)
                 {
                     contentsChanged = RefactorFileContents(file.FullName, out newFileContents);
@@ -307,6 +328,7 @@ namespace SolutionRefactorMgr
                         File.WriteAllText(newPath, newFileContents);
                         LogMessage(level, string.Format("Refactoring file '{0}'", file.Name));
                     }
+
                     File.SetAttributes(newPath, File.GetAttributes(newPath) & ~FileAttributes.ReadOnly);
                     TfsPendAdd(newPath);
                 }
@@ -383,8 +405,10 @@ namespace SolutionRefactorMgr
                                 writer.WriteLine(line);
                             }
                         }
+
                         writer.Flush();
                         ms.Position = 0;
+
                         using (StreamReader sr = new StreamReader(ms))
                         {
                             refactoredFileContents = sr.ReadToEnd();
@@ -419,7 +443,9 @@ namespace SolutionRefactorMgr
             {
                 sourcePath += "\\" + type.ToString();
             }
+
             string destPath = sourcePath;
+
             if (refactorConfig.EditMode == Enumerations.EditModeTypes.Copy)
             {
                 destPath = refactorConfig.SourceDir + module.Name + "\\" + module.Branch;
@@ -428,6 +454,7 @@ namespace SolutionRefactorMgr
                     destPath += "\\" + type.ToString();
                 }
             }
+
             RefactorDirectory(sourcePath, destPath, destPath, true, 2);
         }
 
@@ -451,12 +478,14 @@ namespace SolutionRefactorMgr
 
                     RefactorDirectory(subdir.FullName, destPath + newDirName, destPath + newDirName, true, 2);
                     DirectoryInfo newPackageDir = new DirectoryInfo(destPath + newDirName);
+                    bool packageSourceReformatted = true;
+
                     if (package.ReformatSource)
                     {
-                        ReformatPackageSource(newPackageDir, 2);
+                        packageSourceReformatted = ReformatPackageSource(newPackageDir, 2);
                     }
 
-                    if (package.RebuildPackage)
+                    if (packageSourceReformatted && package.RebuildPackage)
                     {
                         RebuildNugetPackage(newPackageDir, 2);
                     }
@@ -466,139 +495,245 @@ namespace SolutionRefactorMgr
 
         private static void ReportCounts()
         {
-            LogMessage(0, "");
+            LogMessage(0, " ");
             LogMessage(0, "===========================================================================");
             LogMessage(0, "Processing Summary");
             LogMessage(0, "===========================================================================");
-            LogMessage(0, string.Format("Pending Adds:    {0}", pendAddCount.ToString("#,##0")));
-            LogMessage(0, string.Format("Pending Edits:   {0}", pendEditCount.ToString("#,##0")));
-            LogMessage(0, string.Format("Pending Deletes: {0}", pendDeleteCount.ToString("#,##0")));
-            LogMessage(0, string.Format("Pending Renames: {0}", pendRenameCount.ToString("#,##0")));
-            LogMessage(0, "");
-            LogMessage(0, "");
+            LogMessage(0, string.Format("Pending Adds:       {0}", pendAddCount.ToString("#,##0")));
+            LogMessage(0, string.Format("Pending Edits:      {0}", pendEditCount.ToString("#,##0")));
+            LogMessage(0, string.Format("Pending Deletes:    {0}", pendDeleteCount.ToString("#,##0")));
+            LogMessage(0, string.Format("Pending Renames:    {0}", pendRenameCount.ToString("#,##0")));
+            LogMessage(0, string.Format("Exceptions Written: {0}", exceptionsWritten.ToString("#,##0")));
+            LogMessage(0, " ");
         }
 
         private static void RebuildNugetPackage(DirectoryInfo packageDir, int level)
         {
             LogMessage(level, string.Format("Rebuilding package source: '{0}'", packageDir.FullName));
-            FileInfo nuspecFile;
-            FileInfo nupkgFile;
-            FileInfo[] files = packageDir.GetFiles("*.nuspec");
+            FileInfo nuspecFile = null;
+            FileInfo nupkgFile = null;
+
+            FileInfo[] files = packageDir.GetFiles(packageDir.Name + ".nuspec");
             if (files.Length == 1)
             {
                 nuspecFile = files[0];
             }
             else
             {
-                throw new ApplicationException(string.Format("Unable to find nuspec file for package '{0}'.", packageDir.FullName));
+                LogMessage(level, string.Format("Unable to find nuspec file for package '{0}'.", packageDir.FullName), new Exception());
+                tw.WriteLine("Unable to find nuspec file for package '{0}'.", packageDir.FullName);
+                exceptionsWritten++;
             }
 
-            files = packageDir.GetFiles("*.nupkg");
+            files = packageDir.GetFiles(packageDir.Name + ".nupkg");
             if (files.Length == 1)
             {
                 nupkgFile = files[0];
             }
             else
             {
-                throw new ApplicationException(string.Format("Unable to find nupkg file for package '{0}'.", packageDir.FullName));
-            }
-            TfsPendEdit(nupkgFile.FullName);
-
-            string command = string.Format("pack {0}", nuspecFile.FullName);
-            using (Process cmd = new Process())
-            {
-                cmd.StartInfo.FileName = "NuGet.exe";
-                cmd.StartInfo.Arguments = command;
-                cmd.StartInfo.RedirectStandardInput = true;
-                cmd.StartInfo.RedirectStandardOutput = true;
-                cmd.StartInfo.CreateNoWindow = true;
-                cmd.StartInfo.UseShellExecute = false;
-                cmd.Start();
-                cmd.StandardInput.Flush();
-                cmd.StandardInput.Close();
-                cmd.WaitForExit();
-                LogMessage(level, cmd.StandardOutput.ReadToEnd());
-            }
-            string sourcePkg = string.Format("{0}\\{1}", Directory.GetCurrentDirectory(), nuspecFile.Name.Replace(".nuspec", ".nupkg"));
-            if (File.Exists(nupkgFile.FullName))
-            {
-                File.Delete(nupkgFile.FullName);
+                LogMessage(level, string.Format("Unable to find nupkg file for package '{0}'.", packageDir.FullName), new Exception());
+                tw.WriteLine("Unable to find nupkg file for package '{0}'.", packageDir.FullName);
+                exceptionsWritten++;
             }
 
-            File.Move(sourcePkg, nupkgFile.FullName);
+            if (nuspecFile != null && nupkgFile != null)
+            {
+                TfsPendEdit(nupkgFile.FullName);
+
+                string command = string.Format("pack {0}", nuspecFile.FullName);
+                using (Process cmd = new Process())
+                {
+                    cmd.StartInfo.FileName = "NuGet.exe";
+                    cmd.StartInfo.Arguments = command;
+                    cmd.StartInfo.RedirectStandardInput = true;
+                    cmd.StartInfo.RedirectStandardOutput = true;
+                    cmd.StartInfo.CreateNoWindow = true;
+                    cmd.StartInfo.UseShellExecute = false;
+                    cmd.Start();
+                    cmd.StandardInput.Flush();
+                    cmd.StandardInput.Close();
+                    cmd.WaitForExit();
+                    LogMessage(level, cmd.StandardOutput.ReadToEnd());
+                }
+
+                string sourcePkg = string.Format("{0}\\{1}", Directory.GetCurrentDirectory(), nuspecFile.Name.Replace(".nuspec", ".nupkg"));
+                if (File.Exists(nupkgFile.FullName))
+                {
+                    File.Delete(nupkgFile.FullName);
+                }
+
+                if (File.Exists(sourcePkg))
+                {
+                    File.Move(sourcePkg, nupkgFile.FullName);
+                }
+                else
+                {
+                    LogMessage(level, string.Format("Unable to find generated nupkg file at '{0}'. Nupkg file generation may have failed.", sourcePkg), new Exception());
+                    tw.WriteLine("Nupkg file generation may have failed. Unable to find and copy '{0}' to '{1}'.", sourcePkg, nupkgFile.FullName);
+                    exceptionsWritten++;
+                }
+            }
         }
 
-        private static void ReformatPackageSource(DirectoryInfo packageDir, int level)
+        private static bool ReformatPackageSource(DirectoryInfo packageDir, int level)
         {
             LogMessage(level, string.Format("Reformating package source: '{0}'", packageDir.FullName));
-            FileInfo nuspecFile;
-            FileInfo[] files = packageDir.GetFiles("*.nuspec");
+            FileInfo nuspecFile = null;
+
+            FileInfo[] files = packageDir.GetFiles(packageDir.Name + ".nuspec");
             if (files.Length == 1)
             {
                 nuspecFile = files[0];
             }
             else
             {
-                throw new ApplicationException(string.Format("Unable to find nuspec file for package '{0}'.", packageDir.FullName));
+                LogMessage(level, string.Format("Unable to find nuspec file for package '{0}'.", packageDir.FullName), new Exception());
+                tw.WriteLine("Unable to find nuspec file for package '{0}'.", packageDir.FullName);
+                exceptionsWritten++;
+                return false;
             }
-            TfsPendEdit(nuspecFile.FullName);
 
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(nuspecFile.FullName);
-            XmlNamespaceManager nsmgr = new XmlNamespaceManager(xmlDoc.NameTable);
-            nsmgr.AddNamespace("ms", "http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd");
-            XmlNodeList assemblyFiles = xmlDoc.SelectNodes("//ms:file", nsmgr);
-            if (assemblyFiles != null && assemblyFiles.Count > 0)
+            if (nuspecFile != null)
             {
-                foreach(XmlNode assemblyFile in assemblyFiles)
+                TfsPendEdit(nuspecFile.FullName);
+
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(nuspecFile.FullName);
+                XmlNamespaceManager nsmgr = new XmlNamespaceManager(xmlDoc.NameTable);
+                nsmgr.AddNamespace("ms", "http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd");
+                XmlNodeList assemblyFiles = xmlDoc.SelectNodes("//ms:file", nsmgr);
+
+                if (assemblyFiles != null && assemblyFiles.Count > 0)
                 {
-                    assemblyFile.Attributes["src"].Value = assemblyFile.Attributes["target"].Value;
+                    foreach (XmlNode assemblyFile in assemblyFiles)
+                    {
+                        assemblyFile.Attributes["src"].Value = assemblyFile.Attributes["target"].Value;
+                    }
                 }
+
+                xmlDoc.Save(nuspecFile.FullName);
             }
-            xmlDoc.Save(nuspecFile.FullName);
+
+            return true;
         }
 
         private static void TfsPendAdd(string path)
         {
-            if(workspace != null)
+            bool retry = true;
+            int retryAttempts = 0;
+
+            while (retry && retryAttempts <= retryCount)
             {
-                workspace.PendAdd(path);
-                pendAddCount++;
+                try
+                {
+                    if (workspace != null)
+                    {
+                        workspace.PendAdd(path);
+                        pendAddCount++;
+                    }
+
+                    retry = false;
+                }
+                catch
+                {
+                    retryAttempts++;
+                }
             }
         }
 
         private static void TfsPendDelete(string path)
         {
-            if (workspace != null)
+            bool retry = true;
+            int retryAttempts = 0;
+
+            while (retry && retryAttempts <= retryCount)
             {
-                workspace.PendDelete(path);
-                pendDeleteCount++;
+                try
+                {
+                    if (workspace != null)
+                    {
+                        workspace.PendDelete(path);
+                        pendDeleteCount++;
+                    }
+
+                    retry = false;
+                }
+                catch
+                {
+                    retryAttempts++;
+                }
             }
         }
 
         private static void TfsPendEdit(string path)
         {
-            if (workspace != null)
+            bool retry = true;
+            int retryAttempts = 0;
+
+            while (retry && retryAttempts <= retryCount)
             {
-                workspace.PendEdit(path);
-                pendEditCount++;
+                try
+                {
+                    if (workspace != null)
+                    {
+                        workspace.PendEdit(path);
+                        pendEditCount++;
+                    }
+
+                    retry = false;
+                }
+                catch
+                {
+                    retryAttempts++;
+                }
             }
         }
 
         private static void TfsPendRename(string oldPath, string newPath)
         {
-            if (workspace != null)
+            bool retry = true;
+            int retryAttempts = 0;
+
+            while (retry && retryAttempts <= retryCount)
             {
-                workspace.PendRename(oldPath, newPath);
-                pendRenameCount++;
+                try
+                {
+                    if (workspace != null)
+                    {
+                        workspace.PendRename(oldPath, newPath);
+                        pendRenameCount++;
+                    }
+
+                    retry = false;
+                }
+                catch
+                {
+                    retryAttempts++;
+                }
             }
         }
 
         private static void TfsUndo(string path)
         {
-            if (workspace != null)
+            bool retry = true;
+            int retryAttempts = 0;
+
+            while (retry && retryAttempts <= retryCount)
             {
-                workspace.Undo(path);
+                try
+                {
+                    if (workspace != null)
+                    {
+                        workspace.Undo(path);
+                    }
+
+                    retry = false;
+                }
+                catch
+                {
+                    retryAttempts++;
+                }
             }
         }
     }
