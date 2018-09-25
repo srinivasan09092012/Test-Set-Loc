@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <RefactorConfig editMode="Inline" includeFolderNames="true" includeFileNames="true" includeFileContents="true" useSourceControl="true">
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs>
@@ -41,9 +41,10 @@
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
-    <ReplacementString qualifier="Kendo" from="2017.3.913.545" to="2018.2.620.545" />
-    <ReplacementString qualifier="0.0.0.0-2017.3.913.545" from="0.0.0.0-2017.3.913.545" to="0.0.0.0-2018.2.620.545" />
-    <ReplacementString qualifier="2017.3.913.545" from="2017.3.913.545" to="2018.2.620.545" />
+    <ReplacementString qualifier="Kendo" from="2018.2.620.545" to="2018.2.620.545" />
+    <ReplacementString qualifier="KendoSpreadSheets" from="2018.2.620.545" to="2018.2.620.545" />
+    <ReplacementString qualifier="0.0.0.0-2018.2.620.545" from="0.0.0.0-2018.2.620.545" to="0.0.0.0-2018.2.620.545" />
+    <ReplacementString qualifier="2018.2.620.545" from="2018.2.620.545" to="2018.2.620.545" />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
   <TfsWorkspace></TfsWorkspace>
