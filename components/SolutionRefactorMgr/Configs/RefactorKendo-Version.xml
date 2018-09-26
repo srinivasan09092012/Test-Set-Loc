@@ -34,18 +34,22 @@
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
+    <FileType ext=".cd" />
+    <FileType ext=".classdiagram" />
+    <FileType ext=".cmd" />
     <FileType ext=".config" />
     <FileType ext=".cs" />
+    <FileType ext=".cshtml" />
     <FileType ext=".csproj" />
     <FileType ext=".xml" />
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
-    <ReplacementString qualifier="Kendo" from="2018.2.620.545" to="2018.2.620.545" />
-    <ReplacementString qualifier="KendoSpreadSheets" from="2018.2.620.545" to="2018.2.620.545" />
-    <ReplacementString qualifier="0.0.0.0-2018.2.620.545" from="0.0.0.0-2018.2.620.545" to="0.0.0.0-2018.2.620.545" />
-    <ReplacementString qualifier="2018.2.620.545" from="2018.2.620.545" to="2018.2.620.545" />
+    <ReplacementString qualifier="Kendo" from="2018.2.620.440" to="2018.2.620.440" />
+    <ReplacementString qualifier="KendoSpreadSheets" from="2018.2.620.440" to="2018.2.620.440" />
+    <ReplacementString qualifier="0.0.0.0-2018.2.620.440" from="0.0.0.0-2018.2.620.440" to="0.0.0.0-2018.2.620.440" />
+    <ReplacementString qualifier="2018.2.620.440" from="2018.2.620.440" to="2018.2.620.440" />
   </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
-  <TfsWorkspace></TfsWorkspace>
+  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
+  <TfsWorkspace>USCND35122WB</TfsWorkspace>
 </RefactorConfig>
