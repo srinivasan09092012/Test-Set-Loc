@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using UserAccountManager.Domain;
 using UserAccountManager.Providers;
+using UserAccountManager.Utilities;
 using static UserAccountManager.Domain.Enumerations;
 using api = HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain;
 
@@ -43,10 +44,11 @@ namespace UserAccountManager.Forms
         {
             try
             {
+
                 this.Cursor = Cursors.WaitCursor;
                 this.StatusStripLabel.Text = "Initializing user account...";
                 this.InitializeForm();
-                this.VOSTagsBindingSource.DataSource = this.UserProfile.VOSTags;
+                this.VOSTagsBindingSource.DataSource = Serializer.Clone<List<UserVOSTag>>(this.UserProfile.VOSTags);
                 this.GeneralIdLabel.Enabled = this.EnvConfig.ServiceVersion > 1;
                 this.GeneralIdTtextBox.Enabled = this.EnvConfig.ServiceVersion > 1;
                 this.VOSTagsLabel.Enabled = this.EnvConfig.ServiceVersion > 1;
@@ -538,7 +540,7 @@ namespace UserAccountManager.Forms
                     if (existingUserProfile != null)
                     {
                         newUserProfile.ProfileId = existingUserProfile.ProfileId;
-                        cmdProvider.UpdateProfile(newUserProfile);
+                        cmdProvider.UpdateProfile(newUserProfile, this.UserProfile);
                     }
                     else
                     {
@@ -580,7 +582,7 @@ namespace UserAccountManager.Forms
                     }
                     else
                     {
-                        cmdProvider.UpdateProfile(newUserProfile);
+                        cmdProvider.UpdateProfile(newUserProfile, this.UserProfile);
                     }
                 }
             }

@@ -39,19 +39,19 @@ namespace UserAccountManager.Providers
             }
         }
 
-        public void UpdateProfile(UserProfile userProfile)
+        public void UpdateProfile(UserProfile newUserProfile, UserProfile oldUserProfile)
         {
             svc.UpdateProfile cmd = new svc.UpdateProfile()
             {
                 Requestor = this.BuildRequestor(),
-                ContactNumber = userProfile.PhoneNumber,
-                EmailAddress = userProfile.EmailAddress,
-                FirstName = userProfile.FirstName,
+                ContactNumber = newUserProfile.PhoneNumber,
+                EmailAddress = newUserProfile.EmailAddress,
+                FirstName = newUserProfile.FirstName,
                 //GenericId = userProfile.GeneralId,
-                LastName = userProfile.LastName,
-                LocaleId = userProfile.LocaleId,
-                TenantId = userProfile.TenantId.ToString("D"),
-                UserId = userProfile.UserName//,
+                LastName = newUserProfile.LastName,
+                LocaleId = newUserProfile.LocaleId,
+                TenantId = newUserProfile.TenantId.ToString("D"),
+                UserId = newUserProfile.UserName//,
                 //VosTags = userProfile.VosTags
             };
 
@@ -84,6 +84,34 @@ namespace UserAccountManager.Providers
                 RequestDate = DateTime.UtcNow,
                 TenantId = base.tenantId
             };
+        }
+
+        private bool TagsAreDifferent(UserVOSTag newVosTag, UserVOSTag oldVosTag)
+        {
+            bool areDifferent = false;
+
+            if (oldVosTag == null)
+            {
+                areDifferent = true;
+            }
+            else if (newVosTag.Code != oldVosTag.Code)
+            {
+                areDifferent = true;
+            }
+            else if (newVosTag.EffectiveDate != oldVosTag.EffectiveDate)
+            {
+                areDifferent = true;
+            }
+            else if (newVosTag.EndDate != oldVosTag.EndDate)
+            {
+                areDifferent = true;
+            }
+            else if (newVosTag.TypeCode != oldVosTag.TypeCode)
+            {
+                areDifferent = true;
+            }
+
+            return areDifferent;
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Xml.Serialization;
 
 namespace UserAccountManager.Domain
 {
+    [Serializable]
     public class BaseService
     {
         [XmlAttribute("behaviorConfiguration")]

@@ -6,7 +6,7 @@ namespace UserAccountManager.Providers
     {
         void AddProfile(UserProfile userProfile);
 
-        void UpdateProfile(UserProfile userProfile);
+        void UpdateProfile(UserProfile newUserProfile, UserProfile oldUserProfile);
 
         void ActiveProfile(string userId);
 

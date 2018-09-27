@@ -1,14 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <EnvironmentsConfig>
   <Environments>
-    <Environment name="Beta" tenantId="081e354b-2184-47fe-b69d-3c5229d8bccf" serviceVersion="2" isDeleteAllowed="true">
-      <ADContainer>CN=Users,DC=beta,DC=mapshc,DC=com</ADContainer>
-      <ADServer>ad.beta.mapshc.com</ADServer>
-      <ADUser>adService</ADUser>
-      <ADPassword>Password2018</ADPassword>
-      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas.beta.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
-      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.beta.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
-    </Environment>
     <Environment name="Dev" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="2" isDeleteAllowed="true">
       <ADContainer>CN=Users,DC=dev,DC=mapshc,DC=com</ADContainer>
       <ADServer>ad.dev.mapshc.com</ADServer>
@@ -17,15 +9,23 @@
       <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
       <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
     </Environment>
-    <Environment name="Demo" tenantId="081e354b-2184-47fe-b69d-3c5229d8bccf" serviceVersion="1" isDeleteAllowed="true">
-      <ADContainer>CN=Users,DC=demo,DC=mapshc,DC=com</ADContainer>
-      <ADServer>ad.demo.mapshc.com</ADServer>
+    <Environment name="Beta" tenantId="081e354b-2184-47fe-b69d-3c5229d8bccf" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=beta,DC=mapshc,DC=com</ADContainer>
+      <ADServer>ad.beta.mapshc.com</ADServer>
       <ADUser>adService</ADUser>
-      <ADPassword>Password2017</ADPassword>
-      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas.demo.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
-      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.demo.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
+      <ADPassword>Password2018</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas.beta.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.beta.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
     </Environment>
-    <Environment name="Performance" tenantId="081e354b-2184-47fe-b69d-3c5229d8bccf" serviceVersion="1" isDeleteAllowed="true">
+    <Environment name="Demo" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=demo,DC=mapshc,DC=com</ADContainer>
+      <ADServer>143.162.100.7</ADServer>
+      <ADUser>demo\adService</ADUser>
+      <ADPassword>Password2017</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://143.162.100.11/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://143.162.100.11/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="Performance" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="2" isDeleteAllowed="true">
       <ADContainer>CN=Users,DC=performance,DC=mapshc,DC=com</ADContainer>
       <ADServer>ad.performance.mapshc.com</ADServer>
       <ADUser>adService</ADUser>
@@ -49,7 +49,7 @@
       <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas.staging-1.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
       <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.staging-1.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
     </Environment>
-    <Environment name="Test" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="2" isDeleteAllowed="true">
+    <Environment name="Test - DXC Medicaid" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="2" isDeleteAllowed="true">
       <ADContainer>CN=Users,DC=test,DC=mapshc,DC=com</ADContainer>
       <ADServer>ad.test.mapshc.com</ADServer>
       <ADUser>adService</ADUser>
@@ -57,15 +57,13 @@
       <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas.test.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
       <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.test.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
     </Environment>
-    <!--
-    <Environment name="Work" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="2" isDeleteAllowed="true">
-      <ADContainer>CN=Users,DC=dev,DC=mapshc,DC=com</ADContainer>
-      <ADServer>ad.dev.mapshc.com</ADServer>
+    <Environment name="Test - DXC Commercial" tenantId="b37b1cec-6603-2d4f-ac37-74e0724774a1" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=test,DC=mapshc,DC=com</ADContainer>
+      <ADServer>ad.test.mapshc.com</ADServer>
       <ADUser>adService</ADUser>
       <ADPassword>Password2017</ADPassword>
-      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="http://localhost:40520/UserQueryService.svc" />
-      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpBinding_IUserService" binding="basicHttpBinding" endpointAddress="http://localhost:40520/UserService.svc" />
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas.test.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.test.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
     </Environment>
-    -->
   </Environments>
 </EnvironmentsConfig>

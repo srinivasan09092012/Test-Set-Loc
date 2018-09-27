@@ -2,6 +2,7 @@
 
 namespace UserAccountManager.Domain
 {
+    [Serializable]
     public class UserVOSTag
     {
         public UserVOSTag() :

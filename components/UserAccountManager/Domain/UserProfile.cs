@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace UserAccountManager.Domain
 {
+    [Serializable]
     public class UserProfile
     {
         public UserProfile()

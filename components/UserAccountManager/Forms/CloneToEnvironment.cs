@@ -238,7 +238,7 @@ namespace UserAccountManager.Forms
                     }
 
                     // Update target user profile
-                    trgCmdProvider.UpdateProfile(targetUserProfile);
+                    trgCmdProvider.UpdateProfile(targetUserProfile, sourceUserProfile);
                 }
             }
         }
