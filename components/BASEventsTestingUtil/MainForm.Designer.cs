@@ -48,6 +48,8 @@
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.numericUpDownEventsNumbers = new System.Windows.Forms.NumericUpDown();
             this.labelProgess = new System.Windows.Forms.Label();
+            this.tenantIds = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.allTabs.SuspendLayout();
             this.tabPayload.SuspendLayout();
             this.tbErrors.SuspendLayout();
@@ -66,14 +68,14 @@
             this.tbFileName.Margin = new System.Windows.Forms.Padding(2);
             this.tbFileName.Name = "tbFileName";
             this.tbFileName.ReadOnly = true;
-            this.tbFileName.Size = new System.Drawing.Size(986, 24);
+            this.tbFileName.Size = new System.Drawing.Size(1006, 24);
             this.tbFileName.TabIndex = 0;
             // 
             // btnBrowse
             // 
             this.btnBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBrowse.Location = new System.Drawing.Point(1001, 18);
+            this.btnBrowse.Location = new System.Drawing.Point(1021, 18);
             this.btnBrowse.Margin = new System.Windows.Forms.Padding(2);
             this.btnBrowse.MaximumSize = new System.Drawing.Size(105, 31);
             this.btnBrowse.MinimumSize = new System.Drawing.Size(105, 31);
@@ -110,7 +112,7 @@
             this.allTabs.Margin = new System.Windows.Forms.Padding(2);
             this.allTabs.Name = "allTabs";
             this.allTabs.SelectedIndex = 0;
-            this.allTabs.Size = new System.Drawing.Size(1087, 559);
+            this.allTabs.Size = new System.Drawing.Size(1107, 554);
             this.allTabs.TabIndex = 3;
             // 
             // tabPayload
@@ -120,7 +122,7 @@
             this.tabPayload.Margin = new System.Windows.Forms.Padding(2);
             this.tabPayload.Name = "tabPayload";
             this.tabPayload.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPayload.Size = new System.Drawing.Size(1079, 526);
+            this.tabPayload.Size = new System.Drawing.Size(1099, 521);
             this.tabPayload.TabIndex = 0;
             this.tabPayload.Text = "Event Payload";
             this.tabPayload.UseVisualStyleBackColor = true;
@@ -132,7 +134,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.wbXML.Location = new System.Drawing.Point(2, 2);
             this.wbXML.Name = "wbXML";
-            this.wbXML.Size = new System.Drawing.Size(1077, 524);
+            this.wbXML.Size = new System.Drawing.Size(1097, 519);
             this.wbXML.TabIndex = 0;
             // 
             // tbErrors
@@ -167,7 +169,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1079, 526);
+            this.tabPage1.Size = new System.Drawing.Size(1099, 521);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "XML";
             // 
@@ -180,7 +182,7 @@
             this.tbPayloadContent.Location = new System.Drawing.Point(1, 0);
             this.tbPayloadContent.Name = "tbPayloadContent";
             this.tbPayloadContent.ShowSelectionMargin = true;
-            this.tbPayloadContent.Size = new System.Drawing.Size(1075, 485);
+            this.tbPayloadContent.Size = new System.Drawing.Size(1095, 480);
             this.tbPayloadContent.TabIndex = 12;
             this.tbPayloadContent.Text = "";
             this.tbPayloadContent.WordWrap = false;
@@ -189,7 +191,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(945, 490);
+            this.btnCancel.Location = new System.Drawing.Point(965, 485);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 31);
@@ -202,7 +204,7 @@
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(1024, 490);
+            this.btnSave.Location = new System.Drawing.Point(1044, 485);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(50, 31);
@@ -220,10 +222,10 @@
             this.cbEndpoint.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEndpoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEndpoint.FormattingEnabled = true;
-            this.cbEndpoint.Location = new System.Drawing.Point(127, 616);
+            this.cbEndpoint.Location = new System.Drawing.Point(127, 641);
             this.cbEndpoint.Margin = new System.Windows.Forms.Padding(2);
             this.cbEndpoint.Name = "cbEndpoint";
-            this.cbEndpoint.Size = new System.Drawing.Size(977, 26);
+            this.cbEndpoint.Size = new System.Drawing.Size(997, 26);
             this.cbEndpoint.TabIndex = 4;
             this.cbEndpoint.ValueMember = "Value";
             // 
@@ -233,7 +235,7 @@
             this.buttonPressureTest.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonPressureTest.Enabled = false;
             this.buttonPressureTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPressureTest.Location = new System.Drawing.Point(879, 649);
+            this.buttonPressureTest.Location = new System.Drawing.Point(899, 675);
             this.buttonPressureTest.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPressureTest.Name = "buttonPressureTest";
             this.buttonPressureTest.Size = new System.Drawing.Size(166, 47);
@@ -247,7 +249,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 620);
+            this.label2.Location = new System.Drawing.Point(12, 645);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(111, 18);
@@ -261,10 +263,10 @@
             this.buttonNormalTest.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonNormalTest.Enabled = false;
             this.buttonNormalTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNormalTest.Location = new System.Drawing.Point(301, 649);
+            this.buttonNormalTest.Location = new System.Drawing.Point(251, 675);
             this.buttonNormalTest.Margin = new System.Windows.Forms.Padding(2);
             this.buttonNormalTest.Name = "buttonNormalTest";
-            this.buttonNormalTest.Size = new System.Drawing.Size(511, 47);
+            this.buttonNormalTest.Size = new System.Drawing.Size(599, 50);
             this.buttonNormalTest.TabIndex = 5;
             this.buttonNormalTest.Text = "Submit Event";
             this.buttonNormalTest.UseVisualStyleBackColor = true;
@@ -273,7 +275,7 @@
             // numericUpDownEventsNumbers
             // 
             this.numericUpDownEventsNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDownEventsNumbers.Location = new System.Drawing.Point(1050, 660);
+            this.numericUpDownEventsNumbers.Location = new System.Drawing.Point(1070, 686);
             this.numericUpDownEventsNumbers.Name = "numericUpDownEventsNumbers";
             this.numericUpDownEventsNumbers.Size = new System.Drawing.Size(56, 24);
             this.numericUpDownEventsNumbers.TabIndex = 9;
@@ -292,11 +294,43 @@
             this.labelProgess.Size = new System.Drawing.Size(0, 18);
             this.labelProgess.TabIndex = 11;
             // 
+            // tenantIds
+            // 
+            this.tenantIds.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tenantIds.BackColor = System.Drawing.SystemColors.Window;
+            this.tenantIds.DisplayMember = "Name";
+            this.tenantIds.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tenantIds.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tenantIds.FormattingEnabled = true;
+            this.tenantIds.Location = new System.Drawing.Point(127, 608);
+            this.tenantIds.Margin = new System.Windows.Forms.Padding(2);
+            this.tenantIds.Name = "tenantIds";
+            this.tenantIds.Size = new System.Drawing.Size(394, 26);
+            this.tenantIds.TabIndex = 12;
+            this.tenantIds.ValueMember = "Value";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(48, 612);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 18);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Tenant ID:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1117, 710);
+            this.ClientSize = new System.Drawing.Size(1137, 736);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.tenantIds);
             this.Controls.Add(this.labelProgess);
             this.Controls.Add(this.numericUpDownEventsNumbers);
             this.Controls.Add(this.label2);
@@ -345,6 +379,8 @@
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.NumericUpDown numericUpDownEventsNumbers;
         private System.Windows.Forms.Label labelProgess;
+        private System.Windows.Forms.ComboBox tenantIds;
+        private System.Windows.Forms.Label label3;
     }
 }
 

@@ -40,6 +40,19 @@ namespace BASEventsTestingUtil
 
             this.cbEndpoint.SelectedIndex = 0;
 
+            ListItemSection tenantIdsSection = ConfigurationManager.GetSection("myTenants") as ListItemSection;
+            for (int i = 0; i < tenantIdsSection.Values.Count; i++)
+            {
+                this.tenantIds.Items.Add(new ListItem()
+                {
+                    Name = tenantIdsSection.Values[i].Name + " (" + tenantIdsSection.Values[i].Value + ")",
+                    Value = tenantIdsSection.Values[i].Value
+                }
+                );
+            }
+
+            this.tenantIds.SelectedIndex = 0;
+
             this.numericUpDownEventsNumbers.Value = int.Parse(ConfigurationManager.AppSettings["ThreadCount"].ToString());
 
             var allowMultiple = bool.Parse(ConfigurationManager.AppSettings["AllowMultiple"]);
@@ -260,7 +273,7 @@ namespace BASEventsTestingUtil
             em.TenantID = ConfigurationManager.AppSettings["TenantId"];
             if (string.IsNullOrWhiteSpace(em.TenantID))
             {
-                em.TenantID = "081e354b-2184-47fe-b69d-3c5229d8bccf";
+                em.TenantID = ((ListItem)this.tenantIds.SelectedItem).Value;
             }
 
             em.EventType = ConfigurationManager.AppSettings["EventNameOverride"];
@@ -321,22 +334,6 @@ namespace BASEventsTestingUtil
 
                     isSucceed = true;
                 }
-
-                ////using (EventDistributionClient client = new EventDistributionClient())
-                ////{
-                ////    client.Endpoint.Address = new System.ServiceModel.EndpointAddress(serviceUrl);
-
-                ////    client.Open();
-
-                ////    client.ProcessEvent(em);
-
-                ////    if (multipleThreads)
-                ////        builder.Append("Succeed: Event submitted successfully in the thread#: '" + Thread.CurrentThread.ManagedThreadId + "'." + System.Environment.NewLine);
-                ////    else
-                ////        builder.Append("Event submitted successfully." + System.Environment.NewLine);
-
-                ////    isSucceed = true;
-                ////}
             }
             catch (FaultException<EventDistribution.ServiceException> svcEx)
             {
@@ -387,6 +384,11 @@ namespace BASEventsTestingUtil
         private void numericUpDownEventsNumbers_ValueChanged(object sender, EventArgs e)
         {
             threadCount = (int)this.numericUpDownEventsNumbers.Value;
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
