@@ -64,6 +64,12 @@
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.ProfileGroupBox = new System.Windows.Forms.GroupBox();
             this.VOSTagsDataGridView = new System.Windows.Forms.DataGridView();
+            this.userVOSTagIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.effectiveDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VOSTagsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.GeneralIdTtextBox = new System.Windows.Forms.TextBox();
             this.GeneralIdLabel = new System.Windows.Forms.Label();
             this.VOSTagsLabel = new System.Windows.Forms.Label();
@@ -77,22 +83,16 @@
             this.keyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RegQualifiersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.userVOSTagIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.effectiveDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VOSTagsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             this.IdenttyGroupBox.SuspendLayout();
             this.SecurityGroupBox.SuspendLayout();
             this.ProfileGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VOSTagsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VOSTagsBindingSource)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.RegQualifiersGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RegQualifiersDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RegQualifiersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VOSTagsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -355,7 +355,7 @@
             this.SecurityGroupBox.Location = new System.Drawing.Point(12, 233);
             this.SecurityGroupBox.Name = "SecurityGroupBox";
             this.SecurityGroupBox.Size = new System.Drawing.Size(760, 138);
-            this.SecurityGroupBox.TabIndex = 0;
+            this.SecurityGroupBox.TabIndex = 2;
             this.SecurityGroupBox.TabStop = false;
             this.SecurityGroupBox.Text = "Security";
             // 
@@ -460,6 +460,43 @@
             this.VOSTagsDataGridView.Name = "VOSTagsDataGridView";
             this.VOSTagsDataGridView.Size = new System.Drawing.Size(733, 123);
             this.VOSTagsDataGridView.TabIndex = 5;
+            // 
+            // userVOSTagIdDataGridViewTextBoxColumn
+            // 
+            this.userVOSTagIdDataGridViewTextBoxColumn.DataPropertyName = "UserVOSTagId";
+            this.userVOSTagIdDataGridViewTextBoxColumn.HeaderText = "UserVOSTagId";
+            this.userVOSTagIdDataGridViewTextBoxColumn.Name = "userVOSTagIdDataGridViewTextBoxColumn";
+            this.userVOSTagIdDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // codeDataGridViewTextBoxColumn
+            // 
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            this.codeDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // typeCodeDataGridViewTextBoxColumn
+            // 
+            this.typeCodeDataGridViewTextBoxColumn.DataPropertyName = "TypeCode";
+            this.typeCodeDataGridViewTextBoxColumn.HeaderText = "Type Code";
+            this.typeCodeDataGridViewTextBoxColumn.Name = "typeCodeDataGridViewTextBoxColumn";
+            this.typeCodeDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // effectiveDateDataGridViewTextBoxColumn
+            // 
+            this.effectiveDateDataGridViewTextBoxColumn.DataPropertyName = "EffectiveDate";
+            this.effectiveDateDataGridViewTextBoxColumn.HeaderText = "Effective Date";
+            this.effectiveDateDataGridViewTextBoxColumn.Name = "effectiveDateDataGridViewTextBoxColumn";
+            // 
+            // endDateDataGridViewTextBoxColumn
+            // 
+            this.endDateDataGridViewTextBoxColumn.DataPropertyName = "EndDate";
+            this.endDateDataGridViewTextBoxColumn.HeaderText = "End Date";
+            this.endDateDataGridViewTextBoxColumn.Name = "endDateDataGridViewTextBoxColumn";
+            // 
+            // VOSTagsBindingSource
+            // 
+            this.VOSTagsBindingSource.DataSource = typeof(UserAccountManager.Domain.UserVOSTag);
             // 
             // GeneralIdTtextBox
             // 
@@ -577,43 +614,6 @@
             // 
             this.RegQualifiersBindingSource.DataSource = typeof(UserAccountManager.Domain.RegistrationQualifier);
             // 
-            // userVOSTagIdDataGridViewTextBoxColumn
-            // 
-            this.userVOSTagIdDataGridViewTextBoxColumn.DataPropertyName = "UserVOSTagId";
-            this.userVOSTagIdDataGridViewTextBoxColumn.HeaderText = "UserVOSTagId";
-            this.userVOSTagIdDataGridViewTextBoxColumn.Name = "userVOSTagIdDataGridViewTextBoxColumn";
-            this.userVOSTagIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // codeDataGridViewTextBoxColumn
-            // 
-            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
-            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
-            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
-            this.codeDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // typeCodeDataGridViewTextBoxColumn
-            // 
-            this.typeCodeDataGridViewTextBoxColumn.DataPropertyName = "TypeCode";
-            this.typeCodeDataGridViewTextBoxColumn.HeaderText = "Type Code";
-            this.typeCodeDataGridViewTextBoxColumn.Name = "typeCodeDataGridViewTextBoxColumn";
-            this.typeCodeDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // effectiveDateDataGridViewTextBoxColumn
-            // 
-            this.effectiveDateDataGridViewTextBoxColumn.DataPropertyName = "EffectiveDate";
-            this.effectiveDateDataGridViewTextBoxColumn.HeaderText = "Effective Date";
-            this.effectiveDateDataGridViewTextBoxColumn.Name = "effectiveDateDataGridViewTextBoxColumn";
-            // 
-            // endDateDataGridViewTextBoxColumn
-            // 
-            this.endDateDataGridViewTextBoxColumn.DataPropertyName = "EndDate";
-            this.endDateDataGridViewTextBoxColumn.HeaderText = "End Date";
-            this.endDateDataGridViewTextBoxColumn.Name = "endDateDataGridViewTextBoxColumn";
-            // 
-            // VOSTagsBindingSource
-            // 
-            this.VOSTagsBindingSource.DataSource = typeof(UserAccountManager.Domain.UserVOSTag);
-            // 
             // UserAccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -647,12 +647,12 @@
             this.ProfileGroupBox.ResumeLayout(false);
             this.ProfileGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VOSTagsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VOSTagsBindingSource)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.RegQualifiersGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.RegQualifiersDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RegQualifiersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VOSTagsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
