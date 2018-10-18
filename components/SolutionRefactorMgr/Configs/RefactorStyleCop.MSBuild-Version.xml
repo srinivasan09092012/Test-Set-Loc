@@ -32,12 +32,12 @@
     <ModuleConfig name="Screening" branch="Dev" types="All" />
     <ModuleConfig name="TaskManagement" branch="Dev" types="All" />
     <ModuleConfig name="Test" branch="Dev" types="All" />
-    <ModuleConfig name="ThirdPartySource" branch="NA" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="Dev" types="NA" />
     <ModuleConfig name="TPLBillings" branch="Dev" types="All" />
     <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
     <ModuleConfig name="TPLHIPP" branch="Dev" types="All" />
     <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
-    <ModuleConfig name="Utilities" branch="NA" types="All" />
+    <ModuleConfig name="Utilities" branch="Dev" types="NA" />
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
