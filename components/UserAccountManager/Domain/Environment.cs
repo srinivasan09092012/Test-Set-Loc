@@ -14,6 +14,9 @@ namespace UserAccountManager.Domain
         [XmlAttribute("name")]
         public string Name { get; set; }
 
+        [XmlAttribute("adGroupFilterPrefix")]
+        public string AdGroupFilterPrefix { get; set; }
+
         [XmlAttribute("tenantId")]
         public string TenantId { get; set; }
         

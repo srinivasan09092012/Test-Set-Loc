@@ -367,6 +367,19 @@ namespace UserAccountManager.Forms
                 }
             };
 
+            if (!string.IsNullOrEmpty(currentEnvConfig.AdGroupFilterPrefix))
+            {
+                request.SearchFields = new List<GroupSearchField>()
+                {
+                    new GroupSearchField()
+                    {
+                        FieldName = api.Enumerations.GroupSearchFieldType.GroupName,
+                        FieldValue = currentEnvConfig.AdGroupFilterPrefix,
+                        SearchMode = api.Enumerations.SearchModeType.StartsWith
+                    }
+                };
+            }
+
             SearchGroupsResponse response = adQueryProvider.SearchGroups(request);
             if (response != null && response.RowCount > 0)
             {
