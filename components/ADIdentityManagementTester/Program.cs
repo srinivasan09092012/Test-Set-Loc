@@ -54,7 +54,7 @@ namespace ADIdentityManagementTester
                     AddAccountRegistrationQualifiers();
                     AddAccountGroups();
                     UpdateAccount();
-                    ChangePassword();
+                    //ChangePassword();
                     ResetPassword();
                     DeleteAccount();
                 }
