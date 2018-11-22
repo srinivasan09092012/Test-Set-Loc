@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true">
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+    <ModuleConfig name="Administration" branch="056" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="056" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="056" types="All" />
+    <ModuleConfig name="Core" branch="056" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="056" types="All" />
+    <ModuleConfig name="DrugRebate" branch="056" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="056" types="All" />
+    <ModuleConfig name="EDI" branch="056" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="056" types="All" />
+    <ModuleConfig name="FileTransfer" branch="056" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="056" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="056" types="All" />
+    <ModuleConfig name="Integration" branch="056" types="All" />
+    <ModuleConfig name="KansasOnly" branch="056" types="All" />
+    <ModuleConfig name="ManagedCare" branch="056" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="056" types="All" />
+    <ModuleConfig name="MemberManagement" branch="056" types="All" />
+    <ModuleConfig name="MemberPortal" branch="056" types="All" />
+    <ModuleConfig name="Notifications" branch="056" types="All" />
+    <ModuleConfig name="PlanManagement" branch="056" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="056" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="056" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="056" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="056" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="056" types="All" />
+    <ModuleConfig name="Screening" branch="056" types="All" />
+    <ModuleConfig name="TaskManagement" branch="056" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="056" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="056" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="056" types="All" />
+    <ModuleConfig name="Utilities" branch="056" types="NA" />
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes>
+    <FileType ext=".config" />
+  </FileTypes>
+  <LineDeletes />
+  <ReplacementStrings>
+    <!--CONNECTION STRING UA3_TENANT-->
+    <ReplacementString qualifier="mapsdevdbo01.dev.mapshc.com" from="mapsdevdbo01.dev.mapshc.com" to="mapsstgshrdbo01.mapshc.com" />
+    <ReplacementString qualifier="AWRK_PDBA" from="AWRK_PDBA" to="WRK2_PDBA" />
+    <ReplacementString qualifier="ADEV_PDBA" from="ADEV_PDBA" to="STG2_PDBA" />
+    <ReplacementString qualifier="tnnt_tst_e2" from="tnnt_tst_e2" to="TEN_hZCnl52" />
+    <!--CONNECTION STRING INTEGRATION-->
+    <ReplacementString qualifier="AWRK_PDBB" from="AWRK_PDBB" to="WRK2_PDBB" />
+    <ReplacementString qualifier="ADEV_PDBB" from="ADEV_PDBB" to="STG2_PDBB" />
+    <ReplacementString qualifier="ntgrtn_i1" from="ntgrtn_i1" to="INT_WKTdQ81" />
+  </ReplacementStrings>
+  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
+  <!--NOTE: YOU MUST PUT YOUR WORKSPACE NAME IN HERE IF ITS NOT UA3-->
+  <TfsWorkspace>UA3</TfsWorkspace>
+</RefactorConfig>
