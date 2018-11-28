@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Inline" includeFolderNames="true" includeFileNames="true" includeFileContents="true" useSourceControl="true">
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+    <ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />
+    <ModuleConfig name="Administration" branch="Dev" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Core" branch="Dev" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="Dev" types="All" />
+    <ModuleConfig name="EDI" branch="Dev" types="All" />
+    <ModuleConfig name="eID" branch="Dev" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="Dev" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Integration" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="Dev" types="All" />
+    <ModuleConfig name="MemberManagement" branch="Dev" types="All" />
+    <ModuleConfig name="MemberPortal" branch="Dev" types="All" />
+    <ModuleConfig name="Notifications" branch="Dev" types="All" />
+    <ModuleConfig name="PlanManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrityCT" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="Dev" types="All" />
+    <ModuleConfig name="Screening" branch="Dev" types="All" />
+    <ModuleConfig name="TaskManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
+    <ModuleConfig name="Utilities" branch="Dev" types="NA" />
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes>
+    <FileType ext=".csproj" />
+  </FileTypes>
+  <LineDeletes />
+  <ReplacementStrings>
+    <ReplacementString qualifier="&lt;TargetFrameworkVersion&gt;v4.5.2&lt;/TargetFrameworkVersion&gt;" from="&lt;TargetFrameworkVersion&gt;v4.5.2&lt;/TargetFrameworkVersion&gt;" to="&lt;TargetFrameworkVersion&gt;v4.7.1&lt;/TargetFrameworkVersion&gt;" />
+    <ReplacementString qualifier="&lt;TargetFrameworkVersion&gt;v4.5.1&lt;/TargetFrameworkVersion&gt;" from="&lt;TargetFrameworkVersion&gt;v4.5.1&lt;/TargetFrameworkVersion&gt;" to="&lt;TargetFrameworkVersion&gt;v4.7.1&lt;/TargetFrameworkVersion&gt;" />
+    <ReplacementString qualifier="&lt;TargetFrameworkVersion&gt;v4.5&lt;/TargetFrameworkVersion&gt;" from="&lt;TargetFrameworkVersion&gt;v4.5&lt;/TargetFrameworkVersion&gt;" to="&lt;TargetFrameworkVersion&gt;v4.7.1&lt;/TargetFrameworkVersion&gt;" />
+  </ReplacementStrings>
+  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
+  <TfsWorkspace>USCND6195CFQ</TfsWorkspace>
+</RefactorConfig>

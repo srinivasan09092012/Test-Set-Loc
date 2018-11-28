@@ -118,6 +118,7 @@
     <Content Include="Configs\RefactorCopyright.xml" />
     <Content Include="Configs\RefactorDev_MigrateToAzure.xml" />
     <Content Include="Configs\RefactorNamespaces.xml" />
+    <Content Include="Configs\RefactorNetFramework.xml" />
     <Content Include="Configs\RefactorRelease-VersionPackages.xml">
       <SubType>Designer</SubType>
     </Content>
