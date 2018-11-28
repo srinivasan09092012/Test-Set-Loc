@@ -54,7 +54,7 @@ namespace ADIdentityManagementTester
                     AddAccountRegistrationQualifiers();
                     AddAccountGroups();
                     UpdateAccount();
-                    //ChangePassword();
+                    ChangePassword();
                     ResetPassword();
                     DeleteAccount();
                 }
@@ -69,7 +69,7 @@ namespace ADIdentityManagementTester
 
         private static void GenerateRandomUserName()
         {
-            Console.Write("Is User Name Available: ");
+            Console.Write("Generate Random User Name: ");
 
             try
             {
