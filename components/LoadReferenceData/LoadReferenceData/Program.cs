@@ -157,6 +157,11 @@ namespace LoadReferenceData
 
             tasks.Add(Task.Factory.StartNew(() =>
             {
+                LoadQuery("ExternalLinks(TenantID=" + tenantID + ")", "ExternalLinks");
+            }).ContinueWith(c => action("ExternalLinks", c)));
+
+            tasks.Add(Task.Factory.StartNew(() =>
+            {
                 LoadHelpQuery("HelpNodeLocale(TenantID=" + tenantID + ")", "HelpNodeLocale");
             }).ContinueWith(c => action("HelpNodeLocale", c)));
 
@@ -206,6 +211,10 @@ namespace LoadReferenceData
         {
             Console.WriteLine("Data Load started..... ");
             Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            LoadTenantHelper.ExecuteODataQuery("ExternalLinks(TenantID=" + tenantID + ")");
+            stopWatch.Stop();
+            PrintTimeTaken(stopWatch, "ExternalLinks");
             stopWatch.Start();
             LoadTenantHelper.ExecuteODataQuery("HtmlBlock(TenantID=" + tenantID + ")?$expand=HtmlBlockLanguages");
             stopWatch.Stop();
