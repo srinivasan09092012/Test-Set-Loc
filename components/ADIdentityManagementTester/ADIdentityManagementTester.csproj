@@ -37,6 +37,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces, Version=18.4.60.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.IdentityManagement.18.4.60\lib\net451\HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="HPE.HSP.UA3.Core.API.IdentityManagement.Providers, Version=18.4.60.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.IdentityManagement.18.4.60\lib\net451\HPE.HSP.UA3.Core.API.IdentityManagement.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.IdentityManagement.18.4.60\lib\net451\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -55,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

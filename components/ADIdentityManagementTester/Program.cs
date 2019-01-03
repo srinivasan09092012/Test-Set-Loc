@@ -6,8 +6,9 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.DirectoryServices;
-using System.DirectoryServices.AccountManagement;
+using HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces;
+using HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain;
+using HPE.HSP.UA3.Core.API.IdentityManagement.Providers;
 
 namespace ADIdentityManagementTester
 {
@@ -25,8 +26,9 @@ namespace ADIdentityManagementTester
         private static string adPassword = null;
         private static string testUserName = null;
         private static string groupName = "MapsSystemAdministrators";
-
-        private static PrincipalContext pc = null;
+        private static string groupName2 = "MapsProviders";
+        private static IUserManagementProvider adProvider = null;
+        private static IUserQueryProvider adQueryProvider = null;
 
         public static void Main(string[] args)
         {
@@ -44,20 +46,18 @@ namespace ADIdentityManagementTester
 
             try
             {
-                pc = InitializePrincipalContext();
-                if (pc != null)
-                {
-                    GenerateRandomUserName();
-                    IsUserNameAvailable();
-                    IsGroupValid();
-                    CreateAccount();
-                    AddAccountRegistrationQualifiers();
-                    AddAccountGroups();
-                    UpdateAccount();
-                    ChangePassword();
-                    ResetPassword();
-                    DeleteAccount();
-                }
+                adProvider = new ActiveDirectoryProvider(adServer, adUser, adPassword, adContainer);
+                adQueryProvider = new ActiveDirectoryQueryProvider(adServer, adUser, adPassword, adContainer);
+
+                GenerateRandomUserName();
+                IsUserNameAvailable();
+                IsGroupValid();
+                CreateAccount();
+                AddAccountGroups();
+                UpdateAccount();
+                //ChangePassword();
+                ResetPassword();
+                DeleteAccount();
             }
             finally
             {
@@ -75,7 +75,6 @@ namespace ADIdentityManagementTester
             {
                 int nbr = new Random().Next(900000, 999999);
                 testUserName = "TestUser" + nbr.ToString();
-
                 Console.WriteLine(testUserName);
             }
             catch (Exception ex)
@@ -91,12 +90,7 @@ namespace ADIdentityManagementTester
             try
             {
                 bool isAvailable = false;
-
-                using (UserPrincipal user = UserPrincipal.FindByIdentity(pc, testUserName))
-                {
-                    isAvailable = user == null;
-                }
-
+                isAvailable = adQueryProvider.IsGroupNameAvailable(testUserName);
                 Console.WriteLine(isAvailable);
             }
             catch (Exception ex)
@@ -112,12 +106,7 @@ namespace ADIdentityManagementTester
             try
             {
                 bool isValid = false;
-
-                using (GroupPrincipal group = GroupPrincipal.FindByIdentity(pc, groupName))
-                {
-                    isValid = group != null;
-                }
-
+                isValid = !adQueryProvider.IsGroupNameAvailable(groupName);
                 Console.WriteLine(isValid);
             }
             catch (Exception ex)
@@ -132,53 +121,42 @@ namespace ADIdentityManagementTester
 
             try
             {
-                using (UserPrincipal newUser = new UserPrincipal(pc, testUserName, "Password2018", true))
+                UserAccount userAccount = new UserAccount()
                 {
-                    newUser.AccountExpirationDate = null;
-                    newUser.GivenName = "Test";
-                    newUser.MiddleName = "User";
-                    newUser.Surname = "Account";
-                    newUser.EmailAddress = "test@dxc.com";
-                    newUser.DisplayName = "Test Account";
-                    newUser.UserPrincipalName = testUserName + GetDomainFromContainer();
-                    newUser.SamAccountName = testUserName;
-                    newUser.PasswordNotRequired = false;
-                    newUser.PasswordNeverExpires = true;
-                    newUser.VoiceTelephoneNumber = "555-555-5555";
-                    newUser.Save();
-                }
-
-                Console.WriteLine("Success");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error - " + ex.Message);
-            }
-        }
-
-        private static void AddAccountRegistrationQualifiers()
-        {
-            Console.Write("Add Account Reg Qualifiers: ");
-
-            try
-            {
-                using (UserPrincipal user = UserPrincipal.FindByIdentity(pc, testUserName))
-                {
-                    if (user != null)
+                    AccountExpirationDate = null,
+                    Identity = new UserIdentity()
                     {
-                        using (DirectoryEntry directoryEntry = (DirectoryEntry)user.GetUnderlyingObject())
+                        FirstName = "Test",
+                        MiddleName = "User",
+                        LastName = "Account",
+                        EmailAddress = "test@dxc.com",
+                        DisplayName = "Test Account",
+                        UserName = testUserName,
+                        PhoneNumber = "555-555-5555"
+                    },
+                    Groups = new List<string>()
+                    {
+                        groupName
+                    },
+                    RegistrationQualifiers = new List<RegistrationQualifier>()
+                    {
+                        new RegistrationQualifier()
                         {
-                            directoryEntry.Properties["info"].Value = "some json serialzied string here";
-                            directoryEntry.CommitChanges();
+                            Key = "BirthDate",
+                            Value = "19691010"
+                        },
+                        new RegistrationQualifier()
+                        {
+                            Key = "Last4SSN",
+                            Value = "1234"
                         }
-
-                        Console.WriteLine("Success");
-                    }
-                    else
-                    {
-                        Console.WriteLine("User Not Found");
-                    }
-                }
+                    },
+                    PasswordNeverExpires = false,
+                    IsPasswordExpired = true,
+                    Password = "Password2018"
+                };
+                adProvider.AddUser(userAccount);
+                Console.WriteLine("Success");
             }
             catch (Exception ex)
             {
@@ -192,24 +170,8 @@ namespace ADIdentityManagementTester
 
             try
             {
-                using (UserPrincipal user = UserPrincipal.FindByIdentity(pc, testUserName))
-                {
-                    if (user != null)
-                    {
-                        using (GroupPrincipal group = GroupPrincipal.FindByIdentity(pc, groupName))
-                        {
-                            group.GroupScope = GroupScope.Global;
-                            group.Members.Add(user);
-                            group.Save();
-                        }
-
-                        Console.WriteLine("Success");
-                    }
-                    else
-                    {
-                        Console.WriteLine("User Not Found");
-                    }
-                }
+                adProvider.AddUserToGroup(testUserName, groupName2);
+                Console.WriteLine("Success");
             }
             catch (Exception ex)
             {
@@ -223,20 +185,32 @@ namespace ADIdentityManagementTester
 
             try
             {
-                using (UserPrincipal user = UserPrincipal.FindByIdentity(pc, testUserName))
+                UserIdentity userIdentity = new UserIdentity()
                 {
-                    if (user != null)
-                    {
-                        user.VoiceTelephoneNumber = "444-444-4444";
-                        user.Save();
+                    FirstName = "Test",
+                    MiddleName = "User",
+                    LastName = "Account",
+                    EmailAddress = "test@dxc.com",
+                    DisplayName = "Test Account",
+                    UserName = testUserName,
+                    PhoneNumber = "444-444-4444"
+                };
 
-                        Console.WriteLine("Success");
-                    }
-                    else
+                List<RegistrationQualifier> registrationQualifiers = new List<RegistrationQualifier>()
+                {
+                    new RegistrationQualifier()
                     {
-                        Console.WriteLine("User Not Found");
+                        Key = "BirthDate",
+                        Value = "19691010"
+                    },
+                    new RegistrationQualifier()
+                    {
+                        Key = "Last4SSN",
+                        Value = "1234"
                     }
-                }
+                };
+                adProvider.UpdateUser(userIdentity, registrationQualifiers, null);
+                Console.WriteLine("Success");
             }
             catch (Exception ex)
             {
@@ -250,20 +224,8 @@ namespace ADIdentityManagementTester
 
             try
             {
-                using (UserPrincipal user = UserPrincipal.FindByIdentity(pc, testUserName))
-                {
-                    if (user != null)
-                    {
-                        user.ChangePassword("Password2018", "Password2019");
-                        user.Save();
-
-                        Console.WriteLine("Success");
-                    }
-                    else
-                    {
-                        Console.WriteLine("User Not Found");
-                    }
-                }
+                adProvider.ChangeUserPassword(testUserName, "Password2018", "Password2019");
+                Console.WriteLine("Success");
             }
             catch (Exception ex)
             {
@@ -277,20 +239,8 @@ namespace ADIdentityManagementTester
 
             try
             {
-                using (UserPrincipal user = UserPrincipal.FindByIdentity(pc, testUserName))
-                {
-                    if (user != null)
-                    {
-                        user.SetPassword("Password2020");
-                        user.Save();
-
-                        Console.WriteLine("Success");
-                    }
-                    else
-                    {
-                        Console.WriteLine("User Not Found");
-                    }
-                }
+                adProvider.ResetUserPassword(testUserName, "Password2020");
+                Console.WriteLine("Success");
             }
             catch (Exception ex)
             {
@@ -304,77 +254,13 @@ namespace ADIdentityManagementTester
 
             try
             {
-                using (UserPrincipal user = UserPrincipal.FindByIdentity(pc, testUserName))
-                {
-                    if (user != null)
-                    {
-                        user.Delete();
-
-                        Console.WriteLine("Success");
-                    }
-                    else
-                    {
-                        Console.WriteLine("User Not Found");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error - " + ex.Message);
-            }
-        }
-
-        private static string GetDomainFromContainer()
-        {
-            string domain = "@";
-
-            List<string> domainParts = new List<string>(adContainer.Split(','));
-            foreach (string node in domainParts)
-            {
-                if (node.ToLower().StartsWith("dc="))
-                {
-                    domain += node.ToLower().Substring(3) + ".";
-                }
-            }
-
-            if (domain.Length > 1)
-            {
-                domain = domain.Substring(0, domain.Length - 1);
-            }
-
-            return domain;
-        }
-
-        private static PrincipalContext InitializePrincipalContext()
-        {
-            PrincipalContext pc = null;
-
-            Console.Write("Initialize Principal Context: ");
-
-            try
-            {
-                ContextOptions contextOptions = ContextOptions.Negotiate;
-                if (adServer.EndsWith(":636") || adServer.EndsWith(":3269"))
-                {
-                    contextOptions = ContextOptions.SecureSocketLayer | ContextOptions.Negotiate;
-                }
-
-                pc = new PrincipalContext(
-                    ContextType.Domain,
-                    adServer,
-                    adContainer,
-                    contextOptions,
-                    adUser,
-                    adPassword);
-
+                adProvider.DeleteUser(testUserName);
                 Console.WriteLine("Success");
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error - " + ex.Message);
             }
-
-            return pc;
         }
     }
 }
