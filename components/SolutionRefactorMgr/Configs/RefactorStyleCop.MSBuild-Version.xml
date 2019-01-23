@@ -21,7 +21,6 @@
     <ModuleConfig name="ManagedCarePortal" branch="Dev" types="All" />
     <ModuleConfig name="MemberManagement" branch="Dev" types="All" />
     <ModuleConfig name="MemberPortal" branch="Dev" types="All" />
-    <ModuleConfig name="NetworkManagement" branch="Dev" types="All" />
     <ModuleConfig name="Notifications" branch="Dev" types="All" />
     <ModuleConfig name="PlanManagement" branch="Dev" types="All" />
     <ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
@@ -33,9 +32,7 @@
     <ModuleConfig name="TaskManagement" branch="Dev" types="All" />
     <ModuleConfig name="Test" branch="Dev" types="All" />
     <ModuleConfig name="ThirdPartySource" branch="Dev" types="NA" />
-    <ModuleConfig name="TPLBillings" branch="Dev" types="All" />
     <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
-    <ModuleConfig name="TPLHIPP" branch="Dev" types="All" />
     <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
     <ModuleConfig name="Utilities" branch="Dev" types="NA" />
   </ModuleConfigs>
