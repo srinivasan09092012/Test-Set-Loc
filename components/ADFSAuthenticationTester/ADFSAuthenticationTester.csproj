@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -37,11 +37,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Interface, Version=18.4.60.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.AuthManagement.18.4.60\lib\net451\HPE.HSP.UA3.Core.API.AuthManagement.Interface.dll</HintPath>
+    <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Interface, Version=19.1.64.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.AuthManagement.19.1.64\lib\net451\HPE.HSP.UA3.Core.API.AuthManagement.Interface.dll</HintPath>
     </Reference>
-    <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Providers, Version=18.4.60.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.AuthManagement.18.4.60\lib\net451\HPE.HSP.UA3.Core.API.AuthManagement.Providers.dll</HintPath>
+    <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Providers, Version=19.1.64.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.AuthManagement.19.1.64\lib\net451\HPE.HSP.UA3.Core.API.AuthManagement.Providers.dll</HintPath>
     </Reference>
     <Reference Include="IdentityModel, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\Packages\IdentityModel.2.6.0\lib\net45\IdentityModel.dll</HintPath>

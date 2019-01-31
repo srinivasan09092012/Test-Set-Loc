@@ -3,32 +3,33 @@
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs />
   <PackageConfigs>
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.Administration" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.AuthDetermination" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.BatchProcessingFactory" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.ClaimsManagement" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.Core" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.CorrespondenceMgmt" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.DrugRebate" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.FinancialManagement" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.IdentityManagement" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.Integration" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.ManagedCare" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.MemberManagement" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.PlanManagement" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProgramIntegrity" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProviderEnrollment" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProviderManagement" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.TaskManagement" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.TPLCaseTracking" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.TPLPolicy" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.NotificationServices" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.ClaimsManagement" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.Core" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.NCPDP" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.TestAutomation" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X12" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X212" qualifierVersion="18.2.52" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.Administration" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.AuthDetermination" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.BatchProcessingFactory" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ClaimsManagement" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.Core" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.CorrespondenceMgmt" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.DrugRebate" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.FinancialManagement" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.IdentityManagement" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.Integration" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ManagedCare" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.MemberManagement" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.PlanManagement" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProgramIntegrity" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProviderEnrollment" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProviderManagement" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.TaskManagement" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.TPLCaseTracking" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.TPLPolicy" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.NotificationServices" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.ClaimsManagement" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.Core" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.NCPDP" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.TestAutomation" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X12" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X212" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPP.HSP.UA3.ManagedCare" qualifierVersion="18.4.60" rebuildPackage="true" reformatSource="true" />
   </PackageConfigs>
   <FileTypes>
     <FileType ext=".dll" />
@@ -37,10 +38,10 @@
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
-    <ReplacementString qualifier="&lt;version&gt;18.2.52&lt;/version&gt;" from="18.2.52" to="18.3.56" />
-    <ReplacementString qualifier="HP.HSP.UA3" from="18.2.52" to="18.3.56" />
-    <ReplacementString qualifier="HPE.HSP.UA3" from="18.2.52" to="18.3.56" />
+    <ReplacementString qualifier="&lt;version&gt;18.4.60&lt;/version&gt;" from="18.4.60" to="19.1.64" />
+    <ReplacementString qualifier="HP.HSP.UA3" from="18.4.60" to="19.1.64" />
+    <ReplacementString qualifier="HPE.HSP.UA3" from="18.4.60" to="19.1.64" />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
-  <TfsWorkspace></TfsWorkspace>
+  <TfsWorkspace>IN5CG6434WHL_test</TfsWorkspace>
 </RefactorConfig>
