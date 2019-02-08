@@ -60,12 +60,16 @@ namespace UserAccountMigration
             }
         }
 
-        private static void AddUserAccount(UserAccount userAccount, bool processProfile)
+        private static void AddUserAccount(UserAccount userAccount, bool processAD, bool processProfile)
         {
             userAccount.Validate();
             LogMessage(1, string.Format("Adding user '{0}'.", userAccount.UserName));
-            api.UserAccount adUserAccount = ConvertAdUserAccount(userAccount);
-            adProvider.AddUser(adUserAccount);
+
+            if (processAD)
+            {
+                api.UserAccount adUserAccount = ConvertAdUserAccount(userAccount);
+                adProvider.AddUser(adUserAccount);
+            }
 
             if (processProfile)
             {
@@ -243,7 +247,7 @@ namespace UserAccountMigration
                     }
                     else
                     {
-                        AddUserAccount(userAccount, currentProcess.ProcessUserProfile);
+                        AddUserAccount(userAccount, currentProcess.ProcessAD, currentProcess.ProcessUserProfile);
                     }
 
                     lock (currentProcess)
@@ -458,7 +462,8 @@ namespace UserAccountMigration
                         new RegistrationQualifier("BirthDate", userAccount.BirthDate.Value.ToString("yyyyMMdd")),
                         new RegistrationQualifier("Last4SSN", userAccount.Last4SSN)
                     },
-                    UserName = userAccount.UserName
+                    UserName = userAccount.UserName,
+                    TenantId = Guid.Parse(migrationConfig.Environment.TenantId)
                 };
                 userServiceProvider.AddProfile(userProfile);
             }

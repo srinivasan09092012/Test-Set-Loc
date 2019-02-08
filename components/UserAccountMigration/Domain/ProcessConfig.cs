@@ -55,6 +55,9 @@ namespace UserAccountMigration.Domain
         [XmlAttribute("fileFormat")]
         public FileFormatType FileFormat { get; set; }
 
+        [XmlAttribute("processAD")]
+        public bool ProcessAD { get; set; }
+
         [XmlAttribute("processUserProfile")]
         public bool ProcessUserProfile { get; set; }
 
@@ -78,6 +81,7 @@ namespace UserAccountMigration.Domain
             this.FilePath = string.Empty;
             this.FileName = string.Empty;
             this.FileFormat = FileFormatType.Undefined;
+            this.ProcessAD = false;
             this.ProcessUserProfile = false;
             this.MaxThreads = 1;
             this.ProcessedStatus = ProcessStatusType.Initialized;
