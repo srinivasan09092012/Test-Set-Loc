@@ -112,6 +112,34 @@ namespace SSRSImportExportConsole
                                     LoggerManager.Logger.LogFatal("Update Item DataSources error: " + ex.ToString());
                                 }
                             }
+                            else
+                            {
+                                DataSource[] dataSources = this.ReportServer.GetItemDataSources(parent + "/" + fi.Name.Replace(".rdl", string.Empty));
+                                foreach (DataSource data in dataSources)
+                                {
+                                    DataSourceDefinition def = data.Item as DataSourceDefinition;
+
+                                    if (def != null)
+                                    {
+                                        if (def.Extension != null && def.Extension.ToLower().Equals("xml"))
+                                        {
+                                            def.CredentialRetrieval = CredentialRetrievalEnum.None;
+                                        }
+                                    }
+                                }
+
+                                if (dataSources != null && dataSources.ToList().Count() > 0)
+                                {
+                                    try
+                                    {
+                                        this.ReportServer.SetItemDataSources(parent + "/" + fi.Name.Replace(".rdl", string.Empty), dataSources);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        LoggerManager.Logger.LogWarning("Update Item DataSources error", ex);
+                                    }
+                                }
+                            }
                         }
 
                         if (sharedDSReferenceList != null && sharedDSReferenceList.Count > 0)
