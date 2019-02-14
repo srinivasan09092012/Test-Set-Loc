@@ -146,9 +146,9 @@ namespace SSRSImportExportWizard
                         {
                             if (data.Item.ToString().Contains("InvalidDataSourceReference"))
                             {
-                                data.Item = this.ReportServer.GetDataSourceContents(data.Name);
                                 validDataSource = false;
-                                errors.Add(item.Path);
+                                errors.Add(item.Path + " is referring to the data source, " + dataSources[0].Name.ToString() + " that is either invalid or does not exist.");
+                                LoggerManager.Logger.LogWarning(item.Path + " is referring to the data source, " + dataSources[0].Name.ToString() + " that is either invalid or does not exist.");
                                 break;
                             }
                             else

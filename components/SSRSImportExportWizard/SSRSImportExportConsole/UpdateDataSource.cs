@@ -58,8 +58,8 @@ namespace SSRSImportExportConsole
                         {
                             if (data.Item.ToString().Contains("InvalidDataSourceReference"))
                             {
-                                data.Item = this.ReportServer.GetDataSourceContents(data.Name);
                                 validDataSource = false;
+                                LoggerManager.Logger.LogWarning(item.Path + " is referring to the data source, " + dataSources[0].Name.ToString() + " that is either invalid or does not exist.");
                                 break;
                             }
                             else
@@ -106,6 +106,7 @@ namespace SSRSImportExportConsole
                         {
                             foreach (KeyValuePair<string, string> repString in replaceStrings)
                             {
+
                                 if (def.ConnectString != null && def.ConnectString.Contains(repString.Key))
                                 {
                                     validDataSource = true;
