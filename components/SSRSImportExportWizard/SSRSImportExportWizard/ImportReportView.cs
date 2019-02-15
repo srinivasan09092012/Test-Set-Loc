@@ -388,30 +388,37 @@ namespace SSRSImportExportWizard
                                 }
                                 else
                                 {
-                                    DataSource[] dataSources = this.ReportServer.GetItemDataSources(parent + "/" + fi.Name.Replace(".rdl", string.Empty));
-                                    foreach (DataSource data in dataSources)
+                                    try
                                     {
-                                        DataSourceDefinition def = data.Item as DataSourceDefinition;
-
-                                        if (def != null)
+                                        DataSource[] dataSources = this.ReportServer.GetItemDataSources(parent + "/" + fi.Name.Replace(".rdl", string.Empty));
+                                        foreach (DataSource data in dataSources)
                                         {
-                                            if (def.Extension != null && def.Extension.ToLower().Equals("xml"))
+                                            DataSourceDefinition def = data.Item as DataSourceDefinition;
+
+                                            if (def != null)
                                             {
-                                                def.CredentialRetrieval = CredentialRetrievalEnum.None;
+                                                if (def.Extension != null && def.Extension.ToLower().Equals("xml"))
+                                                {
+                                                    def.CredentialRetrieval = CredentialRetrievalEnum.None;
+                                                }
+                                            }
+                                        }
+
+                                        if (dataSources != null && dataSources.ToList().Count() > 0)
+                                        {
+                                            try
+                                            {
+                                                this.ReportServer.SetItemDataSources(parent + "/" + fi.Name.Replace(".rdl", string.Empty), dataSources);
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                LoggerManager.Logger.LogWarning("Update Item DataSources error", ex);
                                             }
                                         }
                                     }
-
-                                    if (dataSources != null && dataSources.ToList().Count() > 0)
+                                    catch (Exception ex)
                                     {
-                                        try
-                                        {
-                                            this.ReportServer.SetItemDataSources(parent + "/" + fi.Name.Replace(".rdl", string.Empty), dataSources);
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            LoggerManager.Logger.LogWarning("Update Item DataSources error", ex);
-                                        }
+                                        LoggerManager.Logger.LogWarning("Get Item DataSources error", ex);
                                     }
                                 }
                             }
