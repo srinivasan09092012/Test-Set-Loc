@@ -30,6 +30,8 @@ namespace SSRSImportExportWizard
 
         public string UploadPath { get; set; }
 
+        public string ServerPath { get; set; }
+
         public bool DoCompare { get; set; }
 
         public ReportingService2010 ReportServer { get; set; }
@@ -66,8 +68,9 @@ namespace SSRSImportExportWizard
             this.Password = txtPassword.Text;
             this.UploadPath = txtDownloadPath.Text;
             this.DoCompare = chkCompare.Checked;
+            this.ServerPath = txtReportServerPath.Text.Trim();
 
-            if (string.IsNullOrEmpty(this.ReportURL) || string.IsNullOrEmpty(this.UserName) || string.IsNullOrEmpty(this.Password) || string.IsNullOrEmpty(this.UploadPath))
+            if (string.IsNullOrEmpty(this.ReportURL) || string.IsNullOrEmpty(this.UserName) || string.IsNullOrEmpty(this.Password) || string.IsNullOrEmpty(this.UploadPath) || string.IsNullOrEmpty(this.ServerPath))
             {
                 lblError.Text = "Please enter required (*) field";
             }

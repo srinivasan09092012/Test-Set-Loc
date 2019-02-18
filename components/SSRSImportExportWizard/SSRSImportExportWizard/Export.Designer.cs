@@ -1,4 +1,6 @@
-﻿namespace SSRSImportExportWizard
+﻿using System.Configuration;
+
+namespace SSRSImportExportWizard
 {
     partial class ExportControl
     {
@@ -115,7 +117,7 @@
             this.txtDownloadPath.Name = "txtDownloadPath";
             this.txtDownloadPath.Size = new System.Drawing.Size(456, 22);
             this.txtDownloadPath.TabIndex = 2;
-            this.txtDownloadPath.Text = "C:\\UA3\\Reports";
+            this.txtDownloadPath.Text = ConfigurationManager.AppSettings["DownloadPath"];
             // 
             // label5
             // 
@@ -179,7 +181,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(183, 26);
             this.txtPassword.TabIndex = 6;
-            this.txtPassword.Text = "Password2015";
+            this.txtPassword.Text = ConfigurationManager.AppSettings["Password"];
             // 
             // txtUserName
             // 
@@ -187,7 +189,7 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(183, 26);
             this.txtUserName.TabIndex = 5;
-            this.txtUserName.Text = "ua3test\\hciadmin";
+            this.txtUserName.Text = ConfigurationManager.AppSettings["UserName"];
             this.txtUserName.Click += new System.EventHandler(this.txtUserName_TextChanged);
             // 
             // label3
@@ -216,7 +218,7 @@
             this.sourceURL.Name = "sourceURL";
             this.sourceURL.Size = new System.Drawing.Size(564, 22);
             this.sourceURL.TabIndex = 1;
-            this.sourceURL.Text = "https://report.dev.mapshc.com/ReportServer/ReportService2010.asmx";
+            this.sourceURL.Text = ConfigurationManager.AppSettings["ReportURL"];
             // 
             // label1
             // 

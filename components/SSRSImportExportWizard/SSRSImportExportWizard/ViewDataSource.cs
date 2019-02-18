@@ -39,7 +39,7 @@ namespace SSRSImportExportWizard
             this.Password = txtPassword.Text;
             this.RootPath = txtRootPath.Text;
 
-            if (string.IsNullOrEmpty(this.ReportURL) || string.IsNullOrEmpty(this.UserName) || string.IsNullOrEmpty(this.Password))
+            if (string.IsNullOrEmpty(this.ReportURL) || string.IsNullOrEmpty(this.UserName) || string.IsNullOrEmpty(this.Password) || string.IsNullOrEmpty(this.RootPath))
             {
                 lblError.Text = "Please enter required (*) field";
             }

@@ -2,6 +2,7 @@
 using SSRSImportExportWizard.ReportServer2010;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
@@ -77,6 +78,10 @@ namespace SSRSImportExportWizard
                         {
                             nodes.Add(new TreeNode(childItem.Name));
                         }
+                        else if (childItem.TypeName == "Resource")
+                        {
+                            nodes.Add(new TreeNode(childItem.Name));
+                        }
                         else if (childItem.TypeName == "Component")
                         {
                             nodes.Add(new TreeNode(childItem.Name));
@@ -144,6 +149,13 @@ namespace SSRSImportExportWizard
                                     else if (childItem.TypeName == "DataSet")
                                     {
                                         this.DownloadDataSets(childItem);
+                                    }
+                                    else if (childItem.TypeName == "Resource")
+                                    {
+                                        if (!childItem.Name.Contains("sln"))
+                                        {
+                                            this.DownloadResources(childItem);
+                                        }
                                     }
                                     else if (childItem.TypeName == "Component")
                                     {
@@ -266,6 +278,40 @@ namespace SSRSImportExportWizard
 
                 doc.Load(stream);
                 doc.Save(sOutFile);
+            }
+            catch (Exception ex)
+            {
+                LoggerManager.Logger.LogWarning("Error while exporting component", ex);
+            }
+        }
+
+        private void DownloadResources(CatalogItem item)
+        {
+            byte[] rpt_def = null;
+            XmlDocument doc = new XmlDocument();
+            
+            string sOutFile = "";
+
+            try
+            {
+                rpt_def = this.ReportServer.GetItemDefinition(item.Path);
+                MemoryStream stream = new MemoryStream();
+
+                sOutFile = string.Format(@"{0}{1}", this.DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
+                sOutFile = sOutFile.Replace("\\", "/");
+
+                if (!Directory.Exists(this.DownloadPath + item.Path.Replace(item.Name, string.Empty)))
+                    Directory.CreateDirectory(this.DownloadPath + item.Path.Replace(item.Name, string.Empty));
+
+                if (File.Exists(sOutFile))
+                    File.Delete(sOutFile);
+
+                using (stream = new MemoryStream(rpt_def))
+                {
+                    Image img = Image.FromStream(stream);
+                    img.Save(sOutFile);
+                    img.Dispose();
+                }
             }
             catch (Exception ex)
             {

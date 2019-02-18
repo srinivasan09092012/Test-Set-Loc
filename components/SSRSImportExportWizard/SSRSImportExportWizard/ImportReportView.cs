@@ -1,17 +1,16 @@
 ﻿using HPE.HSP.UA3.Core.API.Logger;
 using Microsoft.XmlDiffPatch;
-using Newtonsoft.Json;
 using SSRSImportExportWizard.ReportServer2010;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace SSRSImportExportWizard
@@ -37,7 +36,7 @@ namespace SSRSImportExportWizard
             this.ReportServer = reportServer;
             this.Reports = new List<TreeNode>();
             this.UploadPath = importPath;
-            this.ReportServerPath = reportServerPath;
+            this.ReportServerDirectory = reportServerPath;
             this.DoCompare = doCompare;
             this.LoadImportReportFolder();
             TreeNode rootNode = new TreeNode(this.UploadPath, this.Reports.OrderByDescending(o => o.Name).ToArray());
@@ -53,7 +52,7 @@ namespace SSRSImportExportWizard
 
         public string UploadPath { get; set; }
 
-        public string ReportServerPath { get; set; }
+        public string ReportServerDirectory { get; set; }
 
         public bool DoCompare { get; set; }
 
@@ -61,16 +60,119 @@ namespace SSRSImportExportWizard
         {
             List<TreeNode> checkedList = new List<TreeNode>();
             this.LookupChecks(ImportTreeView.Nodes, checkedList);
-            btnImportReports.Enabled = false;
             Cursor.Current = Cursors.WaitCursor;
-            this.CreateFolders(checkedList);
+            btnImportReports.Enabled = false;
+
             this.CreateDataSource(checkedList);
-            this.CreateReports(checkedList);
-            this.CreateComponents(checkedList);
-            btnImportReports.Enabled = true;
+
+            CatalogItem[] items = null;
+            CatalogItem[] childItems = null;
+            string parent = string.Empty;
+
+            try
+            {
+                items = this.ReportServer.ListChildren(@"/", true);
+            }
+            catch (Exception ex)
+            {
+                LoggerManager.Logger.LogFatal("Error while exporting Reports", ex);
+                MessageBox.Show("Error while exporting Report items");
+                return;
+            }
+            if (checkedList.Count > 0)
+            {
+                foreach (CatalogItem item in items)
+                {
+                    if (this.IsItemChecked(checkedList, item.Path.Replace("/", "\\"), item.Name))
+                    {
+                        if (item.TypeName == "Folder")
+                        {
+                            try
+                            {
+                                childItems = this.ReportServer.ListChildren((string.IsNullOrEmpty(item.Path) ? string.Format(@"/{0}", item.Path) : string.Format(@"{0}", item.Path)), false);
+
+                                foreach (CatalogItem childItem in childItems)
+                                {
+                                    if (this.IsItemChecked(checkedList, childItem.Path.Replace("/", "\\"), childItem.Name))
+                                    {
+                                        string localPath = GetImportDirectoryPath(checkedList, item.Path);
+                                        if (childItem.TypeName == "Report")
+                                        {
+                                            string reportServerPath = item.Path.Substring(1).Substring(item.Path.Substring(1).IndexOf('/'));
+                                            parent = CreateDirectory(parent, reportServerPath);
+                                            this.CreateReportsFromPath("/" + this.ReportServerDirectory + reportServerPath, localPath, childItem.Name);
+                                        }
+                                        else if (childItem.TypeName == "Resource")
+                                        {
+                                            string reportServerPath = item.Path.Substring(1).Substring(item.Path.Substring(1).IndexOf('/'));
+                                            parent = CreateDirectory(parent, reportServerPath);
+                                            this.CreateResourceFromPath("/" + this.ReportServerDirectory + reportServerPath, localPath, childItem.Name);
+                                        }
+                                        else if (childItem.TypeName == "Component")
+                                        {
+                                            string componentServerPath = item.Path.Substring(1).Substring(item.Path.Substring(1).IndexOf('/'));
+                                            parent = CreateDirectory(parent, componentServerPath);
+                                            this.CreateComponentFromPath("/" + this.ReportServerDirectory + componentServerPath, localPath, childItem.Name);
+                                        }
+                                    }
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                LoggerManager.Logger.LogWarning("Error while exporting reports under folder", ex);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Items not selected");
+            }
+
             Cursor.Current = Cursors.Default;
-            lblImportProgress.Text = "Reports imported successfully";
-            lblImportProgress.Refresh();
+            MessageBox.Show("Reports imported successfully");
+            btnImportReports.Enabled = true;
+        }
+
+        private string CreateDirectory(string parent, string reportServerPath)
+        {
+            try
+            {
+                string path = ("/" + this.ReportServerDirectory + reportServerPath).Replace("//", "/");
+                if (!this.ReportServer.ListChildren(@"/", true).ToList().Exists(a => a.Path == path))
+                {
+                    string[] directories = reportServerPath.Split('/');
+                    List<string> dirList = directories.ToList();
+                    dirList.RemoveAll(x => string.IsNullOrEmpty(x));
+                    directories = dirList.ToArray();
+
+                    CreateSubFolder(this.ReportServerDirectory, "/", this.ReportServerDirectory + reportServerPath);
+
+                    try
+                    {
+                        for (int i = 0; i < directories.Count(); i++)
+                        {
+                            if (i == 0)
+                                parent = "/" + this.ReportServerDirectory;
+
+                            CreateSubFolder(directories[i].Replace("/", string.Empty), parent.Replace("//", "/"), this.ReportServerDirectory + reportServerPath);
+                            parent = parent + "/" + directories[i];
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        LoggerManager.Logger.LogWarning("Folder already exist", ex);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerManager.Logger.LogFatal("Error while updating Creating Directories", ex);
+                MessageBox.Show("Error while creating Report Directories");
+            }
+
+            return parent;
         }
 
         private void LoadImportReportFolder()
@@ -85,7 +187,19 @@ namespace SSRSImportExportWizard
                 foreach (var fi in di.EnumerateFiles("*", SearchOption.TopDirectoryOnly))
                 {
                     TreeNode reportNode = new TreeNode(fi.Name);
-                    string parent = string.Format(@"/{0}", di.FullName.Replace(this.UploadPath + "\\", string.Empty)).Replace("\\", "/");
+                    string path = string.Empty;
+                    string baseFolder = "\\Base Report Definitions";
+                    string[] directories = new string[100];
+                    int index = di.FullName.IndexOf(baseFolder);
+                    if (index != -1)
+                    {
+                        path = di.FullName.Substring(index + baseFolder.Length);
+                        directories = path.Replace("\\", "/").Split('/');
+
+                    }
+
+                    string parent = string.Format(@"/{0}", this.ReportServerDirectory + path).Replace("\\", "/").Replace("//", "/");
+                    string[] directories1 = parent.Split('/');
 
                     if (this.DoCompare)
                     {
@@ -117,61 +231,58 @@ namespace SSRSImportExportWizard
             }
         }
 
-        private void CreateFolders(List<TreeNode> checkedList)
+        private string GetImportDirectoryPath(List<TreeNode> checkedList, string reportServerDirectory)
         {
-            string rootFolder = "\\" + this.ReportServerPath;
-            DirectoryInfo reportDir = new DirectoryInfo(this.UploadPath + rootFolder);
-            string parent = string.Empty;
-
-            if (this.ReportServerPath.Trim().Length > 0)
+            string path = string.Empty;
+            foreach (var x in checkedList)
             {
-                this.UploadPath = this.UploadPath + "\\";
-            }
-
-            foreach (var di in reportDir.EnumerateDirectories("*", SearchOption.AllDirectories))
-            {
-                if (this.ReportServerPath.Trim().Length > 0)
+                if (x.Parent != null)
                 {
-                    parent = string.Format(@"/{0}", di.Parent.FullName.Replace(this.UploadPath, string.Empty));
-                }
-                else
-                {
-                    parent = string.Format(@"{0}", di.Parent.FullName.Replace(this.UploadPath, string.Empty));
-                }
-
-                if (parent.Length == 0)
-                {
-                    parent = "/";
-                }
-
-                if (this.IsItemChecked(checkedList, parent.Replace("\\", "/"), di.Name))
-                {
-                    try
+                    var fullPath = (x.Parent.FullPath + x.Text).Replace("\\\\", "\\");
+                    if (checkedList.FindIndex(f => fullPath.Contains(reportServerDirectory.Replace("/", "\\"))) != -1)
                     {
-                        this.ReportServer.CreateFolder(di.Name, parent.Replace("\\", "/"), null);
-                    }
-                    catch (Exception ex)
-                    {
-                        LoggerManager.Logger.LogWarning("Folder already exist", ex);
+                        return fullPath;
                     }
                 }
             }
-            
-            lblImportProgress.Text = "Folders created successfully";
-            lblImportProgress.Refresh();
-            Thread.Sleep(3000);
+
+            return path;
+        }
+
+        private void CreateSubFolder(string dir, string parent, string reportServerDirectory)
+        {
+
+            string[] directories = dir.Split('/');
+            List<string> dirList = directories.ToList();
+            dirList.RemoveAll(x => string.IsNullOrEmpty(x));
+            dirList.ForEach(directory =>
+            {
+                try
+                {
+                    if (("/" + reportServerDirectory).Contains(parent.Replace("//", "/")))
+                    {
+                        this.ReportServer.CreateFolder(directory.Trim(), parent.Replace("//", "/"), null);
+                        parent = parent + "/" + directory.Trim();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    parent = parent.Replace("//", "/") + "/" + directory.Trim();
+                    LoggerManager.Logger.LogWarning("Folder already exist", ex);
+                }
+            });
         }
 
         private void CreateDataSource(List<TreeNode> checkedList)
         {
-            string rootFolder = "\\" + this.ReportServerPath;
-            DirectoryInfo reportDir = new DirectoryInfo(this.UploadPath + rootFolder);
+            DirectoryInfo reportDir = new DirectoryInfo(this.UploadPath);
             byte[] definition = null;
             Warning[] warnings = null;
             string dataSourceURL = "/Data Sources/";
             XmlDocument xmlDoc = new XmlDocument();
             List<ItemReference> dataSourceReference = null;
             DataSourceDefinition dsDef = null;
+            string parent = string.Empty;
 
             foreach (var di in reportDir.EnumerateDirectories("*", SearchOption.AllDirectories))
             {
@@ -264,48 +375,90 @@ namespace SSRSImportExportWizard
             Thread.Sleep(3000);
         }
 
-        private void CreateComponents(List<TreeNode> checkedList)
+        private void CreateComponentFromPath(string componentServerPath, string localPath, string componentName)
         {
-            string rootFolder = "\\" + this.ReportServerPath;
+            string rootFolder = "\\";
             DirectoryInfo reportDir = new DirectoryInfo(this.UploadPath + rootFolder);
+            componentServerPath = componentServerPath.Replace("//", "/");
+            string componentFullName = localPath + rootFolder + componentName;
             byte[] definition = null;
             Warning[] warnings = null;
-
-            foreach (var di in reportDir.EnumerateDirectories("*", SearchOption.AllDirectories))
+            try
             {
-                if (this.IsItemChecked(checkedList, di.Name.Replace("\\", "/"), di.Name))
+                FileStream stream = File.OpenRead(componentFullName);
+                definition = new byte[stream.Length];
+                stream.Read(definition, 0, (int)stream.Length);
+                stream.Close();
+                try
                 {
-                    foreach (var fi in di.EnumerateFiles("*.", SearchOption.TopDirectoryOnly))
-                    {
-                        if (this.IsCatalogItemChecked(checkedList, fi.Name.Replace("\\", "/"), fi.Name))
-                        {
-                            FileStream stream = File.OpenRead(fi.FullName);
-                            definition = new byte[stream.Length];
-                            stream.Read(definition, 0, (int)stream.Length);
-                            stream.Close();
-                            string parent = string.Format(@"/{0}", di.FullName.Replace(this.UploadPath + "\\", string.Empty)).Replace("\\", "/");
-
-                            try
-                            {
-                                this.ReportServer.CreateCatalogItem("Component", fi.Name, parent, true, definition, null, out warnings);
-                            }
-                            catch (Exception ex)
-                            {
-                                LoggerManager.Logger.LogWarning("Create Component error", ex);
-                            }
-                        }
-                    }
+                    this.ReportServer.CreateCatalogItem("Component", componentName, componentServerPath, true, definition, null, out warnings);
                 }
+                catch (Exception ex)
+                {
+                    LoggerManager.Logger.LogWarning("Create Component error", ex);
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerManager.Logger.LogWarning("Create Component error", ex);
             }
 
             lblImportProgress.Text = "Components created successfully";
             lblImportProgress.Refresh();
         }
 
-        private void CreateReports(List<TreeNode> checkedList)
+        private void CreateResourceFromPath(string resourceServerPath, string localPath, string resourceName)
         {
-            string rootFolder = "\\" + this.ReportServerPath;
+            string rootFolder = "\\";
             DirectoryInfo reportDir = new DirectoryInfo(this.UploadPath + rootFolder);
+            resourceServerPath = resourceServerPath.Replace("//", "/");
+            string resourceFullName = localPath + rootFolder + resourceName;
+            byte[] definition = null;
+            Warning[] warnings = null;
+            try
+            {
+                FileStream stream = File.OpenRead(resourceFullName);
+                definition = new byte[stream.Length];
+                stream.Read(definition, 0, (int)stream.Length);
+
+                Image img = Image.FromStream(stream);
+
+                stream.Close();
+                try
+                {
+
+                    ImageFormat format = img.RawFormat;
+                    ImageCodecInfo codec = ImageCodecInfo.GetImageDecoders().First(c => c.FormatID == format.Guid);
+                    string mimeType = codec.MimeType;
+
+                    Property[] prop = new Property[1];
+                    prop[0] = new Property();
+                    prop[0].Name = "MimeType";
+                    prop[0].Value = mimeType;
+
+                    this.ReportServer.CreateCatalogItem("Resource", resourceName, resourceServerPath, true, definition, prop, out warnings);
+                }
+                catch (Exception ex)
+                {
+                    LoggerManager.Logger.LogWarning("Create Resource error", ex);
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerManager.Logger.LogWarning("Create Resource error", ex);
+            }
+
+            lblImportProgress.Text = "Resources created successfully";
+            lblImportProgress.Refresh();
+        }
+
+        private void CreateReportsFromPath(string reportServerPath, string localPath, string reportName)
+        {
+            string rootFolder = "\\";
+            DirectoryInfo reportDir = new DirectoryInfo(localPath + rootFolder);
+            reportName = reportName + ".rdl";
+            reportServerPath = reportServerPath.Replace("//", "/");
+            string reportFullName = localPath + rootFolder + reportName;
             byte[] definition = null;
             Warning[] warnings = null;
             List<DataSource> ds = null;
@@ -313,165 +466,151 @@ namespace SSRSImportExportWizard
             XmlDocument xmlDoc = new XmlDocument();
             DataSourceReference reference = null;
             string dataSourceFolder = @"/Data Sources/";
-            string dataSetFolder = @"/Datasets/";
+            string dataSetFolder = @"/Datasets/ ";
 
-            foreach (var di in reportDir.EnumerateDirectories("*", SearchOption.AllDirectories))
+            try
             {
-                if (di.Name != "Data Sources" && di.Name != "Datasets")
-                {
-                    foreach (var fi in di.EnumerateFiles("*.rdl", SearchOption.TopDirectoryOnly))
-                    {
-                        if (this.IsCatalogItemChecked(checkedList, fi.Name.Replace("\\", "/"), fi.Name))
-                        {
-                            string parent = string.Format(@"/{0}", di.FullName.Replace(this.UploadPath + "\\", string.Empty)).Replace("\\", "/");
+                FileStream stream = File.OpenRead(reportFullName);
+                definition = new byte[stream.Length];
+                stream.Read(definition, 0, (int)stream.Length);
+                stream.Close();
 
+                try
+                {
+                    this.ReportServer.DeleteItem(reportServerPath + "/" + reportName.Replace(".rdl", string.Empty));
+                }
+                catch
+                {
+                }
+
+                this.ReportServer.CreateCatalogItem("Report", reportName.Replace(".rdl", string.Empty), reportServerPath, true, definition, null, out warnings);
+            }
+            catch (Exception ex)
+            {
+                LoggerManager.Logger.LogWarning("Create Report error", ex);
+            }
+
+            xmlDoc.Load(reportFullName);
+            XmlNodeList dsReferenceList = xmlDoc.GetElementsByTagName("DataSource");
+            XmlNodeList sharedDSReferenceList = xmlDoc.GetElementsByTagName("DataSet");
+
+            if (dsReferenceList != null && dsReferenceList.Count > 0)
+            {
+                ds = new List<DataSource>();
+                string dataSourceName = string.Empty;
+
+                foreach (XmlNode node in dsReferenceList)
+                {
+                    if (node.Attributes != null && node.Attributes.Count > 0)
+                    {
+                        dataSourceName = node.Attributes["Name"].Value;
+                    }
+
+                    if (node["DataSourceReference"] != null)
+                    {
+                        reference = new DataSourceReference();
+                        reference.Reference = dataSourceFolder + node["DataSourceReference"].InnerText;
+                        ds.Add(new DataSource()
+                        {
+                            Item = reference,
+                            Name = dataSourceName
+                        });
+                    }
+                }
+
+                if (ds.Count > 0)
+                {
+                    try
+                    {
+                        this.ReportServer.SetItemDataSources(reportServerPath + "/" + reportName.Replace(".rdl", string.Empty), ds.ToArray());
+                    }
+                    catch (Exception ex)
+                    {
+                        LoggerManager.Logger.LogWarning("Update Item DataSources error", ex);
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        DataSource[] dataSources = this.ReportServer.GetItemDataSources(reportServerPath + "/" + reportName.Replace(".rdl", string.Empty));
+                        foreach (DataSource data in dataSources)
+                        {
+                            DataSourceDefinition def = data.Item as DataSourceDefinition;
+
+                            if (def != null)
+                            {
+                                if (def.Extension != null && def.Extension.ToLower().Equals("xml"))
+                                {
+                                    def.CredentialRetrieval = CredentialRetrievalEnum.None;
+                                }
+                            }
+                        }
+
+                        if (dataSources != null && dataSources.ToList().Count() > 0)
+                        {
                             try
                             {
-                                FileStream stream = File.OpenRead(fi.FullName);
-                                definition = new byte[stream.Length];
-                                stream.Read(definition, 0, (int)stream.Length);
-                                stream.Close();
-
-                                try
-                                {
-                                    this.ReportServer.DeleteItem(parent + "/" + fi.Name.Replace(".rdl", string.Empty));
-                                }
-                                catch
-                                {
-                                }
-
-                                this.ReportServer.CreateCatalogItem("Report", fi.Name.Replace(".rdl", string.Empty), parent, true, definition, null, out warnings);
+                                this.ReportServer.SetItemDataSources(reportServerPath + "/" + reportName.Replace(".rdl", string.Empty), dataSources);
                             }
                             catch (Exception ex)
                             {
-                                LoggerManager.Logger.LogWarning("Create Report error", ex);
+                                LoggerManager.Logger.LogWarning("Update Item DataSources error", ex);
                             }
-
-                            xmlDoc.Load(fi.FullName);
-                            XmlNodeList dsReferenceList = xmlDoc.GetElementsByTagName("DataSource");
-                            XmlNodeList sharedDSReferenceList = xmlDoc.GetElementsByTagName("DataSet");
-
-                            if (dsReferenceList != null && dsReferenceList.Count > 0)
-                            {
-                                ds = new List<DataSource>();
-                                string dataSourceName = string.Empty;
-
-                                foreach (XmlNode node in dsReferenceList)
-                                {
-                                    if (node.Attributes != null && node.Attributes.Count > 0)
-                                    {
-                                        dataSourceName = node.Attributes["Name"].Value;
-                                    }
-
-                                    if (node["DataSourceReference"] != null)
-                                    {
-                                        reference = new DataSourceReference();
-                                        reference.Reference = dataSourceFolder + node["DataSourceReference"].InnerText;
-                                        ds.Add(new DataSource()
-                                        {
-                                            Item = reference,
-                                            Name = dataSourceName
-                                        });
-                                    }
-                                }
-
-                                if (ds.Count > 0)
-                                {
-                                    try
-                                    {
-                                        this.ReportServer.SetItemDataSources(parent + "/" + fi.Name.Replace(".rdl", string.Empty), ds.ToArray());
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        LoggerManager.Logger.LogWarning("Update Item DataSources error", ex);
-                                    }
-                                }
-                                else
-                                {
-                                    try
-                                    {
-                                        DataSource[] dataSources = this.ReportServer.GetItemDataSources(parent + "/" + fi.Name.Replace(".rdl", string.Empty));
-                                        foreach (DataSource data in dataSources)
-                                        {
-                                            DataSourceDefinition def = data.Item as DataSourceDefinition;
-
-                                            if (def != null)
-                                            {
-                                                if (def.Extension != null && def.Extension.ToLower().Equals("xml"))
-                                                {
-                                                    def.CredentialRetrieval = CredentialRetrievalEnum.None;
-                                                }
-                                            }
-                                        }
-
-                                        if (dataSources != null && dataSources.ToList().Count() > 0)
-                                        {
-                                            try
-                                            {
-                                                this.ReportServer.SetItemDataSources(parent + "/" + fi.Name.Replace(".rdl", string.Empty), dataSources);
-                                            }
-                                            catch (Exception ex)
-                                            {
-                                                LoggerManager.Logger.LogWarning("Update Item DataSources error", ex);
-                                            }
-                                        }
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        LoggerManager.Logger.LogWarning("Get Item DataSources error", ex);
-                                    }
-                                }
-                            }
-
-                            if (sharedDSReferenceList != null && sharedDSReferenceList.Count > 0)
-                            {
-                                references = new List<ItemReference>();
-                                string dataSetName = string.Empty;
-
-                                foreach (XmlNode node in sharedDSReferenceList)
-                                {
-                                    if (node.Attributes != null && node.Attributes.Count > 0)
-                                    {
-                                        dataSetName = node.Attributes["Name"].Value;
-                                    }
-
-                                    foreach (XmlNode childNode in node.ChildNodes)
-                                    {
-                                        if (childNode.Name == "SharedDataSet")
-                                        {
-                                            if (childNode.FirstChild != null && !string.IsNullOrEmpty(childNode.FirstChild.InnerText))
-                                            {
-                                                references.Add(new ItemReference()
-                                                {
-                                                    Name = dataSetName,
-                                                    Reference = dataSetFolder + childNode.FirstChild.InnerText
-                                                });
-                                            }
-                                        }
-                                    }
-                                }
-
-                                if (references.Count > 0)
-                                {
-                                    try
-                                    {
-                                        this.ReportServer.SetItemReferences(parent + "/" + fi.Name.Replace(".rdl", string.Empty), references.ToArray());
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        LoggerManager.Logger.LogWarning("Update Item References error", ex);
-                                    }
-                                }
-                            }
-
-                            lblImportProgress.Text = "Report " + fi.Name.Replace(".rdl", string.Empty) + " created";
-                            lblImportProgress.Refresh();
                         }
+                    }
+                    catch (Exception ex)
+                    {
+                        LoggerManager.Logger.LogWarning("Get Item DataSources error", ex);
                     }
                 }
             }
 
-            lblImportProgress.Text = "Reports created successfully";
+            if (sharedDSReferenceList != null && sharedDSReferenceList.Count > 0)
+            {
+                references = new List<ItemReference>();
+                string dataSetName = string.Empty;
+
+                foreach (XmlNode node in sharedDSReferenceList)
+                {
+                    if (node.Attributes != null && node.Attributes.Count > 0)
+                    {
+                        dataSetName = node.Attributes["Name"].Value;
+                    }
+
+                    foreach (XmlNode childNode in node.ChildNodes)
+                    {
+                        if (childNode.Name == "SharedDataSet")
+                        {
+                            if (childNode.FirstChild != null && !string.IsNullOrEmpty(childNode.FirstChild.InnerText))
+                            {
+                                references.Add(new ItemReference()
+                                {
+                                    Name = dataSetName,
+                                    Reference = dataSetFolder + childNode.FirstChild.InnerText
+                                });
+                            }
+                        }
+                    }
+                }
+
+                if (references.Count > 0)
+                {
+                    try
+                    {
+                        this.ReportServer.SetItemReferences(reportServerPath + "/" + reportName.Replace(".rdl", string.Empty), references.ToArray());
+                    }
+                    catch (Exception ex)
+                    {
+                        LoggerManager.Logger.LogWarning("Update Item References error", ex);
+                    }
+                }
+            }
+
+            lblImportProgress.Text = "Report " + reportName.Replace(".rdl", string.Empty) + " imported on the reported server under the folder " + reportServerPath;
+            lblImportProgress.Refresh();
+
+            lblImportProgress.Text = "Reports imported successfully";
             lblImportProgress.Refresh();
             Thread.Sleep(3000);
         }
@@ -652,7 +791,20 @@ namespace SSRSImportExportWizard
 
         private bool IsItemChecked(List<TreeNode> checkedList, string path, string name)
         {
-            return checkedList.Exists(f => f.Text.Contains(name) || f.Text.Contains(path));
+            bool found = false;
+            checkedList.ForEach(x =>
+            {
+                if (x.Parent != null)
+                {
+                    var fullPath = x.Parent.FullPath + "\\" + x.Text;
+                    if (x.Text.Equals(name + ".rdl") || x.Text.Equals(name + ".rds") || fullPath.Replace("\\\\", "\\").Contains(path))
+                    {
+                        found = true;
+                    }
+                }
+            });
+
+            return found;
         }
 
         private bool IsCatalogItemChecked(List<TreeNode> checkedList, string path, string name)
@@ -699,7 +851,7 @@ namespace SSRSImportExportWizard
         {
             this.Close();
             Cursor.Current = Cursors.WaitCursor;
-            new DataSourceView(this.ReportServer, this.ReportServerPath).ShowDialog();
+            new DataSourceView(this.ReportServer, this.ReportServerDirectory).ShowDialog();
             Cursor.Current = Cursors.Default;
         }
     }

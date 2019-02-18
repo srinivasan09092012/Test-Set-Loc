@@ -1,4 +1,6 @@
-﻿namespace SSRSImportExportWizard
+﻿using System.Configuration;
+
+namespace SSRSImportExportWizard
 {
     partial class ViewDataSource
     {
@@ -56,7 +58,7 @@
             this.TargetURL.Name = "TargetURL";
             this.TargetURL.Size = new System.Drawing.Size(609, 22);
             this.TargetURL.TabIndex = 1;
-            this.TargetURL.Text = "https://report.dev.mapshc.com/ReportServer/ReportService2010.asmx";
+            this.TargetURL.Text = ConfigurationManager.AppSettings["ReportURL"];
             // 
             // lblTestSuccess
             // 
@@ -138,7 +140,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(183, 26);
             this.txtPassword.TabIndex = 5;
-            this.txtPassword.Text = "Password2015";
+            this.txtPassword.Text = ConfigurationManager.AppSettings["Password"];
             // 
             // txtUserName
             // 
@@ -146,7 +148,7 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(183, 26);
             this.txtUserName.TabIndex = 4;
-            this.txtUserName.Text = "ua3dev\\hciadmin";
+            this.txtUserName.Text = ConfigurationManager.AppSettings["UserName"];
             // 
             // label3
             // 
@@ -206,9 +208,9 @@
             // 
             // txtRootPath
             // 
-            this.txtRootPath.Location = new System.Drawing.Point(86, 54);
+            this.txtRootPath.Location = new System.Drawing.Point(165, 54);
             this.txtRootPath.Name = "txtRootPath";
-            this.txtRootPath.Size = new System.Drawing.Size(609, 22);
+            this.txtRootPath.Size = new System.Drawing.Size(530, 22);
             this.txtRootPath.TabIndex = 2;
             // 
             // label5
@@ -217,9 +219,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(10, 53);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 18);
+            this.label5.Size = new System.Drawing.Size(131, 18);
             this.label5.TabIndex = 15;
-            this.label5.Text = "Path";
+            this.label5.Text = "Server Directory*";
             // 
             // ViewDataSource
             // 

@@ -1,4 +1,6 @@
-﻿namespace SSRSImportExportWizard
+﻿using System.Configuration;
+
+namespace SSRSImportExportWizard
 {
     partial class ImportControl
     {
@@ -99,7 +101,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(183, 26);
             this.txtPassword.TabIndex = 8;
-            this.txtPassword.Text = "Password2017";
+            this.txtPassword.Text = ConfigurationManager.AppSettings["Password"];
             // 
             // txtUserName
             // 
@@ -107,7 +109,7 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(183, 26);
             this.txtUserName.TabIndex = 7;
-            this.txtUserName.Text = "test\\hciadmin";
+            this.txtUserName.Text = ConfigurationManager.AppSettings["UserName"];
             // 
             // label3
             // 
@@ -157,7 +159,7 @@
             this.txtDownloadPath.Name = "txtDownloadPath";
             this.txtDownloadPath.Size = new System.Drawing.Size(520, 22);
             this.txtDownloadPath.TabIndex = 2;
-            this.txtDownloadPath.Text = "C:\\UA3\\Reports";
+            this.txtDownloadPath.Text = ConfigurationManager.AppSettings["DownloadPath"];
             // 
             // groupBox1
             // 
@@ -213,7 +215,7 @@
             this.TargetURL.Name = "TargetURL";
             this.TargetURL.Size = new System.Drawing.Size(604, 22);
             this.TargetURL.TabIndex = 1;
-            this.TargetURL.Text = "https://report.test.mapshc.com/ReportServer/ReportService2010.asmx";
+            this.TargetURL.Text = ConfigurationManager.AppSettings["ReportURL"];
             // 
             // ExportBodyPanel
             // 
@@ -266,9 +268,9 @@
             // 
             // txtReportServerPath
             // 
-            this.txtReportServerPath.Location = new System.Drawing.Point(105, 97);
+            this.txtReportServerPath.Location = new System.Drawing.Point(155, 97);
             this.txtReportServerPath.Name = "txtReportServerPath";
-            this.txtReportServerPath.Size = new System.Drawing.Size(490, 22);
+            this.txtReportServerPath.Size = new System.Drawing.Size(400, 22);
             this.txtReportServerPath.TabIndex = 4;
             // 
             // label6
@@ -277,9 +279,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(10, 97);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 17);
+            this.label6.Size = new System.Drawing.Size(193, 17);
             this.label6.TabIndex = 15;
-            this.label6.Text = "Server path";
+            this.label6.Text = "Server Directory*";
             // 
             // ImportControl
             // 
