@@ -92,7 +92,7 @@ namespace SSRSImportExportWizard
                     }
                 }
 
-                DataSourceGridView.DataSource = dataItems.OrderBy(o => o.ReportFullName).ToList();
+                 DataSourceGridView.DataSource = dataItems.OrderBy(o => o.ReportFullName).ToList();
 
                 List<DataSourceItemModel> connections = dataItems.GroupBy(test => test.ConnectionString)
                        .Select(grp => grp.First())
@@ -128,15 +128,22 @@ namespace SSRSImportExportWizard
                 {
                     if (!string.IsNullOrEmpty(ds.ConnectionString) && !string.IsNullOrEmpty(ds.ConnectionString.Trim()) &&  ds.Extension != null && ds.Extension.ToLower().Equals("xml"))
                     {
-                        Uri myUri = new Uri(ds.ConnectionString);
-                        string host = myUri.Host;
-                        if (connectionStrings.FindIndex(x => x.CurrentValue == host) == -1)
+                        try
                         {
-                            connectionStrings.Add(new ConnectionModel()
+                            Uri myUri = new Uri(ds.ConnectionString);
+                            string host = myUri.Host;
+                            if (connectionStrings.FindIndex(x => x.CurrentValue == host) == -1)
                             {
-                                CurrentValue = host,
-                                NewValue = string.Empty
-                            });
+                                connectionStrings.Add(new ConnectionModel()
+                                {
+                                    CurrentValue = host,
+                                    NewValue = string.Empty
+                                });
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            LoggerManager.Logger.LogFatal("Invalid URI in the connectionstring", ex);
                         }
                     }
                 }
