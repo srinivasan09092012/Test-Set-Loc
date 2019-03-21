@@ -30,6 +30,10 @@ namespace SSRSImportExportWizard
         {
             try
             {
+                if (string.IsNullOrEmpty(this.navigateTo))
+                {
+                    throw new Exception("invalid url");
+                };
                 ReportCompareBrowser.Url = new Uri(@"file:///" + navigateTo);
                 ReportCompareBrowser.Show();
             }
