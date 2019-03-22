@@ -57,6 +57,22 @@
       <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas.staging-1.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
       <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.staging-1.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
     </Environment>
+    <Environment name="Stage2" adGroupFilterPrefix="Maps" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="1" isDeleteAllowed="true">
+      <ADContainer>CN=users,DC=tenant1-stage2,DC=mapshc,DC=com </ADContainer>
+      <ADServer>ad.tenant1-stage2.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas-stage2.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas-stage2.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="Stage3" adGroupFilterPrefix="Maps" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="1" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=tenant1-stage3,DC=mapshc,DC=com</ADContainer>
+      <ADServer>ad.tenant1-stage3.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas-stage3.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas-stage3.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
     <Environment name="Test - DXC Medicaid" adGroupFilterPrefix="Maps" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="2" isDeleteAllowed="true">
       <ADContainer>CN=Users,DC=test,DC=mapshc,DC=com</ADContainer>
       <ADServer>ad.test.mapshc.com</ADServer>
