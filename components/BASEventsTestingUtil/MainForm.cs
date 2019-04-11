@@ -178,8 +178,32 @@ namespace BASEventsTestingUtil
         {
             EventMessage em = new EventMessage();
             string serviceUrl = ConfigurationManager.AppSettings["ServiceUrlOverride"];
+
+            bool useAsyncForMultiEvents = false;
+            bool.TryParse(ConfigurationManager.AppSettings["UseAsyncForMultiEvents"], out useAsyncForMultiEvents);
+
             serviceUrl = InitializeEvents(em, serviceUrl);
-            AsyncProcessEvents(em, serviceUrl, threadCount);
+
+            if (useAsyncForMultiEvents)
+            {
+                AsyncProcessEvents(em, serviceUrl, threadCount);
+            }
+            else
+            {
+                var cursor = this.Cursor;
+                Cursor.Current = Cursors.WaitCursor;
+                tbError.Text += (System.Environment.NewLine + "*************** Test Results ***************" + System.Environment.NewLine);
+
+                for (int i = 0; i < threadCount; i++)
+                {
+                    var message = ProcessEvents(em, serviceUrl, false);
+                    Cursor.Current = cursor;
+                    tbError.Text += message.Item1 + " for thread " + i + System.Environment.NewLine;
+                }
+
+                buttonNormalTest.Enabled = true;
+                buttonPressureTest.Enabled = true;
+            }
         }
 
         private void AsyncProcessEvents(EventMessage em, string serviceUrl, int eventsCount)
