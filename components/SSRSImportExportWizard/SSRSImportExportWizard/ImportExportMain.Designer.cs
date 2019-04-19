@@ -1,4 +1,6 @@
-﻿namespace SSRSImportExportWizard
+﻿using SSRSImportExportWizard.ReportServer2010;
+
+namespace SSRSImportExportWizard
 {
     partial class ImportExportMain
     {
@@ -6,6 +8,8 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+
+        public ReportingService2010 ReportServer { get; set; }
 
         /// <summary>
         /// Clean up any resources being used.
@@ -39,7 +43,13 @@
             this.targetURLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ImportExportPanel = new System.Windows.Forms.Panel();
+            this.buttonExportReports = new System.Windows.Forms.Button();
+            this.buttonImportReports = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonViewDS = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
+            this.ImportExportPanel.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -125,10 +135,60 @@
             // ImportExportPanel
             // 
             this.ImportExportPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ImportExportPanel.Controls.Add(this.groupBox1);
             this.ImportExportPanel.Location = new System.Drawing.Point(12, 43);
             this.ImportExportPanel.Name = "ImportExportPanel";
             this.ImportExportPanel.Size = new System.Drawing.Size(721, 445);
             this.ImportExportPanel.TabIndex = 1;
+            // 
+            // buttonExportReports
+            // 
+            this.buttonExportReports.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonExportReports.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.buttonExportReports.Location = new System.Drawing.Point(223, 37);
+            this.buttonExportReports.Name = "buttonExportReports";
+            this.buttonExportReports.Size = new System.Drawing.Size(180, 171);
+            this.buttonExportReports.TabIndex = 1;
+            this.buttonExportReports.Text = "&Export Reports";
+            this.buttonExportReports.UseVisualStyleBackColor = false;
+            this.buttonExportReports.Click += new System.EventHandler(this.buttonExportReports_Click);
+            // 
+            // buttonImportReports
+            // 
+            this.buttonImportReports.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonImportReports.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.buttonImportReports.Location = new System.Drawing.Point(36, 37);
+            this.buttonImportReports.Name = "buttonImportReports";
+            this.buttonImportReports.Size = new System.Drawing.Size(172, 171);
+            this.buttonImportReports.TabIndex = 0;
+            this.buttonImportReports.Text = "&Import Reports";
+            this.buttonImportReports.UseVisualStyleBackColor = false;
+            this.buttonImportReports.Click += new System.EventHandler(this.buttonImportReports_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.buttonViewDS);
+            this.groupBox1.Controls.Add(this.buttonExportReports);
+            this.groupBox1.Controls.Add(this.buttonImportReports);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(14, 11);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(677, 233);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Import/Export Reports";
+            // 
+            // buttonViewDS
+            // 
+            this.buttonViewDS.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonViewDS.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.buttonViewDS.Location = new System.Drawing.Point(422, 37);
+            this.buttonViewDS.Name = "buttonViewDS";
+            this.buttonViewDS.Size = new System.Drawing.Size(168, 171);
+            this.buttonViewDS.TabIndex = 3;
+            this.buttonViewDS.Text = "&View/Update Data Source";
+            this.buttonViewDS.UseVisualStyleBackColor = false;
+            this.buttonViewDS.Click += new System.EventHandler(this.buttonViewDS_Click);
             // 
             // ImportExportMain
             // 
@@ -143,6 +203,8 @@
             this.Text = "Report Import Export Wizard";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.ImportExportPanel.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,6 +223,10 @@
         private System.Windows.Forms.ToolStripMenuItem ExportMenu;
         private System.Windows.Forms.Panel ImportExportPanel;
         private System.Windows.Forms.ToolStripMenuItem ExitMenu;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button buttonExportReports;
+        private System.Windows.Forms.Button buttonImportReports;
+        private System.Windows.Forms.Button buttonViewDS;
     }
 }
 

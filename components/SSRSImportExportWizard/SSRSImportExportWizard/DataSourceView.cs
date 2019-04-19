@@ -79,20 +79,20 @@ namespace SSRSImportExportWizard
                     else if (item.TypeName == "DataSource")
                     {
                         DataSourceDefinition def = this.ReportServer.GetDataSourceContents(item.Path);
-                            if (def != null && !string.IsNullOrEmpty(def.ConnectString) && !string.IsNullOrEmpty(def.ConnectString.Trim()))
+                        if (def != null && !string.IsNullOrEmpty(def.ConnectString) && !string.IsNullOrEmpty(def.ConnectString.Trim()))
+                        {
+                            dataItems.Add(
+                            new DataSourceItemModel()
                             {
-                                dataItems.Add(
-                                new DataSourceItemModel()
-                                {
-                                    ConnectionString = def.ConnectString,
-                                    ReportFullName = item.Path,
-                                    Extension = def.Extension
-                                });
-                            }
+                                ConnectionString = def.ConnectString,
+                                ReportFullName = item.Path,
+                                Extension = def.Extension
+                            });
+                        }
                     }
                 }
 
-                 DataSourceGridView.DataSource = dataItems.OrderBy(o => o.ReportFullName).ToList();
+                DataSourceGridView.DataSource = dataItems.OrderBy(o => o.ReportFullName).ToList();
 
                 List<DataSourceItemModel> connections = dataItems.GroupBy(test => test.ConnectionString)
                        .Select(grp => grp.First())
@@ -112,21 +112,10 @@ namespace SSRSImportExportWizard
 
                 DataSourceConnectionView.DataSource = connectionStrings.OrderBy(o => o.CurrentValue).ToList();
 
-                replacementStrings = new List<ConnectionModel>()
-                {
-                    new ConnectionModel() { CurrentValue = string.Empty, NewValue = string.Empty },
-                    new ConnectionModel() { CurrentValue = string.Empty, NewValue = string.Empty },
-                    new ConnectionModel() { CurrentValue = string.Empty, NewValue = string.Empty },
-                    new ConnectionModel() { CurrentValue = string.Empty, NewValue = string.Empty },
-                    new ConnectionModel() { CurrentValue = string.Empty, NewValue = string.Empty },
-                    new ConnectionModel() { CurrentValue = string.Empty, NewValue = string.Empty },
-                    new ConnectionModel() { CurrentValue = string.Empty, NewValue = string.Empty }
-                };
-
                 connectionStrings = new List<ConnectionModel>();
                 foreach (DataSourceItemModel ds in connections)
                 {
-                    if (!string.IsNullOrEmpty(ds.ConnectionString) && !string.IsNullOrEmpty(ds.ConnectionString.Trim()) &&  ds.Extension != null && ds.Extension.ToLower().Equals("xml"))
+                    if (!string.IsNullOrEmpty(ds.ConnectionString) && !string.IsNullOrEmpty(ds.ConnectionString.Trim()) && ds.Extension != null && ds.Extension.ToLower().Equals("xml"))
                     {
                         try
                         {
@@ -148,7 +137,16 @@ namespace SSRSImportExportWizard
                     }
                 }
 
-                ReplaceStringDGV.DataSource = connectionStrings.OrderBy(o => o.CurrentValue).ToList();
+                replacementStrings = new List<ConnectionModel>()
+                {
+                    new ConnectionModel() { CurrentValue = string.Empty, NewValue = string.Empty },
+                    new ConnectionModel() { CurrentValue = string.Empty, NewValue = string.Empty },
+                    new ConnectionModel() { CurrentValue = string.Empty, NewValue = string.Empty },
+                    new ConnectionModel() { CurrentValue = string.Empty, NewValue = string.Empty },
+                    new ConnectionModel() { CurrentValue = string.Empty, NewValue = string.Empty }
+                };
+
+                ReplaceStringDGV.DataSource = connectionStrings.Union(replacementStrings).ToList();
             }
             catch (Exception ex)
             {
@@ -192,29 +190,29 @@ namespace SSRSImportExportWizard
                             DataSource[] dataSources = this.ReportServer.GetItemDataSources(item.Path);
                             List<string> currentConnectionStrings = new List<string>();
 
-                        foreach (DataSource data in dataSources)
-                        {
-                            if (data.Item.ToString().Contains("InvalidDataSourceReference"))
+                            foreach (DataSource data in dataSources)
                             {
-                                validDataSource = false;
-                                errors.Add(item.Path + " is referring to the data source, " + dataSources[0].Name.ToString() + " that is either invalid or does not exist.");
-                                LoggerManager.Logger.LogWarning(item.Path + " is referring to the data source, " + dataSources[0].Name.ToString() + " that is either invalid or does not exist.");
-                                break;
-                            }
-                            else
-                            {
-                                DataSourceDefinition def = data.Item as DataSourceDefinition;
-                                if (def != null)
+                                if (data.Item.ToString().Contains("InvalidDataSourceReference"))
                                 {
-                                    foreach (KeyValuePair<string, string> repString in replaceStrings)
+                                    validDataSource = false;
+                                    errors.Add(item.Path + " is referring to the data source, " + dataSources[0].Name.ToString() + " that is either invalid or does not exist.");
+                                    LoggerManager.Logger.LogWarning(item.Path + " is referring to the data source, " + dataSources[0].Name.ToString() + " that is either invalid or does not exist.");
+                                    break;
+                                }
+                                else
+                                {
+                                    DataSourceDefinition def = data.Item as DataSourceDefinition;
+                                    if (def != null)
                                     {
-                                        if (def.ConnectString != null && def.ConnectString.Contains(repString.Key))
+                                        foreach (KeyValuePair<string, string> repString in replaceStrings)
                                         {
-                                            validDataSource = true;
-                                            def.UseOriginalConnectString = false;
-                                            def.ConnectString = def.ConnectString.Replace(repString.Key, repString.Value);
+                                            if (def.ConnectString != null && def.ConnectString.Contains(repString.Key))
+                                            {
+                                                validDataSource = true;
+                                                def.UseOriginalConnectString = false;
+                                                def.ConnectString = def.ConnectString.Replace(repString.Key, repString.Value);
+                                            }
                                         }
-                                    }
 
                                         if (def.Extension != null && def.Extension.ToLower().Equals("xml"))
                                         {
@@ -227,36 +225,36 @@ namespace SSRSImportExportWizard
 
                             if (validDataSource)
                             {
-                                    try
+                                try
+                                {
+                                    this.ReportServer.SetItemDataSources(item.Path, dataSources);
+
+                                    foreach (var connectionstring in currentConnectionStrings)
                                     {
-                                        this.ReportServer.SetItemDataSources(item.Path, dataSources);
-                                        
-                                            foreach (var connectionstring in currentConnectionStrings)
+                                        bool hasUpdated = false;
+                                        if (!string.IsNullOrEmpty(connectionstring))
+                                        {
+                                            replaceCurrentValues.ForEach(value =>
                                             {
-                                                bool hasUpdated = false;
-                                                if (!string.IsNullOrEmpty(connectionstring))
+                                                if (connectionstring.Contains(value))
                                                 {
-                                                    replaceCurrentValues.ForEach(value =>
-                                                    {
-                                                        if (connectionstring.Contains(value))
-                                                        {
-                                                            hasUpdated = true;
-                                                        }
-                                                    });
+                                                    hasUpdated = true;
                                                 }
-                                                if (hasUpdated)
-                                                {
-                                                    updatedDSCount++;
-                                                    lblUpdateProgress.Text = "DataSource " + item.Path + " updated successfully";
-                                                    lblUpdateProgress.Refresh();
-                                                }
-                                            }
+                                            });
                                         }
-                                    catch (Exception ex)
-                                    {
-                                        LoggerManager.Logger.LogWarning("FATAL ERROR: " + item.Path, ex);
-                                        errors.Add("FATAL ERROR" + item.Path + Environment.NewLine + ex.Message + Environment.NewLine);
+                                        if (hasUpdated)
+                                        {
+                                            updatedDSCount++;
+                                            lblUpdateProgress.Text = "DataSource " + item.Path + " updated successfully";
+                                            lblUpdateProgress.Refresh();
+                                        }
                                     }
+                                }
+                                catch (Exception ex)
+                                {
+                                    LoggerManager.Logger.LogWarning("FATAL ERROR: " + item.Path, ex);
+                                    errors.Add("FATAL ERROR" + item.Path + Environment.NewLine + ex.Message + Environment.NewLine);
+                                }
                             }
                         }
                         else if (item.TypeName == "DataSource")

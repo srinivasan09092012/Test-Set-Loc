@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SSRSImportExportWizard.ReportServer2010;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,9 +16,9 @@ namespace SSRSImportExportWizard
         public ImportExportMain()
         {
             InitializeComponent();
-            ImportExportPanel.Controls.Clear();
-            ImportExportPanel.Controls.Add(new ExportControl());
+            this.ReportServer = new ReportingService2010();
         }
+
 
         private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
@@ -45,6 +46,24 @@ namespace SSRSImportExportWizard
         private void ExitMenu_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void buttonImportReports_Click(object sender, EventArgs e)
+        {
+            ImportExportPanel.Controls.Clear();
+            ImportExportPanel.Controls.Add(new ImportControl());
+        }
+
+        private void buttonExportReports_Click(object sender, EventArgs e)
+        {
+            ImportExportPanel.Controls.Clear();
+            ImportExportPanel.Controls.Add(new ExportControl());
+        }
+
+        private void buttonViewDS_Click(object sender, EventArgs e)
+        {
+            ImportExportPanel.Controls.Clear();
+            ImportExportPanel.Controls.Add(new ViewDataSource());
         }
     }
 }
