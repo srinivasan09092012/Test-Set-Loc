@@ -229,7 +229,7 @@ namespace SSRSImportExportWizard
                                 {
                                     this.ReportServer.SetItemDataSources(item.Path, dataSources);
 
-                                    foreach (var connectionstring in currentConnectionStrings)
+                                    foreach (var connectionstring in replaceCurrentValues)
                                     {
                                         bool hasUpdated = false;
                                         if (!string.IsNullOrEmpty(connectionstring))
