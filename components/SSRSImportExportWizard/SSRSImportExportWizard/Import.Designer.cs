@@ -101,7 +101,7 @@ namespace SSRSImportExportWizard
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(183, 26);
             this.txtPassword.TabIndex = 8;
-            this.txtPassword.Text = ConfigurationManager.AppSettings["Password"];
+            this.txtPassword.Text = string.Empty;
             // 
             // txtUserName
             // 
