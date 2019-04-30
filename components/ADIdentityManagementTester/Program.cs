@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces;
 using HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.Domain;
 using HPE.HSP.UA3.Core.API.IdentityManagement.Providers;
@@ -32,6 +33,8 @@ namespace ADIdentityManagementTester
 
         public static void Main(string[] args)
         {
+            Stopwatch timer = new Stopwatch();
+
             adContainer = ConfigurationManager.AppSettings["ADContainer"];
             adServer = ConfigurationManager.AppSettings["ADServer"];
             adUser = ConfigurationManager.AppSettings["ADUser"];
@@ -46,6 +49,8 @@ namespace ADIdentityManagementTester
 
             try
             {
+                timer.Start();
+
                 adProvider = new ActiveDirectoryProvider(adServer, adUser, adPassword, adContainer);
                 adQueryProvider = new ActiveDirectoryQueryProvider(adServer, adUser, adPassword, adContainer);
 
@@ -61,6 +66,10 @@ namespace ADIdentityManagementTester
             }
             finally
             {
+                timer.Stop();
+                Console.WriteLine("");
+                Console.WriteLine(string.Format("Total time taken {0} ms.", timer.ElapsedMilliseconds.ToString("#,##0")));
+
                 Console.WriteLine("");
                 Console.Write("Press any key to continue...");
                 Console.ReadKey();
