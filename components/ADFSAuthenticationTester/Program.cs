@@ -6,6 +6,7 @@
 using HPE.HSP.UA3.Core.API.AuthManagement.Providers;
 using System;
 using System.Configuration;
+using System.Diagnostics;
 using System.IdentityModel.Tokens;
 
 namespace ADFSAuthenticationTester
@@ -43,8 +44,12 @@ namespace ADFSAuthenticationTester
 
         public static void AuthenticateUser(string userName, string password)
         {
+            Stopwatch timer = new Stopwatch();
+
             try
             {
+                timer.Start();
+
                 ADFSClaimsProvider provider = new ADFSClaimsProvider(
                     domain,
                     endpointAddress,
@@ -65,6 +70,11 @@ namespace ADFSAuthenticationTester
             catch(Exception ex)
             {
                 Console.WriteLine("Authentication Failed: " + ex.Message);
+            }
+            finally
+            {
+                timer.Stop();
+                Console.WriteLine(string.Format("Total time taken: {0} ms", timer.ElapsedMilliseconds.ToString("#,##0")));
             }
         }
     }
