@@ -18,12 +18,14 @@ namespace DatalistSyncUtil.Entities
         public HelpDbContext(IDbSession session, bool contextOwnsSession = false)
             : base(session, contextOwnsSession)
         {
+            Database.SetInitializer<HelpDbContext>(new NullDatabaseInitializer<HelpDbContext>());
         }
 
         [InjectionConstructor]
         public HelpDbContext(IDbSession session)
             : base(session)
         {
+            Database.SetInitializer<HelpDbContext>(new NullDatabaseInitializer<HelpDbContext>());
         }
 
         public virtual IDbSet<HelpMita> HelpMita { get; set; }
