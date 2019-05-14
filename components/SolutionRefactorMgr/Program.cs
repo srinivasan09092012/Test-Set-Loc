@@ -261,7 +261,7 @@ namespace SolutionRefactorMgr
                                 && !subdir.Name.Contains("TestResults")
                                 && !subdir.Name.Contains("Packages")
                                 )
-                            {
+                               {
                                 string newDirName = subdir.Name;
                                 if (refactorConfig.IncludeFolderNames)
                                 {
@@ -280,7 +280,7 @@ namespace SolutionRefactorMgr
 
         private static void RefactorFile(FileInfo file, string dest, int level)
         {
-            Domain.FileType fileType = refactorConfig.FileTypes.Find(f => f.Extension.ToLower() == file.Extension.ToLower());
+            Domain.FileType fileType = refactorConfig.FileTypes.Find(f => f.Extension.ToLower() == file.Extension.ToLower());   
             bool fileQualifies = fileType != null;
 
             if (fileQualifies && !string.IsNullOrWhiteSpace(fileType.QualifyIfPathContains))
@@ -291,6 +291,12 @@ namespace SolutionRefactorMgr
             if (fileQualifies && !string.IsNullOrWhiteSpace(fileType.IgnoreIfPathContains))
             {
                 fileQualifies = !file.DirectoryName.ToLower().Contains(fileType.IgnoreIfPathContains.ToLower());
+            }
+
+            if (refactorConfig.RefactorPartialContent)
+            {
+              ReplacementString obj = refactorConfig.ReplacementStrings.Find(f => f.filename.Contains(file.Name.ToLower()));
+              fileQualifies = obj != null;
             }
 
             if (fileQualifies)
@@ -381,27 +387,40 @@ namespace SolutionRefactorMgr
                         {
                             bool deleteLine = false;
                             foreach (LineDelete lineDelete in refactorConfig.LineDeletes)
-                            {
-                                if (line.Contains(lineDelete.Contains))
-                                {
-                                    deleteLine = true;
-                                    contentsChanged = true;
-                                    break;
-                                }
+                            { 
+                                    if (line.Contains(lineDelete.Contains))
+                                    {
+                                        deleteLine = true;
+                                        contentsChanged = true;
+                                        break;
+                                    }
                             }
 
                             if (!deleteLine)
                             {
                                 foreach (ReplacementString replacement in refactorConfig.ReplacementStrings)
                                 {
-                                    if (line.Contains(replacement.Qualifier) && line.Contains(replacement.From))
+                                    if (refactorConfig.RefactorPartialContent)
                                     {
-                                        replacement.To = replacement.To.Replace("[NEWLINE]", Environment.NewLine);
-                                        line = line.Replace(replacement.From, replacement.To);
-                                        contentsChanged = true;
-                                    }
-                                }
+                                        if (line.Contains(replacement.Qualifier) && filePath.ToLower().Contains(replacement.filename) && !contentsChanged  )
+                                        {
+                                            string newstring = replacement.connectionString + (line.Contains(replacement.providerName) ? replacement.providerName : "");
+                                            line = System.Text.RegularExpressions.Regex.Replace(line, replacement.From,newstring);
+                                            contentsChanged = true;
+                                            break;
+                                        }
 
+                                    }
+                                    else
+                                    {
+                                        if (line.Contains(replacement.Qualifier) && line.Contains(replacement.From))
+                                        { 
+                                            replacement.To = replacement.To.Replace("[NEWLINE]", Environment.NewLine);
+                                            line = line.Replace(replacement.From, replacement.To);
+                                            contentsChanged = true;
+                                        }
+                                    }   
+                                }
                                 writer.WriteLine(line);
                             }
                         }

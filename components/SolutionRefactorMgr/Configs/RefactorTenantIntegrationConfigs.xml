@@ -2,37 +2,38 @@
 <RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true">
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs>
-    <ModuleConfig name="Administration" branch="056" types="All" />
-    <ModuleConfig name="AuthDetermination" branch="056" types="All" />
-    <ModuleConfig name="ClaimsManagement" branch="056" types="All" />
-    <ModuleConfig name="Core" branch="056" types="All" />
-    <ModuleConfig name="CorrespondenceMgmt" branch="056" types="All" />
-    <ModuleConfig name="DrugRebate" branch="056" types="All" />
-    <ModuleConfig name="DrugRebatePortal" branch="056" types="All" />
-    <ModuleConfig name="EDI" branch="056" types="All" />
-    <ModuleConfig name="EmployeeMgmt" branch="056" types="All" />
-    <ModuleConfig name="FileTransfer" branch="056" types="All" />
-    <ModuleConfig name="FinancialManagement" branch="056" types="All" />
-    <ModuleConfig name="IdentityManagement" branch="056" types="All" />
-    <ModuleConfig name="Integration" branch="056" types="All" />
-    <ModuleConfig name="KansasOnly" branch="056" types="All" />
-    <ModuleConfig name="ManagedCare" branch="056" types="All" />
-    <ModuleConfig name="ManagedCarePortal" branch="056" types="All" />
-    <ModuleConfig name="MemberManagement" branch="056" types="All" />
-    <ModuleConfig name="MemberPortal" branch="056" types="All" />
-    <ModuleConfig name="Notifications" branch="056" types="All" />
-    <ModuleConfig name="PlanManagement" branch="056" types="All" />
-    <ModuleConfig name="ProgramIntegrity" branch="056" types="All" />
-    <ModuleConfig name="ProviderCredentialing" branch="056" types="All" />
-    <ModuleConfig name="ProviderEnrollment" branch="056" types="All" />
-    <ModuleConfig name="ProviderManagement" branch="056" types="All" />
-    <ModuleConfig name="ProviderPortal" branch="056" types="All" />
-    <ModuleConfig name="Screening" branch="056" types="All" />
-    <ModuleConfig name="TaskManagement" branch="056" types="All" />
-    <ModuleConfig name="ThirdPartySource" branch="056" types="All" />
-    <ModuleConfig name="TPLCaseTracking" branch="056" types="All" />
-    <ModuleConfig name="TPLPolicy" branch="056" types="All" />
-    <ModuleConfig name="Utilities" branch="056" types="NA" />
+    <ModuleConfig name="Administration" branch="060" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="060" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="060" types="All" />
+    <ModuleConfig name="Core" branch="060" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="060" types="All" />
+    <ModuleConfig name="DrugRebate" branch="060" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="060" types="All" />
+    <ModuleConfig name="EDI" branch="060" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="060" types="All" />
+    <ModuleConfig name="FileTransfer" branch="060" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="060" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="060" types="All" />
+    <ModuleConfig name="Integration" branch="060" types="All" />
+    <ModuleConfig name="KansasOnly" branch="060" types="All" />
+    <ModuleConfig name="ManagedCare" branch="060" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="060" types="All" />
+    <ModuleConfig name="MemberManagement" branch="060" types="All" />
+    <ModuleConfig name="MemberPortal" branch="060" types="All" />
+    <ModuleConfig name="Notifications" branch="060" types="All" />
+    <ModuleConfig name="PlanManagement" branch="060" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="060" types="All" />
+    <ModuleConfig name="ProgramIntegrityCT" branch="060" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="060" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="060" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="060" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="060" types="All" />
+    <ModuleConfig name="Screening" branch="060" types="All" />
+    <ModuleConfig name="TaskManagement" branch="060" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="060" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="060" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="060" types="All" />
+    <ModuleConfig name="Utilities" branch="060" types="NA" />
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
@@ -41,16 +42,31 @@
   <LineDeletes />
   <ReplacementStrings>
     <!--CONNECTION STRING UA3_TENANT-->
-    <ReplacementString qualifier="mapsdevdbo01.dev.mapshc.com" from="mapsdevdbo01.dev.mapshc.com" to="mapsstgshrdbo01.mapshc.com" />
-    <ReplacementString qualifier="AWRK_PDBA" from="AWRK_PDBA" to="WRK2_PDBA" />
-    <ReplacementString qualifier="ADEV_PDBA" from="ADEV_PDBA" to="STG2_PDBA" />
-    <ReplacementString qualifier="tnnt_tst_e2" from="tnnt_tst_e2" to="TEN_hZCnl52" />
-    <!--CONNECTION STRING INTEGRATION-->
-    <ReplacementString qualifier="AWRK_PDBB" from="AWRK_PDBB" to="WRK2_PDBB" />
-    <ReplacementString qualifier="ADEV_PDBB" from="ADEV_PDBB" to="STG2_PDBB" />
-    <ReplacementString qualifier="ntgrtn_i1" from="ntgrtn_i1" to="INT_WKTdQ81" />
+    <ReplacementString qualifier="mapsdevdbo01.dev.mapshc.com" from="mapsdevdbo01.dev.mapshc.com" to="mapsstgshrdbo02.mapshc.com" />
+    <ReplacementString qualifier="(SERVICE_NAME = ADEV_PDBB)));User ID=UA3_INTEGRATION;Password=ntgrtn_i1" from="(SERVICE_NAME = ADEV_PDBB)));User ID=UA3_INTEGRATION;Password=ntgrtn_i1" to="(SERVICE_NAME = STG3_PDBB)));User ID=RW_INTEGRATION;Password=XXXXXXXXXXXXXXX"/>
+    <ReplacementString qualifier="(SERVICE_NAME = ADEV_PDBB)));PASSWORD=ntgrtn_i1;;USER ID=UA3_INTEGRATION" from="(SERVICE_NAME = ADEV_PDBB)));PASSWORD=ntgrtn_i1;;USER ID=UA3_INTEGRATION" to="(SERVICE_NAME = STG3_PDBA)));USER ID=RW_INTEGRATION;PASSWORD=XXXXXXXXXXXXXXX"/>
+    <ReplacementString qualifier="(SERVICE_NAME = ADEV_PDBA)));PASSWORD=tnnt_tst_e2;;USER ID=UA3_TENANT" from="(SERVICE_NAME = ADEV_PDBA)));PASSWORD=tnnt_tst_e2;;USER ID=UA3_TENANT" to="(SERVICE_NAME = STG3_PDBA)));USER ID=RW_TENANT;PASSWORD=TEN_msdKO54"/>
+    <ReplacementString qualifier="(SERVICE_NAME = ADEV_PDBA)));User ID=UA3_TENANT;Password=tnnt_tst_e2" from="(SERVICE_NAME = ADEV_PDBA)));User ID=UA3_TENANT;Password=tnnt_tst_e2" to="(SERVICE_NAME = STG3_PDBA)));User ID=RW_TENANT;Password=TEN_msdKO54"/>
+    <ReplacementString qualifier="(SERVICE_NAME = AWRK_PDBA)));;User ID=UA3_TENANT;Password=UA3_TENANT" from="(SERVICE_NAME = AWRK_PDBA)));;User ID=UA3_TENANT;Password=UA3_TENANT" to="(SERVICE_NAME = WRK3_PDBA)));User ID=UA3_TENANT;Password=UA3_TENANT"/>
+    <ReplacementString qualifier="(SERVICE_NAME = AWRK_PDBA)));PASSWORD=UA3_INTEGRATION;;USER ID=UA3_INTEGRATION" from="(SERVICE_NAME = AWRK_PDBB)));PASSWORD=UA3_INTEGRATION;;USER ID=UA3_INTEGRATION" to="(SERVICE_NAME = WRK3_PDBA)));USER ID=UA3_INTEGRATION;PASSWORD=XXXXXXXXXXXXXXX"/>
+    <ReplacementString qualifier="(SERVICE_NAME = AWRK_PDBA)));PASSWORD=UA3_TENANT;;USER ID=UA3_TENANT" from="(SERVICE_NAME = AWRK_PDBA)));PASSWORD=UA3_TENANT;;USER ID=UA3_TENANT" to="(SERVICE_NAME = WRK3_PDBA)));USER ID=UA3_TENANT;Password=UA3_TENANT"/>
+    <ReplacementString qualifier="(SERVICE_NAME = AWRK_PDBA)));User ID=UA3_TENANT;Password=UA3_TENANT" from="(SERVICE_NAME = AWRK_PDBA)));User ID=UA3_TENANT;Password=UA3_TENANT" to="(SERVICE_NAME = WRK3_PDBA)));User ID=UA3_TENANT;Password=UA3_TENANT"/>
+    <ReplacementString qualifier="(SERVICE_NAME = AWRK_PDBB)));;User ID=UA3_INTEGRATION;Password=UA3_INTEGRATION" from="(SERVICE_NAME = AWRK_PDBB)));;User ID=UA3_INTEGRATION;Password=UA3_INTEGRATION" to="(SERVICE_NAME = WRK3_PDBB)));User ID=UA3_INTEGRATION;Password=XXXXXXXXXXXXXXX"/>
+    <ReplacementString qualifier="(SERVICE_NAME = AWRK_PDBB)));User ID=UA3_INTEGRATION;Password=UA3_INTEGRATION" from="(SERVICE_NAME = AWRK_PDBB)));User ID=UA3_INTEGRATION;Password=UA3_INTEGRATION" to="(SERVICE_NAME = WRK3_PDBB)));User ID=UA3_INTEGRATION;Password=XXXXXXXXXXXXXXX"/>
+    <ReplacementString qualifier="(SERVICE_NAME = ADEV_PDBA))) ;User ID=UA3_TENANT;Password=tnnt_tst_e2" from="(SERVICE_NAME = ADEV_PDBA))) ;User ID=UA3_TENANT;Password=tnnt_tst_e2" to="(SERVICE_NAME = STG3_PDBA)));User ID=RW_TENANT;Password=TEN_msdKO54"/>
+    <ReplacementString qualifier="(SERVICE_NAME = ADEV_PDBA)));PASSWORD=tnnt_tst_e2;USER ID=UA3_TENANT" from="(SERVICE_NAME = ADEV_PDBA)));PASSWORD=tnnt_tst_e2;USER ID=UA3_TENANT" to="(SERVICE_NAME = STG3_PDBA)));USER ID=RW_TENANT;PASSWORD=TEN_msdKO54"/>
+    <ReplacementString qualifier="(SERVICE_NAME = AWRK_PDBA)));USER ID=UA3_TENANT;PASSWORD=UA3_TENANT;" from="(SERVICE_NAME = AWRK_PDBA)));USER ID=UA3_TENANT;PASSWORD=UA3_TENANT;" to="(SERVICE_NAME = WRK3_PDBA)));User ID=UA3_TENANT;Password=UA3_TENANT"/>
+    <ReplacementString qualifier="(SERVICE_NAME = ADEV_PDBA)));Password=tnnt_tst_e2;USER ID=UA3_TENANT" from="(SERVICE_NAME = ADEV_PDBA)));Password=tnnt_tst_e2;USER ID=UA3_TENANT" to="(SERVICE_NAME = STG3_PDBA)));USER ID=RW_TENANT;PASSWORD=TEN_msdKO54"/>
+    <ReplacementString qualifier="(SERVICE_NAME = AWRK_PDBA)));Password=UA3_TENANT;USER ID=UA3_TENANT" from="(SERVICE_NAME = AWRK_PDBA)));Password=UA3_TENANT;USER ID=UA3_TENANT" to="(SERVICE_NAME = WRK3_PDBA)));USER ID=UA3_TENANT;PASSWORD=UA3_TENANT"/>
+    <ReplacementString qualifier="(SERVICE_NAME = AWRK_PDBB)));User ID=UA3_TENANT_TXN;Password=UA3_TENANT_TXN;" from="(SERVICE_NAME = AWRK_PDBB)));User ID=UA3_TENANT_TXN;Password=UA3_TENANT_TXN;" to="(SERVICE_NAME = WRK3_PDBB)));User ID=UA3_TENANT_TXN;Password=UA3_TENANT_TXN;"/>
+    <ReplacementString qualifier="(SERVICE_NAME = ADEV_PDBA)));USER ID=UA3_TENANT;PASSWORD=tnnt_tst_e2;" from="(SERVICE_NAME = ADEV_PDBA)));USER ID=UA3_TENANT;PASSWORD=tnnt_tst_e2;" to="(SERVICE_NAME = STG3_PDBA)));User ID=RW_TENANT;Password=TEN_msdKO54"/>
+    <ReplacementString qualifier="(SERVICE_NAME = ADEV_PDBA)));USER ID=UA3_TENANT;Password=tnnt_tst_e2;" from="(SERVICE_NAME = ADEV_PDBA)));USER ID=UA3_TENANT;Password=tnnt_tst_e2;" to="(SERVICE_NAME = STG3_PDBA)));User ID=RW_TENANT;Password=TEN_msdKO54"/>
+    <ReplacementString qualifier="(SERVICE_NAME = ADEV_PDBA)));Password=tnnt_tst_e2;;USER ID=UA3_TENANT" from="(SERVICE_NAME = ADEV_PDBA)));Password=tnnt_tst_e2;;USER ID=UA3_TENANT" to="(SERVICE_NAME = STG3_PDBA)));User ID=RW_TENANT;Password=TEN_msdKO54"/>
+    <ReplacementString qualifier="(SERVICE_NAME = ADEV_PDBA)))" from="(SERVICE_NAME = ADEV_PDBA)))" to="(SERVICE_NAME = STG3_PDBA)))"/>
+    <ReplacementString qualifier="(SERVICE_NAME = AWRK_PDBA)))" from="(SERVICE_NAME = AWRK_PDBA)))" to="(SERVICE_NAME = WRK3_PDBA)))"/>
+    />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
   <!--NOTE: YOU MUST PUT YOUR WORKSPACE NAME IN HERE IF ITS NOT UA3-->
-  <TfsWorkspace>UA3</TfsWorkspace>
+  <TfsWorkspace>IN5CG6434WHL_test</TfsWorkspace>
 </RefactorConfig>

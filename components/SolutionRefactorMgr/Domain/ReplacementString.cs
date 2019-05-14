@@ -14,13 +14,21 @@ namespace SolutionRefactorMgr.Domain
         [XmlAttribute("to")]
         public string To { get; set; }
 
+        [XmlAttribute("filename")]
+        public string filename { get; set; }
+
+        [XmlAttribute("connectionString")]
+        public string connectionString { get; set; }
+
+        [XmlAttribute("providerName")]
+        public string providerName { get; set; }
+
         public void Validate()
         {
             if (string.IsNullOrWhiteSpace(this.Qualifier))
             {
                 throw new ArgumentNullException("Replacement string qualifier text has not been specified.");
             }
-
             if (string.IsNullOrWhiteSpace(this.From))
             {
                 throw new ArgumentNullException("Replacement string from text has not been specified.");

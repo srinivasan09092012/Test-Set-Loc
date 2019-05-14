@@ -23,6 +23,9 @@ namespace SolutionRefactorMgr.Domain
         [XmlAttribute("useSourceControl")]
         public bool UseSourceControl { get; set; }
 
+        [XmlAttribute("refactorPartialContent")]
+        public bool RefactorPartialContent { get; set; }
+
         public string SourceDir { get; set; }
 
         [XmlArrayItem("FileType")]
