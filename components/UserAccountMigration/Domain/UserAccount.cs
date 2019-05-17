@@ -52,22 +52,22 @@ namespace UserAccountMigration.Domain
 
         public void Validate(bool isPasswordRequired = false)
         {
-            if (string.IsNullOrEmpty(this.UserName))
+            if (string.IsNullOrWhiteSpace(this.UserName))
             {
                 throw new ArgumentNullException("UserName");
             }
 
-            if (string.IsNullOrEmpty(this.FirstName))
+            if (string.IsNullOrWhiteSpace(this.FirstName))
             {
                 throw new ArgumentNullException("FirstName");
             }
 
-            if (string.IsNullOrEmpty(this.LastName))
+            if (string.IsNullOrWhiteSpace(this.LastName))
             {
                 throw new ArgumentNullException("FirstName");
             }
 
-            if (string.IsNullOrEmpty(this.EmailAddress))
+            if (string.IsNullOrWhiteSpace(this.EmailAddress))
             {
                 throw new ArgumentNullException("EmailAddress");
             }
@@ -77,17 +77,17 @@ namespace UserAccountMigration.Domain
                 throw new ArgumentNullException("BirthDate");
             }
 
-            if (string.IsNullOrEmpty(this.Last4SSN))
+            if (string.IsNullOrWhiteSpace(this.Last4SSN))
             {
                 throw new ArgumentNullException("Last4SSN");
             }
 
-            if (string.IsNullOrEmpty(this.Groups))
+            if (string.IsNullOrWhiteSpace(this.Groups))
             {
                 throw new ArgumentNullException("Groups");
             }
 
-            if (isPasswordRequired && string.IsNullOrEmpty(this.Password))
+            if (isPasswordRequired && string.IsNullOrWhiteSpace(this.Password))
             {
                 throw new ArgumentNullException("Password");
             }

@@ -35,7 +35,7 @@
     Examples:
     ==========================================================
     <Process name="ExportProviders" processType="Export" userGroupFilter="MapsProviders" filePath="Exports\" fileName="Providers.csv" fileFormat="CSV" />
-    <Process name="ImportProviders" processType="Import" filePath="Imports\" fileName="Providers.csv" fileFormat="CSV" processAD="true" processUserProfile="true" maxThreads="10" />
+    <Process name="ImportProviders" processType="Import" allowUpdateOnUserIdMatch="false" filePath="Imports\" fileName="Providers.csv" fileFormat="CSV" processAD="true" processUserProfile="true" maxThreads="10" />
   -->
   <Processes>
     <Process name="ImportProviders" processType="Import" filePath="Imports\" fileName="Providers.csv" fileFormat="CSV" processAD="true" processUserProfile="true" maxThreads="10" />

@@ -54,7 +54,6 @@ namespace UserAccountMigration
             {
                 timer.Stop();
                 ReportCounts();
-                LogMessage(0, " ");
                 Console.Write("Press any key to close");
                 Console.ReadKey();
             }
@@ -63,7 +62,7 @@ namespace UserAccountMigration
         private static void AddUserAccount(UserAccount userAccount, bool processAD, bool processProfile)
         {
             userAccount.Validate();
-            LogMessage(1, string.Format("Adding user '{0}'.", userAccount.UserName));
+            LogMessage(1, string.Format("Adding user '{0}'", userAccount.UserName));
 
             if (processAD)
             {
@@ -195,7 +194,9 @@ namespace UserAccountMigration
                 filePath += "\\";
             }
 
-            fileName = process.FilePath + process.FileName.Substring(0, process.FileName.LastIndexOfAny(new char[] { '.' })) + "-Errors" + process.FileName.Substring(process.FileName.LastIndexOfAny(new char[] { '.' }));
+            fileName = process.FilePath +
+                process.FileName.Substring(0, process.FileName.LastIndexOfAny(new char[] { '.' })) + "-Errors" + process.FileName.Substring(process.FileName.LastIndexOfAny(new char[] { '.' })) +
+                string.Format("-{0}", DateTime.Now.ToString("yyyyMMddhhmmss"));
             if (!Directory.Exists(filePath))
             {
                 throw new ApplicationException(string.Format("File path '{0}' does not exist. Correct file path and try again.", filePath));
@@ -258,7 +259,7 @@ namespace UserAccountMigration
                 catch (Exception ex)
                 {
                     UserAccountError userAccountError = new UserAccountError(userAccount, ex.Message);
-                    LogMessage(1, string.Format("Error processing user '{0}' with error: '{1}'.", userAccount.UserName, ex.Message));
+                    LogMessage(1, string.Format("Error processing user '{0}' with error: '{1}'", userAccount.UserName, ex.Message));
                     lock (userAccountErrors)
                     {
                         userAccountErrors.Add(userAccountError);
@@ -276,13 +277,13 @@ namespace UserAccountMigration
         {
             LogMessage(0, "Initializing AD providers");
             adProvider = new ActiveDirectoryProvider(
-                migrationConfig.Environment.ADServer, 
-                migrationConfig.Environment.ADUser, 
-                migrationConfig.Environment.ADPassword, 
+                migrationConfig.Environment.ADServer,
+                migrationConfig.Environment.ADUser,
+                migrationConfig.Environment.ADPassword,
                 migrationConfig.Environment.ADContainer);
 
             adQueryProvider = new ActiveDirectoryQueryProvider(
-                migrationConfig.Environment.ADServer, 
+                migrationConfig.Environment.ADServer,
                 migrationConfig.Environment.ADUser,
                 migrationConfig.Environment.ADPassword,
                 migrationConfig.Environment.ADContainer);
@@ -308,13 +309,18 @@ namespace UserAccountMigration
             }
             else
             {
-                throw new ApplicationException(string.Format("Configuration file '{0}' does not exist.", filePath));
+                throw new ApplicationException(string.Format("Configuration file '{0}' does not exist", filePath));
             }
+        }
+
+        private static void LogBreak()
+        {
+            Console.WriteLine("");
         }
 
         private static void LogMessage(int level, string msg)
         {
-            if (!string.IsNullOrEmpty(msg))
+            if (!string.IsNullOrWhiteSpace(msg))
             {
                 string dateTimestampThreadName = DateTime.Now.ToString("hh:mm:ss:ff") + "|" + Thread.CurrentThread.Name + "|";
                 string tabs = new string(' ', level * 2);
@@ -340,18 +346,18 @@ namespace UserAccountMigration
 
             try
             {
-                LogMessage(1, string.Format("Querying users in AD matching Group '{0}'.", currentProcess.UserGroupFilter));
+                LogMessage(1, string.Format("Querying users in AD matching Group '{0}'", currentProcess.UserGroupFilter));
                 List<api.UserAccount> adUserAccounts = adQueryProvider.GetActiveUsersInGroup(currentProcess.UserGroupFilter);
 
-                LogMessage(1, "Processing user accounts for export.");
+                LogMessage(1, "Processing user accounts for export");
                 List<UserAccount> userAccounts = new List<UserAccount>();
                 foreach (api.UserAccount adUserAccount in adUserAccounts)
                 {
-                    LogMessage(2, string.Format("Processing user ID '{0}'.", adUserAccount.Identity.UserName));
+                    LogMessage(2, string.Format("Processing user ID '{0}'", adUserAccount.Identity.UserName));
                     UserAccount userAccount = ConvertUserAccount(adUserAccount);
                     if (currentProcess.ProcessUserProfile)
                     {
-                        LogMessage(2, string.Format("Querying profile for user ID '{0}'.", adUserAccount.Identity.UserName));
+                        LogMessage(2, string.Format("Querying profile for user ID '{0}'", adUserAccount.Identity.UserName));
                         UserProfile userProfile = userQueryServiceProvider.LoadUserProfile(adUserAccount.Identity.UserName);
                         if (userProfile != null)
                         {
@@ -363,7 +369,7 @@ namespace UserAccountMigration
                     currentProcess.ProcessedCount++;
                 }
 
-                LogMessage(1, string.Format("Creating export file '{0}'.", exportFile));
+                LogMessage(1, string.Format("Creating export file '{0}'", exportFile));
                 FileHelperEngine<UserAccount> fileEngine = new FileHelperEngine<UserAccount>();
                 fileEngine.HeaderText = fileEngine.GetFileHeader();
                 fileEngine.WriteFile(exportFile, userAccounts);
@@ -383,10 +389,10 @@ namespace UserAccountMigration
 
             try
             {
-                LogMessage(1, string.Format("Loading users from import file '{0}'.", importFile));
+                LogMessage(1, string.Format("Loading users from import file '{0}'", importFile));
                 FileHelperEngine<UserAccount> fileEngine = new FileHelperEngine<UserAccount>();
                 List<UserAccount> userAccounts = new List<UserAccount>(fileEngine.ReadFile(importFile));
-                LogMessage(1, string.Format("{0} user accounts loaded.", userAccounts.Count.ToString("#,##0")));
+                LogMessage(1, string.Format("{0} user accounts loaded", userAccounts.Count.ToString("#,##0")));
                 if (userAccounts != null && userAccounts.Count > 0)
                 {
                     StartImportThreads(userAccounts, currentProcess.MaxThreads);
@@ -421,7 +427,7 @@ namespace UserAccountMigration
                 userAccountErrors = new List<UserAccountError>();
                 try
                 {
-                    LogMessage(0, string.Format("Migration started for process '{0}'.", process.Name));
+                    LogMessage(0, string.Format("Migration started for process '{0}'", process.Name));
                     switch (process.ProcessType)
                     {
                         case ProcessConfig.ProcessTypes.Export:
@@ -439,7 +445,7 @@ namespace UserAccountMigration
                 finally
                 {
                     processCount++;
-                    LogMessage(0, string.Format("Migration ended for process '{0}'.", process.Name));
+                    LogMessage(0, string.Format("Migration ended for process '{0}'", process.Name));
                 }
             }
         }
@@ -484,13 +490,13 @@ namespace UserAccountMigration
 
         private static void ReportCounts()
         {
-            LogMessage(0, " ");
+            LogBreak();
             LogMessage(0, "===========================================================================");
             LogMessage(0, "Processing Summary");
             LogMessage(0, "===========================================================================");
             LogMessage(0, string.Format("Processes Run:  {0}", processCount.ToString("#,##0")));
             LogMessage(0, string.Format("Execution Time: {0} seconds", timer.Elapsed.Seconds.ToString("#,##0")));
-            LogMessage(0, " ");
+            LogBreak();
 
             foreach (ProcessConfig process in migrationConfig.Processes)
             {
@@ -506,7 +512,7 @@ namespace UserAccountMigration
                     LogMessage(1, string.Format("Account Imports: {0}", process.ProcessedCount.ToString("#,##0")));
                     LogMessage(1, string.Format("Account Errors:  {0}", process.ErroredCount.ToString("#,##0")));
                 }
-                LogMessage(0, " ");
+                LogBreak();
             }
         }
 
@@ -521,7 +527,7 @@ namespace UserAccountMigration
 
             int recordsPerThread = userAccounts.Count / threadCount;
 
-            LogMessage(1, string.Format("Starting {0} threads processing {1}+ accounts each.", threadCount.ToString("#,##0"), recordsPerThread.ToString("#,##0")));
+            LogMessage(1, string.Format("Starting {0} threads processing {1}+ accounts each", threadCount.ToString("#,##0"), recordsPerThread.ToString("#,##0")));
             for (int i = 0; i < threadCount; i++)
             {
                 Thread t = new Thread(new ParameterizedThreadStart(Program.ImportAccount));
@@ -543,12 +549,12 @@ namespace UserAccountMigration
             }
         }
 
-        private static void UpdateUserAccount(UserAccount userAccount, DateTime? accountExpiratinDate, bool processProfile)
+        private static void UpdateUserAccount(UserAccount userAccount, DateTime? accountExpirationDate, bool processProfile)
         {
             userAccount.Validate();
-            LogMessage(1, string.Format("Updating user '{0}'.", userAccount.UserName));
+            LogMessage(1, string.Format("Updating user '{0}'", userAccount.UserName));
             api.UserAccount adUserAccount = ConvertAdUserAccount(userAccount);
-            adProvider.UpdateUser(adUserAccount.Identity, adUserAccount.RegistrationQualifiers, accountExpiratinDate);
+            adProvider.UpdateUser(adUserAccount.Identity, adUserAccount.RegistrationQualifiers, accountExpirationDate);
             if (!string.IsNullOrWhiteSpace(userAccount.Password))
             {
                 adProvider.ResetUserPassword(userAccount.UserName, userAccount.Password);
