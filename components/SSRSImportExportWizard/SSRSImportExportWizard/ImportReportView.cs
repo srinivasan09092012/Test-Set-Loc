@@ -466,7 +466,7 @@ namespace SSRSImportExportWizard
             XmlDocument xmlDoc = new XmlDocument();
             DataSourceReference reference = null;
             string dataSourceFolder = @"/Data Sources/";
-            string dataSetFolder = @"/Datasets/ ";
+            string dataSetFolder = @"/Datasets/";
 
             try
             {
@@ -484,9 +484,11 @@ namespace SSRSImportExportWizard
                 }
 
                 this.ReportServer.CreateCatalogItem("Report", reportName.Replace(".rdl", string.Empty), reportServerPath, true, definition, null, out warnings);
+                LoggerManager.Logger.LogInformational("Report " + reportName.Replace(".rdl", string.Empty) + " imported on the report server under the folder " + reportServerPath);
             }
             catch (Exception ex)
             {
+                LoggerManager.Logger.LogWarning("Report " + reportName.Replace(".rdl", string.Empty) + " import FAILED on the report server.");
                 LoggerManager.Logger.LogWarning("Create Report error", ex);
             }
 
@@ -606,7 +608,7 @@ namespace SSRSImportExportWizard
                     }
                 }
             }
-
+           
             lblImportProgress.Text = "Report " + reportName.Replace(".rdl", string.Empty) + " imported on the reported server under the folder " + reportServerPath;
             lblImportProgress.Refresh();
 
