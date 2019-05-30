@@ -42,9 +42,9 @@
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
-    <ReplacementString qualifier="&lt;TargetFrameworkVersion&gt;v4.5.2&lt;/TargetFrameworkVersion&gt;" from="&lt;TargetFrameworkVersion&gt;v4.5.2&lt;/TargetFrameworkVersion&gt;" to="&lt;TargetFrameworkVersion&gt;v4.7.1&lt;/TargetFrameworkVersion&gt;" />
-    <ReplacementString qualifier="&lt;TargetFrameworkVersion&gt;v4.5.1&lt;/TargetFrameworkVersion&gt;" from="&lt;TargetFrameworkVersion&gt;v4.5.1&lt;/TargetFrameworkVersion&gt;" to="&lt;TargetFrameworkVersion&gt;v4.7.1&lt;/TargetFrameworkVersion&gt;" />
-    <ReplacementString qualifier="&lt;TargetFrameworkVersion&gt;v4.5&lt;/TargetFrameworkVersion&gt;" from="&lt;TargetFrameworkVersion&gt;v4.5&lt;/TargetFrameworkVersion&gt;" to="&lt;TargetFrameworkVersion&gt;v4.7.1&lt;/TargetFrameworkVersion&gt;" />
+    <ReplacementString qualifier="&lt;TargetFrameworkVersion&gt;v4.5.2&lt;/TargetFrameworkVersion&gt;" from="&lt;TargetFrameworkVersion&gt;v4.5.2&lt;/TargetFrameworkVersion&gt;" to="&lt;TargetFrameworkVersion&gt;v4.8&lt;/TargetFrameworkVersion&gt;" />
+    <ReplacementString qualifier="&lt;TargetFrameworkVersion&gt;v4.5.1&lt;/TargetFrameworkVersion&gt;" from="&lt;TargetFrameworkVersion&gt;v4.5.1&lt;/TargetFrameworkVersion&gt;" to="&lt;TargetFrameworkVersion&gt;v4.8&lt;/TargetFrameworkVersion&gt;" />
+    <ReplacementString qualifier="&lt;TargetFrameworkVersion&gt;v4.5&lt;/TargetFrameworkVersion&gt;" from="&lt;TargetFrameworkVersion&gt;v4.5&lt;/TargetFrameworkVersion&gt;" to="&lt;TargetFrameworkVersion&gt;v4.8&lt;/TargetFrameworkVersion&gt;" />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
   <TfsWorkspace>USCND6195CFQ</TfsWorkspace>
