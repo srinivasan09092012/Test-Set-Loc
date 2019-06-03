@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WatchdogConfig environment="Local">
+  <PollInterval>5</PollInterval>
+  <!--If the application is down then what action needs to be taken apart from sending alert, Restart or nothing-->
+  <!--Restart, None-->
+  <ApplicationDownAction>Restart</ApplicationDownAction>
+  <MaxRetryCount>3</MaxRetryCount>
+  <PerformanceSampleCount>3</PerformanceSampleCount>
+  <LogAnalyticsWorkspaceId>29174b56-2a5e-400f-86a4-488e756bb036</LogAnalyticsWorkspaceId>
+  <LogAnalyticsApiURL>https://LogAnalyticsWorkspaceId.ods.opinsights.azure.com/api/logs?api-version=2016-04-01</LogAnalyticsApiURL>
+  <SharedKey>aDMEZQi2z5P7T/ORe5htl7TpTnU4ySkn/WgmUaUvPUJM6nj9VdqyXKxZWqROF4sTRuebSXR5Q18eSSI3Q/FsQQ==</SharedKey>
+  <Tenants>
+    <Tenant name ="DXC Medicaid" Id="77b50320-5f06-5740-84f4-18d4a8cda51d"/>
+  </Tenants>
+  <WindowsServices>
+    By default monitoring will be on, in case if it needs to be turned off for a particular service then we can make use of the 'monitor' attribute and set it to "false"
+    <Service name="Event Router DXC Commercial"/>
+    <Service name="Event Router DXC Medicaid"/>
+    <Service name="W3SVC"/>
+  </WindowsServices>  
+  <UXApplication healthurl ="https://tenant1.dev.mapshc.com/healthcheck.htm"  baseaddress="https://tenant1.test.mapshc.com/" Username="hppadmin" Password="Password1234" LoggedInUsername="Hpp Admin" SleepTime="1000" ApplicationPool="UA3 R1.0" serverName="MAPSDEVWEB01" />
+</WatchdogConfig>

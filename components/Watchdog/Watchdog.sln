@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watchdog", "Watchdog\Watchdog.csproj", "{02399EF3-2BB2-40E7-A653-6395C995B6EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configs", "Configs", "{BBD70857-CE5B-43BA-A497-D2478D483813}"
+	ProjectSection(SolutionItems) = preProject
+		nuget.config = nuget.config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02399EF3-2BB2-40E7-A653-6395C995B6EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02399EF3-2BB2-40E7-A653-6395C995B6EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02399EF3-2BB2-40E7-A653-6395C995B6EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02399EF3-2BB2-40E7-A653-6395C995B6EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {59121567-AAB8-46BB-8F0B-C8D70B85B2AF}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://evrt-tfspro.houston.dxccorp.net/tfs/tfs01
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Watchdog\\Watchdog.csproj
+		SccProjectName1 = Watchdog
+		SccLocalPath1 = Watchdog
+	EndGlobalSection
+EndGlobal
