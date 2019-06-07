@@ -4,6 +4,7 @@
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
 // Violators may be punished to the full extent of the law.
 //--------------------------------------------------------------------------------------------------
+using HP.HSP.UA3.Core.BAS.CQRS.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
@@ -43,21 +44,33 @@ namespace Contracts.Domain
         /// <para>Remarks: The billing id for the provider service location.</para>
         /// </summary>
         [DataMember]
-        public string ProviderBillingId { get; set; }
+        public string ProviderBillingId { get; set; }        
 
         /// <summary>
         /// <para>EffectiveDate</para>
         /// <para>Remarks: The effective date of the provider service location.</para>
         /// </summary>
         [DataMember]
-        public DateTime EffectiveDate { get; set; }
+        public DateTime EffectiveDate
+        {
+            get
+            {
+                return this.OriginalEffectiveDate < DateMethods.GetMinDate() ? DateMethods.GetMinDate() : this.OriginalEffectiveDate;
+            }
+        }
 
         /// <summary>
         /// <para>EndDate</para>
         /// <para>Remarks: The end date of the provider service location.</para>
         /// </summary>
         [DataMember]
-        public DateTime EndDate { get; set; }
+        public DateTime EndDate
+        {
+            get
+            {
+                return this.OriginalEndDate < DateMethods.GetMinDate() ? DateMethods.GetMinDate() : this.OriginalEndDate;
+            }
+        }
 
         /// <summary>
         /// <para>IsActive</para>
@@ -67,11 +80,23 @@ namespace Contracts.Domain
         public bool IsActive { get; set; }
 
         /// <summary>
+        /// <para>LongNPI</para>
+        /// <para>Remarks: The NPI of the provider service location with the long type</para>
+        /// </summary>
+        public long? LongNPI { get; set; }
+
+        /// <summary>
         /// <para>NPI</para>
-        /// <para>Remarks: The NPI of the provider service location.</para>
+        /// <para>Remarks: The NPI of the provider service location with the string version of longNPI</para>
         /// </summary>
         [DataMember]
-        public long? NPI { get; set; }
+        public string NPI
+        {
+            get
+            {
+                return this.LongNPI != null ? this.LongNPI.Value.ToString() : string.Empty;
+            }
+        }
 
         /// <summary>
         /// <para>ProviderAddresses</para>
@@ -103,8 +128,20 @@ namespace Contracts.Domain
 
         /// <summary>
         /// <para>PracticeLocationId</para>
-        /// <para>Remarks: The practice location Id of the provider service location..\</para>
+        /// <para>Remarks: The practice location Id of the provider service location.\</para>
         /// </summary>
         public Guid PracticeLocationId { get; set; }
+
+        /// <summary>
+        /// <para>OriginalEffectiveDate</para>
+        /// <para>Remarks: The effective date of the provider service location.</para>
+        /// </summary>
+        public DateTime OriginalEffectiveDate { get; set; }
+
+        /// <summary>
+        /// <para>OriginalEndDate</para>
+        /// <para>Remarks: The end date of the provider service location.</para>
+        /// </summary>
+        public DateTime OriginalEndDate { get; set; }
     }
 }

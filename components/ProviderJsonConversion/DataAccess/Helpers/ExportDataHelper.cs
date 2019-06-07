@@ -12,7 +12,6 @@ using Microsoft.Practices.Unity;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
-using System.Configuration;
 
 namespace DataAccess
 {
@@ -23,7 +22,8 @@ namespace DataAccess
             IDbContextBase context;
             BASUnityContainer.Initialize();
             BASUnityContainer.Container.RegisterType<IDbContextBase, ProviderManagementDbContext>();
-            var cs = ConfigurationManager.ConnectionStrings["DefaultConnection"];
+            
+            string connectionString = ApplicationConfigurationManager.AppSettings["DefaultConnectionString"];
             string schema = ApplicationConfigurationManager.AppSettings["ProviderManagementDbContext.SchemaName"];
             string provider = ApplicationConfigurationManager.AppSettings["#DBProvider.Oracle"];
 
@@ -31,7 +31,7 @@ namespace DataAccess
                 new ContainerControlledLifetimeManager(),
                 new InjectionConstructor(
                     new InjectionParameter<string>(provider),
-                    new InjectionParameter<string>(cs.ConnectionString),
+                    new InjectionParameter<string>(connectionString),
                     new InjectionParameter<string>(schema)));
             context = BASUnityContainer.Container.Resolve<IDbContextBase>();
 
@@ -43,16 +43,16 @@ namespace DataAccess
             LoggerManager.Logger.LogInformational("Generating json object");
 
             ////The format of the dates must be ISODate("2019-05-01T00:00:00.000Z") and since there was no way to generate this as a valid format date
-            ////we need to add two replacement text to get the output in this format "@@@2019-05-01T00:00:00.000Z@@"
+            ////we need to add two replacement text to get the output in this format "*@*@*@*@2019-05-01T00:00:00.000Z*@*@*@*"
             string json = JsonConvert.SerializeObject(
-                result.Results.ToArray(), 
+                result.Results.ToArray(),
                 new IsoDateTimeConverter()
                 {
-                    DateTimeFormat = "@@@yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffZ@@"
+                    DateTimeFormat = "*@*@*@*@yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffZ*@*@*@*"
                 });
 
             ////Then replace the replacement text by ISODate(" and ") to have in this way ISODate("2019-05-01T00:00:00.000Z")
-            json = json.Replace("\"@@@", "ISODate(\"").Replace("@@\"", "\")");
+            json = json.Replace("\"*@*@*@*@", "ISODate(\"").Replace("*@*@*@*\"", "\")");
 
             LoggerManager.Logger.LogInformational("Writting json file");
             System.IO.File.WriteAllText(@"c:\" + fileName + ".json", json);

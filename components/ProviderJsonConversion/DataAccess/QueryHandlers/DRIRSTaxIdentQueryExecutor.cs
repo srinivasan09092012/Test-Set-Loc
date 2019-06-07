@@ -50,8 +50,8 @@ namespace DataAccess.QueryHandlers
                              select new DRIRSTaxIdentificationModel()
                              {
                                  _id = i.IRSTaxIdentificationId,
-                                 EffectiveDate = i.EffectiveDate,
-                                 EndDate = i.EndDate,
+                                 OriginalEffectiveDate = i.EffectiveDate,
+                                 OriginalEndDate = i.EndDate,
                                  IRSTaxId = i.IRSTaxId,
                                  IsValid = i.IsActive,
                                  TaxIdName = i.TaxIdName,

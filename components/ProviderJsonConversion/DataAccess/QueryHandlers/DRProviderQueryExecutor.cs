@@ -77,31 +77,32 @@ namespace DataAccess.QueryHandlers
             this.watch.Start();
 
             var providers = from p in context.Set<PROVIDER>()
-                                               select new DRProviderModel()
-                                               {
-                                                   BaseId = p.BASE_ID,
-                                                   BusinessName = p.BUSINESS_NAME,
-                                                   _id = p.PROVIDER_ID,
-                                                   IsActive = p.IS_ACTIVE,
-                                                   ProviderCategoryCode = p.PROVIDER_CATEGORY_CD
-                                               };
+                            select new DRProviderModel()
+                            {
+                                BaseId = p.BASE_ID.ToString(),
+                                BusinessName = p.BUSINESS_NAME,
+                                _id = p.PROVIDER_ID,
+                                IsActive = p.IS_ACTIVE,
+                                ProviderCategoryCode = p.PROVIDER_CATEGORY_CD
+                            };
             return providers.AsQueryable();
         }
 
         private List<DRProviderServiceLocationModel> GetProviderServiceLocations(IDbContextBase context, Guid providerId)
         {
-            List<DRProviderServiceLocationModel> serviceLocations = (from sl in context.Set<PROVIDER_SERVICE_LOCATION>()
-                                                                    where sl.PROVIDER_ID == providerId
-                                                                     select new DRProviderServiceLocationModel()
-                                                                    {
-                                                                        EffectiveDate = sl.EFFECTIVE_DT,
-                                                                        EndDate = sl.END_DT,
-                                                                        ProviderServiceLocationId = sl.PROVIDER_SERVICE_LOCATION_ID,
-                                                                        PracticeLocationId = sl.PRACTICE_LOCATION_ID,
-                                                                        NPI = sl.NPI
-                                                                    }).ToList();
+                List<DRProviderServiceLocationModel> serviceLocations = (from sl in context.Set<PROVIDER_SERVICE_LOCATION>()
+                                                                         where sl.PROVIDER_ID == providerId
+                                                                         select new DRProviderServiceLocationModel()
+                                                                         {
+                                                                             OriginalEffectiveDate = sl.EFFECTIVE_DT,
+                                                                             OriginalEndDate = sl.END_DT,
+                                                                             ProviderServiceLocationId = sl.PROVIDER_SERVICE_LOCATION_ID,
+                                                                             PracticeLocationId = sl.PRACTICE_LOCATION_ID,
+                                                                             LongNPI = sl.NPI,
+                                                                             ProviderBillingId = sl.PROVIDER_BILLING_ID
+                                                                         }).ToList();
 
-            return serviceLocations;
+                return serviceLocations;
         }
 
         private List<DRAddressModel> GetAddresses(IDbContextBase context, Guid practiceLocationId, Guid serviceLocationId)
@@ -119,8 +120,8 @@ namespace DataAccess.QueryHandlers
                                                   State = a.STATE_CD,
                                                   Line1 = a.ADR_LINE_1,
                                                   Line2 = a.ADR_LINE_2,
-                                                  EffectiveDate = plaa.EffectiveDate,
-                                                  EndDate = plaa.EndDate,
+                                                  OriginalEffectiveDate = plaa.EffectiveDate,
+                                                  OriginalEndDate = plaa.EndDate,
                                                   ServiceLocationId = serviceLocationId
                                               }).ToList();
 
@@ -133,8 +134,8 @@ namespace DataAccess.QueryHandlers
                                                   where speci.PROVIDER_SERVICE_LOCATION_ID == serviceLocationId
                                                   select new DRSpecialtyModel()
                                                   {
-                                                      EffectiveDate = speci.EFFECTIVE_DT,
-                                                      EndDate = speci.END_DT,
+                                                      OriginalEffectiveDate = speci.EFFECTIVE_DT,
+                                                      OriginalEndDate = speci.END_DT,
                                                       IsActive = speci.IS_ACTIVE,
                                                       IsPrimary = speci.IS_PRIMARY,
                                                       ProviderSpecialtyId = speci.PROVIDER_SPECIALTY_ID,
@@ -151,8 +152,8 @@ namespace DataAccess.QueryHandlers
                                                 where taxo.PROVIDER_SERVICE_LOCATION_ID == serviceLocationId
                                                 select new DRTaxonomyModel()
                                                 {
-                                                    EffectiveDate = taxo.EFFECTIVE_DT,
-                                                    EndDate = taxo.END_DT,
+                                                    OriginalEffectiveDate = taxo.EFFECTIVE_DT,
+                                                    OriginalEndDate = taxo.END_DT,
                                                     IsActive = taxo.IS_ACTIVE,
                                                     ProviderTaxonomyId = taxo.PROVIDER_TAXONOMY_ID,
                                                     TaxonomyCode = taxo.TAXONOMY_CD
@@ -167,8 +168,8 @@ namespace DataAccess.QueryHandlers
                                                              where irsTax.ServiceLocationId == serviceLocationId
                                                              select new DRIRSTaxIdAssociationsModel()
                                                              {
-                                                                 EffectiveDate = irsTax.EffectiveDate,
-                                                                 EndDate = irsTax.EndDate,
+                                                                 OriginalEffectiveDate = irsTax.EffectiveDate,
+                                                                 OriginalEndDate = irsTax.EndDate,
                                                                  IRSTaxIdentificationId = irsTax.IRSTaxIdentificationId,
                                                                  ProviderIRSTaxIdAssociationId = irsTax.IRSTaxIdAssociationId,
                                                                  IsActive = irsTax.IsActive

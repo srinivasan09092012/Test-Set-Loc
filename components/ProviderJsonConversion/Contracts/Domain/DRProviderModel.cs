@@ -26,7 +26,14 @@ namespace Contracts.Domain
         /// <para>Remarks: The id that identifies the Provider.</para>
         /// </summary>
         [DataMember]
-        public Guid _id { get; set; }
+        public Guid _id { get; set; }        
+
+        /// <summary>
+        /// <para>BaseId</para>
+        /// <para>Remarks: The Base Id for the Provider.</para>
+        /// </summary>
+        [DataMember]
+        public string BaseId { get; set; }
 
         /// <summary>
         /// <para>BusinessName</para>
@@ -34,13 +41,6 @@ namespace Contracts.Domain
         /// </summary>
         [DataMember]
         public string BusinessName { get; set; }
-
-        /// <summary>
-        /// <para>BaseId</para>
-        /// <para>Remarks: The Base Id for the Provider.</para>
-        /// </summary>
-        [DataMember]
-        public long BaseId { get; set; }
 
         /// <summary>
         /// <para>IsActive</para>
