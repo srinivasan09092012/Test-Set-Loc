@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\Da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{0BBFD3BE-9250-4C43-A6E3-FCABF90469CF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{08185CD1-472D-4D7B-945F-6446135BDE7F}"
+	ProjectSection(SolutionItems) = preProject
+		nuget.config = nuget.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,15 +57,15 @@ Global
 		SccNumberOfProjects = 4
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://evrt-tfspro.houston.dxccorp.net/tfs/tfs01
-		SccProjectUniqueName0 = JsonConversion\\ProviderConversion.csproj
-		SccProjectName0 = JsonConversion
-		SccLocalPath0 = JsonConversion
-		SccProjectUniqueName1 = DataAccess\\DataAccess.csproj
-		SccProjectName1 = DataAccess
-		SccLocalPath1 = DataAccess
-		SccProjectUniqueName2 = Contracts\\Contracts.csproj
-		SccProjectName2 = Contracts
-		SccLocalPath2 = Contracts
-		SccLocalPath3 = .
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = JsonConversion\\ProviderConversion.csproj
+		SccProjectName1 = JsonConversion
+		SccLocalPath1 = JsonConversion
+		SccProjectUniqueName2 = DataAccess\\DataAccess.csproj
+		SccProjectName2 = DataAccess
+		SccLocalPath2 = DataAccess
+		SccProjectUniqueName3 = Contracts\\Contracts.csproj
+		SccProjectName3 = Contracts
+		SccLocalPath3 = Contracts
 	EndGlobalSection
 EndGlobal

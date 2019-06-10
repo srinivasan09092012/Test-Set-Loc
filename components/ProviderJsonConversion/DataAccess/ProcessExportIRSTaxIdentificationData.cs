@@ -57,7 +57,7 @@ namespace DataAccess
 
                 if (i == partialTimes && finalIRSTaxIds > 0)
                 {
-                    DRIRSTaxIdentificationQuery resultExtra = this.ExtractData(i + 1, finalIRSTaxIds);
+                    DRIRSTaxIdentificationQuery resultExtra = this.ExtractData(i + 1, takeNumber);
                     ExportDataHelper.GenerateJsonFile(resultExtra, this.startNumber, this.totalIRSTaxIds, fileName + (i + 1));
                 }
             }

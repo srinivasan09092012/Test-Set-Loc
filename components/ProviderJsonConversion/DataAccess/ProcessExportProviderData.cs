@@ -57,7 +57,7 @@ namespace DataAccess
 
                 if (i == partialTimes && finalProviders > 0)
                 {
-                    DRProviderQuery resultExtra = this.ExtractData(i + 1, finalProviders);
+                    DRProviderQuery resultExtra = this.ExtractData(i + 1, takeNumber);
                     ExportDataHelper.GenerateJsonFile(resultExtra, this.startNumber, this.totalProv, fileName + (i + 1));
                 }
             }
