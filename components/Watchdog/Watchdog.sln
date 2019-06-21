@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watchdog", "Watchdog\Watchdog.csproj", "{02399EF3-2BB2-40E7-A653-6395C995B6EB}"
 EndProject
@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configs", "Configs", "{BBD7
 	ProjectSection(SolutionItems) = preProject
 		nuget.config = nuget.config
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchDog-WindowsService", "WatchDog-WindowsService\WatchDog-WindowsService.csproj", "{77F59B1F-EB33-4C27-8C20-9D16B6B645A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +22,10 @@ Global
 		{02399EF3-2BB2-40E7-A653-6395C995B6EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02399EF3-2BB2-40E7-A653-6395C995B6EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02399EF3-2BB2-40E7-A653-6395C995B6EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77F59B1F-EB33-4C27-8C20-9D16B6B645A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77F59B1F-EB33-4C27-8C20-9D16B6B645A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77F59B1F-EB33-4C27-8C20-9D16B6B645A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77F59B1F-EB33-4C27-8C20-9D16B6B645A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -28,12 +34,15 @@ Global
 		SolutionGuid = {59121567-AAB8-46BB-8F0B-C8D70B85B2AF}
 	EndGlobalSection
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 2
+		SccNumberOfProjects = 3
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://evrt-tfspro.houston.dxccorp.net/tfs/tfs01
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = Watchdog\\Watchdog.csproj
 		SccProjectName1 = Watchdog
 		SccLocalPath1 = Watchdog
+		SccProjectUniqueName2 = WatchDog-WindowsService\\WatchDog-WindowsService.csproj
+		SccProjectName2 = WatchDog-WindowsService
+		SccLocalPath2 = WatchDog-WindowsService
 	EndGlobalSection
 EndGlobal

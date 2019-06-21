@@ -11,9 +11,9 @@ using System.Linq;
 
 namespace Watchdog
 {
-    class Program
+    public class WatchDogProgram
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             try
             {

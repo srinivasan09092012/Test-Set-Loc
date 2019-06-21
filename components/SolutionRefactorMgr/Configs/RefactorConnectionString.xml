@@ -2,7 +2,7 @@
 <RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" refactorPartialContent="true">
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs>
-    <ModuleConfig name="Administration" branch="Dev" types="All" />
+    <ModuleConfig name="Administration" branch="064" types="All" />
     <!--<ModuleConfig name="AuthDetermination" branch="060" types="All" />
     <ModuleConfig name="ClaimsManagement" branch="060" types="All" />
     <ModuleConfig name="Core" branch="060" types="All" />
@@ -41,17 +41,17 @@
   </FileTypes>
   <ReplacementStrings>
     <!--CONNECTION STRING UA3_TENANT-->
-    <ReplacementString filename="web.debug.config" qualifier="connectionString=" from ="connectionString=(.*)" to="tenantConnection"
-                     connectionString=  "connectionString=&quot;Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = mapsdevdbo01.dev.mapshc.com)(PORT = 1521))(CONNECT_DATA = (SERVER = SHARED)(SERVICE_NAME = AWRK_PDBA)));User ID=UA3_TENANT;Password=UA3_TENANT;Self Tuning=false;PERSIST SECURITY INFO=True&quot; " providerName="providerName=&quot;Oracle.ManagedDataAccess.Client&quot;" />              
-    <ReplacementString filename="web.release.config" qualifier="connectionString=" from ="connectionString=(.*)" to="tenantConnection"
-                     connectionString=  "connectionString=&quot;Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = mapsdevdbo01.dev.mapshc.com)(PORT = 1521))(CONNECT_DATA = (SERVER = SHARED)(SERVICE_NAME = ADEV_PDBA)));User ID=UA3_TENANT;Password=tnnt_tst_e2;Self Tuning=false;PERSIST SECURITY INFO=True&quot; " providerName="providerName=&quot;Oracle.ManagedDataAccess.Client&quot;" />
-    <ReplacementString filename="app.debug.config" qualifier="connectionString=" from ="connectionString=(.*)" to="tenantConnection"
-                     connectionString=  "connectionString=&quot;Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = mapsdevdbo01.dev.mapshc.com)(PORT = 1521))(CONNECT_DATA = (SERVER = SHARED)(SERVICE_NAME = AWRK_PDBA)));User ID=UA3_TENANT;Password=UA3_TENANT;Self Tuning=false;PERSIST SECURITY INFO=True&quot;" providerName="providerName=&quot;Oracle.ManagedDataAccess.Client&quot;"/>
-    <ReplacementString filename="app.release.config" qualifier="connectionString=" from ="connectionString=(.*)" to="tenantConnection"
-                     connectionString=  "connectionString=&quot;Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = mapsdevdbo01.dev.mapshc.com)(PORT = 1521))(CONNECT_DATA = (SERVER = SHARED)(SERVICE_NAME = ADEV_PDBA)));User ID=UA3_TENANT;Password=tnnt_tst_e2;Self Tuning=false;PERSIST SECURITY INFO=True&quot;" providerName="providerName=&quot;Oracle.ManagedDataAccess.Client&quot;"/>
+    <ReplacementString filename="web.debug.config" qualifier="connectionString=" from ="connectionString=(.*)" to="TenantConfig"
+                     connectionString=  "connectionString=&quot;Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = mapsstgshrdbo01.mapshc.com)(PORT = 1521))(CONNECT_DATA = (SERVER = SHARED)(SERVICE_NAME = WRK4_PDBA)));User ID=UA3_TENANT;Password=UA3_TENANT;Self Tuning=false;PERSIST SECURITY INFO=True&quot; " providerName="providerName=&quot;Oracle.ManagedDataAccess.Client&quot;" />              
+    <ReplacementString filename="web.release.config" qualifier="connectionString=" from ="connectionString=(.*)" to="TenantConfig"
+                     connectionString=  "connectionString=&quot;Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = mapsstgshrdbo01.mapshc.com)(PORT = 1521))(CONNECT_DATA = (SERVER = SHARED)(SERVICE_NAME = STG4_PDBA)));User ID=RW_TENANT;Password=TEN_BOiYI18;Self Tuning=false;PERSIST SECURITY INFO=True&quot; " providerName="providerName=&quot;Oracle.ManagedDataAccess.Client&quot;" />
+    <ReplacementString filename="app.debug.config" qualifier="connectionString=" from ="connectionString=(.*)" to="TenantConfig"
+                     connectionString=  "connectionString=&quot;Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = mapsstgshrdbo01.mapshc.com)(PORT = 1521))(CONNECT_DATA = (SERVER = SHARED)(SERVICE_NAME = WRK4_PDBA)));User ID=UA3_TENANT;Password=UA3_TENANT;Self Tuning=false;PERSIST SECURITY INFO=True&quot;" providerName="providerName=&quot;Oracle.ManagedDataAccess.Client&quot;"/>
+    <ReplacementString filename="app.release.config" qualifier="connectionString=" from ="connectionString=(.*)" to="TenantConfig"
+                     connectionString=  "connectionString=&quot;Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = mapsstgshrdbo01.mapshc.com)(PORT = 1521))(CONNECT_DATA = (SERVER = SHARED)(SERVICE_NAME = STG4_PDBA)));User ID=RW_TENANT;Password=TEN_BOiYI18;Self Tuning=false;PERSIST SECURITY INFO=True&quot;" providerName="providerName=&quot;Oracle.ManagedDataAccess.Client&quot;"/>
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
   <!--NOTE: YOU MUST PUT YOUR WORKSPACE NAME IN HERE IF ITS NOT UA3-->
-  <TfsWorkspace>IN5CG6434WHL_test</TfsWorkspace>
+  <TfsWorkspace>BUSANELL1</TfsWorkspace>
 
 </RefactorConfig>
