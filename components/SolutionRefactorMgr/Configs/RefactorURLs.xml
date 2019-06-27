@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="true" includeFileContents="true" useSourceControl="true">
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs>
@@ -74,6 +74,6 @@
     <ReplacementString qualifier="ELabs.pubxml" from="ELabs.pubxml" to="Azure.pubxml" />
     <ReplacementString qualifier="DevELabsApp.config" from="DevELabsApp.config" to="DevAzureApp.config" />
   </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
+  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
   <TfsWorkspace>ADIX1</TfsWorkspace>
 </RefactorConfig>

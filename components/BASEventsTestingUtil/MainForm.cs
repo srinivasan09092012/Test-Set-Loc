@@ -101,7 +101,7 @@ namespace BASEventsTestingUtil
             catch (Exception ex)
             {
                 var msg = string.Format("Error loading {0}: ", ex.Message);
-                tbError.Text+=(msg);
+                tbError.Text += (msg);
             }
 
             return result;
@@ -217,7 +217,7 @@ namespace BASEventsTestingUtil
 
             }).ContinueWith((ante) =>
             {
-                MessageBox.Show (eventsCount + " Event(s) submitted, please see details in \"Logs\"!", "Events Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(eventsCount + " Event(s) submitted, please see details in \"Logs\"!", "Events Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 buttonNormalTest.Enabled = true;
                 buttonPressureTest.Enabled = true;
 
@@ -283,13 +283,7 @@ namespace BASEventsTestingUtil
         {
             tbError.Text += string.Empty;
             buttonNormalTest.Enabled = false;
-            buttonPressureTest.Enabled = false;
-
-            StringBuilder sb = new StringBuilder();
-            var settings = new XmlWriterSettings();
-            settings.Indent = true;
-            settings.IndentChars = "  ";
-            settings.Encoding = Encoding.Unicode;
+            buttonPressureTest.Enabled = false;            
 
             var eventNameAttribute = ConfigurationManager.AppSettings["EventNameAttribute"];
             var eventNameSpaceAttribute = ConfigurationManager.AppSettings["EventNameSpaceAttribute"];
@@ -316,13 +310,22 @@ namespace BASEventsTestingUtil
                 em.EventNamespace = nm;
             }
 
+            StringBuilder sb = new StringBuilder();
+            var settings = new XmlWriterSettings
+            {
+                Indent = true,
+                IndentChars = ("  "),
+                Encoding = Encoding.UTF8,
+                OmitXmlDeclaration = true
+            };
+
             using (var writer = XmlWriter.Create(sb, settings))
             {
                 this.payloadDocument.WriteContentTo(writer);
                 writer.Flush();
             }
 
-            em.EventPayLoad = Encoding.Unicode.GetBytes(sb.ToString());
+            em.EventPayLoad = Encoding.UTF8.GetBytes(sb.ToString());
             if (string.IsNullOrWhiteSpace(serviceUrl))
             {
                 serviceUrl = ((ListItem)this.cbEndpoint.SelectedItem).Value;

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true">
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs>
@@ -42,6 +42,6 @@
     <ReplacementString qualifier="key=$quot;InRule.Password" from="Password2015" to="Password2017" />
     <ReplacementString qualifier="key=$quot;InRule.Password" from="password" to="Password2017" />
   </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
+  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
   <TfsWorkspace>BIBWOS1ISV_1</TfsWorkspace>
 </RefactorConfig>

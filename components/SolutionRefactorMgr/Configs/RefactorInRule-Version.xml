@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true">
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs>
@@ -45,7 +45,7 @@
     <ReplacementString qualifier="InRule.Repository, Version=5.0.13.39" from="5.0.13.39" to="5.0.25.101" />
     <ReplacementString qualifier="InRule.Runtime, Version=5.0.13.39" from="5.0.13.39" to="5.0.25.101" />
   </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
+  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
   <TfsWorkspace></TfsWorkspace>
 </RefactorConfig>
 

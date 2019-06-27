@@ -1,57 +1,46 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" refactorPartialContent="true">
+<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true">
   <SourceDir>C:\UA3\Source</SourceDir>
-  <ModuleConfigs>
-    <ModuleConfig name="Administration" branch="064" types="All" />
-    <ModuleConfig name="AuthDetermination" branch="064" types="All" />
-    <ModuleConfig name="ClaimsManagement" branch="064" types="All" />
-    <ModuleConfig name="Core" branch="064" types="All" />
-    <ModuleConfig name="CorrespondenceMgmt" branch="064" types="All" />
-    <ModuleConfig name="DrugRebate" branch="064" types="All" />
-    <ModuleConfig name="DrugRebatePortal" branch="064" types="All" />
-    <ModuleConfig name="EDI" branch="064" types="All" />
-    <ModuleConfig name="EmployeeMgmt" branch="064" types="All" />
-    <ModuleConfig name="FileTransfer" branch="064" types="All" />
-    <ModuleConfig name="FinancialManagement" branch="064" types="All" />
-    <ModuleConfig name="IdentityManagement" branch="064" types="All" />
-    <ModuleConfig name="Integration" branch="064" types="All" />
-    <ModuleConfig name="KansasOnly" branch="064" types="All" />
-    <ModuleConfig name="ManagedCare" branch="064" types="All" />
-    <ModuleConfig name="ManagedCarePortal" branch="064" types="All" />
-    <ModuleConfig name="MemberManagement" branch="064" types="All" />
-    <ModuleConfig name="MemberPortal" branch="064" types="All" />
-    <ModuleConfig name="Notifications" branch="064" types="All" />
-    <ModuleConfig name="PlanManagement" branch="064" types="All" />
-    <ModuleConfig name="ProgramIntegrity" branch="064" types="All" />
-    <ModuleConfig name="ProgramIntegrityCT" branch="064" types="All" />
-    <ModuleConfig name="ProviderCredentialing" branch="064" types="All" />
-    <ModuleConfig name="ProviderEnrollment" branch="064" types="All" />
-    <ModuleConfig name="ProviderManagement" branch="064" types="All" />
-    <ModuleConfig name="ProviderPortal" branch="064" types="All" />
-    <ModuleConfig name="Screening" branch="064" types="All" />
-    <ModuleConfig name="TaskManagement" branch="064" types="All" />
-    <ModuleConfig name="ThirdPartySource" branch="064" types="All" />
-    <ModuleConfig name="TPLCaseTracking" branch="064" types="All" />
-    <ModuleConfig name="TPLPolicy" branch="064" types="All" />
-    <ModuleConfig name="Utilities" branch="064" types="NA" />
-  </ModuleConfigs>
-  <PackageConfigs />
+  <ModuleConfigs />
+  <PackageConfigs>
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.Administration" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.AuthDetermination" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.BatchProcessingFactory" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ClaimsManagement" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.Core" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.CorrespondenceMgmt" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.DrugRebate" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.FinancialManagement" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.IdentityManagement" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.Integration" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ManagedCare" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.MemberManagement" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.PlanManagement" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProgramIntegrity" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProviderEnrollment" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProviderManagement" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.TaskManagement" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.TPLCaseTracking" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.TPLPolicy" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.NotificationServices" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.ClaimsManagement" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.Core" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.EDI" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.NCPDP" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.TestAutomation" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X12" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X212" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPP.HSP.UA3.ManagedCare" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
+  </PackageConfigs>
   <FileTypes>
-    <FileType ext=".config"  />
+    <FileType ext=".nuspec" />
   </FileTypes>
+  <LineDeletes />
   <ReplacementStrings>
-    <!--CONNECTION STRING UA3_TENANT-->
-    <ReplacementString filename="web.debug.config" qualifier="connectionString=" from ="connectionString=(.*)" to="TenantConfig"
-                     connectionString=  "connectionString=&quot;Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = mapsstgshrdbo01.mapshc.com)(PORT = 1521))(CONNECT_DATA = (SERVER = SHARED)(SERVICE_NAME = WRK4_PDBA)));User ID=UA3_TENANT;Password=UA3_TENANT;Self Tuning=false;PERSIST SECURITY INFO=True&quot; " providerName="providerName=&quot;Oracle.ManagedDataAccess.Client&quot;" />
-    <ReplacementString filename="web.release.config" qualifier="connectionString=" from ="connectionString=(.*)" to="TenantConfig"
-                     connectionString=  "connectionString=&quot;Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = mapsstgshrdbo01.mapshc.com)(PORT = 1521))(CONNECT_DATA = (SERVER = SHARED)(SERVICE_NAME = STG4_PDBA)));User ID=RW_TENANT;Password=TEN_BOiYI18;Self Tuning=false;PERSIST SECURITY INFO=True&quot; " providerName="providerName=&quot;Oracle.ManagedDataAccess.Client&quot;" />
-    <ReplacementString filename="app.debug.config" qualifier="connectionString=" from ="connectionString=(.*)" to="TenantConfig"
-                     connectionString=  "connectionString=&quot;Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = mapsstgshrdbo01.mapshc.com)(PORT = 1521))(CONNECT_DATA = (SERVER = SHARED)(SERVICE_NAME = WRK4_PDBA)));User ID=UA3_TENANT;Password=UA3_TENANT;Self Tuning=false;PERSIST SECURITY INFO=True&quot;" providerName="providerName=&quot;Oracle.ManagedDataAccess.Client&quot;"/>
-    <ReplacementString filename="app.release.config" qualifier="connectionString=" from ="connectionString=(.*)" to="TenantConfig"
-                     connectionString=  "connectionString=&quot;Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = mapsstgshrdbo01.mapshc.com)(PORT = 1521))(CONNECT_DATA = (SERVER = SHARED)(SERVICE_NAME = STG4_PDBA)));User ID=RW_TENANT;Password=TEN_BOiYI18;Self Tuning=false;PERSIST SECURITY INFO=True&quot;" providerName="providerName=&quot;Oracle.ManagedDataAccess.Client&quot;"/>
+    <ReplacementString qualifier="&lt;file src=&quot;lib\net451\" from="net451" to="net48" />
+    <ReplacementString qualifier="&lt;file src=&quot;lib\net452\" from="net452" to="net48" />
+    <ReplacementString qualifier="&lt;file src=&quot;lib\net45\" from="net45" to="net48" />
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
-  <!--NOTE: YOU MUST PUT YOUR WORKSPACE NAME IN HERE IF ITS NOT UA3-->
-  <TfsWorkspace>BUSANELL1</TfsWorkspace>
-
+  <TfsWorkspace>UA3</TfsWorkspace>
 </RefactorConfig>

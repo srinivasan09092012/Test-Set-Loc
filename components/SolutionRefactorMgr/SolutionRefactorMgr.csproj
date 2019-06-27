@@ -87,6 +87,9 @@
       <HintPath>..\..\..\Packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="NuGet.Core">
       <HintPath>..\..\..\Packages\NuGet.Core.2.14.0\lib\net40-Client\NuGet.Core.dll</HintPath>
       <Private>True</Private>
@@ -127,6 +130,9 @@
     <Content Include="Configs\RefactorDev_MigrateToAzure.xml" />
     <Content Include="Configs\RefactorNamespaces.xml" />
     <Content Include="Configs\RefactorNetFramework.xml" />
+    <Content Include="Configs\RefactorRelease-VersionPackagesNetFramework.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Configs\RefactorRelease-VersionPackages.xml">
       <SubType>Designer</SubType>
     </Content>

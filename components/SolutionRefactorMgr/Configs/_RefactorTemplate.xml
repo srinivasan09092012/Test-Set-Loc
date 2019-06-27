@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!--
 RefactorConfig - Base processing parameters:
   editmode: enum values Inline (make changes directly to each file found) / Copy (copy changes to a new version of the folder/file)
@@ -61,7 +61,7 @@ RefactorConfig - Base processing parameters:
   <!--
    TfsServer - Location of the TFS server used by these files.
   -->
-  <TfsServer>https://evrt-tfspro.houston.entsvcs.net/tfs</TfsServer>
+  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
   <!--
    TfsWorkspace - local TFS workspace of person running this solution.  Value optional, but might be needed if checkout not allowed without it.
   -->

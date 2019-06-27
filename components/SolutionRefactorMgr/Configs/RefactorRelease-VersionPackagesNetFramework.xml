@@ -39,9 +39,15 @@
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
+
     <ReplacementString qualifier="&lt;version&gt;18.4.60&lt;/version&gt;" from="18.4.60" to="19.1.64" />
     <ReplacementString qualifier="HP.HSP.UA3" from="18.4.60" to="19.1.64" />
     <ReplacementString qualifier="HPE.HSP.UA3" from="18.4.60" to="19.1.64" />
+
+    <ReplacementString qualifier="&lt;file src=&quot;lib\net451\" from="net451" to="net48" />
+    <ReplacementString qualifier="&lt;file src=&quot;lib\net452\" from="net452" to="net48" />
+    <ReplacementString qualifier="&lt;file src=&quot;lib\net45\" from="net45" to="net48" />
+
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
   <TfsWorkspace>IN5CG6434WHL_test</TfsWorkspace>
