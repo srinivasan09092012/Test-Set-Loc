@@ -1,48 +1,438 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" targetTFS ="OnPremise">>
-  <SourceDir>C:\UA3\Source</SourceDir>
-  <ModuleConfigs />
-  <PackageConfigs>
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.Administration" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.AuthDetermination" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.BatchProcessingFactory" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.ClaimsManagement" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.Core" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.CorrespondenceMgmt" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.DrugRebate" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.FinancialManagement" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.IdentityManagement" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.Integration" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.ManagedCare" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.MemberManagement" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.PlanManagement" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProgramIntegrity" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProviderEnrollment" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProviderManagement" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.TaskManagement" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.TPLCaseTracking" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.TPLPolicy" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HP.NotificationServices" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.ClaimsManagement" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.Core" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.EDI" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.NCPDP" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.TestAutomation" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X12" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X212" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-    <PackageConfig qualifierPrefix="HPP.HSP.UA3.ManagedCare" qualifierVersion="19.2.70.99" rebuildPackage="true" reformatSource="true" />
-  </PackageConfigs>
+<RefactorConfig editMode="Inline" includeFolderNames="true" includeFileNames="true" includeFileContents="true" useSourceControl="true" targetTFS ="Azure">
+  <SourceDir>C:\UAD\Source</SourceDir>
+  <!--<SourceDir>C:\UA3\Tools</SourceDir>-->
+  <!--<SourceDir>C:\UA3</SourceDir>-->
+  <ModuleConfigs>
+    <!--Directories for C:\UA3\Source-->
+    <!--Dev Branch-->
+    <!--<ModuleConfig name="Administration" branch="Dev" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Core" branch="Dev" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="BAS" />
+    <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="Dev" types="UX" />
+    <ModuleConfig name="DrugRebatePortal" branch="Dev" types="Reports" />
+    <ModuleConfig name="EDI" branch="Dev" types="BAS" />
+    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="BAS" />
+    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="UX" />
+    <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="Dev" types="BAS" />
+    <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Integration" branch="Dev" types="All" />
+    <ModuleConfig name="KansasOnly" branch="Dev" types="UX" />
+    <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCare" branch="Dev" types="DB" />
+    <ModuleConfig name="ManagedCarePortal" branch="Dev" types="UX" />
+    <ModuleConfig name="ManagedCarePortal" branch="Dev" types="Reports" />
+    <ModuleConfig name="MemberManagement" branch="Dev" types="All" />
+    <ModuleConfig name="MemberPortal" branch="Dev" types="UX" />
+    <ModuleConfig name="MemberPortal" branch="Dev" types="Reports" />
+    <ModuleConfig name="Notifications" branch="Dev" types="UX" />
+    <ModuleConfig name="Notifications" branch="Dev" types="BAS" />
+    <ModuleConfig name="PlanManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrityCT" branch="Dev" types="UX" />
+    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="Test" />
+    <ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="Dev" types="K2_Workflow" />
+    <ModuleConfig name="ProviderPortal" branch="Dev" types="UX" />
+    <ModuleConfig name="ProviderPortal" branch="Dev" types="Reports" />
+    <ModuleConfig name="Screening" branch="Dev" types="BAS" />
+    <ModuleConfig name="Screening" branch="Dev" types="Test" />
+    <ModuleConfig name="TaskManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Test" branch="Dev" types="NA" />
+    <ModuleConfig name="ThirdPartySource" branch="Dev" types="NA" />
+    <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />-->
+
+    <!--DevF Branch-->
+    <!--<ModuleConfig name="Administration" branch="DevF" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="DevF" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="DevF" types="All" />
+    <ModuleConfig name="Core" branch="DevF" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="DevF" types="BAS" />
+    <ModuleConfig name="DrugRebate" branch="DevF" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="DevF" types="UX" />
+    <ModuleConfig name="DrugRebatePortal" branch="DevF" types="Reports" />
+    <ModuleConfig name="EDI" branch="DevF" types="BAS" />
+    <ModuleConfig name="EmployeeMgmt" branch="DevF" types="BAS" />
+    <ModuleConfig name="EmployeeMgmt" branch="DevF" types="UX" />
+    <ModuleConfig name="FileTransfer" branch="DevF" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="DevF" types="BAS" />
+    <ModuleConfig name="IdentityManagement" branch="DevF" types="All" />
+    <ModuleConfig name="Integration" branch="DevF" types="All" />
+    <ModuleConfig name="KansasOnly" branch="DevF" types="UX" />
+    <ModuleConfig name="ManagedCare" branch="DevF" types="All" />
+    <ModuleConfig name="ManagedCare" branch="DevF" types="DB" />
+    <ModuleConfig name="ManagedCarePortal" branch="DevF" types="UX" />
+    <ModuleConfig name="ManagedCarePortal" branch="DevF" types="Reports" />
+    <ModuleConfig name="MemberManagement" branch="DevF" types="All" />
+    <ModuleConfig name="MemberPortal" branch="DevF" types="UX" />
+    <ModuleConfig name="MemberPortal" branch="DevF" types="Reports" />
+    <ModuleConfig name="Notifications" branch="DevF" types="UX" />
+    <ModuleConfig name="Notifications" branch="DevF" types="BAS" />
+    <ModuleConfig name="PlanManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="DevF" types="All" />
+    <ModuleConfig name="ProgramIntegrityCT" branch="DevF" types="UX" />
+    <ModuleConfig name="ProviderCredentialing" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="DevF" types="Test" />
+    <ModuleConfig name="ProviderEnrollment" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="DevF" types="K2_Workflow" />
+    <ModuleConfig name="ProviderPortal" branch="DevF" types="UX" />
+    <ModuleConfig name="ProviderPortal" branch="DevF" types="Reports" />
+    <ModuleConfig name="Screening" branch="DevF" types="BAS" />
+    <ModuleConfig name="Screening" branch="DevF" types="Test" />
+    <ModuleConfig name="TaskManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="DevF" types="NA" />
+    <ModuleConfig name="TPLCaseTracking" branch="DevF" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="DevF" types="All" />-->
+
+    <!--52 Branch-->
+    <!--<ModuleConfig name="Administration" branch="052" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="052" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="052" types="All" />
+    <ModuleConfig name="Core" branch="052" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="052" types="All" />
+    <ModuleConfig name="DrugRebate" branch="052" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="052" types="UX" />
+    <ModuleConfig name="EDI" branch="052" types="BAS" />
+    <ModuleConfig name="EmployeeMgmt" branch="052" types="BAS" />
+    <ModuleConfig name="EmployeeMgmt" branch="052" types="UX" />
+    <ModuleConfig name="FileTransfer" branch="052" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="052" types="BAS" />
+    <ModuleConfig name="IdentityManagement" branch="052" types="All" />
+    <ModuleConfig name="Integration" branch="052" types="BAS" />
+    <ModuleConfig name="Integration" branch="052" types="Batch" />
+    <ModuleConfig name="KansasOnly" branch="052" types="UX" />
+    <ModuleConfig name="ManagedCare" branch="052" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="052" types="UX" />
+    <ModuleConfig name="ManagedCarePortal" branch="052" types="Reports" />
+    <ModuleConfig name="MemberManagement" branch="052" types="All" />
+    <ModuleConfig name="MemberPortal" branch="052" types="UX" />
+    <ModuleConfig name="MemberPortal" branch="052" types="Reports" />
+    <ModuleConfig name="Notifications" branch="052" types="UX" />
+    <ModuleConfig name="Notifications" branch="052" types="BAS" />
+    <ModuleConfig name="PlanManagement" branch="052" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="052" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="052" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="052" types="Test" />
+    <ModuleConfig name="ProviderEnrollment" branch="052" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="052" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="052" types="K2_Workflow" />
+    <ModuleConfig name="ProviderPortal" branch="052" types="UX" />
+    <ModuleConfig name="ProviderPortal" branch="052" types="Reports" />
+    <ModuleConfig name="TaskManagement" branch="052" types="All" />
+    <ModuleConfig name="TaskManagement" branch="052" types="UX" />
+    <ModuleConfig name="ThirdPartySource" branch="052" types="NA" />
+    <ModuleConfig name="TPLCaseTracking" branch="052" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="052" types="All" />
+
+    --><!--39 Branch--><!--
+    <ModuleConfig name="Administration" branch="039" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="039" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="039" types="All" />
+    <ModuleConfig name="Core" branch="039" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="039" types="BAS" />
+    <ModuleConfig name="DrugRebate" branch="039" types="All" />
+    <ModuleConfig name="EDI" branch="039" types="BAS" />
+    <ModuleConfig name="EmployeeMgmt" branch="039" types="BAS" />
+    <ModuleConfig name="EmployeeMgmt" branch="039" types="UX" />
+    <ModuleConfig name="FileTransfer" branch="039" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="039" types="All" />
+    <ModuleConfig name="KansasOnly" branch="039" types="UX" />
+    <ModuleConfig name="ManagedCare" branch="039" types="All" />
+    <ModuleConfig name="MemberManagement" branch="039" types="All" />
+    <ModuleConfig name="MemberPortal" branch="039" types="UX" />
+    <ModuleConfig name="MemberPortal" branch="039" types="Reports" />
+    <ModuleConfig name="Notifications" branch="039" types="UX" />
+    <ModuleConfig name="Notifications" branch="039" types="BAS" />
+    <ModuleConfig name="PlanManagement" branch="039" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="039" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="039" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="039" types="Test" />
+    <ModuleConfig name="ProviderEnrollment" branch="039" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="039" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="039" types="K2_Workflow" />
+    <ModuleConfig name="ProviderPortal" branch="039" types="UX" />
+    <ModuleConfig name="ProviderPortal" branch="039" types="Reports" />
+    <ModuleConfig name="Test" branch="039" types="NA" />
+    <ModuleConfig name="ThirdPartySource" branch="039" types="NA" />
+    <ModuleConfig name="TPLCaseTracking" branch="039" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="039" types="All" />
+
+    --><!--43 Branch--><!--
+    <ModuleConfig name="Administration" branch="043" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="043" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="043" types="All" />
+    <ModuleConfig name="Core" branch="043" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="043" types="BAS" />
+    <ModuleConfig name="DrugRebate" branch="043" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="043" types="UX" />
+    <ModuleConfig name="EDI" branch="043" types="BAS" />
+    <ModuleConfig name="EmployeeMgmt" branch="043" types="BAS" />
+    <ModuleConfig name="EmployeeMgmt" branch="043" types="UX" />
+    <ModuleConfig name="FileTransfer" branch="043" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="043" types="All" />
+    <ModuleConfig name="KansasOnly" branch="043" types="UX" />
+    <ModuleConfig name="ManagedCare" branch="043" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="043" types="UX" />
+    <ModuleConfig name="ManagedCarePortal" branch="043" types="Reports" />
+    <ModuleConfig name="MemberManagement" branch="043" types="All" />
+    <ModuleConfig name="MemberPortal" branch="043" types="UX" />
+    <ModuleConfig name="MemberPortal" branch="043" types="Reports" />
+    <ModuleConfig name="Notifications" branch="043" types="UX" />
+    <ModuleConfig name="Notifications" branch="043" types="BAS" />
+    <ModuleConfig name="PlanManagement" branch="043" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="043" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="043" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="043" types="Test" />
+    <ModuleConfig name="ProviderEnrollment" branch="043" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="043" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="043" types="K2_Workflow" />
+    <ModuleConfig name="ProviderPortal" branch="043" types="UX" />
+    <ModuleConfig name="ProviderPortal" branch="043" types="Reports" />
+    <ModuleConfig name="ThirdPartySource" branch="043" types="NA" />
+    <ModuleConfig name="TPLCaseTracking" branch="043" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="043" types="All" />-->
+
+    <!--56 Branch-->
+    <ModuleConfig name="Administration" branch="056" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="056" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="056" types="All" />
+    <ModuleConfig name="Core" branch="056" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="056" types="All" />
+    <ModuleConfig name="DrugRebate" branch="056" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="056" types="UX" />
+    <ModuleConfig name="DrugRebatePortal" branch="056" types="Reports" />
+    <ModuleConfig name="EDI" branch="056" types="BAS" />
+    <ModuleConfig name="EmployeeMgmt" branch="056" types="BAS" />
+    <ModuleConfig name="EmployeeMgmt" branch="056" types="UX" />
+    <ModuleConfig name="FileTransfer" branch="056" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="056" types="BAS" />
+    <ModuleConfig name="IdentityManagement" branch="056" types="All" />
+    <ModuleConfig name="Integration" branch="056" types="All" />
+    <ModuleConfig name="KansasOnly" branch="056" types="UX" />
+    <ModuleConfig name="ManagedCare" branch="056" types="All" />
+    <ModuleConfig name="ManagedCare" branch="056" types="DB" />
+    <ModuleConfig name="ManagedCarePortal" branch="056" types="UX" />
+    <ModuleConfig name="ManagedCarePortal" branch="056" types="Reports" />
+    <ModuleConfig name="MemberManagement" branch="056" types="All" />
+    <ModuleConfig name="MemberPortal" branch="056" types="UX" />
+    <ModuleConfig name="MemberPortal" branch="056" types="Reports" />
+    <ModuleConfig name="Notifications" branch="056" types="UX" />
+    <ModuleConfig name="Notifications" branch="056" types="BAS" />
+    <ModuleConfig name="PlanManagement" branch="056" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="056" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="056" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="056" types="Test" />
+    <ModuleConfig name="ProviderEnrollment" branch="056" types="All" />/>
+    <ModuleConfig name="ProviderManagement" branch="056" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="056" types="K2_Workflow" />
+    <ModuleConfig name="ProviderPortal" branch="056" types="UX" />
+    <ModuleConfig name="ProviderPortal" branch="056" types="Reports" />
+    <ModuleConfig name="Screening" branch="056" types="BAS" />
+    <ModuleConfig name="Screening" branch="056" types="Test" />
+    <ModuleConfig name="TaskManagement" branch="056" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="056" types="NA" />
+    <ModuleConfig name="TPLCaseTracking" branch="056" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="056" types="All" />
+
+    <!--47 Branch-->
+    <!--<ModuleConfig name="Administration" branch="047" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="047" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="047" types="All" />
+    <ModuleConfig name="Core" branch="047" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="047" types="BAS" />
+    <ModuleConfig name="DrugRebate" branch="047" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="047" types="UX" />
+    <ModuleConfig name="EDI" branch="047" types="BAS" />
+    <ModuleConfig name="EmployeeMgmt" branch="047" types="BAS" />
+    <ModuleConfig name="EmployeeMgmt" branch="047" types="UX" />
+    <ModuleConfig name="FileTransfer" branch="047" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="047" types="All" />
+    <ModuleConfig name="Integration" branch="047" types="BAS" />
+    <ModuleConfig name="Integration" branch="047" types="Batch" />
+    <ModuleConfig name="KansasOnly" branch="047" types="UX" />
+    <ModuleConfig name="ManagedCare" branch="047" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="047" types="UX" />
+    <ModuleConfig name="ManagedCarePortal" branch="047" types="Reports" />
+    <ModuleConfig name="MemberManagement" branch="047" types="All" />
+    <ModuleConfig name="MemberPortal" branch="047" types="UX" />
+    <ModuleConfig name="MemberPortal" branch="047" types="Reports" />
+    <ModuleConfig name="Notifications" branch="047" types="UX" />
+    <ModuleConfig name="Notifications" branch="047" types="BAS" />
+    <ModuleConfig name="PlanManagement" branch="047" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="047" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="047" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="047" types="Test" />
+    <ModuleConfig name="ProviderEnrollment" branch="047" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="047" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="047" types="K2_Workflow" />
+    <ModuleConfig name="ProviderPortal" branch="047" types="UX" />
+    <ModuleConfig name="ProviderPortal" branch="047" types="Reports" />
+    <ModuleConfig name="TaskManagement" branch="047" types="All" />
+    <ModuleConfig name="Test" branch="047" types="NA" />
+    <ModuleConfig name="ThirdPartySource" branch="047" types="NA" />
+    <ModuleConfig name="TPLCaseTracking" branch="047" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="047" types="All" />
+
+    --><!--60 Branch--><!--
+    <ModuleConfig name="Administration" branch="060" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="060" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="060" types="All" />
+    <ModuleConfig name="Core" branch="060" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="060" types="BAS" />
+    <ModuleConfig name="DrugRebate" branch="060" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="060" types="UX" />
+    <ModuleConfig name="DrugRebatePortal" branch="060" types="Reports" />
+    <ModuleConfig name="EDI" branch="060" types="BAS" />
+    <ModuleConfig name="EmployeeMgmt" branch="060" types="BAS" />
+    <ModuleConfig name="EmployeeMgmt" branch="060" types="UX" />
+    <ModuleConfig name="FileTransfer" branch="060" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="064" types="BAS" />
+    <ModuleConfig name="IdentityManagement" branch="060" types="All" />
+    <ModuleConfig name="Integration" branch="060" types="All" />
+    <ModuleConfig name="KansasOnly" branch="060" types="UX" />
+    <ModuleConfig name="ManagedCare" branch="060" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="060" types="UX" />
+    <ModuleConfig name="ManagedCarePortal" branch="060" types="Reports" />
+    <ModuleConfig name="MemberManagement" branch="060" types="All" />
+    <ModuleConfig name="MemberPortal" branch="060" types="UX" />
+    <ModuleConfig name="MemberPortal" branch="060" types="Reports" />
+    <ModuleConfig name="Notifications" branch="060" types="UX" />
+    <ModuleConfig name="Notifications" branch="060" types="BAS" />
+    <ModuleConfig name="PlanManagement" branch="060" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="060" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="060" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="060" types="Test" />
+    <ModuleConfig name="ProviderEnrollment" branch="060" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="060" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="060" types="K2_Workflow" />
+    <ModuleConfig name="ProviderPortal" branch="060" types="UX" />
+    <ModuleConfig name="ProviderPortal" branch="060" types="Reports" />
+    <ModuleConfig name="Screening" branch="060" types="BAS" />
+    <ModuleConfig name="Screening" branch="060" types="Test" />
+    <ModuleConfig name="TaskManagement" branch="060" types="All" />
+    <ModuleConfig name="Test" branch="060" types="NA" />
+    <ModuleConfig name="ThirdPartySource" branch="060" types="NA" />
+    <ModuleConfig name="TPLCaseTracking" branch="060" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="060" types="All" />
+
+    --><!--64 Branch--><!--
+    <ModuleConfig name="Administration" branch="064" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="064" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="064" types="All" />
+    <ModuleConfig name="Core" branch="064" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="064" types="BAS" />
+    <ModuleConfig name="DrugRebate" branch="064" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="064" types="UX" />
+    <ModuleConfig name="DrugRebatePortal" branch="064" types="Reports" />
+    <ModuleConfig name="EDI" branch="064" types="BAS" />
+    <ModuleConfig name="EmployeeMgmt" branch="064" types="BAS" />
+    <ModuleConfig name="EmployeeMgmt" branch="064" types="UX" />
+    <ModuleConfig name="FileTransfer" branch="064" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="064" types="BAS" />
+    <ModuleConfig name="IdentityManagement" branch="064" types="All" />
+    <ModuleConfig name="Integration" branch="064" types="All" />
+    <ModuleConfig name="KansasOnly" branch="064" types="UX" />
+    <ModuleConfig name="ManagedCare" branch="064" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="064" types="UX" />
+    <ModuleConfig name="ManagedCarePortal" branch="064" types="Reports" />
+    <ModuleConfig name="MemberManagement" branch="064" types="All" />
+    <ModuleConfig name="MemberPortal" branch="064" types="UX" />
+    <ModuleConfig name="MemberPortal" branch="064" types="Reports" />
+    <ModuleConfig name="Notifications" branch="064" types="UX" />
+    <ModuleConfig name="Notifications" branch="064" types="BAS" />
+    <ModuleConfig name="PlanManagement" branch="064" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="064" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="064" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="064" types="Test" />
+    <ModuleConfig name="ProviderEnrollment" branch="064" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="064" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="064" types="K2_Workflow" />
+    <ModuleConfig name="ProviderPortal" branch="064" types="UX" />
+    <ModuleConfig name="ProviderPortal" branch="064" types="Reports" />
+    <ModuleConfig name="Screening" branch="064" types="BAS" />
+    <ModuleConfig name="Screening" branch="064" types="Test" />
+    <ModuleConfig name="TaskManagement" branch="064" types="All" />
+    <ModuleConfig name="Test" branch="064" types="NA" />
+    <ModuleConfig name="ThirdPartySource" branch="064" types="NA" />
+    <ModuleConfig name="TPLCaseTracking" branch="064" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="064" types="All" />-->
+
+    <!--Utilities-->
+    <!--<ModuleConfig name="Utilities" branch="Dev" types="NA" />
+    <ModuleConfig name="Utilities" branch="DevF" types="NA" />
+    <ModuleConfig name="Utilities" branch="039" types="NA" />
+    <ModuleConfig name="Utilities" branch="043" types="NA" />
+    <ModuleConfig name="Utilities" branch="047" types="NA" />
+    <ModuleConfig name="Utilities" branch="052" types="NA" />-->
+    <ModuleConfig name="Utilities" branch="056" types="NA" />
+    <!--<ModuleConfig name="Utilities" branch="064" types="NA" />-->
+
+    <!--Others-->
+    <ModuleConfig name="TaskManagement" branch="DevX" types="All" />
+    <ModuleConfig name="Test" branch="DevServiceTest" types="NA" />
+    <ModuleConfig name="Test" branch="PerformanceTesting" types="NA" />
+    <ModuleConfig name="Test" branch="ServiceTesting" types="NA" />
+    <ModuleConfig name="Test" branch="TestAutomation" types="NA" />
+
+    <!--Directories for C:\UA3\Tools-->
+    <!--<ModuleConfig name="K2CustomControl" branch="Source" types="NA" />
+    <ModuleConfig name="TFSWorkItem" branch="FourUpReportTests" types="NA" />-->
+    <!--<ModuleConfig name="Templates" branch="Batch" types="NA" />-->
+    <!--Directories for C:\UA3-->
+    <!--<ModuleConfig name="Tools" branch="Watchdog" types="NA" />
+    <ModuleConfig name="Code Samples" branch="SSISSample" types="NA" />-->
+  </ModuleConfigs>
+  <PackageConfigs />
   <FileTypes>
-    <FileType ext=".nuspec" />
+    <FileType ext=".cs" />
+    <FileType ext=".csproj" />
+    <FileType ext=".xml" />
+    <FileType ext=".sln" />
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
-    <ReplacementString qualifier="&lt;file src=&quot;lib\net451\" from="net451" to="net48" />
-    <ReplacementString qualifier="&lt;file src=&quot;lib\net452\" from="net452" to="net48" />
-    <ReplacementString qualifier="&lt;file src=&quot;lib\net45\" from="net45" to="net48" />
+    <!--ReplacementString for .sln-->
+    <ReplacementString qualifier="SccTeamFoundationServer" from="https://evrt-tfspro.houston.dxccorp.net/tfs/tfs01" to="https://PayerPortfolio.visualstudio.com/"/>
+    <ReplacementString qualifier="SccTeamFoundationServer" from="https://evrt-tfspro.houston.entsvcs.net/tfs/tfs01" to="https://PayerPortfolio.visualstudio.com/"/>
+    <ReplacementString qualifier="SccAuxPath0" from="https://evrt-tfspro.houston.dxccorp.net/tfs/tfs01" to="https://PayerPortfolio.visualstudio.com/" />
+    <ReplacementString qualifier="SccAuxPath0" from="https://evrt-tfspro.houston.entsvcs.net/tfs/tfs01" to="https://PayerPortfolio.visualstudio.com/" />
+    <ReplacementString qualifier="SccAuxPath1" from="https://evrt-tfspro.houston.dxccorp.net/tfs/tfs01" to="https://PayerPortfolio.visualstudio.com/" />
+    <ReplacementString qualifier="SccAuxPath2" from="https://evrt-tfspro.houston.dxccorp.net/tfs/tfs01" to="https://PayerPortfolio.visualstudio.com/" />
+    <ReplacementString qualifier="SccAuxPath3" from="https://evrt-tfspro.houston.dxccorp.net/tfs/tfs01" to="https://PayerPortfolio.visualstudio.com/" />
+    <ReplacementString qualifier="SccAuxPath4" from="https://evrt-tfspro.houston.dxccorp.net/tfs/tfs01" to="https://PayerPortfolio.visualstudio.com/" />
+    <ReplacementString qualifier="SccAuxPath5" from="https://evrt-tfspro.houston.dxccorp.net/tfs/tfs01" to="https://PayerPortfolio.visualstudio.com/" />
+    <ReplacementString qualifier="SccAuxPath6" from="https://evrt-tfspro.houston.dxccorp.net/tfs/tfs01" to="https://PayerPortfolio.visualstudio.com/" />
+    <ReplacementString qualifier="SccAuxPath7" from="https://evrt-tfspro.houston.dxccorp.net/tfs/tfs01" to="https://PayerPortfolio.visualstudio.com/" />
+    <ReplacementString qualifier="SccAuxPath8" from="https://evrt-tfspro.houston.dxccorp.net/tfs/tfs01" to="https://PayerPortfolio.visualstudio.com/" />
+    <ReplacementString qualifier="SccAuxPath9" from="https://evrt-tfspro.houston.dxccorp.net/tfs/tfs01" to="https://PayerPortfolio.visualstudio.com/" />
+    <ReplacementString qualifier="SccAuxPath10" from="https://evrt-tfspro.houston.dxccorp.net/tfs/tfs01" to="https://PayerPortfolio.visualstudio.com/" />
+    <ReplacementString qualifier="SccAuxPath11" from="https://evrt-tfspro.houston.dxccorp.net/tfs/tfs01" to="https://PayerPortfolio.visualstudio.com/" />
+    <!--ReplacementString for servive layer testing-->
+    <ReplacementString qualifier="TfsUri" from="https://evrt-tfspro.houston.dxccorp.net/tfs/TFS01" to="https://PayerPortfolio.visualstudio.com" />
+    <ReplacementString qualifier="TFSUrl" from="https://evrt-tfspro.houston.dxccorp.net/tfs/TFS01" to="https://PayerPortfolio.visualstudio.com" />
+    <!--ReplacementString for project file-->
+    <ReplacementString qualifier="SccAuxPath" from="https://evrt-tfspro.houston.dxccorp.net/tfs/tfs01" to="https://PayerPortfolio.visualstudio.com/" />
+    <!--ReplacementString for xml file-->
+    <ReplacementString qualifier="TfsServer" from="https://evrt-tfspro.houston.dxccorp.net/tfs" to="https://PayerPortfolio.visualstudio.com" />
+    <ReplacementString qualifier="TfsServer" from="https://evrt-tfspro.houston.entsvcs.net/tfs" to="https://PayerPortfolio.visualstudio.com" />
+    <!--ReplacementString for Test cs file-->
+    <ReplacementString qualifier="return" from="https://evrt-tfspro.houston.dxccorp.net/tfs" to="https://PayerPortfolio.visualstudio.com" />
+    <ReplacementString qualifier="DataSource" from="https://evrt-tfspro.houston.entsvcs.net/tfs/TFS01" to="https://PayerPortfolio.visualstudio.com/"/>
+    <ReplacementString qualifier="Microsoft.VisualStudio.TestTools.DataSource.TestCase" from="https://evrt-tfspro.houston.entsvcs.net/tfs/tfs01" to="https://PayerPortfolio.visualstudio.com"/>
+    <ReplacementString qualifier="AppURL" from="https://evrt-tfspro.houston.entsvcs.net/tfs" to="https://PayerPortfolio.visualstudio.com/"/>
+    <ReplacementString qualifier="TfsUri" from="https://evrt-tfspro.houston.entsvcs.net/tfs/TFS01" to="https://PayerPortfolio.visualstudio.com" />
+    <ReplacementString qualifier="TFSUrl" from="https://evrt-tfspro.houston.entsvcs.net/tfs/TFS01" to="https://PayerPortfolio.visualstudio.com" />
   </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
-  <TfsWorkspace>UA3</TfsWorkspace>
-  <TFSUserName>AzureTFSUserName</TFSUserName>
-  <TFSPassword>Password</TFSPassword>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+  <TfsWorkspace>IN5CG5074M98_UAD</TfsWorkspace>
+  <TFSUserName>rajgurum</TFSUserName>
+  <TFSPassword>Password@1234</TFSPassword>
 </RefactorConfig>
