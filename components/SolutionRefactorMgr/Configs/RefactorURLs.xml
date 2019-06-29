@@ -76,4 +76,6 @@
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
   <TfsWorkspace>ADIX1</TfsWorkspace>
+  <TFSUserName>AzureTFSUserName</TFSUserName>
+  <TFSPassword>Password</TFSPassword>
 </RefactorConfig>

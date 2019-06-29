@@ -7,6 +7,7 @@ using System;
 using System.IO;
 using System.Xml;
 using System.Diagnostics;
+using System.Net;
 
 namespace SolutionRefactorMgr
 {
@@ -94,7 +95,15 @@ namespace SolutionRefactorMgr
             if (refactorConfig.UseSourceControl)
             {
                 LogMessage(0, string.Format("Initializing connection to TFS..."));
-                tpc = new TfsTeamProjectCollection(new Uri(refactorConfig.TfsServer));
+                if (refactorConfig.TargetTFS == "OnPremise")
+                {
+                    tpc = new TfsTeamProjectCollection(new Uri(refactorConfig.TfsServer));
+                }
+                else if(refactorConfig.TargetTFS == "Azure")
+                {
+                    tpc = AuthenticateAzureTFS();
+                }
+
                 VersionControlServer versionControl = tpc.GetService<VersionControlServer>();
                 versionControl.NonFatalError += OnNonFatalError;
                 versionControl.Getting += OnGetting;
@@ -107,6 +116,17 @@ namespace SolutionRefactorMgr
                 Workstation.Current.EnsureUpdateWorkspaceInfoCache(versionControl, versionControl.AuthorizedUser);
                 LogMessage(0, string.Format("Successfully connected to TFS"));
             }
+        }
+
+        private static TfsTeamProjectCollection AuthenticateAzureTFS()
+        {
+            NetworkCredential credential = new NetworkCredential(refactorConfig.TFSUserName, refactorConfig.TFSPassword);
+            BasicAuthCredential basicCredntial = new BasicAuthCredential(credential);
+            TfsClientCredentials tfsCredntial = new TfsClientCredentials(basicCredntial);
+            tpc = new TfsTeamProjectCollection(new Uri(refactorConfig.TfsServer), tfsCredntial);
+            tfsCredntial.AllowInteractive = false;
+            tpc.EnsureAuthenticated();
+            return tpc;
         }
 
         private static void LoadConfiguration()
@@ -460,7 +480,18 @@ namespace SolutionRefactorMgr
             string sourcePath = refactorConfig.SourceDir + module.Name + "\\" + module.Branch;
             if (type != Enumerations.ProjectTypes.NA)
             {
-                sourcePath += "\\" + type.ToString();
+                if (type == Enumerations.ProjectTypes.K2_Workflow)
+                 {
+                    sourcePath += "\\" + type.ToString().Replace("_", " ");
+                }
+                else if(type == Enumerations.ProjectTypes.ProviderManagement_EnrollmentTestClient)
+                {
+                    sourcePath += "\\" + type.ToString().Replace("_", ".");
+                }
+                else
+                {
+                    sourcePath += "\\" + type.ToString();
+                }
             }
 
             string destPath = sourcePath;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true">
+<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" targetTFS ="OnPremise">>
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs />
   <PackageConfigs>
@@ -43,4 +43,6 @@
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
   <TfsWorkspace>UA3</TfsWorkspace>
+  <TFSUserName>AzureTFSUserName</TFSUserName>
+  <TFSPassword>Password</TFSPassword>
 </RefactorConfig>

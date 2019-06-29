@@ -44,4 +44,6 @@
   </ReplacementStrings>
   <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
   <TfsWorkspace>BIBWOS1ISV_1</TfsWorkspace>
+  <TFSUserName>AzureTFSUserName</TFSUserName>
+  <TFSPassword>Password</TFSPassword>
 </RefactorConfig>

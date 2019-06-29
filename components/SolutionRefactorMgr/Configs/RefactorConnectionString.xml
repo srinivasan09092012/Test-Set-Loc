@@ -53,5 +53,6 @@
   <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
   <!--NOTE: YOU MUST PUT YOUR WORKSPACE NAME IN HERE IF ITS NOT UA3-->
   <TfsWorkspace>BUSANELL1</TfsWorkspace>
-
+  <TFSUserName>AzureTFSUserName</TFSUserName>
+  <TFSPassword>Password</TFSPassword>
 </RefactorConfig>

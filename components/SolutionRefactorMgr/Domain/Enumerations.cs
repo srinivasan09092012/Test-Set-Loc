@@ -20,7 +20,14 @@ namespace SolutionRefactorMgr.Domain
             EAI,
             NA,
             Reports,
-            UX
+            UX,
+            SolutionRefactorMgr,
+            K2_Workflow,
+            DB,
+            Test,
+            BASEventsTestingUtil,
+            X12OOPViewer,
+            ProviderManagement_EnrollmentTestClient
         }
     }
 }

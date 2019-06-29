@@ -23,6 +23,9 @@ namespace SolutionRefactorMgr.Domain
         [XmlAttribute("useSourceControl")]
         public bool UseSourceControl { get; set; }
 
+        [XmlAttribute("targetTFS")]
+        public string TargetTFS { get; set; }
+
         [XmlAttribute("refactorPartialContent")]
         public bool RefactorPartialContent { get; set; }
 
@@ -42,6 +45,10 @@ namespace SolutionRefactorMgr.Domain
         public string TfsServer { get; set; }
 
         public string TfsWorkspace { get; set; }
+
+        public string TFSUserName { get; set; }
+
+        public string TFSPassword { get; set; }
 
         public void Validate()
         {

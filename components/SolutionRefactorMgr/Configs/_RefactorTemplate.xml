@@ -66,4 +66,12 @@ RefactorConfig - Base processing parameters:
    TfsWorkspace - local TFS workspace of person running this solution.  Value optional, but might be needed if checkout not allowed without it.
   -->
   <TfsWorkspace></TfsWorkspace>
+  <!--
+   TFSUserName - User name to connect to AzureDevOps. This can be an alternative credential name or Name of the PAT key. Value is mandatory.
+  -->
+  <TFSUserName>AzureTFSUserName</TFSUserName>
+  <!--
+   TFSPassword - Password to connect to AzureDevOps. This can be an alternative credential password or the PAT key. Value is mandatory.
+  -->
+  <TFSPassword>Password</TFSPassword>  
 </RefactorConfig>
