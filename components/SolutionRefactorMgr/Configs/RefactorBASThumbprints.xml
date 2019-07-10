@@ -41,7 +41,7 @@
   <ReplacementStrings>
     <ReplacementString qualifier="thumbprint=&quot;4c1bb7b90fdb123dcbe30efa38ccae44fcf355ad&quot; /&gt;" from="thumbprint=&quot;4c1bb7b90fdb123dcbe30efa38ccae44fcf355ad&quot; /&gt;" thumbprint="thumbprint=&quot;4c1bb7b90fdb123dcbe30efa38ccae44fcf355ad&quot; /&gt;" to="thumbprint=&quot;4c1bb7b90fdb123dcbe30efa38ccae44fcf355ad&quot; /&gt;[NEWLINE]              &lt;add name=&quot;DXC Technology HPP Assertion Signing Certificate&quot; thumbprint=&quot;aa2ab8f7dd5dc738a5bb8ddad64ecc4e4a80ac8d&quot; /&gt;" />
   </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace>USCND6195CFQ</TfsWorkspace>
   <TFSUserName>AzureTFSUserName</TFSUserName>
   <TFSPassword>Password</TFSPassword>  

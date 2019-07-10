@@ -74,7 +74,7 @@
     <ReplacementString qualifier="ELabs.pubxml" from="ELabs.pubxml" to="Azure.pubxml" />
     <ReplacementString qualifier="DevELabsApp.config" from="DevELabsApp.config" to="DevAzureApp.config" />
   </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace>ADIX1</TfsWorkspace>
   <TFSUserName>AzureTFSUserName</TFSUserName>
   <TFSPassword>Password</TFSPassword>

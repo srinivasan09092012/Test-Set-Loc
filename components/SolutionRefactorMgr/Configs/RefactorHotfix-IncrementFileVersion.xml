@@ -43,7 +43,7 @@
     <!-- Assembly Versions in Assembly Info file -->
     <ReplacementString qualifier="AssemblyFileVersion(" from="17.36.2.0" to="17.36.2.1" />
   </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace></TfsWorkspace>
   <TFSUserName>AzureTFSUserName</TFSUserName>
   <TFSPassword>Password</TFSPassword>

@@ -138,7 +138,7 @@
     <ReplacementString qualifier="HP.*.dll" from="HP.*.dll" to="HSP.*.dll" />
     <ReplacementString qualifier="hpeDbConnection" from="hpeDbConnection" to="hpsDbConnection" />
   </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace></TfsWorkspace>
   <TFSUserName>AzureTFSUserName</TFSUserName>
   <TFSPassword>Password</TFSPassword>

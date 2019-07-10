@@ -377,18 +377,21 @@
     
     <!--Others-->
     <ModuleConfig name="TaskManagement" branch="DevX" types="All" />   
-    <ModuleConfig name="Test" branch="DevServiceTest" types="NA" />    
+    <ModuleConfig name="Test" branch="DevServiceTest" types="NA" />
+    <ModuleConfig name="Test" branch="Main" types="NA" />
     <ModuleConfig name="Test" branch="PerformanceTesting" types="NA" />    
     <ModuleConfig name="Test" branch="ServiceTesting" types="NA" />    
-    <ModuleConfig name="Test" branch="TestAutomation" types="NA" />        
-    
+    <ModuleConfig name="Test" branch="TestAutomation" types="NA" />
+
+
     <!--Directories for C:\UA3\Tools-->
-    <!--<ModuleConfig name="K2CustomControl" branch="Source" types="NA" />
-    <ModuleConfig name="TFSWorkItem" branch="FourUpReportTests" types="NA" />-->
-    <!--<ModuleConfig name="Templates" branch="Batch" types="NA" />-->
+    <ModuleConfig name="K2CustomControl" branch="Source" types="NA" />
+    <ModuleConfig name="TFSWorkItem" branch="FourUpReportTests" types="NA" />
+    <ModuleConfig name="Templates" branch="Batch" types="NA" />
     <!--Directories for C:\UA3-->
-    <!--<ModuleConfig name="Tools" branch="Watchdog" types="NA" />
-    <ModuleConfig name="Code Samples" branch="SSISSample" types="NA" />-->
+    <ModuleConfig name="Tools" branch="TFSUserMigration" types="NA" />
+    <ModuleConfig name="Code Samples" branch="SSISSample" types="NA" />
+    <ModuleConfig name="Code Samples" branch="SSISSample" types="NA" />
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>

@@ -45,7 +45,7 @@
     <ReplacementString qualifier="Packages\_Source\StyleCop.4.7" from="Packages\_Source\StyleCop.4.7\Visual-StyleCop.MSBuild.targets" to="Packages\StyleCop.5.0\StyleCop.MSBuild.targets" />
     <ReplacementString qualifier="Packages\StyleCop.4.7" from="Packages\StyleCop.4.7\Visual-StyleCop.MSBuild.targets" to="Packages\StyleCop.5.0\StyleCop.MSBuild.targets" />
   </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace>US5CB2111V0J</TfsWorkspace>
   <TFSUserName>AzureTFSUserName</TFSUserName>
   <TFSPassword>Password</TFSPassword>

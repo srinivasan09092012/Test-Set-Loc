@@ -45,7 +45,7 @@
     <ReplacementString qualifier="InRule.Repository, Version=5.0.13.39" from="5.0.13.39" to="5.0.25.101" />
     <ReplacementString qualifier="InRule.Runtime, Version=5.0.13.39" from="5.0.13.39" to="5.0.25.101" />
   </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace></TfsWorkspace>
   <TFSUserName>AzureTFSUserName</TFSUserName>
   <TFSPassword>Password</TFSPassword>

@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
@@ -57,7 +57,7 @@ Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 7
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://evrt-tfspro.houston.entsvcs.net/tfs/tfs01
+		SccTeamFoundationServer = https://PayerPortfolio.visualstudio.com/
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = UA3.CodeFactory.Core.Tests\\UA3.CodeFactory.Core.Tests.csproj
 		SccProjectName1 = UA3.CodeFactory.Core.Tests

@@ -112,7 +112,7 @@
     <ReplacementString qualifier="pium51_k60" from="pium51_k60" to="pm51_k" />
     <ReplacementString qualifier="DATABASE=UA3_PIUM" from="DATABASE=UA3_PIUM" to="DATABASE=medicaid" />      
   </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace></TfsWorkspace>
   <TFSUserName>AzureTFSUserName</TFSUserName>
   <TFSPassword>Password</TFSPassword>  

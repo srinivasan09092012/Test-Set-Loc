@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" refactorPartialContent="true">
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs>
@@ -50,7 +50,7 @@
     <ReplacementString filename="app.release.config" qualifier="connectionString=" from ="connectionString=(.*)" to="TenantConfig"
                      connectionString=  "connectionString=&quot;Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = mapsstgshrdbo01.mapshc.com)(PORT = 1521))(CONNECT_DATA = (SERVER = SHARED)(SERVICE_NAME = STG4_PDBA)));User ID=RW_TENANT;Password=TEN_BOiYI18;Self Tuning=false;PERSIST SECURITY INFO=True&quot;" providerName="providerName=&quot;Oracle.ManagedDataAccess.Client&quot;"/>
   </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <!--NOTE: YOU MUST PUT YOUR WORKSPACE NAME IN HERE IF ITS NOT UA3-->
   <TfsWorkspace>BUSANELL1</TfsWorkspace>
   <TFSUserName>AzureTFSUserName</TFSUserName>

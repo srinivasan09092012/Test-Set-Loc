@@ -42,7 +42,7 @@
     <ReplacementString qualifier="key=$quot;InRule.Password" from="Password2015" to="Password2017" />
     <ReplacementString qualifier="key=$quot;InRule.Password" from="password" to="Password2017" />
   </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace>BIBWOS1ISV_1</TfsWorkspace>
   <TFSUserName>AzureTFSUserName</TFSUserName>
   <TFSPassword>Password</TFSPassword>

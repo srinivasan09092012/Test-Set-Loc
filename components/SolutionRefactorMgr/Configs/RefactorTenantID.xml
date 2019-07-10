@@ -47,7 +47,7 @@
     <ReplacementString qualifier="081E354B-2184-47FE-B69D-3C5229D8BCCF" from="081E354B-2184-47FE-B69D-3C5229D8BCCF" to="77b50320-5f06-5740-84f4-18d4a8cda51d" />
     <ReplacementString qualifier="081e354b-2184-47fe-b69d-3c5229d8bccf" from="081e354b-2184-47fe-b69d-3c5229d8bccf" to="77b50320-5f06-5740-84f4-18d4a8cda51d" />
   </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace>BIBWOS1ISV_1</TfsWorkspace>
   <TFSUserName>AzureTFSUserName</TFSUserName>
   <TFSPassword>Password</TFSPassword>

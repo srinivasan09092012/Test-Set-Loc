@@ -80,7 +80,7 @@
     <ReplacementString qualifier="Copyright (c) 2016" from="2016" to="2018" />
     <ReplacementString qualifier="Copyright (c) 2017" from="2017" to="2018" />
   </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace>BIBWOS1ISV_1</TfsWorkspace>
   <TFSUserName>AzureTFSUserName</TFSUserName>
   <TFSPassword>Password</TFSPassword>

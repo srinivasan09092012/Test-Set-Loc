@@ -43,7 +43,7 @@
     <ReplacementString qualifier="HP.HSP.UA3" from="18.4.60" to="19.1.64" />
     <ReplacementString qualifier="HPE.HSP.UA3" from="18.4.60" to="19.1.64" />
   </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace>IN5CG6434WHL_test</TfsWorkspace>
   <TFSUserName>AzureTFSUserName</TFSUserName>
   <TFSPassword>Password</TFSPassword>

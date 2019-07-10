@@ -49,7 +49,7 @@
     <ReplacementString qualifier="&lt;file src=&quot;lib\net45\" from="net45" to="net48" />
 
   </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace>IN5CG6434WHL_test</TfsWorkspace>
   <TFSUserName>AzureTFSUserName</TFSUserName>
   <TFSPassword>Password</TFSPassword>

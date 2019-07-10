@@ -39,7 +39,7 @@
     <LineDelete contains="&lt;add key=&quot;InRule."/>
   </LineDeletes>
   <ReplacementStrings />
-  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace>BIBWOS1ISV_1</TfsWorkspace>
   <TFSUserName>AzureTFSUserName</TFSUserName>
   <TFSPassword>Password</TFSPassword>

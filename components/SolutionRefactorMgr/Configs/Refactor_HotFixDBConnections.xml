@@ -76,7 +76,7 @@
     <ReplacementString qualifier="Ua3tplKs_11" from="Ua3tplKs_11" to="tplKs_ngf11" />
     <ReplacementString qualifier="tPlpCy_y6" from="tPlpCy_y6" to="tPl_pCy_wey36" />
   </ReplacementStrings>
-  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace>UA3</TfsWorkspace>
   <TFSUserName>AzureTFSUserName</TFSUserName>
   <TFSPassword>Password</TFSPassword>

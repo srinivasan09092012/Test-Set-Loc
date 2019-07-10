@@ -61,7 +61,7 @@ RefactorConfig - Base processing parameters:
   <!--
    TfsServer - Location of the TFS server used by these files.
   -->
-  <TfsServer>https://evrt-tfspro.houston.dxccorp.net/tfs</TfsServer>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <!--
    TfsWorkspace - local TFS workspace of person running this solution.  Value optional, but might be needed if checkout not allowed without it.
   -->

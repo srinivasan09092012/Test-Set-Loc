@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2003
@@ -56,7 +56,7 @@ Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 4
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://evrt-tfspro.houston.dxccorp.net/tfs/tfs01
+		SccTeamFoundationServer = https://PayerPortfolio.visualstudio.com/
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = JsonConversion\\ProviderConversion.csproj
 		SccProjectName1 = JsonConversion
