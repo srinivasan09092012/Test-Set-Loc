@@ -2,20 +2,11 @@
 using HPE.HSP.UA3.Core.API.Logger.Interfaces;
 using Microsoft.Web.Administration;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Management;
-using System.Net;
-using System.Net.Http;
-using System.ServiceProcess;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Watchdog.Domain;
 using Watchdog.Monitor;
-using HP.HSP.UA3.IdentityManagement.UX.Data;
-using HP.HSP.UA3.IdentityManagement.UX.Data.User;
 using System.Diagnostics;
 
 namespace Watchdog.EnvironmentMonitor

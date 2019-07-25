@@ -37,57 +37,28 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HP.HSP.UA3.IdentityManagement.UX.Data">
-      <HintPath>..\..\..\..\IdentityManagement\Dev\UX\HP.HSP.UA3.IdentityManagement.UX.Data\bin\Debug\HP.HSP.UA3.IdentityManagement.UX.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Interface, Version=19.2.70.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Source\Packages\HPE.HSP.UA3.Core.API.AuthManagement.19.2.70\lib\net451\HPE.HSP.UA3.Core.API.AuthManagement.Interface.dll</HintPath>
-    </Reference>
-    <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Providers, Version=19.2.70.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Source\Packages\HPE.HSP.UA3.Core.API.AuthManagement.19.2.70\lib\net451\HPE.HSP.UA3.Core.API.AuthManagement.Providers.dll</HintPath>
-    </Reference>
     <Reference Include="HPE.HSP.UA3.Core.API.Logger, Version=19.2.70.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Source\Packages\HPE.HSP.UA3.Core.API.Logger.19.2.70\lib\net451\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
-    </Reference>
-    <Reference Include="IdentityModel, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Source\Packages\IdentityModel.2.6.0\lib\net45\IdentityModel.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.19.2.70\lib\net451\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Source\Packages\HPE.HSP.UA3.Core.API.Logger.19.2.70\lib\net451\log4net.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.19.2.70\lib\net451\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Source\Packages\HPE.HSP.UA3.Core.API.Logger.19.2.70\lib\net451\Microsoft.Practices.Unity.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.19.2.70\lib\net451\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity.Configuration, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Source\Packages\HPE.HSP.UA3.Core.API.Logger.19.2.70\lib\net451\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.19.2.70\lib\net451\Microsoft.Practices.Unity.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Source\Packages\HPE.HSP.UA3.Core.API.Logger.19.2.70\lib\net451\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Source\Packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.19.2.70\lib\net451\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
-    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=4.0.40306.1554, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Source\Packages\System.IdentityModel.Tokens.Jwt.4.0.4.403061554\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
-    </Reference>
     <Reference Include="System.Management" />
     <Reference Include="System.Net.Http, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\..\Source\Packages\System.Net.Http.4.3.1\lib\net46\System.Net.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Source\Packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Source\Packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Source\Packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Source\Packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -103,32 +74,32 @@
     <Compile Include="ProjectInstaller.Designer.cs">
       <DependentUpon>ProjectInstaller.cs</DependentUpon>
     </Compile>
-    <Compile Include="Service6.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Service6.Designer.cs">
-      <DependentUpon>Service6.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WatchDog-WindowsService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WatchDog-WindowsService.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Watchdog\Watchdog.csproj">
-      <Project>{02399ef3-2bb2-40e7-a653-6395c995b6eb}</Project>
-      <Name>Watchdog</Name>
-    </ProjectReference>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ProjectInstaller.resx">
       <DependentUpon>ProjectInstaller.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Watchdog\Watchdog.csproj">
+      <Project>{02399ef3-2bb2-40e7-a653-6395c995b6eb}</Project>
+      <Name>Watchdog</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
