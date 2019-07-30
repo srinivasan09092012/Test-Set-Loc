@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Inline" includeFolderNames="true" includeFileNames="true" includeFileContents="true" useSourceControl="true" targetTFS ="Azure">
+    <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+<!--    <ModuleConfig name="_ProjectTemplate" branch="Dev" types="All" />
+    <ModuleConfig name="Administration" branch="Dev" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" /> -->
+    <ModuleConfig name="Core" branch="Dev" types="All" />
+<!--    <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="Dev" types="All" />
+    <ModuleConfig name="EDI" branch="Dev" types="All" />
+    <ModuleConfig name="eID" branch="Dev" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="Dev" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Integration" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="Dev" types="All" />
+    <ModuleConfig name="MemberManagement" branch="Dev" types="All" />
+    <ModuleConfig name="MemberPortal" branch="Dev" types="All" />
+    <ModuleConfig name="Notifications" branch="Dev" types="All" />
+    <ModuleConfig name="PlanManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrityCT" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="Dev" types="All" />
+    <ModuleConfig name="Screening" branch="Dev" types="All" />
+    <ModuleConfig name="TaskManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
+    <ModuleConfig name="Utilities" branch="Dev" types="NA" /> -->
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes>
+    <FileType ext=".csproj" />
+    <FileType ext=".bat" />
+    <FileType ext=".config" />
+  </FileTypes>
+  <LineDeletes />
+  <ReplacementStrings>
+
+    <!-- Framework Version in Project Files -->
+    <ReplacementString qualifier="&lt;TargetFrameworkVersion&gt;v4.5.2&lt;/TargetFrameworkVersion&gt;" from="&lt;TargetFrameworkVersion&gt;v4.5.2&lt;/TargetFrameworkVersion&gt;" to="&lt;TargetFrameworkVersion&gt;v4.8&lt;/TargetFrameworkVersion&gt;" />
+    <ReplacementString qualifier="&lt;TargetFrameworkVersion&gt;v4.5.1&lt;/TargetFrameworkVersion&gt;" from="&lt;TargetFrameworkVersion&gt;v4.5.1&lt;/TargetFrameworkVersion&gt;" to="&lt;TargetFrameworkVersion&gt;v4.8&lt;/TargetFrameworkVersion&gt;" />
+    <ReplacementString qualifier="&lt;TargetFrameworkVersion&gt;v4.5&lt;/TargetFrameworkVersion&gt;" from="&lt;TargetFrameworkVersion&gt;v4.5&lt;/TargetFrameworkVersion&gt;" to="&lt;TargetFrameworkVersion&gt;v4.8&lt;/TargetFrameworkVersion&gt;" />
+    <ReplacementString qualifier="&lt;TargetFrameworkVersion&gt;v4.6&lt;/TargetFrameworkVersion&gt;" from="&lt;TargetFrameworkVersion&gt;v4.6&lt;/TargetFrameworkVersion&gt;" to="&lt;TargetFrameworkVersion&gt;v4.8&lt;/TargetFrameworkVersion&gt;" />
+
+    <!-- Folder Names in Copy Assemblies Batch and Project Files -->
+<!--    <ReplacementString qualifier="19.2.70\lib\net451" from="19.2.70\lib\net451" to="19.2.70.1\lib\net48" />
+    <ReplacementString qualifier="19.2.70\lib\net452" from="19.2.70\lib\net452" to="19.2.70.1\lib\net48" />
+    <ReplacementString qualifier="19.2.70\lib\net45" from="19.2.70\lib\net45" to="19.2.70.1\lib\net48" />
+    <ReplacementString qualifier="19.2.70\lib\net46" from="19.2.70\lib\net46" to="19.2.70.1\lib\net48" />
+    <ReplacementString qualifier=".19.2.70\&quot;" from=".19.2.70\&quot;" to=".19.2.70.1\&quot;" />
+    <ReplacementString qualifier=".19.2.70&quot;" from=".19.2.70&quot;" to=".19.2.70.1&quot;" />
+    <ReplacementString qualifier=".19.2.70.nupkg" from=".19.2.70.nupkg" to=".19.2.70.1.nupkg" /> -->
+
+    <ReplacementString qualifier="19.2.70" from="19.2.70" to="19.2.70.1" />
+    <ReplacementString qualifier="19.2.70.1.0" from="19.2.70.1.0" to="19.2.70.0" />
+    <ReplacementString qualifier="19.2.70.1" from="net451" to="net48" />
+    <ReplacementString qualifier="19.2.70.1" from="net452" to="net48" />
+    <ReplacementString qualifier="19.2.70.1" from="net45" to="net48" />
+    <ReplacementString qualifier="19.2.70.1" from="net46" to="net48" />
+
+
+    <!-- Package Names in Packages.config Files -->
+<!--    <ReplacementString qualifier="version=&quot;19.2.70&quot; targetFramework=&quot;net451&quot;" from="version=&quot;19.2.70&quot; targetFramework=&quot;net451&quot;" to="version=&quot;19.2.70.1&quot; targetFramework=&quot;net48&quot;" />
+    <ReplacementString qualifier="version=&quot;19.2.70&quot; targetFramework=&quot;net452&quot;" from="version=&quot;19.2.70&quot; targetFramework=&quot;net452&quot;" to="version=&quot;19.2.70.1&quot; targetFramework=&quot;net48&quot;" />
+    <ReplacementString qualifier="version=&quot;19.2.70&quot; targetFramework=&quot;net45&quot;" from="version=&quot;19.2.70&quot; targetFramework=&quot;net45&quot;" to="version=&quot;19.2.70.1&quot; targetFramework=&quot;net48&quot;" />
+    <ReplacementString qualifier="version=&quot;19.2.70&quot; targetFramework=&quot;net46&quot;" from="version=&quot;19.2.70&quot; targetFramework=&quot;net46&quot;" to="version=&quot;19.2.70.1&quot; targetFramework=&quot;net48&quot;" /> -->
+
+    <!-- Folder Names in Nuspec Files -->
+    <ReplacementString qualifier="&lt;file src=&quot;lib\net451\HP" from="net451" to="net48" />
+    <ReplacementString qualifier="&lt;file src=&quot;lib\net452\HP" from="net452" to="net48" />
+    <ReplacementString qualifier="&lt;file src=&quot;lib\net45\HP" from="net45" to="net48" />
+    <ReplacementString qualifier="&lt;file src=&quot;lib\net46\HP" from="net46" to="net48" />
+
+    
+  </ReplacementStrings>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+  <TfsWorkspace>UA3</TfsWorkspace>
+  <TFSUserName></TFSUserName>
+  <TFSPassword></TFSPassword>
+</RefactorConfig>
