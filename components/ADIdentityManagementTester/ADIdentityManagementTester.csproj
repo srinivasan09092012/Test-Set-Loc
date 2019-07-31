@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>ADIdentityManagementTester</RootNamespace>
     <AssemblyName>ADIdentityManagementTester</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -38,13 +38,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces, Version=19.2.70.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.IdentityManagement.19.2.70\lib\net451\HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.dll</HintPath>
+      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.IdentityManagement.19.2.70\lib\net48\HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="HPE.HSP.UA3.Core.API.IdentityManagement.Providers, Version=19.2.70.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.IdentityManagement.19.2.70\lib\net451\HPE.HSP.UA3.Core.API.IdentityManagement.Providers.dll</HintPath>
+      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.IdentityManagement.19.2.70\lib\net48\HPE.HSP.UA3.Core.API.IdentityManagement.Providers.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.IdentityManagement.19.2.70\lib\net451\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.IdentityManagement.19.2.70\lib\net48\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
