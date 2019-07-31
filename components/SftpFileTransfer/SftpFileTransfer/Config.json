@@ -1,0 +1,29 @@
+{
+  "SftpConfig": {
+    "ServerIP": "10.0.0.8",
+    "UserName": "vtcfguser",
+    "Password": "ShrTh3!nstr0",
+    "PortNo": 22,
+    "SshHostKeyFingerprint": "ssh-rsa 2048 NTFvEOmbu8Aa/W3KXpnTDfQgXctIlwB8PXADt7EbHUI="
+  },
+  "DownloadFromSftpConfig": [
+    {
+      "SftpPathWithoutFileName": "/vtcfgupload/Test/",
+      "FileServerPathWithoutFileName": "c:\\temp\\sftptest\\"
+    },
+    {
+      "SftpPathWithoutFileName": "/vtcfgupload/Test1/",
+      "FileServerPathWithoutFileName": "c:\\temp\\sftptest1\\"
+    }
+  ],
+  "UploadToSftpConfig": [
+    {
+      "SftpPathWithoutFileName": "/vtcfgupload/AmalTest/",
+      "FileServerPathWithoutFileName": "c:\\temp\\sftptest\\"
+    },
+    {
+      "SftpPathWithoutFileName": "/vtcfgupload/AmalTest1/",
+      "FileServerPathWithoutFileName": "c:\\temp\\sftptest1\\"
+    }
+  ]
+}
