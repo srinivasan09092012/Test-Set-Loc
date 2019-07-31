@@ -28,4 +28,13 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FC159509-F3C6-4A97-B490-15927730EA00}
 	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dev.azure.com/payerportfolio
+		SccProjectUniqueName0 = SftpFileTransfer\\FileTransferSFTP.csproj
+		SccProjectName0 = SftpFileTransfer
+		SccLocalPath0 = SftpFileTransfer
+		SccLocalPath1 = .
+	EndGlobalSection
 EndGlobal
