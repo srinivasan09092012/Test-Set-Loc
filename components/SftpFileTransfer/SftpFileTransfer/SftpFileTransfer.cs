@@ -20,7 +20,7 @@ namespace SftpFileTransfer
                 Password = config.SftpConfig.Password,
                 SshHostKeyFingerprint = config.SftpConfig.SshHostKeyFingerprint
             };
-            foreach (FileTransferModel filetransferConfig in config.DownloadFromSftpConfig)
+            Parallel.ForEach(config.DownloadFromSftpConfig, (filetransferConfig)=>
             {
                 if (false == filetransferConfig.FileServerPathWithoutFileName.EndsWith(@"\"))
                     filetransferConfig.FileServerPathWithoutFileName += @"\";
@@ -28,14 +28,17 @@ namespace SftpFileTransfer
                     filetransferConfig.SftpPathWithoutFileName += @"/";
                 try
                 {
+                    Program.LogInformation("\nDownload from Path=" + filetransferConfig.SftpPathWithoutFileName + "\t to" + filetransferConfig.FileServerPathWithoutFileName + " - Start");
                     StartSftpDownloadSession(sessionOptions, filetransferConfig);
-
-                }catch(Exception ex)
+                    Program.LogInformation("\nDownload from Path=" + filetransferConfig.SftpPathWithoutFileName + "\t to" + filetransferConfig.FileServerPathWithoutFileName + " - End");
+                }
+                catch (Exception ex)
                 {
-                    Program.LogInformation("Download from: " + filetransferConfig.SftpPathWithoutFileName + "\t To: " + filetransferConfig.FileServerPathWithoutFileName+ "\t***Failed***");
+                    Program.LogInformation("Download from: " + filetransferConfig.SftpPathWithoutFileName + "\t To: " + filetransferConfig.FileServerPathWithoutFileName + "\t***Failed***");
                     Program.LogInformation(ex.Message + "\n" + ex.StackTrace);
                 }
-            }
+            });
+
             return true;
         }
         public bool UploadFiles(SftpFileTransferModel config)
@@ -48,23 +51,23 @@ namespace SftpFileTransfer
                 Password = config.SftpConfig.Password,
                 SshHostKeyFingerprint = config.SftpConfig.SshHostKeyFingerprint
             };
-
-            foreach (FileTransferModel filetransferConfig in config.DownloadFromSftpConfig)
-            {
+            Parallel.ForEach(config.UploadToSftpConfig, (filetransferConfig)=>{
                 if (false == filetransferConfig.FileServerPathWithoutFileName.EndsWith(@"\"))
                     filetransferConfig.FileServerPathWithoutFileName += @"\";
                 if (false == filetransferConfig.SftpPathWithoutFileName.EndsWith(@"/"))
                     filetransferConfig.SftpPathWithoutFileName += @"/";
                 try
                 {
+                    Program.LogInformation("\nUpload from Path=" + filetransferConfig.FileServerPathWithoutFileName + "\t to" + filetransferConfig.SftpPathWithoutFileName + " - Start");
                     StartSftpUploadSession(sessionOptions, filetransferConfig);
+                    Program.LogInformation("\nUpload from Path=" + filetransferConfig.FileServerPathWithoutFileName + "\t to" + filetransferConfig.SftpPathWithoutFileName + " - End");
                 }
                 catch (Exception ex)
                 {
                     Program.LogInformation("Upload from path from: " + filetransferConfig.FileServerPathWithoutFileName + "\t To: " + filetransferConfig.SftpPathWithoutFileName + "\t***Failed***");
                     Program.LogInformation(ex.Message + "\n" + ex.StackTrace);
                 }
-            }
+            });
             return true;
         }
         void StartSftpDownloadSession(SessionOptions sessionOptions, FileTransferModel filetransferConfig)
@@ -73,13 +76,17 @@ namespace SftpFileTransfer
             {
                 session.Open(sessionOptions);
                 RemoteDirectoryInfo remoteDirectoryInfo = session.ListDirectory(filetransferConfig.SftpPathWithoutFileName);
-                foreach (RemoteFileInfo remoteFileInfo in remoteDirectoryInfo.Files)
+                Parallel.ForEach(remoteDirectoryInfo.Files, (remoteFileInfo) =>
                 {
                     string destinationUncPathWithFileName = "";
 
                     //ignore if subdirectory or parent directory
                     if (remoteFileInfo.IsDirectory == true)
-                        continue;
+                        return;
+
+                    //skip if filename ends with .filepart. ie, file is partially uploaded or uploading
+                    if (true == remoteFileInfo.Name.EndsWith(".filepart"))
+                        return;
 
                     //when same filename already exist on destination path, transfer file with added hh-mm-sec-milliseconds end of file
                     if (true == IsSameFileNameExistOnDestinationFileServerPath(remoteFileInfo.Name, filetransferConfig.FileServerPathWithoutFileName))
@@ -103,6 +110,7 @@ namespace SftpFileTransfer
 
                     transferResult.Check(); // Throw on any error
                 }
+                );
             }
         }
         void StartSftpUploadSession(SessionOptions sessionOptions, FileTransferModel filetransferConfig)
@@ -111,33 +119,33 @@ namespace SftpFileTransfer
             {
                 session.Open(sessionOptions);
                 string[] fileNames = Directory.GetFiles(filetransferConfig.FileServerPathWithoutFileName);
-                foreach (string sourceFileNameWithPath in fileNames)
-                {
-                    string destinationSftpPathWithFileName = "";
-                    string sourceFileName = Path.GetFileName(sourceFileNameWithPath);
+                Parallel.ForEach(fileNames, (sourceFileNameWithPath) =>
+                 {
+                     string destinationSftpPathWithFileName = "";
+                     string sourceFileName = Path.GetFileName(sourceFileNameWithPath);
 
                     //when same filename already exist on destination path, transfer file with added hh-mm-sec-milliseconds end of file
                     if (true == IsSameFileNameExistOnDestinationSftpServerPath(session, sourceFileName, filetransferConfig.SftpPathWithoutFileName))
-                    {
-                        string ext = Path.GetExtension(sourceFileName);
-                        string filenameWithoutExt = Path.GetFileNameWithoutExtension(sourceFileName);
-                        filenameWithoutExt += " " + DateTime.Now.Hour + "-" + DateTime.Now.Minute + "-" + DateTime.Now.Second + "-" + DateTime.Now.Millisecond;
-                        destinationSftpPathWithFileName = filetransferConfig.FileServerPathWithoutFileName + filenameWithoutExt + ext;
-                        Program.LogInformation("Destination path has same FileName=" + sourceFileName + "********Renaming to= " + filenameWithoutExt + ext);
-                    }
-                    else
-                    {
-                        destinationSftpPathWithFileName = filetransferConfig.SftpPathWithoutFileName + sourceFileName;
-                    }
+                     {
+                         string ext = Path.GetExtension(sourceFileName);
+                         string filenameWithoutExt = Path.GetFileNameWithoutExtension(sourceFileName);
+                         filenameWithoutExt += " " + DateTime.Now.Hour + "-" + DateTime.Now.Minute + "-" + DateTime.Now.Second + "-" + DateTime.Now.Millisecond;
+                         destinationSftpPathWithFileName = filetransferConfig.FileServerPathWithoutFileName + filenameWithoutExt + ext;
+                         Program.LogInformation("Destination path has same FileName=" + sourceFileName + "********Renaming to= " + filenameWithoutExt + ext);
+                     }
+                     else
+                     {
+                         destinationSftpPathWithFileName = filetransferConfig.SftpPathWithoutFileName + sourceFileName;
+                     }
 
-                    TransferOptions transferOptions = new TransferOptions();
-                    transferOptions.TransferMode = TransferMode.Binary;
-                    TransferOperationResult transferResult;
-                    Program.LogInformation("Copying from= " + filetransferConfig.FileServerPathWithoutFileName + sourceFileName + "\t To= " + destinationSftpPathWithFileName);
-                    transferResult = session.PutFiles(filetransferConfig.FileServerPathWithoutFileName + sourceFileName, destinationSftpPathWithFileName, true, transferOptions);
+                     TransferOptions transferOptions = new TransferOptions();
+                     transferOptions.TransferMode = TransferMode.Binary;
+                     TransferOperationResult transferResult;
+                     Program.LogInformation("Copying from= " + filetransferConfig.FileServerPathWithoutFileName + sourceFileName + "\t To= " + destinationSftpPathWithFileName);
+                     transferResult = session.PutFiles(filetransferConfig.FileServerPathWithoutFileName + sourceFileName, destinationSftpPathWithFileName, true, transferOptions);
 
-                    transferResult.Check(); // Throw on any error
-                }
+                     transferResult.Check(); // Throw on any error
+                });
             }
         }
         bool IsSameFileNameExistOnDestinationFileServerPath(string sourceFileName, string destinationUncPath)

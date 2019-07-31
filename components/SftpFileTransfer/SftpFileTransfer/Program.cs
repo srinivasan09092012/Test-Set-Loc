@@ -15,24 +15,36 @@ namespace SftpFileTransfer
         static void Main(string[] args)
         {
             Program.LogInformation("\n--------------Program started-----------");
+            try
+            {
+                SftpFileTransfer fileTransferSftp = new SftpFileTransfer();
+                SftpFileTransferModel sftpFileTransferConfig = null;
 
-            SftpFileTransfer fileTransferSftp = new SftpFileTransfer();
-            SftpFileTransferModel sftpFileTransferConfig = null;
-            
-            //1. Deserialize configuration            
-            if (false == DeserializeConfigFile(ref sftpFileTransferConfig))
-                return;
-            Program.LogInformation("Deserializing Config.Json - Success");
+                //1. Deserialize configuration            
+                if (false == DeserializeConfigFile(ref sftpFileTransferConfig))
+                    return;
+                Program.LogInformation("Deserializing Config.Json - Success");
 
-            //2. Download Files from sftp server 
-            Program.LogInformation("\nDownload Operations - Start.");
-            fileTransferSftp.DownloadFiles(sftpFileTransferConfig);
-            Program.LogInformation("Download Operations - Complete.");
+                Parallel.Invoke(() =>
+                {
+                //2. Download Files from sftp server 
+                Program.LogInformation("\nDownload Operations - Start.");
+                    fileTransferSftp.DownloadFiles(sftpFileTransferConfig);
+                    Program.LogInformation("Download Operations - Complete.");
 
-            //3. Upload Files to sftp server 
-            Program.LogInformation("\nUpload Operations - Start.");
-            fileTransferSftp.UploadFiles(sftpFileTransferConfig);
-            Program.LogInformation("Upload Operations - Complete.");
+                },
+                () =>
+                {
+                //3. Upload Files to sftp server 
+                Program.LogInformation("\nUpload Operations - Start.");
+                    fileTransferSftp.UploadFiles(sftpFileTransferConfig);
+                    Program.LogInformation("Upload Operations - Complete.");
+                }
+                );
+            }catch(Exception ex)
+            {
+                Program.LogInformation("Program got terminated: Exception Message:" + ex.Message + "\n" + ex.StackTrace);
+            }
         }
         public static void LogInformation(string log)
         {
