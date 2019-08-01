@@ -20,7 +20,7 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://localhost:44396/ProviderEventService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:40520/EventDistributionService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="ProviderEventService8.wsdl" MetadataType="Wsdl" ID="edf67fc6-993d-4562-babf-bcc6967b1802" SourceId="1" SourceUrl="https://localhost:44396/ProviderEventService.svc?wsdl=wsdl0" />

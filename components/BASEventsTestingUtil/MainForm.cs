@@ -1,4 +1,5 @@
 ﻿using BASEventsTestingUtil.EventDistribution;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -85,7 +86,7 @@ namespace BASEventsTestingUtil
                 {
                     using (var writer = new XmlTextWriter(ms, Encoding.UTF8))
                     {
-                        writer.Formatting = Formatting.Indented;
+                        writer.Formatting = System.Xml.Formatting.Indented;
                         this.payloadDocument.WriteContentTo(writer);
                         writer.Flush();
                         ms.Flush();
@@ -309,6 +310,9 @@ namespace BASEventsTestingUtil
                 nm = nm.Substring(nm.LastIndexOf('/') + 1);
                 em.EventNamespace = nm;
             }
+
+            XmlNodeList eventFilterMetadataNodeList = this.payloadDocument.GetElementsByTagName("EventFilterMetadata");
+            em.EventFilterMetadata = eventFilterMetadataNodeList == null ? null : eventFilterMetadataNodeList.Count == 0 ? null : eventFilterMetadataNodeList[0].OuterXml.ToString();
 
             StringBuilder sb = new StringBuilder();
             var settings = new XmlWriterSettings

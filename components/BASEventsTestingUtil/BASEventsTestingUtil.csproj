@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -37,6 +37,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -80,6 +83,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -106,6 +112,23 @@
     <None Include="Service References\EventDistribution\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\EventDistribution\EventDistributionService2.wsdl" />
+    <None Include="Service References\EventDistribution\EventDistributionService3.wsdl" />
+    <None Include="Service References\EventDistribution\EventDistributionService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\EventDistributionService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\EventDistributionService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\EventDistributionService8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\EventDistributionService9.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\EventDistribution\ProviderEventService10.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -137,21 +160,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\EventDistribution\ProviderEventService2.wsdl" />
-    <None Include="Service References\EventDistribution\ProviderEventService20.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EventDistribution\ProviderEventService21.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EventDistribution\ProviderEventService22.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EventDistribution\ProviderEventService23.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\EventDistribution\ProviderEventService24.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\EventDistribution\ProviderEventService3.wsdl" />
     <None Include="Service References\EventDistribution\ProviderEventService4.wsdl" />
     <None Include="Service References\EventDistribution\ProviderEventService5.wsdl" />
@@ -166,11 +174,9 @@
     <None Include="Service References\EventDistribution\ProviderEventService7.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EventDistribution\ProviderEventService8.wsdl" />
     <None Include="Service References\EventDistribution\ProviderEventService8.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EventDistribution\ProviderEventService9.wsdl" />
     <None Include="Service References\EventDistribution\ProviderEventService9.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -189,7 +195,7 @@
     <None Include="Service References\EventDistribution\ProviderEventService3.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\EventDistribution\ProviderEventService4.disco" />
+    <None Include="Service References\EventDistribution\EventDistributionService1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

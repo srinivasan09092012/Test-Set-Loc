@@ -35,6 +35,9 @@ namespace BASEventsTestingUtil.EventDistribution {
         private string CorrelationIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EventFilterMetadataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EventNamespaceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -42,6 +45,12 @@ namespace BASEventsTestingUtil.EventDistribution {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EventTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> INGroupIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsLastFromGroupField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ModuleNameField;
@@ -121,6 +130,19 @@ namespace BASEventsTestingUtil.EventDistribution {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EventFilterMetadata {
+            get {
+                return this.EventFilterMetadataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EventFilterMetadataField, value) != true)) {
+                    this.EventFilterMetadataField = value;
+                    this.RaisePropertyChanged("EventFilterMetadata");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string EventNamespace {
             get {
                 return this.EventNamespaceField;
@@ -155,6 +177,32 @@ namespace BASEventsTestingUtil.EventDistribution {
                 if ((object.ReferenceEquals(this.EventTypeField, value) != true)) {
                     this.EventTypeField = value;
                     this.RaisePropertyChanged("EventType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> INGroupId {
+            get {
+                return this.INGroupIdField;
+            }
+            set {
+                if ((this.INGroupIdField.Equals(value) != true)) {
+                    this.INGroupIdField = value;
+                    this.RaisePropertyChanged("INGroupId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsLastFromGroup {
+            get {
+                return this.IsLastFromGroupField;
+            }
+            set {
+                if ((this.IsLastFromGroupField.Equals(value) != true)) {
+                    this.IsLastFromGroupField = value;
+                    this.RaisePropertyChanged("IsLastFromGroup");
                 }
             }
         }
