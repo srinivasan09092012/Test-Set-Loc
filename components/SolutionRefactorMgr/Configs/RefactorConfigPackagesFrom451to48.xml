@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Inline" includeFolderNames="true" includeFileNames="true" includeFileContents="true" useSourceControl="true" targetTFS ="Azure">
+    <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+<!--    <ModuleConfig name="_ProjectTemplate" branch="Dev" types="All" />
+    <ModuleConfig name="Administration" branch="Dev" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Core" branch="Dev" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="Dev" types="All" />
+    <ModuleConfig name="EDI" branch="Dev" types="All" />
+    <ModuleConfig name="eID" branch="Dev" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="Dev" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Integration" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="Dev" types="All" />
+    <ModuleConfig name="MemberManagement" branch="Dev" types="All" />
+    <ModuleConfig name="MemberPortal" branch="Dev" types="All" />
+    <ModuleConfig name="Notifications" branch="Dev" types="All" />
+    <ModuleConfig name="PlanManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrityCT" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="Dev" types="All" />
+    <ModuleConfig name="Screening" branch="Dev" types="All" />
+    <ModuleConfig name="TaskManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
+    <ModuleConfig name="Utilities" branch="Dev" types="NA" /> -->
+  </ModuleConfigs>
+    <PackageConfigs>
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.Administration" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.AuthDetermination" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.BatchProcessingFactory" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ClaimsManagement" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.Core" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.CorrespondenceMgmt" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.DrugRebate" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.FinancialManagement" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.IdentityManagement" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.Integration" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ManagedCare" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.MemberManagement" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.PlanManagement" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProgramIntegrity" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProviderEnrollment" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProviderManagement" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.TaskManagement" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.TPLCaseTracking" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.TPLPolicy" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.NotificationServices" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.ClaimsManagement" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.Core" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.EDI" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.NCPDP" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.TestAutomation" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X12" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X212" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HPP.HSP.UA3.ManagedCare" qualifierVersion="19.2.70" rebuildPackage="true" reformatSource="true" />
+  </PackageConfigs>
+  <FileTypes>
+    <FileType ext=".nuspec" />
+  </FileTypes>
+  <LineDeletes />
+  <ReplacementStrings>
+
+    <!-- Framework Version in Project Files -->
+    <ReplacementString qualifier="net451" from="net451" to="net48" />
+    <ReplacementString qualifier="net45" from="net45" to="net48" />
+
+    
+  </ReplacementStrings>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+  <TfsWorkspace>UA3_AZURE</TfsWorkspace>
+  <TFSUserName>martinhache</TFSUserName>
+  <TFSPassword>IHateThis44!</TFSPassword>
+</RefactorConfig>
