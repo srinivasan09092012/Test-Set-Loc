@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:40520/UserQueryService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="UserProfileModel">
     <xs:sequence>
       <xs:element minOccurs="0" name="BrowserInfo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ContactNumber" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="DateOfBirth" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="GenericId" nillable="true" type="xs:string" />
@@ -15,6 +15,7 @@
       <xs:element minOccurs="0" name="LastLogonTS" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="LocalId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Preferences" nillable="true" type="tns:ArrayOfKeyValuePair" />
       <xs:element minOccurs="0" name="RelationshipCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SessionId" nillable="true" type="xs:string" />
@@ -76,15 +77,19 @@
   <xs:element name="ArrayOfUserDelegateModel" nillable="true" type="tns:ArrayOfUserDelegateModel" />
   <xs:complexType name="UserDelegateModel">
     <xs:sequence>
-      <xs:element minOccurs="0" name="DelegateProfileId" type="ser:guid" />
+      <xs:element minOccurs="0" name="DelegateProfileId" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="DelegateUserId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsAssociationActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsAssociationAdministrator" type="xs:boolean" />
       <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RelationshipCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="XREFId" type="ser:guid" />
+      <xs:element minOccurs="0" name="XrefAssocId" type="ser:guid" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserDelegateModel" nillable="true" type="tns:UserDelegateModel" />
@@ -112,6 +117,7 @@
       <xs:element minOccurs="0" name="AssociatedFunctions" nillable="true" type="tns:ArrayOfUserDelegateSecurityFunction" />
       <xs:element minOccurs="0" name="AssociationId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsAssociationAdministrator" type="xs:boolean" />
       <xs:element minOccurs="0" name="UserProfileXrefAssocId" type="ser:guid" />
       <xs:element minOccurs="0" name="UserProfileXrefId" type="ser:guid" />
     </xs:sequence>
@@ -144,6 +150,7 @@
       <xs:element minOccurs="0" name="GenericIdentifier" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
       <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UserProfileId" type="ser:guid" />
       <xs:element minOccurs="0" name="UserProfileXrefId" type="ser:guid" />
     </xs:sequence>
@@ -162,6 +169,7 @@
       <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="GenericIdentifier" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsAssociationAdministrator" type="xs:boolean" />
       <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UserProfileId" type="ser:guid" />
       <xs:element minOccurs="0" name="UserProfileXrefAssocId" type="ser:guid" />

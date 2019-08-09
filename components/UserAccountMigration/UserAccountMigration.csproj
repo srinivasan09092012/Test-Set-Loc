@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -110,6 +110,8 @@
     </Compile>
     <Compile Include="Domain\BaseService.cs" />
     <Compile Include="Domain\Contants.cs" />
+    <Compile Include="Domain\DelegateUser.cs" />
+    <Compile Include="Domain\DelegateUserError.cs" />
     <Compile Include="Domain\MigrationConfig.cs" />
     <Compile Include="Domain\ProcessConfig.cs" />
     <Compile Include="Domain\Environment.cs" />
@@ -120,6 +122,8 @@
     <Compile Include="Domain\UserQueryService.cs" />
     <Compile Include="Domain\UserService.cs" />
     <Compile Include="Domain\UserVOSTag.cs" />
+    <Compile Include="Domain\UserXref.cs" />
+    <Compile Include="Domain\UserXrefError.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\BaseServiceDataProvider.cs" />
@@ -128,7 +132,9 @@
     <Compile Include="Utilities\Serializer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\UserQueryService\UserAccountMigration.UserQueryService.GetUserVOSTagQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -162,34 +168,37 @@
     <None Include="Connected Services\UserQueryService\UserAccountMigration.UserQueryService.UserXRefRelationshipQuery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\UserQueryService\UserQueryService.wsdl" />
-    <None Include="Connected Services\UserQueryService\UserQueryService.xsd">
+    <None Include="Connected Services\UserQueryService\UserQueryService2.wsdl" />
+    <None Include="Connected Services\UserQueryService\UserQueryService21.wsdl" />
+    <None Include="Connected Services\UserQueryService\UserQueryService9.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserQueryService\UserQueryService1.wsdl" />
-    <None Include="Connected Services\UserQueryService\UserQueryService1.xsd">
+    <None Include="Connected Services\UserQueryService\UserQueryService91.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserQueryService\UserQueryService2.xsd">
+    <None Include="Connected Services\UserQueryService\UserQueryService92.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserQueryService\UserQueryService3.xsd">
+    <None Include="Connected Services\UserQueryService\UserQueryService93.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserQueryService\UserQueryService4.xsd">
+    <None Include="Connected Services\UserQueryService\UserQueryService94.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserQueryService\UserQueryService5.xsd">
+    <None Include="Connected Services\UserQueryService\UserQueryService95.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserQueryService\UserQueryService6.xsd">
+    <None Include="Connected Services\UserQueryService\UserQueryService96.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserQueryService\UserQueryService7.xsd">
+    <None Include="Connected Services\UserQueryService\UserQueryService97.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\UserQueryService\UserQueryService8.xsd">
+    <None Include="Connected Services\UserQueryService\UserQueryService98.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService\UserAccountMigration.UserService.DelegateUserXrefProfileIdUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\UserService\UserAccountMigration.UserService.ProfileActivated.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -225,6 +234,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\UserService\UserAccountMigration.UserService.UserVOSTagUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService\UserAccountMigration.UserService.UserXrefInactivated.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\UserService\UserService.wsdl" />
@@ -270,7 +282,7 @@
     </None>
     <None Include="Connected Services\UserQueryService\configuration.svcinfo" />
     <None Include="Connected Services\UserQueryService\configuration91.svcinfo" />
-    <None Include="Connected Services\UserQueryService\UserQueryService.disco" />
+    <None Include="Connected Services\UserQueryService\UserQueryService1.disco" />
     <Content Include="MigrationConfig.xml">
       <SubType>Designer</SubType>
     </Content>

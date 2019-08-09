@@ -23,12 +23,14 @@ namespace UserAccountMigration.UserService {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.AddUserDelegateCommand))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.AddRegisteredUserXrefCommand))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.UpdateRegisteredUserXrefCommand))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.UpdateDelegateUserXrefProfileIdCommand))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.AddUserPreferences))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.RemoveUserPreferences))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.AddUserProfileMemberFocusHistory))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.AddUserVOSTags))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.UpdateUserVOSTag))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.InvalidateUserVOSTag))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.InactivateUserXrefCommand))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.AddProfile))]
     public partial class Command : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -249,6 +251,9 @@ namespace UserAccountMigration.UserService {
         private string ContactNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DisplayNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailAddressField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -270,6 +275,9 @@ namespace UserAccountMigration.UserService {
         private string LocaleIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MiddleNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TenantIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -284,6 +292,19 @@ namespace UserAccountMigration.UserService {
                 if ((object.ReferenceEquals(this.ContactNumberField, value) != true)) {
                     this.ContactNumberField = value;
                     this.RaisePropertyChanged("ContactNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DisplayName {
+            get {
+                return this.DisplayNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DisplayNameField, value) != true)) {
+                    this.DisplayNameField = value;
+                    this.RaisePropertyChanged("DisplayName");
                 }
             }
         }
@@ -375,6 +396,19 @@ namespace UserAccountMigration.UserService {
                 if ((object.ReferenceEquals(this.LocaleIdField, value) != true)) {
                     this.LocaleIdField = value;
                     this.RaisePropertyChanged("LocaleId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MiddleName {
+            get {
+                return this.MiddleNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MiddleNameField, value) != true)) {
+                    this.MiddleNameField = value;
+                    this.RaisePropertyChanged("MiddleName");
                 }
             }
         }
@@ -497,7 +531,7 @@ namespace UserAccountMigration.UserService {
         private bool IsActiveField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] SecurityFunctionsField;
+        private System.Collections.Generic.List<string> SecurityFunctionsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserProfileRelationShipCodeField;
@@ -522,7 +556,7 @@ namespace UserAccountMigration.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] SecurityFunctions {
+        public System.Collections.Generic.List<string> SecurityFunctions {
             get {
                 return this.SecurityFunctionsField;
             }
@@ -582,7 +616,7 @@ namespace UserAccountMigration.UserService {
     public partial class AddRegisteredUserXrefCommand : UserAccountMigration.UserService.Command {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserService.RegisteredUserXrefAssociation[] DelegateAssociationsField;
+        private System.Collections.Generic.List<UserAccountMigration.UserService.RegisteredUserXrefAssociation> DelegateAssociationsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DelegateProfileIdField;
@@ -591,13 +625,28 @@ namespace UserAccountMigration.UserService {
         private string DelegateUserIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvitationEmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvitationFirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvitationLastNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvitationMiddleNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RelationshipCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserProfileIdField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserService.RegisteredUserXrefAssociation[] DelegateAssociations {
+        public System.Collections.Generic.List<UserAccountMigration.UserService.RegisteredUserXrefAssociation> DelegateAssociations {
             get {
                 return this.DelegateAssociationsField;
             }
@@ -636,6 +685,58 @@ namespace UserAccountMigration.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvitationEmail {
+            get {
+                return this.InvitationEmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvitationEmailField, value) != true)) {
+                    this.InvitationEmailField = value;
+                    this.RaisePropertyChanged("InvitationEmail");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvitationFirstName {
+            get {
+                return this.InvitationFirstNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvitationFirstNameField, value) != true)) {
+                    this.InvitationFirstNameField = value;
+                    this.RaisePropertyChanged("InvitationFirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvitationLastName {
+            get {
+                return this.InvitationLastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvitationLastNameField, value) != true)) {
+                    this.InvitationLastNameField = value;
+                    this.RaisePropertyChanged("InvitationLastName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvitationMiddleName {
+            get {
+                return this.InvitationMiddleNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvitationMiddleNameField, value) != true)) {
+                    this.InvitationMiddleNameField = value;
+                    this.RaisePropertyChanged("InvitationMiddleName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public bool IsActive {
             get {
                 return this.IsActiveField;
@@ -644,6 +745,19 @@ namespace UserAccountMigration.UserService {
                 if ((this.IsActiveField.Equals(value) != true)) {
                     this.IsActiveField = value;
                     this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RelationshipCode {
+            get {
+                return this.RelationshipCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RelationshipCodeField, value) != true)) {
+                    this.RelationshipCodeField = value;
+                    this.RaisePropertyChanged("RelationshipCode");
                 }
             }
         }
@@ -670,7 +784,19 @@ namespace UserAccountMigration.UserService {
     public partial class UpdateRegisteredUserXrefCommand : UserAccountMigration.UserService.Command {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserService.RegisteredUserXrefAssociation[] DelegateAssociationsField;
+        private System.Collections.Generic.List<UserAccountMigration.UserService.RegisteredUserXrefAssociation> DelegateAssociationsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvitationEmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvitationFirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvitationLastNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvitationMiddleNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsActiveField;
@@ -679,7 +805,7 @@ namespace UserAccountMigration.UserService {
         private string UserProfileXrefIdField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserService.RegisteredUserXrefAssociation[] DelegateAssociations {
+        public System.Collections.Generic.List<UserAccountMigration.UserService.RegisteredUserXrefAssociation> DelegateAssociations {
             get {
                 return this.DelegateAssociationsField;
             }
@@ -687,6 +813,58 @@ namespace UserAccountMigration.UserService {
                 if ((object.ReferenceEquals(this.DelegateAssociationsField, value) != true)) {
                     this.DelegateAssociationsField = value;
                     this.RaisePropertyChanged("DelegateAssociations");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvitationEmail {
+            get {
+                return this.InvitationEmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvitationEmailField, value) != true)) {
+                    this.InvitationEmailField = value;
+                    this.RaisePropertyChanged("InvitationEmail");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvitationFirstName {
+            get {
+                return this.InvitationFirstNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvitationFirstNameField, value) != true)) {
+                    this.InvitationFirstNameField = value;
+                    this.RaisePropertyChanged("InvitationFirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvitationLastName {
+            get {
+                return this.InvitationLastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvitationLastNameField, value) != true)) {
+                    this.InvitationLastNameField = value;
+                    this.RaisePropertyChanged("InvitationLastName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvitationMiddleName {
+            get {
+                return this.InvitationMiddleNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvitationMiddleNameField, value) != true)) {
+                    this.InvitationMiddleNameField = value;
+                    this.RaisePropertyChanged("InvitationMiddleName");
                 }
             }
         }
@@ -720,19 +898,75 @@ namespace UserAccountMigration.UserService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UpdateDelegateUserXrefProfileIdCommand", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
+        "ds")]
+    [System.SerializableAttribute()]
+    public partial class UpdateDelegateUserXrefProfileIdCommand : UserAccountMigration.UserService.Command {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DelegateProfileIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DelegatingUserIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RelationshipCodeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DelegateProfileId {
+            get {
+                return this.DelegateProfileIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DelegateProfileIdField, value) != true)) {
+                    this.DelegateProfileIdField = value;
+                    this.RaisePropertyChanged("DelegateProfileId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DelegatingUserId {
+            get {
+                return this.DelegatingUserIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DelegatingUserIdField, value) != true)) {
+                    this.DelegatingUserIdField = value;
+                    this.RaisePropertyChanged("DelegatingUserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RelationshipCode {
+            get {
+                return this.RelationshipCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RelationshipCodeField, value) != true)) {
+                    this.RelationshipCodeField = value;
+                    this.RaisePropertyChanged("RelationshipCode");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="AddUserPreferences", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
         "ds")]
     [System.SerializableAttribute()]
     public partial class AddUserPreferences : UserAccountMigration.UserService.Command {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserService.KeyValuePair[] PreferencesField;
+        private System.Collections.Generic.List<UserAccountMigration.UserService.KeyValuePair> PreferencesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserProfileIDField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserService.KeyValuePair[] Preferences {
+        public System.Collections.Generic.List<UserAccountMigration.UserService.KeyValuePair> Preferences {
             get {
                 return this.PreferencesField;
             }
@@ -766,13 +1000,13 @@ namespace UserAccountMigration.UserService {
     public partial class RemoveUserPreferences : UserAccountMigration.UserService.Command {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] PreferencesKeysField;
+        private System.Collections.Generic.List<string> PreferencesKeysField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserProfileIDField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] PreferencesKeys {
+        public System.Collections.Generic.List<string> PreferencesKeys {
             get {
                 return this.PreferencesKeysField;
             }
@@ -1168,6 +1402,46 @@ namespace UserAccountMigration.UserService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="InactivateUserXrefCommand", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
+        "ds")]
+    [System.SerializableAttribute()]
+    public partial class InactivateUserXrefCommand : UserAccountMigration.UserService.Command {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ClearInvitationDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserProfileXrefIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool ClearInvitationData {
+            get {
+                return this.ClearInvitationDataField;
+            }
+            set {
+                if ((this.ClearInvitationDataField.Equals(value) != true)) {
+                    this.ClearInvitationDataField = value;
+                    this.RaisePropertyChanged("ClearInvitationData");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserProfileXrefId {
+            get {
+                return this.UserProfileXrefIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserProfileXrefIdField, value) != true)) {
+                    this.UserProfileXrefIdField = value;
+                    this.RaisePropertyChanged("UserProfileXrefId");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="AddProfile", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Comman" +
         "ds")]
     [System.SerializableAttribute()]
@@ -1175,6 +1449,9 @@ namespace UserAccountMigration.UserService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ContactNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DisplayNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailAddressField;
@@ -1198,6 +1475,12 @@ namespace UserAccountMigration.UserService {
         private string LocaleIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MiddleNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RelationshipCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TenantIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1215,6 +1498,19 @@ namespace UserAccountMigration.UserService {
                 if ((object.ReferenceEquals(this.ContactNumberField, value) != true)) {
                     this.ContactNumberField = value;
                     this.RaisePropertyChanged("ContactNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DisplayName {
+            get {
+                return this.DisplayNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DisplayNameField, value) != true)) {
+                    this.DisplayNameField = value;
+                    this.RaisePropertyChanged("DisplayName");
                 }
             }
         }
@@ -1306,6 +1602,32 @@ namespace UserAccountMigration.UserService {
                 if ((object.ReferenceEquals(this.LocaleIdField, value) != true)) {
                     this.LocaleIdField = value;
                     this.RaisePropertyChanged("LocaleId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MiddleName {
+            get {
+                return this.MiddleNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MiddleNameField, value) != true)) {
+                    this.MiddleNameField = value;
+                    this.RaisePropertyChanged("MiddleName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RelationshipCode {
+            get {
+                return this.RelationshipCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RelationshipCodeField, value) != true)) {
+                    this.RelationshipCodeField = value;
+                    this.RaisePropertyChanged("RelationshipCode");
                 }
             }
         }
@@ -1410,13 +1732,16 @@ namespace UserAccountMigration.UserService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] AssociatedFunctionsField;
+        private System.Collections.Generic.List<string> AssociatedFunctionsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string AssociationIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsAssociationAdministratorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserProfileXrefAssocIdField;
@@ -1432,7 +1757,7 @@ namespace UserAccountMigration.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] AssociatedFunctions {
+        public System.Collections.Generic.List<string> AssociatedFunctions {
             get {
                 return this.AssociatedFunctionsField;
             }
@@ -1466,6 +1791,19 @@ namespace UserAccountMigration.UserService {
                 if ((this.IsActiveField.Equals(value) != true)) {
                     this.IsActiveField = value;
                     this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsAssociationAdministrator {
+            get {
+                return this.IsAssociationAdministratorField;
+            }
+            set {
+                if ((this.IsAssociationAdministratorField.Equals(value) != true)) {
+                    this.IsAssociationAdministratorField = value;
+                    this.RaisePropertyChanged("IsAssociationAdministrator");
                 }
             }
         }
@@ -1681,11 +2019,13 @@ namespace UserAccountMigration.UserService {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.RegisteredUserXrefUpdated))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.RegisteredUserXrefAssociationUpdated))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.RegisteredUserXrefSecurityFunctionUpdated))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.DelegateUserXrefProfileIdUpdated))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.UserPreferencesAdded))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.UserPreferencesRemoved))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.UserVOSTagsAdded))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.UserVOSTagUpdated))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.UserVOSTagInvalidated))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.UserXrefInactivated))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.ProfileAdded))]
     public partial class Event : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1703,6 +2043,12 @@ namespace UserAccountMigration.UserService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EventIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> INGroupIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsLastFromGroupField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ModelIDField;
@@ -1777,6 +2123,32 @@ namespace UserAccountMigration.UserService {
                 if ((object.ReferenceEquals(this.EventIDField, value) != true)) {
                     this.EventIDField = value;
                     this.RaisePropertyChanged("EventID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> INGroupId {
+            get {
+                return this.INGroupIdField;
+            }
+            set {
+                if ((this.INGroupIdField.Equals(value) != true)) {
+                    this.INGroupIdField = value;
+                    this.RaisePropertyChanged("INGroupId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsLastFromGroup {
+            get {
+                return this.IsLastFromGroupField;
+            }
+            set {
+                if ((this.IsLastFromGroupField.Equals(value) != true)) {
+                    this.IsLastFromGroupField = value;
+                    this.RaisePropertyChanged("IsLastFromGroup");
                 }
             }
         }
@@ -1903,11 +2275,13 @@ namespace UserAccountMigration.UserService {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.RegisteredUserXrefUpdated))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.RegisteredUserXrefAssociationUpdated))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.RegisteredUserXrefSecurityFunctionUpdated))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.DelegateUserXrefProfileIdUpdated))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.UserPreferencesAdded))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.UserPreferencesRemoved))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.UserVOSTagsAdded))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.UserVOSTagUpdated))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.UserVOSTagInvalidated))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.UserXrefInactivated))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAccountMigration.UserService.ProfileAdded))]
     public partial class UserEvents : UserAccountMigration.UserService.Event {
     }
@@ -2088,7 +2462,7 @@ namespace UserAccountMigration.UserService {
     public partial class RegisteredUserXrefAdded : UserAccountMigration.UserService.UserEvents {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserService.RegisteredUserXrefAssociationAdded[] AssociationsAddedField;
+        private System.Collections.Generic.List<UserAccountMigration.UserService.RegisteredUserXrefAssociationAdded> AssociationsAddedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DelegateProfileIdField;
@@ -2097,7 +2471,22 @@ namespace UserAccountMigration.UserService {
         private string DelegateUserIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvitationEmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvitationFirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvitationLastNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvitationMiddleNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsValidField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RelationshipCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserProfileIdField;
@@ -2106,7 +2495,7 @@ namespace UserAccountMigration.UserService {
         private string UserProfileXrefIdField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserService.RegisteredUserXrefAssociationAdded[] AssociationsAdded {
+        public System.Collections.Generic.List<UserAccountMigration.UserService.RegisteredUserXrefAssociationAdded> AssociationsAdded {
             get {
                 return this.AssociationsAddedField;
             }
@@ -2145,6 +2534,58 @@ namespace UserAccountMigration.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvitationEmail {
+            get {
+                return this.InvitationEmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvitationEmailField, value) != true)) {
+                    this.InvitationEmailField = value;
+                    this.RaisePropertyChanged("InvitationEmail");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvitationFirstName {
+            get {
+                return this.InvitationFirstNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvitationFirstNameField, value) != true)) {
+                    this.InvitationFirstNameField = value;
+                    this.RaisePropertyChanged("InvitationFirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvitationLastName {
+            get {
+                return this.InvitationLastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvitationLastNameField, value) != true)) {
+                    this.InvitationLastNameField = value;
+                    this.RaisePropertyChanged("InvitationLastName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvitationMiddleName {
+            get {
+                return this.InvitationMiddleNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvitationMiddleNameField, value) != true)) {
+                    this.InvitationMiddleNameField = value;
+                    this.RaisePropertyChanged("InvitationMiddleName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public bool IsValid {
             get {
                 return this.IsValidField;
@@ -2153,6 +2594,19 @@ namespace UserAccountMigration.UserService {
                 if ((this.IsValidField.Equals(value) != true)) {
                     this.IsValidField = value;
                     this.RaisePropertyChanged("IsValid");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RelationshipCode {
+            get {
+                return this.RelationshipCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RelationshipCodeField, value) != true)) {
+                    this.RelationshipCodeField = value;
+                    this.RaisePropertyChanged("RelationshipCode");
                 }
             }
         }
@@ -2195,10 +2649,13 @@ namespace UserAccountMigration.UserService {
         private string AssociationIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsAssociationAdministratorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsValidField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserService.RegisteredUserXrefSecurityFunctionAdded[] SecurityFunctionsAddedField;
+        private System.Collections.Generic.List<UserAccountMigration.UserService.RegisteredUserXrefSecurityFunctionAdded> SecurityFunctionsAddedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserProfileXrefAssocIdField;
@@ -2220,6 +2677,19 @@ namespace UserAccountMigration.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsAssociationAdministrator {
+            get {
+                return this.IsAssociationAdministratorField;
+            }
+            set {
+                if ((this.IsAssociationAdministratorField.Equals(value) != true)) {
+                    this.IsAssociationAdministratorField = value;
+                    this.RaisePropertyChanged("IsAssociationAdministrator");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public bool IsValid {
             get {
                 return this.IsValidField;
@@ -2233,7 +2703,7 @@ namespace UserAccountMigration.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserService.RegisteredUserXrefSecurityFunctionAdded[] SecurityFunctionsAdded {
+        public System.Collections.Generic.List<UserAccountMigration.UserService.RegisteredUserXrefSecurityFunctionAdded> SecurityFunctionsAdded {
             get {
                 return this.SecurityFunctionsAddedField;
             }
@@ -2352,13 +2822,13 @@ namespace UserAccountMigration.UserService {
     public partial class RegisteredUserXrefUpdated : UserAccountMigration.UserService.UserEvents {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserService.RegisteredUserXrefAssociationAdded[] AssociationsAddedField;
+        private System.Collections.Generic.List<UserAccountMigration.UserService.RegisteredUserXrefAssociationAdded> AssociationsAddedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserService.RegisteredUserXrefAssociationUpdated[] AssociationsUpdatedField;
+        private System.Collections.Generic.List<UserAccountMigration.UserService.RegisteredUserXrefAssociationUpdated> AssociationsUpdatedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserService.RegisteredUserXrefAssociation[] DelegateAssociationsField;
+        private System.Collections.Generic.List<UserAccountMigration.UserService.RegisteredUserXrefAssociation> DelegateAssociationsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DelegateProfileIdField;
@@ -2367,7 +2837,22 @@ namespace UserAccountMigration.UserService {
         private string DelegateUserIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvitationEmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvitationFirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvitationLastNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvitationMiddleNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsValidField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RelationshipCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserProfileIdField;
@@ -2376,7 +2861,7 @@ namespace UserAccountMigration.UserService {
         private string UserProfileXrefIdField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserService.RegisteredUserXrefAssociationAdded[] AssociationsAdded {
+        public System.Collections.Generic.List<UserAccountMigration.UserService.RegisteredUserXrefAssociationAdded> AssociationsAdded {
             get {
                 return this.AssociationsAddedField;
             }
@@ -2389,7 +2874,7 @@ namespace UserAccountMigration.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserService.RegisteredUserXrefAssociationUpdated[] AssociationsUpdated {
+        public System.Collections.Generic.List<UserAccountMigration.UserService.RegisteredUserXrefAssociationUpdated> AssociationsUpdated {
             get {
                 return this.AssociationsUpdatedField;
             }
@@ -2402,7 +2887,7 @@ namespace UserAccountMigration.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserService.RegisteredUserXrefAssociation[] DelegateAssociations {
+        public System.Collections.Generic.List<UserAccountMigration.UserService.RegisteredUserXrefAssociation> DelegateAssociations {
             get {
                 return this.DelegateAssociationsField;
             }
@@ -2441,6 +2926,58 @@ namespace UserAccountMigration.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvitationEmail {
+            get {
+                return this.InvitationEmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvitationEmailField, value) != true)) {
+                    this.InvitationEmailField = value;
+                    this.RaisePropertyChanged("InvitationEmail");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvitationFirstName {
+            get {
+                return this.InvitationFirstNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvitationFirstNameField, value) != true)) {
+                    this.InvitationFirstNameField = value;
+                    this.RaisePropertyChanged("InvitationFirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvitationLastName {
+            get {
+                return this.InvitationLastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvitationLastNameField, value) != true)) {
+                    this.InvitationLastNameField = value;
+                    this.RaisePropertyChanged("InvitationLastName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvitationMiddleName {
+            get {
+                return this.InvitationMiddleNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvitationMiddleNameField, value) != true)) {
+                    this.InvitationMiddleNameField = value;
+                    this.RaisePropertyChanged("InvitationMiddleName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public bool IsValid {
             get {
                 return this.IsValidField;
@@ -2449,6 +2986,19 @@ namespace UserAccountMigration.UserService {
                 if ((this.IsValidField.Equals(value) != true)) {
                     this.IsValidField = value;
                     this.RaisePropertyChanged("IsValid");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RelationshipCode {
+            get {
+                return this.RelationshipCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RelationshipCodeField, value) != true)) {
+                    this.RelationshipCodeField = value;
+                    this.RaisePropertyChanged("RelationshipCode");
                 }
             }
         }
@@ -2491,13 +3041,16 @@ namespace UserAccountMigration.UserService {
         private string AssociationIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsAssociationAdministratorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsValidField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserService.RegisteredUserXrefSecurityFunctionAdded[] SecurityFunctionsAddedField;
+        private System.Collections.Generic.List<UserAccountMigration.UserService.RegisteredUserXrefSecurityFunctionAdded> SecurityFunctionsAddedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserService.RegisteredUserXrefSecurityFunctionUpdated[] SecurityFunctionsUpdatedField;
+        private System.Collections.Generic.List<UserAccountMigration.UserService.RegisteredUserXrefSecurityFunctionUpdated> SecurityFunctionsUpdatedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserProfileXrefAssocIdField;
@@ -2519,6 +3072,19 @@ namespace UserAccountMigration.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsAssociationAdministrator {
+            get {
+                return this.IsAssociationAdministratorField;
+            }
+            set {
+                if ((this.IsAssociationAdministratorField.Equals(value) != true)) {
+                    this.IsAssociationAdministratorField = value;
+                    this.RaisePropertyChanged("IsAssociationAdministrator");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public bool IsValid {
             get {
                 return this.IsValidField;
@@ -2532,7 +3098,7 @@ namespace UserAccountMigration.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserService.RegisteredUserXrefSecurityFunctionAdded[] SecurityFunctionsAdded {
+        public System.Collections.Generic.List<UserAccountMigration.UserService.RegisteredUserXrefSecurityFunctionAdded> SecurityFunctionsAdded {
             get {
                 return this.SecurityFunctionsAddedField;
             }
@@ -2545,7 +3111,7 @@ namespace UserAccountMigration.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserService.RegisteredUserXrefSecurityFunctionUpdated[] SecurityFunctionsUpdated {
+        public System.Collections.Generic.List<UserAccountMigration.UserService.RegisteredUserXrefSecurityFunctionUpdated> SecurityFunctionsUpdated {
             get {
                 return this.SecurityFunctionsUpdatedField;
             }
@@ -2658,19 +3224,91 @@ namespace UserAccountMigration.UserService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DelegateUserXrefProfileIdUpdated", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class DelegateUserXrefProfileIdUpdated : UserAccountMigration.UserService.UserEvents {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DelegateProfileIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DelegatingUserIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RelationshipCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserProfileXrefIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DelegateProfileId {
+            get {
+                return this.DelegateProfileIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DelegateProfileIdField, value) != true)) {
+                    this.DelegateProfileIdField = value;
+                    this.RaisePropertyChanged("DelegateProfileId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DelegatingUserId {
+            get {
+                return this.DelegatingUserIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DelegatingUserIdField, value) != true)) {
+                    this.DelegatingUserIdField = value;
+                    this.RaisePropertyChanged("DelegatingUserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RelationshipCode {
+            get {
+                return this.RelationshipCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RelationshipCodeField, value) != true)) {
+                    this.RelationshipCodeField = value;
+                    this.RaisePropertyChanged("RelationshipCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserProfileXrefId {
+            get {
+                return this.UserProfileXrefIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserProfileXrefIdField, value) != true)) {
+                    this.UserProfileXrefIdField = value;
+                    this.RaisePropertyChanged("UserProfileXrefId");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="UserPreferencesAdded", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
         "")]
     [System.SerializableAttribute()]
     public partial class UserPreferencesAdded : UserAccountMigration.UserService.UserEvents {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserService.KeyValuePair[] PreferencesField;
+        private System.Collections.Generic.List<UserAccountMigration.UserService.KeyValuePair> PreferencesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserProfileIDField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserService.KeyValuePair[] Preferences {
+        public System.Collections.Generic.List<UserAccountMigration.UserService.KeyValuePair> Preferences {
             get {
                 return this.PreferencesField;
             }
@@ -2704,13 +3342,13 @@ namespace UserAccountMigration.UserService {
     public partial class UserPreferencesRemoved : UserAccountMigration.UserService.UserEvents {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] PreferencesField;
+        private System.Collections.Generic.List<string> PreferencesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserProfileIDField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] Preferences {
+        public System.Collections.Generic.List<string> Preferences {
             get {
                 return this.PreferencesField;
             }
@@ -2874,6 +3512,110 @@ namespace UserAccountMigration.UserService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserXrefInactivated", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class UserXrefInactivated : UserAccountMigration.UserService.UserEvents {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvitationEmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvitationFirstNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvitationLastNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InvitationMiddleNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserProfileXrefIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvitationEmail {
+            get {
+                return this.InvitationEmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvitationEmailField, value) != true)) {
+                    this.InvitationEmailField = value;
+                    this.RaisePropertyChanged("InvitationEmail");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvitationFirstName {
+            get {
+                return this.InvitationFirstNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvitationFirstNameField, value) != true)) {
+                    this.InvitationFirstNameField = value;
+                    this.RaisePropertyChanged("InvitationFirstName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvitationLastName {
+            get {
+                return this.InvitationLastNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvitationLastNameField, value) != true)) {
+                    this.InvitationLastNameField = value;
+                    this.RaisePropertyChanged("InvitationLastName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InvitationMiddleName {
+            get {
+                return this.InvitationMiddleNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InvitationMiddleNameField, value) != true)) {
+                    this.InvitationMiddleNameField = value;
+                    this.RaisePropertyChanged("InvitationMiddleName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((this.IsActiveField.Equals(value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserProfileXrefId {
+            get {
+                return this.UserProfileXrefIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserProfileXrefIdField, value) != true)) {
+                    this.UserProfileXrefIdField = value;
+                    this.RaisePropertyChanged("UserProfileXrefId");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ProfileAdded", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Events" +
         "")]
     [System.SerializableAttribute()]
@@ -2941,7 +3683,7 @@ namespace UserAccountMigration.UserService {
         private UserAccountMigration.UserService.ServiceException.StatusCodeType ErrorCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] ErrorMessagesField;
+        private System.Collections.Generic.List<string> ErrorMessagesField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -2967,7 +3709,7 @@ namespace UserAccountMigration.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] ErrorMessages {
+        public System.Collections.Generic.List<string> ErrorMessages {
             get {
                 return this.ErrorMessagesField;
             }
@@ -3025,7 +3767,7 @@ namespace UserAccountMigration.UserService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserService.BusinessExceptionMessage[] BusinessMessagesField;
+        private System.Collections.Generic.List<UserAccountMigration.UserService.BusinessExceptionMessage> BusinessMessagesField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -3038,7 +3780,7 @@ namespace UserAccountMigration.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserService.BusinessExceptionMessage[] BusinessMessages {
+        public System.Collections.Generic.List<UserAccountMigration.UserService.BusinessExceptionMessage> BusinessMessages {
             get {
                 return this.BusinessMessagesField;
             }
@@ -3230,6 +3972,16 @@ namespace UserAccountMigration.UserService {
         [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/UpdateRegisteredUserXref", ReplyAction="HP.HSP.UserService/IUserService/UpdateRegisteredUserXrefResponse")]
         System.Threading.Tasks.Task<UserAccountMigration.UserService.RegisteredUserXrefUpdated> UpdateRegisteredUserXrefAsync(UserAccountMigration.UserService.UpdateRegisteredUserXrefCommand command);
         
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/UpdateDelegateUserXrefProfileId", ReplyAction="HP.HSP.UserService/IUserService/UpdateDelegateUserXrefProfileIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountMigration.UserService.ServiceException), Action="HP.HSP.UserService/IUserService/UpdateDelegateUserXrefProfileIdServiceExceptionFa" +
+            "ult", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountMigration.UserService.BusinessValidationException), Action="HP.HSP.UserService/IUserService/UpdateDelegateUserXrefProfileIdBusinessValidation" +
+            "ExceptionFault", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        UserAccountMigration.UserService.DelegateUserXrefProfileIdUpdated UpdateDelegateUserXrefProfileId(UserAccountMigration.UserService.UpdateDelegateUserXrefProfileIdCommand command);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/UpdateDelegateUserXrefProfileId", ReplyAction="HP.HSP.UserService/IUserService/UpdateDelegateUserXrefProfileIdResponse")]
+        System.Threading.Tasks.Task<UserAccountMigration.UserService.DelegateUserXrefProfileIdUpdated> UpdateDelegateUserXrefProfileIdAsync(UserAccountMigration.UserService.UpdateDelegateUserXrefProfileIdCommand command);
+        
         [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/AddUserPreferences", ReplyAction="HP.HSP.UserService/IUserService/AddUserPreferencesResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(UserAccountMigration.UserService.ServiceException), Action="HP.HSP.UserService/IUserService/AddUserPreferencesServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
         [System.ServiceModel.FaultContractAttribute(typeof(UserAccountMigration.UserService.BusinessValidationException), Action="HP.HSP.UserService/IUserService/AddUserPreferencesBusinessValidationExceptionFaul" +
@@ -3282,6 +4034,15 @@ namespace UserAccountMigration.UserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/InvalidateUserVOSTag", ReplyAction="HP.HSP.UserService/IUserService/InvalidateUserVOSTagResponse")]
         System.Threading.Tasks.Task<UserAccountMigration.UserService.UserVOSTagInvalidated> InvalidateUserVOSTagAsync(UserAccountMigration.UserService.InvalidateUserVOSTag command);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/InactivateUserXref", ReplyAction="HP.HSP.UserService/IUserService/InactivateUserXrefResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountMigration.UserService.ServiceException), Action="HP.HSP.UserService/IUserService/InactivateUserXrefServiceExceptionFault", Name="ServiceException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        [System.ServiceModel.FaultContractAttribute(typeof(UserAccountMigration.UserService.BusinessValidationException), Action="HP.HSP.UserService/IUserService/InactivateUserXrefBusinessValidationExceptionFaul" +
+            "t", Name="BusinessValidationException", Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base")]
+        UserAccountMigration.UserService.UserXrefInactivated InactivateUserXref(UserAccountMigration.UserService.InactivateUserXrefCommand command);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="HP.HSP.UserService/IUserService/InactivateUserXref", ReplyAction="HP.HSP.UserService/IUserService/InactivateUserXrefResponse")]
+        System.Threading.Tasks.Task<UserAccountMigration.UserService.UserXrefInactivated> InactivateUserXrefAsync(UserAccountMigration.UserService.InactivateUserXrefCommand command);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3367,6 +4128,14 @@ namespace UserAccountMigration.UserService {
             return base.Channel.UpdateRegisteredUserXrefAsync(command);
         }
         
+        public UserAccountMigration.UserService.DelegateUserXrefProfileIdUpdated UpdateDelegateUserXrefProfileId(UserAccountMigration.UserService.UpdateDelegateUserXrefProfileIdCommand command) {
+            return base.Channel.UpdateDelegateUserXrefProfileId(command);
+        }
+        
+        public System.Threading.Tasks.Task<UserAccountMigration.UserService.DelegateUserXrefProfileIdUpdated> UpdateDelegateUserXrefProfileIdAsync(UserAccountMigration.UserService.UpdateDelegateUserXrefProfileIdCommand command) {
+            return base.Channel.UpdateDelegateUserXrefProfileIdAsync(command);
+        }
+        
         public UserAccountMigration.UserService.UserPreferencesAdded AddUserPreferences(UserAccountMigration.UserService.AddUserPreferences command) {
             return base.Channel.AddUserPreferences(command);
         }
@@ -3413,6 +4182,14 @@ namespace UserAccountMigration.UserService {
         
         public System.Threading.Tasks.Task<UserAccountMigration.UserService.UserVOSTagInvalidated> InvalidateUserVOSTagAsync(UserAccountMigration.UserService.InvalidateUserVOSTag command) {
             return base.Channel.InvalidateUserVOSTagAsync(command);
+        }
+        
+        public UserAccountMigration.UserService.UserXrefInactivated InactivateUserXref(UserAccountMigration.UserService.InactivateUserXrefCommand command) {
+            return base.Channel.InactivateUserXref(command);
+        }
+        
+        public System.Threading.Tasks.Task<UserAccountMigration.UserService.UserXrefInactivated> InactivateUserXrefAsync(UserAccountMigration.UserService.InactivateUserXrefCommand command) {
+            return base.Channel.InactivateUserXrefAsync(command);
         }
     }
 }

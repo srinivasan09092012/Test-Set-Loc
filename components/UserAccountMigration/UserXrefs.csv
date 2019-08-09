@@ -1,0 +1,4 @@
+PrimaryUserName,SecondaryUserName,AssociationId,IsAssociationActive
+badix,ep01prvdel01,00000000-0000-0000-0000-000000000005,false
+badix,,00000000-0000-0000-0000-000000000004,false
+badix,ep01prvdel01,00000000-0000-0000-0000-000000000005,true

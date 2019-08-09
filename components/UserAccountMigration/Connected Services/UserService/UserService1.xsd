@@ -67,7 +67,12 @@
           <xs:element minOccurs="0" name="AssociationsAdded" nillable="true" type="tns:ArrayOfRegisteredUserXrefAssociationAdded" />
           <xs:element minOccurs="0" name="DelegateProfileId" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="DelegateUserId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InvitationEmail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InvitationFirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InvitationLastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InvitationMiddleName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="IsValid" type="xs:boolean" />
+          <xs:element minOccurs="0" name="RelationshipCode" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="UserProfileId" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="UserProfileXrefId" nillable="true" type="xs:string" />
         </xs:sequence>
@@ -86,6 +91,7 @@
       <xs:extension base="tns:UserEvents">
         <xs:sequence>
           <xs:element minOccurs="0" name="AssociationId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsAssociationAdministrator" type="xs:boolean" />
           <xs:element minOccurs="0" name="IsValid" type="xs:boolean" />
           <xs:element minOccurs="0" name="SecurityFunctionsAdded" nillable="true" type="tns:ArrayOfRegisteredUserXrefSecurityFunctionAdded" />
           <xs:element minOccurs="0" name="UserProfileXrefAssocId" nillable="true" type="xs:string" />
@@ -123,7 +129,12 @@
           <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="DelegateAssociations" nillable="true" type="q2:ArrayOfRegisteredUserXrefAssociation" />
           <xs:element minOccurs="0" name="DelegateProfileId" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="DelegateUserId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InvitationEmail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InvitationFirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InvitationLastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InvitationMiddleName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="IsValid" type="xs:boolean" />
+          <xs:element minOccurs="0" name="RelationshipCode" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="UserProfileId" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="UserProfileXrefId" nillable="true" type="xs:string" />
         </xs:sequence>
@@ -142,6 +153,7 @@
       <xs:extension base="tns:UserEvents">
         <xs:sequence>
           <xs:element minOccurs="0" name="AssociationId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsAssociationAdministrator" type="xs:boolean" />
           <xs:element minOccurs="0" name="IsValid" type="xs:boolean" />
           <xs:element minOccurs="0" name="SecurityFunctionsAdded" nillable="true" type="tns:ArrayOfRegisteredUserXrefSecurityFunctionAdded" />
           <xs:element minOccurs="0" name="SecurityFunctionsUpdated" nillable="true" type="tns:ArrayOfRegisteredUserXrefSecurityFunctionUpdated" />
@@ -171,6 +183,19 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="RegisteredUserXrefSecurityFunctionUpdated" nillable="true" type="tns:RegisteredUserXrefSecurityFunctionUpdated" />
+  <xs:complexType name="DelegateUserXrefProfileIdUpdated">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UserEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DelegateProfileId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DelegatingUserId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RelationshipCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserProfileXrefId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DelegateUserXrefProfileIdUpdated" nillable="true" type="tns:DelegateUserXrefProfileIdUpdated" />
   <xs:complexType name="UserPreferencesAdded">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:UserEvents">
@@ -245,4 +270,19 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="UserVOSTagInvalidated" nillable="true" type="tns:UserVOSTagInvalidated" />
+  <xs:complexType name="UserXrefInactivated">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:UserEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="InvitationEmail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InvitationFirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InvitationLastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InvitationMiddleName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="UserProfileXrefId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserXrefInactivated" nillable="true" type="tns:UserXrefInactivated" />
 </xs:schema>

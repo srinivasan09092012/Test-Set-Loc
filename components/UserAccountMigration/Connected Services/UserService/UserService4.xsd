@@ -28,6 +28,8 @@
         </xs:annotation>
       </xs:element>
       <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="INGroupId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="IsLastFromGroup" type="xs:boolean" />
       <xs:element minOccurs="0" name="ModelID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ModelType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Timestamp" nillable="true" type="xs:dateTime">

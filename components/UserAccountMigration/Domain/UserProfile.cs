@@ -38,6 +38,8 @@ namespace UserAccountMigration.Domain
 
         public string PhoneNumber { get; set; }
 
+        public string RelationshipCode { get; set; }
+
         public string UserName { get; set; }
 
         public Guid TenantId { get; set; }

@@ -23,21 +23,30 @@
   </Environment>
   <!--
   Processes - Defines 1 or more processes to be executed in the the current execution of the utility.
-  
+    ExportProviders
+    ImportProviders - import list of providers, creating Active Directory and user profile entries
+    ImportUserXrefs - import list of primary and seconday users and a single service location, creating a Xref association for the combination of the three fields
+    ImportUserXrefsWithDelegates - same as ImportUserXrefs, except that a second delegate file can be added with a list of delegates.  Any user in the Xref file that does not have a secondary user will be assigned to all delegates in the delegate file.
+
   Each process has the following properties:
-    name:        A unique name for the process (i.e. ExportProviders).
-    processType: The types of process (Valid values: Export, Import).
-    filePath:    A physical file path where the input or output file is located. This can be relative (Imports\) or a full path (C:\temp\ or \\server\share).
-    fileName:    The name of the input or output file.
-    fileFormat:  The format of the input or output file (supported types include: CSV)
-    processUserProfile: Boolean value that determines if a user profile should also be processed in addition to the AD use account. Only used for imports.
-    maxThreads:  The maximum number of threads to use whiel processing. Only used for imports.
+    name:             A unique name for the process (i.e. ExportProviders).
+    processType:      The types of process (Valid values: Export, Import, ImoprtXref).
+    userGroupFilter:  The AD groups to export. Only used for exports.
+    filePath:         A physical file path where the input or output file is located. This can be relative (Imports\) or a full path (C:\temp\ or \\server\share).
+    fileName:         The name of the input or output file.
+    delegateFileName: The name of the input delegate file for the list of delegates to be assigned to each imported userxref that does not have a secondary username specified. Only used for ImportXref.
+    fileFormat:       The format of the input or output file (supported types include: CSV)
+    processAD:        Boolean value that determines if a active directory account should also be processed on the import. Only used for Import.
+    processUserProfile: Boolean value that determines if a user profile should also be processed on teh import. Only used for Import.
+    maxThreads:       The maximum number of threads to use while processing. Only used for imports.
     Examples:
     ==========================================================
     <Process name="ExportProviders" processType="Export" userGroupFilter="MapsProviders" filePath="Exports\" fileName="Providers.csv" fileFormat="CSV" />
-    <Process name="ImportProviders" processType="Import" allowUpdateOnUserIdMatch="false" filePath="Imports\" fileName="Providers.csv" fileFormat="CSV" processAD="true" processUserProfile="true" maxThreads="10" />
+    <Process name="ImportProviders" processType="Import" filePath="Imports\" fileName="Providers.csv" fileFormat="CSV" processAD="true" processUserProfile="true" maxThreads="10" />
+    <Process name="ImportUserXrefs" processType="ImportXref" filePath="Imports\" fileName="UserXrefs.csv" fileFormat="CSV" maxThreads="10" />
+    <Process name="ImportUserXrefsWithDelegates" processType="ImportXref" filePath="Imports\" fileName="UserXrefs.csv" delegateFileName="Delegates.csv" fileFormat="CSV" maxThreads="10" />
   -->
   <Processes>
-    <Process name="ImportProviders" processType="Import" filePath="Imports\" fileName="Providers.csv" fileFormat="CSV" processAD="true" processUserProfile="true" maxThreads="10" />
+    <Process name="ImportUserXrefsWithDelegates" processType="ImportXref" filePath="Imports\" fileName="UserXrefs.csv" delegateFileName="Delegates.csv" fileFormat="CSV" maxThreads="10" />
   </Processes>
 </MigrationConfig>

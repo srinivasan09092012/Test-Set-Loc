@@ -16,6 +16,7 @@ namespace UserAccountMigration.Domain
         {
             Undefined,
             Import,
+            ImportXref,
             Export
         }
 
@@ -52,6 +53,9 @@ namespace UserAccountMigration.Domain
         [XmlAttribute("fileName")]
         public string FileName { get; set; }
 
+        [XmlAttribute("delegateFileName")]
+        public string DelegateFileName { get; set; }
+
         [XmlAttribute("fileFormat")]
         public FileFormatType FileFormat { get; set; }
 
@@ -71,6 +75,12 @@ namespace UserAccountMigration.Domain
         public int ProcessedCount { get; set; }
 
         [XmlIgnore]
+        public int DuplicateCount { get; set; }
+
+        [XmlIgnore]
+        public int UpdatedCount { get; set; }
+
+        [XmlIgnore]
         public int ErroredCount { get; set; }
 
         public void Initialize()
@@ -85,7 +95,9 @@ namespace UserAccountMigration.Domain
             this.ProcessUserProfile = false;
             this.MaxThreads = 1;
             this.ProcessedStatus = ProcessStatusType.Initialized;
+            this.DuplicateCount = 0;
             this.ProcessedCount = 0;
+            this.UpdatedCount = 0;
             this.ErroredCount = 0;
         }
 
@@ -118,6 +130,14 @@ namespace UserAccountMigration.Domain
                 }
             }
 
+            if (!string.IsNullOrEmpty(this.DelegateFileName))
+            {
+                if (this.FileName.Contains("\\") || this.FileName.Contains("//") || !this.FileName.Contains("."))
+                {
+                    throw new ArgumentNullException("DelegateFileName");
+                }
+            }
+
             if (this.FileFormat == FileFormatType.Undefined)
             {
                 throw new ArgumentNullException("FileFormat");
@@ -133,6 +153,7 @@ namespace UserAccountMigration.Domain
                     break;
 
                 case ProcessTypes.Import:
+                case ProcessTypes.ImportXref:
                     break;
             }
         }

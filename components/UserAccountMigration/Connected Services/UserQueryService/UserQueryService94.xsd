@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries.Parameters" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries.Parameters" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
-  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" />
-  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Common" />
-  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd7" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:40520/UserQueryService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:40520/UserQueryService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
+  <xs:import schemaLocation="http://localhost:40520/UserQueryService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" />
+  <xs:import schemaLocation="http://localhost:40520/UserQueryService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Common" />
+  <xs:import schemaLocation="http://localhost:40520/UserQueryService.svc?xsd=xsd7" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:complexType name="UserIdParms">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q1:SerializableBase">
@@ -19,6 +19,7 @@
   <xs:complexType name="SearchUserProfileParms">
     <xs:sequence>
       <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="ActiveType" type="q2:Enumerations.SearchActiveType" />
+      <xs:element minOccurs="0" name="ContactNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
@@ -31,8 +32,12 @@
   <xs:element name="SearchUserProfileParms" nillable="true" type="tns:SearchUserProfileParms" />
   <xs:complexType name="UserDelegateParms">
     <xs:sequence>
+      <xs:element minOccurs="0" name="AssociationId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="DelegateFilters" nillable="true" type="tns:ArrayOfUserDelegateFilter" />
       <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsAssociationActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsAssociationAdministrator" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRegistered" type="xs:boolean" />
       <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -53,6 +58,7 @@
   <xs:element name="UserDelegateFilter" nillable="true" type="tns:UserDelegateFilter" />
   <xs:complexType name="UserDelegateDetailParms">
     <xs:sequence>
+      <xs:element minOccurs="0" name="IsUnregistered" type="xs:boolean" />
       <xs:element minOccurs="0" name="UserProfileXrefId" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

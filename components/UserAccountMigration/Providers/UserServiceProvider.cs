@@ -5,7 +5,9 @@
 // Violators may be punished to the full extent of the law.
 //--------------------------------------------------------------------------------------------------
 using System;
+using System.Collections.Generic;
 using System.Net;
+using System.ServiceModel;
 using UserAccountMigration.Domain;
 using svc = UserAccountMigration.UserService;
 
@@ -120,6 +122,59 @@ namespace UserAccountMigration.Providers
                         svcProxy.UpdateUserVOSTag(cmd2);
                     }
                 }
+            }
+        }
+
+        public void AddProfileXref(UserXref userXref, string primaryUserId, string secondaryId, string relationshipCode)
+        {
+            svc.AddRegisteredUserXrefCommand cmd = new svc.AddRegisteredUserXrefCommand()
+            {
+                Requestor = this.BuildRequestor(),
+                UserProfileId = primaryUserId,
+                DelegateProfileId = secondaryId,
+                RelationshipCode = relationshipCode,
+                DelegateAssociations = new List<svc.RegisteredUserXrefAssociation>()
+                {
+                    new svc.RegisteredUserXrefAssociation()
+                    {
+                        AssociationId = userXref.AssociationId,
+                        IsActive = userXref.IsAssociationActive,
+                        IsAssociationAdministrator = true
+                    }
+                },
+                IsActive = true,  
+            };
+
+            using (var channelFactory = this.InitializeChannelFactory<svc.IUserService>())
+            {
+                var svcProxy = this.CreateChannel<svc.IUserService>(channelFactory);
+                var svcResponse = svcProxy.AddRegisteredUserXref(cmd);
+            }
+        }
+
+        public void UpdateProfileXref(UserXref userXref, string xrefId, string xrefAssocId)
+        {
+            svc.UpdateRegisteredUserXrefCommand cmd = new svc.UpdateRegisteredUserXrefCommand()
+            {
+                Requestor = this.BuildRequestor(),
+                UserProfileXrefId = xrefId,
+                DelegateAssociations = new List<svc.RegisteredUserXrefAssociation>()
+                {
+                    new svc.RegisteredUserXrefAssociation()
+                    {
+                        AssociationId = userXref.AssociationId,
+                        IsActive = userXref.IsAssociationActive,
+                        IsAssociationAdministrator = true,
+                        UserProfileXrefAssocId = xrefAssocId
+                    }
+                },
+                IsActive = true,
+            };
+
+            using (var channelFactory = this.InitializeChannelFactory<svc.IUserService>())
+            {
+                var svcProxy = this.CreateChannel<svc.IUserService>(channelFactory);
+                var svcResponse = svcProxy.UpdateRegisteredUserXref(cmd);
             }
         }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="HP.HSP.UserQueryService" elementFormDefault="qualified" targetNamespace="HP.HSP.UserQueryService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries" />
+  <xs:import schemaLocation="http://localhost:40520/UserQueryService.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Queries" />
   <xs:element name="GetUserProfile">
     <xs:complexType>
       <xs:sequence>

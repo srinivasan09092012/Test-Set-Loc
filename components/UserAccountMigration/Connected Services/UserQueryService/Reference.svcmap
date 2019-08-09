@@ -9,7 +9,9 @@
     <GenerateInternalTypes>false</GenerateInternalTypes>
     <GenerateMessageContracts>false</GenerateMessageContracts>
     <NamespaceMappings />
-    <CollectionMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
@@ -19,21 +21,21 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:40520/UserQueryService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="UserQueryService.xsd" MetadataType="Schema" ID="c60b19ca-ab60-4d97-904d-1e40ce7e2715" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd2" />
-    <MetadataFile FileName="UserQueryService1.xsd" MetadataType="Schema" ID="38c767fa-3525-4e30-9669-12c696a3e8df" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd7" />
-    <MetadataFile FileName="UserQueryService2.xsd" MetadataType="Schema" ID="29a109f7-ea88-4b59-b49e-d0afcc086179" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd3" />
-    <MetadataFile FileName="UserQueryService3.xsd" MetadataType="Schema" ID="55ef16db-95ba-4d80-a438-85a614296f64" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd0" />
-    <MetadataFile FileName="UserQueryService4.xsd" MetadataType="Schema" ID="74789c5c-8fcd-4a7b-87b4-984f76e5bcd7" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd1" />
-    <MetadataFile FileName="UserQueryService5.xsd" MetadataType="Schema" ID="bb079b2c-7b7b-4371-85fe-c578477e01b1" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd6" />
-    <MetadataFile FileName="UserQueryService.wsdl" MetadataType="Wsdl" ID="c388f47a-d96c-4fbd-9a09-79218266fb5b" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?wsdl=wsdl0" />
-    <MetadataFile FileName="UserQueryService6.xsd" MetadataType="Schema" ID="35960fc3-40fd-4e73-a3bf-0959e0022af6" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd4" />
-    <MetadataFile FileName="UserQueryService7.xsd" MetadataType="Schema" ID="1309b3c7-1564-4666-a405-365198b352d8" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd5" />
-    <MetadataFile FileName="UserQueryService8.xsd" MetadataType="Schema" ID="b7ab72ad-39f1-4671-a7ff-296e839a743a" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd8" />
-    <MetadataFile FileName="UserQueryService1.wsdl" MetadataType="Wsdl" ID="e2c36d6b-b1bf-4656-8564-b0284a9586c4" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?wsdl" />
-    <MetadataFile FileName="UserQueryService.disco" MetadataType="Disco" ID="af904e9a-87ae-42da-923f-e6f861d908b1" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?disco" />
+    <MetadataFile FileName="UserQueryService9.xsd" MetadataType="Schema" ID="6267eb61-1a28-4950-ae75-7035d0e646e0" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?xsd=xsd6" />
+    <MetadataFile FileName="UserQueryService91.xsd" MetadataType="Schema" ID="da75d3df-5ca8-4968-b9a7-1f95b2c7def6" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?xsd=xsd0" />
+    <MetadataFile FileName="UserQueryService92.xsd" MetadataType="Schema" ID="6efdb406-43a4-4178-855f-dec10873eb77" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?xsd=xsd2" />
+    <MetadataFile FileName="UserQueryService93.xsd" MetadataType="Schema" ID="a20cebe0-8533-45a1-833e-ae4afe74706d" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?xsd=xsd8" />
+    <MetadataFile FileName="UserQueryService1.disco" MetadataType="Disco" ID="8b989377-602f-444c-ba10-b4a55e753a85" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?disco" />
+    <MetadataFile FileName="UserQueryService94.xsd" MetadataType="Schema" ID="3d54aca2-ece6-413c-a074-17701daa5ffd" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?xsd=xsd5" />
+    <MetadataFile FileName="UserQueryService95.xsd" MetadataType="Schema" ID="fc9e8363-1823-4692-bf59-bef978088c22" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?xsd=xsd7" />
+    <MetadataFile FileName="UserQueryService2.wsdl" MetadataType="Wsdl" ID="b1fc1a77-4c9d-4bb4-85c5-2156b43c04c0" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?wsdl" />
+    <MetadataFile FileName="UserQueryService96.xsd" MetadataType="Schema" ID="86c87124-7c3c-4677-ada0-26e3d2740b67" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?xsd=xsd1" />
+    <MetadataFile FileName="UserQueryService21.wsdl" MetadataType="Wsdl" ID="44efc66c-c09b-408d-b748-2bffc25bd032" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="UserQueryService97.xsd" MetadataType="Schema" ID="fe4373e6-fadf-43f9-ae0c-c514849f018a" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?xsd=xsd3" />
+    <MetadataFile FileName="UserQueryService98.xsd" MetadataType="Schema" ID="df2ed166-9716-426c-9a32-fc06a389f683" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?xsd=xsd4" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

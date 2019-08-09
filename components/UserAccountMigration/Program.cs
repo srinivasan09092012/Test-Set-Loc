@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.ServiceModel;
 using System.Threading;
 using UserAccountMigration.Domain;
 using UserAccountMigration.Providers;
@@ -31,6 +32,10 @@ namespace UserAccountMigration
         private static UserServiceProvider userServiceProvider;
         private static UserQueryServiceProvider userQueryServiceProvider;
         private static List<UserAccountError> userAccountErrors = null;
+        private static List<UserXrefError> userXrefErrors = null;
+        private static List<DelegateUserError> delegateUserErrors = null;
+        private static List<UserProfile> userProfiles = new List<UserProfile>();
+        private static List<UserProfile> delegateProfiles = new List<UserProfile>();
         private static Stopwatch timer = new Stopwatch();
 
         static void Main(string[] args)
@@ -210,6 +215,35 @@ namespace UserAccountMigration
             return fileName;
         }
 
+        private static string FormatImportDelegateErrorFileName(ProcessConfig process)
+        {
+            string fileName = string.Empty;
+
+            if (!string.IsNullOrEmpty(process.DelegateFileName))
+            {
+                string filePath = process.FilePath;
+                if (!filePath.EndsWith("\\"))
+                {
+                    filePath += "\\";
+                }
+
+                fileName = process.FilePath +
+                    process.DelegateFileName.Substring(0, process.FileName.LastIndexOfAny(new char[] { '.' })) + "-Errors" + process.DelegateFileName.Substring(process.DelegateFileName.LastIndexOfAny(new char[] { '.' })) +
+                    string.Format("-{0}", DateTime.Now.ToString("yyyyMMddhhmmss"));
+                if (!Directory.Exists(filePath))
+                {
+                    throw new ApplicationException(string.Format("File path '{0}' does not exist. Correct file path and try again.", filePath));
+                }
+
+                if (File.Exists(fileName))
+                {
+                    throw new ApplicationException(string.Format("File name '{0}' already exists. Delete file and try again.", fileName));
+                }
+            }
+
+            return fileName;
+        }
+
         private static string FormatImportFileName(ProcessConfig process)
         {
             string fileName = string.Empty;
@@ -234,6 +268,33 @@ namespace UserAccountMigration
             return fileName;
         }
 
+
+        private static string FormatImportDelegateFileName(ProcessConfig process)
+        {
+            string fileName = string.Empty;
+
+            if (!string.IsNullOrEmpty(process.DelegateFileName))
+            {
+                string filePath = process.FilePath;
+                if (!filePath.EndsWith("\\"))
+                {
+                    filePath += "\\";
+                }
+
+                fileName = process.FilePath + process.DelegateFileName;
+                if (!Directory.Exists(filePath))
+                {
+                    throw new ApplicationException(string.Format("Delegate file path '{0}' does not exist. Correct delegate file path and try again.", filePath));
+                }
+
+                if (!File.Exists(fileName))
+                {
+                    throw new ApplicationException(string.Format("Delegate file name '{0}' does not exist. Correct delegate file name and try again.", fileName));
+                }
+            }
+
+            return fileName;
+        }
         private static void ImportAccount(object threadAccountData)
         {
             List<UserAccount> userAccounts = new List<UserAccount>(threadAccountData as IEnumerable<UserAccount>);
@@ -273,6 +334,137 @@ namespace UserAccountMigration
             }
         }
 
+        private static void ImportXref(object threadAccountData)
+        {
+            List<UserXref> userXrefs = new List<UserXref>(threadAccountData as IEnumerable<UserXref>);
+            foreach (UserXref userXref in userXrefs)
+            {
+                try
+                {
+                    userXref.Validate(delegateProfiles.Count());
+                    List<UserProfile> delegateList = new List<UserProfile>();
+                    UserProfile primaryUser = GetUserPofileId(userXref.PrimaryUserName, userXref);
+                    if (string.IsNullOrEmpty(userXref.SecondaryUserName))
+                    {
+                        delegateList = delegateProfiles;
+                    }
+                    else
+                    {
+                        UserProfile secondaryUser = GetUserPofileId(userXref.SecondaryUserName, userXref);
+                        delegateList.Add(secondaryUser);
+                    }
+
+                    foreach (UserProfile del in delegateList)
+                    {
+                        try
+                        {
+                            userXref.SecondaryUserName = del.UserName;
+                            string userXrefId = string.Empty;
+                            string userXrefAssocId = string.Empty;
+                            bool identicalXrefExists = false;
+
+                            userQueryServiceProvider.GetUserXref(userXref, ref userXrefId, ref userXrefAssocId, ref identicalXrefExists);
+
+                            if (identicalXrefExists)
+                            {
+                                lock (currentProcess)
+                                {
+                                    currentProcess.DuplicateCount++;
+                                }
+                            }
+                            else if (string.IsNullOrEmpty(userXrefId))
+                            {
+                                userServiceProvider.AddProfileXref(userXref, primaryUser.ProfileId.ToString(), del.ProfileId.ToString(), del.RelationshipCode);
+                                lock (currentProcess)
+                                {
+                                    currentProcess.ProcessedCount++;
+                                }
+                            }
+                            else
+                            {
+                                userServiceProvider.UpdateProfileXref(userXref, userXrefId, userXrefAssocId);
+                                lock (currentProcess)
+                                {
+                                    currentProcess.UpdatedCount++;
+                                }
+                            }
+                        }
+                        catch (FaultException<UserService.BusinessValidationException> ex)
+                        {
+                            string msg = ex.Detail.BusinessMessages.Count > 0 ? ex.Detail.BusinessMessages[0].MessageDefault : ex.Message;
+                            UserXrefError userXrefError = new UserXrefError(userXref, msg);
+                            LogMessage(1, string.Format("Error processing primary user '{0}' secondary user '{1}' association '{2}' with error: '{3}'", userXref.PrimaryUserName, del.UserName, userXref.AssociationId, msg));
+                            lock (userXrefErrors)
+                            {
+                                userXrefErrors.Add(userXrefError);
+                            }
+
+                            lock (currentProcess)
+                            {
+                                currentProcess.ErroredCount++;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            UserXrefError userXrefError = new UserXrefError(userXref, ex.Message);
+                            LogMessage(1, string.Format("Error processing primary user '{0}' secondary user '{1}' association '{2}' with error: '{3}'", userXref.PrimaryUserName, del.UserName, userXref.AssociationId, ex.Message));
+                            lock (userXrefErrors)
+                            {
+                                userXrefErrors.Add(userXrefError);
+                            }
+
+                            lock (currentProcess)
+                            {
+                                currentProcess.ErroredCount++;
+                            }
+                        }
+                    }
+                }
+                catch (FaultException<UserService.ServiceException> ex)
+                {
+                    UserXrefError userXrefError = new UserXrefError(userXref, ex.Message);
+                    LogMessage(1, string.Format("Error processing primary user '{0}' secondary user '{1}' association '{2}' with error: '{3}'", userXref.PrimaryUserName, userXref.SecondaryUserName, userXref.AssociationId, ex.Message));
+                    lock (userXrefErrors)
+                    {
+                        userXrefErrors.Add(userXrefError);
+                    }
+
+                    lock (currentProcess)
+                    {
+                        currentProcess.ErroredCount++;
+                    }
+                }
+                catch (FaultException<UserService.BusinessValidationException> ex)
+                {
+                    UserXrefError userXrefError = new UserXrefError(userXref, ex.Message);
+                    LogMessage(1, string.Format("Error processing primary user '{0}' secondary user '{1}' association '{2}' with error: '{3}'", userXref.PrimaryUserName, userXref.SecondaryUserName, userXref.AssociationId, ex.Message));
+                    lock (userXrefErrors)
+                    {
+                        userXrefErrors.Add(userXrefError);
+                    }
+
+                    lock (currentProcess)
+                    {
+                        currentProcess.ErroredCount++;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    UserXrefError userXrefError = new UserXrefError(userXref, ex.Message);
+                    LogMessage(1, string.Format("Error processing primary user '{0}' secondary user '{1}' association '{2}' with error: '{3}'", userXref.PrimaryUserName, userXref.SecondaryUserName, userXref.AssociationId, ex.Message));
+                    lock (userXrefErrors)
+                    {
+                        userXrefErrors.Add(userXrefError);
+                    }
+
+                    lock (currentProcess)
+                    {
+                        currentProcess.ErroredCount++;
+                    }
+                }
+            }
+        }
+
         private static void InitializeADProviders()
         {
             LogMessage(0, "Initializing AD providers");
@@ -294,6 +486,97 @@ namespace UserAccountMigration
             LogMessage(0, "Initializing service providers");
             userServiceProvider = new UserServiceProvider(migrationConfig.Environment);
             userQueryServiceProvider = new UserQueryServiceProvider(migrationConfig.Environment);
+        }
+
+        private static void LoadDelegates(List<DelegateUser> delegateUsers)
+        {
+            foreach (DelegateUser del in delegateUsers)
+            {
+                try
+                {
+                    del.Validate();
+                    if (delegateProfiles.Any<UserProfile>(d => d.UserName.ToUpper() == del.UserName.ToUpper()))
+                    {
+                        string msg = string.Format("Error processing delegate '{0}': delegate already in the list.", del.UserName);
+                        DelegateUserError delegateUserError = new DelegateUserError(del, msg);
+                        LogMessage(1, msg);
+                        lock (delegateUserErrors)
+                        {
+                            delegateUserErrors.Add(delegateUserError);
+                        }
+
+                        lock (currentProcess)
+                        {
+                            currentProcess.ErroredCount++;
+                        }
+                    }
+                    else
+                    { 
+                        UserProfile profile = userQueryServiceProvider.LoadUserProfile(del.UserName);
+                        if (profile != null)
+                        {
+                            delegateProfiles.Add(profile);
+                        }
+                        else
+                        {
+                            string msg = string.Format("Error processing delegate '{0}': user profile not found", del.UserName);
+                            DelegateUserError delegateUserError = new DelegateUserError(del, msg);
+                            LogMessage(1, msg);
+                            lock (delegateUserErrors)
+                            {
+                                delegateUserErrors.Add(delegateUserError);
+                            }
+
+                            lock (currentProcess)
+                            {
+                                currentProcess.ErroredCount++;
+                            }
+                        }
+                    }
+                }
+                catch (FaultException<UserService.ServiceException> ex)
+                {
+                    DelegateUserError delegateUserError = new DelegateUserError(del, ex.Message);
+                    LogMessage(1, string.Format("Error processing delegate user '{0}' with error: '{1}'", del.UserName, ex.Message));
+                    lock (delegateUserErrors)
+                    {
+                        delegateUserErrors.Add(delegateUserError);
+                    }
+
+                    lock (currentProcess)
+                    {
+                        currentProcess.ErroredCount++;
+                    }
+                }
+                catch (FaultException<UserService.BusinessValidationException> ex)
+                {
+                    DelegateUserError delegateUserError = new DelegateUserError(del, ex.Message);
+                    LogMessage(1, string.Format("Error processing delegate user '{0}' with error: '{1}'", del.UserName, ex.Message));
+                    lock (delegateUserErrors)
+                    {
+                        delegateUserErrors.Add(delegateUserError);
+                    }
+
+                    lock (currentProcess)
+                    {
+                        currentProcess.ErroredCount++;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    DelegateUserError delegateUserError = new DelegateUserError(del, ex.Message);
+                    LogMessage(1, string.Format("Error processing delegate user '{0}' with error: '{1}'", del.UserName, ex.Message));
+                    lock (delegateUserErrors)
+                    {
+                        delegateUserErrors.Add(delegateUserError);
+                    }
+
+                    lock (currentProcess)
+                    {
+                        currentProcess.ErroredCount++;
+                    }
+                }
+            }
         }
 
         private static void LoadConfigration()
@@ -419,12 +702,71 @@ namespace UserAccountMigration
             }
         }
 
+        private static void ProcessImportXref(Domain.Environment environment)
+        {
+            string importFile = FormatImportFileName(currentProcess);
+            string importDelegateFile = FormatImportDelegateFileName(currentProcess);
+            string errorFile = FormatImportErrorFileName(currentProcess);
+            string errorDelegateFile = FormatImportDelegateErrorFileName(currentProcess);
+            delegateProfiles = new List<UserProfile>();
+
+            try
+            {
+                LogMessage(1, string.Format("Loading user xrefs from import file '{0}'", importFile));
+                FileHelperEngine<UserXref> fileEngine = new FileHelperEngine<UserXref>();
+                List<UserXref> userXrefs = new List<UserXref>(fileEngine.ReadFile(importFile));
+                LogMessage(1, string.Format("{0} user xrefs loaded", userXrefs.Count.ToString("#,##0")));
+                List<DelegateUser> delegates = null;
+                if (!string.IsNullOrEmpty(importDelegateFile))
+                {
+                    LogMessage(1, string.Format("Loading delegates from import file '{0}'", importFile));
+                    FileHelperEngine<DelegateUser> delFileEngine = new FileHelperEngine<DelegateUser>();
+                    delegates = new List<DelegateUser>(delFileEngine.ReadFile(importDelegateFile));
+                    LogMessage(1, string.Format("{0} delegates loaded", delegates.Count.ToString("#,##0")));
+                    LoadDelegates(delegates);
+                }
+
+                if (delegateUserErrors != null & delegateUserErrors.Count > 0)
+                {
+                    delegateUserErrors.Sort(delegate (DelegateUserError a1, DelegateUserError a2) { return a1.UserName.CompareTo(a2.UserName); });
+                    FileHelperEngine<DelegateUserError> fileErrorEngine = new FileHelperEngine<DelegateUserError>();
+                    fileErrorEngine.HeaderText = fileErrorEngine.GetFileHeader();
+                    fileErrorEngine.WriteFile(errorDelegateFile, delegateUserErrors);
+                }
+                else if (userXrefs != null && userXrefs.Count > 0)
+                {
+                    StartImportThreads(userXrefs, currentProcess.MaxThreads);
+                }
+                else
+                {
+                    LogMessage(1, string.Format("No records to process."));
+                }
+
+                currentProcess.ProcessedStatus = ProcessConfig.ProcessStatusType.Complete;
+
+                if (userXrefErrors != null & userXrefErrors.Count > 0)
+                {
+                    userXrefErrors.OrderBy(e => e.PrimaryUserName).ThenBy(e => e.SecondaryUserName);
+                    FileHelperEngine<UserXrefError> fileErrorEngine = new FileHelperEngine<UserXrefError>();
+                    fileErrorEngine.HeaderText = fileErrorEngine.GetFileHeader();
+                    fileErrorEngine.WriteFile(errorFile, userXrefErrors);
+                }
+            }
+            catch (Exception e)
+            {
+                currentProcess.ProcessedStatus = ProcessConfig.ProcessStatusType.Error;
+                throw;
+            }
+        }
+
         private static void ProcessMigration()
         {
             foreach (ProcessConfig process in migrationConfig.Processes)
             {
                 currentProcess = process;
                 userAccountErrors = new List<UserAccountError>();
+                userXrefErrors = new List<UserXrefError>();
+                delegateUserErrors = new List<DelegateUserError>();
                 try
                 {
                     LogMessage(0, string.Format("Migration started for process '{0}'", process.Name));
@@ -436,6 +778,10 @@ namespace UserAccountMigration
 
                         case ProcessConfig.ProcessTypes.Import:
                             ProcessImport(migrationConfig.Environment);
+                            break;
+
+                        case ProcessConfig.ProcessTypes.ImportXref:
+                            ProcessImportXref(migrationConfig.Environment);
                             break;
 
                         default:
@@ -488,6 +834,39 @@ namespace UserAccountMigration
             }
         }
 
+        private static UserProfile GetUserPofileId(string userName, UserXref userXref)
+        {
+            UserProfile profile = null;
+            string id = string.Empty;
+            profile = userProfiles.FirstOrDefault<UserProfile>(u => u.UserName == userName);
+            if (profile == null)
+            {
+                profile = userQueryServiceProvider.LoadUserProfile(userName);
+                if (profile != null)
+                {
+                    userProfiles.Add(profile);
+                }
+                else
+                {
+                    string msg = string.Format("Error processing user '{0}': user profile not found", userName);
+                    UserXrefError userXrefError = new UserXrefError(userXref, msg);
+                    LogMessage(1, msg);
+                    lock (userXrefErrors)
+                    {
+                        userXrefErrors.Add(userXrefError);
+                    }
+
+                    lock (currentProcess)
+                    {
+                        currentProcess.ErroredCount++;
+                    }
+                }
+            }
+
+
+            return profile;
+
+        }
         private static void ReportCounts()
         {
             LogBreak();
@@ -507,10 +886,17 @@ namespace UserAccountMigration
                     LogMessage(1, string.Format("Account Exports: {0}", process.ProcessedCount.ToString("#,##0")));
                     LogMessage(1, string.Format("Account Errors:  {0}", process.ErroredCount.ToString("#,##0")));
                 }
-                else
+                else if (process.ProcessType == ProcessConfig.ProcessTypes.Import)
                 {
                     LogMessage(1, string.Format("Account Imports: {0}", process.ProcessedCount.ToString("#,##0")));
                     LogMessage(1, string.Format("Account Errors:  {0}", process.ErroredCount.ToString("#,##0")));
+                }
+                else
+                {
+                    LogMessage(1, string.Format("Xref Imports: {0}", process.ProcessedCount.ToString("#,##0")));
+                    LogMessage(1, string.Format("Xref Updates: {0}", process.UpdatedCount.ToString("#,##0")));
+                    LogMessage(1, string.Format("Xref Duplicates:  {0}", process.DuplicateCount.ToString("#,##0")));
+                    LogMessage(1, string.Format("Xref Errors:  {0}", process.ErroredCount.ToString("#,##0")));
                 }
                 LogBreak();
             }
@@ -540,6 +926,40 @@ namespace UserAccountMigration
                 else
                 {
                     t.Start(userAccounts.Skip(i * recordsPerThread));
+                }
+            }
+
+            foreach (Thread t in threads)
+            {
+                t.Join();
+            }
+        }
+
+
+        private static void StartImportThreads(List<UserXref> userXrefs, int maxThreads)
+        {
+            List<Thread> threads = new List<Thread>();
+            int threadCount = maxThreads;
+            if (maxThreads > userXrefs.Count)
+            {
+                threadCount = userXrefs.Count;
+            }
+
+            int recordsPerThread = userXrefs.Count / threadCount;
+
+            LogMessage(1, string.Format("Starting {0} threads processing {1} xrefs each", threadCount.ToString("#,##0"), recordsPerThread.ToString("#,##0")));
+            for (int i = 0; i < threadCount; i++)
+            {
+                Thread t = new Thread(new ParameterizedThreadStart(Program.ImportXref));
+                t.Name = (i + 1).ToString("000");
+                threads.Add(t);
+                if (i < threadCount - 1)
+                {
+                    t.Start(userXrefs.Skip(i * recordsPerThread).Take(recordsPerThread));
+                }
+                else
+                {
+                    t.Start(userXrefs.Skip(i * recordsPerThread));
                 }
             }
 

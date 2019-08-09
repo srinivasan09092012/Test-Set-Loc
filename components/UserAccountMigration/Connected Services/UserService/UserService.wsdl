@@ -134,6 +134,21 @@
         <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="UpdateDelegateUserXrefProfileId">
+      <soap:operation soapAction="HP.HSP.UserService/IUserService/UpdateDelegateUserXrefProfileId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="AddUserPreferences">
       <soap:operation soapAction="HP.HSP.UserService/IUserService/AddUserPreferences" style="document" />
       <wsdl:input>
@@ -211,6 +226,21 @@
     </wsdl:operation>
     <wsdl:operation name="InvalidateUserVOSTag">
       <soap:operation soapAction="HP.HSP.UserService/IUserService/InvalidateUserVOSTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="InactivateUserXref">
+      <soap:operation soapAction="HP.HSP.UserService/IUserService/InactivateUserXref" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -333,6 +363,21 @@
         <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="UpdateDelegateUserXrefProfileId">
+      <soap:operation soapAction="HP.HSP.UserService/IUserService/UpdateDelegateUserXrefProfileId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="AddUserPreferences">
       <soap:operation soapAction="HP.HSP.UserService/IUserService/AddUserPreferences" style="document" />
       <wsdl:input>
@@ -410,6 +455,21 @@
     </wsdl:operation>
     <wsdl:operation name="InvalidateUserVOSTag">
       <soap:operation soapAction="HP.HSP.UserService/IUserService/InvalidateUserVOSTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessValidationExceptionFault">
+        <soap:fault use="literal" name="BusinessValidationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="InactivateUserXref">
+      <soap:operation soapAction="HP.HSP.UserService/IUserService/InactivateUserXref" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -300,13 +300,13 @@ namespace UserAccountMigration.UserQueryService {
     public partial class QueryOfUserProfileModelcp1reAtb : UserAccountMigration.UserQueryService.Query {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.UserProfileModel[] ResultsField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserProfileModel> ResultsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.SortCriteria[] SortCriteriaField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.SortCriteria> SortCriteriaField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.UserProfileModel[] Results {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserProfileModel> Results {
             get {
                 return this.ResultsField;
             }
@@ -319,7 +319,7 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.SortCriteria[] SortCriteria {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.SortCriteria> SortCriteria {
             get {
                 return this.SortCriteriaField;
             }
@@ -412,13 +412,13 @@ namespace UserAccountMigration.UserQueryService {
     public partial class QueryOfUserDelegateModelcp1reAtb : UserAccountMigration.UserQueryService.Query {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.UserDelegateModel[] ResultsField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserDelegateModel> ResultsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.SortCriteria[] SortCriteriaField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.SortCriteria> SortCriteriaField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.UserDelegateModel[] Results {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserDelegateModel> Results {
             get {
                 return this.ResultsField;
             }
@@ -431,7 +431,7 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.SortCriteria[] SortCriteria {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.SortCriteria> SortCriteria {
             get {
                 return this.SortCriteriaField;
             }
@@ -476,13 +476,13 @@ namespace UserAccountMigration.UserQueryService {
     public partial class QueryOfUserDelegateDetailsModelcp1reAtb : UserAccountMigration.UserQueryService.Query {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.UserDelegateDetailsModel[] ResultsField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserDelegateDetailsModel> ResultsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.SortCriteria[] SortCriteriaField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.SortCriteria> SortCriteriaField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.UserDelegateDetailsModel[] Results {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserDelegateDetailsModel> Results {
             get {
                 return this.ResultsField;
             }
@@ -495,7 +495,7 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.SortCriteria[] SortCriteria {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.SortCriteria> SortCriteria {
             get {
                 return this.SortCriteriaField;
             }
@@ -540,13 +540,13 @@ namespace UserAccountMigration.UserQueryService {
     public partial class QueryOfUserXRefAssociatedRelationshipModelcp1reAtb : UserAccountMigration.UserQueryService.Query {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.UserXRefAssociatedRelationshipModel[] ResultsField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserXRefAssociatedRelationshipModel> ResultsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.SortCriteria[] SortCriteriaField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.SortCriteria> SortCriteriaField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.UserXRefAssociatedRelationshipModel[] Results {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserXRefAssociatedRelationshipModel> Results {
             get {
                 return this.ResultsField;
             }
@@ -559,7 +559,7 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.SortCriteria[] SortCriteria {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.SortCriteria> SortCriteria {
             get {
                 return this.SortCriteriaField;
             }
@@ -604,13 +604,13 @@ namespace UserAccountMigration.UserQueryService {
     public partial class QueryOfUserXRefRelationshipModelcp1reAtb : UserAccountMigration.UserQueryService.Query {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.UserXRefRelationshipModel[] ResultsField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserXRefRelationshipModel> ResultsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.SortCriteria[] SortCriteriaField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.SortCriteria> SortCriteriaField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.UserXRefRelationshipModel[] Results {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserXRefRelationshipModel> Results {
             get {
                 return this.ResultsField;
             }
@@ -623,7 +623,7 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.SortCriteria[] SortCriteria {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.SortCriteria> SortCriteria {
             get {
                 return this.SortCriteriaField;
             }
@@ -668,13 +668,13 @@ namespace UserAccountMigration.UserQueryService {
     public partial class QueryOfUserProfileMemberFocusHistoryDetailcp1reAtb : UserAccountMigration.UserQueryService.Query {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.UserProfileMemberFocusHistoryDetail[] ResultsField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserProfileMemberFocusHistoryDetail> ResultsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.SortCriteria[] SortCriteriaField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.SortCriteria> SortCriteriaField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.UserProfileMemberFocusHistoryDetail[] Results {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserProfileMemberFocusHistoryDetail> Results {
             get {
                 return this.ResultsField;
             }
@@ -687,7 +687,7 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.SortCriteria[] SortCriteria {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.SortCriteria> SortCriteria {
             get {
                 return this.SortCriteriaField;
             }
@@ -708,13 +708,13 @@ namespace UserAccountMigration.UserQueryService {
     public partial class UserProfileMemberFocusHistoryQuery : UserAccountMigration.UserQueryService.QueryOfUserProfileMemberFocusHistoryDetailcp1reAtb {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.UserProfileMemberFocusHistoryDetail[] QueryResultField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserProfileMemberFocusHistoryDetail> QueryResultField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private UserAccountMigration.UserQueryService.UserProfileMemberFocusHistoryParms WhereField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.UserProfileMemberFocusHistoryDetail[] QueryResult {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserProfileMemberFocusHistoryDetail> QueryResult {
             get {
                 return this.QueryResultField;
             }
@@ -748,13 +748,13 @@ namespace UserAccountMigration.UserQueryService {
     public partial class QueryOfUserVOSProfileModelcp1reAtb : UserAccountMigration.UserQueryService.Query {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.UserVOSProfileModel[] ResultsField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserVOSProfileModel> ResultsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.SortCriteria[] SortCriteriaField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.SortCriteria> SortCriteriaField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.UserVOSProfileModel[] Results {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserVOSProfileModel> Results {
             get {
                 return this.ResultsField;
             }
@@ -767,7 +767,7 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.SortCriteria[] SortCriteria {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.SortCriteria> SortCriteria {
             get {
                 return this.SortCriteriaField;
             }
@@ -812,13 +812,13 @@ namespace UserAccountMigration.UserQueryService {
     public partial class QueryOfUserVOSTagDetailedModelcp1reAtb : UserAccountMigration.UserQueryService.Query {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.UserVOSTagDetailedModel[] ResultsField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserVOSTagDetailedModel> ResultsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.SortCriteria[] SortCriteriaField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.SortCriteria> SortCriteriaField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.UserVOSTagDetailedModel[] Results {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserVOSTagDetailedModel> Results {
             get {
                 return this.ResultsField;
             }
@@ -831,7 +831,7 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.SortCriteria[] SortCriteria {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.SortCriteria> SortCriteria {
             get {
                 return this.SortCriteriaField;
             }
@@ -925,7 +925,7 @@ namespace UserAccountMigration.UserQueryService {
         private string ContactNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> DateOfBirthField;
+        private string DisplayNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailAddressField;
@@ -955,7 +955,10 @@ namespace UserAccountMigration.UserQueryService {
         private string LocalIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.KeyValuePair[] PreferencesField;
+        private string MiddleNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.KeyValuePair> PreferencesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RelationshipCodeField;
@@ -1012,14 +1015,14 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> DateOfBirth {
+        public string DisplayName {
             get {
-                return this.DateOfBirthField;
+                return this.DisplayNameField;
             }
             set {
-                if ((this.DateOfBirthField.Equals(value) != true)) {
-                    this.DateOfBirthField = value;
-                    this.RaisePropertyChanged("DateOfBirth");
+                if ((object.ReferenceEquals(this.DisplayNameField, value) != true)) {
+                    this.DisplayNameField = value;
+                    this.RaisePropertyChanged("DisplayName");
                 }
             }
         }
@@ -1142,7 +1145,20 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.KeyValuePair[] Preferences {
+        public string MiddleName {
+            get {
+                return this.MiddleNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MiddleNameField, value) != true)) {
+                    this.MiddleNameField = value;
+                    this.RaisePropertyChanged("MiddleName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.KeyValuePair> Preferences {
             get {
                 return this.PreferencesField;
             }
@@ -1678,6 +1694,9 @@ namespace UserAccountMigration.UserQueryService {
         private UserAccountMigration.UserQueryService.EnumerationsSearchActiveType ActiveTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContactNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailAddressField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1717,6 +1736,19 @@ namespace UserAccountMigration.UserQueryService {
                 if ((this.ActiveTypeField.Equals(value) != true)) {
                     this.ActiveTypeField = value;
                     this.RaisePropertyChanged("ActiveType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ContactNumber {
+            get {
+                return this.ContactNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContactNumberField, value) != true)) {
+                    this.ContactNumberField = value;
+                    this.RaisePropertyChanged("ContactNumber");
                 }
             }
         }
@@ -1910,7 +1942,7 @@ namespace UserAccountMigration.UserQueryService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] UserIdListField;
+        private System.Collections.Generic.List<string> UserIdListField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1923,7 +1955,7 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] UserIdList {
+        public System.Collections.Generic.List<string> UserIdList {
             get {
                 return this.UserIdListField;
             }
@@ -1956,7 +1988,7 @@ namespace UserAccountMigration.UserQueryService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid DelegateProfileIdField;
+        private System.Nullable<System.Guid> DelegateProfileIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DelegateUserIdField;
@@ -1971,7 +2003,16 @@ namespace UserAccountMigration.UserQueryService {
         private bool IsActiveField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsAssociationActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsAssociationAdministratorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LastNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MiddleNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RelationshipCodeField;
@@ -1981,6 +2022,9 @@ namespace UserAccountMigration.UserQueryService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid XREFIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid XrefAssocIdField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1993,7 +2037,7 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid DelegateProfileId {
+        public System.Nullable<System.Guid> DelegateProfileId {
             get {
                 return this.DelegateProfileIdField;
             }
@@ -2058,6 +2102,32 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsAssociationActive {
+            get {
+                return this.IsAssociationActiveField;
+            }
+            set {
+                if ((this.IsAssociationActiveField.Equals(value) != true)) {
+                    this.IsAssociationActiveField = value;
+                    this.RaisePropertyChanged("IsAssociationActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsAssociationAdministrator {
+            get {
+                return this.IsAssociationAdministratorField;
+            }
+            set {
+                if ((this.IsAssociationAdministratorField.Equals(value) != true)) {
+                    this.IsAssociationAdministratorField = value;
+                    this.RaisePropertyChanged("IsAssociationAdministrator");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string LastName {
             get {
                 return this.LastNameField;
@@ -2066,6 +2136,19 @@ namespace UserAccountMigration.UserQueryService {
                 if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
                     this.LastNameField = value;
                     this.RaisePropertyChanged("LastName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MiddleName {
+            get {
+                return this.MiddleNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MiddleNameField, value) != true)) {
+                    this.MiddleNameField = value;
+                    this.RaisePropertyChanged("MiddleName");
                 }
             }
         }
@@ -2109,6 +2192,19 @@ namespace UserAccountMigration.UserQueryService {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid XrefAssocId {
+            get {
+                return this.XrefAssocIdField;
+            }
+            set {
+                if ((this.XrefAssocIdField.Equals(value) != true)) {
+                    this.XrefAssocIdField = value;
+                    this.RaisePropertyChanged("XrefAssocId");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -2130,10 +2226,22 @@ namespace UserAccountMigration.UserQueryService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.UserDelegateFilter[] DelegateFiltersField;
+        private string AssociationIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserDelegateFilter> DelegateFiltersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<bool> IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsAssociationActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsAssociationAdministratorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsRegisteredField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserIdField;
@@ -2149,7 +2257,20 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.UserDelegateFilter[] DelegateFilters {
+        public string AssociationId {
+            get {
+                return this.AssociationIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AssociationIdField, value) != true)) {
+                    this.AssociationIdField = value;
+                    this.RaisePropertyChanged("AssociationId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserDelegateFilter> DelegateFilters {
             get {
                 return this.DelegateFiltersField;
             }
@@ -2170,6 +2291,45 @@ namespace UserAccountMigration.UserQueryService {
                 if ((this.IsActiveField.Equals(value) != true)) {
                     this.IsActiveField = value;
                     this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsAssociationActive {
+            get {
+                return this.IsAssociationActiveField;
+            }
+            set {
+                if ((this.IsAssociationActiveField.Equals(value) != true)) {
+                    this.IsAssociationActiveField = value;
+                    this.RaisePropertyChanged("IsAssociationActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsAssociationAdministrator {
+            get {
+                return this.IsAssociationAdministratorField;
+            }
+            set {
+                if ((this.IsAssociationAdministratorField.Equals(value) != true)) {
+                    this.IsAssociationAdministratorField = value;
+                    this.RaisePropertyChanged("IsAssociationAdministrator");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsRegistered {
+            get {
+                return this.IsRegisteredField;
+            }
+            set {
+                if ((this.IsRegisteredField.Equals(value) != true)) {
+                    this.IsRegisteredField = value;
+                    this.RaisePropertyChanged("IsRegistered");
                 }
             }
         }
@@ -2328,7 +2488,7 @@ namespace UserAccountMigration.UserQueryService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.UserDelegateAssociation[] DelegateAssociationsField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserDelegateAssociation> DelegateAssociationsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private UserAccountMigration.UserQueryService.UserDelegateModel UserDelegateField;
@@ -2344,7 +2504,7 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.UserDelegateAssociation[] DelegateAssociations {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserDelegateAssociation> DelegateAssociations {
             get {
                 return this.DelegateAssociationsField;
             }
@@ -2390,13 +2550,16 @@ namespace UserAccountMigration.UserQueryService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.UserDelegateSecurityFunction[] AssociatedFunctionsField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserDelegateSecurityFunction> AssociatedFunctionsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string AssociationIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsAssociationAdministratorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid UserProfileXrefAssocIdField;
@@ -2415,7 +2578,7 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.UserDelegateSecurityFunction[] AssociatedFunctions {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserDelegateSecurityFunction> AssociatedFunctions {
             get {
                 return this.AssociatedFunctionsField;
             }
@@ -2449,6 +2612,19 @@ namespace UserAccountMigration.UserQueryService {
                 if ((this.IsActiveField.Equals(value) != true)) {
                     this.IsActiveField = value;
                     this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsAssociationAdministrator {
+            get {
+                return this.IsAssociationAdministratorField;
+            }
+            set {
+                if ((this.IsAssociationAdministratorField.Equals(value) != true)) {
+                    this.IsAssociationAdministratorField = value;
+                    this.RaisePropertyChanged("IsAssociationAdministrator");
                 }
             }
         }
@@ -2578,6 +2754,9 @@ namespace UserAccountMigration.UserQueryService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsUnregisteredField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserProfileXrefIdField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -2587,6 +2766,19 @@ namespace UserAccountMigration.UserQueryService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsUnregistered {
+            get {
+                return this.IsUnregisteredField;
+            }
+            set {
+                if ((this.IsUnregisteredField.Equals(value) != true)) {
+                    this.IsUnregisteredField = value;
+                    this.RaisePropertyChanged("IsUnregistered");
+                }
             }
         }
         
@@ -2637,6 +2829,9 @@ namespace UserAccountMigration.UserQueryService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LastNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid UserProfileIdField;
@@ -2720,6 +2915,19 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserIdField, value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Guid UserProfileId {
             get {
                 return this.UserProfileIdField;
@@ -2766,7 +2974,7 @@ namespace UserAccountMigration.UserQueryService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.UserDelegateFilter[] DelegateFiltersField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserDelegateFilter> DelegateFiltersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DelegateProfileIdField;
@@ -2782,7 +2990,7 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.UserDelegateFilter[] DelegateFilters {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserDelegateFilter> DelegateFilters {
             get {
                 return this.DelegateFiltersField;
             }
@@ -2841,6 +3049,9 @@ namespace UserAccountMigration.UserQueryService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsAssociationAdministratorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LastNameField;
@@ -2930,6 +3141,19 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsAssociationAdministrator {
+            get {
+                return this.IsAssociationAdministratorField;
+            }
+            set {
+                if ((this.IsAssociationAdministratorField.Equals(value) != true)) {
+                    this.IsAssociationAdministratorField = value;
+                    this.RaisePropertyChanged("IsAssociationAdministrator");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string LastName {
             get {
                 return this.LastNameField;
@@ -3002,7 +3226,7 @@ namespace UserAccountMigration.UserQueryService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.UserDelegateFilter[] DelegateFiltersField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserDelegateFilter> DelegateFiltersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DelegateProfileIdField;
@@ -3018,7 +3242,7 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.UserDelegateFilter[] DelegateFilters {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.UserDelegateFilter> DelegateFilters {
             get {
                 return this.DelegateFiltersField;
             }
@@ -3844,7 +4068,7 @@ namespace UserAccountMigration.UserQueryService {
         private UserAccountMigration.UserQueryService.ServiceException.StatusCodeType ErrorCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] ErrorMessagesField;
+        private System.Collections.Generic.List<string> ErrorMessagesField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -3870,7 +4094,7 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] ErrorMessages {
+        public System.Collections.Generic.List<string> ErrorMessages {
             get {
                 return this.ErrorMessagesField;
             }
@@ -3928,7 +4152,7 @@ namespace UserAccountMigration.UserQueryService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UserAccountMigration.UserQueryService.BusinessExceptionMessage[] BusinessMessagesField;
+        private System.Collections.Generic.List<UserAccountMigration.UserQueryService.BusinessExceptionMessage> BusinessMessagesField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -3941,7 +4165,7 @@ namespace UserAccountMigration.UserQueryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public UserAccountMigration.UserQueryService.BusinessExceptionMessage[] BusinessMessages {
+        public System.Collections.Generic.List<UserAccountMigration.UserQueryService.BusinessExceptionMessage> BusinessMessages {
             get {
                 return this.BusinessMessagesField;
             }
