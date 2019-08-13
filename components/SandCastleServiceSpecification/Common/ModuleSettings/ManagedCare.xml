@@ -1,0 +1,17 @@
+<DocModuleSettingModel>
+  <ModuleName>MC</ModuleName>
+  <StorageDrive>J:</StorageDrive>
+  <webSourcePath>J:\UA3\SandCastleCustomizationTool\ShbDoc\ManagedCare\help</webSourcePath>
+  <webTargetPath>J:\UA3\SandCastleCustomizationTool\CustomServiceSpecs\MC\Output</webTargetPath>
+  <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
+  <ServiceListPages>
+	<ServiceListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Capitation.htm</ServiceListPage>
+	<ServiceListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare.htm</ServiceListPage>
+	<ServiceListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Member.htm</ServiceListPage>
+	<ServiceListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_EDI.htm</ServiceListPage>
+	<ServiceListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_MCE.htm</ServiceListPage>
+	<ServiceListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_MCO.htm</ServiceListPage>
+	<ServiceListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_MCOPortal.htm</ServiceListPage>
+	<ServiceListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Network.htm</ServiceListPage>	
+  </ServiceListPages>
+</DocModuleSettingModel> 

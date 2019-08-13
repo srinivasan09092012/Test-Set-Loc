@@ -1,0 +1,10 @@
+<DocModuleSettingModel>
+  <ModuleName>PE</ModuleName>
+  <StorageDrive>J:</StorageDrive>
+  <webSourcePath>J:\UA3\SandCastleCustomizationTool\ShbDoc\ProviderEnrollment\help</webSourcePath>
+  <webTargetPath>J:\UA3\SandCastleCustomizationTool\CustomServiceSpecs\PE\Output</webTargetPath>
+  <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
+  <ServiceListPages>
+	<ServiceListPage>N_HP_HSP_UA3_ProviderEnrollment_BAS_EnrollmentSvc.htm</ServiceListPage>
+  </ServiceListPages>
+</DocModuleSettingModel>

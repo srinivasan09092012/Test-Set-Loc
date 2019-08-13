@@ -1,7 +1,7 @@
 ﻿using HtmlAgilityPack;
 using System.Linq;
 
-namespace APISvcSpec.Helpers
+namespace APISvcSpec.Helpers.HTML
 {
     public class TextHelper
     {

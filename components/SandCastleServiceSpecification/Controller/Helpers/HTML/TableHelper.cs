@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-namespace APISvcSpec.Helpers
+namespace APISvcSpec.Helpers.HTML
 {
     public class TableHelper
     {
@@ -30,18 +30,14 @@ namespace APISvcSpec.Helpers
             this._tableStyleClass = tableStyleClass;
         }
 
-        public bool RemoveTable()
+        public void RemoveTable()
         {
             var n = _htmlDoc.DocumentNode.SelectNodes("//table[@id='" + this._tableId + "']");
 
             if (n != null)
-                n.FirstOrDefault().Remove();
-            else
             {
-                return false;
+                n.FirstOrDefault().Remove();
             }
-
-            return true;
         }
 
         private HtmlNode CreateNode()
@@ -50,40 +46,36 @@ namespace APISvcSpec.Helpers
             return new HtmlNode(HtmlNodeType.Element, _htmlDoc, _htmlNodeIndex);
         }
 
-        public string ReadCellDisplayValue(int colIndex, int rowIndex)
-        {
-            if (_ts is null)
-            {
-                _ts = new TableStructure(this._tableId);
-                this.GetTableStructure(this._tableId);
-            }
+        ////public string ReadCellDisplayValue(int colIndex, int rowIndex)
+        ////{
+        ////    if (_ts is null)
+        ////    {
+        ////        _ts = new TableStructure(this._tableId);
+        ////        this.GetTableStructure(this._tableId);
+        ////    }
 
-            return rows[rowIndex][colIndex].ToString();
-        }
+        ////    return rows[rowIndex][colIndex].ToString();
+        ////}
 
         private void addTableColumnHeader(string headerLabel)
         {
-            if (_ts is null)
-            {
-                _ts = new TableStructure(this._tableId);
-                this.GetTableStructure(this._tableId);
-            }
-            HtmlNode newHeader = CreateNode();
-            newHeader.Name = "th";
-            newHeader.InnerHtml = headerLabel;
-            
-            #region validate
+             if (_ts is null)
+             {
+                 _ts = new TableStructure(this._tableId);
+                 this.GetTableStructure(this._tableId);
+             }
+             HtmlNode newHeader = CreateNode();
+             newHeader.Name = "th";
+             newHeader.InnerHtml = headerLabel;
 
-            if (_ts._tableHeaderColumns.Select(x => x.Value == headerLabel).Count() > 0)
-            {
-                //column name al ready exist con table error
-            }
+             if (_ts._tableHeaderColumns.Select(x => x.Value == headerLabel).Count() > 0)
+             {
+                // column name al ready exist con table error
+             }
 
-            if (_ts._columnCount == 0)
-                return;
+             if (_ts._columnCount == 0)
+                 return;
 
-
-            #endregion
 
             #region addColumnHeader
 
@@ -180,6 +172,11 @@ namespace APISvcSpec.Helpers
 
         public bool renameColumnHeader(int columnIndex, string newColumnHeaderLabel)
         {
+            var selectedNodes = _htmlDoc.DocumentNode.SelectNodes("//table[@id='" + this._tableId + "']");
+
+            if (selectedNodes == null)
+                return true;
+            
             foreach (var node in _htmlDoc.DocumentNode.SelectNodes("//table[@id='" + this._tableId + "']"))
             {
                 if (node.HasChildNodes)
@@ -199,20 +196,20 @@ namespace APISvcSpec.Helpers
 
         }
 
-        public bool removeRow()
-        {
-            return true;
-        }
-
-        public bool SetCellDisplayValue(int columnIndex, int rowIndex, string label)
+        ////public bool removeRow()
+        ////{
+        ////    return true;
+        ////}
+   
+        public void SetCellDisplayValue(int columnIndex, int rowIndex, string label)
         {
             var node = _htmlDoc.DocumentNode.SelectNodes("//table[@id='" + this._tableId + "']").FirstOrDefault().ChildNodes;
 
-            var row = node[rowIndex];
-
-            row.ChildNodes[columnIndex].InnerHtml = label;
-
-            return true;
+            if (rowIndex <= node.Count()-1)
+            {
+                var row = node[rowIndex];
+                row.ChildNodes[columnIndex].InnerHtml = label;
+            }
         }
 
         public bool SetCellDisplayValue(string tdClassId, string label)
@@ -229,7 +226,7 @@ namespace APISvcSpec.Helpers
                             {
                                 if (childlvl.HasChildNodes)
                                 {
-                                    childlvl.ChildNodes.FirstOrDefault().InnerHtml = label;// ;
+                                    childlvl.ChildNodes.FirstOrDefault().InnerHtml = label;
                                 }
                             }
                         }
@@ -272,14 +269,15 @@ namespace APISvcSpec.Helpers
             Dictionary<int, string> tableHeaderColumns = new Dictionary<int, string>();
             DataTable dt = new DataTable(id);
             List<string> tmpRow = new List<string>();
+
             var t = _htmlDoc.DocumentNode.SelectNodes("//table[@id='" + id + "']");
             
             if (t != null)
             {
                 InnerHtmltableCollection = ((HtmlNodeCollection)t).FirstOrDefault().InnerHtml;
+
                 foreach (var table in t)
                 {
-
                     if (table.HasChildNodes)
                     {
                         foreach (var row in table.ChildNodes)
@@ -296,7 +294,6 @@ namespace APISvcSpec.Helpers
                                     }
                                     else
                                     {
-
                                         tmpRow.Add(column.InnerHtml);
                                     }
                                 }
@@ -364,6 +361,11 @@ namespace APISvcSpec.Helpers
             }
 
             return string.Empty;
+        }
+
+        public List<List<string>> ReadAllColumnsValues()
+        {
+            return this.rows;
         }
     }
 }

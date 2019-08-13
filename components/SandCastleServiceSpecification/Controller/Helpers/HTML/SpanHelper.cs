@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace APISvcSpec.Helpers
+namespace APISvcSpec.Helpers.HTML
 {
     public class SpanHelper
     {
@@ -51,9 +51,14 @@ namespace APISvcSpec.Helpers
 
         public bool RemoveNode(string all)
         {
-            foreach (var spanTag in _htmlDoc.DocumentNode.SelectNodes("//span[@class='" + this._SpanStyleClass + "']"))
+            var n = _htmlDoc.DocumentNode.SelectNodes("//span[@class='" + this._SpanStyleClass + "']");
+
+            if (n != null && n.Count > 0)
             {
-                spanTag.Remove();
+                foreach (var spanTag in n)
+                {
+                    spanTag.Remove();
+                }
             }
 
             return true;

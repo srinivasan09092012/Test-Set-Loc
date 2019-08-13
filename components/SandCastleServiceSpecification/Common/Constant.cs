@@ -33,13 +33,13 @@ namespace Common
             public static class Folders
             {
                 //sandcastle output
-                public const string Html = @"/html/";
+                public const string Html = @"\html\";
                 public const string Icons = "icons";
-                public const string outPutFolderName = @"/API Sevice Specification/";// used by default constructor
+                public const string outPutFolderName = @"\API Sevice Specification\";// used by default constructor
 
                 //bootstrap folder structure:
-                public const string BootStrap = @"/BootStrap";
-                public const string img = @"/img/";
+                public const string BootStrap = @"\BootStrap";
+                public const string img = @"\img\";
             }
 
             public static class PathAndRoutes

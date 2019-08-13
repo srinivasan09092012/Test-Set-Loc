@@ -4,20 +4,20 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0D36417A-31A8-4971-A2AC-A035BFF2154A}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Common</RootNamespace>
-    <AssemblyName>Common</AssemblyName>
+    <ProjectGuid>{6DE7EC32-482F-490B-AE5F-2BC9E6642001}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SandCastleSvcSpec</RootNamespace>
+    <AssemblyName>SandCastleSvcSpec</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -27,6 +27,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -35,10 +36,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FileHelpers, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e0c08d59cc3d657, processorArchitecture=MSIL">
-      <HintPath>..\packages\FileHelpers.3.3.0\lib\net45\FileHelpers.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.11.12.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.12\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,25 +50,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTOMissingTagsModel.cs" />
-    <Compile Include="QueryMissingTagsModel.cs" />
-    <Compile Include="ModelMissingTagsModel.cs" />
-    <Compile Include="EventMissingTagsModel.cs" />
-    <Compile Include="Constant.cs" />
-    <Compile Include="DocModuleSettingModel.cs" />
-    <Compile Include="CommandMissingTagsModel.cs" />
-    <Compile Include="ServiceMissingTagsModel.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ModuleSettings\DrugRebate.xml" />
-    <Content Include="ModuleSettings\ManagedCare.xml" />
-    <Content Include="ModuleSettings\ProviderEnrollment.xml" />
-    <Content Include="ModuleSettings\ProviderManagement.xml" />
-    <Content Include="ModuleSettings\TPLPolicy.xml" />
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{0d36417a-31a8-4971-a2ac-a035bff2154a}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Controller\Controller.csproj">
+      <Project>{fcdede44-7892-4be8-944c-b6573312dd5c}</Project>
+      <Name>Controller</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

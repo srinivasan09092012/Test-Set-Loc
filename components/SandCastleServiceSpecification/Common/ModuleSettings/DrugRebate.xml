@@ -1,0 +1,10 @@
+<DocModuleSettingModel>
+  <ModuleName>DR</ModuleName>
+  <StorageDrive>J:</StorageDrive>
+  <webSourcePath>J:\UA3\SandCastleCustomizationTool\ShbDoc\DrugRebate\help</webSourcePath>
+  <webTargetPath>J:\UA3\SandCastleCustomizationTool\CustomServiceSpecs\DR\Output</webTargetPath>
+  <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
+  <ServiceListPages>
+	<ServiceListPage>N_HP_HSP_UA3_DrugRebate_BAS_DrugRebate.htm</ServiceListPage>
+  </ServiceListPages>
+</DocModuleSettingModel>

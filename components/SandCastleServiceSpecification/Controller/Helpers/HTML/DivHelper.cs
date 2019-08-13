@@ -1,268 +1,221 @@
 ﻿using HtmlAgilityPack;
 using System.Linq;
 
-namespace APISvcSpec.Helpers
+namespace APISvcSpec.Helpers.HTML
 {
     public class DivHelper
     {
-        private HtmlDocument _htmlDoc;
+        private HtmlDocument _htmlDoc;   //TODO: item time may be similar across helpers
+        private HtmlNode _ContextDiv; //TODO: item time may be similar across helpers
+        private bool _ContextDivLoaded = false; //TODO: item time may be similar across helpers
         private int _htmlNodeIndex;
-        private string _divId;
-        private string _divStyleClass;
+        private short _selectedFilter;
+        public enum SearchFilter : short
+        {
+            Name = 1,
+            Id = 2,
+            Class = 4,
+        };
 
-        public DivHelper(HtmlDocument htmlDoc, string divId)
+        //<summary>
+        //DivHelper Constructor
+        //<param name = "htmlDoc">HTMLAgilityPack.HtmlDocument object, pre loaded, helper will target the search to it  </param>
+        //<param name = "filter">Enum intented to support more than one search filter, By Name, Id and Class</param>
+        //<param name = "criteria">Search criteria for the selected search filter</param>
+        //</summary>
+        public DivHelper(HtmlDocument htmlDoc, SearchFilter filter, string criteria)
         {
             this._htmlDoc = htmlDoc;
-            this._divId = divId;
             this._htmlNodeIndex = 1000;
-        }
+            this._selectedFilter = (short)filter;
 
-        public DivHelper(HtmlDocument htmlDoc, string divStyleClass, int byClass)
-        {
-            this._htmlDoc = htmlDoc;
-            this._divStyleClass = divStyleClass;
-            this._htmlNodeIndex = 1000;
-        }
-
-        public DivHelper(HtmlDocument htmlDoc, string divId, string divStyleClass)
-        {
-            this._htmlDoc = htmlDoc;
-            this._divId = divId;
-            this._divStyleClass = divStyleClass;
-            this._htmlNodeIndex = 1000;
-        }
-
-        public string GetChildValueByTag(string childNodeTag)
-        {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//div[@id='" + this._divId + "']");
-
-            if (n != null)
+            switch (_selectedFilter)
             {
-                if (n.FirstOrDefault().HasChildNodes)
-                {
-                    foreach (var child in n.FirstOrDefault().ChildNodes)
-                    {
-                        if (child.Name == childNodeTag)
-                        {
-                            if (child.Attributes.Contains("href"))
-                            {
-                                child.Attributes.Add("onClick", "window.open('" + child.Attributes["href"].Value + "', 'MyWindow','width=800,height=850,toolbar=no,menubar=no,status=no,resizable=no'); return false;");
-                                child.Attributes["href"].Value = "#";
-                            }
-                            return child.OuterHtml;
-                        }
-                    }
-                }
+                case 1:
+                    this.Load("//div[@Name='" + criteria + "']");
+                    break;
+                case 2:
+                    this.Load("//div[@id='" + criteria + "']");
+                    break;
+                default:
+                    this.Load("//div[@class='" + criteria + "']");
+                    break;
             }
-
-            return string.Empty;
         }
 
-        public string GetChildValueByTagForQuery(string childNodeTag)
+        //<summary>
+        //Load
+        //Search for the given DIV in the way selected in constructor
+        //<param name = "xpath">spath string to search in the html document for the DIV requested.</param>
+        //</summary>
+        private void Load(string xpath)
         {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//div[@id='" + this._divId + "']").FirstOrDefault();
+            var DivNodes = _htmlDoc.DocumentNode.SelectNodes(xpath);
 
-            if (n.HasChildNodes)
+            if (DivNodes != null && DivNodes.Count() > 0)
             {
-                foreach (var child in n.ChildNodes)
-                {
-                    if (child.Name == childNodeTag)
-                    {
-                        return child.OuterHtml;
-                    }
-                }
+                this._ContextDiv = DivNodes.FirstOrDefault();
+                this._ContextDivLoaded = true;
             }
-
-            return string.Empty;
-        }
-
-        private HtmlNode CreateNode()
-        {
-            _htmlNodeIndex++;
-            return new HtmlNode(HtmlNodeType.Element, _htmlDoc, _htmlNodeIndex);
-        }
-
-        public bool removeChildByName(string tagName)
-        {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//div[@id='" + this._divId + "']").FirstOrDefault();
-
-            if (n.HasChildNodes)
-            {
-               foreach(var node in n.ChildNodes)
-               {
-                    if (node.Name == tagName)
-                    {
-                        node.Remove();
-                        break;
-                    }
-
-               }
-            }
-
-            return true;
-        }
-
-        public bool removeChildNodes()
-        {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//div[@id='" + this._divId + "']").FirstOrDefault();
-
-            if (n.HasChildNodes)
-            {
-                int x = 0;
-                while (x <= n.ChildNodes.Count - 1)
-                {
-                    n.ChildNodes.RemoveAt(x);
-                }
-            }
-
-            return true;
-        }
-
-        public bool RenameDivInnerHtml(string label)
-        {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//div[@id='" + this._divId + "']").FirstOrDefault();
-            n.InnerHtml = label;
-            return true;
-        }
-
-        public bool RemoveNode()
-        {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//div[@class='" + this._divStyleClass + "']");
-
-            if (n != null && n.Count > 0)
-            {
-                n.FirstOrDefault().Remove();
-            }
-            
-            return true;
-        }
-
-        public bool RemoveAllNodes()
-        {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//div[@class='" + this._divStyleClass + "']");
-
-            if (n != null)
-            {
-                foreach (var node in n)
-                {
-                    node.Remove();
-                }
-            }
-            
-            return true;
-        }
-
-        public bool addCleanChildrenNode(string htmlString)
-        {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//div[@id='" + this._divId + "']").FirstOrDefault();
-            HtmlNode newNode = CreateNode();
-            newNode.Name = "p";
-            newNode.InnerHtml = htmlString;
-            n.ChildNodes.Add(newNode);
-            newNode = null;
-            return true;
-        }
-
-        public bool addChildrenNode(HtmlNode newNode)
-        {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//div[@id='" + this._divId + "']").FirstOrDefault();
-            n.ChildNodes.Add(newNode);
-            return true;
-        }
-
-        public bool addChildrenNode(string htmlString)
-        {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//div[@id='" + this._divId + "']").FirstOrDefault();
-            HtmlNode newNode = CreateNode();
-            newNode.Name = "div";
-            newNode.AddClass("toclevel2");
-            newNode.Attributes.Add("data-toclevel", "2");
-            newNode.InnerHtml = htmlString;
-            n.ChildNodes.Add(newNode);
-            newNode = null;
-            return true;
-        }
-
-        public bool addImgChildrenNode(string htmlString)
-        {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//div[@id='" + this._divId + "']").FirstOrDefault();
-            HtmlNode newNode = CreateNode();
-            newNode.Name = "p";
-            newNode.Attributes.Add("align", "middle");
-            newNode.InnerHtml = htmlString;
-            n.ChildNodes.Add(newNode);
-              newNode = null;
-            return true;
-        }
-
-        public bool addNewLine()
-        {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//div[@id='" + this._divId + "']").FirstOrDefault();
-            HtmlNode newNode = CreateNode();
-            newNode.Name = "br";
-            n.ChildNodes.Add(newNode);
-            newNode = null;
-            return true;
-        }
-
-        public bool addTableChildrenNode(string htmlString)
-        {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//div[@id='" + this._divId + "']").FirstOrDefault();
-            HtmlNode newNode = CreateNode();
-            newNode.Name = "table";
-            newNode.InnerHtml = htmlString;
-            n.ChildNodes.Add(newNode);
-            newNode = null;
-            return true;
-        }
-
-        public bool RemoveNodeById()
-        {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//div[@id='" + this._divId + "']");
-
-            if (n != null)
-                n.FirstOrDefault().Remove();
             else
             {
-                return false;
+                _ContextDivLoaded = false;
             }
-
-            return true;
         }
 
-
-        public bool removeClass(string NodeClass)
+        //<summary>
+        //Load
+        //Search for the given DIV in the way selected in constructor
+        //<param name = "xpath">spath string to search in the html document for the DIV requested.</param>
+        //</summary>
+        ///TODO: THIS CODE NOT SURE WHERE SHOULD BE, BUT NOTE HERE, DOUBLE CHECK.
+        public string GetChildValueByTag(string childNodeTag)
         {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//div[@id='" + this._divId + "']").FirstOrDefault();
-
-            if (n.HasClass(NodeClass))
+            if (this._ContextDivLoaded)
             {
-                n.RemoveClass(NodeClass);
-            }
-            return true;
-        }
+                var ContextDivChild = this._ContextDiv.ChildNodes.Where(x => x.Name == childNodeTag && x.Attributes.Contains("href"));
 
-        //TODO: how to know when to delete using id or class
-
-
-        public bool updateAreChildNode()
-        {
-            try
-            {
-                var n = _htmlDoc.DocumentNode.SelectNodes("//div[@id='" + this._divId + "']").FirstOrDefault();
-
-                foreach (var child in n.ChildNodes)
+                if (ContextDivChild != null & ContextDivChild.Count() > 0)
                 {
-                    if (child.Name == "a")
+                    ContextDivChild.FirstOrDefault().Attributes.Add("onClick", "window.open('" + ContextDivChild.FirstOrDefault().Attributes["href"].Value + "', 'MyWindow','width=800,height=850,toolbar=no,menubar=no,status=no,resizable=yes,scrollbars=yes'); return false;");
+                    ContextDivChild.FirstOrDefault().Attributes["href"].Value = "#";
+                    return ContextDivChild.FirstOrDefault().OuterHtml;
+                }
+            }
+
+            return string.Empty;
+        }
+
+        //<summary>
+        // GetChildNodeOuterHtml
+        // Get the outerHtml of a child in the context DIV
+        // Search by Node Name
+        //<param name = "childNodeName">  </param>
+        ///<returns>String</returns>
+        //</summary>
+        public string GetChildNodeOuterHtml(string childNodeName)
+        {
+            if (this._ContextDivLoaded)
+            {
+                var ContextDivChildNodes = this._ContextDiv.ChildNodes.Where(x => x.Name == childNodeName).Select(y => y.OuterHtml);
+
+                if (ContextDivChildNodes != null & ContextDivChildNodes.Count() > 0)
+                {
+                    return ContextDivChildNodes.FirstOrDefault();
+                }
+            }
+
+            return string.Empty;
+        }
+
+        //<summary>
+        //removeChildByName
+        //Remove a Child Node from the DIV Parent Node in Context
+        //<param name = "divName"> Name of the Child Div Node to delelete</param>
+        ///<returns>Void</returns>
+        //</summary>
+        public void removeChildByName(string NodeName)
+        {
+            if (this._ContextDivLoaded)
+            {
+                if (this._ContextDiv.HasChildNodes)
+                {
+                    var ContextDivChildNodes = this._ContextDiv.ChildNodes.Where(x => x.Name == NodeName);
+
+                    if (ContextDivChildNodes != null & ContextDivChildNodes.Count() > 0)
                     {
-                        child.Attributes.Add("onClick", "window.open('" + child.Attributes["href"].Value + "', 'MyWindow','width=800,height=850,toolbar=no,menubar=no,status=no,resizable=no'); return false;");
-                        child.Attributes["href"].Value = "#";
+                        ContextDivChildNodes.FirstOrDefault().Remove(); 
                     }
                 }
             }
-            catch
-            { return false; }
-            return true;
+        }
+
+        //<summary>
+        //ReplaceInnerHtml
+        //Replace the current InnerHTML of the conext DIV
+        //<param name = "html">string variable that holds the new html code to set </param>
+        ///<returns>Void</returns>
+        //</summary>
+        public void ReplaceInnerHtml(string html)
+        {
+            if (this._ContextDivLoaded)
+            {
+                this._ContextDiv.InnerHtml = html;
+            }
+        }
+
+        //<summary>
+        //Remove
+        //Remove the Context DIV and all of it content in from given HTML doc
+        ///<returns>Void</returns>
+        //</summary>
+        public void Remove()
+        {
+            if (this._ContextDivLoaded)
+            {
+                this._ContextDiv.Remove();
+            }
+        }
+
+        //<summary>
+        //removeAllChildNodes
+        //Remove all the Child Nodes from the DIV Parent Node in Context
+        ///<returns>Void</returns>
+        //</summary>
+        public void removeAllChildNodes()
+        {
+            if (this._ContextDivLoaded)
+            {
+                this._ContextDiv.ChildNodes.Clear();
+            }
+        }
+
+        //<summary>
+        //addChildrenNode
+        //Add a children node to the context DIV on the given HTML doc
+        //<param name = "htmlNode"> HTMLAgilityPack.HtmlNode to add as child note to the context DIV</param>
+        ///<returns>Void</returns>
+        //</summary>
+        public void addChildrenNode(HtmlNode htmlNode)
+        {
+            if (this._ContextDivLoaded)
+            {
+                this._ContextDiv.ChildNodes.Add(htmlNode);
+            }
+        }
+
+        //<summary>
+        //addNewLine
+        //Add a BR node to insert a new line and separate adjacent items
+        ///<returns>Void</returns>
+        //</summary>
+        public void addNewLine()
+        {
+            if (this._ContextDivLoaded)
+            {
+                HtmlNode LineNode = new HtmlNode(HtmlNodeType.Element, _htmlDoc, _htmlNodeIndex++);
+                LineNode.Name = "br";
+                this._ContextDiv.ChildNodes.Add(LineNode);
+                LineNode = null;
+            }
+        }
+
+        //<summary>
+        //removeClass
+        //Remove the class style from the context DIV
+        ///<returns>Void</returns>
+        //</summary>
+        public void removeStyleClass(string StyleClass)
+        {
+            if (this._ContextDivLoaded)
+            {
+                this._ContextDiv.RemoveClass(StyleClass);
+            }
+        }
+
+        public bool Exists()
+        {
+            return this._ContextDivLoaded;
         }
     }
 }
