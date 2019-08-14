@@ -75,19 +75,19 @@ namespace SftpFileTransfer
                                                             "ssh-rsa 2048 NTFvEOmbu8Aa/W3KXpnTDfQgXctIlwB8PXADt7EbHUI=");
             sftpFileTransferConfig.DownloadFromSftpConfig = new FileTransferModel[]
             {
-                new FileTransferModel{ SftpPathWithoutFileName="abc1",FileServerPathWithoutFileName="dfd1"},
-                new FileTransferModel { SftpPathWithoutFileName = "abc2", FileServerPathWithoutFileName = "dfd2" },
-                new FileTransferModel { SftpPathWithoutFileName = "abc3", FileServerPathWithoutFileName = "dfd3" },
-                new FileTransferModel { SftpPathWithoutFileName = "abc4", FileServerPathWithoutFileName = "dfd4" },
-                new FileTransferModel { SftpPathWithoutFileName = "abc5", FileServerPathWithoutFileName = "dfd5" }
+                new FileTransferModel{ SftpDirectory="abc1",FileServerDirectory="dfd1"},
+                new FileTransferModel { SftpDirectory = "abc2", FileServerDirectory = "dfd2" },
+                new FileTransferModel { SftpDirectory = "abc3", FileServerDirectory = "dfd3" },
+                new FileTransferModel { SftpDirectory = "abc4", FileServerDirectory = "dfd4" },
+                new FileTransferModel { SftpDirectory = "abc5", FileServerDirectory = "dfd5" }
             };
             sftpFileTransferConfig.UploadToSftpConfig = new FileTransferModel[]
             {
-                new FileTransferModel{ SftpPathWithoutFileName="kkk1",FileServerPathWithoutFileName="zzz1"},
-                new FileTransferModel{ SftpPathWithoutFileName="kkk2",FileServerPathWithoutFileName="zzz2"},
-                new FileTransferModel{ SftpPathWithoutFileName="kkk3",FileServerPathWithoutFileName="zzz3"},
-                new FileTransferModel{ SftpPathWithoutFileName="kkk4",FileServerPathWithoutFileName="zzz4"},
-                new FileTransferModel{ SftpPathWithoutFileName="kkk5",FileServerPathWithoutFileName="zzz5"},
+                new FileTransferModel{ SftpDirectory="kkk1",FileServerDirectory="zzz1"},
+                new FileTransferModel{ SftpDirectory="kkk2",FileServerDirectory="zzz2"},
+                new FileTransferModel{ SftpDirectory="kkk3",FileServerDirectory="zzz3"},
+                new FileTransferModel{ SftpDirectory="kkk4",FileServerDirectory="zzz4"},
+                new FileTransferModel{ SftpDirectory="kkk5",FileServerDirectory="zzz5"},
             };
 
             //Serialize to File

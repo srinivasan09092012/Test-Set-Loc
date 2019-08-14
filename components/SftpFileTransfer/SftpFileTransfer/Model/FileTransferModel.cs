@@ -8,7 +8,7 @@ namespace SftpFileTransfer
 {
     public class FileTransferModel
     {
-        public string SftpPathWithoutFileName { get; set; }
-        public string FileServerPathWithoutFileName { get; set; }
+        public string SftpDirectory { get; set; }
+        public string FileServerDirectory { get; set; }
     }
 }
