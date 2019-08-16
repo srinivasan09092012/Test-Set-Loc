@@ -111,6 +111,8 @@ namespace BASEventsTestingUtil
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             EventMessage em = new EventMessage();
+            em.CommitID = Guid.NewGuid().ToString();
+
             string serviceUrl = ConfigurationManager.AppSettings["ServiceUrlOverride"];
             serviceUrl = InitializeEvents(em, serviceUrl);
             var cursor = this.Cursor;
