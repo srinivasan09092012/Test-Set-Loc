@@ -1,0 +1,15 @@
+<DocModuleSettingModel>
+  <ModuleName>DR</ModuleName>
+  <ModuleNameDisplay>Drug Rebate</ModuleNameDisplay>
+  <StorageDrive>C:</StorageDrive>
+  <webSourcePath>C:\Users\egardea\Downloads\DrugRebate\Output\WebStyle</webSourcePath>
+  <webTargetPath>C:\ServiceSpecs\DrugRebate\API Sevice Specification</webTargetPath>
+  <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
+  <ServiceListPages>
+	<ServiceListPage>N_HP_HSP_UA3_DrugRebate_BAS_DrugRebate.htm</ServiceListPage>
+  </ServiceListPages>  
+  <MainContractContent>G_HP_HSP_UA3_DrugRebate_BAS_DrugRebate_Contracts.htm</MainContractContent>
+  <ContractListPages>
+	<ContractListPage>N_HP_HSP_UA3_DrugRebate_BAS_DrugRebate_Contracts_Events.htm</ContractListPage>
+  </ContractListPages>
+</DocModuleSettingModel>

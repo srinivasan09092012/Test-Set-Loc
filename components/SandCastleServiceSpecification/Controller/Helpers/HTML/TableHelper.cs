@@ -8,6 +8,7 @@ namespace APISvcSpec.Helpers.HTML
     public class TableHelper
     {
         private HtmlDocument _htmlDoc;
+        public HtmlNode _ContextTable; //TODO: item time may be similar across helpers
         public TableStructure _ts;
         private string _tableId = string.Empty;
         private string _tableStyleClass = string.Empty;
@@ -30,7 +31,7 @@ namespace APISvcSpec.Helpers.HTML
             this._tableStyleClass = tableStyleClass;
         }
 
-        public void RemoveTable()
+        public void Remove()
         {
             var n = _htmlDoc.DocumentNode.SelectNodes("//table[@id='" + this._tableId + "']");
 
@@ -275,7 +276,7 @@ namespace APISvcSpec.Helpers.HTML
             if (t != null)
             {
                 InnerHtmltableCollection = ((HtmlNodeCollection)t).FirstOrDefault().InnerHtml;
-
+                this._ContextTable = t.FirstOrDefault();
                 foreach (var table in t)
                 {
                     if (table.HasChildNodes)
@@ -366,6 +367,16 @@ namespace APISvcSpec.Helpers.HTML
         public List<List<string>> ReadAllColumnsValues()
         {
             return this.rows;
+        }
+
+        //<summary>
+        //GetInnerHtml
+        //Get the current InnerHTML of the conext DIV
+        ///<returns>string content inner html</returns>
+        //</summary>
+        public string GetInnerHtml()
+        {
+            return this._ContextTable.InnerHtml;
         }
     }
 }

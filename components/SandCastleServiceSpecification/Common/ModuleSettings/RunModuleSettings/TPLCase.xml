@@ -1,0 +1,15 @@
+<DocModuleSettingModel>
+  <ModuleName>TPLC</ModuleName>
+  <StorageDrive>C:</StorageDrive>
+  <ModuleNameDisplay>TPL Case Tracking</ModuleNameDisplay>
+  <webSourcePath>C:\Users\egardea\Downloads\TPLCase\Output\WebStyle</webSourcePath>
+  <webTargetPath>C:\ServiceSpecs\TPLCase\API Sevice Specification</webTargetPath>
+  <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
+  <ServiceListPages>
+	<ServiceListPage>N_HP_HSP_UA3_TPLCaseTracking_BAS_CaseTracking.htm</ServiceListPage>
+  </ServiceListPages>
+  <MainContractContent>G_HP_HSP_UA3_TPLCaseTracking_BAS_CaseTracking_Contracts.htm</MainContractContent>
+  <ContractListPages>
+	<ContractListPage>N_HP_HSP_UA3_TPLCaseTracking_BAS_CaseTracking_Contracts_Events.htm</ContractListPage>
+  </ContractListPages>
+</DocModuleSettingModel>

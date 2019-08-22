@@ -2,7 +2,7 @@
 
 namespace Common
 {
-    public class Constant
+    public class Constants
     {
         public static class WebSolutionStructure
         {

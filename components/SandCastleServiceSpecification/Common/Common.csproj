@@ -48,25 +48,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTOMissingTagsModel.cs" />
-    <Compile Include="QueryMissingTagsModel.cs" />
-    <Compile Include="ModelMissingTagsModel.cs" />
-    <Compile Include="EventMissingTagsModel.cs" />
-    <Compile Include="Constant.cs" />
-    <Compile Include="DocModuleSettingModel.cs" />
-    <Compile Include="CommandMissingTagsModel.cs" />
-    <Compile Include="ServiceMissingTagsModel.cs" />
+    <Compile Include="ReportModels\DTOMissingTagsModel.cs" />
+    <Compile Include="ReportModels\QueryMissingTagsModel.cs" />
+    <Compile Include="ReportModels\ModelMissingTagsModel.cs" />
+    <Compile Include="ReportModels\EventMissingTagsModel.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="ModuleSettings\ModuleSettingModel.cs" />
+    <Compile Include="ReportModels\CommandMissingTagsModel.cs" />
+    <Compile Include="ReportModels\ServiceMissingTagsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ModuleSettings\DrugRebate.xml" />
-    <Content Include="ModuleSettings\ManagedCare.xml" />
-    <Content Include="ModuleSettings\ProviderEnrollment.xml" />
-    <Content Include="ModuleSettings\ProviderManagement.xml" />
-    <Content Include="ModuleSettings\TPLPolicy.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\DrugRebate.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\ManagedCare.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\MemberManagement.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\ProgramIntegrity.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\ProviderEnrollment.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\ProviderManagement.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\TaskM.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\TPLCase.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\TPLPolicy.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -90,5 +90,33 @@ namespace APISvcSpec.Helpers.HTML
 
             return true;
         }
+
+        public void RenameChildNode(string ChildNodeName, string Label)
+        {
+            var spanTags = _htmlDoc.DocumentNode.SelectNodes("//span[@class='" + this._SpanStyleClass + "']");
+            if (spanTags.Count >= 1)
+            {
+                spanTags.FirstOrDefault().ChildNodes.Where(x => x.Name == "#text").FirstOrDefault().InnerHtml = Label;
+            }
+        }
+
+        public void removeClass()
+        {
+            var n = _htmlDoc.DocumentNode.SelectNodes("//span[@class='" + this._SpanStyleClass + "']").FirstOrDefault();
+            n.RemoveClass();
+        }
+
+        public void addClass(string styleClass)
+        {
+            var n = _htmlDoc.DocumentNode.SelectNodes("//span[@class='" + this._SpanStyleClass + "']").FirstOrDefault();
+            n.AddClass(styleClass);
+        }
+
+        public bool RemoveNodeByClass()
+        {
+            var n = _htmlDoc.DocumentNode.SelectNodes("//span[@class='" + this._SpanStyleClass + "']").FirstOrDefault();
+            n.Remove();
+            return true;
+        }
     }
 }

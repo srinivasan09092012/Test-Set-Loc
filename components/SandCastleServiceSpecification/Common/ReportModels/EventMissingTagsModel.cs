@@ -1,18 +1,18 @@
 ﻿using FileHelpers;
 
-namespace Common
+namespace Common.ReportModels
 {
     [DelimitedRecord(",")]
-    public class QueryMissingTagsModel
+    public class EventMissingTagsModel
     {
         [FieldNullValue(typeof(string), null)]
         public string ModuleName; 
 
         [FieldNullValue(typeof(string), null)]
-        public string QueryName; 
+        public string EventName; 
 
         [FieldNullValue(typeof(string), null)]
-        public string QueryDescription; 
+        public string EventDescription;
 
         [FieldNullValue(typeof(string), null)]
         public string ActionNeeded; 

@@ -51,7 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\DataTableHelper.cs" />
     <Compile Include="Helpers\HTML\DocumentHelper.cs" />
     <Compile Include="Helpers\IO\BackupHelper.cs" />
     <Compile Include="Helpers\HTML\DivHelper.cs" />

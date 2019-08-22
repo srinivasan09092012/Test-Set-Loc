@@ -1,18 +1,18 @@
 ﻿using FileHelpers;
 
-namespace Common
+namespace Common.ReportModels
 {
     [DelimitedRecord(",")]
-    public class ModelMissingTagsModel
+    public class CommandMissingTagsModel
     {
         [FieldNullValue(typeof(string), null)]
         public string ModuleName; 
 
         [FieldNullValue(typeof(string), null)]
-        public string ModelName; 
+        public string CommandName; 
 
         [FieldNullValue(typeof(string), null)]
-        public string ModelDescription; 
+        public string CommandDescription; 
 
         [FieldNullValue(typeof(string), null)]
         public string ActionNeeded; 

@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <!-- The configuration and platform will be used to determine which assemblies to include from solution and
+				 project documentation sources -->
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5ae1b154-0aaf-42c2-a687-6d12e4897ac6}</ProjectGuid>
+    <SHFBSchemaVersion>2017.9.26.0</SHFBSchemaVersion>
+    <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual Studio adds them anyway -->
+    <AssemblyName>Documentation</AssemblyName>
+    <RootNamespace>Documentation</RootNamespace>
+    <Name>Documentation</Name>
+    <!-- SHFB properties -->
+    <FrameworkVersion>.NET Framework 4.5</FrameworkVersion>
+    <OutputPath>Output\WebStyle\</OutputPath>
+    <HtmlHelpName>HPP-  BAS and Events For Third Party Integrators</HtmlHelpName>
+    <Language>en-US</Language>
+    <HelpFileFormat>Website</HelpFileFormat>
+    <SyntaxFilters>C#</SyntaxFilters>
+    <PresentationStyle>VS2013</PresentationStyle>
+    <CleanIntermediates>True</CleanIntermediates>
+    <KeepLogFile>False</KeepLogFile>
+    <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
+    <IndentHtml>False</IndentHtml>
+    <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
+    <HelpTitle>HPP - Documentation Of Business Access Service %28BAS%29 and Events For Integration</HelpTitle>
+    <HelpFileVersion>1.0.0.0</HelpFileVersion>
+    <NamingMethod>MemberName</NamingMethod>
+    <ContentPlacement>AboveNamespaces</ContentPlacement>
+    <RootNamespaceContainer>True</RootNamespaceContainer>
+    <RootNamespaceTitle>BAS and Events For Third Party Integrators</RootNamespaceTitle>
+    <NamespaceGrouping>True</NamespaceGrouping>
+    <Preliminary>False</Preliminary>
+    <HeaderText>HPP provide this technical information in order to support external development and integration.</HeaderText>
+    <FooterText>If more information needed reach to DevOps Team.</FooterText>
+    <CopyrightHref>www.DXCHPPCopyRight.com</CopyrightHref>
+    <CopyrightText>Technical Asset Protected by Law</CopyrightText>
+    <FeedbackEMailAddress>edmundo.gardea%40dxc.com</FeedbackEMailAddress>
+    <FeedbackEMailLinkText>edmundo.gardea%40dxc.com</FeedbackEMailLinkText>
+    <SdkLinkTarget>Blank</SdkLinkTarget>
+    <HtmlSdkLinkType>None</HtmlSdkLinkType>
+    <BinaryTOC>True</BinaryTOC>
+    <IncludeFavorites>False</IncludeFavorites>
+    <WebsiteSdkLinkType>None</WebsiteSdkLinkType>
+    <AppendMarkdownFileExtensionsToUrls>False</AppendMarkdownFileExtensionsToUrls>
+    <CatalogProductId>HPP_BAS</CatalogProductId>
+    <CatalogVersion>100</CatalogVersion>
+    <CatalogName>HPP_BAS</CatalogName>
+    <VendorName>DXC Technology</VendorName>
+    <ProductTitle>HPP %28Healthcare Payer Platform%29</ProductTitle>
+    <TocParentId>-1</TocParentId>
+    <TocParentVersion>100</TocParentVersion>
+    <TopicVersion>100</TopicVersion>
+    <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
+    <DocumentationSources>
+      <DocumentationSource sourceFile="Y:\TaskManagement\Dev\BAS\TaskManagement\HP.HSP.UA3.TaskManagement.BAS.TaskManagement\bin\HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.dll" />
+<DocumentationSource sourceFile="Y:\TaskManagement\Dev\BAS\TaskManagement\HP.HSP.UA3.TaskManagement.BAS.TaskManagement\bin\HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.xml" />
+<DocumentationSource sourceFile="Y:\TaskManagement\Dev\BAS\TaskManagement\HP.HSP.UA3.TaskManagement.BAS.TaskManagement\bin\HP.HSP.UA3.TaskManagement.BAS.TaskManagement.dll" />
+<DocumentationSource sourceFile="Y:\TaskManagement\Dev\BAS\TaskManagement\HP.HSP.UA3.TaskManagement.BAS.TaskManagement\bin\HP.HSP.UA3.TaskManagement.BAS.TaskManagement.xml" /></DocumentationSources>
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="(global)" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TaskManagement.BAS.TaskManagement" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts (Group)" isGroup="True" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Common" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Exceptions" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Shared" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto" isDocumented="False" xmlns="" /></NamespaceSummaries>
+    <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
+    <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
+    <WorkingPath>Output\TempFiles\</WorkingPath>
+    <TransformComponentArguments>
+      <Argument Key="logoFile" Value="dxc_logo_vt_blk_rgb_300.png" xmlns="" />
+      <Argument Key="logoHeight" Value="120" xmlns="" />
+      <Argument Key="logoWidth" Value="120" xmlns="" />
+      <Argument Key="logoAltText" Value="" xmlns="" />
+      <Argument Key="logoPlacement" Value="left" xmlns="" />
+      <Argument Key="logoAlignment" Value="left" xmlns="" />
+      <Argument Key="maxVersionParts" Value="" xmlns="" />
+      <Argument Key="defaultLanguage" Value="cs" xmlns="" />
+      <Argument Key="includeEnumValues" Value="true" xmlns="" />
+      <Argument Key="baseSourceCodeUrl" Value="" xmlns="" />
+      <Argument Key="requestExampleUrl" Value="" xmlns="" />
+    </TransformComponentArguments>
+    <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
+    <ApiFilter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement" isExposed="False" xmlns="">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.TaskManagementQueryService" filterName="TaskManagementQueryService" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.TaskManagementQueryService.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.TaskManagementQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.TaskManagementService" filterName="TaskManagementService" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.TaskManagementService.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.TaskManagementService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands" isExposed="False" xmlns="">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.AddLinkConfigurationCommand" filterName="AddLinkConfigurationCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.AddLinkConfigurationCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.AddLinkConfigurationCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.AddRoutingConfigurationCommand" filterName="AddRoutingConfigurationCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.AddRoutingConfigurationCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.AddTmTaskCommand" filterName="AddTmTaskCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.AddTmTaskCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.AddTmTaskTemplateCommand" filterName="AddTmTaskTemplateCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.AddTmTaskTemplateCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.AddUserCapacityCommand" filterName="AddUserCapacityCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.AddUserCapacityCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.AddUserRouteAssociationCommand" filterName="AddUserRouteAssociationCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.AddUserRouteAssociationCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.AddUserRoutingPathsCommand" filterName="AddUserRoutingPathsCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.AddUserRoutingPathsCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.AddUserRoutingPathsCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.CloseTmTaskCommand" filterName="CloseTmTaskCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.CloseTmTaskCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.CloseTmTaskCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.InvalidateLinkConfigurationCommand" filterName="InvalidateLinkConfigurationCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.InvalidateLinkConfigurationCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.InvalidateRoutingConfigurationCommand" filterName="InvalidateRoutingConfigurationCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.InvalidateRoutingConfigurationCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.InvalidateTmTaskTemplateCommand" filterName="InvalidateTmTaskTemplateCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.InvalidateTmTaskTemplateCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.InvalidateTmTaskTemplateCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.InvalidateUserRouteAssociationCommand" filterName="InvalidateUserRouteAssociationCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.InvalidateUserRouteAssociationCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.InvalidateUserRoutingPathCommand" filterName="InvalidateUserRoutingPathCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.InvalidateUserRoutingPathCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.RecallTmTaskCommand" filterName="RecallTmTaskCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.RecallTmTaskCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.RecallTmTaskCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.TmTaskEventCommand" filterName="TmTaskEventCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.TmTaskEventCommand.EventProcessAction" filterName="EventProcessAction" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.UpdateLinkConfigurationCommand" filterName="UpdateLinkConfigurationCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.UpdateLinkConfigurationCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.UpdateRoutingConfigurationCommand" filterName="UpdateRoutingConfigurationCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.UpdateRoutingConfigurationCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.UpdateTmTaskCommand" filterName="UpdateTmTaskCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.UpdateTmTaskCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.UpdateTmTaskCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.UpdateTmTaskTemplateCommand" filterName="UpdateTmTaskTemplateCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.UpdateTmTaskTemplateCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.UpdateUserCapacityCommand" filterName="UpdateUserCapacityCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.UpdateUserCapacityCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.UpdateUserCapacityCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.UpdateUserRouteAssociationCommand" filterName="UpdateUserRouteAssociationCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.UpdateUserRouteAssociationCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.UpdateUserRoutingPathCommand" filterName="UpdateUserRoutingPathCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Commands.UpdateUserRoutingPathCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Common" isExposed="False" xmlns="" />
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events" isExposed="False" xmlns="">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.AddExternalTaskAccepted" filterName="AddExternalTaskAccepted" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.AddExternalTaskAccepted.AcceptanceMessage" filterName="AcceptanceMessage" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.AddTaskErrored" filterName="AddTaskErrored" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.AddTaskErrored.ErrorMessages" filterName="ErrorMessages" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.AuditBusinessRuleAdded" filterName="AuditBusinessRuleAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.AuditBusinessRuleAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.AuditBusinessRuleXrefAdded" filterName="AuditBusinessRuleXrefAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.AuditBusinessRuleXrefAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.CloseExternalTaskErrored" filterName="CloseExternalTaskErrored" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.CloseExternalTaskErrored.ErrorMessages" filterName="ErrorMessages" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.CommonBaseEvents" filterName="CommonBaseEvents" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.CommonBaseEvents.ReceivedEvent" filterName="ReceivedEvent" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.ExternalTaskClosed" filterName="ExternalTaskClosed" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.ExternalTaskClosed.AcceptanceMessage" filterName="AcceptanceMessage" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.ExternalTaskRecalled" filterName="ExternalTaskRecalled" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.ExternalTaskRecalled.AcceptanceMessage" filterName="AcceptanceMessage" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.LinkAssociation" filterName="LinkAssociation" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.LinkAssociation.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.LinkConfigurationAdded" filterName="LinkConfigurationAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.LinkConfigurationAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.LinkConfigurationInvalidated" filterName="LinkConfigurationInvalidated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.LinkConfigurationInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.LinkConfigurationUpdated" filterName="LinkConfigurationUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.LinkConfigurationUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.RecallExternalTaskErrored" filterName="RecallExternalTaskErrored" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.RecallExternalTaskErrored.ErrorMessages" filterName="ErrorMessages" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.RoutingConfigurationAdded" filterName="RoutingConfigurationAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.RoutingConfigurationAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.RoutingConfigurationInvalidated" filterName="RoutingConfigurationInvalidated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.RoutingConfigurationInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.RoutingConfigurationUpdated" filterName="RoutingConfigurationUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.RoutingConfigurationUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.TaskBusinessRuleAuditEvents" filterName="TaskBusinessRuleAuditEvents" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.TaskBusinessRuleAuditEvents.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.TaskManagementEvents" filterName="TaskManagementEvents" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.TaskManagementEvents.ModelType" filterName="ModelType" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.TmTaskAdded" filterName="TmTaskAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.TmTaskAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.TmTaskCommentAdded" filterName="TmTaskCommentAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.TmTaskCommentAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.TmTaskEvent" filterName="TmTaskEvent" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.TmTaskEvent.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.TmTaskRoutingAdded" filterName="TmTaskRoutingAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.TmTaskRoutingAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.TmTaskTemplateAdded" filterName="TmTaskTemplateAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.TmTaskTemplateAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.TmTaskTemplateInvalidated" filterName="TmTaskTemplateInvalidated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.TmTaskTemplateInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.TmTaskTemplateUpdated" filterName="TmTaskTemplateUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.TmTaskTemplateUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.TmTaskUpdated" filterName="TmTaskUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.TmTaskUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.UserCapacityAdded" filterName="UserCapacityAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.UserCapacityAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.UserCapacityUpdated" filterName="UserCapacityUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.UserCapacityUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.UserRouteAssociationAdded" filterName="UserRouteAssociationAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.UserRouteAssociationAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.UserRouteAssociationInvalidated" filterName="UserRouteAssociationInvalidated" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.UserRouteAssociationInvalidated.UserProfileVOSId" filterName="UserProfileVOSId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.UserRouteAssociationUpdated" filterName="UserRouteAssociationUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.UserRouteAssociationUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.UserRoutingPathInvalidated" filterName="UserRoutingPathInvalidated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.UserRoutingPathInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.UserRoutingPathsAdded" filterName="UserRoutingPathsAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.UserRoutingPathsAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.UserRoutingPathUpdated" filterName="UserRoutingPathUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Events.UserRoutingPathUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Exceptions" isExposed="False" xmlns="" />
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries" isExposed="False" xmlns="">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.GetTmTaskCommentQuery" filterName="GetTmTaskCommentQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.GetTmTaskRoutingQuery" filterName="GetTmTaskRoutingQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.GetUserAccessQuery" filterName="GetUserAccessQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.GetUserCapacityQuery" filterName="GetUserCapacityQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.GetUserRouteAssociationQuery" filterName="GetUserRouteAssociationQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.GetUserRoutingPathQuery" filterName="GetUserRoutingPathQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.LinkConfigurationInternalQuery" filterName="LinkConfigurationInternalQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.LinkConfigurationQuery" filterName="LinkConfigurationQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.RoutingConfigurationInternalQuery" filterName="RoutingConfigurationInternalQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.SearchInternalTmTaskQuery" filterName="SearchInternalTmTaskQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.SearchInternalTmTaskTemplateQuery" filterName="SearchInternalTmTaskTemplateQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.SearchRoutingConfigurationQuery" filterName="SearchRoutingConfigurationQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.SearchRoutingPathIdAndDescriptionInternalQuery" filterName="SearchRoutingPathIdAndDescriptionInternalQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.SearchRoutingPathIdAndDescriptionQuery" filterName="SearchRoutingPathIdAndDescriptionQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.SearchRoutingUserCapacityInternalQuery" filterName="SearchRoutingUserCapacityInternalQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.SearchRoutingUserCapacityQuery" filterName="SearchRoutingUserCapacityQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.SearchTemplateIdPredictiveQuery" filterName="SearchTemplateIdPredictiveQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.SearchTmTaskListQuery" filterName="SearchTmTaskListQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.SearchTmTaskQuery" filterName="SearchTmTaskQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.SearchTmTaskTemplateQuery" filterName="SearchTmTaskTemplateQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.SearchUserCapacityQuery" filterName="SearchUserCapacityQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.SearchUserRouteAssociationQuery" filterName="SearchUserRouteAssociationQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.SearchUserRoutingPathQuery" filterName="SearchUserRoutingPathQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.SearchVOSUserCapacityQuery" filterName="SearchVOSUserCapacityQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.TaskTemplateIdentifierQuery" filterName="TaskTemplateIdentifierQuery" isExposed="True" />
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters" isExposed="False" xmlns="">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.GetTmTaskCommentQueryParms" filterName="GetTmTaskCommentQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.GetTmTaskCommentQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.GetTmTaskRoutingQueryParms" filterName="GetTmTaskRoutingQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.GetTmTaskRoutingQueryParms.TmTaskId" filterName="TmTaskId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.GetUserAccessQueryParms" filterName="GetUserAccessQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.GetUserAccessQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.GetUserCapacityQueryParms" filterName="GetUserCapacityQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.GetUserCapacityQueryParms.CapacityId" filterName="CapacityId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.GetUserRouteAssociationQueryParms" filterName="GetUserRouteAssociationQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.GetUserRouteAssociationQueryParms.UserRouteAssociationId" filterName="UserRouteAssociationId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.LinkConfigurationQueryParms" filterName="LinkConfigurationQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.LinkConfigurationQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.SearchCriteria" filterName="SearchCriteria" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.SearchCriteria.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.SearchRoutingConfigurationQueryParms" filterName="SearchRoutingConfigurationQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.SearchRoutingConfigurationQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.SearchRoutingPathIdAndDescriptionQueryParms" filterName="SearchRoutingPathIdAndDescriptionQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.SearchRoutingPathIdAndDescriptionQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.SearchTemplateIdPredictiveQueryParms" filterName="SearchTemplateIdPredictiveQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.SearchTemplateIdPredictiveQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.SearchTmTaskListQueryParms" filterName="SearchTmTaskListQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.SearchTmTaskListQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.SearchTmTaskQueryParms" filterName="SearchTmTaskQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.SearchTmTaskQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.SearchTmTaskTemplateQueryParms" filterName="SearchTmTaskTemplateQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.SearchTmTaskTemplateQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.SearchUserCapacityQueryParms" filterName="SearchUserCapacityQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.SearchUserCapacityQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.SearchUserRouteAssociationQueryParms" filterName="SearchUserRouteAssociationQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.SearchUserRouteAssociationQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.TaskTemplateIdentifierQueryParms" filterName="TaskTemplateIdentifierQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Queries.Parameters.TaskTemplateIdentifierQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Shared" isExposed="False" xmlns="" />
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto" isExposed="False" xmlns="">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.LinkConfigurationModel" filterName="LinkConfigurationModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.LinkConfigurationModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.RoutingPathIdAndDescriptionView" filterName="RoutingPathIdAndDescriptionView" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.RoutingPathIdAndDescriptionView.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.TemplateIdPredictiveView" filterName="TemplateIdPredictiveView" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.TemplateIdPredictiveView.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.TmRoutingConfigurationModel" filterName="TmRoutingConfigurationModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.TmRoutingConfigurationModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.TmTaskCommentModel" filterName="TmTaskCommentModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.TmTaskCommentModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.TmTaskLinkAssociation" filterName="TmTaskLinkAssociation" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.TmTaskLinkAssociation.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.TmTaskListModel" filterName="TmTaskListModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.TmTaskListModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.TmTaskModel" filterName="TmTaskModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.TmTaskModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.TmTaskRoutingModel" filterName="TmTaskRoutingModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.TmTaskRoutingModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.TmTaskTemplateModel" filterName="TmTaskTemplateModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.TmTaskTemplateModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.UserCapacityAccessModel" filterName="UserCapacityAccessModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.UserCapacityAccessModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.UserCapacityModel" filterName="UserCapacityModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.UserCapacityModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.UserRouteAssociationModel" filterName="UserRouteAssociationModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.ViewDto.UserRouteAssociationModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+</Filter></ApiFilter>
+  </PropertyGroup>
+  <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
+			 the build.  The others are optional common platform types that may appear. -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
+  </PropertyGroup>
+  <!-- Import the SHFB build targets -->
+  <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />
+  <!-- The pre-build and post-build event properties must appear *after* the targets file import in order to be
+			 evaluated correctly. -->
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="icons\dxc_logo_vt_blk_rgb_300.png">
+      <ImageId>dxc_logo_vt_blk_rgb_300</ImageId>
+      <AlternateText>dxc logo vt blk rgb 300</AlternateText>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="icons\" />
+  </ItemGroup>
+</Project>

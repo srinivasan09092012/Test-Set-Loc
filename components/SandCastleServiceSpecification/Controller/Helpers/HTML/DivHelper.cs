@@ -6,7 +6,7 @@ namespace APISvcSpec.Helpers.HTML
     public class DivHelper
     {
         private HtmlDocument _htmlDoc;   //TODO: item time may be similar across helpers
-        private HtmlNode _ContextDiv; //TODO: item time may be similar across helpers
+        public HtmlNode _ContextDiv; //TODO: item time may be similar across helpers
         private bool _ContextDivLoaded = false; //TODO: item time may be similar across helpers
         private int _htmlNodeIndex;
         private short _selectedFilter;
@@ -63,12 +63,27 @@ namespace APISvcSpec.Helpers.HTML
             }
         }
 
+
+        public string GetChildNodeInnerHtml(string ChildNodeName)
+        {
+            if (this._ContextDivLoaded)
+            {
+                if (this._ContextDiv.HasChildNodes)
+                {
+                    return this._ContextDiv.ChildNodes.Where(x => x.Name == "span" & x.HasClass("nolink")).FirstOrDefault().ToString();
+                }
+            }
+
+            return string.Empty;
+        }
+
+
         //<summary>
         //Load
         //Search for the given DIV in the way selected in constructor
         //<param name = "xpath">spath string to search in the html document for the DIV requested.</param>
         //</summary>
-        ///TODO: THIS CODE NOT SURE WHERE SHOULD BE, BUT NOTE HERE, DOUBLE CHECK.
+        ///TODO: THIS CODE NOT SURE WHERE SHOULD BE, BUT NOT HERE, DOUBLE CHECK.
         public string GetChildValueByTag(string childNodeTag)
         {
             if (this._ContextDivLoaded)
@@ -145,6 +160,21 @@ namespace APISvcSpec.Helpers.HTML
         }
 
         //<summary>
+        //GetInnerHtml
+        //Get the current InnerHTML of the conext DIV
+        ///<returns>Void</returns>
+        //</summary>
+        public string GetInnerHtml()
+        {
+            if (this._ContextDivLoaded)
+            {
+                return this._ContextDiv.InnerHtml;
+            }
+
+            return string.Empty;
+        }
+
+        //<summary>
         //Remove
         //Remove the Context DIV and all of it content in from given HTML doc
         ///<returns>Void</returns>
@@ -186,17 +216,24 @@ namespace APISvcSpec.Helpers.HTML
 
         //<summary>
         //addNewLine
-        //Add a BR node to insert a new line and separate adjacent items
+        //Add a number of BR nodes to insert a new line and separate adjacent items
         ///<returns>Void</returns>
+        ///<parms>byte count</parms>
         //</summary>
-        public void addNewLine()
+        public void addLines(byte count = 1)
         {
             if (this._ContextDivLoaded)
             {
-                HtmlNode LineNode = new HtmlNode(HtmlNodeType.Element, _htmlDoc, _htmlNodeIndex++);
-                LineNode.Name = "br";
-                this._ContextDiv.ChildNodes.Add(LineNode);
-                LineNode = null;
+                HtmlNode LineNode;
+
+                while (count > 0)
+                {
+                    LineNode = new HtmlNode(HtmlNodeType.Element, _htmlDoc, _htmlNodeIndex++);
+                    LineNode.Name = "br";
+                    this._ContextDiv.ChildNodes.Add(LineNode);
+                    LineNode = null;
+                    count--;
+                }
             }
         }
 

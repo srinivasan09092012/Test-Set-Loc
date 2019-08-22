@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using FileHelpers;
 using System;
+using Common.ReportModels;
 
 namespace APISvcSpec.Helpers.Scan
 {
@@ -16,37 +17,60 @@ namespace APISvcSpec.Helpers.Scan
 
         private void AddMissingDTOTag(DTOMissingTagsModel mst)
         {
-            DTOWithMissingDescription.Add(mst);
+            if (mst.DTODescription.Contains("[Missing &lt;summary&gt; documentation for"))
+            {
+                mst.DTODescription = string.Empty;
+                DTOWithMissingDescription.Add(mst);
+            }
         }
 
         private void AddMissingQueryTag(QueryMissingTagsModel mst)
         {
-            QueryWithMissingDescription.Add(mst);
+            if (mst.QueryDescription.Contains("[Missing &lt;summary&gt; documentation for"))
+            {
+                mst.QueryDescription = string.Empty;
+                QueryWithMissingDescription.Add(mst);
+            }
         }
 
         private void AddMissingServiceTag(ServiceMissingTagsModel mst)
         {
-            ServiceWithMissingDescription.Add(mst);
+            if (mst.ServiceOperationDescription == string.Empty)
+            {
+                ServiceWithMissingDescription.Add(mst);
+            }
         }
 
         private void AddMissingCommandTag(CommandMissingTagsModel mst)
         {
-            CommandsWithMissingDescription.Add(mst);
+            if (mst.CommandDescription.Contains("[Missing &lt;summary&gt; documentation for"))
+            {
+                mst.CommandDescription = string.Empty;
+                CommandsWithMissingDescription.Add(mst);
+            }
         }
 
         private void AddMissingEventTag(EventMissingTagsModel mst)
         {
-            EventsWithMissingDescription.Add(mst);
+            if (mst.EventDescription.Contains("[Missing &lt;summary&gt; documentation for"))
+            {
+                mst.EventDescription = string.Empty;
+                EventsWithMissingDescription.Add(mst);
+            }
         }
 
         private void AddMissingModelTag(ModelMissingTagsModel mst)
         {
-            ModelsWithMissingDescription.Add(mst);
+            if (mst.ModelDescription.Contains("[Missing &lt;summary&gt; documentation for"))
+            {
+                mst.ModelDescription = string.Empty;
+                ModelsWithMissingDescription.Add(mst);
+            }
         }
 
         public void GetDTOSource(Dictionary<string, string> source, string ModuleName, string StorageDrive)
         {
-            this.AddMissingDTOTag(
+            this.DTOWithMissingDescription.Add(
                 new DTOMissingTagsModel()
                 {
                     ModuleName = "Module Name",
@@ -72,7 +96,7 @@ namespace APISvcSpec.Helpers.Scan
 
         public void GetQuerySource(Dictionary<string, string> source, string ModuleName, string StorageDrive)
         {
-            this.AddMissingQueryTag(
+            this.QueryWithMissingDescription.Add(
                 new QueryMissingTagsModel()
                 {
                     ModuleName = "Module Name",
@@ -98,7 +122,7 @@ namespace APISvcSpec.Helpers.Scan
 
         public void GetModelsSource(Dictionary<string, string> source, string ModuleName, string StorageDrive)
         {
-            this.AddMissingModelTag(
+            this.ModelsWithMissingDescription.Add(
                 new ModelMissingTagsModel()
                 {
                     ModuleName = "Module Name",
@@ -124,7 +148,7 @@ namespace APISvcSpec.Helpers.Scan
 
         public void GetEventsSource(Dictionary<string, string> source, string ModuleName, string StorageDrive)
         {
-            this.AddMissingEventTag(
+            this.EventsWithMissingDescription.Add(
                 new EventMissingTagsModel()
                 {
                     ModuleName = "Module Name",
@@ -150,7 +174,7 @@ namespace APISvcSpec.Helpers.Scan
 
         public void GetCommandsSource(Dictionary<string, string> source, string ModuleName, string StorageDrive)
         {
-            this.AddMissingCommandTag(
+            this.CommandsWithMissingDescription.Add(
                 new CommandMissingTagsModel()
                 {
                     ModuleName = "Module Name",
@@ -165,7 +189,7 @@ namespace APISvcSpec.Helpers.Scan
                 new CommandMissingTagsModel()
                 {
                     ModuleName = ModuleName,
-                    CommandName =item.Key,
+                    CommandName = item.Key,
                     CommandDescription = item.Value,
                     ActionNeeded = "Developer must revisit the code and enter Sandcastle XML comment to the definition of the Command"
                 });
@@ -176,7 +200,7 @@ namespace APISvcSpec.Helpers.Scan
 
         public void GetServicesSource(List<List<string>> source, string ModuleName, string ServiceName, string StorageDrive)
         {
-            this.AddMissingServiceTag(
+            this.ServiceWithMissingDescription.Add(
                new ServiceMissingTagsModel()
                {
                    ModuleName = "Module",
@@ -188,15 +212,16 @@ namespace APISvcSpec.Helpers.Scan
 
             foreach (var item in source)
             {
-                this.AddMissingServiceTag(
-                new ServiceMissingTagsModel()
-                {
-                    ModuleName = ModuleName,
-                    ServiceName = ServiceName, 
-                    ServiceOperationName = item[0],
-                    ServiceOperationDescription = item[1],
-                    ActionNeeded = "Developer must revisit the code and enter Sandcastle XML comment to the definition of the method"
-                });
+                    this.AddMissingServiceTag(
+                    new ServiceMissingTagsModel()
+                    {
+                        ModuleName = ModuleName,
+                        ServiceName = ServiceName,
+                        ServiceOperationName = item[0],
+                        ServiceOperationDescription = item[1],
+                        ActionNeeded = "Developer must revisit the code and enter Sandcastle XML comment to the definition of the method"
+                    });
+                
             }
 
             writeServiceFile(ModuleName, StorageDrive);
@@ -207,7 +232,6 @@ namespace APISvcSpec.Helpers.Scan
             if (DTOWithMissingDescription.Count > 1)
             {
                 var engine = new FileHelperAsyncEngine<DTOMissingTagsModel>();
-                //TODO: REMOVE HARCODE, INCLUDE IN SETTING XML FILE
                 using (engine.BeginWriteFile(StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\ViewDTO\ContractViewDTO.csv"))
                 {
                     foreach (var operation in DTOWithMissingDescription)
@@ -225,7 +249,6 @@ namespace APISvcSpec.Helpers.Scan
             if (ServiceWithMissingDescription.Count > 1)
             {
                 var engine = new FileHelperAsyncEngine<ServiceMissingTagsModel>();
-                //TODO: REMOVE HARCODE, INCLUDE IN SETTING XML FILE
                 using (engine.BeginWriteFile(StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\Services\Service" + ServiceWithMissingDescription[1].ServiceName + ".csv"))
                 {
                     foreach (var operation in ServiceWithMissingDescription)
@@ -243,7 +266,6 @@ namespace APISvcSpec.Helpers.Scan
             if (CommandsWithMissingDescription.Count > 1)
             {
                 var engine = new FileHelperAsyncEngine<CommandMissingTagsModel>();
-                //TODO: REMOVE HARCODE, INCLUDE IN SETTING XML FILE
                 using (engine.BeginWriteFile(StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\Commands\ContractCommands.csv"))
                 {
                     foreach (var operation in CommandsWithMissingDescription)
@@ -261,7 +283,6 @@ namespace APISvcSpec.Helpers.Scan
             if (EventsWithMissingDescription.Count > 1)
             {
                 var engine = new FileHelperAsyncEngine<EventMissingTagsModel>();
-                //TODO: REMOVE HARCODE, INCLUDE IN SETTING XML FILE
                 using (engine.BeginWriteFile(StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\Events\ContractEvents.csv"))
                 {
                     foreach (var operation in EventsWithMissingDescription)
@@ -279,7 +300,6 @@ namespace APISvcSpec.Helpers.Scan
             if (ModelsWithMissingDescription.Count > 1)
             {
                 var engine = new FileHelperAsyncEngine<ModelMissingTagsModel>();
-                //TODO: REMOVE HARCODE, INCLUDE IN SETTING XML FILE
                 using (engine.BeginWriteFile(StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\Models\ContractModels.csv"))
                 {
                     foreach (var operation in ModelsWithMissingDescription)
@@ -297,7 +317,6 @@ namespace APISvcSpec.Helpers.Scan
             if (QueryWithMissingDescription.Count > 1)
             {
                 var engine = new FileHelperAsyncEngine<QueryMissingTagsModel>();
-                //TODO: REMOVE HARCODE, INCLUDE IN SETTING XML FILE
                 using (engine.BeginWriteFile(StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\QueryParams\ContractQueryParams.csv"))
                 {
                     foreach (var operation in QueryWithMissingDescription)

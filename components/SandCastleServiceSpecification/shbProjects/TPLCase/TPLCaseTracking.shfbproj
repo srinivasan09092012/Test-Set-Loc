@@ -1,0 +1,1324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <!-- The configuration and platform will be used to determine which assemblies to include from solution and
+				 project documentation sources -->
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{035c700b-5957-437f-ac26-4fc33e440204}</ProjectGuid>
+    <SHFBSchemaVersion>2017.9.26.0</SHFBSchemaVersion>
+    <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual Studio adds them anyway -->
+    <AssemblyName>Documentation</AssemblyName>
+    <RootNamespace>Documentation</RootNamespace>
+    <Name>Documentation</Name>
+    <!-- SHFB properties -->
+    <FrameworkVersion>.NET Framework 4.5.1</FrameworkVersion>
+    <OutputPath>Output\WebStyle\</OutputPath>
+    <HtmlHelpName>HPP-  BAS and Events For Third Party Integrators</HtmlHelpName>
+    <Language>en-US</Language>
+    <DocumentationSources>
+      <DocumentationSource sourceFile="Y:\TPLCaseTracking\Dev\BAS\CaseTracking\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking\bin\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.dll" />
+<DocumentationSource sourceFile="Y:\TPLCaseTracking\Dev\BAS\CaseTracking\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking\bin\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.xml" />
+<DocumentationSource sourceFile="Y:\TPLCaseTracking\Dev\BAS\CaseTracking\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking\bin\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.dll" />
+<DocumentationSource sourceFile="Y:\TPLCaseTracking\Dev\BAS\CaseTracking\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking\bin\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.xml" /></DocumentationSources>
+    <HelpFileFormat>Website</HelpFileFormat>
+    <SyntaxFilters>C#</SyntaxFilters>
+    <PresentationStyle>VS2013</PresentationStyle>
+    <CleanIntermediates>True</CleanIntermediates>
+    <KeepLogFile>False</KeepLogFile>
+    <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
+    <IndentHtml>False</IndentHtml>
+    <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
+    <HelpTitle>HPP - Documentation Of Business Access Service %28BAS%29 and Events For Integration</HelpTitle>
+    <HelpFileVersion>1.0.0.0</HelpFileVersion>
+    <NamingMethod>MemberName</NamingMethod>
+    <ContentPlacement>AboveNamespaces</ContentPlacement>
+    <RootNamespaceContainer>True</RootNamespaceContainer>
+    <RootNamespaceTitle>BAS and Events For Third Party Integrators</RootNamespaceTitle>
+    <NamespaceGrouping>True</NamespaceGrouping>
+    <Preliminary>False</Preliminary>
+    <HeaderText>HPP provide this technical information in order to support external development and integration.</HeaderText>
+    <FooterText>If more information needed reach to DevOps Team.</FooterText>
+    <CopyrightHref>www.DXCHPPCopyRight.com</CopyrightHref>
+    <CopyrightText>Technical Asset Protected by Law</CopyrightText>
+    <FeedbackEMailAddress>edmundo.gardea%40dxc.com</FeedbackEMailAddress>
+    <FeedbackEMailLinkText>edmundo.gardea%40dxc.com</FeedbackEMailLinkText>
+    <SdkLinkTarget>Blank</SdkLinkTarget>
+    <HtmlSdkLinkType>None</HtmlSdkLinkType>
+    <BinaryTOC>True</BinaryTOC>
+    <IncludeFavorites>False</IncludeFavorites>
+    <WebsiteSdkLinkType>None</WebsiteSdkLinkType>
+    <AppendMarkdownFileExtensionsToUrls>False</AppendMarkdownFileExtensionsToUrls>
+    <CatalogProductId>HPP_BAS</CatalogProductId>
+    <CatalogVersion>100</CatalogVersion>
+    <CatalogName>HPP_BAS</CatalogName>
+    <VendorName>DXC Technology</VendorName>
+    <ProductTitle>HPP %28Healthcare Payer Platform%29</ProductTitle>
+    <TocParentId>-1</TocParentId>
+    <TocParentVersion>100</TocParentVersion>
+    <TopicVersion>100</TopicVersion>
+    <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="(global)" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts (Group)" isGroup="True" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Constants" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Exceptions" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Interfaces" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Reports" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Shared" isDocumented="False" xmlns="" />
+<NamespaceSummaryItem name="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto" isDocumented="False" xmlns="" /></NamespaceSummaries>
+    <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
+    <ApiFilter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking" isExposed="False">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.BatchCaseTrackingService" filterName="BatchCaseTrackingService" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.BatchCaseTrackingService.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.BatchCaseTrackingService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.CaseTrackingQueryService" filterName="CaseTrackingQueryService" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.CaseTrackingQueryService.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.CaseTrackingQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.CaseTrackingReportQueryService" filterName="CaseTrackingReportQueryService" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.CaseTrackingReportQueryService.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.CaseTrackingReportQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.CaseTrackingService" filterName="CaseTrackingService" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.CaseTrackingService.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.CaseTrackingService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands" isExposed="False">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddAdjustedClaimCommand" filterName="AddAdjustedClaimCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddAdjustedClaimCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddAttachmentCommand" filterName="AddAttachmentCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddAttachmentCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddAttachmentCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCapitationPaymentHistoryCommand" filterName="AddCapitationPaymentHistoryCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCapitationPaymentHistoryCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCarrierCommand" filterName="AddCarrierCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCarrierCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCaseBatchCommand" filterName="AddCaseBatchCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCaseBatchCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCaseCommand" filterName="AddCaseCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCaseCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCaseLetterCommand" filterName="AddCaseLetterCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCaseLetterCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCaseLetterCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCaseNoteCommand" filterName="AddCaseNoteCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCaseNoteCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCaseNoteCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCaseReferralCommand" filterName="AddCaseReferralCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCaseReferralCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCaseReferralCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCashReceiptCommand" filterName="AddCashReceiptCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCashReceiptCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCashReceiptCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCashReceiptDispositionCommand" filterName="AddCashReceiptDispositionCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCashReceiptDispositionCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCashReceiptDispositionCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCheckTrackingCommand" filterName="AddCheckTrackingCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddCheckTrackingCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddClaimToCaseCommand" filterName="AddClaimToCaseCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddClaimToCaseCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddContactCommand" filterName="AddContactCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddContactCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddContactToCaseCommand" filterName="AddContactToCaseCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddContactToCaseCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddDesktopReviewCaseCommand" filterName="AddDesktopReviewCaseCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddDesktopReviewCaseCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddDesktopReviewFinancialARCommand" filterName="AddDesktopReviewFinancialARCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddDesktopReviewFinancialARCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddDesktopReviewFinancialARCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddFeeExpenseCommand" filterName="AddFeeExpenseCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddFeeExpenseCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddFeeExpenseCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddFinancialARDispositionCommand" filterName="AddFinancialARDispositionCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddFinancialARDispositionCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddFinancialARDispositionCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddLienCommand" filterName="AddLienCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddLienCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddLienCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddManagedCareEntityCommand" filterName="AddManagedCareEntityCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddManagedCareEntityCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddManagedCareEntityCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddMCEContactCommand" filterName="AddMCEContactCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddMCEContactCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddMCEContactCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddMemberAddressCommand" filterName="AddMemberAddressCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddMemberAddressCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddMemberAddressCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddMemberAssignmentCommand" filterName="AddMemberAssignmentCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddMemberAssignmentCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddMemberAssignmentCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddMemberBenefitPlanCommand" filterName="AddMemberBenefitPlanCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddMemberBenefitPlanCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddMemberBenefitPlanCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddMemberCommand" filterName="AddMemberCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddMemberCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddMemberCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddMemberHIPPExpenditureCommand" filterName="AddMemberHIPPExpenditureCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddMemberHIPPExpenditureCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddMemberHIPPExpenditureListCommand" filterName="AddMemberHIPPExpenditureListCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddMemberHIPPExpenditureListCommand.ExpenditureList" filterName="ExpenditureList" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddOtherInsuranceCommand" filterName="AddOtherInsuranceCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddOtherInsuranceCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddOtherInsuranceCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddProviderCommand" filterName="AddProviderCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddProviderCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddProviderCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddRelatedCaseCommand" filterName="AddRelatedCaseCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddRelatedCaseCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddRelatedCaseCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddServiceLocationCommand" filterName="AddServiceLocationCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddServiceLocationCommand.ProviderId" filterName="ProviderId" isExposed="True" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddServiceLocationCommand.ServiceLocations" filterName="ServiceLocations" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddUserVOSAssociationCommand" filterName="AddUserVOSAssociationCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddUserVOSAssociationCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddUserVOSAssociationCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddWorkerCompensationCaseCommand" filterName="AddWorkerCompensationCaseCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddWorkerCompensationCaseCommand.WorkerCompensationIdList" filterName="WorkerCompensationIdList" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddWorkerCompensationCommand" filterName="AddWorkerCompensationCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AddWorkerCompensationCommand.WorkerCompPayLoad" filterName="WorkerCompPayLoad" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AdjustClaimPaidCommand" filterName="AdjustClaimPaidCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AdjustClaimPaidCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.AdjustClaimPaidCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.ClaimPaidCommand" filterName="ClaimPaidCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.ClaimPaidCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.ClaimPaidCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.ExtendMemberEligibilityCommand" filterName="ExtendMemberEligibilityCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.ExtendMemberEligibilityCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateAttachmentCommand" filterName="InvalidateAttachmentCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateAttachmentCommand.CaseId" filterName="CaseId" isExposed="True" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateAttachmentCommand.TrackingId" filterName="TrackingId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateCapitationPaymentHistoryCommand" filterName="InvalidateCapitationPaymentHistoryCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateCapitationPaymentHistoryCommand.CapitationPaymentHistoryList" filterName="CapitationPaymentHistoryList" isExposed="True" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateCapitationPaymentHistoryCommand.CaseId" filterName="CaseId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateCarrierCommand" filterName="InvalidateCarrierCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateCarrierCommand.CarrierId" filterName="CarrierId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateCaseCommand" filterName="InvalidateCaseCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateCaseCommand.CaseId" filterName="CaseId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateCaseLetterCommand" filterName="InvalidateCaseLetterCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateCaseLetterCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateCaseLetterCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateCaseReferralCommand" filterName="InvalidateCaseReferralCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateCaseReferralCommand.CaseId" filterName="CaseId" isExposed="True" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateCaseReferralCommand.CaseReferralId" filterName="CaseReferralId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateCheckTrackingCommand" filterName="InvalidateCheckTrackingCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateCheckTrackingCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateCheckTrackingCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateClaimCommand" filterName="InvalidateClaimCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateClaimCommand.CaseClaimId" filterName="CaseClaimId" isExposed="True" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateClaimCommand.CaseId" filterName="CaseId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateContactCommand" filterName="InvalidateContactCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateContactCommand.ContactID" filterName="ContactID" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateContactToCaseCommand" filterName="InvalidateContactToCaseCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateContactToCaseCommand.CaseContactID" filterName="CaseContactID" isExposed="True" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateContactToCaseCommand.CaseID" filterName="CaseID" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateFeeExpenseCommand" filterName="InvalidateFeeExpenseCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateFeeExpenseCommand.CaseId" filterName="CaseId" isExposed="True" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateFeeExpenseCommand.FeeExpenseId" filterName="FeeExpenseId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateLienCommand" filterName="InvalidateLienCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateLienCommand.LienCaseId" filterName="LienCaseId" isExposed="True" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateLienCommand.LienId" filterName="LienId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateMemberAddressCommand" filterName="InvalidateMemberAddressCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateMemberAddressCommand.AddressId" filterName="AddressId" isExposed="True" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateMemberAddressCommand.MemberId" filterName="MemberId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateMemberAssignmentCommand" filterName="InvalidateMemberAssignmentCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateMemberAssignmentCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateMemberAssignmentCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateMemberBenefitPlanCommand" filterName="InvalidateMemberBenefitPlanCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateMemberBenefitPlanCommand.InvalidateBenefitPlans" filterName="InvalidateBenefitPlans" isExposed="True" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateMemberBenefitPlanCommand.MemberId" filterName="MemberId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateMemberExpenditureHistoryCommand" filterName="InvalidateMemberExpenditureHistoryCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateMemberExpenditureHistoryCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateOtherInsuranceCommand" filterName="InvalidateOtherInsuranceCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateOtherInsuranceCommand.MemberId" filterName="MemberId" isExposed="True" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateOtherInsuranceCommand.OtherInsuranceId" filterName="OtherInsuranceId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateParentClaimCommand" filterName="InvalidateParentClaimCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateParentClaimCommand.AdjustedICN" filterName="AdjustedICN" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateRelatedCaseCommand" filterName="InvalidateRelatedCaseCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateRelatedCaseCommand.CaseId" filterName="CaseId" isExposed="True" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateRelatedCaseCommand.RelatedCaseId" filterName="RelatedCaseId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateUserVOSAssociationCommand" filterName="InvalidateUserVOSAssociationCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateUserVOSAssociationCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.InvalidateUserVOSAssociationCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.MaintainMemberCommand" filterName="MaintainMemberCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.MaintainMemberCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.MaintainMemberCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.ProcessWorkerCompensationCommand" filterName="ProcessWorkerCompensationCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.ProcessWorkerCompensationCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.ProcessWorkerCompensationCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.ReassignCaseCommand" filterName="ReassignCaseCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.ReassignCaseCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.ReassignCaseCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.ReassignMemberBenefitPlansCommand" filterName="ReassignMemberBenefitPlansCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.ReassignMemberBenefitPlansCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.ReassignMemberBenefitPlansCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.TerminateMemberEligibilityCommand" filterName="TerminateMemberEligibilityCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.TerminateMemberEligibilityCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateAdjustmentClaimCommand" filterName="UpdateAdjustmentClaimCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateAdjustmentClaimCommand.AdjustmentClaimId" filterName="AdjustmentClaimId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateAttachmentCommand" filterName="UpdateAttachmentCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateAttachmentCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateAttachmentCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCarrierCommand" filterName="UpdateCarrierCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCarrierCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCaseCommand" filterName="UpdateCaseCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCaseCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCaseLetterCommand" filterName="UpdateCaseLetterCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCaseLetterCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCaseLetterCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCaseNoteCommand" filterName="UpdateCaseNoteCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCaseNoteCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCaseNoteCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCaseReferralCommand" filterName="UpdateCaseReferralCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCaseReferralCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCaseReferralCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCashReceiptCommand" filterName="UpdateCashReceiptCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCashReceiptCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCashReceiptCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCashReceiptDispositionApprovedCommand" filterName="UpdateCashReceiptDispositionApprovedCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCashReceiptDispositionApprovedCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCashReceiptDispositionDeniedCommand" filterName="UpdateCashReceiptDispositionDeniedCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCashReceiptDispositionDeniedCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCheckTrackingCommand" filterName="UpdateCheckTrackingCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCheckTrackingCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateCheckTrackingCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateContactCommand" filterName="UpdateContactCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateContactCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateContactToCaseCommand" filterName="UpdateContactToCaseCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateContactToCaseCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateDesktopReviewCaseCommand" filterName="UpdateDesktopReviewCaseCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateDesktopReviewCaseCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateDesktopReviewCaseCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateDesktopReviewFinancialARCommand" filterName="UpdateDesktopReviewFinancialARCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateDesktopReviewFinancialARCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateDesktopReviewFinancialARCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateFeeExpenseCommand" filterName="UpdateFeeExpenseCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateFeeExpenseCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateFeeExpenseCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateGeneralInformationCommand" filterName="UpdateGeneralInformationCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateGeneralInformationCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateGeneralInformationCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateLienCommand" filterName="UpdateLienCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateLienCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateLienCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateManagedCareEntityCommand" filterName="UpdateManagedCareEntityCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateManagedCareEntityCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateManagedCareEntityCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateMCEContactCommand" filterName="UpdateMCEContactCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateMCEContactCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateMCEContactCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateMemberAddressCommand" filterName="UpdateMemberAddressCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateMemberAddressCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateMemberAddressCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateMemberAssignmentCommand" filterName="UpdateMemberAssignmentCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateMemberAssignmentCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateMemberAssignmentCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateMemberBenefitPlanCommand" filterName="UpdateMemberBenefitPlanCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateMemberBenefitPlanCommand.BenefitPlans" filterName="BenefitPlans" isExposed="True" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateMemberBenefitPlanCommand.MemberId" filterName="MemberId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateMemberCommand" filterName="UpdateMemberCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateMemberCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateMemberCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateMemberExpenditureHistoryCommand" filterName="UpdateMemberExpenditureHistoryCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateMemberExpenditureHistoryCommand.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateMemberIsValidCommand" filterName="UpdateMemberIsValidCommand" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateMemberIsValidCommand.IsValid" filterName="IsValid" isExposed="True" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateMemberIsValidCommand.MemberId" filterName="MemberId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateOtherInsuranceCommand" filterName="UpdateOtherInsuranceCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateOtherInsuranceCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateOtherInsuranceCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateProviderCommand" filterName="UpdateProviderCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateProviderCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateProviderCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateRelatedCaseCommand" filterName="UpdateRelatedCaseCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateRelatedCaseCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateRelatedCaseCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateServiceLocationCommand" filterName="UpdateServiceLocationCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateServiceLocationCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateServiceLocationCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateUserVOSAssociationCommand" filterName="UpdateUserVOSAssociationCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateUserVOSAssociationCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateUserVOSAssociationCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateWorkerCompensationCommand" filterName="UpdateWorkerCompensationCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateWorkerCompensationCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Commands.UpdateWorkerCompensationCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Constants" isExposed="False" />
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events" isExposed="False">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AccidentTraumaClaimMemberReportAdded" filterName="AccidentTraumaClaimMemberReportAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AccidentTraumaClaimMemberReportAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AccidentTraumaClaimUpdated" filterName="AccidentTraumaClaimUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AccidentTraumaClaimUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AccidentTraumaMemberReportAdded" filterName="AccidentTraumaMemberReportAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AccidentTraumaMemberReportAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AccidentTraumaMemberReportInvalidated" filterName="AccidentTraumaMemberReportInvalidated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AccidentTraumaMemberReportInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AccidentTraumaMemberReportUpdated" filterName="AccidentTraumaMemberReportUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AccidentTraumaMemberReportUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AdjustClaimPaidAdded" filterName="AdjustClaimPaidAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AdjustClaimPaidAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AdjustClaimPaidEvents" filterName="AdjustClaimPaidEvents" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AdjustClaimPaidEvents.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AdjustmentClaimReasonCodeAdded" filterName="AdjustmentClaimReasonCodeAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AdjustmentClaimReasonCodeAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AdjustmentClaimUpdated" filterName="AdjustmentClaimUpdated" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AdjustmentClaimUpdated.AdjustmentClaimId" filterName="AdjustmentClaimId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AttachmentAdded" filterName="AttachmentAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AttachmentAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AttachmentEvents" filterName="AttachmentEvents" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AttachmentEvents.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AttachmentInvalidated" filterName="AttachmentInvalidated" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AttachmentInvalidated.TrackingId" filterName="TrackingId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AttachmentUpdated" filterName="AttachmentUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.AttachmentUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CapitationPaymentHistoryAdded" filterName="CapitationPaymentHistoryAdded" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CapitationPaymentHistoryAdded.CapitationPaymentHistoryList" filterName="CapitationPaymentHistoryList" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CapitationPaymentHistoryEvents" filterName="CapitationPaymentHistoryEvents" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CapitationPaymentHistoryEvents.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CapitationPaymentHistoryInvalidated" filterName="CapitationPaymentHistoryInvalidated" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CapitationPaymentHistoryInvalidated.CapitationPaymentHistoryList" filterName="CapitationPaymentHistoryList" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CarrierAdded" filterName="CarrierAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CarrierAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CarrierEvents" filterName="CarrierEvents" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CarrierEvents.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CarrierInvalidated" filterName="CarrierInvalidated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CarrierInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CarrierUpdated" filterName="CarrierUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CarrierUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseAdded" filterName="CaseAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseEvents" filterName="CaseEvents" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseEvents.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseInvalidated" filterName="CaseInvalidated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseLetterAdded" filterName="CaseLetterAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseLetterAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseLetterEvents" filterName="CaseLetterEvents" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseLetterEvents.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseLetterInvalidated" filterName="CaseLetterInvalidated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseLetterInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseLetterUpdated" filterName="CaseLetterUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseLetterUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseNoteAdded" filterName="CaseNoteAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseNoteAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseNoteUpdated" filterName="CaseNoteUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseNoteUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseReferralAdded" filterName="CaseReferralAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseReferralAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseReferralInvalidated" filterName="CaseReferralInvalidated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseReferralInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseReferralUpdated" filterName="CaseReferralUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseReferralUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseUpdated" filterName="CaseUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CaseUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CashReceiptAdded" filterName="CashReceiptAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CashReceiptAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CashReceiptDispositionApproved" filterName="CashReceiptDispositionApproved" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CashReceiptDispositionApproved.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CashReceiptDispositionDenied" filterName="CashReceiptDispositionDenied" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CashReceiptDispositionDenied.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CashReceiptDispositionRequested" filterName="CashReceiptDispositionRequested" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CashReceiptDispositionRequested.CashReceipt" filterName="CashReceipt" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CashReceiptUpdated" filterName="CashReceiptUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CashReceiptUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CheckTrackingAdded" filterName="CheckTrackingAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CheckTrackingAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CheckTrackingInvalidated" filterName="CheckTrackingInvalidated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CheckTrackingInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CheckTrackingUpdated" filterName="CheckTrackingUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.CheckTrackingUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ClaimInvalidated" filterName="ClaimInvalidated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ClaimInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ClaimPaid" filterName="ClaimPaid" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ClaimPaid.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ClaimsManagementEvents" filterName="ClaimsManagementEvents" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ClaimsManagementEvents.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ClaimToCaseAdded" filterName="ClaimToCaseAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ClaimToCaseAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ClaimToCaseEvents" filterName="ClaimToCaseEvents" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ClaimToCaseEvents.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ContactAdded" filterName="ContactAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ContactAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ContactEvents" filterName="ContactEvents" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ContactEvents.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ContactInvalidated" filterName="ContactInvalidated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ContactInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ContactToCaseAdded" filterName="ContactToCaseAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ContactToCaseAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ContactToCaseInvalidated" filterName="ContactToCaseInvalidated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ContactToCaseInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ContactToCaseUpdated" filterName="ContactToCaseUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ContactToCaseUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ContactUpdated" filterName="ContactUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ContactUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.FeeExpenseAdded" filterName="FeeExpenseAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.FeeExpenseAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.FeeExpenseEvents" filterName="FeeExpenseEvents" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.FeeExpenseEvents.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.FeeExpenseInvalidated" filterName="FeeExpenseInvalidated" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.FeeExpenseInvalidated.FeeExpenseId" filterName="FeeExpenseId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.FeeExpenseUpdated" filterName="FeeExpenseUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.FeeExpenseUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.FinancialARAdded" filterName="FinancialARAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.FinancialARAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.FinancialARDispositionAdded" filterName="FinancialARDispositionAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.FinancialARDispositionAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.FinancialARUpdated" filterName="FinancialARUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.FinancialARUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.GeneralInformationUpdated" filterName="GeneralInformationUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.GeneralInformationUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.LienAdded" filterName="LienAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.LienAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.LienInvalidated" filterName="LienInvalidated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.LienInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.LienUpdated" filterName="LienUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.LienUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ManagedCareEntityAdded" filterName="ManagedCareEntityAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ManagedCareEntityAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ManagedCareEntityEvents" filterName="ManagedCareEntityEvents" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ManagedCareEntityEvents.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ManagedCareEntityUpdated" filterName="ManagedCareEntityUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ManagedCareEntityUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MCEContactAdded" filterName="MCEContactAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MCEContactAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MCEContactUpdated" filterName="MCEContactUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MCEContactUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberAdded" filterName="MemberAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberAddressAdded" filterName="MemberAddressAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberAddressAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberAddressInvalidated" filterName="MemberAddressInvalidated" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberAddressInvalidated.AddressId" filterName="AddressId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberAddressUpdated" filterName="MemberAddressUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberAddressUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberAssignmentAdded" filterName="MemberAssignmentAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberAssignmentAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberAssignmentInvalidated" filterName="MemberAssignmentInvalidated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberAssignmentInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberAssignmentUpdated" filterName="MemberAssignmentUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberAssignmentUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberBenefitPlanAdded" filterName="MemberBenefitPlanAdded" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberBenefitPlanAdded.BenefitPlans" filterName="BenefitPlans" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberBenefitPlanInvalidated" filterName="MemberBenefitPlanInvalidated" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberBenefitPlanInvalidated.BenefitPlans" filterName="BenefitPlans" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberBenefitPlanReassignment" filterName="MemberBenefitPlanReassignment" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberBenefitPlanReassignment.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberBenefitPlanUpdated" filterName="MemberBenefitPlanUpdated" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberBenefitPlanUpdated.BenefitPlans" filterName="BenefitPlans" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberConverted" filterName="MemberConverted" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberConverted.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberEligibilityExtended" filterName="MemberEligibilityExtended" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberEligibilityExtended.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberEligibilityTerminated" filterName="MemberEligibilityTerminated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberEligibilityTerminated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberEvents" filterName="MemberEvents" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberEvents.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberExpenditureHistoryAdded" filterName="MemberExpenditureHistoryAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberExpenditureHistoryAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberExpenditureHistoryUpdated" filterName="MemberExpenditureHistoryUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberExpenditureHistoryUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberIsValidUpdated" filterName="MemberIsValidUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberIsValidUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberLevelOfCareAdded" filterName="MemberLevelOfCareAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberLevelOfCareAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberMaintained" filterName="MemberMaintained" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberMaintained.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberPopCodeAdded" filterName="MemberPopCodeAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberPopCodeAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberUpdated" filterName="MemberUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.MemberUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.OtherInsuranceAdded" filterName="OtherInsuranceAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.OtherInsuranceAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.OtherInsuranceEvents" filterName="OtherInsuranceEvents" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.OtherInsuranceEvents.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.OtherInsuranceInvalidated" filterName="OtherInsuranceInvalidated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.OtherInsuranceInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.OtherInsuranceUpdated" filterName="OtherInsuranceUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.OtherInsuranceUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ProviderAdded" filterName="ProviderAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ProviderAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ProviderEvents" filterName="ProviderEvents" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ProviderEvents.ProviderId" filterName="ProviderId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ProviderUpdated" filterName="ProviderUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ProviderUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ReassignCaseUpdate" filterName="ReassignCaseUpdate" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ReassignCaseUpdate.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.RelatedCaseAdded" filterName="RelatedCaseAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.RelatedCaseAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.RelatedCaseInvalidated" filterName="RelatedCaseInvalidated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.RelatedCaseInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.RelatedCaseUpdated" filterName="RelatedCaseUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.RelatedCaseUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ServiceLocationAdded" filterName="ServiceLocationAdded" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ServiceLocationAdded.ServiceLocations" filterName="ServiceLocations" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ServiceLocationDetailsUpdated" filterName="ServiceLocationDetailsUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.ServiceLocationDetailsUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.UserVOSAssociationAdded" filterName="UserVOSAssociationAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.UserVOSAssociationAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.UserVOSAssociationInvalidated" filterName="UserVOSAssociationInvalidated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.UserVOSAssociationInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.UserVOSAssociationUpdated" filterName="UserVOSAssociationUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.UserVOSAssociationUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.WorkerCompensationAdded" filterName="WorkerCompensationAdded" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.WorkerCompensationAdded.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.WorkerCompensationCaseAdded" filterName="WorkerCompensationCaseAdded" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.WorkerCompensationCaseAdded.WorkerCompensationUpdatedList" filterName="WorkerCompensationUpdatedList" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.WorkerCompensationEvents" filterName="WorkerCompensationEvents" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.WorkerCompensationEvents.ModelType" filterName="ModelType" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.WorkerCompensationUpdated" filterName="WorkerCompensationUpdated" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Events.WorkerCompensationUpdated.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Exceptions" isExposed="False" />
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Interfaces" isExposed="False" />
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries" isExposed="False">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.AccidentTraumaClaimQuery" filterName="AccidentTraumaClaimQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.AccidentTraumaInvalidClaimMemberReportedQuery" filterName="AccidentTraumaInvalidClaimMemberReportedQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.AccidentTraumaMemberClaimQuery" filterName="AccidentTraumaMemberClaimQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.AccidentTraumaMemberReportedQuery" filterName="AccidentTraumaMemberReportedQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.AssociatedCaseContactQuery" filterName="AssociatedCaseContactQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.CapitationPaymentAPIQuery" filterName="CapitationPaymentAPIQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.CapitationPaymentHistoryQuery" filterName="CapitationPaymentHistoryQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.CarrierQuery" filterName="CarrierQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.CaseAdditionalMemberQuery" filterName="CaseAdditionalMemberQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.CaseAggregateDeltaQuery" filterName="CaseAggregateDeltaQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.CaseAssignmentHistoryQuery" filterName="CaseAssignmentHistoryQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.CaseEventsQuery" filterName="CaseEventsQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.CaseFilterQuery" filterName="CaseFilterQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.CaseInformationQuery" filterName="CaseInformationQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.CaseInformationRecordCountQuery" filterName="CaseInformationRecordCountQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.CaseLetterSummaryDetailQuery" filterName="CaseLetterSummaryDetailQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.CaseLetterSummaryQuery" filterName="CaseLetterSummaryQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.CaseListQuery" filterName="CaseListQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.CaseNoteQuery" filterName="CaseNoteQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.CaseReferralQuery" filterName="CaseReferralQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.CaseSummaryAmountQuery" filterName="CaseSummaryAmountQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.CheckTrackingQuery" filterName="CheckTrackingQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.CommonEventsQuery" filterName="CommonEventsQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.ContactAggregateDeltaQuery" filterName="ContactAggregateDeltaQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.ContactAssociatedSummaryQuery" filterName="ContactAssociatedSummaryQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.ContactEventsQuery" filterName="ContactEventsQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.DesktopReviewRecoveryQuery" filterName="DesktopReviewRecoveryQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.DispositionCapitationPaymentQuery" filterName="DispositionCapitationPaymentQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.DispositionCaseClaimQuery" filterName="DispositionCaseClaimQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.EligibleAdjustmentClaimQuery" filterName="EligibleAdjustmentClaimQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.FinancialARQuery" filterName="FinancialARQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.GetAttachmentFileQuery" filterName="GetAttachmentFileQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.GetCaseContactQuery" filterName="GetCaseContactQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.GetCaseLetterDetailsQuery" filterName="GetCaseLetterDetailsQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.GetCaseTracking" filterName="GetCaseTracking" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.GetDesktopCaseInformationQuery" filterName="GetDesktopCaseInformationQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.GetInsuranceQuery" filterName="GetInsuranceQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.GetLienQuery" filterName="GetLienQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.GetRelatedCasesQuery" filterName="GetRelatedCasesQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.InsuranceQuery" filterName="InsuranceQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.MemberAssignmentQuery" filterName="MemberAssignmentQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.MemberExpenditureHistoryQuery" filterName="MemberExpenditureHistoryQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.MemberExpenditureTotalsQuery" filterName="MemberExpenditureTotalsQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.ParentClaimCaseDetailsQuery" filterName="ParentClaimCaseDetailsQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.SearchAttachmentQuery" filterName="SearchAttachmentQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.SearchCaseLetterQuery" filterName="SearchCaseLetterQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.SearchCaseQuery" filterName="SearchCaseQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.SearchCaseTracking" filterName="SearchCaseTracking" isExposed="True" />
+  <Filter entryType="Enumeration" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.SearchCaseTracking.SortBy" filterName="SearchCaseTracking.SortBy" isExposed="True" />
+  <Filter entryType="Enumeration" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.SearchCaseTracking.SortDirectionType" filterName="SearchCaseTracking.SortDirectionType" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.SearchCashRecoveryQuery" filterName="SearchCashRecoveryQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.SearchClaimAPIQuery" filterName="SearchClaimAPIQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.SearchClaimQuery" filterName="SearchClaimQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.SearchContactQuery" filterName="SearchContactQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.SearchContactToCaseQuery" filterName="SearchContactToCaseQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.SearchDesktopReviewCaseQuery" filterName="SearchDesktopReviewCaseQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.SearchFeeExpenseQuery" filterName="SearchFeeExpenseQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.SearchLiensQuery" filterName="SearchLiensQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.SearchMemberQuery" filterName="SearchMemberQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.SearchRecoveryQuery" filterName="SearchRecoveryQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.SearchUserVOSAssociationsQuery" filterName="SearchUserVOSAssociationsQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.TaskManagerQuery" filterName="TaskManagerQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.WorkerCompensationQuery" filterName="WorkerCompensationQuery" isExposed="True" />
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters" isExposed="False">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.AccidentTraumaClaimQueryParms" filterName="AccidentTraumaClaimQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.AccidentTraumaClaimQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.AccidentTraumaInvalidClaimMemberReportedQueryParms" filterName="AccidentTraumaInvalidClaimMemberReportedQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.AccidentTraumaInvalidClaimMemberReportedQueryParms.MemberNotificationId" filterName="MemberNotificationId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.AccidentTraumaMemberReportedQueryParms" filterName="AccidentTraumaMemberReportedQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.AccidentTraumaMemberReportedQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.AssociatedCaseContactQueryParms" filterName="AssociatedCaseContactQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.AssociatedCaseContactQueryParms.ContactId" filterName="ContactId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CapitationPaymentAPIQueryParms" filterName="CapitationPaymentAPIQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CapitationPaymentAPIQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CapitationPaymentHistoryQueryParms" filterName="CapitationPaymentHistoryQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CapitationPaymentHistoryQueryParms.CaseID" filterName="CaseID" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CarrierQueryParms" filterName="CarrierQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CarrierQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseAdditionalMemberQueryParms" filterName="CaseAdditionalMemberQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseAdditionalMemberQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseAggregateDeltaQueryParms" filterName="CaseAggregateDeltaQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseAggregateDeltaQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseAssignmentHistoryQueryParms" filterName="CaseAssignmentHistoryQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseAssignmentHistoryQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseEventsQueryParms" filterName="CaseEventsQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseEventsQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseFilterQueryParms" filterName="CaseFilterQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseFilterQueryParms.CaseFilterFieldName" filterName="CaseFilterFieldName" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseInformationQueryParms" filterName="CaseInformationQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseInformationQueryParms.CaseId" filterName="CaseId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseInformationRecordCountQueryParms" filterName="CaseInformationRecordCountQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseInformationRecordCountQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseLetterSummaryDetailQueryParms" filterName="CaseLetterSummaryDetailQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseLetterSummaryDetailQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseLetterSummaryQueryParms" filterName="CaseLetterSummaryQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseLetterSummaryQueryParms.LetterTypeCode" filterName="LetterTypeCode" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseListQueryParms" filterName="CaseListQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseListQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseNoteQueryParms" filterName="CaseNoteQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseNoteQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseReferralQueryParms" filterName="CaseReferralQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseReferralQueryParms.CaseId" filterName="CaseId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseSummaryAmountQueryParms" filterName="CaseSummaryAmountQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CaseSummaryAmountQueryParms.CaseId" filterName="CaseId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CheckTrackingQueryParms" filterName="CheckTrackingQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CheckTrackingQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CommonEventQueryParms" filterName="CommonEventQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.CommonEventQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ContactAggregateDeltaQueryParms" filterName="ContactAggregateDeltaQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ContactAggregateDeltaQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ContactAssociatedSummaryQueryParms" filterName="ContactAssociatedSummaryQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ContactAssociatedSummaryQueryParms.ContactId" filterName="ContactId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ContactEventsQueryParms" filterName="ContactEventsQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ContactEventsQueryParms.ContactId" filterName="ContactId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.DesktopReviewRecoveryQueryParms" filterName="DesktopReviewRecoveryQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.DesktopReviewRecoveryQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.DispositionCapitationPaymentQueryParms" filterName="DispositionCapitationPaymentQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.DispositionCapitationPaymentQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.DispositionCaseClaimQueryParms" filterName="DispositionCaseClaimQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.DispositionCaseClaimQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.FilterSearchCriteria" filterName="FilterSearchCriteria" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.FilterSearchCriteria.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.GetAttachmentFileQueryParms" filterName="GetAttachmentFileQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.GetAttachmentFileQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.GetCaseContactQueryParms" filterName="GetCaseContactQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.GetCaseContactQueryParms.CaseContactID" filterName="CaseContactID" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.GetCaseLetterDetailsQueryParms" filterName="GetCaseLetterDetailsQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.GetCaseLetterDetailsQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.GetCaseTrackingParms" filterName="GetCaseTrackingParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.GetCaseTrackingParms.CaseTrackingProperty" filterName="CaseTrackingProperty" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.GetDesktopCaseInformationQueryParms" filterName="GetDesktopCaseInformationQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.GetDesktopCaseInformationQueryParms.CaseId" filterName="CaseId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.GetLienQueryParms" filterName="GetLienQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.GetLienQueryParms.LienId" filterName="LienId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.GetRelatedCaseQueryParms" filterName="GetRelatedCaseQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.GetRelatedCaseQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.InsuranceQueryParms" filterName="InsuranceQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.InsuranceQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.MemberAssignmentQueryParms" filterName="MemberAssignmentQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.MemberAssignmentQueryParms.MemberId" filterName="MemberId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.MemberExpenditureHistoryQueryParms" filterName="MemberExpenditureHistoryQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.MemberExpenditureHistoryQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ParentClaimCaseDetailsQueryParms" filterName="ParentClaimCaseDetailsQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ParentClaimCaseDetailsQueryParms.ParentICN" filterName="ParentICN" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchAttachmentQueryParms" filterName="SearchAttachmentQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchAttachmentQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchCaseLetterQueryParms" filterName="SearchCaseLetterQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchCaseLetterQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchCaseListFilter" filterName="SearchCaseListFilter" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchCaseListFilter.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchCaseQueryParms" filterName="SearchCaseQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchCaseQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchCaseTrackingParms" filterName="SearchCaseTrackingParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchCaseTrackingParms.CaseTrackingProperty" filterName="CaseTrackingProperty" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchCashRecoveryQueryParms" filterName="SearchCashRecoveryQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchCashRecoveryQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchClaimAPIQueryParms" filterName="SearchClaimAPIQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchClaimAPIQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchClaimQueryParms" filterName="SearchClaimQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchClaimQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchContactQueryParms" filterName="SearchContactQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchContactQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchContactToCaseQueryParms" filterName="SearchContactToCaseQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchContactToCaseQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchCriteria" filterName="SearchCriteria" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchCriteria.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchDesktopReviewCaseQueryParms" filterName="SearchDesktopReviewCaseQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchDesktopReviewCaseQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchFeeExpenseQueryParms" filterName="SearchFeeExpenseQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchFeeExpenseQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchLiensQueryParms" filterName="SearchLiensQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchLiensQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchMemberQueryParms" filterName="SearchMemberQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchMemberQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchRecoveryQueryParms" filterName="SearchRecoveryQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchRecoveryQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchUserVOSAssociationsQueryParms" filterName="SearchUserVOSAssociationsQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.SearchUserVOSAssociationsQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.TaskManagerQueryParms" filterName="TaskManagerQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.TaskManagerQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.WorkerCompensationFilters" filterName="WorkerCompensationFilters" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.WorkerCompensationFilters.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.WorkerCompensationQueryParms" filterName="WorkerCompensationQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.WorkerCompensationQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms" isExposed="False">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms.AccidentTraumaQueryParms" filterName="AccidentTraumaQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms.AccidentTraumaQueryParms.ReportGenerationToDate" filterName="ReportGenerationToDate" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms.AdjustmentClaimReportQueryParms" filterName="AdjustmentClaimReportQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms.AdjustmentClaimReportQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms.CaseTrackingSummaryReportQueryParms" filterName="CaseTrackingSummaryReportQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms.CaseTrackingSummaryReportQueryParms.CaseNumber" filterName="CaseNumber" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms.CertificateOfAuthenticationQueryParms" filterName="CertificateOfAuthenticationQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms.CertificateOfAuthenticationQueryParms.CaseNumber" filterName="CaseNumber" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms.DesktopReviewProviderDetailsQueryParms" filterName="DesktopReviewProviderDetailsQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms.DesktopReviewProviderDetailsQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms.DesktopReviewSecondLetterQueryParms" filterName="DesktopReviewSecondLetterQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms.DesktopReviewSecondLetterQueryParms.CaseId" filterName="CaseId" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms.DeskTopReviewSummaryReportQueryParms" filterName="DeskTopReviewSummaryReportQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms.DeskTopReviewSummaryReportQueryParms.FiscalYear" filterName="FiscalYear" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms.EstateRecoveryReportQueryParms" filterName="EstateRecoveryReportQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms.EstateRecoveryReportQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms.GetCaseQueryParms" filterName="GetCaseQueryParms" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms.GetCaseQueryParms.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms.WorkerCompensationMatchingReportQueryParms" filterName="WorkerCompensationMatchingReportQueryParms" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Parameters.ReportQueryParms.WorkerCompensationMatchingReportQueryParms.ReportGenerationToDate" filterName="ReportGenerationToDate" isExposed="True" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Reports" isExposed="False">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Reports.AccidentTraumaQuery" filterName="AccidentTraumaQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Reports.AdjustmentClaimReportQuery" filterName="AdjustmentClaimReportQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Reports.CaseTrackingSummaryReportQuery" filterName="CaseTrackingSummaryReportQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Reports.CertificateOfAuthenticationReportQuery" filterName="CertificateOfAuthenticationReportQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Reports.DesktopReviewCaseProviderDetailsQuery" filterName="DesktopReviewCaseProviderDetailsQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Reports.DesktopReviewSecondLetterQuery" filterName="DesktopReviewSecondLetterQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Reports.DeskTopReviewSummaryReportQuery" filterName="DeskTopReviewSummaryReportQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Reports.EstateRecoveryReportQuery" filterName="EstateRecoveryReportQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Reports.GetCaseQuery" filterName="GetCaseQuery" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Queries.Reports.WorkerCompensationMatchingReportQuery" filterName="WorkerCompensationMatchingReportQuery" isExposed="True" />
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.Shared" isExposed="False" />
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto" isExposed="False">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.AccidentTraumaClaimMemberNotificationModel" filterName="AccidentTraumaClaimMemberNotificationModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.AccidentTraumaClaimMemberNotificationModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.AccidentTraumaClaimModel" filterName="AccidentTraumaClaimModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.AccidentTraumaClaimModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.AccidentTraumaMemberReportedModel" filterName="AccidentTraumaMemberReportedModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.AccidentTraumaMemberReportedModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.AccidentTraumaReportModel" filterName="AccidentTraumaReportModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.AccidentTraumaReportModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.AdjustmentClaimReportModel" filterName="AdjustmentClaimReportModel" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.AssociatedCaseContactModel" filterName="AssociatedCaseContactModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.AssociatedCaseContactModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.AttachmentModel" filterName="AttachmentModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.AttachmentModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CapitationPaymentHistoryModel" filterName="CapitationPaymentHistoryModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CapitationPaymentHistoryModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CarrierModel" filterName="CarrierModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CarrierModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseAdditionalMemberModel" filterName="CaseAdditionalMemberModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseAdditionalMemberModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseFilterModel" filterName="CaseFilterModel" isExposed="False">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseFilterModel.CaseFilterValue" filterName="CaseFilterValue" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseInformationDetailModel" filterName="CaseInformationDetailModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseInformationDetailModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseInformationModel" filterName="CaseInformationModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseInformationModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseInformationRecordCountModel" filterName="CaseInformationRecordCountModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseInformationRecordCountModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseLetterModel" filterName="CaseLetterModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseLetterModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseLetterSummaryDetailModel" filterName="CaseLetterSummaryDetailModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseLetterSummaryDetailModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseLetterSummaryModel" filterName="CaseLetterSummaryModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseLetterSummaryModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseListModel" filterName="CaseListModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseListModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseModel" filterName="CaseModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseNoteModel" filterName="CaseNoteModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseNoteModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseReferralModel" filterName="CaseReferralModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseReferralModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseSummaryAmountModel" filterName="CaseSummaryAmountModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseSummaryAmountModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseTrackingSummaryReportModel" filterName="CaseTrackingSummaryReportModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CaseTrackingSummaryReportModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CashReceiptDispositionModel" filterName="CashReceiptDispositionModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CashReceiptDispositionModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CashReceiptModel" filterName="CashReceiptModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CashReceiptModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CertificateOfAuthenticationReportModel" filterName="CertificateOfAuthenticationReportModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CertificateOfAuthenticationReportModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CheckTrackingModel" filterName="CheckTrackingModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CheckTrackingModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.ClaimModel" filterName="ClaimModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.ClaimModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.ContactAssociatedSummaryModel" filterName="ContactAssociatedSummaryModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.ContactAssociatedSummaryModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.ContactModel" filterName="ContactModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.ContactModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.ContactToCaseModel" filterName="ContactToCaseModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.ContactToCaseModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CountyModel" filterName="CountyModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.CountyModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.DesktopReviewCaseProviderDetailsModel" filterName="DesktopReviewCaseProviderDetailsModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.DesktopReviewCaseProviderDetailsModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.DesktopReviewRecoveryModel" filterName="DesktopReviewRecoveryModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.DesktopReviewRecoveryModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.DesktopReviewReportSampleModel" filterName="DesktopReviewReportSampleModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.DesktopReviewReportSampleModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.DesktopReviewReportSummarySampleModel" filterName="DesktopReviewReportSummarySampleModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.DesktopReviewReportSummarySampleModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.DesktopReviewReportTotalRecoveriesModel" filterName="DesktopReviewReportTotalRecoveriesModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.DesktopReviewReportTotalRecoveriesModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.DesktopReviewSecondLetterModel" filterName="DesktopReviewSecondLetterModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.DesktopReviewSecondLetterModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.DeskTopReviewSummaryReportModel" filterName="DeskTopReviewSummaryReportModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.DeskTopReviewSummaryReportModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.DesktopReviewYear" filterName="DesktopReviewYear" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.DesktopReviewYear.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.DispositionCapitationPaymentModel" filterName="DispositionCapitationPaymentModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.DispositionCapitationPaymentModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.DispositionCaseClaimModel" filterName="DispositionCaseClaimModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.DispositionCaseClaimModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.EstateRecoveryReportModel" filterName="EstateRecoveryReportModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.EstateRecoveryReportModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.FeeExpenseModel" filterName="FeeExpenseModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.FeeExpenseModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.FinancialARModel" filterName="FinancialARModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.FinancialARModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.GetCaseModel" filterName="GetCaseModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.GetCaseModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.InsuranceModel" filterName="InsuranceModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.InsuranceModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.LienModel" filterName="LienModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.LienModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.MemberAssignmentModel" filterName="MemberAssignmentModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.MemberAssignmentModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.MemberExpenditureDetailModel" filterName="MemberExpenditureDetailModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.MemberExpenditureDetailModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.MemberExpenditureTotalsModel" filterName="MemberExpenditureTotalsModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.MemberExpenditureTotalsModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.MemberModel" filterName="MemberModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.MemberModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.ParentClaimCaseDetailsModel" filterName="ParentClaimCaseDetailsModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.ParentClaimCaseDetailsModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.RecoveryModel" filterName="RecoveryModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.RecoveryModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.RelatedCaseModel" filterName="RelatedCaseModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.RelatedCaseModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.SearchCaseModel" filterName="SearchCaseModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.SearchCaseModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.SearchDesktopReviewCaseModel" filterName="SearchDesktopReviewCaseModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.SearchDesktopReviewCaseModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.SearchLiensModel" filterName="SearchLiensModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.SearchLiensModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.SearchRecoveryModel" filterName="SearchRecoveryModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.SearchRecoveryModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.TaskManagerModel" filterName="TaskManagerModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.TaskManagerModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.UserVOSAssociationsModel" filterName="UserVOSAssociationsModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.UserVOSAssociationsModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.WorkerCompensationMatchingReportModel" filterName="WorkerCompensationMatchingReportModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.WorkerCompensationMatchingReportModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.WorkerCompensationModel" filterName="WorkerCompensationModel" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.ViewDto.WorkerCompensationModel.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+</Filter></ApiFilter>
+    <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
+    <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
+    <WorkingPath>Output\TempFiles\</WorkingPath>
+    <TransformComponentArguments>
+      <Argument Key="logoFile" Value="dxc_logo_vt_blk_rgb_300.png" xmlns="" />
+      <Argument Key="logoHeight" Value="120" xmlns="" />
+      <Argument Key="logoWidth" Value="120" xmlns="" />
+      <Argument Key="logoAltText" Value="DXC.Technology" xmlns="" />
+      <Argument Key="logoPlacement" Value="left" xmlns="" />
+      <Argument Key="logoAlignment" Value="left" xmlns="" />
+      <Argument Key="maxVersionParts" Value="" xmlns="" />
+      <Argument Key="defaultLanguage" Value="cs" xmlns="" />
+      <Argument Key="includeEnumValues" Value="true" xmlns="" />
+      <Argument Key="baseSourceCodeUrl" Value="" xmlns="" />
+      <Argument Key="requestExampleUrl" Value="" xmlns="" />
+    </TransformComponentArguments>
+  </PropertyGroup>
+  <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
+			 the build.  The others are optional common platform types that may appear. -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
+  </PropertyGroup>
+  <!-- Import the SHFB build targets -->
+  <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />
+  <!-- The pre-build and post-build event properties must appear *after* the targets file import in order to be
+			 evaluated correctly. -->
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="icons\dxc_logo_vt_blk_rgb_300.png">
+      <ImageId>dxc_logo_vt_blk_rgb_300</ImageId>
+      <AlternateText>dxc logo vt blk rgb 300</AlternateText>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="icons\" />
+  </ItemGroup>
+</Project>

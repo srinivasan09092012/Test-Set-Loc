@@ -1,6 +1,6 @@
 ﻿using FileHelpers;
 
-namespace Common
+namespace Common.ReportModels
 {
     [DelimitedRecord(",")]
     public class ServiceMissingTagsModel

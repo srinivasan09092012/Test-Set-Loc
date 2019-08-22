@@ -12,16 +12,16 @@ namespace APISvcSpec.IO
 
         public Backup()
         {
-            webSourceDirInfo = new DirectoryInfo(Common.Constant.WebSolutionStructure.PathAndRoutes.webRootSource);
-            webTargetDirInfo = new DirectoryInfo(Common.Constant.WebSolutionStructure.PathAndRoutes.webRootTarget + Common.Constant.WebSolutionStructure.Folders.outPutFolderName);
-            bootStrapComponents = new DirectoryInfo(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + Common.Constant.WebSolutionStructure.Folders.BootStrap);
+            webSourceDirInfo = new DirectoryInfo(Common.Constants.WebSolutionStructure.PathAndRoutes.webRootSource);
+            webTargetDirInfo = new DirectoryInfo(Common.Constants.WebSolutionStructure.PathAndRoutes.webRootTarget + Common.Constants.WebSolutionStructure.Folders.outPutFolderName);
+            bootStrapComponents = new DirectoryInfo(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + Common.Constants.WebSolutionStructure.Folders.BootStrap);
         }
 
          public Backup(string webSourcePath, string webTargetPath)
         {
             webSourceDirInfo = new DirectoryInfo(webSourcePath);
             webTargetDirInfo = new DirectoryInfo(webTargetPath);
-            bootStrapComponents = new DirectoryInfo(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + Common.Constant.WebSolutionStructure.Folders.BootStrap);
+            bootStrapComponents = new DirectoryInfo(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + Common.Constants.WebSolutionStructure.Folders.BootStrap);
         }
 
         public void BackUpWebSite(bool zipBackup = false)

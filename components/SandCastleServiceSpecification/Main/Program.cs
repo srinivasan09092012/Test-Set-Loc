@@ -8,6 +8,7 @@ using APISvcSpec.Helpers.Scan;
 using Common;
 using APISvcSpec;
 using APISvcSpec.Helpers.HTML;
+using Common.ModuleSettings;
 
 namespace SandCastleSvcSpec
 {
@@ -22,27 +23,27 @@ namespace SandCastleSvcSpec
             Console.WriteLine("");
 
             Console.WriteLine("Loading settings");
-            var moduleSetting = validateInputArgs(args);
+            var moduleSetting = validateInputArgs();
             Console.WriteLine("Loading settings... Done");
             Console.WriteLine("");
             Console.WriteLine("");
 
             foreach (var module in moduleSetting)
             {
-                Console.WriteLine("Runnig Settings for Module: " + module.ModuleName);
+                Console.WriteLine("Runnig Settings for Module: " + module.ModuleNameDisplay);
                 Console.WriteLine("");
                 DoBackup(module);
                 ExecuteSandCastleEnhancement(module);// improve for parallel programing
             }
         }
 
-        static List<Common.DocModuleSettingModel> validateInputArgs(string[] args)
+        static List<ModuleSettingModel> validateInputArgs()
         {
             string storageDrive = ConfigurationManager.AppSettings["storageDrive"];
             var sDrive = new DirectoryInfo(storageDrive);
-            var xs = new XmlSerializer(typeof(DocModuleSettingModel));
-            var moduleSetting = new DocModuleSettingModel();
-            var moduleSeetingList = new List<DocModuleSettingModel>();
+            var xs = new XmlSerializer(typeof(ModuleSettingModel));
+            var moduleSetting = new ModuleSettingModel();
+            var moduleSeetingList = new List<ModuleSettingModel>();
 
             if (sDrive.Exists)
             {
@@ -52,7 +53,7 @@ namespace SandCastleSvcSpec
                 {
                     using (var sr = new StreamReader(file.FullName))
                     {
-                        moduleSetting = (DocModuleSettingModel)xs.Deserialize(sr);
+                        moduleSetting = (ModuleSettingModel)xs.Deserialize(sr);
                         moduleSeetingList.Add(moduleSetting);
                     }
                 }
@@ -69,25 +70,25 @@ namespace SandCastleSvcSpec
             }
         }
 
-        static void DoBackup(DocModuleSettingModel moduleSetting)
+        static void DoBackup(ModuleSettingModel moduleSetting)
         {
             #region backupsite
             Backup bkp = new Backup(moduleSetting.WebSourcePath, moduleSetting.WebTargetPath);
             bkp.BackUpWebSite();
-            bkp.copyFile(Environment.CurrentDirectory + Common.Constant.WebSolutionStructure.Folders.img + Common.Constant.WebSolutionStructure.Files.UnderConstructionIcon, moduleSetting.WebTargetPath + Common.Constant.WebSolutionStructure.Folders.Icons + Common.Constant.WebSolutionStructure.Files.UnderConstructionIcon);
+            bkp.copyFile(Environment.CurrentDirectory + Common.Constants.WebSolutionStructure.Folders.img + Common.Constants.WebSolutionStructure.Files.UnderConstructionIcon, moduleSetting.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Icons + Common.Constants.WebSolutionStructure.Files.UnderConstructionIcon);
             #endregion
         }
 
-        static void ExecuteSandCastleEnhancement(DocModuleSettingModel moduleSetting)
+        static void ExecuteSandCastleEnhancement(ModuleSettingModel moduleSetting)
         {
             Console.WriteLine("Executing SandCastle Customization Process");
             Console.WriteLine("");
 
             #region variable declarations and initializations
             HtmlFactory factoryHtml = new HtmlFactory();
-            factoryHtml.ModuleSttings = moduleSetting;
+            factoryHtml.ModuleSettings = moduleSetting;
             List<string> serviceUrls = new List<string>();
-            List<string> serviceList = new List<string>();
+            List<string> CommandsPage = new List<string>();
             ScanMissingTagsHelper missingScanHelper = new ScanMissingTagsHelper();
             Dictionary<string, string> commandsToPrint = new Dictionary<string, string>();
             Dictionary<string, string> EventsToPrint = new Dictionary<string, string>();
@@ -96,16 +97,14 @@ namespace SandCastleSvcSpec
             Dictionary<string, string> DtosToPrint = new Dictionary<string, string>();
             #endregion
 
-            Console.WriteLine("Preparing Landing Page");
-            Console.WriteLine(""); //TODO: para modulos como managed care, el landing page no esta funcionando, por que los servicios estan en varias contentPages, se necesita arreglar para indicar una como home page
+           
+            Console.WriteLine("");
+            Console.WriteLine(".... Done");
+
+            Console.WriteLine("Preparing Services Landing Page");
+            Console.WriteLine("");
             #region prepare Landing Page
-            factoryHtml.updateIndexFile(Common.Constant.WebSolutionStructure.Files.IndexPage, moduleSetting.MainPageContent);
-
-            foreach (var ServicePage in moduleSetting.ServiceListPages.ServiceListPage)
-            {
-                factoryHtml.PrepareServicePage(Common.Constant.WebSolutionStructure.Folders.Html + ServicePage);
-            }
-
+            factoryHtml.updateIndexFile(Common.Constants.WebSolutionStructure.Files.IndexPage, moduleSetting.MainPageContent);
             #endregion
 
             Console.WriteLine("Preparing Service Operation List Pages");
@@ -113,12 +112,8 @@ namespace SandCastleSvcSpec
             #region Preparing Service Operation List Pages
             foreach (var ServicePage in moduleSetting.ServiceListPages.ServiceListPage)
             {
-                factoryHtml.prepareServiceOperationList(Common.Constant.WebSolutionStructure.Folders.Html + ServicePage);
-            }
-
-            foreach (var ServicePage in moduleSetting.ServiceListPages.ServiceListPage)
-            {
-                factoryHtml.UpdateALLTableList(Common.Constant.WebSolutionStructure.Folders.Html + ServicePage);
+                factoryHtml.prepareServiceOperationList(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+                factoryHtml.UpdateALLTableList(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
             }
             #endregion
 
@@ -126,52 +121,50 @@ namespace SandCastleSvcSpec
             Console.WriteLine("");
             #region Updating Left Navigator 
             //TODO:  All the pages have the left navigator by default, there is a good chance to have the navigator in the main page only and setup a cointainer to present each page, to achive this, i will have to remove the left navigator from each single page.
-            //this is not affecting on MainPageContent, tags not founds - serviceList.AddRange(factoryHtml.getServiceListFromPageContent(Common.Constant.WebSolutionStructure.Folders.Html + moduleSetting.MainPageContent));
 
             foreach (var ServicePage in moduleSetting.ServiceListPages.ServiceListPage)
             {
-                serviceList.AddRange(factoryHtml.getServiceListFromPageContent(Common.Constant.WebSolutionStructure.Folders.Html + ServicePage));
+                CommandsPage.AddRange(factoryHtml.getServiceListFromPageContent(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage));
             }
 
-            serviceUrls = factoryHtml.extractServiceUrl(serviceList);
+            serviceUrls = factoryHtml.extractServiceUrl(CommandsPage);
 
             foreach (string url in serviceUrls)
             {
-                factoryHtml.UpdateLeftNavigator(url, serviceList); //TODO: refactor to the call and usage of Pages param, each left navigator in page is being updated with the links to all service urls, need refactor 
+                factoryHtml.UpdateLeftNavigator(url, CommandsPage);
             }
 
-            factoryHtml.UpdateLeftNavigator(moduleSetting.WebTargetPath + Constant.WebSolutionStructure.Folders.Html + moduleSetting.MainPageContent, serviceList);
+            factoryHtml.UpdateLeftNavigator(moduleSetting.WebTargetPath + Constants.WebSolutionStructure.Folders.Html + moduleSetting.MainPageContent, CommandsPage);
             #endregion
 
             Console.WriteLine("Preparing Documentation Pages:");
             Console.WriteLine("");
             # region Preparing Command and Event Pages
 
-            //TODO: NECESITAMOS UN ENUMARE FILE CUSTOM POR QUE ESTE TOMA MUICHO TIEMPO LEVANTAR LOS ARCHIVOS DE DISCO.
             //Commands
-            serviceList.Clear();
-            serviceList.AddRange(Directory.EnumerateFiles(moduleSetting.WebTargetPath + Common.Constant.WebSolutionStructure.Folders.Html, "*_Contracts_Commands_*" + Common.Constant.WebSolutionStructure.Files.Extensions.htmlExtension, SearchOption.TopDirectoryOnly));
+            CommandsPage.Clear();
+            CommandsPage.AddRange(Directory.EnumerateFiles(moduleSetting.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Html, "*_Contracts_Commands_*" + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension, SearchOption.TopDirectoryOnly));
             Console.WriteLine("-- Commands Pages");
             
-            foreach (string page in serviceList)
+            foreach (string CommandPage in CommandsPage)
             {
-                if (Path.GetFileName(page).StartsWith("T_")) // solo las paginas que inician con T_nos interesan para el procesarmientio
+                if (Path.GetFileName(CommandPage).StartsWith("T_")) // solo las paginas que inician con T_nos interesan para el procesarmientio
                 {
                     //TODO: IN PROGRESS, refactor, muchas paginas modificadas que no son necesarias
                     //Si el DIV summary existe en doc, quiere decir que falta xml comments
                     var htmlDocument = DocumentHelper.GetInstance();
-                    htmlDocument._documentPath = page;
+                    htmlDocument._documentPath = CommandPage;
                     htmlDocument.Load();
                     DivHelper CommandDivHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "summary");
                     TableHelper tableHelper = new TableHelper(htmlDocument._loadedDocument, string.Empty, "titleTable");
 
                     if (CommandDivHelper.Exists())
                     {
-                        commandsToPrint.Add(tableHelper.GetCellDisplayValue("titleColumn"), string.Empty);
+                        commandsToPrint.Add(tableHelper.GetCellDisplayValue("titleColumn"), CommandDivHelper.GetInnerHtml());
                     }
 
-                    factoryHtml.UpdateInputOutputPages(page);
-                    factoryHtml.addDataTypeColumnToCommandPages(page);
+                    factoryHtml.cleanInputOutputPages(CommandPage);
+                    factoryHtml.preparePropertiesTable(CommandPage);
                 }
             }
             Console.WriteLine("-- Done....Exporting to Excel");
@@ -180,11 +173,11 @@ namespace SandCastleSvcSpec
             //end
 
             //Events
-            serviceList.Clear();
-            serviceList.AddRange(Directory.EnumerateFiles(moduleSetting.WebTargetPath + Common.Constant.WebSolutionStructure.Folders.Html, "*_Contracts_Events_*" + Common.Constant.WebSolutionStructure.Files.Extensions.htmlExtension, SearchOption.TopDirectoryOnly));
+            CommandsPage.Clear();
+            CommandsPage.AddRange(Directory.EnumerateFiles(moduleSetting.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Html, "*_Contracts_Events_*" + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension, SearchOption.TopDirectoryOnly));
             Console.WriteLine("-- Events Pages");
             
-            foreach (string page in serviceList)
+            foreach (string page in CommandsPage)
             {
                 if (Path.GetFileName(page).StartsWith("T_")) // solo las paginas que inician con T_nos interesan para el procesarmientio
                 {
@@ -198,11 +191,11 @@ namespace SandCastleSvcSpec
 
                     if (EventDivHelper.Exists())
                     {
-                        EventsToPrint.Add(tableHelper.GetCellDisplayValue("titleColumn"), string.Empty);
+                        EventsToPrint.Add(tableHelper.GetCellDisplayValue("titleColumn"), EventDivHelper.GetInnerHtml());
                     }
 
-                    factoryHtml.UpdateInputOutputPages(page);
-                    factoryHtml.addDataTypeColumnToCommandPages(page);
+                    factoryHtml.cleanInputOutputPages(page);
+                    factoryHtml.preparePropertiesTable(page);
                 }
             }
 
@@ -212,11 +205,11 @@ namespace SandCastleSvcSpec
             //end
 
             //query parameters
-            serviceList.Clear();
-            serviceList.AddRange(Directory.EnumerateFiles(moduleSetting.WebTargetPath + Common.Constant.WebSolutionStructure.Folders.Html, "*_Contracts_Queries_Parameters_*" + Common.Constant.WebSolutionStructure.Files.Extensions.htmlExtension, SearchOption.TopDirectoryOnly));
+            CommandsPage.Clear();
+            CommandsPage.AddRange(Directory.EnumerateFiles(moduleSetting.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Html, "*_Contracts_Queries_Parameters_*" + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension, SearchOption.TopDirectoryOnly));
             Console.WriteLine("-- Query Pages");
             
-            foreach (string page in serviceList)
+            foreach (string page in CommandsPage)
             {
                 if (Path.GetFileName(page).StartsWith("T_")) // solo las paginas que inician con T_nos interesan para el procesarmientio
                 {
@@ -225,16 +218,16 @@ namespace SandCastleSvcSpec
                     var htmlDocument = DocumentHelper.GetInstance();
                     htmlDocument._documentPath = page;
                     htmlDocument.Load();
-                    DivHelper ModelDivHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "summary");
+                    DivHelper QueryDivHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "summary");
                     TableHelper tableHelper = new TableHelper(htmlDocument._loadedDocument, string.Empty, "titleTable");
 
-                    if (ModelDivHelper.Exists())
+                    if (QueryDivHelper.Exists())
                     {
-                        QueryToPrint.Add(tableHelper.GetCellDisplayValue("titleColumn"), string.Empty);
+                        QueryToPrint.Add(tableHelper.GetCellDisplayValue("titleColumn"), QueryDivHelper.GetInnerHtml());
                     }
 
-                    factoryHtml.UpdateInputOutputPages(page);
-                    factoryHtml.addDataTypeColumnToCommandPages(page);
+                    factoryHtml.cleanInputOutputPages(page);
+                    factoryHtml.preparePropertiesTable(page);
                 }
             }
             Console.WriteLine("-- Done....Exporting to Excel");
@@ -243,11 +236,11 @@ namespace SandCastleSvcSpec
             //end
 
             //domain
-            serviceList.Clear();
-            serviceList.AddRange(Directory.EnumerateFiles(moduleSetting.WebTargetPath + Common.Constant.WebSolutionStructure.Folders.Html, "*_Contracts_Domain_*" + Common.Constant.WebSolutionStructure.Files.Extensions.htmlExtension, SearchOption.TopDirectoryOnly));
+            CommandsPage.Clear();
+            CommandsPage.AddRange(Directory.EnumerateFiles(moduleSetting.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Html, "*_Contracts_Domain_*" + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension, SearchOption.TopDirectoryOnly));
             Console.WriteLine("-- Data Models Pages");
             
-            foreach (string page in serviceList)
+            foreach (string page in CommandsPage)
             {
                 if (Path.GetFileName(page).StartsWith("T_")) // solo las paginas que inician con T_nos interesan para el procesarmientio
                 {
@@ -261,26 +254,25 @@ namespace SandCastleSvcSpec
 
                     if (ModelDivHelper.Exists())
                     {
-                        ModelsToPrint.Add(tableHelper.GetCellDisplayValue("titleColumn"), string.Empty);
+                        ModelsToPrint.Add(tableHelper.GetCellDisplayValue("titleColumn"), ModelDivHelper.GetInnerHtml());
                     }
 
-                    factoryHtml.UpdateInputOutputPages(page);
-                    factoryHtml.addDataTypeColumnToCommandPages(page);
+                    factoryHtml.cleanInputOutputPages(page);
+                    factoryHtml.preparePropertiesTable(page);
                 }
             }
 
             Console.WriteLine("-- Done....Exporting to Excel");
             Console.WriteLine("");
             missingScanHelper.GetModelsSource(ModelsToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrive);
-
             //end
 
             //dto
-            serviceList.Clear();
-            serviceList.AddRange(Directory.EnumerateFiles(moduleSetting.WebTargetPath + Common.Constant.WebSolutionStructure.Folders.Html, "*_Contracts_ViewDto_*" + Common.Constant.WebSolutionStructure.Files.Extensions.htmlExtension, SearchOption.TopDirectoryOnly));
+            CommandsPage.Clear();
+            CommandsPage.AddRange(Directory.EnumerateFiles(moduleSetting.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Html, "*_Contracts_ViewDto_*" + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension, SearchOption.TopDirectoryOnly));
             Console.WriteLine("-- View DTO Pages");
 
-            foreach (string page in serviceList)
+            foreach (string page in CommandsPage)
             {
                 if (Path.GetFileName(page).StartsWith("T_")) // solo las paginas que inician con T_nos interesan para el procesarmientio
                 {
@@ -289,16 +281,16 @@ namespace SandCastleSvcSpec
                     var htmlDocument = DocumentHelper.GetInstance();
                     htmlDocument._documentPath = page;
                     htmlDocument.Load();
-                    DivHelper ModelDivHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "summary");
+                    DivHelper DTODivHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "summary");
                     TableHelper tableHelper = new TableHelper(htmlDocument._loadedDocument, string.Empty, "titleTable");
 
-                    if (ModelDivHelper.Exists())
+                    if (DTODivHelper.Exists())
                     {
-                        DtosToPrint.Add(tableHelper.GetCellDisplayValue("titleColumn"), string.Empty);
+                        DtosToPrint.Add(tableHelper.GetCellDisplayValue("titleColumn"), DTODivHelper.GetInnerHtml());
                     }
 
-                    factoryHtml.UpdateInputOutputPages(page);
-                    factoryHtml.addDataTypeColumnToCommandPages(page);
+                    factoryHtml.cleanInputOutputPages(page);
+                    factoryHtml.preparePropertiesTable(page);
                 }
             }
             Console.WriteLine("-- Done Exporting to Excel");
@@ -307,7 +299,7 @@ namespace SandCastleSvcSpec
 
             //cleanup
             DtosToPrint.Clear();
-            serviceList.Clear();
+            CommandsPage.Clear();
             EventsToPrint.Clear();
             ModelsToPrint.Clear();
             QueryToPrint.Clear();
@@ -320,7 +312,7 @@ namespace SandCastleSvcSpec
             #region Adding input and output to the service operations table
             foreach (var ServicePage in moduleSetting.ServiceListPages.ServiceListPage)
             {
-                factoryHtml.UpdateInputOutput(Common.Constant.WebSolutionStructure.Folders.Html + ServicePage);
+                factoryHtml.UpdateInputOutput(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
             }
             Console.WriteLine(".... Done");
             Console.WriteLine("");
@@ -331,12 +323,12 @@ namespace SandCastleSvcSpec
             #region Preparing and cleaning service pages
             foreach (var ServicePage in moduleSetting.ServiceListPages.ServiceListPage)
             {
-                factoryHtml.removeHiperLinks(Common.Constant.WebSolutionStructure.Folders.Html + ServicePage);
+                factoryHtml.removeHiperLinks(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
             }
 
             foreach (var ServicePage in moduleSetting.ServiceListPages.ServiceListPage)
             {
-                factoryHtml.removeText(Common.Constant.WebSolutionStructure.Folders.Html + ServicePage);
+                factoryHtml.removeText(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
             }
             Console.WriteLine(".... Done");
             Console.WriteLine("");
@@ -347,7 +339,7 @@ namespace SandCastleSvcSpec
             #region Adding Pagination control to service pages
             foreach (var ServicePage in moduleSetting.ServiceListPages.ServiceListPage)
             {
-                factoryHtml.AddPaginationControl(Common.Constant.WebSolutionStructure.Folders.Html + ServicePage);
+                factoryHtml.AddPaginationControl(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
             }
             Console.WriteLine(".... Done");
             Console.WriteLine("");
@@ -358,7 +350,7 @@ namespace SandCastleSvcSpec
             #region Preparing and cleaning service list pages
             foreach (var ServicePage in moduleSetting.ServiceListPages.ServiceListPage)
             {
-                factoryHtml.removeTextFromServices(Common.Constant.WebSolutionStructure.Folders.Html + ServicePage);
+                factoryHtml.removeTextFromServices(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
             }
             Console.WriteLine(".... Done");
             Console.WriteLine("");
@@ -369,14 +361,28 @@ namespace SandCastleSvcSpec
             #region removing empty elements and tags
             foreach (var ServicePage in moduleSetting.ServiceListPages.ServiceListPage)
             {
-                factoryHtml.RemoveEmptyParams(Common.Constant.WebSolutionStructure.Folders.Html + ServicePage);
+                factoryHtml.RemoveEmptyParams(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
             }
             Console.WriteLine(".... Done");
             Console.WriteLine("");
             #endregion
 
+            Console.WriteLine("");
+            Console.WriteLine("Preparing Event View Landing Page");
+            #region Adding Event View
+            factoryHtml.AddEventView();
+            #endregion
+
+            Console.WriteLine("");
+            Console.WriteLine("Adding Pagination control to event page");
+            #region Adding Pagination control to service pages
+            factoryHtml.setPaginationControl(moduleSetting.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Html + moduleSetting.MainContractContent, "classList", "namespacesSection");
+            Console.WriteLine(".... Done");
+            Console.WriteLine("");
+            #endregion
+
             Console.WriteLine("Executing SandCastle Enhancement Process done");
-            
+
         }
     }
 }

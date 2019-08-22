@@ -1,8 +1,9 @@
 <DocModuleSettingModel>
   <ModuleName>MC</ModuleName>
-  <StorageDrive>J:</StorageDrive>
-  <webSourcePath>J:\UA3\SandCastleCustomizationTool\ShbDoc\ManagedCare\help</webSourcePath>
-  <webTargetPath>J:\UA3\SandCastleCustomizationTool\CustomServiceSpecs\MC\Output</webTargetPath>
+  <ModuleNameDisplay>Managed Care</ModuleNameDisplay>
+  <StorageDrive>C:</StorageDrive>
+  <webSourcePath>C:\Users\egardea\Downloads\ManagedCare\Output\WebStyle</webSourcePath>
+  <webTargetPath>C:\ServiceSpecs\ManagedCare\API Sevice Specification</webTargetPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
   <ServiceListPages>
 	<ServiceListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Capitation.htm</ServiceListPage>
@@ -14,4 +15,8 @@
 	<ServiceListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_MCOPortal.htm</ServiceListPage>
 	<ServiceListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Network.htm</ServiceListPage>	
   </ServiceListPages>
+  <MainContractContent>G_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Contracts.htm</MainContractContent>
+  <ContractListPages>
+	<ContractListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Contracts_Events.htm</ContractListPage>
+  </ContractListPages>
 </DocModuleSettingModel> 
