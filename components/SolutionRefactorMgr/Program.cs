@@ -95,14 +95,8 @@ namespace SolutionRefactorMgr
             if (refactorConfig.UseSourceControl)
             {
                 LogMessage(0, string.Format("Initializing connection to TFS..."));
-                if (refactorConfig.TargetTFS == "OnPremise")
-                {
-                    tpc = new TfsTeamProjectCollection(new Uri(refactorConfig.TfsServer));
-                }
-                else if(refactorConfig.TargetTFS == "Azure")
-                {
-                    tpc = AuthenticateAzureTFS();
-                }
+
+                tpc = AuthenticateAzureTFS();
 
                 VersionControlServer versionControl = tpc.GetService<VersionControlServer>();
                 versionControl.NonFatalError += OnNonFatalError;

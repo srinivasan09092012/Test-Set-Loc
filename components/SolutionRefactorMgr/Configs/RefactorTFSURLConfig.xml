@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<RefactorConfig editMode="Inline" includeFolderNames="true" includeFileNames="true" includeFileContents="true" useSourceControl="true" targetTFS ="Azure">
+<RefactorConfig editMode="Inline" includeFolderNames="true" includeFileNames="true" includeFileContents="true" useSourceControl="true">
   <SourceDir>C:\UA3\Source</SourceDir>
   <!--<SourceDir>C:\UA3\Tools</SourceDir>-->
   <!--<SourceDir>C:\UA3</SourceDir>-->

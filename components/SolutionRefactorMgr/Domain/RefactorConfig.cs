@@ -23,9 +23,6 @@ namespace SolutionRefactorMgr.Domain
         [XmlAttribute("useSourceControl")]
         public bool UseSourceControl { get; set; }
 
-        [XmlAttribute("targetTFS")]
-        public string TargetTFS { get; set; }
-
         [XmlAttribute("refactorPartialContent")]
         public bool RefactorPartialContent { get; set; }
 
