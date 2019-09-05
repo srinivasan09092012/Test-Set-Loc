@@ -75,6 +75,7 @@
     <ReplacementString qualifier="Include=&quot;HP.NotificationServices" from="Version=19.2.70.0" to="Version=19.3.76.0" />
     <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.ClaimsManagement" from="Version=19.2.70.0" to="Version=19.3.76.0" />
     <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.Core" from="Version=19.2.70.0" to="Version=19.3.76.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.EDI" from="Version=19.2.70.0" to="Version=19.3.76.0" />
     <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.NCPDP" from="Version=19.2.70.0" to="Version=19.3.76.0" />
     <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.TestAutomation" from="Version=19.2.70.0" to="Version=19.3.76.0" />
     <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.X212" from="Version=19.2.70.0" to="Version=19.3.76.0" />
@@ -104,6 +105,7 @@
     <ReplacementString qualifier="\Packages\HP.NotificationServices" from="19.2.70" to="19.3.76" />
     <ReplacementString qualifier="\Packages\HPE.HSP.UA3.ClaimsManagement" from="19.2.70" to="19.3.76" />
     <ReplacementString qualifier="\Packages\HPE.HSP.UA3.Core" from="19.2.70" to="19.3.76" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.EDI" from="19.2.70" to="19.3.76" />
     <ReplacementString qualifier="\Packages\HPE.HSP.UA3.NCPDP" from="19.2.70" to="19.3.76" />
     <ReplacementString qualifier="\Packages\HPE.HSP.UA3.TestAutomation" from="19.2.70" to="19.3.76" />
     <ReplacementString qualifier="\Packages\HPE.HSP.UA3.X212" from="19.2.70" to="19.3.76" />
@@ -141,6 +143,7 @@
     <ReplacementString qualifier="id=&quot;HP.NotificationServices" from="19.2.70" to="19.3.76" />
     <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.ClaimsManagement" from="19.2.70" to="19.3.76" />
     <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.Core" from="19.2.70" to="19.3.76" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.EDI" from="19.2.70" to="19.3.76" />
     <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.NCPDP" from="19.2.70" to="19.3.76" />
     <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.TestAutomation" from="19.2.70" to="19.3.76" />
     <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.X212" from="19.2.70" to="19.3.76" />
