@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true">
+<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" targetTFS="Azure">
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs>
     <ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />
