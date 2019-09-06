@@ -48,6 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExtensionMethods\CustomMethods.cs" />
+    <Compile Include="Implementations\EventViewerLogger.cs" />
+    <Compile Include="Interfaces\ILogger.cs" />
+    <Compile Include="Interfaces\LogginLevels.cs" />
+    <Compile Include="ModuleSettings\ContentPage.cs" />
     <Compile Include="ReportModels\DTOMissingTagsModel.cs" />
     <Compile Include="ReportModels\QueryMissingTagsModel.cs" />
     <Compile Include="ReportModels\ModelMissingTagsModel.cs" />
@@ -59,6 +64,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Derivables\LoggingOverview.xlsx" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

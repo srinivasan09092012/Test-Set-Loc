@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6DE7EC32-482F-490B-AE5F-2BC9E6642001}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SandCastleSvcSpec</RootNamespace>
+    <RootNamespace>Main</RootNamespace>
     <AssemblyName>SandCastleSvcSpec</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -54,7 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

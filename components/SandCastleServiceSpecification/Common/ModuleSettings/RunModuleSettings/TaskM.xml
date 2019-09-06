@@ -1,15 +1,15 @@
 <DocModuleSettingModel>
   <ModuleName>TASKM</ModuleName>
-  <StorageDrive>C:</StorageDrive>
+  <StorageDrive>J:</StorageDrive>
   <ModuleNameDisplay>Task Management</ModuleNameDisplay>
-  <webSourcePath>C:\Users\egardea\Downloads\TASKM\Output\WebStyle</webSourcePath>
-  <webTargetPath>C:\ServiceSpecs\TASKM\API Sevice Specification</webTargetPath>
+  <webSourcePath>J:\UA3\SandCastleCustomizationTool\ShbDoc\TaskM\help</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\TaskMgmt\19.1.64.2\HelpWeb</webTargetPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
   <ServiceListPages>
-	<ServiceListPage>N_HP_HSP_UA3_TaskManagement_BAS_TaskManagement.htm</ServiceListPage>
+	<ListPage>N_HP_HSP_UA3_TaskManagement_BAS_TaskManagement.htm</ListPage>
   </ServiceListPages>
   <MainContractContent>G_HP_HSP_UA3_TaskManagement_BAS_TaskManagement_Contracts.htm</MainContractContent>
   <ContractListPages>
-	<ContractListPage>N_HP_HSP_UA3_TaskManagement_BAS_TaskManagement_Contracts_Events.htm</ContractListPage>
+	<ListPage>N_HP_HSP_UA3_TaskManagement_BAS_TaskManagement_Contracts_Events.htm</ListPage>
   </ContractListPages>
 </DocModuleSettingModel>

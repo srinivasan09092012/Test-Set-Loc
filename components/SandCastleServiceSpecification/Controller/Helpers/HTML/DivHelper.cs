@@ -1,7 +1,7 @@
 ﻿using HtmlAgilityPack;
 using System.Linq;
 
-namespace APISvcSpec.Helpers.HTML
+namespace Controller.Helpers.HTML
 {
     public class DivHelper
     {
@@ -151,7 +151,7 @@ namespace APISvcSpec.Helpers.HTML
         //<param name = "html">string variable that holds the new html code to set </param>
         ///<returns>Void</returns>
         //</summary>
-        public void ReplaceInnerHtml(string html)
+        public void SetInnerHtml(string html)
         {
             if (this._ContextDivLoaded)
             {

@@ -41,12 +41,6 @@ namespace Common
                 public const string BootStrap = @"\BootStrap";
                 public const string img = @"\img\";
             }
-
-            public static class PathAndRoutes
-            {
-                public const string webRootSource = @"C:\Users\egardea\Downloads\PM Tech Doc\Output\WebStyle\";// used by default constructor, internal validations usage only
-                public const string webRootTarget = @"C:\ServiceSpecs\WebStyle\";// used by default constructor, internal validations usage only
-            }
         }
 
         public static class HtmlInventory

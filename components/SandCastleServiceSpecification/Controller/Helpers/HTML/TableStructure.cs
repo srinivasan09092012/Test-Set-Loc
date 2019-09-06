@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace APISvcSpec.Helpers
+namespace Controller.Helpers
 {
     public class TableStructure
     {

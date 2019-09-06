@@ -1,62 +1,38 @@
-﻿using System;
+﻿using Common.Interfaces;
+using System;
 using System.IO;
 using System.Reflection;
 
-namespace APISvcSpec.IO
+namespace Controller.IO
 {
-    public class Backup
+    public class BackupHelper
     {
-        private static DirectoryInfo webSourceDirInfo;
-        private static DirectoryInfo webTargetDirInfo;
-        private static DirectoryInfo bootStrapComponents;
+        private DirectoryInfo webSourceDirInfo;
+        private DirectoryInfo webTargetDirInfo;
+        private DirectoryInfo bootStrapComponents;
+        private readonly ILogger backupLoggerEngine;
 
-        public Backup()
+        public BackupHelper(string webSourcePath, string webTargetPath, ILogger loggerEngine)
         {
-            webSourceDirInfo = new DirectoryInfo(Common.Constants.WebSolutionStructure.PathAndRoutes.webRootSource);
-            webTargetDirInfo = new DirectoryInfo(Common.Constants.WebSolutionStructure.PathAndRoutes.webRootTarget + Common.Constants.WebSolutionStructure.Folders.outPutFolderName);
-            bootStrapComponents = new DirectoryInfo(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + Common.Constants.WebSolutionStructure.Folders.BootStrap);
-        }
-
-         public Backup(string webSourcePath, string webTargetPath)
-        {
+            backupLoggerEngine = loggerEngine;
             webSourceDirInfo = new DirectoryInfo(webSourcePath);
             webTargetDirInfo = new DirectoryInfo(webTargetPath);
             bootStrapComponents = new DirectoryInfo(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + Common.Constants.WebSolutionStructure.Folders.BootStrap);
         }
 
-        public void BackUpWebSite(bool zipBackup = false)
+        public void CopyTargetSite()
         {
-            Console.WriteLine("Starting Source Web Site Backup on: " + DateTime.UtcNow);
-            Console.WriteLine("");
-
-            if (!webSourceDirInfo.Exists)
-            {
-                Console.WriteLine("Source web site not found. aborting process");
-                ////TODO: logging, abort the process due lack of source folder and files
-                ///TODO: LOGGIN NOT PRESENT IN THE PROCESS, MUST HAVE ONE
-            }
-
-            if (webTargetDirInfo.Exists)
-            {
-                Directory.Delete(webTargetDirInfo.FullName, true);
-            }
-
+            //TODO: failure on this method should stop the entire process for current setting file
             this.CopyFolderAndContent(webSourceDirInfo, webTargetDirInfo.FullName);
+            backupLoggerEngine.writeEntry(string.Format("Checkpoint 1 : Default SandCastle Sources \n\nFrom: {0} \nTo: {1}", webSourceDirInfo.FullName, webTargetDirInfo.FullName), LogginSeetings.LevelType.InformationApplication,1043,1);
+
+            this.CopyFolderAndContent(bootStrapComponents, webTargetDirInfo.FullName);
+            backupLoggerEngine.writeEntry(string.Format("Checkpoint 2 : Boostrap Components \n\nFrom: {0} \nTo: {1}", bootStrapComponents.FullName, webTargetDirInfo.FullName), LogginSeetings.LevelType.InformationApplication,1043,1);
 
             foreach (FileInfo file in webSourceDirInfo.EnumerateFiles("*.*", SearchOption.TopDirectoryOnly))
             {
                 copyFile(file.FullName, webTargetDirInfo.FullName + @"\" + file.Name);
             }
-
-            Console.WriteLine(".....done: " + DateTime.UtcNow);
-            Console.WriteLine("");
-
-            Console.WriteLine("Loading boostrap components. " + DateTime.UtcNow);
-            Console.WriteLine("");
-
-            this.CopyFolderAndContent(bootStrapComponents, webTargetDirInfo.FullName);
-            Console.WriteLine("....done." + DateTime.UtcNow);
-            Console.WriteLine("");
         }
 
         public void CopyFolderAndContent(DirectoryInfo rootDirectory, string directoryTarget)
@@ -65,38 +41,41 @@ namespace APISvcSpec.IO
             {
                 var subDirectoryInfo = createDirectory(directoryTarget + @"\" + directory.Name);
 
-                foreach (FileInfo file in directory.GetFiles("*.*", SearchOption.TopDirectoryOnly))
+                if (subDirectoryInfo != null)
                 {
-                    copyFile(file.FullName, subDirectoryInfo.FullName + @"\" + file.Name);
-                }
+                    foreach (FileInfo file in directory.GetFiles("*.*", SearchOption.TopDirectoryOnly))
+                    {
+                        copyFile(file.FullName, subDirectoryInfo.FullName + @"\" + file.Name);
+                    }
 
-                CopyFolderAndContent(directory, subDirectoryInfo.FullName);
+                    CopyFolderAndContent(directory, subDirectoryInfo.FullName);
+                }
             }
         }
 
-        /// <summary>
-        /// Copy File from one location to another, handle exceptions
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="target"></param>
-        public void copyFile(string source, string target)
+        private DirectoryInfo createDirectory(string path)
         {
             try
             {
-                File.Copy(source, target);
+                return Directory.CreateDirectory(path);
             }
-            catch
-            { }
+            catch (Exception exe)
+            {
+                backupLoggerEngine.writeEntry(string.Format("Folder {0} could not be created \nError: {1}", path, exe.Message), LogginSeetings.LevelType.ErrorApplication,1011,1);
+                return null;
+            }
         }
 
-        /// <summary>
-        /// create directory folder and handle exceptions
-        /// </summary>
-        /// <param name="directory"></param>
-        /// <returns></returns>
-        private DirectoryInfo createDirectory(string directory)
+        private void copyFile(string source, string destination)
         {
-            return Directory.CreateDirectory(directory);
+            try
+            {
+                File.Copy(source, destination, true);
+            }
+            catch (Exception exe)
+            {
+                backupLoggerEngine.writeEntry(string.Format("File {0} could not be copied to {1} \nError: {2}", source,destination, exe.Message), LogginSeetings.LevelType.ErrorApplication,1011,1);
+            }
         }
     }
 }

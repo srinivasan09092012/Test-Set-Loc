@@ -1,23 +1,29 @@
-﻿using APISvcSpec.Helpers.HTML;
-using APISvcSpec.Helpers.Scan;
+﻿using Controller.Helpers.HTML;
+using Controller.Helpers.Scan;
 using Common.ModuleSettings;
 using HtmlAgilityPack;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Common.Interfaces;
 
-namespace APISvcSpec
+namespace Controller
 {
     public class HtmlFactory
     {
-        static int nodeIndex = 0;
+        int nodeIndex = 0;
         public ModuleSettingModel ModuleSettings = new ModuleSettingModel();
+        private readonly ILogger LoggerEngine;
 
-        public void updateIndexFile(string indexPage, string MainPageContent)
+        public HtmlFactory(ILogger loggerEngineInstance)
+        {
+            LoggerEngine = loggerEngineInstance;
+        }
+        
+        public void prepareIndexFile(string indexPage, string MainPageContent)
         {
             string fullSourcePath = ModuleSettings.WebTargetPath + indexPage;
-
             var htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = fullSourcePath;
             htmlDocument.Load();
@@ -136,7 +142,7 @@ namespace APISvcSpec
             htmlDocument.Save();
         }
 
-        public void UpdateALLTableList(string originalDocument)
+        public void UpdateOperationsLists(string originalDocument)
         {
             string fullSourcePath = ModuleSettings.WebTargetPath + originalDocument;
             var htmlDocument = DocumentHelper.GetInstance();
@@ -190,19 +196,11 @@ namespace APISvcSpec
             htmlDocument.Load();
             TableHelper tblHelper = new TableHelper(htmlDocument._loadedDocument, "classList", pageContent);
             List<string> pagesExposingServices = tblHelper.readColumnValues(1);
-
-            // start removing responsability
-
-            //Removing hiperlink from table column
+            
             foreach (string servicePage in pagesExposingServices)
             {
                 removeTableCellHiperLink(ModuleSettings.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Html + servicePage.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
             }
-
-            //other remove hiperlinks tasks
-            //..
-            //..
-            // end removing responsability
         }
 
         public void AddPaginationControl(string originalDocument)
@@ -238,12 +236,12 @@ namespace APISvcSpec
             }
         }
 
-        public void UpdateLeftNavigator(string urlPage, List<string> ServiceList)
+        public void UpdateLeftNavigator(string urlPage, List<string> ServiceList, string lvl0HomePage)
         {
             var htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = urlPage;
             htmlDocument.Load();
-            UpdatePageLeftMenu(htmlDocument._loadedDocument, urlPage, ServiceList);
+            UpdatePageLeftMenu(htmlDocument._loadedDocument, ServiceList, lvl0HomePage);
             htmlDocument.Save();
         }
 
@@ -562,69 +560,6 @@ namespace APISvcSpec
             txtHelper = new TextHelper(doc._loadedDocument, "Assembly:");
             txtHelper.removeTagByText("TopicContent");
 
-            //if (ModuleSettings.ModuleName == "TPLPolicy")
-            //{
-            //    txtHelper = new TextHelper(doc._loadedDocument, "HP.HSP.UA3.TPLPolicy.BAS.Policy (in HP.HSP.UA3.TPLPolicy.BAS.Policy.dll) Version: 19.2.70.0 (19.2.70.0)");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-
-            //    txtHelper = new TextHelper(doc._loadedDocument, "HP.HSP.UA3.TPLPolicy.BAS.");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-            //}
-
-            //if (ModuleSettings.ModuleName == "PE")
-            //{
-            //    txtHelper = new TextHelper(doc._loadedDocument, "HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc (in HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.dll) Version: 19.2.70.0 (19.2.70.0)");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-
-            //    txtHelper = new TextHelper(doc._loadedDocument, "HP.HSP.UA3.ProviderEnrollment.BAS.");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-            //}
-
-            //if (ModuleSettings.ModuleName == "PM")
-            //{
-            //    txtHelper = new TextHelper(doc._loadedDocument, "HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc (in HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.dll) Version: 19.2.70.0 (19.2.70.0)");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-
-            //    txtHelper = new TextHelper(doc._loadedDocument, "HP.HSP.UA3.ProviderManagement.BAS.");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-            //}
-
-            //if (ModuleSettings.ModuleName == "DR")
-            //{
-            //    txtHelper = new TextHelper(doc._loadedDocument, "HP.HSP.UA3.DrugRebate.BAS.DrugRebate (in HP.HSP.UA3.DrugRebate.BAS.DrugRebate.dll) Version: 19.2.70.0 (19.2.70.0)");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-
-            //    txtHelper = new TextHelper(doc._loadedDocument, "HP.HSP.UA3.DrugRebate.BAS.");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-            //}
-
-            //if (ModuleSettings.ModuleName == "MC")
-            //{
-            //    txtHelper = new TextHelper(doc._loadedDocument, "HP.HSP.UA3.ManagedCare.BAS.ManagedCare (in HP.HSP.UA3.ManagedCare.BAS.ManagedCare.dll) Version: 19.2.70.0 (19.2.70.0)");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-
-            //    txtHelper = new TextHelper(doc._loadedDocument, "HP.HSP.UA3.ManagedCare.BAS.");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-            //}
-
-            //if (ModuleSettings.ModuleName == "TPLC")
-            //{
-            //    txtHelper = new TextHelper(doc._loadedDocument, "HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking (in HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.dll) Version: 19.2.70.0 (19.2.70.0)");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-
-            //    txtHelper = new TextHelper(doc._loadedDocument, "HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-            //}
-
-            //if (ModuleSettings.ModuleName == "TASKM")
-            //{
-            //    txtHelper = new TextHelper(doc._loadedDocument, "HP.HSP.UA3.TaskManagement.BAS.TaskManagement (in HP.HSP.UA3.TaskManagement.BAS.TaskManagement.dll) Version: 19.2.70.0 (19.2.70.0)");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-
-            //    txtHelper = new TextHelper(doc._loadedDocument, "HP.HSP.UA3.TaskManagement.BAS.TaskManagement");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-            //}
-
             if (ModuleSettings.ModuleName != string.Empty)
             {
                 txtHelper = new TextHelper(doc._loadedDocument, "HP.HSP.UA3.");
@@ -635,84 +570,63 @@ namespace APISvcSpec
             }
         }
 
-        private void UpdatePageLeftMenu(HtmlDocument htmlDocument, string urlPage, List<string> ServiceList)
+        private void UpdatePageLeftMenu(HtmlDocument htmlDocument, List<string> ServiceList, string lvl0HomePage)
         {
-            foreach (var node in htmlDocument.DocumentNode.SelectNodes("//div"))
-            {
-                if (node.HasClass("toclevel2"))
-                {
-                    node.Remove();
-                }
+            HtmlNode menuEntry;
+            DivHelper divHelperTocNav = new DivHelper(htmlDocument, DivHelper.SearchFilter.Id, "tocNav");
+            divHelperTocNav.SetInnerHtml(string.Empty);
 
-                if (node.HasClass("toclevel0"))
-                {
-                    if (node.HasChildNodes)
-                    {
-                        foreach (var childNode in node.ChildNodes.Where(x => x.Name == "a"))
-                        {
-                            foreach (var childNodeAttribute in childNode.Attributes.Where(x => x.Name == "tocid"))
-                            {
-                                if (childNodeAttribute.Value != "roottoc")
-                                {
-                                    node.Remove();
-                                    break;
-                                }
-                                else if (childNodeAttribute.Value == "roottoc")
-                                {
-                                    childNode.Attributes["href"].Value = "#!";
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
+            nodeIndex++;
+            menuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument, nodeIndex);
+            menuEntry.Name = "div";
+            menuEntry.AddClass("toclevel0");
+            menuEntry.Attributes.Add("data-toclevel", "0");
+            menuEntry.InnerHtml = "<a class='tocCollapsed' onclick='javascript: Toggle(this); ' href='#!'></a> " + "<a data-tochassubtree = 'true' href='" + lvl0HomePage + "'>Payer Platform - Service and Event Specification</a>";
+            divHelperTocNav.addChildrenNode(menuEntry);
+            menuEntry = null;
 
-                if (node.HasClass("toclevel1"))
-                {
-                    if (node.HasChildNodes)
-                    {
-                        foreach (var childNode in node.ChildNodes.Where(x => x.Name == "a"))
-                        {
-                            foreach (var childNodeAttribute in childNode.Attributes.Where(x => x.Name == "tocid"))
-                            {
-                                if (childNodeAttribute.Value.Contains(Path.GetFileNameWithoutExtension(urlPage.Replace("N_", string.Empty))))
-                                {
-                                    childNode.InnerHtml = ModuleSettings.ModuleNameDisplay + " API";
-                                    childNode.Attributes["href"].Value = "../html/" + Path.GetFileName(ModuleSettings.MainPageContent);
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            nodeIndex++;
+            menuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument, nodeIndex);
+            menuEntry.Name = "div";
+            menuEntry.AddClass("toclevel1");
+            menuEntry.Attributes.Add("data-toclevel", "1");
+            menuEntry.InnerHtml = "<a class='tocCollapsed' onclick='javascript: Toggle(this); ' href='#!'></a> " + "<a data-tochassubtree = 'true' href='#!'>"+ ModuleSettings.ModuleNameDisplay  +" API Web Services</a>";
+            divHelperTocNav.addChildrenNode(menuEntry);
+            menuEntry = null;
 
-            //TODO: ESTO NO DEBE ESTAR EN EL METODO DE UPDATE LEFT NAV, REACOMODAR
-            //remove Class key word from itle
-            var titleNode = htmlDocument.DocumentNode.SelectNodes("//title").FirstOrDefault();
-            titleNode.InnerHtml = titleNode.InnerText.Replace("Class", string.Empty);
-            DivHelper divHelper = new DivHelper(htmlDocument, DivHelper.SearchFilter.Id, "tocNav");
-            HtmlNode newNode;
             foreach (string service in ServiceList)
             {
                 nodeIndex++;
-                newNode = new HtmlNode(HtmlNodeType.Element, htmlDocument, nodeIndex);
-                newNode.Name = "div";
-                newNode.AddClass("toclevel2");
-                newNode.Attributes.Add("data-toclevel", "2");
-                newNode.InnerHtml = "<a class='tocCollapsed' onclick='javascript: Toggle(this);''href='#!' /><a data-tochassubtree='true' href='.." + Common.Constants.WebSolutionStructure.Folders.Html + @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension + "' title='Service' tocid='Methods_T_HP_HSP_UA3_" + ModuleSettings.ModuleName + @service.Remove(0, 9).Split('>')[0].Split('.')[0] + "'>" + service.Split('>')[1].Split('<')[0] + "</a>";
-                divHelper.addChildrenNode(newNode);
+                menuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument, nodeIndex);
+                menuEntry.Name = "div";
+                menuEntry.AddClass("toclevel2");
+                menuEntry.Attributes.Add("data-toclevel", "2");
+                menuEntry.InnerHtml = "<a class='tocCollapsed' onclick='javascript: Toggle(this);''href='#!' /><a data-tochassubtree='true' href='.." + Common.Constants.WebSolutionStructure.Folders.Html + @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension + "' title='Service' tocid='Methods_T_HP_HSP_UA3_" + ModuleSettings.ModuleName + @service.Remove(0, 9).Split('>')[0].Split('.')[0] + "'>" + service.Split('>')[1].Split('<')[0] + "</a>";
+                divHelperTocNav.addChildrenNode(menuEntry);
+                menuEntry = null;
             }
 
-            DivHelper EvtView = new DivHelper(htmlDocument, DivHelper.SearchFilter.Id, "tocNav");
             nodeIndex++;
-            HtmlNode Divevnt = new HtmlNode(HtmlNodeType.Element, htmlDocument, nodeIndex);
-            Divevnt.AddClass("toclevel1");
-            Divevnt.Attributes.Add("data-toclevel", "1");
-            Divevnt.Name = "div";
-            Divevnt.InnerHtml = "<a class='tocCollapsed' onclick='javascript: Toggle(this); href='#'/><a data-tochassubtree='true' href='.." + Common.Constants.WebSolutionStructure.Folders.Html + ModuleSettings.MainContractContent + "'>Event List</a>";
-            EvtView.addChildrenNode(Divevnt);
+            menuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument, nodeIndex);
+            menuEntry.Name = "div";
+            menuEntry.AddClass("toclevel1");
+            menuEntry.Attributes.Add("data-toclevel", "1");
+            menuEntry.Name = "div";
+            menuEntry.InnerHtml = "<a class='tocCollapsed' onclick='javascript: Toggle(this); href='#'/><a data-tochassubtree='true' href='#!'>Events For Outbound Communications</a>";
+            divHelperTocNav.addChildrenNode(menuEntry);
+            menuEntry = null;
 
+            nodeIndex++;
+            menuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument, nodeIndex);
+            menuEntry.Name = "div";
+            menuEntry.AddClass("toclevel2");
+            menuEntry.Attributes.Add("data-toclevel", "2");
+            menuEntry.Name = "div";
+            menuEntry.InnerHtml = "<a class='tocCollapsed' onclick='javascript: Toggle(this); href='#'/><a data-tochassubtree='true' href='.." + Common.Constants.WebSolutionStructure.Folders.Html + ModuleSettings.MainContractContent + "'>Full Events List</a>";
+            divHelperTocNav.addChildrenNode(menuEntry);
+            menuEntry = null;
+
+            //TODO: THIS IS NOT PART OF LEFT NAV, RE LOCATE
             this.UpdatePageHeader(htmlDocument);
             this.UpdatePageFooter(htmlDocument);
         }
@@ -720,14 +634,14 @@ namespace APISvcSpec
         public void UpdatePageHeader(HtmlDocument doc)
         {
             DivHelper divHelper = new DivHelper(doc, DivHelper.SearchFilter.Id, Common.Constants.HtmlInventory.PageHeaderDiv);
-            divHelper.ReplaceInnerHtml(Common.Constants.Labels.ProductName);
+            divHelper.SetInnerHtml(Common.Constants.Labels.ProductName);
         }
 
         public void UpdatePageFooter(HtmlDocument doc)
         {
             DivHelper divHelper = new DivHelper(doc, DivHelper.SearchFilter.Id, Common.Constants.HtmlInventory.PageFooterDiv);
             divHelper.removeAllChildNodes();
-            divHelper.ReplaceInnerHtml(Common.Constants.Labels.CopyRight);
+            divHelper.SetInnerHtml(Common.Constants.Labels.CopyRight);
         }
 
         /// <summary>
@@ -811,69 +725,6 @@ namespace APISvcSpec
 
             txtHelper = new TextHelper(doc, "Top");
             txtHelper.removeTagByText("ID3RBSection");
-
-            //if (ModuleSettings.ModuleName == "TPLPolicy")
-            //{
-            //    txtHelper = new TextHelper(doc, "HP.HSP.UA3.TPLPolicy.BAS.Policy.Contracts (in HP.HSP.UA3.TPLPolicy.BAS.Policy.Contracts.dll) Version: 19.2.70.0 (19.2.70.0)");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-
-            //    txtHelper = new TextHelper(doc, "HP.HSP.UA3.TPLPolicy.BAS.");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-            //}
-
-            //if (ModuleSettings.ModuleName == "PE")
-            //{
-            //    txtHelper = new TextHelper(doc, "HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.Contracts (in HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.Contracts.dll) Version: 19.2.70.0 (19.2.70.0)");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-
-            //    txtHelper = new TextHelper(doc, "HP.HSP.UA3.ProviderEnrollment.BAS.");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-            //}
-
-            //if (ModuleSettings.ModuleName == "PM")
-            //{
-            //    txtHelper = new TextHelper(doc, "HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.Contracts (in HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.Contracts.dll) Version: 19.2.70.0 (19.2.70.0)");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-
-            //    txtHelper = new TextHelper(doc, "HP.HSP.UA3.ProviderManagement.BAS.");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-            //}
-
-            //if (ModuleSettings.ModuleName == "DR")
-            //{
-            //    txtHelper = new TextHelper(doc, "HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts (in HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.dll) Version: 19.2.70.0 (19.2.70.0)");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-
-            //    txtHelper = new TextHelper(doc, "HP.HSP.UA3.DrugRebate.BAS.");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-            //}
-
-            //if (ModuleSettings.ModuleName == "MC")
-            //{
-            //    txtHelper = new TextHelper(doc, "HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts (in HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.dll) Version: 19.2.70.0 (19.2.70.0)");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-
-            //    txtHelper = new TextHelper(doc, "HP.HSP.UA3.ManagedCare.BAS.");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-            //}
-
-            //if (ModuleSettings.ModuleName == "TPLC")
-            //{
-            //    txtHelper = new TextHelper(doc, "HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts (in HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.dll) Version: 19.2.70.0 (19.2.70.0)");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-
-            //    txtHelper = new TextHelper(doc, "HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-            //}
-
-            //if (ModuleSettings.ModuleName == "TASKM")
-            //{
-            //    txtHelper = new TextHelper(doc, "HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts (in HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.dll) Version: 19.2.70.0 (19.2.70.0)");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-
-            //    txtHelper = new TextHelper(doc, "HP.HSP.UA3.TaskManagement.BAS.TaskManagement.");
-            //    txtHelper.removeTagByTextStartWith("TopicContent");
-            //}
 
             if (ModuleSettings.ModuleName != string.Empty)
             {
@@ -966,8 +817,8 @@ namespace APISvcSpec
             tableHelper = new TableHelper(htmlDocument._loadedDocument, "methodList");
             TableHelper tableTitleHelper = new TableHelper(htmlDocument._loadedDocument, "", "titleTable");
 
-            ScanMissingTagsHelper scanHelper = new ScanMissingTagsHelper();
-            scanHelper.GetServicesSource(tableHelper.ReadAllColumnsValues(), ModuleSettings.ModuleName, tableTitleHelper.GetCellDisplayValue("titleColumn"), ModuleSettings.StorageDrive);
+            MissingTagsHelper scanHelper = new MissingTagsHelper(LoggerEngine);
+            scanHelper.GetServicesSource(tableHelper.ReadAllColumnsValues(), ModuleSettings.ModuleName, tableTitleHelper.GetCellDisplayValue("titleColumn"), ModuleSettings.StorageDrivePath);
             scanHelper = null;
         }
 
@@ -1120,7 +971,7 @@ namespace APISvcSpec
             htmlDocument.Save();
         }
 
-        public void AddEventView()
+        public void prepareEventPage()
         {
             var htmlDocument = DocumentHelper.GetInstance();
             DivHelper EvtView;
@@ -1133,21 +984,21 @@ namespace APISvcSpec
 
             EvtView = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "PageHeader");
             EvtView.removeAllChildNodes();
-            EvtView.ReplaceInnerHtml("Healthcare Payer Platform");
+            EvtView.SetInnerHtml("Healthcare Payer Platform");
             tblHelper = new TableHelper(htmlDocument._loadedDocument, "namespaceList");
             tblHelper.Remove();
             divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "leftNav");
-            divHelper.ReplaceInnerHtml(innerDiv);
+            divHelper.SetInnerHtml(innerDiv);
             htmlDocument.Save();
 
             StringBuilder strTableEvents = new StringBuilder();
             var innerHtmlDocument = DocumentHelper.GetInstance();
-            foreach (var page in ModuleSettings.ContractListPages.ContractListPage)
+            foreach (var page in ModuleSettings.ContractListPages.ListPage)
             {
                 innerHtmlDocument._documentPath = ModuleSettings.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Html + page;
                 innerHtmlDocument.Load();
                 divHelper = new DivHelper(innerHtmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "leftNav");
-                divHelper.ReplaceInnerHtml(innerDiv);
+                divHelper.SetInnerHtml(innerDiv);
                 tblHelper = new TableHelper(innerHtmlDocument._loadedDocument, "classList");
                 strTableEvents.Append(tblHelper.GetInnerHtml());
                 innerHtmlDocument.Save();
@@ -1195,7 +1046,7 @@ namespace APISvcSpec
             tblHelper.SetCellDisplayValue("titleColumn", "Events For Third Party Integrators");
 
             divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "summary");
-            divHelper.ReplaceInnerHtml(string.Empty);
+            divHelper.SetInnerHtml(string.Empty);
             divHelper.addLines(3);
             htmlDocument.Save();
         }

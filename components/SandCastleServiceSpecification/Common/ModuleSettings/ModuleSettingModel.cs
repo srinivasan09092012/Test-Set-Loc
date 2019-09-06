@@ -4,48 +4,44 @@ using System.Xml.Serialization;
 namespace Common.ModuleSettings
 {
     [XmlRoot(ElementName = "ServiceListPages")]
-    public class ServiceListPages
+    public class ServiceListPages: ContentPage
     {
-        [XmlElement(ElementName = "ServiceListPage")]
-        public List<string> ServiceListPage { get; set; }
     }
 
     [XmlRoot(ElementName = "ContractListPages")]
-    public class ContractListPages
+    public class ContractListPages: ContentPage
     {
-        [XmlElement(ElementName = "ContractListPage")]
-        public List<string> ContractListPage { get; set; }
     }
 
     [XmlRoot(ElementName = "DocModuleSettingModel")]
     public class ModuleSettingModel
     {
         [XmlElement(ElementName = "ModuleName")]
-        public string ModuleName { get; set; }
+        public string ModuleName;
 
         [XmlElement(ElementName = "ModuleNameDisplay")]
-        public string ModuleNameDisplay { get; set; }
+        public string ModuleNameDisplay;
 
         [XmlElement(ElementName = "StorageDrive")]
-        public string StorageDrive { get; set; }
+        public string StorageDrivePath;
 
         [XmlElement(ElementName = "webSourcePath")]
-        public string WebSourcePath { get; set; }
+        public string WebSourcePath;
 
         [XmlElement(ElementName = "webTargetPath")]
-        public string WebTargetPath { get; set; }
+        public string WebTargetPath;
 
         [XmlElement(ElementName = "MainPageContent")]
-        public string MainPageContent { get; set; }
+        public string MainPageContent;
 
         [XmlElement(ElementName = "ServiceListPages")]
-        public ServiceListPages ServiceListPages { get; set; }
+        public ServiceListPages ServiceListPages;
 
         [XmlElement(ElementName = "MainContractContent")]
-        public string MainContractContent { get; set; }
+        public string MainContractContent;
 
         [XmlElement(ElementName = "ContractListPages")]
-        public ContractListPages ContractListPages { get; set; }
+        public ContractListPages ContractListPages;
 
     }
 }

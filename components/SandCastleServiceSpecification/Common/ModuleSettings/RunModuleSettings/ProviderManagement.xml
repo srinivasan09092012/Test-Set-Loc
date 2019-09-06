@@ -1,16 +1,16 @@
 <DocModuleSettingModel>
   <ModuleName>PM</ModuleName>
-  <StorageDrive>C:</StorageDrive>
   <ModuleNameDisplay>Provider Management</ModuleNameDisplay>
-  <webSourcePath>C:\Users\egardea\Downloads\ProviderManagement\output</webSourcePath>
-  <webTargetPath>C:\ServiceSpecs\ProviderManagement\API Sevice Specification</webTargetPath>
+  <StorageDrive>J:</StorageDrive>
+  <webSourcePath>J:\UA3\SandCastleCustomizationTool\ShbDoc\ProviderManagement\help</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\ProviderMgmt\19.1.64.2\HelpWeb</webTargetPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
   <ServiceListPages>
-	<ServiceListPage>N_HP_HSP_UA3_ProviderManagement_BAS_Providers.htm</ServiceListPage>
-	<ServiceListPage>N_HP_HSP_UA3_ProviderManagement_BAS_ProviderSvc.htm</ServiceListPage>
+	<ListPage>N_HP_HSP_UA3_ProviderManagement_BAS_Providers.htm</ListPage>
+	<ListPage>N_HP_HSP_UA3_ProviderManagement_BAS_ProviderSvc.htm</ListPage>
   </ServiceListPages>
-  <MainContractContent>G_HP_HSP_UA3_ProviderManagement_BAS_Providers_Contracts.htm</MainContractContent>
+    <MainContractContent>G_HP_HSP_UA3_ProviderManagement_BAS_Providers_Contracts.htm</MainContractContent>
   <ContractListPages>
-	<ContractListPage>N_HP_HSP_UA3_ProviderManagement_BAS_Providers_Contracts_Events.htm</ContractListPage>
+	<ListPage>N_HP_HSP_UA3_ProviderManagement_BAS_Providers_Contracts_Events.htm</ListPage>
   </ContractListPages>
 </DocModuleSettingModel>

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace APISvcSpec.Helpers.HTML
+namespace Controller.Helpers.HTML
 {
     public class DataListHelper
     {

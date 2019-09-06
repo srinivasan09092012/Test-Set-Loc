@@ -1,15 +1,15 @@
 <DocModuleSettingModel>
-  <ModuleName> </ModuleName>
-  <StorageDrive>C:</StorageDrive>
-  <ModuleNameDisplay></ModuleNameDisplay>
-  <webSourcePath>C:\Users\egardea\Downloads\\Output\WebStyle</webSourcePath>
-  <webTargetPath>C:\ServiceSpecs\\API Sevice Specification</webTargetPath>
+  <ModuleName>MemMgt</ModuleName>
+  <StorageDrive>J:</StorageDrive>
+  <ModuleNameDisplay>Member Management Information </ModuleNameDisplay>
+  <webSourcePath>J:\UA3\SandCastleCustomizationTool\ShbDoc\MemberManagementInfo\help</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\MemberMgmt\19.1.64.2\HelpWeb</webTargetPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
   <ServiceListPages>
-	<ServiceListPage>N_HP_HSP_UA3_MemberManagement_BAS_MemberInformation.htm</ServiceListPage>
+	<ListPage>N_HP_HSP_UA3_MemberManagement_BAS_MemberInformation.htm</ListPage>
   </ServiceListPages>
   <MainContractContent>G_HP_HSP_UA3_MemberManagement_BAS_MemberInformation_Contracts.htm</MainContractContent>
   <ContractListPages>
-	<ContractListPage>N_HP_HSP_UA3_MemberManagement_BAS_MemberInformation_Contracts_Events.htm</ContractListPage>
+	<ListPage>N_HP_HSP_UA3_MemberManagement_BAS_MemberInformation_Contracts_Events.htm</ListPage>
   </ContractListPages>
 </DocModuleSettingModel>

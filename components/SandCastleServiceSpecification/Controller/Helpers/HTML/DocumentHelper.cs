@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace APISvcSpec.Helpers.HTML
+namespace Controller.Helpers.HTML
 {
     public sealed class DocumentHelper
     {

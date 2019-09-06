@@ -1,22 +1,22 @@
 <DocModuleSettingModel>
   <ModuleName>MC</ModuleName>
   <ModuleNameDisplay>Managed Care</ModuleNameDisplay>
-  <StorageDrive>C:</StorageDrive>
-  <webSourcePath>C:\Users\egardea\Downloads\ManagedCare\Output\WebStyle</webSourcePath>
-  <webTargetPath>C:\ServiceSpecs\ManagedCare\API Sevice Specification</webTargetPath>
+  <StorageDrive>J:</StorageDrive>
+  <webSourcePath>J:\UA3\SandCastleCustomizationTool\ShbDoc\ManagedCare\help</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\ManagedCare\19.1.64.2\HelpWeb</webTargetPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
   <ServiceListPages>
-	<ServiceListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Capitation.htm</ServiceListPage>
-	<ServiceListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare.htm</ServiceListPage>
-	<ServiceListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Member.htm</ServiceListPage>
-	<ServiceListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_EDI.htm</ServiceListPage>
-	<ServiceListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_MCE.htm</ServiceListPage>
-	<ServiceListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_MCO.htm</ServiceListPage>
-	<ServiceListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_MCOPortal.htm</ServiceListPage>
-	<ServiceListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Network.htm</ServiceListPage>	
+	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Capitation.htm</ListPage>
+	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare.htm</ListPage>
+	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Member.htm</ListPage>
+	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_EDI.htm</ListPage>
+	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_MCE.htm</ListPage>
+	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_MCO.htm</ListPage>
+	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_MCOPortal.htm</ListPage>
+	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Network.htm</ListPage>	
   </ServiceListPages>
   <MainContractContent>G_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Contracts.htm</MainContractContent>
   <ContractListPages>
-	<ContractListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Contracts_Events.htm</ContractListPage>
+	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Contracts_Events.htm</ListPage>
   </ContractListPages>
 </DocModuleSettingModel> 

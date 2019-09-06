@@ -1,19 +1,25 @@
-﻿using Common;
-using System.Collections.Generic;
-using FileHelpers;
-using System;
+﻿using Common.Interfaces;
 using Common.ReportModels;
+using FileHelpers;
+using System.Collections.Generic;
+using Common.ExtensionMethods;
 
-namespace APISvcSpec.Helpers.Scan
+namespace Controller.Helpers.Scan
 {
-    public class ScanMissingTagsHelper
+    public class MissingTagsHelper
     {
-        List<ServiceMissingTagsModel> ServiceWithMissingDescription = new List<ServiceMissingTagsModel>();
-        List<CommandMissingTagsModel> CommandsWithMissingDescription = new List<CommandMissingTagsModel>();
-        List<EventMissingTagsModel> EventsWithMissingDescription = new List<EventMissingTagsModel>();
-        List<ModelMissingTagsModel> ModelsWithMissingDescription = new List<ModelMissingTagsModel>();
-        List<QueryMissingTagsModel> QueryWithMissingDescription = new List<QueryMissingTagsModel>();
-        List<DTOMissingTagsModel> DTOWithMissingDescription = new List<DTOMissingTagsModel>();
+        private List<ServiceMissingTagsModel> ServiceWithMissingDescription = new List<ServiceMissingTagsModel>();
+        private List<CommandMissingTagsModel> CommandsWithMissingDescription = new List<CommandMissingTagsModel>();
+        private List<EventMissingTagsModel> EventsWithMissingDescription = new List<EventMissingTagsModel>();
+        private List<ModelMissingTagsModel> ModelsWithMissingDescription = new List<ModelMissingTagsModel>();
+        private List<QueryMissingTagsModel> QueryWithMissingDescription = new List<QueryMissingTagsModel>();
+        private List<DTOMissingTagsModel> DTOWithMissingDescription = new List<DTOMissingTagsModel>();
+        private readonly ILogger loggerEngine;
+
+        public MissingTagsHelper(ILogger loggerEngineInstance)
+        {
+            loggerEngine = loggerEngineInstance;
+        }
 
         private void AddMissingDTOTag(DTOMissingTagsModel mst)
         {
@@ -231,8 +237,10 @@ namespace APISvcSpec.Helpers.Scan
         {
             if (DTOWithMissingDescription.Count > 1)
             {
+                string reportPath = (StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\ViewDTO\").CreateDirectory() + "ContractViewDTO.csv";
+                loggerEngine.writeEntry(string.Format("Generating excel list for DTO with missing XML Comments to folder {0}", reportPath), LogginSeetings.LevelType.InformationApplication, 9000, 9);
                 var engine = new FileHelperAsyncEngine<DTOMissingTagsModel>();
-                using (engine.BeginWriteFile(StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\ViewDTO\ContractViewDTO.csv"))
+                using (engine.BeginWriteFile(reportPath))
                 {
                     foreach (var operation in DTOWithMissingDescription)
                     {
@@ -248,8 +256,10 @@ namespace APISvcSpec.Helpers.Scan
         {
             if (ServiceWithMissingDescription.Count > 1)
             {
+                string reportPath = (StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\Services\").CreateDirectory() + "Service" + ServiceWithMissingDescription[1].ServiceName + ".csv";
+                loggerEngine.writeEntry(string.Format("Generating excel list for Services with missing XML Comments to folder {0}", reportPath), LogginSeetings.LevelType.InformationApplication,9000,9);
                 var engine = new FileHelperAsyncEngine<ServiceMissingTagsModel>();
-                using (engine.BeginWriteFile(StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\Services\Service" + ServiceWithMissingDescription[1].ServiceName + ".csv"))
+                using (engine.BeginWriteFile(reportPath))
                 {
                     foreach (var operation in ServiceWithMissingDescription)
                     {
@@ -265,8 +275,10 @@ namespace APISvcSpec.Helpers.Scan
         {
             if (CommandsWithMissingDescription.Count > 1)
             {
+                string reportPath = (StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\Commands\").CreateDirectory() + "ContractCommands.csv";
+                loggerEngine.writeEntry(string.Format("Generating excel list for Commands with missing XML Comments to folder {0}",reportPath), LogginSeetings.LevelType.InformationApplication, 9000, 9);
                 var engine = new FileHelperAsyncEngine<CommandMissingTagsModel>();
-                using (engine.BeginWriteFile(StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\Commands\ContractCommands.csv"))
+                using (engine.BeginWriteFile(reportPath))
                 {
                     foreach (var operation in CommandsWithMissingDescription)
                     {
@@ -282,8 +294,10 @@ namespace APISvcSpec.Helpers.Scan
         {
             if (EventsWithMissingDescription.Count > 1)
             {
+                string reportPath = (StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\Events\").CreateDirectory() + "ContractEvents.csv";
+                loggerEngine.writeEntry(string.Format("Generating excel list for Events with missing XML Comments to folder {0}", reportPath), LogginSeetings.LevelType.InformationApplication, 9000, 9);
                 var engine = new FileHelperAsyncEngine<EventMissingTagsModel>();
-                using (engine.BeginWriteFile(StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\Events\ContractEvents.csv"))
+                using (engine.BeginWriteFile(reportPath))
                 {
                     foreach (var operation in EventsWithMissingDescription)
                     {
@@ -299,8 +313,10 @@ namespace APISvcSpec.Helpers.Scan
         {
             if (ModelsWithMissingDescription.Count > 1)
             {
+                string reportPath = (StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\Models\").CreateDirectory() + "ContractModels.csv";
+                loggerEngine.writeEntry(string.Format("Generating excel list for Models with missing XML doc input to folder {0}", reportPath), LogginSeetings.LevelType.InformationApplication, 9000, 9);
                 var engine = new FileHelperAsyncEngine<ModelMissingTagsModel>();
-                using (engine.BeginWriteFile(StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\Models\ContractModels.csv"))
+                using (engine.BeginWriteFile(reportPath))
                 {
                     foreach (var operation in ModelsWithMissingDescription)
                     {
@@ -316,8 +332,10 @@ namespace APISvcSpec.Helpers.Scan
         {
             if (QueryWithMissingDescription.Count > 1)
             {
+                string reportPath = (StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\QueryParams\").CreateDirectory() + "ContractQueryParams.csv";
+                loggerEngine.writeEntry(string.Format("Generating excel list for QueryParams with missing XML Comments to folder {0}", reportPath), LogginSeetings.LevelType.InformationApplication,9000,9);
                 var engine = new FileHelperAsyncEngine<QueryMissingTagsModel>();
-                using (engine.BeginWriteFile(StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\QueryParams\ContractQueryParams.csv"))
+                using (engine.BeginWriteFile(reportPath))
                 {
                     foreach (var operation in QueryWithMissingDescription)
                     {

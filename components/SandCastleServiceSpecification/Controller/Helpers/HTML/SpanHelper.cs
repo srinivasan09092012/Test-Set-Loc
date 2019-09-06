@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace APISvcSpec.Helpers.HTML
+namespace Controller.Helpers.HTML
 {
     public class SpanHelper
     {

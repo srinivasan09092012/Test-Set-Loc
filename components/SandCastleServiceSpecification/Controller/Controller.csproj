@@ -7,7 +7,7 @@
     <ProjectGuid>{FCDEDE44-7892-4BE8-944C-B6573312DD5C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>APISvcSpec</RootNamespace>
+    <RootNamespace>Controller</RootNamespace>
     <AssemblyName>APISvcSpec</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -55,8 +55,7 @@
     <Compile Include="Helpers\IO\BackupHelper.cs" />
     <Compile Include="Helpers\HTML\DivHelper.cs" />
     <Compile Include="Helpers\HTML\DataListHelper.cs" />
-    <Compile Include="Helpers\IO\MissingTagsToFileHelper.cs" />
-    <Compile Include="Helpers\Scan\ScanMissingTagsHelper.cs" />
+    <Compile Include="Helpers\Scan\MissingTagsHelper.cs" />
     <Compile Include="HtmlFactory.cs" />
     <Compile Include="Helpers\HTML\SpanHelper.cs" />
     <Compile Include="Helpers\HTML\TableHelper.cs" />
@@ -424,6 +423,9 @@
       <Project>{0d36417a-31a8-4971-a2ac-a035bff2154a}</Project>
       <Name>Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
