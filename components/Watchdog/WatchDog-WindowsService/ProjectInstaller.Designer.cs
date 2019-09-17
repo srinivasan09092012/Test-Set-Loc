@@ -28,30 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.serviceProcessInstaller6 = new System.ServiceProcess.ServiceProcessInstaller();
-            this.serviceInstaller6 = new System.ServiceProcess.ServiceInstaller();
+            this.watchDogProcessInstaller = new System.ServiceProcess.ServiceProcessInstaller();
+            this.watchDogServiceInstaller = new System.ServiceProcess.ServiceInstaller();
             // 
             // serviceProcessInstaller1
-            this.serviceProcessInstaller6.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
-            this.serviceProcessInstaller6.Password = null;
-            this.serviceProcessInstaller6.Username = null;
+            this.watchDogProcessInstaller.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
+            this.watchDogProcessInstaller.Password = null;
+            this.watchDogProcessInstaller.Username = null;
             // 
             // serviceInstaller2
-            this.serviceInstaller6.Description = "WatchDog Service";
-            this.serviceInstaller6.DisplayName = "WatchDog";
-            this.serviceInstaller6.ServiceName = "Service6";
+            this.watchDogServiceInstaller.Description = "WatchDog Service";
+            this.watchDogServiceInstaller.DisplayName = "WatchDog";
+            this.watchDogServiceInstaller.ServiceName = "WatchDogWindowsService";
             // 
             // ProjectInstaller
             // 
             this.Installers.AddRange(new System.Configuration.Install.Installer[] {
-            this.serviceProcessInstaller6,
-            this.serviceInstaller6});
+            this.watchDogProcessInstaller,
+            this.watchDogServiceInstaller});
 
         }
 
         #endregion
 
-        private System.ServiceProcess.ServiceProcessInstaller serviceProcessInstaller6;
-        private System.ServiceProcess.ServiceInstaller serviceInstaller6;
+        private System.ServiceProcess.ServiceProcessInstaller watchDogProcessInstaller;
+        private System.ServiceProcess.ServiceInstaller watchDogServiceInstaller;
     }
 }

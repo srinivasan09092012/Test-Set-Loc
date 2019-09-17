@@ -24,7 +24,6 @@ namespace Watchdog.EnvironmentMonitor
         private string baseaddress = string.Empty;        
         private UXConfig serviceConfigData = null;
         private string iisServerName = string.Empty;               
-        private HttpWebResponse responseUX;
         private HttpWebResponse response;
         private ApplicationPool appPool = null;
         private int serverTime = 0;
@@ -151,15 +150,44 @@ namespace Watchdog.EnvironmentMonitor
             return isServiceActiveOrNot;
         }
 
+        private void KillBrowser()
+        {
+            Process[] ps = Process.GetProcessesByName("chrome");
+
+            foreach (Process p in ps)
+            {
+                if (!p.HasExited)
+                {
+                    p.Kill();
+                }
+            }
+        }
+
+        private void KillDriver()
+        {
+            Process[] ps = Process.GetProcessesByName("chromedriver");
+
+            foreach (Process p in ps)
+            {
+                if (!p.HasExited)
+                {
+                    p.Kill();
+                }
+            }
+        }
+
         private bool ServiceCheckForADFSLogin(bool isLoginSuccessOrNot)
         {
+            KillBrowser();
+            KillDriver();
+            ChromeOptions options = new ChromeOptions();
+            ChromeDriver web = new ChromeDriver(options);
             try
-            {
-                ChromeOptions options = new ChromeOptions();
-                options.AddArgument("--headless");
-                using (var web = new ChromeDriver(options))
-                {
+            {                
+                options.AddArgument("--headless");                
+
                     web.Url = baseaddress;
+                    LoggerManager.Logger.LogInformational($"Base Address : {baseaddress}" + $"Web url : {web.Url}");
                     web.Manage().Window.Maximize();
                     web.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
                     web.FindElement(By.XPath(UXMonitoringConstants.LoginXpath)).Click();
@@ -168,18 +196,20 @@ namespace Watchdog.EnvironmentMonitor
                     var wait = new WebDriverWait(web, TimeSpan.FromSeconds(100));
                     wait.Until(d => d.Title.Equals(UXMonitoringConstants.SuccessfullyLoggedInPageTitle));
                     IWebElement res = web.FindElement(By.Id(UXMonitoringConstants.SuccessfullyLoggedInWelcomeID));
-                    isLoginSuccessOrNot = res.Text.Contains(loggedInUsername);
+                    isLoginSuccessOrNot = res.Text.ToLower().Contains(loggedInUsername.ToLower());
                     LoggerManager.Logger.LogInformational("----Logged-in Successfully----");
-                    if (isLoginSuccessOrNot)
-                        web.Quit();
-                    return isLoginSuccessOrNot;
-                }
+                    web.Quit();
+                    return isLoginSuccessOrNot;                
             }
             catch (Exception ex)
             {
                 LoggerManager.Logger.LogFatal("Error occured during health check. Please check the log files for more details.", ex);
 
                 return isLoginSuccessOrNot;
+            }
+            finally
+            {
+                web.Quit();                
             }
         }
 

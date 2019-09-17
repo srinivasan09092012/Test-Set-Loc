@@ -16,12 +16,12 @@ namespace Watchdog
         public static void Main(string[] args)
         {
             try
-            {
+            {                
                 LoggerManager.Logger.LogInformational("--------------Monitoring started-----------");
 
                 ConfigurationProvider.LoadConfiguration();
 
-                Tenant tenant = new Tenant();                
+                Tenant tenant = new Tenant();
 
                 List<Task> tasks = new List<Task>();
                 tasks.Add(Task.Run(() => MonitorWindowsServices()));
@@ -41,11 +41,11 @@ namespace Watchdog
                 LoggerManager.Logger.LogInformational("--------------Monitoring ended-----------");
             }
             catch (Exception ex)
-            {
+            {               
                 LoggerManager.Logger.LogFatal("Error occured during health check. Please check the log files for more details.", ex);
-            }
+            }                        
         }
-
+        
         private static void MonitorBAS(Tenant tenant)
         {
             ConfigurationProvider.WatchdogConfiguration.BASConfiguration.BASServiceList.FindAll(s => s.Monitor == true).ForEach(config =>
@@ -60,16 +60,16 @@ namespace Watchdog
         {
             ConfigurationProvider.WatchdogConfiguration.BASConfiguration.BASApplicationPoolList.FindAll(s => s.Monitor == true).ForEach(config =>
             {
-                List<ApplicationPool> applicationPools = ListOfApplicationPools(config);
-                foreach(ApplicationPool appPoolName in applicationPools)
+                List<ApplicationPool> applicationPools = ListOfApplicationPools(config, ConfigurationProvider.WatchdogConfiguration.BASConfiguration);
+                foreach (ApplicationPool appPoolName in applicationPools)
                 {
                     ApplicationPoolMonitor basApplicationPoolMonitor = new ApplicationPoolMonitor(config, LoggerManager.Logger, appPoolName);
                     basApplicationPoolMonitor.Monitor();
-                }                
+                }
             });
         }
 
-        private static List<ApplicationPool> ListOfApplicationPools(ApplicationPoolConfigDataItem serviceConfigData)
+        private static List<ApplicationPool> ListOfApplicationPools(ApplicationPoolConfigDataItem serviceConfigData, BASConfig BASConfiguration)
         {
             List<ApplicationPool> ListofApplicationPools = new List<ApplicationPool>();
             using (ServerManager manager = ServerManager.OpenRemote(serviceConfigData.ServerName))
@@ -77,15 +77,15 @@ namespace Watchdog
 
                 if (manager.ApplicationPools != null && manager.ApplicationPools.Count > 0)
                 {
-                    var result = manager.ApplicationPools.Where(s => s.Name.Contains("HP.DataServices"));
-                   if(result!= null && result.Count() > 0)
+                    var result = manager.ApplicationPools.Where(s => s.Name.Contains(BASConfiguration.SiteName));
+                    if (result != null && result.Count() > 0)
                     {
                         var listOfApplicationPoolsFromServer = result;
                         foreach (ApplicationPool application in listOfApplicationPoolsFromServer)
                         {
                             ListofApplicationPools.Add(application);
                         }
-                    }                    
+                    }
                 }
             }
             return ListofApplicationPools;
@@ -128,5 +128,5 @@ namespace Watchdog
                 uxMonitor.Monitor();
             }
         }
-    }
+    }         
 }

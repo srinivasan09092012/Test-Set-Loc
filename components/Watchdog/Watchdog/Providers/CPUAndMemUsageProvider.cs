@@ -1,9 +1,11 @@
-﻿using HPE.HSP.UA3.Core.API.Logger.Interfaces;
+﻿using HPE.HSP.UA3.Core.API.Logger;
+using HPE.HSP.UA3.Core.API.Logger.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Management;
+using System.Threading;
 
 namespace Watchdog.Providers
 {
@@ -23,8 +25,10 @@ namespace Watchdog.Providers
                 using (PerformanceCounter processPT = new PerformanceCounter("Process", "% Processor Time", instanceName))
                 using (PerformanceCounter processMemory = new PerformanceCounter("Process", "Working Set - Private", instanceName))
                 {
-                    double cpuUsag = Math.Round(processPT.NextValue(), 1);
-                    cpuPercent = cpuUsag / Environment.ProcessorCount;
+                    double counter1 = processPT.NextValue();
+                    Thread.Sleep(1000);                    
+                    cpuPercent = (Math.Round(processPT.NextValue(), 1) / Environment.ProcessorCount);
+                    logger.LogInformational("CPU-Percentage :" + cpuPercent);
                     double totalMemoryInMB = GetTotalPhysicalMemoryInMB(logger);
                     logger.LogInformational("Total Memory MB :" + totalMemoryInMB);
                     processMemInKB = processMemory.NextValue() / 1024;
@@ -65,7 +69,7 @@ namespace Watchdog.Providers
                     }
                     catch (Exception ex)
                     {
-
+                        LoggerManager.Logger.LogFatal("--------Error Message--------"+ex.Message);
                     }
                 }
             }

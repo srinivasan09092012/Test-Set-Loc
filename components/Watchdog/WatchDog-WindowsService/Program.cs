@@ -17,7 +17,7 @@ namespace WatchDog_WindowsService
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[]
             {
-                new Service6()
+                new WatchDog()
             };
             ServiceBase.Run(ServicesToRun);
         }
