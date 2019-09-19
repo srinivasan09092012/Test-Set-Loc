@@ -719,7 +719,7 @@ namespace UserAccountMigration
                 List<DelegateUser> delegates = null;
                 if (!string.IsNullOrEmpty(importDelegateFile))
                 {
-                    LogMessage(1, string.Format("Loading delegates from import file '{0}'", importFile));
+                    LogMessage(1, string.Format("Loading delegates from import file '{0}'", importDelegateFile));
                     FileHelperEngine<DelegateUser> delFileEngine = new FileHelperEngine<DelegateUser>();
                     delegates = new List<DelegateUser>(delFileEngine.ReadFile(importDelegateFile));
                     LogMessage(1, string.Format("{0} delegates loaded", delegates.Count.ToString("#,##0")));
