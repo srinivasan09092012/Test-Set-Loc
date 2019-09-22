@@ -119,6 +119,7 @@
     <ReplacementString qualifier="cd &quot;..\" from="19.2.70" to="19.3.76" />
     <ReplacementString qualifier="if exist &quot;..\" from="19.2.70" to="19.3.76" />
     <ReplacementString qualifier="echo You must have the entire 'PACKAGE\_SOURCE" from="19.2.70" to="19.3.76" />
+    <ReplacementString qualifier="xcopy /e /f /r /y" from="19.2.70" to="19.3.76" />
 
     <!-- Package Names in Packages.config Files -->
     <ReplacementString qualifier="id=&quot;HP.HSP.UA3.Administration" from="19.2.70" to="19.3.76" />
