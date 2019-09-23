@@ -54,6 +54,19 @@ namespace BASEventsTestingUtil
 
             this.tenantIds.SelectedIndex = 0;
 
+            ListItemSection moduleIdsSection = ConfigurationManager.GetSection("myModules") as ListItemSection;
+            for (int i = 0; i < moduleIdsSection.Values.Count; i++)
+            {
+                this.moduleIDs.Items.Add(new ListItem()
+                    {
+                        Name = moduleIdsSection.Values[i].Name,
+                        Value = moduleIdsSection.Values[i].Value
+                    }
+                );
+            }
+
+            this.moduleIDs.SelectedIndex = 0;
+
             this.numericUpDownEventsNumbers.Value = int.Parse(ConfigurationManager.AppSettings["ThreadCount"].ToString());
 
             var allowMultiple = bool.Parse(ConfigurationManager.AppSettings["AllowMultiple"]);
@@ -336,6 +349,13 @@ namespace BASEventsTestingUtil
             {
                 serviceUrl = ((ListItem)this.cbEndpoint.SelectedItem).Value;
             }
+            
+            if (!string.IsNullOrWhiteSpace(((ListItem)this.moduleIDs.SelectedItem).Value))
+            {
+                em.ModuleName = ((ListItem)this.moduleIDs.SelectedItem).Value;
+
+            }
+
 
             return serviceUrl;
         }
@@ -420,6 +440,11 @@ namespace BASEventsTestingUtil
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }
