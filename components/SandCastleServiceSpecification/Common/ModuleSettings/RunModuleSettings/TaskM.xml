@@ -5,6 +5,8 @@
   <webSourcePath>J:\UA3\SandCastleCustomizationTool\ShbDoc\TaskM\help</webSourcePath>
   <webTargetPath>J:\www\servicespecs\Modules\TaskMgmt\19.1.64.2\HelpWeb</webTargetPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
+  <WebHost>http://localhost:8080/</WebHost>
+  <WebHostPhysicalPath>J:\www\servicespecs\Modules\</WebHostPhysicalPath>
   <ServiceListPages>
 	<ListPage>N_HP_HSP_UA3_TaskManagement_BAS_TaskManagement.htm</ListPage>
   </ServiceListPages>

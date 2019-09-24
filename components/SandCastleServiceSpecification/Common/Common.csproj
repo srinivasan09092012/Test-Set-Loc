@@ -65,19 +65,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Derivables\LoggingOverview.xlsx" />
+    <None Include="ModuleSettings\DropOffSettingFile.bat" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ModuleSettings\RunModuleSettings\Administration_BroadCastMessage.xml" />
     <Content Include="ModuleSettings\RunModuleSettings\DrugRebate.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\Finantial.xml" />
     <Content Include="ModuleSettings\RunModuleSettings\ManagedCare.xml" />
     <Content Include="ModuleSettings\RunModuleSettings\MemberManagement.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\PlanManagement_CodeInformation.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\PlanManagement_Grouping.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\PlanManagement_RI.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\PlanManagement_RS.xml" />
     <Content Include="ModuleSettings\RunModuleSettings\ProgramIntegrity.xml" />
     <Content Include="ModuleSettings\RunModuleSettings\ProviderEnrollment.xml" />
-    <Content Include="ModuleSettings\RunModuleSettings\ProviderManagement.xml" />
+    <None Include="ModuleSettings\RunModuleSettings\ProviderManagement.Debug.xml">
+      <DependentUpon>ProviderManagement.xml</DependentUpon>
+    </None>
+    <None Include="ModuleSettings\RunModuleSettings\ProviderManagement.Release.xml">
+      <DependentUpon>ProviderManagement.xml</DependentUpon>
+    </None>
+    <None Include="ModuleSettings\RunModuleSettings\ProviderManagement.xml" />
     <Content Include="ModuleSettings\RunModuleSettings\TaskM.xml" />
     <Content Include="ModuleSettings\RunModuleSettings\TPLCase.xml" />
     <Content Include="ModuleSettings\RunModuleSettings\TPLPolicy.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <UsingTask TaskName="TransformXml" AssemblyFile="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Web\Microsoft.Web.Publishing.Tasks.dll" />
+  <Target Name="ProviderManagement_xml_AfterBuild" AfterTargets="AfterBuild" Condition="Exists('ProviderManagement.$(Configuration).xml')">
+    <TransformXml Source="ProviderManagement.xml" Destination="$(OutputPath)ProviderManagement.xml" Transform="ProviderManagement.$(Configuration).xml" />
+  </Target>
 </Project>

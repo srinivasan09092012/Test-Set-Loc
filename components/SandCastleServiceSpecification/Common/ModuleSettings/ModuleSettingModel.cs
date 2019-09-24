@@ -34,6 +34,12 @@ namespace Common.ModuleSettings
         [XmlElement(ElementName = "MainPageContent")]
         public string MainPageContent;
 
+        [XmlElement(ElementName = "WebHost")]
+        public string WebHost;
+
+        [XmlElement(ElementName = "WebHostPhysicalPath")]
+        public string WebHostPhysicalPath;
+
         [XmlElement(ElementName = "ServiceListPages")]
         public ServiceListPages ServiceListPages;
 

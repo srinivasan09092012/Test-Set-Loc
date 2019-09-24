@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Common.Interfaces;
+using System;
 
 namespace Controller
 {
@@ -289,15 +290,58 @@ namespace Controller
                     DivHelper divHelper = new DivHelper(innerHtmlDoc, DivHelper.SearchFilter.Id, "ID0EACA_code_Div1");
                     var nodes = divHelper._ContextDiv.ChildNodes.FirstOrDefault().ChildNodes.Where(y => y.HasClass("identifier")).ToList<HtmlNode>();
 
-                    if (nodes.Count() == 2 || nodes[0].InnerText == "Nullable")
+                    if (nodes.Count() == 2)
                     {
-                        tableHelper.SetCellDisplayValue(3, x, nodes[0].InnerText);
+                        DivHelper dv2 = new DivHelper(innerHtmlDoc, DivHelper.SearchFilter.Id, "ID1RBSection");
+                        var result = dv2._ContextDiv.ChildNodes.Where(n => n.Name.Equals("a"));
+
+                        if (result != null && result.Count() > 0)
+                        {
+                            tableHelper.SetCellDisplayValue(3, x, result.FirstOrDefault().OuterHtml);
+                        }
+                        else
+                        {
+                            tableHelper.SetCellDisplayValue(3, x, nodes[0].InnerText);
+                        }
                     }
                     else if (nodes.Count() == 3)
                     {
-                        tableHelper.SetCellDisplayValue(3, x, nodes[0].InnerText + "&lt;" + nodes[1].InnerText + "&gt;");
-                    }
+                        if (nodes[0].InnerText == "Nullable")
+                        {
+                            tableHelper.SetCellDisplayValue(3, x, nodes[1].InnerText);
+                        }
+                        else
+                        {
 
+                            DivHelper dv2 = new DivHelper(innerHtmlDoc, DivHelper.SearchFilter.Id, "ID1RBSection");
+                            var result = dv2._ContextDiv.ChildNodes.Where(n => n.Name.Equals("a"));
+
+                            if (result.Count() > 0)
+                            {
+                                tableHelper.SetCellDisplayValue(3, x, nodes[0].InnerText + "&lt;" + result.FirstOrDefault().OuterHtml + "&gt;");
+                            }
+                            else
+                            {
+                                tableHelper.SetCellDisplayValue(3, x, nodes[0].InnerText + "&lt;" + nodes[1].InnerText + "&gt;");
+                            }
+                        }
+                    }
+                    else if (nodes.Count() == 4)
+                    {
+                        DivHelper dv2 = new DivHelper(innerHtmlDoc, DivHelper.SearchFilter.Id, "ID1RBSection");
+                        var result = dv2._ContextDiv.ChildNodes.Where(n => n.Name.Equals("a"));
+
+                        if (result.Count() > 0)
+                        {
+                            tableHelper.SetCellDisplayValue(3, x, nodes[1].InnerText + "&lt;" + result.FirstOrDefault().OuterHtml + "&gt;");
+                        }
+                        else
+                        {
+                            tableHelper.SetCellDisplayValue(3, x, nodes[1].InnerText + "&lt;" + nodes[1].InnerText + "&gt;");
+                        }
+                        
+                    }
+                    
                     x++;
                 }
             }
@@ -372,6 +416,86 @@ namespace Controller
                 tableHelper.SetCellDisplayValue(3, x, divHelper.GetChildValueByTag("a"));
                 x++;
             }
+        }
+
+        public string CreateOnclickAttribute(DocumentHelper htmlDocument)
+        {
+            TableHelper tbl = null;
+            string response = string.Empty;
+
+            tbl = new TableHelper(htmlDocument._loadedDocument, "propertyList");
+            if (tbl._ContextTable != null)
+            {
+                List<string> dataTypeColumn = tbl.readColumnValues(2);
+                int x = 1;
+                nodeIndex++;
+                var tmpNode = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+                tmpNode.Name = "div";
+                string NewCellValue = string.Empty;
+                string hrefAttri = string.Empty;
+                bool isList = false;
+
+                foreach (var file in dataTypeColumn)//.Where(y => y.Contains("<a href=")))
+                {
+                    if (file.StartsWith("List"))
+                    {
+                        isList = true;
+                        tmpNode.InnerHtml = file.Replace("List", string.Empty).Replace("&lt;", string.Empty).Replace("&gt;", string.Empty);
+                    }
+                    else
+                    {
+                        tmpNode.InnerHtml = file;
+                    }
+
+                    if (tmpNode.ChildNodes[0].HasAttributes)
+                    {
+                        hrefAttri = "HtmlBlock_" + tmpNode.ChildNodes[0].Attributes[0].Value;
+                        tmpNode.ChildNodes[0].Attributes[0].Value = "#!";
+                        tmpNode.ChildNodes[0].Attributes.Add("onClick", "try{updateBreadCrumb({DisplayName:'" + tmpNode.ChildNodes[0].InnerText + "',TargetUrl:'"
+                                                                            + ModuleSettings.WebHost
+                                                                            + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
+                                                                            + @"\" + Common.Constants.WebSolutionStructure.Folders.Html
+                                                                            + @"\" + hrefAttri + "',IsActive:true});}catch(err){alert(err.message);}");
+                        if (isList)
+                        {
+                            NewCellValue = "List &lt;" + tmpNode.ChildNodes[0].OuterHtml + "&gt;";
+                        }
+                        else
+                        {
+                            NewCellValue = tmpNode.ChildNodes[0].OuterHtml;
+                        }
+
+                        tbl.SetCellDisplayValue(2, x, NewCellValue);
+                    }
+                    
+                    x++;
+                    isList = false;
+                }
+
+                response = "<table>" + tbl._ContextTable.OuterHtml + "</table>";
+                htmlDocument.Save();
+            }
+
+            return response;
+        }
+
+        public void CreateHtmlBlocks(string page)
+        {
+            var htmlDocument = DocumentHelper.GetInstance();
+            htmlDocument._documentPath = page;
+            htmlDocument.Load();
+
+            var tableToHtmlBlock = CreateOnclickAttribute(htmlDocument);
+
+            //rewriting this file because save fails when i set the .Text property
+            using (StreamWriter sw = File.CreateText(Path.GetDirectoryName(htmlDocument._documentPath) + @"\" + "HtmlBlock_" + Path.GetFileName(htmlDocument._documentPath)))
+            {
+                sw.WriteLine(tableToHtmlBlock);
+                sw.Flush(); 
+            }
+
+            //update links to use the entry point function in custom jquery code
+            htmlDocument.Load();
         }
 
         public void updateServiceListForQuery(HtmlDocument doc, string webFolderTarget)
@@ -1048,6 +1172,88 @@ namespace Controller
             divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "summary");
             divHelper.SetInnerHtml(string.Empty);
             divHelper.addLines(3);
+            htmlDocument.Save();
+        }
+
+        public void addBreadCrumbsControl(string htmlPage)
+        {
+            var htmlDocument = DocumentHelper.GetInstance();
+            htmlDocument._documentPath = htmlPage;
+            htmlDocument.Load();
+
+            DivHelper divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "collapsibleAreaRegion");
+            divHelper.removeStyleClass("collapsibleAreaRegion");
+            htmlDocument.Save();
+            htmlDocument.Load();
+            divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "collapsibleAreaRegion");
+            nodeIndex++;
+            HtmlNode breadCrumbsList = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            breadCrumbsList.Name = "ol";
+            breadCrumbsList.Id = "BreadCrumbsEventPage";
+            breadCrumbsList.AddClass("breadcrumb");
+
+            nodeIndex++;
+            HtmlNode breadCrumbsListDefaultItem = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            breadCrumbsListDefaultItem.Name = "li";
+            breadCrumbsListDefaultItem.AddClass("breadcrumb-item");
+            breadCrumbsListDefaultItem.AddClass("active");
+            breadCrumbsListDefaultItem.InnerHtml = "Main Event Attributes";
+            breadCrumbsList.ChildNodes.Add(breadCrumbsListDefaultItem);
+   
+            var headNode = htmlDocument._loadedDocument.DocumentNode.SelectNodes("//head").FirstOrDefault();
+            
+            nodeIndex++;
+            HtmlNode node = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            node.Name = "script";
+            node.Attributes.Add("type", "text/javascript");
+            node.Attributes.Add("src", "../js/jquery-3.4.0.min.js");
+            headNode.ChildNodes.Add(node);
+            nodeIndex++;
+            node = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            node.Name = "script";
+            node.Attributes.Add("type", "text/javascript");
+            node.Attributes.Add("src", "../js/popper.min.js");
+            headNode.ChildNodes.Add(node);
+            nodeIndex++;
+            node = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            node.Name = "script";
+            node.Attributes.Add("type", "text/javascript");
+            node.Attributes.Add("src", "../js/bootstrap.min.js");
+            headNode.ChildNodes.Add(node);
+            nodeIndex++;
+            node = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            node.Name = "script";
+            node.Attributes.Add("type", "text/javascript");
+            node.Attributes.Add("src", "../js/addons/datatables.min.js");
+            headNode.ChildNodes.Add(node);
+            nodeIndex++;
+            node = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            node.Name = "link";
+            node.Attributes.Add("rel", "stylesheet");
+            node.Attributes.Add("href", "../css/bootstrap.min.css");
+            headNode.ChildNodes.Add(node);
+            nodeIndex++;
+            node = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            node.Name = "link";
+            node.Attributes.Add("rel", "stylesheet");
+            node.Attributes.Add("href", "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+            headNode.ChildNodes.Add(node);
+
+            nodeIndex++;
+            node = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            node.Name = "script";
+            node.InnerHtml = "$(document).ready(function(){try{InitializeBreadCrumbs({DisplayName:'Main Event Attributes',TargetUrl:'" + ModuleSettings.WebHost + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty) + @"\" + Common.Constants.WebSolutionStructure.Folders.Html +  @"\" + htmlDocument._documentTitle + "',IsActive: false});}catch(err){alert(err.message);}});";  //"$(document).ready(function(){try{InitializeBreadCrumbs({DisplayName:'Main Event Attributes',TargetUrl:'http://localhost:8080/ProviderManagement/APISeviceSpecification/html/T_HP_HSP_UA3_ProviderManagement_BAS_Providers_Contracts_Events_ServiceLocationAdded.htm',IsActive: false});}catch(err){alert(err.message);}});";
+            headNode.ChildNodes.Add(node);
+
+            nodeIndex++;
+            node = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            node.Name = "script";
+            node.Attributes.Add("type", "text/javascript");
+            node.Attributes.Add("src", "ComplexEventNavigator.js");
+            headNode.ChildNodes.Add(node);
+
+            divHelper.addChildrenNode(breadCrumbsList);
+
             htmlDocument.Save();
         }
     }

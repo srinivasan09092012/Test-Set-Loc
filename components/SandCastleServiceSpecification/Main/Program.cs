@@ -37,8 +37,6 @@ namespace SandCastleSvcSpec
             var moduleSetting = SearchingModuleSettings(moduleSettingFilesStoragePath);
 
             // maybe with context patter will be easy to introduce this since now there is no way to track from this point all the modules and their process result
-            byte eventid = 1;
-
             foreach (var module in moduleSetting)
             {
                 Console.WriteLine("");
@@ -245,11 +243,26 @@ namespace SandCastleSvcSpec
 
                 if (CommandDivHelper.Exists())
                 {
-                    artifactsToPrint.Add(tableHelper.GetCellDisplayValue("titleColumn"), CommandDivHelper.GetInnerHtml());
+                    if (!artifactsToPrint.ContainsKey(tableHelper.GetCellDisplayValue("titleColumn")))
+                    {
+                        artifactsToPrint.Add(tableHelper.GetCellDisplayValue("titleColumn"), CommandDivHelper.GetInnerHtml());
+                    }
                 }
 
                 factoryHtml.cleanInputOutputPages(page);
                 factoryHtml.preparePropertiesTable(page);
+
+                if (page.Contains("_Events_"))
+                {
+                    factoryHtml.addBreadCrumbsControl(page);
+                    factoryHtml.CreateOnclickAttribute(htmlDocument);
+                    factoryHtml.CreateHtmlBlocks(page);
+                }
+
+                if (page.Contains("_Contracts_ValueObjects_") || page.Contains("_Contracts_Shared_"))
+                {
+                    factoryHtml.CreateHtmlBlocks(page);
+                } 
 
             }
 
@@ -346,13 +359,19 @@ namespace SandCastleSvcSpec
             Console.WriteLine("-- Done....Exporting to Excel");
             Console.WriteLine("");
             missingScanHelper.GetModelsSource(ModelsToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
+           
+            Console.WriteLine("-- View DTO Pages");
+            DtosToPrint = PreparePages("T_ * _Contracts_ViewDto_ * ", moduleSetting);
+            Console.WriteLine("-- Done Exporting to Excel");
+            missingScanHelper.GetDTOSource(DtosToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
 
             Console.WriteLine("");
-            Console.WriteLine("-- View DTO Pages");
-            DtosToPrint = PreparePages("T_*_Contracts_ViewDto_*", moduleSetting);
-            Console.WriteLine("-- Done Exporting to Excel");
+            Console.WriteLine("-- Value Objects");
+            PreparePages("T_*_Contracts_ValueObjects_*", moduleSetting);
+
             Console.WriteLine("");
-            missingScanHelper.GetDTOSource(DtosToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
+            Console.WriteLine("-- Value Objects");
+            PreparePages("T_*_Contracts_Shared_*", moduleSetting);
 
             DtosToPrint = null;
             EventsToPrint = null;

@@ -46,18 +46,6 @@ namespace Controller.Helpers.HTML
             _htmlNodeIndex++;
             return new HtmlNode(HtmlNodeType.Element, _htmlDoc, _htmlNodeIndex);
         }
-
-        ////public string ReadCellDisplayValue(int colIndex, int rowIndex)
-        ////{
-        ////    if (_ts is null)
-        ////    {
-        ////        _ts = new TableStructure(this._tableId);
-        ////        this.GetTableStructure(this._tableId);
-        ////    }
-
-        ////    return rows[rowIndex][colIndex].ToString();
-        ////}
-
         private void addTableColumnHeader(string headerLabel)
         {
              if (_ts is null)
