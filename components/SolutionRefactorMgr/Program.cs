@@ -512,7 +512,7 @@ namespace SolutionRefactorMgr
             foreach (DirectoryInfo subdir in dirs)
             {
                 if(subdir.Name.ToLower().StartsWith(package.QualifierPrefix.ToLower()) &&
-                    (string.IsNullOrEmpty(package.QualifierVersion) || subdir.Name.ToLower().Contains(package.QualifierVersion)))
+                    (string.IsNullOrEmpty(package.QualifierVersion) || subdir.Name.ToLower().EndsWith(package.QualifierVersion)))
                 {
                     string newDirName = subdir.Name;
                     if (refactorConfig.IncludeFolderNames)
