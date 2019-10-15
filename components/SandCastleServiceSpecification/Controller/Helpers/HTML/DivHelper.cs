@@ -84,7 +84,7 @@ namespace Controller.Helpers.HTML
         //<param name = "xpath">spath string to search in the html document for the DIV requested.</param>
         //</summary>
         ///TODO: THIS CODE NOT SURE WHERE SHOULD BE, BUT NOT HERE, DOUBLE CHECK.
-        public string GetChildValueByTag(string childNodeTag)
+        public string GetChildValueByTag(string childNodeTag, string WebHost, string WebHostPhysicalPath, string WebTargetPath)
         {
             if (this._ContextDivLoaded)
             {
@@ -92,7 +92,7 @@ namespace Controller.Helpers.HTML
 
                 if (ContextDivChild != null & ContextDivChild.Count() > 0)
                 {
-                    ContextDivChild.FirstOrDefault().Attributes.Add("onClick", "window.open('" + ContextDivChild.FirstOrDefault().Attributes["href"].Value + "', 'MyWindow','width=800,height=850,toolbar=no,menubar=no,status=no,resizable=yes,scrollbars=yes'); return false;");
+                    ContextDivChild.FirstOrDefault().Attributes.Add("onClick", "window.open('" + WebHost + @"\" + WebTargetPath.Replace(WebHostPhysicalPath, string.Empty) + @"\" + Common.Constants.WebSolutionStructure.Folders.Html  + @"\"+  ContextDivChild.FirstOrDefault().Attributes["href"].Value + "', 'MyWindow','width=800,height=850,toolbar=no,menubar=no,status=no,resizable=yes,scrollbars=yes'); return false;");
                     ContextDivChild.FirstOrDefault().Attributes["href"].Value = "#";
                     return ContextDivChild.FirstOrDefault().OuterHtml;
                 }

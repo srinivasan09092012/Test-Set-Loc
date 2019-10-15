@@ -238,14 +238,16 @@ namespace SandCastleSvcSpec
                 htmlDocument._documentPath = page;
                 htmlDocument.Load();
 
-                DivHelper CommandDivHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "summary");
+                DivHelper SummaryDivHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "summary");
                 TableHelper tableHelper = new TableHelper(htmlDocument._loadedDocument, string.Empty, "titleTable");
 
-                if (CommandDivHelper.Exists())
+                if (SummaryDivHelper.Exists())
                 {
                     if (!artifactsToPrint.ContainsKey(tableHelper.GetCellDisplayValue("titleColumn")))
                     {
-                        artifactsToPrint.Add(tableHelper.GetCellDisplayValue("titleColumn"), CommandDivHelper.GetInnerHtml());
+                        artifactsToPrint.Add(tableHelper.GetCellDisplayValue("titleColumn"), SummaryDivHelper.GetInnerHtml());
+                        SummaryDivHelper.Remove();
+                        htmlDocument.Save();
                     }
                 }
 
@@ -275,7 +277,7 @@ namespace SandCastleSvcSpec
             HtmlFactory factoryHtml = new HtmlFactory(loggerDetailEngine);
             factoryHtml.ModuleSettings = moduleSetting;
             List<string> serviceUrls = new List<string>();
-            List<string> SericesPages = new List<string>();
+            List<string> ContentPages = new List<string>();
 
             MissingTagsHelper missingScanHelper = new MissingTagsHelper(loggerDetailEngine);
             Dictionary<string, string> commandsToPrint = new Dictionary<string, string>();
@@ -295,24 +297,18 @@ namespace SandCastleSvcSpec
             #endregion
             
             Console.WriteLine("");
-            Console.WriteLine("Updating Left Navigator for all the content");
+            Console.WriteLine("Updating Left Navigator for all the content"); 
             #region Updating Left Navigator 
 
             foreach (var ServicePage in moduleSetting.ServiceListPages.ListPage)
             {
-                SericesPages.AddRange(factoryHtml.getServiceListFromPageContent(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage));
+                ContentPages.AddRange(factoryHtml.getServiceListFromPageContent(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage));
             }
 
-            serviceUrls = factoryHtml.extractServiceUrl(SericesPages);
+            serviceUrls = factoryHtml.extractServiceUrl(ContentPages);// will be reused below
 
-            foreach (string url in serviceUrls)
-            {
-                factoryHtml.UpdateLeftNavigator(url, SericesPages, moduleSetting.MainPageContent);
-            }
+            factoryHtml.UpdateLeftNavigator(moduleSetting.WebTargetPath + Constants.WebSolutionStructure.Folders.Html + moduleSetting.MainPageContent, ContentPages, moduleSetting.MainPageContent);
 
-            factoryHtml.UpdateLeftNavigator(moduleSetting.WebTargetPath + Constants.WebSolutionStructure.Folders.Html + moduleSetting.MainPageContent, SericesPages, moduleSetting.MainPageContent);
-
-            factoryHtml.UpdateLeftNavigator(moduleSetting.WebTargetPath + Constants.WebSolutionStructure.Folders.Html + moduleSetting.MainContractContent, SericesPages, moduleSetting.MainPageContent);
             #endregion
 
             Console.WriteLine("");
@@ -331,7 +327,6 @@ namespace SandCastleSvcSpec
             Console.WriteLine("");
             Console.WriteLine("Preparing Command and Event Pages:");
             #region Preparing Command and Event Pages
-
             Console.WriteLine("");
             Console.WriteLine("-- Commands Pages");
             commandsToPrint = PreparePages("T_*_Contracts_Commands_*", moduleSetting);
@@ -410,7 +405,17 @@ namespace SandCastleSvcSpec
             Console.WriteLine("");
             #endregion
 
-            
+            #region creating htmlBlocks on service Pages
+
+            foreach (string url in serviceUrls)
+            {
+                factoryHtml.CreatePageHtmlBlocks(url);
+            }
+
+            factoryHtml.CreatePageHtmlBlocks(moduleSetting.WebTargetPath +
+                                                Common.Constants.WebSolutionStructure.Folders.Html +
+                                                moduleSetting.MainContractContent);
+            #endregion
         }
     }
 }

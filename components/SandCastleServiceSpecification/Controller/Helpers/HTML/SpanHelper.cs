@@ -66,8 +66,13 @@ namespace Controller.Helpers.HTML
 
         public bool RemoveNodeById()
         {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//span[@id='" + this._SpanId + "']").FirstOrDefault();
-            n.Remove();
+            var n = _htmlDoc.DocumentNode.SelectNodes("//span[@id='" + this._SpanId + "']");
+
+            if (n != null)
+            {
+                n.FirstOrDefault().Remove();
+            }
+            
             return true;
         }
 
@@ -117,6 +122,15 @@ namespace Controller.Helpers.HTML
             var n = _htmlDoc.DocumentNode.SelectNodes("//span[@class='" + this._SpanStyleClass + "']").FirstOrDefault();
             n.Remove();
             return true;
+        }
+
+        public void InnerHtml(string text)
+        {
+            var n = _htmlDoc.DocumentNode.SelectNodes("//span[@class='" + this._SpanStyleClass + "']");
+            if (n != null)
+            {
+                n.FirstOrDefault().InnerHtml = text;
+            }
         }
     }
 }

@@ -54,7 +54,7 @@ namespace Common
         public static class Labels
         {
             public static string CopyRight = string.Format("This document is the property of DXC Technology, Copyright (c) {0}. All rights reserved.", DateTime.Now.Year.ToString());
-            public static string ProductName = "Healthcare Payer Platform";
+            public static string ProductName = "DXC Payer Portfolio";
         }
     }
 }
