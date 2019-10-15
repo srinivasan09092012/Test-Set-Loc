@@ -90,10 +90,11 @@
       <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.test.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
     </Environment>
     <Environment name="Test - DXC Commercial" adGroupFilterPrefix="Maps" tenantId="b37b1cec-6603-2d4f-ac37-74e0724774a1" serviceVersion="2" isDeleteAllowed="true">
-      <ADContainer>CN=Users,DC=test,DC=mapshc,DC=com</ADContainer>
-      <ADServer>mapststdmc01.test.mapshc.com</ADServer>
-      <ADUser>adService</ADUser>
-      <ADPassword>Password2017</ADPassword>
+      <ADContainer>CN=Users,DC=test2,DC=mapshc,DC=com</ADContainer>
+      <ADServer>10.143.60.138</ADServer>
+      <!--<ADServer>mapstst2ad01.test2.mapshc.com</ADServer>-->
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
       <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas.test.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
       <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.test.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
     </Environment>
