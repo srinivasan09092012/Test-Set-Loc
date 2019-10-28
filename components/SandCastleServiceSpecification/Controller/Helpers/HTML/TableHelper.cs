@@ -41,6 +41,16 @@ namespace Controller.Helpers.HTML
             }
         }
 
+        public void Delete()
+        {
+            var n = _htmlDoc.DocumentNode.SelectNodes("//table[@class='" + this._tableStyleClass + "']");
+
+            if (n != null)
+            {
+                n.FirstOrDefault().Remove();
+            }
+        }
+
         private HtmlNode CreateNode()
         {
             _htmlNodeIndex++;
@@ -133,6 +143,30 @@ namespace Controller.Helpers.HTML
             }
             return true;
         }
+        public bool removeColumnByClass(int columnIndex)
+        {
+            try
+            {
+                foreach (var node in _htmlDoc.DocumentNode.SelectNodes("//table[@class='" + this._tableStyleClass + "']"))
+                {
+                    if (node.HasChildNodes)
+                    {
+                        foreach (var row in node.ChildNodes)
+                        {
+                            if (row.HasChildNodes)
+                            {
+                                row.ChildNodes[columnIndex].Remove();
+                            }
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
 
         public bool removeColumn(int columnIndex)
         {
@@ -201,29 +235,32 @@ namespace Controller.Helpers.HTML
             }
         }
 
-        public bool SetCellDisplayValue(string tdClassId, string label)
+        public void SetCellDisplayValue(string tdClassId, string label)
         {
-            foreach (var node in _htmlDoc.DocumentNode.SelectNodes("//table[@class='" + this._tableStyleClass + "']"))
+            try
             {
-                if (node.HasChildNodes)
+                foreach (var node in _htmlDoc.DocumentNode.SelectNodes("//table[@class='" + this._tableStyleClass + "']"))
                 {
-                    foreach (var child in node.ChildNodes)
+                    if (node.HasChildNodes)
                     {
-                        foreach (var childlvl in child.ChildNodes)
+                        foreach (var child in node.ChildNodes)
                         {
-                            if (childlvl.HasClass(tdClassId))
+                            foreach (var childlvl in child.ChildNodes)
                             {
-                                if (childlvl.HasChildNodes)
+                                if (childlvl.HasClass(tdClassId))
                                 {
-                                    childlvl.ChildNodes.FirstOrDefault().InnerHtml = label;
+                                    if (childlvl.HasChildNodes)
+                                    {
+                                        childlvl.ChildNodes.FirstOrDefault().InnerHtml = label;
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
-
-            return true;
+            catch
+            { }
         }
 
         public string GetCellDisplayValue(string tdClassId)

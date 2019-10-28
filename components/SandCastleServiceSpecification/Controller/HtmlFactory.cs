@@ -86,6 +86,11 @@ namespace Controller
             htmlDocument.Load();
             removeIconColumn(htmlDocument._loadedDocument);
             htmlDocument.Save();
+
+            htmlDocument.Load();
+            DivHelper divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID3RBSection");
+            divHelper.removeStyleClass("collapsibleSection");
+            htmlDocument.Save();
         }
 
         /// <summary>
@@ -237,6 +242,8 @@ namespace Controller
             foreach (string service in services)
             {
                 removeEmptyTags(ModuleSettings.WebTargetPath, Common.Constants.WebSolutionStructure.Folders.Html + @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension, "p");
+                removeEmptyTags(ModuleSettings.WebTargetPath, Common.Constants.WebSolutionStructure.Folders.Html + @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension, "br");
+                removeEmptyTags(ModuleSettings.WebTargetPath, Common.Constants.WebSolutionStructure.Folders.Html + @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension, "div");
             }
         }
 
@@ -246,14 +253,64 @@ namespace Controller
             htmlDocument._documentPath = urlPage;
             htmlDocument.Load();
 
-            HtmlNode HtmlDivForMenuEntry;
-            HtmlNode htmlSandCastleMenuEntry;
+            Dictionary<string, string> ServicesMenuEntry = new Dictionary<string, string>();
+           
+            HtmlNode EventsDivForMenuEntryTocLevel0;
+            HtmlNode EventsDivForMenuEntryTocLevel1;
 
-            htmlSandCastleMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, 0);
+            HtmlNode EventsLinkedMenuEntry;
+            HtmlNode EventsRootMenuEntry;
 
+            HtmlNode ServicesDivForMenuEntryTocLevel0;
+            HtmlNode ServicesDivForMenuEntryTocLevel1;
+
+            HtmlNode ServicesLinkedMenuEntry;
+            HtmlNode ServicesRootMenuEntry;
+
+            //Linked items in menu, located below of a not linked root item
+            nodeIndex++;
+            EventsLinkedMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            //Root items in menu, used to group linked items such: Events and Web Services.
+            nodeIndex++;
+            EventsRootMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+
+            //Used to organize the menu identation levels, hold all divs
             DivHelper divHelperTocNav = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "tocNav");
+
+            nodeIndex++;
+            ServicesLinkedMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+
+            nodeIndex++;
+            ServicesRootMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+
+            nodeIndex++;
+            EventsDivForMenuEntryTocLevel0 =new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            EventsDivForMenuEntryTocLevel0.Name = "div";
+            EventsDivForMenuEntryTocLevel0.AddClass("toclevel1");
+            EventsDivForMenuEntryTocLevel0.Attributes.Add("data-toclevel", "0");
+
+            nodeIndex++;
+            EventsDivForMenuEntryTocLevel1 = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            EventsDivForMenuEntryTocLevel1.Name = "div";
+            EventsDivForMenuEntryTocLevel1.AddClass("toclevel2");
+            EventsDivForMenuEntryTocLevel1.Attributes.Add("data-toclevel", "1");
+
+            nodeIndex++;
+            ServicesDivForMenuEntryTocLevel0 = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            ServicesDivForMenuEntryTocLevel0.Name = "div";
+            ServicesDivForMenuEntryTocLevel0.AddClass("toclevel1");
+            ServicesDivForMenuEntryTocLevel0.Attributes.Add("data-toclevel", "0");
+
+            nodeIndex++;
+            ServicesDivForMenuEntryTocLevel1 = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            ServicesDivForMenuEntryTocLevel1.Name = "div";
+            ServicesDivForMenuEntryTocLevel1.AddClass("toclevel2");
+            ServicesDivForMenuEntryTocLevel1.Attributes.Add("data-toclevel", "1");
+
+            //Clear the default menu provided by default sandcastle engine.
             divHelperTocNav.SetInnerHtml(string.Empty);
 
+            #region page setup
             if (Path.GetFileName(urlPage) != lvl0HomePage)
             {
                 DivHelper divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "TopicContent");
@@ -324,80 +381,47 @@ namespace Controller
                 node.Attributes.Add("src", "LeftNavMenu.js");
                 headNode.ChildNodes.Add(node);
             }
+            #endregion
 
-
-            /*****************************************
-             * dict to services html menu
-             *****************************************/
-
-            /***********************************************************************************************
+            /************
               * Events
-            ***********************************************************************************************/
-            htmlSandCastleMenuEntry.Name = "a";
-            //htmlSandCastleMenuEntry.Attributes.Add("href", "#!");
-            htmlSandCastleMenuEntry.InnerHtml = "Events Produced";
-            
-            nodeIndex++;
-            HtmlDivForMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
-            HtmlDivForMenuEntry.Name = "div";
-            HtmlDivForMenuEntry.AddClass("toclevel1");
-            HtmlDivForMenuEntry.Attributes.Add("data-toclevel", "0");
-            HtmlDivForMenuEntry.Name = "div";
-            HtmlDivForMenuEntry.InnerHtml = htmlSandCastleMenuEntry.OuterHtml;
-            divHelperTocNav.addChildrenNode(HtmlDivForMenuEntry);
-            HtmlDivForMenuEntry = null;
+            *************/
 
-            nodeIndex++;
-            HtmlDivForMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
-            htmlSandCastleMenuEntry.Attributes.Add("onclick", "loadTopicContentHtml('" + ModuleSettings.WebHost
+            EventsRootMenuEntry.Name = "a";
+            EventsRootMenuEntry.Attributes.Add("style", "color: black;");
+            EventsRootMenuEntry.InnerHtml = "Events Produced";
+            EventsDivForMenuEntryTocLevel0.InnerHtml = EventsRootMenuEntry.OuterHtml;
+            divHelperTocNav.addChildrenNode(EventsDivForMenuEntryTocLevel0);
+
+            EventsLinkedMenuEntry.Name = "a";
+            EventsLinkedMenuEntry.Attributes.Add("style", "color: black;");
+            EventsLinkedMenuEntry.Attributes.Add("onmouseover", "OnHoverHandle('#EventsFullList');");
+            EventsLinkedMenuEntry.Attributes.Add("onmouseout", "OnLeaveHandler('#EventsFullList');");
+            
+            EventsLinkedMenuEntry.Attributes.Add("id", "EventsFullList");
+            EventsLinkedMenuEntry.Attributes.Add("href", "#!");
+            EventsLinkedMenuEntry.InnerHtml = "Full List";
+            EventsLinkedMenuEntry.Attributes.Add("onclick", "loadTopicContentHtml('" + ModuleSettings.WebHost
                                                                             + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
                                                                             + @"\" + Common.Constants.WebSolutionStructure.Folders.Html
-                                                                            + @"\" + ModuleSettings.MainContractContent + "')");
+                                                                            + @"\" + ModuleSettings.MainContractContent + "','#EventsFullList')");
 
-            htmlSandCastleMenuEntry.Name = "a";
-            htmlSandCastleMenuEntry.Attributes.Add("href", "#!");
-            htmlSandCastleMenuEntry.InnerHtml = "Full List";
-            nodeIndex++;
-            HtmlDivForMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
-            HtmlDivForMenuEntry.Name = "div";
-            HtmlDivForMenuEntry.AddClass("toclevel2");
-            HtmlDivForMenuEntry.Attributes.Add("data-toclevel", "1");
-            HtmlDivForMenuEntry.Name = "div";
-            HtmlDivForMenuEntry.InnerHtml = htmlSandCastleMenuEntry.OuterHtml;
-            divHelperTocNav.addChildrenNode(HtmlDivForMenuEntry);
-            HtmlDivForMenuEntry = null;
-            /***********************************************************************************************
+
+            EventsDivForMenuEntryTocLevel1.InnerHtml = EventsLinkedMenuEntry.OuterHtml;
+            divHelperTocNav.addChildrenNode(EventsDivForMenuEntryTocLevel1);
+            /****************
              * end events
-             ***********************************************************************************************/
+             ****************/
 
-
-
-            /***********************************************************************************************
+            /************
              * services
-             ***********************************************************************************************/
-            nodeIndex++;
-            HtmlDivForMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
-            htmlSandCastleMenuEntry.Name = "a";
-            htmlSandCastleMenuEntry.Attributes.Remove("href");
-            htmlSandCastleMenuEntry.Attributes.Remove("onclick");
-            ////////////menuEntry.Attributes.Add("onclick", "loadTopicContentHtml('" + ModuleSettings.WebHost
-            ////////////                                                                + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
-            ////////////                                                                + @"\" + Common.Constants.WebSolutionStructure.Folders.Html
-            ////////////                                                                + @"\" + lvl0HomePage + " #TopicContent')");
-            htmlSandCastleMenuEntry.InnerHtml = "Web Services";
-            //end <a> node
+             ************/
 
-            nodeIndex++;
-            HtmlDivForMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
-            HtmlDivForMenuEntry.Name = "div";
-            HtmlDivForMenuEntry.AddClass("toclevel1");
-            HtmlDivForMenuEntry.Attributes.Add("data-toclevel", "0");
-            HtmlDivForMenuEntry.InnerHtml = htmlSandCastleMenuEntry.OuterHtml;
-            divHelperTocNav.addChildrenNode(HtmlDivForMenuEntry);
-            HtmlDivForMenuEntry = null;
-
-            //entry display name, target file 
-            Dictionary<string, string> ServicesMenuEntry = new Dictionary<string, string>();
+            ServicesRootMenuEntry.InnerHtml = "Web Services";
+            ServicesRootMenuEntry.Name = "a";
+            ServicesRootMenuEntry.Attributes.Add("style", "color: black;");
+            ServicesDivForMenuEntryTocLevel0.InnerHtml = ServicesRootMenuEntry.OuterHtml;
+            divHelperTocNav.addChildrenNode(ServicesDivForMenuEntryTocLevel0);
 
             foreach (string service in ServiceList)
             {
@@ -409,27 +433,33 @@ namespace Controller
 
             var ServicesMenuEntryOrdered = ServicesMenuEntry.OrderBy(x => x.Key);
 
+            ServicesLinkedMenuEntry.Name = "a";
+            ServicesLinkedMenuEntry.Attributes.Add("style", "color: black;");
+            
+
             foreach (var menuEntryOrdered in ServicesMenuEntryOrdered)
             {
-                htmlSandCastleMenuEntry.Attributes.Remove("onclick");
-                htmlSandCastleMenuEntry.Attributes.Add("href", "#!");
-                htmlSandCastleMenuEntry.Attributes.Add("onclick", "loadTopicContentHtml('" + ModuleSettings.WebHost
+                ServicesLinkedMenuEntry.Attributes.Remove("onmouseover");
+                ServicesLinkedMenuEntry.Attributes.Remove("onmouseout");
+                ServicesLinkedMenuEntry.Attributes.Remove("id");
+                ServicesLinkedMenuEntry.Attributes.Remove("onclick");
+                ServicesLinkedMenuEntry.Attributes.Add("href", "#!");
+                ServicesLinkedMenuEntry.Attributes.Add("onclick", "loadTopicContentHtml('" + ModuleSettings.WebHost
                                                                             + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
                                                                             + @"\" + Common.Constants.WebSolutionStructure.Folders.Html
-                                                                            + @"\" + menuEntryOrdered.Value + "')");
-                htmlSandCastleMenuEntry.InnerHtml = menuEntryOrdered.Key;
-                nodeIndex++;
-                HtmlDivForMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
-                HtmlDivForMenuEntry.Name = "div";
-                HtmlDivForMenuEntry.AddClass("toclevel2");
-                HtmlDivForMenuEntry.Attributes.Add("data-toclevel", "1");
-                HtmlDivForMenuEntry.InnerHtml = htmlSandCastleMenuEntry.OuterHtml;
-                divHelperTocNav.addChildrenNode(HtmlDivForMenuEntry);
-                HtmlDivForMenuEntry = null;
+                                                                            + @"\" + menuEntryOrdered.Value + "','#" + menuEntryOrdered.Key + "')");
+                ServicesLinkedMenuEntry.InnerHtml = menuEntryOrdered.Key;
+                ServicesLinkedMenuEntry.Attributes.Add("onmouseover", "OnHoverHandle('#" + menuEntryOrdered.Key + "');");
+                ServicesLinkedMenuEntry.Attributes.Add("onmouseout", "OnLeaveHandler('#" + menuEntryOrdered.Key + "');");
+                ServicesLinkedMenuEntry.Attributes.Add("id", menuEntryOrdered.Key );
+                ServicesDivForMenuEntryTocLevel1.InnerHtml += ServicesLinkedMenuEntry.OuterHtml;
             }
-            /***********************************************************************************************
-             * end services
-             ***********************************************************************************************/
+
+            divHelperTocNav.addChildrenNode(ServicesDivForMenuEntryTocLevel1);
+
+                                                                                                                                                                                            /*****************
+                                                                                                                                                                                             * end services
+                                                                                                                                                                                             *****************/
 
             this.UpdatePageHeader(htmlDocument._loadedDocument);
             this.UpdatePageFooter(htmlDocument._loadedDocument);
@@ -449,6 +479,10 @@ namespace Controller
             htmlDocument.Load();
             UpdateBodyPage(htmlDocument._loadedDocument, "div", htmlPage, ModuleSettings.ModuleName, ModuleSettings.MainPageContent);
             htmlDocument.Save();
+
+            removeEmptyTags(ModuleSettings.WebTargetPath, Common.Constants.WebSolutionStructure.Folders.Html + htmlDocument._documentTitle, "div");
+            removeEmptyTags(ModuleSettings.WebTargetPath, Common.Constants.WebSolutionStructure.Folders.Html + htmlDocument._documentTitle, "p");
+            removeEmptyTags(ModuleSettings.WebTargetPath, Common.Constants.WebSolutionStructure.Folders.Html + htmlDocument._documentTitle, "br");
         }
 
         private void addDataTypeColumn(HtmlDocument doc)
@@ -850,7 +884,7 @@ namespace Controller
             TableHelper tableHelper = new TableHelper(doc._loadedDocument, string.Empty, "titleTable");
             TableHelper MathodListTableHelper = new TableHelper(doc._loadedDocument, "methodList");
             List<string> list = MathodListTableHelper.readColumnValues(0);
-            tableHelper.SetCellDisplayValue("titleColumn", tableHelper.GetCellDisplayValue("titleColumn").Replace("Class", string.Empty));
+            tableHelper.SetCellDisplayValue("titleColumn", string.Empty);
             tableHelper.removeColumnByClass(0);
             SpanHelper spanHelper = new SpanHelper(doc._loadedDocument, "collapsibleRegionTitle", 1);
 
@@ -866,8 +900,8 @@ namespace Controller
             SummaryDiv.Remove();
 
             var n = doc._loadedDocument.DocumentNode.SelectNodes("//img[@id='ID3RBToggle']");
-            n.FirstOrDefault().Remove();// removing img icon
-            spanHelper.RenameChildNode("Service Methods");
+            n.FirstOrDefault().Remove();
+            spanHelper.RemoveNode();
             doc.Save();
 
             doc.Load();
@@ -892,7 +926,7 @@ namespace Controller
             DivHelper divHelper = new DivHelper(doc._loadedDocument, DivHelper.SearchFilter.Id, "ID0RBSection");
             divHelper.Remove();
 
-            divHelper = new DivHelper(doc._loadedDocument, DivHelper.SearchFilter.Class, "seeAlsoSection");
+            divHelper = new DivHelper(doc._loadedDocument, DivHelper.SearchFilter.Id, "seeAlsoSection");
             divHelper.Remove();
 
             divHelper = new DivHelper(doc._loadedDocument, DivHelper.SearchFilter.Id, "ID4RBSection");
@@ -985,10 +1019,6 @@ namespace Controller
 
             // calling div helper to remove empty section 
             divHelper = new DivHelper(doc, DivHelper.SearchFilter.Id, "ID2RBSection");
-            divHelper.Remove();
-
-            //removing 
-            divHelper = new DivHelper(doc, DivHelper.SearchFilter.Class, "collapsibleAreaRegion");
             divHelper.Remove();
 
             // calling div helper to remove see also header
@@ -1153,7 +1183,6 @@ namespace Controller
             tableNode.Name = "table";
             tableNode.AddClass("table table-striped table-bordered table-sm");
             tableNode.Id = "methodList";
-
             //creating boostrap table
 
             // produce <thead></thead>
@@ -1267,6 +1296,9 @@ namespace Controller
             node.InnerHtml = "$(document).ready(function(){$('#methodList').DataTable();$('.dataTables_length').addClass('bs-select'); });";
             htmlNode.ChildNodes.Add(node);
 
+            divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "collapsibleAreaRegion");
+            divHelper.RemoveCollectionMatch();
+
             htmlDocument.Save();
         }
 
@@ -1293,8 +1325,6 @@ namespace Controller
             string innerDiv = divHelper.GetInnerHtml();
             htmlDocument._documentPath = ModuleSettings.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Html + ModuleSettings.MainContractContent;
             htmlDocument.Load();
-
-       
 
             EvtView = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "PageHeader");
             EvtView.removeAllChildNodes();
@@ -1350,20 +1380,107 @@ namespace Controller
             {
                 tmpNode.Name = "span";
                 tmpNode.InnerHtml = val;
-                tmpNode.ChildNodes[0].Attributes.Add("onClick", "window.open('" + ModuleSettings.WebHost + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty) + @"\" + Common.Constants.WebSolutionStructure.Folders.Html + @"\" + tmpNode.ChildNodes[0].Attributes["href"].Value + "', 'MyWindow','width=800,height=850,toolbar=no,menubar=no,status=no,resizable=yes,scrollbars=yes'); return false;");
+                tmpNode.ChildNodes[0].Attributes.Add("onClick", "window.open('" + ModuleSettings.WebHost + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty) + @"\" + Common.Constants.WebSolutionStructure.Folders.Html + @"\" + tmpNode.ChildNodes[0].Attributes["href"].Value + "', 'MyWindow','width=800,height=450,toolbar=no,menubar=no,status=no,resizable=yes,scrollbars=yes'); return false;");
                 tmpNode.ChildNodes[0].Attributes["href"].Value = "#";
                 tblHelper.SetCellDisplayValue(0, x, tmpNode.InnerHtml);
                 x++;
             }
 
             tblHelper = new TableHelper(htmlDocument._loadedDocument, string.Empty, "titleTable");
-            tblHelper.SetCellDisplayValue("titleColumn", "Events List");
+            tblHelper.Remove();
+            tblHelper.SetCellDisplayValue("titleColumn", string.Empty);
             tblHelper.removeColumnByClass(0);
             divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "summary");
-            divHelper.SetInnerHtml(string.Empty);
-            divHelper.addLines(3);
+            divHelper.Remove();
             SpanHelper spIntro = new SpanHelper(htmlDocument._loadedDocument, "", "introStyle");
             spIntro.RemoveNode();
+            htmlDocument.Save();
+        }
+
+        public void AddStickyLayout(string htmlPage)
+        {
+            string comments = string.Empty;
+            var htmlDocument = DocumentHelper.GetInstance();
+            htmlDocument._documentPath = htmlPage;
+            htmlDocument.Load();
+
+            //body
+            var bodyNode = htmlDocument._loadedDocument.DocumentNode.SelectNodes("//body").FirstOrDefault();
+
+            //take title from table
+            TableHelper tblTitle = new TableHelper(htmlDocument._loadedDocument, string.Empty, "titleTable");
+            var title = tblTitle.readTdDisplayValueByClass("titleColumn");
+            tblTitle.Delete();
+
+            //header for stcky content 
+            HtmlNode headerDiv = new HtmlNode(HtmlNodeType.Element,htmlDocument._loadedDocument, 0);
+            headerDiv.Name = "div";
+            headerDiv.Id = "topHeader";
+            headerDiv.Attributes.Add("class", "top-Header");
+
+            //adding header
+            DivHelper topicContentDiv = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "TopicContent");
+            topicContentDiv._ContextDiv.RemoveClass("pageBody");
+            var pNode = topicContentDiv._ContextDiv.ChildNodes.Where(x => x.Name == "p");
+            if (pNode != null)
+            {
+                try
+                {
+                    comments = pNode.FirstOrDefault().InnerHtml;
+                    pNode.FirstOrDefault().Remove();
+                }
+                catch
+                {
+                }
+            }
+
+            headerDiv.InnerHtml = "<h1>" + title + "</h1>";// + comments;
+            topicContentDiv._ContextDiv.ChildNodes.Insert(0,headerDiv);
+        
+            DivHelper BreadScrumContentDiv = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "collapsibleAreaRegion");
+            BreadScrumContentDiv._ContextDiv.Attributes.Add("id", "midHeader");
+            BreadScrumContentDiv._ContextDiv.Attributes.Remove("class");
+            BreadScrumContentDiv._ContextDiv.Attributes.Add("class", "mid-Header");
+
+            DivHelper PropTableContentDiv = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID3RBSection");
+            PropTableContentDiv._ContextDiv.Attributes.Add("class", "Content");
+
+            //adding references to css and js
+            var headNode = htmlDocument._loadedDocument.DocumentNode.SelectNodes("//head").FirstOrDefault();
+
+            nodeIndex++;
+            HtmlNode scriptNode = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            scriptNode.Name = "script";
+            scriptNode.Attributes.Add("type", "text/javascript");
+            scriptNode.Attributes.Add("src", "stickyLayout.js");
+            headNode.ChildNodes.Add(scriptNode);
+
+            nodeIndex++;
+            var StyleRefNode = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            StyleRefNode.Name = "link";
+            StyleRefNode.Attributes.Add("rel", "stylesheet");
+            StyleRefNode.Attributes.Add("href", "stickyLayout.css");
+
+            nodeIndex++;
+            var MetaNode = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            MetaNode.Name = "meta";
+            MetaNode.Attributes.Add("content", "with=device-with, initial-scale=1");
+
+            headNode.ChildNodes.Add(scriptNode);
+            headNode.ChildNodes.Add(StyleRefNode);
+            headNode.ChildNodes.Add(MetaNode);
+
+            //removing body attrib
+           
+            bodyNode.Attributes.Remove("onload");
+            var inputNodes = bodyNode.ChildNodes.Where(x => x.Name == "input");
+            if (inputNodes != null)
+            {
+                inputNodes.FirstOrDefault().Remove();
+            }
+
+            DivHelper pageBodyDiv = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "pageBody");
+            pageBodyDiv._ContextDiv.RemoveClass("pageBody");
 
             htmlDocument.Save();
         }
