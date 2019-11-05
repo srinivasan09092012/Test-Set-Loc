@@ -351,71 +351,77 @@ namespace UserAccountMigration
                     else
                     {
                         UserProfile secondaryUser = GetUserPofileId(userXref.SecondaryUserName, userXref);
-                        delegateList.Add(secondaryUser);
+                        if (secondaryUser != null)
+                        {
+                            delegateList.Add(secondaryUser);
+                        }
                     }
 
-                    foreach (UserProfile del in delegateList)
+                    if (primaryUser != null && delegateList.Any())
                     {
-                        try
+                        foreach (UserProfile del in delegateList)
                         {
-                            userXref.SecondaryUserName = del.UserName;
-                            string userXrefId = string.Empty;
-                            string userXrefAssocId = string.Empty;
-                            bool identicalXrefExists = false;
-
-                            userQueryServiceProvider.GetUserXref(userXref, ref userXrefId, ref userXrefAssocId, ref identicalXrefExists);
-
-                            if (identicalXrefExists)
+                            try
                             {
-                                lock (currentProcess)
+                                userXref.SecondaryUserName = del.UserName;
+                                string userXrefId = string.Empty;
+                                string userXrefAssocId = string.Empty;
+                                bool identicalXrefExists = false;
+
+                                userQueryServiceProvider.GetUserXref(userXref, ref userXrefId, ref userXrefAssocId, ref identicalXrefExists);
+
+                                if (identicalXrefExists)
                                 {
-                                    currentProcess.DuplicateCount++;
+                                    lock (currentProcess)
+                                    {
+                                        currentProcess.DuplicateCount++;
+                                    }
+                                }
+                                else if (string.IsNullOrEmpty(userXrefId))
+                                {
+                                    userServiceProvider.AddProfileXref(userXref, primaryUser.ProfileId.ToString(), del.ProfileId.ToString(), del.RelationshipCode);
+                                    lock (currentProcess)
+                                    {
+                                        currentProcess.ProcessedCount++;
+                                    }
+                                }
+                                else
+                                {
+                                    userServiceProvider.UpdateProfileXref(userXref, userXrefId, userXrefAssocId);
+                                    lock (currentProcess)
+                                    {
+                                        currentProcess.UpdatedCount++;
+                                    }
                                 }
                             }
-                            else if (string.IsNullOrEmpty(userXrefId))
+                            catch (FaultException<UserService.BusinessValidationException> ex)
                             {
-                                userServiceProvider.AddProfileXref(userXref, primaryUser.ProfileId.ToString(), del.ProfileId.ToString(), del.RelationshipCode);
+                                string msg = ex.Detail.BusinessMessages.Count > 0 ? ex.Detail.BusinessMessages[0].MessageDefault : ex.Message;
+                                UserXrefError userXrefError = new UserXrefError(userXref, msg);
+                                LogMessage(1, string.Format("Error processing primary user '{0}' secondary user '{1}' association '{2}' with error: '{3}'", userXref.PrimaryUserName, del.UserName, userXref.AssociationId, msg));
+                                lock (userXrefErrors)
+                                {
+                                    userXrefErrors.Add(userXrefError);
+                                }
+
                                 lock (currentProcess)
                                 {
-                                    currentProcess.ProcessedCount++;
+                                    currentProcess.ErroredCount++;
                                 }
                             }
-                            else
+                            catch (Exception ex)
                             {
-                                userServiceProvider.UpdateProfileXref(userXref, userXrefId, userXrefAssocId);
+                                UserXrefError userXrefError = new UserXrefError(userXref, ex.Message);
+                                LogMessage(1, string.Format("Error processing primary user '{0}' secondary user '{1}' association '{2}' with error: '{3}'", userXref.PrimaryUserName, del.UserName, userXref.AssociationId, ex.Message));
+                                lock (userXrefErrors)
+                                {
+                                    userXrefErrors.Add(userXrefError);
+                                }
+
                                 lock (currentProcess)
                                 {
-                                    currentProcess.UpdatedCount++;
+                                    currentProcess.ErroredCount++;
                                 }
-                            }
-                        }
-                        catch (FaultException<UserService.BusinessValidationException> ex)
-                        {
-                            string msg = ex.Detail.BusinessMessages.Count > 0 ? ex.Detail.BusinessMessages[0].MessageDefault : ex.Message;
-                            UserXrefError userXrefError = new UserXrefError(userXref, msg);
-                            LogMessage(1, string.Format("Error processing primary user '{0}' secondary user '{1}' association '{2}' with error: '{3}'", userXref.PrimaryUserName, del.UserName, userXref.AssociationId, msg));
-                            lock (userXrefErrors)
-                            {
-                                userXrefErrors.Add(userXrefError);
-                            }
-
-                            lock (currentProcess)
-                            {
-                                currentProcess.ErroredCount++;
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            UserXrefError userXrefError = new UserXrefError(userXref, ex.Message);
-                            LogMessage(1, string.Format("Error processing primary user '{0}' secondary user '{1}' association '{2}' with error: '{3}'", userXref.PrimaryUserName, del.UserName, userXref.AssociationId, ex.Message));
-                            lock (userXrefErrors)
-                            {
-                                userXrefErrors.Add(userXrefError);
-                            }
-
-                            lock (currentProcess)
-                            {
-                                currentProcess.ErroredCount++;
                             }
                         }
                     }
