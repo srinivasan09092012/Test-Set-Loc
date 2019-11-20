@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.textToCompOrDecomp = new System.Windows.Forms.TextBox();
             this.Compress = new System.Windows.Forms.Button();
             this.Decompress = new System.Windows.Forms.Button();
@@ -94,6 +95,7 @@
             this.Controls.Add(this.Decompress);
             this.Controls.Add(this.Compress);
             this.Controls.Add(this.textToCompOrDecomp);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Gzip Utility to Compress or Decompress";
             this.ResumeLayout(false);
