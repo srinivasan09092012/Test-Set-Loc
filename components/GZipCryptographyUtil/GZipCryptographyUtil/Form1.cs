@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using System.Configuration;
 using System.Security.Cryptography;
+using HP.HSP.UA3.Core.BAS.CQRS.Caching;
+using HP.HSP.UA3.Core.BAS.CQRS.Helpers;
 
 namespace WindowsFormsApp1
 {
@@ -16,7 +18,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                textToCompOrDecomp.Text = HP.HSP.UA3.Core.BAS.CQRS.Caching.GZipHelper.Compress(textToCompOrDecomp.Text);
+                textToCompOrDecomp.Text = GZipHelper.Compress(textToCompOrDecomp.Text);
             }
             catch (Exception ex)
             {
@@ -29,7 +31,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                textToCompOrDecomp.Text = HP.HSP.UA3.Core.BAS.CQRS.Caching.GZipHelper.Decompress(textToCompOrDecomp.Text);
+                textToCompOrDecomp.Text = GZipHelper.Decompress(textToCompOrDecomp.Text);
             }
             catch (Exception ex)
             {
@@ -45,7 +47,7 @@ namespace WindowsFormsApp1
                 string aesIV = ConfigurationManager.AppSettings["AESIV"];
                 PaddingMode paddingMode = (PaddingMode)Enum.Parse(typeof(PaddingMode), ConfigurationManager.AppSettings["PaddingMode"]);
 
-                textToCompOrDecomp.Text = HP.HSP.UA3.Core.BAS.CQRS.Helpers.Cryptographer.Decrypt(aesIV, key, paddingMode, textToCompOrDecomp.Text);
+                textToCompOrDecomp.Text = Cryptographer.Decrypt(aesIV, key, paddingMode, textToCompOrDecomp.Text);
             }
             catch (Exception ex)
             {
@@ -61,7 +63,7 @@ namespace WindowsFormsApp1
                 string aesIV = ConfigurationManager.AppSettings["AESIV"];
                 PaddingMode paddingMode = (PaddingMode)Enum.Parse(typeof(PaddingMode), ConfigurationManager.AppSettings["PaddingMode"]);
 
-                textToCompOrDecomp.Text = HP.HSP.UA3.Core.BAS.CQRS.Helpers.Cryptographer.Encrypt(aesIV, key, paddingMode, textToCompOrDecomp.Text);
+                textToCompOrDecomp.Text = Cryptographer.Encrypt(aesIV, key, paddingMode, textToCompOrDecomp.Text);
             }
             catch (Exception ex)
             {

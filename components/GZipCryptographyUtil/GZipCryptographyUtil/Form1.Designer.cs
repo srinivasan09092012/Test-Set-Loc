@@ -51,17 +51,17 @@
             this.Compress.Name = "Compress";
             this.Compress.Size = new System.Drawing.Size(136, 33);
             this.Compress.TabIndex = 2;
-            this.Compress.Text = "Compress";
+            this.Compress.Text = "GZip Compress";
             this.Compress.UseVisualStyleBackColor = true;
             this.Compress.Click += new System.EventHandler(this.Compress_Click);
             // 
             // Decompress
             // 
-            this.Decompress.Location = new System.Drawing.Point(785, 583);
+            this.Decompress.Location = new System.Drawing.Point(743, 583);
             this.Decompress.Name = "Decompress";
-            this.Decompress.Size = new System.Drawing.Size(136, 33);
+            this.Decompress.Size = new System.Drawing.Size(178, 33);
             this.Decompress.TabIndex = 3;
-            this.Decompress.Text = "DE - Compress";
+            this.Decompress.Text = "GZip DE - Compress";
             this.Decompress.UseVisualStyleBackColor = true;
             this.Decompress.Click += new System.EventHandler(this.Decompress_Click);
             // 
@@ -71,7 +71,7 @@
             this.Decrypt.Name = "Decrypt";
             this.Decrypt.Size = new System.Drawing.Size(136, 33);
             this.Decrypt.TabIndex = 4;
-            this.Decrypt.Text = "Decrypt";
+            this.Decrypt.Text = "AES Decrypt";
             this.Decrypt.UseVisualStyleBackColor = true;
             this.Decrypt.Click += new System.EventHandler(this.Decrypt_Click);
             // 
@@ -81,7 +81,7 @@
             this.Encrypt.Name = "Encrypt";
             this.Encrypt.Size = new System.Drawing.Size(136, 33);
             this.Encrypt.TabIndex = 5;
-            this.Encrypt.Text = "Encrypt";
+            this.Encrypt.Text = "AES Encrypt";
             this.Encrypt.UseVisualStyleBackColor = true;
             this.Encrypt.Click += new System.EventHandler(this.Encrypt_Click);
             // 
