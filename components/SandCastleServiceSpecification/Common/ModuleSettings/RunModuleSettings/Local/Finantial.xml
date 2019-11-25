@@ -1,10 +1,12 @@
 <DocModuleSettingModel>
   <ModuleName>Finantial</ModuleName>
   <ModuleNameDisplay>Finantial</ModuleNameDisplay>
-  <StorageDrive>J:</StorageDrive>
-  <webSourcePath>J:\UA3\SandCastleCustomizationTool\ShbDoc\Finantial\help</webSourcePath>
-  <webTargetPath>J:\www\servicespecs\Modules\Administration\19.1.64.2\helpweb</webTargetPath>
+  <StorageDrive>C:</StorageDrive>
+  <webSourcePath>C:\Users\egardea\Downloads\Finantial\Output</webSourcePath>
+  <webTargetPath>C:\inetpub\wwwroot\LocalSandCastle\Finantial\\APISeviceSpecification</webTargetPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
+  <WebHost>http://localhost:8080/</WebHost>
+  <WebHostPhysicalPath>C:\inetpub\wwwroot\LocalSandCastle</WebHostPhysicalPath>
   <ServiceListPages>
 	<ListPage>N_HP_HSP_UA3_FinancialManagement_BAS_FinancialManagementSvc.htm</ListPage>
   </ServiceListPages>

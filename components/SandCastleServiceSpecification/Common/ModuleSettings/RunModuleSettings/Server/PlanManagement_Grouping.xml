@@ -1,0 +1,17 @@
+<DocModuleSettingModel>
+  <ModuleName>PLG</ModuleName>
+  <ModuleNameDisplay>Plan Management - Grouping</ModuleNameDisplay>
+  <StorageDrive>J:</StorageDrive>
+  <webSourcePath>J:\UA3\SandCastleCustomizationTool\ShbDoc\PlanManagement\Grouping\help</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\PlanMgmt\\19.1.64.4\\HelpWeb\\Grouping</webTargetPath>
+  <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
+  <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>
+  <WebHostPhysicalPath>J:\www\servicespecs\Modules</WebHostPhysicalPath>
+  <ServiceListPages>
+	<ListPage>N_HP_HSP_UA3_PlanManagement_BAS_Grouping.htm</ListPage>
+  </ServiceListPages>
+  <MainContractContent>G_HP_HSP_UA3_PlanManagement_BAS_Grouping_Contracts.htm</MainContractContent>
+  <ContractListPages>
+	<ListPage>N_HP_HSP_UA3_PlanManagement_BAS_Grouping_Contracts_Events.htm</ListPage>
+  </ContractListPages>
+</DocModuleSettingModel>

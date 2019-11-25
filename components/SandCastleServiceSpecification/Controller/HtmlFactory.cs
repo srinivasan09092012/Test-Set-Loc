@@ -1,13 +1,12 @@
-﻿using Controller.Helpers.HTML;
-using Controller.Helpers.Scan;
+﻿using Common.Interfaces;
 using Common.ModuleSettings;
+using Controller.Helpers.HTML;
+using Controller.Helpers.Scan;
 using HtmlAgilityPack;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Common.Interfaces;
-using System;
 
 namespace Controller
 {
@@ -16,12 +15,19 @@ namespace Controller
         int nodeIndex = 0;
         public ModuleSettingModel ModuleSettings = new ModuleSettingModel();
         private readonly ILogger LoggerEngine;
+        private readonly IExecutionContext ExecutionContext;
 
         public HtmlFactory(ILogger loggerEngineInstance)
         {
             LoggerEngine = loggerEngineInstance;
         }
-        
+
+        public HtmlFactory(ILogger loggerEngineInstance, IExecutionContext exeContext)
+        {
+            LoggerEngine = loggerEngineInstance;
+            ExecutionContext = exeContext;
+        }
+
         public void prepareIndexFile(string indexPage, string MainPageContent)
         {
             string fullSourcePath = ModuleSettings.WebTargetPath + indexPage;
@@ -38,9 +44,6 @@ namespace Controller
             TableHelper tbl = new TableHelper(htmlDocument._loadedDocument, "namespaceList");
             tbl.Remove();
 
-            DivHelper divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "collapsibleAreaRegion");
-            divHelper.Remove();
-
             tbl = new TableHelper(htmlDocument._loadedDocument, string.Empty, "titleTable");
             tbl.removeColumn(0);
             SpanHelper spIntro = new SpanHelper(htmlDocument._loadedDocument, "", "introStyle");
@@ -49,7 +52,7 @@ namespace Controller
             htmlDocument.Save();
         }
 
-        public void updateCmdAndEventServiceList(string webFolderTarget, string originalDocument)
+        public void updateServiceList(string webFolderTarget, string originalDocument)
         {
             string fullSourcePath = webFolderTarget + originalDocument;
             var htmlDocument = DocumentHelper.GetInstance();
@@ -59,7 +62,7 @@ namespace Controller
             htmlDocument.Save();
         }
 
-        public void updateCmdAndEventServiceListForQuery(string webFolderTarget, string originalDocument)
+        public void updateServiceListForQuery(string webFolderTarget, string originalDocument)
         {
             string fullSourcePath = webFolderTarget + originalDocument;
             var htmlDocument = DocumentHelper.GetInstance();
@@ -88,7 +91,7 @@ namespace Controller
             htmlDocument.Save();
 
             htmlDocument.Load();
-            DivHelper divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID3RBSection");
+            DivHelper divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID4RBSection");/////////ID3RBSection
             divHelper.removeStyleClass("collapsibleSection");
             htmlDocument.Save();
         }
@@ -99,9 +102,9 @@ namespace Controller
         /// </summary>
         /// <param name="contentPage">Page content that hold a list of links of services</param>
         /// <returns>A list of services in the given content page, each item in the list are still html links, format should be applied to read.</returns>
-        public List<string> getServiceListFromPageContent(string contentPage)
+        public List<string> getServiceListFromPageContent(string contentPage, string targetPath)
         {
-            string fullSourcePath = ModuleSettings.WebTargetPath + contentPage;
+            string fullSourcePath = targetPath + contentPage;
             var htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = fullSourcePath;
             htmlDocument.Load();
@@ -127,56 +130,37 @@ namespace Controller
             return ServiceUrls;
         }
 
-        public void prepareServiceOperationList(string originalDocument)
-        {
-            string fullSourcePath = ModuleSettings.WebTargetPath + originalDocument;
-            var htmlDocument = DocumentHelper.GetInstance();
-            htmlDocument._documentPath = fullSourcePath;
-            htmlDocument.Load();
-            TableHelper tblHelper = new TableHelper(htmlDocument._loadedDocument, "classList", originalDocument);
-            tblHelper = new TableHelper(htmlDocument._loadedDocument, "classList");
-
-            List<string> services = tblHelper.readColumnValues(1);
-
-            foreach (string service in services)
-            {
-                var svcHtmlDocument = DocumentHelper.GetInstance();
-                svcHtmlDocument._documentPath = ModuleSettings.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Html + @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension;
-                svcHtmlDocument.Load();
-                OperationListPage(htmlDocument);
-                svcHtmlDocument.Save();
-            }
-
-            tblHelper.removeColumn(0);
-            htmlDocument.Save();
-        }
-
-        public void UpdateOperationsLists(string originalDocument)
-        {
-            string fullSourcePath = ModuleSettings.WebTargetPath + originalDocument;
+        public void UpdateOperationsLists(string originalDocument){
+            string fullSourcePath = ExecutionContext.getTargetPath() + originalDocument;
             var htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = fullSourcePath;
             htmlDocument.Load();
 
             TableHelper tblHelper = new TableHelper(htmlDocument._loadedDocument, "classList", originalDocument);
             List<string> services = tblHelper.readColumnValues(1);
-
             foreach (string service in services)
             {
-                if (service.Contains("Query"))
+                if (ExecutionContext.getExecutionStage() == 2)
                 {
-                    this.UpdateQueryMethodsTableList(ModuleSettings.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Html + @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
+                    this.UpdateQueryMethodsTableList(ExecutionContext.getTargetPath() + Common.Constants.WebSolutionStructure.Folders.Html + @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
                 }
                 else
                 {
-                    this.UpdateMethodsTableList(ModuleSettings.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Html + @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
+                    if (service.Contains("Query"))
+                    {
+                        this.UpdateQueryMethodsTableList(ExecutionContext.getTargetPath() + Common.Constants.WebSolutionStructure.Folders.Html + @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
+                    }
+                    else
+                    {
+                        this.UpdateMethodsTableList(ExecutionContext.getTargetPath() + Common.Constants.WebSolutionStructure.Folders.Html + @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
+                    }
                 }
             }
         }
 
         public void UpdateInputOutput(string originalDocument)
         {
-            string fullSourcePath = ModuleSettings.WebTargetPath + originalDocument;
+            string fullSourcePath = ExecutionContext.getTargetPath() + originalDocument;
             var htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = fullSourcePath;
             htmlDocument.Load();
@@ -186,20 +170,33 @@ namespace Controller
 
             foreach (string service in services)
             {
-                if (service.Contains("Query"))
+                if (ExecutionContext.getExecutionStage() == 2)
                 {
-                    this.updateCmdAndEventServiceListForQuery(ModuleSettings.WebTargetPath, Common.Constants.WebSolutionStructure.Folders.Html + @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
+                    this.updateServiceListForQuery(ExecutionContext.getTargetPath(), Common.Constants.WebSolutionStructure.Folders.Html +
+                                                                                                    @service.Remove(0, 9).Split('>')[0].Split('.')[0] +
+                                                                                                    Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
                 }
                 else
                 {
-                    this.updateCmdAndEventServiceList(ModuleSettings.WebTargetPath, Common.Constants.WebSolutionStructure.Folders.Html + @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
+                    if (service.Contains("Query"))
+                    {
+                        this.updateServiceListForQuery(ExecutionContext.getTargetPath(), Common.Constants.WebSolutionStructure.Folders.Html +
+                                                                                                    @service.Remove(0, 9).Split('>')[0].Split('.')[0] +
+                                                                                                    Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
+                    }
+                    else
+                    {
+                        this.updateServiceList(ExecutionContext.getTargetPath(), Common.Constants.WebSolutionStructure.Folders.Html +
+                                                                                            @service.Remove(0, 9).Split('>')[0].Split('.')[0] +
+                                                                                            Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
+                    }
                 }
             }
         }
 
         public void removeHiperLinks(string pageContent)
         {
-            string fullSourcePath = ModuleSettings.WebTargetPath + pageContent;
+            string fullSourcePath = ExecutionContext.getTargetPath() + pageContent;
             var htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = fullSourcePath;
             htmlDocument.Load();
@@ -208,13 +205,15 @@ namespace Controller
             
             foreach (string servicePage in pagesExposingServices)
             {
-                removeTableCellHiperLink(ModuleSettings.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Html + servicePage.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
+                removeTableCellHiperLink(ExecutionContext.getTargetPath() + Common.Constants.WebSolutionStructure.Folders.Html + 
+                                                                            servicePage.Remove(0, 9).Split('>')[0].Split('.')[0] + 
+                                                                            Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
             }
         }
 
         public void AddPaginationControl(string originalDocument)
         {
-            string fullSourcePath = ModuleSettings.WebTargetPath + originalDocument;
+            string fullSourcePath = ExecutionContext.getTargetPath() + originalDocument;
             var htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = fullSourcePath;
             htmlDocument.Load();
@@ -224,7 +223,9 @@ namespace Controller
 
             foreach (string service in services)
             {
-                setPaginationControl(ModuleSettings.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Html + @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension, "methodList", "ID3RBSection");
+                setPaginationControl(ExecutionContext.getTargetPath() + Common.Constants.WebSolutionStructure.Folders.Html + 
+                                                                    @service.Remove(0, 9).Split('>')[0].Split('.')[0] + 
+                                                                    Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension, "methodList", "ID4RBSection");
             }
         }
 
@@ -247,25 +248,49 @@ namespace Controller
             }
         }
 
-        public void UpdateLeftNavigator(string urlPage, List<string> ServiceList, string lvl0HomePage)
+        public void UpdateContentLeftNavigator(string urlPage, List<string> ServiceList, string lvl0HomePage, List<string> apiContentList)
         {
             var htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = urlPage;
             htmlDocument.Load();
 
+            #region declarations
             Dictionary<string, string> ServicesMenuEntry = new Dictionary<string, string>();
-           
+            Dictionary<string, string> apiMenuEntry = new Dictionary<string, string>();
+
+            HtmlNode ModuleHomeDivForMenuEntryTocLevel0;
+            HtmlNode ModuleHomeDivForMenuEntryTocLevel1;
+
+            HtmlNode ModuleHomeLinkedMenuEntry;
+            HtmlNode ModuleHomeRootMenuEntry;
+
             HtmlNode EventsDivForMenuEntryTocLevel0;
             HtmlNode EventsDivForMenuEntryTocLevel1;
 
             HtmlNode EventsLinkedMenuEntry;
             HtmlNode EventsRootMenuEntry;
 
+            HtmlNode OtherResourcesRootMenuEntry;
+            HtmlNode OtherResourcesLinkedMenuEntry;
+            HtmlNode OtherResourcesAPILinkedMenuEntry;
+
             HtmlNode ServicesDivForMenuEntryTocLevel0;
             HtmlNode ServicesDivForMenuEntryTocLevel1;
 
+            HtmlNode OtherResourcesDivForMenuEntryTocLevel0;
+            HtmlNode OtherResourcesDivForMenuEntryTocLevel1;
+
+            HtmlNode OtherResourcesDivForApiMenuEntryTocLevel1;
+
             HtmlNode ServicesLinkedMenuEntry;
             HtmlNode ServicesRootMenuEntry;
+
+            //Linked items in menu, located below of a not linked root item
+            nodeIndex++;
+            ModuleHomeLinkedMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            //Root items in menu, used to group linked items such: Events and Web Services.
+            nodeIndex++;
+            ModuleHomeRootMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
 
             //Linked items in menu, located below of a not linked root item
             nodeIndex++;
@@ -274,6 +299,9 @@ namespace Controller
             nodeIndex++;
             EventsRootMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
 
+            nodeIndex++;
+            OtherResourcesRootMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+
             //Used to organize the menu identation levels, hold all divs
             DivHelper divHelperTocNav = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "tocNav");
 
@@ -281,10 +309,16 @@ namespace Controller
             ServicesLinkedMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
 
             nodeIndex++;
+            OtherResourcesLinkedMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+
+            nodeIndex++;
+            OtherResourcesAPILinkedMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+
+            nodeIndex++;
             ServicesRootMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
 
             nodeIndex++;
-            EventsDivForMenuEntryTocLevel0 =new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            EventsDivForMenuEntryTocLevel0 = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
             EventsDivForMenuEntryTocLevel0.Name = "div";
             EventsDivForMenuEntryTocLevel0.AddClass("toclevel1");
             EventsDivForMenuEntryTocLevel0.Attributes.Add("data-toclevel", "0");
@@ -298,17 +332,48 @@ namespace Controller
             nodeIndex++;
             ServicesDivForMenuEntryTocLevel0 = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
             ServicesDivForMenuEntryTocLevel0.Name = "div";
-            ServicesDivForMenuEntryTocLevel0.AddClass("toclevel1");
+            ServicesDivForMenuEntryTocLevel0.AddClass("toclevel2");
             ServicesDivForMenuEntryTocLevel0.Attributes.Add("data-toclevel", "0");
 
             nodeIndex++;
             ServicesDivForMenuEntryTocLevel1 = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
             ServicesDivForMenuEntryTocLevel1.Name = "div";
-            ServicesDivForMenuEntryTocLevel1.AddClass("toclevel2");
+            ServicesDivForMenuEntryTocLevel1.AddClass("toclevel3");
             ServicesDivForMenuEntryTocLevel1.Attributes.Add("data-toclevel", "1");
+
+            nodeIndex++;
+            OtherResourcesDivForMenuEntryTocLevel0 = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            OtherResourcesDivForMenuEntryTocLevel0.Name = "div";
+            OtherResourcesDivForMenuEntryTocLevel0.AddClass("toclevel2");
+            OtherResourcesDivForMenuEntryTocLevel0.Attributes.Add("data-toclevel", "0");
+
+            nodeIndex++;
+            OtherResourcesDivForMenuEntryTocLevel1 = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            OtherResourcesDivForMenuEntryTocLevel1.Name = "div";
+            OtherResourcesDivForMenuEntryTocLevel1.AddClass("toclevel3");
+            OtherResourcesDivForMenuEntryTocLevel1.Attributes.Add("data-toclevel", "1");
+
+            nodeIndex++;
+            OtherResourcesDivForApiMenuEntryTocLevel1 = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            OtherResourcesDivForApiMenuEntryTocLevel1.Name = "div";
+            OtherResourcesDivForApiMenuEntryTocLevel1.AddClass("toclevel3");
+            OtherResourcesDivForApiMenuEntryTocLevel1.Attributes.Add("data-toclevel", "1");
+
+            nodeIndex++;
+            ModuleHomeDivForMenuEntryTocLevel0 = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            ModuleHomeDivForMenuEntryTocLevel0.Name = "div";
+            ModuleHomeDivForMenuEntryTocLevel0.AddClass("toclevel1");
+            ModuleHomeDivForMenuEntryTocLevel0.Attributes.Add("data-toclevel", "0");
+
+            nodeIndex++;
+            ModuleHomeDivForMenuEntryTocLevel1 = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            ModuleHomeDivForMenuEntryTocLevel1.Name = "div";
+            ModuleHomeDivForMenuEntryTocLevel1.AddClass("toclevel1");
+            ModuleHomeDivForMenuEntryTocLevel1.Attributes.Add("data-toclevel", "1");
 
             //Clear the default menu provided by default sandcastle engine.
             divHelperTocNav.SetInnerHtml(string.Empty);
+            #endregion
 
             #region page setup
             if (Path.GetFileName(urlPage) != lvl0HomePage)
@@ -383,87 +448,150 @@ namespace Controller
             }
             #endregion
 
-            /************
-              * Events
-            *************/
+            #region module entry
+            ModuleHomeLinkedMenuEntry.Name = "a";
+            ModuleHomeLinkedMenuEntry.Attributes.Add("style", "color: black;");
+            ModuleHomeLinkedMenuEntry.Attributes.Add("onmouseover", "OnHoverHandle('#ModuleOverview');");
+            ModuleHomeLinkedMenuEntry.Attributes.Add("onmouseout", "OnLeaveHandler('#ModuleOverview');");
 
-            EventsRootMenuEntry.Name = "a";
-            EventsRootMenuEntry.Attributes.Add("style", "color: black;");
-            EventsRootMenuEntry.InnerHtml = "Events Produced";
-            EventsDivForMenuEntryTocLevel0.InnerHtml = EventsRootMenuEntry.OuterHtml;
-            divHelperTocNav.addChildrenNode(EventsDivForMenuEntryTocLevel0);
-
-            EventsLinkedMenuEntry.Name = "a";
-            EventsLinkedMenuEntry.Attributes.Add("style", "color: black;");
-            EventsLinkedMenuEntry.Attributes.Add("onmouseover", "OnHoverHandle('#EventsFullList');");
-            EventsLinkedMenuEntry.Attributes.Add("onmouseout", "OnLeaveHandler('#EventsFullList');");
-            
-            EventsLinkedMenuEntry.Attributes.Add("id", "EventsFullList");
-            EventsLinkedMenuEntry.Attributes.Add("href", "#!");
-            EventsLinkedMenuEntry.InnerHtml = "Full List";
-            EventsLinkedMenuEntry.Attributes.Add("onclick", "loadTopicContentHtml('" + ModuleSettings.WebHost
+            ModuleHomeLinkedMenuEntry.Attributes.Add("id", "ModuleOverview");
+            ModuleHomeLinkedMenuEntry.Attributes.Add("href", "#!");
+            ModuleHomeLinkedMenuEntry.Attributes.Add("parent", "DXCHome");
+            ModuleHomeLinkedMenuEntry.Attributes.Add("IsParentActive", "true");
+            ModuleHomeLinkedMenuEntry.Attributes.Add("BreadscrumbDisplayName", ModuleSettings.ModuleNameDisplay);
+            ModuleHomeLinkedMenuEntry.Attributes.Add("TopicContentHtml", "" + ModuleSettings.WebHost
                                                                             + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
                                                                             + @"\" + Common.Constants.WebSolutionStructure.Folders.Html
-                                                                            + @"\" + ModuleSettings.MainContractContent + "','#EventsFullList')");
+                                                                            + @"\ModuleOverview.html");
 
+            ModuleHomeLinkedMenuEntry.InnerHtml = ModuleSettings.ModuleNameDisplay;
+            ModuleHomeLinkedMenuEntry.Attributes.Add("onclick", "OnClickHandler(this)");
+            ModuleHomeDivForMenuEntryTocLevel1.InnerHtml = ModuleHomeLinkedMenuEntry.OuterHtml;
+            divHelperTocNav.addChildrenNode(ModuleHomeDivForMenuEntryTocLevel1);
+            #endregion
 
-            EventsDivForMenuEntryTocLevel1.InnerHtml = EventsLinkedMenuEntry.OuterHtml;
-            divHelperTocNav.addChildrenNode(EventsDivForMenuEntryTocLevel1);
-            /****************
-             * end events
-             ****************/
-
-            /************
-             * services
-             ************/
-
-            ServicesRootMenuEntry.InnerHtml = "Web Services";
-            ServicesRootMenuEntry.Name = "a";
-            ServicesRootMenuEntry.Attributes.Add("style", "color: black;");
-            ServicesDivForMenuEntryTocLevel0.InnerHtml = ServicesRootMenuEntry.OuterHtml;
-            divHelperTocNav.addChildrenNode(ServicesDivForMenuEntryTocLevel0);
-
-            foreach (string service in ServiceList)
+            if (ModuleSettings.ModuleHelpContentAvailable)
             {
-                if (!string.IsNullOrEmpty(service))
+                EventsRootMenuEntry.Name = "a";
+                EventsRootMenuEntry.Attributes.Add("style", "color: black;");
+                EventsRootMenuEntry.InnerHtml = "Events Produced";
+                EventsDivForMenuEntryTocLevel0.InnerHtml = EventsRootMenuEntry.OuterHtml;
+                EventsLinkedMenuEntry.Name = "a";
+                EventsLinkedMenuEntry.Attributes.Add("style", "color: black;");
+                EventsLinkedMenuEntry.Attributes.Add("onmouseover", "OnHoverHandle('#EventsFullList');");
+                EventsLinkedMenuEntry.Attributes.Add("onmouseout", "OnLeaveHandler('#EventsFullList');");
+                EventsLinkedMenuEntry.Attributes.Add("id", "EventsFullList");
+                EventsLinkedMenuEntry.Attributes.Add("href", "#!");
+                EventsLinkedMenuEntry.Attributes.Add("parent", "Integration");
+                EventsLinkedMenuEntry.Attributes.Add("IsParentActive", "true");
+                EventsLinkedMenuEntry.Attributes.Add("BreadscrumbDisplayName", "Events Produced");
+                EventsLinkedMenuEntry.Attributes.Add("TopicContentHtml", "" + ModuleSettings.WebHost
+                                                                                + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
+                                                                                + @"\" + Common.Constants.WebSolutionStructure.Folders.Html
+                                                                                + @"\" + ModuleSettings.MainContractContent + " #namespacesSection");
+                EventsLinkedMenuEntry.Attributes.Add("onclick", "OnClickHandler(this)");
+                EventsLinkedMenuEntry.InnerHtml = "Events Produced";
+                EventsDivForMenuEntryTocLevel1.InnerHtml = EventsLinkedMenuEntry.OuterHtml;
+                divHelperTocNav.addChildrenNode(EventsDivForMenuEntryTocLevel1);
+                ServicesRootMenuEntry.InnerHtml = "Web Services";
+                ServicesRootMenuEntry.Name = "a";
+                ServicesRootMenuEntry.Attributes.Add("style", "color: black;");
+                ServicesDivForMenuEntryTocLevel0.InnerHtml = ServicesRootMenuEntry.OuterHtml;
+                divHelperTocNav.addChildrenNode(ServicesDivForMenuEntryTocLevel0);
+
+                foreach (string service in ServiceList)
                 {
-                    ServicesMenuEntry.Add(service.Split('>')[1].Split('<')[0], @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
+                    if (!string.IsNullOrEmpty(service))
+                    {
+                        ServicesMenuEntry.Add(service.Split('>')[1].Split('<')[0], @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
+                    }
                 }
+
+                var ServicesMenuEntryOrdered = ServicesMenuEntry.OrderBy(x => x.Key);
+
+                ServicesLinkedMenuEntry.Name = "a";
+                ServicesLinkedMenuEntry.Attributes.Add("style", "color: black;");
+
+                foreach (var menuEntryOrdered in ServicesMenuEntryOrdered)
+                {
+                    ServicesLinkedMenuEntry.Attributes.Remove("onmouseover");
+                    ServicesLinkedMenuEntry.Attributes.Remove("onmouseout");
+                    ServicesLinkedMenuEntry.Attributes.Remove("id");
+                    ServicesLinkedMenuEntry.Attributes.Remove("onclick");
+                    ServicesLinkedMenuEntry.Attributes.Remove("BreadscrumbDisplayName");
+                    ServicesLinkedMenuEntry.Attributes.Remove("TopicContentHtml");
+                    ServicesLinkedMenuEntry.Attributes.Add("href", "#!");
+                    ServicesLinkedMenuEntry.Attributes.Add("Parent", "Web Services");
+                    ServicesLinkedMenuEntry.Attributes.Add("IsParentActive", "false");
+                    ServicesLinkedMenuEntry.Attributes.Add("onclick", "OnClickHandler(this)");
+                    ServicesLinkedMenuEntry.Attributes.Add("BreadscrumbDisplayName", menuEntryOrdered.Key);
+                    ServicesLinkedMenuEntry.Attributes.Add("TopicContentHtml", "" + ModuleSettings.WebHost
+                                                                                + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
+                                                                                + @"\" + Common.Constants.WebSolutionStructure.Folders.Html
+                                                                                + @"\" + menuEntryOrdered.Value + " #ID4RBSection");
+                    ServicesLinkedMenuEntry.InnerHtml = menuEntryOrdered.Key;
+                    ServicesLinkedMenuEntry.Attributes.Add("onmouseover", "OnHoverHandle('#" + menuEntryOrdered.Key + "');");
+                    ServicesLinkedMenuEntry.Attributes.Add("onmouseout", "OnLeaveHandler('#" + menuEntryOrdered.Key + "');");
+                    ServicesLinkedMenuEntry.Attributes.Add("id", menuEntryOrdered.Key);
+                    ServicesDivForMenuEntryTocLevel1.InnerHtml += ServicesLinkedMenuEntry.OuterHtml;
+                }
+
+                divHelperTocNav.addChildrenNode(ServicesDivForMenuEntryTocLevel1);
             }
 
-            var ServicesMenuEntryOrdered = ServicesMenuEntry.OrderBy(x => x.Key);
+            OtherResourcesRootMenuEntry.Name = "a";
+            OtherResourcesRootMenuEntry.Attributes.Add("style", "color: black;");
+            OtherResourcesRootMenuEntry.InnerHtml = "Other Resources";
+            OtherResourcesDivForMenuEntryTocLevel0.InnerHtml = OtherResourcesRootMenuEntry.OuterHtml;
+            divHelperTocNav.addChildrenNode(OtherResourcesDivForMenuEntryTocLevel0);
 
-            ServicesLinkedMenuEntry.Name = "a";
-            ServicesLinkedMenuEntry.Attributes.Add("style", "color: black;");
-            
+            OtherResourcesLinkedMenuEntry.Name = "a";
+            OtherResourcesLinkedMenuEntry.Attributes.Add("style", "color: black;");
+            OtherResourcesLinkedMenuEntry.Attributes.Add("onmouseover", "OnHoverHandle('#OtherResources');");
+            OtherResourcesLinkedMenuEntry.Attributes.Add("onmouseout", "OnLeaveHandler('#OtherResources');");
 
-            foreach (var menuEntryOrdered in ServicesMenuEntryOrdered)
+            OtherResourcesLinkedMenuEntry.Attributes.Add("id", "OtherResources");
+            OtherResourcesLinkedMenuEntry.Attributes.Add("href", ModuleSettings.WebHost + @"\" + ModuleSettings.OtherResourcesFolder);
+            OtherResourcesLinkedMenuEntry.Attributes.Add("target", "_blank");
+            OtherResourcesLinkedMenuEntry.InnerHtml = "Browse to xsd and wsdl folder";
+            OtherResourcesDivForMenuEntryTocLevel1.InnerHtml = OtherResourcesLinkedMenuEntry.OuterHtml;
+            divHelperTocNav.addChildrenNode(OtherResourcesDivForMenuEntryTocLevel1);
+
+            if (ModuleSettings.ModuleAPIAvailable)
             {
-                ServicesLinkedMenuEntry.Attributes.Remove("onmouseover");
-                ServicesLinkedMenuEntry.Attributes.Remove("onmouseout");
-                ServicesLinkedMenuEntry.Attributes.Remove("id");
-                ServicesLinkedMenuEntry.Attributes.Remove("onclick");
-                ServicesLinkedMenuEntry.Attributes.Add("href", "#!");
-                ServicesLinkedMenuEntry.Attributes.Add("onclick", "loadTopicContentHtml('" + ModuleSettings.WebHost
-                                                                            + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
-                                                                            + @"\" + Common.Constants.WebSolutionStructure.Folders.Html
-                                                                            + @"\" + menuEntryOrdered.Value + "','#" + menuEntryOrdered.Key + "')");
-                ServicesLinkedMenuEntry.InnerHtml = menuEntryOrdered.Key;
-                ServicesLinkedMenuEntry.Attributes.Add("onmouseover", "OnHoverHandle('#" + menuEntryOrdered.Key + "');");
-                ServicesLinkedMenuEntry.Attributes.Add("onmouseout", "OnLeaveHandler('#" + menuEntryOrdered.Key + "');");
-                ServicesLinkedMenuEntry.Attributes.Add("id", menuEntryOrdered.Key );
-                ServicesDivForMenuEntryTocLevel1.InnerHtml += ServicesLinkedMenuEntry.OuterHtml;
+                foreach (string service in apiContentList)
+                {
+                    if (!string.IsNullOrEmpty(service))
+                    {
+                        apiMenuEntry.Add(service.Split('>')[1].Split('<')[0], @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
+                    }
+                }
+
+                var apiMenuEntryOrdered = apiMenuEntry.OrderBy(x => x.Key);
+
+                OtherResourcesAPILinkedMenuEntry.Name = "a";
+                OtherResourcesAPILinkedMenuEntry.Attributes.Add("style", "color: black;");
+                OtherResourcesAPILinkedMenuEntry.Attributes.Add("onmouseover", "OnHoverHandle('#moduleAPI');");
+                OtherResourcesAPILinkedMenuEntry.Attributes.Add("onmouseout", "OnLeaveHandler('#moduleAPI');");
+                OtherResourcesAPILinkedMenuEntry.Attributes.Add("id", "moduleAPI");
+                OtherResourcesAPILinkedMenuEntry.Attributes.Add("href", "#!");
+                OtherResourcesAPILinkedMenuEntry.Attributes.Add("Parent", "Other Resources");
+                OtherResourcesAPILinkedMenuEntry.Attributes.Add("IsParentActive", "false");
+                OtherResourcesAPILinkedMenuEntry.Attributes.Add("onclick", "OnClickHandler(this)");
+                OtherResourcesAPILinkedMenuEntry.Attributes.Add("BreadscrumbDisplayName", apiMenuEntryOrdered.FirstOrDefault().Key + " API");
+
+                OtherResourcesAPILinkedMenuEntry.Attributes.Add("TopicContentHtml", "" + ModuleSettings.WebHost
+                                                                       + @"\" + ModuleSettings.ModuleAPITargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
+                                                                       + @"\" + Common.Constants.WebSolutionStructure.Folders.Html
+                                                                       + @"\" + apiMenuEntryOrdered.FirstOrDefault().Value + " #ID5RBSection");
+
+                OtherResourcesAPILinkedMenuEntry.InnerHtml = apiMenuEntryOrdered.FirstOrDefault().Key + " API";
+                OtherResourcesDivForApiMenuEntryTocLevel1.InnerHtml = OtherResourcesAPILinkedMenuEntry.OuterHtml;
+                divHelperTocNav.addChildrenNode(OtherResourcesDivForApiMenuEntryTocLevel1);
             }
 
-            divHelperTocNav.addChildrenNode(ServicesDivForMenuEntryTocLevel1);
-
-                                                                                                                                                                                            /*****************
-                                                                                                                                                                                             * end services
-                                                                                                                                                                                             *****************/
-
-            this.UpdatePageHeader(htmlDocument._loadedDocument);
-            this.UpdatePageFooter(htmlDocument._loadedDocument);
             this.UpdatePageBodyAttrib(htmlDocument._loadedDocument);
+
             htmlDocument.Save();
         }
 
@@ -499,7 +627,6 @@ namespace Controller
 
         public void fillDataTypeColumn(HtmlDocument htmlDoc)
         {
-            //update with data type value
             HtmlDocument innerHtmlDoc = new HtmlDocument();
             TableHelper tableHelper = new TableHelper(htmlDoc, "propertyList");
             List<string> files = tableHelper.readColumnValues(1);
@@ -604,7 +731,6 @@ namespace Controller
 
             if (divNodes != null && divNodes.Count > 0)
             {
-
                 foreach (var n in r)
                 {
                     divNodes.FirstOrDefault().ChildNodes.Add(n);
@@ -714,20 +840,16 @@ namespace Controller
             var htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = page;
             htmlDocument.Load();
-
             var tableToHtmlBlock = CreateOnclickAttribute(htmlDocument);
 
-            //rewriting this file because save fails when i set the .Text property
             using (StreamWriter sw = File.CreateText(Path.GetDirectoryName(htmlDocument._documentPath) + @"\" + "HtmlBlock_" + Path.GetFileName(htmlDocument._documentPath)))
             {
                 sw.WriteLine(tableToHtmlBlock);
                 sw.Flush(); 
             }
 
-            //update links to use the entry point function in custom jquery code
             htmlDocument.Load();
         }
-
 
         public string CreateTablePageHtmlBlock(DocumentHelper htmlDocument)
         {
@@ -741,17 +863,14 @@ namespace Controller
             var htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = page;
             htmlDocument.Load();
-
             var tableToHtmlBlock = CreateTablePageHtmlBlock(htmlDocument);
 
-            //rewriting this file because save fails when i set the .Text property
             using (StreamWriter sw = File.CreateText(Path.GetDirectoryName(htmlDocument._documentPath) + @"\" + Path.GetFileName(htmlDocument._documentPath)))
             {
                 sw.WriteLine(tableToHtmlBlock);
                 sw.Flush();
             }
 
-            //update links to use the entry point function in custom jquery code
             htmlDocument.Load();
         }
 
@@ -774,54 +893,82 @@ namespace Controller
                 j = (webFolderTarget + @"html\" + @file.Remove(0, 9).Split('>')[0]).Length;
                 innerHtmlDoc.Load((webFolderTarget + @"\html\" + @file.Remove(0, 9).Split('>')[0]).Substring(0, j));
                 DivHelper divHelper = new DivHelper(innerHtmlDoc, DivHelper.SearchFilter.Id, "ID1RBSection");
-                string linkfilelevel2 = divHelper.GetChildNodeOuterHtml("a");
+                DataListHelper dlhlp = new DataListHelper(innerHtmlDoc);
+                var formatedList = dlhlp.formatDescriptionList("ID1RBSection");
+                string linkfilelevel2 = string.Empty;
+                nodeIndex++;
+                HtmlNode hrefNewNode = new HtmlNode(HtmlNodeType.Element, doc, nodeIndex);
 
-                if (linkfilelevel2 != string.Empty)
-                {
-                    j = (webFolderTarget + @"html\" + linkfilelevel2.Remove(0, 9).Split('>')[0]).Length;
-                    innerHtmlDocLvl2.Load((webFolderTarget + @"\html\" + linkfilelevel2.Remove(0, 9).Split('>')[0]).Substring(0, j));
-                    tblHelperlevl2 = new TableHelper(innerHtmlDocLvl2, "propertyList");
-
-                    if (tblHelperlevl2._ts != null)
-                    {
-                        List<string> linkColumns = tblHelperlevl2.readColumnValues(1);
-
-                        string tempstr = string.Empty;
-                        foreach (string col in linkColumns)
+                if (formatedList != null) {
+                    var arefTag = formatedList.Where(e => e.Name == "a");
+                    if (arefTag != null && arefTag.Count()>0) {
+                        var attributesHrefColl = arefTag.FirstOrDefault().Attributes.Where(i => i.Name == "href");
+                        if (attributesHrefColl != null && attributesHrefColl.Count()>0)
                         {
-                            nodeIndex++;
-                            myNode = new HtmlNode(HtmlNodeType.Element, doc, nodeIndex);
-                            myNode.Name = "p";
-                            myNode.InnerHtml = col;
-                            if (myNode.InnerText == "Where")
-                            {
-                                tempstr = myNode.InnerHtml;
-                                break;
-                            }
-                            nodeIndex++;
-                            myNode = null;
-                        }
-
-                        string linkfilelvl3 = tempstr;
-
-                        if (linkfilelvl3 != string.Empty)
-                        {
-                            j = (webFolderTarget + @"html\" + linkfilelvl3.Remove(0, 9).Split('>')[0]).Length;
-                            innerHtmlDocLvl3.Load((webFolderTarget + @"\html\" + linkfilelvl3.Remove(0, 9).Split('>')[0]).Substring(0, j));
-                            divHelper = new DivHelper(innerHtmlDocLvl3, DivHelper.SearchFilter.Id, "ID1RBSection");
-                            string linkfilelvl4 = divHelper.GetChildValueByTag("a", ModuleSettings.WebHost, ModuleSettings.WebHostPhysicalPath, ModuleSettings.WebTargetPath);
-                            tableHelper.SetCellDisplayValue(2, x, linkfilelvl4);
-                        }
-                        else
-                        {
-                            tableHelper.SetCellDisplayValue(2, x, "This query receives no parameters");
+                            linkfilelevel2 = attributesHrefColl.FirstOrDefault().Value;
+                            hrefNewNode.InnerHtml = arefTag.FirstOrDefault().InnerHtml;
                         }
                     }
                 }
-                else
+
+                if (linkfilelevel2.Contains("Query"))
                 {
-                    tableHelper.SetCellDisplayValue(2, x, "This query receives no parameters");
+                    if (linkfilelevel2 != string.Empty)
+                    {
+                        innerHtmlDocLvl2.Load((webFolderTarget + @"\html\" + linkfilelevel2));
+                        tblHelperlevl2 = new TableHelper(innerHtmlDocLvl2, "propertyList");
+
+                        if (tblHelperlevl2._ts != null)
+                        {
+                            string tempstr = string.Empty;
+                            string linkfilelvl3 = string.Empty;
+                            linkfilelevel2 = divHelper.GetChildNodeOuterHtml("a");
+                            List<string> linkColumns = tblHelperlevl2.readColumnValues(1);
+                            foreach (string col in linkColumns)
+                            {
+                                nodeIndex++;
+                                myNode = new HtmlNode(HtmlNodeType.Element, doc, nodeIndex);
+                                myNode.Name = "p";
+                                myNode.InnerHtml = col;
+                                if (myNode.InnerText == "Where")
+                                {
+                                    tempstr = myNode.InnerHtml;
+                                    break;
+                                }
+                            }
+                            myNode = null;
+
+                            linkfilelvl3 = tempstr;
+
+                            if (linkfilelvl3 != string.Empty)
+                            {
+                                j = (webFolderTarget + @"html\" + linkfilelvl3.Remove(0, 9).Split('>')[0]).Length;
+                                innerHtmlDocLvl3.Load((webFolderTarget + @"\html\" + linkfilelvl3.Remove(0, 9).Split('>')[0]).Substring(0, j));
+                                divHelper = new DivHelper(innerHtmlDocLvl3, DivHelper.SearchFilter.Id, "ID1RBSection");
+                                string linkfilelvl4 = divHelper.GetChildValueByTag("a", ModuleSettings.WebHost, ModuleSettings.WebHostPhysicalPath, ExecutionContext.getTargetPath());
+                                tableHelper.SetCellDisplayValue(2, x, linkfilelvl4);
+                            }
+                            else
+                            {
+                                tableHelper.SetCellDisplayValue(2, x, "This query receives no parameters");
+                            }
+                            
+
+                        }
+                    }
+                    else
+                    {
+                        tableHelper.SetCellDisplayValue(2, x, "This query receives no parameters");
+                    }
                 }
+                else {
+                    //request object
+                    hrefNewNode.Name = "a";
+                    hrefNewNode.Attributes.Add("href", "#");
+                    hrefNewNode.Attributes.Add("onClick", "window.open('" + ModuleSettings.WebHost + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty) + @"\" + Common.Constants.WebSolutionStructure.Folders.Html + @"\" + linkfilelevel2 + "', 'MyWindow','width=800,height=450,toolbar=no,menubar=no,status=no,resizable=yes,scrollbars=yes'); return false;");
+                    tableHelper.SetCellDisplayValue(2, x, hrefNewNode.OuterHtml);
+                }
+
                 x++;
             }
 
@@ -832,13 +979,28 @@ namespace Controller
                 innerHtmlDoc.Load((webFolderTarget + @"\html\" + @file.Remove(0, 9).Split('>')[0]).Substring(0, j));
                 DivHelper divHelper = new DivHelper(innerHtmlDoc, DivHelper.SearchFilter.Id, "ID1RBSection");
                 string linkfilelevel2 = divHelper.GetChildNodeOuterHtml("a");
-                if (linkfilelevel2 != string.Empty)
+                var link = divHelper.GetChildValueByTag("a", ModuleSettings.WebHost, ModuleSettings.WebHostPhysicalPath, ExecutionContext.getTargetPath());
+
+                if (link.Contains("Query"))
                 {
-                    j = (webFolderTarget + @"html\" + linkfilelevel2.Remove(0, 9).Split('>')[0]).Length;
-                    innerHtmlDocLvl2.Load((webFolderTarget + @"\html\" + linkfilelevel2.Remove(0, 9).Split('>')[0]).Substring(0, j));
-                    divHelper = new DivHelper(innerHtmlDocLvl2, DivHelper.SearchFilter.Id, "ID0RBSection");
-                    tableHelper.SetCellDisplayValue(3, x, divHelper.GetChildValueByTag("a",ModuleSettings.WebHost, ModuleSettings.WebHostPhysicalPath, ModuleSettings.WebTargetPath));
+                    if (linkfilelevel2 != string.Empty)
+                    {
+                        j = (webFolderTarget + @"html\" + linkfilelevel2.Remove(0, 9).Split('>')[0]).Length;
+                        innerHtmlDocLvl2.Load((webFolderTarget + @"\html\" + linkfilelevel2.Remove(0, 9).Split('>')[0]).Substring(0, j));
+                        divHelper = new DivHelper(innerHtmlDocLvl2, DivHelper.SearchFilter.Id, "ID0RBSection");
+                        tableHelper.SetCellDisplayValue(3, x, divHelper.GetChildValueByTag("a", ModuleSettings.WebHost, ModuleSettings.WebHostPhysicalPath, ExecutionContext.getTargetPath()));
+                    }
+                    else
+                    {
+                        tableHelper.SetCellDisplayValue(3, x, "Return type unknow");
+                    }
                 }
+                else {
+                    tableHelper.SetCellDisplayValue(3, x, "List<" +  link + ">");
+                }
+
+                
+
                 x++;
             }
         }
@@ -879,84 +1041,6 @@ namespace Controller
             return false;
         }
         
-        private void OperationListPage(DocumentHelper doc)
-        {
-            TableHelper tableHelper = new TableHelper(doc._loadedDocument, string.Empty, "titleTable");
-            TableHelper MathodListTableHelper = new TableHelper(doc._loadedDocument, "methodList");
-            List<string> list = MathodListTableHelper.readColumnValues(0);
-            tableHelper.SetCellDisplayValue("titleColumn", string.Empty);
-            tableHelper.removeColumnByClass(0);
-            SpanHelper spanHelper = new SpanHelper(doc._loadedDocument, "collapsibleRegionTitle", 1);
-
-            spanHelper.RemoveNodeByClass();
-            doc.Save();
-
-            doc.Load();
-            spanHelper.RemoveNodeByClass();
-            doc.Save();
-
-            doc.Load();
-            DivHelper SummaryDiv = new DivHelper(doc._loadedDocument, DivHelper.SearchFilter.Class, "summary");
-            SummaryDiv.Remove();
-
-            var n = doc._loadedDocument.DocumentNode.SelectNodes("//img[@id='ID3RBToggle']");
-            n.FirstOrDefault().Remove();
-            spanHelper.RemoveNode();
-            doc.Save();
-
-            doc.Load();
-            spanHelper = new SpanHelper(doc._loadedDocument, "collapsibleRegionTitle_2");
-            spanHelper.RemoveNodeById();
-            doc.Save();
-
-            doc.Load();
-            spanHelper = new SpanHelper(doc._loadedDocument, "collapsibleRegionTitle_3");
-            spanHelper.RemoveNodeById();
-            doc.Save();
-
-            spanHelper = new SpanHelper(doc._loadedDocument, "introStyle", 1);
-            spanHelper.RemoveNode();
-
-            spanHelper = new SpanHelper(doc._loadedDocument, "nolink", 1);
-            spanHelper.RemoveNode("all");
-
-            spanHelper = new SpanHelper(doc._loadedDocument, "selflink", 1);
-            spanHelper.RemoveNode("all");
-
-            DivHelper divHelper = new DivHelper(doc._loadedDocument, DivHelper.SearchFilter.Id, "ID0RBSection");
-            divHelper.Remove();
-
-            divHelper = new DivHelper(doc._loadedDocument, DivHelper.SearchFilter.Id, "seeAlsoSection");
-            divHelper.Remove();
-
-            divHelper = new DivHelper(doc._loadedDocument, DivHelper.SearchFilter.Id, "ID4RBSection");
-            divHelper.Remove();
-
-            divHelper = new DivHelper(doc._loadedDocument, DivHelper.SearchFilter.Id, "ID5RBSection");
-            divHelper.Remove();
-
-            divHelper = new DivHelper(doc._loadedDocument, DivHelper.SearchFilter.Class, "codeSnippetContainer");
-            divHelper.Remove();
-
-            divHelper = new DivHelper(doc._loadedDocument, DivHelper.SearchFilter.Id, "ID2RBSection");
-            divHelper.Remove();
-
-            TextHelper txtHelper = new TextHelper(doc._loadedDocument, "Namespace:");
-            txtHelper.removeTagByText("TopicContent");
-
-            txtHelper = new TextHelper(doc._loadedDocument, "Assembly:");
-            txtHelper.removeTagByText("TopicContent");
-
-            if (ModuleSettings.ModuleName != string.Empty)
-            {
-                txtHelper = new TextHelper(doc._loadedDocument, "HP.HSP.UA3.");
-                txtHelper.removeTagByTextStartWith("TopicContent");
-
-                txtHelper = new TextHelper(doc._loadedDocument, "HP.HSP.UA3.");
-                txtHelper.removeTagByTextStartWith("TopicContent");
-            }
-        }
-
         public void UpdatePageHeader(HtmlDocument doc)
         {
             DivHelper divHelper = new DivHelper(doc, DivHelper.SearchFilter.Id, Common.Constants.HtmlInventory.PageHeaderDiv);
@@ -992,11 +1076,6 @@ namespace Controller
         {
             TableHelper tableHelper;
 
-            //refactored method
-            //***********************
-            // common section starts
-            //***********************
-
             // calling div helper to remove copy - Syntax section
             DivHelper divHelper = new DivHelper(doc, DivHelper.SearchFilter.Class, Common.Constants.HtmlInventory.PageSyntaxisClassDiv);
             divHelper.Remove();
@@ -1013,10 +1092,6 @@ namespace Controller
             divHelper = new DivHelper(doc, DivHelper.SearchFilter.Id, "ID5RBSection");
             divHelper.Remove();
 
-            //remarks at the bottom
-            divHelper = new DivHelper(doc, DivHelper.SearchFilter.Id, "ID4RBSection");
-            divHelper.Remove();
-
             // calling div helper to remove empty section 
             divHelper = new DivHelper(doc, DivHelper.SearchFilter.Id, "ID2RBSection");
             divHelper.Remove();
@@ -1025,8 +1100,8 @@ namespace Controller
             divHelper = new DivHelper(doc, DivHelper.SearchFilter.Id, "seeAlsoSection");
             divHelper.Remove();
 
-            // calling div helper to remove see also header
-            divHelper = new DivHelper(doc, DivHelper.SearchFilter.Id, "ID3RBSection");
+            TableHelper tblConstructor = new TableHelper(doc, "constructorList");
+            tblConstructor.Remove();
 
             divHelper = new DivHelper(doc, DivHelper.SearchFilter.Id, "ID2RBSection");
             divHelper.Remove();
@@ -1059,6 +1134,9 @@ namespace Controller
             tableHelper.removeRow(0);
 
             txtHelper = new TextHelper(doc, "Top");
+            txtHelper.removeTagByText("ID4RBSection");
+
+            txtHelper = new TextHelper(doc, "Top");
             txtHelper.removeTagByText("ID3RBSection");
 
             if (ModuleSettings.ModuleName != string.Empty)
@@ -1067,6 +1145,18 @@ namespace Controller
                 txtHelper.removeTagByTextStartWith("TopicContent");
 
                 txtHelper = new TextHelper(doc, "HP.HSP.UA3.");
+                txtHelper.removeTagByTextStartWith("TopicContent");
+
+                txtHelper = new TextHelper(doc, "HPE.HSP.UA3");
+                txtHelper.removeTagByTextStartWith("TopicContent");
+
+                txtHelper = new TextHelper(doc, "HPE.HSP.UA3");
+                txtHelper.removeTagByTextStartWith("TopicContent");
+
+                txtHelper = new TextHelper(doc, "HPP.HSP.UA3");
+                txtHelper.removeTagByTextStartWith("TopicContent");
+
+                txtHelper = new TextHelper(doc, "HPP.HSP.UA3");
                 txtHelper.removeTagByTextStartWith("TopicContent");
             }
 
@@ -1081,8 +1171,6 @@ namespace Controller
 
             tableHelper = new TableHelper(doc, string.Empty, "titleTable");
             tableHelper.SetCellDisplayValue("titleColumn", tableHelper.readTdDisplayValueByClass("titleColumn").Replace("Class", string.Empty));
-
-            //end by page type
         }
 
         public void removeText(string originalDocument)
@@ -1147,7 +1235,6 @@ namespace Controller
 
             htmlDocument.Save();
 
-            /*getting the services and descriptions*/
             htmlDocument.Load();
             tableHelper = new TableHelper(htmlDocument._loadedDocument, "methodList");
             TableHelper tableTitleHelper = new TableHelper(htmlDocument._loadedDocument, "", "titleTable");
@@ -1167,6 +1254,9 @@ namespace Controller
             tableHelper.addTableColumn("Event returned");
             tableHelper.renameColumnHeader(1, "Operation Name");
             tableHelper.removeColumn(0);
+            //DivHelper RemarksDivHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID4RBSection");
+            TextHelper txtHepler = new TextHelper(htmlDocument._loadedDocument, "[Missing");
+            txtHepler.removeTagByTextStartWith("ID4RBSection");
             htmlDocument.Save();
         }
 
@@ -1216,6 +1306,7 @@ namespace Controller
 
             //removing original table
             tableHelper.Remove();
+
             htmlDocument.Save();
             htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = contentPage;
@@ -1252,7 +1343,6 @@ namespace Controller
             node.Attributes.Add("rel", "stylesheet");
             divNodes.ChildNodes.Add(node);
             #endregion
-
 
             //adding script blocks to body tag
             var headNode = htmlDocument._loadedDocument.DocumentNode.SelectNodes("//head").FirstOrDefault();
@@ -1298,7 +1388,6 @@ namespace Controller
 
             divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "collapsibleAreaRegion");
             divHelper.RemoveCollectionMatch();
-
             htmlDocument.Save();
         }
 
@@ -1312,6 +1401,10 @@ namespace Controller
             tableHelper.addTableColumn("Query Collection Result");
             tableHelper.renameColumnHeader(1, "Operation Name");
             tableHelper.removeColumn(0);
+            //DivHelper RemarksDivHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID4RBSection");
+            //RemarksDivHelper.Remove();
+            TextHelper txtHepler = new TextHelper(htmlDocument._loadedDocument, "[Missing");
+            txtHepler.removeTagByTextStartWith("ID4RBSection");
             htmlDocument.Save();
         }
 
@@ -1434,7 +1527,7 @@ namespace Controller
                 }
             }
 
-            headerDiv.InnerHtml = "<h1>" + title + "</h1>";// + comments;
+            headerDiv.InnerHtml = "<h1>" + title + "</h1>";
             topicContentDiv._ContextDiv.ChildNodes.Insert(0,headerDiv);
         
             DivHelper BreadScrumContentDiv = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "collapsibleAreaRegion");
@@ -1442,7 +1535,7 @@ namespace Controller
             BreadScrumContentDiv._ContextDiv.Attributes.Remove("class");
             BreadScrumContentDiv._ContextDiv.Attributes.Add("class", "mid-Header");
 
-            DivHelper PropTableContentDiv = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID3RBSection");
+            DivHelper PropTableContentDiv = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID4RBSection");/////////ID3RBSection
             PropTableContentDiv._ContextDiv.Attributes.Add("class", "Content");
 
             //adding references to css and js
@@ -1471,7 +1564,6 @@ namespace Controller
             headNode.ChildNodes.Add(MetaNode);
 
             //removing body attrib
-           
             bodyNode.Attributes.Remove("onload");
             var inputNodes = bodyNode.ChildNodes.Where(x => x.Name == "input");
             if (inputNodes != null)
@@ -1561,7 +1653,6 @@ namespace Controller
             node.Attributes.Add("type", "text/javascript");
             node.Attributes.Add("src", "ComplexEventNavigator.js");
             headNode.ChildNodes.Add(node);
-
             divHelper.addChildrenNode(breadCrumbsList);
 
             htmlDocument.Save();

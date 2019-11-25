@@ -1,0 +1,17 @@
+<DocModuleSettingModel>
+  <ModuleName>MemMgt</ModuleName>
+  <StorageDrive>J:</StorageDrive>
+  <ModuleNameDisplay>Member Management Information </ModuleNameDisplay>
+  <webSourcePath>J:\UA3\SandCastleCustomizationTool\ShbDoc\MemberMgtInfo\help</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\MemberMgmt\\19.1.64.4\\HelpWeb</webTargetPath>
+  <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
+  <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>
+  <WebHostPhysicalPath>J:\www\servicespecs\Modules</WebHostPhysicalPath>
+  <ServiceListPages>
+	<ListPage>N_HP_HSP_UA3_MemberManagement_BAS_MemberInformation.htm</ListPage>
+  </ServiceListPages>
+  <MainContractContent>G_HP_HSP_UA3_MemberManagement_BAS_MemberInformation_Contracts.htm</MainContractContent>
+  <ContractListPages>
+	<ListPage>N_HP_HSP_UA3_MemberManagement_BAS_MemberInformation_Contracts_Events.htm</ListPage>
+  </ContractListPages>
+</DocModuleSettingModel>

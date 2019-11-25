@@ -3,8 +3,10 @@
   <ModuleNameDisplay>Administration - Broadcast Message</ModuleNameDisplay>
   <StorageDrive>J:</StorageDrive>
   <webSourcePath>J:\UA3\SandCastleCustomizationTool\ShbDoc\Administration\help</webSourcePath>
-  <webTargetPath>J:\www\servicespecs\Modules\FinancialManagement\19.1.64.2\helpweb</webTargetPath>
- <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
+  <webTargetPath>J:\www\servicespecs\Modules\Administration\\19.1.64.4\\helpweb</webTargetPath>
+  <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
+  <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>
+  <WebHostPhysicalPath>J:\www\servicespecs\Modules</WebHostPhysicalPath>
   <ServiceListPages>
 	<ListPage>N_HP_HSP_UA3_Administration_BAS_BroadcastMessage.htm</ListPage>
   </ServiceListPages>

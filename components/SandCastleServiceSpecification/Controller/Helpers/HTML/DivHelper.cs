@@ -7,6 +7,7 @@ namespace Controller.Helpers.HTML
     {
         private HtmlDocument _htmlDoc;   //TODO: item time may be similar across helpers
         public HtmlNode _ContextDiv; //TODO: item time may be similar across helpers
+        public HtmlNodeCollection _ContextDivCollection;
         private bool _ContextDivLoaded = false; //TODO: item time may be similar across helpers
         private int _htmlNodeIndex;
         private short _selectedFilter;
@@ -55,6 +56,7 @@ namespace Controller.Helpers.HTML
             if (DivNodes != null && DivNodes.Count() > 0)
             {
                 this._ContextDiv = DivNodes.FirstOrDefault();
+                this._ContextDivCollection = DivNodes;
                 this._ContextDivLoaded = true;
             }
             else
@@ -62,21 +64,6 @@ namespace Controller.Helpers.HTML
                 _ContextDivLoaded = false;
             }
         }
-
-
-        public string GetChildNodeInnerHtml(string ChildNodeName)
-        {
-            if (this._ContextDivLoaded)
-            {
-                if (this._ContextDiv.HasChildNodes)
-                {
-                    return this._ContextDiv.ChildNodes.Where(x => x.Name == "span" & x.HasClass("nolink")).FirstOrDefault().ToString();
-                }
-            }
-
-            return string.Empty;
-        }
-
 
         //<summary>
         //Load
@@ -92,7 +79,7 @@ namespace Controller.Helpers.HTML
 
                 if (ContextDivChild != null & ContextDivChild.Count() > 0)
                 {
-                    ContextDivChild.FirstOrDefault().Attributes.Add("onClick", "window.open('" + WebHost + @"\" + WebTargetPath.Replace(WebHostPhysicalPath, string.Empty) + @"\" + Common.Constants.WebSolutionStructure.Folders.Html  + @"\"+  ContextDivChild.FirstOrDefault().Attributes["href"].Value + "', 'MyWindow','width=800,height=850,toolbar=no,menubar=no,status=no,resizable=yes,scrollbars=yes'); return false;");
+                    ContextDivChild.FirstOrDefault().Attributes.Add("onClick", "window.open('" + WebHost + @"\" + WebTargetPath.Replace(WebHostPhysicalPath, string.Empty) + @"\" + Common.Constants.WebSolutionStructure.Folders.Html  + @"\"+  ContextDivChild.FirstOrDefault().Attributes["href"].Value + "', 'MyWindow','width=800,height=450,toolbar=no,menubar=no,status=no,resizable=yes,scrollbars=yes'); return false;");
                     ContextDivChild.FirstOrDefault().Attributes["href"].Value = "#";
                     return ContextDivChild.FirstOrDefault().OuterHtml;
                 }
@@ -186,6 +173,18 @@ namespace Controller.Helpers.HTML
                 this._ContextDiv.Remove();
             }
         }
+ 
+        public void RemoveCollectionMatch()
+        {
+            if (this._ContextDivLoaded)
+            {
+                foreach (var div in this._ContextDivCollection)
+                {
+                   div.Remove();
+                }
+                
+            }
+        }
 
         //<summary>
         //removeAllChildNodes
@@ -211,29 +210,6 @@ namespace Controller.Helpers.HTML
             if (this._ContextDivLoaded)
             {
                 this._ContextDiv.ChildNodes.Add(htmlNode);
-            }
-        }
-
-        //<summary>
-        //addNewLine
-        //Add a number of BR nodes to insert a new line and separate adjacent items
-        ///<returns>Void</returns>
-        ///<parms>byte count</parms>
-        //</summary>
-        public void addLines(byte count = 1)
-        {
-            if (this._ContextDivLoaded)
-            {
-                HtmlNode LineNode;
-
-                while (count > 0)
-                {
-                    LineNode = new HtmlNode(HtmlNodeType.Element, _htmlDoc, _htmlNodeIndex++);
-                    LineNode.Name = "br";
-                    this._ContextDiv.ChildNodes.Add(LineNode);
-                    LineNode = null;
-                    count--;
-                }
             }
         }
 

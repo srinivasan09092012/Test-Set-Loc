@@ -8,7 +8,7 @@ namespace Controller.Helpers.HTML
     public class TableHelper
     {
         private HtmlDocument _htmlDoc;
-        public HtmlNode _ContextTable; //TODO: item time may be similar across helpers
+        public HtmlNode _ContextTable;
         public TableStructure _ts;
         private string _tableId = string.Empty;
         private string _tableStyleClass = string.Empty;
@@ -218,11 +218,6 @@ namespace Controller.Helpers.HTML
             return true;
 
         }
-
-        ////public bool removeRow()
-        ////{
-        ////    return true;
-        ////}
    
         public void SetCellDisplayValue(int columnIndex, int rowIndex, string label)
         {

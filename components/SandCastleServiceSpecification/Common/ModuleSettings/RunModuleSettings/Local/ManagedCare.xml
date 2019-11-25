@@ -1,0 +1,24 @@
+<DocModuleSettingModel>
+  <ModuleName>MC</ModuleName>
+  <ModuleNameDisplay>Managed Care</ModuleNameDisplay>
+  <StorageDrive>C:</StorageDrive>
+  <webSourcePath>C:\Users\egardea\Downloads\ManagedCare\Output</webSourcePath>
+  <webTargetPath>C:\inetpub\wwwroot\LocalSandCastle\ManagedCare\\APISeviceSpecification</webTargetPath>
+  <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
+  <WebHost>http://localhost:8080/</WebHost>
+  <WebHostPhysicalPath>C:\inetpub\wwwroot\LocalSandCastle</WebHostPhysicalPath>
+  <ServiceListPages>
+	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Capitation.htm</ListPage>
+	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare.htm</ListPage>
+	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Member.htm</ListPage>
+	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_EDI.htm</ListPage>
+	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_MCE.htm</ListPage>
+	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_MCO.htm</ListPage>
+	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_MCOPortal.htm</ListPage>
+	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Network.htm</ListPage>	
+  </ServiceListPages>
+  <MainContractContent>G_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Contracts.htm</MainContractContent>
+  <ContractListPages>
+	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Contracts_Events.htm</ListPage>
+  </ContractListPages>
+</DocModuleSettingModel> 

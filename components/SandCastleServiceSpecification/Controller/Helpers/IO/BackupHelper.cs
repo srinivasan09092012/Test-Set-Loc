@@ -22,7 +22,7 @@ namespace Controller.IO
 
         public void CopyTargetSite()
         {
-            //TODO: failure on this method should stop the entire process for current setting file
+            
             this.CopyFolderAndContent(webSourceDirInfo, webTargetDirInfo.FullName);
             backupLoggerEngine.writeEntry(string.Format("Checkpoint 1 : Default SandCastle Sources \n\nFrom: {0} \nTo: {1}", webSourceDirInfo.FullName, webTargetDirInfo.FullName), LogginSeetings.LevelType.InformationApplication,1043,1);
 

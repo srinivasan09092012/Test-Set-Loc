@@ -13,6 +13,11 @@ namespace Common.ModuleSettings
     {
     }
 
+    [XmlRoot(ElementName = "ModuleAPIPages")]
+    public class ModuleAPIPages : ContentPage
+    {
+    }
+
     [XmlRoot(ElementName = "DocModuleSettingModel")]
     public class ModuleSettingModel
     {
@@ -49,5 +54,25 @@ namespace Common.ModuleSettings
         [XmlElement(ElementName = "ContractListPages")]
         public ContractListPages ContractListPages;
 
+        [XmlElement(ElementName = "OtherResourcesFolder")]
+        public string OtherResourcesFolder;
+
+        [XmlElement(ElementName = "ModuleHelpContentAvailable")]
+        public bool ModuleHelpContentAvailable;
+
+        [XmlElement(ElementName = "ModuleAPIAvailable")]
+        public bool ModuleAPIAvailable;
+
+        [XmlElement(ElementName = "ModuleAPISourcePath")]
+        public string ModuleAPISourcePath;
+
+        [XmlElement(ElementName = "ModuleAPITargetPath")]
+        public string ModuleAPITargetPath;
+
+        [XmlElement(ElementName = "ModuleAPIPages")]
+        public ModuleAPIPages ModuleAPIPages;
+
+        [XmlElement(ElementName = "MainAPIContent")]
+        public string MainAPIContent;
     }
 }

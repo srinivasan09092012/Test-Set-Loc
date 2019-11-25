@@ -3,10 +3,10 @@
    <ModuleNameDisplay>TPL Policy</ModuleNameDisplay>
   <StorageDrive>J:</StorageDrive>
   <webSourcePath>J:\UA3\SandCastleCustomizationTool\ShbDoc\TPLPolicy\help</webSourcePath>
-  <webTargetPath>J:\www\servicespecs\Modules\TPL\19.1.64.2\HelpWeb</webTargetPath>
+  <webTargetPath>J:\www\servicespecs\Modules\TPL\\19.1.64.4\\HelpWeb</webTargetPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
-  <WebHost>http://localhost:8080/</WebHost>
-  <WebHostPhysicalPath>J:\www\servicespecs\Modules\</WebHostPhysicalPath>
+  <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>
+  <WebHostPhysicalPath>J:\www\servicespecs\Modules</WebHostPhysicalPath>
   <ServiceListPages>
 	<ListPage>N_HP_HSP_UA3_TPLPolicy_BAS_Policy.htm</ListPage>
   </ServiceListPages>

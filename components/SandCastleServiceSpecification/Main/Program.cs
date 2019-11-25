@@ -46,7 +46,6 @@ namespace SandCastleSvcSpec
                     
                 try
                 {
-                    DoBackup(module);
                     ExecuteSandCastleEnhancement(module);// improve for parallel programing
                     loggerDetailEngine.writeEntry(string.Format("Web style documentation created successfuly for \n\nModule: {0} \n\nIn the local path: {1} \n\nDocumentation now available online. ", module.ModuleNameDisplay, module.WebTargetPath), LogginSeetings.LevelType.InformationApplication, 2181, 2);
                 }
@@ -215,10 +214,10 @@ namespace SandCastleSvcSpec
             return parsedSettingFile == null ? false : ((Convert.ToBoolean(ConfigurationManager.AppSettings["fullValidationOnSettingFile"])? fullValidation(parsedSettingFile):noValidation(parsedSettingFile)));
         }
 
-        static void DoBackup(ModuleSettingModel moduleSetting)
+        static void DoBackup(string WebSourcePath, string WebTargetPath)
         {
             #region backupsite
-            BackupHelper bkp = new BackupHelper(moduleSetting.WebSourcePath, moduleSetting.WebTargetPath, loggerDetailEngine);
+            BackupHelper bkp = new BackupHelper(WebSourcePath, WebTargetPath, loggerDetailEngine);
             bkp.CopyTargetSite();
             #endregion
         }
@@ -231,25 +230,30 @@ namespace SandCastleSvcSpec
             List<string> Pages = new List<string>();
             Pages.AddRange(Directory.EnumerateFiles(moduleSetting.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Html, searchFilePattern + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension, SearchOption.TopDirectoryOnly));
             Dictionary<string, string> artifactsToPrint = new Dictionary<string, string>();
-            //html code generating
             foreach (string page in Pages)
             {
                 var htmlDocument = DocumentHelper.GetInstance();
                 htmlDocument._documentPath = page;
                 htmlDocument.Load();
 
+                DivHelper RemarksDivHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID4RBSection");
                 DivHelper SummaryDivHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "summary");
                 TableHelper tableHelper = new TableHelper(htmlDocument._loadedDocument, string.Empty, "titleTable");
+     
+                //RemarksDivHelper.Remove();
 
-                if (SummaryDivHelper.Exists())
+                if (SummaryDivHelper.GetInnerHtml().Contains("[Missing "))
                 {
+                    SummaryDivHelper.Remove();
+
                     if (!artifactsToPrint.ContainsKey(tableHelper.GetCellDisplayValue("titleColumn")))
                     {
                         artifactsToPrint.Add(tableHelper.GetCellDisplayValue("titleColumn"), SummaryDivHelper.GetInnerHtml());
                         SummaryDivHelper.Remove();
-                        htmlDocument.Save();
                     }
                 }
+
+                htmlDocument.Save();
 
                 factoryHtml.cleanInputOutputPages(page);
                 factoryHtml.preparePropertiesTable(page);
@@ -257,6 +261,8 @@ namespace SandCastleSvcSpec
                 if (page.Contains("_Events_"))
                 {
                     factoryHtml.addBreadCrumbsControl(page);
+                    factoryHtml.removeEmptyTags(moduleSetting.WebTargetPath, Common.Constants.WebSolutionStructure.Folders.Html + Path.GetFileName(page), "div");
+                    factoryHtml.AddStickyLayout(page);
                     factoryHtml.CreateOnclickAttribute(htmlDocument);
                     factoryHtml.CreateHtmlBlocks(page);
                 }
@@ -274,11 +280,10 @@ namespace SandCastleSvcSpec
         static void ExecuteSandCastleEnhancement(ModuleSettingModel moduleSetting)
         {
             #region variable declarations and initializations
-            HtmlFactory factoryHtml = new HtmlFactory(loggerDetailEngine);
-            factoryHtml.ModuleSettings = moduleSetting;
-            List<string> serviceUrls = new List<string>();
+            HtmlFactory factoryHtml;
+            ExecutionContext ctx;
             List<string> ContentPages = new List<string>();
-
+            List<string> apiContentPages = new List<string>();
             MissingTagsHelper missingScanHelper = new MissingTagsHelper(loggerDetailEngine);
             Dictionary<string, string> commandsToPrint = new Dictionary<string, string>();
             Dictionary<string, string> EventsToPrint = new Dictionary<string, string>();
@@ -287,134 +292,179 @@ namespace SandCastleSvcSpec
             Dictionary<string, string> DtosToPrint = new Dictionary<string, string>();
             #endregion
 
-            Console.WriteLine("");
-            loggerDetailEngine.writeEntry("Generating web style documentation", LogginSeetings.LevelType.InformationApplication, 9000,9);
+            #region ModuleHelpContentAvailable
+            if (moduleSetting.ModuleHelpContentAvailable)
+            {
+                ctx = new ExecutionContext(ExecutionContext.ExecutionStages.HelpContent, moduleSetting);
+                factoryHtml = new HtmlFactory(loggerDetailEngine, ctx);
+                factoryHtml.ModuleSettings = moduleSetting;
+                DoBackup(moduleSetting.WebSourcePath, moduleSetting.WebTargetPath);
 
-            Console.WriteLine("");
-            Console.WriteLine("Preparing Services Landing Page");
-            #region prepare Landing Page
-            factoryHtml.prepareIndexFile(Common.Constants.WebSolutionStructure.Files.IndexPage, moduleSetting.MainPageContent);
+                Console.WriteLine("");
+                loggerDetailEngine.writeEntry("Generating help content documentation", LogginSeetings.LevelType.InformationApplication, 9000, 9);
+
+                Console.WriteLine("");
+                Console.WriteLine("Preparing Services Landing Page");
+                #region prepare Landing Page
+                factoryHtml.prepareIndexFile(Common.Constants.WebSolutionStructure.Files.IndexPage, moduleSetting.MainPageContent);
+                #endregion
+
+                Console.WriteLine("");
+                Console.WriteLine("Preparing operations tables and adding pagination controls");
+                #region Preparing Service Operation List Pages
+                foreach (var ServicePage in moduleSetting.ServiceListPages.ListPage)
+                {
+                    factoryHtml.UpdateOperationsLists(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+                    factoryHtml.UpdateInputOutput(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+                    factoryHtml.removeHiperLinks(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+                    factoryHtml.AddPaginationControl(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+                }
+                #endregion
+
+                Console.WriteLine("");
+                Console.WriteLine("Preparing Command and Event Pages:");
+                #region Preparing Command and Event Pages
+                Console.WriteLine("");
+                Console.WriteLine("-- Commands Pages");
+                commandsToPrint = PreparePages("T_*_Contracts_Commands_*", moduleSetting);
+                Console.WriteLine("-- Done....Exporting to Excel");
+                Console.WriteLine("");
+                missingScanHelper.GetCommandsSource(commandsToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
+
+                Console.WriteLine("");
+                Console.WriteLine("-- Events Pages");
+                EventsToPrint = PreparePages("T_*_Contracts_Events_*", moduleSetting);
+                Console.WriteLine("-- Done....Exporting to Excel");
+                Console.WriteLine("");
+                missingScanHelper.GetEventsSource(EventsToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
+
+                Console.WriteLine("");
+                Console.WriteLine("-- Query Pages");
+                QueryToPrint = PreparePages("T_*_Contracts_Queries_Parameters_*", moduleSetting);
+                Console.WriteLine("-- Done....Exporting to Excel");
+                Console.WriteLine("");
+                missingScanHelper.GetQuerySource(QueryToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
+
+                Console.WriteLine("");
+                Console.WriteLine("-- Data Models Pages");
+                ModelsToPrint = PreparePages("T_*_Contracts_Domain_*", moduleSetting);
+                Console.WriteLine("-- Done....Exporting to Excel");
+                Console.WriteLine("");
+                missingScanHelper.GetModelsSource(ModelsToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
+
+                Console.WriteLine("-- View DTO Pages");
+                DtosToPrint = PreparePages("T_*_Contracts_ViewDto_*", moduleSetting);
+                Console.WriteLine("-- Done Exporting to Excel");
+                missingScanHelper.GetDTOSource(DtosToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
+
+                Console.WriteLine("");
+                Console.WriteLine("-- Value Objects");
+                PreparePages("T_*_Contracts_ValueObjects_*", moduleSetting);
+
+                Console.WriteLine("");
+                Console.WriteLine("-- Shared Objects");
+                PreparePages("T_*_Contracts_Shared_*", moduleSetting);
+
+                DtosToPrint = null;
+                EventsToPrint = null;
+                ModelsToPrint = null;
+                QueryToPrint = null;
+                missingScanHelper = null;
+
+                Console.WriteLine(".... Done");
+                Console.WriteLine("");
+                #endregion
+
+                Console.WriteLine("");
+                Console.WriteLine("Removing empty elements and tags");
+                #region removing empty elements and tags
+                foreach (var ServicePage in moduleSetting.ServiceListPages.ListPage)
+                {
+                    factoryHtml.removeTextFromServices(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+                    factoryHtml.removeText(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+                    factoryHtml.RemoveEmptyParams(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+                }
+
+                Console.WriteLine(".... Done");
+                Console.WriteLine("");
+                #endregion
+
+                Console.WriteLine("");
+                Console.WriteLine("Preparing Event View Landing Page");
+                #region Adding Event View
+                factoryHtml.prepareEventPage();
+                #endregion
+
+                Console.WriteLine("");
+                Console.WriteLine("Adding Pagination control to event page");
+                #region Adding Pagination control to service pages
+                factoryHtml.setPaginationControl(moduleSetting.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Html + moduleSetting.MainContractContent, "classList", "namespacesSection");
+                Console.WriteLine(".... Done");
+                Console.WriteLine("");
+                #endregion
+
+                #region creating htmlBlocks on service Pages
+
+
+                #endregion
+
+            }
             #endregion
-            
-            Console.WriteLine("");
-            Console.WriteLine("Updating Left Navigator for all the content"); 
+
+            #region routine for API
+            // claims management
+            // PaymentCapitalization
+            ctx = new ExecutionContext(ExecutionContext.ExecutionStages.APIContent, moduleSetting);
+            factoryHtml = new HtmlFactory(loggerDetailEngine, ctx);
+            factoryHtml.ModuleSettings = moduleSetting;
+
+            if (ctx.ModuleSetting.ModuleAPIAvailable)
+            {
+                DoBackup(ctx.getSourcePath(), ctx.getTargetPath());
+
+                Console.WriteLine("");
+                Console.WriteLine("Preparing operations tables and adding pagination controls");
+                #region Preparing Service Operation List Pages
+                foreach (var ServicePage in moduleSetting.ModuleAPIPages.ListPage)
+                {
+                    factoryHtml.UpdateOperationsLists(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+                    factoryHtml.UpdateInputOutput(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+                    factoryHtml.removeHiperLinks(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+                }
+
+
+                factoryHtml.setPaginationControl(ctx.getTargetPath() + Common.Constants.WebSolutionStructure.Folders.Html + moduleSetting.MainAPIContent, "methodList", "ID5RBSection");
+                #endregion
+
+                var strTmp = moduleSetting.WebTargetPath;
+                moduleSetting.WebTargetPath = moduleSetting.ModuleAPITargetPath;
+                PreparePages("T_HPE_HSP_UA3_*Request", moduleSetting);
+                PreparePages("T_HPE_HSP_UA3_*Response", moduleSetting);
+
+                PreparePages("T_HPP_HSP_UA3_*Request", moduleSetting);
+                PreparePages("T_HPP_HSP_UA3_*Response", moduleSetting);
+                moduleSetting.WebTargetPath = strTmp;
+            }
+            #endregion
+
             #region Updating Left Navigator 
-
+            Console.WriteLine("");
+            Console.WriteLine("Updating Left Navigator for all the content");
             foreach (var ServicePage in moduleSetting.ServiceListPages.ListPage)
             {
-                ContentPages.AddRange(factoryHtml.getServiceListFromPageContent(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage));
+                ContentPages.AddRange(factoryHtml.getServiceListFromPageContent(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage, moduleSetting.WebTargetPath));
             }
 
-            serviceUrls = factoryHtml.extractServiceUrl(ContentPages);// will be reused below
-
-            factoryHtml.UpdateLeftNavigator(moduleSetting.WebTargetPath + Constants.WebSolutionStructure.Folders.Html + moduleSetting.MainPageContent, ContentPages, moduleSetting.MainPageContent);
-
-            #endregion
-
-            Console.WriteLine("");
-            Console.WriteLine("Preparing operations tables and adding pagination controls");
-            #region Preparing Service Operation List Pages
-            foreach (var ServicePage in moduleSetting.ServiceListPages.ListPage)
+            foreach (var apiServicePage in moduleSetting.ModuleAPIPages.ListPage)
             {
-                factoryHtml.prepareServiceOperationList(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
-                factoryHtml.UpdateOperationsLists(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
-                factoryHtml.UpdateInputOutput(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
-                factoryHtml.removeHiperLinks(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
-                factoryHtml.AddPaginationControl(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
-            }
-            #endregion
-
-            Console.WriteLine("");
-            Console.WriteLine("Preparing Command and Event Pages:");
-            #region Preparing Command and Event Pages
-            Console.WriteLine("");
-            Console.WriteLine("-- Commands Pages");
-            commandsToPrint = PreparePages("T_*_Contracts_Commands_*", moduleSetting);
-            Console.WriteLine("-- Done....Exporting to Excel");
-            Console.WriteLine("");
-            missingScanHelper.GetCommandsSource(commandsToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
-
-            Console.WriteLine("");
-            Console.WriteLine("-- Events Pages");
-            EventsToPrint = PreparePages("T_*_Contracts_Events_*", moduleSetting);
-            Console.WriteLine("-- Done....Exporting to Excel");
-            Console.WriteLine("");
-            missingScanHelper.GetEventsSource(EventsToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
-
-            Console.WriteLine("");
-            Console.WriteLine("-- Query Pages");
-            QueryToPrint = PreparePages("T_*_Contracts_Queries_Parameters_*", moduleSetting);
-            Console.WriteLine("-- Done....Exporting to Excel");
-            Console.WriteLine("");
-            missingScanHelper.GetQuerySource(QueryToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
-
-            Console.WriteLine("");
-            Console.WriteLine("-- Data Models Pages");
-            ModelsToPrint = PreparePages("T_*_Contracts_Domain_*", moduleSetting);
-            Console.WriteLine("-- Done....Exporting to Excel");
-            Console.WriteLine("");
-            missingScanHelper.GetModelsSource(ModelsToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
-           
-            Console.WriteLine("-- View DTO Pages");
-            DtosToPrint = PreparePages("T_ * _Contracts_ViewDto_ * ", moduleSetting);
-            Console.WriteLine("-- Done Exporting to Excel");
-            missingScanHelper.GetDTOSource(DtosToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
-
-            Console.WriteLine("");
-            Console.WriteLine("-- Value Objects");
-            PreparePages("T_*_Contracts_ValueObjects_*", moduleSetting);
-
-            Console.WriteLine("");
-            Console.WriteLine("-- Value Objects");
-            PreparePages("T_*_Contracts_Shared_*", moduleSetting);
-
-            DtosToPrint = null;
-            EventsToPrint = null;
-            ModelsToPrint = null;
-            QueryToPrint = null;
-            missingScanHelper = null;
-
-            Console.WriteLine(".... Done");
-            Console.WriteLine("");
-            #endregion
-
-            Console.WriteLine("");
-            Console.WriteLine("Removing empty elements and tags");
-            #region removing empty elements and tags
-            foreach (var ServicePage in moduleSetting.ServiceListPages.ListPage)
-            {
-                factoryHtml.removeTextFromServices(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
-                factoryHtml.removeText(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
-                factoryHtml.RemoveEmptyParams(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
-            }
-            Console.WriteLine(".... Done");
-            Console.WriteLine("");
-            #endregion
-
-            Console.WriteLine("");
-            Console.WriteLine("Preparing Event View Landing Page");
-            #region Adding Event View
-            factoryHtml.prepareEventPage();
-            #endregion
-
-            Console.WriteLine("");
-            Console.WriteLine("Adding Pagination control to event page");
-            #region Adding Pagination control to service pages
-            factoryHtml.setPaginationControl(moduleSetting.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Html + moduleSetting.MainContractContent, "classList", "namespacesSection");
-            Console.WriteLine(".... Done");
-            Console.WriteLine("");
-            #endregion
-
-            #region creating htmlBlocks on service Pages
-
-            foreach (string url in serviceUrls)
-            {
-                factoryHtml.CreatePageHtmlBlocks(url);
+                apiContentPages.AddRange(factoryHtml.getServiceListFromPageContent(Common.Constants.WebSolutionStructure.Folders.Html + apiServicePage, moduleSetting.ModuleAPITargetPath));
             }
 
-            factoryHtml.CreatePageHtmlBlocks(moduleSetting.WebTargetPath +
-                                                Common.Constants.WebSolutionStructure.Folders.Html +
-                                                moduleSetting.MainContractContent);
+            var targetPath = string.IsNullOrEmpty(moduleSetting.WebTargetPath) ? moduleSetting.ModuleAPITargetPath : moduleSetting.WebTargetPath;
+            var mainContent = string.IsNullOrEmpty(moduleSetting.MainPageContent) ? moduleSetting.MainAPIContent : moduleSetting.MainPageContent;
+
+
+            factoryHtml.UpdateContentLeftNavigator(targetPath + Constants.WebSolutionStructure.Folders.Html + mainContent, ContentPages, mainContent, apiContentPages);
             #endregion
         }
     }

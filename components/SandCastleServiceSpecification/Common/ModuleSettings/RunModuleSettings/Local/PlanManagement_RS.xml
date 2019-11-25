@@ -1,0 +1,17 @@
+<DocModuleSettingModel>
+  <ModuleName>PLRI</ModuleName>
+  <ModuleNameDisplay>Plan Management - Related Information</ModuleNameDisplay>
+  <StorageDrive>C:</StorageDrive>
+  <webSourcePath>C:\Users\egardea\Downloads\PlanMgmt\RateSettings\Output</webSourcePath>
+  <webTargetPath>C:\inetpub\wwwroot\LocalSandCastle\PlanMgmt\\RS\\APISeviceSpecification</webTargetPath>
+  <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
+  <WebHost>http://localhost:8080/</WebHost>
+  <WebHostPhysicalPath>C:\inetpub\wwwroot\LocalSandCastle</WebHostPhysicalPath>
+  <ServiceListPages>
+	<ListPage>N_HP_HSP_UA3_PlanManagement_BAS_RateSetting.htm</ListPage>
+  </ServiceListPages>
+  <MainContractContent>G_HP_HSP_UA3_PlanManagement_BAS_RateSetting_Contracts.htm</MainContractContent>
+  <ContractListPages>
+	<ListPage>N_HP_HSP_UA3_PlanManagement_BAS_RateSetting_Contracts_Events.htm</ListPage>
+  </ContractListPages>
+</DocModuleSettingModel>
