@@ -161,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Configs\RefactorStyleCop.MSBuild-Version.xml" />
+    <Content Include="Configs\RefactorSupportForMoq.xml" />
     <Content Include="Configs\RefactorTenantID.xml" />
     <Content Include="Configs\RefactorTenantIntegrationConfigs.xml">
       <SubType>Designer</SubType>
