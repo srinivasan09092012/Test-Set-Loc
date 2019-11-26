@@ -70,5 +70,88 @@ namespace WindowsFormsApp1
                 textToCompOrDecomp.Text = "Can't AES Encrypt this string!!" + Environment.NewLine + ex.Message;
             }
         }
+
+        private void clear_Click(object sender, EventArgs e)
+        {
+            textToCompOrDecomp.Text = "";
+        }
+
+        private void Copy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(textToCompOrDecomp.Text);
+        }
+
+        private void RawConverter_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                byte[] bytes = ParseHex(textToCompOrDecomp.Text.Replace("-", ""));
+                Guid guid = new Guid(bytes);
+                textToCompOrDecomp.Text = guid.ToString("N").ToUpperInvariant();
+            }
+            catch (Exception ex)
+            {
+                textToCompOrDecomp.Text = "Can't RAW convert this string!!" + Environment.NewLine + ex.Message;
+            }
+        }
+
+        private void GUIDConverter_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Guid guid = new Guid(textToCompOrDecomp.Text);
+                textToCompOrDecomp.Text = Guid.Parse(BitConverter.ToString(guid.ToByteArray()).Replace("-", "")).ToString().ToLowerInvariant();                
+            }
+            catch (Exception ex)
+            {
+                textToCompOrDecomp.Text = "Can't convert to a GUID!!" + Environment.NewLine + ex.Message;
+            }
+        }
+
+        static byte[] ParseHex(string text)
+        {
+            byte[] ret = new byte[text.Length / 2];
+            for (int i = 0; i < ret.Length; i++)
+            {
+                ret[i] = Convert.ToByte(text.Substring(i * 2, 2), 16);
+            }
+            return ret;
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Decode_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                byte[] data = System.Convert.FromBase64String(textToCompOrDecomp.Text);
+                textToCompOrDecomp.Text = System.Text.ASCIIEncoding.ASCII.GetString(data);
+            }
+            catch (Exception ex)
+            {
+                textToCompOrDecomp.Text = "Can't BASE 64 decode this string" + Environment.NewLine + ex.Message;
+            }
+        }
+
+        private void Encode_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(textToCompOrDecomp.Text);
+                textToCompOrDecomp.Text = System.Convert.ToBase64String(plainTextBytes);
+            }
+            catch (Exception ex)
+            {
+                textToCompOrDecomp.Text = "Can't BASE 64 decode this string" + Environment.NewLine + ex.Message;
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
