@@ -53,6 +53,7 @@
             // textToCompOrDecomp
             // 
             this.textToCompOrDecomp.Location = new System.Drawing.Point(38, 49);
+            this.textToCompOrDecomp.MaxLength = 1500000;
             this.textToCompOrDecomp.Multiline = true;
             this.textToCompOrDecomp.Name = "textToCompOrDecomp";
             this.textToCompOrDecomp.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
