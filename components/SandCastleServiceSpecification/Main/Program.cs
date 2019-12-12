@@ -24,8 +24,40 @@ namespace SandCastleSvcSpec
         
         private delegate bool validateSettingFile(ModuleSettingModel parsedSettingFile);
 
+        // Declare the generic class.
+        public class GenericList<X>
+        {
+            public void Add(X input) { }
+        }
+
+        private class ExampleClass { }
+
         static void Main(string[] args)
         {
+
+            // Declare a list of type int.
+            GenericList<int> list1 = new GenericList<int>();
+            list1.Add(1);
+
+            // Declare a list of type string.
+            GenericList<string> list2 = new GenericList<string>();
+            list2.Add("");
+
+            // Declare a list of type ExampleClass.
+            GenericList<ExampleClass> list3 = new GenericList<ExampleClass>();
+            list3.Add(new ExampleClass());
+
+            Func<int, int> square = x => x * x;
+            Console.WriteLine(square(5));
+
+            /*
+             *******
+             **************
+             **************
+             *******
+             */
+
+
             Console.WriteLine("************************************");
             Console.WriteLine("   SandCastle Customization Tool");
             Console.WriteLine("************************************");
@@ -365,6 +397,8 @@ namespace SandCastleSvcSpec
                 Console.WriteLine("-- Shared Objects");
                 PreparePages("T_*_Contracts_Shared_*", moduleSetting);
 
+            
+
                 DtosToPrint = null;
                 EventsToPrint = null;
                 ModelsToPrint = null;
@@ -443,6 +477,23 @@ namespace SandCastleSvcSpec
 
                 PreparePages("T_HPP_HSP_UA3_*Request", moduleSetting);
                 PreparePages("T_HPP_HSP_UA3_*Response", moduleSetting);
+
+                Console.WriteLine("");
+                Console.WriteLine("Preparing Command and Event Pages vARIANT 2:");
+
+                Console.WriteLine("");
+                Console.WriteLine("-- Commands Pages");
+                commandsToPrint = PreparePages("T_*_Commands_*", moduleSetting);
+
+                Console.WriteLine("-- Events Pages");
+                EventsToPrint = PreparePages("T_*_Events_*", moduleSetting);
+
+                Console.WriteLine("-- Queries");
+                EventsToPrint = PreparePages("T_*_Queries_*", moduleSetting);
+
+                Console.WriteLine("-- Queries");
+                EventsToPrint = PreparePages("T_*_Domain_*", moduleSetting);
+
                 moduleSetting.WebTargetPath = strTmp;
             }
             #endregion

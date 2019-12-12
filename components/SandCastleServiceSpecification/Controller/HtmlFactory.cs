@@ -280,6 +280,12 @@ namespace Controller
             HtmlNode OtherResourcesDivForMenuEntryTocLevel0;
             HtmlNode OtherResourcesDivForMenuEntryTocLevel1;
 
+            HtmlNode apiDivForMenuEntryTocLevel0;
+            HtmlNode apiDivForMenuEntryTocLevel1;
+
+            HtmlNode apiLinkedMenuEntry;
+            HtmlNode apiRootMenuEntry;
+
             HtmlNode OtherResourcesDivForApiMenuEntryTocLevel1;
 
             HtmlNode ServicesLinkedMenuEntry;
@@ -318,6 +324,9 @@ namespace Controller
             ServicesRootMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
 
             nodeIndex++;
+            apiRootMenuEntry = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+
+            nodeIndex++;
             EventsDivForMenuEntryTocLevel0 = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
             EventsDivForMenuEntryTocLevel0.Name = "div";
             EventsDivForMenuEntryTocLevel0.AddClass("toclevel1");
@@ -340,6 +349,13 @@ namespace Controller
             ServicesDivForMenuEntryTocLevel1.Name = "div";
             ServicesDivForMenuEntryTocLevel1.AddClass("toclevel3");
             ServicesDivForMenuEntryTocLevel1.Attributes.Add("data-toclevel", "1");
+
+            
+            nodeIndex++;
+            apiDivForMenuEntryTocLevel1 = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            apiDivForMenuEntryTocLevel1.Name = "div";
+            apiDivForMenuEntryTocLevel1.AddClass("toclevel3");
+            apiDivForMenuEntryTocLevel1.Attributes.Add("data-toclevel", "1");
 
             nodeIndex++;
             OtherResourcesDivForMenuEntryTocLevel0 = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
@@ -370,6 +386,12 @@ namespace Controller
             ModuleHomeDivForMenuEntryTocLevel1.Name = "div";
             ModuleHomeDivForMenuEntryTocLevel1.AddClass("toclevel1");
             ModuleHomeDivForMenuEntryTocLevel1.Attributes.Add("data-toclevel", "1");
+
+            nodeIndex++;
+            apiDivForMenuEntryTocLevel0 = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
+            apiDivForMenuEntryTocLevel0.Name = "div";
+            apiDivForMenuEntryTocLevel0.AddClass("toclevel2");
+            apiDivForMenuEntryTocLevel0.Attributes.Add("data-toclevel", "0");
 
             //Clear the default menu provided by default sandcastle engine.
             divHelperTocNav.SetInnerHtml(string.Empty);
@@ -539,6 +561,46 @@ namespace Controller
                 divHelperTocNav.addChildrenNode(ServicesDivForMenuEntryTocLevel1);
             }
 
+            if (ModuleSettings.ModuleAPIAvailable)
+            {
+                foreach (string service in apiContentList)
+                {
+                    if (!string.IsNullOrEmpty(service))
+                    {
+                        apiMenuEntry.Add(service.Split('>')[1].Split('<')[0], @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
+                    }
+                }
+
+                var apiMenuEntryOrdered = apiMenuEntry.OrderBy(x => x.Key);
+
+                apiRootMenuEntry.Name = "a";
+                apiRootMenuEntry.Attributes.Add("style", "color: black;");
+                apiRootMenuEntry.InnerHtml = "Module Specific API";
+                apiDivForMenuEntryTocLevel0.InnerHtml = apiRootMenuEntry.OuterHtml;
+                divHelperTocNav.addChildrenNode(apiDivForMenuEntryTocLevel0);
+
+                OtherResourcesAPILinkedMenuEntry.Name = "a";
+                OtherResourcesAPILinkedMenuEntry.Attributes.Add("style", "color: black;");
+                OtherResourcesAPILinkedMenuEntry.Attributes.Add("onmouseover", "OnHoverHandle('#moduleAPI');");
+                OtherResourcesAPILinkedMenuEntry.Attributes.Add("onmouseout", "OnLeaveHandler('#moduleAPI');");
+                OtherResourcesAPILinkedMenuEntry.Attributes.Add("id", "moduleAPI");
+                OtherResourcesAPILinkedMenuEntry.Attributes.Add("href", "#!");
+                OtherResourcesAPILinkedMenuEntry.Attributes.Add("Parent", "Module Specific API");
+                OtherResourcesAPILinkedMenuEntry.Attributes.Add("IsParentActive", "false");
+                OtherResourcesAPILinkedMenuEntry.Attributes.Add("onclick", "OnClickHandler(this)");
+                OtherResourcesAPILinkedMenuEntry.Attributes.Add("BreadscrumbDisplayName", apiMenuEntryOrdered.FirstOrDefault().Key + " API");
+
+                OtherResourcesAPILinkedMenuEntry.Attributes.Add("TopicContentHtml", "" + ModuleSettings.WebHost
+                                                                       + @"\" + ModuleSettings.ModuleAPITargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
+                                                                       + @"\" + Common.Constants.WebSolutionStructure.Folders.Html
+                                                                       + @"\" + apiMenuEntryOrdered.FirstOrDefault().Value + " #ID5RBSection");
+
+                OtherResourcesAPILinkedMenuEntry.InnerHtml = apiMenuEntryOrdered.FirstOrDefault().Key + " API";
+                OtherResourcesDivForApiMenuEntryTocLevel1.InnerHtml = OtherResourcesAPILinkedMenuEntry.OuterHtml;
+                divHelperTocNav.addChildrenNode(OtherResourcesDivForApiMenuEntryTocLevel1);
+            }
+
+            #region otherResources
             OtherResourcesRootMenuEntry.Name = "a";
             OtherResourcesRootMenuEntry.Attributes.Add("style", "color: black;");
             OtherResourcesRootMenuEntry.InnerHtml = "Other Resources";
@@ -556,39 +618,7 @@ namespace Controller
             OtherResourcesLinkedMenuEntry.InnerHtml = "Browse to xsd and wsdl folder";
             OtherResourcesDivForMenuEntryTocLevel1.InnerHtml = OtherResourcesLinkedMenuEntry.OuterHtml;
             divHelperTocNav.addChildrenNode(OtherResourcesDivForMenuEntryTocLevel1);
-
-            if (ModuleSettings.ModuleAPIAvailable)
-            {
-                foreach (string service in apiContentList)
-                {
-                    if (!string.IsNullOrEmpty(service))
-                    {
-                        apiMenuEntry.Add(service.Split('>')[1].Split('<')[0], @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
-                    }
-                }
-
-                var apiMenuEntryOrdered = apiMenuEntry.OrderBy(x => x.Key);
-
-                OtherResourcesAPILinkedMenuEntry.Name = "a";
-                OtherResourcesAPILinkedMenuEntry.Attributes.Add("style", "color: black;");
-                OtherResourcesAPILinkedMenuEntry.Attributes.Add("onmouseover", "OnHoverHandle('#moduleAPI');");
-                OtherResourcesAPILinkedMenuEntry.Attributes.Add("onmouseout", "OnLeaveHandler('#moduleAPI');");
-                OtherResourcesAPILinkedMenuEntry.Attributes.Add("id", "moduleAPI");
-                OtherResourcesAPILinkedMenuEntry.Attributes.Add("href", "#!");
-                OtherResourcesAPILinkedMenuEntry.Attributes.Add("Parent", "Other Resources");
-                OtherResourcesAPILinkedMenuEntry.Attributes.Add("IsParentActive", "false");
-                OtherResourcesAPILinkedMenuEntry.Attributes.Add("onclick", "OnClickHandler(this)");
-                OtherResourcesAPILinkedMenuEntry.Attributes.Add("BreadscrumbDisplayName", apiMenuEntryOrdered.FirstOrDefault().Key + " API");
-
-                OtherResourcesAPILinkedMenuEntry.Attributes.Add("TopicContentHtml", "" + ModuleSettings.WebHost
-                                                                       + @"\" + ModuleSettings.ModuleAPITargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
-                                                                       + @"\" + Common.Constants.WebSolutionStructure.Folders.Html
-                                                                       + @"\" + apiMenuEntryOrdered.FirstOrDefault().Value + " #ID5RBSection");
-
-                OtherResourcesAPILinkedMenuEntry.InnerHtml = apiMenuEntryOrdered.FirstOrDefault().Key + " API";
-                OtherResourcesDivForApiMenuEntryTocLevel1.InnerHtml = OtherResourcesAPILinkedMenuEntry.OuterHtml;
-                divHelperTocNav.addChildrenNode(OtherResourcesDivForApiMenuEntryTocLevel1);
-            }
+            #endregion
 
             this.UpdatePageBodyAttrib(htmlDocument._loadedDocument);
 
@@ -1401,8 +1431,6 @@ namespace Controller
             tableHelper.addTableColumn("Query Collection Result");
             tableHelper.renameColumnHeader(1, "Operation Name");
             tableHelper.removeColumn(0);
-            //DivHelper RemarksDivHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID4RBSection");
-            //RemarksDivHelper.Remove();
             TextHelper txtHepler = new TextHelper(htmlDocument._loadedDocument, "[Missing");
             txtHepler.removeTagByTextStartWith("ID4RBSection");
             htmlDocument.Save();

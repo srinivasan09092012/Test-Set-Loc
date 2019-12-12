@@ -5,10 +5,10 @@ namespace Controller.Helpers.HTML
 {
     public class DivHelper
     {
-        private HtmlDocument _htmlDoc;   //TODO: item time may be similar across helpers
-        public HtmlNode _ContextDiv; //TODO: item time may be similar across helpers
+        private HtmlDocument _htmlDoc;   
+        public HtmlNode _ContextDiv; 
         public HtmlNodeCollection _ContextDivCollection;
-        private bool _ContextDivLoaded = false; //TODO: item time may be similar across helpers
+        private bool _ContextDivLoaded = false;
         private int _htmlNodeIndex;
         private short _selectedFilter;
         public enum SearchFilter : short
