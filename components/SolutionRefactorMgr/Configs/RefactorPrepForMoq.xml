@@ -2,11 +2,11 @@
 <RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" targetTFS="Azure">
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs>
+    <ModuleConfig name="Core" branch="Dev" types="UX" />
     <!--
     <ModuleConfig name="Administration" branch="Dev" types="All" />
     <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
     <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
-    <ModuleConfig name="Core" branch="Dev" types="All" />
     <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
     <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
     <ModuleConfig name="DrugRebatePortal" branch="Dev" types="All" />
@@ -38,7 +38,7 @@
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
-    <FileType ext="Tests.cs" />
+    <FileType ext=".cs" />
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
@@ -49,11 +49,12 @@
     <ReplacementString qualifier="using Rhino.Mocks;" from="Rhino.Mocks;" to="Moq;" />
 
     <!-- Methods -->
-    <ReplacementString qualifier="MockRepository.GenerateMock" from="MockRepository.GenerateMock" to="new Moq.Mock" />
+    <ReplacementString qualifier="MockRepository.GenerateMock" from="MockRepository.GenerateMock" to="new Mock" />
     <ReplacementString qualifier="MockRepository.GenerateStrictMock" from="(" to="(MockBehavior.Strict" />
-    <ReplacementString qualifier="MockRepository.GenerateStrictMock" from="MockRepository.GenerateStrictMock" to="new Moq.Mock" />
+    <ReplacementString qualifier="MockRepository.GenerateStrictMock" from="MockRepository.GenerateStrictMock" to="new Mock" />
+    <ReplacementString qualifier="MockRepository.GenerateStub" from="MockRepository.GenerateMock" to="new Mock" />
     <ReplacementString qualifier="MockRepository.GeneratePartialMock" from=";" to=" { CallBase = true };" />
-    <ReplacementString qualifier="MockRepository.GeneratePartialMock" from="MockRepository.GeneratePartialMock" to="new Moq.Mock" />
+    <ReplacementString qualifier="MockRepository.GeneratePartialMock" from="MockRepository.GeneratePartialMock" to="new Mock" />
     <ReplacementString qualifier=".Expect" from=";" to=".Verifiable();" />
     <ReplacementString qualifier=".Expect" from=".Expect" to=".Setup" />
     <ReplacementString qualifier=".Stub" from=".Stub" to=".Setup" />
@@ -66,10 +67,10 @@
     <ReplacementString qualifier="VerifyAllExpectations" from="VerifyAllExpectations" to="VerifyAll" />
     <ReplacementString qualifier=".IgnoreArguments()" from=";" to="; //MOQ: Removed 'IgnoreArguments()', Replace parameters with It.IsAny&lt;[type]&gt;()" />
     <ReplacementString qualifier=".IgnoreArguments()" from=".IgnoreArguments()" to="" />
-
+    <ReplacementString qualifier=".Repeat.Any()" from=".Repeat.Any()" to="" />
   </ReplacementStrings>
   <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
-  <TfsWorkspace>IN5CG6434WHL_test</TfsWorkspace>
-  <TFSUserName>AzureTFSUserName</TFSUserName>
+  <TfsWorkspace>Workspace</TfsWorkspace>
+  <TFSUserName>user</TFSUserName>
   <TFSPassword>Password</TFSPassword>
 </RefactorConfig>

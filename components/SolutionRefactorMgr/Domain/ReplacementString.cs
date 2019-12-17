@@ -33,10 +33,10 @@ namespace SolutionRefactorMgr.Domain
             {
                 throw new ArgumentNullException("Replacement string from text has not been specified.");
             }
-
             if (string.IsNullOrWhiteSpace(this.To))
             {
-                throw new ArgumentNullException("Replacement string to text has not been specified.");
+                ////It's ok to replace with an empty string.
+                ////throw new ArgumentNullException("Replacement string to text has not been specified.");
             }
         }
     }
