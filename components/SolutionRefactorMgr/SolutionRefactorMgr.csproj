@@ -120,6 +120,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="Configs\PackageUpgrades\DevF\Refactor_Package_Cleanup_Repoint_From_Deleted_dll.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\Refactor_Repoint_from_19_2_70_to_19_3_76.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\Refactor_Web_App_Config_DOTNET_Upgrade.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\UpdateNugetConfig.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\Refactor_Package_Cleanup_Repoint_From_Deleted_dll.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\Refactor_Repoint_from_19_2_70_to_19_3_76.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\Refactor_Web_App_Config_DOTNET_Upgrade.xml" />
     <Content Include="Configs\RefactorAppSettings.xml" />
     <Content Include="Configs\RefactorBASThumbprints.xml" />
     <Content Include="Configs\RefactorConfigPackagesFrom451to48.xml">
@@ -159,8 +166,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
-    <Folder Include="Configs\PackageUpgrades\DevF\" />
-    <Folder Include="Configs\PackageUpgrades\Dev\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Configs\RefactorStyleCop.MSBuild-Version.xml" />
