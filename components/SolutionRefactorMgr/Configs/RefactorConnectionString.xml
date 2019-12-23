@@ -53,6 +53,6 @@
   <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <!--NOTE: YOU MUST PUT YOUR WORKSPACE NAME IN HERE IF ITS NOT UA3-->
   <TfsWorkspace>BUSANELL1</TfsWorkspace>
-  <TFSUserName>AzureTFSUserName</TFSUserName>
-  <TFSPassword>Password</TFSPassword>
+  <TFSUserName>AzureDevOpsPATKeyName</TFSUserName>
+  <TFSPassword>AzureDevOpsPATKeyValue</TFSPassword>
 </RefactorConfig>

@@ -80,6 +80,6 @@
   </ReplacementStrings>
   <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace>UA3_AZURE</TfsWorkspace>
-  <TFSUserName>martinhache</TFSUserName>
-  <TFSPassword>IHateThis44!</TFSPassword>
+  <TFSUserName>AzureDevOpsPATKeyName</TFSUserName>
+  <TFSPassword>AzureDevOpsPATKeyValue</TFSPassword>
 </RefactorConfig>

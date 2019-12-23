@@ -70,7 +70,7 @@
     <ReplacementString qualifier=".Repeat.Any()" from=".Repeat.Any()" to="" />
   </ReplacementStrings>
   <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
-  <TfsWorkspace>Workspace</TfsWorkspace>
-  <TFSUserName>user</TFSUserName>
-  <TFSPassword>Password</TFSPassword>
+  <TfsWorkspace>IN5CG9214YC9</TfsWorkspace>
+  <TFSUserName>AzureDevOpsPATKeyName</TFSUserName>
+  <TFSPassword>AzureDevOpsPATKeyName</TFSPassword>
 </RefactorConfig>

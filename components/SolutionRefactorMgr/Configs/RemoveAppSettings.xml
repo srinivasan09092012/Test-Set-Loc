@@ -41,6 +41,6 @@
   <ReplacementStrings />
   <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace>BIBWOS1ISV_1</TfsWorkspace>
-  <TFSUserName>AzureTFSUserName</TFSUserName>
-  <TFSPassword>Password</TFSPassword>
+  <TFSUserName>AzureDevOpsPATKeyName</TFSUserName>
+  <TFSPassword>AzureDevOpsPATKeyValue</TFSPassword>
 </RefactorConfig>

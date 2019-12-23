@@ -84,6 +84,6 @@
   </ReplacementStrings>
   <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace>UA3</TfsWorkspace>
-  <TFSUserName></TFSUserName>
-  <TFSPassword></TFSPassword>
+  <TFSUserName>AzureDevOpsPATKeyName</TFSUserName>
+  <TFSPassword>AzureDevOpsPATKeyValue</TFSPassword>
 </RefactorConfig>

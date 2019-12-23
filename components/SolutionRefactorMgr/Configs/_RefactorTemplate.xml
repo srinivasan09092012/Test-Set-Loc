@@ -67,11 +67,11 @@ RefactorConfig - Base processing parameters:
   -->
   <TfsWorkspace></TfsWorkspace>
   <!--
-   TFSUserName - User name to connect to AzureDevOps. This can be an alternative credential name or Name of the PAT key. Value is mandatory.
+   TFSUserName - Security key to connect to AzureDevOps. This should be PAT key. Alternative credentials are depricated. Value is mandatory.
   -->
-  <TFSUserName>AzureTFSUserName</TFSUserName>
+  <TFSUserName>AzureDevOpsPATKeyName</TFSUserName>
   <!--
-   TFSPassword - Password to connect to AzureDevOps. This can be an alternative credential password or the PAT key. Value is mandatory.
+   TFSPassword - Security password to connect to AzureDevOps. TThis should be PAT key value. Alternative credentials are depricated. Value is mandatory.
   -->
-  <TFSPassword>Password</TFSPassword>  
+  <TFSPassword>AzureDevOpsPATKeyValue</TFSPassword>  
 </RefactorConfig>
