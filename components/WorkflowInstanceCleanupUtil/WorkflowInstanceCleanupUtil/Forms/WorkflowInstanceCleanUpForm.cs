@@ -73,7 +73,7 @@ namespace WorkflowInstanceCleanupUtil
                     string processName = this.GetProcessFullName(cmbWorkflowProcess.SelectedItem.ToString());
                     DateTime startDate = dtpStartDate.Value;
                     DateTime endDate = dtpEndDate.Value;
-                    this.WriteMessageToUI("Instance deletion started, Connecting to the server");
+                    this.WriteMessageToUI("Instance deletion started, Connecting to the server...");
 
                     using (IWorkItemCleanUpProcessor processor = this.InitializeK2Processor(environment))
                     {
@@ -165,6 +165,35 @@ namespace WorkflowInstanceCleanupUtil
         private K2EnvironmentModel GetEnvironmentConfiguration(string environmentName)
         {
             return new K2EnvironmentModel().GetEnvironmentConfiguration().Where(x => x.Environment == environmentName).FirstOrDefault();
+        }
+
+        private void BtnSearchWorkitems_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.IsFormValid())
+                {
+                    string environment = cmboxEnvironment.SelectedItem.ToString();
+                    string processName = this.GetProcessFullName(cmbWorkflowProcess.SelectedItem.ToString());
+                    DateTime startDate = dtpStartDate.Value;
+                    DateTime endDate = dtpEndDate.Value;
+                    this.WriteMessageToUI("Connecting to the server...");
+
+                    using (IWorkItemCleanUpProcessor processor = this.InitializeK2Processor(environment))
+                    {
+                        this.WriteMessageToUI("Connected to the server successfull");
+
+                        List<ProcessInfo> processes = processor.GetAllProcessInstanceIds(startDate, endDate, processName);
+                        int scannedInstances = processes.Count;
+                        this.WriteMessageToUI("Connected to the server successfull, Number of instance found: " + scannedInstances);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Error occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.WriteMessageToUI("Error occurred while connecting to server");
+            }
         }
     }
 }
