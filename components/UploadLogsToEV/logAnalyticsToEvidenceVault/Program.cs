@@ -61,6 +61,7 @@ namespace QuerySample
             List<QueryResults> queryResults = new List<QueryResults>();
             queryResults.Add(results);
             UploadEventLogs(tenantInfo, queryResults, -1, "System.Json");
+            UploadJumpServersSessionsLogs(tenantInfo);
         }
         
         public void UploadTenantSpecificEventLogsToEvidenceVault(HppTenants tenantInfo, int indexTenant)
@@ -97,7 +98,6 @@ namespace QuerySample
             UploadTenantSpecificSqlServerEventLogsToEvidenceVault(tenantInfo, indexTenant);
             UploadTenantSpecificRedisEventLogsToEvidenceVault(tenantInfo, indexTenant);
             UploadTenantSpecificIISHostToEvidenceVault(tenantInfo, indexTenant);
-            UploadJumpServersSessionsLogs(tenantInfo);
 
         }
         public void UploadJumpServersSessionsLogs(HppTenants tenantInfo)
