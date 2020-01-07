@@ -103,9 +103,9 @@ namespace QuerySample
         public void UploadJumpServersSessionsLogs(HppTenants tenantInfo)
         {
             List<QueryResults> queryResults = new List<QueryResults>();
-            string queryString = @"Event | where TimeGenerated > ago(24h) | | where Source contains ""session"" and EventID == ""21"" 
-                    | where  _ResourceId contains ""jump""
-                    | project TimeGenerated,Computer,RenderedDescription, EventID";
+            string queryString = @"Event | where TimeGenerated > ago(24h) | where Source contains ""session"" and EventID == ""21"" 
+                    | where  (_ResourceId contains ""jump"" or _ResourceId contains ""jmp"") and _ResourceId contains ""hpp_shr_rgp_common_0001""
+                    | project TimeGenerated,Source,Computer,""NA"",""DPP SaaS"",RenderedDescription";
 
             Console.WriteLine("\n{0}", queryString);
             Console.WriteLine("\nQuerying...Wait!");
