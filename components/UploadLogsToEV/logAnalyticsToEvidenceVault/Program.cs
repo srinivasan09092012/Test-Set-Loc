@@ -97,7 +97,21 @@ namespace QuerySample
             UploadTenantSpecificSqlServerEventLogsToEvidenceVault(tenantInfo, indexTenant);
             UploadTenantSpecificRedisEventLogsToEvidenceVault(tenantInfo, indexTenant);
             UploadTenantSpecificIISHostToEvidenceVault(tenantInfo, indexTenant);
-            UploadTenantSpecificIISLogsToEvidenceVault(tenantInfo, indexTenant);
+            UploadJumpServersSessionsLogs(tenantInfo);
+
+        }
+        public void UploadJumpServersSessionsLogs(HppTenants tenantInfo)
+        {
+            List<QueryResults> queryResults = new List<QueryResults>();
+            string queryString = @"Event | where TimeGenerated > ago(24h) | | where Source contains ""session"" and EventID == ""21"" 
+                    | where  _ResourceId contains ""jump""
+                    | project TimeGenerated,Computer,RenderedDescription, EventID";
+
+            Console.WriteLine("\n{0}", queryString);
+            Console.WriteLine("\nQuerying...Wait!");
+            var results1 = omsClient.Query(queryString);
+            queryResults.Add(results1);
+            UploadEventLogs(tenantInfo, queryResults, -1, "JumServerSessionsLog.Json");
         }
         public void UploadEventLogs(HppTenants tenantInfo, List<QueryResults> queryResultsList, int indexTenant, string fileName)
         {
