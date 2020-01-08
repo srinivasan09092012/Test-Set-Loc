@@ -1,4 +1,11 @@
-﻿using HPE.HSP.UA3.Core.API.Logger;
+﻿//-----------------------------------------------------------------------------------------
+// Violators may be punished to the full extent of the law.
+// Any unauthorized use in whole or in part without written consent is strictly prohibited.
+//
+// This code is the property of DXC Technology, Copyright (c) 2020. All rights reserved.
+//-----------------------------------------------------------------------------------------
+
+using HPE.HSP.UA3.Core.API.Logger;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,9 +37,9 @@ namespace Watchdog
                 WatchdogConfiguration.TenantsConfig = GetTenantConfiguration(xmlDocument);
                 WatchdogConfiguration.WindowsServiceConfiguration.WindowsServiceList = GetWindowsServicesConfiguration(xmlDocument);
                 WatchdogConfiguration.BASConfiguration = GetBASConfiguration(xmlDocument);
-                WatchdogConfiguration.UXConfiguration = GetUXConfiguration(xmlDocument);
                 WatchdogConfiguration.K2Configuration = GetK2Configuration(xmlDocument);
                 WatchdogConfiguration.InRuleConfiguration = GetInRuleConfiguration(xmlDocument);
+                WatchdogConfiguration.UXMonitoring = GetUXMonitoring(xmlDocument);
             }
             catch (Exception ex)
             {
@@ -131,26 +138,46 @@ namespace Watchdog
             return basConfiguration;
         }
 
-        private static UXConfig GetUXConfiguration(XElement xmlDocument)
+        private static UXMonitoring GetUXMonitoring(XElement xmlDocument)
         {
-            XElement nodes = xmlDocument.Descendants("UXApplication").FirstOrDefault();
-            UXConfig uxConfiguration = new UXConfig();
+            XElement nodes = xmlDocument.Descendants("UXMonitoring").FirstOrDefault();
+            UXMonitoring uXMonitoring = new UXMonitoring();
             if (nodes != null)
-            {                
-                uxConfiguration.HealthUrl = GetAttributeValue<string>(nodes, "healthUrl", string.Empty);
-                uxConfiguration.BaseAddress = GetAttributeValue<string>(nodes, "baseAddress", string.Empty);
-                uxConfiguration.ApplicationPoolName = GetAttributeValue<string>(nodes, "ApplicationPool", string.Empty);                
-                uxConfiguration.Monitor = GetAttributeValue<bool>(nodes, "monitor", true);
-                uxConfiguration.Username = GetAttributeValue<string>(nodes, "Username", string.Empty);
-                uxConfiguration.SleepTime = GetAttributeValue<string>(nodes, "SleepTime", string.Empty);
-                uxConfiguration.ServerName = GetAttributeValue<string>(nodes, "ServerName", string.Empty);
-                uxConfiguration.Password = GetAttributeValue<string>(nodes, "Password", string.Empty);
-                uxConfiguration.LoggedInUsername = GetAttributeValue<string>(nodes, "LoggedInUsername", string.Empty);
-                uxConfiguration.MaxRetryCount = GetAttributeValue<int>(nodes, "maxRetryCount", WatchdogConfiguration.MaxRetryCount);
-                uxConfiguration.PerformanceSampleCount = GetAttributeValue<int>(nodes, "performanceSampleCount", WatchdogConfiguration.PerformanceSampleCount);
-            }
+            {
+                uXMonitoring.WebServers = (from node in nodes.Descendants("WebServer")
+                                           select new UxWebServerConfig
+                                           {
+                                               Servername = GetAttributeValue<string>(node, "serverName", string.Empty),
+                                               Monitor = GetAttributeValue<bool>(node, "monitor", true),
+                                               PerformanceSampleCount = GetAttributeValue<int>(node, "performanceSampleCount", WatchdogConfiguration.PerformanceSampleCount),
+                                                 Applications = (from appNode in nodes.Descendants("Application")
+                                                                 
+                                                                 select new UXConfig
+                                                                 {
+                                                                     Sleeptime = GetAttributeValue<int>(appNode, "serverName", 0),
+                                                                     Sitename = GetAttributeValue<string>(appNode, "sitename", string.Empty),
+                                                                     Applicationpool = GetAttributeValue<string>(appNode, "applicationpool", string.Empty),
+                                                                     UXUrls = (from uxnode in node.Descendants("URL")
+                                                                               select new UXApplicationConfig
+                                                                               {
+                                                                                   Name = GetAttributeValue<string>(uxnode, "name", string.Empty),
+                                                                                   Monitor = GetAttributeValue<bool>(uxnode, "monitor", true),
+                                                                                   URLValue = GetAttributeValue<string>(uxnode, "Value", string.Empty),
+                                                                                   Healthurl = GetAttributeValue<string>(uxnode, "HealthUrl", string.Empty),
+                                                                                   Username = GetAttributeValue<string>(uxnode, "Username", string.Empty),
+                                                                                   Password = GetAttributeValue<string>(uxnode, "Password", string.Empty),
+                                                                                   LoggedInUsername = GetAttributeValue<string>(uxnode, "LoggedInUsername", string.Empty),
+                                                                                   SleepInterval = GetAttributeValue<int>(uxnode, "Sleeptime", GetAttributeValue<int>(uxnode.Parent, "serverName", 0))
+                                                                               }).ToList()
 
-            return uxConfiguration;
+                                                                 }).ToList(),
+                                                                
+                                                                 
+
+                                             }).ToList();
+                
+            }
+            return uXMonitoring;
         }
 
         private static InRuleConfig GetInRuleConfiguration(XElement xmlDocument)

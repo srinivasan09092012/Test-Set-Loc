@@ -1,13 +1,19 @@
-﻿using HPE.HSP.UA3.Core.API.Logger;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿//-----------------------------------------------------------------------------------------
+// Violators may be punished to the full extent of the law.
+// Any unauthorized use in whole or in part without written consent is strictly prohibited.
+//
+// This code is the property of DXC Technology, Copyright (c) 2020. All rights reserved.
+//-----------------------------------------------------------------------------------------
+
+using HPE.HSP.UA3.Core.API.Logger;
 using Microsoft.Web.Administration;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Watchdog.Domain;
 using Watchdog.EnvironmentMonitor;
 using Watchdog.Monitor;
-using System.Linq;
 
 namespace Watchdog
 {
@@ -60,24 +66,24 @@ namespace Watchdog
         {
             ConfigurationProvider.WatchdogConfiguration.BASConfiguration.BASApplicationPoolList.FindAll(s => s.Monitor == true).ForEach(config =>
             {
-                List<ApplicationPool> applicationPools = ListOfApplicationPools(config, ConfigurationProvider.WatchdogConfiguration.BASConfiguration);
+                List<ApplicationPool> applicationPools = ListOfApplicationPools(config.ServerName, config.Sitename);
                 foreach (ApplicationPool appPoolName in applicationPools)
                 {
-                    ApplicationPoolMonitor basApplicationPoolMonitor = new ApplicationPoolMonitor(config, LoggerManager.Logger, appPoolName);
-                    basApplicationPoolMonitor.Monitor();
+                    ApplicationPoolMonitor basApplicationPoolMonitor = new ApplicationPoolMonitor((ServiceConfigMetaData)config, LoggerManager.Logger, appPoolName, Convert.ToInt32(config.Time));
+                    ServiceHealthInformation info = basApplicationPoolMonitor.Monitor();
                 }
             });
         }
 
-        private static List<ApplicationPool> ListOfApplicationPools(ApplicationPoolConfigDataItem serviceConfigData, BASConfig BASConfiguration)
+        private static List<ApplicationPool> ListOfApplicationPools(string serverName, string applicationPoolName)
         {
             List<ApplicationPool> ListofApplicationPools = new List<ApplicationPool>();
-            using (ServerManager manager = ServerManager.OpenRemote(serviceConfigData.ServerName))
+            using (ServerManager manager = ServerManager.OpenRemote(serverName))
             {
 
                 if (manager.ApplicationPools != null && manager.ApplicationPools.Count > 0)
                 {
-                    var result = manager.ApplicationPools.Where(s => s.Name.Contains(BASConfiguration.SiteName));
+                    var result = manager.ApplicationPools.Where(s => s.Name.Contains(applicationPoolName));
                     if (result != null && result.Count() > 0)
                     {
                         var listOfApplicationPoolsFromServer = result;
@@ -122,11 +128,28 @@ namespace Watchdog
 
         private static void MonitorUXServices(Tenant tenant)
         {
-            if (ConfigurationProvider.WatchdogConfiguration.UXConfiguration.Monitor)
+            ConfigurationProvider.WatchdogConfiguration.UXMonitoring.WebServers.FindAll(s => s.Monitor == true).ForEach(config =>
             {
-                UXMonitor uxMonitor = new UXMonitor(ConfigurationProvider.WatchdogConfiguration.UXConfiguration, ConfigurationProvider.WatchdogConfiguration.UXConfiguration.Username, ConfigurationProvider.WatchdogConfiguration.UXConfiguration.Password, ConfigurationProvider.WatchdogConfiguration.UXConfiguration.LoggedInUsername, LoggerManager.Logger);
-                uxMonitor.Monitor();
-            }
+                config.Applications.ForEach(appPoolConfig =>
+                {
+                    List<ApplicationPool> applicationPools = ListOfApplicationPools(config.Servername, appPoolConfig.Applicationpool);
+                    foreach (ApplicationPool appPoolName in applicationPools)
+                    {
+                        ApplicationPoolMonitor uxapplicationPoolMonitor = new ApplicationPoolMonitor((ServiceConfigMetaData)config, LoggerManager.Logger, appPoolName, appPoolConfig.Sleeptime);
+                        ServiceHealthInformation info = uxapplicationPoolMonitor.Monitor();
+                        if (info.Status == Constants.Status.Running)
+                        {
+                            appPoolConfig.UXUrls.ForEach(urlConfig =>
+                            {
+                                UXMonitor uxMonitor = new UXMonitor(urlConfig, info.RestartStatus, LoggerManager.Logger);
+                                uxMonitor.Monitor();
+                            });
+                        }
+                    }
+                });
+
+            });
+
         }
     }         
 }

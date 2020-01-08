@@ -1,4 +1,10 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------------------------
+// Violators may be punished to the full extent of the law.
+// Any unauthorized use in whole or in part without written consent is strictly prohibited.
+//
+// This code is the property of DXC Technology, Copyright (c) 2020. All rights reserved.
+//-----------------------------------------------------------------------------------------
+
 using System.Collections.Generic;
 
 namespace Watchdog.Domain
@@ -9,7 +15,6 @@ namespace Watchdog.Domain
         {
             WindowsServiceConfiguration = new WindowsServices();
             BASConfiguration = new BASConfig();
-            UXConfiguration = new UXConfig();
             K2Configuration = new K2Config();
         }
 
@@ -35,10 +40,10 @@ namespace Watchdog.Domain
 
         public BASConfig BASConfiguration { get; set; }
 
-        public UXConfig UXConfiguration { get; set; }
-
         public K2Config K2Configuration { get; set; }
 
         public InRuleConfig InRuleConfiguration { get; set; }
+
+        public UXMonitoring UXMonitoring { get; set; }
     }
 }

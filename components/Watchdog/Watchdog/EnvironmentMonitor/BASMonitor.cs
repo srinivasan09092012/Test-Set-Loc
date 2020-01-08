@@ -1,4 +1,11 @@
-﻿using HPE.HSP.UA3.Core.API.AuthManagement.Providers;
+﻿//-----------------------------------------------------------------------------------------
+// Violators may be punished to the full extent of the law.
+// Any unauthorized use in whole or in part without written consent is strictly prohibited.
+//
+// This code is the property of DXC Technology, Copyright (c) 2020. All rights reserved.
+//-----------------------------------------------------------------------------------------
+
+using HPE.HSP.UA3.Core.API.AuthManagement.Providers;
 using HPE.HSP.UA3.Core.API.Logger.Interfaces;
 using Microsoft.Web.Administration;
 using System;
@@ -98,14 +105,14 @@ namespace Watchdog.Monitor
                         }
                         else
                         {
-                            this.applicationHealthInformation.RestartStatus = "Failed";
+                            this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
                             throw new Exception("Site Name Pool doesn't exist : " + serviceConfigData.Name);
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    this.applicationHealthInformation.RestartStatus = "Failed";
+                    this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
                     logger.LogError("Error occured while attempting to restart the application pool : " + serviceConfigData.ApplicationPoolName, ex);
                     throw ex;
                 }
@@ -139,14 +146,14 @@ namespace Watchdog.Monitor
                         }
                         else
                         {
-                            this.applicationHealthInformation.RestartStatus = "Failed";
+                            this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
                             throw new Exception("Application Pool doesn't exist : " + serviceConfigData.ApplicationPoolName);
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    this.applicationHealthInformation.RestartStatus = "Failed";
+                    this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
                     logger.LogError("Error occured while attempting to restart the application pool : " + serviceConfigData.ApplicationPoolName, ex);
                     throw ex;
                 }
@@ -174,14 +181,14 @@ namespace Watchdog.Monitor
                         }
                         else
                         {
-                            this.applicationHealthInformation.RestartStatus = "Failed";
+                            this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
                             throw new Exception("Application Pool doesn't exist : " + serviceConfigData.ApplicationPoolName);
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    this.applicationHealthInformation.RestartStatus = "Failed";
+                    this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
                     logger.LogError("Error occured while attempting to restart the application pool : " + serviceConfigData.ApplicationPoolName, ex);
                     throw ex;
                 }
@@ -223,7 +230,7 @@ namespace Watchdog.Monitor
             this.applicationHealthInformation.MemoryUsagePercent = cpuMemData.Item2;
             this.applicationHealthInformation.processMemInKB = cpuMemData.Item3;
             this.applicationHealthInformation.processMemInGB = cpuMemData.Item4;
-            this.applicationHealthInformation.Status = "Running";
+            this.applicationHealthInformation.Status = Constants.Status.Running;
         }
 
         private bool IsWcfServiceAvailable()
@@ -339,13 +346,13 @@ namespace Watchdog.Monitor
                 }
                 catch (Exception ex)
                 {
-                    this.applicationHealthInformation.RestartStatus = "Failed";
+                    this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
                     logger.LogError("Error occured while recycling application pool", ex);
                 }
 
                 if (appPool.State == ObjectState.Started)
                 {
-                    this.applicationHealthInformation.RestartStatus = "Restarted";                    
+                    this.applicationHealthInformation.RestartStatus = Constants.Status.Restarted;                    
                     logger.LogInformational("Application pool: " + serviceConfigData.ApplicationPoolName + " has been recycled successfully");
                 }                
             }            
@@ -362,13 +369,13 @@ namespace Watchdog.Monitor
                 }
                 catch (Exception ex)
                 {
-                    this.applicationHealthInformation.RestartStatus = "Failed";
+                    this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
                     logger.LogError("Error occured while recycling application pool", ex);
                 }
 
                 if (appPool.State == ObjectState.Started)
                 {
-                    this.applicationHealthInformation.RestartStatus = "Restarted";
+                    this.applicationHealthInformation.RestartStatus = Constants.Status.Restarted;
                     isApplicationPoolSuccessfullyStarted = true;
                     logger.LogInformational("Application pool: " + serviceConfigData.ApplicationPoolName + " has been recycled successfully");
                 }
@@ -387,13 +394,13 @@ namespace Watchdog.Monitor
                 }
                 catch (Exception ex)
                 {
-                    this.applicationHealthInformation.RestartStatus = "Failed";
+                    this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
                     logger.LogError("Error occured while recycling site service", ex);
                 }
 
                 if (siteName.State == ObjectState.Started)
                 {
-                    this.applicationHealthInformation.RestartStatus = "Restarted";
+                    this.applicationHealthInformation.RestartStatus = Constants.Status.Restarted;
 
                     logger.LogInformational("Site Name: " + serviceConfigData.Name + " has been recycled successfully");
                 }

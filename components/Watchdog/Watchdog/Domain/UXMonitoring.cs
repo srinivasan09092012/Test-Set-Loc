@@ -5,20 +5,16 @@
 // This code is the property of DXC Technology, Copyright (c) 2020. All rights reserved.
 //-----------------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace Watchdog.Domain
 {
-    public class ApplicationPoolConfigDataItem : ServiceConfigMetaData
+    public class UXMonitoring 
     {
-        [XmlAttribute("serverName")]
-        public string ServerName { get; set; }
-
-        [XmlAttribute("time")]
-        public string Time { get; set; }        
-
-        [XmlAttribute("sitename")]
-
-        public string Sitename { get; set; }
+        [XmlElement("WebServer")]
+        public List<UxWebServerConfig> WebServers { get; set; }
+        
     }
+
 }

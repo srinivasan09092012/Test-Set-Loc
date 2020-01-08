@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -67,9 +67,7 @@
       <HintPath>..\..\..\..\..\..\Windows\System32\inetsrv\Microsoft.Web.Administration.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Source\Packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\..\Packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -98,16 +96,18 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppValidation.cs" />
     <Compile Include="Domain\ApplicationPoolConfigDataItem.cs" />
     <Compile Include="Domain\BASConfig.cs" />
     <Compile Include="Domain\BASConfigDataItem.cs" />
-    <Compile Include="Domain\UXConfig.cs" />
+    <Compile Include="Domain\UXConfigNew.cs" />
     <Compile Include="Domain\UXConfigDataItem.cs" />
     <Compile Include="Domain\InRuleConfig.cs" />
     <Compile Include="Domain\InRuleConfigDataItem.cs" />
     <Compile Include="Domain\K2Config.cs" />
     <Compile Include="Domain\K2ConfigDataItem.cs" />
+    <Compile Include="Domain\UXMonitoring.cs" />
+    <Compile Include="Domain\UXApplicationConfig.cs" />
+    <Compile Include="Domain\UxWebServerConfig.cs" />
     <Compile Include="EnvironmentMonitor\ApplicationPoolMonitor.cs" />
     <Compile Include="EnvironmentMonitor\InRuleMonitor.cs" />
     <Compile Include="EnvironmentMonitor\K2Monitor.cs" />

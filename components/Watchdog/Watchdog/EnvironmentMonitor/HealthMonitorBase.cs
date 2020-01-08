@@ -1,4 +1,11 @@
-﻿using HPE.HSP.UA3.Core.API.Logger.Interfaces;
+﻿//-----------------------------------------------------------------------------------------
+// Violators may be punished to the full extent of the law.
+// Any unauthorized use in whole or in part without written consent is strictly prohibited.
+//
+// This code is the property of DXC Technology, Copyright (c) 2020. All rights reserved.
+//-----------------------------------------------------------------------------------------
+
+using HPE.HSP.UA3.Core.API.Logger.Interfaces;
 using System;
 using System.IO;
 using System.Linq;
@@ -29,8 +36,6 @@ namespace Watchdog.Monitor
         }
         public virtual ServiceHealthInformation Monitor()
         {
-            ServiceHealthInformation serviceHealthData = null;
-
             try
             {
                 logger.LogInformational("Monitoring started for : " + serviceDetail.Name);
@@ -44,7 +49,7 @@ namespace Watchdog.Monitor
                 else
                 {
                     logger.LogError(string.Format("{0} unavailble to monitor.", serviceDetail.Name));
-                    this.applicationHealthInformation.Status = "Not Running";
+                    this.applicationHealthInformation.Status = Constants.Status.NotRunning;
                 }
 
                 this.LogServiceHealthInformation();
@@ -56,7 +61,7 @@ namespace Watchdog.Monitor
                 logger.LogError(string.Format("Error occured while monitoring {0}.", serviceDetail.Name), ex);
             }
 
-            return serviceHealthData;
+            return applicationHealthInformation;
         }
 
         protected bool GetServiceAvailabilityStatus()
@@ -86,8 +91,9 @@ namespace Watchdog.Monitor
 
         private void CollectServicePerformanceData()
         {
-            Process process = this.GetProcessIdForService();            
-            List<Tuple<double, double, float, double>> cpuMemDataList = new List<Tuple<double, double, float, double>>();
+            Process process = this.GetProcessIdForService();
+            Tuple<double, double, float, double> averageCPUMemPerfSample = new Tuple<double, double, float, double>(0.0d,0.0d,0.0f,0.0d);
+            List <Tuple<double, double, float, double>> cpuMemDataList = new List<Tuple<double, double, float, double>>();
             if (process != null)
             {
                 for (int i = 0; i < serviceDetail.PerformanceSampleCount; i++)
@@ -95,9 +101,9 @@ namespace Watchdog.Monitor
                     cpuMemDataList.Add(CPUAndMemUsageProvider.GetProcessCPUAndMemoryUsagePercent(logger, process));
                 }
 
-                Tuple<double, double, float, double> averageCPUMemPerfSample = new Tuple<double, double, float, double>(Math.Round(cpuMemDataList.Select(x => x.Item1).Average(), 3), Math.Round(cpuMemDataList.Select(x => x.Item2).Average(), 2), (cpuMemDataList.Select(x => x.Item3).Average()), Math.Round(cpuMemDataList.Select(x => x.Item4).Average(), 3));
-                this.BuildServiceHealthInformation(averageCPUMemPerfSample);
+                averageCPUMemPerfSample = new Tuple<double, double, float, double>(Math.Round(cpuMemDataList.Select(x => x.Item1).Average(), 3), Math.Round(cpuMemDataList.Select(x => x.Item2).Average(), 2), (cpuMemDataList.Select(x => x.Item3).Average()), Math.Round(cpuMemDataList.Select(x => x.Item4).Average(), 3));
             }
+            this.BuildServiceHealthInformation(averageCPUMemPerfSample);
         }
 
         protected abstract Process GetProcessIdForService();
@@ -155,6 +161,7 @@ namespace Watchdog.Monitor
             logger.LogInformational("Restart status : " + this.applicationHealthInformation.RestartStatus);
             logger.LogInformational("CPU Usage percentage: " + this.applicationHealthInformation.CPUUsagePercent);
             logger.LogInformational("Memory Usage percentage: " + this.applicationHealthInformation.MemoryUsagePercent);
+            logger.LogInformational("Memory Usage in KB: " + this.applicationHealthInformation.processMemInKB);
             logger.LogInformational("------------------------------------------------------------------");
         }
 

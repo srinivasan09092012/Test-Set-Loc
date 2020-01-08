@@ -1,17 +1,22 @@
-﻿using HPE.HSP.UA3.Core.API.Logger;
+﻿//-----------------------------------------------------------------------------------------
+// Violators may be punished to the full extent of the law.
+// Any unauthorized use in whole or in part without written consent is strictly prohibited.
+//
+// This code is the property of DXC Technology, Copyright (c) 2020. All rights reserved.
+//-----------------------------------------------------------------------------------------
+
+using HPE.HSP.UA3.Core.API.Logger;
 using HPE.HSP.UA3.Core.API.Logger.Interfaces;
-using System;
-using System.Management;
-using System.Net;
-using Watchdog.Domain;
-using Watchdog.Monitor;
-using System.Diagnostics;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-using Microsoft.Web.Administration;
-using System.Linq;
-using System.Threading;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Net;
+using System.Reflection;
+using Watchdog.Domain;
+using Watchdog.Monitor;
 
 namespace Watchdog.EnvironmentMonitor
 {
@@ -21,39 +26,33 @@ namespace Watchdog.EnvironmentMonitor
         private string username = string.Empty;
         private string password = string.Empty;
         private string loggedInUsername = string.Empty;
-        private string baseaddress = string.Empty;        
-        private UXConfig serviceConfigData = null;
-        private string iisServerName = string.Empty;               
+        private string baseaddress = string.Empty;
+        private UXApplicationConfig serviceConfigData = null;
+        private string iisServerName = string.Empty;
         private HttpWebResponse response;
-        private ApplicationPool appPool = null;
         private int serverTime = 0;
+        private string restartStatus = string.Empty;
 
-        public UXMonitor(UXConfig serviceData, string Username, string Password, string LoggedInUsername, ILogger logger)
+        public UXMonitor(UXApplicationConfig serviceData, string restartStatus, ILogger logger)
             : base(serviceData, logger)
         {
-            this.serviceConfigData = serviceData;            
-            this.username = Username;
-            this.password = Password;
-            this.loggedInUsername = LoggedInUsername;
+            this.serviceConfigData = serviceData;
             this.iisServerName = serviceConfigData.ServerName;
             this.applicationHealthInformation.ServiceType = "UXServices";
             this.applicationHealthInformation.ServiceName = serviceConfigData.Name;
-            this.url = serviceData.HealthUrl;
-            this.baseaddress = serviceData.BaseAddress;
-            this.serverTime = Convert.ToInt32(serviceData.SleepTime);
+            this.url = serviceData.Healthurl;
+            this.serverTime = serviceData.SleepInterval;
+            this.restartStatus = restartStatus;
         }
 
         public override bool CheckServiceAvailabilityAsync()
-        {               
+        {
             bool isServiceHealthy = false;
             bool isServiceActiveForHealthCheck = false;
             bool isServiceActiveForADFSLogin = false;
-            bool isApplicationPoolActiveOrNot = false;
-
-            isApplicationPoolActiveOrNot = this.RestartServiceForApplicationPool(isApplicationPoolActiveOrNot);
             isServiceActiveForHealthCheck = this.ServiceCheckForHealthCheck(isServiceActiveForHealthCheck);
             isServiceActiveForADFSLogin = this.ServiceCheckForADFSLogin(isServiceActiveForADFSLogin);
-            if (isServiceActiveForHealthCheck && isServiceActiveForADFSLogin && isApplicationPoolActiveOrNot)
+            if (isServiceActiveForHealthCheck && isServiceActiveForADFSLogin) //&& isApplicationPoolActiveOrNot)
             {
                 LoggerManager.Logger.LogInformational("---Response was Successful for UX Monitoring---" + "Status:" + "Ok");
                 isServiceHealthy = true;
@@ -62,78 +61,23 @@ namespace Watchdog.EnvironmentMonitor
             {
                 LoggerManager.Logger.LogFatal("--------Response was Unsuccessful for UX Monitoring--------");
             }
-            
-            return isServiceHealthy;            
+
+            return isServiceHealthy;
         }
 
-        private bool RestartServiceForApplicationPool(bool isApplicationPoolActiveOrNot)
-        {
-            bool isApplicationPoolSuccessfullyStarted = false;
-            if (!string.IsNullOrEmpty(this.iisServerName) && !string.IsNullOrEmpty(serviceConfigData.ApplicationPoolName))
-            {
-                try
-                {
-                    using (ServerManager manager = ServerManager.OpenRemote(this.iisServerName))
-                    {
-                        appPool = manager.ApplicationPools.FirstOrDefault(ap => ap.Name == serviceConfigData.ApplicationPoolName);
-                        
-                        if (appPool != null)
-                        {
-                            this.applicationHealthInformation.ApplicationPool = this.appPool.Name;
-                            bool appPoolStopped = appPool.State == ObjectState.Stopped || appPool.State == ObjectState.Stopping;
-                            if (appPoolStopped)
-                                isApplicationPoolActiveOrNot = this.StartingApplicationPool(appPool, appPoolStopped, isApplicationPoolSuccessfullyStarted, serverTime);
-                            else
-                                isApplicationPoolActiveOrNot = true;
-                            logger.LogInformational("Application pool : " + appPool.Name + " is running successfully");
-                        }
-                        else
-                        {
-                            this.applicationHealthInformation.RestartStatus = "Failed";
-                            throw new Exception("Application Pool doesn't exist : " + serviceConfigData.ApplicationPoolName);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    this.applicationHealthInformation.RestartStatus = "Failed";
-                    logger.LogError("Error occured while attempting to restart the application pool : " + serviceConfigData.ApplicationPoolName, ex);
-                    throw ex;
-                }
-            }
-
-            return isApplicationPoolActiveOrNot;
-        }
-
-        private bool StartingApplicationPool(ApplicationPool appPool, bool isAppPoolStopped, bool isApplicationPoolSuccessfullyStarted,int time)
-        {
-            if (isAppPoolStopped)
-            {
-                try
-                {
-                    appPool.Start();
-                    Thread.Sleep(time);
-                }
-                catch (Exception ex)
-                {
-                    this.applicationHealthInformation.RestartStatus = "Failed";
-                    logger.LogError("Error occured while recycling application pool", ex);
-                }
-
-                if (appPool.State == ObjectState.Started)
-                {
-                    this.applicationHealthInformation.RestartStatus = "Restarted";
-                    isApplicationPoolSuccessfullyStarted = true;
-                    logger.LogInformational("Application pool: " + serviceConfigData.ApplicationPoolName + " has been recycled successfully");
-                }
-            }
-            return isApplicationPoolSuccessfullyStarted;
-        }
 
         private bool ServiceCheckForHealthCheck(bool isServiceActiveOrNot)
         {
             WebRequest wr = WebRequest.Create(url);
-            wr.Timeout = 10000;            
+            if (String.Compare(this.restartStatus, Constants.Status.Restarted, true) == 0)
+            {
+                wr.Timeout = 300000;
+            }
+            else
+            {
+                wr.Timeout = 2000;
+            }
+
             try
             {
                 response = (HttpWebResponse)wr.GetResponse();
@@ -141,7 +85,7 @@ namespace Watchdog.EnvironmentMonitor
                 {
                     LoggerManager.Logger.LogInformational("---Response was Successful for UX Monitoring Health Check---" + "Status:" + response.StatusCode);
                     isServiceActiveOrNot = true;
-                }                
+                }
             }
             catch (Exception ex)
             {
@@ -181,25 +125,27 @@ namespace Watchdog.EnvironmentMonitor
             KillBrowser();
             KillDriver();
             ChromeOptions options = new ChromeOptions();
-            ChromeDriver web = new ChromeDriver(options);
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            ChromeDriver web = new ChromeDriver(dir, options, TimeSpan.FromMinutes(5));
             try
-            {                
-                options.AddArgument("--headless");                
+            {
+                options.AddArgument("--headless");
 
-                    web.Url = baseaddress;
-                    LoggerManager.Logger.LogInformational($"Base Address : {baseaddress}" + $"Web url : {web.Url}");
-                    web.Manage().Window.Maximize();
-                    web.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-                    web.FindElement(By.XPath(UXMonitoringConstants.LoginXpath)).Click();
-                    web.FindElement(By.Id(UXMonitoringConstants.UserName)).SendKeys(username);
-                    web.FindElement(By.Id(UXMonitoringConstants.Password)).SendKeys(password + Keys.Enter);
-                    var wait = new WebDriverWait(web, TimeSpan.FromSeconds(100));
-                    wait.Until(d => d.Title.Equals(UXMonitoringConstants.SuccessfullyLoggedInPageTitle));
-                    IWebElement res = web.FindElement(By.Id(UXMonitoringConstants.SuccessfullyLoggedInWelcomeID));
-                    isLoginSuccessOrNot = res.Text.ToLower().Contains(loggedInUsername.ToLower());
-                    LoggerManager.Logger.LogInformational("----Logged-in Successfully----");
-                    web.Quit();
-                    return isLoginSuccessOrNot;                
+                web.Url = this.serviceConfigData.URLValue;
+                LoggerManager.Logger.LogInformational($"Base Address : {this.serviceConfigData.URLValue}" + $"Web url : {web.Url}");
+                web.Manage().Window.Maximize();
+                web.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                web.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(120);
+                web.FindElement(By.XPath(UXMonitoringConstants.LoginXpath)).Click();
+                web.FindElement(By.Id(UXMonitoringConstants.UserName)).SendKeys(this.serviceConfigData.Username);
+                web.FindElement(By.Id(UXMonitoringConstants.Password)).SendKeys(this.serviceConfigData.Password + Keys.Enter);
+                var wait = new WebDriverWait(web, TimeSpan.FromSeconds(300));
+                wait.Until(d => d.Title.Equals(UXMonitoringConstants.SuccessfullyLoggedInPageTitle));
+                IWebElement res = web.FindElement(By.Id(UXMonitoringConstants.SuccessfullyLoggedInWelcomeID));
+                isLoginSuccessOrNot = res.Text.ToLower().Contains(this.serviceConfigData.LoggedInUsername.ToLower());
+                LoggerManager.Logger.LogInformational("----Logged-in Successfully----");
+                web.Quit();
+                return isLoginSuccessOrNot;
             }
             catch (Exception ex)
             {
@@ -209,31 +155,13 @@ namespace Watchdog.EnvironmentMonitor
             }
             finally
             {
-                web.Quit();                
+                web.Quit();
             }
         }
 
         protected override Process GetProcessIdForService()
         {
-            Process process = null;
-            int processId = 0;
-            string commandLine = String.Empty;
-            ManagementClass MgmtClass = new ManagementClass("Win32_Process");
-            foreach (ManagementObject mo in MgmtClass.GetInstances())
-            {
-                if (mo["Name"].ToString() == "w3wp.exe")
-                {
-                    processId = Convert.ToInt32(mo["ProcessId"]);
-                    commandLine = mo["CommandLine"].ToString();
-                    if (commandLine.ToLower().Contains(appPool.Name.ToLower()))
-                    {
-                        process = Process.GetProcessById(processId);
-                        break;
-                    }
-                }
-            }
-
-            return process;
+            return null;
         }
 
         protected override void BuildServiceHealthInformation(Tuple<double, double, float, double> cpuMemData)
@@ -242,11 +170,11 @@ namespace Watchdog.EnvironmentMonitor
             this.applicationHealthInformation.MemoryUsagePercent = cpuMemData.Item2;
             this.applicationHealthInformation.processMemInKB = cpuMemData.Item3;
             this.applicationHealthInformation.processMemInGB = cpuMemData.Item4;
-            this.applicationHealthInformation.Status = "Running";
+            this.applicationHealthInformation.Status = Constants.Status.Running;
         }
 
         protected override void RestartService()
-        {            
-        }                      
+        {
+        }
     }
 }

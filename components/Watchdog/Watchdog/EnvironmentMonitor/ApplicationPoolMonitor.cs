@@ -1,13 +1,16 @@
-﻿using HPE.HSP.UA3.Core.API.Logger.Interfaces;
+﻿//-----------------------------------------------------------------------------------------
+// Violators may be punished to the full extent of the law.
+// Any unauthorized use in whole or in part without written consent is strictly prohibited.
+//
+// This code is the property of DXC Technology, Copyright (c) 2020. All rights reserved.
+//-----------------------------------------------------------------------------------------
+
+using HPE.HSP.UA3.Core.API.Logger.Interfaces;
 using Microsoft.Web.Administration;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Management;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Watchdog.Domain;
 using Watchdog.Monitor;
 
@@ -15,14 +18,12 @@ namespace Watchdog.EnvironmentMonitor
 {
     public class ApplicationPoolMonitor : HealthMonitorBase
     {
-        private ApplicationPoolConfigDataItem serviceConfigData = null;
-        private int serverTime = 0;
+        private int sleepTime = 0;
         private ApplicationPool appPool = null;
-        public ApplicationPoolMonitor(ApplicationPoolConfigDataItem serviceData, ILogger logger, ApplicationPool applicationPool)
+        public ApplicationPoolMonitor(ServiceConfigMetaData serviceData, ILogger logger, ApplicationPool applicationPool, int sleepTime)
             : base(serviceData, logger)
         {
-            this.serviceConfigData = serviceData;
-            this.serverTime = Convert.ToInt32(serviceData.Time);
+            this.sleepTime = sleepTime;//Convert.ToInt32(serviceData.Time);
             this.applicationHealthInformation.ServiceType = "Application Pool";
             this.appPool = applicationPool;
         }
@@ -41,6 +42,7 @@ namespace Watchdog.EnvironmentMonitor
             if (isApplicationPoolActiveOrNot)
             {
                 logger.LogInformational("All Application pools are running successfully");
+                this.applicationHealthInformation.Status = Constants.Status.Running;
                 isServiceHealthy = true;
             }
             return isServiceHealthy;
@@ -56,7 +58,7 @@ namespace Watchdog.EnvironmentMonitor
                     this.applicationHealthInformation.ApplicationPool = this.appPool.Name;
                     bool appPoolStopped = appPool.State == ObjectState.Stopped || appPool.State == ObjectState.Stopping;
                     if (appPoolStopped)
-                        isApplicationPoolActiveOrNot = this.StartingApplicationPool(appPool, appPoolStopped, isApplicationPoolSuccessfullyStarted, appPool.Name, serverTime);
+                        isApplicationPoolActiveOrNot = this.StartingApplicationPool(appPool, appPoolStopped, isApplicationPoolSuccessfullyStarted, appPool.Name);
                     else
                         isApplicationPoolActiveOrNot = true;
                 }
@@ -68,7 +70,7 @@ namespace Watchdog.EnvironmentMonitor
             }
             catch (Exception ex)
             {
-                this.applicationHealthInformation.RestartStatus = "Failed";
+                this.applicationHealthInformation.RestartStatus =Constants.Status.Failed;
                 logger.LogError("Error occured while attempting to restart the application pool : " + appPool.Name, ex);
                 throw ex;
             }
@@ -76,24 +78,24 @@ namespace Watchdog.EnvironmentMonitor
             return isApplicationPoolActiveOrNot;
         }
 
-        private bool StartingApplicationPool(ApplicationPool appPool, bool isAppPoolStopped, bool isApplicationPoolSuccessfullyStarted, string appPoolName, int time)
+        private bool StartingApplicationPool(ApplicationPool appPool, bool isAppPoolStopped, bool isApplicationPoolSuccessfullyStarted, string appPoolName)
         {
             if (isAppPoolStopped)
             {
                 try
                 {
                     appPool.Start();
-                    Thread.Sleep(time);
+                    Thread.Sleep(this.sleepTime);
                 }
                 catch (Exception ex)
                 {
-                    this.applicationHealthInformation.RestartStatus = "Failed";
+                    this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
                     logger.LogError("Error occured while recycling application pool", ex);
                 }
 
                 if (appPool.State == ObjectState.Started)
                 {
-                    this.applicationHealthInformation.RestartStatus = "Restarted";
+                    this.applicationHealthInformation.RestartStatus = Constants.Status.Restarted;
                     isApplicationPoolSuccessfullyStarted = true;
                     logger.LogInformational("Application pool: " + appPoolName + " has been recycled successfully");
                 }
@@ -107,7 +109,7 @@ namespace Watchdog.EnvironmentMonitor
             this.applicationHealthInformation.MemoryUsagePercent = cpuMemData.Item2;
             this.applicationHealthInformation.processMemInKB = cpuMemData.Item3;
             this.applicationHealthInformation.processMemInGB= cpuMemData.Item4;
-            this.applicationHealthInformation.Status = "Running";
+            this.applicationHealthInformation.Status = Constants.Status.Running;
         }
 
         protected override Process GetProcessIdForService()
