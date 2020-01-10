@@ -43,22 +43,22 @@
   <LineDeletes />
   <ReplacementStrings>
     <!--Update Package source paths to our artifacts feed in all possible _Source folder references-->
-    <ReplacementString qualifier="HP UA3 Package Source" from="&quot;..\..\Packages\_Source" to="&quot;https://payerportfolio.pkgs.visualstudio.com/_packaging/PayerPortfolioPackagesSource/nuget/v3/index.json" />
-    <ReplacementString qualifier="HP UA3 Package Source" from="&quot;..\..\..\Packages\_Source" to="&quot;https://payerportfolio.pkgs.visualstudio.com/_packaging/PayerPortfolioPackagesSource/nuget/v3/index.json" />
-    <ReplacementString qualifier="HP UA3 Package Source" from="&quot;..\..\..\..\Packages\_Source" to="&quot;https://payerportfolio.pkgs.visualstudio.com/_packaging/PayerPortfolioPackagesSource/nuget/v3/index.json" />
-    <ReplacementString qualifier="HP UA3 Package Source" from="&quot;..\..\..\..\..\Packages\_Source" to="&quot;https://payerportfolio.pkgs.visualstudio.com/_packaging/PayerPortfolioPackagesSource/nuget/v3/index.json" />
-    <ReplacementString qualifier="HP UA3 Package Source" from="&quot;..\..\..\..\..\..\Packages\_Source" to="&quot;https://payerportfolio.pkgs.visualstudio.com/_packaging/PayerPortfolioPackagesSource/nuget/v3/index.json" />
+    <ReplacementString qualifier="HP UA3 Package Source" from="&quot;..\..\Packages\_Source" to="&quot;https://payerportfolio.pkgs.visualstudio.com/USHC_AMER_US_ADU_HSP_Ua3/_packaging/PayerPortfolioPackagesSource/nuget/v3/index.json" />
+    <ReplacementString qualifier="HP UA3 Package Source" from="&quot;..\..\..\Packages\_Source" to="&quot;https://payerportfolio.pkgs.visualstudio.com/USHC_AMER_US_ADU_HSP_Ua3/_packaging/PayerPortfolioPackagesSource/nuget/v3/index.json" />
+    <ReplacementString qualifier="HP UA3 Package Source" from="&quot;..\..\..\..\Packages\_Source" to="&quot;https://payerportfolio.pkgs.visualstudio.com/USHC_AMER_US_ADU_HSP_Ua3/_packaging/PayerPortfolioPackagesSource/nuget/v3/index.json" />
+    <ReplacementString qualifier="HP UA3 Package Source" from="&quot;..\..\..\..\..\Packages\_Source" to="&quot;https://payerportfolio.pkgs.visualstudio.com/USHC_AMER_US_ADU_HSP_Ua3/_packaging/PayerPortfolioPackagesSource/nuget/v3/index.json" />
+    <ReplacementString qualifier="HP UA3 Package Source" from="&quot;..\..\..\..\..\..\Packages\_Source" to="&quot;https://payerportfolio.pkgs.visualstudio.com/USHC_AMER_US_ADU_HSP_Ua3/_packaging/PayerPortfolioPackagesSource/nuget/v3/index.json" />
        
     <!--Update Package source paths from other possible references-->
-    <ReplacementString qualifier="HP UA3 Package Source" from="C:\UA3\Source\Packages&quot;" to="https://payerportfolio.pkgs.visualstudio.com/_packaging/PayerPortfolioPackagesSource/nuget/v3/index.json&quot;"/>
-    <ReplacementString qualifier="HP UA3 Package Source" from="C:\UA3\Source\Packages\&quot;" to="https://payerportfolio.pkgs.visualstudio.com/_packaging/PayerPortfolioPackagesSource/nuget/v3/index.json&quot;"/> 
-    <ReplacementString qualifier="HP UA3 Package Source" from="C:\UA3\Source\Packages\_Source&quot;" to="https://payerportfolio.pkgs.visualstudio.com/_packaging/PayerPortfolioPackagesSource/nuget/v3/index.json&quot;"/>
+    <ReplacementString qualifier="HP UA3 Package Source" from="C:\UA3\Source\Packages&quot;" to="https://payerportfolio.pkgs.visualstudio.com/USHC_AMER_US_ADU_HSP_Ua3/_packaging/PayerPortfolioPackagesSource/nuget/v3/index.json&quot;"/>
+    <ReplacementString qualifier="HP UA3 Package Source" from="C:\UA3\Source\Packages\&quot;" to="https://payerportfolio.pkgs.visualstudio.com/USHC_AMER_US_ADU_HSP_Ua3/_packaging/PayerPortfolioPackagesSource/nuget/v3/index.json&quot;"/> 
+    <ReplacementString qualifier="HP UA3 Package Source" from="C:\UA3\Source\Packages\_Source&quot;" to="https://payerportfolio.pkgs.visualstudio.com/USHC_AMER_US_ADU_HSP_Ua3/_packaging/PayerPortfolioPackagesSource/nuget/v3/index.json&quot;"/>
     
     <!--Update Package source name-->
     <ReplacementString qualifier="HP UA3 Package Source" from="HP UA3 Package Source" to="PayerPortfolioPackagesSource" />
     
     <!--Add PackageSource if missing-->
-    <ReplacementString qualifier="&lt;packageSources /&gt;" from="&lt;packageSources /&gt;" to="&lt;packageSources&gt;[NEWLINE]    &lt;add key=&quot;PayerPortfolioPackagesSource&quot; value=&quot;https://payerportfolio.pkgs.visualstudio.com/_packaging/PayerPortfolioPackagesSource/nuget/v3/index.json&quot; /&gt;[NEWLINE]  &lt;/packageSources&gt;" />
+    <ReplacementString qualifier="&lt;packageSources /&gt;" from="&lt;packageSources /&gt;" to="&lt;packageSources&gt;[NEWLINE]    &lt;add key=&quot;PayerPortfolioPackagesSource&quot; value=&quot;https://payerportfolio.pkgs.visualstudio.com/USHC_AMER_US_ADU_HSP_Ua3/_packaging/PayerPortfolioPackagesSource/nuget/v3/index.json&quot; /&gt;[NEWLINE]  &lt;/packageSources&gt;" />
     
     <!--Add Credentials (replace UserName and Password before using)-->
     <ReplacementString qualifier="&lt;packageSourceCredentials /&gt;" from="&lt;packageSourceCredentials /&gt;" to="&lt;packageSourceCredentials&gt;[NEWLINE]    &lt;PayerPortfolioPackagesSource&gt;[NEWLINE]      &lt;add key=&quot;Username&quot; value=&quot;<UserName>&quot; /&gt;[NEWLINE]      &lt;add key=&quot;ClearTextPassword&quot; value=&quot;<Password>&quot; /&gt;[NEWLINE]    &lt;/PayerPortfolioPackagesSource&gt;[NEWLINE]  &lt;/packageSourceCredentials&gt;" />
