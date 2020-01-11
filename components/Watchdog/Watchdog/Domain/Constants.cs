@@ -26,19 +26,19 @@ namespace Watchdog.Domain
 
     public class UXMonitoringConstants
     {
-        public const string UserName =
-                "UserName";
+        public const string UserName = "UserName";
 
-        public const string Password =
-            "Password";
+        public const string Password = "Password";
 
-        public const string SuccessfullyLoggedInPageTitle =
-            "My Home";
+        public const string SuccessfullyLoggedInPageTitle = "My Home";
 
-        public const string SuccessfullyLoggedInWelcomeID =
-            "pageBannerWelcome";
+        public const string SuccessfullyLoggedInWelcomeID = "pageBannerWelcome";
 
-        public const string LoginXpath =
-            "//*[@id='AAGMenu.Login']/div[2]/a";
+        public const string LoginXpath = "//*[@id='AAGMenu.Login']/div[2]/a";
+
+        public const string LoginFailed = "Login failed";
+
+        public const string LoginSuccess = "Login Success";
+
     }
 }

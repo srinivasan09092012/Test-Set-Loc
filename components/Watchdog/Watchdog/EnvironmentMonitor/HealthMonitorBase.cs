@@ -49,7 +49,7 @@ namespace Watchdog.Monitor
                 else
                 {
                     logger.LogError(string.Format("{0} unavailble to monitor.", serviceDetail.Name));
-                    this.applicationHealthInformation.Status = Constants.Status.NotRunning;
+                    this.SetServiceUnavailableStatus();
                 }
 
                 this.LogServiceHealthInformation();
@@ -109,6 +109,11 @@ namespace Watchdog.Monitor
         protected abstract Process GetProcessIdForService();
 
         protected abstract void BuildServiceHealthInformation(Tuple<double, double, float, double> cpuMemData);
+
+        protected virtual void SetServiceUnavailableStatus()
+        {
+            this.applicationHealthInformation.Status = Constants.Status.NotRunning;
+        }
 
         private void LogServiceHealthInformation()
         {

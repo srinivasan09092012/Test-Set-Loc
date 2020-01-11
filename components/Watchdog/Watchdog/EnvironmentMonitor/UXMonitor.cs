@@ -32,6 +32,7 @@ namespace Watchdog.EnvironmentMonitor
         private HttpWebResponse response;
         private int serverTime = 0;
         private string restartStatus = string.Empty;
+        
 
         public UXMonitor(UXApplicationConfig serviceData, string restartStatus, ILogger logger)
             : base(serviceData, logger)
@@ -63,6 +64,11 @@ namespace Watchdog.EnvironmentMonitor
             }
 
             return isServiceHealthy;
+        }
+
+        protected override void SetServiceUnavailableStatus()
+        {
+            this.applicationHealthInformation.Status = UXMonitoringConstants.LoginFailed;
         }
 
 
@@ -170,7 +176,7 @@ namespace Watchdog.EnvironmentMonitor
             this.applicationHealthInformation.MemoryUsagePercent = cpuMemData.Item2;
             this.applicationHealthInformation.processMemInKB = cpuMemData.Item3;
             this.applicationHealthInformation.processMemInGB = cpuMemData.Item4;
-            this.applicationHealthInformation.Status = Constants.Status.Running;
+            this.applicationHealthInformation.Status = UXMonitoringConstants.LoginSuccess;
         }
 
         protected override void RestartService()

@@ -99,7 +99,7 @@
     <Compile Include="Domain\ApplicationPoolConfigDataItem.cs" />
     <Compile Include="Domain\BASConfig.cs" />
     <Compile Include="Domain\BASConfigDataItem.cs" />
-    <Compile Include="Domain\UXConfigNew.cs" />
+    <Compile Include="Domain\UXConfig.cs" />
     <Compile Include="Domain\UXConfigDataItem.cs" />
     <Compile Include="Domain\InRuleConfig.cs" />
     <Compile Include="Domain\InRuleConfigDataItem.cs" />
@@ -147,6 +147,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="WatchdogConfig_Template.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
