@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Security.Cryptography;
 using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Helpers;
+using System.Text;
 
 namespace WindowsFormsApp1
 {
@@ -74,6 +75,7 @@ namespace WindowsFormsApp1
         private void clear_Click(object sender, EventArgs e)
         {
             textToCompOrDecomp.Text = "";
+            textToCompOrDecomp.Focus();
         }
 
         private void Copy_Click(object sender, EventArgs e)
@@ -152,6 +154,17 @@ namespace WindowsFormsApp1
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void HashStreamIdOriginal_Click(object sender, EventArgs e)
+        {
+            byte[] hashBytes = SHA1.Create().ComputeHash(Encoding.UTF8.GetBytes(textToCompOrDecomp.Text));
+            textToCompOrDecomp.Text = BitConverter.ToString(hashBytes).Replace("-", string.Empty);
+        }
+
+        private void newguid_Click(object sender, EventArgs e)
+        {
+            textToCompOrDecomp.Text = Guid.NewGuid().ToString();
         }
     }
 }

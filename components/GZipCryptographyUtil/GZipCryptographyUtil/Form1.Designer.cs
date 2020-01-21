@@ -44,10 +44,14 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.Decode = new System.Windows.Forms.Button();
             this.Encode = new System.Windows.Forms.Button();
+            this.HashStreamIdOriginal = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.newguid = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // textToCompOrDecomp
@@ -154,12 +158,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.newguid);
             this.groupBox1.Controls.Add(this.GUIDConverter);
             this.groupBox1.Controls.Add(this.RawConverter);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(38, 627);
+            this.groupBox1.Location = new System.Drawing.Point(38, 722);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(318, 61);
+            this.groupBox1.Size = new System.Drawing.Size(492, 61);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "GUID";
@@ -169,36 +174,36 @@
             this.groupBox2.Controls.Add(this.Encrypt);
             this.groupBox2.Controls.Add(this.Decrypt);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(752, 627);
+            this.groupBox2.Location = new System.Drawing.Point(860, 627);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(329, 68);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "AES";
+            this.groupBox2.Text = "AES (AppSetting Encrypted Values)";
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.Decompress);
             this.groupBox3.Controls.Add(this.Compress);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(1119, 627);
+            this.groupBox3.Location = new System.Drawing.Point(38, 628);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(367, 60);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "GZip";
+            this.groupBox3.Text = "GZip (Redis Cache Values)";
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.Decode);
             this.groupBox4.Controls.Add(this.Encode);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(387, 628);
+            this.groupBox4.Location = new System.Drawing.Point(498, 627);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(317, 60);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "BASE 64 ";
+            this.groupBox4.Text = "BASE 64 (Commits Payload)";
             // 
             // Decode
             // 
@@ -222,11 +227,49 @@
             this.Encode.UseVisualStyleBackColor = true;
             this.Encode.Click += new System.EventHandler(this.Encode_Click);
             // 
+            // HashStreamIdOriginal
+            // 
+            this.HashStreamIdOriginal.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.HashStreamIdOriginal.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HashStreamIdOriginal.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.HashStreamIdOriginal.Location = new System.Drawing.Point(22, 21);
+            this.HashStreamIdOriginal.Name = "HashStreamIdOriginal";
+            this.HashStreamIdOriginal.Size = new System.Drawing.Size(192, 26);
+            this.HashStreamIdOriginal.TabIndex = 10;
+            this.HashStreamIdOriginal.Text = "Convert To StreamID";
+            this.HashStreamIdOriginal.UseVisualStyleBackColor = true;
+            this.HashStreamIdOriginal.Click += new System.EventHandler(this.HashStreamIdOriginal_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.HashStreamIdOriginal);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(589, 722);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(355, 61);
+            this.groupBox5.TabIndex = 13;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Convert Hash (Commits StreamIDOriginal)";
+            // 
+            // newguid
+            // 
+            this.newguid.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.newguid.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newguid.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.newguid.Location = new System.Drawing.Point(326, 21);
+            this.newguid.Name = "newguid";
+            this.newguid.Size = new System.Drawing.Size(136, 33);
+            this.newguid.TabIndex = 10;
+            this.newguid.Text = "New GUID";
+            this.newguid.UseVisualStyleBackColor = true;
+            this.newguid.Click += new System.EventHandler(this.newguid_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1687, 717);
+            this.ClientSize = new System.Drawing.Size(1686, 839);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -242,6 +285,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,6 +308,9 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button Decode;
         private System.Windows.Forms.Button Encode;
+        private System.Windows.Forms.Button HashStreamIdOriginal;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button newguid;
     }
 }
 
