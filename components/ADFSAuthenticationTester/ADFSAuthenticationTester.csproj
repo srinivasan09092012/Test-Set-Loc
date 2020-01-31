@@ -37,11 +37,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Interface, Version=19.3.76.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.AuthManagement.19.3.76\lib\net48\HPE.HSP.UA3.Core.API.AuthManagement.Interface.dll</HintPath>
+    <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Interface, Version=20.1.82.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.AuthManagement.20.1.82\lib\net48\HPE.HSP.UA3.Core.API.AuthManagement.Interface.dll</HintPath>
     </Reference>
-    <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Providers, Version=19.3.76.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.AuthManagement.19.3.76\lib\net48\HPE.HSP.UA3.Core.API.AuthManagement.Providers.dll</HintPath>
+    <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Providers, Version=20.1.82.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.AuthManagement.20.1.82\lib\net48\HPE.HSP.UA3.Core.API.AuthManagement.Providers.dll</HintPath>
     </Reference>
     <Reference Include="IdentityModel, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\Packages\IdentityModel.2.6.0\lib\net45\IdentityModel.dll</HintPath>

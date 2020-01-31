@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" targetTFS="Azure">
+<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" targetTFS ="Azure">
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs>
-    <ModuleConfig name="Core" branch="Dev" types="UX" />
-    <!--
+    <ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />
     <ModuleConfig name="Administration" branch="Dev" types="All" />
     <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
     <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Core" branch="Dev" types="All" />
     <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
     <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
     <ModuleConfig name="DrugRebatePortal" branch="Dev" types="All" />
@@ -34,43 +34,124 @@
     <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
     <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
     <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
-    -->
+    <ModuleConfig name="Utilities" branch="Dev" types="NA" />
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
+    <FileType ext=".bat" />
+    <FileType ext=".config" />
     <FileType ext=".cs" />
+    <FileType ext=".csproj" />
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
-    <!-- Namespaces -->
-    <ReplacementString qualifier="using HP.HSP.UA3.Core.BAS.TestTools.Helpers;" from="Helpers;" to="Helpers.Moq;" />
-    <ReplacementString qualifier="using HP.HSP.UA3.Core.UX.TestTools;" from="TestTools;" to="TestTools.Moq;" />
-    <ReplacementString qualifier="using HP.HSP.UA3.Core.UX.TestTools.Helpers;" from="Helpers;" to="Helpers.Moq;" />
-    <ReplacementString qualifier="using Rhino.Mocks;" from="Rhino.Mocks;" to="Moq;" />
+    <!-- UX application settings version -->
+    <ReplacementString qualifier="add key=&quot;AppVersion&quot; value=&quot;19.3.76.0&quot;" from="19.3.76.0" to="20.1.82.0" />
 
-    <!-- Methods -->
-    <ReplacementString qualifier="MockRepository.GenerateMock" from="MockRepository.GenerateMock" to="new Mock" />
-    <ReplacementString qualifier="MockRepository.GenerateStrictMock" from="(" to="(MockBehavior.Strict" />
-    <ReplacementString qualifier="MockRepository.GenerateStrictMock" from="MockRepository.GenerateStrictMock" to="new Mock" />
-    <ReplacementString qualifier="MockRepository.GenerateStub" from="MockRepository.GenerateMock" to="new Mock" />
-    <ReplacementString qualifier="MockRepository.GeneratePartialMock" from=";" to=" { CallBase = true };" />
-    <ReplacementString qualifier="MockRepository.GeneratePartialMock" from="MockRepository.GeneratePartialMock" to="new Mock" />
-    <ReplacementString qualifier=".Expect" from=";" to=".Verifiable();" />
-    <ReplacementString qualifier=".Expect" from=".Expect" to=".Setup" />
-    <ReplacementString qualifier=".Stub" from=".Stub" to=".Setup" />
-    <ReplacementString qualifier=".Return" from=".Return" to=".Returns" />
-    <ReplacementString qualifier=".Throw" from=".Throw" to=".Throws" />
-    <ReplacementString qualifier="AssertWasCalled" from=", options => options.Repeat.Times" to=", Times.Exactly" />
-    <ReplacementString qualifier="AssertWasCalled" from="AssertWasCalled" to="Verify" />
-    <ReplacementString qualifier="AssertWasNotCalled" from="));" to="), Times.Never);" />
-    <ReplacementString qualifier="AssertWasNotCalled" from="AssertWasNotCalled" to="Verify" />
-    <ReplacementString qualifier="VerifyAllExpectations" from="VerifyAllExpectations" to="VerifyAll" />
-    <ReplacementString qualifier=".IgnoreArguments()" from=";" to="; //MOQ: Removed 'IgnoreArguments()', Replace parameters with It.IsAny&lt;[type]&gt;()" />
-    <ReplacementString qualifier=".IgnoreArguments()" from=".IgnoreArguments()" to="" />
-    <ReplacementString qualifier=".Repeat.Any()" from=".Repeat.Any()" to="" />
+    <!-- Assembly Versions in Assembly Info file -->
+    <ReplacementString qualifier="AssemblyVersion(" from="19.3.76.0" to="20.1.82.0" />
+    <ReplacementString qualifier="AssemblyFileVersion(" from="19.3.76.0" to="20.1.82.0" />
+
+    <!-- Assembly Versions in Project Files -->
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.Administration" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.AuthDetermination" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.BatchProcessingFactory" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.ClaimsManagement" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.Core" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.CorrespondenceMgmt" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.DrugRebate" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.FinancialManagement" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.IdentityManagement" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.Integration" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.ManagedCare" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.MemberManagement" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.PlanManagement" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.ProgramIntegrity" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.ProviderEnrollment" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.ProviderManagement" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.TaskManagement" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.TPLCaseTracking" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.TPLPolicy" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HP.NotificationServices" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.ClaimsManagement" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.Core" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.EDI" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.NCPDP" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.TestAutomation" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.X212" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3.X12" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+    <ReplacementString qualifier="Include=&quot;HPP.HSP.UA3.ManagedCare" from="Version=19.3.76.0" to="Version=20.1.82.0" />
+
+    <!-- Package Names in Copy Assemblies Batch Files -->
+    <ReplacementString qualifier="xcopy /f /r /y" from="19.3.76\lib" to="20.1.82\lib" />
+    <ReplacementString qualifier="del /f" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="start C:\UA3\Tools\NuGet\Nuget.exe pack" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="cd &quot;..\" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="if exist &quot;..\" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="echo You must have the entire 'PACKAGE\_SOURCE" from="19.3.76" to="20.1.82" />
+
+    <!-- Package Names in Project Files -->
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.Administration" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.AuthDetermination" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.BatchProcessingFactory" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.ClaimsManagement" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.Core" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.CorrespondenceMgmt" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.DrugRebate" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.FinancialManagement" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.IdentityManagement" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.Integration" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.ManagedCare" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.MemberManagement" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.PlanManagement" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.ProgramIntegrity" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.ProviderEnrollment" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.ProviderManagement" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.TaskManagement" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.TPLCaseTracking" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HP.HSP.UA3.TPLPolicy" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HP.NotificationServices" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.ClaimsManagement" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.Core" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.EDI" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.NCPDP" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.TestAutomation" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.X212" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HPE.HSP.UA3.X12" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="id=&quot;HPP.HSP.UA3.ManagedCare" from="19.3.76" to="20.1.82" />
+
+    <!-- Package Names in Packages.config Files -->
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.Administration" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.AuthDetermination" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.BatchProcessingFactory" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.ClaimsManagement" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.Core" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.CorrespondenceMgmt" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.DrugRebate" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.FinancialManagement" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.IdentityManagement" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.Integration" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.ManagedCare" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.MemberManagement" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.PlanManagement" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.ProgramIntegrity" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.ProviderEnrollment" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.ProviderManagement" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.TaskManagement" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.TPLCaseTracking" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HP.HSP.UA3.TPLPolicy" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HP.NotificationServices" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.ClaimsManagement" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.Core" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.EDI" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.NCPDP" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.TestAutomation" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.X212" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HPE.HSP.UA3.X12" from="19.3.76" to="20.1.82" />
+    <ReplacementString qualifier="\Packages\HPP.HSP.UA3.ManagedCare" from="19.3.76" to="20.1.82" />
   </ReplacementStrings>
   <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
-  <TfsWorkspace>IN5CG9214YC9</TfsWorkspace>
-  <TFSUserName>AzureDevOpsPATKeyName</TFSUserName>
-  <TFSPassword>AzureDevOpsPATKeyName</TFSPassword>
+  <TfsWorkspace>IN5CG61308ZH</TfsWorkspace>
+  <TFSUserName>pradeep470</TFSUserName>
+  <TFSPassword>Pradeepyadav#@1</TFSPassword>
 </RefactorConfig>
