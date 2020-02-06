@@ -42,11 +42,13 @@
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
-    <!--Vertica.Data.x64 to Vertica.Data-->
-    <ReplacementString qualifier="&lt;PackageReference Include=&quot;Vertica.Data.x64&quot;" from="&lt;PackageReference Include=&quot;Vertica.Data.x64&quot;" to="&lt;PackageReference Include=&quot;Vertica.Data&quot;" />
-
+   
     <!--FileHelpers 3.1.5 to FileHelpers 3.2.6 (Custom Package)-->
     <ReplacementString qualifier="&lt;PackageReference Include=&quot;FileHelpers&quot;" from="Version=&quot;3.1.5&quot;" to="Version=&quot;3.2.6&quot;" />
+    
+    <!--ETL FileHelpers 3.1.5 to ETL FileHelpers 3.2.6  -->
+   <ReplacementString qualifier="&lt;PackageReference Include=&quot;ETLFileHelpers&quot;" from="Version=&quot;3.1.5&quot;" to="Version=&quot;3.2.6&quot;" />
+    
   </ReplacementStrings>
   <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace>TFSWorkspaceName</TfsWorkspace>
