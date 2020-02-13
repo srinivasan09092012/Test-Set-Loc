@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecipherUtil", "DecipherUtil\DecipherUtil.csproj", "{665CBC6C-B3EF-4E9A-829D-06F9A9A0EEB3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configs", "Configs", "{E1F3A963-BCA4-40D7-B5B6-02D199C38687}"
+	ProjectSection(SolutionItems) = preProject
+		nuget.config = nuget.config
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DecipherUtil_SetUp", "DecipherUtil_SetUp\DecipherUtil_SetUp.vdproj", "{3015BFD3-42D4-49A9-9227-15AB373871BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{665CBC6C-B3EF-4E9A-829D-06F9A9A0EEB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{665CBC6C-B3EF-4E9A-829D-06F9A9A0EEB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{665CBC6C-B3EF-4E9A-829D-06F9A9A0EEB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{665CBC6C-B3EF-4E9A-829D-06F9A9A0EEB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3015BFD3-42D4-49A9-9227-15AB373871BE}.Debug|Any CPU.ActiveCfg = Debug
+		{3015BFD3-42D4-49A9-9227-15AB373871BE}.Debug|Any CPU.Build.0 = Debug
+		{3015BFD3-42D4-49A9-9227-15AB373871BE}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D0B403F3-37FE-4377-AC94-5141812301DA}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://payerportfolio.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = DecipherUtil\\DecipherUtil.csproj
+		SccProjectName1 = DecipherUtil
+		SccLocalPath1 = DecipherUtil
+		SccProjectUniqueName2 = DecipherUtil_SetUp\\DecipherUtil_SetUp.vdproj
+		SccProjectName2 = DecipherUtil_SetUp
+		SccLocalPath2 = DecipherUtil_SetUp
+	EndGlobalSection
+EndGlobal
