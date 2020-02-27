@@ -32,7 +32,11 @@ namespace WindowsFormsApp1
         {
             try
             {
-                textToCompOrDecomp.Text = GZipHelper.Decompress(textToCompOrDecomp.Text);
+                string jsonString = GZipHelper.Decompress(textToCompOrDecomp.Text);
+                JsonFormatter jsonFormatter = new JsonFormatter();
+                jsonString = jsonFormatter.PrettyPrint(jsonString);
+
+                textToCompOrDecomp.Text = jsonString;
             }
             catch (Exception ex)
             {
@@ -130,7 +134,13 @@ namespace WindowsFormsApp1
             try
             {
                 byte[] data = System.Convert.FromBase64String(textToCompOrDecomp.Text);
-                textToCompOrDecomp.Text = System.Text.ASCIIEncoding.ASCII.GetString(data);
+                JsonFormatter jsonFormatter = new JsonFormatter();
+                string jsonString = jsonFormatter.PrettyPrint(System.Text.ASCIIEncoding.ASCII.GetString(data));
+                if (jsonString.Substring(0, 3) == "???")
+                {
+                    jsonString = jsonString.Substring(3, jsonString.Length-3);
+                }
+                textToCompOrDecomp.Text = jsonString;
             }
             catch (Exception ex)
             {
