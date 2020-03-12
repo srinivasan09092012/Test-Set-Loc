@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Inline" includeFolderNames="true" includeFileNames="true" includeFileContents="true" useSourceControl="true">
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+    <ModuleConfig name="Administration" branch="Dev" types="UX" />
+    <ModuleConfig name="AuthDetermination" branch="Dev" types="UX" />
+    <ModuleConfig name="ClaimsManagement" branch="Dev" types="UX" />
+    <ModuleConfig name="Core" branch="Dev" types="UX" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="UX" />
+    <ModuleConfig name="DrugRebate" branch="Dev" types="UX" />
+    <ModuleConfig name="DrugRebatePortal" branch="Dev" types="UX" />
+    <ModuleConfig name="EDI" branch="Dev" types="UX" />
+    <ModuleConfig name="eID" branch="Dev" types="UX" />
+    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="UX" />
+    <ModuleConfig name="FileTransfer" branch="Dev" types="UX" />
+    <ModuleConfig name="IdentityManagement" branch="Dev" types="UX" />
+    <ModuleConfig name="KansasOnly" branch="Dev" types="UX" />
+    <ModuleConfig name="ManagedCare" branch="Dev" types="UX" />
+    <ModuleConfig name="ManagedCarePortal" branch="Dev" types="UX" />
+    <ModuleConfig name="MemberManagement" branch="Dev" types="UX" />
+    <ModuleConfig name="MemberPortal" branch="Dev" types="UX" />
+    <ModuleConfig name="Notifications" branch="Dev" types="UX" />
+    <ModuleConfig name="PlanManagement" branch="Dev" types="UX" />
+    <ModuleConfig name="ProgramIntegrity" branch="Dev" types="UX" />
+    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="UX" />
+    <ModuleConfig name="ProviderEnrollment" branch="Dev" types="UX" />
+    <ModuleConfig name="ProviderManagement" branch="Dev" types="UX" />
+    <ModuleConfig name="ProviderPortal" branch="Dev" types="UX" />
+    <ModuleConfig name="ThirdPartySource" branch="Dev" types="UX" />
+    <ModuleConfig name="TPLCaseTracking" branch="Dev" types="UX" />
+    <ModuleConfig name="TPLPolicy" branch="Dev" types="UX" />
+    <ModuleConfig name="Utilities" branch="Dev" types="NA" />
+    <ModuleConfig name="WorkflowManagement" branch="Dev" types="UX" />
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes>
+    <FileType ext=".cd" />
+    <FileType ext=".classdiagram" />
+    <FileType ext=".cmd" />
+    <FileType ext=".config" />
+    <FileType ext=".cs" />
+    <FileType ext=".cshtml" />
+    <FileType ext=".csproj" />
+    <FileType ext=".xml" />
+  </FileTypes>
+  <LineDeletes />
+  <ReplacementStrings>
+    <ReplacementString qualifier="Microsoft.AspNet.Mvc" from="5.2.7" to="5.2.7" />
+    <ReplacementString qualifier="Microsoft.AspNet.Razor" from="3.2.7" to="3.2.7" />
+    <ReplacementString qualifier="Microsoft.AspNet.WebPages" from="3.2.7" to="3.2.7" />
+  </ReplacementStrings>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+  <TfsWorkspace>US5CD95200G7</TfsWorkspace>
+  <TFSUserName>tbarger2</TFSUserName>
+  <TFSPassword>fq4rnhrocdyz5xvxpaydifxazu7dlsywwxpwbvsznszyau4kjuhq</TFSPassword>
+</RefactorConfig>
