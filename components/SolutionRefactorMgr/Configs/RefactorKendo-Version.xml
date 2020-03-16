@@ -14,6 +14,7 @@
     <ModuleConfig name="EmployeeMgmt" branch="Dev" types="UX" />
     <ModuleConfig name="FileTransfer" branch="Dev" types="UX" />
     <ModuleConfig name="IdentityManagement" branch="Dev" types="UX" />
+    <ModuleConfig name="Integration" branch="Dev" types="UX" />
     <ModuleConfig name="KansasOnly" branch="Dev" types="UX" />
     <ModuleConfig name="ManagedCare" branch="Dev" types="UX" />
     <ModuleConfig name="ManagedCarePortal" branch="Dev" types="UX" />
@@ -22,15 +23,15 @@
     <ModuleConfig name="Notifications" branch="Dev" types="UX" />
     <ModuleConfig name="PlanManagement" branch="Dev" types="UX" />
     <ModuleConfig name="ProgramIntegrity" branch="Dev" types="UX" />
+    <ModuleConfig name="ProgramIntegrityCT" branch="Dev" types="UX" />
     <ModuleConfig name="ProviderCredentialing" branch="Dev" types="UX" />
     <ModuleConfig name="ProviderEnrollment" branch="Dev" types="UX" />
     <ModuleConfig name="ProviderManagement" branch="Dev" types="UX" />
     <ModuleConfig name="ProviderPortal" branch="Dev" types="UX" />
-    <ModuleConfig name="ThirdPartySource" branch="Dev" types="UX" />
+    <ModuleConfig name="TaskManagement" branch="Dev" types="UX" />
     <ModuleConfig name="TPLCaseTracking" branch="Dev" types="UX" />
     <ModuleConfig name="TPLPolicy" branch="Dev" types="UX" />
     <ModuleConfig name="Utilities" branch="Dev" types="NA" />
-    <ModuleConfig name="WorkflowManagement" branch="Dev" types="UX" />
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
@@ -45,13 +46,17 @@
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
-    <ReplacementString qualifier="Kendo" from="2018.2.620.440" to="2018.2.620.440" />
-    <ReplacementString qualifier="KendoSpreadSheets" from="2018.2.620.440" to="2018.2.620.440" />
-    <ReplacementString qualifier="0.0.0.0-2018.2.620.440" from="0.0.0.0-2018.2.620.440" to="0.0.0.0-2018.2.620.440" />
-    <ReplacementString qualifier="2018.2.620.440" from="2018.2.620.440" to="2018.2.620.440" />
+    <ReplacementString qualifier="Kendo" from="2020.1.114.545" to="2020.1.114.545" />
+    <ReplacementString qualifier="KendoSpreadSheets" from="2020.1.114.545" to="2020.1.114.545" />
+    <ReplacementString qualifier="0.0.0.0-2020.1.114.545" from="0.0.0.0-2020.1.114.545" to="0.0.0.0-2020.1.114.545" />
+    <ReplacementString qualifier="2020.1.114.545" from="2020.1.114.545" to="2020.1.114.545" />
+    <!--<ReplacementString qualifier="Kendo" from="net451" to="net48" />
+    <ReplacementString qualifier="KendoSpreadSheets" from="net451" to="net48" />
+    <ReplacementString qualifier="0.0.0.0-2020.1.114.545" from="net451" to="net48" />
+    <ReplacementString qualifier="2020.1.114.545" from="net451" to="net48" />-->
   </ReplacementStrings>
   <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
-  <TfsWorkspace>USCND35122WB</TfsWorkspace>
+  <TfsWorkspace>US5CD95200G7</TfsWorkspace>
   <TFSUserName>AzureDevOpsPATKeyName</TFSUserName>
   <TFSPassword>AzureDevOpsPATKeyValue</TFSPassword>
 </RefactorConfig>
