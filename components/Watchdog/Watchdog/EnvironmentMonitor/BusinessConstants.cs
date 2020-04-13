@@ -5,16 +5,12 @@
 // This code is the property of DXC Technology, Copyright (c) 2020. All rights reserved.
 //-----------------------------------------------------------------------------------------
 
-using System.Xml.Serialization;
-
-namespace Watchdog.Domain
+namespace Watchdog.EnvironmentMonitor
 {
-    public class Tenant
+    public class BusinessConstants
     {
-        [XmlAttribute("name")]
-        public string Name { get; set; }
-
-        [XmlAttribute("Id")]
-        public string Id { get; set; }
+        public const string AddressInteractiveServiceDataProvider = "AddressInteractiveServiceDataProvider";
+        public const string AddressServicseDataProvider = "AddressServicseDataProvider";
+        public const double DefaultResultPercentageThreshold = 90.0;
     }
 }

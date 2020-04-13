@@ -66,4 +66,18 @@
       </Application>
     </WebServer>
   </UXMonitoring>
-</WatchdogConfig>
+      <!--AddressDoctorServices has two types of services interactive and noninteractive-->
+      <!--
+          Type: Type of the AddressDoctor interface, by default value will be API
+        -->
+      <AddressDoctorServices  type ="API">
+        <!--Details of the AddressDoctor service,interactive or non interactive
+       name: Name of AddressDoctor service, Address Doctor Interactive / Address Doctor Non Interactive
+       applicationDownAction: If the application is down then what action needs to be taken apart from sending alert, Restart or nothing
+                              Values are Restart, None. Default value is None 
+       MaxRetryCount: Number of attempts in case if service is unavailable. Default value is 0
+      -->
+        <Service name ="Address Doctor Interactive" applicationDownAction ="NONE" maxRetryCount ="0"></Service>
+      <Service name ="Address Doctor Non Interactive" applicationDownAction ="NONE" maxRetryCount ="0"></Service>
+    </AddressDoctorServices>
+  </WatchdogConfig>

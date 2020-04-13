@@ -14,27 +14,26 @@
     <Tenant name ="DXC Commercial" Id="B37B1CEC-6603-2D4F-AC37-74E0724774A1"/>
   </Tenants>
   <WindowsServices>
-
     <!--default monitoring will be on, in case if it needs to be turned off for a particular service then we can make use of the 'monitor' attribute and set it to "false"-->
-
-    <!--<Service name="Event Router DXC Commercial"/>
-    <Service name="Event Router DXC Medicaid"/>-->
+    <Service name="Event Router DXC Commercial"/>
+    <Service name="Event Router DXC Medicaid"/>
     <Service name="W3SVC"/>
     <Service name="Redis"/>
   </WindowsServices>
-  <!--<BusinessApplicationServices baseAddress="https://bas.test.mapshc.com/" serverName ="MAPSDEVAPP01" sitename ="HP.DataServices">
+  <BusinessApplicationServices baseAddress="https://bas.test.mapshc.com/" serverName ="MAPSDEVAPP01" sitename ="HP.DataServices">
       <ApplicationPool  serverName ="MAPSDEVAPP01" time="1000"/>
-    </BusinessApplicationServices>-->
+    </BusinessApplicationServices>
+  <!--AddressDoctorServices has two types of services interactive and noninteractive-->
+  <AddressDoctorServices  type ="API">
+    <Service name ="Address Doctor Interactive" applicationDownAction ="None" maxRetryCount ="0"></Service>
+    <Service name ="Address Doctor Non Interactive" applicationDownAction ="None" maxRetryCount ="0"></Service> 
+    </AddressDoctorServices>
   <UXMonitoring>
-    <WebServer serverName="IN5CG6430RHX">
+    <WebServer serverName="IN5CG7295F3T">
       <Application  SleepTime="1000" sitename ="UA3" ApplicationPool ="UX AppPool">
         <URL value ="https://localhost.dev.mapshc.com/" name ="Medicaid"  Healthurl ="https://localhost.dev.mapshc.com/healthcheck.htm" Username="hppadmin" Password="Password1234" LoggedInUsername="hpp admin"/>
         <URL value ="https://localhost2.dev.mapshc.com/" name ="Commercial" Healthurl ="https://localhost2.dev.mapshc.com/healthcheck.htm" Username="hppuseadmin" Password="Password1234" LoggedInUsername="hppuseadmin"/>
       </Application>
-      <!-- <Application>
-      </Application>-->
     </WebServer>
-    <!--  <WebServer>
-    </WebServer>-->
   </UXMonitoring>
 </WatchdogConfig>

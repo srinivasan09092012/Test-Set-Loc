@@ -40,6 +40,7 @@ namespace Watchdog
                 WatchdogConfiguration.K2Configuration = GetK2Configuration(xmlDocument);
                 WatchdogConfiguration.InRuleConfiguration = GetInRuleConfiguration(xmlDocument);
                 WatchdogConfiguration.UXMonitoring = GetUXMonitoring(xmlDocument);
+                WatchdogConfiguration.AddressDoctorConfiguration = GetAddressDoctorConfiguration(xmlDocument);
             }
             catch (Exception ex)
             {
@@ -136,6 +137,29 @@ namespace Watchdog
             }
             
             return basConfiguration;
+        }
+
+        private static AddressDoctorconfig GetAddressDoctorConfiguration(XElement xmlDocument)
+        {
+            XElement nodes = xmlDocument.Descendants("AddressDoctorServices").FirstOrDefault();
+            AddressDoctorconfig addressDoctorconfiguration = new AddressDoctorconfig();
+            if (nodes != null)
+            {
+                addressDoctorconfiguration.Type = GetAttributeValue<string>(nodes, "type", "API");
+               
+                addressDoctorconfiguration.AddressDoctorServices = (from node in nodes.Descendants("Service")
+                                                   select new AddressDoctorConfigDataItem
+                                                   {
+                                                       Name = GetAttributeValue<string>(node, "name", string.Empty),
+                                                       ApplicationDownAction = GetAttributeValue<string>(node, "ApplicationDownAction", WatchdogConfiguration.ApplicationDownAction),
+                                                       Monitor = GetAttributeValue<bool>(node, "Monitor", true),
+                                                       MaxRetryCount = GetAttributeValue<int>(node, "maxRetryCount", WatchdogConfiguration.MaxRetryCount),
+                                                       Type = GetAttributeValue<string>(node, "type", addressDoctorconfiguration.Type),
+                                                       PerformanceSampleCount = GetAttributeValue<int>(node, "performanceSampleCount", WatchdogConfiguration.PerformanceSampleCount)
+                                                   }).ToList();
+            }
+
+            return addressDoctorconfiguration;
         }
 
         private static UXMonitoring GetUXMonitoring(XElement xmlDocument)

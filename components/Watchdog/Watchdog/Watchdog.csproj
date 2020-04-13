@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -37,6 +37,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HP.HSP.UA3.Core.API.AddressValidation, Version=20.1.82.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.API.AddressValidation.20.1.82\lib\net48\HP.HSP.UA3.Core.API.AddressValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="HP.HSP.UA3.Core.API.AddressValidation.Data, Version=20.1.82.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.API.AddressValidation.20.1.82\lib\net48\HP.HSP.UA3.Core.API.AddressValidation.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="HP.HSP.UA3.Core.API.AddressValidation.Interfaces, Version=20.1.82.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.API.AddressValidation.20.1.82\lib\net48\HP.HSP.UA3.Core.API.AddressValidation.Interfaces.dll</HintPath>
+    </Reference>
     <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Interface, Version=20.1.82.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.AuthManagement.20.1.82\lib\net48\HPE.HSP.UA3.Core.API.AuthManagement.Interface.dll</HintPath>
     </Reference>
@@ -96,6 +113,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\AddressDoctorConfig.cs" />
+    <Compile Include="Domain\AddressDoctorConfigDataItem.cs" />
     <Compile Include="Domain\ApplicationPoolConfigDataItem.cs" />
     <Compile Include="Domain\BASConfig.cs" />
     <Compile Include="Domain\BASConfigDataItem.cs" />
@@ -108,11 +127,13 @@
     <Compile Include="Domain\UXMonitoring.cs" />
     <Compile Include="Domain\UXApplicationConfig.cs" />
     <Compile Include="Domain\UxWebServerConfig.cs" />
+    <Compile Include="EnvironmentMonitor\AddressDoctorMonitor.cs" />
     <Compile Include="EnvironmentMonitor\ApplicationPoolMonitor.cs" />
+    <Compile Include="EnvironmentMonitor\BusinessConstants.cs" />
     <Compile Include="EnvironmentMonitor\InRuleMonitor.cs" />
     <Compile Include="EnvironmentMonitor\K2Monitor.cs" />
     <Compile Include="EnvironmentMonitor\UXMonitor.cs" />
-    <Compile Include="Domain\Constants.cs" />
+    <Compile Include="Domain\Constants.cs" />	
     <Compile Include="Domain\ServiceConfigMetaData.cs" />
     <Compile Include="Domain\ServiceHealthInformation.cs" />
     <Compile Include="Domain\TenantsConfig.cs" />
@@ -122,6 +143,7 @@
     <Compile Include="EnvironmentMonitor\BASMonitor.cs" />
     <Compile Include="EnvironmentMonitor\HealthMonitorBase.cs" />
     <Compile Include="EnvironmentMonitor\IHealthMonitor.cs" />
+    <Compile Include="EnvironmentMonitor\WatchdogContainer.cs" />
     <Compile Include="EnvironmentMonitor\WindowsServiceMonitor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

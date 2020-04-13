@@ -4,31 +4,13 @@
 //
 // This code is the property of DXC Technology, Copyright (c) 2020. All rights reserved.
 //-----------------------------------------------------------------------------------------
-using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace Watchdog.Domain
 {
-    public class K2Config : ServiceConfigMetaData
+    public class AddressDoctorConfigDataItem : ServiceConfigMetaData
     {
-        public K2Config()
-        {
-            K2ServiceList = new List<K2ConfigDataItem>();
-        }
-
-        [XmlAttribute("baseAddress")]
-        public string BaseAddress { get; set; }
-
-        [XmlAttribute("sitename")]
-        public string SiteName { get; set; }
-
-        [XmlAttribute("serverName")]
-        public string ServerName { get; set; }
-
         [XmlAttribute("type")]
         public string Type { get; set; }
-
-        [XmlElement("Service")]
-        public List<K2ConfigDataItem> K2ServiceList { get; set; }
-    }        
+    }
 }

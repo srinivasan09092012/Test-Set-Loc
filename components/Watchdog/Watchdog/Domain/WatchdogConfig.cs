@@ -15,6 +15,7 @@ namespace Watchdog.Domain
         {
             WindowsServiceConfiguration = new WindowsServices();
             BASConfiguration = new BASConfig();
+            AddressDoctorConfiguration = new AddressDoctorconfig();
             K2Configuration = new K2Config();
         }
 
@@ -45,5 +46,7 @@ namespace Watchdog.Domain
         public InRuleConfig InRuleConfiguration { get; set; }
 
         public UXMonitoring UXMonitoring { get; set; }
+
+        public AddressDoctorconfig AddressDoctorConfiguration { get; set; }
     }
 }
