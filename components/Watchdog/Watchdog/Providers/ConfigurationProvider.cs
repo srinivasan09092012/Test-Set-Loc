@@ -37,7 +37,7 @@ namespace Watchdog
                 WatchdogConfiguration.TenantsConfig = GetTenantConfiguration(xmlDocument);
                 WatchdogConfiguration.WindowsServiceConfiguration.WindowsServiceList = GetWindowsServicesConfiguration(xmlDocument);
                 WatchdogConfiguration.BASConfiguration = GetBASConfiguration(xmlDocument);
-                WatchdogConfiguration.K2Configuration = GetK2Configuration(xmlDocument);
+                WatchdogConfiguration.K2ServiceConfiguration = GetK2ServiceConfiguration(xmlDocument);
                 WatchdogConfiguration.InRuleConfiguration = GetInRuleConfiguration(xmlDocument);
                 WatchdogConfiguration.UXMonitoring = GetUXMonitoring(xmlDocument);
                 WatchdogConfiguration.AddressDoctorConfiguration = GetAddressDoctorConfiguration(xmlDocument);
@@ -139,6 +139,34 @@ namespace Watchdog
             return basConfiguration;
         }
 
+        private static K2ServiceConfig GetK2ServiceConfiguration(XElement xmlDocument)
+        {
+            XElement nodes = xmlDocument.Descendants("K2Services").FirstOrDefault();
+            K2ServiceConfig k2serviceConfiguration = new K2ServiceConfig();
+            if (nodes != null)
+            {
+                k2serviceConfiguration.BaseAddress = GetAttributeValue<string>(nodes, "baseAddress", string.Empty);
+                k2serviceConfiguration.Type = GetAttributeValue<string>(nodes, "type", "WCF");
+                k2serviceConfiguration.ServerName = GetAttributeValue<string>(nodes, "serverName", string.Empty);
+                k2serviceConfiguration.SiteName = GetAttributeValue<string>(nodes, "sitename", string.Empty);
+
+                k2serviceConfiguration.K2ServiceList = (from node in nodes.Descendants("Service")
+                                                        select new K2ServiceConfigDataItem
+                                                        {
+                                                            Name = GetAttributeValue<string>(node, "name", string.Empty),
+                                                            ApplicationDownAction = GetAttributeValue<string>(node, "ApplicationDownAction", WatchdogConfiguration.ApplicationDownAction),
+                                                            Monitor = GetAttributeValue<bool>(node, "Monitor", true),
+                                                            MaxRetryCount = GetAttributeValue<int>(node, "maxRetryCount", WatchdogConfiguration.MaxRetryCount),
+                                                            ApplicationPoolName = GetAttributeValue<string>(node, "applicationPoolName", string.Empty),
+                                                            Type = GetAttributeValue<string>(node, "type", k2serviceConfiguration.Type),
+                                                            Endpoint = GetAttributeValue<string>(node, "endpoint", string.Empty),
+                                                            PerformanceSampleCount = GetAttributeValue<int>(node, "performanceSampleCount", WatchdogConfiguration.PerformanceSampleCount)
+                                                        }).ToList();
+            }
+
+            return k2serviceConfiguration;
+        }
+        
         private static AddressDoctorconfig GetAddressDoctorConfiguration(XElement xmlDocument)
         {
             XElement nodes = xmlDocument.Descendants("AddressDoctorServices").FirstOrDefault();
@@ -229,33 +257,6 @@ namespace Watchdog
             }
 
             return inRuleConfiguration;
-        }
-
-        private static K2Config GetK2Configuration(XElement xmlDocument)
-        {
-            XElement nodes = xmlDocument.Descendants("K2Application").FirstOrDefault();
-            K2Config k2Configuration = new K2Config();
-            if (nodes != null)
-            {
-                k2Configuration.BaseAddress = GetAttributeValue<string>(nodes, "baseAddress", string.Empty);
-                k2Configuration.Type = GetAttributeValue<string>(nodes, "type", "WCF");
-                k2Configuration.ServerName = GetAttributeValue<string>(nodes, "serverName", string.Empty);
-                k2Configuration.SiteName = GetAttributeValue<string>(nodes, "sitename", string.Empty);
-                k2Configuration.K2ServiceList = (from node in nodes.Descendants()
-                                                 select new K2ConfigDataItem
-                                                 {
-                                                     Name = GetAttributeValue<string>(node, "name", string.Empty),
-                                                     ApplicationDownAction = GetAttributeValue<string>(node, "ApplicationDownAction", WatchdogConfiguration.ApplicationDownAction),
-                                                     Monitor = GetAttributeValue<bool>(node, "Monitor", true),
-                                                     MaxRetryCount = GetAttributeValue<int>(node, "maxRetryCount", WatchdogConfiguration.MaxRetryCount),
-                                                     ApplicationPoolName = GetAttributeValue<string>(node, "applicationPoolName", string.Empty),
-                                                     Type = GetAttributeValue<string>(node, "type", WatchdogConfiguration.BASConfiguration.Type),
-                                                     Endpoint = GetAttributeValue<string>(node, "endpoint", string.Empty),
-                                                     PerformanceSampleCount = GetAttributeValue<int>(node, "performanceSampleCount", WatchdogConfiguration.PerformanceSampleCount)
-                                                 }).ToList();
-            }
-
-            return k2Configuration;
         }
 
         private static T GetElementValue<T>(XElement node, string nodeName)

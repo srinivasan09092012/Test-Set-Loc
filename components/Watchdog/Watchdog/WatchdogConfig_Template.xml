@@ -80,4 +80,16 @@
         <Service name ="Address Doctor Interactive" applicationDownAction ="NONE" maxRetryCount ="0"></Service>
       <Service name ="Address Doctor Non Interactive" applicationDownAction ="NONE" maxRetryCount ="0"></Service>
     </AddressDoctorServices>
-  </WatchdogConfig>
+  <!--K2Services: Monitoring of K2 Services-->
+  <K2Services baseAddress="https://k2.dev.mapshc.com" type ="WCF" serverName ="IN5CG9214XLD" sitename ="K2">
+    <!--baseAddress: Base url of respective environment to monitor K2
+        type: Type of the service being monitored, defualt value is WCF.
+        serverName: VM name where Watchdog will be deployed.
+        sitename: Sitename of the K2 application hosted in IIS-->
+    <Service name ="K2" endpoint ="K2Services/WCF.svc" applicationPoolName ="K2 blackpearl"></Service>
+    <!--name: Name of the K2 service being monitored
+        endpoint: Endpoint address of respective K2 service to monitor
+        applicationPoolName: ApplicationPool name of K2 hosted in IIS
+    -->
+  </K2Services>
+</WatchdogConfig>

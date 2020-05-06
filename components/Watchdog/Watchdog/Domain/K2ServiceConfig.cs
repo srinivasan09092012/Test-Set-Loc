@@ -9,11 +9,11 @@ using System.Xml.Serialization;
 
 namespace Watchdog.Domain
 {
-    public class K2Config : ServiceConfigMetaData
+    public class K2ServiceConfig
     {
-        public K2Config()
+        public K2ServiceConfig()
         {
-            K2ServiceList = new List<K2ConfigDataItem>();
+            K2ServiceList = new List<K2ServiceConfigDataItem>();
         }
 
         [XmlAttribute("baseAddress")]
@@ -29,6 +29,7 @@ namespace Watchdog.Domain
         public string Type { get; set; }
 
         [XmlElement("Service")]
-        public List<K2ConfigDataItem> K2ServiceList { get; set; }
-    }        
+        public List<K2ServiceConfigDataItem> K2ServiceList { get; set; }
+
+    }
 }

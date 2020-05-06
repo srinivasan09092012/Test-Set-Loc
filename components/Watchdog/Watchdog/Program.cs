@@ -32,13 +32,14 @@ namespace Watchdog
                 Tenant tenant = new Tenant();
 
                 List<Task> tasks = new List<Task>();
+
                 tasks.Add(Task.Run(() => MonitorWindowsServices()));
 
                 tasks.Add(Task.Run(() => MonitorBASApplicationPool()));
 
                 tasks.Add(Task.Run(() => MonitorBAS(tenant)));
 
-                tasks.Add(Task.Run(() => MonitorK2(tenant)));
+                tasks.Add(Task.Run(() => MonitorK2Service(tenant)));
 
                 tasks.Add(Task.Run(() => MonitorInRule(tenant)));
 
@@ -88,6 +89,16 @@ namespace Watchdog
             });
         }
 
+        private static void MonitorK2Service(Tenant tenant)
+        {
+            ConfigurationProvider.WatchdogConfiguration.K2ServiceConfiguration?.K2ServiceList.FindAll(s => s.Monitor == true).ForEach(config =>
+            {
+                K2ServiceMonitor k2serviceMonitor = new K2ServiceMonitor(config, ConfigurationProvider.WatchdogConfiguration.K2ServiceConfiguration.ServerName, ConfigurationProvider.WatchdogConfiguration.K2ServiceConfiguration.SiteName,
+                    config.GetEndpointURL(ConfigurationProvider.WatchdogConfiguration.K2ServiceConfiguration.BaseAddress), tenant.Id, LoggerManager.Logger);
+                k2serviceMonitor.Monitor();
+            });
+        }
+
         private static List<ApplicationPool> ListOfApplicationPools(string serverName, string applicationPoolName)
         {
             List<ApplicationPool> ListofApplicationPools = new List<ApplicationPool>();
@@ -118,17 +129,7 @@ namespace Watchdog
                 windowsServicesMonitor.Monitor();
             });
         }   
-       
-        private static void MonitorK2(Tenant tenant)
-        {
-            ConfigurationProvider.WatchdogConfiguration.K2Configuration?.K2ServiceList.FindAll(s => s.Monitor == true).ForEach(config =>
-            {
-                K2Monitor k2Monitor = new K2Monitor(config, ConfigurationProvider.WatchdogConfiguration.K2Configuration.ServerName, ConfigurationProvider.WatchdogConfiguration.K2Configuration.SiteName,
-                    config.GetEndpointURL(ConfigurationProvider.WatchdogConfiguration.K2Configuration.BaseAddress), tenant.Id, LoggerManager.Logger);
-                k2Monitor.Monitor();
-            });
-        }
-
+        
         private static void MonitorInRule(Tenant tenant)
         {
             ConfigurationProvider.WatchdogConfiguration.InRuleConfiguration?.InRuleServiceList.FindAll(s => s.Monitor == true).ForEach(config =>

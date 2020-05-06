@@ -118,22 +118,23 @@
     <Compile Include="Domain\ApplicationPoolConfigDataItem.cs" />
     <Compile Include="Domain\BASConfig.cs" />
     <Compile Include="Domain\BASConfigDataItem.cs" />
+    <Compile Include="Domain\K2ServiceConfig.cs" />
+    <Compile Include="Domain\K2ServiceConfigDataItem.cs" />
     <Compile Include="Domain\UXConfig.cs" />
     <Compile Include="Domain\UXConfigDataItem.cs" />
     <Compile Include="Domain\InRuleConfig.cs" />
     <Compile Include="Domain\InRuleConfigDataItem.cs" />
-    <Compile Include="Domain\K2Config.cs" />
-    <Compile Include="Domain\K2ConfigDataItem.cs" />
     <Compile Include="Domain\UXMonitoring.cs" />
     <Compile Include="Domain\UXApplicationConfig.cs" />
     <Compile Include="Domain\UxWebServerConfig.cs" />
     <Compile Include="EnvironmentMonitor\AddressDoctorMonitor.cs" />
     <Compile Include="EnvironmentMonitor\ApplicationPoolMonitor.cs" />
     <Compile Include="EnvironmentMonitor\BusinessConstants.cs" />
+    <Compile Include="EnvironmentMonitor\IISHelper.cs" />
     <Compile Include="EnvironmentMonitor\InRuleMonitor.cs" />
-    <Compile Include="EnvironmentMonitor\K2Monitor.cs" />
+    <Compile Include="EnvironmentMonitor\K2ServiceMonitor.cs" />
     <Compile Include="EnvironmentMonitor\UXMonitor.cs" />
-    <Compile Include="Domain\Constants.cs" />	
+    <Compile Include="Domain\Constants.cs" />
     <Compile Include="Domain\ServiceConfigMetaData.cs" />
     <Compile Include="Domain\ServiceHealthInformation.cs" />
     <Compile Include="Domain\TenantsConfig.cs" />
@@ -169,7 +170,9 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="WatchdogConfig_Template.xml" />
+    <Content Include="WatchdogConfig_Template.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
