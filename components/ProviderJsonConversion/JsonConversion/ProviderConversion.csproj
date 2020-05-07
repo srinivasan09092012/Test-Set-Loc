@@ -91,13 +91,13 @@
     <Reference Include="HPE.HSP.UA3.Core.API.Logger, Version=19.1.64.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.19.1.64\lib\net45\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
     </Reference>
-    <Reference Include="InRule.Common, Version=5.0.25.101, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">
+    <Reference Include="InRule.Common, Version=5.5.0.216, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.19.1.64\lib\net45\InRule.Common.dll</HintPath>
     </Reference>
-    <Reference Include="InRule.Repository, Version=5.0.25.101, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">
+    <Reference Include="InRule.Repository, Version=5.5.0.216, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.19.1.64\lib\net45\InRule.Repository.dll</HintPath>
     </Reference>
-    <Reference Include="InRule.Runtime, Version=5.0.25.101, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">
+    <Reference Include="InRule.Runtime, Version=5.5.0.216, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.19.1.64\lib\net45\InRule.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
