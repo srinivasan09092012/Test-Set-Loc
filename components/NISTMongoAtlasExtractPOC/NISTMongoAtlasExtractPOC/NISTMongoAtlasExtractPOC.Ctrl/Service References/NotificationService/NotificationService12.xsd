@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Queries.Parameters" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Queries.Parameters" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Shared" />
+  <xs:complexType name="PostedEventQueryParms">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreationDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EventName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Shared" minOccurs="0" name="FilterCriterias" nillable="true" type="q1:ArrayOfSearchFilterCriteria" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsNotified" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NotificationCreated" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OccurredAfter" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OccurredBefore" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PostedEventId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Subsystem" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TenantId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PostedEventQueryParms" nillable="true" type="tns:PostedEventQueryParms" />
+  <xs:complexType name="EventQueryParms">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CategoryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EventId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EventName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Shared" minOccurs="0" name="FilterCriterias" nillable="true" type="q2:ArrayOfSearchFilterCriteria" />
+      <xs:element minOccurs="0" name="HasSLA" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Subsystem" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EventQueryParms" nillable="true" type="tns:EventQueryParms" />
+  <xs:complexType name="SubscriptionQueryParms">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EventName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Shared" minOccurs="0" name="FilterCriterias" nillable="true" type="q3:ArrayOfSearchFilterCriteria" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SubscriptionQueryParms" nillable="true" type="tns:SubscriptionQueryParms" />
+  <xs:complexType name="SubscriberQueryParms">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EMail" nillable="true" type="xs:string" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Shared" minOccurs="0" name="FilterCriterias" nillable="true" type="q4:ArrayOfSearchFilterCriteria" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SmsAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubscriberID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SubscriberQueryParms" nillable="true" type="tns:SubscriberQueryParms" />
+</xs:schema>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3c76a74f-59f6-4a14-9441-c503866c7732" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>true</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="NotificationService.xsd" MetadataType="Schema" ID="224f8f9a-aa27-42b6-ba63-643459308b87" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd2" />
+    <MetadataFile FileName="NotificationService1.xsd" MetadataType="Schema" ID="e9c347bf-9d48-4861-88b2-3ba35e413737" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd7" />
+    <MetadataFile FileName="NotificationService2.xsd" MetadataType="Schema" ID="832c5175-68fb-4f5a-ad4c-b2cb03a91b6b" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd0" />
+    <MetadataFile FileName="NotificationService3.xsd" MetadataType="Schema" ID="21e84424-aea8-4c4e-a8bb-617ff1f4d9f7" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd5" />
+    <MetadataFile FileName="NotificationService4.xsd" MetadataType="Schema" ID="d20bdcd1-76fb-4dd3-8e59-4f2e396b56ae" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd10" />
+    <MetadataFile FileName="NotificationService5.xsd" MetadataType="Schema" ID="a79d54fa-bec5-4add-b63e-bbf3e969e7f3" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd11" />
+    <MetadataFile FileName="NotificationService6.xsd" MetadataType="Schema" ID="89fd3634-27ad-4779-875d-0b70d46ef52f" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd12" />
+    <MetadataFile FileName="NotificationService.disco" MetadataType="Disco" ID="5e374ac8-a67b-4f60-bd53-6a2096cf628e" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?disco" />
+    <MetadataFile FileName="NotificationService7.xsd" MetadataType="Schema" ID="3f1eac0f-fedd-45d8-ad22-a5bb0477d4b8" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd3" />
+    <MetadataFile FileName="NotificationService8.xsd" MetadataType="Schema" ID="97a3c057-e927-4064-b197-3c50c67eacb4" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd1" />
+    <MetadataFile FileName="NotificationService9.xsd" MetadataType="Schema" ID="f47d4343-02c7-4285-a15f-e4d926187a61" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd6" />
+    <MetadataFile FileName="NotificationService10.xsd" MetadataType="Schema" ID="1312ecd8-9660-429d-aba6-c44290380119" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd4" />
+    <MetadataFile FileName="NotificationService.wsdl" MetadataType="Wsdl" ID="efe80e36-7013-4345-9441-7fc4ebc86cb2" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?wsdl" />
+    <MetadataFile FileName="NotificationService11.xsd" MetadataType="Schema" ID="95fe9a66-49b1-4f0c-93c2-ceaeb02e8988" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd8" />
+    <MetadataFile FileName="NotificationService12.xsd" MetadataType="Schema" ID="e313b96c-f594-4daa-bba6-471a67d82dd6" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd9" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

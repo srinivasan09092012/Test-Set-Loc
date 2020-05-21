@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd2" namespace="HP.NotificationServices.Library.DataTransferObjects" />
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" />
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Queries" />
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Library.DataTransferObjects" />
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/System.Net.Mail" />
+  <xs:element name="IsServiceAvailable">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsServiceAvailableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsServiceAvailableResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsServiceHealthy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tenantId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsServiceHealthyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsServiceHealthyResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateEvent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="HP.NotificationServices.Library.DataTransferObjects" minOccurs="0" name="request" nillable="true" type="q1:Event" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateEventResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="HP.NotificationServices.Library.DataTransferObjects" minOccurs="0" name="CreateEventResult" nillable="true" type="q2:Event" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PostEvent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="eventName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="subsystem" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="messageBody" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isArchivedEvent" type="xs:boolean" />
+        <xs:element minOccurs="0" name="processRunTime" nillable="true" type="xs:dateTime" />
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="previousEventID" nillable="true" type="q3:guid" />
+        <xs:element minOccurs="0" name="operatorId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tenantId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PostEventResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="PostEventResult" nillable="true" type="q4:PostEvent" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteEvent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="eventId" type="q5:guid" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tenantId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteEventResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteSubscriber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="subscriberId" type="q6:guid" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tenantId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteSubscriberResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPostedEvents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="request" nillable="true" type="q7:PostedEventSearchCriteria" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPostedEventsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="GetPostedEventsResult" nillable="true" type="q8:ArrayOfPostEvent" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchPostedEvents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Queries" minOccurs="0" name="query" nillable="true" type="q9:PostedEventQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchPostedEventsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Queries" minOccurs="0" name="SearchPostedEventsResult" nillable="true" type="q10:PostedEventQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateEvent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="HP.NotificationServices.Library.DataTransferObjects" minOccurs="0" name="request" nillable="true" type="q11:Event" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateEventResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="HP.NotificationServices.Library.DataTransferObjects" minOccurs="0" name="UpdateEventResult" nillable="true" type="q12:Event" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEvents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="request" nillable="true" type="q13:EventSearchCriteria" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEventsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="HP.NotificationServices.Library.DataTransferObjects" minOccurs="0" name="GetEventsResult" nillable="true" type="q14:ArrayOfEvent" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchEvents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Queries" minOccurs="0" name="query" nillable="true" type="q15:EventQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchEventsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Queries" minOccurs="0" name="SearchEventsResult" nillable="true" type="q16:EventQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateSubscriber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="request" nillable="true" type="q17:Subscription" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateSubscriberResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="CreateSubscriberResult" nillable="true" type="q18:Subscription" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSubscriber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="request" nillable="true" type="q19:Subscription" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSubscriberResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="UpdateSubscriberResult" nillable="true" type="q20:Subscription" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchEventSubscriptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Queries" minOccurs="0" name="query" nillable="true" type="q21:SubscriptionQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchEventSubscriptionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Queries" minOccurs="0" name="SearchEventSubscriptionsResult" nillable="true" type="q22:SubscriptionQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSubscriptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="request" nillable="true" type="q23:SubscriptionSearchCriteria" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSubscriptionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="GetSubscriptionsResult" nillable="true" type="q24:ArrayOfSubscription" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSubscribers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="eventId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSubscribersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Library.DataTransferObjects" minOccurs="0" name="GetSubscribersResult" nillable="true" type="q25:ArrayOfSubscription" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSubscriberDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="request" nillable="true" type="q26:SubscriberSearchCriteria" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSubscriberDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="GetSubscriberDetailsResult" nillable="true" type="q27:ArrayOfSubscription" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchSubscriberDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Queries" minOccurs="0" name="query" nillable="true" type="q28:SubscriberQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchSubscriberDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Queries" minOccurs="0" name="SearchSubscriberDetailsResult" nillable="true" type="q29:SubscriberQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEventNameDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tenantId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEventNameDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="GetEventNameDetailsResult" nillable="true" type="q30:ArrayOfEventNameDetails" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSubscriberEmailDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tenantId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSubscriberEmailDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="GetSubscriberEmailDetailsResult" nillable="true" type="q31:ArrayOfSubscriberEmailDetails" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSubscriberSMSDetails">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSubscriberSMSDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="GetSubscriberSMSDetailsResult" nillable="true" type="q32:ArrayOfSubscriberSMSDetails" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateGenericSubscription">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="request" nillable="true" type="q33:Subscription" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateGenericSubscriptionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="CreateGenericSubscriptionResult" nillable="true" type="q34:Subscription" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteSubscription">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="subscriptionID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteSubscriptionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Library.DataTransferObjects" minOccurs="0" name="DeleteSubscriptionResult" nillable="true" type="q35:Subscription" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendEmail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tenantId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="subject" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="emailBody" nillable="true" type="xs:string" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="addressList" nillable="true" type="q36:ArrayOfAddress" />
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="fromAddress" nillable="true" type="q37:Address" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/System.Net.Mail" minOccurs="0" name="priority" type="q38:MailPriority" />
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="attachmentList" nillable="true" type="q39:ArrayOfAttachments" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendEmailResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSubscription">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="request" nillable="true" type="q40:Subscription" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSubscriptionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="UpdateSubscriptionResult" nillable="true" type="q41:Subscription" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendAndPostSubscribedEvent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="request" nillable="true" type="q42:SendAndPostSubscribedEventCriteria" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendAndPostSubscribedEventResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" minOccurs="0" name="SendAndPostSubscribedEventResult" nillable="true" type="q43:PostEvent" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
