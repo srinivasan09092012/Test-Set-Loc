@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Configuration;
 using System.IO;
 using System.Management;
@@ -11,7 +12,9 @@ namespace WatchDog_WindowsService
 {
     public partial class WatchDog : ServiceBase
     {
-        System.Timers.Timer timer = new System.Timers.Timer();
+        private System.Timers.Timer timer = new System.Timers.Timer();
+        private const string IIS_REG_KEY = @"Software\Microsoft\InetStp";
+
         public WatchDog()
         {
             InitializeComponent();
@@ -44,41 +47,65 @@ namespace WatchDog_WindowsService
                     string serverBootUpTime = managementObj.Properties["LastBootUpTime"].Value.ToString();
                     serverStartTime = ManagementDateTimeConverter.ToDateTime(serverBootUpTime).AddMinutes(15);
                 }
-                bool iis = IsIISRunning();
-                if (DateTime.Now > serverStartTime && iis == true)
+                
+                //Start watchdog only 15 minutes after server boot time and if IIS is installed then that also should be in running state
+                if (DateTime.Now > serverStartTime)
                 {
-                    this.WriteToFile("Starting Watch-Dog :- " + DateTime.Now);
-                    WatchDogProgram.Main(null);
-                    this.WriteToFile("Watch-Dog Program Ended :- " + DateTime.Now);
-                    Thread.Sleep(10000);
+                    if (!IsIISInstalled())
+                    {
+                        //If IIS is not installed then start the watchdog
+                        RunWatchDogApplication();
+                    }
+                    else
+                    {
+                        ServiceController controller = new ServiceController("W3SVC");
+                        //If IIS is installed then check if IIS is up and running before starting watchdog.
+                        if (controller != null && controller.Status == ServiceControllerStatus.Running)
+                        {
+                            RunWatchDogApplication();
+                        }
+                    }
                 }               
             }            
         }
 
-        private static bool IsIISRunning()
+        private void RunWatchDogApplication()
         {
-            bool isRunning = false;
-
-            ServiceController controller = new ServiceController("W3SVC");
-
-            if (controller.Status == ServiceControllerStatus.Running)
-            {
-                isRunning = true;
-            }
-
-            return isRunning;
+            this.WriteToFile("Starting Watch-Dog :- " + DateTime.Now);
+            WatchDogProgram.Main(null);
+            this.WriteToFile("Watch-Dog Program Ended :- " + DateTime.Now);
+            Thread.Sleep(10000);
         }
 
         private void WriteToFile(string text)
         {
             string path = ConfigurationManager.AppSettings["FilePath"].ToString();                
             string filename = "Windows-Service-Log.txt";
-            if (!Directory.Exists(path))                
-                Directory.CreateDirectory(path);                                        
+
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
             using (StreamWriter writer = new StreamWriter(path + filename, true))
             {
                 writer.WriteLine(string.Format(text, DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt")));
                 writer.Close();
+            }
+        }
+
+        public bool IsIISInstalled()
+        {
+            try
+            {
+                using (RegistryKey iisKey = Registry.LocalMachine.OpenSubKey(IIS_REG_KEY))
+                {
+                    return (int)iisKey.GetValue("MajorVersion") >= 6;
+                }
+            }
+            catch(Exception ex)
+            {
+                this.WriteToFile("Error occured while validating IIS installation : " + ex.Message);
+                return false;
             }
         }
     }
