@@ -48,10 +48,10 @@
     <ReplacementString qualifier="log4net" from="Version=1.2.15.0" to="Version=2.0.8.0" />
     <ReplacementString qualifier="log4net" from="Version=2.0.5.0" to="Version=2.0.8.0" />
     <ReplacementString qualifier="Packages\log4net.2.0.5\lib\net45-full\log4net.dll" from="Packages\log4net.2.0.5\lib\net45-full\log4net.dll" to="Packages\log4net.2.0.8\lib\net45-full\log4net.dll" />
-    <ReplacementString qualifier="Packages\HPE.HSP.UA3.Core.API.Logger.20.1.89\lib\net48\log4net.dll" from="Packages\HPE.HSP.UA3.Core.API.Logger.20.1.89\lib\net48\log4net.dll" to="Packages\log4net.2.0.8\lib\net45-full\log4net.dll"/>
-    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.89\lib\net48\log4net.dll"  from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.89\lib\net48\log4net.dll" to="Packages\log4net.2.0.8\lib\net45-full\log4net.dll"/>
+    <ReplacementString qualifier="Packages\HPE.HSP.UA3.Core.API.Logger.20.2.89\lib\net48\log4net.dll" from="Packages\HPE.HSP.UA3.Core.API.Logger.20.2.89\lib\net48\log4net.dll" to="Packages\log4net.2.0.8\lib\net45-full\log4net.dll"/>
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.2.89\lib\net48\log4net.dll"  from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.2.89\lib\net48\log4net.dll" to="Packages\log4net.2.0.8\lib\net45-full\log4net.dll"/>
 
-    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.89\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll"  from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.89\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll" to="Packages\HPE.HSP.UA3.Core.API.Logger.20.1.89\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll"/>
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.2.89\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll"  from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.2.89\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll" to="Packages\HPE.HSP.UA3.Core.API.Logger.20.2.89\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll"/>
 
     <!--packages.config-->
     <ReplacementString qualifier="log4net" from="2.0.5"  to="2.0.8"/>
