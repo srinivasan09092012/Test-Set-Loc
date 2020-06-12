@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="Configs\PackageUpgrades\DevF\Log4Net.2.0.5 to 2.0.8.xml" />
     <Content Include="Configs\PackageUpgrades\DevF\Refactor_Package_Cleanup_Repoint_From_Deleted_dll.xml" />
     <Content Include="Configs\PackageUpgrades\DevF\Refactor_Repoint_from_19_2_70_to_19_3_76.xml" />
     <Content Include="Configs\PackageUpgrades\DevF\Refactor_Web_App_Config_DOTNET_Upgrade.xml" />
@@ -131,6 +132,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Configs\PackageUpgrades\DevF\Fix Package Names.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\Log4Net.2.0.5 to 2.0.8.xml" />
     <Content Include="Configs\PackageUpgrades\Dev\Refactor_Package_Cleanup_Repoint_From_Deleted_dll.xml" />
     <Content Include="Configs\PackageUpgrades\Dev\Refactor_Repoint_from_19_2_70_to_19_3_76.xml" />
     <Content Include="Configs\PackageUpgrades\Dev\Refactor_Web_App_Config_DOTNET_Upgrade.xml" />
