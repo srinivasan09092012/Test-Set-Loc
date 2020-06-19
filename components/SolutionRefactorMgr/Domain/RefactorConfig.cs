@@ -105,6 +105,7 @@ namespace SolutionRefactorMgr.Domain
                 foreach (ReplacementString replacement in this.ReplacementStrings)
                 {
                     replacement.Validate();
+                    replacement.Initialize();
                 }
             }
         }

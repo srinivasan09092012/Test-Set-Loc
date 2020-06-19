@@ -34,7 +34,7 @@
     <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
     <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
     <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
-    -->
+    -->  
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
@@ -49,23 +49,22 @@
     <ReplacementString qualifier="using Rhino.Mocks;" from="Rhino.Mocks;" to="Moq;" />
 
     <!-- Methods -->
-    <ReplacementString qualifier="MockRepository.GenerateMock" from="MockRepository.GenerateMock" to="new Mock" />
     <ReplacementString qualifier="MockRepository.GenerateStrictMock" from="(" to="(MockBehavior.Strict" />
-    <ReplacementString qualifier="MockRepository.GenerateStrictMock" from="MockRepository.GenerateStrictMock" to="new Mock" />
-    <ReplacementString qualifier="MockRepository.GenerateStub" from="MockRepository.GenerateMock" to="new Mock" />
     <ReplacementString qualifier="MockRepository.GeneratePartialMock" from=";" to=" { CallBase = true };" />
-    <ReplacementString qualifier="MockRepository.GeneratePartialMock" from="MockRepository.GeneratePartialMock" to="new Mock" />
-    <ReplacementString qualifier=".Expect" from=";" to=".Verifiable();" />
-    <ReplacementString qualifier=".Expect" from=".Expect" to=".Setup" />
-    <ReplacementString qualifier=".Stub" from=".Stub" to=".Setup" />
-    <ReplacementString qualifier=".Return" from=".Return" to=".Returns" />
-    <ReplacementString qualifier=".Throw" from=".Throw" to=".Throws" />
+    <ReplacementString qualifier="MockRepository.Generate" from="^(\s+)(?!var)(\w+) (\w+) = MockRepository" to="$1Mock&lt;$2&gt; $3 = MockRepository" regexReplace="true"/>
+    <ReplacementString qualifier="MockRepository.Generate" from="MockRepository\.(GenerateStub|GenerateMock|GenerateStrictMock|GeneratePartialMock)" to="new Mock" regexReplace="true"/>
+    <ReplacementString qualifier=".Return(" from=".Return(" to=".Returns(" />
+    <ReplacementString qualifier=".Expect(" from=".Throw(" to=".Throws(" />
+    <ReplacementString qualifier=".Expect(" from=";" to=".Verifiable();" />
+    <ReplacementString qualifier=".Expect" from="Arg\&lt;(.*?)\&gt;.Is.Anything(,|\))" to="It.IsAny&lt;$1&gt;()$2" regexReplace="true"/>
+    <ReplacementString qualifier=".Stub(" from="Arg\&lt;(.*?)\&gt;.Is.Anything(,|\))" to="It.IsAny&lt;$1&gt;()$2" regexReplace="true"/>
+    <ReplacementString qualifier=".Stub(" from=".Stub(" to=".Setup(" />
+    <ReplacementString qualifier=".Expect(" from=".Expect(" to=".Setup(" />
     <ReplacementString qualifier="AssertWasCalled" from=", options => options.Repeat.Times" to=", Times.Exactly" />
     <ReplacementString qualifier="AssertWasCalled" from="AssertWasCalled" to="Verify" />
     <ReplacementString qualifier="AssertWasNotCalled" from="));" to="), Times.Never);" />
     <ReplacementString qualifier="AssertWasNotCalled" from="AssertWasNotCalled" to="Verify" />
     <ReplacementString qualifier="VerifyAllExpectations" from="VerifyAllExpectations" to="VerifyAll" />
-    <ReplacementString qualifier=".IgnoreArguments()" from=";" to="; //MOQ: Removed 'IgnoreArguments()', Replace parameters with It.IsAny&lt;[type]&gt;()" />
     <ReplacementString qualifier=".IgnoreArguments()" from=".IgnoreArguments()" to="" />
     <ReplacementString qualifier=".Repeat.Any()" from=".Repeat.Any()" to="" />
   </ReplacementStrings>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Xml.Serialization;
+using System.Text.RegularExpressions;
 
 namespace SolutionRefactorMgr.Domain
 {
@@ -23,6 +24,11 @@ namespace SolutionRefactorMgr.Domain
         [XmlAttribute("providerName")]
         public string providerName { get; set; }
 
+        [XmlAttribute("regexReplace")]
+        public bool RegexReplace { get; set; }
+
+        public Regex FromRegex { get; set; }
+
         public void Validate()
         {
             if (string.IsNullOrWhiteSpace(this.Qualifier))
@@ -37,6 +43,16 @@ namespace SolutionRefactorMgr.Domain
             {
                 ////It's ok to replace with an empty string.
                 ////throw new ArgumentNullException("Replacement string to text has not been specified.");
+            }
+        }
+
+        public void Initialize()
+        {
+            this.To = this.To.Replace("[NEWLINE]", Environment.NewLine);
+
+            if (this.RegexReplace)
+            {
+                this.FromRegex = new Regex(this.From);
             }
         }
     }

@@ -427,12 +427,7 @@ namespace SolutionRefactorMgr
                                     }
                                     else
                                     {
-                                        if (line.Contains(replacement.Qualifier) && line.Contains(replacement.From))
-                                        { 
-                                            replacement.To = replacement.To.Replace("[NEWLINE]", Environment.NewLine);
-                                            line = line.Replace(replacement.From, replacement.To);
-                                            contentsChanged = true;
-                                        }
+                                        contentsChanged |= RefactorLine(replacement, ref line);
                                     }   
                                 }
                                 writer.WriteLine(line);
@@ -451,6 +446,28 @@ namespace SolutionRefactorMgr
             }
 
             return contentsChanged;
+        }
+
+        private static bool RefactorLine(ReplacementString replacement, ref string line)
+        {
+            if (replacement.RegexReplace)
+            {
+                if (line.Contains(replacement.Qualifier) && replacement.FromRegex.IsMatch(line))
+                {
+                    line = replacement.FromRegex.Replace(line, replacement.To);
+                    return true;
+                }
+            }
+            else
+            {
+                if (line.Contains(replacement.Qualifier) && line.Contains(replacement.From))
+                {
+                    line = line.Replace(replacement.From, replacement.To);
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private static string RefactorFileName(string origValue)
