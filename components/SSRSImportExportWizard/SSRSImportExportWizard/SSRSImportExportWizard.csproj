@@ -38,11 +38,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HPE.HSP.UA3.Core.API.Logger">
-      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.20.1.82\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.20.2.89\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.20.1.82\lib\net48\log4net.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.20.2.89\lib\net48\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
