@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="UA3_TENANT"
+  DTS:DTSID="{39CC5542-E5A6-4FC4-997B-FDF5C97833AC}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=AWRK_PDBA;User ID=UA3_TENANT;Provider=OraOLEDB.Oracle.1;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAtMUP3G1u9kuqPMjSLzhc0gAAAAACAAAAAAADZgAAwAAAABAAAABKeyjLPBE2jBGb8cw30bcbAAAAAASAAACgAAAAEAAAANpMa9mQGsl/cx7YkGjDY0N4AAAAwVTyq6RyL7y6fI8cuCczxWOHn7awpXlMA4pDxiPE7lMqmGZbLHi2WfyQ7Dp/ikCuQyO97IcxxP/fC4HBCW3xIRYxdE1i/42FjkLQTkhXyVNI/M9chpVUnDPy+wylZNRy94R4XH+1nGgUx7PxmyeSmhIE2JtiODjmFAAAANhBDxjxEbzHD2p01KETIWy7YXLy</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
