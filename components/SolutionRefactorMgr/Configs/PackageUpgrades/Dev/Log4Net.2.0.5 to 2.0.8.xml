@@ -58,6 +58,11 @@
     <ReplacementString qualifier="log4net" from="net451"  to="net48"/>
     <ReplacementString qualifier="log4net" from="net452"  to="net48"/>
     <ReplacementString qualifier="log4net" from="net461"  to="net48"/>
+    
+    <!--Binding Redirect updates in App.config and Web.config-->
+    <ReplacementString qualifier="oldVersion=&quot;0.0.0.0-1.2.13.0&quot; newVersion=&quot;1.2.13.0&quot;" from="oldVersion=&quot;0.0.0.0-1.2.13.0&quot; newVersion=&quot;1.2.13.0&quot;" to="oldVersion=&quot;0.0.0.0-2.0.8.0&quot; newVersion=&quot;2.0.8.0&quot;" />
+    <ReplacementString qualifier="oldVersion=&quot;0.0.0.0-1.2.15.0&quot; newVersion=&quot;1.2.15.0&quot;" from="oldVersion=&quot;0.0.0.0-1.2.15.0&quot; newVersion=&quot;1.2.15.0&quot;" to="oldVersion=&quot;0.0.0.0-2.0.8.0&quot; newVersion=&quot;2.0.8.0&quot;" />
+    <ReplacementString qualifier="oldVersion=&quot;0.0.0.0-2.0.7.0&quot; newVersion=&quot;2.0.7.0&quot;" from="oldVersion=&quot;0.0.0.0-2.0.7.0&quot; newVersion=&quot;2.0.7.0&quot;" to="oldVersion=&quot;0.0.0.0-2.0.8.0&quot; newVersion=&quot;2.0.8.0&quot;" />
   </ReplacementStrings>
   <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace></TfsWorkspace>
