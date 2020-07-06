@@ -3,6 +3,8 @@ using Common.ReportModels;
 using FileHelpers;
 using System.Collections.Generic;
 using Common.ExtensionMethods;
+using System.IO;
+using System;
 
 namespace Controller.Helpers.Scan
 {
@@ -237,7 +239,7 @@ namespace Controller.Helpers.Scan
         {
             if (DTOWithMissingDescription.Count > 1)
             {
-                string reportPath = (StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\ViewDTO\").CreateDirectory() + "ContractViewDTO.csv";
+                string reportPath = (StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\ViewDTO\").CreateDirectory() + "ContractViewDTO-.csv";
                 loggerEngine.writeEntry(string.Format("Generating excel list for DTO with missing XML Comments to folder {0}", reportPath), LogginSeetings.LevelType.InformationApplication, 9000, 9);
                 var engine = new FileHelperAsyncEngine<DTOMissingTagsModel>();
                 using (engine.BeginWriteFile(reportPath))
@@ -256,7 +258,7 @@ namespace Controller.Helpers.Scan
         {
             if (ServiceWithMissingDescription.Count > 1)
             {
-                string reportPath = (StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\Services\").CreateDirectory() + "Service" + ServiceWithMissingDescription[1].ServiceName + ".csv";
+                string reportPath = (StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\Services\").CreateDirectory() + "Service - " + ServiceWithMissingDescription[1].ServiceName + ".csv";
                 loggerEngine.writeEntry(string.Format("Generating excel list for Services with missing XML Comments to folder {0}", reportPath), LogginSeetings.LevelType.InformationApplication,9000,9);
                 var engine = new FileHelperAsyncEngine<ServiceMissingTagsModel>();
                 using (engine.BeginWriteFile(reportPath))
@@ -275,7 +277,7 @@ namespace Controller.Helpers.Scan
         {
             if (CommandsWithMissingDescription.Count > 1)
             {
-                string reportPath = (StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\Commands\").CreateDirectory() + "ContractCommands.csv";
+                string reportPath = (StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\Commands\").CreateDirectory() + "ContractCommands - " + ".csv";
                 loggerEngine.writeEntry(string.Format("Generating excel list for Commands with missing XML Comments to folder {0}",reportPath), LogginSeetings.LevelType.InformationApplication, 9000, 9);
                 var engine = new FileHelperAsyncEngine<CommandMissingTagsModel>();
                 using (engine.BeginWriteFile(reportPath))
@@ -294,7 +296,7 @@ namespace Controller.Helpers.Scan
         {
             if (EventsWithMissingDescription.Count > 1)
             {
-                string reportPath = (StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\Events\").CreateDirectory() + "ContractEvents.csv";
+                string reportPath = (StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\Events\").CreateDirectory() + "ContractEvents-" + ".csv";
                 loggerEngine.writeEntry(string.Format("Generating excel list for Events with missing XML Comments to folder {0}", reportPath), LogginSeetings.LevelType.InformationApplication, 9000, 9);
                 var engine = new FileHelperAsyncEngine<EventMissingTagsModel>();
                 using (engine.BeginWriteFile(reportPath))
@@ -313,7 +315,7 @@ namespace Controller.Helpers.Scan
         {
             if (ModelsWithMissingDescription.Count > 1)
             {
-                string reportPath = (StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\Models\").CreateDirectory() + "ContractModels.csv";
+                string reportPath = (StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\Models\").CreateDirectory() + "ContractModels-" + ".csv";
                 loggerEngine.writeEntry(string.Format("Generating excel list for Models with missing XML doc input to folder {0}", reportPath), LogginSeetings.LevelType.InformationApplication, 9000, 9);
                 var engine = new FileHelperAsyncEngine<ModelMissingTagsModel>();
                 using (engine.BeginWriteFile(reportPath))
@@ -332,7 +334,7 @@ namespace Controller.Helpers.Scan
         {
             if (QueryWithMissingDescription.Count > 1)
             {
-                string reportPath = (StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\QueryParams\").CreateDirectory() + "ContractQueryParams.csv";
+                string reportPath = (StorageDrive + @"\UA3\SandCastleCustomizationTool\CustomServiceSpecs\" + ModuleName + @"\Reports\MissingXMLInput\QueryParams\").CreateDirectory() + "ContractQueryParams-" + ".csv";
                 loggerEngine.writeEntry(string.Format("Generating excel list for QueryParams with missing XML Comments to folder {0}", reportPath), LogginSeetings.LevelType.InformationApplication,9000,9);
                 var engine = new FileHelperAsyncEngine<QueryMissingTagsModel>();
                 using (engine.BeginWriteFile(reportPath))

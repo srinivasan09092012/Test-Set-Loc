@@ -35,6 +35,15 @@ namespace Common.Implementations
             this.isReady = true;
         }
 
+        public void writeEntry(string EntryMsg)
+        {
+            if (this.isReady)
+            {
+                winEvtLog.WriteEntry(EntryMsg, EventLogEntryType.Information, 9000, 9);
+                Console.WriteLine(EntryMsg);
+            }
+        }
+
         public void writeEntry(string EntryMsg, LogginSeetings.LevelType LoggingLevel, int EventId, short CategoryId)
         {
             if (this.isReady)

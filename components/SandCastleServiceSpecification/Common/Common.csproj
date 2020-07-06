@@ -71,20 +71,24 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ModuleSettings\RunModuleSettings\Local\Administration_BroadCastMessage.xml" />
-    <Content Include="ModuleSettings\RunModuleSettings\Local\DrugRebate.xml" />
-    <Content Include="ModuleSettings\RunModuleSettings\Local\Finantial.xml" />
-    <Content Include="ModuleSettings\RunModuleSettings\Local\ManagedCare.xml" />
-    <Content Include="ModuleSettings\RunModuleSettings\Local\MemberManagement.xml" />
-    <Content Include="ModuleSettings\RunModuleSettings\Local\PlanManagement_CodeInformation.xml" />
-    <Content Include="ModuleSettings\RunModuleSettings\Local\PlanManagement_Grouping.xml" />
-    <Content Include="ModuleSettings\RunModuleSettings\Local\PlanManagement_RI.xml" />
-    <Content Include="ModuleSettings\RunModuleSettings\Local\PlanManagement_RS.xml" />
-    <Content Include="ModuleSettings\RunModuleSettings\Local\ProgramIntegrity.xml" />
-    <Content Include="ModuleSettings\RunModuleSettings\Local\ProviderEnrollment.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\Local\exclude\Administration_BroadCastMessage.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\Local\exclude\DrugRebate.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\Local\exclude\Finantial.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\Local\exclude\Integration.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\Local\exclude\ManagedCare.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\Local\exclude\MemberManagement.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\Local\exclude\PlanManagement_CodeInformation.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\Local\exclude\PlanManagement_Grouping.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\Local\exclude\PlanManagement_RI.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\Local\exclude\PlanManagement_RS.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\Local\exclude\ProgramIntegrity.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\Local\exclude\ProviderEnrollment.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\Local\IdentityManagement.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\ModuleSettingXML_Schema.xml" />
     <Content Include="ModuleSettings\RunModuleSettings\Server\Administration_BroadCastMessage.xml" />
     <Content Include="ModuleSettings\RunModuleSettings\Server\DrugRebate.xml" />
     <Content Include="ModuleSettings\RunModuleSettings\Server\Finantial.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\Server\IdentityManagement.xml" />
     <Content Include="ModuleSettings\RunModuleSettings\Server\Integration.xml" />
     <Content Include="ModuleSettings\RunModuleSettings\Server\ManagedCare.xml" />
     <Content Include="ModuleSettings\RunModuleSettings\Server\MemberManagement.xml" />
@@ -98,10 +102,10 @@
     <Content Include="ModuleSettings\RunModuleSettings\Server\TaskM.xml" />
     <Content Include="ModuleSettings\RunModuleSettings\Server\TPLCase.xml" />
     <Content Include="ModuleSettings\RunModuleSettings\Server\TPLPolicy.xml" />
-    <None Include="ModuleSettings\RunModuleSettings\Local\ProviderManagement.xml" />
-    <Content Include="ModuleSettings\RunModuleSettings\Local\TaskM.xml" />
-    <Content Include="ModuleSettings\RunModuleSettings\Local\TPLCase.xml" />
-    <Content Include="ModuleSettings\RunModuleSettings\Local\TPLPolicy.xml" />
+    <None Include="ModuleSettings\RunModuleSettings\Local\exclude\ProviderManagement.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\Local\exclude\TaskM.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\Local\exclude\TPLCase.xml" />
+    <Content Include="ModuleSettings\RunModuleSettings\Local\exclude\TPLPolicy.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

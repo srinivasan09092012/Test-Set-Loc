@@ -11,44 +11,83 @@ namespace Controller.Helpers.HTML
     {
         private HtmlDocument _htmlDoc;
         private int _htmlNodeIndex;
-        private string _SpanId;
-        private string _SpanStyleClass;
-        private int _searchBy;
-        
-        public SpanHelper(HtmlDocument htmlDoc, string spanStyleClass, int byClass)
+        private string _id;
+        private string _class;
+        private short _selectedFilter;
+        public HtmlNode _ContextSpan;
+        public bool _ContextSpanLoaded;
+
+        public enum SearchFilter : short
+        {
+            Name = 1,
+            Id = 2,
+            Class = 4,
+        };
+
+        public SpanHelper(HtmlDocument htmlDoc, SearchFilter filter, string criteria)
         {
             this._htmlDoc = htmlDoc;
-            this._SpanStyleClass = spanStyleClass;
-            this._htmlNodeIndex = 0;
-        }
+            this._htmlNodeIndex = 1000;
+            this._selectedFilter = (short)filter;
 
-        public SpanHelper(HtmlDocument htmlDoc, string spanId, string spanStyleClass)
-        {
-            this._htmlDoc = htmlDoc;
-            this._SpanId = spanId;
-            this._SpanStyleClass = spanStyleClass;
-            this._htmlNodeIndex = 0;
-            this._searchBy = 2;
-        }
-
-        public bool RemoveNode()
-        {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//span[@class='" + this._SpanStyleClass + "']");
-
-            if (n != null && n.Count > 0)
+            switch (_selectedFilter)
             {
-                n.FirstOrDefault().Remove();
+                case 1:
+                    this.Load("//span[@Name='" + criteria + "']");
+                    break;
+                case 2:
+                    this.Load("//span[@id='" + criteria + "']");
+                    break;
+                default:
+                    this.Load("//span[@class='" + criteria + "']");
+                    break;
             }
-            return true;
+
+            if (!this._ContextSpanLoaded)
+            {
+                Console.WriteLine("Requested Span Not found. Criteria: " + criteria + " Filter: " + filter.ToString());
+            }
         }
 
-        public bool RemoveNode(string all)
+        //<summary>
+        //Load
+        //Search for the given DIV in the way selected in constructor
+        //<param name = "xpath">spath string to search in the html document for the DIV requested.</param>
+        //</summary>
+        private void Load(string xpath)
         {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//span[@class='" + this._SpanStyleClass + "']");
+            var DivNodes = _htmlDoc.DocumentNode.SelectNodes(xpath);
 
-            if (n != null && n.Count > 0)
+            if (DivNodes != null && DivNodes.Count() > 0)
             {
-                foreach (var spanTag in n)
+                this._ContextSpan = DivNodes.FirstOrDefault();
+                this._ContextSpanLoaded = true;
+            }
+            else
+            {
+                _ContextSpanLoaded = false;
+            }
+        }
+
+        public void RemoveNode()
+        {
+            if (_ContextSpanLoaded)
+            {
+                _ContextSpan.Remove();
+            }
+        }
+
+        //<summary>
+        //RemoveAllOccurences
+        //Remove all spans with the specified style
+        //</summary>
+        public bool RemoveAllOccurences()
+        {
+            var selectedNode = _htmlDoc.DocumentNode.SelectNodes("//span[@class='" + this._class + "']");
+
+            if (selectedNode != null && selectedNode.Count > 0)
+            {
+                foreach (var spanTag in selectedNode)
                 {
                     spanTag.Remove();
                 }
@@ -59,10 +98,9 @@ namespace Controller.Helpers.HTML
 
         public void InnerHtml(string text)
         {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//span[@class='" + this._SpanStyleClass + "']");
-            if (n != null)
+            if (_ContextSpanLoaded)
             {
-                n.FirstOrDefault().InnerHtml = text;
+                _ContextSpan.InnerHtml = text;
             }
         }
     }

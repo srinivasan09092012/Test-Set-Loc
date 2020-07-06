@@ -41,12 +41,12 @@ namespace Controller
             //opening R_ page to remove namespace table
             htmlDocument._documentPath = ModuleSettings.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Html + MainPageContent;
             htmlDocument.Load();
-            TableHelper tbl = new TableHelper(htmlDocument._loadedDocument, "namespaceList");
+            TableHelper tbl = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "namespaceList");
             tbl.Remove();
 
-            tbl = new TableHelper(htmlDocument._loadedDocument, string.Empty, "titleTable");
+            tbl = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Class, "titleTable");
             tbl.removeColumn(0);
-            SpanHelper spIntro = new SpanHelper(htmlDocument._loadedDocument, "", "introStyle");
+            SpanHelper spIntro = new SpanHelper(htmlDocument._loadedDocument, SpanHelper.SearchFilter.Class, "introStyle");
             spIntro.InnerHtml("Select a service name in the left menu to display the available web service methods.");
             tbl.SetCellDisplayValue("titleColumn", "Web Services");//Web Services for third party integrators
             htmlDocument.Save();
@@ -108,7 +108,7 @@ namespace Controller
             var htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = fullSourcePath;
             htmlDocument.Load();
-            TableHelper tblHelper = new TableHelper(htmlDocument._loadedDocument, "classList", contentPage);
+            TableHelper tblHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "classList");
             return tblHelper.readColumnValues(1);
         }
 
@@ -131,12 +131,13 @@ namespace Controller
         }
 
         public void UpdateOperationsLists(string originalDocument){
+
             string fullSourcePath = ExecutionContext.getTargetPath() + originalDocument;
             var htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = fullSourcePath;
             htmlDocument.Load();
 
-            TableHelper tblHelper = new TableHelper(htmlDocument._loadedDocument, "classList", originalDocument);
+            TableHelper tblHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "classList");
             List<string> services = tblHelper.readColumnValues(1);
             foreach (string service in services)
             {
@@ -165,7 +166,7 @@ namespace Controller
             htmlDocument._documentPath = fullSourcePath;
             htmlDocument.Load();
 
-            TableHelper tblHelper = new TableHelper(htmlDocument._loadedDocument, "classList", originalDocument);
+            TableHelper tblHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "classList");
             List<string> services = tblHelper.readColumnValues(1);
 
             foreach (string service in services)
@@ -200,7 +201,7 @@ namespace Controller
             var htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = fullSourcePath;
             htmlDocument.Load();
-            TableHelper tblHelper = new TableHelper(htmlDocument._loadedDocument, "classList", pageContent);
+            TableHelper tblHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "classList");
             List<string> pagesExposingServices = tblHelper.readColumnValues(1);
             
             foreach (string servicePage in pagesExposingServices)
@@ -218,7 +219,7 @@ namespace Controller
             htmlDocument._documentPath = fullSourcePath;
             htmlDocument.Load();
 
-            TableHelper tblHelper = new TableHelper(htmlDocument._loadedDocument, "classList", originalDocument);
+            TableHelper tblHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "classList");
             List<string> services = tblHelper.readColumnValues(1);
 
             foreach (string service in services)
@@ -237,7 +238,7 @@ namespace Controller
             htmlDocument._documentPath = fullSourcePath;
             htmlDocument.Load();
 
-            TableHelper tblHelper = new TableHelper(htmlDocument._loadedDocument, "classList", originalDocument);
+            TableHelper tblHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "classList");
             List<string> services = tblHelper.readColumnValues(1);
 
             foreach (string service in services)
@@ -645,20 +646,20 @@ namespace Controller
 
         private void addDataTypeColumn(HtmlDocument doc)
         {
-            TableHelper tableHelper = new TableHelper(doc, "propertyList");
-            tableHelper.addTableColumn("Data Type");
+            TableHelper tableHelper = new TableHelper(doc, TableHelper.SearchFilter.Id, "propertyList");
+            tableHelper.addColumn("Data Type");
         }
 
         private void removeIconColumn(HtmlDocument doc)
         {
-            TableHelper tableHelper = new TableHelper(doc, "propertyList");
+            TableHelper tableHelper = new TableHelper(doc, TableHelper.SearchFilter.Id ,"propertyList");
             tableHelper.removeColumn(0);
         }
 
         public void fillDataTypeColumn(HtmlDocument htmlDoc)
         {
             HtmlDocument innerHtmlDoc = new HtmlDocument();
-            TableHelper tableHelper = new TableHelper(htmlDoc, "propertyList");
+            TableHelper tableHelper = new TableHelper(htmlDoc, TableHelper.SearchFilter.Id, "propertyList");
             List<string> files = tableHelper.readColumnValues(1);
             int j;
             int x = 1;
@@ -738,7 +739,7 @@ namespace Controller
             nodeIndex++;
             HtmlNode newNode = new HtmlNode(HtmlNodeType.Element, htmlDoc, nodeIndex);
             HtmlDocument innerHtmlDoc = new HtmlDocument();
-            TableHelper tableHelper = new TableHelper(htmlDoc, "propertyList");
+            TableHelper tableHelper = new TableHelper(htmlDoc, TableHelper.SearchFilter.Id, "propertyList");
             List<string> files = tableHelper.readColumnValues(1);
             int x = 1;
             foreach (var file in files)
@@ -777,7 +778,7 @@ namespace Controller
         public void updateServiceList(HtmlDocument htmlMainDoc, string webFolderTarget)
         {
             HtmlDocument innerHtmlDoc = new HtmlDocument();
-            TableHelper tableHelper = new TableHelper(htmlMainDoc, "methodList");
+            TableHelper tableHelper = new TableHelper(htmlMainDoc, TableHelper.SearchFilter.Id, "methodList");
             List<string> r = tableHelper.readColumnValues(0);
             int x = 1;
             int j;
@@ -807,7 +808,7 @@ namespace Controller
             TableHelper tbl = null;
             string response = string.Empty;
 
-            tbl = new TableHelper(htmlDocument._loadedDocument, "propertyList");
+            tbl = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id,"propertyList");
             if (tbl._ContextTable != null)
             {
                 List<string> dataTypeColumn = tbl.readColumnValues(2);
@@ -909,7 +910,7 @@ namespace Controller
             HtmlDocument innerHtmlDoc = new HtmlDocument();
             HtmlDocument innerHtmlDocLvl2 = new HtmlDocument();
             HtmlDocument innerHtmlDocLvl3 = new HtmlDocument();
-            TableHelper tableHelper = new TableHelper(doc, "methodList");
+            TableHelper tableHelper = new TableHelper(doc, TableHelper.SearchFilter.Id, "methodList");
             TableHelper tblHelperlevl2;
             HtmlNode myNode;
             List<HtmlNode> myNodeList = new List<HtmlNode>();
@@ -946,7 +947,7 @@ namespace Controller
                     if (linkfilelevel2 != string.Empty)
                     {
                         innerHtmlDocLvl2.Load((webFolderTarget + @"\html\" + linkfilelevel2));
-                        tblHelperlevl2 = new TableHelper(innerHtmlDocLvl2, "propertyList");
+                        tblHelperlevl2 = new TableHelper(innerHtmlDocLvl2, TableHelper.SearchFilter.Id, "propertyList");
 
                         if (tblHelperlevl2._ts != null)
                         {
@@ -1111,8 +1112,8 @@ namespace Controller
             divHelper.Remove();
 
             // calling span helper to remove Syntax header
-            SpanHelper spanHelper = new SpanHelper(doc, Common.Constants.HtmlInventory.PageSyntaxiHeadersClassSpan, 1);
-            spanHelper.RemoveNode("all");
+            SpanHelper spanHelper = new SpanHelper(doc, SpanHelper.SearchFilter.Class, "collapsibleRegionTitle");
+            spanHelper.RemoveAllOccurences();
 
             //calling div hhelper to remove reference on the botton section
             divHelper = new DivHelper(doc, DivHelper.SearchFilter.Id, "ID6RBSection");
@@ -1130,7 +1131,7 @@ namespace Controller
             divHelper = new DivHelper(doc, DivHelper.SearchFilter.Id, "seeAlsoSection");
             divHelper.Remove();
 
-            TableHelper tblConstructor = new TableHelper(doc, "constructorList");
+            TableHelper tblConstructor = new TableHelper(doc, TableHelper.SearchFilter.Id, "constructorList");
             tblConstructor.Remove();
 
             divHelper = new DivHelper(doc, DivHelper.SearchFilter.Id, "ID2RBSection");
@@ -1139,7 +1140,7 @@ namespace Controller
             divHelper = new DivHelper(doc, DivHelper.SearchFilter.Id, "ID0RBSection");
             divHelper.Remove();
 
-            spanHelper = new SpanHelper(doc, "introStyle", 1);
+            spanHelper = new SpanHelper(doc, SpanHelper.SearchFilter.Class, "introStyle");
             spanHelper.RemoveNode();
 
             TextHelper txtHelper = new TextHelper(doc, "Namespace:");
@@ -1160,7 +1161,7 @@ namespace Controller
             divHelper = new DivHelper(doc, DivHelper.SearchFilter.Id, "pageFooter");
             divHelper.Remove();
 
-            tableHelper = new TableHelper(doc, "", "titleTable");
+            tableHelper = new TableHelper(doc,  TableHelper.SearchFilter.Class ,"titleTable");
             tableHelper.removeRow(0);
 
             txtHelper = new TextHelper(doc, "Top");
@@ -1192,14 +1193,14 @@ namespace Controller
 
             if (Path.GetFileName(docPath).Contains("_Contracts_Events_") || Path.GetFileName(docPath).Contains("_Contracts_ViewDto_"))
             {
-                tableHelper = new TableHelper(doc, string.Empty, "titleTable");
+                tableHelper = new TableHelper(doc, TableHelper.SearchFilter.Class , "titleTable");
                 tableHelper.SetCellDisplayValue("titleColumn", tableHelper.readTdDisplayValueByClass("titleColumn").Replace("Class", "Event"));
 
                 txtHelper = new TextHelper(doc, "event exposes the following attributes.");
                 txtHelper.renameTagByText("TopicContent", "type exposes the following members.");
             }
 
-            tableHelper = new TableHelper(doc, string.Empty, "titleTable");
+            tableHelper = new TableHelper(doc,  TableHelper.SearchFilter.Class, "titleTable");
             tableHelper.SetCellDisplayValue("titleColumn", tableHelper.readTdDisplayValueByClass("titleColumn").Replace("Class", string.Empty));
         }
 
@@ -1231,7 +1232,7 @@ namespace Controller
             htmlDocument._documentPath = fullSourcePath;
             htmlDocument.Load();
 
-            TableHelper tblHelper = new TableHelper(htmlDocument._loadedDocument, "classList");
+            TableHelper tblHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "classList");
             List<string> services = tblHelper.readColumnValues(1);
 
             foreach (string service in services)
@@ -1253,7 +1254,7 @@ namespace Controller
             htmlDocument.Load();
             nodeIndex++;
             HtmlNode tmpColumnHolderNode = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
-            TableHelper tableHelper = new TableHelper(htmlDocument._loadedDocument, "methodList");
+            TableHelper tableHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "methodList");
 
             int x = 1;
             foreach (var serviceNameColumn in tableHelper.readColumnValues(0))
@@ -1265,28 +1266,33 @@ namespace Controller
 
             htmlDocument.Save();
 
-            htmlDocument.Load();
-            tableHelper = new TableHelper(htmlDocument._loadedDocument, "methodList");
-            TableHelper tableTitleHelper = new TableHelper(htmlDocument._loadedDocument, "", "titleTable");
+            //htmlDocument.Load();
+            //tableHelper = new TableHelper(htmlDocument._loadedDocument, "methodList");
+            //TableHelper tableTitleHelper = new TableHelper(htmlDocument._loadedDocument, "", "titleTable");
 
-            MissingTagsHelper scanHelper = new MissingTagsHelper(LoggerEngine);
-            scanHelper.GetServicesSource(tableHelper.ReadAllColumnsValues(), ModuleSettings.ModuleName, tableTitleHelper.GetCellDisplayValue("titleColumn"), ModuleSettings.StorageDrivePath);
-            scanHelper = null;
+            //MissingTagsHelper scanHelper = new MissingTagsHelper(LoggerEngine);
+            //scanHelper.GetServicesSource(tableHelper.ReadAllColumnsValues(), ModuleSettings.ModuleName, tableTitleHelper.GetCellDisplayValue("titleColumn"), ModuleSettings.StorageDrivePath);
+            //scanHelper = null;
         }
 
-        public void UpdateMethodsTableList(string doc)
+        /// <summary>
+        /// UpdateMethodsTableList
+        /// <para>Add columns: Input, Event and Operation Name</para>
+        /// </summary>
+        /// <param name="originalDocument"></param>
+        public void UpdateMethodsTableList(string originalDocument)
         {
             var htmlDocument = DocumentHelper.GetInstance();
-            htmlDocument._documentPath = doc;
+            htmlDocument._documentPath = originalDocument;
             htmlDocument.Load();
-            TableHelper tableHelper = new TableHelper(htmlDocument._loadedDocument, "methodList");
-            tableHelper.addTableColumn("Input Command");
-            tableHelper.addTableColumn("Event returned");
+            TableHelper tableHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "methodList");
+            tableHelper.addColumn("Input Command");
+            tableHelper.addColumn("Event returned");
             tableHelper.renameColumnHeader(1, "Operation Name");
             tableHelper.removeColumn(0);
             //DivHelper RemarksDivHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID4RBSection");
-            TextHelper txtHepler = new TextHelper(htmlDocument._loadedDocument, "[Missing");
-            txtHepler.removeTagByTextStartWith("ID4RBSection");
+            //TextHelper txtHepler = new TextHelper(htmlDocument._loadedDocument, "[Missing");
+            //txtHepler.removeTagByTextStartWith("ID4RBSection");
             htmlDocument.Save();
         }
 
@@ -1297,7 +1303,7 @@ namespace Controller
             htmlDocument._documentPath = contentPage;
             htmlDocument.Load();
             nodeIndex++;
-            TableHelper tableHelper = new TableHelper(htmlDocument._loadedDocument, targetTable);
+            TableHelper tableHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, targetTable);
             StringBuilder sb = new StringBuilder();
             HtmlNode tableNode = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
             tableNode.Name = "table";
@@ -1307,6 +1313,12 @@ namespace Controller
 
             // produce <thead></thead>
             sb.Append("<thead><tr>");
+
+            if (!tableHelper._ContextTableLoaded)
+            {
+                return;
+            }
+
             foreach (var col in tableHelper._ts._tableHeaderColumns)
             {
                 sb.Append("<th>");
@@ -1316,7 +1328,7 @@ namespace Controller
             sb.Append("</tr></thead>");
 
             // produce <tbody>
-            string bodyTable = tableHelper.InnerHtmltableCollection.Replace(sb.ToString().Replace("<thead>", string.Empty).Replace("</thead>", string.Empty), string.Empty);
+            string bodyTable = tableHelper._innerHtmltableCollection.Replace(sb.ToString().Replace("<thead>", string.Empty).Replace("</thead>", string.Empty), string.Empty);
 
             sb.Append("<tbody>");
             sb.Append(bodyTable);
@@ -1420,19 +1432,23 @@ namespace Controller
             divHelper.RemoveCollectionMatch();
             htmlDocument.Save();
         }
-
-        public void UpdateQueryMethodsTableList(string doc)
+        /// <summary>
+        /// UpdateQueryMethodsTableList
+        /// <para>Add columns: Input, Result and Operation </para>
+        /// </summary>
+        /// <param name="originalDocument"></param>
+        public void UpdateQueryMethodsTableList(string originalDocument)
         {
             var htmlDocument = DocumentHelper.GetInstance();
-            htmlDocument._documentPath = doc;
+            htmlDocument._documentPath = originalDocument;
             htmlDocument.Load();
-            TableHelper tableHelper = new TableHelper(htmlDocument._loadedDocument, "methodList");
-            tableHelper.addTableColumn("Input Query Parameter");
-            tableHelper.addTableColumn("Query Collection Result");
+            TableHelper tableHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "methodList");
+            tableHelper.addColumn("Input Query Parameter");
+            tableHelper.addColumn("Query Collection Result");
             tableHelper.renameColumnHeader(1, "Operation Name");
             tableHelper.removeColumn(0);
-            TextHelper txtHepler = new TextHelper(htmlDocument._loadedDocument, "[Missing");
-            txtHepler.removeTagByTextStartWith("ID4RBSection");
+            ////TextHelper txtHepler = new TextHelper(htmlDocument._loadedDocument, "[Missing");
+            ////txtHepler.removeTagByTextStartWith("ID4RBSection");
             htmlDocument.Save();
         }
 
@@ -1450,7 +1466,7 @@ namespace Controller
             EvtView = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "PageHeader");
             EvtView.removeAllChildNodes();
             EvtView.SetInnerHtml("DXC Payer Platform");
-            tblHelper = new TableHelper(htmlDocument._loadedDocument, "namespaceList");
+            tblHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "namespaceList");
             tblHelper.Remove();
             divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "leftNav");
             divHelper.SetInnerHtml(innerDiv);
@@ -1464,7 +1480,7 @@ namespace Controller
                 innerHtmlDocument.Load();
                 divHelper = new DivHelper(innerHtmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "leftNav");
                 divHelper.SetInnerHtml(innerDiv);
-                tblHelper = new TableHelper(innerHtmlDocument._loadedDocument, "classList");
+                tblHelper = new TableHelper(innerHtmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "classList");
                 strTableEvents.Append(tblHelper.GetInnerHtml());
                 innerHtmlDocument.Save();
             }
@@ -1484,16 +1500,16 @@ namespace Controller
             htmlDocument.Save();
 
             htmlDocument.Load();
-            SpanHelper spanHelper = new SpanHelper(htmlDocument._loadedDocument, "collapsibleRegionTitle", 1);
+            SpanHelper spanHelper = new SpanHelper(htmlDocument._loadedDocument, SpanHelper.SearchFilter.Class, "collapsibleRegionTitle");
             spanHelper.RemoveNode();// removing 
 
-            tblHelper = new TableHelper(htmlDocument._loadedDocument, "classList");
+            tblHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "classList");
             tblHelper.removeColumn(0);
             tblHelper.renameColumnHeader(0, "Event");
             htmlDocument.Save();
 
             htmlDocument.Load();
-            tblHelper = new TableHelper(htmlDocument._loadedDocument, "classList");
+            tblHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "classList");
             List<string> col = tblHelper.readColumnValues(0);
             int x = 1;
             HtmlNode tmpNode = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
@@ -1507,13 +1523,13 @@ namespace Controller
                 x++;
             }
 
-            tblHelper = new TableHelper(htmlDocument._loadedDocument, string.Empty, "titleTable");
+            tblHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Class, "titleTable");
             tblHelper.Remove();
             tblHelper.SetCellDisplayValue("titleColumn", string.Empty);
-            tblHelper.removeColumnByClass(0);
+            tblHelper.removeColumn(0);
             divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "summary");
             divHelper.Remove();
-            SpanHelper spIntro = new SpanHelper(htmlDocument._loadedDocument, "", "introStyle");
+            SpanHelper spIntro = new SpanHelper(htmlDocument._loadedDocument,  SpanHelper.SearchFilter.Class, "introStyle");
             spIntro.RemoveNode();
             htmlDocument.Save();
         }
@@ -1529,15 +1545,21 @@ namespace Controller
             var bodyNode = htmlDocument._loadedDocument.DocumentNode.SelectNodes("//body").FirstOrDefault();
 
             //take title from table
-            TableHelper tblTitle = new TableHelper(htmlDocument._loadedDocument, string.Empty, "titleTable");
+            TableHelper tblTitle = new TableHelper(htmlDocument._loadedDocument,  TableHelper.SearchFilter.Class, "titleTable");
             var title = tblTitle.readTdDisplayValueByClass("titleColumn");
-            tblTitle.Delete();
+            tblTitle.Remove();
 
             //header for stcky content 
             HtmlNode headerDiv = new HtmlNode(HtmlNodeType.Element,htmlDocument._loadedDocument, 0);
             headerDiv.Name = "div";
             headerDiv.Id = "topHeader";
             headerDiv.Attributes.Add("class", "top-Header");
+
+            //mid-header for stcky content 
+            HtmlNode midHeaderDiv = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, 1);
+            midHeaderDiv.Name = "div";
+            midHeaderDiv.Id = "midHeader";
+            midHeaderDiv.Attributes.Add("class", "mid-Header");
 
             //adding header
             DivHelper topicContentDiv = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "TopicContent");
@@ -1557,13 +1579,11 @@ namespace Controller
 
             headerDiv.InnerHtml = "<h1>" + title + "</h1>";
             topicContentDiv._ContextDiv.ChildNodes.Insert(0,headerDiv);
-        
-            DivHelper BreadScrumContentDiv = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "collapsibleAreaRegion");
-            BreadScrumContentDiv._ContextDiv.Attributes.Add("id", "midHeader");
-            BreadScrumContentDiv._ContextDiv.Attributes.Remove("class");
-            BreadScrumContentDiv._ContextDiv.Attributes.Add("class", "mid-Header");
 
-            DivHelper PropTableContentDiv = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID4RBSection");/////////ID3RBSection
+            //adding mid-header
+            topicContentDiv._ContextDiv.ChildNodes.Insert(1, midHeaderDiv);
+
+            DivHelper PropTableContentDiv = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID4RBSection");
             PropTableContentDiv._ContextDiv.Attributes.Add("class", "Content");
 
             //adding references to css and js
@@ -1611,11 +1631,7 @@ namespace Controller
             htmlDocument._documentPath = htmlPage;
             htmlDocument.Load();
 
-            DivHelper divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "collapsibleAreaRegion");
-            divHelper.removeStyleClass("collapsibleAreaRegion");
-            htmlDocument.Save();
-            htmlDocument.Load();
-            divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "collapsibleAreaRegion");
+            DivHelper divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "summary");
             nodeIndex++;
             HtmlNode breadCrumbsList = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
             breadCrumbsList.Name = "ol";
@@ -1681,7 +1697,7 @@ namespace Controller
             node.Attributes.Add("type", "text/javascript");
             node.Attributes.Add("src", "ComplexEventNavigator.js");
             headNode.ChildNodes.Add(node);
-            divHelper.addChildrenNode(breadCrumbsList);
+            divHelper.InsertChildrenNode(breadCrumbsList);
 
             htmlDocument.Save();
         }

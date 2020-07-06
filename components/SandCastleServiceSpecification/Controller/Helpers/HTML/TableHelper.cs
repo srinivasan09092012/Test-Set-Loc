@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -10,44 +11,86 @@ namespace Controller.Helpers.HTML
         private HtmlDocument _htmlDoc;
         public HtmlNode _ContextTable;
         public TableStructure _ts;
-        private string _tableId = string.Empty;
-        private string _tableStyleClass = string.Empty;
-        private int _htmlNodeIndex = 0;
         public List<List<string>> rows = new List<List<string>>();
-        public string InnerHtmltableCollection;
+        public string _innerHtmltableCollection;
+        public bool _tableFound = false;
+        public string _tableId = string.Empty;
+        public string _tableStyleClass = string.Empty;
+        public int _htmlNodeIndex = 0;
 
-        public TableHelper(HtmlDocument htmlDoc, string tableId) 
+        private short _selectedFilter;
+        public bool _ContextTableLoaded = false;
+
+        public enum SearchFilter : short
         {
-            _htmlDoc = htmlDoc;
-            this._tableId = tableId;
-            _ts = new TableStructure(this._tableId);
-            this.GetTableStructure(this._tableId);
+            Name = 1,
+            Id = 2,
+            Class = 4,
+        };
+
+        //<summary>
+        //TableHelper Constructor
+        //<param name = "htmlDoc">HTMLAgilityPack.HtmlDocument object, pre loaded, helper will target the search to it  </param>
+        //<param name = "filter">Enum intented to support more than one search filter, By Name, Id and Class</param>
+        //<param name = "criteria">Search criteria for the selected search filter</param>
+        //</summary>
+        public TableHelper(HtmlDocument htmlDoc, SearchFilter filter, string criteria)
+        {
+            this._htmlDoc = htmlDoc;
+            this._htmlNodeIndex = 1000;
+            this._selectedFilter = (short)filter;
+
+            switch (_selectedFilter)
+            {
+                case 1:
+                    this.Load("//table[@Name='" + criteria + "']");
+                    break;
+                case 2:
+                    this.Load("//table[@id='" + criteria + "']");
+                    break;
+                default:
+                    this.Load("//table[@class='" + criteria + "']");
+                    break;
+            }
+
+            if (!this._ContextTableLoaded)
+            {
+                Console.WriteLine("Requested Table Not found. Criteria: " + criteria + " Filter: " + filter.ToString());
+            }
+            else
+            {
+                Console.WriteLine("Table found. Criteria: " + criteria + " Filter: " + filter.ToString() + " getting structure");
+                _ts = new TableStructure(criteria);
+                this.GetTableStructure(criteria);
+                Console.WriteLine("Getting structure done");
+            }
         }
 
-        public TableHelper(HtmlDocument htmlDoc, string tableId, string tableStyleClass) 
+        //<summary>
+        //Load
+        //Search for the given DIV in the way selected in constructor
+        //<param name = "xpath">spath string to search in the html document for the DIV requested.</param>
+        //</summary>
+        private void Load(string xpath)
         {
-            _htmlDoc = htmlDoc;
-            this._tableId = tableId;
-            this._tableStyleClass = tableStyleClass;
+            var tableNodes = _htmlDoc.DocumentNode.SelectNodes(xpath);
+
+            if (tableNodes != null)
+            {
+                this._ContextTable = tableNodes.FirstOrDefault();
+                this._ContextTableLoaded = true;
+            }
+            else
+            {
+                _ContextTableLoaded = false;
+            }
         }
 
         public void Remove()
         {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//table[@id='" + this._tableId + "']");
-
-            if (n != null)
+            if (this._ContextTableLoaded)
             {
-                n.FirstOrDefault().Remove();
-            }
-        }
-
-        public void Delete()
-        {
-            var n = _htmlDoc.DocumentNode.SelectNodes("//table[@class='" + this._tableStyleClass + "']");
-
-            if (n != null)
-            {
-                n.FirstOrDefault().Remove();
+                this._ContextTable.Remove();
             }
         }
 
@@ -56,38 +99,16 @@ namespace Controller.Helpers.HTML
             _htmlNodeIndex++;
             return new HtmlNode(HtmlNodeType.Element, _htmlDoc, _htmlNodeIndex);
         }
+
         private void addTableColumnHeader(string headerLabel)
         {
-             if (_ts is null)
-             {
-                 _ts = new TableStructure(this._tableId);
-                 this.GetTableStructure(this._tableId);
-             }
-             HtmlNode newHeader = CreateNode();
-             newHeader.Name = "th";
-             newHeader.InnerHtml = headerLabel;
-
-             if (_ts._tableHeaderColumns.Select(x => x.Value == headerLabel).Count() > 0)
-             {
-                // column name al ready exist con table error
-             }
-
-             if (_ts._columnCount == 0)
-                 return;
-
-
-            #region addColumnHeader
-
-            foreach (var table in _htmlDoc.DocumentNode.SelectNodes("//table[@id='" + this._tableId + "']"))
+            if (this._ContextTableLoaded)
             {
-                var rows = table.ChildNodes;
-                var firstRow = rows.FirstOrDefault();
-                firstRow.ChildNodes.Add(newHeader);
+                HtmlNode newHeader = CreateNode();
+                newHeader.Name = "th";
+                newHeader.InnerHtml = headerLabel;
+                this._ContextTable.ChildNodes.FirstOrDefault().ChildNodes.Add(newHeader);
             }
-
-            newHeader = null;
-            #endregion
-            
         }
 
         /// <summary>
@@ -95,88 +116,68 @@ namespace Controller.Helpers.HTML
         /// </summary>
         /// <param name="columnName"></param>
         /// <returns></returns>
-        public bool addTableColumn(string columnName)
+        public bool addColumn(string columnName)
         {
-            this.addTableColumnHeader(columnName);
-            HtmlNode newColumn = CreateNode();
-            newColumn.Name = "td";
-            newColumn.InnerHtml = string.Empty;
-
-            if (_ts._columnCount == 0)
-                return false;
-
-            foreach (var table in _htmlDoc.DocumentNode.SelectNodes("//table[@id='" + this._tableId + "']"))
+            if (this._ContextTableLoaded)
             {
-                var rows = table.ChildNodes;
+                this.addTableColumnHeader(columnName);
+                HtmlNode newColumn = CreateNode();
+                newColumn.Name = "td";
+                newColumn.InnerHtml = string.Empty;
+
+                if (_ts._columnCount == 0)
+                    return false;
+                
+                var rows = this._ContextTable.ChildNodes;
+
                 foreach (var row in rows.Skip(1))
                 {
                     row.ChildNodes.Add(newColumn);
                 }
+                
+                newColumn = null;
             }
-
-            newColumn = null;
-
             return true;
         }
 
         public bool removeRow(int rowIndex)
         {
-            try
+            if (this._ContextTableLoaded)
             {
-                foreach (var node in _htmlDoc.DocumentNode.SelectNodes("//table[@class='" + this._tableStyleClass + "']"))
+                try
                 {
-                    if (node.HasChildNodes)
+                    foreach (var node in this._ContextTable.ChildNodes)
                     {
-                        foreach (var row in node.ChildNodes)
+                        if (node.HasChildNodes)
                         {
-                            if (row.HasChildNodes)
+                            foreach (var row in node.ChildNodes)
                             {
-                                row.ChildNodes[rowIndex].Remove();
+                                if (row.HasChildNodes)
+                                {
+                                    row.ChildNodes[rowIndex].Remove();
+                                }
                             }
                         }
                     }
                 }
-            }
-            catch
-            {
-                return false;
-            }
-            return true;
-        }
-        public bool removeColumnByClass(int columnIndex)
-        {
-            try
-            {
-                foreach (var node in _htmlDoc.DocumentNode.SelectNodes("//table[@class='" + this._tableStyleClass + "']"))
+                catch
                 {
-                    if (node.HasChildNodes)
-                    {
-                        foreach (var row in node.ChildNodes)
-                        {
-                            if (row.HasChildNodes)
-                            {
-                                row.ChildNodes[columnIndex].Remove();
-                            }
-                        }
-                    }
+                    return false;
                 }
             }
-            catch
-            {
-                return false;
-            }
+
             return true;
         }
 
-        public bool removeColumn(int columnIndex)
+        public void removeColumn(int columnIndex)
         {
-            try
+            if (this._ContextTableLoaded)
             {
-                foreach (var node in _htmlDoc.DocumentNode.SelectNodes("//table[@id='" + this._tableId + "']"))
+                try
                 {
-                    if (node.HasChildNodes)
+                    if (this._ContextTable.HasChildNodes)
                     {
-                        foreach (var row in node.ChildNodes)
+                        foreach (var row in this._ContextTable.ChildNodes)
                         {
                             if (row.HasChildNodes)
                             {
@@ -184,57 +185,80 @@ namespace Controller.Helpers.HTML
                             }
                         }
                     }
+                    
+                }
+                catch
+                {
                 }
             }
-            catch
-            {
-                return false;
-            }
-            return true;
         }
 
-        public bool renameColumnHeader(int columnIndex, string newColumnHeaderLabel)
+        public void renameColumnHeader(int columnIndex, string columnHeader)
         {
-            var selectedNodes = _htmlDoc.DocumentNode.SelectNodes("//table[@id='" + this._tableId + "']");
-
-            if (selectedNodes == null)
-                return true;
-            
-            foreach (var node in _htmlDoc.DocumentNode.SelectNodes("//table[@id='" + this._tableId + "']"))
+            if (this._ContextTableLoaded)
             {
-                if (node.HasChildNodes)
+                if (this._ContextTable.HasChildNodes)
                 {
-                    foreach (var row in node.ChildNodes.Where(x => x.FirstChild.Name == "th"))
+                    var rows = this._ContextTable.ChildNodes;
+                    var headerRow = rows.FirstOrDefault();
+                    try
                     {
-                        if (row.HasChildNodes)
-                        {
-                            row.ChildNodes[columnIndex].InnerHtml = newColumnHeaderLabel;
-                            break;
-                        }
+                        headerRow.ChildNodes[columnIndex].InnerHtml = columnHeader;
+                    }
+                    catch (Exception exe)
+                    {
+                        Console.WriteLine("error when renameColumnHeader " + exe.Message);
                     }
                 }
             }
-
-            return true;
-
         }
    
         public void SetCellDisplayValue(int columnIndex, int rowIndex, string label)
         {
-            var node = _htmlDoc.DocumentNode.SelectNodes("//table[@id='" + this._tableId + "']").FirstOrDefault().ChildNodes;
-
-            if (rowIndex <= node.Count()-1)
+            if (this._ContextTableLoaded)
             {
-                var row = node[rowIndex];
+                var allRows = this._ContextTable.ChildNodes;
+                var row = allRows[rowIndex];
                 row.ChildNodes[columnIndex].InnerHtml = label;
             }
         }
 
         public void SetCellDisplayValue(string tdClassId, string label)
         {
-            try
+            if (this._ContextTableLoaded)
             {
-                foreach (var node in _htmlDoc.DocumentNode.SelectNodes("//table[@class='" + this._tableStyleClass + "']"))
+                try
+                {
+                    foreach (var node in this._ContextTable.ChildNodes)
+                    {
+                        if (node.HasChildNodes)
+                        {
+                            foreach (var child in node.ChildNodes)
+                            {
+                                foreach (var childlvl in child.ChildNodes)
+                                {
+                                    if (childlvl.HasClass(tdClassId))
+                                    {
+                                        if (childlvl.HasChildNodes)
+                                        {
+                                            childlvl.ChildNodes.FirstOrDefault().InnerHtml = label;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                catch
+                { }
+            }
+        }
+
+        public string GetCellDisplayValue(string tdClassId)
+        {
+            if (this._ContextTableLoaded)
+            {
+                foreach (var node in this._ContextTable.ChildNodes)
                 {
                     if (node.HasChildNodes)
                     {
@@ -246,33 +270,8 @@ namespace Controller.Helpers.HTML
                                 {
                                     if (childlvl.HasChildNodes)
                                     {
-                                        childlvl.ChildNodes.FirstOrDefault().InnerHtml = label;
+                                        return childlvl.ChildNodes.FirstOrDefault().InnerHtml;
                                     }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            catch
-            { }
-        }
-
-        public string GetCellDisplayValue(string tdClassId)
-        {
-            foreach (var node in _htmlDoc.DocumentNode.SelectNodes("//table[@class='" + this._tableStyleClass + "']"))
-            {
-                if (node.HasChildNodes)
-                {
-                    foreach (var child in node.ChildNodes)
-                    {
-                        foreach (var childlvl in child.ChildNodes)
-                        {
-                            if (childlvl.HasClass(tdClassId))
-                            {
-                                if (childlvl.HasChildNodes)
-                                {
-                                    return childlvl.ChildNodes.FirstOrDefault().InnerHtml;
                                 }
                             }
                         }
@@ -283,97 +282,98 @@ namespace Controller.Helpers.HTML
             return string.Empty;
         }
 
-        private void GetTableStructure(string id, string styleclass = "styleclass")
+        private void GetTableStructure(string id)
         {
-            int columnCount = 0;
-            int rowCount = 0;
-            Dictionary<int, string> tableHeaderColumns = new Dictionary<int, string>();
-            DataTable dt = new DataTable(id);
-            List<string> tmpRow = new List<string>();
-
-            var t = _htmlDoc.DocumentNode.SelectNodes("//table[@id='" + id + "']");
-            
-            if (t != null)
+            if (this._ContextTableLoaded)
             {
-                InnerHtmltableCollection = ((HtmlNodeCollection)t).FirstOrDefault().InnerHtml;
-                this._ContextTable = t.FirstOrDefault();
-                foreach (var table in t)
+                int columnCount = 0;
+                int rowCount = 0;
+                Dictionary<int, string> tableHeaderColumns = new Dictionary<int, string>();
+                List<string> tmpRow = new List<string>();
+                this._innerHtmltableCollection = this._ContextTable.InnerHtml;
+                if (this._ContextTable.HasChildNodes)
                 {
-                    if (table.HasChildNodes)
+                    foreach (var row in this._ContextTable.ChildNodes)
                     {
-                        foreach (var row in table.ChildNodes)
+                        if (row.HasChildNodes)
                         {
-                            if (row.HasChildNodes)
+                            rowCount++;
+                            foreach (var column in row.ChildNodes)
                             {
-                                rowCount++;
-                                foreach (var column in row.ChildNodes)
+                                if (rowCount == 1)
                                 {
-                                    if (rowCount == 1)
-                                    {
-                                        tableHeaderColumns.Add(columnCount, column.InnerHtml);
-                                        columnCount++;
-                                    }
-                                    else
-                                    {
-                                        tmpRow.Add(column.InnerHtml);
-                                    }
+                                    tableHeaderColumns.Add(columnCount, column.InnerHtml);
+                                    columnCount++;
                                 }
-
-                                if (tmpRow.Count > 0)
+                                else
                                 {
-                                    rows.Add(tmpRow);
+                                    tmpRow.Add(column.InnerHtml);
                                 }
-
-                                tmpRow = null;
-                                tmpRow = new List<string>();
-
                             }
+
+                            if (tmpRow.Count > 0)
+                            {
+                                rows.Add(tmpRow);
+                            }
+
+                            tmpRow = null;
+                            tmpRow = new List<string>();
+
                         }
                     }
                 }
+                
+                _ts._tableId = id;
+                _ts._rowCount = rowCount;
+                _ts._columnCount = columnCount;
+                _ts._tableHeaderColumns = tableHeaderColumns;
+                _ts._isValid = true;
             }
-
-            _ts._tableClass = styleclass;
-            _ts._tableId = id;
-            _ts._rowCount = rowCount;
-            _ts._columnCount = columnCount;
-            _ts._tableHeaderColumns = tableHeaderColumns;
-            _ts._isValid = true;
         }
 
         public List<string> readColumnValues(int indexColumn)
         {
-            if (_ts is null)
+            if (this._ContextTableLoaded)
             {
-                _ts = new TableStructure(this._tableId);
-                this.GetTableStructure(this._tableId);
+                if (_ts is null)
+                {
+                    _ts = new TableStructure(this._tableId);
+                    this.GetTableStructure(this._tableId);
+                }
+
+                List<string> response = new List<string>();
+
+                foreach (List<string> rows in rows)
+                {
+                    response.Add(rows[indexColumn]);
+                }
+
+                return response;
             }
-
-            List<string> response = new List<string>();
-
-            foreach (List<string> rows in rows)
+            else
             {
-                response.Add(rows[indexColumn]);
+                return new List<string>();
             }
-
-            return response;
         }
 
         public string readTdDisplayValueByClass(string tdClass)
         {
-            foreach (var node in _htmlDoc.DocumentNode.SelectNodes("//table[@class='" + this._tableStyleClass + "']"))
+            if (this._ContextTableLoaded)
             {
-                if (node.HasChildNodes)
+                foreach (var node in this._ContextTable.ChildNodes)
                 {
-                    foreach (var child in node.ChildNodes)
+                    if (node.HasChildNodes)
                     {
-                        foreach (var childlvl in child.ChildNodes)
+                        foreach (var child in node.ChildNodes)
                         {
-                            if (childlvl.HasClass(tdClass))
+                            foreach (var childlvl in child.ChildNodes)
                             {
-                                if (childlvl.HasChildNodes)
+                                if (childlvl.HasClass(tdClass))
                                 {
-                                    return childlvl.ChildNodes.FirstOrDefault().InnerHtml;
+                                    if (childlvl.HasChildNodes)
+                                    {
+                                        return childlvl.ChildNodes.FirstOrDefault().InnerHtml;
+                                    }
                                 }
                             }
                         }
@@ -382,11 +382,6 @@ namespace Controller.Helpers.HTML
             }
 
             return string.Empty;
-        }
-
-        public List<List<string>> ReadAllColumnsValues()
-        {
-            return this.rows;
         }
 
         //<summary>
@@ -396,7 +391,14 @@ namespace Controller.Helpers.HTML
         //</summary>
         public string GetInnerHtml()
         {
-            return this._ContextTable.InnerHtml;
+            if (this._ContextTableLoaded)
+            {
+                return this._ContextTable.InnerHtml;
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
     }
 }

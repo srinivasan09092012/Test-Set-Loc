@@ -12,6 +12,7 @@ namespace Controller.Helpers.HTML
         public string _documentTitle;
         public  string _documentPath;
         public Dictionary<string, HtmlDocument> _documentsQueue;
+        public List<string> _htmlUpdatedDocuments;
 
         public HtmlDocument _loadedDocument { get; set; }
 
@@ -19,6 +20,7 @@ namespace Controller.Helpers.HTML
         {
             this._loadedDocument = agilityHtmlDoc;
             this._documentsQueue = new Dictionary<string, HtmlDocument>();
+            this._htmlUpdatedDocuments = new List<string>();
         }
 
         public static DocumentHelper GetInstance()
@@ -56,8 +58,11 @@ namespace Controller.Helpers.HTML
         public void Save()
         {
             this._loadedDocument.Save(this._documentPath, Encoding.UTF8);
-        }
 
-        
+            if (!this._htmlUpdatedDocuments.Contains(this._documentPath))
+            {
+                this._htmlUpdatedDocuments.Add(this._documentPath);
+            }
+        }
     }
 }

@@ -24,40 +24,8 @@ namespace SandCastleSvcSpec
         
         private delegate bool validateSettingFile(ModuleSettingModel parsedSettingFile);
 
-        // Declare the generic class.
-        public class GenericList<X>
-        {
-            public void Add(X input) { }
-        }
-
-        private class ExampleClass { }
-
         static void Main(string[] args)
         {
-
-            // Declare a list of type int.
-            GenericList<int> list1 = new GenericList<int>();
-            list1.Add(1);
-
-            // Declare a list of type string.
-            GenericList<string> list2 = new GenericList<string>();
-            list2.Add("");
-
-            // Declare a list of type ExampleClass.
-            GenericList<ExampleClass> list3 = new GenericList<ExampleClass>();
-            list3.Add(new ExampleClass());
-
-            Func<int, int> square = x => x * x;
-            Console.WriteLine(square(5));
-
-            /*
-             *******
-             **************
-             **************
-             *******
-             */
-
-
             Console.WriteLine("************************************");
             Console.WriteLine("   SandCastle Customization Tool");
             Console.WriteLine("************************************");
@@ -268,11 +236,11 @@ namespace SandCastleSvcSpec
                 htmlDocument._documentPath = page;
                 htmlDocument.Load();
 
-                DivHelper RemarksDivHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID4RBSection");
+                DivHelper multiusedRegion = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "collapsibleAreaRegion");
                 DivHelper SummaryDivHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "summary");
-                TableHelper tableHelper = new TableHelper(htmlDocument._loadedDocument, string.Empty, "titleTable");
-     
-                //RemarksDivHelper.Remove();
+                TableHelper tableHelper = new TableHelper(htmlDocument._loadedDocument,  TableHelper.SearchFilter.Class, "titleTable");
+
+                multiusedRegion.RemoveCollectionMatch();
 
                 if (SummaryDivHelper.GetInnerHtml().Contains("[Missing "))
                 {
@@ -327,22 +295,20 @@ namespace SandCastleSvcSpec
             #region ModuleHelpContentAvailable
             if (moduleSetting.ModuleHelpContentAvailable)
             {
+                loggerDetailEngine.writeEntry("Generating help content documentation", LogginSeetings.LevelType.InformationApplication, 9000, 9);
+
                 ctx = new ExecutionContext(ExecutionContext.ExecutionStages.HelpContent, moduleSetting);
                 factoryHtml = new HtmlFactory(loggerDetailEngine, ctx);
                 factoryHtml.ModuleSettings = moduleSetting;
                 DoBackup(moduleSetting.WebSourcePath, moduleSetting.WebTargetPath);
 
-                Console.WriteLine("");
-                loggerDetailEngine.writeEntry("Generating help content documentation", LogginSeetings.LevelType.InformationApplication, 9000, 9);
-
-                Console.WriteLine("");
-                Console.WriteLine("Preparing Services Landing Page");
+                loggerDetailEngine.writeEntry("Preparing Services Landing Page");
                 #region prepare Landing Page
                 factoryHtml.prepareIndexFile(Common.Constants.WebSolutionStructure.Files.IndexPage, moduleSetting.MainPageContent);
                 #endregion
 
-                Console.WriteLine("");
-                Console.WriteLine("Preparing operations tables and adding pagination controls");
+                loggerDetailEngine.writeEntry("Preparing operations tables and adding pagination controls");
+
                 #region Preparing Service Operation List Pages
                 foreach (var ServicePage in moduleSetting.ServiceListPages.ListPage)
                 {
@@ -353,64 +319,35 @@ namespace SandCastleSvcSpec
                 }
                 #endregion
 
-                Console.WriteLine("");
-                Console.WriteLine("Preparing Command and Event Pages:");
+                loggerDetailEngine.writeEntry("Preparing Command and Event Pages:");
+
                 #region Preparing Command and Event Pages
-                Console.WriteLine("");
-                Console.WriteLine("-- Commands Pages");
-                commandsToPrint = PreparePages("T_*_Contracts_Commands_*", moduleSetting);
-                Console.WriteLine("-- Done....Exporting to Excel");
-                Console.WriteLine("");
-                missingScanHelper.GetCommandsSource(commandsToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
+                loggerDetailEngine.writeEntry("-- Commands Pages");
+                PreparePages("T_*_Contracts_Commands_*", moduleSetting);
 
-                Console.WriteLine("");
-                Console.WriteLine("-- Events Pages");
-                EventsToPrint = PreparePages("T_*_Contracts_Events_*", moduleSetting);
-                Console.WriteLine("-- Done....Exporting to Excel");
-                Console.WriteLine("");
-                missingScanHelper.GetEventsSource(EventsToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
+                loggerDetailEngine.writeEntry("-- Events Pages");
+                PreparePages("T_*_Contracts_Events_*", moduleSetting);
 
-                Console.WriteLine("");
-                Console.WriteLine("-- Query Pages");
-                QueryToPrint = PreparePages("T_*_Contracts_Queries_Parameters_*", moduleSetting);
-                Console.WriteLine("-- Done....Exporting to Excel");
-                Console.WriteLine("");
-                missingScanHelper.GetQuerySource(QueryToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
+                loggerDetailEngine.writeEntry("-- Query Pages");
+                PreparePages("T_*_Contracts_Queries_Parameters_*", moduleSetting);
 
-                Console.WriteLine("");
-                Console.WriteLine("-- Data Models Pages");
-                ModelsToPrint = PreparePages("T_*_Contracts_Domain_*", moduleSetting);
-                Console.WriteLine("-- Done....Exporting to Excel");
-                Console.WriteLine("");
-                missingScanHelper.GetModelsSource(ModelsToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
+                loggerDetailEngine.writeEntry("-- Data Models Pages");
+                PreparePages("T_*_Contracts_Domain_*", moduleSetting);
 
-                Console.WriteLine("-- View DTO Pages");
-                DtosToPrint = PreparePages("T_*_Contracts_ViewDto_*", moduleSetting);
-                Console.WriteLine("-- Done Exporting to Excel");
-                missingScanHelper.GetDTOSource(DtosToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
+                loggerDetailEngine.writeEntry("-- View DTO Pages");
+                PreparePages("T_*_Contracts_ViewDto_*", moduleSetting);
 
-                Console.WriteLine("");
-                Console.WriteLine("-- Value Objects");
+                loggerDetailEngine.writeEntry("-- Value Objects");
                 PreparePages("T_*_Contracts_ValueObjects_*", moduleSetting);
 
-                Console.WriteLine("");
-                Console.WriteLine("-- Shared Objects");
+                loggerDetailEngine.writeEntry("-- Shared Objects");
                 PreparePages("T_*_Contracts_Shared_*", moduleSetting);
 
-            
+                loggerDetailEngine.writeEntry(".... Done");
 
-                DtosToPrint = null;
-                EventsToPrint = null;
-                ModelsToPrint = null;
-                QueryToPrint = null;
-                missingScanHelper = null;
-
-                Console.WriteLine(".... Done");
-                Console.WriteLine("");
                 #endregion
-
-                Console.WriteLine("");
-                Console.WriteLine("Removing empty elements and tags");
+                
+                loggerDetailEngine.writeEntry("Removing empty elements and tags");
                 #region removing empty elements and tags
                 foreach (var ServicePage in moduleSetting.ServiceListPages.ListPage)
                 {
@@ -419,29 +356,20 @@ namespace SandCastleSvcSpec
                     factoryHtml.RemoveEmptyParams(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
                 }
 
-                Console.WriteLine(".... Done");
-                Console.WriteLine("");
+                loggerDetailEngine.writeEntry(".... Done");
                 #endregion
 
-                Console.WriteLine("");
-                Console.WriteLine("Preparing Event View Landing Page");
+                loggerDetailEngine.writeEntry("Preparing Event View Landing Page");
                 #region Adding Event View
                 factoryHtml.prepareEventPage();
                 #endregion
 
-                Console.WriteLine("");
-                Console.WriteLine("Adding Pagination control to event page");
+                loggerDetailEngine.writeEntry("Adding Pagination control to event page");
                 #region Adding Pagination control to service pages
                 factoryHtml.setPaginationControl(moduleSetting.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Html + moduleSetting.MainContractContent, "classList", "namespacesSection");
                 Console.WriteLine(".... Done");
                 Console.WriteLine("");
                 #endregion
-
-                #region creating htmlBlocks on service Pages
-
-
-                #endregion
-
             }
             #endregion
 

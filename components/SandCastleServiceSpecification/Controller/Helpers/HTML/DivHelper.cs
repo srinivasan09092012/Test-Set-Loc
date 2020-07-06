@@ -213,6 +213,17 @@ namespace Controller.Helpers.HTML
             }
         }
 
+        public void InsertChildrenNode(HtmlNode htmlNode)
+        {
+            if (this._ContextDivLoaded)
+            {
+                if (this._ContextDiv.HasChildNodes)
+                {
+                    this._ContextDiv.ChildNodes.Insert(this._ContextDiv.ChildNodes.Count, htmlNode);
+                }
+            }
+        }
+
         //<summary>
         //removeClass
         //Remove the class style from the context DIV
