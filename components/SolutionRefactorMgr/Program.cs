@@ -307,6 +307,11 @@ namespace SolutionRefactorMgr
                 fileQualifies = !file.DirectoryName.ToLower().Contains(fileType.IgnoreIfPathContains.ToLower());
             }
 
+            if (fileQualifies && !string.IsNullOrWhiteSpace(fileType.QualifyIfNameContains))
+            {
+                fileQualifies = file.FullName.ToLower().Contains(fileType.QualifyIfNameContains.ToLower());
+            }
+
             if (refactorConfig.RefactorPartialContent)
             {
               ReplacementString obj = refactorConfig.ReplacementStrings.Find(f => f.filename.Contains(file.Name.ToLower()));

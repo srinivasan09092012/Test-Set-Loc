@@ -13,6 +13,9 @@ namespace SolutionRefactorMgr.Domain
         [XmlAttribute("ignoreIfPathContains")]
         public string IgnoreIfPathContains { get; set; }
 
+        [XmlAttribute("qualifyIfNameContains")]
+        public string QualifyIfNameContains { get; set; }
+
         public void Validate()
         {
         }
