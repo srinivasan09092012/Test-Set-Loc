@@ -3,7 +3,7 @@
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs>
     <ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />
-    <ModuleConfig name="Administration" branch="Dev" types="BAS" />
+    <ModuleConfig name="Administration" branch="Dev" types="All" />
     <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
     <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
     <ModuleConfig name="ConfigurationManagement" branch="Dev" types="All" />
@@ -16,7 +16,7 @@
     <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
     <ModuleConfig name="FinancialManagement" branch="Dev" types="All" />
     <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
-    <ModuleConfig name="Integration" branch="Dev" types="BAS" />
+    <ModuleConfig name="Integration" branch="Dev" types="All" />
     <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
     <ModuleConfig name="ManagedCarePortal" branch="Dev" types="All" />
     <ModuleConfig name="MemberManagement" branch="Dev" types="All" />
