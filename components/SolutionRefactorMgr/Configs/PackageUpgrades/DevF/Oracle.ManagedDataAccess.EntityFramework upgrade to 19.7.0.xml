@@ -3,38 +3,38 @@
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs>
     <ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />
-    <ModuleConfig name="Administration" branch="Dev" types="All" />
-    <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
-    <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
-    <ModuleConfig name="ConfigurationManagement" branch="Dev" types="All" />
-    <ModuleConfig name="Core" branch="Dev" types="All" />
-    <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
-    <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
-    <ModuleConfig name="DrugRebatePortal" branch="Dev" types="All" />
-    <ModuleConfig name="EDI" branch="Dev" types="All" />
-    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
-    <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
-    <ModuleConfig name="FinancialManagement" branch="Dev" types="All" />
-    <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
-    <ModuleConfig name="Integration" branch="Dev" types="All" />
-    <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
-    <ModuleConfig name="ManagedCarePortal" branch="Dev" types="All" />
-    <ModuleConfig name="MemberManagement" branch="Dev" types="All" />
-    <ModuleConfig name="MemberPortal" branch="Dev" types="All" />
-    <ModuleConfig name="Notifications" branch="Dev" types="All" />
-    <ModuleConfig name="PlanManagement" branch="Dev" types="All" />
-    <ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
-    <ModuleConfig name="ProgramIntegrityCT" branch="Dev" types="All" />
-    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="All" />
-    <ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
-    <ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
-    <ModuleConfig name="ProviderPortal" branch="Dev" types="All" />
-    <ModuleConfig name="Screening" branch="Dev" types="All" />
-    <ModuleConfig name="TaskManagement" branch="Dev" types="All" />
-    <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
-    <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
-    <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
-    <ModuleConfig name="Utilities" branch="Dev" types="NA" />
+    <ModuleConfig name="Administration" branch="DevF" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="DevF" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ConfigurationManagement" branch="DevF" types="All" />
+    <ModuleConfig name="Core" branch="DevF" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="DevF" types="All" />
+    <ModuleConfig name="DrugRebate" branch="DevF" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="DevF" types="All" />
+    <ModuleConfig name="EDI" branch="DevF" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="DevF" types="All" />
+    <ModuleConfig name="FileTransfer" branch="DevF" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="DevF" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="DevF" types="All" />
+    <ModuleConfig name="Integration" branch="DevF" types="All" />
+    <ModuleConfig name="ManagedCare" branch="DevF" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="DevF" types="All" />
+    <ModuleConfig name="MemberManagement" branch="DevF" types="All" />
+    <ModuleConfig name="MemberPortal" branch="DevF" types="All" />
+    <ModuleConfig name="Notifications" branch="DevF" types="All" />
+    <ModuleConfig name="PlanManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="DevF" types="All" />
+    <ModuleConfig name="ProgramIntegrityCT" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="DevF" types="All" />
+    <ModuleConfig name="Screening" branch="DevF" types="All" />
+    <ModuleConfig name="TaskManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="DevF" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="DevF" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="DevF" types="All" />
+    <ModuleConfig name="Utilities" branch="DevF" types="NA" />
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
