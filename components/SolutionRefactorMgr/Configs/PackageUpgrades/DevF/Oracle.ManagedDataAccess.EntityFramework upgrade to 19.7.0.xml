@@ -47,7 +47,9 @@
     <!--Reference Element in csproj-->
     <!--Provider & DbProviderFactories element in app.config-->
     <ReplacementString qualifier="Oracle.ManagedDataAccess" from="Version=4.122.1.0" to="Version=4.122.19.1" />
+    <ReplacementString qualifier="Oracle.ManagedDataAccess" from="Version=4.121.2.0" to="Version=4.122.19.1" />
     <ReplacementString qualifier="Oracle.ManagedDataAccess.EntityFramework" from="Version=6.122.1.0" to="Version=6.122.19.1" />
+    <ReplacementString qualifier="Oracle.ManagedDataAccess.EntityFramework" from="Version=6.121.2.0" to="Version=6.122.19.1" />
     <!--Binding Redirects in app/web.config files-->
     <ReplacementString qualifier="bindingRedirect oldVersion=&quot;4.121.0.0 - 4.65535.65535.65535" from="bindingRedirect oldVersion=&quot;4.121.0.0 - 4.65535.65535.65535&quot; newVersion=&quot;4.122.19.1" to="bindingRedirect oldVersion=&quot;0.0.0.0-4.122.19.1&quot; newVersion=&quot;4.122.19.1" />
     <ReplacementString qualifier="bindingRedirect oldVersion=&quot;4.121.0.0 - 4.65535.65535.65535" from="bindingRedirect oldVersion=&quot;4.121.0.0 - 4.65535.65535.65535&quot; newVersion=&quot;4.122.1.0" to="bindingRedirect oldVersion=&quot;0.0.0.0-4.122.19.1&quot; newVersion=&quot;4.122.19.1" />
