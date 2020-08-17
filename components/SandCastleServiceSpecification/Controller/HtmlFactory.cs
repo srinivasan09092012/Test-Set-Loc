@@ -1266,13 +1266,13 @@ namespace Controller
 
             htmlDocument.Save();
 
-            //htmlDocument.Load();
-            //tableHelper = new TableHelper(htmlDocument._loadedDocument, "methodList");
-            //TableHelper tableTitleHelper = new TableHelper(htmlDocument._loadedDocument, "", "titleTable");
+            htmlDocument.Load();
+            tableHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id ,"methodList");
+            TableHelper tableTitleHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Class, "titleTable");
 
-            //MissingTagsHelper scanHelper = new MissingTagsHelper(LoggerEngine);
-            //scanHelper.GetServicesSource(tableHelper.ReadAllColumnsValues(), ModuleSettings.ModuleName, tableTitleHelper.GetCellDisplayValue("titleColumn"), ModuleSettings.StorageDrivePath);
-            //scanHelper = null;
+            MissingTagsHelper scanHelper = new MissingTagsHelper(LoggerEngine);
+            scanHelper.GetServicesSource(tableHelper.ReadAllColumnsValues(), ModuleSettings.ModuleName, tableTitleHelper.GetInnerText(), ModuleSettings.StorageDrivePath);
+            scanHelper = null;
         }
 
         /// <summary>
@@ -1290,9 +1290,7 @@ namespace Controller
             tableHelper.addColumn("Event returned");
             tableHelper.renameColumnHeader(1, "Operation Name");
             tableHelper.removeColumn(0);
-            //DivHelper RemarksDivHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID4RBSection");
-            //TextHelper txtHepler = new TextHelper(htmlDocument._loadedDocument, "[Missing");
-            //txtHepler.removeTagByTextStartWith("ID4RBSection");
+
             htmlDocument.Save();
         }
 
@@ -1447,8 +1445,8 @@ namespace Controller
             tableHelper.addColumn("Query Collection Result");
             tableHelper.renameColumnHeader(1, "Operation Name");
             tableHelper.removeColumn(0);
-            ////TextHelper txtHepler = new TextHelper(htmlDocument._loadedDocument, "[Missing");
-            ////txtHepler.removeTagByTextStartWith("ID4RBSection");
+            TextHelper txtHepler = new TextHelper(htmlDocument._loadedDocument, "[Missing");
+            txtHepler.removeTagByTextStartWith("ID4RBSection");
             htmlDocument.Save();
         }
 

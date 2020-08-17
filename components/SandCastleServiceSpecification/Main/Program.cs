@@ -245,10 +245,9 @@ namespace SandCastleSvcSpec
                 if (SummaryDivHelper.GetInnerHtml().Contains("[Missing "))
                 {
                     SummaryDivHelper.Remove();
-
-                    if (!artifactsToPrint.ContainsKey(tableHelper.GetCellDisplayValue("titleColumn")))
+                    if (!artifactsToPrint.ContainsKey(tableHelper.GetInnerText()))
                     {
-                        artifactsToPrint.Add(tableHelper.GetCellDisplayValue("titleColumn"), SummaryDivHelper.GetInnerHtml());
+                        artifactsToPrint.Add(tableHelper.GetInnerText(), SummaryDivHelper.GetInnerHtml());
                         SummaryDivHelper.Remove();
                     }
                 }
@@ -300,7 +299,7 @@ namespace SandCastleSvcSpec
                 ctx = new ExecutionContext(ExecutionContext.ExecutionStages.HelpContent, moduleSetting);
                 factoryHtml = new HtmlFactory(loggerDetailEngine, ctx);
                 factoryHtml.ModuleSettings = moduleSetting;
-                DoBackup(moduleSetting.WebSourcePath, moduleSetting.WebTargetPath);
+                ////DoBackup(moduleSetting.WebSourcePath, moduleSetting.WebTargetPath);
 
                 loggerDetailEngine.writeEntry("Preparing Services Landing Page");
                 #region prepare Landing Page
@@ -323,19 +322,24 @@ namespace SandCastleSvcSpec
 
                 #region Preparing Command and Event Pages
                 loggerDetailEngine.writeEntry("-- Commands Pages");
-                PreparePages("T_*_Contracts_Commands_*", moduleSetting);
+                commandsToPrint = PreparePages("T_*_Contracts_Commands_*", moduleSetting);
+                missingScanHelper.GetCommandsSource(commandsToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
 
                 loggerDetailEngine.writeEntry("-- Events Pages");
-                PreparePages("T_*_Contracts_Events_*", moduleSetting);
+                EventsToPrint = PreparePages("T_*_Contracts_Events_*", moduleSetting);
+                missingScanHelper.GetEventsSource(EventsToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
 
                 loggerDetailEngine.writeEntry("-- Query Pages");
-                PreparePages("T_*_Contracts_Queries_Parameters_*", moduleSetting);
+                QueryToPrint = PreparePages("T_*_Contracts_Queries_Parameters_*", moduleSetting);
+                missingScanHelper.GetQuerySource(QueryToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
 
                 loggerDetailEngine.writeEntry("-- Data Models Pages");
-                PreparePages("T_*_Contracts_Domain_*", moduleSetting);
+                ModelsToPrint = PreparePages("T_*_Contracts_Domain_*", moduleSetting);
+                missingScanHelper.GetModelsSource(ModelsToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
 
                 loggerDetailEngine.writeEntry("-- View DTO Pages");
-                PreparePages("T_*_Contracts_ViewDto_*", moduleSetting);
+                DtosToPrint = PreparePages("T_*_Contracts_ViewDto_*", moduleSetting);
+                missingScanHelper.GetDTOSource(DtosToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
 
                 loggerDetailEngine.writeEntry("-- Value Objects");
                 PreparePages("T_*_Contracts_ValueObjects_*", moduleSetting);

@@ -66,6 +66,11 @@ namespace Controller.Helpers.HTML
             }
         }
 
+        public List<List<string>> ReadAllColumnsValues()
+        {
+            return this.rows;
+        }
+
         //<summary>
         //Load
         //Search for the given DIV in the way selected in constructor
@@ -252,6 +257,16 @@ namespace Controller.Helpers.HTML
                 catch
                 { }
             }
+        }
+
+        public string GetInnerText()
+        {
+            if (this._ContextTableLoaded)
+            {
+                return this._ContextTable.InnerText;
+            }
+
+            return string.Empty;
         }
 
         public string GetCellDisplayValue(string tdClassId)
