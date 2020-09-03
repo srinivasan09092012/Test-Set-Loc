@@ -168,6 +168,7 @@
     </Content>
     <Content Include="Configs\RefactorHotfix-IncrementFileVersion.xml" />
     <Content Include="Configs\PackageUpgrades\DevF\Oracle.ManagedDataAccess.EntityFramework upgrade to 19.7.0.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\NEventStore Upgrade to 7.0.0.xml" />
     <None Include="nuget.config">
       <SubType>Designer</SubType>
     </None>
