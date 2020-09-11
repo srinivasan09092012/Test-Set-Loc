@@ -5,6 +5,9 @@ using System.Security.Cryptography;
 using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Helpers;
 using System.Text;
+using System.IO;
+using System.Diagnostics;
+using System.Threading;
 
 namespace WindowsFormsApp1
 {
@@ -188,6 +191,30 @@ namespace WindowsFormsApp1
             catch (Exception ex)
             {
                 textToCompOrDecomp.Text = "Can't create the NEW GUID" + Environment.NewLine + ex.Message;
+            }
+        }
+
+        private void btnCopyToNotePad_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                File.WriteAllText(@"C:\Temp\Temporary.json", textToCompOrDecomp.Text);
+
+                if (File.Exists(@"C:\Program Files (x86)\Notepad++\notepad++.exe"))
+                {
+                    Process.Start(@"C:\Program Files (x86)\Notepad++\notepad++.exe", @"C:\Temp\Temporary.json");
+                }
+                else
+                {
+                    Process.Start(@"C:\Program Files\Notepad++\notepad++.exe", @"C:\Temp\Temporary.json");
+                }
+
+                Thread.Sleep(500);
+            }
+            catch 
+            {
+                Process.Start("notepad", @"C:\Temp\Temporary.json");
+                Thread.Sleep(500);
             }
         }
     }

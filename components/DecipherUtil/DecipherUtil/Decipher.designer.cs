@@ -47,6 +47,7 @@
             this.Encode = new System.Windows.Forms.Button();
             this.HashStreamIdOriginal = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnCopyToNotePad = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -110,9 +111,9 @@
             // 
             // clear
             // 
-            this.clear.Location = new System.Drawing.Point(1506, 148);
+            this.clear.Location = new System.Drawing.Point(1506, 215);
             this.clear.Name = "clear";
-            this.clear.Size = new System.Drawing.Size(136, 33);
+            this.clear.Size = new System.Drawing.Size(152, 33);
             this.clear.TabIndex = 6;
             this.clear.Text = "Clear";
             this.clear.UseVisualStyleBackColor = true;
@@ -124,7 +125,7 @@
             this.Copy.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Copy.Location = new System.Drawing.Point(1506, 84);
             this.Copy.Name = "Copy";
-            this.Copy.Size = new System.Drawing.Size(136, 33);
+            this.Copy.Size = new System.Drawing.Size(152, 33);
             this.Copy.TabIndex = 7;
             this.Copy.Text = "Copy";
             this.Copy.UseVisualStyleBackColor = true;
@@ -264,11 +265,23 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Convert Hash (Commits StreamIDOriginal)";
             // 
+            // btnCopyToNotePad
+            // 
+            this.btnCopyToNotePad.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCopyToNotePad.Location = new System.Drawing.Point(1506, 151);
+            this.btnCopyToNotePad.Name = "btnCopyToNotePad";
+            this.btnCopyToNotePad.Size = new System.Drawing.Size(152, 33);
+            this.btnCopyToNotePad.TabIndex = 6;
+            this.btnCopyToNotePad.Text = "Copy to Notepad++";
+            this.btnCopyToNotePad.UseVisualStyleBackColor = true;
+            this.btnCopyToNotePad.Click += new System.EventHandler(this.btnCopyToNotePad_Click);
+            // 
             // Decipher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1686, 839);
+            this.Controls.Add(this.btnCopyToNotePad);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -311,6 +324,7 @@
         private System.Windows.Forms.Button HashStreamIdOriginal;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button newguid;
+        private System.Windows.Forms.Button btnCopyToNotePad;
     }
 }
 
