@@ -1,0 +1,53 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowInstanceCleanupUtil", "WorkflowInstanceCleanupUtil\WorkflowInstanceCleanupUtil.csproj", "{CF3E2D50-98EC-43AB-9615-9381231C7872}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{93B29C66-805A-4D57-AE1C-5C41E765DA90}"
+	ProjectSection(SolutionItems) = preProject
+		nuget.config = nuget.config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowInstanceCleanupUtil.Job", "WorkflowInstanceCleanupUtil.Job\WorkflowInstanceCleanupUtil.Job.csproj", "{44E58994-440A-4561-A0BD-8927D0F6A13C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowInstanceCleanupUtil.Lib", "WorkflowInstanceCleanupUtil.Lib\WorkflowInstanceCleanupUtil.Lib.csproj", "{E0020379-7775-4CDB-ABC9-592A2A14C844}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF3E2D50-98EC-43AB-9615-9381231C7872}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF3E2D50-98EC-43AB-9615-9381231C7872}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF3E2D50-98EC-43AB-9615-9381231C7872}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF3E2D50-98EC-43AB-9615-9381231C7872}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44E58994-440A-4561-A0BD-8927D0F6A13C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44E58994-440A-4561-A0BD-8927D0F6A13C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44E58994-440A-4561-A0BD-8927D0F6A13C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44E58994-440A-4561-A0BD-8927D0F6A13C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0020379-7775-4CDB-ABC9-592A2A14C844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0020379-7775-4CDB-ABC9-592A2A14C844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0020379-7775-4CDB-ABC9-592A2A14C844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0020379-7775-4CDB-ABC9-592A2A14C844}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E1ED29EB-297C-4752-BBAA-F3C527FAD6D2}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://payerportfolio.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = WorkflowInstanceCleanupUtil.Job\\WorkflowInstanceCleanupUtil.Job.csproj
+		SccProjectName1 = WorkflowInstanceCleanupUtil.Job
+		SccLocalPath1 = WorkflowInstanceCleanupUtil.Job
+		SccProjectUniqueName2 = WorkflowInstanceCleanupUtil.Lib\\WorkflowInstanceCleanupUtil.Lib.csproj
+		SccProjectName2 = WorkflowInstanceCleanupUtil.Lib
+		SccLocalPath2 = WorkflowInstanceCleanupUtil.Lib
+	EndGlobalSection
+EndGlobal
