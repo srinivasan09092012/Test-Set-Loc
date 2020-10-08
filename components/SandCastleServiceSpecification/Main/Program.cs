@@ -239,7 +239,7 @@ namespace SandCastleSvcSpec
                 DivHelper multiusedRegion = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "collapsibleAreaRegion");
                 DivHelper SummaryDivHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "summary");
                 TableHelper tableHelper = new TableHelper(htmlDocument._loadedDocument,  TableHelper.SearchFilter.Class, "titleTable");
-
+               
                 multiusedRegion.RemoveCollectionMatch();
 
                 if (SummaryDivHelper.GetInnerHtml().Contains("[Missing "))
@@ -256,6 +256,13 @@ namespace SandCastleSvcSpec
 
                 factoryHtml.cleanInputOutputPages(page);
                 factoryHtml.preparePropertiesTable(page);
+
+                if (page.Contains("_Commands_"))
+                {
+                    DivHelper seeAlso = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID7RBSection");
+                    seeAlso.Remove();
+                    htmlDocument.Save();
+                }
 
                 if (page.Contains("_Events_"))
                 {
@@ -299,7 +306,6 @@ namespace SandCastleSvcSpec
                 ctx = new ExecutionContext(ExecutionContext.ExecutionStages.HelpContent, moduleSetting);
                 factoryHtml = new HtmlFactory(loggerDetailEngine, ctx);
                 factoryHtml.ModuleSettings = moduleSetting;
-                ////DoBackup(moduleSetting.WebSourcePath, moduleSetting.WebTargetPath);
 
                 loggerDetailEngine.writeEntry("Preparing Services Landing Page");
                 #region prepare Landing Page

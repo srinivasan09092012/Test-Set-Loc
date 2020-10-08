@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <!-- The configuration and platform will be used to determine which assemblies to include from solution and
+				 project documentation sources -->
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0b24ed8f-d29a-4aff-be3e-8cf524ae92fc}</ProjectGuid>
+    <SHFBSchemaVersion>2017.9.26.0</SHFBSchemaVersion>
+    <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual Studio adds them anyway -->
+    <AssemblyName>Documentation</AssemblyName>
+    <RootNamespace>Documentation</RootNamespace>
+    <Name>Documentation</Name>
+    <!-- SHFB properties -->
+    <FrameworkVersion>.NET Framework 4.5</FrameworkVersion>
+    <OutputPath>..\..\..\..\..\www\servicespecs\Modules\ProviderCredentialing\SAMCHECK\HelpWeb\</OutputPath>
+    <HtmlHelpName>HPP-  BAS and Events For Third Party Integrators</HtmlHelpName>
+    <Language>en-US</Language>
+    <HelpFileFormat>Website</HelpFileFormat>
+    <SyntaxFilters>C#</SyntaxFilters>
+    <PresentationStyle>VS2013</PresentationStyle>
+    <CleanIntermediates>True</CleanIntermediates>
+    <KeepLogFile>True</KeepLogFile>
+    <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
+    <IndentHtml>False</IndentHtml>
+    <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
+    <HelpTitle>HPP - Documentation Of Business Access Service %28BAS%29 and Events For Integration</HelpTitle>
+    <HelpFileVersion>1.0.0.0</HelpFileVersion>
+    <NamingMethod>MemberName</NamingMethod>
+    <ContentPlacement>AboveNamespaces</ContentPlacement>
+    <RootNamespaceContainer>True</RootNamespaceContainer>
+    <RootNamespaceTitle>BAS and Events For Third Party Integrators</RootNamespaceTitle>
+    <NamespaceGrouping>True</NamespaceGrouping>
+    <Preliminary>False</Preliminary>
+    <HeaderText>HPP provide this technical information in order to support external development and integration.</HeaderText>
+    <FooterText>If more information needed reach to DevOps Team.</FooterText>
+    <CopyrightHref>www.DXCHPPCopyRight.com</CopyrightHref>
+    <CopyrightText>Technical Asset Protected by Law</CopyrightText>
+    <FeedbackEMailAddress>edmundo.gardea%40dxc.com</FeedbackEMailAddress>
+    <FeedbackEMailLinkText>edmundo.gardea%40dxc.com</FeedbackEMailLinkText>
+    <SdkLinkTarget>Blank</SdkLinkTarget>
+    <HtmlSdkLinkType>None</HtmlSdkLinkType>
+    <BinaryTOC>False</BinaryTOC>
+    <IncludeFavorites>False</IncludeFavorites>
+    <WebsiteSdkLinkType>None</WebsiteSdkLinkType>
+    <AppendMarkdownFileExtensionsToUrls>True</AppendMarkdownFileExtensionsToUrls>
+    <CatalogProductId>PM_HPP_BAS</CatalogProductId>
+    <CatalogVersion>1</CatalogVersion>
+    <CatalogName>PM_HPP_BAS</CatalogName>
+    <VendorName>DXC Technology</VendorName>
+    <ProductTitle>HPP %28Healthcare Payer Platform%29</ProductTitle>
+    <TocParentId>-1</TocParentId>
+    <TocParentVersion>1</TocParentVersion>
+    <TopicVersion>1</TopicVersion>
+    <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
+    <DocumentationSources>
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Screening.BAS.SAMCheck\HP.HSP.UA3.Screening.BAS.SAMCheck.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Screening.BAS.SAMCheck\HP.HSP.UA3.Screening.BAS.SAMCheck.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Screening.BAS.SAMCheck\HP.HSP.UA3.Screening.BAS.SAMCheck.Contracts.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Screening.BAS.SAMCheck\HP.HSP.UA3.Screening.BAS.SAMCheck.Contracts.dll" />
+    </DocumentationSources>
+    <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
+    <ApiFilter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck" isExposed="False">
+        <Filter entryType="Interface" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck.ISAMCheckService" filterName="ISAMCheckService" isExposed="True" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck.SAMCheckService" filterName="SAMCheckService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck.SAMCheckService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck.SAMCheckService.SAMServiceHandler" filterName="SAMServiceHandler" isExposed="False" />
+        </Filter>
+      </Filter>
+    </ApiFilter>
+    <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
+    <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
+    <WorkingPath>D:\PSSAMCHECKTmp\</WorkingPath>
+    <TransformComponentArguments>
+      <Argument Key="logoFile" Value="dxc_logo_vt_blk_rgb_300.png" xmlns="" />
+      <Argument Key="logoHeight" Value="120" xmlns="" />
+      <Argument Key="logoWidth" Value="120" xmlns="" />
+      <Argument Key="logoAltText" Value="" xmlns="" />
+      <Argument Key="logoPlacement" Value="left" xmlns="" />
+      <Argument Key="logoAlignment" Value="left" xmlns="" />
+      <Argument Key="maxVersionParts" Value="" xmlns="" />
+      <Argument Key="defaultLanguage" Value="cs" xmlns="" />
+      <Argument Key="includeEnumValues" Value="true" xmlns="" />
+      <Argument Key="baseSourceCodeUrl" Value="" xmlns="" />
+      <Argument Key="requestExampleUrl" Value="" xmlns="" />
+    </TransformComponentArguments>
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="(global)" isDocumented="True" xmlns="" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.Screening.BAS.SAMCheck" isDocumented="True" xmlns="" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.Screening.BAS.SAMCheck.Contracts (Group)" isGroup="True" isDocumented="True" xmlns="" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.Screening.BAS.SAMCheck.Contracts.Common" isDocumented="True" xmlns="" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.Screening.BAS.SAMCheck.Contracts.Domain" isDocumented="True" xmlns="" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.Screening.BAS.SAMCheck.Contracts.Queries" isDocumented="True" xmlns="" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.Screening.BAS.SAMCheck.Contracts.Queries.Parameters" isDocumented="True" xmlns="" />
+    </NamespaceSummaries>
+  </PropertyGroup>
+  <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
+			 the build.  The others are optional common platform types that may appear. -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
+  </PropertyGroup>
+  <!-- Import the SHFB build targets -->
+  <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />
+  <!-- The pre-build and post-build event properties must appear *after* the targets file import in order to be
+			 evaluated correctly. -->
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="html\" />
+    <Folder Include="icon\" />
+    <Folder Include="css\" />
+    <Folder Include="font\" />
+    <Folder Include="img\" />
+    <Folder Include="css\addons\" />
+    <Folder Include="css\modules\" />
+    <Folder Include="font\roboto\" />
+    <Folder Include="img\lightbox\" />
+    <Folder Include="img\overlays\" />
+    <Folder Include="img\svg\" />
+    <Folder Include="scss\free\modules\animations-extended\" />
+    <Folder Include="scss\free\modules\" />
+    <Folder Include="scss\core\bootstrap\" />
+    <Folder Include="scss\free\" />
+    <Folder Include="scss\core\" />
+    <Folder Include="scss\addons\" />
+    <Folder Include="js\addons\" />
+    <Folder Include="js\CustomCode\" />
+    <Folder Include="js\modules\" />
+    <Folder Include="scss\" />
+    <Folder Include="js\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="html\ComplexEventNavigator.js" />
+    <Content Include="html\LeftNavMenu.js" />
+    <Content Include="html\stickyLayout.css" />
+    <Content Include="html\stickyLayout.js" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\mdb.css" />
+    <Content Include="css\mdb.lite.css" />
+    <Content Include="css\mdb.lite.min.css" />
+    <Content Include="css\mdb.min.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\style.min.css" />
+    <Content Include="css\addons\datatables.css" />
+    <Content Include="css\addons\datatables.min.css" />
+    <Content Include="css\addons\datatables-select.css" />
+    <Content Include="css\addons\datatables-select.min.css" />
+    <Content Include="css\addons\directives.css" />
+    <Content Include="css\addons\directives.min.css" />
+    <Content Include="css\modules\animations-extended.css" />
+    <Content Include="css\modules\animations-extended.min.css" />
+    <Content Include="js\addons\rating.js" />
+    <Content Include="js\addons\masonry.pkgd.min.js" />
+    <Content Include="js\addons\imagesloaded.pkgd.min.js" />
+    <Content Include="js\addons\datatables-select.min.js" />
+    <Content Include="js\addons\datatables-select.js" />
+    <Content Include="js\addons\datatables.min.js" />
+    <Content Include="js\addons\datatables.js" />
+    <Content Include="js\CustomCode\ComplexEventNavigator.js" />
+    <Content Include="js\modules\wow.js" />
+    <Content Include="js\modules\waves.js" />
+    <Content Include="js\modules\velocity.min.js" />
+    <Content Include="js\modules\velocity.js" />
+    <Content Include="js\modules\treeview.js" />
+    <Content Include="js\modules\scrolling-navbar.js" />
+    <Content Include="js\modules\jquery.easing.js" />
+    <Content Include="js\modules\forms-free.js" />
+    <Content Include="js\modules\enhanced-modals.js" />
+    <Content Include="js\modules\chart.js" />
+    <Content Include="js\modules\bs-custom-file-input.js" />
+    <Content Include="js\popper.min.js" />
+    <Content Include="js\mdb.min.js" />
+    <Content Include="js\mdb.js" />
+    <Content Include="js\jquery-3.4.0.min.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\bootstrap.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon\dxc_logo_vt_blk_rgb_300.png">
+      <ImageId>dxc_logo_vt_blk_rgb_300</ImageId>
+      <AlternateText>dxc logo vt blk rgb 300</AlternateText>
+    </Content>
+    <Content Include="img\lightbox\default-skin.png">
+      <ImageId>default-skin</ImageId>
+      <AlternateText>default-skin</AlternateText>
+    </Content>
+    <Content Include="img\lightbox\preloader.gif">
+      <ImageId>preloader</ImageId>
+      <AlternateText>preloader</AlternateText>
+    </Content>
+    <Content Include="img\overlays\01.png">
+      <ImageId>01</ImageId>
+      <AlternateText>01</AlternateText>
+    </Content>
+    <Content Include="img\overlays\02.png">
+      <ImageId>02</ImageId>
+      <AlternateText>02</AlternateText>
+    </Content>
+    <Content Include="img\overlays\03.png">
+      <ImageId>03</ImageId>
+      <AlternateText>03</AlternateText>
+    </Content>
+    <Content Include="img\overlays\04.png">
+      <ImageId>04</ImageId>
+      <AlternateText>04</AlternateText>
+    </Content>
+    <Content Include="img\overlays\05.png">
+      <ImageId>05</ImageId>
+      <AlternateText>05</AlternateText>
+    </Content>
+    <Content Include="img\overlays\06.png">
+      <ImageId>06</ImageId>
+      <AlternateText>06</AlternateText>
+    </Content>
+    <Content Include="img\overlays\07.png">
+      <ImageId>07</ImageId>
+      <AlternateText>07</AlternateText>
+    </Content>
+    <Content Include="img\overlays\08.png">
+      <ImageId>08</ImageId>
+      <AlternateText>08</AlternateText>
+    </Content>
+    <Content Include="img\overlays\09.png">
+      <ImageId>09</ImageId>
+      <AlternateText>09</AlternateText>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="font\roboto\Roboto-Bold.eot" />
+    <Content Include="font\roboto\Roboto-Bold.ttf" />
+    <Content Include="font\roboto\Roboto-Bold.woff" />
+    <Content Include="font\roboto\Roboto-Bold.woff2" />
+    <Content Include="font\roboto\Roboto-Light.eot" />
+    <Content Include="font\roboto\Roboto-Light.ttf" />
+    <Content Include="font\roboto\Roboto-Light.woff" />
+    <Content Include="font\roboto\Roboto-Light.woff2" />
+    <Content Include="font\roboto\Roboto-Medium.eot" />
+    <Content Include="font\roboto\Roboto-Medium.ttf" />
+    <Content Include="font\roboto\Roboto-Medium.woff" />
+    <Content Include="font\roboto\Roboto-Medium.woff2" />
+    <Content Include="font\roboto\Roboto-Regular.eot" />
+    <Content Include="font\roboto\Roboto-Regular.ttf" />
+    <Content Include="font\roboto\Roboto-Regular.woff" />
+    <Content Include="font\roboto\Roboto-Regular.woff2" />
+    <Content Include="font\roboto\Roboto-Thin.eot" />
+    <Content Include="font\roboto\Roboto-Thin.ttf" />
+    <Content Include="font\roboto\Roboto-Thin.woff" />
+    <Content Include="font\roboto\Roboto-Thin.woff2" />
+    <Content Include="img\lightbox\default-skin.svg" />
+    <Content Include="img\svg\arrow_left.svg" />
+    <Content Include="img\svg\arrow_right.svg" />
+    <Content Include="scss\free\modules\animations-extended\animations-extended.scss" />
+    <Content Include="scss\free\modules\animations-extended\_module.scss" />
+    <Content Include="scss\free\_treeview.scss" />
+    <Content Include="scss\free\_tables.scss" />
+    <Content Include="scss\free\_switch.scss" />
+    <Content Include="scss\free\_steppers.scss" />
+    <Content Include="scss\free\_pagination.scss" />
+    <Content Include="scss\free\_navbars.scss" />
+    <Content Include="scss\free\_msc.scss" />
+    <Content Include="scss\free\_modals.scss" />
+    <Content Include="scss\free\_loader.scss" />
+    <Content Include="scss\free\_list-group.scss" />
+    <Content Include="scss\free\_input-group.scss" />
+    <Content Include="scss\free\_forms.scss" />
+    <Content Include="scss\free\_footers.scss" />
+    <Content Include="scss\free\_dropdowns.scss" />
+    <Content Include="scss\free\_depreciated.scss" />
+    <Content Include="scss\free\_carousels.scss" />
+    <Content Include="scss\free\_cards.scss" />
+    <Content Include="scss\free\_buttons.scss" />
+    <Content Include="scss\free\_badges.scss" />
+    <Content Include="scss\free\_animations-basic.scss" />
+    <Content Include="scss\core\bootstrap\_variables.scss" />
+    <Content Include="scss\core\bootstrap\_rfs.scss" />
+    <Content Include="scss\core\bootstrap\_functions.scss" />
+    <Content Include="scss\core\_waves.scss" />
+    <Content Include="scss\core\_variables.scss" />
+    <Content Include="scss\core\_typography.scss" />
+    <Content Include="scss\core\_mixins.scss" />
+    <Content Include="scss\core\_masks.scss" />
+    <Content Include="scss\core\_helpers.scss" />
+    <Content Include="scss\core\_global.scss" />
+    <Content Include="scss\core\_colors.scss" />
+    <Content Include="scss\addons\_directives.scss" />
+    <Content Include="scss\addons\_datatables-select.scss" />
+    <Content Include="scss\addons\_datatables.scss" />
+    <Content Include="scss\mdb.scss" />
+    <Content Include="scss\mdb.lite.scss" />
+    <Content Include="scss\_custom-variables.scss" />
+    <Content Include="scss\_custom-styles.scss" />
+    <Content Include="scss\_custom-skin.scss" />
+  </ItemGroup>
+</Project>
