@@ -20,7 +20,6 @@ namespace WarmUpProvider.Console
             {
                 BASUnityContainer.Initialize();
                 InitializeInstrumentationSettings();
-                LoggerManager.Logger.LogInformational("~~~~~~~~~~~~~~Starting to warm up provider configurations~~~~~~~~~~~~~~");
                 WarmUpHelper warmUpHelper = new WarmUpHelper();
                 warmUpHelper.StartUp();
             }
@@ -29,7 +28,6 @@ namespace WarmUpProvider.Console
                 LoggerManager.Logger.LogWarning("Exception thrown : ", ex);
             }
 
-            LoggerManager.Logger.LogInformational("~~~~~~~~~~~~~~Warming up of provider completed~~~~~~~~~~~~~~");
             System.Console.ReadLine();
         }
 

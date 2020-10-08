@@ -180,7 +180,7 @@
         "CheckHealthStatus": "true"
       },
       {
-        "ModuleName": "PlanManagement",
+        "ModuleName": "Plan Management",
         "ApplicationName": "Plan Mgmt Service",
         "EndPoint": "/HP.HSP.UA3.CodeInformation/R6.0/CodeInformationService.svc/CodeInformation",
         "Binding": "basicHttpsBinding",
@@ -190,34 +190,6 @@
         "ModuleName": "Plan Management",
         "ApplicationName": "Plan Mgmt Service",
         "EndPoint": "/HP.HSP.UA3.RelatedInformation/R6.0/RelatedInformationQueryService.svc/RelatedInformationQuery",
-        "Binding": "basicHttpsBinding",
-        "CheckHealthStatus": "true"
-      },
-      {
-        "ModuleName": "Program Integrity",
-        "ApplicationName": "Program Integrity Services",
-        "EndPoint": "/HP.HSP.UA3.ProgramIntegrity/R6.0/MemberAgeGroupQueryService.svc",
-        "Binding": "basicHttpsBinding",
-        "CheckHealthStatus": "true"
-      },
-      {
-        "ModuleName": "Program Integrity",
-        "ApplicationName": "PI Report Services",
-        "EndPoint": "/HP.HSP.UA3.ProgramIntegrity/R6.0/GlobalUtilizationReportService.svc",
-        "Binding": "basicHttpsBinding",
-        "CheckHealthStatus": "true"
-      },
-      {
-        "ModuleName": "Program Integrity",
-        "ApplicationName": "PI Batch BAS Service",
-        "EndPoint": "/HP.HSP.UA3.ProgramIntegrity/R6.0/StudyRequestService.svc",
-        "Binding": "basicHttpsBinding",
-        "CheckHealthStatus": "true"
-      },
-      {
-        "ModuleName": "Program Integrity CT",
-        "ApplicationName": "PI Case Tracking Services",
-        "EndPoint": "/HP.HSP.UA3.ProgramIntegrity/R6.0/DataMartQueryService.svc",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
