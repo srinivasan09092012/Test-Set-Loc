@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SSIS_PurgeRestrictedCodeData_CommercialEnv"
   DTS:PackageType="5"
-  DTS:VersionBuild="43"
-  DTS:VersionGUID="{44F5F3FB-7ED6-41DE-AAE6-B0AA0083B092}">
+  DTS:VersionBuild="45"
+  DTS:VersionGUID="{505CABAE-BAF0-4E99-92B1-4CE5A068693C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -34,7 +34,7 @@
           <OraEnableDetailedTracing>False</OraEnableDetailedTracing>
           <OraPassword
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACOHqKbFd/kKA9h1rlRwm7wAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAC2j0djvKgK3O5zIG1dSqDUAAAAAASAAACgAAAAEAAAAE/b9COQIC+yuD0o+k7ydvAYAAAANNdZNi9JmFt3kPP+U5m3MHvFrqhrvhEIFAAAADcyrJjVDMbnmc/1hWpSAlxVjThx</OraPassword>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4Xz1YlNmrk2+Z7msIbdhcgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADo+LS4T9cM6T7fi0wATaH6AAAAAASAAACgAAAAEAAAAF2qAsTo0kmaQUT1hG52D9kYAAAAJ1GrSXPoshacu1aFvmpP0x0znzOZMvEFFAAAAJFBdv4Yk8qGYbr8hVmENmFiwg8Z</OraPassword>
         </OracleXMLPackage>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -291,7 +291,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       DTS:LocaleID="-1"
       DTS:ObjectName="Clear PURGE_RESULT Table"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1314,7 +1314,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       DTS:LocaleID="-1"
       DTS:ObjectName="Is Errored In INT?"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1336,7 +1336,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       DTS:LocaleID="-1"
       DTS:ObjectName="Is Errored In PLAN DB"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1358,7 +1358,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       DTS:LocaleID="-1"
       DTS:ObjectName="Is Errored in Tenant?"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1380,7 +1380,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       DTS:LocaleID="-1"
       DTS:ObjectName="Log Invalid Datalist Error"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1397,18 +1397,24 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       DTS:LocaleID="-1"
       DTS:ObjectName="PURGE INT DB DATA"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{3F17DE53-0C45-40E7-AB0F-ED7E7EE578BB}"
-          SQLTask:SqlStatementSource="Execute [UA3_INTEGRATION].[Delete_RestrCode_INTData] ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="Execute [UA3_INTEGRATION].[Delete_RestrCode_INTData] ?,?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
             SQLTask:DtsVariableName="$Package::ContenID"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="130"
-            SQLTask:ParameterSize="1000" />
+            SQLTask:ParameterSize="2000" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="$Package::TenantID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="100" />
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -1421,7 +1427,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       DTS:LocaleID="-1"
       DTS:ObjectName="PURGE PLAN DB DATA"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1432,7 +1438,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
             SQLTask:DtsVariableName="$Package::ContenID"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="130"
-            SQLTask:ParameterSize="1000" />
+            SQLTask:ParameterSize="2000" />
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="1"
             SQLTask:DtsVariableName="$Package::TenantID"
@@ -1451,7 +1457,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       DTS:LocaleID="-1"
       DTS:ObjectName="PURGE TENANT DB DATA IN ORACLE DB"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1462,7 +1468,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
             SQLTask:DtsVariableName="$Package::ContenID"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="130"
-            SQLTask:ParameterSize="1000" />
+            SQLTask:ParameterSize="2000" />
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="1"
             SQLTask:DtsVariableName="$Package::TenantID"
@@ -1596,7 +1602,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="210,42"
           Id="Package\Check For datalist existance"
@@ -1654,7 +1660,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
           TopLeft="382,70.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="-102,0"
               Start="0,0"
               End="-94.5,0">
@@ -1678,7 +1684,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
           TopLeft="592,72">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="93,0"
               Start="0,0"
               End="85.5,0">
@@ -1702,7 +1708,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
           TopLeft="790.25,95">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,95"
               Start="0,0"
               End="0,87.5">
@@ -1724,7 +1730,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
           TopLeft="788.25,232">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,88"
               Start="0,0"
               End="0,80.5">
@@ -1746,7 +1752,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
           TopLeft="185.25,173">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,43"
               Start="0,0"
               End="0,35.5">
@@ -1770,7 +1776,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
           TopLeft="182.5,258">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,35"
               Start="0,0"
               End="0,27.5">
@@ -1792,7 +1798,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
           TopLeft="271,313.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="102,0"
               Start="0,0"
               End="94.5,0">
@@ -1816,7 +1822,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
           TopLeft="181.5,422">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,50"
               Start="0,0"
               End="0,42.5">
@@ -1838,7 +1844,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
           TopLeft="264,496.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="116,0"
               Start="0,0"
               End="108.5,0">
@@ -1862,7 +1868,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
           TopLeft="181.5,337">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,43"
               Start="0,0"
               End="0,35.5">
@@ -1886,7 +1892,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
           TopLeft="187,92">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,39"
               Start="0,0"
               End="0,31.5">
@@ -1908,7 +1914,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
           TopLeft="279,153">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="96,0"
               Start="0,0"
               End="88.5,0">
@@ -1985,7 +1991,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
     design-time-name="Package\Generate PLAN Error Report">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="178,42"
           Id="Package\Generate PLAN Error Report\PLAN OLE DB Source"
@@ -2013,9 +2019,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
