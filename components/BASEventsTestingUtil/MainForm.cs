@@ -4,6 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using System.Net;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
 using System.Text;
 using System.Threading;
@@ -375,6 +378,7 @@ namespace BASEventsTestingUtil
                 binding.ReceiveTimeout = new TimeSpan(0, 20, 0);
                 binding.SendTimeout = new TimeSpan(0, 20, 0);
                 EndpointAddress address = new EndpointAddress(serviceUrl);
+                ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
                 using (ChannelFactory<IEventDistribution> factory = new ChannelFactory<IEventDistribution>(binding, address))
                 {
                     EventDistribution.IEventDistribution proxy = factory.CreateChannel();
