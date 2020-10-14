@@ -2,7 +2,7 @@
 
   {
     "TenantId": "77B50320-5F06-5740-84F4-18D4A8CDA51D",
-    "RootURL": "https://bas.test.mapshc.com",
+    "RootURL": "https://bas.dev.mapshc.com",
     "Endpoints": [
       {
         "ModuleName": "Administration",
@@ -245,7 +245,7 @@
       {
         "ModuleName": "Provider Management",
         "ApplicationName": "PM Report Services",
-        "EndPoint": "HP.HSP.UA3.ReportingSvc/R6.0/ReportingQueryService.svc",
+        "EndPoint": "/HP.HSP.UA3.ReportingSvc/R6.0/ReportingQueryService.svc",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
