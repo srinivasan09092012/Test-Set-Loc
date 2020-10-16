@@ -26,10 +26,14 @@ namespace Watchdog.Domain
         public string GetEndpointURL(string baseAddress)
         {
             StringBuilder builder = new StringBuilder();
-            builder.Append(baseAddress);
-            builder.Append("/");
-            builder.Append(Endpoint);
+            if (!string.IsNullOrEmpty(baseAddress))
+            {
 
+                builder.Append(baseAddress);
+                builder.Append("/");
+            }
+
+            builder.Append(Endpoint);
             return builder.ToString();
         }
     }

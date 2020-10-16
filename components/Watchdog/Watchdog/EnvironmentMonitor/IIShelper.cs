@@ -58,43 +58,43 @@ namespace Watchdog.EnvironmentMonitor
                 if (appPool.State == ObjectState.Started)
                 {
                     applicationHealthInformation.RestartStatus = Constants.Status.Restarted;
-                    logger.LogInformational("Application pool: " + applicationPoolName + " has been recycled successfully");
+                    logger.LogInformational("Application pool: " + applicationPoolName + " has been restarted successfully");
                 }
             }
         }
 
-        public static void RestartServiceForSite(string iisServerName,ILogger logger,ref ServiceHealthInformation applicationHealthInformation,K2ServiceConfigDataItem serviceConfigData)
+        public static void RestartServiceForSite(string iisServerName, ILogger logger, ref ServiceHealthInformation applicationHealthInformation, string serviceName, string serviceSiteName, string applicationName)
         {
-            if (!string.IsNullOrEmpty(iisServerName) && !string.IsNullOrEmpty(serviceConfigData.Name))
-            {
-                try
+                if (!string.IsNullOrEmpty(iisServerName) && !string.IsNullOrEmpty(serviceName))
                 {
-                    using (ServerManager manager = ServerManager.OpenRemote(iisServerName))
+                    try
                     {
-                        Site siteName = manager.Sites.FirstOrDefault(s => s.Name.Equals(serviceConfigData.SiteName));
+                        using (ServerManager manager = ServerManager.OpenRemote(iisServerName))
+                        {
+                            Site siteName = manager.Sites.FirstOrDefault(s => s.Name.Equals(serviceSiteName));
 
-                        if (siteName != null)
-                        {
-                            bool siteNameStopped = siteName.State == ObjectState.Stopped || siteName.State == ObjectState.Stopping;
-                            StartSiteNameService(siteName, siteNameStopped,serviceConfigData,ref applicationHealthInformation,logger);
-                        }
-                        else
-                        {
-                            applicationHealthInformation.RestartStatus = Constants.Status.Failed;
-                            throw new Exception("Site doesn't exist : " + serviceConfigData.Name);
+                            if (siteName != null)
+                            {
+                                bool siteNameStopped = siteName.State == ObjectState.Stopped || siteName.State == ObjectState.Stopping;
+                                StartSiteNameService(siteName, siteNameStopped, serviceName, ref applicationHealthInformation, logger);
+                            }
+                            else
+                            {
+                                applicationHealthInformation.RestartStatus = Constants.Status.Failed;
+                                throw new Exception("Site doesn't exist : " + serviceName);
+                            }
                         }
                     }
-                }
-                catch (Exception ex)
-                {
-                   applicationHealthInformation.RestartStatus = Constants.Status.Failed;
-                    logger.LogError("Error occured while attempting to restart the site : " + serviceConfigData.ApplicationPoolName, ex);
-                    throw ex;
-                }
-            }
+                    catch (Exception ex)
+                    {
+                        applicationHealthInformation.RestartStatus = Constants.Status.Failed;
+                        logger.LogError("Error occured while attempting to restart the site : " + applicationName, ex);
+                        throw ex;
+                    }
+                }               
         }
 
-        private static void StartSiteNameService(Site siteName, bool siteNameStopped,K2ServiceConfigDataItem serviceConfigData, ref ServiceHealthInformation applicationHealthInformation,ILogger logger)     
+        private static void StartSiteNameService(Site siteName, bool siteNameStopped,string serviceName, ref ServiceHealthInformation applicationHealthInformation,ILogger logger)     
         {
             if (siteNameStopped)
             {
@@ -112,10 +112,12 @@ namespace Watchdog.EnvironmentMonitor
                 if (siteName.State == ObjectState.Started)
                 {
                     applicationHealthInformation.RestartStatus = Constants.Status.Restarted;
-                    logger.LogInformational("Site Name: " + serviceConfigData.Name + " has been recycled successfully");
+                    logger.LogInformational("Site Name: " + serviceName + " has been restarted successfully");
+                    
                 }
             }
         }
+
         public static void RestartServiceForApplicationPool(string iisServerName,string applicationPoolName,ILogger logger, ref ServiceHealthInformation applicationHealthInformation)
         {
             if (!string.IsNullOrEmpty(iisServerName) && !string.IsNullOrEmpty(applicationPoolName))

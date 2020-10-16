@@ -5,20 +5,17 @@
 // This code is the property of DXC Technology, Copyright (c) 2020. All rights reserved.
 //-----------------------------------------------------------------------------------------
 
-using HPE.HSP.UA3.Core.API.Logger;
 using HPE.HSP.UA3.Core.API.Logger.Interfaces;
-using Microsoft.Web.Administration;
 using System;
-using System.Linq;
+using System.Diagnostics;
 using System.Management;
-using System.Threading;
 using Watchdog.Domain;
 using Watchdog.Monitor;
-using System.Diagnostics;
+
 
 namespace Watchdog.EnvironmentMonitor
 {
-    class InRuleMonitor : HealthMonitorBase
+    public class InRuleMonitor : HealthMonitorBase
     {
         private InRuleConfigDataItem serviceConfigData = null;
         private string iisServerName = string.Empty;
@@ -42,116 +39,31 @@ namespace Watchdog.EnvironmentMonitor
 
         public override bool CheckServiceAvailabilityAsync()
         {
-            bool isServiceHealthy = false;
-            bool isApplicationPoolActiveOrNot = false;
-            bool isServiceActiveOrNot = false;
-            isServiceActiveOrNot = this.RestartServiceForSite(isServiceActiveOrNot);
-            isApplicationPoolActiveOrNot = this.RestartServiceForApplicationPool(isApplicationPoolActiveOrNot);
-            if (isServiceActiveOrNot && isApplicationPoolActiveOrNot)
+            bool isServiceAvailable = false;
+            try
             {
-                LoggerManager.Logger.LogInformational("---Response was Successful for InRule Monitoring---" + "Status:" + "Ok");
-                isServiceHealthy = true;
+                WCFUtility.GetEndpointAddress(endpointAddress);
+                var endpoints = WCFUtility.GetEndpointsForContracts();
+                if (endpoints != null)
+                {
+                    isServiceAvailable = true;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                LoggerManager.Logger.LogFatal("--------Response was Unsuccessful for InRule Monitoring--------");
+                logger.LogError("InRule Service - Unavailable to download contracts: " + serviceConfigData.Name, ex);
             }
 
-
-            return isServiceHealthy;
+            return isServiceAvailable;
         }
 
-        private bool RestartServiceForSite(bool isServiceActiveOrNot)
+        protected override void BuildServiceHealthInformation(Tuple<double, double, float, double> cpuMemData)
         {
-            if (!string.IsNullOrEmpty(this.iisServerName) && !string.IsNullOrEmpty(serviceConfigData.Name))
-            {
-                try
-                {
-                    using (ServerManager manager = ServerManager.OpenRemote(this.iisServerName))
-                    {
-                        Site siteName = manager.Sites.FirstOrDefault(s => s.Name.Equals(serviceConfigData.SiteName));
-
-                        if (siteName != null)
-                        {
-                            bool siteNameStopped = siteName.State == ObjectState.Stopped || siteName.State == ObjectState.Stopping;
-                            this.StartSiteNameService(siteName, siteNameStopped);
-                            isServiceActiveOrNot = true;
-                        }
-                        else
-                        {
-                            this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
-                            throw new Exception("Site Name Pool doesn't exist : " + serviceConfigData.Name);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
-                    logger.LogError("Error occured while attempting to restart the application pool : " + serviceConfigData.ApplicationPoolName, ex);
-                    throw ex;
-                }
-            }
-
-            return isServiceActiveOrNot;
-        }
-
-        private bool RestartServiceForApplicationPool(bool isApplicationPoolActiveOrNot)
-        {
-            if (!string.IsNullOrEmpty(this.iisServerName) && !string.IsNullOrEmpty(serviceConfigData.ApplicationPoolName))
-            {
-                try
-                {
-                    using (ServerManager manager = ServerManager.OpenRemote(this.iisServerName))
-                    {
-                        ApplicationPool appPool = manager.ApplicationPools.FirstOrDefault(ap => ap.Name == serviceConfigData.ApplicationPoolName);
-                        
-                        if (appPool != null)
-                        {
-                            this.applicationHealthInformation.ApplicationPool = appPool.Name;
-                            bool appPoolStopped = appPool.State == ObjectState.Stopped || appPool.State == ObjectState.Stopping;
-                            this.StartApplicationPool(appPool, appPoolStopped);
-                            isApplicationPoolActiveOrNot = true;
-                        }
-                        else
-                        {
-                            this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
-                            throw new Exception("Application Pool doesn't exist : " + serviceConfigData.ApplicationPoolName);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
-                    logger.LogError("Error occured while attempting to restart the application pool : " + serviceConfigData.ApplicationPoolName, ex);
-                    throw ex;
-                }
-            }
-
-            return isApplicationPoolActiveOrNot;
-        }
-
-        private void StartSiteNameService(Site siteName, bool siteNameStopped)
-        {
-            if (siteNameStopped)
-            {
-                try
-                {
-                    siteName.Start();
-                    Thread.Sleep(10000);
-                }
-                catch (Exception ex)
-                {
-                    this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
-                    logger.LogError("Error occured while recycling site service", ex);
-                }
-
-                if (siteName.State == ObjectState.Started)
-                {
-                    this.applicationHealthInformation.RestartStatus = Constants.Status.Restarted;
-
-                    logger.LogInformational("Site Name: " + serviceConfigData.Name + " has been recycled successfully");
-                }
-            }
+            this.applicationHealthInformation.CPUUsagePercent = cpuMemData.Item1;
+            this.applicationHealthInformation.MemoryUsagePercent = cpuMemData.Item2;
+            this.applicationHealthInformation.processMemInKB = cpuMemData.Item3;
+            this.applicationHealthInformation.processMemInGB = cpuMemData.Item4;
+            this.applicationHealthInformation.Status = Constants.Status.Running;
         }
 
         protected override Process GetProcessIdForService()
@@ -174,69 +86,10 @@ namespace Watchdog.EnvironmentMonitor
             return process;
         }
 
-        protected override void BuildServiceHealthInformation(Tuple<double, double, float, double> cpuMemData)
-        {
-            this.applicationHealthInformation.CPUUsagePercent = cpuMemData.Item1;
-            this.applicationHealthInformation.MemoryUsagePercent = cpuMemData.Item2;
-            this.applicationHealthInformation.processMemInKB = cpuMemData.Item3;
-            this.applicationHealthInformation.processMemInGB = cpuMemData.Item4;
-            this.applicationHealthInformation.Status = Constants.Status.Running;
-        }
-
         protected override void RestartService()
         {
-            if (!string.IsNullOrEmpty(this.iisServerName) && !string.IsNullOrEmpty(serviceConfigData.ApplicationPoolName))
-            {
-                try
-                {
-                    using (ServerManager manager = ServerManager.OpenRemote(this.iisServerName))
-                    {
-                        ApplicationPool appPool = manager.ApplicationPools.FirstOrDefault(ap => ap.Name == serviceConfigData.ApplicationPoolName);
-
-                        if (appPool != null)
-                        {
-                            //Get the current state of the app pool                            
-                            bool appPoolStopped = appPool.State == ObjectState.Stopped || appPool.State == ObjectState.Stopping;                            
-                            this.StartApplicationPool(appPool, appPoolStopped);
-                        }
-                        else
-                        {
-                            this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
-                            throw new Exception("Application Pool doesn't exist : " + serviceConfigData.ApplicationPoolName);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
-                    logger.LogError("Error occured while attempting to restart the application pool : " + serviceConfigData.ApplicationPoolName, ex);
-                    throw ex;
-                }
-            }
-        }        
-
-        private void StartApplicationPool(ApplicationPool appPool, bool isAppPoolStopped)
-        {
-            if (isAppPoolStopped)
-            {
-                try
-                {
-                    appPool.Start();
-                    Thread.Sleep(1000);
-                }
-                catch (Exception ex)
-                {
-                    this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
-                    logger.LogError("Error occured while recycling application pool", ex);
-                }
-
-                if (appPool.State == ObjectState.Started)
-                {
-                    this.applicationHealthInformation.RestartStatus = Constants.Status.Restarted;
-
-                    logger.LogInformational("Application pool: " + serviceConfigData.ApplicationPoolName + " has been recycled successfully");
-                }
-            }
+            IISHelper.RestartServiceForApplicationPool(iisServerName, serviceConfigData.ApplicationPoolName, logger, ref applicationHealthInformation);
+            IISHelper.RestartServiceForSite(iisServerName, logger, ref applicationHealthInformation, serviceConfigData.Name, serviceConfigData.SiteName, serviceConfigData.ApplicationPoolName);
         }
     }
 }

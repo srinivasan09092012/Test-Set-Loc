@@ -6,15 +6,7 @@
 //-----------------------------------------------------------------------------------------
 using HPE.HSP.UA3.Core.API.Logger.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Data;
 using System.Diagnostics;
-using System.Linq;
-using System.ServiceModel.Description;
-using System.Web.Services.Discovery;
-using System.Xml;
-using System.Xml.Schema;
 using Watchdog.Domain;
 
 namespace Watchdog.EnvironmentMonitor
@@ -46,7 +38,8 @@ namespace Watchdog.EnvironmentMonitor
             bool isServiceAvailable = false;
             try
             {
-                var endpoints = this.GetEndpointsForContracts();
+                WCFUtility.GetEndpointAddress(this.endpointAddress);
+                var endpoints = WCFUtility.GetEndpointsForContracts();
                 if (endpoints != null)
                 {
                     isServiceAvailable = true;
@@ -63,7 +56,7 @@ namespace Watchdog.EnvironmentMonitor
         protected override void RestartService()
         {
             IISHelper.RestartServiceForApplicationPool(iisServerName,serviceConfigData.ApplicationPoolName,logger,ref applicationHealthInformation);            
-            IISHelper.RestartServiceForSite(iisServerName,logger,ref applicationHealthInformation,serviceConfigData);            
+            IISHelper.RestartServiceForSite(iisServerName,logger,ref applicationHealthInformation,serviceConfigData.Name,serviceConfigData.SiteName,serviceConfigData.ApplicationPoolName);            
         }
 
         protected override Process GetProcessIdForService()
@@ -78,85 +71,6 @@ namespace Watchdog.EnvironmentMonitor
             this.applicationHealthInformation.processMemInKB = cpuMemData.Item3;
             this.applicationHealthInformation.processMemInGB = cpuMemData.Item4;
             this.applicationHealthInformation.Status = Constants.Status.Running;
-        }
-
-        private MetadataSet GetMetaDataFromWsdl()
-        {
-            DiscoveryClientProtocol disco = new DiscoveryClientProtocol();
-            disco.AllowAutoRedirect = true;
-            disco.UseDefaultCredentials = true;
-            disco.DiscoverAny(this.endpointAddress);
-            disco.ResolveAll();
-
-            Collection<MetadataSection> results = new Collection<MetadataSection>();
-
-            foreach (object document in disco.Documents.Values)
-            {
-                AddDocumentToResults(document, results);
-            }
-
-            return new MetadataSet(results);
-        }
-
-        private Dictionary<string, IEnumerable<ServiceEndpoint>> GetEndpointsForContracts()
-        {
-            var endpointsForContracts = new Dictionary<string, IEnumerable<ServiceEndpoint>>();
-
-            var metaSet = GetMetaDataFromWsdl();
-
-            ServiceContractGenerator scGenerator = new ServiceContractGenerator();
-
-            // Import all contracts and endpoints
-            WsdlImporter importer = new WsdlImporter(metaSet);
-            Collection<ContractDescription> contracts = importer.ImportAllContracts();
-            ServiceEndpointCollection allEndpoints = importer.ImportAllEndpoints();
-
-            // Generate type information for each contract
-            foreach (ContractDescription contract in contracts)
-            {
-                scGenerator.GenerateServiceContractType(contract);
-                endpointsForContracts[contract.Name] = allEndpoints.Where(x => x.Contract.Name == contract.Name).ToList();
-            }
-
-            IEnumerable<MetadataConversionError> codegenWarnings = scGenerator.Errors;
-            if (codegenWarnings != null)
-            {
-                foreach (MetadataConversionError error in codegenWarnings)
-                {
-                    if (!error.IsWarning)
-                    {
-                        throw new Exception("Unable to generate service contracts.");
-                    }
-                }
-            }
-
-            return endpointsForContracts;
-        }
-      
-        private void AddDocumentToResults(object document, Collection<MetadataSection> results)
-        {
-            System.Web.Services.Description.ServiceDescription wsdl = document as System.Web.Services.Description.ServiceDescription;
-            XmlSchema schema = document as XmlSchema;
-            XmlElement xmlDoc = document as XmlElement;
-
-            if (wsdl != null)
-            {
-                results.Add(MetadataSection.CreateFromServiceDescription(wsdl));
-            }
-            else if (schema != null)
-            {
-                results.Add(MetadataSection.CreateFromSchema(schema));
-            }
-            else if (xmlDoc != null && xmlDoc.LocalName == "Policy")
-            {
-                results.Add(MetadataSection.CreateFromPolicy(xmlDoc, null));
-            }
-            else
-            {
-                MetadataSection mexDoc = new MetadataSection();
-                mexDoc.Metadata = document;
-                results.Add(mexDoc);
-            }
         }
     }
 }

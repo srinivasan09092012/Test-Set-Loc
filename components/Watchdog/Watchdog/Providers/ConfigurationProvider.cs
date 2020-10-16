@@ -234,7 +234,7 @@ namespace Watchdog
 
         private static InRuleConfig GetInRuleConfiguration(XElement xmlDocument)
         {
-            XElement nodes = xmlDocument.Descendants("InRuleApplication").FirstOrDefault();
+            XElement nodes = xmlDocument.Descendants("InRuleServices").FirstOrDefault();
             InRuleConfig inRuleConfiguration = new InRuleConfig();
             if (nodes != null)
             {
@@ -242,7 +242,7 @@ namespace Watchdog
                 inRuleConfiguration.Type = GetAttributeValue<string>(nodes, "type", "WCF");
                 inRuleConfiguration.ServerName = GetAttributeValue<string>(nodes, "serverName", string.Empty);
                 inRuleConfiguration.SiteName = GetAttributeValue<string>(nodes, "sitename", string.Empty);
-                inRuleConfiguration.InRuleServiceList = (from node in nodes.Descendants()
+                inRuleConfiguration.InRuleServiceList = (from node in nodes.Descendants("Service")
                                                          select new InRuleConfigDataItem
                                                          {
                                                              Name = GetAttributeValue<string>(node, "name", string.Empty),
@@ -250,7 +250,7 @@ namespace Watchdog
                                                              Monitor = GetAttributeValue<bool>(node, "Monitor", true),
                                                              MaxRetryCount = GetAttributeValue<int>(node, "maxRetryCount", WatchdogConfiguration.MaxRetryCount),
                                                              ApplicationPoolName = GetAttributeValue<string>(node, "applicationPoolName", string.Empty),
-                                                             Type = GetAttributeValue<string>(node, "type", WatchdogConfiguration.BASConfiguration.Type),
+                                                             Type = GetAttributeValue<string>(node, "type", inRuleConfiguration.Type),
                                                              Endpoint = GetAttributeValue<string>(node, "endpoint", string.Empty),
                                                              PerformanceSampleCount = GetAttributeValue<int>(node, "performanceSampleCount", WatchdogConfiguration.PerformanceSampleCount)
                                                          }).ToList();

@@ -14,7 +14,7 @@
     <Tenant name ="DXC Commercial" Id="B37B1CEC-6603-2D4F-AC37-74E0724774A1"/>
   </Tenants>
   <WindowsServices>
-    <!--default monitoring will be on, in case if it needs to be turned off for a particular service then we can make use of the 'monitor' attribute and set it to "false"-->
+    default monitoring will be on, in case if it needs to be turned off for a particular service then we can make use of the 'monitor' attribute and set it to "false"
     <Service name="Event Router DXC Commercial"/>
     <Service name="Event Router DXC Medicaid"/>
     <Service name="W3SVC"/>
@@ -26,6 +26,9 @@
   <K2Services baseAddress="https://k2.dev.mapshc.com" type ="WCF" serverName ="IN5CG9214XLD" sitename ="K2">
     <Service name ="K2" endpoint ="K2Services/WCF.svc" applicationPoolName ="K2 blackpearl"></Service>
   </K2Services>
+  <InRuleServices baseAddress="https://bre.test.mapshc.com" type="WCF" serverName="IN5CG9214XLD" sitename="Default Web Site">
+    <Service name="InRuleCatalogService" endpoint="InRuleCatalogService/Service.svc" applicationPoolName="DefaultAppPool"></Service> 
+  </InRuleServices>
   <!--AddressDoctorServices has two types of services interactive and noninteractive-->
   <AddressDoctorServices  type ="API">
     <Service name ="Address Doctor Interactive" applicationDownAction ="None" maxRetryCount ="0"></Service>
