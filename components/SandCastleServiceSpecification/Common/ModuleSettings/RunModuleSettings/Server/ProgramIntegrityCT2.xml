@@ -1,0 +1,27 @@
+<DocModuleSettingModel>
+  <ModuleName>PICT</ModuleName>
+  <StorageDrive>J:</StorageDrive>
+  <ModuleNameDisplay>Program Integrity Case Tracking</ModuleNameDisplay>
+  <webSourcePath>J:\www\servicespecs\Modules\ProgramIntegrityCT\\HelpWeb</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\ProgramIntegrityCT\\HelpWeb</webTargetPath>
+  <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
+  <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>
+  <WebHostPhysicalPath>J:\www\servicespecs\Modules</WebHostPhysicalPath>
+  <ServiceListPages>
+	<ListPage>N_HP_HSP_UA3_ProgramIntegrityCT_BAS_CaseTracking.htm</ListPage>
+  </ServiceListPages>
+  <MainContractContent>G_HP_HSP_UA3_ProgramIntegrityCT_BAS_CaseTracking_Contracts.htm</MainContractContent>
+  <ContractListPages>
+	<ListPage>N_HP_HSP_UA3_ProgramIntegrityCT_BAS_CaseTracking_Contracts_Events.htm</ListPage>
+  </ContractListPages>
+  
+  <OtherResourcesFolder>ProgramIntegrityCT</OtherResourcesFolder>
+  <ModuleAPISourcePath></ModuleAPISourcePath>
+  <ModuleAPITargetPath></ModuleAPITargetPath>
+  <ModuleAPIPages>
+	<ListPage></ListPage>
+  </ModuleAPIPages>
+  <MainAPIContent></MainAPIContent>
+   <ModuleHelpContentAvailable>true</ModuleHelpContentAvailable>
+  <ModuleAPIAvailable>false</ModuleAPIAvailable>
+</DocModuleSettingModel>

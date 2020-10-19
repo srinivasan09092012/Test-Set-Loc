@@ -2,8 +2,8 @@
   <ModuleName>PI</ModuleName>
   <StorageDrive>J:</StorageDrive>
   <ModuleNameDisplay>Program Integrity</ModuleNameDisplay>
-  <webSourcePath>J:\UA3\SandCastleCustomizationTool\ShbDoc\ProgramIntegrity\help</webSourcePath>
-  <webTargetPath>J:\www\servicespecs\Modules\ProgramIntegrity\\19.1.64.4\\HelpWeb</webTargetPath>
+  <webSourcePath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb</webTargetPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
   <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>
   <WebHostPhysicalPath>J:\www\servicespecs\Modules</WebHostPhysicalPath>
@@ -14,4 +14,14 @@
   <ContractListPages>
 	<ListPage>N_HP_HSP_UA3_ProgramIntegrity_BAS_ProgramIntegritySvc_Contracts_Events.htm</ListPage>
   </ContractListPages>
+  
+  <OtherResourcesFolder>ProgramIntegrity</OtherResourcesFolder>
+  <ModuleAPISourcePath></ModuleAPISourcePath>
+  <ModuleAPITargetPath></ModuleAPITargetPath>
+  <ModuleAPIPages>
+	<ListPage></ListPage>
+  </ModuleAPIPages>
+  <MainAPIContent></MainAPIContent>
+   <ModuleHelpContentAvailable>true</ModuleHelpContentAvailable>
+  <ModuleAPIAvailable>false</ModuleAPIAvailable>
 </DocModuleSettingModel>

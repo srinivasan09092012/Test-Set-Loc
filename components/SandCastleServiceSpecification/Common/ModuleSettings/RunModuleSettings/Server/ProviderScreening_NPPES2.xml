@@ -1,0 +1,24 @@
+<DocModuleSettingModel>
+  <ModuleName>PSNPES</ModuleName>
+  <ModuleNameDisplay>Provider Screening - NPPES</ModuleNameDisplay>
+  <StorageDrive>J:</StorageDrive>
+  <webSourcePath>J:\www\servicespecs\Modules\ProviderCredentialing\\NPPES\\HelpWeb</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\ProviderCredentialing\\NPPES\\HelpWeb</webTargetPath>
+  <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
+  <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>
+  <WebHostPhysicalPath>J:\www\servicespecs\Modules</WebHostPhysicalPath>
+  <ServiceListPages>
+	<ListPage>N_HP_HSP_UA3_Screening_BAS_NPPES.htm</ListPage>
+  </ServiceListPages>
+  <MainContractContent>G_HP_HSP_UA3_Screening_BAS_NPPES_Contracts.htm</MainContractContent>
+  <ContractListPages></ContractListPages>
+  <OtherResourcesFolder>ProviderCredentialing</OtherResourcesFolder>
+  <ModuleAPISourcePath></ModuleAPISourcePath>
+  <ModuleAPITargetPath></ModuleAPITargetPath>
+  <ModuleAPIPages>
+	<ListPage></ListPage>
+  </ModuleAPIPages>
+  <MainAPIContent></MainAPIContent>
+   <ModuleHelpContentAvailable>true</ModuleHelpContentAvailable>
+  <ModuleAPIAvailable>false</ModuleAPIAvailable>
+</DocModuleSettingModel>

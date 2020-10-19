@@ -2,8 +2,8 @@
   <ModuleName>PE</ModuleName>
   <ModuleNameDisplay>Provider Enrollment</ModuleNameDisplay>
   <StorageDrive>J:</StorageDrive>
-  <webSourcePath>J:\UA3\SandCastleCustomizationTool\ShbDoc\ProviderEnrollment\help</webSourcePath>
-  <webTargetPath>J:\www\servicespecs\Modules\ProviderEnrollment\\19.1.64.4\\HelpWeb</webTargetPath>
+  <webSourcePath>J:\www\servicespecs\Modules\ProviderEnrollment\HelpWeb</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\ProviderEnrollment\\HelpWeb</webTargetPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
   <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>
   <WebHostPhysicalPath>J:\www\servicespecs\Modules</WebHostPhysicalPath>
@@ -14,4 +14,14 @@
   <ContractListPages>
 	<ListPage>N_HP_HSP_UA3_ProviderEnrollment_BAS_EnrollmentSvc_Contracts_Events.htm</ListPage>
   </ContractListPages>
+  
+   <OtherResourcesFolder>ProviderEnrollment</OtherResourcesFolder>
+  <ModuleAPISourcePath></ModuleAPISourcePath>
+  <ModuleAPITargetPath></ModuleAPITargetPath>
+  <ModuleAPIPages>
+	<ListPage></ListPage>
+  </ModuleAPIPages>
+  <MainAPIContent></MainAPIContent>
+   <ModuleHelpContentAvailable>true</ModuleHelpContentAvailable>
+  <ModuleAPIAvailable>false</ModuleAPIAvailable>
 </DocModuleSettingModel>

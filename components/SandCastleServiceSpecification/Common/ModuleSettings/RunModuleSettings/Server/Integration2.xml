@@ -1,21 +1,21 @@
 <DocModuleSettingModel>
-  <ModuleName>IdentityManagement</ModuleName>
-  <ModuleNameDisplay>Identity Management</ModuleNameDisplay>
+  <ModuleName>IN</ModuleName>
+  <ModuleNameDisplay>Integration</ModuleNameDisplay>
   <StorageDrive>J:</StorageDrive>
-  <webSourcePath>J:\UA3\SandCastleCustomizationTool\ShbDoc\IdentityManagement\help</webSourcePath>
-  <webTargetPath>J:\www\servicespecs\Modules\IdentityMgmt\\helpweb</webTargetPath>
+  <webSourcePath>J:\www\servicespecs\Modules\Integration\\HelpWeb</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\Integration\\HelpWeb</webTargetPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
   <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>
   <WebHostPhysicalPath>J:\www\servicespecs\Modules</WebHostPhysicalPath>
   <ServiceListPages>
-	<ListPage>N_HP_HSP_UA3_IdentityManagement_BAS_User.htm</ListPage>
+	<ListPage>N_HP_HSP_UA3_Integration_BAS_Integration.htm</ListPage>
   </ServiceListPages>
-  <MainContractContent>G_HP_HSP_UA3_IdentityManagement_BAS_User_Contracts.htm</MainContractContent>
+  <MainContractContent>G_HP_HSP_UA3_Integration_BAS_Integration_Contracts.htm</MainContractContent>
   <ContractListPages>
-	<ListPage>N_HP_HSP_UA3_IdentityManagement_BAS_User_Contracts_Events.htm</ListPage>
+	<ListPage>N_HP_HSP_UA3_Integration_BAS_Integration_Contracts_Events.htm</ListPage>
   </ContractListPages>
   
-  <OtherResourcesFolder>IdentityMgmt</OtherResourcesFolder>
+  <OtherResourcesFolder>Integration</OtherResourcesFolder>
   <ModuleAPISourcePath></ModuleAPISourcePath>
   <ModuleAPITargetPath></ModuleAPITargetPath>
   <ModuleAPIPages>
