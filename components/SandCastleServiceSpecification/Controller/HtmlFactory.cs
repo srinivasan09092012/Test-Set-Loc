@@ -58,8 +58,27 @@ namespace Controller
             var htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = fullSourcePath;
             htmlDocument.Load();
+
+            FormatServiceDocument(htmlDocument);
+
             updateServiceList(htmlDocument._loadedDocument, webFolderTarget);
             htmlDocument.Save();
+        }
+
+        private static void FormatServiceDocument(DocumentHelper htmlDocument)
+        {
+            var summaryText = htmlDocument._loadedDocument.DocumentNode.Descendants("div").FirstOrDefault(x => x.ParentNode.Name == "div" && x.ParentNode.Id == "TopicContent" && x.InnerText.Contains("Service Characteristics"));
+
+            if (summaryText != null)
+            {
+                DivHelper divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID4RBSection");
+                
+                if (divHelper != null)
+                {                    
+                    divHelper.addChildrenNode(summaryText);
+                    divHelper.removeChildByName("h4");                    
+                }
+            }
         }
 
         public void updateServiceListForQuery(string webFolderTarget, string originalDocument)
@@ -68,6 +87,7 @@ namespace Controller
             var htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = fullSourcePath;
             htmlDocument.Load();
+            FormatServiceDocument(htmlDocument);
             updateServiceListForQuery(htmlDocument._loadedDocument, webFolderTarget);
             htmlDocument.Save();
         }
