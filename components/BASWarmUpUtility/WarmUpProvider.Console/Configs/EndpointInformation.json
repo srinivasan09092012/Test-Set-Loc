@@ -61,13 +61,6 @@
         "CheckHealthStatus": "true"
       },
       {
-        "ModuleName": "Core",
-        "ApplicationName": "Event Distribution Service",
-        "EndPoint": "/HP.HSP.UA3.Core.BAS.EventDistribution/R6.0/EventDistributionService.svc",
-        "Binding": "basicHttpsBinding",
-        "CheckHealthStatus": "true"
-      },
-      {
         "ModuleName": "DrugRebate",
         "ApplicationName": "Drug Rebate Services",
         "EndPoint": "/HP.HSP.UA3.DrugRebate/R6.0/FundCodesService.svc",
@@ -148,13 +141,6 @@
         "ModuleName": "Member Management",
         "ApplicationName": "Member Management BAS Service",
         "EndPoint": "/HP.HSP.UA3.MemberInfo/R6.0/MemberInformationService.svc",
-        "Binding": "basicHttpsBinding",
-        "CheckHealthStatus": "true"
-      },
-      {
-        "ModuleName": "Member Management",
-        "ApplicationName": "Member Management BAS Service",
-        "EndPoint": "/HP.HSP.UA3.MemberMgmt/R6.0/MemberManagementQueryService.svc",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
