@@ -28,11 +28,11 @@ namespace WarmUpProvider.Service
 
         protected override void OnStart(string[] args)
         {
-            LoggerManager.Logger.LogInformational("Warm Up Utilty Service Starting...");
+            LoggerManager.Logger.LogInformational("BAS Warm Up Utilty Service Starting...");
             BASUnityContainer.Initialize();
             this.OnLoad();
             this.SetWarmUpEndpointTimer();
-            LoggerManager.Logger.LogInformational("Warm Up Utilty Service Started");
+            LoggerManager.Logger.LogInformational("BAS Warm Up Utilty Service Started");
         }
 
         private void SetWarmUpEndpointTimer()
@@ -48,7 +48,7 @@ namespace WarmUpProvider.Service
         {
             List<Task> tasks = new List<Task>();
             WarmUpHelper warmUpProvider = new WarmUpHelper();
-            tasks.Add(Task.Run(() => warmUpProvider.WarmUpEndpoints()));
+            tasks.Add(Task.Run(() => warmUpProvider.StartUp()));
             Task.WaitAll(tasks.ToArray());
         }
 
@@ -58,21 +58,19 @@ namespace WarmUpProvider.Service
             {
                 try
                 {
-                    LoggerManager.Logger.LogInformational("Starting to Warm Up Endpoints.");
                     WarmUpHelper warmUpProvider = new WarmUpHelper();
-                    warmUpProvider.WarmUpEndpoints();
-                    LoggerManager.Logger.LogInformational("Completed Warming Up Endpoints.");
+                    warmUpProvider.StartUp();
                 }
                 catch (Exception ex)
                 {
-                    LoggerManager.Logger.LogWarning("Warming Up Endpoints failed!!!", ex);
+                    LoggerManager.Logger.LogWarning("BAS Warming Up Endpoints failed!!!", ex);
                 }
             });
         }
 
         protected override void OnStop()
         {
-            LoggerManager.Logger.LogWarning("Warm Up Utilty Service has Stopped.");
+            LoggerManager.Logger.LogWarning("BAS Warm Up Utilty Service has Stopped.");
         }
 
         private static void InitializeInstrumentationSettings()

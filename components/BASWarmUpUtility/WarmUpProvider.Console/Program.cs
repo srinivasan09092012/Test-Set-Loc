@@ -27,8 +27,6 @@ namespace WarmUpProvider.Console
             {
                 LoggerManager.Logger.LogWarning("Exception thrown : ", ex);
             }
-
-            System.Console.ReadLine();
         }
 
         private static void InitializeInstrumentationSettings()

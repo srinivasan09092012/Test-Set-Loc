@@ -28,25 +28,22 @@ namespace WarmUpProvider.Helpers
     public class WarmUpHelper
     {
         private Guid tenantId;
-        private IAuthClaimsProvider authProvider = null;
         private List<TenantWarmUpModel> retryEnpointLists = new List<TenantWarmUpModel>();
         private ConcurrentBag<ExceptionNotificationModel> businessExceptionMessages = new ConcurrentBag<ExceptionNotificationModel>();
 
         public void StartUp()
         {
             this.tenantId = Guid.Parse(ConfigurationManager.AppSettings["TenantId"]);
-            IUnityContainer container = BASUnityContainer.Container;
-            this.authProvider = container.Resolve<IAuthClaimsProvider>();
             this.WarmUpEndpoints();
         }
 
-        public void WarmUpEndpoints()
+        private void WarmUpEndpoints()
         {
             Stopwatch sw = new Stopwatch();
             ApplicationConfigurationManager.LoadApplicationConfiguration(this.tenantId.ToString(), new RedisCacheManager());
 
             sw.Start();
-            this.LoggerHelper("-----------Starting to Warm up Endpoints-----------");
+            this.LoggerHelper("-----------Starting to Warm up Endpoints for Tenant : " + this.tenantId.ToString() + "-----------");
 
             try
             {
@@ -63,7 +60,7 @@ namespace WarmUpProvider.Helpers
                         string absoluteURL = tenant.RootURL + moduleEndpoint.EndPoint;
                         tasks.Add(Task.Run(() =>
                         {
-                            this.WarmUpServices(moduleEndpoint, absoluteURL, this.tenantId.ToString(), this.authProvider);
+                            this.WarmUpServices(moduleEndpoint, absoluteURL, this.tenantId.ToString());
                         }));
 
                         if (tasks.Count == 15)
@@ -95,11 +92,11 @@ namespace WarmUpProvider.Helpers
             this.LoggerHelper("-----------Warming up Endpoints Completed-----------");
         }
 
-        public void WarmUpServices(ModuleEndpointModel moduleEndpoint, string absoluteURL, string tenantId, IAuthClaimsProvider authClaimsProvider)
+        private void WarmUpServices(ModuleEndpointModel moduleEndpoint, string absoluteURL, string tenantId)
         {
             try
             {
-                IServiceChannelFactory serviceChannelFactory = new ServiceChannelFactory(string.IsNullOrEmpty(moduleEndpoint.Binding) ? "BasicHttpBinding" : moduleEndpoint.Binding, absoluteURL, authClaimsProvider);
+                IServiceChannelFactory serviceChannelFactory = new ServiceChannelFactory(string.IsNullOrEmpty(moduleEndpoint.Binding) ? "BasicHttpBinding" : moduleEndpoint.Binding, absoluteURL);
 
                 serviceChannelFactory.Invoke<IServiceAvailability>(
                     proxy => proxy.IsServiceAvailable());
