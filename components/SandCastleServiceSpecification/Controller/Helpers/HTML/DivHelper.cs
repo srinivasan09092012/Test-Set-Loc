@@ -83,6 +83,17 @@ namespace Controller.Helpers.HTML
                     ContextDivChild.FirstOrDefault().Attributes["href"].Value = "#";
                     return ContextDivChild.FirstOrDefault().OuterHtml;
                 }
+                else
+                {
+                    ContextDivChild = this._ContextDiv.ChildNodes.Where(x => x.Name == "span");
+                    if(ContextDivChild.Count() > 5)
+                    {
+                        if(ContextDivChild.ElementAt(2).InnerText == "Query")
+                        {
+                           return "<span> " + ContextDivChild.ElementAt(4).InnerText + "</span>";
+                        }
+                    }
+                }
             }
 
             return string.Empty;
