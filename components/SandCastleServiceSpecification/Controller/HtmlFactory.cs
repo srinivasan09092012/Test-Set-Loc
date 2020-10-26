@@ -674,6 +674,8 @@ namespace Controller
         {
             TableHelper tableHelper = new TableHelper(doc, TableHelper.SearchFilter.Id ,"propertyList");
             tableHelper.removeColumn(0);
+            TableHelper tableHelper2 = new TableHelper(doc, TableHelper.SearchFilter.Id, "operatorList");
+            tableHelper2.removeColumn(0);
         }
 
         public void fillDataTypeColumn(HtmlDocument htmlDoc)
