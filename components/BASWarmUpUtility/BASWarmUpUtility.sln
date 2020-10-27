@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarmUpProvider.Console", "W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarmUpProvider", "WarmUpProvider\WarmUpProvider.csproj", "{2564A433-6EB4-4B76-8190-4F3E5809D097}"
 EndProject
+Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "WarmUpProvider.Main", "WarmUpProvider.Main\WarmUpProvider.Main.sfproj", "{EA511483-D146-47DE-AABD-71358CB38A09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarmUpProvider.Main.Service", "WarmUpProvider.Main.Service\WarmUpProvider.Main.Service.csproj", "{986B1A51-D081-4F80-9D6F-BCC23F1AB13B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,20 @@ Global
 		{2564A433-6EB4-4B76-8190-4F3E5809D097}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2564A433-6EB4-4B76-8190-4F3E5809D097}.Release|x64.ActiveCfg = Release|Any CPU
 		{2564A433-6EB4-4B76-8190-4F3E5809D097}.Release|x64.Build.0 = Release|Any CPU
+		{EA511483-D146-47DE-AABD-71358CB38A09}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{EA511483-D146-47DE-AABD-71358CB38A09}.Debug|x64.ActiveCfg = Debug|x64
+		{EA511483-D146-47DE-AABD-71358CB38A09}.Debug|x64.Build.0 = Debug|x64
+		{EA511483-D146-47DE-AABD-71358CB38A09}.Debug|x64.Deploy.0 = Debug|x64
+		{EA511483-D146-47DE-AABD-71358CB38A09}.Release|Any CPU.ActiveCfg = Release|x64
+		{EA511483-D146-47DE-AABD-71358CB38A09}.Release|x64.ActiveCfg = Release|x64
+		{EA511483-D146-47DE-AABD-71358CB38A09}.Release|x64.Build.0 = Release|x64
+		{EA511483-D146-47DE-AABD-71358CB38A09}.Release|x64.Deploy.0 = Release|x64
+		{986B1A51-D081-4F80-9D6F-BCC23F1AB13B}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{986B1A51-D081-4F80-9D6F-BCC23F1AB13B}.Debug|x64.ActiveCfg = Debug|x64
+		{986B1A51-D081-4F80-9D6F-BCC23F1AB13B}.Debug|x64.Build.0 = Debug|x64
+		{986B1A51-D081-4F80-9D6F-BCC23F1AB13B}.Release|Any CPU.ActiveCfg = Release|x64
+		{986B1A51-D081-4F80-9D6F-BCC23F1AB13B}.Release|x64.ActiveCfg = Release|x64
+		{986B1A51-D081-4F80-9D6F-BCC23F1AB13B}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,7 +73,7 @@ Global
 		SolutionGuid = {D2ABE49B-9088-4701-B221-A3AB77BE20DF}
 	EndGlobalSection
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
+		SccNumberOfProjects = 6
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://payerportfolio.visualstudio.com/
 		SccLocalPath0 = .
@@ -68,5 +86,11 @@ Global
 		SccProjectUniqueName3 = WarmUpProvider\\WarmUpProvider.csproj
 		SccProjectName3 = WarmUpProvider
 		SccLocalPath3 = WarmUpProvider
+		SccProjectUniqueName4 = WarmUpProvider.Main\\WarmUpProvider.Main.sfproj
+		SccProjectName4 = WarmUpProvider.Main
+		SccLocalPath4 = WarmUpProvider.Main
+		SccProjectUniqueName5 = WarmUpProvider.Main.Service\\WarmUpProvider.Main.Service.csproj
+		SccProjectName5 = WarmUpProvider.Main.Service
+		SccLocalPath5 = WarmUpProvider.Main.Service
 	EndGlobalSection
 EndGlobal
