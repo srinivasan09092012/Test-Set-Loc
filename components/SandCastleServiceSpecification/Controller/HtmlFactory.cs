@@ -804,6 +804,9 @@ namespace Controller
             List<string> r = tableHelper.readColumnValues(0);
             int x = 1;
             int j;
+
+            r = r.Where(row => row.Contains("href")).ToList();
+
             foreach (var file in r)
             {
                 j = (webFolderTarget + @"html\" + @file.Remove(0, 9).Split('>')[0]).Length;
@@ -940,6 +943,8 @@ namespace Controller
             int x = 1;
             int j;
             nodeIndex++;
+
+            r = r.Where(row => row.Contains("href")).ToList();
 
             foreach (var file in r)
             {

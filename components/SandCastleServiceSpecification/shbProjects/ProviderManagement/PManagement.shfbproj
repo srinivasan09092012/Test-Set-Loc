@@ -23,7 +23,7 @@
       <DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.ProviderMgmt\HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.dll" />
       <DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.ProviderMgmt\HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.xml" />
     </DocumentationSources>
-    <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
+    <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
     <HelpFileFormat>Website</HelpFileFormat>
     <SyntaxFilters>C#</SyntaxFilters>
