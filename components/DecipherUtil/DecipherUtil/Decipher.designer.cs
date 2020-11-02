@@ -48,11 +48,15 @@
             this.HashStreamIdOriginal = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnCopyToNotePad = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnSQLHexToString = new System.Windows.Forms.Button();
+            this.btnStringToSQLHex = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // textToCompOrDecomp
@@ -188,7 +192,7 @@
             this.groupBox2.Controls.Add(this.Encrypt);
             this.groupBox2.Controls.Add(this.Decrypt);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(860, 627);
+            this.groupBox2.Location = new System.Drawing.Point(1089, 628);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(329, 68);
             this.groupBox2.TabIndex = 11;
@@ -212,12 +216,12 @@
             this.groupBox4.Controls.Add(this.Decode);
             this.groupBox4.Controls.Add(this.Encode);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(498, 627);
+            this.groupBox4.Location = new System.Drawing.Point(490, 628);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(317, 60);
+            this.groupBox4.Size = new System.Drawing.Size(339, 60);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "BASE 64 (Commits Payload)";
+            this.groupBox4.Text = "Base 64";
             // 
             // Decode
             // 
@@ -226,7 +230,7 @@
             this.Decode.Name = "Decode";
             this.Decode.Size = new System.Drawing.Size(136, 33);
             this.Decode.TabIndex = 5;
-            this.Decode.Text = "Decode";
+            this.Decode.Text = "Decode(B64)";
             this.Decode.UseVisualStyleBackColor = true;
             this.Decode.Click += new System.EventHandler(this.Decode_Click);
             // 
@@ -237,7 +241,7 @@
             this.Encode.Name = "Encode";
             this.Encode.Size = new System.Drawing.Size(136, 33);
             this.Encode.TabIndex = 4;
-            this.Encode.Text = "Encode";
+            this.Encode.Text = "Encode(B64)";
             this.Encode.UseVisualStyleBackColor = true;
             this.Encode.Click += new System.EventHandler(this.Encode_Click);
             // 
@@ -276,11 +280,46 @@
             this.btnCopyToNotePad.UseVisualStyleBackColor = true;
             this.btnCopyToNotePad.Click += new System.EventHandler(this.btnCopyToNotePad_Click);
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.btnSQLHexToString);
+            this.groupBox6.Controls.Add(this.btnStringToSQLHex);
+            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox6.Location = new System.Drawing.Point(1079, 722);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(374, 77);
+            this.groupBox6.TabIndex = 13;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Commits Payload";
+            // 
+            // btnSQLHexToString
+            // 
+            this.btnSQLHexToString.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSQLHexToString.Location = new System.Drawing.Point(17, 21);
+            this.btnSQLHexToString.Name = "btnSQLHexToString";
+            this.btnSQLHexToString.Size = new System.Drawing.Size(149, 33);
+            this.btnSQLHexToString.TabIndex = 5;
+            this.btnSQLHexToString.Text = "SQL-HEXToString";
+            this.btnSQLHexToString.UseVisualStyleBackColor = true;
+            this.btnSQLHexToString.Click += new System.EventHandler(this.btnSQLHexToString_Click);
+            // 
+            // btnStringToSQLHex
+            // 
+            this.btnStringToSQLHex.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStringToSQLHex.Location = new System.Drawing.Point(203, 21);
+            this.btnStringToSQLHex.Name = "btnStringToSQLHex";
+            this.btnStringToSQLHex.Size = new System.Drawing.Size(148, 33);
+            this.btnStringToSQLHex.TabIndex = 4;
+            this.btnStringToSQLHex.Text = "StringToSQL-HEX";
+            this.btnStringToSQLHex.UseVisualStyleBackColor = true;
+            this.btnStringToSQLHex.Click += new System.EventHandler(this.btnStringToSQLHex_Click);
+            // 
             // Decipher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1686, 839);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.btnCopyToNotePad);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -299,6 +338,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,6 +365,9 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button newguid;
         private System.Windows.Forms.Button btnCopyToNotePad;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button btnSQLHexToString;
+        private System.Windows.Forms.Button btnStringToSQLHex;
     }
 }
 

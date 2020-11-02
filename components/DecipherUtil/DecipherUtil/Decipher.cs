@@ -8,6 +8,7 @@ using System.Text;
 using System.IO;
 using System.Diagnostics;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace WindowsFormsApp1
 {
@@ -164,6 +165,19 @@ namespace WindowsFormsApp1
             }
         }
 
+        static byte[] StrToByteArray(string str)
+        {
+            Dictionary<string, byte> hexindex = new Dictionary<string, byte>();
+            for (int i = 0; i <= 255; i++)
+                hexindex.Add(i.ToString("X2"), (byte)i);
+
+            List<byte> hexres = new List<byte>();
+            for (int i = 0; i < str.Length; i += 2)
+                hexres.Add(hexindex[str.Substring(i, 2)]);
+
+            return hexres.ToArray();
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -210,11 +224,43 @@ namespace WindowsFormsApp1
                 }
 
                 Thread.Sleep(500);
+
             }
             catch 
             {
                 Process.Start("notepad", @"C:\Temp\Temporary.json");
                 Thread.Sleep(500);
+            }
+        }
+
+        public static string ConvertToHex(string asciiString)
+        {
+            var bytes = Encoding.UTF8.GetBytes(asciiString);
+            string hex = BitConverter.ToString(bytes);
+            hex = hex.Replace("-", string.Empty);
+
+            return hex;
+        }
+
+        private void btnSQLHexToString_Click(object sender, EventArgs e)
+        {
+            string varbinaryStr = textToCompOrDecomp.Text;
+
+            var no_0x_varbinary_str = varbinaryStr.Replace("0x", "").Trim();
+            byte[] bytes = StrToByteArray(no_0x_varbinary_str);
+
+            textToCompOrDecomp.Text = Encoding.UTF8.GetString(bytes);
+        }
+
+        private void btnStringToSQLHex_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                textToCompOrDecomp.Text = "0x" + ConvertToHex(textToCompOrDecomp.Text).ToUpper();
+            }
+            catch (Exception ex)
+            {
+                textToCompOrDecomp.Text = "Can't decode this string" + Environment.NewLine + ex.Message;
             }
         }
     }
