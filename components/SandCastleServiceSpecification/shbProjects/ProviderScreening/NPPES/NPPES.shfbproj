@@ -55,11 +55,10 @@
     <TopicVersion>1</TopicVersion>
     <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Screening.BAS.NPPES\HP.HSP.UA3.Screening.BAS.NPPES.Contracts.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Screening.BAS.NPPES\HP.HSP.UA3.Screening.BAS.NPPES.Contracts.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Screening.BAS.NPPES\HP.HSP.UA3.Screening.BAS.NPPES.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Screening.BAS.NPPES\HP.HSP.UA3.Screening.BAS.NPPES.xml" />
-    </DocumentationSources>
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.NPPESServices\HP.HSP.UA3.Screening.BAS.NPPES.Contracts.dll" />
+<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.NPPESServices\HP.HSP.UA3.Screening.BAS.NPPES.Contracts.xml" />
+<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.NPPESServices\HP.HSP.UA3.Screening.BAS.NPPES.dll" />
+<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.NPPESServices\HP.HSP.UA3.Screening.BAS.NPPES.xml" /></DocumentationSources>
     <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.Screening.BAS.NPPES" isExposed="False">

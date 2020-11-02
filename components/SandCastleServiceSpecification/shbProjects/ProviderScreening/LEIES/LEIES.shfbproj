@@ -55,11 +55,10 @@
     <TopicVersion>1</TopicVersion>
     <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Screening.BAS.LEIES\HP.HSP.UA3.Screening.BAS.LEIESvc.Contracts.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Screening.BAS.LEIES\HP.HSP.UA3.Screening.BAS.LEIESvc.Contracts.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Screening.BAS.LEIES\HP.HSP.UA3.Screening.BAS.LEIESvc.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Screening.BAS.LEIES\HP.HSP.UA3.Screening.BAS.LEIESvc.xml" />
-    </DocumentationSources>
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.LEIESvc\HP.HSP.UA3.Screening.BAS.LEIESvc.Contracts.dll" />
+<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.LEIESvc\HP.HSP.UA3.Screening.BAS.LEIESvc.Contracts.xml" />
+<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.LEIESvc\HP.HSP.UA3.Screening.BAS.LEIESvc.dll" />
+<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.LEIESvc\HP.HSP.UA3.Screening.BAS.LEIESvc.xml" /></DocumentationSources>
     <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.Screening.BAS.LEIESvc" isExposed="False">

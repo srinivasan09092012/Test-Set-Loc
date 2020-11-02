@@ -55,11 +55,10 @@
     <TopicVersion>1</TopicVersion>
     <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Screening.BAS.MCSIS\HP.HSP.UA3.Screening.BAS.MCSIS.Contracts.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Screening.BAS.MCSIS\HP.HSP.UA3.Screening.BAS.MCSIS.Contracts.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Screening.BAS.MCSIS\HP.HSP.UA3.Screening.BAS.MCSIS.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Screening.BAS.MCSIS\HP.HSP.UA3.Screening.BAS.MCSIS.xml" />
-    </DocumentationSources>
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.MCSIS\HP.HSP.UA3.Screening.BAS.MCSIS.Contracts.dll" />
+<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.MCSIS\HP.HSP.UA3.Screening.BAS.MCSIS.Contracts.xml" />
+<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.MCSIS\HP.HSP.UA3.Screening.BAS.MCSIS.dll" />
+<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.MCSIS\HP.HSP.UA3.Screening.BAS.MCSIS.xml" /></DocumentationSources>
     <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.Screening.BAS.MCSIS" isExposed="False">

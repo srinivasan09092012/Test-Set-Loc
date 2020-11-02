@@ -55,11 +55,10 @@
     <TopicVersion>1</TopicVersion>
     <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Screening.BAS.SAMCheck\HP.HSP.UA3.Screening.BAS.SAMCheck.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Screening.BAS.SAMCheck\HP.HSP.UA3.Screening.BAS.SAMCheck.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Screening.BAS.SAMCheck\HP.HSP.UA3.Screening.BAS.SAMCheck.Contracts.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Screening.BAS.SAMCheck\HP.HSP.UA3.Screening.BAS.SAMCheck.Contracts.dll" />
-    </DocumentationSources>
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.SAMCheck\HP.HSP.UA3.Screening.BAS.SAMCheck.Contracts.dll" />
+<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.SAMCheck\HP.HSP.UA3.Screening.BAS.SAMCheck.Contracts.xml" />
+<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.SAMCheck\HP.HSP.UA3.Screening.BAS.SAMCheck.dll" />
+<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.SAMCheck\HP.HSP.UA3.Screening.BAS.SAMCheck.xml" /></DocumentationSources>
     <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck" isExposed="False">

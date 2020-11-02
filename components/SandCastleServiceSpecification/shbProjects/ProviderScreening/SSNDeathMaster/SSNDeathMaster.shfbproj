@@ -55,11 +55,10 @@
     <TopicVersion>1</TopicVersion>
     <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.SSNDeathMaster\HP.HSP.UA3.SSNDeathMaster.BAS.SSNDMF.Contracts.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.SSNDeathMaster\HP.HSP.UA3.SSNDeathMaster.BAS.SSNDMF.Contracts.xml" />
       <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.SSNDeathMaster\HP.HSP.UA3.SSNDeathMaster.BAS.SSNDMF.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.SSNDeathMaster\HP.HSP.UA3.SSNDeathMaster.BAS.SSNDMF.xml" />
-    </DocumentationSources>
+<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.SSNDeathMaster\HP.HSP.UA3.SSNDeathMaster.BAS.SSNDMF.xml" />
+<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.SSNDeathMaster\HP.HSP.UA3.SSNDeathMaster.BAS.SSNDMF.Contracts.dll" />
+<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.SSNDeathMaster\HP.HSP.UA3.SSNDeathMaster.BAS.SSNDMF.Contracts.xml" /></DocumentationSources>
     <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.SSNDeathMaster.BAS.SSNDMF" isExposed="False">
