@@ -148,6 +148,7 @@
     <Content Include="Configs\RefactorConnectionString.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Configs\RefactorDXCtoGWT.xml" />
     <Content Include="Configs\RefactorInRule-Version.xml" />
     <Content Include="Configs\RefactorAspNetMvc-Version.xml" />
     <Content Include="Configs\RefactorKendo-Version.xml" />

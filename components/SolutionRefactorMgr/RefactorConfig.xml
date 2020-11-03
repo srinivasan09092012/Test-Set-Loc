@@ -7,6 +7,7 @@
     <PackageConfig qualifierPrefix="HP.HSP.UA3.AuthDetermination" qualifierVersion="20.3.94" rebuildPackage="true" reformatSource="true" />
     <PackageConfig qualifierPrefix="HP.HSP.UA3.BatchProcessingFactory" qualifierVersion="20.3.94" rebuildPackage="true" reformatSource="true" />
     <PackageConfig qualifierPrefix="HP.HSP.UA3.ClaimsManagement" qualifierVersion="20.3.94" rebuildPackage="true" reformatSource="true" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ConfigurationManagement" qualifierVersion="20.3.94" rebuildPackage="true" reformatSource="true" />
     <PackageConfig qualifierPrefix="HP.HSP.UA3.Core" qualifierVersion="20.3.94" rebuildPackage="true" reformatSource="true" />
     <PackageConfig qualifierPrefix="HP.HSP.UA3.CorrespondenceMgmt" qualifierVersion="20.3.94" rebuildPackage="true" reformatSource="true" />
     <PackageConfig qualifierPrefix="HP.HSP.UA3.DrugRebate" qualifierVersion="20.3.94" rebuildPackage="true" reformatSource="true" />

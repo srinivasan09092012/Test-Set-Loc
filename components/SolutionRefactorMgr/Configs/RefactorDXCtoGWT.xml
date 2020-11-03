@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" targetTFS ="Azure">
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+    <ModuleConfig name="_ProjectTemplate" branch="Main" types="Reports" />
+    <ModuleConfig name="Administration" branch="Dev" types="Reports" />
+    <ModuleConfig name="AuthDetermination" branch="Dev" types="Reports" />
+    <ModuleConfig name="ClaimsManagement" branch="Dev" types="Reports" />
+    <ModuleConfig name="Core" branch="Dev" types="Reports" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="Reports" />
+    <ModuleConfig name="DrugRebate" branch="Dev" types="Reports" />
+    <ModuleConfig name="DrugRebatePortal" branch="Dev" types="Reports" />
+    <ModuleConfig name="EDI" branch="Dev" types="Reports" />
+    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="Reports" />
+    <ModuleConfig name="FileTransfer" branch="Dev" types="Reports" />
+    <ModuleConfig name="FinancialManagement" branch="Dev" types="Reports" />
+    <ModuleConfig name="IdentityManagement" branch="Dev" types="Reports" />
+    <ModuleConfig name="Integration" branch="Dev" types="Reports" />-->
+    <!--<ModuleConfig name="KansasOnly" branch="Dev" types="All" />-->
+    <ModuleConfig name="ManagedCare" branch="Dev" types="Reports" />
+    <ModuleConfig name="ManagedCarePortal" branch="Dev" types="Reports" />
+    <ModuleConfig name="MemberManagement" branch="Dev" types="Reports" />
+    <ModuleConfig name="MemberPortal" branch="Dev" types="Reports" />
+    <ModuleConfig name="Notifications" branch="Dev" types="Reports" />
+    <ModuleConfig name="PlanManagement" branch="Dev" types="Reports" />
+    <ModuleConfig name="ProgramIntegrity" branch="Dev" types="Reports" />
+    <ModuleConfig name="ProgramIntegrityCT" branch="Dev" types="Reports" />
+    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="Reports" />
+    <ModuleConfig name="ProviderEnrollment" branch="Dev" types="Reports" />
+    <ModuleConfig name="ProviderManagement" branch="Dev" types="Reports" />
+    <ModuleConfig name="ProviderPortal" branch="Dev" types="Reports" />
+    <ModuleConfig name="Screening" branch="Dev" types="Reports" />
+    <ModuleConfig name="TaskManagement" branch="Dev" types="Reports" />
+    <ModuleConfig name="ThirdPartySource" branch="Dev" types="Reports" />
+    <ModuleConfig name="TPLCaseTracking" branch="Dev" types="Reports" />
+    <ModuleConfig name="TPLPolicy" branch="Dev" types="Reports" />
+    <!--<ModuleConfig name="Utilities" branch="Dev" types="NA" />-->
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes>
+    <FileType ext=".rdl" />
+    <!--<FileType ext=".bat" />
+    <FileType ext=".config" />
+    <FileType ext=".cs" />
+    <FileType ext=".csproj" />-->
+  </FileTypes>
+  <LineDeletes />
+  <ReplacementStrings>
+    <ReplacementString qualifier="@dxc.com" from="@dxc.com" to="@gainwelltechnologies.com" />
+    <ReplacementString qualifier="Image Name=&quot;DXC_Logo" from="Image Name=&quot;DXC_Logo" to="Image Name=&quot;GWT_Logo" />
+    <ReplacementString qualifier="Image Name=&quot;DXC_LOGO" from="Image Name=&quot;DXC_LOGO" to="Image Name=&quot;GWT_LOGO" />
+    <ReplacementString qualifier="Image Name=&quot;DXCLogo" from="Image Name=&quot;DXCLogo" to="Image Name=&quot;GWTLogo" />
+    <ReplacementString qualifier="Image Name=&quot;DxcLogo" from="Image Name=&quot;DxcLogo" to="Image Name=&quot;GWTLogo" />
+    <ReplacementString qualifier="Image Name=&quot;HPE_Logo" from="Image Name=&quot;HPE_Logo" to="Image Name=&quot;GWT_Logo" />
+    <ReplacementString qualifier="Image Name=&quot;HPE_LOGO" from="Image Name=&quot;HPE_LOGO" to="Image Name=&quot;GWT_LOGO" />
+    <ReplacementString qualifier="&lt;ToolTip&gt;DXC_Logo" from="&lt;ToolTip&gt;DXC_Logo" to="&lt;ToolTip&gt;Gainwell Technologies" />
+    <ReplacementString qualifier="&lt;ToolTip&gt;DXC_LOGO" from="&lt;ToolTip&gt;DXC_LOGO" to="&lt;ToolTip&gt;Gainwell Technologies" />
+    <ReplacementString qualifier="&lt;ToolTip&gt;DXCLogo" from="&lt;ToolTip&gt;DXCLogo" to="&lt;ToolTip&gt;Gainwell Technologies" />
+    <ReplacementString qualifier="&lt;ToolTip&gt;DxcLogo" from="&lt;ToolTip&gt;DxcLogo" to="&lt;ToolTip&gt;Gainwell Technologies" />
+    <ReplacementString qualifier="&lt;ToolTip&gt;HPE_Logo" from="&lt;ToolTip&gt;HPE_Logo" to="&lt;ToolTip&gt;Gainwell Technologies" />
+    <ReplacementString qualifier="&lt;ToolTip&gt;HPE_LOGO" from="&lt;ToolTip&gt;HPE_LOGO" to="&lt;ToolTip&gt;Gainwell Technologies" />
+    <ReplacementString qualifier="3000 Hanover St." from="3000 Hanover St." to="1775 Tysons Boulevard" />
+    <ReplacementString qualifier="3000 Hanover St" from="3000 Hanover St" to="1775 Tysons Boulevard" />
+    <ReplacementString qualifier="California" from="California" to="Virginia" />
+    <ReplacementString qualifier="D.X.C. 56-7-89, et seq" from="D.X.C. 56-7-89, et seq" to="Gainwell 56-7-89, et seq" />
+    <ReplacementString qualifier="DXC Account Service Team" from="DXC Account Service Team" to="Gainwell Technologies Account Service Team" />
+    <ReplacementString qualifier="DXC Account Services Team" from="DXC Account Services Team" to="Gainwell Technologies Account Service Team" />
+    <ReplacementString qualifier="DXC Drug Rebate Unit" from="DXC Drug Rebate Unit" to="Gainwell Technologies Drug Rebate Unit" />
+    <ReplacementString qualifier="DXC Logo" from="DXC Logo" to="Gainwell Technologies" />
+    <ReplacementString qualifier="Dxc Logo" from="Dxc Logo" to="Gainwell Technologies" />
+    <ReplacementString qualifier="DXCHLS_Image" from="DXCHLS_Image" to="GWTHLS_Image" />
+    <ReplacementString qualifier="DXC Office of Administrative Hearings (OAH)" from="DXC Office of Administrative Hearings (OAH)" to="Gainwell Technologies Office of Administrative Hearings (OAH)" />
+    <ReplacementString qualifier="DXC one" from="DXC one" to="Gainwell Technologies one" />
+    <ReplacementString qualifier="DXC Procedures Act, A.B.C. 12-345 et.seq. and" from="DXC Procedures Act, A.B.C. 12-345 et.seq. an" to="Gainwell Technologies Procedures Act, A.B.C. 12-345 et.seq. and" />
+    <ReplacementString qualifier="DXC Technology MMIS" from="DXC Technology MMIS" to="Gainwell Technologies Medicaid Management Solutions" />
+    <ReplacementString qualifier="DXC Technology" from="DXC Technology" to="Gainwell Technologies" />
+    <ReplacementString qualifier="DXC.technology" from="DXC.technology" to="Gainwell Technologies" />
+    <ReplacementString qualifier="DxcConfidential" from="DxcConfidential" to="GainwellConfidential" />
+    <ReplacementString qualifier="DXC CONFIDENTIAL" from="DXC CONFIDENTIAL" to="GAINWELL TECHNOLOGIES CONFIDENTIAL" />
+    <ReplacementString qualifier="DXC's Technology MMIS" from="DXC's Technology MMIS" to="Gainwell Technologies Medicaid Management Solutions" />
+    <ReplacementString qualifier="DXC Tecnología MMIS" from="DXC Tecnología MMIS" to="Soluciones de Gestión de Medicaid de Gainwell Technologies" />
+    <ReplacementString qualifier="Equipo de Servicios de Cuentas DXC" from="Equipo de Servicios de Cuentas DXC" to="Equipo de Servicios de Cuentas de Gainwell Technologies" />
+    <ReplacementString qualifier="HPE Customer Service Account  Team" from="HPE Customer Service Account  Team" to="Gainwell Technologies Customer Service Account Team" />
+    <ReplacementString qualifier="Palo Alto, CA 94304-1112" from="Palo Alto, CA 94304-1112" to="Mclean, VA 22102" />
+    <ReplacementString qualifier="Palo Alto,CA 94304-1112" from="Palo Alto,CA 94304-1112" to="Mclean, VA 22102" />
+    <ReplacementString qualifier="Palo Alto" from="Palo Alto" to="McLean" />
+    <ReplacementString qualifier="State id=&quot;CA&quot;" from="State id=&quot;CA&quot;" to="State id=&quot;VA&quot;" />
+    <ReplacementString qualifier="StateCode&amp;gt;DXC" from="StateCode&amp;gt;DXC" to="StateCode&amp;gt;GWT" />
+    <ReplacementString qualifier="&amp;lt;Client&amp;gt;DXC&amp;lt;/Client&amp;gt;" from="&amp;lt;Client&amp;gt;DXC&amp;lt;/Client&amp;gt;" to="&amp;lt;Client&amp;gt;Gainwell Technologies&amp;lt;/Client&amp;gt;" />
+    <ReplacementString qualifier="Tecnología DXC MMIS" from="Tecnología DXC MMIS" to="Soluciones de Gestión de Medicaid de Gainwell Technologies" />
+    <ReplacementString qualifier="www.dxc.technology" from="www.dxc.technology" to="gainwelltechnologies.com" />
+    <ReplacementString qualifier="www.dxc.com" from="www.dxc.com" to="gainwelltechnologies.com" />
+    <ReplacementString qualifier="MMIS Commissioner" from="MMIS Commissioner" to="Medicaid Management Solutions Commissioner" />
+    <ReplacementString qualifier="MMIS Program" from="MMIS Program" to="Medicaid Management Solutions Program" />
+    <ReplacementString qualifier="Programa MMIS" from="Programa MMIS" to="Programa Medicaid Management Solutions" />
+    <ReplacementString qualifier="MMIS Procedures" from="MMIS Procedures" to="Medicaid Management Solutions Procedures" />
+    <ReplacementString qualifier="- MMIS" from="- MMIS" to="- Medicaid Management Solutions" />
+    <ReplacementString qualifier="-MMIS" from="- MMIS" to="-Medicaid Management Solutions" />
+    <ReplacementString qualifier="MMIS - Division" from="MMIS - Division" to="Medicaid Management Solutions - Division" />
+    <ReplacementString qualifier="MMIS – Division" from="MMIS – Division" to="Medicaid Management Solutions - Division" />
+    <ReplacementString qualifier="&lt;Value&gt;MMIS&lt;/Value&gt;" from="&lt;Value&gt;MMIS&lt;/Value&gt;" to="&lt;Value&gt;Medicaid Management Solutions&lt;/Value&gt;" />
+    <ReplacementString qualifier="2.27479in" from="2.27479in" to="4.51833in" />
+  </ReplacementStrings>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+  <TfsWorkspace></TfsWorkspace>
+  <TFSUserName></TFSUserName>
+  <TFSPassword>!</TFSPassword>
+</RefactorConfig>
