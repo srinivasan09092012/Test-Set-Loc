@@ -90,6 +90,8 @@
     <ReplacementString qualifier="Tecnología DXC MMIS" from="Tecnología DXC MMIS" to="Soluciones de Gestión de Medicaid de Gainwell Technologies" />
     <ReplacementString qualifier="www.dxc.technology" from="www.dxc.technology" to="gainwelltechnologies.com" />
     <ReplacementString qualifier="www.dxc.com" from="www.dxc.com" to="gainwelltechnologies.com" />
+    <ReplacementString qualifier=" HPP" from=" HPP" to=" Medicaid Management Solutions" />
+    <ReplacementString qualifier="Healthcare Payer Platform" from="Healthcare Payer Platform" to="Medicaid Management Solutions" />
     <ReplacementString qualifier="MMIS Commissioner" from="MMIS Commissioner" to="Medicaid Management Solutions Commissioner" />
     <ReplacementString qualifier="MMIS Program" from="MMIS Program" to="Medicaid Management Solutions Program" />
     <ReplacementString qualifier="Programa MMIS" from="Programa MMIS" to="Programa Medicaid Management Solutions" />
