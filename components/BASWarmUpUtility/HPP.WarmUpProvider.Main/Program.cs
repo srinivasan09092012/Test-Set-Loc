@@ -12,7 +12,7 @@ using System.Configuration;
 using System.Diagnostics;
 using System.Threading;
 
-namespace WarmUpProvider.Main.Service
+namespace HPP.WarmUpProvider.Main
 {
     internal static class Program
     {
@@ -31,7 +31,7 @@ namespace WarmUpProvider.Main.Service
                 ApplicationConfigurationManager.LoadApplicationConfiguration(ConfigurationManager.AppSettings["TenantId"], new RedisCacheManager());
                 InitializeInstrumentationSettings();
 
-                ServiceRuntime.RegisterServiceAsync("WarmUpProvider.Main.ServiceType",
+                ServiceRuntime.RegisterServiceAsync("HPP.WarmUpProvider.MainType",
                     context => new Service(context)).GetAwaiter().GetResult();
 
                 ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(Service).Name);

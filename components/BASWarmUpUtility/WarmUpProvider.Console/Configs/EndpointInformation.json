@@ -111,13 +111,6 @@
       },
       {
         "ModuleName": "Integration",
-        "ApplicationName": "DataAggregator Service",
-        "EndPoint": "/HP.HSP.UA3.DataAggregatorService/R6.0/DataAggregatorQueryService.svc",
-        "Binding": "basicHttpsBinding",
-        "CheckHealthStatus": "true"
-      },
-      {
-        "ModuleName": "Integration",
         "ApplicationName": "Event Group Watcher Service",
         "EndPoint": "/HP.HSP.UA3.Integration.BAS.EventGroupWatcher/R6.0/EventGroupWatcherQueryService.svc",
         "Binding": "basicHttpsBinding",

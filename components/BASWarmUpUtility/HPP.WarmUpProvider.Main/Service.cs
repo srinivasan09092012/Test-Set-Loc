@@ -16,7 +16,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using WarmUpProvider.Helpers;
 
-namespace WarmUpProvider.Main.Service
+namespace HPP.WarmUpProvider.Main
 {
     /// <summary>
     /// An instance of this class is created for each service instance by the Service Fabric runtime.

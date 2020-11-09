@@ -9,9 +9,7 @@ using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Helpers;
 using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
 using HP.HSP.UA3.Core.BAS.CQRS.UserMeta;
-using HPE.HSP.UA3.Core.API.AuthManagement.Interface;
 using HPE.HSP.UA3.Core.API.Logger;
-using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -19,6 +17,7 @@ using System.Configuration;
 using System.Diagnostics;
 using System.ServiceModel;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using WarmUpProvider.Domain;
 using WarmUpProvider.NotificationService;
@@ -28,7 +27,6 @@ namespace WarmUpProvider.Helpers
     public class WarmUpHelper
     {
         private Guid tenantId;
-        private List<TenantWarmUpModel> retryEnpointLists = new List<TenantWarmUpModel>();
         private ConcurrentBag<ExceptionNotificationModel> businessExceptionMessages = new ConcurrentBag<ExceptionNotificationModel>();
 
         public void StartUp()
@@ -51,6 +49,7 @@ namespace WarmUpProvider.Helpers
                 List<TenantWarmUpModel> tenantWarmUpModels = new List<TenantWarmUpModel>();
 
                 tenantWarmUpModels = fileHelper.ReadEndpointDataFromJSON();
+                
                 List<Task> tasks = new List<Task>();
 
                 foreach (var tenant in tenantWarmUpModels)
@@ -73,6 +72,7 @@ namespace WarmUpProvider.Helpers
 
                 Task.WaitAll(tasks.ToArray());
                 tasks.Clear();
+                tenantWarmUpModels.Clear();
             }
             catch (Exception ex)
             {
@@ -87,6 +87,7 @@ namespace WarmUpProvider.Helpers
             if (this.businessExceptionMessages.Count > 0)
             {
                 this.SendMail();
+                this.businessExceptionMessages = null;
             }
 
             this.LoggerHelper("-----------Warming up Endpoints Completed-----------");

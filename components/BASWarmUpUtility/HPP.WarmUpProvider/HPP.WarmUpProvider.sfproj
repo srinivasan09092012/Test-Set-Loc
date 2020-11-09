@@ -36,7 +36,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WarmUpProvider.Main.Service\WarmUpProvider.Main.Service.csproj" />
+    <ProjectReference Include="..\HPP.WarmUpProvider.Main\HPP.WarmUpProvider.Main.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
   <PropertyGroup>

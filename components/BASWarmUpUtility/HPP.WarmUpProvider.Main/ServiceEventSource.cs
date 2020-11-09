@@ -9,9 +9,9 @@ using System.Diagnostics.Tracing;
 using System.Fabric;
 using System.Threading.Tasks;
 
-namespace WarmUpProvider.Main.Service
+namespace HPP.WarmUpProvider.Main
 {
-    [EventSource(Name = "MyCompany-WarmUpProvider.Main-WarmUpProvider.Main.Service")]
+    [EventSource(Name = "HPP.WarmUpProvider.Main")]
     internal sealed class ServiceEventSource : EventSource
     {
         public static readonly ServiceEventSource Current = new ServiceEventSource();

@@ -7,8 +7,8 @@
     <ProjectGuid>{986B1A51-D081-4F80-9D6F-BCC23F1AB13B}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WarmUpProvider.Main.Service</RootNamespace>
-    <AssemblyName>WarmUpProvider.Main.Service</AssemblyName>
+    <RootNamespace>HPP.WarmUpProvider.Main</RootNamespace>
+    <AssemblyName>HPP.WarmUpProvider.Main</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
