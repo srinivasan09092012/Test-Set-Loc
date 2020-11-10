@@ -24,12 +24,12 @@
   <ContractListPages>
 	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Contracts_Events.htm</ListPage>
   </ContractListPages>
-  <ModuleAPIAvailable>false</ModuleAPIAvailable>
-  <ModuleAPISourcePath></ModuleAPISourcePath>
-  <ModuleAPITargetPath></ModuleAPITargetPath>
+  <ModuleAPIAvailable>true</ModuleAPIAvailable>
+  <ModuleAPISourcePath>D:\\MCCapitation\</ModuleAPISourcePath>
+  <ModuleAPITargetPath>J:\www\servicespecs\Modules\ManagedCare\\HelpWeb\\Capitation</ModuleAPITargetPath>
   <ModuleAPIPages>
-	<ListPage></ListPage>
+	<ListPage>N_HPP_HSP_UA3_ManagedCare_API_CapitationPayment_Providers.htm</ListPage>
   </ModuleAPIPages>
-  <MainAPIContent></MainAPIContent>
+  <MainAPIContent>T_HPP_HSP_UA3_ManagedCare_API_CapitationPayment_Providers_CapitationPaymentProvider.htm</MainAPIContent>
   <OtherResourcesFolder>ManagedCare</OtherResourcesFolder>
 </DocModuleSettingModel> 
