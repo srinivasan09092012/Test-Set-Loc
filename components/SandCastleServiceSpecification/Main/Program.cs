@@ -295,9 +295,10 @@ namespace SandCastleSvcSpec
       Dictionary<string, string> ModelsToPrint = new Dictionary<string, string>();
       Dictionary<string, string> QueryToPrint = new Dictionary<string, string>();
       Dictionary<string, string> DtosToPrint = new Dictionary<string, string>();
-      #endregion
+      Dictionary<string, string> DataTranfersToPrint = new Dictionary<string, string>();
+            #endregion
 
-      #region ModuleHelpContentAvailable
+            #region ModuleHelpContentAvailable
       if (moduleSetting.ModuleHelpContentAvailable)
       {
 
@@ -348,6 +349,10 @@ namespace SandCastleSvcSpec
         loggerDetailEngine.writeEntry("-- View DTO Pages");
         DtosToPrint = PreparePages("T_*_Contracts_ViewDto_*", moduleSetting);
         missingScanHelper.GetDTOSource(DtosToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
+
+        loggerDetailEngine.writeEntry("-- Data Transfer Pages");
+        DataTranfersToPrint = PreparePages("T_*_Contracts_DataTransfer_*", moduleSetting);
+        missingScanHelper.GetDTOSource(DataTranfersToPrint, moduleSetting.ModuleName, moduleSetting.StorageDrivePath);
 
         loggerDetailEngine.writeEntry("-- Value Objects");
         PreparePages("T_*_Contracts_ValueObjects_*", moduleSetting);
