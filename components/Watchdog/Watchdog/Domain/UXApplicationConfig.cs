@@ -21,6 +21,6 @@ namespace Watchdog.Domain
 
         public int SleepInterval { get; set; }
 
-        public string ServerName { get; set; }
+        public string SiteName { get; set; }
     }
 }

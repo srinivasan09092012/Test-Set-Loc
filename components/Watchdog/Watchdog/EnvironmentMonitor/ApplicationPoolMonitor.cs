@@ -25,6 +25,7 @@ namespace Watchdog.EnvironmentMonitor
         {
             this.sleepTime = sleepTime;//Convert.ToInt32(serviceData.Time);
             this.applicationHealthInformation.ServiceType = "Application Pool";
+            this.applicationHealthInformation.ServiceName = applicationPool.Name;
             this.appPool = applicationPool;
         }
 
@@ -90,14 +91,14 @@ namespace Watchdog.EnvironmentMonitor
                 catch (Exception ex)
                 {
                     this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
-                    logger.LogError("Error occured while recycling application pool", ex);
+                    logger.LogError("Error occured while starting application pool: " + appPoolName, ex);
                 }
 
                 if (appPool.State == ObjectState.Started)
                 {
                     this.applicationHealthInformation.RestartStatus = Constants.Status.Restarted;
                     isApplicationPoolSuccessfullyStarted = true;
-                    logger.LogInformational("Application pool: " + appPoolName + " has been recycled successfully");
+                    logger.LogInformational("Application pool: " + appPoolName + " has been started successfully");
                 }
             }
             return isApplicationPoolSuccessfullyStarted;

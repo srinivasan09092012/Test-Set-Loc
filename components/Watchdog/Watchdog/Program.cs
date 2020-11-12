@@ -35,6 +35,10 @@ namespace Watchdog
 
                 tasks.Add(Task.Run(() => MonitorWindowsServices()));
 
+                tasks.Add(Task.Run(() => MonitorUXServices(tenant)));
+
+                tasks.Add(Task.Run(() => MonitorAddressDoctor(tenant)));
+
                 tasks.Add(Task.Run(() => MonitorBASApplicationPool()));
 
                 tasks.Add(Task.Run(() => MonitorBAS(tenant)));
@@ -42,10 +46,6 @@ namespace Watchdog
                 tasks.Add(Task.Run(() => MonitorK2Service(tenant)));
 
                 tasks.Add(Task.Run(() => MonitorInRule(tenant)));
-
-                tasks.Add(Task.Run(() => MonitorUXServices(tenant)));
-
-                tasks.Add(Task.Run(() => MonitorAddressDoctor(tenant)));
 
                 Task.WaitAll(tasks.ToArray());
 
@@ -128,8 +128,8 @@ namespace Watchdog
                 WindowsServiceMonitor windowsServicesMonitor = new WindowsServiceMonitor(config, LoggerManager.Logger, string.Empty);
                 windowsServicesMonitor.Monitor();
             });
-        }   
-        
+        }
+
         private static void MonitorInRule(Tenant tenant)
         {
             ConfigurationProvider.WatchdogConfiguration.InRuleConfiguration?.InRuleServiceList.FindAll(s => s.Monitor == true).ForEach(config =>
@@ -155,7 +155,7 @@ namespace Watchdog
                         {
                             appPoolConfig.UXUrls.ForEach(urlConfig =>
                             {
-                                UXMonitor uxMonitor = new UXMonitor(urlConfig, info.RestartStatus, LoggerManager.Logger);
+                                UXMonitor uxMonitor = new UXMonitor(urlConfig, config.Servername, appPoolConfig.Sitename, info.RestartStatus, LoggerManager.Logger);
                                 uxMonitor.Monitor();
                             });
                         }

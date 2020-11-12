@@ -48,7 +48,7 @@ namespace Watchdog.Monitor
                 }
                 else
                 {
-                    logger.LogError(string.Format("{0} unavailble to monitor.", serviceDetail.Name));
+                    logger.LogError(string.Format("{0} unavailable to monitor.", serviceDetail.Name));
                     this.SetServiceUnavailableStatus();
                 }
 

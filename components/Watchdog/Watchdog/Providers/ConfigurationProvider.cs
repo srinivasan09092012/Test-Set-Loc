@@ -201,8 +201,10 @@ namespace Watchdog
                                            {
                                                Servername = GetAttributeValue<string>(node, "serverName", string.Empty),
                                                Monitor = GetAttributeValue<bool>(node, "monitor", true),
+                                               ApplicationDownAction = GetAttributeValue<string>(node, "applicationDownAction", WatchdogConfiguration.ApplicationDownAction),
+                                               MaxRetryCount = GetAttributeValue<int>(node, "maxRetryCount", WatchdogConfiguration.MaxRetryCount),
                                                PerformanceSampleCount = GetAttributeValue<int>(node, "performanceSampleCount", WatchdogConfiguration.PerformanceSampleCount),
-                                                 Applications = (from appNode in nodes.Descendants("Application")
+                                               Applications = (from appNode in nodes.Descendants("Application")
                                                                  
                                                                  select new UXConfig
                                                                  {
@@ -214,6 +216,9 @@ namespace Watchdog
                                                                                {
                                                                                    Name = GetAttributeValue<string>(uxnode, "name", string.Empty),
                                                                                    Monitor = GetAttributeValue<bool>(uxnode, "monitor", true),
+                                                                                   ApplicationDownAction = GetAttributeValue<string>(node, "applicationDownAction", WatchdogConfiguration.ApplicationDownAction),
+                                                                                   MaxRetryCount = GetAttributeValue<int>(node, "maxRetryCount", WatchdogConfiguration.MaxRetryCount),
+                                                                                   PerformanceSampleCount = GetAttributeValue<int>(node, "performanceSampleCount", WatchdogConfiguration.PerformanceSampleCount),
                                                                                    URLValue = GetAttributeValue<string>(uxnode, "Value", string.Empty),
                                                                                    Healthurl = GetAttributeValue<string>(uxnode, "HealthUrl", string.Empty),
                                                                                    Username = GetAttributeValue<string>(uxnode, "Username", string.Empty),
@@ -221,14 +226,10 @@ namespace Watchdog
                                                                                    LoggedInUsername = GetAttributeValue<string>(uxnode, "LoggedInUsername", string.Empty),
                                                                                    SleepInterval = GetAttributeValue<int>(uxnode, "Sleeptime", GetAttributeValue<int>(uxnode.Parent, "serverName", 0))
                                                                                }).ToList()
-
                                                                  }).ToList(),
-                                                                
-                                                                 
-
-                                             }).ToList();
-                
+                                           }).ToList();
             }
+
             return uXMonitoring;
         }
 

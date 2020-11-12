@@ -7,14 +7,17 @@
 
 using HPE.HSP.UA3.Core.API.Logger;
 using HPE.HSP.UA3.Core.API.Logger.Interfaces;
+using Microsoft.Web.Administration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Reflection;
+using System.Threading;
 using Watchdog.Domain;
 using Watchdog.Monitor;
 
@@ -34,11 +37,12 @@ namespace Watchdog.EnvironmentMonitor
         private string restartStatus = string.Empty;
         
 
-        public UXMonitor(UXApplicationConfig serviceData, string restartStatus, ILogger logger)
+        public UXMonitor(UXApplicationConfig serviceData, string serverName, string siteName, string restartStatus, ILogger logger)
             : base(serviceData, logger)
         {
             this.serviceConfigData = serviceData;
-            this.iisServerName = serviceConfigData.ServerName;
+            this.iisServerName = serverName;
+            this.serviceConfigData.SiteName = siteName;
             this.applicationHealthInformation.ServiceType = "UXServices";
             this.applicationHealthInformation.ServiceName = serviceConfigData.Name;
             this.url = serviceData.Healthurl;
@@ -49,11 +53,18 @@ namespace Watchdog.EnvironmentMonitor
         public override bool CheckServiceAvailabilityAsync()
         {
             bool isServiceHealthy = false;
+            bool isServiceActiveOrNot = false;
             bool isServiceActiveForHealthCheck = false;
             bool isServiceActiveForADFSLogin = false;
-            isServiceActiveForHealthCheck = this.ServiceCheckForHealthCheck(isServiceActiveForHealthCheck);
-            isServiceActiveForADFSLogin = this.ServiceCheckForADFSLogin(isServiceActiveForADFSLogin);
-            if (isServiceActiveForHealthCheck && isServiceActiveForADFSLogin) //&& isApplicationPoolActiveOrNot)
+
+            isServiceActiveOrNot = this.RestartServiceForSite(isServiceActiveOrNot);
+            if (isServiceActiveOrNot)
+            {
+                isServiceActiveForHealthCheck = this.ServiceCheckForHealthCheck(isServiceActiveForHealthCheck);
+                isServiceActiveForADFSLogin = this.ServiceCheckForADFSLogin(isServiceActiveForADFSLogin);
+            }
+
+            if (isServiceActiveForHealthCheck && isServiceActiveForADFSLogin)
             {
                 LoggerManager.Logger.LogInformational("---Response was Successful for UX Monitoring---" + "Status:" + "Ok");
                 isServiceHealthy = true;
@@ -81,7 +92,7 @@ namespace Watchdog.EnvironmentMonitor
             }
             else
             {
-                wr.Timeout = 2000;
+                wr.Timeout = 5000;
             }
 
             try
@@ -163,6 +174,66 @@ namespace Watchdog.EnvironmentMonitor
             {
                 web.Quit();
             }
+        }
+
+        private bool RestartServiceForSite(bool isServiceActiveOrNot)
+        {
+            if (!string.IsNullOrEmpty(this.iisServerName) && !string.IsNullOrEmpty(serviceConfigData.Name))
+            {
+                try
+                {
+                    using (ServerManager manager = ServerManager.OpenRemote(this.iisServerName))
+                    {
+                        Site siteName = manager.Sites.FirstOrDefault(s => s.Name.Equals(serviceConfigData.SiteName));
+
+                        if (siteName != null)
+                        {
+                            bool siteNameStopped = siteName.State == ObjectState.Stopped || siteName.State == ObjectState.Stopping;
+                            logger.LogInformational(serviceConfigData.SiteName + " site Status :" + siteName.State.ToString());
+                            isServiceActiveOrNot = this.StartSiteNameService(siteName, siteNameStopped);
+                        }
+                        else
+                        {
+                            this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
+                            throw new Exception("Site Name doesn't exist : " + serviceConfigData.SiteName);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
+                    logger.LogError("Error occured while attempting to restart the site : " + serviceConfigData.SiteName, ex);
+                    throw ex;
+                }
+            }
+
+            return isServiceActiveOrNot;
+        }
+
+        private bool StartSiteNameService(Site siteName, bool siteNameStopped)
+        {
+            if (siteNameStopped)
+            {
+                try
+                {
+                    siteName.Start();
+                    Thread.Sleep(10000);
+                }
+                catch (Exception ex)
+                {
+                    this.applicationHealthInformation.RestartStatus = Constants.Status.Failed;
+                    logger.LogError("Error occured while starting the site: " + siteName, ex);
+                }
+
+                if (siteName.State == ObjectState.Started)
+                {
+                    this.applicationHealthInformation.RestartStatus = Constants.Status.Restarted;
+                    siteNameStopped = false;
+                    logger.LogInformational("Site Name: " + siteName + " has been started successfully");
+                }
+            }
+
+            return !siteNameStopped;
         }
 
         protected override Process GetProcessIdForService()

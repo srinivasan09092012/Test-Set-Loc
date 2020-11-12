@@ -59,10 +59,19 @@ namespace WatchDog_WindowsService
                     else
                     {
                         ServiceController controller = new ServiceController("W3SVC");
-                        //If IIS is installed then check if IIS is up and running before starting watchdog.
-                        if (controller != null && controller.Status == ServiceControllerStatus.Running)
+                        ////If IIS is installed then check if IIS is up and running before starting watchdog.
+                        if (controller != null)
                         {
+                            if (controller.Status != ServiceControllerStatus.Running)
+                            {
+                                this.WriteToFile("W3SVC service is in " + controller.Status + " state. " + DateTime.Now);
+                            }
+
                             RunWatchDogApplication();
+                        }
+                        else
+                        {
+                            this.WriteToFile("Watch-Dog can not start. W3SVC service is not available. " + DateTime.Now);
                         }
                     }
                 }               
