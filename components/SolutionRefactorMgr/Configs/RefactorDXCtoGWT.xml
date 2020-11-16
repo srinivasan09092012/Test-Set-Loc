@@ -71,7 +71,7 @@
     <ReplacementString qualifier="DXCHLS_Image" from="DXCHLS_Image" to="GWTHLS_Image" />
     <ReplacementString qualifier="DXC Office of Administrative Hearings (OAH)" from="DXC Office of Administrative Hearings (OAH)" to="Gainwell Technologies Office of Administrative Hearings (OAH)" />
     <ReplacementString qualifier="DXC one" from="DXC one" to="Gainwell Technologies one" />
-    <ReplacementString qualifier="DXC Procedures Act, A.B.C. 12-345 et.seq. and" from="DXC Procedures Act, A.B.C. 12-345 et.seq. an" to="Gainwell Technologies Procedures Act, A.B.C. 12-345 et.seq. and" />
+    <ReplacementString qualifier="DXC Procedures Act, A.B.C. 12-345 et.seq. and" from="DXC Procedures Act, A.B.C. 12-345 et.seq. and" to="Gainwell Technologies Procedures Act, A.B.C. 12-345 et.seq. and" />
     <ReplacementString qualifier="DXC Technology MMIS" from="DXC Technology MMIS" to="Gainwell Technologies Medicaid Management Solutions" />
     <ReplacementString qualifier="DXC Technology" from="DXC Technology" to="Gainwell Technologies" />
     <ReplacementString qualifier="DXC.technology" from="DXC.technology" to="Gainwell Technologies" />
