@@ -1,4 +1,5 @@
-﻿using Common.Interfaces;
+﻿using Common.Information;
+using Common.Interfaces;
 using Common.ModuleSettings;
 using Controller.Helpers.HTML;
 using Controller.Helpers.Scan;
@@ -14,6 +15,7 @@ namespace Controller
     {
         int nodeIndex = 0;
         public ModuleSettingModel ModuleSettings = new ModuleSettingModel();
+        public InformationModel InformationModel = new InformationModel();
         private readonly ILogger LoggerEngine;
         private readonly IExecutionContext ExecutionContext;
 
@@ -1110,6 +1112,18 @@ namespace Controller
             DivHelper divHelper = new DivHelper(doc, DivHelper.SearchFilter.Id, Common.Constants.HtmlInventory.PageFooterDiv);
             divHelper.removeAllChildNodes();
             divHelper.SetInnerHtml(Common.Constants.Labels.CopyRight);
+        }
+
+        public void UpdateBuildVersionPageFooter()
+        {
+            var htmlDocument = DocumentHelper.GetInstance();
+            htmlDocument._documentPath = this.InformationModel.TargetPathHomePage + @"\DocumentationHome.htm";
+            htmlDocument.Load();
+
+            DivHelper divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "buildInformation");
+            divHelper.SetInnerHtml($"Server: {this.InformationModel.ServerIp} Build Date: {this.InformationModel.BuildDate} v{this.InformationModel.BuildVersion}");
+
+            htmlDocument.Save();
         }
 
         public void UpdatePageBodyAttrib(HtmlDocument doc)

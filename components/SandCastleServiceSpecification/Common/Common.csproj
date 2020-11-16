@@ -53,6 +53,7 @@
     <Compile Include="Interfaces\IExecutionContext.cs" />
     <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Interfaces\LogginLevels.cs" />
+    <Compile Include="Information\InformationModel.cs" />
     <Compile Include="ModuleSettings\ContentPage.cs" />
     <Compile Include="Implementations\ExecutionContext.cs" />
     <Compile Include="ReportModels\DTOMissingTagsModel.cs" />

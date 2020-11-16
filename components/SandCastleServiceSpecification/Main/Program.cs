@@ -4,6 +4,7 @@ using Controller.Helpers.Scan;
 using Controller.IO;
 using Common;
 using Common.Implementations;
+using Common.Information;
 using Common.Interfaces;
 using Common.ModuleSettings;
 using System;
@@ -35,24 +36,26 @@ namespace SandCastleSvcSpec
       string moduleSettingFilesStoragePath = ConfigurationManager.AppSettings["moduleSettingFilesStoragePath"];
       var moduleSetting = SearchingModuleSettings(moduleSettingFilesStoragePath);
 
-      // maybe with context patter will be easy to introduce this since now there is no way to track from this point all the modules and their process result
-      foreach (var module in moduleSetting)
-      {
-        Console.WriteLine("");
-        Console.WriteLine("**********************************************************");
-        loggerDetailEngine.writeEntry(string.Format("Running Settings for Module: {0} \n\nCopying new target files, waiting for two checkpoints before process create documentation. ", module.ModuleNameDisplay), LogginSeetings.LevelType.InformationApplication, 9000, 9);
-        Console.WriteLine("**********************************************************");
+            // maybe with context patter will be easy to introduce this since now there is no way to track from this point all the modules and their process result
+            foreach (var module in moduleSetting)
+            {
+                Console.WriteLine("");
+                Console.WriteLine("**********************************************************");
+                loggerDetailEngine.writeEntry(string.Format("Running Settings for Module: {0} \n\nCopying new target files, waiting for two checkpoints before process create documentation. ", module.ModuleNameDisplay), LogginSeetings.LevelType.InformationApplication, 9000, 9);
+                Console.WriteLine("**********************************************************");
 
-        try
-        {
-          ExecuteSandCastleEnhancement(module);// improve for parallel programing
-          loggerDetailEngine.writeEntry(string.Format("Web style documentation created successfuly for \n\nModule: {0} \n\nIn the local path: {1} \n\nDocumentation now available online. ", module.ModuleNameDisplay, module.WebTargetPath), LogginSeetings.LevelType.InformationApplication, 2181, 2);
-        }
-        catch (Exception exe)
-        {
-          loggerDetailEngine.writeEntry(string.Format("Unexpected exception ocurred for \n\nModule: {0} \n\nIn the local path: {1} \n\nError Message: {2} ", module.ModuleNameDisplay, module.WebTargetPath, exe.Message), LogginSeetings.LevelType.ErrorApplication, 2014, 2);
-        }
-      }
+                try
+                {
+                    ExecuteSandCastleEnhancement(module);// improve for parallel programing
+                    loggerDetailEngine.writeEntry(string.Format("Web style documentation created successfuly for \n\nModule: {0} \n\nIn the local path: {1} \n\nDocumentation now available online. ", module.ModuleNameDisplay, module.WebTargetPath), LogginSeetings.LevelType.InformationApplication, 2181, 2);
+                }
+                catch (Exception exe)
+                {
+                    loggerDetailEngine.writeEntry(string.Format("Unexpected exception ocurred for \n\nModule: {0} \n\nIn the local path: {1} \n\nError Message: {2} ", module.ModuleNameDisplay, module.WebTargetPath, exe.Message), LogginSeetings.LevelType.ErrorApplication, 2014, 2);
+                }
+            }
+
+            UpdateBuildVersion();
 
       Console.WriteLine("");
       loggerDetailEngine.writeEntry("SandCastle Customization Tool execution completed", LogginSeetings.LevelType.InformationApplication, 1042, 1);
@@ -153,7 +156,25 @@ namespace SandCastleSvcSpec
       }
     }
 
-    static bool IsValidSettingFile(ModuleSettingModel parsedSettingFile, string parsedSettingFilePath)
+    static InformationModel readInformationFile(string informationFilePath)
+    {
+        var xs = new XmlSerializer(typeof(InformationModel));
+
+        using (var sr = new StreamReader(informationFilePath))
+        {
+            try
+            {
+                return (InformationModel)xs.Deserialize(sr);
+            }
+            catch (Exception exe)
+            {
+                loggerDetailEngine.writeEntry(string.Format("Skipping the information file {0}, XML structure error found: {1} \n", Path.GetFileName(informationFilePath), exe.Message), LogginSeetings.LevelType.FailureAudit, 2163, 2);
+                return null;
+            }
+        }
+    }
+
+        static bool IsValidSettingFile(ModuleSettingModel parsedSettingFile, string parsedSettingFilePath)
     {
       //use this delegate when validations are on
       validateSettingFile fullValidation = delegate (ModuleSettingModel settingFile)
@@ -492,6 +513,57 @@ namespace SandCastleSvcSpec
         File.WriteAllText(file, html);
         loggerDetailEngine.writeEntry($"{fname} modified");
       }
+    }
+
+    static void UpdateBuildVersion()
+    {
+        DirectoryInfo sDrive = null;
+        var informationModel = new InformationModel();
+
+        string storageDrive = ConfigurationManager.AppSettings["informationFilesStoragePath"];
+
+        try
+        {
+            if (string.IsNullOrEmpty(storageDrive))
+            {
+                throw new Exception("\nBuild Information key: [informationFilesStoragePath] not found in Application Information File, create and set this key to the xml settings folder");
+            }
+
+            sDrive = new DirectoryInfo(storageDrive);
+
+            if (!sDrive.Exists)
+            {
+                throw new Exception("\nPath not found in local system " + sDrive.FullName);
+            }
+        }
+        catch (Exception exe)
+        {
+            loggerDetailEngine.writeEntry("Error to locate Information Folder: " + exe.Message, LogginSeetings.LevelType.ErrorApplication, 1013, 1);
+
+        }
+
+        var informationFile = sDrive.GetFiles("BuildInformation" + Constants.WebSolutionStructure.Files.Extensions.xmlExtension, SearchOption.TopDirectoryOnly);
+
+        if (informationFile.Length == 0)
+        {
+            loggerDetailEngine.writeEntry("Aborting process 0 information files found in folder " + sDrive.FullName, LogginSeetings.LevelType.WarningApplication, 2021, 2);
+            Console.WriteLine();
+
+        }
+
+        Console.WriteLine("");
+        loggerDetailEngine.writeEntry(string.Format("Search completed, {0} files found in folder {1} ", informationFile.Length, sDrive.FullName), LogginSeetings.LevelType.InformationApplication, 9000, 9);
+
+        informationModel = readInformationFile(informationFile.FirstOrDefault().FullName);
+
+        informationModel.TargetPathHomePage = storageDrive;
+
+        HtmlFactory factoryHtml = new HtmlFactory(loggerDetailEngine);
+        factoryHtml.InformationModel = informationModel;
+        factoryHtml.UpdateBuildVersionPageFooter();
+
+        Console.WriteLine("");
+                
     }
   }
 }
