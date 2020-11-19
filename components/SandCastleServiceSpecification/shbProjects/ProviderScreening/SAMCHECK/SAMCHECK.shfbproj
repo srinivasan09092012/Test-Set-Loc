@@ -56,19 +56,23 @@
     <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.SAMCheck\HP.HSP.UA3.Screening.BAS.SAMCheck.Contracts.dll" />
-<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.SAMCheck\HP.HSP.UA3.Screening.BAS.SAMCheck.Contracts.xml" />
-<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.SAMCheck\HP.HSP.UA3.Screening.BAS.SAMCheck.dll" />
-<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.SAMCheck\HP.HSP.UA3.Screening.BAS.SAMCheck.xml" /></DocumentationSources>
-    <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.SAMCheck\HP.HSP.UA3.Screening.BAS.SAMCheck.Contracts.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.SAMCheck\HP.HSP.UA3.Screening.BAS.SAMCheck.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.SAMCheck\HP.HSP.UA3.Screening.BAS.SAMCheck.xml" />
+    </DocumentationSources>
+    <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck" isExposed="False">
-        <Filter entryType="Interface" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck.ISAMCheckService" filterName="ISAMCheckService" isExposed="True" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck.SAMCheckService" filterName="SAMCheckService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck.SAMCheckService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-          <Filter entryType="Property" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck.SAMCheckService.SAMServiceHandler" filterName="SAMServiceHandler" isExposed="False" />
-        </Filter>
-      </Filter>
-    </ApiFilter>
+  <Filter entryType="Interface" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck.ISAMCheckService" filterName="ISAMCheckService" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck.SAMCheckService" filterName="SAMCheckService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck.SAMCheckService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck.SAMCheckService.SAMServiceHandler" filterName="SAMServiceHandler" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+</Filter></ApiFilter>
     <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
     <WorkingPath>D:\PSSAMCHECKTmp\</WorkingPath>

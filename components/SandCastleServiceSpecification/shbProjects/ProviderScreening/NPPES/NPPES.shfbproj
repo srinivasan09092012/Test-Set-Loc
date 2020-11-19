@@ -56,18 +56,19 @@
     <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.NPPESServices\HP.HSP.UA3.Screening.BAS.NPPES.Contracts.dll" />
-<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.NPPESServices\HP.HSP.UA3.Screening.BAS.NPPES.Contracts.xml" />
-<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.NPPESServices\HP.HSP.UA3.Screening.BAS.NPPES.dll" />
-<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.NPPESServices\HP.HSP.UA3.Screening.BAS.NPPES.xml" /></DocumentationSources>
-    <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.NPPESServices\HP.HSP.UA3.Screening.BAS.NPPES.Contracts.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.NPPESServices\HP.HSP.UA3.Screening.BAS.NPPES.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.NPPESServices\HP.HSP.UA3.Screening.BAS.NPPES.xml" />
+    </DocumentationSources>
+    <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.Screening.BAS.NPPES" isExposed="False">
-        <Filter entryType="Interface" fullName="HP.HSP.UA3.Screening.BAS.NPPES.INPPESQueryService" filterName="INPPESQueryService" isExposed="True" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.Screening.BAS.NPPES.NPPESQueryService" filterName="NPPESQueryService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.Screening.BAS.NPPES.NPPESQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-        </Filter>
-      </Filter>
-    </ApiFilter>
+  <Filter entryType="Interface" fullName="HP.HSP.UA3.Screening.BAS.NPPES.INPPESQueryService" filterName="INPPESQueryService" isExposed="True" />
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+</Filter></ApiFilter>
     <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
     <WorkingPath>D:\PSNTmp\</WorkingPath>

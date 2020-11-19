@@ -53,11 +53,10 @@
     <TopicVersion>100</TopicVersion>
     <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.CodeInformation\HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.CodeInformation\HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.CodeInformation\HP.HSP.UA3.PlanManagement.BAS.CodeInformation.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.CodeInformation\HP.HSP.UA3.PlanManagement.BAS.CodeInformation.xml" />
-    </DocumentationSources>
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.CodeInformation\HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Business.dll" />
+<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.CodeInformation\HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Business.xml" />
+<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.CodeInformation\HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.dll" />
+<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.CodeInformation\HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.xml" /></DocumentationSources>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="(global)" isDocumented="True" xmlns="" />
       <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation" isDocumented="True" xmlns="" />
@@ -76,36 +75,100 @@
       <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Utilities" isDocumented="True" xmlns="" />
       <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.ViewDTO" isDocumented="True" xmlns="" />
     </NamespaceSummaries>
-    <VisibleItems>ProtectedInternalAsProtected, NonBrowsable</VisibleItems>
+    <VisibleItems>InheritedMembers, ProtectedInternalAsProtected, NonBrowsable</VisibleItems>
     <ApiFilter>
-      <Filter entryType="Namespace" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation" isExposed="True">
-        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.BatchCodeInformationService" filterName="BatchCodeInformationService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.BatchCodeInformationService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.BatchNDCInformationService" filterName="BatchNDCInformationService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.BatchNDCInformationService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.CodeInformationEventService" filterName="CodeInformationEventService" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.CodeInformationQueryService" filterName="CodeInformationQueryService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.CodeInformationQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.CodeInformationService" filterName="CodeInformationService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.CodeInformationService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.ExternalCodeQueryService" filterName="ExternalCodeQueryService" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Global" filterName="Global" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.ModuleConfigurator" filterName="ModuleConfigurator" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.NDCInformationQueryService" filterName="NDCInformationQueryService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.NDCInformationQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.NDCInformationService" filterName="NDCInformationService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.NDCInformationService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.NDCServiceConstants" filterName="NDCServiceConstants" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.NDCServiceConstants.IocConstants" filterName="NDCServiceConstants.IocConstants" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.NDCServiceConstants.ServiceExceptionConstants" filterName="NDCServiceConstants.ServiceExceptionConstants" isExposed="False" />
-      </Filter>
-    </ApiFilter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Commands" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Commands.ConsumeDentalCodeCommand" filterName="ConsumeDentalCodeCommand" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Commands.ConsumeDRGCodeCommand" filterName="ConsumeDRGCodeCommand" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Commands.ConsumeDrugClassificationCommand" filterName="ConsumeDrugClassificationCommand" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Commands.ConsumeHCPCSCodeCommand" filterName="ConsumeHCPCSCodeCommand" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Commands.ConsumeHCPCSNDCASSCNCommand" filterName="ConsumeHCPCSNDCASSCNCommand" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Commands.ConsumeICD10DiagnosisCodeCommand" filterName="ConsumeICD10DiagnosisCodeCommand" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Commands.ConsumeICD10ProcedureCodeCommand" filterName="ConsumeICD10ProcedureCodeCommand" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Commands.ConsumeManufacturerCommand" filterName="ConsumeManufacturerCommand" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Commands.ConsumeNationalDrugCodeCommand" filterName="ConsumeNationalDrugCodeCommand" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Commands.ConsumeNDCCODStatusCommand" filterName="ConsumeNDCCODStatusCommand" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Commands.ConsumeNDCRateCommand" filterName="ConsumeNDCRateCommand" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Commands.ConsumeNDCRebateCommand" filterName="ConsumeNDCRebateCommand" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Commands.ConsumeRevenueCodeCommand" filterName="ConsumeRevenueCodeCommand" isExposed="False" />
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.DentalCodeAdded" filterName="DentalCodeAdded" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.DentalCodeAdded.ExternalId" filterName="ExternalId" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.DRGCodeProcessed" filterName="DRGCodeProcessed" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.DrugClassificationAdded" filterName="DrugClassificationAdded" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.DrugClassificationAdded.ExternalId" filterName="ExternalId" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.HCPCSCodeAdded" filterName="HCPCSCodeAdded" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.HCPCSCodeAdded.ExternalId" filterName="ExternalId" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.HCPCSNDCASSCNAdded" filterName="HCPCSNDCASSCNAdded" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.HCPCSNDCASSCNAdded.ExternalId" filterName="ExternalId" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.ICD10DiagnosisCodeAdded" filterName="ICD10DiagnosisCodeAdded" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.ICD10DiagnosisCodeAdded.ExternalId" filterName="ExternalId" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.ICD10ProcedureCodeAdded" filterName="ICD10ProcedureCodeAdded" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.ICD10ProcedureCodeAdded.ExternalId" filterName="ExternalId" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.ManufacturerAdded" filterName="ManufacturerAdded" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.ManufacturerAdded.ExternalId" filterName="ExternalId" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.NationalDrugCodeAdded" filterName="NationalDrugCodeAdded" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.NationalDrugCodeAdded.ExternalId" filterName="ExternalId" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.NationalDrugCodeCODStatusAdded" filterName="NationalDrugCodeCODStatusAdded" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.NationalDrugCodeCODStatusAdded.ExternalId" filterName="ExternalId" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.NDCCMSStatusDateAdded" filterName="NDCCMSStatusDateAdded" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.NDCCMSStatusDateAdded.ExternalId" filterName="ExternalId" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.NDCRateAdded" filterName="NDCRateAdded" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.NDCRateAdded.ExternalId" filterName="ExternalId" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.NDCRebateIndicatorAdded" filterName="NDCRebateIndicatorAdded" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.NDCRebateIndicatorAdded.ExternalId" filterName="ExternalId" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.RevenueCodeAdded" filterName="RevenueCodeAdded" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events.RevenueCodeAdded.ExternalId" filterName="ExternalId" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.GetDiagnosisCodeDetailQuery" filterName="GetDiagnosisCodeDetailQuery" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.GetDiagnosisCodeDetailQuery.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.GetHCPCSProcedureCodeDetailQuery" filterName="GetHCPCSProcedureCodeDetailQuery" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.GetHCPCSProcedureCodeDetailQuery.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.GetNDCDrugCodeDetailQuery" filterName="GetNDCDrugCodeDetailQuery" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.GetNDCDrugCodeDetailQuery.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Shared" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Shared.DentalCodeRestriction" filterName="DentalCodeRestriction" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Shared.DentalCodeRestriction.ExternalId" filterName="ExternalId" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Shared.DiagnosisCodeRestriction" filterName="DiagnosisCodeRestriction" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Shared.DiagnosisCodeRestriction.ExternalId" filterName="ExternalId" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Shared.DRGCodeRestrictionProcessed" filterName="DRGCodeRestrictionProcessed" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Shared.HCPCSCodeRestriction" filterName="HCPCSCodeRestriction" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Shared.HCPCSCodeRestriction.ExternalId" filterName="ExternalId" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Shared.NDCRate" filterName="NDCRate" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Shared.NDCRate.ExternalId" filterName="ExternalId" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Shared.ProcedureCodeRestriction" filterName="ProcedureCodeRestriction" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Shared.ProcedureCodeRestriction.ExternalId" filterName="ExternalId" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Shared.RevenueCodeRestriction" filterName="RevenueCodeRestriction" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Shared.RevenueCodeRestriction.ExternalId" filterName="ExternalId" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
+</Filter></ApiFilter>
     <WarnOnMissingSourceContext>True</WarnOnMissingSourceContext>
     <WorkingPath>D:\CItmp2\</WorkingPath>
     <NamingMethod>MemberName</NamingMethod>

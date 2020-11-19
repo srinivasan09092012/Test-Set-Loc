@@ -89,32 +89,40 @@ This API documentation is intented for teams or products that need to interact w
       <NamespaceSummaryItem name="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.Contracts.ValueObjects" isDocumented="True" />
       <NamespaceSummaryItem name="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.Contracts.ViewDto" isDocumented="True" />
     </NamespaceSummaries>
-    <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
+    <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc" isExposed="False">
-        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.EnrollmentQueryService" filterName="EnrollmentQueryService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.EnrollmentQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.EnrollmentService" filterName="EnrollmentService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.EnrollmentService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-        </Filter>
-        <Filter entryType="Interface" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.IEnrollmentQueryService" filterName="IEnrollmentQueryService" isExposed="True" />
-        <Filter entryType="Interface" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.IEnrollmentService" filterName="IEnrollmentService" isExposed="True" />
-        <Filter entryType="Interface" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.IMCOQueryService" filterName="IMCOQueryService" isExposed="True" />
-        <Filter entryType="Interface" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.IMCOService" filterName="IMCOService" isExposed="True" />
-        <Filter entryType="Interface" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.IPortalService" filterName="IPortalService" isExposed="True" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.MCOQueryService" filterName="MCOQueryService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.MCOQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.MCOService" filterName="MCOService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.MCOService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.PortalService" filterName="PortalService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.PortalService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-        </Filter>
-      </Filter>
-      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.Contracts" isExposed="False" />
-    </ApiFilter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.EnrollmentQueryService" filterName="EnrollmentQueryService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.EnrollmentQueryService.GetEnrollmentApplicationPartialForReport" filterName="GetEnrollmentApplicationPartialForReport" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.EnrollmentQueryService.SearchExistingServiceLocation" filterName="SearchExistingServiceLocation" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.EnrollmentQueryService.SearchRegisteredProvider" filterName="SearchRegisteredProvider" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.EnrollmentQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.EnrollmentService" filterName="EnrollmentService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.EnrollmentService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+  </Filter>
+  <Filter entryType="Interface" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.IEnrollmentQueryService" filterName="IEnrollmentQueryService" isExposed="True" />
+  <Filter entryType="Interface" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.IEnrollmentService" filterName="IEnrollmentService" isExposed="True" />
+  <Filter entryType="Interface" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.IMCOQueryService" filterName="IMCOQueryService" isExposed="True" />
+  <Filter entryType="Interface" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.IMCOService" filterName="IMCOService" isExposed="True" />
+  <Filter entryType="Interface" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.IPortalService" filterName="IPortalService" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.MCOQueryService" filterName="MCOQueryService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.MCOQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.MCOService" filterName="MCOService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.MCOService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.PortalService" filterName="PortalService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.PortalService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.Contracts" isExposed="False" />
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+</Filter></ApiFilter>
     <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <SourceCodeBasePath>
     </SourceCodeBasePath>

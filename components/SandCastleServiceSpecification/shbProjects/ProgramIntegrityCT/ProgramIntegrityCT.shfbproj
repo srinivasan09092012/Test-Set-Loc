@@ -56,9 +56,10 @@
     <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.ProgramIntegrityCT\HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.Contracts.dll" />
-<DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.ProgramIntegrityCT\HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.Contracts.xml" />
-<DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.ProgramIntegrityCT\HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.dll" />
-<DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.ProgramIntegrityCT\HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.xml" /></DocumentationSources>
+      <DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.ProgramIntegrityCT\HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.Contracts.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.ProgramIntegrityCT\HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.ProgramIntegrityCT\HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.xml" />
+    </DocumentationSources>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="(global)" isDocumented="True" />
       <NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc" isDocumented="True" />
@@ -84,7 +85,7 @@
       <NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.Contracts.Shared" isDocumented="True" />
       <NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.Contracts.ViewDto" isDocumented="True" />
     </NamespaceSummaries>
-    <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
+    <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking" isExposed="True">
   <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseReferralUpdated" filterName="CaseReferralUpdated" isExposed="False" />
@@ -111,7 +112,11 @@
   <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.UpdateCaseReferralCommand" filterName="UpdateCaseReferralCommand" isExposed="False" />
   <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.UpdateCaseScopeAndExtrapolationPhaseCommand" filterName="UpdateCaseScopeAndExtrapolationPhaseCommand" isExposed="False" />
 </Filter>
-    </ApiFilter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+</Filter></ApiFilter>
     <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
     <WorkingPath>D:\PICTTmp\</WorkingPath>

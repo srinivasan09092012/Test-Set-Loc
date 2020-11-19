@@ -89,22 +89,33 @@
       <Argument Key="baseSourceCodeUrl" Value="" xmlns="" />
       <Argument Key="requestExampleUrl" Value="" xmlns="" />
     </TransformComponentArguments>
-    <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
+    <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement" isExposed="True">
-        <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Global" filterName="Global" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.TaskManagementEventService" filterName="TaskManagementEventService" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.TaskManagementModuleConfigurator" filterName="TaskManagementModuleConfigurator" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.TaskManagementQueryService" filterName="TaskManagementQueryService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.TaskManagementQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.TaskManagementService" filterName="TaskManagementService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.TaskManagementService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-        </Filter>
-      </Filter>
-      <Filter entryType="Namespace" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Common" isExposed="False" />
-      <Filter entryType="Namespace" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Exceptions" isExposed="False" />
-    </ApiFilter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Global" filterName="Global" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.RoutingConfigurationService" filterName="RoutingConfigurationService" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.RoutingConfigurationService.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.RoutingConfigurationService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.TaskManagementEventService" filterName="TaskManagementEventService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.TaskManagementModuleConfigurator" filterName="TaskManagementModuleConfigurator" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.TaskManagementQueryService" filterName="TaskManagementQueryService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.TaskManagementQueryService.GetUserDashboardData" filterName="GetUserDashboardData" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.TaskManagementQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.TaskManagementService" filterName="TaskManagementService" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.TaskManagementService.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.TaskManagementService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Common" isExposed="False" />
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.Exceptions" isExposed="False" />
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+</Filter></ApiFilter>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
@@ -135,7 +146,7 @@
     </PostBuildEvent>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
- <ItemGroup>
+  <ItemGroup>
     <Folder Include="html\" />
     <Folder Include="icon\" />
     <Folder Include="css\" />
@@ -322,5 +333,4 @@
     <Content Include="scss\_custom-styles.scss" />
     <Content Include="scss\_custom-skin.scss" />
   </ItemGroup>
- 
 </Project>

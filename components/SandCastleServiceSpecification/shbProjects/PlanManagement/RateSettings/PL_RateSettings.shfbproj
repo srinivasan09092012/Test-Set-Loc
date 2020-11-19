@@ -62,37 +62,38 @@
     </DocumentationSources>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="(global)" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts (Group)" isGroup="True" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Commands" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Constants" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Exceptions" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Interfaces" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.Conditions" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.Parameters" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.Sorting" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Shared" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Utilities" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.ViewDTO" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts (Group)" isGroup="True" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Commands" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Constants" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Events" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Exceptions" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Interfaces" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Queries" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Queries.Conditions" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Queries.Parameters" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Queries.Sorting" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Shared" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Utilities" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.ValueObjects" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.ViewDTO" isDocumented="True" /></NamespaceSummaries>
-    <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts (Group)" isGroup="True" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Commands" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Constants" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Exceptions" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Interfaces" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.Conditions" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.Parameters" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.Sorting" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Shared" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Utilities" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.ViewDTO" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts (Group)" isGroup="True" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Commands" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Constants" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Events" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Exceptions" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Interfaces" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Queries" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Queries.Conditions" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Queries.Parameters" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Queries.Sorting" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Shared" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Utilities" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.ValueObjects" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.ViewDTO" isDocumented="True" />
+    </NamespaceSummaries>
+    <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting" isExposed="True">
   <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.BatchFeeScheduleService" filterName="BatchFeeScheduleService" isExposed="True">
@@ -113,10 +114,12 @@
   <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Global" filterName="Global" isExposed="False" />
   <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingEventService" filterName="RateSettingEventService" isExposed="False" />
   <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingFileUploadService" filterName="RateSettingFileUploadService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingFileUploadService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
     <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingFileUploadService.UploadFile" filterName="UploadFile" isExposed="False" />
   </Filter>
   <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingModuleConfigurator" filterName="RateSettingModuleConfigurator" isExposed="False" />
   <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingQueryService" filterName="RateSettingQueryService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingQueryService.GetAttachmentFile" filterName="GetAttachmentFile" isExposed="False" />
     <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
   </Filter>
   <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingReportService" filterName="RateSettingReportService" isExposed="False" />
@@ -124,7 +127,22 @@
     <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
   </Filter>
 </Filter>
-    </ApiFilter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Queries" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Queries.GetCompleteFeeScheduleQuery" filterName="GetCompleteFeeScheduleQuery" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Queries.GetCompleteFeeScheduleQuery.Validate" filterName="Validate" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Queries.GetCompleteFeeScheduleQuery.ValidateScheduleId" filterName="ValidateScheduleId" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.ViewDTO" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.ViewDTO.FeeScheduleFullView" filterName="FeeScheduleFullView" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.ViewDTO.FeeScheduleFullView.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+</Filter></ApiFilter>
     <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
     <WorkingPath>D:\RSTmp\</WorkingPath>

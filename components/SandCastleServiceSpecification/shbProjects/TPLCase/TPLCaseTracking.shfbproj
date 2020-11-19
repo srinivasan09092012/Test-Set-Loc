@@ -56,9 +56,10 @@
     <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.TPLCaseTracking\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.dll" />
-<DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.TPLCaseTracking\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.xml" />
-<DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.TPLCaseTracking\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.dll" />
-<DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.TPLCaseTracking\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.xml" /></DocumentationSources>
+      <DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.TPLCaseTracking\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.TPLCaseTracking\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.TPLCaseTracking\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.xml" />
+    </DocumentationSources>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="(global)" isDocumented="True" xmlns="" />
       <NamespaceSummaryItem name="HP.HSP.UA3.TPLPolicy.BAS.Policy" isDocumented="True" xmlns="" />
@@ -77,14 +78,36 @@
       <NamespaceSummaryItem name="HP.HSP.UA3.TPLPolicy.BAS.Policy.Contracts.Shared.COTS" isDocumented="True" xmlns="" />
       <NamespaceSummaryItem name="HP.HSP.UA3.TPLPolicy.BAS.Policy.Contracts.ViewDto" isDocumented="True" xmlns="" />
     </NamespaceSummaries>
-    <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
+    <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.BatchAuditQueryService" filterName="BatchAuditQueryService" isExposed="False">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.BatchAuditQueryService.#ctor" filterName=".ctor" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.BatchCaseTrackingService" filterName="BatchCaseTrackingService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.BatchCaseTrackingService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+  </Filter>
   <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.CaseTrackingEventService" filterName="CaseTrackingEventService" isExposed="False" />
   <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.CaseTrackingModuleConfigurator" filterName="CaseTrackingModuleConfigurator" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.CaseTrackingQueryService" filterName="CaseTrackingQueryService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.CaseTrackingQueryService.GetAttachmentFile" filterName="GetAttachmentFile" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.CaseTrackingQueryService.GetCaseLetterDetails" filterName="GetCaseLetterDetails" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.CaseTrackingQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.CaseTrackingReportQueryService" filterName="CaseTrackingReportQueryService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.CaseTrackingReportQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.CaseTrackingService" filterName="CaseTrackingService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.CaseTrackingService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+  </Filter>
   <Filter entryType="Class" fullName="HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Global" filterName="Global" isExposed="False" />
 </Filter>
-    </ApiFilter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+</Filter></ApiFilter>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
     <WorkingPath>D:\tplC\</WorkingPath>
   </PropertyGroup>

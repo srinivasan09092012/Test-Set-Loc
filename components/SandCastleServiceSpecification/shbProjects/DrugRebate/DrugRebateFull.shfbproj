@@ -87,63 +87,91 @@ This API documentation is intented for teams or products that need to interact w
       <NamespaceSummaryItem name="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Shared" isDocumented="True" />
       <NamespaceSummaryItem name="HP.HSP.UA3.DrugRebate.BAS.FundCodes.Contracts.Events" isDocumented="True" />
     </NamespaceSummaries>
-    <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
+    <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate" isExposed="True">
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.DrugRebateClaimsQueryService" filterName="DrugRebateClaimsQueryService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.DrugRebateClaimsQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.DrugRebateClaimsService" filterName="DrugRebateClaimsService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.DrugRebateClaimsService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.DrugRebateEventService" filterName="DrugRebateEventService" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.DrugRebateModuleConfigurator" filterName="DrugRebateModuleConfigurator" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.DrugRebateQueryService" filterName="DrugRebateQueryService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.DrugRebateQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.DrugRebateService" filterName="DrugRebateService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.DrugRebateService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.FundCodesQueryService" filterName="FundCodesQueryService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.FundCodesQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.FundCodesService" filterName="FundCodesService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.FundCodesService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Global" filterName="Global" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.InvoiceQueryService" filterName="InvoiceQueryService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.InvoiceQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.InvoiceService" filterName="InvoiceService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.InvoiceService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-        </Filter>
-      </Filter>
-      <Filter entryType="Namespace" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events" isExposed="True">
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.CashControlNumberEvents" filterName="CashControlNumberEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.ClaimAssociatedInvoiceTypeEvents" filterName="ClaimAssociatedInvoiceTypeEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.IncrementalAdjRateAddedEvents" filterName="IncrementalAdjRateAddedEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.IncrementalAdjustmentAddedEvents" filterName="IncrementalAdjustmentAddedEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.IncrementalAdjustmentEvents" filterName="IncrementalAdjustmentEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.InvoiceDisputeClaimMaintanenceEvent" filterName="InvoiceDisputeClaimMaintanenceEvent" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.InvoiceEvents" filterName="InvoiceEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.InvoiceProcessFlagEvents" filterName="InvoiceProcessFlagEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.LabelerEvents" filterName="LabelerEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.LabelerReportEvents" filterName="LabelerReportEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.NDCEvents" filterName="NDCEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.NotificationEvents" filterName="NotificationEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.PostmarkDateEvents" filterName="PostmarkDateEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.Provider340BEvents" filterName="Provider340BEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.ProviderEvents" filterName="ProviderEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.ProviderIRSTaxIdentificationEvents" filterName="ProviderIRSTaxIdentificationEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.ProviderRecoupmentEvents" filterName="ProviderRecoupmentEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.ProviderRevalidateEvents" filterName="ProviderRevalidateEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.RateHistoryEvents" filterName="RateHistoryEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.ROSIEvents" filterName="ROSIEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.SystemRateEvents" filterName="SystemRateEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.URAEvents" filterName="URAEvents" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.UROAEvents" filterName="UROAEvents" isExposed="False" />
-      </Filter>
-    </ApiFilter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.DrugRebateClaimsQueryService" filterName="DrugRebateClaimsQueryService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.DrugRebateClaimsQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.DrugRebateClaimsService" filterName="DrugRebateClaimsService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.DrugRebateClaimsService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.DrugRebateEventService" filterName="DrugRebateEventService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.DrugRebateModuleConfigurator" filterName="DrugRebateModuleConfigurator" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.DrugRebateQueryService" filterName="DrugRebateQueryService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.DrugRebateQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.DrugRebateService" filterName="DrugRebateService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.DrugRebateService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.FundCodesQueryService" filterName="FundCodesQueryService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.FundCodesQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.FundCodesService" filterName="FundCodesService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.FundCodesService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Global" filterName="Global" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.InvoiceQueryService" filterName="InvoiceQueryService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.InvoiceQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.InvoiceService" filterName="InvoiceService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.InvoiceService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.NDCQueryService" filterName="NDCQueryService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.NDCQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.WebAdminQueryService" filterName="WebAdminQueryService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.WebAdminQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.WebAdminService" filterName="WebAdminService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.WebAdminService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.CashControlNumberEvents" filterName="CashControlNumberEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.ClaimAssociatedInvoiceTypeEvents" filterName="ClaimAssociatedInvoiceTypeEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.IncrementalAdjRateAddedEvents" filterName="IncrementalAdjRateAddedEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.IncrementalAdjustmentAddedEvents" filterName="IncrementalAdjustmentAddedEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.IncrementalAdjustmentEvents" filterName="IncrementalAdjustmentEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.InvoiceDisputeClaimMaintanenceEvent" filterName="InvoiceDisputeClaimMaintanenceEvent" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.InvoiceEvents" filterName="InvoiceEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.InvoiceProcessFlagEvents" filterName="InvoiceProcessFlagEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.LabelerEvents" filterName="LabelerEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.LabelerReportEvents" filterName="LabelerReportEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.NDCEvents" filterName="NDCEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.NotificationEvents" filterName="NotificationEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.PostmarkDateEvents" filterName="PostmarkDateEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.Provider340BEvents" filterName="Provider340BEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.ProviderEvents" filterName="ProviderEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.ProviderIRSTaxIdentificationEvents" filterName="ProviderIRSTaxIdentificationEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.ProviderRecoupmentEvents" filterName="ProviderRecoupmentEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.ProviderRevalidateEvents" filterName="ProviderRevalidateEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.RateHistoryEvents" filterName="RateHistoryEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.ROSIEvents" filterName="ROSIEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.SystemRateEvents" filterName="SystemRateEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.URAEvents" filterName="URAEvents" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Events.UROAEvents" filterName="UROAEvents" isExposed="False" />
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Queries" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Queries.GetURAForSupplementalQuery" filterName="GetURAForSupplementalQuery" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Queries.GetURAForSupplementalQuery.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Queries.GetURAQuery" filterName="GetURAQuery" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Queries.GetURAQuery.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Queries.SearchClaimsQuery" filterName="SearchClaimsQuery" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Queries.SearchClaimsQuery.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Queries.SearchURAQuery" filterName="SearchURAQuery" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Queries.SearchURAQuery.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+</Filter></ApiFilter>
     <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
     <SourceCodeBasePath>
     </SourceCodeBasePath>

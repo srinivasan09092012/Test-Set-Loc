@@ -94,13 +94,45 @@ This API documentation is intented for teams or products that need to interact w
       <NamespaceSummaryItem name="HP.HSP.UA3.Administration.BAS.BroadcastMessage.Contracts.Queries" isDocumented="True" />
       <NamespaceSummaryItem name="HP.HSP.UA3.Administration.BAS.BroadcastMessage.Contracts.Queries.Parameters" isDocumented="True" />
     </NamespaceSummaries>
-    <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
+    <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.Administration.BAS.BroadcastMessage" isExposed="False">
-        <Filter entryType="Class" fullName="HP.HSP.UA3.Administration.BAS.BroadcastMessage.BroadcastMessageQueryService" filterName="BroadcastMessageQueryService" isExposed="True" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.Administration.BAS.BroadcastMessage.BroadcastMessageService" filterName="BroadcastMessageService" isExposed="True" />
-      </Filter>
-    </ApiFilter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Administration.BAS.BroadcastMessage.BroadcastMessageQueryService" filterName="BroadcastMessageQueryService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.Administration.BAS.BroadcastMessage.BroadcastMessageQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Administration.BAS.BroadcastMessage.BroadcastMessageService" filterName="BroadcastMessageService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.Administration.BAS.BroadcastMessage.BroadcastMessageService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase.IsServiceAvailable" filterName="IsServiceAvailable" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase.IsServiceHealthy" filterName="IsServiceHealthy" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase.TryRoute" filterName="TryRoute" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="True">
+    <Filter entryType="Property" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event.ApplicationName" filterName="ApplicationName" isExposed="False" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event.CommitId" filterName="CommitId" isExposed="False" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event.CorrelationId" filterName="CorrelationId" isExposed="False" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event.EventFilterMetadata" filterName="EventFilterMetadata" isExposed="False" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event.EventID" filterName="EventID" isExposed="False" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event.EventType" filterName="EventType" isExposed="False" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event.INGroupId" filterName="INGroupId" isExposed="False" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event.IsLastFromGroup" filterName="IsLastFromGroup" isExposed="False" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event.ModelID" filterName="ModelID" isExposed="False" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event.Timestamp" filterName="Timestamp" isExposed="False" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event.UserID" filterName="UserID" isExposed="False" />
+    <Filter entryType="Property" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event.UserIp" filterName="UserIp" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase.SetCurrentRequestContext" filterName="SetCurrentRequestContext" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase.IsServiceAvailable" filterName="IsServiceAvailable" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase.IsServiceHealthy" filterName="IsServiceHealthy" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase.TryRoute" filterName="TryRoute" isExposed="False" />
+  </Filter>
+</Filter></ApiFilter>
     <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <SourceCodeBasePath>
     </SourceCodeBasePath>

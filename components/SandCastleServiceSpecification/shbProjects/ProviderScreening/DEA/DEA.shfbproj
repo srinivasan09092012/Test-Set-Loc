@@ -56,18 +56,19 @@
     <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.DEA\HP.HSP.UA3.Screening.BAS.DEA.Contracts.dll" />
-<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.DEA\HP.HSP.UA3.Screening.BAS.DEA.Contracts.xml" />
-<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.DEA\HP.HSP.UA3.Screening.BAS.DEA.dll" />
-<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.DEA\HP.HSP.UA3.Screening.BAS.DEA.xml" /></DocumentationSources>
-    <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.DEA\HP.HSP.UA3.Screening.BAS.DEA.Contracts.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.DEA\HP.HSP.UA3.Screening.BAS.DEA.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.DEA\HP.HSP.UA3.Screening.BAS.DEA.xml" />
+    </DocumentationSources>
+    <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.Screening.BAS.DEA" isExposed="False">
-        <Filter entryType="Class" fullName="HP.HSP.UA3.Screening.BAS.DEA.DEAQueryService" filterName="DEAQueryService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.Screening.BAS.DEA.DEAQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-        </Filter>
-        <Filter entryType="Interface" fullName="HP.HSP.UA3.Screening.BAS.DEA.IDEAQueryService" filterName="IDEAQueryService" isExposed="True" />
-      </Filter>
-    </ApiFilter>
+  <Filter entryType="Interface" fullName="HP.HSP.UA3.Screening.BAS.DEA.IDEAQueryService" filterName="IDEAQueryService" isExposed="True" />
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+</Filter></ApiFilter>
     <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
     <WorkingPath>D:\PSDEATmp\</WorkingPath>

@@ -62,34 +62,40 @@
     </DocumentationSources>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="(global)" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts (Group)" isGroup="True" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Commands" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Constants" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Exceptions" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Interfaces" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.Conditions" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.Parameters" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.Sorting" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Shared" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Utilities" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.ViewDTO" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.Grouping" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.Grouping.Contracts (Group)" isGroup="True" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.Grouping.Contracts.Commands" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.Grouping.Contracts.Events" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.Grouping.Contracts.Queries" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.Grouping.Contracts.Queries.Parameters" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.Grouping.Contracts.Shared" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.Grouping.Contracts.ViewDTO" isDocumented="True" /></NamespaceSummaries>
-    <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts (Group)" isGroup="True" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Commands" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Constants" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Exceptions" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Interfaces" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.Conditions" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.Parameters" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.Sorting" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Shared" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Utilities" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.ViewDTO" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.Grouping" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.Grouping.Contracts (Group)" isGroup="True" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.Grouping.Contracts.Commands" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.Grouping.Contracts.Events" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.Grouping.Contracts.Queries" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.Grouping.Contracts.Queries.Parameters" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.Grouping.Contracts.Shared" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.Grouping.Contracts.ViewDTO" isDocumented="True" />
+    </NamespaceSummaries>
+    <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.PlanManagement.BAS.Grouping" isExposed="False">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.Grouping.GroupingQueryService" filterName="GroupingQueryService" isExposed="True" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.Grouping.GroupingService" filterName="GroupingService" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.Grouping.GroupingQueryService" filterName="GroupingQueryService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.Grouping.GroupingQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.Grouping.GroupingService" filterName="GroupingService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.Grouping.GroupingService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.Grouping.GroupingService.UpdateGroupingCache" filterName="UpdateGroupingCache" isExposed="False" />
+  </Filter>
   <Filter entryType="Interface" fullName="HP.HSP.UA3.PlanManagement.BAS.Grouping.IGroupingQueryService" filterName="IGroupingQueryService" isExposed="True" />
   <Filter entryType="Interface" fullName="HP.HSP.UA3.PlanManagement.BAS.Grouping.IGroupingService" filterName="IGroupingService" isExposed="True" />
 </Filter>
@@ -109,6 +115,12 @@
   <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.Grouping.Contracts.Queries.Parameters.SearchGroupingQueryParms" filterName="SearchGroupingQueryParms" isExposed="True">
     <Filter entryType="Constructor" fullName="HP.HSP.UA3.PlanManagement.BAS.Grouping.Contracts.Queries.Parameters.SearchGroupingQueryParms.#ctor" filterName=".ctor" isExposed="False" />
   </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
 </Filter></ApiFilter>
     <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
     <WarnOnMissingSourceContext>True</WarnOnMissingSourceContext>

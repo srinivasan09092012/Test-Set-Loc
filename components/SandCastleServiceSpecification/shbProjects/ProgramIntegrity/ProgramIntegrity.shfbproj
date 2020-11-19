@@ -62,19 +62,81 @@
     </DocumentationSources>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="(global)" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts (Group)" isGroup="True" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts.Commands" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts.Common" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts.Domain" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts.Domain.TimeLine" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts.Events" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts.Queries" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts.Queries.Parameters" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts.Domain.AuditTrails" isDocumented="True" /></NamespaceSummaries>
-    <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
+      <NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts (Group)" isGroup="True" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts.Commands" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts.Common" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts.Domain" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts.Domain.TimeLine" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts.Events" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts.Queries" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts.Queries.Parameters" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts.Domain.AuditTrails" isDocumented="True" />
+    </NamespaceSummaries>
+    <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
-    </ApiFilter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.AnalysisReviewQueryService" filterName="AnalysisReviewQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.CaseRequestQueryService" filterName="CaseRequestQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.ConditionMarkersService" filterName="ConditionMarkersService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.ConfigSettingsService" filterName="ConfigSettingsService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.CustomPeerGroupQueryService" filterName="CustomPeerGroupQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.DashboardService" filterName="DashboardService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.DataMartQueryService" filterName="DataMartQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.DiseaseMarkersQueryService" filterName="DiseaseMarkersQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.EntityBookmarkQueryService" filterName="EntityBookmarkQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.EntityQueryService" filterName="EntityQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.EventAuditQueryService" filterName="EventAuditQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.ExportReportDetailsQueryService" filterName="ExportReportDetailsQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.GetMapDetailsService" filterName="GetMapDetailsService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Global" filterName="Global" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.GlobalUtilizationReportService" filterName="GlobalUtilizationReportService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.HospitalBenchMarkingService" filterName="HospitalBenchMarkingService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.ManageAssignmentPermissionsCommandService" filterName="ManageAssignmentPermissionsCommandService" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.ManageAssignmentPermissionsCommandService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.ManageConfigurationsQueryService" filterName="ManageConfigurationsQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.MCORankingService" filterName="MCORankingService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.MCOResultAggregationFilterService" filterName="MCOResultAggregationFilterService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.MCOUtilizationComparisonQueryService" filterName="MCOUtilizationComparisonQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.MemberAgeGroupQueryService" filterName="MemberAgeGroupQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.MemberMapDetailsService" filterName="MemberMapDetailsService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.MemberRankingQueryService" filterName="MemberRankingQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.MemberResultAggregationFilterService" filterName="MemberResultAggregationFilterService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.PredictiveModelQueryService" filterName="PredictiveModelQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.ProgramIntegrityConfigurator" filterName="ProgramIntegrityConfigurator" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.RandomSampleQueryService" filterName="RandomSampleQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.RxMorbidityGroupsQueryService" filterName="RxMorbidityGroupsQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.ServiceTypesQueryService" filterName="ServiceTypesQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.StudyRequestService" filterName="StudyRequestService" isExposed="False">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.StudyRequestService.#ctor" filterName=".ctor" isExposed="True" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.StudyRequestService.AddStudyRequest" filterName="AddStudyRequest" isExposed="True" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.StudyRequestService.SaveStudyRequestQueue" filterName="SaveStudyRequestQueue" isExposed="True" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.StudyRequestService.SearchStudyRequestForJobExecution" filterName="SearchStudyRequestForJobExecution" isExposed="True" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.StudyRequestService.UpdateStudyRequest" filterName="UpdateStudyRequest" isExposed="True" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.StudyRequestService.UpdateStudyRequestQueue" filterName="UpdateStudyRequestQueue" isExposed="True" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.StudyRequestSupervisoryQueryService" filterName="StudyRequestSupervisoryQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.StudyRequestUserQueryService" filterName="StudyRequestUserQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.StudyResultAggregationQueryService" filterName="StudyResultAggregationQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.StudyResultService" filterName="StudyResultService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.StudyServiceTypePeerGroupMapping" filterName="StudyServiceTypePeerGroupMapping" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.SuppressionQueryService" filterName="SuppressionQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.SystemUserFunctionsQueryService" filterName="SystemUserFunctionsQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.TargetedQueryService" filterName="TargetedQueryService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.TimeLineService" filterName="TimeLineService" isExposed="False" />
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts.Queries" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts.Queries.GetMembersQuery" filterName="GetMembersQuery" isExposed="True">
+    <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc.Contracts.Queries.GetMembersQuery.IsValid" filterName="IsValid" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+</Filter></ApiFilter>
     <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
     <WorkingPath>D:\PITmp\</WorkingPath>

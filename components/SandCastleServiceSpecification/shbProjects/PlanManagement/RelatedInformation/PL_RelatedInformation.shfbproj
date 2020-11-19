@@ -56,58 +56,65 @@
     <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.RelatedInformation\HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.dll" />
-<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.RelatedInformation\HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.xml" />
-<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.RelatedInformation\HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.dll" />
-<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.RelatedInformation\HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.xml" /></DocumentationSources>
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.RelatedInformation\HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.RelatedInformation\HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.RelatedInformation\HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.xml" />
+    </DocumentationSources>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="(global)" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts (Group)" isGroup="True" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Commands" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Constants" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Exceptions" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Interfaces" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.Conditions" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.Parameters" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.Sorting" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Shared" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Utilities" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.ViewDTO" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts (Group)" isGroup="True" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.Commands" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.Constants" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.Events" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.Exceptions" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.Queries" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.Queries.Parameters" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.Queries.Sorting" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.Shared" isDocumented="True" />
-<NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.ViewDTO" isDocumented="True" /></NamespaceSummaries>
-    <VisibleItems>ProtectedInternalAsProtected</VisibleItems>
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts (Group)" isGroup="True" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Commands" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Constants" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Events" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Exceptions" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Interfaces" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.Conditions" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.Parameters" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Queries.Sorting" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Shared" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.Utilities" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.CodeInformation.Contracts.ViewDTO" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts (Group)" isGroup="True" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.Commands" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.Constants" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.Events" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.Exceptions" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.Queries" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.Queries.Parameters" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.Queries.Sorting" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.Shared" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.ViewDTO" isDocumented="True" />
+    </NamespaceSummaries>
+    <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
-      <Filter entryType="Namespace" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation" isExposed="False">
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation" isExposed="True">
   <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.CycleScheduleQueryService" filterName="CycleScheduleQueryService" isExposed="True">
     <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.CycleScheduleQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
   </Filter>
   <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.CycleScheduleService" filterName="CycleScheduleService" isExposed="True">
     <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.CycleScheduleService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
   </Filter>
-  <Filter entryType="Interface" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.ICycleScheduleQueryService" filterName="ICycleScheduleQueryService" isExposed="True" />
-  <Filter entryType="Interface" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.ICycleScheduleService" filterName="ICycleScheduleService" isExposed="True" />
-  <Filter entryType="Interface" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.IRelatedInformationQueryService" filterName="IRelatedInformationQueryService" isExposed="True" />
-  <Filter entryType="Interface" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.IRelatedInformationService" filterName="IRelatedInformationService" isExposed="True" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Global" filterName="Global" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationEventService" filterName="RelatedInformationEventService" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationModuleConfigurator" filterName="RelatedInformationModuleConfigurator" isExposed="False" />
   <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationQueryService" filterName="RelatedInformationQueryService" isExposed="True">
     <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
   </Filter>
   <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationService" filterName="RelatedInformationService" isExposed="True">
     <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationService.UpdateDataListCache" filterName="UpdateDataListCache" isExposed="False" />
   </Filter>
 </Filter>
-    </ApiFilter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+</Filter></ApiFilter>
     <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
     <WorkingPath>D:\RITmp\</WorkingPath>
