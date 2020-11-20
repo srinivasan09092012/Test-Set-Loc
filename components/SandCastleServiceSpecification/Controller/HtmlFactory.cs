@@ -846,6 +846,7 @@ namespace Controller
                 string NewCellValue = string.Empty;
                 string hrefAttri = string.Empty;
                 bool isList = false;
+                bool isEnumerable = false;
 
                 foreach (var file in dataTypeColumn)
                 {
@@ -855,6 +856,10 @@ namespace Controller
                         {
                             isList = true;
                             tmpNode.InnerHtml = file.Replace("List", string.Empty).Replace("&lt;", string.Empty).Replace("&gt;", string.Empty);
+                        }else if (file.StartsWith("IEnumerable"))
+                        {
+                            isEnumerable = true;
+                            tmpNode.InnerHtml = file.Replace("IEnumerable", string.Empty).Replace("&lt;", string.Empty).Replace("&gt;", string.Empty);
                         }
                         else
                         {
@@ -873,6 +878,9 @@ namespace Controller
                             if (isList)
                             {
                                 NewCellValue = "List &lt;" + tmpNode.ChildNodes[0].OuterHtml + "&gt;";
+                            } else if (isEnumerable)
+                            {
+                                NewCellValue = "IEnumerable &lt;" + tmpNode.ChildNodes[0].OuterHtml + "&gt;";
                             }
                             else
                             {
@@ -884,6 +892,7 @@ namespace Controller
                     }
                     x++;
                     isList = false;
+                    isEnumerable = false;
                 }
 
                 response = "<table>" + tbl._ContextTable.OuterHtml + "</table>";
@@ -1664,7 +1673,7 @@ namespace Controller
             htmlDocument.Save();
         }
 
-        public void addBreadCrumbsControl(string htmlPage)
+        public void addBreadCrumbsControl(string htmlPage, string breadcrumbText)
         {
             var htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = htmlPage;
@@ -1682,7 +1691,7 @@ namespace Controller
             breadCrumbsListDefaultItem.Name = "li";
             breadCrumbsListDefaultItem.AddClass("breadcrumb-item");
             breadCrumbsListDefaultItem.AddClass("active");
-            breadCrumbsListDefaultItem.InnerHtml = "Main Event Attributes";
+            breadCrumbsListDefaultItem.InnerHtml = breadcrumbText;
             breadCrumbsList.ChildNodes.Add(breadCrumbsListDefaultItem);
    
             var headNode = htmlDocument._loadedDocument.DocumentNode.SelectNodes("//head").FirstOrDefault();
@@ -1727,7 +1736,7 @@ namespace Controller
             nodeIndex++;
             node = new HtmlNode(HtmlNodeType.Element, htmlDocument._loadedDocument, nodeIndex);
             node.Name = "script";
-            node.InnerHtml = "$(document).ready(function(){try{InitializeBreadCrumbs({DisplayName:'Main Event Attributes',TargetUrl:'" + ModuleSettings.WebHost + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty) + @"\" + Common.Constants.WebSolutionStructure.Folders.Html +  @"\" + htmlDocument._documentTitle + "',IsActive: false});}catch(err){alert(err.message);}});";  //"$(document).ready(function(){try{InitializeBreadCrumbs({DisplayName:'Main Event Attributes',TargetUrl:'http://localhost:8080/ProviderManagement/APISeviceSpecification/html/T_HP_HSP_UA3_ProviderManagement_BAS_Providers_Contracts_Events_ServiceLocationAdded.htm',IsActive: false});}catch(err){alert(err.message);}});";
+            node.InnerHtml = "$(document).ready(function(){try{InitializeBreadCrumbs({DisplayName:'"+ breadcrumbText +"',TargetUrl:'" + ModuleSettings.WebHost + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty) + @"\" + Common.Constants.WebSolutionStructure.Folders.Html +  @"\" + htmlDocument._documentTitle + "',IsActive: false});}catch(err){alert(err.message);}});";  //"$(document).ready(function(){try{InitializeBreadCrumbs({DisplayName:'Main Event Attributes',TargetUrl:'http://localhost:8080/ProviderManagement/APISeviceSpecification/html/T_HP_HSP_UA3_ProviderManagement_BAS_Providers_Contracts_Events_ServiceLocationAdded.htm',IsActive: false});}catch(err){alert(err.message);}});";
             headNode.ChildNodes.Add(node);
 
             nodeIndex++;

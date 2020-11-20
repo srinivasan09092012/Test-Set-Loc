@@ -248,6 +248,7 @@ namespace SandCastleSvcSpec
       factoryHtml.ModuleSettings = moduleSetting;
       List<string> serviceUrls = new List<string>();
       List<string> Pages = new List<string>();
+      string BreadcrumbText = string.Empty;
       Pages.AddRange(Directory.EnumerateFiles(moduleSetting.WebTargetPath + Common.Constants.WebSolutionStructure.Folders.Html, searchFilePattern + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension, SearchOption.TopDirectoryOnly));
       Dictionary<string, string> artifactsToPrint = new Dictionary<string, string>();
       foreach (string page in Pages)
@@ -286,11 +287,22 @@ namespace SandCastleSvcSpec
 
         if (page.Contains("_Events_"))
         {
-          factoryHtml.addBreadCrumbsControl(page);
+          BreadcrumbText = "Main Event Attributes";
+          factoryHtml.addBreadCrumbsControl(page, BreadcrumbText);
           factoryHtml.removeEmptyTags(moduleSetting.WebTargetPath, Common.Constants.WebSolutionStructure.Folders.Html + Path.GetFileName(page), "div");
           factoryHtml.AddStickyLayout(page);
           factoryHtml.CreateOnclickAttribute(htmlDocument);
           factoryHtml.CreateHtmlBlocks(page);
+        }
+
+        if (page.Contains("_Domain_") || page.Contains("_ViewDto_") || page.Contains("_DataTransfer_"))
+        {
+            BreadcrumbText = "Main Properties";
+            factoryHtml.addBreadCrumbsControl(page,BreadcrumbText);
+            factoryHtml.removeEmptyTags(moduleSetting.WebTargetPath, Common.Constants.WebSolutionStructure.Folders.Html + Path.GetFileName(page), "div");
+            factoryHtml.AddStickyLayout(page);
+            factoryHtml.CreateOnclickAttribute(htmlDocument);
+            factoryHtml.CreateHtmlBlocks(page);
         }
 
         if (page.Contains("_Contracts_ValueObjects_") || page.Contains("_Contracts_Shared_"))
