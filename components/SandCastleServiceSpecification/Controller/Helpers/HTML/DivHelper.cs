@@ -252,5 +252,17 @@ namespace Controller.Helpers.HTML
         {
             return this._ContextDivLoaded;
         }
+
+        ///Addattribute
+        ///Check if the instance of the DIV gas loaded the div from HTML document then add the given attribute
+        ///<returns>Void</returns>
+        ///<summary>
+        public void AddAttribute(string attribute, string value)
+        {
+            if (this._ContextDivLoaded)
+            {
+                this._ContextDiv.Attributes.Add(attribute, value);
+            }
+        }
     }
 }

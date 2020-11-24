@@ -1632,7 +1632,7 @@ namespace Controller
             topicContentDiv._ContextDiv.ChildNodes.Insert(1, midHeaderDiv);
 
             DivHelper PropTableContentDiv = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID4RBSection");
-            PropTableContentDiv._ContextDiv.Attributes.Add("class", "Content");
+            PropTableContentDiv.AddAttribute("class", "Content");
 
             //adding references to css and js
             var headNode = htmlDocument._loadedDocument.DocumentNode.SelectNodes("//head").FirstOrDefault();
