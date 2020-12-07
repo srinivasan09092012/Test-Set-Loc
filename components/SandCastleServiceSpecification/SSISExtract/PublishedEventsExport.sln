@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1145
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "PublishedEventsExport", "PublishedEventsExport\PublishedEventsExport.dtproj", "{732AA9B3-FFB7-4852-A937-447F7F60AB4C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{732AA9B3-FFB7-4852-A937-447F7F60AB4C}.Development|Default.ActiveCfg = Development
+		{732AA9B3-FFB7-4852-A937-447F7F60AB4C}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {148AD4FC-7091-4ADA-8B4A-911CB3489AA7}
+	EndGlobalSection
+EndGlobal
