@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
 namespace Common.ModuleSettings
 {
@@ -74,5 +73,8 @@ namespace Common.ModuleSettings
 
         [XmlElement(ElementName = "MainAPIContent")]
         public string MainAPIContent;
+
+        [XmlElement(ElementName = "EventsExtractFile")]
+        public string EventsExtractFile;
     }
 }

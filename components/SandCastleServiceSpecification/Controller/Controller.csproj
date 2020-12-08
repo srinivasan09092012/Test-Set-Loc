@@ -51,7 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddHtmlBlocks.cs" />
+    <Compile Include="Helpers\Extracts\CSVExtractHelper.cs" />
     <Compile Include="Helpers\HTML\DocumentHelper.cs" />
+    <Compile Include="Helpers\HTML\NodeHelper.cs" />
     <Compile Include="Helpers\IO\BackupHelper.cs" />
     <Compile Include="Helpers\HTML\DivHelper.cs" />
     <Compile Include="Helpers\HTML\DataListHelper.cs" />
@@ -62,6 +65,8 @@
     <Compile Include="Helpers\HTML\TableStructure.cs" />
     <Compile Include="Helpers\HTML\TextHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoveHtmlBlocks.cs" />
+    <Compile Include="UpdateHtmlBlocks.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BootStrap\font\roboto\Roboto-Bold.eot">

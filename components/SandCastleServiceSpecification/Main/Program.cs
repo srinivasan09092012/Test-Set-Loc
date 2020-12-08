@@ -245,7 +245,14 @@ namespace SandCastleSvcSpec
     public static Dictionary<string, string> PreparePages(string searchFilePattern, ModuleSettingModel moduleSetting)
     {
       HtmlFactory factoryHtml = new HtmlFactory(loggerDetailEngine);
+      AddHtmlBlocks addHtmlBlocks = new AddHtmlBlocks();
+      RemoveHtmlBlocks removeHtmlBlocks = new RemoveHtmlBlocks();
+      UpdateHtmlBlocks updateHtmlBlocks = new UpdateHtmlBlocks();
       factoryHtml.ModuleSettings = moduleSetting;
+      removeHtmlBlocks.ModuleSettings = moduleSetting;
+      addHtmlBlocks.ModuleSettings = moduleSetting;
+      updateHtmlBlocks.ModuleSettings = moduleSetting;
+
       List<string> serviceUrls = new List<string>();
       List<string> Pages = new List<string>();
       string BreadcrumbText = string.Empty;
@@ -275,7 +282,7 @@ namespace SandCastleSvcSpec
 
         htmlDocument.Save();
 
-        factoryHtml.cleanInputOutputPages(page);
+        removeHtmlBlocks.cleanInputOutputPages(page);
         factoryHtml.preparePropertiesTable(page);
 
         if (page.Contains("_Commands_"))
@@ -288,9 +295,9 @@ namespace SandCastleSvcSpec
         if (page.Contains("_Events_"))
         {
           BreadcrumbText = "Main Event Attributes";
-          factoryHtml.addBreadCrumbsControl(page, BreadcrumbText);
-          factoryHtml.removeEmptyTags(moduleSetting.WebTargetPath, Common.Constants.WebSolutionStructure.Folders.Html + Path.GetFileName(page), "div");
-          factoryHtml.AddStickyLayout(page);
+          addHtmlBlocks.addBreadCrumbsControl(page, BreadcrumbText);
+          removeHtmlBlocks.removeEmptyTags(moduleSetting.WebTargetPath, Common.Constants.WebSolutionStructure.Folders.Html + Path.GetFileName(page), "div");
+          addHtmlBlocks.AddStickyLayout(page);
           factoryHtml.CreateOnclickAttribute(htmlDocument);
           factoryHtml.CreateHtmlBlocks(page);
         }
@@ -298,9 +305,9 @@ namespace SandCastleSvcSpec
         if (page.Contains("_Domain_") || page.Contains("_ViewDto_") || page.Contains("_DataTransfer_"))
         {
             BreadcrumbText = "Main Properties";
-            factoryHtml.addBreadCrumbsControl(page,BreadcrumbText);
-            factoryHtml.removeEmptyTags(moduleSetting.WebTargetPath, Common.Constants.WebSolutionStructure.Folders.Html + Path.GetFileName(page), "div");
-            factoryHtml.AddStickyLayout(page);
+            addHtmlBlocks.addBreadCrumbsControl(page,BreadcrumbText);
+            removeHtmlBlocks.removeEmptyTags(moduleSetting.WebTargetPath, Common.Constants.WebSolutionStructure.Folders.Html + Path.GetFileName(page), "div");
+            addHtmlBlocks.AddStickyLayout(page);
             factoryHtml.CreateOnclickAttribute(htmlDocument);
             factoryHtml.CreateHtmlBlocks(page);
         }
@@ -341,7 +348,13 @@ namespace SandCastleSvcSpec
 
         ctx = new ExecutionContext(ExecutionContext.ExecutionStages.HelpContent, moduleSetting);
         factoryHtml = new HtmlFactory(loggerDetailEngine, ctx);
+        AddHtmlBlocks addHtmlBlocks = new AddHtmlBlocks(loggerDetailEngine, ctx);
+        RemoveHtmlBlocks removeHtmlBlocks = new RemoveHtmlBlocks(loggerDetailEngine, ctx);
+        UpdateHtmlBlocks updateHtmlBlocks = new UpdateHtmlBlocks(loggerDetailEngine, ctx);
         factoryHtml.ModuleSettings = moduleSetting;
+        updateHtmlBlocks.ModuleSettings = moduleSetting;
+        removeHtmlBlocks.ModuleSettings = moduleSetting;
+        addHtmlBlocks.ModuleSettings = moduleSetting;
 
         loggerDetailEngine.writeEntry("Preparing Services Landing Page");
         #region prepare Landing Page
@@ -353,10 +366,10 @@ namespace SandCastleSvcSpec
         #region Preparing Service Operation List Pages
         foreach (var ServicePage in moduleSetting.ServiceListPages.ListPage)
         {
-          factoryHtml.UpdateOperationsLists(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
-          factoryHtml.UpdateInputOutput(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
-          factoryHtml.removeHiperLinks(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
-          factoryHtml.AddPaginationControl(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+          updateHtmlBlocks.UpdateOperationsLists(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+          updateHtmlBlocks.UpdateInputOutput(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+          removeHtmlBlocks.removeHiperLinks(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+          addHtmlBlocks.AddPaginationControl(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
         }
         #endregion
 
@@ -401,9 +414,9 @@ namespace SandCastleSvcSpec
         #region removing empty elements and tags
         foreach (var ServicePage in moduleSetting.ServiceListPages.ListPage)
         {
-          factoryHtml.removeTextFromServices(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
-          factoryHtml.removeText(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
-          factoryHtml.RemoveEmptyParams(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+          removeHtmlBlocks.removeTextFromServices(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+          removeHtmlBlocks.removeText(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+          removeHtmlBlocks.RemoveEmptyParams(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
         }
 
         loggerDetailEngine.writeEntry(".... Done");
@@ -429,9 +442,13 @@ namespace SandCastleSvcSpec
       // PaymentCapitalization
       ctx = new ExecutionContext(ExecutionContext.ExecutionStages.APIContent, moduleSetting);
       factoryHtml = new HtmlFactory(loggerDetailEngine, ctx);
+      RemoveHtmlBlocks removeHtmlBlocksAPI = new RemoveHtmlBlocks(loggerDetailEngine, ctx);
+      UpdateHtmlBlocks updateHtmlBlocksAPI = new UpdateHtmlBlocks(loggerDetailEngine, ctx);
       factoryHtml.ModuleSettings = moduleSetting;
+      updateHtmlBlocksAPI.ModuleSettings = moduleSetting;
+      removeHtmlBlocksAPI.ModuleSettings = moduleSetting;
 
-      if (ctx.ModuleSetting.ModuleAPIAvailable)
+            if (ctx.ModuleSetting.ModuleAPIAvailable)
       {
         DoBackup(ctx.getSourcePath(), ctx.getTargetPath());
 
@@ -440,9 +457,9 @@ namespace SandCastleSvcSpec
         #region Preparing Service Operation List Pages
         foreach (var ServicePage in moduleSetting.ModuleAPIPages.ListPage)
         {
-          factoryHtml.UpdateOperationsLists(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
-          factoryHtml.UpdateInputOutput(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
-          factoryHtml.removeHiperLinks(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+          updateHtmlBlocksAPI.UpdateOperationsLists(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+          updateHtmlBlocksAPI.UpdateInputOutput(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+          removeHtmlBlocksAPI.removeHiperLinks(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
         }
 
 
@@ -494,9 +511,8 @@ namespace SandCastleSvcSpec
       var mainContent = string.IsNullOrEmpty(moduleSetting.MainPageContent) ? moduleSetting.MainAPIContent : moduleSetting.MainPageContent;
 
 
-      factoryHtml.UpdateContentLeftNavigator(targetPath + Constants.WebSolutionStructure.Folders.Html + mainContent, ContentPages, mainContent, apiContentPages);
+      updateHtmlBlocksAPI.UpdateContentLeftNavigator(targetPath + Constants.WebSolutionStructure.Folders.Html + mainContent, ContentPages, mainContent, apiContentPages);
       #endregion
-
 
     }
 
@@ -570,9 +586,9 @@ namespace SandCastleSvcSpec
 
         informationModel.TargetPathHomePage = storageDrive;
 
-        HtmlFactory factoryHtml = new HtmlFactory(loggerDetailEngine);
-        factoryHtml.InformationModel = informationModel;
-        factoryHtml.UpdateBuildVersionPageFooter();
+        UpdateHtmlBlocks updateHtmlBlocks = new UpdateHtmlBlocks();
+        updateHtmlBlocks.InformationModel = informationModel;
+        updateHtmlBlocks.UpdateBuildVersionPageFooter();
 
         Console.WriteLine("");
                 
