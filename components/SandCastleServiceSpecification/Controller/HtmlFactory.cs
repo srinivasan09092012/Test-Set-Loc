@@ -421,7 +421,7 @@ namespace Controller
 
             //adding checkbox control to filter published events
             DivHelper divCheckboxHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID0RBSection");
-            divCheckboxHelper.SetInnerHtml("<div class=\"collapsibleSection\" id=\"ID0RBSection\"><form><div class=\"form-check\"><input id=\"includeUnpublished\" onclick=\"FilterPublished(this);\" type=\"checkbox\"><label>Include Unpublished</label></div></form></div>");
+            divCheckboxHelper.SetInnerHtml("<div class=\"collapsibleSection\" id=\"ID0RBSection\"><form><div class=\"form-check\"><input id=\"includeUnpublished\" onclick=\"FilterPublished(this);\" type=\"checkbox\"><label for=\"includeUnpublished\">Include Unpublished</label></div></form></div>");
 
             //collapsibleRegionTitle
             DivHelper divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, targetDivContainer);
