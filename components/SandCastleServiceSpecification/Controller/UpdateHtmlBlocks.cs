@@ -652,10 +652,8 @@ namespace Controller
             htmlDocument._documentPath = InformationModel.TargetPathHomePage + @"\DocumentationHome.htm";
             htmlDocument.Load();
 
-            DateTime buildDate = new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime;
-
             DivHelper divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "buildInformation");
-            divHelper.SetInnerHtml($"Server: {InformationModel.ServerIp} Build Date: {buildDate} v{InformationModel.BuildVersion}");
+            divHelper.SetInnerHtml($"Server: {InformationModel.ServerIp} Build Date: {DateTime.Now.ToString("M/d/yyyy")} v{InformationModel.BuildVersion}");
 
             htmlDocument.Save();
         }
