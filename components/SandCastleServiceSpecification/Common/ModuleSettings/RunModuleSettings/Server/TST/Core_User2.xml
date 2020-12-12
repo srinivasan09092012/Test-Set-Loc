@@ -1,0 +1,27 @@
+<DocModuleSettingModel>
+  <ModuleName>User</ModuleName>
+  <ModuleNameDisplay>Core User</ModuleNameDisplay>
+  <StorageDrive>J:</StorageDrive>
+  <webSourcePath>J:\www\servicespecs\Modules\Core\\HelpWeb\\User</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\Core\\HelpWeb\\User</webTargetPath>
+  <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
+  <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>
+  <WebHostPhysicalPath>J:\www\servicespecs\Modules</WebHostPhysicalPath>
+  <ServiceListPages>
+	<ListPage>N_HP_HSP_UA3_Core_BAS_User.htm</ListPage>
+  </ServiceListPages>
+  <MainContractContent>G_HP_HSP_UA3_Core_BAS_User_Contracts.htm</MainContractContent>
+  <ContractListPages>
+	<ListPage>N_HP_HSP_UA3_Core_BAS_User_Contracts_Events.htm</ListPage>
+  </ContractListPages>
+  <OtherResourcesFolder>Core</OtherResourcesFolder>
+  <ModuleAPISourcePath></ModuleAPISourcePath>
+  <ModuleAPITargetPath></ModuleAPITargetPath>
+  <ModuleAPIPages>
+	<ListPage></ListPage>
+  </ModuleAPIPages>
+  <MainAPIContent></MainAPIContent>
+   <ModuleHelpContentAvailable>true</ModuleHelpContentAvailable>
+  <ModuleAPIAvailable>false</ModuleAPIAvailable>
+  <EventsExtractFile>J:\UA3\SandCastleCustomizationTool\ModuleEventsExtracts\Test\PublishedModules.csv</EventsExtractFile>
+</DocModuleSettingModel>
