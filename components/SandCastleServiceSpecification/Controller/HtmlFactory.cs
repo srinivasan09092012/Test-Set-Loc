@@ -5,6 +5,7 @@ using Controller.Helpers.Extracts;
 using Controller.Helpers.HTML;
 using Controller.Helpers.Scan;
 using HtmlAgilityPack;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -419,9 +420,12 @@ namespace Controller
             htmlDocument._documentPath = contentPage;
             htmlDocument.Load();
 
-            //adding checkbox control to filter published events
-            DivHelper divCheckboxHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID0RBSection");
-            divCheckboxHelper.SetInnerHtml("<div class=\"collapsibleSection\" id=\"ID0RBSection\"><form><div class=\"form-check\"><input id=\"includeUnpublished\" onclick=\"FilterPublished(this);\" type=\"checkbox\"><label for=\"includeUnpublished\">Include Unpublished</label></div></form></div>");
+            if (ModuleSettings == null || ModuleSettings.ContractListPages.ListPage.Any())
+            {
+                //adding checkbox control to filter published events
+                DivHelper divCheckboxHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, "ID0RBSection");
+                divCheckboxHelper.SetInnerHtml("<div class=\"collapsibleSection\" id=\"ID0RBSection\"><form><div class=\"form-check\"><input id=\"includeUnpublished\" onclick=\"FilterPublished(this);\" type=\"checkbox\"><label for=\"includeUnpublished\">Include Unpublished</label></div></form></div>");
+            }
 
             //collapsibleRegionTitle
             DivHelper divHelper = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Id, targetDivContainer);
@@ -573,45 +577,52 @@ namespace Controller
             spIntro.RemoveNode();
             htmlDocument.Save();
 
-            //Adding a published column
-            htmlDocument.Load();
-            tblHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "classList");
-            tblHelper.addColumn("Published");
-            htmlDocument.Save();
-
-            //Load extract
-            if (!string.IsNullOrEmpty(ModuleSettings.EventsExtractFile) & File.Exists(ModuleSettings.EventsExtractFile))
+            if (ModuleSettings.ContractListPages.ListPage.Any())
             {
-                CSVExtractHelper CSVExtract = new CSVExtractHelper();
-                var eventsExtractFile = CSVExtract.GetExtract(ModuleSettings.EventsExtractFile);
+                //Adding a published column
+                htmlDocument.Load();
+                tblHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "classList");
+                tblHelper.addColumn("Published");
+                htmlDocument.Save();
 
-                if (eventsExtractFile != null & eventsExtractFile.Any())
+                //Load extract
+                if (!string.IsNullOrEmpty(ModuleSettings.EventsExtractFile) & File.Exists(ModuleSettings.EventsExtractFile))
                 {
-                    htmlDocument.Load();
-                    tblHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "classList");
-                    List<string> events = tblHelper.readColumnValues(0);
-                    HtmlNode aRefEventNode = NodeHelper.GetNode(htmlDocument._loadedDocument);
+                    CSVExtractHelper CSVExtract = new CSVExtractHelper();
+                    var eventsExtractFile = CSVExtract.GetExtract(ModuleSettings.EventsExtractFile);
 
-                    int rowIndex = 1;    //Skipping header row (index zero)
-                    int columnIndex = 2; //Published column
-                    foreach (string eventName in events)
+                    if (eventsExtractFile != null & eventsExtractFile.Any())
                     {
-                        aRefEventNode.Name = "a";
-                        aRefEventNode.InnerHtml = eventName;
-                        if (eventsExtractFile.Where(o => o.EVENT_TYPE_NAME.Equals(aRefEventNode.InnerText)
-                                                       & o.MODULE_NAME.Equals(ModuleSettings.ModuleNameDisplay)).Count() >= 1)
-                        {
-                            tblHelper.SetCellDisplayValue(columnIndex, rowIndex, "Yes");
-                        }
-                        else
-                        {
-                            tblHelper.SetCellDisplayValue(columnIndex, rowIndex, "No");
-                        }
-                        rowIndex++;
-                    }
+                        htmlDocument.Load();
+                        tblHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "classList");
+                        List<string> events = tblHelper.readColumnValues(0);
+                        HtmlNode aRefEventNode = NodeHelper.GetNode(htmlDocument._loadedDocument);
 
-                    htmlDocument.Save();
+                        int rowIndex = 1;    //Skipping header row (index zero)
+                        int columnIndex = 2; //Published column
+                        foreach (string eventName in events)
+                        {
+                            aRefEventNode.Name = "a";
+                            aRefEventNode.InnerHtml = eventName;
+                            if (eventsExtractFile.Where(o => o.EVENT_TYPE_NAME.Equals(aRefEventNode.InnerText)
+                                                           & o.MODULE_NAME.Equals(ModuleSettings.ModuleNameDisplay)).Count() >= 1)
+                            {
+                                tblHelper.SetCellDisplayValue(columnIndex, rowIndex, "Yes");
+                            }
+                            else
+                            {
+                                tblHelper.SetCellDisplayValue(columnIndex, rowIndex, "No");
+                            }
+                            rowIndex++;
+                        }
+
+                        htmlDocument.Save();
+                    }
                 }
+            }  
+            else
+            {
+                Console.WriteLine("This Module hasn't events");
             }
         }        
     }
