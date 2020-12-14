@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Domain" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Domain" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Domain" />
+  <xs:complexType name="DataListItemCodeDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SortOrder" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataListItemCodeDescription" nillable="true" type="tns:DataListItemCodeDescription" />
+  <xs:complexType name="ArrayOfDataListItemCodeDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataListItemCodeDescription" nillable="true" type="tns:DataListItemCodeDescription" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataListItemCodeDescription" nillable="true" type="tns:ArrayOfDataListItemCodeDescription" />
+  <xs:complexType name="DataListItemAttributeDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttributeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeValueDescription" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataListItemAttributeDescription" nillable="true" type="tns:DataListItemAttributeDescription" />
+  <xs:complexType name="ArrayOfLanguageListItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LanguageListItem" nillable="true" type="tns:LanguageListItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLanguageListItem" nillable="true" type="tns:ArrayOfLanguageListItem" />
+  <xs:complexType name="LanguageListItem">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Domain" base="q1:Languages">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LanguageListItem" nillable="true" type="tns:LanguageListItem" />
+</xs:schema>

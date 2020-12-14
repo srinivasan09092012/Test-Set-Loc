@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="HP.HSP.DataListsQueryService" elementFormDefault="qualified" targetNamespace="HP.HSP.DataListsQueryService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries" />
+  <xs:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Domain" />
+  <xs:element name="GetDataListItems">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries" minOccurs="0" name="query" nillable="true" type="q1:DataListItemsQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataListItemsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries" minOccurs="0" name="GetDataListItemsResult" nillable="true" type="q2:DataListItemsQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetItemCodeDescription">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries" minOccurs="0" name="query" nillable="true" type="q3:DataListItemCodeDescriptionQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetItemCodeDescriptionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries" minOccurs="0" name="GetItemCodeDescriptionResult" nillable="true" type="q4:DataListItemCodeDescriptionQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllItemDescriptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries" minOccurs="0" name="query" nillable="true" type="q5:DataListAllItemCodeDescriptionsQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllItemDescriptionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Domain" minOccurs="0" name="GetAllItemDescriptionsResult" nillable="true" type="q6:ArrayOfDataListItemCodeDescription" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetItemAttribute">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries" minOccurs="0" name="query" nillable="true" type="q7:DataListItemAttributeDescriptionQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetItemAttributeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Domain" minOccurs="0" name="GetItemAttributeResult" nillable="true" type="q8:DataListItemAttributeDescription" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchLanguageDataListItems">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries" minOccurs="0" name="query" nillable="true" type="q9:DataLanguageListItemsQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchLanguageDataListItemsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Domain" minOccurs="0" name="SearchLanguageDataListItemsResult" nillable="true" type="q10:ArrayOfLanguageListItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchDataListsEvents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries" minOccurs="0" name="query" nillable="true" type="q11:DataListEventQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchDataListsEventsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries" minOccurs="0" name="SearchDataListsEventsResult" nillable="true" type="q12:DataListEventQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataListsAggregateDelta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries" minOccurs="0" name="query" nillable="true" type="q13:DataListAggregateDeltaQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataListsAggregateDeltaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries" minOccurs="0" name="GetDataListsAggregateDeltaResult" nillable="true" type="q14:DataListAggregateDeltaQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchDataListItemEvents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries" minOccurs="0" name="query" nillable="true" type="q15:DataListItemEventQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchDataListItemEventsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries" minOccurs="0" name="SearchDataListItemEventsResult" nillable="true" type="q16:DataListItemEventQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataListItemAggregateDelta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries" minOccurs="0" name="query" nillable="true" type="q17:DataListItemAggregateDeltaQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataListItemAggregateDeltaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries" minOccurs="0" name="GetDataListItemAggregateDeltaResult" nillable="true" type="q18:DataListItemAggregateDeltaQuery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

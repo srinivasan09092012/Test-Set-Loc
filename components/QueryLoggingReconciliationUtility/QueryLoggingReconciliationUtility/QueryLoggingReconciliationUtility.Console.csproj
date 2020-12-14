@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{773CBC05-FB66-41D6-8830-7BEA927B7221}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QueryLoggingReconciliationUtility.Terminal</RootNamespace>
+    <AssemblyName>QueryLoggingReconciliationUtility.Terminal</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connected Services\DataListsQueryService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\DataListsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Connected Services\DataListsQueryService\DataListsQueryService.wsdl" />
+    <None Include="Connected Services\DataListsQueryService\DataListsQueryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\DataListsQueryService1.wsdl" />
+    <None Include="Connected Services\DataListsQueryService\DataListsQueryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\DataListsQueryService10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\DataListsQueryService11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\DataListsQueryService12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\DataListsQueryService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\DataListsQueryService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\DataListsQueryService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\DataListsQueryService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\DataListsQueryService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\DataListsQueryService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\DataListsQueryService8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\DataListsQueryService9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\QueryLoggingReconciliationUtility.Terminal.DataListsQueryService.DataListAggregateDeltaQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\QueryLoggingReconciliationUtility.Terminal.DataListsQueryService.DataListEventQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\QueryLoggingReconciliationUtility.Terminal.DataListsQueryService.DataListItemAggregateDeltaQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\QueryLoggingReconciliationUtility.Terminal.DataListsQueryService.DataListItemAttributeDescription.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\QueryLoggingReconciliationUtility.Terminal.DataListsQueryService.DataListItemCodeDescription.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\QueryLoggingReconciliationUtility.Terminal.DataListsQueryService.DataListItemCodeDescriptionQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\QueryLoggingReconciliationUtility.Terminal.DataListsQueryService.DataListItemEventQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\QueryLoggingReconciliationUtility.Terminal.DataListsQueryService.DataListItemsQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataListsQueryService\QueryLoggingReconciliationUtility.Terminal.DataListsQueryService.LanguageListItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataListsService\DataListsService.wsdl" />
+    <None Include="Connected Services\DataListsService\DataListsService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsService\DataListsService1.wsdl" />
+    <None Include="Connected Services\DataListsService\DataListsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsService\DataListsService10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsService\DataListsService11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsService\DataListsService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsService\DataListsService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsService\DataListsService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsService\DataListsService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsService\DataListsService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsService\DataListsService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsService\DataListsService8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsService\DataListsService9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataListsService\QueryLoggingReconciliationUtility.Terminal.DataListsService.CoreDataListAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataListsService\QueryLoggingReconciliationUtility.Terminal.DataListsService.CoreDataListUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataListsService\QueryLoggingReconciliationUtility.Terminal.DataListsService.DataListItemAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataListsService\QueryLoggingReconciliationUtility.Terminal.DataListsService.DataListItemAttributeDeleted.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataListsService\QueryLoggingReconciliationUtility.Terminal.DataListsService.DatalistItemAttributeRevalidated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataListsService\QueryLoggingReconciliationUtility.Terminal.DataListsService.DataListItemReset.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataListsService\QueryLoggingReconciliationUtility.Terminal.DataListsService.DataListItemUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataListsService\QueryLoggingReconciliationUtility.Terminal.DataListsService.DataListsAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataListsService\QueryLoggingReconciliationUtility.Terminal.DataListsService.DataListsRevalidated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataListsService\QueryLoggingReconciliationUtility.Terminal.DataListsService.DataListsUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataListsService\QueryLoggingReconciliationUtility.Terminal.DataListsService.IsServiceAvailableResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataListsService\QueryLoggingReconciliationUtility.Terminal.DataListsService.IsServiceHealthyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\DataListsQueryService\" />
+    <WCFMetadataStorage Include="Connected Services\DataListsService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\DataListsQueryService\DataListsQueryService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\DataListsQueryService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\DataListsQueryService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\DataListsQueryService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\DataListsService\DataListsService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\DataListsService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\DataListsService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\DataListsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

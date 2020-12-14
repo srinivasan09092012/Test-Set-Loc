@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Commands" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Commands" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost:44311/DataListsService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
+  <xs:import schemaLocation="https://localhost:44311/DataListsService.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Shared" />
+  <xs:complexType name="ResetDatalistItemStateCommand">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q1:Command">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ContentId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResetDatalistItemStateCommand" nillable="true" type="tns:ResetDatalistItemStateCommand" />
+  <xs:complexType name="AddDataListCommand">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q2:Command">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Shared" minOccurs="0" name="DataList" nillable="true" type="q3:DataList" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddDataListCommand" nillable="true" type="tns:AddDataListCommand" />
+  <xs:complexType name="UpdateDataListCommand">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q4:Command">
+        <xs:sequence>
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Shared" minOccurs="0" name="DataList" nillable="true" type="q5:DataList" />
+          <xs:element minOccurs="0" name="DataListId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateDataListCommand" nillable="true" type="tns:UpdateDataListCommand" />
+  <xs:complexType name="RevalidateDatalistCommand">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q6:Command">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DataListId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RevalidateDatalistCommand" nillable="true" type="tns:RevalidateDatalistCommand" />
+  <xs:complexType name="AddCoreListCommand">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q7:Command">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContentId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataListsName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DatalistMaintenanceLevel" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrderIndex" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReleaseStatus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TenantModuleId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddCoreListCommand" nillable="true" type="tns:AddCoreListCommand" />
+  <xs:complexType name="UpdateCoreListCommand">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q8:Command">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContentId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataListsName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DatalistMaintenanceLevel" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsValid" type="xs:boolean" />
+          <xs:element minOccurs="0" name="OrderIndex" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReleaseStatus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TenantModuleId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateCoreListCommand" nillable="true" type="tns:UpdateCoreListCommand" />
+</xs:schema>

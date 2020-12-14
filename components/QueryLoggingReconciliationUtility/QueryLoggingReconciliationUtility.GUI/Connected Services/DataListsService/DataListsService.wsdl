@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="HP.HSP.DataLists" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="HP.HSP.DataLists" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="HP.HSP.DataLists/Imports">
+      <xsd:import schemaLocation="https://localhost:44311/DataListsService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsService.svc?xsd=xsd2" namespace="HP.HSP.DataLists" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base.Administration.Commands" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base.Administration.Shared" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base.Administration.Events" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsService.svc?xsd=xsd8" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Commands" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsService.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Events" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsService.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Shared" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IDataListsService_IsServiceAvailable_InputMessage">
+    <wsdl:part xmlns:q1="http://tempuri.org/" name="parameters" element="q1:IsServiceAvailable" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_IsServiceAvailable_OutputMessage">
+    <wsdl:part xmlns:q2="http://tempuri.org/" name="parameters" element="q2:IsServiceAvailableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_IsServiceHealthy_InputMessage">
+    <wsdl:part xmlns:q3="http://tempuri.org/" name="parameters" element="q3:IsServiceHealthy" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_IsServiceHealthy_OutputMessage">
+    <wsdl:part xmlns:q4="http://tempuri.org/" name="parameters" element="q4:IsServiceHealthyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_AddDataListItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddDataListItem" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_AddDataListItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddDataListItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_AddDataListItem_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q5:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_AddDataListItem_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q6:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_UpdateDataListItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDataListItem" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_UpdateDataListItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDataListItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_UpdateDataListItem_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q7:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_UpdateDataListItem_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q8:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_ResetDatalistItemState_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResetDatalistItemState" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_ResetDatalistItemState_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResetDatalistItemStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_ResetDatalistItemState_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q9:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_ResetDatalistItemState_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q10:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_AddDataList_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddDataList" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_AddDataList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddDataListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_AddDataList_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q11:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_AddDataList_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q12:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_UpdateDataList_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDataList" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_UpdateDataList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDataListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_UpdateDataList_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q13:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_UpdateDataList_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q14:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_RevalidateAttribute_InputMessage">
+    <wsdl:part name="parameters" element="tns:RevalidateAttribute" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_RevalidateAttribute_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RevalidateAttributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_RevalidateAttribute_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q15:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_RevalidateAttribute_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q16:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_DeleteDataListItemAttribute_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDataListItemAttribute" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_DeleteDataListItemAttribute_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDataListItemAttributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_DeleteDataListItemAttribute_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q17:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_DeleteDataListItemAttribute_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q18:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_RevalidateDataList_InputMessage">
+    <wsdl:part name="parameters" element="tns:RevalidateDataList" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_RevalidateDataList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RevalidateDataListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_RevalidateDataList_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q19:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_RevalidateDataList_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q20:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_AddCoreDataList_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCoreDataList" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_AddCoreDataList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCoreDataListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_AddCoreDataList_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q21:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_AddCoreDataList_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q22:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_UpdateCoreDataList_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCoreDataList" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_UpdateCoreDataList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCoreDataListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_UpdateCoreDataList_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q23="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q23:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsService_UpdateCoreDataList_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q24="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q24:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:portType name="IDataListsService">
+    <wsdl:operation name="IsServiceAvailable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceAvailability/IsServiceAvailable" message="tns:IDataListsService_IsServiceAvailable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceAvailability/IsServiceAvailableResponse" message="tns:IDataListsService_IsServiceAvailable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsServiceHealthy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceAvailability/IsServiceHealthy" message="tns:IDataListsService_IsServiceHealthy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceAvailability/IsServiceHealthyResponse" message="tns:IDataListsService_IsServiceHealthy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDataListItem">
+      <wsdl:input wsaw:Action="HP.HSP.DataLists/IDataListsService/AddDataListItem" message="tns:IDataListsService_AddDataListItem_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataLists/IDataListsService/AddDataListItemResponse" message="tns:IDataListsService_AddDataListItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/AddDataListItemServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsService_AddDataListItem_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/AddDataListItemBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IDataListsService_AddDataListItem_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDataListItem">
+      <wsdl:input wsaw:Action="HP.HSP.DataLists/IDataListsService/UpdateDataListItem" message="tns:IDataListsService_UpdateDataListItem_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataLists/IDataListsService/UpdateDataListItemResponse" message="tns:IDataListsService_UpdateDataListItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/UpdateDataListItemServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsService_UpdateDataListItem_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/UpdateDataListItemBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IDataListsService_UpdateDataListItem_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetDatalistItemState">
+      <wsdl:input wsaw:Action="HP.HSP.DataLists/IDataListsService/ResetDatalistItemState" message="tns:IDataListsService_ResetDatalistItemState_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataLists/IDataListsService/ResetDatalistItemStateResponse" message="tns:IDataListsService_ResetDatalistItemState_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/ResetDatalistItemStateServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsService_ResetDatalistItemState_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/ResetDatalistItemStateBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IDataListsService_ResetDatalistItemState_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDataList">
+      <wsdl:input wsaw:Action="HP.HSP.DataLists/IDataListsService/AddDataList" message="tns:IDataListsService_AddDataList_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataLists/IDataListsService/AddDataListResponse" message="tns:IDataListsService_AddDataList_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/AddDataListServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsService_AddDataList_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/AddDataListBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IDataListsService_AddDataList_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDataList">
+      <wsdl:input wsaw:Action="HP.HSP.DataLists/IDataListsService/UpdateDataList" message="tns:IDataListsService_UpdateDataList_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataLists/IDataListsService/UpdateDataListResponse" message="tns:IDataListsService_UpdateDataList_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/UpdateDataListServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsService_UpdateDataList_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/UpdateDataListBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IDataListsService_UpdateDataList_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RevalidateAttribute">
+      <wsdl:input wsaw:Action="HP.HSP.DataLists/IDataListsService/RevalidateAttribute" message="tns:IDataListsService_RevalidateAttribute_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataLists/IDataListsService/RevalidateAttributeResponse" message="tns:IDataListsService_RevalidateAttribute_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/RevalidateAttributeServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsService_RevalidateAttribute_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/RevalidateAttributeBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IDataListsService_RevalidateAttribute_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDataListItemAttribute">
+      <wsdl:input wsaw:Action="HP.HSP.DataLists/IDataListsService/DeleteDataListItemAttribute" message="tns:IDataListsService_DeleteDataListItemAttribute_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataLists/IDataListsService/DeleteDataListItemAttributeResponse" message="tns:IDataListsService_DeleteDataListItemAttribute_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/DeleteDataListItemAttributeServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsService_DeleteDataListItemAttribute_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/DeleteDataListItemAttributeBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IDataListsService_DeleteDataListItemAttribute_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RevalidateDataList">
+      <wsdl:input wsaw:Action="HP.HSP.DataLists/IDataListsService/RevalidateDataList" message="tns:IDataListsService_RevalidateDataList_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataLists/IDataListsService/RevalidateDataListResponse" message="tns:IDataListsService_RevalidateDataList_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/RevalidateDataListServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsService_RevalidateDataList_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/RevalidateDataListBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IDataListsService_RevalidateDataList_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCoreDataList">
+      <wsdl:input wsaw:Action="HP.HSP.DataLists/IDataListsService/AddCoreDataList" message="tns:IDataListsService_AddCoreDataList_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataLists/IDataListsService/AddCoreDataListResponse" message="tns:IDataListsService_AddCoreDataList_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/AddCoreDataListServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsService_AddCoreDataList_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/AddCoreDataListBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IDataListsService_AddCoreDataList_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCoreDataList">
+      <wsdl:input wsaw:Action="HP.HSP.DataLists/IDataListsService/UpdateCoreDataList" message="tns:IDataListsService_UpdateCoreDataList_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataLists/IDataListsService/UpdateCoreDataListResponse" message="tns:IDataListsService_UpdateCoreDataList_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/UpdateCoreDataListServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsService_UpdateCoreDataList_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataLists/IDataListsService/UpdateCoreDataListBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IDataListsService_UpdateCoreDataList_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Domain" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Domain" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfCodeListModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CodeListModel" nillable="true" type="tns:CodeListModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCodeListModel" nillable="true" type="tns:ArrayOfCodeListModel" />
+  <xs:complexType name="CodeListModel">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CodeItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Attributes" nillable="true" type="tns:ArrayOfDataListItemAttributeModel" />
+          <xs:element minOccurs="0" name="BelongsToId" type="ser:guid" />
+          <xs:element minOccurs="0" name="ChildOrderIndex" type="xs:int" />
+          <xs:element minOccurs="0" name="Children" nillable="true" type="tns:ArrayOfCodeListModel" />
+          <xs:element minOccurs="0" name="ContentID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataListItemLinkId" type="ser:guid" />
+          <xs:element minOccurs="0" name="DataListItemModuleList" nillable="true" type="tns:ArrayOfCodeListItemModule" />
+          <xs:element minOccurs="0" name="DataListItemPeriodList" nillable="true" type="tns:ArrayOfCodeListItemPeriod" />
+          <xs:element minOccurs="0" name="EffectiveEndDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="EffectiveStartDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ExternalKey" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ID" type="ser:guid" />
+          <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsEditable" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LanguageList" nillable="true" type="tns:ArrayOfLanguages" />
+          <xs:element minOccurs="0" name="ModifiedDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="OrderIndex" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Parents" nillable="true" type="tns:ArrayOfCodeListModel" />
+          <xs:element minOccurs="0" name="TenantID" type="ser:guid" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CodeListModel" nillable="true" type="tns:CodeListModel" />
+  <xs:complexType name="CodeItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CodeItem" nillable="true" type="tns:CodeItem" />
+  <xs:complexType name="ArrayOfDataListItemAttributeModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataListItemAttributeModel" nillable="true" type="tns:DataListItemAttributeModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataListItemAttributeModel" nillable="true" type="tns:ArrayOfDataListItemAttributeModel" />
+  <xs:complexType name="DataListItemAttributeModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DataListAttributeID" type="ser:guid" />
+      <xs:element minOccurs="0" name="DataListAttributeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataListAttributeValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataListItemID" type="ser:guid" />
+      <xs:element minOccurs="0" name="DataListTypeID" type="ser:guid" />
+      <xs:element minOccurs="0" name="DataListTypeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataListValueID" type="ser:guid" />
+      <xs:element minOccurs="0" name="ID" type="ser:guid" />
+      <xs:element minOccurs="0" name="LastModifiedDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataListItemAttributeModel" nillable="true" type="tns:DataListItemAttributeModel" />
+  <xs:complexType name="ArrayOfCodeListItemModule">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CodeListItemModule" nillable="true" type="tns:CodeListItemModule" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCodeListItemModule" nillable="true" type="tns:ArrayOfCodeListItemModule" />
+  <xs:complexType name="CodeListItemModule">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodeID" type="ser:guid" />
+      <xs:element minOccurs="0" name="DataListItemModuleId" type="ser:guid" />
+      <xs:element minOccurs="0" name="IsDefault" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsExclude" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ModuleID" type="ser:guid" />
+      <xs:element minOccurs="0" name="ModuleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TenantModuleID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CodeListItemModule" nillable="true" type="tns:CodeListItemModule" />
+  <xs:complexType name="ArrayOfCodeListItemPeriod">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CodeListItemPeriod" nillable="true" type="tns:CodeListItemPeriod" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCodeListItemPeriod" nillable="true" type="tns:ArrayOfCodeListItemPeriod" />
+  <xs:complexType name="CodeListItemPeriod">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DataListItemID" type="ser:guid" />
+      <xs:element minOccurs="0" name="DataListItemPeriodId" type="ser:guid" />
+      <xs:element minOccurs="0" name="EffectiveDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsValid" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastModified" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OperatorId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CodeListItemPeriod" nillable="true" type="tns:CodeListItemPeriod" />
+  <xs:complexType name="ArrayOfLanguages">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Languages" nillable="true" type="tns:Languages" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLanguages" nillable="true" type="tns:ArrayOfLanguages" />
+  <xs:complexType name="Languages">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodeID" type="ser:guid" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LocaleID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LongDescription" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Languages" nillable="true" type="tns:Languages" />
+</xs:schema>

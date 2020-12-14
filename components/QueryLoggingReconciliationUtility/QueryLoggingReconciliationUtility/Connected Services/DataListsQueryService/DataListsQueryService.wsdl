@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="HP.HSP.DataListsQueryService" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="HP.HSP.DataListsQueryService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="HP.HSP.DataListsQueryService/Imports">
+      <xsd:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd0" namespace="HP.HSP.DataListsQueryService" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Domain" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries.Sorting" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries.Parameters" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries.Conditions" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd9" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Domain" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base.Audit" />
+      <xsd:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Extensions" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IDataListsQueryService_GetDataListItems_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataListItems" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_GetDataListItems_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataListItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_GetDataListItems_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q1:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_GetItemCodeDescription_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemCodeDescription" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_GetItemCodeDescription_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemCodeDescriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_GetItemCodeDescription_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q2:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_GetAllItemDescriptions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllItemDescriptions" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_GetAllItemDescriptions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllItemDescriptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_GetAllItemDescriptions_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q3:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_GetItemAttribute_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemAttribute" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_GetItemAttribute_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemAttributeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_GetItemAttribute_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q4:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_GetItemAttribute_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q5:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_SearchLanguageDataListItems_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchLanguageDataListItems" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_SearchLanguageDataListItems_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchLanguageDataListItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_SearchLanguageDataListItems_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q6:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_SearchDataListsEvents_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchDataListsEvents" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_SearchDataListsEvents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchDataListsEventsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_SearchDataListsEvents_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q7:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_SearchDataListsEvents_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q8:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_GetDataListsAggregateDelta_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataListsAggregateDelta" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_GetDataListsAggregateDelta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataListsAggregateDeltaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_GetDataListsAggregateDelta_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q9:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_GetDataListsAggregateDelta_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q10:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_SearchDataListItemEvents_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchDataListItemEvents" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_SearchDataListItemEvents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchDataListItemEventsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_SearchDataListItemEvents_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q11:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_SearchDataListItemEvents_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q12:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_GetDataListItemAggregateDelta_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataListItemAggregateDelta" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_GetDataListItemAggregateDelta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataListItemAggregateDeltaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_GetDataListItemAggregateDelta_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q13:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IDataListsQueryService_GetDataListItemAggregateDelta_BusinessValidationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q14:BusinessValidationException" />
+  </wsdl:message>
+  <wsdl:portType name="IDataListsQueryService">
+    <wsdl:operation name="GetDataListItems">
+      <wsdl:input wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetDataListItems" message="tns:IDataListsQueryService_GetDataListItems_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetDataListItemsResponse" message="tns:IDataListsQueryService_GetDataListItems_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetDataListItemsServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsQueryService_GetDataListItems_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemCodeDescription">
+      <wsdl:input wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetItemCodeDescription" message="tns:IDataListsQueryService_GetItemCodeDescription_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetItemCodeDescriptionResponse" message="tns:IDataListsQueryService_GetItemCodeDescription_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetItemCodeDescriptionServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsQueryService_GetItemCodeDescription_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllItemDescriptions">
+      <wsdl:input wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetAllItemDescriptions" message="tns:IDataListsQueryService_GetAllItemDescriptions_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetAllItemDescriptionsResponse" message="tns:IDataListsQueryService_GetAllItemDescriptions_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetAllItemDescriptionsServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsQueryService_GetAllItemDescriptions_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemAttribute">
+      <wsdl:input wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetItemAttribute" message="tns:IDataListsQueryService_GetItemAttribute_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetItemAttributeResponse" message="tns:IDataListsQueryService_GetItemAttribute_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetItemAttributeServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsQueryService_GetItemAttribute_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetItemAttributeBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IDataListsQueryService_GetItemAttribute_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchLanguageDataListItems">
+      <wsdl:input wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/SearchLanguageDataListItems" message="tns:IDataListsQueryService_SearchLanguageDataListItems_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/SearchLanguageDataListItemsResponse" message="tns:IDataListsQueryService_SearchLanguageDataListItems_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/SearchLanguageDataListItemsServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsQueryService_SearchLanguageDataListItems_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchDataListsEvents">
+      <wsdl:input wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/SearchDataListsEvents" message="tns:IDataListsQueryService_SearchDataListsEvents_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/SearchDataListsEventsResponse" message="tns:IDataListsQueryService_SearchDataListsEvents_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/SearchDataListsEventsServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsQueryService_SearchDataListsEvents_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/SearchDataListsEventsBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IDataListsQueryService_SearchDataListsEvents_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataListsAggregateDelta">
+      <wsdl:input wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetDataListsAggregateDelta" message="tns:IDataListsQueryService_GetDataListsAggregateDelta_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetDataListsAggregateDeltaResponse" message="tns:IDataListsQueryService_GetDataListsAggregateDelta_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetDataListsAggregateDeltaServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsQueryService_GetDataListsAggregateDelta_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetDataListsAggregateDeltaBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IDataListsQueryService_GetDataListsAggregateDelta_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchDataListItemEvents">
+      <wsdl:input wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/SearchDataListItemEvents" message="tns:IDataListsQueryService_SearchDataListItemEvents_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/SearchDataListItemEventsResponse" message="tns:IDataListsQueryService_SearchDataListItemEvents_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/SearchDataListItemEventsServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsQueryService_SearchDataListItemEvents_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/SearchDataListItemEventsBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IDataListsQueryService_SearchDataListItemEvents_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataListItemAggregateDelta">
+      <wsdl:input wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetDataListItemAggregateDelta" message="tns:IDataListsQueryService_GetDataListItemAggregateDelta_InputMessage" />
+      <wsdl:output wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetDataListItemAggregateDeltaResponse" message="tns:IDataListsQueryService_GetDataListItemAggregateDelta_OutputMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetDataListItemAggregateDeltaServiceExceptionFault" name="ServiceExceptionFault" message="tns:IDataListsQueryService_GetDataListItemAggregateDelta_ServiceExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="HP.HSP.DataListsQueryService/IDataListsQueryService/GetDataListItemAggregateDeltaBusinessValidationExceptionFault" name="BusinessValidationExceptionFault" message="tns:IDataListsQueryService_GetDataListItemAggregateDelta_BusinessValidationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

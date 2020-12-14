@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="RequestorModel">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ApplicationName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BrowserInfo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CorrelationId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IdentifierId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IdentifierIdType" type="tns:CoreEnumerations.Messaging.IdentifierIdType" />
+          <xs:element minOccurs="0" name="IpAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LocaleCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RequestDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="TenantId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RequestorModel" nillable="true" type="tns:RequestorModel" />
+  <xs:complexType name="BaseModel">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="BaseModel" nillable="true" type="tns:BaseModel" />
+  <xs:simpleType name="CoreEnumerations.Messaging.IdentifierIdType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="User" />
+      <xs:enumeration value="System" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CoreEnumerations.Messaging.IdentifierIdType" nillable="true" type="tns:CoreEnumerations.Messaging.IdentifierIdType" />
+  <xs:simpleType name="CoreEnumerations.Messaging.SearchModeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EqualTo" />
+      <xs:enumeration value="NotEqualTo" />
+      <xs:enumeration value="Contains" />
+      <xs:enumeration value="StartsWith" />
+      <xs:enumeration value="EndsWith" />
+      <xs:enumeration value="GreaterThanOrEqualTo" />
+      <xs:enumeration value="LessThanOrEqualTo" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CoreEnumerations.Messaging.SearchModeType" nillable="true" type="tns:CoreEnumerations.Messaging.SearchModeType" />
+  <xs:simpleType name="CoreEnumerations.Messaging.SortDirectionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ascending" />
+      <xs:enumeration value="Descending" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CoreEnumerations.Messaging.SortDirectionType" nillable="true" type="tns:CoreEnumerations.Messaging.SortDirectionType" />
+  <xs:simpleType name="AuditEnumerations.EventAuditSortFieldType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Default" />
+      <xs:enumeration value="EventStampDate" />
+      <xs:enumeration value="EventType" />
+      <xs:enumeration value="UserId" />
+      <xs:enumeration value="SourceOfChange" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AuditEnumerations.EventAuditSortFieldType" nillable="true" type="tns:AuditEnumerations.EventAuditSortFieldType" />
+</xs:schema>
