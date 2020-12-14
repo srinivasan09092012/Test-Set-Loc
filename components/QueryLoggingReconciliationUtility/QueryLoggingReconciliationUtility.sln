@@ -28,4 +28,16 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BEE91554-F9C0-4C99-BFC5-42193231D0CA}
 	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://payerportfolio.visualstudio.com/
+		SccProjectUniqueName0 = QueryLoggingReconciliationUtility\\QueryLoggingReconciliationUtility.Console.csproj
+		SccProjectName0 = QueryLoggingReconciliationUtility
+		SccLocalPath0 = QueryLoggingReconciliationUtility
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = QueryLoggingReconciliationUtility.GUI\\QueryLoggingReconciliationUtility.GUI.csproj
+		SccProjectName2 = QueryLoggingReconciliationUtility.GUI
+		SccLocalPath2 = QueryLoggingReconciliationUtility.GUI
+	EndGlobalSection
 EndGlobal
