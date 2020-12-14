@@ -1,6 +1,6 @@
 <DocModuleSettingModel>
   <ModuleName>User</ModuleName>
-  <ModuleNameDisplay>Core User</ModuleNameDisplay>
+  <ModuleNameDisplay>Core</ModuleNameDisplay>
   <StorageDrive>J:</StorageDrive>
   <webSourcePath>J:\www\servicespecs\Modules\Core\\HelpWeb\\User</webSourcePath>
   <webTargetPath>J:\www\servicespecs\Modules\Core\\HelpWeb\\User</webTargetPath>
