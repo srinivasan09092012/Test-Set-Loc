@@ -8,6 +8,9 @@ using System.IO;
 using System.Xml;
 using System.Diagnostics;
 using System.Net;
+using System.Linq;
+using System.Text;
+using System.Collections.Generic;
 
 namespace SolutionRefactorMgr
 {
@@ -220,7 +223,7 @@ namespace SolutionRefactorMgr
 
         private static void RefactorDirectory(string source, string origDest, string newDest, bool recursive, int level)
         {
-            if(Directory.Exists(source))
+            if (Directory.Exists(source))
             {
                 bool processDirectory = true;
                 LogMessage(level, string.Format("Refactoring directory '{0}' to '{1}'", source, origDest));
@@ -275,7 +278,7 @@ namespace SolutionRefactorMgr
                                 && !subdir.Name.Contains("TestResults")
                                 && !subdir.Name.Contains("Packages")
                                 )
-                               {
+                            {
                                 string newDirName = subdir.Name;
                                 if (refactorConfig.IncludeFolderNames)
                                 {
@@ -294,7 +297,7 @@ namespace SolutionRefactorMgr
 
         private static void RefactorFile(FileInfo file, string dest, int level)
         {
-            Domain.FileType fileType = refactorConfig.FileTypes.Find(f => f.Extension.ToLower() == file.Extension.ToLower());   
+            Domain.FileType fileType = refactorConfig.FileTypes.Find(f => f.Extension.ToLower() == file.Extension.ToLower());
             bool fileQualifies = fileType != null;
 
             if (fileQualifies && !string.IsNullOrWhiteSpace(fileType.QualifyIfPathContains))
@@ -314,8 +317,8 @@ namespace SolutionRefactorMgr
 
             if (refactorConfig.RefactorPartialContent)
             {
-              ReplacementString obj = refactorConfig.ReplacementStrings.Find(f => f.filename.Contains(file.Name.ToLower()));
-              fileQualifies = obj != null;
+                ReplacementString obj = refactorConfig.ReplacementStrings.Find(f => f.filename.Contains(file.Name.ToLower()));
+                fileQualifies = obj != null;
             }
 
             if (fileQualifies)
@@ -383,11 +386,444 @@ namespace SolutionRefactorMgr
                     TfsPendAdd(newPath);
                     LogMessage(level, string.Format("Copying file '{0}'", file.Name));
                 }
+                else if (refactorConfig.EditMode == Enumerations.EditModeTypes.UpgradePackage && file.Extension.ToLower() == ".csproj")
+                {
+                    //Handle csproj file related changes
+                    string projectFilePath = Path.Combine(dest, file.Name);
+                    bool projectUpdated = false;
+                    if (File.Exists(projectFilePath))
+                    {
+                        string projectFileContents = File.ReadAllText(projectFilePath);
+                        projectUpdated = UpdateProjectFile(projectFilePath, out projectFileContents);
+                        if (projectUpdated)
+                        {
+                            TfsPendEdit(projectFilePath);
+                            File.WriteAllText(projectFilePath, projectFileContents);
+                            LogMessage(level, string.Format("Refactoring file '{0}'", new FileInfo(projectFilePath).Name));
+                        }
+                        else
+                        {
+                            LogMessage(level, string.Format("Skipping file '{0}'", new FileInfo(projectFilePath).Name));
+                        }
+                    }
+                    else
+                    {
+                        LogMessage(level, string.Format("File '{0}' not found", new FileInfo(projectFilePath).Name));
+                    }
+
+                    //Handle Packages.config file related changes
+                    string packageConfigFilePath = projectFilePath.Substring(0, projectFilePath.LastIndexOf("\\")) + "\\packages.config";
+                    if (projectUpdated && File.Exists(packageConfigFilePath))
+                    {
+                        string packagesConfigFileContents = File.ReadAllText(packageConfigFilePath);
+                        if (UpdatePackagesConfigFile(packageConfigFilePath, out packagesConfigFileContents))
+                        {
+                            TfsPendEdit(packageConfigFilePath);
+                            File.WriteAllText(packageConfigFilePath, packagesConfigFileContents);
+                            LogMessage(level, string.Format("Refactoring file '{0}'", new FileInfo(packageConfigFilePath).Name));
+                        }
+                        else
+                        {
+                            LogMessage(level, string.Format("Skipping file '{0}'", new FileInfo(packageConfigFilePath).Name));
+                        }
+                    }
+                    else
+                    {
+                        LogMessage(level, string.Format("File '{0}' not found", new FileInfo(packageConfigFilePath).Name));
+                    }
+
+                    //Handle web/app.config file related changes
+                    string webConfigFilePath = projectFilePath.Substring(0, projectFilePath.LastIndexOf("\\")) + "\\web.config";
+                    string appConfigFilePath = projectFilePath.Substring(0, projectFilePath.LastIndexOf("\\")) + "\\app.config";
+                    string configFilePath = File.Exists(webConfigFilePath) ? webConfigFilePath : appConfigFilePath;
+                    if (projectUpdated && File.Exists(configFilePath))
+                    {
+                        string configFileContents = File.ReadAllText(configFilePath);
+                        if (UpdateConfigFile(configFilePath, out configFileContents))
+                        {
+                            TfsPendEdit(configFilePath);
+                            File.WriteAllText(configFilePath, configFileContents);
+                            LogMessage(level, string.Format("Refactoring file '{0}'", new FileInfo(configFilePath).Name));
+                        }
+                        else
+                        {
+                            LogMessage(level, string.Format("Skipping file '{0}'", new FileInfo(configFilePath).Name));
+                        }
+                    }
+                    else
+                    {
+                        LogMessage(level, string.Format("File '{0}' not found", new FileInfo(configFilePath).Name));
+                    }
+                }
                 else
                 {
                     LogMessage(level, string.Format("Skipping file '{0}'", file.Name));
                 }
             }
+        }
+
+        private static bool UpdateProjectFile(string projectFilePath, out string refactoredFileContents)
+        {
+            string xmlNs = "http://schemas.microsoft.com/developer/msbuild/2003";
+            string FilePath = projectFilePath;
+            bool projectUpdated = false;
+            XmlDocument projectFile = new XmlDocument();
+            projectFile.Load(FilePath);
+            XmlNamespaceManager nsmgr = new XmlNamespaceManager(projectFile.NameTable);
+            nsmgr.AddNamespace("MsBuild", xmlNs);
+
+            List<string> pathParts = projectFilePath.Split('\\').ToList();
+            string folderLevels = string.Empty;
+            for (int i = pathParts.Count - 1; i >= 0; i--)
+            {
+                if (pathParts[i] != "Source")
+                    folderLevels += "..\\";
+                else
+                {
+                    folderLevels = folderLevels.Substring(0, folderLevels.Length - 3);
+                    break;
+                }
+            }
+
+            string referenceName = string.Empty;
+            XmlNodeList references = projectFile.SelectNodes("//MsBuild:Reference", nsmgr);
+            XmlElement referencesItemGroup = references.Count != 0 ? (XmlElement)references[0].ParentNode : null;
+            
+            //Package upgrade will happen only if
+            //root package is already referred and to a lower version than the one being updated to.
+            //Any new dependency to the package being upgraded will get a reference entry as configured.
+            string rootPackageInclude = refactorConfig.References.Find(f => f.Dependency == "false").Include;
+            string rootPackageName = rootPackageInclude.IndexOf(',') > 0 ? rootPackageInclude.Substring(0, rootPackageInclude.IndexOf(',')) : rootPackageInclude;
+            var rootReference = references.Cast<XmlElement>().Where(n => n.Attributes["Include"].Value.Contains(rootPackageName + ",")).Select(mod => mod).ToList();
+            if (rootReference.Count == 0)
+            {
+                rootReference = references.Cast<XmlElement>().Where(n => n.Attributes["Include"].Value == rootPackageName).Select(mod => mod).ToList();
+            }
+            var rootReferenceHintpath = rootReference.Count > 0 ? rootReference[0].ChildNodes.Cast<XmlElement>().Where(n => n.Name == "HintPath").Select(mod => mod).ToList() : new List<XmlElement>();
+
+            if (rootReference.Count != 0 && (rootReferenceHintpath.Count > 0 ? IsUpgrade(rootReferenceHintpath[0].InnerText, refactorConfig.References.Find(f => f.Dependency == "false").HintPath) : true))
+            {
+                foreach (Reference reference in refactorConfig.References)
+                {
+                    referenceName = reference.Include.Substring(0, reference.Include.IndexOf(',') != -1 ? reference.Include.IndexOf(',') : reference.Include.Length);
+                    var existingReference = references.Cast<XmlElement>().Where(n => n.Attributes["Include"].Value.Contains(referenceName + ",")).Select(mod => mod).ToList();
+                    if (existingReference.Count == 0)
+                    {
+                        existingReference = references.Cast<XmlElement>().Where(n => n.Attributes["Include"].Value == referenceName).Select(mod => mod).ToList();
+                    }
+                    if (existingReference.Count == 0)
+                    {
+                        AddReference(projectFile, referencesItemGroup, reference.Include, !string.IsNullOrEmpty(reference.HintPath) ? folderLevels + reference.HintPath : string.Empty);
+                        projectUpdated = true;
+                    }
+                    else
+                    {
+                        projectUpdated = UpdateReference(projectFile, existingReference[0], reference, folderLevels);
+                    }
+                }
+            }
+
+            refactoredFileContents = GetFormattedXml(projectFile.OuterXml);
+            return projectUpdated;
+        }
+
+        private static void AddReference(XmlDocument csprojFile, XmlElement referencesItemGroupElement, string strInclude, string strHintPath)
+        {
+            string xmlNs = "http://schemas.microsoft.com/developer/msbuild/2003";
+            XmlElement reference = csprojFile.CreateElement("Reference", xmlNs);
+            reference.SetAttribute("Include", strInclude);
+            if (!string.IsNullOrEmpty(strHintPath))
+            {
+                XmlElement hintPath = csprojFile.CreateElement("HintPath", xmlNs);
+                hintPath.InnerText = strHintPath;
+                reference.AppendChild(hintPath);
+            }
+            referencesItemGroupElement.AppendChild(reference);
+        }
+
+        private static bool UpdateReference(XmlDocument projectFile, XmlElement existingReference, Reference reference, string folderLevels)
+        {
+            bool projectUpdated = false;
+            string xmlNs = "http://schemas.microsoft.com/developer/msbuild/2003";
+
+            bool hintPathExists = false;
+            if (existingReference.ChildNodes.Count > 0)
+            {
+                List<XmlNode> lstNodesToRemove = new List<XmlNode>();
+                foreach (XmlNode childNode in existingReference.ChildNodes)
+                {
+                    if (childNode.Name == "HintPath" && !string.IsNullOrEmpty(reference.HintPath) && childNode.InnerText != folderLevels + reference.HintPath)
+                    {
+                        if (!IsUpgrade(childNode.InnerText, reference.HintPath))
+                        {
+                            return false;
+                        }
+                        childNode.InnerText = folderLevels + reference.HintPath;
+                        hintPathExists = true;
+                        projectUpdated = true;
+                    }
+                    //Any Private and Specific elements in the reference will be removed
+                    if (childNode.Name == "Private" || childNode.Name == "SpecificVersion")
+                    {
+                        lstNodesToRemove.Add(childNode);
+                    }
+                }
+
+                foreach (XmlNode nodeToRemove in lstNodesToRemove)
+                {
+                    existingReference.RemoveChild(nodeToRemove);
+                    projectUpdated = true;
+                }
+            }
+            else if (!string.IsNullOrEmpty(reference.HintPath) && !hintPathExists)
+            {
+                XmlElement hintPath = projectFile.CreateElement("HintPath", xmlNs);
+                hintPath.InnerText = folderLevels + reference.HintPath;
+                existingReference.AppendChild(hintPath);
+                projectUpdated = true;
+            }
+
+            if (existingReference.Attributes["Include"].Value != reference.Include)
+            {
+                existingReference.RemoveAttribute("Include");
+                existingReference.SetAttribute("Include", reference.Include);
+                projectUpdated = true;
+            }
+
+            return projectUpdated;
+        }
+
+        private static bool IsUpgrade(string fromHintPath, string toHintPath)
+        {
+            //Using version available in the folder to determine if it is an upgrade
+            bool isUpGrade = false;
+            List<string> from = fromHintPath.Split('\\').ToList();
+            List<string> to = toHintPath.Split('\\').ToList();
+            List<string> fromPackageName = new List<string>();
+            List<string> toPackageName = new List<string>();
+
+            for (int i = 0; i < from.Count; i++)
+            {
+                if (from[i] == "Packages" || from[i] == "packages")
+                {
+                    fromPackageName = from[i + 1].Split('.').ToList();
+                    break;
+                }
+            }
+            for (int i = 0; i < to.Count; i++)
+            {
+                if (to[i] == "Packages" || to[i] == "packages")
+                {
+                    toPackageName = to[i + 1].Split('.').ToList();
+                    break;
+                }
+            }
+            if (fromPackageName.Count != toPackageName.Count)
+            {
+                while (fromPackageName.Count > toPackageName.Count)
+                {
+                    toPackageName.Add("0");
+                }
+                while (fromPackageName.Count < toPackageName.Count)
+                {
+                    fromPackageName.Add("0");
+                }
+            }
+            for (int i = 0; i < fromPackageName.Count; i++)
+            {
+                if (int.TryParse(fromPackageName[i], out int fromVersion) && int.TryParse(toPackageName[i], out int toVersion))
+                {
+                    if (toVersion > fromVersion)
+                        return true;
+                }
+                else if (fromPackageName[i] != toPackageName[i])
+                {
+                    if (fromPackageName[0] == "HP" || fromPackageName[0] == "HPE" || fromPackageName[0] == "HPP")
+                        return true;
+                }
+            }
+
+            return isUpGrade;
+        }
+
+        private static bool UpdatePackagesConfigFile(string packagesConfigPath, out string refactoredFileContents)
+        {
+            string FilePath = packagesConfigPath;
+            bool fileUpdated = false;
+            XmlDocument packagesConfigFile = new XmlDocument();
+            packagesConfigFile.Load(FilePath);
+            XmlElement packagesElement = packagesConfigFile.DocumentElement;
+            XmlNodeList packages = packagesConfigFile.SelectNodes("/packages/package");
+
+            foreach (Package package in refactorConfig.Packages)
+            {
+                var existingPackageEntry = packages.Cast<XmlElement>().Where(n => n.Attributes["id"].Value == package.id).Select(mod => mod).ToList();
+
+                if (existingPackageEntry.Count == 0)
+                {
+                    AddPackageEntry(packagesConfigFile, packagesElement, package.id, package.version, package.targetFramework);
+                    fileUpdated = true;
+                }
+                else if (existingPackageEntry[0].Attributes["version"].Value != package.version || existingPackageEntry[0].Attributes["targetFramework"].Value != package.targetFramework)
+                {
+                    List<string> existingVersion = existingPackageEntry[0].Attributes["version"].Value.Split('.').ToList();
+                    List<string> toVersion = package.version.Split('.').ToList();
+
+                    while (existingVersion.Count > toVersion.Count)
+                    {
+                        toVersion.Add("0");
+                    }
+                    while (existingVersion.Count < toVersion.Count)
+                    {
+                        existingVersion.Add("0");
+                    }
+                    bool isUpgrade = false;
+                    for(int i=0; i<existingVersion.Count; i++)
+                    {
+                        if (Convert.ToInt32(toVersion[i]) > Convert.ToInt32(existingVersion[i]))
+                        {
+                            isUpgrade = true;
+                            break;
+                        }
+                    }
+                    if (isUpgrade)
+                    {
+                        existingPackageEntry[0].RemoveAttribute("version");
+                        existingPackageEntry[0].RemoveAttribute("targetFramework");
+                        existingPackageEntry[0].SetAttribute("version", package.version);
+                        existingPackageEntry[0].SetAttribute("targetFramework", package.targetFramework);
+                        fileUpdated = true;
+                    }
+                }
+            }
+
+            refactoredFileContents = GetFormattedXml(packagesConfigFile.OuterXml);
+            return fileUpdated;
+        }
+
+        private static void AddPackageEntry(XmlDocument packagesConfigFile, XmlElement packagesElement, string id, string version, string targetFramework)
+        {
+            XmlElement packageElement = packagesConfigFile.CreateElement("package");
+            packageElement.SetAttribute("id", id);
+            packageElement.SetAttribute("version", version);
+            packageElement.SetAttribute("targetFramework", targetFramework);
+            packagesElement.AppendChild(packageElement);
+        }
+
+        private static bool UpdateConfigFile(string configFilePath, out string refactoredFileContents)
+        {
+            string xmlNs = "urn:schemas-microsoft-com:asm.v1";
+            bool fileUpdated = false;
+            XmlDocument configFile = new XmlDocument();
+            configFile.Load(configFilePath);
+            XmlNamespaceManager nsmgr = new XmlNamespaceManager(configFile.NameTable);
+            nsmgr.AddNamespace("ConfigNS", xmlNs);
+
+            XmlElement assemblyBinding = (XmlElement)configFile.SelectSingleNode("//ConfigNS:assemblyBinding", nsmgr);
+            if (assemblyBinding == null)
+            {
+                XmlElement configuration = (XmlElement)configFile.SelectSingleNode("configuration", nsmgr);
+                XmlElement runtime = (XmlElement)configFile.SelectSingleNode("configuration/runtime", nsmgr);
+                if (runtime == null)
+                {
+                    assemblyBinding = configFile.CreateElement("assemblyBinding", xmlNs);
+                    runtime = configFile.CreateElement("runtime");
+                    runtime.AppendChild(assemblyBinding);
+                    configuration.AppendChild(runtime);
+                }
+            }
+
+            if (assemblyBinding != null)
+            {
+                foreach (DependentAssembly dependentAssly in refactorConfig.WebAppConfig)
+                {
+                    XmlElement dependentAssembly = (XmlElement)assemblyBinding.SelectSingleNode("//ConfigNS:assemblyIdentity[@name='" + dependentAssly.name + "']", nsmgr);
+                    if (dependentAssembly == null)
+                    {
+                        AddDependentAssembly(configFile, assemblyBinding, dependentAssly);
+                        fileUpdated = true;
+                    }
+                    else
+                    {
+                        foreach (XmlElement dependentAssemblyChild in dependentAssembly.ParentNode.ChildNodes)
+                        {
+                            if (dependentAssemblyChild.Name == "assemblyIdentity")
+                            {
+                                if (dependentAssemblyChild.Attributes["publicKeyToken"].Value != dependentAssly.publicKeyToken || dependentAssemblyChild.Attributes["culture"].Value != dependentAssly.culture)
+                                {
+                                    dependentAssemblyChild.RemoveAttribute("publicKeyToken");
+                                    dependentAssemblyChild.RemoveAttribute("culture");
+                                    dependentAssemblyChild.SetAttribute("publicKeyToken", dependentAssly.publicKeyToken);
+                                    dependentAssemblyChild.SetAttribute("culture", dependentAssly.culture);
+                                    fileUpdated = true;
+                                }
+                            }
+                            else if (dependentAssemblyChild.Name == "bindingRedirect")
+                            {
+                                if (dependentAssemblyChild.Attributes["oldVersion"].Value != dependentAssly.oldVersion || dependentAssemblyChild.Attributes["newVersion"].Value != dependentAssly.newVersion)
+                                {
+                                    dependentAssemblyChild.RemoveAttribute("oldVersion");
+                                    dependentAssemblyChild.RemoveAttribute("newVersion");
+                                    dependentAssemblyChild.SetAttribute("oldVersion", dependentAssly.oldVersion);
+                                    dependentAssemblyChild.SetAttribute("newVersion", dependentAssly.newVersion);
+                                    fileUpdated = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            refactoredFileContents = GetFormattedXml(configFile.OuterXml);
+            return fileUpdated;
+        }
+
+        public static void AddDependentAssembly(XmlDocument configFile, XmlElement assemblyBinding, DependentAssembly dependentAssly)
+        {
+            string xmlNs = "urn:schemas-microsoft-com:asm.v1";
+            XmlElement dependentAssembly = configFile.CreateElement("dependentAssembly", xmlNs);
+            XmlElement assemblyIdentity = configFile.CreateElement("assemblyIdentity", xmlNs);
+            assemblyIdentity.SetAttribute("name", dependentAssly.name);
+            assemblyIdentity.SetAttribute("publicKeyToken", dependentAssly.publicKeyToken);
+            assemblyIdentity.SetAttribute("culture", dependentAssly.culture);
+            XmlElement bindingRedirect = configFile.CreateElement("bindingRedirect", xmlNs);
+            bindingRedirect.SetAttribute("oldVersion", dependentAssly.oldVersion);
+            bindingRedirect.SetAttribute("newVersion", dependentAssly.newVersion);
+
+            dependentAssembly.AppendChild(assemblyIdentity);
+            dependentAssembly.AppendChild(bindingRedirect);
+
+            assemblyBinding.AppendChild(dependentAssembly);
+        }
+
+        public static string GetFormattedXml(string xml)
+        {
+            string result = "";
+            MemoryStream mStream = new MemoryStream();
+            XmlTextWriter writer = new XmlTextWriter(mStream, Encoding.Unicode);
+            XmlDocument document = new XmlDocument();
+
+            try
+            {
+                document.LoadXml(xml);
+                writer.Formatting = Formatting.Indented;
+                document.WriteContentTo(writer);
+                writer.Flush();
+                mStream.Flush();
+                mStream.Position = 0;
+                StreamReader sReader = new StreamReader(mStream);
+                result = sReader.ReadToEnd();
+            }
+            
+            catch (XmlException)
+            {
+                LogMessage(2, "There was an issue in Formatting the XML");
+            }
+            finally
+            {
+                mStream.Close();
+                writer.Close();
+            }
+            return result;
         }
 
         private static bool RefactorFileContents(string filePath, out string refactoredFileContents)
@@ -406,13 +842,13 @@ namespace SolutionRefactorMgr
                         {
                             bool deleteLine = false;
                             foreach (LineDelete lineDelete in refactorConfig.LineDeletes)
-                            { 
-                                    if (line.Contains(lineDelete.Contains))
-                                    {
-                                        deleteLine = true;
-                                        contentsChanged = true;
-                                        break;
-                                    }
+                            {
+                                if (line.Contains(lineDelete.Contains))
+                                {
+                                    deleteLine = true;
+                                    contentsChanged = true;
+                                    break;
+                                }
                             }
 
                             if (!deleteLine)
@@ -421,10 +857,10 @@ namespace SolutionRefactorMgr
                                 {
                                     if (refactorConfig.RefactorPartialContent)
                                     {
-                                        if (line.Contains(replacement.Qualifier) && filePath.ToLower().Contains(replacement.filename) && !contentsChanged  )
+                                        if (line.Contains(replacement.Qualifier) && filePath.ToLower().Contains(replacement.filename) && !contentsChanged)
                                         {
                                             string newstring = replacement.connectionString + (line.Contains(replacement.providerName) ? replacement.providerName : "");
-                                            line = System.Text.RegularExpressions.Regex.Replace(line, replacement.From,newstring);
+                                            line = System.Text.RegularExpressions.Regex.Replace(line, replacement.From, newstring);
                                             contentsChanged = true;
                                             break;
                                         }
@@ -433,7 +869,7 @@ namespace SolutionRefactorMgr
                                     else
                                     {
                                         contentsChanged |= RefactorLine(replacement, ref line);
-                                    }   
+                                    }
                                 }
                                 writer.WriteLine(line);
                             }
@@ -497,10 +933,10 @@ namespace SolutionRefactorMgr
             if (type != Enumerations.ProjectTypes.NA)
             {
                 if (type == Enumerations.ProjectTypes.K2_Workflow)
-                 {
+                {
                     sourcePath += "\\" + type.ToString().Replace("_", " ");
                 }
-                else if(type == Enumerations.ProjectTypes.ProviderManagement_EnrollmentTestClient)
+                else if (type == Enumerations.ProjectTypes.ProviderManagement_EnrollmentTestClient)
                 {
                     sourcePath += "\\" + type.ToString().Replace("_", ".");
                 }
@@ -533,7 +969,7 @@ namespace SolutionRefactorMgr
             DirectoryInfo[] dirs = dir.GetDirectories();
             foreach (DirectoryInfo subdir in dirs)
             {
-                if(subdir.Name.ToLower().StartsWith(package.QualifierPrefix.ToLower()) &&
+                if (subdir.Name.ToLower().StartsWith(package.QualifierPrefix.ToLower()) &&
                     (string.IsNullOrEmpty(package.QualifierVersion) || subdir.Name.ToLower().EndsWith(package.QualifierVersion)))
                 {
                     string newDirName = subdir.Name;

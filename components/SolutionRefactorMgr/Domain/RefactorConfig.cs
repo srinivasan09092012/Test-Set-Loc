@@ -39,6 +39,12 @@ namespace SolutionRefactorMgr.Domain
 
         public List<ReplacementString> ReplacementStrings { get; set; }
 
+        public List<Reference> References { get; set; }
+
+        public List<DependentAssembly> WebAppConfig { get; set; }
+
+        public List<Package> Packages { get; set; }
+
         public string TfsServer { get; set; }
 
         public string TfsWorkspace { get; set; }

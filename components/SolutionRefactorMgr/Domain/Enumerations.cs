@@ -7,7 +7,8 @@ namespace SolutionRefactorMgr.Domain
         public enum EditModeTypes
         {
             Copy,
-            Inline
+            Inline,
+            UpgradePackage
         }
 
         [Serializable]

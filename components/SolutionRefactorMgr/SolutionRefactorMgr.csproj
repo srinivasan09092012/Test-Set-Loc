@@ -108,6 +108,9 @@
   <ItemGroup>
     <Compile Include="Domain\Constants.cs" />
     <Compile Include="Domain\Enumerations.cs" />
+    <Compile Include="Domain\DependentAssembly.cs" />
+    <Compile Include="Domain\Package.cs" />
+    <Compile Include="Domain\Reference.cs" />
     <Compile Include="Domain\FileType.cs" />
     <Compile Include="Domain\LineDelete.cs" />
     <Compile Include="Domain\ModuleConfig.cs" />
@@ -137,6 +140,7 @@
     <Content Include="Configs\PackageUpgrades\Dev\Refactor_Package_Cleanup_Repoint_From_Deleted_dll.xml" />
     <Content Include="Configs\PackageUpgrades\Dev\Refactor_Repoint_from_19_2_70_to_19_3_76.xml" />
     <Content Include="Configs\PackageUpgrades\Dev\Refactor_Web_App_Config_DOTNET_Upgrade.xml" />
+    <Content Include="Configs\PackageUpgrades\Upgrade_Package.xml" />
     <Content Include="Configs\RefactorAppSettings.xml" />
     <Content Include="Configs\RefactorBASThumbprints.xml" />
     <Content Include="Configs\RefactorConfigPackagesFrom451to48.xml">
@@ -171,6 +175,7 @@
     <Content Include="Configs\RefactorHotfix-IncrementFileVersion.xml" />
     <Content Include="Configs\PackageUpgrades\DevF\Oracle.ManagedDataAccess.EntityFramework upgrade to 19.7.0.xml" />
     <Content Include="Configs\PackageUpgrades\DevF\NEventStore Upgrade to 7.0.0.xml" />
+    <None Include="Configs\PackageUpgrades\DevF\StackExchange.Redis_Upgrade_to_2.1.58" />
     <None Include="nuget.config">
       <SubType>Designer</SubType>
     </None>
