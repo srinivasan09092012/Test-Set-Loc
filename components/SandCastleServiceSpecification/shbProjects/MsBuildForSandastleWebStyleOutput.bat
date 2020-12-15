@@ -2,9 +2,12 @@
 c:
 cd C:\Program Files (x86)\MSBuild\14.0\Bin
 start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\Administration\BroadCastMessage\Administration_BroadCastMessage.shfbproj
+start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\ClaimsManagement\ClaimsManagement.shfbproj
+start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\Core\User\User.shfbproj
 start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\DrugRebate\DrugRebateFull.shfbproj
 start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\Integration\Integration.shfbproj
 start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\ManagedCare\ManagedCare.shfbproj
+start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\MCCapitation\MCCapitation.shfbproj
 start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\PlanManagement\Grouping\PL_Grouping.shfbproj
 start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\PlanManagement\RateSettings\PL_RateSettings.shfbproj
 start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\PlanManagement\RelatedInformation\PL_RelatedInformation.shfbproj
