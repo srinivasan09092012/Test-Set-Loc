@@ -1,6 +1,6 @@
 <DocModuleSettingModel>
   <ModuleName>Claims</ModuleName>
-  <ModuleNameDisplay>Claims Management</ModuleNameDisplay>
+  <ModuleNameDisplay>External</ModuleNameDisplay>
   <StorageDrive>J:</StorageDrive>
   <webSourcePath>J:\www\servicespecs\Modules\ClaimsManagement\\HelpWeb</webSourcePath>
   <webTargetPath>J:\www\servicespecs\Modules\ClaimsManagement\\HelpWeb</webTargetPath>
@@ -23,5 +23,5 @@
   <OtherResourcesFolder>ClaimsManagement</OtherResourcesFolder>
   <ModuleHelpContentAvailable>true</ModuleHelpContentAvailable>
   <ModuleAPIAvailable>false</ModuleAPIAvailable>
-  <EventsExtractFile>C:\extracts\dev\export.dsv</EventsExtractFile>
+  <EventsExtractFile>J:\UA3\SandCastleCustomizationTool\ModuleEventsExtracts\Test\PublishedModules.csv</EventsExtractFile>
 </DocModuleSettingModel>
