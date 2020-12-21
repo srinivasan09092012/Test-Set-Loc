@@ -514,7 +514,16 @@ namespace Controller
                 EventsLinkedMenuEntry.Attributes.Add("href", "#!");
                 EventsLinkedMenuEntry.Attributes.Add("parent", "Integration");
                 EventsLinkedMenuEntry.Attributes.Add("IsParentActive", "true");
-                EventsLinkedMenuEntry.Attributes.Add("BreadscrumbDisplayName", "Events Produced");
+
+                if (ModuleSettings.ContractListPages.ListPage.Any())
+                {
+                    EventsLinkedMenuEntry.Attributes.Add("BreadscrumbDisplayName", "Events Produced");
+                } 
+                else
+                {
+                    EventsLinkedMenuEntry.Attributes.Add("BreadscrumbDisplayName", "Events Produced: No events are produced for this sub-module.");
+                }
+
                 EventsLinkedMenuEntry.Attributes.Add("TopicContentHtml", "" + ModuleSettings.WebHost
                                                                                 + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
                                                                                 + @"\" + Common.Constants.WebSolutionStructure.Folders.Html
