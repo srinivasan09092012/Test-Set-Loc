@@ -9,7 +9,7 @@
     <ModuleConfig name="ConfigurationManagement" branch="DevF" types="All" />
     <ModuleConfig name="Core" branch="DevF" types="All" />
     <ModuleConfig name="CorrespondenceMgmt" branch="DevF" types="All" />
-    <ModuleConfig name="DrugRebate" branch="DevF" types="Batch" />
+    <ModuleConfig name="DrugRebate" branch="DevF" types="All" />
     <ModuleConfig name="DrugRebatePortal" branch="DevF" types="All" />
     <ModuleConfig name="EDI" branch="DevF" types="All" />
     <ModuleConfig name="EmployeeMgmt" branch="DevF" types="All" />
