@@ -8,6 +8,8 @@ start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\San
 start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\Integration\Integration.shfbproj
 start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\ManagedCare\ManagedCare.shfbproj
 start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\MCCapitation\MCCapitation.shfbproj
+start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\MemberManagement\MemberInformation\MemberInformation.shfbproj
+start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\MemberManagement\MemberManagement\MemberManagement.shfbproj
 start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\PlanManagement\Grouping\PL_Grouping.shfbproj
 start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\PlanManagement\RateSettings\PL_RateSettings.shfbproj
 start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\PlanManagement\RelatedInformation\PL_RelatedInformation.shfbproj

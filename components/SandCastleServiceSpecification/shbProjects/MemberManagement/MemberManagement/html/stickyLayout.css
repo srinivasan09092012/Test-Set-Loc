@@ -1,0 +1,23 @@
+.top-Header {
+  padding: 30px;
+  text-align: center;
+}
+
+.mid-Header {
+  padding: 10px 16px;
+  color: #f1f1f1;
+}
+
+.Content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .Content {
+  padding-top: 102px;
+}
