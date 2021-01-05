@@ -20,6 +20,7 @@ namespace BASEventsTestingUtil
     {
         private XmlDocument payloadDocument;
         private static int threadCount = 10;
+        private string selectedFolderForMultipleFiles = string.Empty;
 
 
         public MainForm()
@@ -127,19 +128,43 @@ namespace BASEventsTestingUtil
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             EventMessage em = new EventMessage();
-            em.CommitID = Guid.NewGuid().ToString();
+            
 
             string serviceUrl = ConfigurationManager.AppSettings["ServiceUrlOverride"];
-            serviceUrl = InitializeEvents(em, serviceUrl);
-            var cursor = this.Cursor;
-            Cursor.Current = Cursors.WaitCursor;
-            var message = ProcessEvents(em, serviceUrl, false);
-            Cursor.Current = cursor;
 
-            MessageBox.Show(message.Item1, "Event Result", MessageBoxButtons.OK, (message.Item2) ? MessageBoxIcon.Information : MessageBoxIcon.Error);
-            tbError.Text = message.Item1;
+            if (!string.IsNullOrWhiteSpace(this.selectedFolderForMultipleFiles))
+            {
+                foreach (string file in Directory.GetFiles(this.selectedFolderForMultipleFiles, "*.xml"))
+                {
+                    this.LoadPayload(file);
+                    em.CommitID = Guid.NewGuid().ToString();
+                    serviceUrl = this.InitializeEvents(em, serviceUrl);
+                    Cursor cursor = this.Cursor;
+                    Cursor.Current = Cursors.WaitCursor;
+                    Tuple<string, bool> tuple = this.ProcessEvents(em, serviceUrl, false);
+                    Cursor.Current = cursor;
+                    using (StreamWriter streamWriter = new StreamWriter(this.selectedFolderForMultipleFiles + "\\" + ConfigurationManager.AppSettings["LogFileNameForMultipleFileProcess"], true))
+                    {
+                        streamWriter.WriteLine((object)DateTime.Now);
+                        streamWriter.WriteLine(tuple.Item2 ? "Event Executed Successfully" : "Event Failed - " + tuple.Item1);
+                    }
+                }
+            }
+            else
+            {
+                em.CommitID = Guid.NewGuid().ToString();
+                serviceUrl = InitializeEvents(em, serviceUrl);
+                var cursor = this.Cursor;
+                Cursor.Current = Cursors.WaitCursor;
+                var message = ProcessEvents(em, serviceUrl, false);
+                Cursor.Current = cursor;
+
+                MessageBox.Show(message.Item1, "Event Result", MessageBoxButtons.OK, (message.Item2) ? MessageBoxIcon.Information : MessageBoxIcon.Error);
+                tbError.Text = message.Item1;
+            }
             buttonNormalTest.Enabled = true;
             buttonPressureTest.Enabled = true;
+            this.selectedFolderForMultipleFiles = string.Empty;
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -451,6 +476,14 @@ namespace BASEventsTestingUtil
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnbrowseFolder_Click(object sender, EventArgs e)
+        {
+            if (this.folderBrowserDialog1.ShowDialog() == DialogResult.OK && !string.IsNullOrWhiteSpace(this.folderBrowserDialog1.SelectedPath))
+                this.selectedFolderForMultipleFiles = this.folderBrowserDialog1.SelectedPath;
+            this.buttonNormalTest.Enabled = true;
+            this.buttonPressureTest.Enabled = true;
         }
     }
 }
