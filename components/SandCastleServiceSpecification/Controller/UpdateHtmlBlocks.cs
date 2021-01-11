@@ -310,12 +310,14 @@ namespace Controller
             HtmlNode OtherResourcesRootMenuEntry;
             HtmlNode OtherResourcesLinkedMenuEntry;
             HtmlNode OtherResourcesAPILinkedMenuEntry;
+            HtmlNode OtherResourcesPortalLinkedMenuEntry;
 
             HtmlNode ServicesDivForMenuEntryTocLevel0;
             HtmlNode ServicesDivForMenuEntryTocLevel1;
 
             HtmlNode OtherResourcesDivForMenuEntryTocLevel0;
             HtmlNode OtherResourcesDivForMenuEntryTocLevel1;
+            HtmlNode OtherResourcesDivForMenuEntryTocLevel2;
 
             HtmlNode apiDivForMenuEntryTocLevel0;
             HtmlNode apiDivForMenuEntryTocLevel1;
@@ -346,6 +348,8 @@ namespace Controller
             ServicesLinkedMenuEntry = NodeHelper.GetNode(htmlDocument._loadedDocument);
 
             OtherResourcesLinkedMenuEntry = NodeHelper.GetNode(htmlDocument._loadedDocument);
+
+            OtherResourcesPortalLinkedMenuEntry = NodeHelper.GetNode(htmlDocument._loadedDocument);
 
 
             OtherResourcesAPILinkedMenuEntry = NodeHelper.GetNode(htmlDocument._loadedDocument);
@@ -389,6 +393,11 @@ namespace Controller
             OtherResourcesDivForMenuEntryTocLevel1.Name = "div";
             OtherResourcesDivForMenuEntryTocLevel1.AddClass("toclevel3");
             OtherResourcesDivForMenuEntryTocLevel1.Attributes.Add("data-toclevel", "1");
+
+            OtherResourcesDivForMenuEntryTocLevel2 = NodeHelper.GetNode(htmlDocument._loadedDocument);
+            OtherResourcesDivForMenuEntryTocLevel2.Name = "div";
+            OtherResourcesDivForMenuEntryTocLevel2.AddClass("toclevel3");
+            OtherResourcesDivForMenuEntryTocLevel2.Attributes.Add("data-toclevel", "1");
 
             OtherResourcesDivForApiMenuEntryTocLevel1 = NodeHelper.GetNode(htmlDocument._loadedDocument);
             OtherResourcesDivForApiMenuEntryTocLevel1.Name = "div";
@@ -635,6 +644,24 @@ namespace Controller
             OtherResourcesLinkedMenuEntry.InnerHtml = "Browse to xsd and wsdl folder";
             OtherResourcesDivForMenuEntryTocLevel1.InnerHtml = OtherResourcesLinkedMenuEntry.OuterHtml;
             divHelperTocNav.addChildrenNode(OtherResourcesDivForMenuEntryTocLevel1);
+
+            if (!string.IsNullOrEmpty(ModuleSettings.WebPortalPath))
+            {
+                //Adding Portal External Links
+                OtherResourcesPortalLinkedMenuEntry.Name = "a";
+                OtherResourcesPortalLinkedMenuEntry.Attributes.Add("style", "color: black;");
+                OtherResourcesPortalLinkedMenuEntry.Attributes.Add("onmouseover", "OnHoverHandle('#ExternalPortal');");
+                OtherResourcesPortalLinkedMenuEntry.Attributes.Add("onmouseout", "OnLeaveHandler('#ExternalPortal');");
+
+                OtherResourcesPortalLinkedMenuEntry.Attributes.Add("id", "ExternalPortal");
+                OtherResourcesPortalLinkedMenuEntry.Attributes.Add("href", ModuleSettings.WebHost + @"\" + ModuleSettings.WebPortalPath);
+                
+                OtherResourcesPortalLinkedMenuEntry.Attributes.Add("target", "_blank");
+                OtherResourcesPortalLinkedMenuEntry.InnerHtml = "Browse to portal documentation";
+                OtherResourcesDivForMenuEntryTocLevel2.InnerHtml = OtherResourcesPortalLinkedMenuEntry.OuterHtml;
+                divHelperTocNav.addChildrenNode(OtherResourcesDivForMenuEntryTocLevel2);
+            }
+                                     
             #endregion
 
             this.UpdatePageBodyAttrib(htmlDocument._loadedDocument);
