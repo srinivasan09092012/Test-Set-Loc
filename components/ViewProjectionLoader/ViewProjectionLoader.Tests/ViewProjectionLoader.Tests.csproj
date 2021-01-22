@@ -83,9 +83,9 @@
       <HintPath>..\..\..\..\Packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="HP.HSP.UA3.Core.BAS.CQRS, Version=20.3.94.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="HP.HSP.UA3.Core.BAS.CQRS, Version=21.1.100.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.20.3.94\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.1.100\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="HP.HSP.UA3.EmployeeMgmt.BAS.Employee.Contracts">

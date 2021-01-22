@@ -114,7 +114,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="HP.HSP.UA3.Core.BAS.CQRS">
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.20.3.94\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.1.100\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">

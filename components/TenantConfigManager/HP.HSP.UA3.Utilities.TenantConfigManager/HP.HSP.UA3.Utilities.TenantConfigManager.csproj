@@ -40,20 +40,20 @@
     <Reference Include="FileHelpers">
       <HintPath>..\..\..\..\Packages\FileHelpers.3.2.7\lib\net45\FileHelpers.dll</HintPath>
     </Reference>
-    <Reference Include="HP.HSP.UA3.Core.UX.Common, Version=20.3.94.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="HP.HSP.UA3.Core.UX.Common, Version=21.1.100.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.UX.Providers.20.3.94\lib\net48\HP.HSP.UA3.Core.UX.Common.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.UX.Providers.21.1.100\lib\net48\HP.HSP.UA3.Core.UX.Common.dll</HintPath>
     </Reference>
-    <Reference Include="HP.HSP.UA3.Core.UX.Data, Version=20.3.94.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="HP.HSP.UA3.Core.UX.Data, Version=21.1.100.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.UX.Providers.20.3.94\lib\net48\HP.HSP.UA3.Core.UX.Data.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.UX.Providers.21.1.100\lib\net48\HP.HSP.UA3.Core.UX.Data.dll</HintPath>
     </Reference>
-    <Reference Include="HP.HSP.UA3.Core.UX.Interfaces, Version=20.3.94.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="HP.HSP.UA3.Core.UX.Interfaces, Version=21.1.100.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.UX.Providers.20.3.94\lib\net48\HP.HSP.UA3.Core.UX.Interfaces.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.UX.Providers.21.1.100\lib\net48\HP.HSP.UA3.Core.UX.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="HP.HSP.UA3.Core.UX.Providers">
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.UX.Providers.20.3.94\lib\net48\HP.HSP.UA3.Core.UX.Providers.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.UX.Providers.21.1.100\lib\net48\HP.HSP.UA3.Core.UX.Providers.dll</HintPath>
     </Reference>
     <Reference Include="ScintillaNET">
       <HintPath>..\..\..\..\Packages\jacobslusser.ScintillaNET.3.3.0\lib\net40\ScintillaNET.dll</HintPath>
