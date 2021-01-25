@@ -140,6 +140,7 @@
     <Content Include="Configs\PackageUpgrades\Dev\Refactor_Package_Cleanup_Repoint_From_Deleted_dll.xml" />
     <Content Include="Configs\PackageUpgrades\Dev\Refactor_Repoint_from_19_2_70_to_19_3_76.xml" />
     <Content Include="Configs\PackageUpgrades\Dev\Refactor_Web_App_Config_DOTNET_Upgrade.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\StackExchange.Redis_Upgrade_to_2.1.58.xml" />
     <Content Include="Configs\PackageUpgrades\Upgrade_Package.xml" />
     <Content Include="Configs\RefactorAppSettings.xml" />
     <Content Include="Configs\RefactorBASThumbprints.xml" />

@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="UpgradePackage" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" targetTFS="Azure">
+	<SourceDir>C:\UA3\Source</SourceDir>
+	<ModuleConfigs>
+		<!--<ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />-->
+		<ModuleConfig name="Administration" branch="Dev" types="All" />
+		<ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
+		<ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
+		<ModuleConfig name="ConfigurationManagement" branch="Dev" types="All" />
+		<ModuleConfig name="Core" branch="Dev" types="All" />
+		<ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
+		<ModuleConfig name="DrugRebate" branch="Dev" types="All" />
+		<ModuleConfig name="DrugRebatePortal" branch="Dev" types="All" />
+		<ModuleConfig name="EDI" branch="Dev" types="All" />
+		<ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
+		<ModuleConfig name="FileTransfer" branch="Dev" types="All" />
+		<ModuleConfig name="FinancialManagement" branch="Dev" types="All" />
+		<ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
+		<ModuleConfig name="Integration" branch="Dev" types="All" />
+		<ModuleConfig name="ManagedCare" branch="Dev" types="All" />
+		<ModuleConfig name="ManagedCarePortal" branch="Dev" types="All" />
+		<ModuleConfig name="MemberManagement" branch="Dev" types="All" />
+		<ModuleConfig name="MemberPortal" branch="Dev" types="All" />
+		<ModuleConfig name="Notifications" branch="Dev" types="All" />
+		<ModuleConfig name="PlanManagement" branch="Dev" types="All" />
+		<ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
+		<ModuleConfig name="ProgramIntegrityCT" branch="Dev" types="All" />
+		<ModuleConfig name="ProviderCredentialing" branch="Dev" types="All" />
+		<ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
+		<ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
+		<ModuleConfig name="ProviderPortal" branch="Dev" types="All" />
+		<ModuleConfig name="Screening" branch="Dev" types="All" />
+		<ModuleConfig name="TaskManagement" branch="Dev" types="All" />
+		<ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
+		<ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
+		<ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
+		<ModuleConfig name="Utilities" branch="Dev" types="NA" />
+	</ModuleConfigs>
+	<PackageConfigs />
+	<FileTypes />
+	<LineDeletes />
+	<ReplacementStrings />
+	<!--Only the root package should have Dependency = "false"-->
+	<!-- These sections are to be run in sequence as per the pass Number. Only one pass to be run at a time. Comment out other passes-->
+	<!--========================================================StackExchange.Redis 2.1.5.8  Pass 1 Level 0=================================================================-->
+	<References>
+		<Reference Dependency ="false" Include = "StackExchange.Redis, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c219ff1ca8c2ce46, processorArchitecture=MSIL" HintPath = "Packages\StackExchange.Redis.2.1.58\lib\net472\StackExchange.Redis.dll" />
+		<Reference Dependency ="true" Include = "Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll" />
+		<Reference Dependency ="true" Include = "Pipelines.Sockets.Unofficial, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42ea0a778e13fbe2, processorArchitecture=MSIL" HintPath = "Packages\Pipelines.Sockets.Unofficial.2.1.16\lib\net472\Pipelines.Sockets.Unofficial.dll" />
+		<Reference Dependency ="true" Include = "System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll" />
+		<Reference Dependency ="true" Include = "System.Diagnostics.PerformanceCounter, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Diagnostics.PerformanceCounter.4.7.0\lib\net461\System.Diagnostics.PerformanceCounter.dll" />
+		<Reference Dependency ="true" Include = "System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" HintPath = "Packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll" />
+		<Reference Dependency ="true" Include = "System.IO.Pipelines, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.IO.Pipelines.4.7.1\lib\netstandard2.0\System.IO.Pipelines.dll" />
+		<Reference Dependency ="true" Include = "System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Memory.4.5.4\lib\net461\System.Memory.dll" />
+		<Reference Dependency ="true" Include = "System.Numerics" HintPath = "" />
+		<Reference Dependency ="true" Include = "System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll" />
+		<Reference Dependency ="true" Include = "System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll" />
+		<Reference Dependency ="true" Include = "System.Threading.Channels, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Threading.Channels.4.7.1\lib\net461\System.Threading.Channels.dll" />
+		<Reference Dependency ="true" Include = "System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll" />
+	</References>
+	<Packages>
+		<Package id="Microsoft.Bcl.AsyncInterfaces" version="1.1.1" targetFramework="net48" />
+		<Package id="Pipelines.Sockets.Unofficial" version="2.1.16" targetFramework="net48" />
+		<Package id="StackExchange.Redis" version="2.1.58" targetFramework="net48" />
+		<Package id="System.Buffers" version="4.5.1" targetFramework="net48" />
+		<Package id="System.Diagnostics.PerformanceCounter" version="4.7.0" targetFramework="net48" />
+		<Package id="System.IO.Compression" version="4.3.0" targetFramework="net48" />
+		<Package id="System.IO.Pipelines" version="4.7.1" targetFramework="net48" />
+		<Package id="System.Memory" version="4.5.4" targetFramework="net48" />
+		<Package id="System.Numerics.Vectors" version="4.5.0" targetFramework="net48" />
+		<Package id="System.Runtime.CompilerServices.Unsafe" version="4.7.1" targetFramework="net48" />
+		<Package id="System.Threading.Channels" version="4.7.1" targetFramework="net48" />
+		<Package id="System.Threading.Tasks.Extensions" version="4.5.4" targetFramework="net48" />
+	</Packages>
+	<WebAppConfig>
+		<DependentAssembly name = "System.Buffers" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.3.0" newVersion = "4.0.3.0"/>
+		<DependentAssembly name = "System.Runtime.CompilerServices.Unsafe" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-4.0.6.0" newVersion = "4.0.6.0"/>
+		<DependentAssembly name = "System.Threading.Tasks.Extensions" publicKeyToken="cc7b13ffcd2ddd51" culture="neutral" oldVersion="0.0.0.0-4.2.0.1" newVersion="4.2.0.1"/>
+		<DependentAssembly name = "System.Numerics.Vectors" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-4.1.4.0" newVersion = "4.1.4.0"/>
+	</WebAppConfig>
+	<!--=========================================================================================================================================================-->
+
+	<!--============================================Microsoft.Bcl.AsyncInterfaces (>= 1.1.1) Pass 2 Level 1=============================================-->
+	<References>
+		<Reference Dependency ="false" Include = "Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll" />
+		<Reference Dependency ="true" Include = "System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll" />
+		<Reference Dependency ="true" Include = "System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll" />
+	</References>
+	<Packages>
+		<Package id="Microsoft.Bcl.AsyncInterfaces" version="1.1.1" targetFramework="net48" />
+		<Package id="System.Threading.Tasks.Extensions" version="4.5.4" targetFramework="net48" />
+		<Package id="System.Runtime.CompilerServices.Unsafe" version="4.7.1" targetFramework="net48" />
+	</Packages>
+	<WebAppConfig>
+		<DependentAssembly name = "System.Runtime.CompilerServices.Unsafe" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-4.0.6.0" newVersion = "4.0.6.0"/>
+		<DependentAssembly name = "System.Threading.Tasks.Extensions" publicKeyToken="cc7b13ffcd2ddd51" culture="neutral" oldVersion="0.0.0.0-4.2.0.1" newVersion="4.2.0.1"/>
+	</WebAppConfig>
+	<!--=========================================================================================================================================================-->
+
+	<!--============================================System.Threading.Channels (>= 4.7.1) Pass 3 Level 1============================================-->
+	<References>
+		<Reference Dependency ="false" Include = "System.Threading.Channels, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Threading.Channels.4.7.1\lib\net461\System.Threading.Channels.dll" />
+		<Reference Dependency ="true" Include = "System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll" />
+		<Reference Dependency ="true" Include = "System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll" />
+	</References>
+	<Packages>
+		<Package id="System.Runtime.CompilerServices.Unsafe" version="4.7.1" targetFramework="net48" />
+		<Package id="System.Threading.Channels" version="4.7.1" targetFramework="net48" />
+		<Package id="System.Threading.Tasks.Extensions" version="4.5.4" targetFramework="net48" />
+	</Packages>
+	<WebAppConfig>
+		<DependentAssembly name = "System.Runtime.CompilerServices.Unsafe" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-4.0.6.0" newVersion = "4.0.6.0"/>
+		<DependentAssembly name = "System.Threading.Tasks.Extensions" publicKeyToken="cc7b13ffcd2ddd51" culture="neutral" oldVersion="0.0.0.0-4.2.0.1" newVersion="4.2.0.1"/>
+	</WebAppConfig>
+	<!--=========================================================================================================================================================-->
+
+
+	<!--=============================================Pipelines.Sockets.Unofficial(>=2.1.16) Pass 4 Level 1============================================-->
+	<References>
+		<Reference Dependency ="false" Include = "Pipelines.Sockets.Unofficial, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42ea0a778e13fbe2, processorArchitecture=MSIL" HintPath = "Packages\Pipelines.Sockets.Unofficial.2.1.16\lib\net472\Pipelines.Sockets.Unofficial.dll" />
+		<Reference Dependency ="true" Include = "System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll" />
+		<Reference Dependency ="true" Include = "System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll" />
+		<Reference Dependency ="true" Include = "System.IO.Pipelines, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.IO.Pipelines.4.7.1\lib\netstandard2.0\System.IO.Pipelines.dll" />
+		<Reference Dependency ="true" Include = "System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll" />
+		<Reference Dependency ="true" Include = "System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Memory.4.5.4\lib\net461\System.Memory.dll" />
+		<Reference Dependency ="true" Include = "System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll" />
+	</References>
+	<Packages>
+		<Package id="Pipelines.Sockets.Unofficial" version="2.1.16" targetFramework="net48" />
+		<Package id="System.Buffers" version="4.5.1" targetFramework="net48" />
+		<Package id="System.IO.Pipelines" version="4.7.1" targetFramework="net48" />
+		<Package id="System.Memory" version="4.5.4" targetFramework="net48" />
+		<Package id="System.Numerics.Vectors" version="4.5.0" targetFramework="net48" />
+		<Package id="System.Runtime.CompilerServices.Unsafe" version="4.7.1" targetFramework="net48" />
+		<Package id="System.Threading.Tasks.Extensions" version="4.5.4" targetFramework="net48" />
+	</Packages>
+	<WebAppConfig>
+		<DependentAssembly name = "System.Buffers" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.3.0" newVersion = "4.0.3.0"/>
+		<DependentAssembly name = "System.Runtime.CompilerServices.Unsafe" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-4.0.6.0" newVersion = "4.0.6.0"/>
+		<DependentAssembly name = "System.Threading.Tasks.Extensions" publicKeyToken="cc7b13ffcd2ddd51" culture="neutral" oldVersion="0.0.0.0-4.2.0.1" newVersion="4.2.0.1"/>
+		<DependentAssembly name = "System.Numerics.Vectors" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-4.1.4.0" newVersion = "4.1.4.0"/>
+	</WebAppConfig>
+	<!--=========================================================================================================================================================-->
+
+	<!--============================================System.Threading.Tasks.Extensions (>= 4.5.4) Pass 5 Level 2==================================-->
+	<References>
+		<Reference Dependency ="false" Include = "System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll" />
+		<Reference Dependency ="true" Include = "System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll" />
+	</References>
+	<Packages>
+		<Package id="System.Runtime.CompilerServices.Unsafe" version="4.7.1" targetFramework="net48" />
+		<Package id="System.Threading.Tasks.Extensions" version="4.5.4" targetFramework="net48" />
+	</Packages>
+	<WebAppConfig>
+		<DependentAssembly name = "System.Runtime.CompilerServices.Unsafe" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-4.0.6.0" newVersion = "4.0.6.0"/>
+		<DependentAssembly name = "System.Threading.Tasks.Extensions" publicKeyToken="cc7b13ffcd2ddd51" culture="neutral" oldVersion="0.0.0.0-4.2.0.1" newVersion="4.2.0.1"/>
+	</WebAppConfig>
+	<!--=========================================================================================================================================================-->
+
+	<!--============================================System.IO.Pipelines (>= 4.7.1) Pass 6 Level 2============================================-->
+	<References>
+		<Reference Dependency ="false" Include = "System.IO.Pipelines, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.IO.Pipelines.4.7.1\lib\netstandard2.0\System.IO.Pipelines.dll" />
+		<Reference Dependency ="true" Include = "System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll" />
+		<Reference Dependency ="true" Include = "System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll" />
+		<Reference Dependency ="true" Include = "System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Memory.4.5.4\lib\net461\System.Memory.dll" />
+		<Reference Dependency ="true" Include = "System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll" />
+		<Reference Dependency ="true" Include = "System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll" />
+	</References>
+	<Packages>
+		<Package id="System.Buffers" version="4.5.1" targetFramework="net48" />
+		<Package id="System.IO.Pipelines" version="4.7.1" targetFramework="net48" />
+		<Package id="System.Memory" version="4.5.4" targetFramework="net48" />
+		<Package id="System.Numerics.Vectors" version="4.5.0" targetFramework="net48" />
+		<Package id="System.Runtime.CompilerServices.Unsafe" version="4.7.1" targetFramework="net48" />
+		<Package id="System.Threading.Tasks.Extensions" version="4.5.4" targetFramework="net48" />
+	</Packages>
+	<WebAppConfig>
+		<DependentAssembly name = "System.Buffers" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.3.0" newVersion = "4.0.3.0"/>
+		<DependentAssembly name = "System.Runtime.CompilerServices.Unsafe" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-4.0.6.0" newVersion = "4.0.6.0"/>
+		<DependentAssembly name = "System.Threading.Tasks.Extensions" publicKeyToken="cc7b13ffcd2ddd51" culture="neutral" oldVersion="0.0.0.0-4.2.0.1" newVersion="4.2.0.1"/>
+		<DependentAssembly name = "System.Numerics.Vectors" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-4.1.4.0" newVersion = "4.1.4.0"/>
+	</WebAppConfig>
+	<!--=========================================================================================================================================================-->
+
+	<!--============================================System.Memory (>= 4.5.4) Pass 7 Level 3============================================-->
+	<References>
+		<Reference Dependency ="false" Include = "System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Memory.4.5.4\lib\net461\System.Memory.dll" />
+		<Reference Dependency ="true" Include = "System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll" />
+		<Reference Dependency ="true" Include = "System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll" />
+		<Reference Dependency ="true" Include = "System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll" />
+	</References>
+	<Packages>
+		<Package id="System.Memory" version="4.5.4" targetFramework="net48" />
+		<Package id="System.Buffers" version="4.5.1" targetFramework="net48" />
+		<Package id="System.Runtime.CompilerServices.Unsafe" version="4.7.1" targetFramework="net48" />
+		<Package id="System.Numerics.Vectors" version="4.5.0" targetFramework="net48" />
+	</Packages>
+	<WebAppConfig>
+		<DependentAssembly name = "System.Buffers" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.3.0" newVersion = "4.0.3.0"/>
+		<DependentAssembly name = "System.Runtime.CompilerServices.Unsafe" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-4.0.6.0" newVersion = "4.0.6.0"/>
+		<DependentAssembly name = "System.Numerics.Vectors" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-4.1.4.0" newVersion = "4.1.4.0"/>
+	</WebAppConfig>
+	<!--=========================================================================================================================================================-->
+
+	<!--============================================System.Diagnostics.PerformanceCounter (>= 4.7.0) Pass 8 Leaf@Level 1========================================-->
+	<References>
+		<Reference Dependency ="false" Include = "System.Diagnostics.PerformanceCounter, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Diagnostics.PerformanceCounter.4.7.0\lib\net461\System.Diagnostics.PerformanceCounter.dll" />
+	</References>
+	<Packages>
+		<Package id="System.Diagnostics.PerformanceCounter" version="4.7.0" targetFramework="net48" />
+	</Packages>
+	<!--=========================================================================================================================================================-->
+
+	<!--==========================================================System.IO.Compression (>= 4.3.0) Pass 9 Leaf@Level 1==================================================-->
+	<References>
+		<Reference Dependency ="false" Include = "System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" HintPath = "Packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll" />
+	</References>
+	<Packages>
+		<Package id="System.IO.Compression" version="4.3.0" targetFramework="net48" />
+	</Packages>
+	<!--=========================================================================================================================================================-->
+	<!--=====================================================System.Runtime.CompilerServices.Unsafe (>= 4.7.1) Pass 10  Leaf@ Level2,3,4============================================-->
+	<References>
+		<Reference Dependency ="false" Include = "System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll" />
+	</References>
+	<Packages>
+		<Package id="System.Runtime.CompilerServices.Unsafe" version="4.7.1" targetFramework="net48" />
+	</Packages>
+	<WebAppConfig>
+		<DependentAssembly name = "System.Runtime.CompilerServices.Unsafe" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-4.0.6.0" newVersion = "4.0.6.0"/>
+	</WebAppConfig>
+	<!--=========================================================================================================================================================-->
+
+	<!--=================================================================System.Buffers(>= 4.5.0) Pass 11 Leaf@ Level2,3,4==================================================================-->
+	<References>
+		<Reference Dependency ="false" Include = "System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll" />
+	</References>
+	<Packages>
+		<Package id="System.Buffers" version="4.5.1" targetFramework="net48" />
+	</Packages>
+	<WebAppConfig>
+		<DependentAssembly name = "System.Buffers" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.3.0" newVersion = "4.0.3.0"/>
+	</WebAppConfig>
+	<!--=========================================================================================================================================================-->
+	<!--================================================================System.Numerics.Vectors (>= 4.5.0) Pass 12 Leaf@ Level 4===========================================================-->
+	<References>
+		<Reference Dependency ="false" Include = "System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll" />
+	</References>
+	<Packages>
+		<Package id="System.Numerics.Vectors" version="4.5.0" targetFramework="net48" />
+	</Packages>
+	<WebAppConfig>
+		<DependentAssembly name = "System.Numerics.Vectors" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-4.1.4.0" newVersion = "4.1.4.0"/>
+	</WebAppConfig>
+	<!--=========================================================================================================================================================-->
+	<TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+	<TfsWorkspace></TfsWorkspace>
+	<TFSUserName></TFSUserName>
+	<TFSPassword></TFSPassword>
+</RefactorConfig>
