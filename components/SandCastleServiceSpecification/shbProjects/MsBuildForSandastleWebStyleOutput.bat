@@ -35,3 +35,5 @@ start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\San
 start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\ProviderScreening\SSNDeathMaster\SSNDeathMaster.shfbproj
 start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\ProgramIntegrityCT\ProgramIntegrityCT.shfbproj
 start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\ProgramIntegrity\ProgramIntegrity.shfbproj
+start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\PIURBatchSvc\PIURBatchSvc.shfbproj
+start MSBuild.exe /p:CleanIntermediates=True /p:Configuration=Release J:\UA3\SandCastleCustomizationTool\ShbDoc\PIURReportSvc\PIURReportSvc.shfbproj
