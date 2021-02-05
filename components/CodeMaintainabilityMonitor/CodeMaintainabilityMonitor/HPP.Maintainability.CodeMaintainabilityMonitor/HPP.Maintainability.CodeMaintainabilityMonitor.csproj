@@ -51,27 +51,19 @@
     <Reference Include="System.Xml" />
     <Reference Include="Telerik.WinControls, Version=2021.1.122.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Packages\_Source\KendoWinForms.2020.1.218\lib\net471\Telerik.WinControls.dll</HintPath>
+      <HintPath>..\lib\RCWF\2021.1.122.40\Telerik.WinControls.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.WinControls.UI, Version=2021.1.122.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Packages\_Source\KendoWinForms.2020.1.218\lib\net471\Telerik.WinControls.UI.dll</HintPath>
+      <HintPath>..\lib\RCWF\2021.1.122.40\Telerik.WinControls.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.Windows.Documents.Core, Version=2021.1.118.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+    <Reference Include="Telerik.WinControls.UI.Design, Version=2021.1.122.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Packages\_Source\KendoWinForms.2020.1.218\lib\net471\Telerik.Windows.Documents.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Documents.Fixed, Version=2021.1.118.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Packages\_Source\KendoWinForms.2020.1.218\lib\net471\Telerik.Windows.Documents.Fixed.dll</HintPath>
+      <HintPath>..\lib\RCWF\2021.1.122.40\Telerik.WinControls.UI.Design.dll</HintPath>
     </Reference>
     <Reference Include="TelerikCommon, Version=2021.1.122.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Packages\_Source\KendoWinForms.2020.1.218\lib\net471\TelerikCommon.dll</HintPath>
-    </Reference>
-    <Reference Include="TelerikExport, Version=2021.1.122.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Packages\_Source\KendoWinForms.2020.1.218\lib\net471\TelerikExport.dll</HintPath>
+      <HintPath>..\lib\RCWF\2021.1.122.40\TelerikCommon.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
