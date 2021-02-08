@@ -76,15 +76,24 @@ namespace DataAccess.QueryHandlers
             query.Validate();
             this.watch.Start();
 
-            var providers = from p in context.Set<PROVIDER>()
-                            select new DRProviderModel()
+            var providers = (from p in context.Set<PROVIDER>()
+                             select new
+                             {
+                                 BaseId = p.BASE_ID,
+                                 BusinessName = p.BUSINESS_NAME,
+                                 _id = p.PROVIDER_ID,
+                                 IsActive = p.IS_ACTIVE,
+                                 ProviderCategoryCode = p.PROVIDER_CATEGORY_CD
+                             }).AsEnumerable()
+                            .Select(x => new DRProviderModel()
                             {
-                                BaseId = p.BASE_ID.ToString(),
-                                BusinessName = p.BUSINESS_NAME,
-                                _id = p.PROVIDER_ID,
-                                IsActive = p.IS_ACTIVE,
-                                ProviderCategoryCode = p.PROVIDER_CATEGORY_CD
-                            };
+                                BaseId = x.BaseId.ToString(),
+                                BusinessName = x.BusinessName,
+                                _id = x._id,
+                                IsActive = x.IsActive,
+                                ProviderCategoryCode = x.ProviderCategoryCode
+                            });
+
             return providers.AsQueryable();
         }
 
