@@ -101,26 +101,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <!-- Stylecop Analyzer section -->
-  <PropertyGroup>
-    <CodeAnalysisRuleSet>..\..\..\..\..\Stylecop.Analyzers.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
-    <AdditionalFiles Include="..\..\..\..\..\stylecop.json">
-      <Link>stylecop.json</Link>
-    </AdditionalFiles>
-    <Analyzer Include="..\Packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
-    <Analyzer Include="..\Packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
-  </ItemGroup>
-  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <RunAnalyzers>true</RunAnalyzers>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <RunAnalyzers>false</RunAnalyzers>
-  </PropertyGroup>
-  <!-- end of stylecop analyzer section -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
