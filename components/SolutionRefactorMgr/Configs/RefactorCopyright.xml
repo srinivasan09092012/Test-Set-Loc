@@ -6,6 +6,7 @@
     <ModuleConfig name="Administration" branch="Dev" types="All" />
     <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
     <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ConfigurationManagement" branch="Dev" types="All" />
     <ModuleConfig name="Core" branch="Dev" types="All" />
     <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
     <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
@@ -46,42 +47,42 @@
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
-    <ReplacementString qualifier="Hewlett Packard Enterprise" from="Hewlett Packard Enterprise" to="DXC Technology" />
-    <ReplacementString qualifier="Hewlett-Packard Enterprise" from="Hewlett-Packard Enterprise" to="DXC Technology" />
-    <ReplacementString qualifier="Hewlett-Packard-Enterprise" from="Hewlett-Packard-Enterprise" to="DXC Technology" />
+    <ReplacementString qualifier="DXC Technology" from="DXC Technology" to="Gainwell Technologies" />
+    <ReplacementString qualifier="DXC Technology Enterprise" from="DXC Technology Enterprise" to="Gainwell Technologies" />
+    <ReplacementString qualifier="DXC Technology-Enterprise" from="DXC Technology-Enterprise" to="Gainwell Technologies" />
 
-    <ReplacementString qualifier="hewlett packard enterprise" from="hewlett packard enterprise" to="DXC Technology" />
-    <ReplacementString qualifier="hewlett-packard enterprise" from="hewlett-packard enterprise" to="DXC Technology" />
-    <ReplacementString qualifier="hewlett-packard-enterprise" from="hewlett-packard-enterprise" to="DXC Technology" />
+    <ReplacementString qualifier="DXC Technology" from="DXC Technology" to="Gainwell Technologies" />
+    <ReplacementString qualifier="DXC Technology enterprise" from="DXC Technology enterprise" to="Gainwell Technologies" />
+    <ReplacementString qualifier="DXC Technology-enterprise" from="DXC Technology-enterprise" to="Gainwell Technologies" />
 
-    <ReplacementString qualifier="Hewlett Packard Company" from="Hewlett Packard Company" to="DXC Technology" />
-    <ReplacementString qualifier="Hewlett-Packard Company" from="Hewlett-Packard Company" to="DXC Technology" />
-    <ReplacementString qualifier="Hewlett-Packard-Company" from="Hewlett-Packard-Company" to="DXC Technology" />
+    <ReplacementString qualifier="DXC Technology" from="DXC Technology" to="Gainwell Technologies" />
+    <ReplacementString qualifier="DXC Technology" from="DXC Technology" to="Gainwell Technologies" />
+    <ReplacementString qualifier="DXC Technology-Company" from="DXC Technology-Company" to="Gainwell Technologies" />
 
-    <ReplacementString qualifier="hewlett packard company" from="hewlett packard company" to="DXC Technology" />
-    <ReplacementString qualifier="hewlett-packard company" from="hewlett-packard company" to="DXC Technology" />
-    <ReplacementString qualifier="hewlett-packard-company" from="hewlett-packard-company" to="DXC Technology" />
+    <ReplacementString qualifier="DXC Technology" from="DXC Technology" to="Gainwell Technologies" />
+    <ReplacementString qualifier="DXC Technology" from="DXC Technology" to="Gainwell Technologies" />
+    <ReplacementString qualifier="DXC Technology-company" from="DXC Technology-company" to="Gainwell Technologies" />
 
-    <ReplacementString qualifier="Hewlett Packard" from="Hewlett Packard" to="DXC Technology" />
-    <ReplacementString qualifier="Hewlett-Packard" from="Hewlett-Packard" to="DXC Technology" />
+    <ReplacementString qualifier="DXC Technology" from="DXC Technology" to="Gainwell Technologies" />
+    <ReplacementString qualifier="DXC Technology" from="DXC Technology" to="Gainwell Technologies" />
 
-    <ReplacementString qualifier="hewlett packard" from="hewlett packard" to="DXC Technology" />
-    <ReplacementString qualifier="hewlett-packard" from="hewlett-packard" to="DXC Technology" />
+    <ReplacementString qualifier="DXC Technology" from="DXC Technology" to="Gainwell Technologies" />
+    <ReplacementString qualifier="DXC Technology" from="DXC Technology" to="Gainwell Technologies" />
 
-    <ReplacementString qualifier="DXC Technology" from="2015" to="2018" />
-    <ReplacementString qualifier="DXC Technology" from="2016" to="2018" />
-    <ReplacementString qualifier="DXC Technology" from="2017" to="2018" />
+    <ReplacementString qualifier="Gainwell Technologies" from="2018" to="2021" />
+    <ReplacementString qualifier="Gainwell Technologies" from="2019" to="2021" />
+    <ReplacementString qualifier="Gainwell Technologies" from="2020" to="2021" />
 
-    <ReplacementString qualifier="Copyright © 2015" from="2015" to="2018" />
-    <ReplacementString qualifier="Copyright © 2016" from="2016" to="2018" />
-    <ReplacementString qualifier="Copyright © 2017" from="2017" to="2018" />
+    <ReplacementString qualifier="Copyright © 2018" from="2018" to="2021" />
+    <ReplacementString qualifier="Copyright © 2019" from="2019" to="2021" />
+    <ReplacementString qualifier="Copyright © 2020" from="2020" to="2021" />
 
-    <ReplacementString qualifier="Copyright (c) 2015" from="2015" to="2018" />
-    <ReplacementString qualifier="Copyright (c) 2016" from="2016" to="2018" />
-    <ReplacementString qualifier="Copyright (c) 2017" from="2017" to="2018" />
+    <ReplacementString qualifier="Copyright (c) 2018" from="2018" to="2021" />
+    <ReplacementString qualifier="Copyright (c) 2019" from="2019" to="2021" />
+    <ReplacementString qualifier="Copyright (c) 2020" from="2020" to="2021" />
   </ReplacementStrings>
   <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
-  <TfsWorkspace>BIBWOS1ISV_1</TfsWorkspace>
-  <TFSUserName>AzureDevOpsPATKeyName</TFSUserName>
-  <TFSPassword>AzureDevOpsPATKeyValue</TFSPassword>
+  <TfsWorkspace></TfsWorkspace>
+  <TFSUserName></TFSUserName>
+  <TFSPassword></TFSPassword>
 </RefactorConfig>
