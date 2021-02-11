@@ -355,7 +355,28 @@ namespace BASEventsTestingUtil
             }
 
             XmlNodeList eventFilterMetadataNodeList = this.payloadDocument.GetElementsByTagName("EventFilterMetadata");
-            em.EventFilterMetadata = eventFilterMetadataNodeList == null ? null : eventFilterMetadataNodeList.Count == 0 ? null : eventFilterMetadataNodeList[0].OuterXml.ToString();
+            if (eventFilterMetadataNodeList == null || eventFilterMetadataNodeList.Count == 0)
+            {
+                eventFilterMetadataNodeList = this.payloadDocument.GetElementsByTagName("a:EventFilterMetadata");
+            }
+            em.EventFilterMetadata = eventFilterMetadataNodeList == null ? null : eventFilterMetadataNodeList.Count == 0 ? null : eventFilterMetadataNodeList[0].InnerXml == string.Empty ? null : eventFilterMetadataNodeList[0].OuterXml.ToString();
+
+
+            XmlNodeList INGroupIdList = this.payloadDocument.GetElementsByTagName("INGroupId");
+            if (INGroupIdList == null || INGroupIdList.Count == 0)
+            {
+                INGroupIdList = this.payloadDocument.GetElementsByTagName("a:INGroupId");
+            }
+            em.INGroupId = INGroupIdList == null ? Guid.Empty : INGroupIdList.Count == 0 ? Guid.Empty : INGroupIdList[0].InnerXml == string.Empty ? Guid.Empty : Guid.Parse(INGroupIdList[0].InnerXml);
+
+
+            XmlNodeList IsLastFromGroup = this.payloadDocument.GetElementsByTagName("IsLastFromGroup");
+            if (IsLastFromGroup == null || IsLastFromGroup.Count == 0)
+            {
+                IsLastFromGroup = this.payloadDocument.GetElementsByTagName("a:IsLastFromGroup");
+            }
+            em.IsLastFromGroup = IsLastFromGroup == null ? false : IsLastFromGroup.Count == 0 ? false : INGroupIdList[0].InnerXml == string.Empty ? false : bool.Parse(IsLastFromGroup[0].InnerXml);
+
 
             StringBuilder sb = new StringBuilder();
             var settings = new XmlWriterSettings
