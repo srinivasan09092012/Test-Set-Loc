@@ -554,7 +554,7 @@ namespace Controller
 
             htmlDocument.Load();
             tblHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "classList");
-            List<string> col = tblHelper.readColumnValues(0);
+            List<string> col = tblHelper.readColumnValues(0).Where(v => v != "Class").ToList();
             int x = 1;
             HtmlNode tmpNode = NodeHelper.GetNode(htmlDocument._loadedDocument);
             foreach (string val in col)

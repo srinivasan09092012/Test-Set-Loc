@@ -9,21 +9,24 @@
   <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>
   <WebHostPhysicalPath>J:\www\servicespecs\Modules</WebHostPhysicalPath>
   <ServiceListPages>
-	<ListPage>N_HP_HSP_UA3_Integration_BAS_Integration.htm</ListPage>
+    <ListPage>N_HP_HSP_UA3_Integration_BAS_Integration.htm</ListPage>
+    <ListPage>N_HP_HSP_UA3_Integration_BAS_EventGroupWatcher.htm</ListPage>
+    <ListPage>N_HP_HSP_UA3_Integration_BAS_EventsDistributor.htm</ListPage>
   </ServiceListPages>
   <MainContractContent>G_HP_HSP_UA3_Integration_BAS_Integration_Contracts.htm</MainContractContent>
   <ContractListPages>
-	<ListPage>N_HP_HSP_UA3_Integration_BAS_Integration_Contracts_Events.htm</ListPage>
+    <ListPage>N_HP_HSP_UA3_Integration_BAS_Integration_Contracts_Events.htm</ListPage>
+    <ListPage>N_HP_HSP_UA3_Integration_BAS_EventGroupWatcher_Contracts_Events.htm</ListPage>
+    <ListPage>N_HP_HSP_UA3_Integration_BAS_EventsDistributor_Contracts_Events.htm</ListPage>
   </ContractListPages>
-  
   <OtherResourcesFolder>Integration</OtherResourcesFolder>
   <ModuleAPISourcePath></ModuleAPISourcePath>
   <ModuleAPITargetPath></ModuleAPITargetPath>
   <ModuleAPIPages>
-	<ListPage></ListPage>
+    <ListPage></ListPage>
   </ModuleAPIPages>
   <MainAPIContent></MainAPIContent>
-   <ModuleHelpContentAvailable>true</ModuleHelpContentAvailable>
+  <ModuleHelpContentAvailable>true</ModuleHelpContentAvailable>
   <ModuleAPIAvailable>false</ModuleAPIAvailable>
-  <EventsExtractFile>C:\extracts\dev\export.dsv</EventsExtractFile>
+  <EventsExtractFile>J:\UA3\SandCastleCustomizationTool\ModuleEventsExtracts\Test\PublishedModules.csv</EventsExtractFile>
 </DocModuleSettingModel>

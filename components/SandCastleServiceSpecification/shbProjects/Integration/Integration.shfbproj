@@ -19,10 +19,17 @@
     <Language>en-US</Language>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Integration\HP.HSP.UA3.Integration.BAS.Integration.Contracts.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Integration\HP.HSP.UA3.Integration.BAS.Integration.Contracts.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Integration\HP.HSP.UA3.Integration.BAS.Integration.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Integration\HP.HSP.UA3.Integration.BAS.Integration.xml" />
-    </DocumentationSources>
+<DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Integration\HP.HSP.UA3.Integration.BAS.Integration.Contracts.xml" />
+<DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Integration\HP.HSP.UA3.Integration.BAS.Integration.dll" />
+<DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Integration\HP.HSP.UA3.Integration.BAS.Integration.xml" />
+<DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Integration.BAS.EventGroupWatcher\HP.HSP.UA3.Integration.BAS.EventGroupWatcher.Contracts.dll" />
+<DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Integration.BAS.EventGroupWatcher\HP.HSP.UA3.Integration.BAS.EventGroupWatcher.Contracts.xml" />
+<DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Integration.BAS.EventGroupWatcher\HP.HSP.UA3.Integration.BAS.EventGroupWatcher.dll" />
+<DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Integration.BAS.EventGroupWatcher\HP.HSP.UA3.Integration.BAS.EventGroupWatcher.xml" />
+<DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Integration.BAS.EventsDistributor\HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.dll" />
+<DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Integration.BAS.EventsDistributor\HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.xml" />
+<DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Integration.BAS.EventsDistributor\HP.HSP.UA3.Integration.BAS.EventsDistributor.dll" />
+<DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Integration.BAS.EventsDistributor\HP.HSP.UA3.Integration.BAS.EventsDistributor.xml" /></DocumentationSources>
     <HelpFileFormat>Website</HelpFileFormat>
     <SyntaxFilters>C#</SyntaxFilters>
     <PresentationStyle>VS2013</PresentationStyle>
@@ -75,7 +82,50 @@ This API documentation is intented for teams or products that need to interact w
     </NamespaceSummaries>
     <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
-      <Filter entryType="Namespace" fullName="HP.HSP.UA3.Integration.BAS.Integration" isExposed="True">
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.Integration.BAS.EventGroupWatcher" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Integration.BAS.EventGroupWatcher.Global" filterName="Global" isExposed="False" />
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.EventsDistributorQueryService" filterName="EventsDistributorQueryService" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.EventsDistributorQueryService.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.EventsDistributorQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.EventsDistributorService" filterName="EventsDistributorService" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.EventsDistributorService.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.EventsDistributorService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Global" filterName="Global" isExposed="False" />
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.Commands" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.Commands.AddExternalOrchestrationCommand" filterName="AddExternalOrchestrationCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.Commands.AddExternalOrchestrationCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.Commands.AddExternalOrchestrationCommand.SetCommandValidations" filterName="SetCommandValidations" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.Commands.ExternalFileHistoryCommand" filterName="ExternalFileHistoryCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.Commands.ExternalFileHistoryCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.Commands.ExternalFileHistoryCommand.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.Commands.UpdateExternalOrchestrationCommand" filterName="UpdateExternalOrchestrationCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.Commands.UpdateExternalOrchestrationCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.Commands.UpdateExternalOrchestrationCommand.SetCommandValidations" filterName="SetCommandValidations" isExposed="False" />
+  </Filter>
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.Commands.ValidateExternalOrchestrationCommand" filterName="ValidateExternalOrchestrationCommand" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.Commands.ValidateExternalOrchestrationCommand.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.Commands.ValidateExternalOrchestrationCommand.SetCommandValidations" filterName="SetCommandValidations" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.Queries" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.Queries.ExternalOrchestrationQuery" filterName="ExternalOrchestrationQuery" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.Queries.ExternalOrchestrationQuery.#ctor" filterName=".ctor" isExposed="False" />
+    <Filter entryType="Method" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.Queries.ExternalOrchestrationQuery.Validate" filterName="Validate" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.Queries.Parameters" isExposed="True">
+  <Filter entryType="Class" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.Queries.Parameters.ExternalOrchestrationQueryParams" filterName="ExternalOrchestrationQueryParams" isExposed="True">
+    <Filter entryType="Constructor" fullName="HP.HSP.UA3.Integration.BAS.EventsDistributor.Contracts.Queries.Parameters.ExternalOrchestrationQueryParams.#ctor" filterName=".ctor" isExposed="False" />
+  </Filter>
+</Filter>
+<Filter entryType="Namespace" fullName="HP.HSP.UA3.Integration.BAS.Integration" isExposed="True">
   <Filter entryType="Class" fullName="HP.HSP.UA3.Integration.BAS.Integration.Global" filterName="Global" isExposed="False" />
   <Filter entryType="Class" fullName="HP.HSP.UA3.Integration.BAS.Integration.IntegrationEventService" filterName="IntegrationEventService" isExposed="False" />
   <Filter entryType="Class" fullName="HP.HSP.UA3.Integration.BAS.Integration.IntegrationModuleConfigurator" filterName="IntegrationModuleConfigurator" isExposed="False" />
