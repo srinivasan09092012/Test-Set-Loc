@@ -108,7 +108,9 @@ namespace DataAccess.QueryHandlers
                                                                              ProviderServiceLocationId = sl.PROVIDER_SERVICE_LOCATION_ID,
                                                                              PracticeLocationId = sl.PRACTICE_LOCATION_ID,
                                                                              LongNPI = sl.NPI,
-                                                                             ProviderBillingId = sl.PROVIDER_BILLING_ID
+                                                                             ProviderBillingId = sl.PROVIDER_BILLING_ID,
+                                                                             ProviderTypeCode = sl.PROVIDER_TYPE_CD,
+                                                                             IsActive = sl.IS_ACTIVE
                                                                          }).ToList();
 
                 return serviceLocations;
