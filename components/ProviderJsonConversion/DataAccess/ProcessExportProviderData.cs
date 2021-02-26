@@ -24,16 +24,16 @@ namespace DataAccess
             this.totalProv = this.GetTotalProviders();
         }
 
-        public void CompleteCall()
+        public void CompleteCall(string outputFlePath)
         {
             int totalProv = this.GetTotalProviders();
             int currentPage = 1;
 
             DRProviderQuery result = this.ExtractData(currentPage, totalProv);
-            ExportDataHelper.GenerateJsonFile(result, this.startNumber, this.totalProv, "DRProvider");
+            ExportDataHelper.GenerateJsonFile(result, this.startNumber, this.totalProv, "DRProvider", outputFlePath);
         }
 
-        public void PartialCalls(int takeNumber)
+        public void PartialCalls(int takeNumber, string outputFilePath)
         {
             int skipNumber = 0;
             int partialTimes = 0;
@@ -51,14 +51,14 @@ namespace DataAccess
             for (int i = 1; i <= partialTimes; i++)
             {
                 DRProviderQuery result = this.ExtractData(i, takeNumber);
-                ExportDataHelper.GenerateJsonFile(result, this.startNumber, this.totalProv, fileName + i);
+                ExportDataHelper.GenerateJsonFile(result, this.startNumber, this.totalProv, fileName + i, outputFilePath);
                 skipNumber = takeNumber * i;
                 this.startNumber = skipNumber;
 
                 if (i == partialTimes && finalProviders > 0)
                 {
                     DRProviderQuery resultExtra = this.ExtractData(i + 1, takeNumber);
-                    ExportDataHelper.GenerateJsonFile(resultExtra, this.startNumber, this.totalProv, fileName + (i + 1));
+                    ExportDataHelper.GenerateJsonFile(resultExtra, this.startNumber, this.totalProv, fileName + (i + 1), outputFilePath);
                 }
             }
         }

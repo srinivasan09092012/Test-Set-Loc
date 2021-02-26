@@ -24,16 +24,16 @@ namespace DataAccess
             this.totalIRSTaxIds = this.GetTotalIRSTaxIds();
         }
 
-        public void CompleteCall()
+        public void CompleteCall(string outputFilePath)
         {
             int totalIRSTaxId = this.GetTotalIRSTaxIds();
             int currentPage = 1;
 
             DRIRSTaxIdentificationQuery result = this.ExtractData(currentPage, totalIRSTaxId);
-            ExportDataHelper.GenerateJsonFile(result, this.startNumber, this.totalIRSTaxIds, "DRIRSTaxIdentification");
+            ExportDataHelper.GenerateJsonFile(result, this.startNumber, this.totalIRSTaxIds, "DRIRSTaxIdentification", outputFilePath);
         }
 
-        public void PartialCalls(int takeNumber)
+        public void PartialCalls(int takeNumber, string outputFilePath)
         {
             int skipNumber = 0;
             int partialTimes = 0;
@@ -51,14 +51,14 @@ namespace DataAccess
             for (int i = 1; i <= partialTimes; i++)
             {
                 DRIRSTaxIdentificationQuery result = this.ExtractData(i, takeNumber);
-                ExportDataHelper.GenerateJsonFile(result, this.startNumber, this.totalIRSTaxIds, fileName + i);
+                ExportDataHelper.GenerateJsonFile(result, this.startNumber, this.totalIRSTaxIds, fileName + i, outputFilePath);
                 skipNumber = takeNumber * i;
                 this.startNumber = skipNumber;
 
                 if (i == partialTimes && finalIRSTaxIds > 0)
                 {
                     DRIRSTaxIdentificationQuery resultExtra = this.ExtractData(i + 1, takeNumber);
-                    ExportDataHelper.GenerateJsonFile(resultExtra, this.startNumber, this.totalIRSTaxIds, fileName + (i + 1));
+                    ExportDataHelper.GenerateJsonFile(resultExtra, this.startNumber, this.totalIRSTaxIds, fileName + (i + 1), outputFilePath);
                 }
             }
         }

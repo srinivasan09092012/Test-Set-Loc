@@ -38,7 +38,7 @@ namespace DataAccess
             return context;
         }
 
-        public static void GenerateJsonFile(dynamic result, int startNumber, int totalRecords, string fileName)
+        public static void GenerateJsonFile(dynamic result, int startNumber, int totalRecords, string fileName, string outputFilePath)
         {
             LoggerManager.Logger.LogInformational("Generating json object");
 
@@ -54,8 +54,11 @@ namespace DataAccess
             ////Then replace the replacement text by ISODate(" and ") to have in this way ISODate("2019-05-01T00:00:00.000Z")
             json = json.Replace("\"*@*@*@*@", "ISODate(\"").Replace("*@*@*@*\"", "\")");
 
-            LoggerManager.Logger.LogInformational("Writting json file");
-            System.IO.File.WriteAllText(@"c:\\ProviderJSON\\" + fileName + ".json", json);
+            LoggerManager.Logger.LogInformational("Writing JSON extract file " + fileName + " to " + outputFilePath);
+
+            string path = System.IO.Path.Combine(outputFilePath, fileName + ".json");
+            System.IO.File.WriteAllText(path, json);
+
             TimeSpan t = TimeSpan.FromMilliseconds(result.TotalMiliseconds);
             string totalTime = string.Format("{0:D2}h:{1:D2}m:{2:D2}s:{3:D3}ms", t.Hours, t.Minutes, t.Seconds, t.Milliseconds);
             LoggerManager.Logger.LogInformational(string.Format("Time to process {0} to {1} from {2} records took: {3}", startNumber + 1, startNumber + result.Results.Count, totalRecords, totalTime));
