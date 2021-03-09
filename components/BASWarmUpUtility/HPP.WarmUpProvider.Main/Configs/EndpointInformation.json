@@ -2,7 +2,7 @@
 
   {
     "TenantId": "77B50320-5F06-5740-84F4-18D4A8CDA51D",
-    "RootURL": "https://sf.sandbox.mapshc.com",
+    "RootURL": "https://sf.test.mapshc.com",
     "Endpoints": [
       {
         "ModuleName": "Administration",

@@ -20,7 +20,7 @@
                                     AzureActiveDirectory="true"
                                     ServerCertThumbprint="0123456789012345678901234567890123456789" />
   -->
-  <ClusterConnectionParameters ConnectionEndpoint="sf.sandbox.mapshc.com:8020" X509Credential="true" ServerCertThumbprint="745D51B58F1CD9FCBC59F7AFAF1FA9A499EEFE4C" FindType="FindByThumbprint" FindValue="745D51B58F1CD9FCBC59F7AFAF1FA9A499EEFE4C" StoreLocation="CurrentUser" StoreName="My" />
+  <ClusterConnectionParameters ConnectionEndpoint="sf.test.mapshc.com:8020" X509Credential="true" ServerCertThumbprint="399A1731555615D2D61AB54DDA5993698A11B9C5" FindType="FindByThumbprint" FindValue="399A1731555615D2D61AB54DDA5993698A11B9C5" StoreLocation="CurrentUser" StoreName="My" />
   <ApplicationParameterFile Path="..\ApplicationParameters\Cloud.xml" />
   <CopyPackageParameters CompressPackage="true" />
 </PublishProfile>

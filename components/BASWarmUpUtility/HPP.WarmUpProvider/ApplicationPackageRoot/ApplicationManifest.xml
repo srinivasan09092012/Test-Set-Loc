@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="HPP.WarmUpProviderType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
-    <Parameter Name="HPP.WarmUpProvider.Main_InstanceCount" DefaultValue="-1" />
+    <Parameter Name="HPP.WarmUpProvider.Main_InstanceCount" DefaultValue="1" />
+    <Parameter Name="BASWarmUpProviderSvc_api_cert" DefaultValue="" />
   </Parameters>
   <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
        should match the Name and Version attributes of the ServiceManifest element defined in the 
@@ -22,4 +23,7 @@
       </StatelessService>
     </Service>
   </DefaultServices>
+  <Certificates>
+    <EndpointCertificate X509FindValue="AB153C3B1F631820B334E08502E085BB65481250" Name="BASWarmUpProviderSvc_api_cert" />
+  </Certificates>
 </ApplicationManifest>

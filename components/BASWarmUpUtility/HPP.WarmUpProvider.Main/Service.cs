@@ -68,6 +68,7 @@ namespace HPP.WarmUpProvider.Main
             {
                 try
                 {
+                    LoggerManager.Logger.LogInformational("BAS Warm Up Endpoint Starting.....");
                     WarmUpHelper warmUpProvider = new WarmUpHelper();
                     warmUpProvider.StartUp();
                 }

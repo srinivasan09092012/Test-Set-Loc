@@ -26,40 +26,35 @@ namespace WarmUpProvider.Helpers
 {
     public class WarmUpHelper
     {
-        private Guid tenantId;
         private ConcurrentBag<ExceptionNotificationModel> businessExceptionMessages = new ConcurrentBag<ExceptionNotificationModel>();
 
         public void StartUp()
         {
-            this.tenantId = Guid.Parse(ConfigurationManager.AppSettings["TenantId"]);
             this.WarmUpEndpoints();
         }
 
         private void WarmUpEndpoints()
         {
-            Stopwatch sw = new Stopwatch();
-            ApplicationConfigurationManager.LoadApplicationConfiguration(this.tenantId.ToString(), new RedisCacheManager());
-
-            sw.Start();
-            this.LoggerHelper("-----------Starting to Warm up Endpoints for Tenant : " + this.tenantId.ToString() + "-----------");
-
             try
             {
                 FileHelper fileHelper = new FileHelper();
                 List<TenantWarmUpModel> tenantWarmUpModels = new List<TenantWarmUpModel>();
 
                 tenantWarmUpModels = fileHelper.ReadEndpointDataFromJSON();
-                
+
                 List<Task> tasks = new List<Task>();
 
                 foreach (var tenant in tenantWarmUpModels)
                 {
+                    Stopwatch stopWatch = new Stopwatch();
+                    stopWatch.Start();
+                    this.LoggerHelper("-----------Starting to Warm up Provider Endpoints for Tenant : " + tenant.TenantId + "-----------");
                     foreach (var moduleEndpoint in tenant.Endpoints)
                     {
                         string absoluteURL = tenant.RootURL + moduleEndpoint.EndPoint;
                         tasks.Add(Task.Run(() =>
                         {
-                            this.WarmUpServices(moduleEndpoint, absoluteURL, this.tenantId.ToString());
+                            this.WarmUpServices(moduleEndpoint, absoluteURL, tenant.TenantId);
                         }));
 
                         if (tasks.Count == 15)
@@ -68,26 +63,26 @@ namespace WarmUpProvider.Helpers
                             tasks.Clear();
                         }
                     }
+
+                    Task.WaitAll(tasks.ToArray());
+                    tasks.Clear();
+
+                    if (this.businessExceptionMessages.Count > 0)
+                    {
+                        this.SendMail(tenant.TenantId);
+                        this.businessExceptionMessages = null;
+                    }
+
+                    stopWatch.Stop();
+                    this.LoggerHelper("Total Time Took To Warm Up Provider Endpoints of Tenant : " + tenant.TenantId + " " + stopWatch.Elapsed.Hours + ":" + stopWatch.Elapsed.Minutes + ":" + stopWatch.Elapsed.Seconds);
                 }
 
-                Task.WaitAll(tasks.ToArray());
-                tasks.Clear();
                 tenantWarmUpModels.Clear();
             }
             catch (Exception ex)
             {
                 this.LoggerHelper("Error warming up Provider Endpoints!", WarmUpEnums.LogType.Error, ex);
                 throw ex;
-            }
-
-            sw.Stop();
-
-            this.LoggerHelper("Total Time Took To Warm Up Endpoints: " + sw.Elapsed.Hours + ":" + sw.Elapsed.Minutes + ":" + sw.Elapsed.Seconds);
-
-            if (this.businessExceptionMessages.Count > 0)
-            {
-                this.SendMail();
-                this.businessExceptionMessages = null;
             }
 
             this.LoggerHelper("-----------Warming up Endpoints Completed-----------");
@@ -123,7 +118,7 @@ namespace WarmUpProvider.Helpers
                 {
                     BusinessExceptionMessage = new List<BusinessExceptionMessage>()
                     {
-                        new BusinessExceptionMessage(string.Empty, string.Empty, ex.Message)
+                        new BusinessExceptionMessage("FaultException<ServiceException>", "FaultException<ServiceException>", ex.Message)
                     },
                     Endpoint = absoluteURL
                 });
@@ -180,25 +175,32 @@ namespace WarmUpProvider.Helpers
                 }
             }
 
-            this.businessExceptionMessages.Add(new ExceptionNotificationModel()
+            if (businessMessages.Count > 0)
             {
-                BusinessExceptionMessage = new List<BusinessExceptionMessage>(businessMessages),
-                Endpoint = absoluteURL
-            });
+                this.businessExceptionMessages.Add(new ExceptionNotificationModel()
+                {
+                    BusinessExceptionMessage = new List<BusinessExceptionMessage>(businessMessages),
+                    Endpoint = absoluteURL
+                });
+            }
         }
 
-        private void SendMail()
+        private void SendMail(string tenantID)
         {
             this.LoggerHelper("Sending Exception Notification Mail.....", WarmUpEnums.LogType.Information);
             string notificationBinding = ConfigurationManager.AppSettings["NotificationBinding"];
             string notificationEndpoint = ConfigurationManager.AppSettings["NotificationEndpoint"];
             string fromEmailAddress = ConfigurationManager.AppSettings["FromEmailAddress"];
             string toEmailAddress = ConfigurationManager.AppSettings["ToEmailAddress"];
+            string appName = ConfigurationManager.AppSettings["ApplicationName"];
             string exceptionMessages = string.Empty;
             string emailSubject = "Warm Up Exception Notification_" + DateTime.Now.ToShortDateString() + "_" + DateTime.Now.ToShortTimeString();
-            string emailBody = "Exception messages which were observed while warming up services are attached in this mail.\r\n\nThank you,\rBAS Warm Up Utility.";
+            string machineName = Environment.MachineName;
+            string emailBody = "Exception messages which were observed while warming up services are attached in this mail.\r\nServer Name : " + machineName + "\r\nApplication Name : " + appName + "\r\n"; //// Thank you,\rBAS Warm Up Utility.";
+            string emailBodyNote = "Please note: This email was sent by an automated process from an unmonitored address. Please do not reply to this email.";
             List<Address> toAddress = new List<Address>();
             List<Attachments> attachment = new List<Attachments>();
+            emailBody += emailBodyNote;
 
             Address fromAddress = new Address()
             {
@@ -208,12 +210,12 @@ namespace WarmUpProvider.Helpers
 
             foreach (string item in toEmailAddress.Split(','))
             {
-                Address subscribingModuleEmailIds = new Address()
+                Address toEmailIds = new Address()
                 {
                     EmailAddress = item.Trim(),
                     MailType = Address.MailTypeEnum.To
                 };
-                toAddress.Add(subscribingModuleEmailIds);
+                toAddress.Add(toEmailIds);
             }
 
             exceptionMessages += "Endpoint,";
@@ -245,7 +247,7 @@ namespace WarmUpProvider.Helpers
                 IServiceChannelFactory serviceChannelFactory = new ServiceChannelFactory(notificationBinding, notificationEndpoint);
 
                 serviceChannelFactory.Invoke<INotificationService>(
-                        proxy => proxy.SendEmail(this.tenantId.ToString(), emailSubject, emailBody, toAddress, fromAddress, MailPriority.Normal, attachment));
+                        proxy => proxy.SendEmail(tenantID, emailSubject, emailBody, toAddress, fromAddress, MailPriority.Normal, attachment));
 
                 this.LoggerHelper("Exception Notifications Sent.", WarmUpEnums.LogType.Information);
             }
