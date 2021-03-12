@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceSpecificationTool", "ServiceSpecificationTool\ServiceSpecificationTool.csproj", "{CA68667B-694F-40FD-BF12-AD4DE8027C8B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2200EA0A-4BB3-43AE-AB93-D4808B3C4DBE}"
+	ProjectSection(SolutionItems) = preProject
+		App.config = App.config
+		nuget.config = nuget.config
+		NuGet.exe = NuGet.exe
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA68667B-694F-40FD-BF12-AD4DE8027C8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA68667B-694F-40FD-BF12-AD4DE8027C8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA68667B-694F-40FD-BF12-AD4DE8027C8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA68667B-694F-40FD-BF12-AD4DE8027C8B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B8EA8564-5424-49B2-ABF1-30C317135744}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://payerportfolio.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ServiceSpecificationTool\\ServiceSpecificationTool.csproj
+		SccProjectName1 = ServiceSpecificationTool
+		SccLocalPath1 = ServiceSpecificationTool
+	EndGlobalSection
+EndGlobal
