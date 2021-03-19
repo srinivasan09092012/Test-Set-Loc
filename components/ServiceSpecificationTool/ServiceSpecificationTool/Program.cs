@@ -1675,7 +1675,7 @@ namespace ServiceSpecificationTool
                 {
                     if (!module.ModuleName.Contains("Portal"))
                     {
-                        localWorkSpacePath = @"\" + branchName[2] + @"\BAS";
+                        localWorkSpacePath = @"\" + branchName + @"\BAS";
 
                         serverPath = module.Serverpath + localWorkSpacePath;
 
