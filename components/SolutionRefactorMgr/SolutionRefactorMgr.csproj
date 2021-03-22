@@ -176,7 +176,8 @@
     <Content Include="Configs\RefactorHotfix-IncrementFileVersion.xml" />
     <Content Include="Configs\PackageUpgrades\DevF\Oracle.ManagedDataAccess.EntityFramework upgrade to 19.7.0.xml" />
     <Content Include="Configs\PackageUpgrades\DevF\NEventStore Upgrade to 7.0.0.xml" />
-    <None Include="Configs\PackageUpgrades\DevF\StackExchange.Redis_Upgrade_to_2.1.58" />
+    <Content Include="Configs\PackageUpgrades\DevF\StackExchange.Redis_Upgrade_to_2.2.4.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\StackExchange.Redis_Upgrade_to_2.1.58.xml" />
     <None Include="nuget.config">
       <SubType>Designer</SubType>
     </None>
