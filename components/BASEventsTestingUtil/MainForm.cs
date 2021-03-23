@@ -375,7 +375,7 @@ namespace BASEventsTestingUtil
             {
                 IsLastFromGroup = this.payloadDocument.GetElementsByTagName("a:IsLastFromGroup");
             }
-            em.IsLastFromGroup = IsLastFromGroup == null ? false : IsLastFromGroup.Count == 0 ? false : INGroupIdList[0].InnerXml == string.Empty ? false : bool.Parse(IsLastFromGroup[0].InnerXml);
+            em.IsLastFromGroup = IsLastFromGroup == null ? false : IsLastFromGroup.Count == 0 ? false : IsLastFromGroup[0].InnerXml == string.Empty ? false : bool.Parse(IsLastFromGroup[0].InnerXml);
 
 
             StringBuilder sb = new StringBuilder();

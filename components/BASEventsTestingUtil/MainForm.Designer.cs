@@ -280,6 +280,11 @@ namespace BASEventsTestingUtil
             // 
             this.numericUpDownEventsNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDownEventsNumbers.Location = new System.Drawing.Point(1260, 572);
+            this.numericUpDownEventsNumbers.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
             this.numericUpDownEventsNumbers.Name = "numericUpDownEventsNumbers";
             this.numericUpDownEventsNumbers.Size = new System.Drawing.Size(56, 28);
             this.numericUpDownEventsNumbers.TabIndex = 9;
