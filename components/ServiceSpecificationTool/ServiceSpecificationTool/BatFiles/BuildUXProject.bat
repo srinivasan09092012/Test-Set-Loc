@@ -20,7 +20,7 @@ For %%A in (%_path%) do (
     set FileName=%%~nA.xml
 ) 
 
-"%MSBUILD%" %ProjectPath% /t:Clean;Rebuild /p:OutDir=%TempDllsOutPutDir% /p:Disable_CopyWebApplication=True,Configuration="Release",DocumentationFile=%FileName%.xml
+"%MSBUILD%" %ProjectPath% /t:Clean;Rebuild /p:OutDir=%TempDllsOutPutDir% /p:Disable_CopyWebApplication=True,Configuration="Release",DocumentationFile=%FileName%
 
 echo "Copying files from Temporary folder to Actual Directory"
 
