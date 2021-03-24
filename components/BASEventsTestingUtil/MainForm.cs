@@ -494,11 +494,6 @@ namespace BASEventsTestingUtil
 
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnbrowseFolder_Click(object sender, EventArgs e)
         {
             if (this.folderBrowserDialog1.ShowDialog() == DialogResult.OK && !string.IsNullOrWhiteSpace(this.folderBrowserDialog1.SelectedPath))

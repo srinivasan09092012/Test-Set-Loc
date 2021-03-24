@@ -54,7 +54,6 @@ namespace BASEventsTestingUtil
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.moduleIDs = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.btnbrowseFolder = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.allTabs.SuspendLayout();
@@ -358,17 +357,6 @@ namespace BASEventsTestingUtil
             this.moduleIDs.TabIndex = 14;
             this.moduleIDs.ValueMember = "Value";
             // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(799, 457);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(489, 24);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "(Used only when Publishing to Event Distribution Service)";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
             // btnbrowseFolder
             // 
             this.btnbrowseFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -390,7 +378,6 @@ namespace BASEventsTestingUtil
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1327, 658);
             this.Controls.Add(this.btnbrowseFolder);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.moduleIDs);
             this.Controls.Add(this.label3);
@@ -448,7 +435,6 @@ namespace BASEventsTestingUtil
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox moduleIDs;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnbrowseFolder;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
