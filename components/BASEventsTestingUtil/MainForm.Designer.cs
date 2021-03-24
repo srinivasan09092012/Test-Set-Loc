@@ -54,6 +54,7 @@ namespace BASEventsTestingUtil
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.moduleIDs = new System.Windows.Forms.ComboBox();
+            this.moduleIDTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.btnbrowseFolder = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.allTabs.SuspendLayout();
@@ -437,6 +438,7 @@ namespace BASEventsTestingUtil
         private System.Windows.Forms.ComboBox moduleIDs;
         private System.Windows.Forms.Button btnbrowseFolder;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private ToolTip moduleIDTooltip;
     }
 }
 

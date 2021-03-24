@@ -77,6 +77,7 @@ namespace BASEventsTestingUtil
 
             buttonPressureTest.Visible = allowMultiple;
             numericUpDownEventsNumbers.Visible = allowMultiple;
+            moduleIDTooltip.SetToolTip(this.moduleIDs, "Used only when Publishing to Event Distribution Service");
         }
 
         private void LoadPayload(string filePath)
