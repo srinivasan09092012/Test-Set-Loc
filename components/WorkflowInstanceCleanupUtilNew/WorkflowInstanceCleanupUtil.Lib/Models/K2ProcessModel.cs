@@ -15,19 +15,6 @@ namespace WorkflowInstanceCleanupUtil.Lib.Models
 
         public string ProcessFullName { get; set; }
 
-        public List<K2ProcessModel> GetProcessConfiguration()
-        {
-            ICollection<K2ProcessModel> environments = new List<K2ProcessModel>();
-            var config = WorkflowProcessConfig.GetConfig();
-            foreach (WorkflowProcess item in config.Processes)
-            {
-                K2ProcessModel workflowEnvironment = new K2ProcessModel();
-                workflowEnvironment.ProcessName = item.ProcessName;
-                workflowEnvironment.ProcessFullName = item.ProcessFullName;
-                environments.Add(workflowEnvironment);
-            }
-
-            return environments.ToList();
-        }
+        public List<K2ProcessModel> ChildProcesses { get; set; }
     }
 }

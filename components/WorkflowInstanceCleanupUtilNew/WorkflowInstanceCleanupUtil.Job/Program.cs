@@ -11,70 +11,38 @@ namespace WorkflowInstanceCleanupUtil.Job
     {
         static void Main(string[] args)
         {
-            List<string> environments = GetEnvironments();
-            List<string> processNames = GetProcessFullName();
             DateTime startDate = DateTime.UtcNow.AddMonths(Convert.ToByte(ConfigurationManager.AppSettings["LookBackNumberOfMonth"]));
             DateTime endDate = DateTime.UtcNow.AddDays(1);
+            List<K2ProcessModel> processes;
+            List<K2EnvironmentModel> environments;
+
+            ReadConfiguration(out environments, out processes);
 
             foreach (var environment in environments)
             {
-                Console.WriteLine(string.Format("Processing {0} environment", environment));
+                Console.WriteLine(string.Format("Processing {0} environment", environment.Environment));
 
 
                 using (IWorkItemCleanUpProcessor processor = InitializeK2Processor(environment))
                 {
-                    foreach (var processName in processNames)
+                    foreach (var process in processes)
                     {
-                        Console.WriteLine(string.Format("Processing {0} WorkFlow Process", processName));
-                        DeleteInstances(processor, startDate, endDate, processName);
-                        Console.WriteLine(string.Format("Processed {0} WorkFlow Process", processName));
+                        DeleteProcessInstances(processor, startDate, endDate, process);
                     }
                 }
             }
         }
 
-        private static List<string> GetEnvironments()
+        private static void ReadConfiguration(out List<K2EnvironmentModel> environments, out List<K2ProcessModel> processes)
         {
-            List<string> environments = new List<string>();
-            IEnumerable<K2EnvironmentModel> k2environments = new K2EnvironmentModel().GetEnvironmentConfiguration();
-            environments.AddRange(k2environments.Select(t => t.Environment).ToArray());
-
-            return environments;
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            WorkflowConfigurationSection workflowConfig = config.GetSection("WorkflowConfiguration") as WorkflowConfigurationSection;
+            environments = workflowConfig.WorkflowEnvironments.ToEnvironmentList();
+            processes = workflowConfig.WorkflowProcesses.ToProcessList();
         }
 
-        private static List<string> GetProcessFullName()
+        private static WorkItemCleanUpProcessor InitializeK2Processor(K2EnvironmentModel environment)
         {
-            K2ProcessModel k2ProcessModel = new K2ProcessModel();
-            List<string> processNames = new List<string>();
-            List<string> configProcessNames = GetProcesses();
-            foreach (var item in configProcessNames)
-            {
-                K2ProcessModel process = GetProcessConfiguration(item, k2ProcessModel);
-                processNames.Add(process.ProcessFullName);
-            }
-
-            return processNames;
-        }
-
-        private static List<string> GetProcesses()
-        {
-            List<string> configProcessNames = new List<string>();
-            IList<K2ProcessModel> processes = new K2ProcessModel().GetProcessConfiguration();
-            configProcessNames.AddRange(processes.Select(t => t.ProcessName).ToArray());
-
-            return configProcessNames;
-        }
-
-
-        private static K2ProcessModel GetProcessConfiguration(string processName, K2ProcessModel k2ProcessModel)
-        {
-            return k2ProcessModel.GetProcessConfiguration().Where(x => x.ProcessName == processName).FirstOrDefault();
-        }
-
-        private static WorkItemCleanUpProcessor InitializeK2Processor(string environmentName)
-        {
-            K2EnvironmentModel environment = GetEnvironmentConfiguration(environmentName);
-
             return new WorkItemCleanUpProcessor(
                 environment.Server,
                 uint.Parse(environment.Port),
@@ -83,16 +51,22 @@ namespace WorkflowInstanceCleanupUtil.Job
                 "K2",
                 true);
         }
-        private static K2EnvironmentModel GetEnvironmentConfiguration(string environmentName)
+
+        private static void DeleteProcessInstances(IWorkItemCleanUpProcessor processor, DateTime startDate, DateTime endDate, K2ProcessModel process)
         {
-            return new K2EnvironmentModel().GetEnvironmentConfiguration().Where(x => x.Environment == environmentName).FirstOrDefault();
+            DeleteInstances(processor, startDate, endDate, process);
+
+            foreach (var child in process.ChildProcesses)
+            {
+                DeleteInstances(processor, startDate, endDate, child);
+            }
         }
 
-
-        private static void DeleteInstances(IWorkItemCleanUpProcessor processor, DateTime startDate, DateTime endDate, string processName)
+        private static void DeleteInstances(IWorkItemCleanUpProcessor processor, DateTime startDate, DateTime endDate, K2ProcessModel processInfo)
         {
+            Console.WriteLine(string.Format("Processing {0} WorkFlow Process", processInfo.ProcessFullName));
             int numberOfInstanceDeleted = 0;
-            List<ProcessInfo> processes = processor.GetAllProcessInstanceIds(startDate, endDate, processName);
+            List<ProcessInfo> processes = processor.GetAllProcessInstanceIds(startDate, endDate, processInfo.ProcessFullName);
 
             foreach (var process in processes)
             {
@@ -100,6 +74,8 @@ namespace WorkflowInstanceCleanupUtil.Job
                 numberOfInstanceDeleted++;
                 Console.WriteLine(string.Format("Deleted {0}", process.ID));
             }
+
+            Console.WriteLine(string.Format("Processed {0} WorkFlow Process", processInfo.ProcessFullName));
         }
     }
 }

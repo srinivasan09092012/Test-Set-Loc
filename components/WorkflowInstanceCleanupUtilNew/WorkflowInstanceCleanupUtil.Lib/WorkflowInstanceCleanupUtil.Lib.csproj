@@ -57,15 +57,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Environments.cs" />
+    <Compile Include="Models\ChildProcessConfigCollection.cs" />
     <Compile Include="Models\K2EnvironmentModel.cs" />
     <Compile Include="Models\K2ProcessModel.cs" />
-    <Compile Include="Models\Processes.cs" />
     <Compile Include="Models\ProcessInfo.cs" />
-    <Compile Include="Models\WorkflowEnvironmentConfig.cs" />
-    <Compile Include="Models\WorkflowEnvironmentConfigSettings.cs" />
-    <Compile Include="Models\WorkflowProcessConfig.cs" />
-    <Compile Include="Models\WorkflowProcessConfigSettings.cs" />
+    <Compile Include="Models\WorkflowConfigurationSection.cs" />
+    <Compile Include="Models\WorkflowEnvironmentCollection.cs" />
+    <Compile Include="Models\WorkflowEnvironmentConfigElement.cs" />
+    <Compile Include="Models\WorkflowProcessConfigCollection.cs" />
+    <Compile Include="Models\WorkflowProcessConfigElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Workflow\IWorkItemCleanUpProcessor.cs" />
     <Compile Include="Workflow\WorkItemCleanUpProcessor.cs" />

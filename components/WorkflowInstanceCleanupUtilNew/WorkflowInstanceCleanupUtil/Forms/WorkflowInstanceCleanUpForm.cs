@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Windows.Forms;
 using WorkflowInstanceCleanupUtil.Lib.Models;
@@ -16,51 +17,33 @@ namespace WorkflowInstanceCleanupUtil
     public partial class WorkflowInstanceCleanUp : Form
     {
         private bool stopDeletingtheInstance = false;
+        private List<K2ProcessModel> processes;
+        private List<K2EnvironmentModel> environments;
 
         public WorkflowInstanceCleanUp()
         {
             this.InitializeComponent();
+            this.ReadConfiguration();
             this.BindEnvironmentDropdown();
             this.BindProcessDropdown();
         }
 
-        private void DeleteInstances(IWorkItemCleanUpProcessor processor, DateTime startDate, DateTime endDate, string processName)
+        private void ReadConfiguration()
         {
-            int numberOfInstanceDeleted = 0;
-            List<ProcessInfo> processes = processor.GetAllProcessInstanceIds(startDate, endDate, processName);
-            int scannedInstances = processes.Count;
-            this.WriteMessageToUI("Number of instance found to be deleted are " + scannedInstances);
-            btnStopDeleting.Visible = true;
-            this.stopDeletingtheInstance = false;
-
-            foreach (var process in processes)
-            {
-                if (!this.stopDeletingtheInstance)
-                {
-                    processor.DeleteProcessInstances(process.ID, checkBoxDeleteLogs.Checked);
-                    numberOfInstanceDeleted++;
-                    this.WriteMessageToUI("Number of instance found to be deleted are " + scannedInstances + ", Deleted " + numberOfInstanceDeleted + "/" + scannedInstances);
-                    this.WriteMessageToListBoxUI(process.Folio);
-                }
-                else
-                {
-                    break;
-                }
-            }
-
-            this.WriteMessageToUI("Deletion of instance is completed, Number of instance deleted : " + numberOfInstanceDeleted);
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            WorkflowConfigurationSection workflowConfig = config.GetSection("WorkflowConfiguration") as WorkflowConfigurationSection;
+            this.environments = workflowConfig.WorkflowEnvironments.ToEnvironmentList();
+            this.processes = workflowConfig.WorkflowProcesses.ToProcessList();
         }
 
         private void BindProcessDropdown()
         {
-            IList<K2ProcessModel> processes = new K2ProcessModel().GetProcessConfiguration();
-            cmbWorkflowProcess.Items.AddRange(processes.Select(t => t.ProcessName).ToArray());
+            cmbWorkflowProcess.Items.AddRange(this.processes.Select(t => t.ProcessName).ToArray());
         }
 
         private void BindEnvironmentDropdown()
         {
-            IEnumerable<K2EnvironmentModel> environments = new K2EnvironmentModel().GetEnvironmentConfiguration();
-            cmboxEnvironment.Items.AddRange(environments.Select(t => t.Environment).ToArray());
+            cmboxEnvironment.Items.AddRange(this.environments.Select(t => t.Environment).ToArray());
         }
 
         private void DeleteInstanceButton_Click(object sender, EventArgs e)
@@ -70,7 +53,7 @@ namespace WorkflowInstanceCleanupUtil
                 if (this.IsFormValid())
                 {
                     string environment = cmboxEnvironment.SelectedItem.ToString();
-                    string processName = this.GetProcessFullName(cmbWorkflowProcess.SelectedItem.ToString());
+                    K2ProcessModel process = this.GetProcessInfo(cmbWorkflowProcess.SelectedItem.ToString());
                     DateTime startDate = dtpStartDate.Value;
                     DateTime endDate = dtpEndDate.Value;
                     this.WriteMessageToUI("Instance deletion started, Connecting to the server...");
@@ -79,8 +62,9 @@ namespace WorkflowInstanceCleanupUtil
                     {
                         this.WriteMessageToUI("Connected to the server successfull");
                         btnDeleteInstaces.Enabled = false;
-                        this.DeleteInstances(processor, startDate, endDate, processName);
+                        this.DeleteProcessInstances(processor, startDate, endDate, process);
                         btnDeleteInstaces.Enabled = true;
+                        btnStopDeleting.Visible = false;
                     }
                 }
             }
@@ -89,6 +73,41 @@ namespace WorkflowInstanceCleanupUtil
                 MessageBox.Show(exception.Message, "Error occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.WriteMessageToUI("Error occurred while connecting to server");
             }
+        }
+
+        private void DeleteProcessInstances(IWorkItemCleanUpProcessor processor, DateTime startDate, DateTime endDate, K2ProcessModel process)
+        {
+            this.DeleteInstances(processor, startDate, endDate, process);
+
+            foreach (var child in process.ChildProcesses)
+            {
+                this.DeleteInstances(processor, startDate, endDate, child);
+            }
+        }
+
+        private void DeleteInstances(IWorkItemCleanUpProcessor processor, DateTime startDate, DateTime endDate, K2ProcessModel processInfo)
+        {
+            int numberOfInstanceDeleted = 0;
+            List<ProcessInfo> processes = processor.GetAllProcessInstanceIds(startDate, endDate, processInfo.ProcessFullName);
+            int scannedInstances = processes.Count;
+            this.WriteMessageToUI(string.Format("{0} - Number of instance found to be deleted are {1}", processInfo.ProcessName, scannedInstances));
+            btnStopDeleting.Visible = true;
+            this.stopDeletingtheInstance = false;
+
+            foreach (var process in processes)
+            {
+                if (this.stopDeletingtheInstance)
+                {
+                    break;
+                }
+
+                processor.DeleteProcessInstances(process.ID, checkBoxDeleteLogs.Checked);
+                numberOfInstanceDeleted++;
+                this.WriteMessageToUI(string.Format("{0} - Number of instance found to be deleted are {1}, Deleted {2}/{3}", processInfo.ProcessName, scannedInstances, numberOfInstanceDeleted, scannedInstances));
+                this.WriteMessageToListBoxUI(process.Folio);
+            }
+
+            this.WriteMessageToUI(string.Format("{0} - Deletion of instance is completed, Number of instance deleted : {1}", processInfo.ProcessName, numberOfInstanceDeleted));
         }
 
         private void WriteMessageToUI(string message)
@@ -151,20 +170,14 @@ namespace WorkflowInstanceCleanupUtil
                 true);
         }
 
-        private string GetProcessFullName(string processDescription)
+        private K2ProcessModel GetProcessInfo(string processDescription)
         {
-            K2ProcessModel process = this.GetProcessConfiguration(processDescription);
-            return process.ProcessFullName;
-        }
-
-        private K2ProcessModel GetProcessConfiguration(string processName)
-        {
-            return new K2ProcessModel().GetProcessConfiguration().Where(x => x.ProcessName == processName).FirstOrDefault();
+            return this.processes.Where(x => x.ProcessName == processDescription).First();
         }
 
         private K2EnvironmentModel GetEnvironmentConfiguration(string environmentName)
         {
-            return new K2EnvironmentModel().GetEnvironmentConfiguration().Where(x => x.Environment == environmentName).FirstOrDefault();
+            return this.environments.Where(x => x.Environment == environmentName).First();
         }
 
         private void BtnSearchWorkitems_Click(object sender, EventArgs e)
@@ -174,7 +187,7 @@ namespace WorkflowInstanceCleanupUtil
                 if (this.IsFormValid())
                 {
                     string environment = cmboxEnvironment.SelectedItem.ToString();
-                    string processName = this.GetProcessFullName(cmbWorkflowProcess.SelectedItem.ToString());
+                    string processName = this.GetProcessInfo(cmbWorkflowProcess.SelectedItem.ToString()).ProcessFullName;
                     DateTime startDate = dtpStartDate.Value;
                     DateTime endDate = dtpEndDate.Value;
                     this.WriteMessageToUI("Connecting to the server...");

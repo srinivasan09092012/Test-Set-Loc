@@ -39,7 +39,7 @@ Global
 		SolutionGuid = {E1ED29EB-297C-4752-BBAA-F3C527FAD6D2}
 	EndGlobalSection
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
+		SccNumberOfProjects = 4
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://payerportfolio.visualstudio.com/
 		SccLocalPath0 = .
@@ -49,5 +49,8 @@ Global
 		SccProjectUniqueName2 = WorkflowInstanceCleanupUtil.Lib\\WorkflowInstanceCleanupUtil.Lib.csproj
 		SccProjectName2 = WorkflowInstanceCleanupUtil.Lib
 		SccLocalPath2 = WorkflowInstanceCleanupUtil.Lib
+		SccProjectUniqueName3 = WorkflowInstanceCleanupUtil\\WorkflowInstanceCleanupUtil.csproj
+		SccProjectName3 = WorkflowInstanceCleanupUtil
+		SccLocalPath3 = WorkflowInstanceCleanupUtil
 	EndGlobalSection
 EndGlobal

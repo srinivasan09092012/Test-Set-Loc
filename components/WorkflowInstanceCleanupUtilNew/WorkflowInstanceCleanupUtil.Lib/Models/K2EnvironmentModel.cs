@@ -20,23 +20,5 @@ namespace WorkflowInstanceCleanupUtil.Lib.Models
         public string Password { get; set; }
 
         public string Server { get; set; }
-
-        public List<K2EnvironmentModel> GetEnvironmentConfiguration()
-        {
-            ICollection<K2EnvironmentModel> environments = new List<K2EnvironmentModel>();
-            var config = WorkflowEnvironmentConfig.GetConfig();
-            foreach (WorkflowEnvironment item in config.Environments)
-            {
-                K2EnvironmentModel workflowEnvironment = new K2EnvironmentModel();
-                workflowEnvironment.Environment = item.Environment;
-                workflowEnvironment.Server = item.Server;
-                workflowEnvironment.UserName = item.Username;
-                workflowEnvironment.Password = item.Password;
-                workflowEnvironment.Port = item.Port;
-                environments.Add(workflowEnvironment);
-            }
-
-            return environments.ToList();
-        }
     }
 }
