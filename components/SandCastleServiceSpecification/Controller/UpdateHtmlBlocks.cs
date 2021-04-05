@@ -541,50 +541,77 @@ namespace Controller
                 EventsLinkedMenuEntry.InnerHtml = "Events Produced";
                 EventsDivForMenuEntryTocLevel1.InnerHtml = EventsLinkedMenuEntry.OuterHtml;
                 divHelperTocNav.addChildrenNode(EventsDivForMenuEntryTocLevel1);
+
                 ServicesRootMenuEntry.InnerHtml = "Web Services";
                 ServicesRootMenuEntry.Name = "a";
                 ServicesRootMenuEntry.Attributes.Add("style", "color: black;");
-                ServicesDivForMenuEntryTocLevel0.InnerHtml = ServicesRootMenuEntry.OuterHtml;
-                divHelperTocNav.addChildrenNode(ServicesDivForMenuEntryTocLevel0);
 
-                foreach (string service in ServiceList)
+
+                if (ServiceList.Count > 0)
                 {
-                    if (!string.IsNullOrEmpty(service))
+                    ServicesDivForMenuEntryTocLevel0.InnerHtml = ServicesRootMenuEntry.OuterHtml;
+                    divHelperTocNav.addChildrenNode(ServicesDivForMenuEntryTocLevel0);
+
+                    foreach (string service in ServiceList)
                     {
-                        ServicesMenuEntry.Add(service.Split('>')[1].Split('<')[0], @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
+                        if (!string.IsNullOrEmpty(service))
+                        {
+                            ServicesMenuEntry.Add(service.Split('>')[1].Split('<')[0], @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
+                        }
                     }
+
+                    var ServicesMenuEntryOrdered = ServicesMenuEntry.OrderBy(x => x.Key);
+
+                    ServicesLinkedMenuEntry.Name = "a";
+                    ServicesLinkedMenuEntry.Attributes.Add("style", "color: black;");
+
+                    foreach (var menuEntryOrdered in ServicesMenuEntryOrdered)
+                    {
+                        ServicesLinkedMenuEntry.Attributes.Remove("onmouseover");
+                        ServicesLinkedMenuEntry.Attributes.Remove("onmouseout");
+                        ServicesLinkedMenuEntry.Attributes.Remove("id");
+                        ServicesLinkedMenuEntry.Attributes.Remove("onclick");
+                        ServicesLinkedMenuEntry.Attributes.Remove("BreadscrumbDisplayName");
+                        ServicesLinkedMenuEntry.Attributes.Remove("TopicContentHtml");
+                        ServicesLinkedMenuEntry.Attributes.Add("href", "#!");
+                        ServicesLinkedMenuEntry.Attributes.Add("Parent", "Web Services");
+                        ServicesLinkedMenuEntry.Attributes.Add("IsParentActive", "false");
+                        ServicesLinkedMenuEntry.Attributes.Add("onclick", "OnClickHandler(this)");
+                        ServicesLinkedMenuEntry.Attributes.Add("BreadscrumbDisplayName", menuEntryOrdered.Key);
+                        ServicesLinkedMenuEntry.Attributes.Add("TopicContentHtml", "" + ModuleSettings.WebHost
+                                                                                    + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
+                                                                                    + @"\" + Common.Constants.WebSolutionStructure.Folders.Html
+                                                                                    + @"\" + menuEntryOrdered.Value + " #ID4RBSection");
+                        ServicesLinkedMenuEntry.InnerHtml = menuEntryOrdered.Key;
+                        ServicesLinkedMenuEntry.Attributes.Add("onmouseover", "OnHoverHandle('#" + menuEntryOrdered.Key + "');");
+                        ServicesLinkedMenuEntry.Attributes.Add("onmouseout", "OnLeaveHandler('#" + menuEntryOrdered.Key + "');");
+                        ServicesLinkedMenuEntry.Attributes.Add("id", menuEntryOrdered.Key);
+                        ServicesDivForMenuEntryTocLevel1.InnerHtml += ServicesLinkedMenuEntry.OuterHtml;
+                    }
+
+                    divHelperTocNav.addChildrenNode(ServicesDivForMenuEntryTocLevel1);
                 }
-
-                var ServicesMenuEntryOrdered = ServicesMenuEntry.OrderBy(x => x.Key);
-
-                ServicesLinkedMenuEntry.Name = "a";
-                ServicesLinkedMenuEntry.Attributes.Add("style", "color: black;");
-
-                foreach (var menuEntryOrdered in ServicesMenuEntryOrdered)
+                else
                 {
-                    ServicesLinkedMenuEntry.Attributes.Remove("onmouseover");
-                    ServicesLinkedMenuEntry.Attributes.Remove("onmouseout");
-                    ServicesLinkedMenuEntry.Attributes.Remove("id");
-                    ServicesLinkedMenuEntry.Attributes.Remove("onclick");
-                    ServicesLinkedMenuEntry.Attributes.Remove("BreadscrumbDisplayName");
-                    ServicesLinkedMenuEntry.Attributes.Remove("TopicContentHtml");
-                    ServicesLinkedMenuEntry.Attributes.Add("href", "#!");
-                    ServicesLinkedMenuEntry.Attributes.Add("Parent", "Web Services");
-                    ServicesLinkedMenuEntry.Attributes.Add("IsParentActive", "false");
-                    ServicesLinkedMenuEntry.Attributes.Add("onclick", "OnClickHandler(this)");
-                    ServicesLinkedMenuEntry.Attributes.Add("BreadscrumbDisplayName", menuEntryOrdered.Key);
-                    ServicesLinkedMenuEntry.Attributes.Add("TopicContentHtml", "" + ModuleSettings.WebHost
-                                                                                + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
-                                                                                + @"\" + Common.Constants.WebSolutionStructure.Folders.Html
-                                                                                + @"\" + menuEntryOrdered.Value + " #ID4RBSection");
-                    ServicesLinkedMenuEntry.InnerHtml = menuEntryOrdered.Key;
-                    ServicesLinkedMenuEntry.Attributes.Add("onmouseover", "OnHoverHandle('#" + menuEntryOrdered.Key + "');");
-                    ServicesLinkedMenuEntry.Attributes.Add("onmouseout", "OnLeaveHandler('#" + menuEntryOrdered.Key + "');");
-                    ServicesLinkedMenuEntry.Attributes.Add("id", menuEntryOrdered.Key);
-                    ServicesDivForMenuEntryTocLevel1.InnerHtml += ServicesLinkedMenuEntry.OuterHtml;
-                }
+                    var serviceListpage = ModuleSettings.ServiceListPages.ListPage[0];
 
-                divHelperTocNav.addChildrenNode(ServicesDivForMenuEntryTocLevel1);
+                    ServicesRootMenuEntry.Attributes.Add("onmouseover", "OnHoverHandle('#WebServiceEmpty');");
+                    ServicesRootMenuEntry.Attributes.Add("onmouseout", "OnLeaveHandler('#WebServiceEmpty');");
+                    ServicesRootMenuEntry.Attributes.Add("id", "WebServiceEmpty");
+                    ServicesRootMenuEntry.Attributes.Add("href", "#!");
+                    ServicesRootMenuEntry.Attributes.Add("onclick", "OnClickHandler(this)");
+                    ServicesRootMenuEntry.Attributes.Add("parent", "Integration");
+                    ServicesRootMenuEntry.Attributes.Add("IsParentActive", "true");
+                    ServicesRootMenuEntry.Attributes.Add("BreadscrumbDisplayName", "Web Service Produced: No services are produced for this sub-module.");
+                    ServicesRootMenuEntry.Attributes.Add("TopicContentHtml", "" + ModuleSettings.WebHost
+                                                                                    + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
+                                                                                    + @"\" + Common.Constants.WebSolutionStructure.Folders.Html
+                                                                                    + @"\" + serviceListpage + " #ID4RBSection");
+
+                    ServicesDivForMenuEntryTocLevel0.InnerHtml = ServicesRootMenuEntry.OuterHtml;
+                    divHelperTocNav.addChildrenNode(ServicesDivForMenuEntryTocLevel0);
+
+                }
             }
 
             if (ModuleSettings.ModuleAPIAvailable)
@@ -822,13 +849,18 @@ namespace Controller
         {
             var htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = originalDocument;
+
+            htmlDocument.Load();
+            DivHelper seeAlsoDiv = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "seeAlsoStyle");
+            seeAlsoDiv.SetInnerHtml(string.Empty);
+            htmlDocument.Save();
+
             htmlDocument.Load();
             TableHelper tableHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "methodList");
             tableHelper.addColumn("Input Command");
             tableHelper.addColumn("Event returned");
             tableHelper.renameColumnHeader(1, "Operation Name");
             tableHelper.removeColumn(0);
-
             htmlDocument.Save();
         }
 
