@@ -873,6 +873,12 @@ namespace Controller
         {
             var htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = originalDocument;
+
+            htmlDocument.Load();
+            DivHelper seeAlsoDiv = new DivHelper(htmlDocument._loadedDocument, DivHelper.SearchFilter.Class, "seeAlsoStyle");
+            seeAlsoDiv.SetInnerHtml(string.Empty);
+            htmlDocument.Save();
+
             htmlDocument.Load();
             TableHelper tableHelper = new TableHelper(htmlDocument._loadedDocument, TableHelper.SearchFilter.Id, "methodList");
             tableHelper.addColumn("Input Query Parameter");
