@@ -378,6 +378,12 @@ namespace BASEventsTestingUtil
             }
             em.IsLastFromGroup = IsLastFromGroup == null ? false : IsLastFromGroup.Count == 0 ? false : IsLastFromGroup[0].InnerXml == string.Empty ? false : bool.Parse(IsLastFromGroup[0].InnerXml);
 
+            XmlNodeList AggregateRootID = this.payloadDocument.GetElementsByTagName("AggregateRootID");
+            if (AggregateRootID == null || AggregateRootID.Count == 0)
+            {
+                AggregateRootID = this.payloadDocument.GetElementsByTagName("a:AggregateRootID");
+            }
+            em.AggregateRootID = AggregateRootID == null ? null : AggregateRootID.Count == 0 ? null : AggregateRootID[0].InnerXml == string.Empty ? null : AggregateRootID[0].InnerXml;
 
             StringBuilder sb = new StringBuilder();
             var settings = new XmlWriterSettings
