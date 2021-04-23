@@ -235,28 +235,6 @@ namespace SourceCode.SmartObjects.Services.WorklistService
             row["ProcessName"] = item.ProcessInstance.Name;
             row["Folio"] = item.ProcessInstance.Folio;
             row["EventInstanceName"] = item.EventInstance.Name;
-
-            // HP Added to split folio into ID1,2,3
-            string[] IDs = item.ProcessInstance.Folio.Split(folioSplitter);
-            row["ID1"] = String.Empty;
-            row["ID2"] = String.Empty;
-            row["ID3"] = String.Empty;
-
-            if (IDs.Length > 0)
-            {
-                row["ID1"] = IDs[0];
-            }
-
-            if (IDs.Length > 1)
-            {
-                row["ID2"] = IDs[1];
-            }
-
-            if (IDs.Length > 2)
-            {
-                // In case there were more than 2 delimiters, recombine all remaining values
-                row["ID3"] = String.Join(folioJoiner, IDs, 2, IDs.Length - 2);
-            }
         }
 
         internal DataTable LoadWorklistItem(string serialNumber)
@@ -394,7 +372,7 @@ namespace SourceCode.SmartObjects.Services.WorklistService
                 switch (property.Key)
                 {
                     case "Status":
-                        criteria.AddFilterField(WCLogical.And, WCField.WorklistItemStatus, WCCompare.Equal, property.Value);
+                        this.AddStatusCriteria(criteria, propertyValue); 
                         break;
                     case "ActivityName":
                         criteria.AddFilterField(WCLogical.And, WCField.ActivityName, WCCompare.Equal, property.Value);
@@ -418,6 +396,21 @@ namespace SourceCode.SmartObjects.Services.WorklistService
             }
 
             return criteria;
+        }
+
+        private void AddStatusCriteria(WorklistCriteria criteria, string propertyValue)
+        {
+            if (!propertyValue.Contains("|"))
+            {
+                criteria.AddFilterField(WCLogical.And, WCField.WorklistItemStatus, WCCompare.Equal, (int)this.TranslateStatus(propertyValue));
+                return;
+            }
+
+            string[] strArrays = propertyValue.Split(new char[] { '|' });
+            for (int i = 0; i < strArrays.Length; i++)
+            {
+                criteria.AddFilterField(WCLogical.Or, WCField.WorklistItemStatus, WCCompare.Equal, (int)this.TranslateStatus(strArrays[i]));
+            }
         }
 
         internal virtual DataTable GetResultTable()
@@ -445,6 +438,25 @@ namespace SourceCode.SmartObjects.Services.WorklistService
             result.Columns.Add("EventInstanceName", typeof(string));
 
             return result;
+        }
+
+        private WorklistStatus TranslateStatus(string status)
+        {
+            switch (status)
+            {
+                case "Allocated":
+                    return WorklistStatus.Allocated;
+                case "Available":
+                    return WorklistStatus.Available;
+                case "Completed":
+                    return WorklistStatus.Completed;
+                case "Open":
+                    return WorklistStatus.Open;
+                case "Sleep":
+                    return WorklistStatus.Sleep;
+                default:
+                    throw new Exception("Status value is invalid");
+            }
         }
     }
 }
