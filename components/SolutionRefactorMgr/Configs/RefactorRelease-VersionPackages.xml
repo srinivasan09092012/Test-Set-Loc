@@ -3,39 +3,40 @@
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs />
   <PackageConfigs>
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.Administration" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <!--<PackageConfig qualifierPrefix="HP.HSP.UA3.AuthDetermination" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.BatchProcessingFactory" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.ClaimsManagement" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.Core" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.CorrespondenceMgmt" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.DrugRebate" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.FinancialManagement" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.IdentityManagement" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.Integration" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.ManagedCare" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.MemberManagement" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.PlanManagement" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProgramIntegrity" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProgramIntegrityCT" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProviderEnrollment" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProviderManagement" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProviderPortal" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.TaskManagement" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.TPLCaseTracking" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HP.HSP.UA3.TPLPolicy" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HP.NotificationServices" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.ClaimsManagement" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.Core" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.EDI" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.Integration" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.NCPDP" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.TestAutomation" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X12" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X212" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HPP.ConfigManagement" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HPP.Core" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />
-    <PackageConfig qualifierPrefix="HPP.HSP.UA3.ManagedCare" qualifierVersion="20.3.94" rebuildPackage="false" reformatSource="false" />-->
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.Administration" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.AuthDetermination" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.BatchProcessingFactory" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ClaimsManagement" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.Core" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.CorrespondenceMgmt" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.DrugRebate" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.FinancialManagement" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.IdentityManagement" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.Integration" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ManagedCare" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.MemberManagement" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.PlanManagement" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProgramIntegrity" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProgramIntegrityCT" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProviderEnrollment" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProviderManagement" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProviderPortal" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.TaskManagement" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.TPLCaseTracking" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.TPLPolicy" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.NotificationServices" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.ClaimsManagement" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.Core" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.EDI" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.Integration" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.NCPDP" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.TestAutomation" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X12" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X212" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPP.ConfigManagement" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPP.Core" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPP.HSP.UA3.ManagedCare" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="MMS.Core" qualifierVersion="21.1.100" rebuildPackage="false" reformatSource="false" />
   </PackageConfigs>
   <FileTypes>
     <FileType ext=".dll" />
@@ -43,14 +44,14 @@
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
-    <ReplacementString qualifier="&lt;version&gt;20.3.94&lt;/version&gt;" from="20.3.94" to="21.1.100" />
-    <ReplacementString qualifier="HP.HSP.UA3" from="20.3.94" to="21.1.100" />
-    <ReplacementString qualifier="HPE.HSP.UA3" from="20.3.94" to="21.1.100" />
-    <ReplacementString qualifier="HP." from="20.3.94" to="21.1.100" />
-    <ReplacementString qualifier="HPP." from="20.3.94" to="21.1.100" />
+    <ReplacementString qualifier="&lt;version&gt;21.1.100&lt;/version&gt;" from="21.1.100" to="21.2.106" />
+    <ReplacementString qualifier="HP.HSP.UA3" from="21.1.100" to="21.2.106" />
+    <ReplacementString qualifier="HPE.HSP.UA3" from="21.1.100" to="21.2.106" />
+    <ReplacementString qualifier="HP." from="21.1.100" to="21.2.106" />
+    <ReplacementString qualifier="HPP." from="21.1.100" to="21.2.106" />
   </ReplacementStrings>
   <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
-  <TfsWorkspace></TfsWorkspace>
-  <TFSUserName></TFSUserName>
-  <TFSPassword></TFSPassword>
+  <TfsWorkspace>TFSWorkSpaceName</TfsWorkspace>
+  <TFSUserName>AzureDevOpsPATKeyName</TFSUserName>
+  <TFSPassword>AzureDevOpsPATKeyValue</TFSPassword>
 </RefactorConfig>
