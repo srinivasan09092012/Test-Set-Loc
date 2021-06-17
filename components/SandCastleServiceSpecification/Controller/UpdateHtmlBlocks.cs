@@ -237,7 +237,7 @@ namespace Controller
                 }
                 else
                 {
-                    if (service.Contains("Query"))
+                    if (service.Contains("Query") || service.Contains("Report"))
                     {
                         this.UpdateQueryMethodsTableList(ExecutionContext.getTargetPath() + Common.Constants.WebSolutionStructure.Folders.Html + @service.Remove(0, 9).Split('>')[0].Split('.')[0] + Common.Constants.WebSolutionStructure.Files.Extensions.htmlExtension);
                     }
