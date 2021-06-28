@@ -46,17 +46,17 @@
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
-    <ReplacementString qualifier="Kendo" from="2020.1.114.545" to="2020.1.114.545" />
-    <ReplacementString qualifier="KendoSpreadSheets" from="2020.1.114.545" to="2020.1.114.545" />
-    <ReplacementString qualifier="0.0.0.0-2020.1.114.545" from="0.0.0.0-2020.1.114.545" to="0.0.0.0-2020.1.114.545" />
-    <ReplacementString qualifier="2020.1.114.545" from="2020.1.114.545" to="2020.1.114.545" />
-    <!--<ReplacementString qualifier="Kendo" from="net451" to="net48" />
+	  <ReplacementString qualifier="Kendo" from="2020.1.114.545" to="2021.1.330.545" />
+	  <!--<ReplacementString qualifier="KendoSpreadSheets" from="2020.1.114.545" to="2020.1.114.545" />-->
+	  <ReplacementString qualifier="0.0.0.0-2020.1.114.545" from="0.0.0.0-2021.1.330.545" to="0.0.0.0-2021.1.330.545" />
+	  <ReplacementString qualifier="2020.1.114.545" from="2020.1.114.545" to="2021.1.330.545" />
+	  <!--<ReplacementString qualifier="Kendo" from="net451" to="net48" />
     <ReplacementString qualifier="KendoSpreadSheets" from="net451" to="net48" />
     <ReplacementString qualifier="0.0.0.0-2020.1.114.545" from="net451" to="net48" />
     <ReplacementString qualifier="2020.1.114.545" from="net451" to="net48" />-->
   </ReplacementStrings>
   <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
-  <TfsWorkspace>US5CD95200G7</TfsWorkspace>
+  <TfsWorkspace></TfsWorkspace>
   <TFSUserName>AzureDevOpsPATKeyName</TFSUserName>
   <TFSPassword>AzureDevOpsPATKeyValue</TFSPassword>
 </RefactorConfig>
