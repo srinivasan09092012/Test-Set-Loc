@@ -28,7 +28,7 @@ namespace LoadReferenceData
                 }
                 catch(Exception e)
                 {
-                    Console.WriteLine("*** Task={0}, ERROR={1} ***", args[1], e.Message);
+                    Console.WriteLine("*** Task={0}, ERROR={1} ***", args[1], e.ToString());
                     overallErrors = true;
                 }
             }
@@ -84,7 +84,7 @@ namespace LoadReferenceData
                 if (t.Exception != null)
                 {
                     errorFlag = true;
-                    Console.WriteLine("*** Task={0}, ERROR={1} / {2} ***", str, t.Exception.Message, t.Exception.InnerException.Message);
+                    Console.WriteLine("*** Task={0}, ERROR={1} / {2} ***", str, t.Exception.Message, t.Exception.ToString());
                 }
             };
 
