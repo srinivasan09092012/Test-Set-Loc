@@ -8,6 +8,7 @@ namespace SolutionRefactorMgr.Domain
     [Serializable]
     public class RefactorConfig
     {
+
         [XmlAttribute("editMode")]
         public Enumerations.EditModeTypes EditMode { get; set; }
 
@@ -39,9 +40,17 @@ namespace SolutionRefactorMgr.Domain
 
         public List<ReplacementString> ReplacementStrings { get; set; }
 
-        public List<Reference> References { get; set; }
+        public List<CsProj.Reference> References { get; set; }
 
-        public List<DependentAssembly> WebAppConfig { get; set; }
+        public List<CsProj.Content> Contents { get; set; }
+
+        public List<CsProj.Import> Imports { get; set; }
+
+        public List<CsProj.Target> Targets { get; set; }
+
+        public List<FileDetails> AddFiles { get; set; }
+
+        public List<WebAppConfig.DependentAssembly> WebAppConfig { get; set; }
 
         public List<Package> Packages { get; set; }
 

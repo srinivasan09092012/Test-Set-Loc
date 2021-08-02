@@ -2,6 +2,8 @@
 using Microsoft.TeamFoundation.VersionControl.Client;
 using HPE.HSP.UA3.Core.API.Logger.Loggers;
 using SolutionRefactorMgr.Domain;
+using SolutionRefactorMgr.Domain.WebAppConfig;
+using SolutionRefactorMgr.Domain.CsProj;
 using SolutionRefactorMgr.Utilities;
 using System;
 using System.IO;
@@ -466,7 +468,8 @@ namespace SolutionRefactorMgr
         {
             string xmlNs = "http://schemas.microsoft.com/developer/msbuild/2003";
             string FilePath = projectFilePath;
-            bool projectUpdated = false;
+            bool referenceAdded = false;
+            bool referenceUpdated = false;
             XmlDocument projectFile = new XmlDocument();
             projectFile.Load(FilePath);
             XmlNamespaceManager nsmgr = new XmlNamespaceManager(projectFile.NameTable);
@@ -484,11 +487,11 @@ namespace SolutionRefactorMgr
                     break;
                 }
             }
-
+            #region "Reference" Element
             string referenceName = string.Empty;
             XmlNodeList references = projectFile.SelectNodes("//MsBuild:Reference", nsmgr);
             XmlElement referencesItemGroup = references.Count != 0 ? (XmlElement)references[0].ParentNode : null;
-            
+
             //Package upgrade will happen only if
             //root package is already referred and to a lower version than the one being updated to.
             //Any new dependency to the package being upgraded will get a reference entry as configured.
@@ -514,17 +517,127 @@ namespace SolutionRefactorMgr
                     if (existingReference.Count == 0)
                     {
                         AddReference(projectFile, referencesItemGroup, reference.Include, !string.IsNullOrEmpty(reference.HintPath) ? folderLevels + reference.HintPath : string.Empty);
-                        projectUpdated = true;
+                        referenceAdded = true;
                     }
-                    else
+                    else if(UpdateReference(projectFile, existingReference[0], reference, folderLevels))
                     {
-                        projectUpdated = UpdateReference(projectFile, existingReference[0], reference, folderLevels);
+                        referenceUpdated = true;
                     }
                 }
             }
+            #endregion
+            if (referenceUpdated||referenceAdded)
+            {
+                #region "Content" Element
+                XmlNodeList contents = projectFile.SelectNodes("//MsBuild:Content", nsmgr);
+                XmlElement contentsItemGroup = contents.Count != 0 ? (XmlElement)contents[0].ParentNode : projectFile.CreateElement("ItemGroup", xmlNs);
+                if (refactorConfig.Contents.Count > 0)
+                {
+                    foreach (Content content in refactorConfig.Contents)
+                    {
+                        AddContent(projectFile, contentsItemGroup, content);
+                    }
+                    if (contents.Count < 1)
+                    {
+                        XmlNodeList nones = projectFile.SelectNodes("//MsBuild:None", nsmgr);
+                        XmlElement noneItemGroup = nones.Count != 0 ? (XmlElement)nones[0].ParentNode : null;
+
+                        XmlNodeList compiles = projectFile.SelectNodes("//MsBuild:Compile", nsmgr);
+                        XmlElement compileItemGroup = compiles.Count != 0 ? (XmlElement)compiles[0].ParentNode : null;
+
+                        if (nones.Count > 1)
+                        {
+                            projectFile.DocumentElement.InsertBefore(contentsItemGroup, noneItemGroup);
+                        }
+                        else if (compiles.Count > 1)
+                        {
+                            projectFile.DocumentElement.InsertAfter(contentsItemGroup, compileItemGroup);
+                        }
+                    }
+                }
+                #endregion
+
+                #region "Import" Element
+                XmlNodeList imports = projectFile.SelectNodes("//MsBuild:Import", nsmgr);
+
+                foreach (Import import in refactorConfig.Imports)
+                {
+                    string strProject = import.Project.Replace("[SOURCEFOLDER]", folderLevels);
+                    string strCondition = import.Condition.Replace("[SOURCEFOLDER]", folderLevels);
+                    
+                    AddImport(projectFile, strProject, strCondition);
+                }
+                #endregion
+
+                #region "Target" Element
+                XmlNodeList targets = projectFile.SelectNodes("//MsBuild:Target", nsmgr);
+
+                foreach (Target target in refactorConfig.Targets)
+                {
+                    AddTarget(projectFile, target, folderLevels);
+                }
+                #endregion
+
+                #region "AddFiles"
+                foreach(FileDetails fileDetails in refactorConfig.AddFiles)
+                {
+                    string pathToAdd = fileDetails.PathToAdd.Replace("[PROJECTFOLDER]", Path.GetDirectoryName(projectFilePath));
+
+                    File.Copy(fileDetails.SourcePath , pathToAdd, true);
+                    File.SetAttributes(pathToAdd, File.GetAttributes(pathToAdd) & ~FileAttributes.ReadOnly);
+                    TfsPendAdd(pathToAdd);
+                }
+                #endregion
+            }
 
             refactoredFileContents = GetFormattedXml(projectFile.OuterXml);
-            return projectUpdated;
+            return referenceUpdated||referenceAdded;
+        }
+
+        private static void AddTarget(XmlDocument csprojFile, Target target, string folderLevels)
+        {
+            string xmlNs = "http://schemas.microsoft.com/developer/msbuild/2003";
+            XmlElement targetElement = csprojFile.CreateElement("Target", xmlNs);
+            targetElement.SetAttribute("Name", target.Name);
+            targetElement.SetAttribute("BeforeTargets", target.BeforeTargets);
+            XmlElement propertyGroup = csprojFile.CreateElement("PropertyGroup", xmlNs);
+            foreach(PropertyElement property in target.PropertyGroup)
+            {
+                XmlElement propertyElement = csprojFile.CreateElement(property.ElementName, xmlNs);
+                propertyElement.InnerText = property.ElementText;
+                propertyGroup.AppendChild(propertyElement);
+            }
+
+            targetElement.AppendChild(propertyGroup);
+
+            foreach (Error error in target.ErrorList)
+            {
+                string strErrorCondition = error.Condition.Replace("[SOURCEFOLDER]", folderLevels);
+                string strErrorText = error.Text.Replace("[SOURCEFOLDER]", folderLevels);
+                XmlElement errorElement = csprojFile.CreateElement("Error", xmlNs);
+                errorElement.SetAttribute("Condition", strErrorCondition);
+                errorElement.SetAttribute("Text", strErrorText);
+                targetElement.AppendChild(errorElement);
+            }
+            csprojFile.DocumentElement.AppendChild(targetElement);
+        }
+
+        private static void AddImport(XmlDocument csprojFile, string strProject, string strCondition)
+        {
+            string xmlNs = "http://schemas.microsoft.com/developer/msbuild/2003";
+            XmlElement importElement = csprojFile.CreateElement("Import", xmlNs);
+            importElement.SetAttribute("Project", strProject);
+            importElement.SetAttribute("Condition", strCondition);
+            csprojFile.DocumentElement.AppendChild(importElement);
+        }
+
+        private static void AddContent(XmlDocument csprojFile, XmlElement contentsItemGroup, Content content)
+        {
+            string xmlNs = "http://schemas.microsoft.com/developer/msbuild/2003";
+            XmlElement contentElement = csprojFile.CreateElement("Content", xmlNs);
+            contentElement.SetAttribute("Include", content.Include);
+
+            contentsItemGroup.AppendChild(contentElement);
         }
 
         private static void AddReference(XmlDocument csprojFile, XmlElement referencesItemGroupElement, string strInclude, string strHintPath)
@@ -543,7 +656,7 @@ namespace SolutionRefactorMgr
 
         private static bool UpdateReference(XmlDocument projectFile, XmlElement existingReference, Reference reference, string folderLevels)
         {
-            bool projectUpdated = false;
+            bool referenceUpdated = false;
             string xmlNs = "http://schemas.microsoft.com/developer/msbuild/2003";
 
             bool hintPathExists = false;
@@ -560,7 +673,7 @@ namespace SolutionRefactorMgr
                         }
                         childNode.InnerText = folderLevels + reference.HintPath;
                         hintPathExists = true;
-                        projectUpdated = true;
+                        referenceUpdated = true;
                     }
                     //Any Private and Specific elements in the reference will be removed
                     if (childNode.Name == "Private" || childNode.Name == "SpecificVersion")
@@ -572,7 +685,7 @@ namespace SolutionRefactorMgr
                 foreach (XmlNode nodeToRemove in lstNodesToRemove)
                 {
                     existingReference.RemoveChild(nodeToRemove);
-                    projectUpdated = true;
+                    referenceUpdated = true;
                 }
             }
             else if (!string.IsNullOrEmpty(reference.HintPath) && !hintPathExists)
@@ -580,17 +693,17 @@ namespace SolutionRefactorMgr
                 XmlElement hintPath = projectFile.CreateElement("HintPath", xmlNs);
                 hintPath.InnerText = folderLevels + reference.HintPath;
                 existingReference.AppendChild(hintPath);
-                projectUpdated = true;
+                referenceUpdated = true;
             }
 
             if (existingReference.Attributes["Include"].Value != reference.Include)
             {
                 existingReference.RemoveAttribute("Include");
                 existingReference.SetAttribute("Include", reference.Include);
-                projectUpdated = true;
+                referenceUpdated = true;
             }
 
-            return projectUpdated;
+            return referenceUpdated;
         }
 
         private static bool IsUpgrade(string fromHintPath, string toHintPath)
@@ -678,7 +791,7 @@ namespace SolutionRefactorMgr
                         existingVersion.Add("0");
                     }
                     bool isUpgrade = false;
-                    for(int i=0; i<existingVersion.Count; i++)
+                    for (int i = 0; i < existingVersion.Count; i++)
                     {
                         if (Convert.ToInt32(toVersion[i]) > Convert.ToInt32(existingVersion[i]))
                         {
@@ -813,7 +926,7 @@ namespace SolutionRefactorMgr
                 StreamReader sReader = new StreamReader(mStream);
                 result = sReader.ReadToEnd();
             }
-            
+
             catch (XmlException)
             {
                 LogMessage(2, "There was an issue in Formatting the XML");

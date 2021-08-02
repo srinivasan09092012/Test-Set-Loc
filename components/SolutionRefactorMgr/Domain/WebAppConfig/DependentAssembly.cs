@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace SolutionRefactorMgr.Domain
+namespace SolutionRefactorMgr.Domain.WebAppConfig
 {
     public class DependentAssembly
     {
