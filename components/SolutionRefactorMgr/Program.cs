@@ -519,14 +519,14 @@ namespace SolutionRefactorMgr
                         AddReference(projectFile, referencesItemGroup, reference.Include, !string.IsNullOrEmpty(reference.HintPath) ? folderLevels + reference.HintPath : string.Empty);
                         referenceAdded = true;
                     }
-                    else if(UpdateReference(projectFile, existingReference[0], reference, folderLevels))
+                    else if (UpdateReference(projectFile, existingReference[0], reference, folderLevels))
                     {
                         referenceUpdated = true;
                     }
                 }
             }
             #endregion
-            if (referenceUpdated||referenceAdded)
+            if (referenceUpdated || referenceAdded)
             {
                 #region "Content" Element
                 XmlNodeList contents = projectFile.SelectNodes("//MsBuild:Content", nsmgr);
@@ -558,32 +558,46 @@ namespace SolutionRefactorMgr
                 #endregion
 
                 #region "Import" Element
-                XmlNodeList imports = projectFile.SelectNodes("//MsBuild:Import", nsmgr);
+                XmlNodeList existingImports = projectFile.SelectNodes("//MsBuild:Import", nsmgr);
 
                 foreach (Import import in refactorConfig.Imports)
                 {
                     string strProject = import.Project.Replace("[SOURCEFOLDER]", folderLevels);
                     string strCondition = import.Condition.Replace("[SOURCEFOLDER]", folderLevels);
-                    
-                    AddImport(projectFile, strProject, strCondition);
+
+                    var importFound = existingImports.Cast<XmlElement>().Where(n => n.Attributes["Project"].Value == strProject).Select(mod => mod).ToList();
+
+                    if (importFound.Count == 0)
+                        AddImport(projectFile, strProject, strCondition);
                 }
                 #endregion
 
                 #region "Target" Element
-                XmlNodeList targets = projectFile.SelectNodes("//MsBuild:Target", nsmgr);
+                XmlNodeList existingtargets = projectFile.SelectNodes("//MsBuild:Target", nsmgr);
 
                 foreach (Target target in refactorConfig.Targets)
                 {
-                    AddTarget(projectFile, target, folderLevels);
+                    //bool targetExists = false;
+                    var targetFound = existingtargets.Cast<XmlElement>().Where(n => n.Attributes["Name"].Value == target.Name).Select(mod => mod).ToList();
+
+
+                    if (targetFound.Count > 0)
+                    {
+                        UpdateTarget(projectFile, target, folderLevels, targetFound[0], nsmgr);
+                    }
+                    else
+                    {
+                        AddTarget(projectFile, target, folderLevels);
+                    }
                 }
                 #endregion
 
                 #region "AddFiles"
-                foreach(FileDetails fileDetails in refactorConfig.AddFiles)
+                foreach (FileDetails fileDetails in refactorConfig.AddFiles)
                 {
                     string pathToAdd = fileDetails.PathToAdd.Replace("[PROJECTFOLDER]", Path.GetDirectoryName(projectFilePath));
 
-                    File.Copy(fileDetails.SourcePath , pathToAdd, true);
+                    File.Copy(fileDetails.SourcePath, pathToAdd, true);
                     File.SetAttributes(pathToAdd, File.GetAttributes(pathToAdd) & ~FileAttributes.ReadOnly);
                     TfsPendAdd(pathToAdd);
                 }
@@ -591,17 +605,43 @@ namespace SolutionRefactorMgr
             }
 
             refactoredFileContents = GetFormattedXml(projectFile.OuterXml);
-            return referenceUpdated||referenceAdded;
+            return referenceUpdated || referenceAdded;
+        }
+
+        private static void UpdateTarget(XmlDocument csprojFile, Target target, string folderLevels, XmlElement targetFound, XmlNamespaceManager nsmgr)
+        {
+            string xmlNs = "http://schemas.microsoft.com/developer/msbuild/2003";
+            var existingErrorElement = targetFound.SelectNodes("//MsBuild:Error", nsmgr);
+            foreach (Error error in target.ErrorList)
+            {
+                var errorFound = existingErrorElement.Cast<XmlElement>().Where(n => n.Attributes["Condition"].Value == error.Condition.Replace("[SOURCEFOLDER]", folderLevels)).Select(mod => mod).ToList();
+                if(errorFound.Count == 0)
+                {
+                    XmlElement errorElement = csprojFile.CreateElement("Error", xmlNs);
+                    errorElement.SetAttribute("Condition", error.Condition.Replace("[SOURCEFOLDER]", folderLevels));
+                    errorElement.SetAttribute("Text", error.Text.Replace("[SOURCEFOLDER]", folderLevels));
+                    targetFound.AppendChild(errorElement);
+                }
+            }
         }
 
         private static void AddTarget(XmlDocument csprojFile, Target target, string folderLevels)
         {
             string xmlNs = "http://schemas.microsoft.com/developer/msbuild/2003";
+
             XmlElement targetElement = csprojFile.CreateElement("Target", xmlNs);
             targetElement.SetAttribute("Name", target.Name);
-            targetElement.SetAttribute("BeforeTargets", target.BeforeTargets);
+            if (!string.IsNullOrEmpty(target.BeforeTargets))
+                targetElement.SetAttribute("BeforeTargets", target.BeforeTargets);
+            if (!string.IsNullOrEmpty(target.AfterTargets))
+                targetElement.SetAttribute("AfterTargets", target.AfterTargets);
+            if (!string.IsNullOrEmpty(target.DependsOnTargets))
+                targetElement.SetAttribute("DependsOnTargets", target.DependsOnTargets);
+            if (!string.IsNullOrEmpty(target.Condition))
+                targetElement.SetAttribute("Condition", target.Condition);
+
             XmlElement propertyGroup = csprojFile.CreateElement("PropertyGroup", xmlNs);
-            foreach(PropertyElement property in target.PropertyGroup)
+            foreach (PropertyElement property in target.PropertyGroup)
             {
                 XmlElement propertyElement = csprojFile.CreateElement(property.ElementName, xmlNs);
                 propertyElement.InnerText = property.ElementText;
@@ -612,11 +652,11 @@ namespace SolutionRefactorMgr
 
             foreach (Error error in target.ErrorList)
             {
-                string strErrorCondition = error.Condition.Replace("[SOURCEFOLDER]", folderLevels);
-                string strErrorText = error.Text.Replace("[SOURCEFOLDER]", folderLevels);
+                //string strErrorCondition = error.Condition.Replace("[SOURCEFOLDER]", folderLevels);
+                //string strErrorText = error.Text.Replace("[SOURCEFOLDER]", folderLevels);
                 XmlElement errorElement = csprojFile.CreateElement("Error", xmlNs);
-                errorElement.SetAttribute("Condition", strErrorCondition);
-                errorElement.SetAttribute("Text", strErrorText);
+                errorElement.SetAttribute("Condition", error.Condition.Replace("[SOURCEFOLDER]", folderLevels));
+                errorElement.SetAttribute("Text", error.Text.Replace("[SOURCEFOLDER]", folderLevels));
                 targetElement.AppendChild(errorElement);
             }
             csprojFile.DocumentElement.AppendChild(targetElement);
