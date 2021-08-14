@@ -78,7 +78,7 @@ namespace HP.HSP.UA3.Utilities.ProjectSetupWizard.Forms
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(219, 13);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Copyright © Gainwell Technologies 2018";
+            this.label3.Text = "Copyright © Gainwell Technologies 2021";
             // 
             // OKButton
             // 

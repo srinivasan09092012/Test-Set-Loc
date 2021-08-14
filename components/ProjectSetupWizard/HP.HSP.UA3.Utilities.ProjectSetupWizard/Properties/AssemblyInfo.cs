@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Gainwell Technologiess")]
 [assembly: AssemblyProduct("HP.HSP.UA3.Utilities.ProjectSetupWizard")]
-[assembly: AssemblyCopyright("Copyright © Gainwell Technologies 2018")]
+[assembly: AssemblyCopyright("Copyright © Gainwell Technologies 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

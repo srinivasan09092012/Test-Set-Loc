@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Gainwell Technologies")]
 [assembly: AssemblyProduct("HP.HSP.UA3.Utilities.X12OOPViewer")]
-[assembly: AssemblyCopyright("Copyright © Gainwell Technologies 2018")]
+[assembly: AssemblyCopyright("Copyright © Gainwell Technologies 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

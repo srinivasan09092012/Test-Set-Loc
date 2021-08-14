@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Gainwell Technologies")]
 [assembly: AssemblyProduct("QueryLoggingReconciliationUtility")]
-[assembly: AssemblyCopyright("Copyright © Gainwell Technologies 2019")]
+[assembly: AssemblyCopyright("Copyright © Gainwell Technologies 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

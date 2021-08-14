@@ -55,7 +55,7 @@ namespace HP.HSP.UA3.Utilities.X12OOPViewer.Forms
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(174, 13);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Copyright © Gainwell Technologies 2018";
+            this.label3.Text = "Copyright © Gainwell Technologies 2021";
             // 
             // VersionLabel
             // 
