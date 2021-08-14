@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("UserAccountManager")]
 [assembly: AssemblyDescription("HPP user account manager.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("DXC Technology")]
+[assembly: AssemblyCompany("Gainwell Technologies")]
 [assembly: AssemblyProduct("UserAccountManager")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]

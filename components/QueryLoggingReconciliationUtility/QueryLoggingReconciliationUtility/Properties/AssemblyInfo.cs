@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("QueryLoggingReconciliationUtility")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Hewlett Packard Enterprise")]
+[assembly: AssemblyCompany("Gainwell Technologies")]
 [assembly: AssemblyProduct("QueryLoggingReconciliationUtility")]
-[assembly: AssemblyCopyright("Copyright © Hewlett Packard Enterprise 2019")]
+[assembly: AssemblyCopyright("Copyright © Gainwell Technologies 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("HP.HSP.UA3.Utilities.X12OOPViewer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("DXC Technology")]
+[assembly: AssemblyCompany("Gainwell Technologies")]
 [assembly: AssemblyProduct("HP.HSP.UA3.Utilities.X12OOPViewer")]
-[assembly: AssemblyCopyright("Copyright © DXC Technology 2018")]
+[assembly: AssemblyCopyright("Copyright © Gainwell Technologies 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("UserAccountMigration")]
 [assembly: AssemblyDescription("User Account Migration Utility")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("DXC Technology")]
+[assembly: AssemblyCompany("Gainwell Technologies")]
 [assembly: AssemblyProduct("UserAccountMigration")]
-[assembly: AssemblyCopyright("Copyright © DXC Technology 2018")]
+[assembly: AssemblyCopyright("Copyright © Gainwell Technologies 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
