@@ -14,7 +14,7 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.5</FrameworkVersion>
-    <OutputPath>..\..\..\..\..\www\servicespecs\Modules\ProviderCredentialing\SAMCHECK\HelpWeb\</OutputPath>
+    <OutputPath>..\..\..\..\..\www\servicespecs\Modules\ProviderCredentialing\SAMCHECK\HelpWeb_Latest\</OutputPath>
     <HtmlHelpName>HPP-  BAS and Events For Third Party Integrators</HtmlHelpName>
     <Language>en-US</Language>
     <HelpFileFormat>Website</HelpFileFormat>
@@ -63,17 +63,18 @@
     <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck" isExposed="False">
-  <Filter entryType="Interface" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck.ISAMCheckService" filterName="ISAMCheckService" isExposed="True" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck.SAMCheckService" filterName="SAMCheckService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck.SAMCheckService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-    <Filter entryType="Property" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck.SAMCheckService.SAMServiceHandler" filterName="SAMServiceHandler" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
-</Filter></ApiFilter>
-    <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
+        <Filter entryType="Interface" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck.ISAMCheckService" filterName="ISAMCheckService" isExposed="True" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck.SAMCheckService" filterName="SAMCheckService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck.SAMCheckService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.Screening.BAS.SAMCheck.SAMCheckService.SAMServiceHandler" filterName="SAMServiceHandler" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+      </Filter>
+    </ApiFilter>
+    <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
     <WorkingPath>D:\PSSAMCHECKTmp\</WorkingPath>
     <TransformComponentArguments>
@@ -124,8 +125,7 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>J:\UA3\SandCastleCustomizationTool\bin\SandCastleSvcSpec.exe "J:\UA3\SandCastleCustomizationTool\ModulesSettings\Processed - Active Modules\ProviderScreening_SAMCHECK2.xml"</PostBuildEvent>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>

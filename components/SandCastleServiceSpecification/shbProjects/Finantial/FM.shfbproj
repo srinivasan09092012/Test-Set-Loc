@@ -14,7 +14,7 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.5</FrameworkVersion>
-    <OutputPath>..\..\..\..\www\servicespecs\Modules\FinancialManagement\HelpWeb\</OutputPath>
+    <OutputPath>..\..\..\..\www\servicespecs\Modules\FinancialManagement\HelpWeb_Latest\</OutputPath>
     <HtmlHelpName>HPP-  BAS and Events For Third Party Integrators</HtmlHelpName>
     <Language>en-US</Language>
     <DocumentationSources>
@@ -60,9 +60,9 @@
     </NamespaceSummaries>
     <VisibleItems>ProtectedInternalAsProtected, NonBrowsable</VisibleItems>
     <ApiFilter>
-      <Filter entryType="Namespace" fullName="HP.HSP.UA3.FinancialManagement.BAS.FinancialManagementSvc" isExposed="True" xmlns="">
-        <Filter entryType="Class" fullName="HP.HSP.UA3.FinancialManagement.BAS.FinancialManagementSvc.FinancialManagementSvcConfigurator" filterName="FinancialManagementSvcConfigurator" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.FinancialManagement.BAS.FinancialManagementSvc.Global" filterName="Global" isExposed="False" />
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.FinancialManagement.BAS.FinancialManagementSvc" isExposed="False">
+        <Filter entryType="Interface" fullName="HP.HSP.UA3.FinancialManagement.BAS.FinancialManagementSvc.IFinancialManagementSvcQueryService" filterName="IFinancialManagementSvcQueryService" isExposed="True" />
+        <Filter entryType="Interface" fullName="HP.HSP.UA3.FinancialManagement.BAS.FinancialManagementSvc.IFinancialManagementSvcService" filterName="IFinancialManagementSvcService" isExposed="True" />
       </Filter>
     </ApiFilter>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
@@ -118,8 +118,7 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>J:\UA3\SandCastleCustomizationTool\bin\SandCastleSvcSpec.exe "J:\UA3\SandCastleCustomizationTool\ModulesSettings\Processed - Active Modules\Financial2.xml"</PostBuildEvent>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>

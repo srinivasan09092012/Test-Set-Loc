@@ -14,14 +14,14 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.5.1</FrameworkVersion>
-    <OutputPath>..\..\..\..\..\www\servicespecs\Modules\PlanMgmt\HelpWeb\RelatedInformation\</OutputPath>
+    <OutputPath>..\..\..\..\..\www\servicespecs\Modules\PlanMgmt\HelpWeb\RelatedInformation_Latest\</OutputPath>
     <HtmlHelpName>HPP-  BAS and Events For Third Party Integrators</HtmlHelpName>
     <Language>en-US</Language>
     <HelpFileFormat>Website</HelpFileFormat>
     <SyntaxFilters>C#</SyntaxFilters>
     <PresentationStyle>VS2013</PresentationStyle>
     <CleanIntermediates>True</CleanIntermediates>
-    <KeepLogFile>False</KeepLogFile>
+    <KeepLogFile>True</KeepLogFile>
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
     <IndentHtml>False</IndentHtml>
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
@@ -55,10 +55,10 @@
     <TopicVersion>100</TopicVersion>
     <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.RelatedInformation\HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.RelatedInformation\HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.RelatedInformation\HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.dll" />
       <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.RelatedInformation\HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.RelatedInformation\HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.RelatedInformation\HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.RelatedInformation\HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Contracts.dll" />
     </DocumentationSources>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="(global)" isDocumented="True" />
@@ -92,30 +92,31 @@
     <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.CycleScheduleQueryService" filterName="CycleScheduleQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.CycleScheduleQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.CycleScheduleService" filterName="CycleScheduleService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.CycleScheduleService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Global" filterName="Global" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationEventService" filterName="RelatedInformationEventService" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationModuleConfigurator" filterName="RelatedInformationModuleConfigurator" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationQueryService" filterName="RelatedInformationQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationService" filterName="RelatedInformationService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationService.UpdateDataListCache" filterName="UpdateDataListCache" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
-</Filter></ApiFilter>
-    <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.CycleScheduleQueryService" filterName="CycleScheduleQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.CycleScheduleQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.CycleScheduleService" filterName="CycleScheduleService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.CycleScheduleService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.Global" filterName="Global" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationEventService" filterName="RelatedInformationEventService" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationModuleConfigurator" filterName="RelatedInformationModuleConfigurator" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationQueryService" filterName="RelatedInformationQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationService" filterName="RelatedInformationService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RelatedInformation.RelatedInformationService.UpdateDataListCache" filterName="UpdateDataListCache" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+      </Filter>
+    </ApiFilter>
+    <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
     <WorkingPath>D:\RITmp\</WorkingPath>
     <TransformComponentArguments>
@@ -157,8 +158,7 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>J:\UA3\SandCastleCustomizationTool\bin\SandCastleSvcSpec.exe "J:\UA3\SandCastleCustomizationTool\ModulesSettings\Processed - Active Modules\PlanManagement_RI2.xml"</PostBuildEvent>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>

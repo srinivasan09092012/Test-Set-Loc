@@ -14,7 +14,7 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.5</FrameworkVersion>
-    <OutputPath>..\..\..\..\..\www\servicespecs\Modules\ProviderCredentialing\SSNDEATHMASTER\HelpWeb\</OutputPath>
+    <OutputPath>..\..\..\..\..\www\servicespecs\Modules\ProviderCredentialing\SSNDEATHMASTER\HelpWeb_Latest\</OutputPath>
     <HtmlHelpName>HPP-  BAS and Events For Third Party Integrators</HtmlHelpName>
     <Language>en-US</Language>
     <HelpFileFormat>Website</HelpFileFormat>
@@ -63,13 +63,17 @@
     <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.SSNDeathMaster.BAS.SSNDMF" isExposed="False">
-  <Filter entryType="Interface" fullName="HP.HSP.UA3.SSNDeathMaster.BAS.SSNDMF.ISSNDMFQueryService" filterName="ISSNDMFQueryService" isExposed="True" />
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
-</Filter></ApiFilter>
-    <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
+        <Filter entryType="Interface" fullName="HP.HSP.UA3.SSNDeathMaster.BAS.SSNDMF.ISSNDMFQueryService" filterName="ISSNDMFQueryService" isExposed="True" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.SSNDeathMaster.BAS.SSNDMF.SSNDMFQueryService" filterName="SSNDMFQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.SSNDeathMaster.BAS.SSNDMF.SSNDMFQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+      </Filter>
+    </ApiFilter>
+    <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
     <WorkingPath>D:\PSSSTmp\</WorkingPath>
     <TransformComponentArguments>
@@ -120,8 +124,7 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>J:\UA3\SandCastleCustomizationTool\bin\SandCastleSvcSpec.exe "J:\UA3\SandCastleCustomizationTool\ModulesSettings\Processed - Active Modules\ProviderScreening_SSNDEATHMASTER2.xml"</PostBuildEvent>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>

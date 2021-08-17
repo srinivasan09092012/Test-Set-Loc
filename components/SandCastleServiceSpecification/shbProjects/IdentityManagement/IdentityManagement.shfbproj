@@ -14,7 +14,7 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.5.1</FrameworkVersion>
-    <OutputPath>..\..\..\..\www\servicespecs\Modules\IdentityMgmt\helpweb\</OutputPath>
+    <OutputPath>..\..\..\..\www\servicespecs\Modules\IdentityMgmt\helpweb_Latest\</OutputPath>
     <HtmlHelpName>HPP-  BAS and Events For Third Party Integrators</HtmlHelpName>
     <Language>en-US</Language>
     <DocumentationSources>
@@ -94,30 +94,31 @@ This API documentation is intented for teams or products that need to interact w
     <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.IdentityManagement.BAS.User" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.Global" filterName="Global" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.SecureUserQueryService" filterName="SecureUserQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.SecureUserQueryService.GetUser" filterName="GetUser" isExposed="False" />
-    <Filter entryType="Method" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.SecureUserQueryService.GetUserRegistrationInvitation" filterName="GetUserRegistrationInvitation" isExposed="False" />
-    <Filter entryType="Method" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.SecureUserQueryService.GetUserRegistrationInvitationByRelCode" filterName="GetUserRegistrationInvitationByRelCode" isExposed="False" />
-    <Filter entryType="Method" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.SecureUserQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.SecureUserService" filterName="SecureUserService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.SecureUserService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.ServiceConfigurator" filterName="ServiceConfigurator" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.UnsecureUserQueryService" filterName="UnsecureUserQueryService" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.UnsecureUserService" filterName="UnsecureUserService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.UnsecureUserService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.UserEventService" filterName="UserEventService" isExposed="False" />
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
-</Filter></ApiFilter>
-    <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.Global" filterName="Global" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.SecureUserQueryService" filterName="SecureUserQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.SecureUserQueryService.GetUser" filterName="GetUser" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.SecureUserQueryService.GetUserRegistrationInvitation" filterName="GetUserRegistrationInvitation" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.SecureUserQueryService.GetUserRegistrationInvitationByRelCode" filterName="GetUserRegistrationInvitationByRelCode" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.SecureUserQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.SecureUserService" filterName="SecureUserService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.SecureUserService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.ServiceConfigurator" filterName="ServiceConfigurator" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.UnsecureUserQueryService" filterName="UnsecureUserQueryService" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.UnsecureUserService" filterName="UnsecureUserService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.UnsecureUserService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.IdentityManagement.BAS.User.UserEventService" filterName="UserEventService" isExposed="False" />
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+      </Filter>
+    </ApiFilter>
+    <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <SourceCodeBasePath>
     </SourceCodeBasePath>
     <WarnOnMissingSourceContext>True</WarnOnMissingSourceContext>
@@ -161,8 +162,7 @@ This API documentation is intented for teams or products that need to interact w
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>J:\UA3\SandCastleCustomizationTool\bin\SandCastleSvcSpec.exe "J:\UA3\SandCastleCustomizationTool\ModulesSettings\Processed - Active Modules\IdentityManagement2.xml"</PostBuildEvent>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>

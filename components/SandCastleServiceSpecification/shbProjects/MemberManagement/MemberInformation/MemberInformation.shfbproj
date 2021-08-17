@@ -14,14 +14,14 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.5.1</FrameworkVersion>
-    <OutputPath>..\..\..\..\..\www\servicespecs\Modules\MemberMgmt\HelpWeb\MemberInformation\</OutputPath>
+    <OutputPath>..\..\..\..\..\www\servicespecs\Modules\MemberMgmt\HelpWeb\MemberInformation_Latest\</OutputPath>
     <HtmlHelpName>HPP-  BAS and Events For Third Party Integrators</HtmlHelpName>
     <Language>en-US</Language>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.MemberManagement.BAS.MembeInformation\HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.MemberManagement.BAS.MembeInformation\HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.MemberManagement.BAS.MembeInformation\HP.HSP.UA3.MemberManagement.BAS.MemberInformation.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.MemberManagement.BAS.MembeInformation\HP.HSP.UA3.MemberManagement.BAS.MemberInformation.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.MemberInfo\HP.HSP.UA3.MemberManagement.BAS.MemberInformation.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.MemberInfo\HP.HSP.UA3.MemberManagement.BAS.MemberInformation.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.MemberInfo\HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.MemberInfo\HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.xml" />
     </DocumentationSources>
     <HelpFileFormat>Website</HelpFileFormat>
     <SyntaxFilters>C#</SyntaxFilters>
@@ -86,46 +86,75 @@ This API documentation is intented for teams or products that need to interact w
       <NamespaceSummaryItem name="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Queries.Parameters" isDocumented="True" />
       <NamespaceSummaryItem name="HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.Shared" isDocumented="True" />
       <NamespaceSummaryItem name="HP.HSP.UA3.DrugRebate.BAS.FundCodes.Contracts.Events" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.MemberManagement.BAS.MemberInformation" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts (Group)" isGroup="True" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Commands" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Common" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Events" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Exceptions" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Interface" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Interfaces" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Queries" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Queries.Conditions" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Queries.Parameters" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Queries.Sorting" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Shared" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Shared.MemberInformation" isDocumented="True" />
+      <NamespaceSummaryItem name="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.ViewDto" isDocumented="True" />
     </NamespaceSummaries>
     <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
-      <Filter entryType="Namespace" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation" isExposed="False">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.BatchMemberInformationService" filterName="BatchMemberInformationService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.BatchMemberInformationService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.CoverageAndBenefitsCommandService" filterName="CoverageAndBenefitsCommandService" isExposed="True" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.CoverageAndBenefitsQueryService" filterName="CoverageAndBenefitsQueryService" isExposed="True" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.MemberDemographicsCommandService" filterName="MemberDemographicsCommandService" isExposed="True" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.MemberDemographicsQueryService" filterName="MemberDemographicsQueryService" isExposed="True" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.MemberInformationQueryService" filterName="MemberInformationQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.MemberInformationQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.MemberInformationService" filterName="MemberInformationService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.MemberInformationService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Commands" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Commands.SubmitHospiceElectionCommand" filterName="SubmitHospiceElectionCommand" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Commands.SubmitHospiceElectionCommand.Validate" filterName="Validate" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Common" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Common.MemberManagementConstants.Validation.MCBusinessConstant" filterName="MemberManagementConstants.Validation.MCBusinessConstant" isExposed="True">
-    <Filter entryType="Field" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Common.MemberManagementConstants.Validation.MCBusinessConstant.MemberResponsiblePersonAssociationMemberResponsiblePersonAssociationId" filterName="MemberResponsiblePersonAssociationMemberResponsiblePersonAssociationId" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.ViewDto" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.ViewDto.HospiceElectionModel" filterName="HospiceElectionModel" isExposed="True">
-    <Filter entryType="Property" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.ViewDto.HospiceElectionModel.BenefitPlanGuid" filterName="BenefitPlanGuid" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
-</Filter></ApiFilter>
-    <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.BatchMemberInformationService" filterName="BatchMemberInformationService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.BatchMemberInformationService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Global" filterName="Global" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.MemberInformationEventService" filterName="MemberInformationEventService" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.MemberInformationQueryService" filterName="MemberInformationQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.MemberInformationQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.MemberInformationService" filterName="MemberInformationService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.MemberInformationService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.MemberModuleConfigurator" filterName="MemberModuleConfigurator" isExposed="False" />
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Commands" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Commands.SubmitHospiceElectionCommand" filterName="SubmitHospiceElectionCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Commands.SubmitHospiceElectionCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Common" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Common.MemberManagementConstants.Validation.MCBusinessConstant" filterName="MemberManagementConstants.Validation.MCBusinessConstant" isExposed="True">
+          <Filter entryType="Field" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Common.MemberManagementConstants.Validation.MCBusinessConstant.MemberResponsiblePersonAssociationMemberResponsiblePersonAssociationId" filterName="MemberResponsiblePersonAssociationMemberResponsiblePersonAssociationId" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Events" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Events.MedicaidCaseMaintained" filterName="MedicaidCaseMaintained" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Events.MedicaidCaseMaintained.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Queries" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Queries.GetMemberDetailsQuery" filterName="GetMemberDetailsQuery" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Queries.GetMemberDetailsQuery.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Queries.GetSubscriptionServiceQuery" filterName="GetSubscriptionServiceQuery" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.Queries.GetSubscriptionServiceQuery.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.ViewDto" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.ViewDto.HospiceElectionModel" filterName="HospiceElectionModel" isExposed="True">
+          <Filter entryType="Property" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberInformation.Contracts.ViewDto.HospiceElectionModel.BenefitPlanGuid" filterName="BenefitPlanGuid" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+      </Filter>
+    </ApiFilter>
+    <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <SourceCodeBasePath>
     </SourceCodeBasePath>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
@@ -169,8 +198,7 @@ This API documentation is intented for teams or products that need to interact w
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>J:\UA3\SandCastleCustomizationTool\bin\SandCastleSvcSpec.exe "J:\UA3\SandCastleCustomizationTool\ModulesSettings\Processed - Active Modules\MemberMgmt_MemberInformation.xml"</PostBuildEvent>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>

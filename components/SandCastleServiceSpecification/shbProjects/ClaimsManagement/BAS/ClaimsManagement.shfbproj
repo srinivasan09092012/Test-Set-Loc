@@ -14,7 +14,7 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.5.1</FrameworkVersion>
-    <OutputPath>..\..\..\..\www\servicespecs\Modules\ClaimsManagement\HelpWeb\</OutputPath>
+    <OutputPath>..\..\..\..\www\servicespecs\Modules\ClaimsManagement\HelpWeb_Latest\</OutputPath>
     <HtmlHelpName>HPP-  BAS and Events For Third Party Integrators</HtmlHelpName>
     <Language>en-US</Language>
     <DocumentationSources>
@@ -90,49 +90,50 @@ This API documentation is intented for teams or products that need to interact w
     <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementAPIQueryService" filterName="ClaimsManagementAPIQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementAPIQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementEDIService" filterName="ClaimsManagementEDIService" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementModuleConfigurator" filterName="ClaimsManagementModuleConfigurator" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementProviderQueryService" filterName="ClaimsManagementProviderQueryService" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementProviderService" filterName="ClaimsManagementProviderService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementProviderService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementQueryService" filterName="ClaimsManagementQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementQueryService.GetMemberList" filterName="GetMemberList" isExposed="False" />
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementService" filterName="ClaimsManagementService" isExposed="True">
-    <Filter entryType="Constructor" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementService.#ctor" filterName=".ctor" isExposed="False" />
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.Global" filterName="Global" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.IocConstant" filterName="IocConstant" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.SearchClaimsQueryService" filterName="SearchClaimsQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.SearchClaimsQueryService.GetMemberList" filterName="GetMemberList" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.Contracts.Events" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.Contracts.Events.ClaimsManagementEvents" filterName="ClaimsManagementEvents" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.Contracts.Events.InpatientClaimsManagementEvents" filterName="InpatientClaimsManagementEvents" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.Contracts.Events.SubmitMedicalClaimEvents" filterName="SubmitMedicalClaimEvents" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.Contracts.Events.SubmitPharmacyClaimEvents" filterName="SubmitPharmacyClaimEvents" isExposed="False" />
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Command" filterName="Command" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Query" filterName="Query" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Query`1" filterName="Query`1" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.SerializableBase" filterName="SerializableBase" isExposed="False" />
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Interfaces" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Interfaces.IServiceAvailability" filterName="IServiceAvailability" isExposed="False" />
-</Filter></ApiFilter>
-    <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementAPIQueryService" filterName="ClaimsManagementAPIQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementAPIQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementEDIService" filterName="ClaimsManagementEDIService" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementModuleConfigurator" filterName="ClaimsManagementModuleConfigurator" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementProviderQueryService" filterName="ClaimsManagementProviderQueryService" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementProviderService" filterName="ClaimsManagementProviderService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementProviderService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementQueryService" filterName="ClaimsManagementQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementQueryService.GetMemberList" filterName="GetMemberList" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementService" filterName="ClaimsManagementService" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementService.#ctor" filterName=".ctor" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.ClaimsManagementService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.Global" filterName="Global" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.IocConstant" filterName="IocConstant" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.SearchClaimsQueryService" filterName="SearchClaimsQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.SearchClaimsQueryService.GetMemberList" filterName="GetMemberList" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.Contracts.Events" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.Contracts.Events.ClaimsManagementEvents" filterName="ClaimsManagementEvents" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.Contracts.Events.InpatientClaimsManagementEvents" filterName="InpatientClaimsManagementEvents" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.Contracts.Events.SubmitMedicalClaimEvents" filterName="SubmitMedicalClaimEvents" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.Contracts.Events.SubmitPharmacyClaimEvents" filterName="SubmitPharmacyClaimEvents" isExposed="False" />
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Command" filterName="Command" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Query" filterName="Query" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Query`1" filterName="Query`1" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.SerializableBase" filterName="SerializableBase" isExposed="False" />
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Interfaces" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Interfaces.IServiceAvailability" filterName="IServiceAvailability" isExposed="False" />
+      </Filter>
+    </ApiFilter>
+    <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <SourceCodeBasePath>
     </SourceCodeBasePath>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
@@ -176,8 +177,7 @@ This API documentation is intented for teams or products that need to interact w
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>J:\UA3\SandCastleCustomizationTool\bin\SandCastleSvcSpec.exe "J:\UA3\SandCastleCustomizationTool\ModulesSettings\Processed - Active Modules\Claims2.xml"</PostBuildEvent>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>

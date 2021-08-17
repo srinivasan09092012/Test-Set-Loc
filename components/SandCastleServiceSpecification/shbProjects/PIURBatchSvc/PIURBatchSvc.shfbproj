@@ -14,7 +14,7 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.5.1</FrameworkVersion>
-    <OutputPath>..\..\..\..\..\..\..\SandCastle\PIURBatchSvc\</OutputPath>
+    <OutputPath>..\..\..\..\www\servicespecs\Modules\ProgramIntegrity\HelpWeb\PIURBatchSvc_Latest\</OutputPath>
     <HtmlHelpName>HPP-  BAS and Events For Third Party Integrators</HtmlHelpName>
     <Language>en-US</Language>
     <HelpFileFormat>Website</HelpFileFormat>
@@ -55,10 +55,11 @@
     <TopicVersion>100</TopicVersion>
     <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\..\..\..\..\ProgramIntegrity\Dev\BAS\PIBatchSvc\HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc\bin\HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc.Contracts.dll" />
-<DocumentationSource sourceFile="..\..\..\..\..\ProgramIntegrity\Dev\BAS\PIBatchSvc\HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc\bin\HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc.Contracts.xml" />
-<DocumentationSource sourceFile="..\..\..\..\..\ProgramIntegrity\Dev\BAS\PIBatchSvc\HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc\bin\HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc.dll" />
-<DocumentationSource sourceFile="..\..\..\..\..\ProgramIntegrity\Dev\BAS\PIBatchSvc\HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc\bin\HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc.xml" /></DocumentationSources>
+      <DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc\HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc.Contracts.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc\HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc.Contracts.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc\HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc\HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc.xml" />
+    </DocumentationSources>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="(global)" isDocumented="True" />
       <NamespaceSummaryItem name="HP.HSP.UA3.ProgramIntegrity.BAS.ProgramIntegritySvc" isDocumented="True" />
@@ -76,14 +77,24 @@
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc" isExposed="True">
         <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc.Global" filterName="Global" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc.PurgeProcessService" filterName="PurgeProcessService" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc.StudyProcessService" filterName="StudyProcessService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc.StudyProcessService.GetTableLocks" filterName="GetTableLocks" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc.StudyRequestService" filterName="StudyRequestService" isExposed="False">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc.StudyRequestService.#ctor" filterName=".ctor" isExposed="True" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc.StudyRequestService.SaveStudyRequest" filterName="SaveStudyRequest" isExposed="True" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc.StudyRequestService.SearchStudyRequestForJobExecution" filterName="SearchStudyRequestForJobExecution" isExposed="True" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc.StudyRequestService.UpdateStudyRequestQueue" filterName="UpdateStudyRequestQueue" isExposed="True" />
+        </Filter>
       </Filter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
         <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
       </Filter>
     </ApiFilter>
-    <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
+    <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
-    <WorkingPath>C:\SandCastle\PIURBatchSvcTemp\</WorkingPath>
+    <WorkingPath>D:\PIBatchSvcTmp\</WorkingPath>
     <TransformComponentArguments>
       <Argument Key="logoFile" Value="dxc_logo_vt_blk_rgb_300.png" xmlns="" />
       <Argument Key="logoHeight" Value="120" xmlns="" />
@@ -123,8 +134,7 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>J:\UA3\SandCastleCustomizationTool\bin\SandCastleSvcSpec.exe "J:\UA3\SandCastleCustomizationTool\ModulesSettings\Processed - Active Modules\PIURBatchSvc2.xml"</PostBuildEvent>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>

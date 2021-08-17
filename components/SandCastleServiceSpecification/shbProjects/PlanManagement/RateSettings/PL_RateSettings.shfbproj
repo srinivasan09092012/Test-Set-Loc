@@ -14,7 +14,7 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.5.1</FrameworkVersion>
-    <OutputPath>..\..\..\..\..\www\servicespecs\Modules\PlanMgmt\RS\</OutputPath>
+    <OutputPath>..\..\..\..\..\www\servicespecs\Modules\PlanMgmt\RS_Latest\</OutputPath>
     <HtmlHelpName>HPP-  BAS and Events For Third Party Integrators</HtmlHelpName>
     <Language>en-US</Language>
     <HelpFileFormat>Website</HelpFileFormat>
@@ -96,53 +96,54 @@
     <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.BatchFeeScheduleService" filterName="BatchFeeScheduleService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.BatchFeeScheduleService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.BatchProviderRateService" filterName="BatchProviderRateService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.BatchProviderRateService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.DiagnosisQueryService" filterName="DiagnosisQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.DiagnosisQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.FeeScheduleQueryService" filterName="FeeScheduleQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.FeeScheduleQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.FeeScheduleService" filterName="FeeScheduleService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.FeeScheduleService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Global" filterName="Global" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingEventService" filterName="RateSettingEventService" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingFileUploadService" filterName="RateSettingFileUploadService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingFileUploadService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingFileUploadService.UploadFile" filterName="UploadFile" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingModuleConfigurator" filterName="RateSettingModuleConfigurator" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingQueryService" filterName="RateSettingQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingQueryService.GetAttachmentFile" filterName="GetAttachmentFile" isExposed="False" />
-    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingReportService" filterName="RateSettingReportService" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingService" filterName="RateSettingService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Queries" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Queries.GetCompleteFeeScheduleQuery" filterName="GetCompleteFeeScheduleQuery" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Queries.GetCompleteFeeScheduleQuery.Validate" filterName="Validate" isExposed="False" />
-    <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Queries.GetCompleteFeeScheduleQuery.ValidateScheduleId" filterName="ValidateScheduleId" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.ViewDTO" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.ViewDTO.FeeScheduleFullView" filterName="FeeScheduleFullView" isExposed="True">
-    <Filter entryType="Constructor" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.ViewDTO.FeeScheduleFullView.#ctor" filterName=".ctor" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
-</Filter></ApiFilter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.BatchFeeScheduleService" filterName="BatchFeeScheduleService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.BatchFeeScheduleService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.BatchProviderRateService" filterName="BatchProviderRateService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.BatchProviderRateService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.DiagnosisQueryService" filterName="DiagnosisQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.DiagnosisQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.FeeScheduleQueryService" filterName="FeeScheduleQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.FeeScheduleQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.FeeScheduleService" filterName="FeeScheduleService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.FeeScheduleService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Global" filterName="Global" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingEventService" filterName="RateSettingEventService" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingFileUploadService" filterName="RateSettingFileUploadService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingFileUploadService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingFileUploadService.UploadFile" filterName="UploadFile" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingModuleConfigurator" filterName="RateSettingModuleConfigurator" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingQueryService" filterName="RateSettingQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingQueryService.GetAttachmentFile" filterName="GetAttachmentFile" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingReportService" filterName="RateSettingReportService" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingService" filterName="RateSettingService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.RateSettingService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Queries" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Queries.GetCompleteFeeScheduleQuery" filterName="GetCompleteFeeScheduleQuery" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Queries.GetCompleteFeeScheduleQuery.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.Queries.GetCompleteFeeScheduleQuery.ValidateScheduleId" filterName="ValidateScheduleId" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.ViewDTO" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.ViewDTO.FeeScheduleFullView" filterName="FeeScheduleFullView" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.ViewDTO.FeeScheduleFullView.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+      </Filter>
+    </ApiFilter>
     <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
     <WorkingPath>D:\RSTmp\</WorkingPath>
@@ -185,8 +186,7 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>J:\UA3\SandCastleCustomizationTool\bin\SandCastleSvcSpec.exe "J:\UA3\SandCastleCustomizationTool\ModulesSettings\Processed - Active Modules\PlanManagement_RS2.xml"</PostBuildEvent>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>

@@ -14,7 +14,7 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.5</FrameworkVersion>
-    <OutputPath>..\..\..\..\www\servicespecs\Modules\ManagedCare\HelpWeb\</OutputPath>
+    <OutputPath>..\..\..\..\www\servicespecs\Modules\ManagedCare\HelpWeb_Latest\</OutputPath>
     <HtmlHelpName>HPP-  BAS and Events For Third Party Integrators</HtmlHelpName>
     <Language>en-US</Language>
     <DocumentationSources>
@@ -62,227 +62,519 @@ This API documentation is intented for teams or products that need to interact w
     <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare" isExposed="False">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.ManagedCareQueryService" filterName="ManagedCareQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.ManagedCareQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.ManagedCareService" filterName="ManagedCareService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.ManagedCareService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Capitation" isExposed="False">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Capitation.CapitationBatchQueryService" filterName="CapitationBatchQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Capitation.CapitationBatchQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Capitation.CapitationBatchService" filterName="CapitationBatchService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Capitation.CapitationBatchService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Capitation.CapitationQueryService" filterName="CapitationQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Capitation.CapitationQueryService.GetAttachmentFile" filterName="GetAttachmentFile" isExposed="False" />
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Capitation.CapitationQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Capitation.CapitationService" filterName="CapitationService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Capitation.CapitationService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddCapitationErrorTaskCommand" filterName="AddCapitationErrorTaskCommand" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddCapitationErrorTaskCommand.Validate" filterName="Validate" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddMemberAssignmentBatchCommand" filterName="AddMemberAssignmentBatchCommand" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddMemberAssignmentBatchCommand.Validate" filterName="Validate" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddMemberCaseAssignmentCommand" filterName="AddMemberCaseAssignmentCommand" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddMemberCaseAssignmentCommand.Validate" filterName="Validate" isExposed="False" />
-    <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddMemberCaseAssignmentCommand.Exceptions" filterName="Exceptions" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.DeleteRateScheduleFileCommand" filterName="DeleteRateScheduleFileCommand" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.DeleteRateScheduleFileCommand.Validate" filterName="Validate" isExposed="False" />
-    <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.DeleteRateScheduleFileCommand.Exceptions" filterName="Exceptions" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateManagedCareEntityCommand" filterName="InvalidateManagedCareEntityCommand" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateManagedCareEntityCommand.Validate" filterName="Validate" isExposed="False" />
-    <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateManagedCareEntityCommand.Exceptions" filterName="Exceptions" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEAddressCommand" filterName="InvalidateMCEAddressCommand" isExposed="True">
-    <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEAddressCommand.#ctor" filterName=".ctor" isExposed="False" />
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEAddressCommand.Validate" filterName="Validate" isExposed="False" />
-    <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEAddressCommand.Exceptions" filterName="Exceptions" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEERAEnrollmentCommand" filterName="InvalidateMCEERAEnrollmentCommand" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEERAEnrollmentCommand.Validate" filterName="Validate" isExposed="False" />
-    <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEERAEnrollmentCommand.Exceptions" filterName="Exceptions" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEIRSTaxAssociationCommand" filterName="InvalidateMCEIRSTaxAssociationCommand" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEIRSTaxAssociationCommand.Validate" filterName="Validate" isExposed="False" />
-    <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEIRSTaxAssociationCommand.Exceptions" filterName="Exceptions" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMemberAssignmentBatchCommand" filterName="InvalidateMemberAssignmentBatchCommand" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMemberAssignmentBatchCommand.Validate" filterName="Validate" isExposed="False" />
-    <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMemberAssignmentBatchCommand.Exceptions" filterName="Exceptions" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMemberSPACommand" filterName="InvalidateMemberSPACommand" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMemberSPACommand.Validate" filterName="Validate" isExposed="False" />
-    <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMemberSPACommand.Exceptions" filterName="Exceptions" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.MCMaintainMedicaidCaseCommand" filterName="MCMaintainMedicaidCaseCommand" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.MCMaintainMedicaidCaseCommand.Validate" filterName="Validate" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.MemberLetterReGenerationCommand" filterName="MemberLetterReGenerationCommand" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.MemberLetterReGenerationCommand.Validate" filterName="Validate" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateCapitationErrorTaskCommand" filterName="UpdateCapitationErrorTaskCommand" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateCapitationErrorTaskCommand.Validate" filterName="Validate" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateCapitationHoldConfigurationCommand" filterName="UpdateCapitationHoldConfigurationCommand" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateCapitationHoldConfigurationCommand.Validate" filterName="Validate" isExposed="False" />
-    <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateCapitationHoldConfigurationCommand.Exceptions" filterName="Exceptions" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateEncounterClaimCommand" filterName="UpdateEncounterClaimCommand" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateEncounterClaimCommand.Validate" filterName="Validate" isExposed="False" />
-    <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateEncounterClaimCommand.Exceptions" filterName="Exceptions" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateMCEServiceGroupMemberAssignmentCommand" filterName="UpdateMCEServiceGroupMemberAssignmentCommand" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateMCEServiceGroupMemberAssignmentCommand.Validate" filterName="Validate" isExposed="False" />
-    <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateMCEServiceGroupMemberAssignmentCommand.Exceptions" filterName="Exceptions" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateMemberAssignmentBatchCommand" filterName="UpdateMemberAssignmentBatchCommand" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateMemberAssignmentBatchCommand.Validate" filterName="Validate" isExposed="False" />
-    <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateMemberAssignmentBatchCommand.Exceptions" filterName="Exceptions" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateProviderMCContractCommand" filterName="UpdateProviderMCContractCommand" isExposed="True">
-    <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateProviderMCContractCommand.#ctor" filterName=".ctor" isExposed="False" />
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateProviderMCContractCommand.Validate" filterName="Validate" isExposed="False" />
-    <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateProviderMCContractCommand.Exceptions" filterName="Exceptions" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Common" isExposed="False" />
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions" isExposed="False">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareBASValidationException" filterName="ManagedCareBASValidationException" isExposed="True" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareExceptionConstants" filterName="ManagedCareExceptionConstants" isExposed="True" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareExceptionConstants.Constants" filterName="ManagedCareExceptionConstants.Constants" isExposed="True" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareExceptionConstants.DataLists" filterName="ManagedCareExceptionConstants.DataLists" isExposed="True" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareExceptionConstants.Field" filterName="ManagedCareExceptionConstants.Field" isExposed="True" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareExceptionConstants.FileLoaderExceptionKey" filterName="ManagedCareExceptionConstants.FileLoaderExceptionKey" isExposed="True" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareExceptionConstants.Messages" filterName="ManagedCareExceptionConstants.Messages" isExposed="True" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareExceptionConstants.Name" filterName="ManagedCareExceptionConstants.Name" isExposed="True" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareExceptionConstants.RegexConstants" filterName="ManagedCareExceptionConstants.RegexConstants" isExposed="True" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareExceptionConstants.Validation" filterName="ManagedCareExceptionConstants.Validation" isExposed="True" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareValidationException" filterName="ManagedCareValidationException" isExposed="True" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.MemberExceptionConstants" filterName="MemberExceptionConstants" isExposed="True" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.MemberExceptionConstants.Validation" filterName="MemberExceptionConstants.Validation" isExposed="True" />
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Interface" isExposed="False" />
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Interfaces" isExposed="False" />
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.CapitationHoldConfigAuditDeltaQuery" filterName="CapitationHoldConfigAuditDeltaQuery" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.CapitationHoldConfigAuditDeltaQuery.Validate" filterName="Validate" isExposed="False" />
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.CapitationHoldConfigAuditDeltaQuery.ValidateSearchCriteriaEntered" filterName="ValidateSearchCriteriaEntered" isExposed="False" />
-    <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.CapitationHoldConfigAuditDeltaQuery.Messages" filterName="Messages" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.GetMCECapitationPaymentQuery" filterName="GetMCECapitationPaymentQuery" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.GetMCECapitationPaymentQuery.Validate" filterName="Validate" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.GetMemberRateSelectionConfigurationQuery" filterName="GetMemberRateSelectionConfigurationQuery" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.GetMemberRateSelectionConfigurationQuery.Validate" filterName="Validate" isExposed="False" />
-    <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.GetMemberRateSelectionConfigurationQuery.Exceptions" filterName="Exceptions" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.MemberManagedCareEligiblePopCodeQuery" filterName="MemberManagedCareEligiblePopCodeQuery" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.MemberManagedCareEligiblePopCodeQuery.Validate" filterName="Validate" isExposed="False" />
-    <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.MemberManagedCareEligiblePopCodeQuery.Exceptions" filterName="Exceptions" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.SearchPaymentsHistoryQuery" filterName="SearchPaymentsHistoryQuery" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.SearchPaymentsHistoryQuery.Validate" filterName="Validate" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Shared" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Shared.MedicaidAddress" filterName="MedicaidAddress" isExposed="True">
-    <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Shared.MedicaidAddress.Use" filterName="Use" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.EDI" isExposed="False">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.EDI.EDIBatchQueryService" filterName="EDIBatchQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.EDI.EDIBatchQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.EDI.EDIQueryService" filterName="EDIQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.EDI.EDIQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.EDI.EDIService" filterName="EDIService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.EDI.EDIService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCE" isExposed="False">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCE.MCEQueryService" filterName="MCEQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCE.MCEQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCE.MCEService" filterName="MCEService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCE.MCEService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCO" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCO.MCOService" filterName="MCOService" isExposed="True">
-    <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCO.MCOService.#ctor" filterName=".ctor" isExposed="False" />
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCO.MCOService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCOPortal" isExposed="False">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCOPortal.MCOPortalQueryService" filterName="MCOPortalQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCOPortal.MCOPortalQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCOPortal.MCOPortalService" filterName="MCOPortalService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCOPortal.MCOPortalService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Member" isExposed="False">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Member.MemberQueryService" filterName="MemberQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Member.MemberQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Member.MemberService" filterName="MemberService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Member.MemberService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MemberPortal" isExposed="False">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MemberPortal.MemberPortalQueryService" filterName="MemberPortalQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MemberPortal.MemberPortalQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Network" isExposed="False">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Network.NetworkQueryService" filterName="NetworkQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Network.NetworkQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Network.NetworkService" filterName="NetworkService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Network.NetworkService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Provider" isExposed="False">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Provider.ProviderQueryService" filterName="ProviderQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Provider.ProviderQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Provider.ProviderService" filterName="ProviderService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Provider.ProviderService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.ProviderPortal" isExposed="False">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.ProviderPortal.ProviderPortalQueryService" filterName="ProviderPortalQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.ProviderPortal.ProviderPortalQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Report" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Report.ManagedCareReportService" filterName="ManagedCareReportService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Report.ManagedCareReportService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.TPL" isExposed="False">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.TPL.TPLQueryService" filterName="TPLQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.TPL.TPLQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands" isExposed="False" />
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
-</Filter></ApiFilter>
+        <Filter entryType="Interface" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.IManagedCareQueryService" filterName="IManagedCareQueryService" isExposed="True" />
+        <Filter entryType="Interface" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.IManagedCareService" filterName="IManagedCareService" isExposed="True" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.ManagedCareQueryService" filterName="ManagedCareQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.ManagedCareQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.ManagedCareService" filterName="ManagedCareService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.ManagedCareService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Capitation" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Capitation.CapitationBatchQueryService" filterName="CapitationBatchQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Capitation.CapitationBatchQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Capitation.CapitationBatchService" filterName="CapitationBatchService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Capitation.CapitationBatchService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Capitation.CapitationQueryService" filterName="CapitationQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Capitation.CapitationQueryService.GetAttachmentFile" filterName="GetAttachmentFile" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Capitation.CapitationQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Capitation.CapitationService" filterName="CapitationService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Capitation.CapitationService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddCapitationErrorTaskCommand" filterName="AddCapitationErrorTaskCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddCapitationErrorTaskCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddCapitationPaymentHistoryCommand" filterName="AddCapitationPaymentHistoryCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddCapitationPaymentHistoryCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddEncounterClaimBatchCommand" filterName="AddEncounterClaimBatchCommand" isExposed="True">
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddEncounterClaimBatchCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddMemberAssignmentBatchCommand" filterName="AddMemberAssignmentBatchCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddMemberAssignmentBatchCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddMemberCaseAssignmentCommand" filterName="AddMemberCaseAssignmentCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddMemberCaseAssignmentCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddMemberCaseAssignmentCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddMemberSPACommand" filterName="AddMemberSPACommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddMemberSPACommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddMemberSPACommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddServiceGroupCommand" filterName="AddServiceGroupCommand" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddServiceGroupCommand.#ctor" filterName=".ctor" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddServiceGroupCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.AddServiceGroupCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.DeleteRateScheduleFileCommand" filterName="DeleteRateScheduleFileCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.DeleteRateScheduleFileCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.DeleteRateScheduleFileCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateCapitationCycleCommand" filterName="InvalidateCapitationCycleCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateCapitationCycleCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateCapitationCycleCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateCapitationCycleOverrideCommand" filterName="InvalidateCapitationCycleOverrideCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateCapitationCycleOverrideCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateCapitationCycleOverrideCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateManagedCareEntityCommand" filterName="InvalidateManagedCareEntityCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateManagedCareEntityCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateManagedCareEntityCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEAddressCommand" filterName="InvalidateMCEAddressCommand" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEAddressCommand.#ctor" filterName=".ctor" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEAddressCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEAddressCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEARRecoupmentCommand" filterName="InvalidateMCEARRecoupmentCommand" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEARRecoupmentCommand.#ctor" filterName=".ctor" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEARRecoupmentCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEARRecoupmentCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCECategoryOfServiceCommand" filterName="InvalidateMCECategoryOfServiceCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCECategoryOfServiceCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCECategoryOfServiceCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEContactCommand" filterName="InvalidateMCEContactCommand" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEContactCommand.#ctor" filterName=".ctor" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEContactCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEContactCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEContractCommand" filterName="InvalidateMCEContractCommand" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEContractCommand.#ctor" filterName=".ctor" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEContractCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEContractCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEEFTEnrollmentCommand" filterName="InvalidateMCEEFTEnrollmentCommand" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEEFTEnrollmentCommand.#ctor" filterName=".ctor" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEEFTEnrollmentCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEEFTEnrollmentCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEERAEnrollmentCommand" filterName="InvalidateMCEERAEnrollmentCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEERAEnrollmentCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEERAEnrollmentCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEIRSTaxAssociationCommand" filterName="InvalidateMCEIRSTaxAssociationCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEIRSTaxAssociationCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEIRSTaxAssociationCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEManagingEmployeeAssociationCommand" filterName="InvalidateMCEManagingEmployeeAssociationCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEManagingEmployeeAssociationCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEManagingEmployeeAssociationCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEOwnerAssociationsCommand" filterName="InvalidateMCEOwnerAssociationsCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEOwnerAssociationsCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMCEOwnerAssociationsCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMemberAssignmentBatchCommand" filterName="InvalidateMemberAssignmentBatchCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMemberAssignmentBatchCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMemberAssignmentBatchCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMemberSPACommand" filterName="InvalidateMemberSPACommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMemberSPACommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMemberSPACommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMemberSpecialConditionCommand" filterName="InvalidateMemberSpecialConditionCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMemberSpecialConditionCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateMemberSpecialConditionCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateProviderCapacityCommand" filterName="InvalidateProviderCapacityCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateProviderCapacityCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateProviderCapacityCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateProviderMCContractCommand" filterName="InvalidateProviderMCContractCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateProviderMCContractCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateProviderMCContractCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateProviderMCEMemberAssociationCommand" filterName="InvalidateProviderMCEMemberAssociationCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateProviderMCEMemberAssociationCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateProviderMCEMemberAssociationCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateProviderMCLocationRestrictionCommand" filterName="InvalidateProviderMCLocationRestrictionCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateProviderMCLocationRestrictionCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateProviderMCLocationRestrictionCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateServiceGroupCapitationCycleCommand" filterName="InvalidateServiceGroupCapitationCycleCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateServiceGroupCapitationCycleCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateServiceGroupCapitationCycleCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateVosTagCommand" filterName="InvalidateVosTagCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateVosTagCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.InvalidateVosTagCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.MCEventProcessStatusCommand" filterName="MCEventProcessStatusCommand" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.MCEventProcessStatusCommand.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.MCEventProcessStatusUpdateCommand" filterName="MCEventProcessStatusUpdateCommand" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.MCEventProcessStatusUpdateCommand.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.MCMaintainMedicaidCaseCommand" filterName="MCMaintainMedicaidCaseCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.MCMaintainMedicaidCaseCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.MemberLetterReGenerationCommand" filterName="MemberLetterReGenerationCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.MemberLetterReGenerationCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.RecoupOnlyAddTaskCommand" filterName="RecoupOnlyAddTaskCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.RecoupOnlyAddTaskCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.RecoupOnlyAddTaskCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.RepayEncounterClaimOnRateChangeCommand" filterName="RepayEncounterClaimOnRateChangeCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.RepayEncounterClaimOnRateChangeCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.RepayEncounterClaimOnRateChangeCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.RequestMemberLetterNotificationCommand" filterName="RequestMemberLetterNotificationCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.RequestMemberLetterNotificationCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.RequestMemberLetterNotificationCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateCapitationErrorTaskCommand" filterName="UpdateCapitationErrorTaskCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateCapitationErrorTaskCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateCapitationFinancialPaymentCommand" filterName="UpdateCapitationFinancialPaymentCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateCapitationFinancialPaymentCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateCapitationHoldConfigurationCommand" filterName="UpdateCapitationHoldConfigurationCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateCapitationHoldConfigurationCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateCapitationHoldConfigurationCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateEncounterClaimCommand" filterName="UpdateEncounterClaimCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateEncounterClaimCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateEncounterClaimCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateMCEServiceGroupMemberAssignmentCommand" filterName="UpdateMCEServiceGroupMemberAssignmentCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateMCEServiceGroupMemberAssignmentCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateMCEServiceGroupMemberAssignmentCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateMemberAssignmentBatchCommand" filterName="UpdateMemberAssignmentBatchCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateMemberAssignmentBatchCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateMemberAssignmentBatchCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateMemberLockOutCommand" filterName="UpdateMemberLockOutCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateMemberLockOutCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateMemberSPACommand" filterName="UpdateMemberSPACommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateMemberSPACommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateMemberSPACommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateProviderMCContractCommand" filterName="UpdateProviderMCContractCommand" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateProviderMCContractCommand.#ctor" filterName=".ctor" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateProviderMCContractCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateProviderMCContractCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateProviderMCEMemberAssocitionCommand" filterName="UpdateProviderMCEMemberAssocitionCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateProviderMCEMemberAssocitionCommand.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands.UpdateProviderMCEMemberAssocitionCommand.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Common" isExposed="False" />
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCEDI834PCPAssignmentAdded" filterName="MCEDI834PCPAssignmentAdded" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCEDI834PCPAssignmentAdded.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCEDI834PCPAssignmentInvalidated" filterName="MCEDI834PCPAssignmentInvalidated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCEDI834PCPAssignmentInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCEDI834PCPAssignmentUpdated" filterName="MCEDI834PCPAssignmentUpdated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCEDI834PCPAssignmentUpdated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMedicaidCaseUpdated" filterName="MCMedicaidCaseUpdated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMedicaidCaseUpdated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMedicaidCaseWorkerAdded" filterName="MCMedicaidCaseWorkerAdded" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMedicaidCaseWorkerAdded.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMedicaidCaseWorkerUpdated" filterName="MCMedicaidCaseWorkerUpdated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMedicaidCaseWorkerUpdated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberAdded" filterName="MCMemberAdded" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberAdded.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberAssignmentAdded" filterName="MCMemberAssignmentAdded" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberAssignmentAdded.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberAssignmentInvalidated" filterName="MCMemberAssignmentInvalidated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberAssignmentInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberAssignmentInvoiceEvent" filterName="MCMemberAssignmentInvoiceEvent" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberAssignmentInvoiceEvent.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberAssignmentUpdated" filterName="MCMemberAssignmentUpdated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberAssignmentUpdated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberBenefitPlanAdded" filterName="MCMemberBenefitPlanAdded" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberBenefitPlanAdded.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberBenefitPlanInvalidated" filterName="MCMemberBenefitPlanInvalidated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberBenefitPlanInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberBenefitPlanReassignment" filterName="MCMemberBenefitPlanReassignment" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberBenefitPlanReassignment.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberBenefitPlanUpdated" filterName="MCMemberBenefitPlanUpdated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberBenefitPlanUpdated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberCaseWorkerAdded" filterName="MCMemberCaseWorkerAdded" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberCaseWorkerAdded.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberCaseWorkerUpdated" filterName="MCMemberCaseWorkerUpdated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberCaseWorkerUpdated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberChronicConditionInvalidated" filterName="MCMemberChronicConditionInvalidated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberChronicConditionInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberContactPointAdded" filterName="MCMemberContactPointAdded" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberContactPointAdded.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberContactPointInvalidated" filterName="MCMemberContactPointInvalidated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberContactPointInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberContactPointUpdated" filterName="MCMemberContactPointUpdated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberContactPointUpdated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberHealthStatusAdded" filterName="MCMemberHealthStatusAdded" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberHealthStatusAdded.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberHealthStatusInvalidated" filterName="MCMemberHealthStatusInvalidated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberHealthStatusInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberHealthStatusUpdated" filterName="MCMemberHealthStatusUpdated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberHealthStatusUpdated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberLanguageAdded" filterName="MCMemberLanguageAdded" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberLanguageAdded.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberLanguageInvalidated" filterName="MCMemberLanguageInvalidated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberLanguageInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberLanguageUpdated" filterName="MCMemberLanguageUpdated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberLanguageUpdated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberLevelOfCareAdded" filterName="MCMemberLevelOfCareAdded" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberLevelOfCareAdded.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberLevelOfCareInvalidated" filterName="MCMemberLevelOfCareInvalidated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberLevelOfCareInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberLevelOfCareUpdated" filterName="MCMemberLevelOfCareUpdated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberLevelOfCareUpdated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberLockOutAdded" filterName="MCMemberLockOutAdded" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberLockOutAdded.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberLockOutInvalidated" filterName="MCMemberLockOutInvalidated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberLockOutInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberLockOutUpdated" filterName="MCMemberLockOutUpdated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberLockOutUpdated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberMedicaidCaseAdded" filterName="MCMemberMedicaidCaseAdded" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberMedicaidCaseAdded.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberMedicaidCaseInvalidated" filterName="MCMemberMedicaidCaseInvalidated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberMedicaidCaseInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberMedicaidCaseUpdated" filterName="MCMemberMedicaidCaseUpdated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberMedicaidCaseUpdated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberMedicareAdded" filterName="MCMemberMedicareAdded" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberMedicareAdded.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberMedicareUpdated" filterName="MCMemberMedicareUpdated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberMedicareUpdated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberPatientLiabilityAdded" filterName="MCMemberPatientLiabilityAdded" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberPatientLiabilityAdded.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberPatientLiabilityInvalidated" filterName="MCMemberPatientLiabilityInvalidated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberPatientLiabilityInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberPatientLiabilityUpdated" filterName="MCMemberPatientLiabilityUpdated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberPatientLiabilityUpdated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberPopCodeAdded" filterName="MCMemberPopCodeAdded" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberPopCodeAdded.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberPopCodeInvalidated" filterName="MCMemberPopCodeInvalidated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberPopCodeInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberPopCodeUpdated" filterName="MCMemberPopCodeUpdated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberPopCodeUpdated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberRestrictiveAssignmentPlanAdded" filterName="MCMemberRestrictiveAssignmentPlanAdded" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberRestrictiveAssignmentPlanAdded.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberRestrictiveAssignmentPlanUpdated" filterName="MCMemberRestrictiveAssignmentPlanUpdated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberRestrictiveAssignmentPlanUpdated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberSPAInvalidated" filterName="MCMemberSPAInvalidated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.MCMemberSPAInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.PolicyAdded" filterName="PolicyAdded" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.PolicyAdded.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.PolicyCoveragesAdded" filterName="PolicyCoveragesAdded" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.PolicyCoveragesAdded.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.PolicyCoveragesUpdated" filterName="PolicyCoveragesUpdated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.PolicyCoveragesUpdated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.PolicyInvalidated" filterName="PolicyInvalidated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.PolicyInvalidated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.PolicyUpdated" filterName="PolicyUpdated" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Events.PolicyUpdated.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions" isExposed="False">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareBASValidationException" filterName="ManagedCareBASValidationException" isExposed="True" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareExceptionConstants" filterName="ManagedCareExceptionConstants" isExposed="True" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareExceptionConstants.Constants" filterName="ManagedCareExceptionConstants.Constants" isExposed="True" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareExceptionConstants.DataLists" filterName="ManagedCareExceptionConstants.DataLists" isExposed="True" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareExceptionConstants.Field" filterName="ManagedCareExceptionConstants.Field" isExposed="True" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareExceptionConstants.FileLoaderExceptionKey" filterName="ManagedCareExceptionConstants.FileLoaderExceptionKey" isExposed="True" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareExceptionConstants.Messages" filterName="ManagedCareExceptionConstants.Messages" isExposed="True" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareExceptionConstants.Name" filterName="ManagedCareExceptionConstants.Name" isExposed="True" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareExceptionConstants.RegexConstants" filterName="ManagedCareExceptionConstants.RegexConstants" isExposed="True" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareExceptionConstants.Validation" filterName="ManagedCareExceptionConstants.Validation" isExposed="True" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.ManagedCareValidationException" filterName="ManagedCareValidationException" isExposed="True" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.MemberExceptionConstants" filterName="MemberExceptionConstants" isExposed="True" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Exceptions.MemberExceptionConstants.Validation" filterName="MemberExceptionConstants.Validation" isExposed="True" />
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Interface" isExposed="False" />
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Interfaces" isExposed="False" />
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.CapitationHoldConfigAuditDeltaQuery" filterName="CapitationHoldConfigAuditDeltaQuery" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.CapitationHoldConfigAuditDeltaQuery.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.CapitationHoldConfigAuditDeltaQuery.ValidateSearchCriteriaEntered" filterName="ValidateSearchCriteriaEntered" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.CapitationHoldConfigAuditDeltaQuery.Messages" filterName="Messages" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.GetEDI834FileDetailsQuery" filterName="GetEDI834FileDetailsQuery" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.GetEDI834FileDetailsQuery.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.GetEDI834FileDetailsQuery.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.GetMCECapitationPaymentQuery" filterName="GetMCECapitationPaymentQuery" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.GetMCECapitationPaymentQuery.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.GetMemberLetterReGenerationDetailQuery" filterName="GetMemberLetterReGenerationDetailQuery" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.GetMemberLetterReGenerationDetailQuery.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.GetMemberRateSelectionConfigurationQuery" filterName="GetMemberRateSelectionConfigurationQuery" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.GetMemberRateSelectionConfigurationQuery.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.GetMemberRateSelectionConfigurationQuery.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.MemberManagedCareEligiblePopCodeQuery" filterName="MemberManagedCareEligiblePopCodeQuery" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.MemberManagedCareEligiblePopCodeQuery.Validate" filterName="Validate" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.MemberManagedCareEligiblePopCodeQuery.Exceptions" filterName="Exceptions" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.SearchGeneratedMemberCorrespondenceCountsQuery" filterName="SearchGeneratedMemberCorrespondenceCountsQuery" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.SearchGeneratedMemberCorrespondenceCountsQuery.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.SearchPaymentsHistoryQuery" filterName="SearchPaymentsHistoryQuery" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Queries.SearchPaymentsHistoryQuery.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Shared" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Shared.BenefitPlan" filterName="BenefitPlan" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Shared.BenefitPlan.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Shared.MedicaidAddress" filterName="MedicaidAddress" isExposed="True">
+          <Filter entryType="Property" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Shared.MedicaidAddress.Use" filterName="Use" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Shared.MemberEligDetermination" filterName="MemberEligDetermination" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.Shared.MemberEligDetermination.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.EDI" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.EDI.EDIBatchQueryService" filterName="EDIBatchQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.EDI.EDIBatchQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.EDI.EDIQueryService" filterName="EDIQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.EDI.EDIQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.EDI.EDIService" filterName="EDIService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.EDI.EDIService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCE" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCE.MCEQueryService" filterName="MCEQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCE.MCEQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCE.MCEService" filterName="MCEService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCE.MCEService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCO" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCO.MCOService" filterName="MCOService" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCO.MCOService.#ctor" filterName=".ctor" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCO.MCOService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCOPortal" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCOPortal.MCOPortalQueryService" filterName="MCOPortalQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCOPortal.MCOPortalQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCOPortal.MCOPortalService" filterName="MCOPortalService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MCOPortal.MCOPortalService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Member" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Member.MemberQueryService" filterName="MemberQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Member.MemberQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Member.MemberService" filterName="MemberService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Member.MemberService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MemberPortal" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MemberPortal.MemberPortalQueryService" filterName="MemberPortalQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.MemberPortal.MemberPortalQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Network" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Network.NetworkQueryService" filterName="NetworkQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Network.NetworkQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Network.NetworkService" filterName="NetworkService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Network.NetworkService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Provider" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Provider.ProviderQueryService" filterName="ProviderQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Provider.ProviderQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Provider.ProviderService" filterName="ProviderService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Provider.ProviderService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.ProviderPortal" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.ProviderPortal.ProviderPortalQueryService" filterName="ProviderPortalQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.ProviderPortal.ProviderPortalQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Report" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Report.ManagedCareReportService" filterName="ManagedCareReportService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Report.ManagedCareReportService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.TPL" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.TPL.TPLQueryService" filterName="TPLQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.TPL.TPLQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.UA3.ManagedCare.BAS.ManagedCare.Contracts.Commands" isExposed="False" />
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+      </Filter>
+    </ApiFilter>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="(global)" isDocumented="True" />
       <NamespaceSummaryItem name="HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.Contracts.Events" isDocumented="True" />
@@ -358,8 +650,7 @@ This API documentation is intented for teams or products that need to interact w
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>J:\UA3\SandCastleCustomizationTool\ShbDoc\MCCapitation\MsBuildForSandastleWebStyleOutput.bat</PostBuildEvent>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>

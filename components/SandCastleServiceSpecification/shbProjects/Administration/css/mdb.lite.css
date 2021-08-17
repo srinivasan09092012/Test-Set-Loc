@@ -1958,7 +1958,7 @@ a.waves-effect, a.waves-light {
  * Version - 3.7.0
  * Licensed under the MIT license - http://opensource.org/licenses/MIT
  *
- * Copyright (c) 2021 Daniel Eden
+ * Copyright (c) 2018 Daniel Eden
  */
 .animated {
   -webkit-animation-duration: 1s;
@@ -5927,13 +5927,13 @@ body.scrollable {
   content: "Pilih"; }
 
 .custom-file-input:lang(zh) ~ .custom-file-label::after {
-  content: "??????"; }
+  content: "選擇"; }
 
 .custom-file-input:lang(de) ~ .custom-file-label::after {
-  content: "W??hlen"; }
+  content: "Wählen"; }
 
 .custom-file-input:lang(ru) ~ .custom-file-label::after {
-  content: "????????????????"; }
+  content: "выбирать"; }
 
 .edge-header {
   display: block;

@@ -14,14 +14,15 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.5.1</FrameworkVersion>
-    <OutputPath>..\..\..\..\..\www\servicespecs\Modules\MemberMgmt\HelpWeb\MemberManagement\</OutputPath>
+    <OutputPath>..\..\..\..\..\www\servicespecs\Modules\MemberMgmt\HelpWeb\MemberManagement_Latest\</OutputPath>
     <HtmlHelpName>HPP-  BAS and Events For Third Party Integrators</HtmlHelpName>
     <Language>en-US</Language>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.MemberManagement.BAS.MemberManagement\HP.HSP.UA3.MemberManagement.BAS.MemberManagement.Contracts.dll" />
-<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.MemberManagement.BAS.MemberManagement\HP.HSP.UA3.MemberManagement.BAS.MemberManagement.Contracts.xml" />
-<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.MemberManagement.BAS.MemberManagement\HP.HSP.UA3.MemberManagement.BAS.MemberManagement.dll" />
-<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.MemberManagement.BAS.MemberManagement\HP.HSP.UA3.MemberManagement.BAS.MemberManagement.xml" /></DocumentationSources>
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.MemberManagement.BAS.MemberManagement\HP.HSP.UA3.MemberManagement.BAS.MemberManagement.Contracts.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.MemberManagement.BAS.MemberManagement\HP.HSP.UA3.MemberManagement.BAS.MemberManagement.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.MemberManagement.BAS.MemberManagement\HP.HSP.UA3.MemberManagement.BAS.MemberManagement.xml" />
+    </DocumentationSources>
     <HelpFileFormat>Website</HelpFileFormat>
     <SyntaxFilters>C#</SyntaxFilters>
     <PresentationStyle>VS2013</PresentationStyle>
@@ -89,18 +90,19 @@ This API documentation is intented for teams or products that need to interact w
     <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberManagement" isExposed="False">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberManagement.MemberManagementQueryService" filterName="MemberManagementQueryService" isExposed="True">
-    <Filter entryType="Constructor" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberManagement.MemberManagementQueryService.#ctor" filterName=".ctor" isExposed="False" />
-    <Filter entryType="Method" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberManagement.MemberManagementQueryService.ThrowsException" filterName="ThrowsException" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberManagement.Contracts.Domain" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberManagement.Contracts.Domain.X270.INS_MultipleBirthSequenceNumber" filterName="X270.INS_MultipleBirthSequenceNumber" isExposed="True">
-    <Filter entryType="Property" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberManagement.Contracts.Domain.X270.INS_MultipleBirthSequenceNumber.INS07_ConsolidatedOmnibusBudgetReconciliationAct_COBRA_QualifyingEventCode" filterName="INS07_ConsolidatedOmnibusBudgetReconciliationAct_COBRA_QualifyingEventCode" isExposed="False" />
-    <Filter entryType="Property" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberManagement.Contracts.Domain.X270.INS_MultipleBirthSequenceNumber.INS07_ConsolidatedOmnibusBudgetReconciliationAct_COBRA_QualifyingEventCodeSpecified" filterName="INS07_ConsolidatedOmnibusBudgetReconciliationAct_COBRA_QualifyingEventCodeSpecified" isExposed="False" />
-  </Filter>
-</Filter></ApiFilter>
-    <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberManagement.MemberManagementQueryService" filterName="MemberManagementQueryService" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberManagement.MemberManagementQueryService.#ctor" filterName=".ctor" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberManagement.MemberManagementQueryService.ThrowsException" filterName="ThrowsException" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberManagement.Contracts.Domain" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberManagement.Contracts.Domain.X270.INS_MultipleBirthSequenceNumber" filterName="X270.INS_MultipleBirthSequenceNumber" isExposed="True">
+          <Filter entryType="Property" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberManagement.Contracts.Domain.X270.INS_MultipleBirthSequenceNumber.INS07_ConsolidatedOmnibusBudgetReconciliationAct_COBRA_QualifyingEventCode" filterName="INS07_ConsolidatedOmnibusBudgetReconciliationAct_COBRA_QualifyingEventCode" isExposed="False" />
+          <Filter entryType="Property" fullName="HP.HSP.UA3.MemberManagement.BAS.MemberManagement.Contracts.Domain.X270.INS_MultipleBirthSequenceNumber.INS07_ConsolidatedOmnibusBudgetReconciliationAct_COBRA_QualifyingEventCodeSpecified" filterName="INS07_ConsolidatedOmnibusBudgetReconciliationAct_COBRA_QualifyingEventCodeSpecified" isExposed="False" />
+        </Filter>
+      </Filter>
+    </ApiFilter>
+    <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <SourceCodeBasePath>
     </SourceCodeBasePath>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
@@ -144,8 +146,7 @@ This API documentation is intented for teams or products that need to interact w
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>J:\UA3\SandCastleCustomizationTool\bin\SandCastleSvcSpec.exe "J:\UA3\SandCastleCustomizationTool\ModulesSettings\Processed - Active Modules\MemberMgmt_Management.xml"</PostBuildEvent>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>

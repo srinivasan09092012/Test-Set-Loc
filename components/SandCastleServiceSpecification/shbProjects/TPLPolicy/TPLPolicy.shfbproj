@@ -81,49 +81,50 @@
     <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.BatchAuditQueryService" filterName="BatchAuditQueryService" isExposed="False">
-    <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.BatchAuditQueryService.#ctor" filterName=".ctor" isExposed="True" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.BatchHIPPQueryService" filterName="BatchHIPPQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.BatchHIPPQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.BatchHIPPService" filterName="BatchHIPPService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.BatchHIPPService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.BatchPolicyQueryService" filterName="BatchPolicyQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.BatchPolicyQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.BatchPolicyService" filterName="BatchPolicyService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.BatchPolicyService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.Global" filterName="Global" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.HIPPQueryService" filterName="HIPPQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.HIPPQueryService.GetHIPPLetter" filterName="GetHIPPLetter" isExposed="False" />
-    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.HIPPQueryService.GetHIPPLetterDetails" filterName="GetHIPPLetterDetails" isExposed="False" />
-    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.HIPPQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.HIPPService" filterName="HIPPService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.HIPPService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.PolicyEventService" filterName="PolicyEventService" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.PolicyModuleConfigurator" filterName="PolicyModuleConfigurator" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.PolicyQueryService" filterName="PolicyQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.PolicyQueryService.PolicyLetterDetails" filterName="PolicyLetterDetails" isExposed="False" />
-    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.PolicyQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.PolicyReportQueryService" filterName="PolicyReportQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.PolicyReportQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.PolicyService" filterName="PolicyService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.PolicyService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
-</Filter></ApiFilter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.BatchAuditQueryService" filterName="BatchAuditQueryService" isExposed="False">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.BatchAuditQueryService.#ctor" filterName=".ctor" isExposed="True" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.BatchHIPPQueryService" filterName="BatchHIPPQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.BatchHIPPQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.BatchHIPPService" filterName="BatchHIPPService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.BatchHIPPService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.BatchPolicyQueryService" filterName="BatchPolicyQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.BatchPolicyQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.BatchPolicyService" filterName="BatchPolicyService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.BatchPolicyService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.Global" filterName="Global" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.HIPPQueryService" filterName="HIPPQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.HIPPQueryService.GetHIPPLetter" filterName="GetHIPPLetter" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.HIPPQueryService.GetHIPPLetterDetails" filterName="GetHIPPLetterDetails" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.HIPPQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.HIPPService" filterName="HIPPService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.HIPPService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.PolicyEventService" filterName="PolicyEventService" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.PolicyModuleConfigurator" filterName="PolicyModuleConfigurator" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.PolicyQueryService" filterName="PolicyQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.PolicyQueryService.PolicyLetterDetails" filterName="PolicyLetterDetails" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.PolicyQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.PolicyReportQueryService" filterName="PolicyReportQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.PolicyReportQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.PolicyService" filterName="PolicyService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.TPLPolicy.BAS.Policy.PolicyService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+      </Filter>
+    </ApiFilter>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
     <WorkingPath>D:\TPLPolicyTmp\</WorkingPath>
   </PropertyGroup>
@@ -152,8 +153,7 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>J:\UA3\SandCastleCustomizationTool\bin\SandCastleSvcSpec.exe "J:\UA3\SandCastleCustomizationTool\ModulesSettings\Processed - Active Modules\TPLPolicy2.xml"</PostBuildEvent>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>

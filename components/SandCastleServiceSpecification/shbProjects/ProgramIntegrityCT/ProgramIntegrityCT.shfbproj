@@ -14,7 +14,7 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.5.1</FrameworkVersion>
-    <OutputPath>..\..\..\..\www\servicespecs\Modules\ProgramIntegrityCT\HelpWeb\</OutputPath>
+    <OutputPath>..\..\..\..\www\servicespecs\Modules\ProgramIntegrityCT\HelpWeb_Latest\</OutputPath>
     <HtmlHelpName>HPP-  BAS and Events For Third Party Integrators</HtmlHelpName>
     <Language>en-US</Language>
     <HelpFileFormat>Website</HelpFileFormat>
@@ -88,36 +88,38 @@
     <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseReferralUpdated" filterName="CaseReferralUpdated" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseScopeAndExtrapolationPhaseEvent" filterName="CaseScopeAndExtrapolationPhaseEvent" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseTrackingEventService" filterName="CaseTrackingEventService" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseTrackingModuleConfigurator" filterName="CaseTrackingModuleConfigurator" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseTrackingQueryService" filterName="CaseTrackingQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseTrackingQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseTrackingReportService" filterName="CaseTrackingReportService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseTrackingReportService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseTrackingService" filterName="CaseTrackingService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseTrackingService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.Global" filterName="Global" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.InvalidateCaseReferralCommand" filterName="InvalidateCaseReferralCommand" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.SuperCaseQueryService" filterName="SuperCaseQueryService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.SuperCaseQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.SuperCaseService" filterName="SuperCaseService" isExposed="True">
-    <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.SuperCaseService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.UpdateCaseReferralCommand" filterName="UpdateCaseReferralCommand" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.UpdateCaseScopeAndExtrapolationPhaseCommand" filterName="UpdateCaseScopeAndExtrapolationPhaseCommand" isExposed="False" />
-</Filter>
-<Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
-  <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
-</Filter></ApiFilter>
-    <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseReferralUpdated" filterName="CaseReferralUpdated" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseScopeAndExtrapolationPhaseEvent" filterName="CaseScopeAndExtrapolationPhaseEvent" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseTrackingEventService" filterName="CaseTrackingEventService" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseTrackingModuleConfigurator" filterName="CaseTrackingModuleConfigurator" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseTrackingQueryService" filterName="CaseTrackingQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseTrackingQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseTrackingReportService" filterName="CaseTrackingReportService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseTrackingReportService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseTrackingService" filterName="CaseTrackingService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.CaseTrackingService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.Global" filterName="Global" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.InvalidateCaseReferralCommand" filterName="InvalidateCaseReferralCommand" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.SuperCaseQueryService" filterName="SuperCaseQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.SuperCaseQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.SuperCaseService" filterName="SuperCaseService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.SuperCaseService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.UpdateCaseReferralCommand" filterName="UpdateCaseReferralCommand" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.UpdateCaseScopeAndExtrapolationPhaseCommand" filterName="UpdateCaseScopeAndExtrapolationPhaseCommand" isExposed="False" />
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+      </Filter>
+    </ApiFilter>
+    <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
     <WorkingPath>D:\PICTTmp\</WorkingPath>
     <TransformComponentArguments>
@@ -159,8 +161,7 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>J:\UA3\SandCastleCustomizationTool\bin\SandCastleSvcSpec.exe "J:\UA3\SandCastleCustomizationTool\ModulesSettings\Processed - Active Modules\ProgramIntegrityCT2.xml"</PostBuildEvent>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>

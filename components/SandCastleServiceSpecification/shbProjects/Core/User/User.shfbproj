@@ -14,14 +14,15 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.5</FrameworkVersion>
-    <OutputPath>..\..\..\..\..\www\servicespecs\Modules\Core\HelpWeb\User\</OutputPath>
+    <OutputPath>..\..\..\..\..\www\servicespecs\Modules\Core\HelpWeb\User_Latest\</OutputPath>
     <HtmlHelpName>HPP-  BAS and Events For Third Party Integrators</HtmlHelpName>
     <Language>en-US</Language>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Core.BAS.User\HP.HSP.UA3.Core.BAS.User.Contracts.dll" />
-<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Core.BAS.User\HP.HSP.UA3.Core.BAS.User.Contracts.xml" />
-<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Core.BAS.User\HP.HSP.UA3.Core.BAS.User.dll" />
-<DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Core.BAS.User\HP.HSP.UA3.Core.BAS.User.xml" /></DocumentationSources>
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Core.BAS.User\HP.HSP.UA3.Core.BAS.User.Contracts.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Core.BAS.User\HP.HSP.UA3.Core.BAS.User.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.Core.BAS.User\HP.HSP.UA3.Core.BAS.User.xml" />
+    </DocumentationSources>
     <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
     <HelpFileFormat>Website</HelpFileFormat>
     <SyntaxFilters>C#</SyntaxFilters>
@@ -62,7 +63,7 @@ This API documentation is intented for teams or products that need to interact w
     <TocParentVersion>1</TocParentVersion>
     <TopicVersion>1</TopicVersion>
     <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
-    <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
+    <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
     <WorkingPath>D:\CUtemp\</WorkingPath>
     <ApiFilter>
@@ -114,8 +115,7 @@ This API documentation is intented for teams or products that need to interact w
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>J:\UA3\SandCastleCustomizationTool\bin\SandCastleSvcSpec.exe "J:\UA3\SandCastleCustomizationTool\ModulesSettings\Processed - Active Modules\Core_User2.xml"</PostBuildEvent>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>

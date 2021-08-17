@@ -6,7 +6,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{99edbb4c-378f-44da-b99a-c4ded763c3cc}</ProjectGuid>
+    <ProjectGuid>{cc809086-1976-4eed-a2fd-6c96117e557b}</ProjectGuid>
     <SHFBSchemaVersion>2017.9.26.0</SHFBSchemaVersion>
     <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual Studio adds them anyway -->
     <AssemblyName>Documentation</AssemblyName>
@@ -14,7 +14,7 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.5</FrameworkVersion>
-    <OutputPath>J:\www\servicespecs\Modules\ProviderMgmt\HelpWeb\</OutputPath>
+    <OutputPath>..\..\..\..\www\servicespecs\Modules\ProviderMgmt\HelpWeb_Latest\</OutputPath>
     <HtmlHelpName>HPP-  BAS and Events For Third Party Integrators</HtmlHelpName>
     <Language>en-US</Language>
     <DocumentationSources>
@@ -23,8 +23,7 @@
       <DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.ProviderMgmt\HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.dll" />
       <DocumentationSource sourceFile="..\..\..\..\www\UA3\SandCastleCustomizationTool\ShbDoc\ShbDoc_Dev\HP.HSP.UA3.ProviderMgmt\HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.xml" />
     </DocumentationSources>
-    <VisibleItems>InheritedMembers, ProtectedInternalAsProtected</VisibleItems>
-    <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
+    <VisibleItems>InheritedMembers, ProtectedInternalAsProtected, NonBrowsable</VisibleItems>
     <HelpFileFormat>Website</HelpFileFormat>
     <SyntaxFilters>C#</SyntaxFilters>
     <PresentationStyle>VS2013</PresentationStyle>
@@ -32,81 +31,11 @@
     <KeepLogFile>False</KeepLogFile>
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
     <IndentHtml>False</IndentHtml>
-    <BuildAssemblerVerbosity>OnlyErrors</BuildAssemblerVerbosity>
-    <HtmlSdkLinkType>None</HtmlSdkLinkType>
-    <BinaryTOC>False</BinaryTOC>
-    <IncludeFavorites>False</IncludeFavorites>
-    <WebsiteSdkLinkType>None</WebsiteSdkLinkType>
-    <AppendMarkdownFileExtensionsToUrls>True</AppendMarkdownFileExtensionsToUrls>
-    <NamespaceSummaries>
-      <NamespaceSummaryItem name="(global)" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Aggregates" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.Portal" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Common" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Domain" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Domain.Portal" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Events" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Events.Portal" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Exceptions" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.NPPR" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.Conditions" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.Parameters" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.Parameters.Portal" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.Portal" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.Sorting" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.ValueObjects" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.ValueObjects.Portal" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts (Group)" isGroup="True" isDocumented="True" />
-      <NamespaceSummaryItem name="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Shared" isDocumented="True" />
-    </NamespaceSummaries>
-    <ApiFilter>
-      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers" isExposed="True">
-        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Global" filterName="Global" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderBatchQueryService" filterName="ProviderBatchQueryService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderBatchQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderBatchService" filterName="ProviderBatchService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderBatchService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderEventService" filterName="ProviderEventService" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderModuleConfigurator" filterName="ProviderModuleConfigurator" isExposed="False" />
-        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderPortalQueryService" filterName="ProviderPortalQueryService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderPortalQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderPortalService" filterName="ProviderPortalService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderPortalService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderService" filterName="ProviderService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
-        </Filter>
-        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProvidersQueryService" filterName="ProvidersQueryService" isExposed="True">
-          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProvidersQueryService.RemoveText" filterName="RemoveText" isExposed="False" />
-          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProvidersQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
-        </Filter>
-      </Filter>
-      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc" isExposed="False" />
-    </ApiFilter>
-    <WarnOnMissingSourceContext>True</WarnOnMissingSourceContext>
-    <WorkingPath>D:\PMTmp\</WorkingPath>
-    <TransformComponentArguments>
-      <Argument Key="logoFile" Value="dxc_logo_vt_blk_rgb_300.png" />
-      <Argument Key="logoHeight" Value="120" />
-      <Argument Key="logoWidth" Value="120" />
-      <Argument Key="logoAltText" Value="DXC.Technology" />
-      <Argument Key="logoPlacement" Value="left" />
-      <Argument Key="logoAlignment" Value="left" />
-      <Argument Key="maxVersionParts" Value="" />
-      <Argument Key="defaultLanguage" Value="cs" />
-      <Argument Key="includeEnumValues" Value="true" />
-      <Argument Key="baseSourceCodeUrl" Value="" />
-      <Argument Key="requestExampleUrl" Value="" />
-    </TransformComponentArguments>
+    <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <HelpTitle>HPP - Documentation Of Business Access Service %28BAS%29 and Events For Integration</HelpTitle>
     <HelpFileVersion>1.0.0.0</HelpFileVersion>
+    <NamingMethod>MemberName</NamingMethod>
+    <ContentPlacement>AboveNamespaces</ContentPlacement>
     <RootNamespaceContainer>True</RootNamespaceContainer>
     <RootNamespaceTitle>BAS and Events For Third Party Integrators</RootNamespaceTitle>
     <NamespaceGrouping>True</NamespaceGrouping>
@@ -118,6 +47,11 @@
     <FeedbackEMailAddress>edmundo.gardea%40dxc.com</FeedbackEMailAddress>
     <FeedbackEMailLinkText>edmundo.gardea%40dxc.com</FeedbackEMailLinkText>
     <SdkLinkTarget>Blank</SdkLinkTarget>
+    <HtmlSdkLinkType>None</HtmlSdkLinkType>
+    <BinaryTOC>False</BinaryTOC>
+    <IncludeFavorites>False</IncludeFavorites>
+    <WebsiteSdkLinkType>None</WebsiteSdkLinkType>
+    <AppendMarkdownFileExtensionsToUrls>True</AppendMarkdownFileExtensionsToUrls>
     <CatalogProductId>PM_HPP_BAS</CatalogProductId>
     <CatalogVersion>100</CatalogVersion>
     <CatalogName>PM_HPP_BAS</CatalogName>
@@ -127,8 +61,155 @@
     <TocParentVersion>1</TocParentVersion>
     <TopicVersion>1</TopicVersion>
     <MSHelpViewerSdkLinkType>Msdn</MSHelpViewerSdkLinkType>
-    <NamingMethod>MemberName</NamingMethod>
-    <ContentPlacement>AboveNamespaces</ContentPlacement>
+    <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
+    <WorkingPath>D:\PMTemp\</WorkingPath>
+    <ApiFilter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Global" filterName="Global" isExposed="False" />
+        <Filter entryType="Interface" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.IProviderService" filterName="IProviderService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.IProviderService.UpdateTermination" filterName="UpdateTermination" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderBatchQueryService" filterName="ProviderBatchQueryService" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderBatchQueryService.#ctor" filterName=".ctor" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderBatchQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderBatchService" filterName="ProviderBatchService" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderBatchService.#ctor" filterName=".ctor" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderBatchService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderEventService" filterName="ProviderEventService" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderModuleConfigurator" filterName="ProviderModuleConfigurator" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderPortalQueryService" filterName="ProviderPortalQueryService" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderPortalQueryService.#ctor" filterName=".ctor" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderPortalQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderPortalService" filterName="ProviderPortalService" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderPortalService.#ctor" filterName=".ctor" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderPortalService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderService" filterName="ProviderService" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderService.#ctor" filterName=".ctor" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProviderService.UpdateTermination" filterName="UpdateTermination" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProvidersQueryService" filterName="ProvidersQueryService" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProvidersQueryService.#ctor" filterName=".ctor" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.ProvidersQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.AddAuthorizedAdministratorBatchCommand" filterName="AddAuthorizedAdministratorBatchCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.AddAuthorizedAdministratorBatchCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.AddBaseEFTEnrollmentCommand" filterName="AddBaseEFTEnrollmentCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.AddBaseEFTEnrollmentCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.AddNotificationReportCommand" filterName="AddNotificationReportCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.AddNotificationReportCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.AddTransactionalReportRecordCommand" filterName="AddTransactionalReportRecordCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.AddTransactionalReportRecordCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.DeleteBaseEFTEnrollmentCommand" filterName="DeleteBaseEFTEnrollmentCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.DeleteBaseEFTEnrollmentCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.UpdateBaseEFTEnrollmentCommand" filterName="UpdateBaseEFTEnrollmentCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.UpdateBaseEFTEnrollmentCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.Portal" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.Portal.AddPortalAuthorizedAdministratorCommand" filterName="AddPortalAuthorizedAdministratorCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.Portal.AddPortalAuthorizedAdministratorCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.Portal.AddPortalBaseEFTEnrollmentCommand" filterName="AddPortalBaseEFTEnrollmentCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.Portal.AddPortalBaseEFTEnrollmentCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.Portal.DeletePortalAuthorizedAdministratorCommand" filterName="DeletePortalAuthorizedAdministratorCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.Portal.DeletePortalAuthorizedAdministratorCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.Portal.DeletePortalBaseEFTEnrollmentCommand" filterName="DeletePortalBaseEFTEnrollmentCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.Portal.DeletePortalBaseEFTEnrollmentCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.Portal.PortalTransactionWorkFlowCommand" filterName="PortalTransactionWorkFlowCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.Portal.PortalTransactionWorkFlowCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.Portal.UpdatePortalAuthorizedAdministratorCommand" filterName="UpdatePortalAuthorizedAdministratorCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.Portal.UpdatePortalAuthorizedAdministratorCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.Portal.UpdatePortalBaseEFTEnrollmentCommand" filterName="UpdatePortalBaseEFTEnrollmentCommand" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Commands.Portal.UpdatePortalBaseEFTEnrollmentCommand.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Domain" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Domain.ApprovedEnrollmentProviderModel" filterName="ApprovedEnrollmentProviderModel" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Domain.ApprovedEnrollmentProviderModel.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Domain.ProviderTerminatedNotificationModel" filterName="ProviderTerminatedNotificationModel" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Domain.ProviderTerminatedNotificationModel.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Domain.ProviderTypeAndSpecialty" filterName="ProviderTypeAndSpecialty" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Domain.ProviderTypeAndSpecialty.#ctor" filterName=".ctor" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.ApprovedEnrollmentProviderQuery" filterName="ApprovedEnrollmentProviderQuery" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.ApprovedEnrollmentProviderQuery.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.DeathInactivationNotificationQuery" filterName="DeathInactivationNotificationQuery" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.DeathInactivationNotificationQuery.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.ExpiredLicenseNumberNotificationQuery" filterName="ExpiredLicenseNumberNotificationQuery" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.ExpiredLicenseNumberNotificationQuery.#ctor" filterName=".ctor" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.ExpiredLicenseNumberNotificationQuery.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.ExpiringContractNotificationQuery" filterName="ExpiringContractNotificationQuery" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.ExpiringContractNotificationQuery.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.ExpiringLicenseNumberNotificationQuery" filterName="ExpiringLicenseNumberNotificationQuery" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.ExpiringLicenseNumberNotificationQuery.#ctor" filterName=".ctor" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.ExpiringLicenseNumberNotificationQuery.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.SearchAuthorizedAdministratorsForExtractQuery" filterName="SearchAuthorizedAdministratorsForExtractQuery" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.SearchAuthorizedAdministratorsForExtractQuery.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.SearchBaseEFTEnrollmentsQuery" filterName="SearchBaseEFTEnrollmentsQuery" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.SearchBaseEFTEnrollmentsQuery.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.SearchBaseProvidersQuery" filterName="SearchBaseProvidersQuery" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.SearchBaseProvidersQuery.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.SearchNotificationReportsQuery" filterName="SearchNotificationReportsQuery" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.SearchNotificationReportsQuery.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.Portal" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.Portal.GetPortalProviderInformationQuery" filterName="GetPortalProviderInformationQuery" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.Portal.GetPortalProviderInformationQuery.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.Portal.SearchServiceLocationNameAndAddressesQuery" filterName="SearchServiceLocationNameAndAddressesQuery" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.Providers.Contracts.Queries.Portal.SearchServiceLocationNameAndAddressesQuery.Validate" filterName="Validate" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.BatchAuditQueryService" filterName="BatchAuditQueryService" isExposed="True">
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.BatchAuditQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.ProviderBaseQueryService" filterName="ProviderBaseQueryService" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.ProviderBaseQueryService.#ctor" filterName=".ctor" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.ProviderBaseQueryService.TryRouteQuery" filterName="TryRouteQuery" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.ProviderBaseService" filterName="ProviderBaseService" isExposed="True">
+          <Filter entryType="Constructor" fullName="HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.ProviderBaseService.#ctor" filterName=".ctor" isExposed="False" />
+          <Filter entryType="Method" fullName="HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.ProviderBaseService.TryRouteCommand" filterName="TryRouteCommand" isExposed="False" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base" isExposed="True">
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.CommandServiceBase" filterName="CommandServiceBase" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.Event" filterName="Event" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.PipelineServiceBase" filterName="PipelineServiceBase" isExposed="False" />
+        <Filter entryType="Class" fullName="HP.HSP.UA3.Core.BAS.CQRS.Base.QueryServiceBase" filterName="QueryServiceBase" isExposed="False" />
+      </Filter>
+    </ApiFilter>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
@@ -155,8 +236,7 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>J:\UA3\SandCastleCustomizationTool\bin\SandCastleSvcSpec.exe "J:\UA3\SandCastleCustomizationTool\ModulesSettings\Processed - Active Modules\ProviderManagement_2.xml"</PostBuildEvent>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
