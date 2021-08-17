@@ -2,8 +2,9 @@
   <ModuleName>PSMCSIS</ModuleName>
   <ModuleNameDisplay>Provider Screening - MCSIS</ModuleNameDisplay>
   <StorageDrive>J:</StorageDrive>
-  <webSourcePath>J:\www\servicespecs\Modules\ProviderCredentialing\\MCSIS\\HelpWeb</webSourcePath>
-  <webTargetPath>J:\www\servicespecs\Modules\ProviderCredentialing\\MCSIS\\HelpWeb</webTargetPath>
+  <webSourcePath>J:\www\servicespecs\Modules\ProviderCredentialing\\MCSIS\\HelpWeb_Latest</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\ProviderCredentialing\\MCSIS\\HelpWeb_Latest</webTargetPath>
+  <WebRoutingTargetPath>J:\www\servicespecs\Modules\ProviderCredentialing\\MCSIS\\HelpWeb</WebRoutingTargetPath>
   <webPortalPath></webPortalPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
   <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>
@@ -22,5 +23,4 @@
   <MainAPIContent></MainAPIContent>
    <ModuleHelpContentAvailable>true</ModuleHelpContentAvailable>
   <ModuleAPIAvailable>false</ModuleAPIAvailable>
-  <EventsExtractFile>C:\extracts\dev\export.dsv</EventsExtractFile>
 </DocModuleSettingModel>

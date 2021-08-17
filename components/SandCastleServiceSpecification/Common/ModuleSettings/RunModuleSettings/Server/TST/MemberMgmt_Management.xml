@@ -1,9 +1,10 @@
 <DocModuleSettingModel>
   <ModuleName>MemberManagement</ModuleName>
-  <ModuleNameDisplay>Member Management</ModuleNameDisplay>
+  <ModuleNameDisplay>MemberManagement</ModuleNameDisplay>
   <StorageDrive>J:</StorageDrive>
-  <webSourcePath>J:\www\servicespecs\Modules\\MemberMgmt\\HelpWeb\\MemberManagement</webSourcePath>
-  <webTargetPath>J:\www\servicespecs\Modules\\MemberMgmt\\HelpWeb\\MemberManagement</webTargetPath>
+  <webSourcePath>J:\www\servicespecs\Modules\\MemberMgmt\\HelpWeb\\MemberManagement_Latest</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\\MemberMgmt\\HelpWeb\\MemberManagement_Latest</webTargetPath>
+  <WebRoutingTargetPath>J:\www\servicespecs\Modules\\MemberMgmt\\HelpWeb\\MemberManagement</WebRoutingTargetPath>
   <webPortalPath>MemberPortal</webPortalPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
   <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>

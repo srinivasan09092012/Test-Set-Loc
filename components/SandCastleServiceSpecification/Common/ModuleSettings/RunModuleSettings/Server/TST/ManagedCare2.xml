@@ -3,8 +3,9 @@
   <ModuleNameDisplay>Managed Care</ModuleNameDisplay>
   <ModuleHelpContentAvailable>true</ModuleHelpContentAvailable>
   <StorageDrive>J:</StorageDrive>
-  <webSourcePath>J:\www\servicespecs\Modules\ManagedCare\\HelpWeb</webSourcePath>
-  <webTargetPath>J:\www\servicespecs\Modules\ManagedCare\\HelpWeb</webTargetPath>
+  <webSourcePath>J:\www\servicespecs\Modules\ManagedCare\\HelpWeb_Latest</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\ManagedCare\\HelpWeb_Latest</webTargetPath>
+  <WebRoutingTargetPath>J:\www\servicespecs\Modules\ManagedCare\\HelpWeb</WebRoutingTargetPath>
   <webPortalPath>ManagedCarePortal</webPortalPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
   <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>
@@ -20,6 +21,8 @@
 	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Network.htm</ListPage>	
     <ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_ProviderPortal.htm</ListPage>
 	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_TPL.htm</ListPage>
+	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Provider.htm</ListPage>
+	<ListPage>N_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Report.htm</ListPage>
   </ServiceListPages>
   <MainContractContent>G_HP_HSP_UA3_ManagedCare_BAS_ManagedCare_Contracts.htm</MainContractContent>
   <ContractListPages>
@@ -33,5 +36,5 @@
   </ModuleAPIPages>
   <MainAPIContent>T_HPP_HSP_UA3_ManagedCare_API_CapitationPayment_Providers_CapitationPaymentProvider.htm</MainAPIContent>
   <OtherResourcesFolder>ManagedCare</OtherResourcesFolder>
-  <EventsExtractFile>C:\extracts\dev\export.dsv</EventsExtractFile>
+  <EventsExtractFile>J:\UA3\SandCastleCustomizationTool\ModuleEventsExtracts\Test\PublishedModules.csv</EventsExtractFile>
 </DocModuleSettingModel> 

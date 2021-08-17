@@ -2,8 +2,9 @@
   <ModuleName>Claims</ModuleName>
   <ModuleNameDisplay>External</ModuleNameDisplay>
   <StorageDrive>J:</StorageDrive>
-  <webSourcePath>J:\www\servicespecs\Modules\ClaimsManagement\\HelpWeb</webSourcePath>
-  <webTargetPath>J:\www\servicespecs\Modules\ClaimsManagement\\HelpWeb</webTargetPath>
+  <webSourcePath>J:\www\servicespecs\Modules\ClaimsManagement\\HelpWeb_Latest</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\ClaimsManagement\\HelpWeb_Latest</webTargetPath>
+  <WebRoutingTargetPath>J:\www\servicespecs\Modules\ClaimsManagement\\helpweb</WebRoutingTargetPath>
   <webPortalPath></webPortalPath>
  <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
   <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>

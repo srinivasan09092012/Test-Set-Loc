@@ -1,9 +1,10 @@
 <DocModuleSettingModel>
   <ModuleName>PLRS</ModuleName>
-  <ModuleNameDisplay>Plan Management - Rate Settings</ModuleNameDisplay>
+  <ModuleNameDisplay>Plan Management</ModuleNameDisplay>
   <StorageDrive>J:</StorageDrive>
-  <webSourcePath>J:\www\servicespecs\Modules\PlanMgmt\\RS</webSourcePath>
-  <webTargetPath>J:\www\servicespecs\Modules\PlanMgmt\\RS</webTargetPath>
+  <webSourcePath>J:\www\servicespecs\Modules\PlanMgmt\\RS_Latest</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\PlanMgmt\\RS_Latest</webTargetPath>
+  <WebRoutingTargetPath>J:\www\servicespecs\Modules\PlanMgmt\\RS</WebRoutingTargetPath>
   <webPortalPath></webPortalPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
   <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>
@@ -25,5 +26,5 @@
   <MainAPIContent></MainAPIContent>
    <ModuleHelpContentAvailable>true</ModuleHelpContentAvailable>
   <ModuleAPIAvailable>false</ModuleAPIAvailable>
-  <EventsExtractFile>C:\extracts\dev\export.dsv</EventsExtractFile>
+  <EventsExtractFile>J:\UA3\SandCastleCustomizationTool\ModuleEventsExtracts\Test\PublishedModules.csv</EventsExtractFile>
 </DocModuleSettingModel>

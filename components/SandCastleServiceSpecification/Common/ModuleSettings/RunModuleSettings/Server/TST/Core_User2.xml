@@ -2,8 +2,9 @@
   <ModuleName>User</ModuleName>
   <ModuleNameDisplay>Core</ModuleNameDisplay>
   <StorageDrive>J:</StorageDrive>
-  <webSourcePath>J:\www\servicespecs\Modules\Core\\HelpWeb\\User</webSourcePath>
-  <webTargetPath>J:\www\servicespecs\Modules\Core\\HelpWeb\\User</webTargetPath>
+  <webSourcePath>J:\www\servicespecs\Modules\Core\\HelpWeb\\User_Latest</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\Core\\HelpWeb\\User_Latest</webTargetPath>
+  <WebRoutingTargetPath>J:\www\servicespecs\Modules\Core\\HelpWeb\\User</WebRoutingTargetPath>
   <webPortalPath></webPortalPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
   <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>

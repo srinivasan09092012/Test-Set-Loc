@@ -1,12 +1,13 @@
 <DocModuleSettingModel>
   <ModuleName>PLCI</ModuleName>
-  <ModuleNameDisplay>Plan Management - Code Information</ModuleNameDisplay>
+  <ModuleNameDisplay>Plan Management</ModuleNameDisplay>
   <StorageDrive>J:</StorageDrive>
-  <webSourcePath>J:\www\servicespecs\Modules\PlanMgmt\\HelpWeb\\CodeInformation</webSourcePath>
-  <webTargetPath>J:\www\servicespecs\Modules\PlanMgmt\\HelpWeb\\CodeInformation</webTargetPath>
+  <webSourcePath>J:\www\servicespecs\Modules\PlanMgmt\\HelpWeb\\CodeInformation_Latest</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\PlanMgmt\\HelpWeb\\CodeInformation_Latest</webTargetPath>
+  <WebRoutingTargetPath>J:\www\servicespecs\Modules\PlanMgmt\\HelpWeb\\CodeInformation</WebRoutingTargetPath>
   <webPortalPath></webPortalPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
-    <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>
+  <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>
   <WebHostPhysicalPath>J:\www\servicespecs\Modules</WebHostPhysicalPath>
   <ServiceListPages>
 	<ListPage>N_HP_HSP_UA3_PlanManagement_BAS_CodeInformation.htm</ListPage>
@@ -25,5 +26,5 @@
   <MainAPIContent></MainAPIContent>
    <ModuleHelpContentAvailable>true</ModuleHelpContentAvailable>
   <ModuleAPIAvailable>false</ModuleAPIAvailable>
-  <EventsExtractFile>C:\extracts\dev\export.dsv</EventsExtractFile>
+  <EventsExtractFile>J:\UA3\SandCastleCustomizationTool\ModuleEventsExtracts\Test\PublishedModules.csv</EventsExtractFile>
 </DocModuleSettingModel>

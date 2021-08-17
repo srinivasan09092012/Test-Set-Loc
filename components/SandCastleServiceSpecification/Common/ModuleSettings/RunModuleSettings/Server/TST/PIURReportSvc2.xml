@@ -1,9 +1,10 @@
 <DocModuleSettingModel>
-  <ModuleName>PIUR</ModuleName>
-  <ModuleNameDisplay>Program Integrity</ModuleNameDisplay>
+  <ModuleName>PIURRptSvc</ModuleName>
+  <ModuleNameDisplay>Report Service</ModuleNameDisplay>
   <StorageDrive>J:</StorageDrive>
-  <webSourcePath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb\\PIURReportSvc</webSourcePath>
-  <webTargetPath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb\\PIURReportSvc</webTargetPath>
+  <webSourcePath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb\\PIURReportSvc_Latest</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb\\PIURReportSvc_Latest</webTargetPath>
+  <WebRoutingTargetPath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb\\PIURReportSvc</WebRoutingTargetPath>
   <webPortalPath></webPortalPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
   <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>

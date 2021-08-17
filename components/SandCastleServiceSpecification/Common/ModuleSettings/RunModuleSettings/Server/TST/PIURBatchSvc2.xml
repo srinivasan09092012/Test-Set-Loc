@@ -2,8 +2,9 @@
   <ModuleName>PIUR</ModuleName>
   <ModuleNameDisplay>Program Integrity</ModuleNameDisplay>
   <StorageDrive>J:</StorageDrive>
-  <webSourcePath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb\\PIURBatchSvc</webSourcePath>
-  <webTargetPath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb\\PIURBatchSvc</webTargetPath>
+  <webSourcePath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb\\PIURBatchSvc_Latest</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb\\PIURBatchSvc_Latest</webTargetPath>
+  <WebRoutingTargetPath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb\\PIURBatchSvc</WebRoutingTargetPath>
   <webPortalPath></webPortalPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
   <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>

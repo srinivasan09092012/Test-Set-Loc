@@ -2,15 +2,15 @@
   <ModuleName>PM</ModuleName>
   <ModuleNameDisplay>Provider Management</ModuleNameDisplay>
   <StorageDrive>J:</StorageDrive>
-  <webSourcePath>J:\www\servicespecs\Modules\ProviderMgmt\HelpWeb</webSourcePath>
-  <webTargetPath>J:\www\servicespecs\Modules\ProviderMgmt\\HelpWeb</webTargetPath>
+  <webSourcePath>J:\www\servicespecs\Modules\ProviderMgmt\HelpWeb_Latest</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\ProviderMgmt\\HelpWeb_Latest</webTargetPath>
+  <WebRoutingTargetPath>J:\www\servicespecs\Modules\ProviderMgmt\\HelpWeb</WebRoutingTargetPath>
   <webPortalPath>ProviderPortal</webPortalPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
   <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>
   <WebHostPhysicalPath>J:\www\servicespecs\Modules</WebHostPhysicalPath>
   <ServiceListPages>
 	<ListPage>N_HP_HSP_UA3_ProviderManagement_BAS_Providers.htm</ListPage>
-	<ListPage>N_HP_HSP_UA3_ProviderManagement_BAS_ProviderSvc.htm</ListPage>
   </ServiceListPages>
     <MainContractContent>G_HP_HSP_UA3_ProviderManagement_BAS_Providers_Contracts.htm</MainContractContent>
   <ContractListPages>
@@ -26,5 +26,5 @@
   <MainAPIContent></MainAPIContent>
    <ModuleHelpContentAvailable>true</ModuleHelpContentAvailable>
   <ModuleAPIAvailable>false</ModuleAPIAvailable>
-  <EventsExtractFile>C:\extracts\dev\export.dsv</EventsExtractFile>
+  <EventsExtractFile>J:\UA3\SandCastleCustomizationTool\ModuleEventsExtracts\Test\PublishedModules.csv</EventsExtractFile>
 </DocModuleSettingModel>

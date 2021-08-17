@@ -1,9 +1,10 @@
 <DocModuleSettingModel>
   <ModuleName>PI</ModuleName>
-  <StorageDrive>J:</StorageDrive>
   <ModuleNameDisplay>Program Integrity</ModuleNameDisplay>
-  <webSourcePath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb</webSourcePath>
-  <webTargetPath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb</webTargetPath>
+  <StorageDrive>J:</StorageDrive>
+  <webSourcePath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb\\PISvc_Latest</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb\\PISvc_Latest</webTargetPath>
+  <WebRoutingTargetPath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb\\PISvc</WebRoutingTargetPath>
   <webPortalPath></webPortalPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
   <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>
@@ -25,5 +26,5 @@
   <MainAPIContent></MainAPIContent>
    <ModuleHelpContentAvailable>true</ModuleHelpContentAvailable>
   <ModuleAPIAvailable>false</ModuleAPIAvailable>
-  <EventsExtractFile>C:\extracts\dev\export.dsv</EventsExtractFile>
+  <EventsExtractFile>J:\UA3\SandCastleCustomizationTool\ModuleEventsExtracts\Test\PublishedModules.csv</EventsExtractFile>
 </DocModuleSettingModel>
