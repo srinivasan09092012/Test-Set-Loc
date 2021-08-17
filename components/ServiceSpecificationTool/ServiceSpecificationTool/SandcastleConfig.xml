@@ -62,8 +62,9 @@
 		<Documentation docModuleName="Notification" moduleName="Notifications" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/Notification" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\Notification"/>
 		<Documentation docModuleName="PlanMgmt" moduleName="PlanManagement" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/PlanMgmt" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\PlanMgmt"/>
 		<Documentation docModuleName="ProgramIntegrity" moduleName="ProgramIntegrity" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/ProgramIntegrity" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\ProgramIntegrity"/>
- 		<Documentation docModuleName="ProgramIntegrityCT" moduleName="ProgramIntegrityCT"  serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/ProgramIntegrityCT" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\ProgramIntegrityCT"/>
+		<Documentation docModuleName="ProgramIntegrityCT" moduleName="ProgramIntegrityCT"  serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/ProgramIntegrityCT" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\ProgramIntegrityCT"/>
 		<Documentation docModuleName="ProviderCredentialing" moduleName="ProviderCredentialing" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/ProviderCredentialing" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\ProviderCredentialing"/>
+		<Documentation docModuleName="ProviderCredentialing" moduleName="Screening" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/Screening" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\ProviderCredentialing"/>
 		<Documentation docModuleName="ProviderEnrollment" moduleName="ProviderEnrollment" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/ProviderEnrollment" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\ProviderEnrollment"/>
 		<Documentation docModuleName="ProviderMgmt"  moduleName="ProviderManagement"  serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/ProviderMgmt" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\ProviderMgmt"/>
 		<Documentation docModuleName="ProviderPortal"  moduleName="ProviderPortal" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/ProviderPortal" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\ProviderPortal"/>
@@ -76,8 +77,9 @@
 		<ServiceEnvironments environmentName="test" active="False" serverpath="https://bas.test.mapshc.com" />
 		<ServiceEnvironments environmentName="stage1" active="False" serverpath="http://bas-stage1.mapshc.com:8010" />
 		<ServiceEnvironments environmentName="stage5" active="False" serverpath="http://bas-stage5.stages.mapshc.com:8010"/>
-		<ServiceEnvironments environmentName="stage6" active="True" serverpath="https://bas-stage6.stages.mapshc.com:8443"/>
-		
+		<ServiceEnvironments environmentName="stage6" active="False" serverpath="http://bas-stage6.stages.mapshc.com:8010"/>
+		<ServiceEnvironments environmentName="Dev" active="False" serverpath="http://bas.dev.mapshc.com:8010"/>
+		<ServiceEnvironments environmentName="stage3" active="False" serverpath="http://bas-stage3.stages.mapshc.com:8010"/>
 	</ServiceEnvironments>
 
 	<XSDSConfig>

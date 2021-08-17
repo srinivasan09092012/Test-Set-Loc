@@ -809,12 +809,17 @@ namespace ServiceSpecificationTool
                         currentBranch = "0" + branch[2];
                     }
                 }
+                else
+                {
+                    currentBranch = branch[2];
+                }
                 Program.branch = false;
-            }else
+            }
+            else
             {
                 currentBranch = "Dev";
             }
-            
+
             return currentBranch;
         }
 
@@ -861,7 +866,7 @@ namespace ServiceSpecificationTool
                 string severPath, workSpace;
 
                 GetBranch();
-                
+
                 for (int i = 0; i < modulesFromSource.Count(); i++)
                 {
                     bool exists;

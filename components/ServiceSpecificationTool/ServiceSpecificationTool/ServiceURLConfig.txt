@@ -103,6 +103,7 @@ PlanManagement:/HP.HSP.UA3.RelatedInformation/R6.0/RelatedInformationService.svc
 Notifications:/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc
 Notifications:/HP.HSP.UA3.NotificationServices/R6.0/NotificationQueryService.svc
 Notifications:/HP.HSP.UA3.NotificationServices/R6.0/NotificationCommandService.svc
+Notifications:/HP.HSP.UA3.NotificationServices/R6.0/NotificationEventService.svc
 ProgramIntegrity:/HP.HSP.UA3.PIReportSvc/R6.0/ServiceTypeComparisionExceptionDetailsService.svc
 ProgramIntegrity:/HP.HSP.UA3.PIReportSvc/R6.0/ClaimListingService.svc
 ProgramIntegrity:/HP.HSP.UA3.PIReportSvc/R6.0/GlobalUtilizationReportService.svc
@@ -112,6 +113,13 @@ ProgramIntegrity:/HP.HSP.UA3.PIReportSvc/R6.0/ProviderInformationService.svc
 ProgramIntegrity:/HP.HSP.UA3.PIReportSvc/R6.0/ProviderProfileMemberDataService.svc
 ProgramIntegrity:/HP.HSP.UA3.PIReportSvc/R6.0/ReportAggregationFilterService.svc
 ProgramIntegrity:/HP.HSP.UA3.PIReportSvc/R6.0/StudyResultService.svc
+ProgramIntegrity:/HP.HSP.UA3.PIReportSvc/R6.0/ClaimListingQueryService.svc
+ProgramIntegrity:/HP.HSP.UA3.PIReportSvc/R6.0/ProviderInformationQueryService.svc
+ProgramIntegrity:/HP.HSP.UA3.PIReportSvc/R6.0/ProviderProfileMemberDataQueryService.svc
+ProgramIntegrity:/HP.HSP.UA3.PIReportSvc/R6.0/ReportAggregationFilterQueryService.svc
+ProgramIntegrity:/HP.HSP.UA3.PIReportSvc/R6.0/StudyResultQueryService.svc
+ProgramIntegrity:/HP.HSP.UA3.PIReportSvc/R6.0/MCOUtilizationReportQueryService.svc
+ProgramIntegrity:/HP.HSP.UA3.PIReportSvc/R6.0/GlobalUtilizationReportQueryService.svc
 ProgramIntegrity:/HP.HSP.UA3.PIBatchSvc/R6.0/AggregationChartMapping.svc
 ProgramIntegrity:/HP.HSP.UA3.PIBatchSvc/R6.0/AggregationReportCommandService.svc
 ProgramIntegrity:/HP.HSP.UA3.PIBatchSvc/R6.0/CaseRequestProcessCommandService.svc
@@ -192,6 +200,7 @@ ProgramIntegrity:/HP.HSP.UA3.ProgramIntegrity/R6.0/SuppressionCommandService.svc
 ProgramIntegrity:/HP.HSP.UA3.ProgramIntegrity/R6.0/SuppressionQueryService.svc
 ProgramIntegrity:/HP.HSP.UA3.ProgramIntegrity/R6.0/TargetedQueryCommandService.svc
 ProgramIntegrity:/HP.HSP.UA3.ProgramIntegrity/R6.0/TargetedQueryService.svc
+ProgramIntegrity:/HP.HSP.UA3.ProgramIntegrity/R6.0/StudyRequestQueryService.svc
 ProgramIntegrityCT:/HP.HSP.UA3.ProgramIntegrityCT/R6.0/CaseTrackingQueryService.svc
 ProgramIntegrityCT:/HP.HSP.UA3.ProgramIntegrityCT/R6.0/CaseTrackingService.svc
 ProviderCredentialing:/HP.HSP.UA3.Audit/R6.0/AuditQueryService.svc
@@ -209,6 +218,7 @@ ProviderCredentialing:/HP.HSP.UA3.PECOS/R6.0/PECOSQueryService.svc
 ProviderCredentialing:/HP.HSP.UA3.SAMCheck/R6.0/SAMCheckService.svc
 ProviderCredentialing:/HP.HSP.UA3.SSNDeathMaster/R6.0/SSNDMFQueryService.svc
 ProviderCredentialing:/HP.HSP.UA3.ValCrdntls/R6.0/ValCrdntlsQueryService.svc
+ProviderCredentialing:/HP.HSP.UA3.StateScreening/R6.0/StateScreeningQueryService.svc
 ProviderEnrollment:/HP.HSP.UA3.ProviderEnrollmentFileMgmtService/R6.0/FileMgmtQueryService.svc
 ProviderEnrollment:/HP.HSP.UA3.ProviderEnrollmentFileMgmtService/R6.0/FileMgmtService.svc
 ProviderEnrollment:/HP.HSP.UA3.ProviderEnrollmentServices/R6.0/BatchAuditQueryService.svc
@@ -220,6 +230,7 @@ ProviderEnrollment:/HP.HSP.UA3.ProviderEnrollmentServices/R6.0/EnrollmentQuerySe
 ProviderEnrollment:/HP.HSP.UA3.ProviderEnrollmentServices/R6.0/EnrollmentService.svc
 ProviderEnrollment:/HP.HSP.UA3.ProviderEnrollmentServices/R6.0/EnrollmentBusinessRuleService.svc
 ProviderEnrollment:/HP.HSP.UA3.ProviderEnrollmentServices/R6.0/ReportTemplateService.svc
+ProviderEnrollment:/HP.HSP.UA3.ProviderEnrollmentServices/R6.0/EnrollmentReportService.svc
 ProviderManagement:/HP.HSP.UA3.ProviderMgmt/R6.0/BatchAuditQueryService.svc
 ProviderManagement:/HP.HSP.UA3.ProviderMgmt/R6.0/ProviderBatchQueryService.svc
 ProviderManagement:/HP.HSP.UA3.ProviderMgmt/R6.0/ProviderBatchService.svc
@@ -228,6 +239,8 @@ ProviderManagement:/HP.HSP.UA3.ProviderMgmt/R6.0/ProviderService.svc
 ProviderManagement:/HP.HSP.UA3.ProviderMgmt/R6.0/ProvidersQueryService.svc
 ProviderManagement:/HP.HSP.UA3.ProviderMgmt/R6.0/ProviderPortalQueryService.svc
 ProviderManagement:/HP.HSP.UA3.ProviderMgmt/R6.0/ProviderPortalService.svc
+ProviderManagement:/HP.HSP.UA3.ProviderMgmt/R6.0/ProviderBaseQueryService.svc
+ProviderManagement:/HP.HSP.UA3.ProviderMgmt/R6.0/ProviderBaseService.svc
 ProviderManagement:/HP.HSP.UA3.ReportingSvc/R6.0/ReportingQueryService.svc
 ProviderManagement:/HP.HSP.UA3.CLIAProcessServices/R6.0/CLIAProcessQueryService.svc
 ProviderManagement:/HP.HSP.UA3.CLIAProcessServices/R6.0/CLIAProcessService.svc
@@ -265,7 +278,13 @@ DrugRebate:/HP.HSP.UA3.DrugRebate/R6.0/FundCodesQueryService.svc
 DrugRebate:/HP.HSP.UA3.DrugRebate/R6.0/FundCodesService.svc
 DrugRebate:/HP.HSP.UA3.DrugRebate/R6.0/InvoiceQueryService.svc
 DrugRebate:/HP.HSP.UA3.DrugRebate/R6.0/InvoiceService.svc
+DrugRebate:/HP.HSP.UA3.DrugRebate/R6.0/PQAQueryService.svc
+DrugRebate:/HP.HSP.UA3.DrugRebate/R6.0/ROSIQueryService.svc
+DrugRebate:/HP.HSP.UA3.DrugRebate/R6.0/ROSIService.svc
+DrugRebate:/HP.HSP.UA3.DrugRebate/R6.0/PQAService.svc
 DrugRebate:/HP.HSP.UA3.DRFileMgmtServices/R6.0/FileMgmtQueryService.svc
+DrugRebate:/HP.HSP.UA3.DRFileMgmtServices/R6.0/DrugRebateFileMgmtQueryService.svc
+DrugRebate:/HP.HSP.UA3.DRFileMgmtServices/R6.0/DrugRebateFileMgmtService.svc
 DrugRebate:/HP.HSP.UA3.DRFileMgmtServices/R6.0/FileMgmtService.svc
 DrugRebate:/HP.HSP.UA3.FundCodesServices/R6.0/FundCodesQueryService.svc
 DrugRebate:/HP.HSP.UA3.FundCodesServices/R6.0/FundCodesService.svc
@@ -277,6 +296,7 @@ DrugRebate:/HP.HSP.UA3.DrugRebate/R6.0/WebAdminQueryService.svc
 DrugRebate:/HP.HSP.UA3.DrugRebate/R6.0/WebAdminService.svc
 DrugRebate:/HP.HSP.UA3.DrugRebateReportSvc/R6.0/DrugRebateReportQueryService.svc
 DrugRebate:/HP.HSP.UA3.DrugRebateReportSvc/R6.0/DrugRebateReportService.svc
+DrugRebate:/HP.HSP.UA3.DrugRebateReportSvc/R6.0/InvoiceReportQueryService.svc
 FileTransfer:/HP.HSP.UA3.FileTransferServices/R6.0/FileTransferSvcQueryService.svc
 FileTransfer:/HP.HSP.UA3.FileTransferServices/R6.0/FileTransferSvcService.svc
 IdentityManagement:/HP.HSP.UA3.User/R6.0/UserMegaGridQueryService.svc
@@ -293,6 +313,7 @@ Integration:/HP.HSP.UA3.DataAggregator/R6.0/DataAggregatorQueryService.svc
 Integration:/HP.HSP.UA3.DataAggregator/R6.0/DataAggregatorService.svc
 Integration:/HP.HSP.UA3.EventsDistributor/R6.0/EventsDistributorQueryService.svc
 Integration:/HP.HSP.UA3.EventsDistributor/R6.0/EventsDistributorService.svc
+Integration:/HP.HSP.UA3.EventsDistributor/R6.0/FTEEventService.svc
 Integration:/HP.HSP.UA3.Integration/R6.0/IntegrationEventService.svc
 Integration:/HP.HSP.UA3.Integration/R6.0/IntegrationQueryService.svc
 Integration:/HP.HSP.UA3.Integration/R6.0/IntegrationService.svc
@@ -307,6 +328,9 @@ Integration:/HP.HSP.UA3.EventToFile/R6.0/ViewProjectionService.svc
 TaskManagement:/HP.HSP.UA3.TaskManagement/R6.0/TaskManagementEventService.svc
 TaskManagement:/HP.HSP.UA3.TaskManagement/R6.0/TaskManagementQueryService.svc
 TaskManagement:/HP.HSP.UA3.TaskManagement/R6.0/TaskManagementService.svc
+TaskManagement:/HP.HSP.UA3.TaskManagement/R6.0/BatchScheduleQueryService.svc
+TaskManagement:/HP.HSP.UA3.TaskManagement/R6.0/BatchServiceRequest.svc
+TaskManagement:/HP.HSP.UA3.TaskManagement/R6.0/RoutingConfigurationService.svc
 EDI:/HP.HSP.UA3.EDIServices/R6.0/CoreBatch.svc
 EDI:/HP.HSP.UA3.EDIServices/R6.0/CoreBatchQueryService.svc
 EDI:/HP.HSP.UA3.EDIServices/R6.0/CoreRealTime.svc
@@ -336,4 +360,3 @@ TPLCaseTracking:/HP.HSP.UA3.ProgramIntegrityCT/R6.0/SuperCaseService.svc
 TPLCaseTracking:/HP.HSP.UA3.CaseTrackingReportSvc/R6.0/CaseTrackingReportSvcQueryService.svc
 ProviderPortal:/HP.HSP.UA3.TemplateServices/R6.0/TemplateQueryService.svc
 ProviderPortal:/HP.HSP.UA3.TemplateServices/R6.0/TemplateService.svc
-
