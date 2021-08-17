@@ -45,6 +45,17 @@ namespace Common.Implementations
             }
         }
 
+        public string getRoutingTargetPath()
+        {
+            switch (ExecutionStage)
+            {
+                case 1:
+                    return this.ModuleSetting.WebRoutingTargetPath;
+                default:
+                    return this.ModuleSetting.ModuleAPITargetPath;
+            }
+        }
+
         public ModuleSettings.ModuleSettingModel getModuleSettings(){
             return moduleSetting;
         }

@@ -181,7 +181,7 @@ namespace Controller
 
             node = NodeHelper.GetNode(htmlDocument._loadedDocument);
             node.Name = "script";
-            node.InnerHtml = "$(document).ready(function(){try{InitializeBreadCrumbs({DisplayName:'" + breadcrumbText + "',TargetUrl:'" + ModuleSettings.WebHost + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty) + @"\" + Common.Constants.WebSolutionStructure.Folders.Html + @"\" + htmlDocument._documentTitle + "',IsActive: false});}catch(err){alert(err.message);}});";  //"$(document).ready(function(){try{InitializeBreadCrumbs({DisplayName:'Main Event Attributes',TargetUrl:'http://localhost:8080/ProviderManagement/APISeviceSpecification/html/T_HP_HSP_UA3_ProviderManagement_BAS_Providers_Contracts_Events_ServiceLocationAdded.htm',IsActive: false});}catch(err){alert(err.message);}});";
+            node.InnerHtml = "$(document).ready(function(){try{InitializeBreadCrumbs({DisplayName:'" + breadcrumbText + "',TargetUrl:'" + ModuleSettings.WebHost + @"\" + ModuleSettings.WebRoutingTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty) + @"\" + Common.Constants.WebSolutionStructure.Folders.Html + @"\" + htmlDocument._documentTitle + "',IsActive: false});}catch(err){alert(err.message);}});";  //"$(document).ready(function(){try{InitializeBreadCrumbs({DisplayName:'Main Event Attributes',TargetUrl:'http://localhost:8080/ProviderManagement/APISeviceSpecification/html/T_HP_HSP_UA3_ProviderManagement_BAS_Providers_Contracts_Events_ServiceLocationAdded.htm',IsActive: false});}catch(err){alert(err.message);}});";
             headNode.ChildNodes.Add(node);
 
             node = NodeHelper.GetNode(htmlDocument._loadedDocument);

@@ -6,6 +6,8 @@
 
         string getTargetPath();
 
+        string getRoutingTargetPath();
+
         ModuleSettings.ModuleSettingModel getModuleSettings();
 
         int getExecutionStage();

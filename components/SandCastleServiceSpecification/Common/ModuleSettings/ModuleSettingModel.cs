@@ -35,6 +35,9 @@ namespace Common.ModuleSettings
         [XmlElement(ElementName = "webTargetPath")]
         public string WebTargetPath;
 
+        [XmlElement(ElementName = "WebRoutingTargetPath")]
+        public string WebRoutingTargetPath;
+
         [XmlElement(ElementName = "webPortalPath")]
         public string WebPortalPath;
 

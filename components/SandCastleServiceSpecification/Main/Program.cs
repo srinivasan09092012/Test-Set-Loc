@@ -54,8 +54,25 @@ namespace SandCastleSvcSpec
             ProcessModules(ActiveModules);
 
             UpdateBuildVersion();
-            
+
+            CreateArchiveFolder(SingleModule);
+
             loggerDetailEngine.writeEntry("SandCastle Customization Tool execution completed", LogginSeetings.LevelType.InformationApplication, 1042, 1);
+        }
+
+        private static void CreateArchiveFolder(ModuleSettingModel SingleModule)
+        {
+            DirectoryInfo archivefolder = new DirectoryInfo(SingleModule.WebRoutingTargetPath);
+            var archiveFolderName = archivefolder.Name;
+            archivefolder.MoveTo(archivefolder.Parent.FullName + @"\" + archivefolder.Name + "_" + DateTime.UtcNow.ToString("MMddyyyy"));
+            loggerDetailEngine.writeEntry(archivefolder.Name + " Archive folder created as of current date, proceed with manual deletion if needed.", LogginSeetings.LevelType.InformationApplication, 1042, 1);
+
+            DirectoryInfo latestfolder = new DirectoryInfo(SingleModule.WebTargetPath);
+            latestfolder.MoveTo(latestfolder.Parent.FullName + @"\" + archiveFolderName);
+            loggerDetailEngine.writeEntry(archiveFolderName + " Latest SandCastle documentation for module " + SingleModule.ModuleNameDisplay + " has been created", LogginSeetings.LevelType.InformationApplication, 1042, 1);
+
+            archivefolder = null;
+            latestfolder = null;
         }
 
         private static void ProcessModules(List<ModuleSettingModel> ActiveModules)
@@ -377,10 +394,10 @@ namespace SandCastleSvcSpec
                 #region Preparing Service Operation List Pages
                 foreach (var ServicePage in moduleSetting.ServiceListPages.ListPage)
                 {
-                    updateHtmlBlocks.UpdateOperationsLists(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
-                    updateHtmlBlocks.UpdateInputOutput(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
-                    removeHtmlBlocks.removeHiperLinks(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
-                    addHtmlBlocks.AddPaginationControl(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+                    updateHtmlBlocks.UpdateOperationsLists(Constants.WebSolutionStructure.Folders.Html + ServicePage);
+                    updateHtmlBlocks.UpdateInputOutput(Constants.WebSolutionStructure.Folders.Html + ServicePage);
+                    removeHtmlBlocks.RemoveHiperLinks(Constants.WebSolutionStructure.Folders.Html + ServicePage);
+                    addHtmlBlocks.AddPaginationControl(Constants.WebSolutionStructure.Folders.Html + ServicePage);
                 }
                 #endregion
 
@@ -470,7 +487,7 @@ namespace SandCastleSvcSpec
                 {
                     updateHtmlBlocksAPI.UpdateOperationsLists(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
                     updateHtmlBlocksAPI.UpdateInputOutput(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
-                    removeHtmlBlocksAPI.removeHiperLinks(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
+                    removeHtmlBlocksAPI.RemoveHiperLinks(Common.Constants.WebSolutionStructure.Folders.Html + ServicePage);
                 }
 
 
@@ -506,7 +523,6 @@ namespace SandCastleSvcSpec
             #endregion
 
             #region Updating Left Navigator 
-            Console.WriteLine("");
             Console.WriteLine("Updating Left Navigator for all the content");
             foreach (var ServicePage in moduleSetting.ServiceListPages.ListPage)
             {
@@ -590,18 +606,12 @@ namespace SandCastleSvcSpec
 
         }
 
-        Console.WriteLine("");
-        loggerDetailEngine.writeEntry(string.Format("Search completed, {0} files found in folder {1} ", informationFile.Length, sDrive.FullName), LogginSeetings.LevelType.InformationApplication, 9000, 9);
-
         informationModel = readInformationFile(informationFile.FirstOrDefault().FullName);
-
         informationModel.TargetPathHomePage = storageDrive;
 
         UpdateHtmlBlocks updateHtmlBlocks = new UpdateHtmlBlocks();
         updateHtmlBlocks.InformationModel = informationModel;
         updateHtmlBlocks.UpdateBuildVersionPageFooter();
-
-        Console.WriteLine("");
                 
     }
   }

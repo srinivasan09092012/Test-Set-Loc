@@ -294,7 +294,7 @@ namespace Controller
                             tmpNode.ChildNodes[0].Attributes[0].Value = "#!";
                             tmpNode.ChildNodes[0].Attributes.Add("onClick", "try{updateBreadCrumb({DisplayName:'" + tmpNode.ChildNodes[0].InnerText + "',TargetUrl:'"
                                                                                 + ModuleSettings.WebHost
-                                                                                + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
+                                                                                + @"\" + ModuleSettings.WebRoutingTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
                                                                                 + @"\" + Common.Constants.WebSolutionStructure.Folders.Html
                                                                                 + @"\" + hrefAttri + "',IsActive:true});}catch(err){alert(err.message);}");
                             if (isList)
@@ -561,7 +561,7 @@ namespace Controller
             {
                 tmpNode.Name = "span";
                 tmpNode.InnerHtml = val;
-                tmpNode.ChildNodes[0].Attributes.Add("onClick", "window.open('" + ModuleSettings.WebHost + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty) + @"\" + Common.Constants.WebSolutionStructure.Folders.Html + @"\" + tmpNode.ChildNodes[0].Attributes["href"].Value + "', 'MyWindow','width=800,height=450,toolbar=no,menubar=no,status=no,resizable=yes,scrollbars=yes'); return false;");
+                tmpNode.ChildNodes[0].Attributes.Add("onClick", "window.open('" + ModuleSettings.WebHost + @"\" + ModuleSettings.WebRoutingTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty) + @"\" + Common.Constants.WebSolutionStructure.Folders.Html + @"\" + tmpNode.ChildNodes[0].Attributes["href"].Value + "', 'MyWindow','width=800,height=450,toolbar=no,menubar=no,status=no,resizable=yes,scrollbars=yes'); return false;");
                 tmpNode.ChildNodes[0].Attributes["href"].Value = "#";
                 tblHelper.SetCellDisplayValue(0, x, tmpNode.InnerHtml);
                 x++;

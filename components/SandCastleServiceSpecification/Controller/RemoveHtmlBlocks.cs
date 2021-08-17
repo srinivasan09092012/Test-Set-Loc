@@ -28,7 +28,7 @@ namespace Controller
             ExecutionContext = exeContext;
         }
 
-        public void removeHiperLinks(string pageContent)
+        public void RemoveHiperLinks(string pageContent)
         {
             string fullSourcePath = ExecutionContext.getTargetPath() + pageContent;
             var htmlDocument = DocumentHelper.GetInstance();

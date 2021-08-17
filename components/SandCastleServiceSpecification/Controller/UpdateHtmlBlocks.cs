@@ -34,9 +34,7 @@ namespace Controller
             var htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = fullSourcePath;
             htmlDocument.Load();
-
             HtmlFactory.FormatServiceDocument(htmlDocument);
-
             updateServiceList(htmlDocument._loadedDocument, webFolderTarget);
             htmlDocument.Save();
         }
@@ -58,7 +56,7 @@ namespace Controller
                 HtmlFactory.formatHtmlDataList((webFolderTarget + @"\html\" + @file.Remove(0, 9).Split('>')[0]).Substring(0, j));
                 innerHtmlDoc.Load((webFolderTarget + @"\html\" + @file.Remove(0, 9).Split('>')[0]).Substring(0, j));
                 DivHelper divHelper = new DivHelper(innerHtmlDoc, DivHelper.SearchFilter.Id, "ID0RBSection");
-                tableHelper.SetCellDisplayValue(2, x, divHelper.GetChildValueByTag("a", ModuleSettings.WebHost, ModuleSettings.WebHostPhysicalPath, ModuleSettings.WebTargetPath));
+                tableHelper.SetCellDisplayValue(2, x, divHelper.GetChildValueByTag("a", ModuleSettings.WebHost, ModuleSettings.WebHostPhysicalPath, ModuleSettings.WebRoutingTargetPath));
                 x++;
             }
 
@@ -68,7 +66,7 @@ namespace Controller
                 j = (webFolderTarget + @"html\" + @file.Remove(0, 9).Split('>')[0]).Length;
                 innerHtmlDoc.Load((webFolderTarget + @"\html\" + @file.Remove(0, 9).Split('>')[0]).Substring(0, j));
                 DivHelper divHelper = new DivHelper(innerHtmlDoc, DivHelper.SearchFilter.Id, "ID1RBSection");
-                tableHelper.SetCellDisplayValue(3, x, divHelper.GetChildValueByTag("a", ModuleSettings.WebHost, ModuleSettings.WebHostPhysicalPath, ModuleSettings.WebTargetPath));
+                tableHelper.SetCellDisplayValue(3, x, divHelper.GetChildValueByTag("a", ModuleSettings.WebHost, ModuleSettings.WebHostPhysicalPath, ModuleSettings.WebRoutingTargetPath));
                 x++;
             }
         }
@@ -157,7 +155,7 @@ namespace Controller
                                 j = (webFolderTarget + @"html\" + linkfilelvl3.Remove(0, 9).Split('>')[0]).Length;
                                 innerHtmlDocLvl3.Load((webFolderTarget + @"\html\" + linkfilelvl3.Remove(0, 9).Split('>')[0]).Substring(0, j));
                                 divHelper = new DivHelper(innerHtmlDocLvl3, DivHelper.SearchFilter.Id, "ID1RBSection");
-                                string linkfilelvl4 = divHelper.GetChildValueByTag("a", ModuleSettings.WebHost, ModuleSettings.WebHostPhysicalPath, ExecutionContext.getTargetPath());
+                                string linkfilelvl4 = divHelper.GetChildValueByTag("a", ModuleSettings.WebHost, ModuleSettings.WebHostPhysicalPath, ModuleSettings.WebRoutingTargetPath);
                                 tableHelper.SetCellDisplayValue(2, x, linkfilelvl4);
                             }
                             else
@@ -178,7 +176,7 @@ namespace Controller
                     //request object
                     hrefNewNode.Name = "a";
                     hrefNewNode.Attributes.Add("href", "#");
-                    hrefNewNode.Attributes.Add("onClick", "window.open('" + ModuleSettings.WebHost + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty) + @"\" + Common.Constants.WebSolutionStructure.Folders.Html + @"\" + linkfilelevel2 + "', 'MyWindow','width=800,height=450,toolbar=no,menubar=no,status=no,resizable=yes,scrollbars=yes'); return false;");
+                    hrefNewNode.Attributes.Add("onClick", "window.open('" + ModuleSettings.WebHost + @"\" + ModuleSettings.WebRoutingTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty) + @"\" + Common.Constants.WebSolutionStructure.Folders.Html + @"\" + linkfilelevel2 + "', 'MyWindow','width=800,height=450,toolbar=no,menubar=no,status=no,resizable=yes,scrollbars=yes'); return false;");
                     tableHelper.SetCellDisplayValue(2, x, hrefNewNode.OuterHtml);
                 }
 
@@ -192,7 +190,7 @@ namespace Controller
                 innerHtmlDoc.Load((webFolderTarget + @"\html\" + @file.Remove(0, 9).Split('>')[0]).Substring(0, j));
                 DivHelper divHelper = new DivHelper(innerHtmlDoc, DivHelper.SearchFilter.Id, "ID1RBSection");
                 string linkfilelevel2 = divHelper.GetChildNodeOuterHtml("a");
-                var link = divHelper.GetChildValueByTag("a", ModuleSettings.WebHost, ModuleSettings.WebHostPhysicalPath, ExecutionContext.getTargetPath());
+                var link = divHelper.GetChildValueByTag("a", ModuleSettings.WebHost, ModuleSettings.WebHostPhysicalPath, ExecutionContext.getRoutingTargetPath());
 
                 if (link.Contains("Query"))
                 {
@@ -201,7 +199,7 @@ namespace Controller
                         j = (webFolderTarget + @"html\" + linkfilelevel2.Remove(0, 9).Split('>')[0]).Length;
                         innerHtmlDocLvl2.Load((webFolderTarget + @"\html\" + linkfilelevel2.Remove(0, 9).Split('>')[0]).Substring(0, j));
                         divHelper = new DivHelper(innerHtmlDocLvl2, DivHelper.SearchFilter.Id, "ID0RBSection");
-                        tableHelper.SetCellDisplayValue(3, x, divHelper.GetChildValueByTag("a", ModuleSettings.WebHost, ModuleSettings.WebHostPhysicalPath, ExecutionContext.getTargetPath()));
+                        tableHelper.SetCellDisplayValue(3, x, divHelper.GetChildValueByTag("a", ModuleSettings.WebHost, ModuleSettings.WebHostPhysicalPath, ExecutionContext.getRoutingTargetPath()));
                     }
                     else
                     {
@@ -213,15 +211,12 @@ namespace Controller
                     tableHelper.SetCellDisplayValue(3, x, "List<" + link + ">");
                 }
 
-
-
                 x++;
             }
         }
 
         public void UpdateOperationsLists(string originalDocument)
         {
-
             string fullSourcePath = ExecutionContext.getTargetPath() + originalDocument;
             var htmlDocument = DocumentHelper.GetInstance();
             htmlDocument._documentPath = fullSourcePath;
@@ -499,7 +494,7 @@ namespace Controller
             ModuleHomeLinkedMenuEntry.Attributes.Add("IsParentActive", "true");
             ModuleHomeLinkedMenuEntry.Attributes.Add("BreadscrumbDisplayName", ModuleSettings.ModuleNameDisplay);
             ModuleHomeLinkedMenuEntry.Attributes.Add("TopicContentHtml", "" + ModuleSettings.WebHost
-                                                                            + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
+                                                                            + @"\" + ModuleSettings.WebRoutingTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
                                                                             + @"\" + Common.Constants.WebSolutionStructure.Folders.Html
                                                                             + @"\ModuleOverview.html");
 
@@ -534,7 +529,7 @@ namespace Controller
                 }
 
                 EventsLinkedMenuEntry.Attributes.Add("TopicContentHtml", "" + ModuleSettings.WebHost
-                                                                                + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
+                                                                                + @"\" + ModuleSettings.WebRoutingTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
                                                                                 + @"\" + Common.Constants.WebSolutionStructure.Folders.Html
                                                                                 + @"\" + ModuleSettings.MainContractContent + " #namespacesSection");
                 EventsLinkedMenuEntry.Attributes.Add("onclick", "OnClickHandler(this)");
@@ -579,7 +574,7 @@ namespace Controller
                         ServicesLinkedMenuEntry.Attributes.Add("onclick", "OnClickHandler(this)");
                         ServicesLinkedMenuEntry.Attributes.Add("BreadscrumbDisplayName", menuEntryOrdered.Key);
                         ServicesLinkedMenuEntry.Attributes.Add("TopicContentHtml", "" + ModuleSettings.WebHost
-                                                                                    + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
+                                                                                    + @"\" + ModuleSettings.WebRoutingTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
                                                                                     + @"\" + Common.Constants.WebSolutionStructure.Folders.Html
                                                                                     + @"\" + menuEntryOrdered.Value + " #ID4RBSection");
                         ServicesLinkedMenuEntry.InnerHtml = menuEntryOrdered.Key;
@@ -604,7 +599,7 @@ namespace Controller
                     ServicesRootMenuEntry.Attributes.Add("IsParentActive", "true");
                     ServicesRootMenuEntry.Attributes.Add("BreadscrumbDisplayName", "Web Service Produced: No services are produced for this sub-module.");
                     ServicesRootMenuEntry.Attributes.Add("TopicContentHtml", "" + ModuleSettings.WebHost
-                                                                                    + @"\" + ModuleSettings.WebTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
+                                                                                    + @"\" + ModuleSettings.WebRoutingTargetPath.Replace(ModuleSettings.WebHostPhysicalPath, string.Empty)
                                                                                     + @"\" + Common.Constants.WebSolutionStructure.Folders.Html
                                                                                     + @"\" + serviceListpage + " #ID4RBSection");
 
