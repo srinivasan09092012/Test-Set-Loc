@@ -141,6 +141,8 @@
   <ItemGroup>
     <None Include="App.config" />
     <Content Include="Configs\PackageUpgrades\DevF\Log4Net.2.0.5 to 2.0.8.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\Log4net_Upgrade to 2.0.12.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\MongoCSharpDriver_Upgrade to 2.13.1.xml" />
     <Content Include="Configs\PackageUpgrades\DevF\MongoCSharpDriver_Upgrade to 2.13.1.xml" />
     <Content Include="Configs\PackageUpgrades\DevF\Refactor_Package_Cleanup_Repoint_From_Deleted_dll.xml" />
     <Content Include="Configs\PackageUpgrades\DevF\Refactor_Repoint_from_19_2_70_to_19_3_76.xml" />
