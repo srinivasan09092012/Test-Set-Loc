@@ -833,10 +833,13 @@ namespace SolutionRefactorMgr
                     bool isUpgrade = false;
                     for (int i = 0; i < existingVersion.Count; i++)
                     {
-                        if (Convert.ToInt32(toVersion[i]) > Convert.ToInt32(existingVersion[i]))
+                        if (int.TryParse(existingVersion[i], out int fromVersion) && int.TryParse(toVersion[i], out int targetVersion))
                         {
-                            isUpgrade = true;
-                            break;
+                            if (targetVersion > fromVersion)
+                            {
+                                isUpgrade = true;
+                                break;
+                            }
                         }
                     }
                     if (isUpgrade)
