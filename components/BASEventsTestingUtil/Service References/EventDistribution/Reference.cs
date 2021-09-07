@@ -38,9 +38,6 @@ namespace BASEventsTestingUtil.EventDistribution {
         private string EventFilterMetadataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EventGroupIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EventNamespaceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -141,19 +138,6 @@ namespace BASEventsTestingUtil.EventDistribution {
                 if ((object.ReferenceEquals(this.EventFilterMetadataField, value) != true)) {
                     this.EventFilterMetadataField = value;
                     this.RaisePropertyChanged("EventFilterMetadata");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string EventGroupId {
-            get {
-                return this.EventGroupIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EventGroupIdField, value) != true)) {
-                    this.EventGroupIdField = value;
-                    this.RaisePropertyChanged("EventGroupId");
                 }
             }
         }
