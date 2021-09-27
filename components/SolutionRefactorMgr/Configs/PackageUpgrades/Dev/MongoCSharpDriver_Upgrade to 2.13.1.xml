@@ -42,10 +42,11 @@
   <!--Only the root package should have Dependency = "false"-->
   <!-- These sections are to be run in sequence as per the pass Number. Only one pass to be run at a time. Comment out other passes-->
 
-  <!--=================================================HP.HSP.UA3.Core.BAS.CQRS(21.2.106)  Pass 1 =================================================================-->
-
+  <!--=================================================HP.HSP.UA3.Core.BAS.CQRS(21.3.112)  Pass 1 =================================================================-->
+  <!--Run a replacement string pass to reduce Core BAS CQRS version to 21.3.111 so that this pass will execute as 111 to 112 is an upgrade-->
+  <!--This pass will make sure MongoDBDriver is installed in all the projects that has a reference to Core BAS CQRS -->
   <References>
-    <Reference Dependency ="false" Include = "HP.HSP.UA3.Core.BAS.CQRS" HintPath = "Packages\HP.HSP.UA3.Core.BAS.CQRS.21.2.106\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll" />
+    <Reference Dependency ="false" Include = "HP.HSP.UA3.Core.BAS.CQRS" HintPath = "Packages\HP.HSP.UA3.Core.BAS.CQRS.21.3.112\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll" />
     <Reference Dependency ="true" Include = "MongoDB.Driver.Legacy, Version=2.13.1.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\mongocsharpdriver.2.13.1\lib\net452\MongoDB.Driver.Legacy.dll" />
     <Reference Dependency ="true" Include = "MongoDB.Bson, Version=2.13.1.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Bson.2.13.1\lib\net452\MongoDB.Bson.dll" />
     <Reference Dependency ="true" Include = "MongoDB.Driver.Core, Version=2.13.1.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Driver.Core.2.13.1\lib\net452\MongoDB.Driver.Core.dll" />
@@ -73,7 +74,7 @@
     <Reference Dependency ="true" Include = "System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll" />
   </References>
   <Packages>
-    <Package id="HP.HSP.UA3.Core.BAS.CQRS" version="21.2.105" targetFramework="net48" />
+    <Package id="HP.HSP.UA3.Core.BAS.CQRS" version="21.3.112" targetFramework="net48" />
     <Package id="mongocsharpdriver" version="2.13.1" targetFramework="net48" />
     <Package id="MongoDB.Bson" version="2.13.1" targetFramework="net48" />
     <Package id="MongoDB.Driver.Core" version="2.13.1" targetFramework="net48" />
@@ -633,7 +634,7 @@
 
   <!--=========================================================================================================================================================-->
 
-  <!--=============================================System.Buffers (>= 4.5.1) Pass 20 Leaf@ Level2,3,4==================================================================-->
+  <!--=============================================System.Buffers(>= 4.5.1) Pass 20 Leaf@ Level2,3,4==================================================================-->
 
   <!--<References>
     <Reference Dependency ="false" Include = "System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll" />
