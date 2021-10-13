@@ -5,7 +5,6 @@
 // Violators may be punished to the full extent of the law.
 //-----------------------------------------------------------------------------------------
 using HP.HSP.UA3.Core.BAS.CQRS.Base;
-using HP.HSP.UA3.Core.BAS.CQRS.Caching;
 using HP.HSP.UA3.Core.BAS.CQRS.Helpers;
 using HP.HSP.UA3.Core.BAS.CQRS.Interfaces;
 using HP.HSP.UA3.Core.BAS.CQRS.UserMeta;
@@ -17,7 +16,6 @@ using System.Configuration;
 using System.Diagnostics;
 using System.ServiceModel;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using WarmUpProvider.Domain;
 using WarmUpProvider.NotificationService;
@@ -74,7 +72,7 @@ namespace WarmUpProvider.Helpers
                     }
 
                     stopWatch.Stop();
-                    this.LoggerHelper("Total Time Took To Warm Up Provider Endpoints of Tenant : " + tenant.TenantId + " " + stopWatch.Elapsed.Hours + ":" + stopWatch.Elapsed.Minutes + ":" + stopWatch.Elapsed.Seconds);
+                    this.LoggerHelper("Total Time Took To Warm Up Provider Endpoints of Tenant : " + tenant.TenantId + " " + stopWatch.Elapsed.Hours + "HH:" + stopWatch.Elapsed.Minutes + "mm:" + stopWatch.Elapsed.Seconds + "s");
                 }
 
                 tenantWarmUpModels.Clear();
@@ -196,8 +194,8 @@ namespace WarmUpProvider.Helpers
             string exceptionMessages = string.Empty;
             string emailSubject = "Warm Up Exception Notification_" + DateTime.Now.ToShortDateString() + "_" + DateTime.Now.ToShortTimeString();
             string machineName = Environment.MachineName;
-            string emailBody = "Exception messages which were observed while warming up services are attached in this mail.\r\nServer Name : " + machineName + "\r\nApplication Name : " + appName + "\r\n"; //// Thank you,\rBAS Warm Up Utility.";
-            string emailBodyNote = "Please note: This email was sent by an automated process from an unmonitored address. Please do not reply to this email.";
+            string emailBody = "Exception messages which were observed while warming up services are attached in this mail.\r\nServer Name : " + machineName + "\r\nApplication Name : " + appName + "\r\n ";
+            string emailBodyNote = "\r\n Please note: This email was sent by an automated process from an unmonitored address. Please do not reply to this email.";
             List<Address> toAddress = new List<Address>();
             List<Attachments> attachment = new List<Attachments>();
             emailBody += emailBodyNote;

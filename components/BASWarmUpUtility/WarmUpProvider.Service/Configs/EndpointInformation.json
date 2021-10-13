@@ -2,334 +2,320 @@
 
   {
     "TenantId": "77B50320-5F06-5740-84F4-18D4A8CDA51D",
-    "RootURL": "https://bas.dev.mapshc.com",
+    "RootURL": "https://sf.test.mapshc.com",
     "Endpoints": [
       {
         "ModuleName": "Administration",
         "ApplicationName": "Broadcast Message Services",
-        "EndPoint": "/HP.HSP.UA3.BroadcastMessage/R6.0/BroadcastMessageQueryService.svc",
+        "EndPoint": "/HPP.Administration.BAS.BroadcastMessage/R6.0/?ListenerName=BroadcastMessageQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Administration",
         "ApplicationName": "Tenant Configuration Services",
-        "EndPoint": "/HP.HSP.UA3.TenantConfiguration/R6.0/AppSettingService.svc/AppSetting",
+        "EndPoint": "/HPP.Administration.BAS.TenantConfiguration/R6.0/?ListenerName=AppSettingServiceStandardListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Administration",
         "ApplicationName": "DataLists Services",
-        "EndPoint": "/HP.HSP.UA3.DataLists/R6.0/LabelService.svc/Label",
+        "EndPoint": "/HPP.Administration.BAS.DataLists/R6.0/?ListenerName=LabelServiceStandardListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Administration",
         "ApplicationName": "Event Admin Services",
-        "EndPoint": "/HP.HSP.UA3.EventAdminServices/R6.0/EventAdminQueryService.svc/EventAdminQuery",
+        "EndPoint": "/HPP.Administration.BAS.EventAdmin/R6.0/?ListenerName=EventAdminQueryServiceStandardListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Core",
         "ApplicationName": "Help Services",
-        "EndPoint": "/HP.HSP.UA3.HelpContentServices/R6.0/HelpContentService.svc/HelpContent",
+        "EndPoint": "/HPP.Core.BAS.HelpContent/R6.0/?ListenerName=HelpContentServiceStandardListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Core",
         "ApplicationName": "Broadcast Message Core Services",
-        "EndPoint": "/HP.HSP.UA3.BroadcastMessageCore/R6.0/BroadcastMessageQueryService.svc",
+        "EndPoint": "/HPP.Core.BAS.BroadcastMessage/R6.0/?ListenerName=BroadcastMessageQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Core",
         "ApplicationName": "Note Services",
-        "EndPoint": "/HP.HSP.UA3.Note/R6.0/NoteQueryService.svc",
+        "EndPoint": "/HPP.UA3.Core.BAS.Note/HPP.UA3.Core.BAS.Note.Main/?ListenerName=NoteQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Core",
         "ApplicationName": "UserServices",
-        "EndPoint": "/HP.HSP.UA3.User/R6.0/UserQueryService.svc",
+        "EndPoint": "/HPP.Core.BAS.User/R6.0/?ListenerName=UserQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "DrugRebate",
         "ApplicationName": "Drug Rebate Services",
-        "EndPoint": "/HP.HSP.UA3.DrugRebate/R6.0/FundCodesService.svc",
+        "EndPoint": "/HPP.DrugRebate.BAS.DrugRebate/R6.0/?ListenerName=FundCodesServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Drug Rebate",
         "ApplicationName": "File Management Service",
-        "EndPoint": "/HP.HSP.UA3.DRFileMgmtServices/R6.0/FileMgmtQueryService.svc",
+        "EndPoint": "/HPP.UA3.DrugRebate.BAS.FileMgmt/R6.0/?ListenerName=FileMgmtQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Drug Rebate",
         "ApplicationName": "BAS - ReportingSvc",
-        "EndPoint": "/HP.HSP.UA3.DrugRebateReportSvc/R6.0/DrugRebateReportQueryService.svc",
+        "EndPoint": "/HPP.DrugRebate.BAS.ReportingSvc/R6.0/?ListenerName=DrugRebateReportQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "File Transfer",
         "ApplicationName": "File Transfer Command Service",
-        "EndPoint": "/HP.HSP.UA3.FileTransferServices/R6.0/FileTransferSvcService.svc",
+        "EndPoint": "/HPP.FileTransfer.BAS.FileTransferSvc/R6.0/?ListenerName=FileTransferSvcServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "IdentityManagement",
         "ApplicationName": "User Identity Services",
-        "EndPoint": "/HP.HSP.UA3.UserIdentity/R6.0/UnsecureUserService.svc",
+        "EndPoint": "/HPP.IdentityManagement.BAS.User/R6.0/?ListenerName=UnsecureUserServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Integration",
         "ApplicationName": "EventToFile Service",
-        "EndPoint": "/HP.HSP.UA3.EventToFile/R6.0/OutboundFieldQueryService.svc",
+        "EndPoint": "/HPP.UA3.Integration.BAS.EventToFile/R6.0/?ListenerName=OutboundFieldQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Integration",
         "ApplicationName": "EventsDistributor Service",
-        "EndPoint": "/HP.HSP.UA3.EventsDistributor/R6.0/EventsDistributorService.svc",
+        "EndPoint": "/HPP.UA3.Integration.BAS.EventsDistributor/R6.0/?ListenerName=EventsDistributorServiceListener",
         "Binding": "BasicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Integration",
-        "ApplicationName": "DataAggregator Service",
-        "EndPoint": "/HP.HSP.UA3.DataAggregatorService/R6.0/DataAggregatorQueryService.svc",
-        "Binding": "basicHttpsBinding",
-        "CheckHealthStatus": "true"
-      },
-      {
-        "ModuleName": "Integration",
         "ApplicationName": "Event Group Watcher Service",
-        "EndPoint": "/HP.HSP.UA3.Integration.BAS.EventGroupWatcher/R6.0/EventGroupWatcherQueryService.svc",
+        "EndPoint": "/HPP.UA3.Integration.BAS.EventGroupWatcher/R6.0/?ListenerName=EventGroupWatcherQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Integration",
         "ApplicationName": "Integration Services",
-        "EndPoint": "/HP.HSP.UA3.Integration/R6.0/IntegrationQueryService.svc",
+        "EndPoint": "/HPP.Integration.BAS.Integration/R6.0/?ListenerName=IntegrationQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "ManagedCare",
         "ApplicationName": "Managed Care Service",
-        "EndPoint": "/HP.HSP.UA3.ManagedCare/R6.0/Member/MemberService.svc",
+        "EndPoint": "/HPP.ManagedCare.BAS.ManagedCare/R6.0/?ListenerName=MemberServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Member Management",
         "ApplicationName": "Member Management BAS Service",
-        "EndPoint": "/HP.HSP.UA3.MemberInfo/R6.0/MemberInformationService.svc",
+        "EndPoint": "/HPP.MemberManagement.BAS.MemberInformation/R6.0/?ListenerName=MemberInformationServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Notifications",
         "ApplicationName": "Notification Services",
-        "EndPoint": "/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc",
+        "EndPoint": "/HPP.NotificationServices/R6.0/?ListenerName=NotificationServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Plan Management",
         "ApplicationName": "Plan Mgmt Service",
-        "EndPoint": "/HP.HSP.UA3.RateSetting/R6.0/RateSettingQueryService.svc/RateSettingQuery",
+        "EndPoint": "/HPP.PlanManagement.BAS.RateSetting/R6.0/?ListenerName=RateSettingQueryServiceStandardListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Plan Management",
         "ApplicationName": "Plan Mgmt Service",
-        "EndPoint": "/HP.HSP.UA3.Grouping/R6.0/GroupingQueryService.svc/Grouping",
+        "EndPoint": "/HPP.PlanManagement.BAS.Grouping/R6.0/?ListenerName=GroupingQueryServiceStandardListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Plan Management",
         "ApplicationName": "Plan Mgmt Service",
-        "EndPoint": "/HP.HSP.UA3.CodeInformation/R6.0/CodeInformationService.svc/CodeInformation",
+        "EndPoint": "/HPP.PlanManagement.BAS.CodeInformation/R6.0/?ListenerName=CodeInformationServiceStandardListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Plan Management",
         "ApplicationName": "Plan Mgmt Service",
-        "EndPoint": "/HP.HSP.UA3.RelatedInformation/R6.0/RelatedInformationQueryService.svc/RelatedInformationQuery",
+        "EndPoint": "/HPP.PlanManagement.BAS.RelatedInformation/R6.0/?ListenerName=RelatedInformationQueryServiceStandardListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Provider Credentialing",
         "ApplicationName": "FileManagement",
-        "EndPoint": "/HP.HSP.UA3.FileMgmtServices/R6.0/FileMgmtQueryService.svc",
+        "EndPoint": "/HPP.ProviderCredentialing.BAS.FileMgmt/R6.0/?ListenerName=FileMgmtQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Provider Credentialing",
         "ApplicationName": "Audit Services",
-        "EndPoint": "/HP.HSP.UA3.Audit/R6.0/AuditQueryService.svc",
+        "EndPoint": " /HPP.ProgramIntegrity.BAS.ProgramIntegritySvc/R6.0/?ListenerName=EventAuditQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Provider Credentialing",
         "ApplicationName": "Validate Credentials Services",
-        "EndPoint": "/HP.HSP.UA3.ValCrdntls/R6.0/ValCrdntlsQueryService.svc",
+        "EndPoint": "/HPP.ProviderCredentialing.BAS.ValCrdntls/R6.0/?ListenerName=ValCrdntlsQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Provider Enrollment",
         "ApplicationName": "Enrollment Services",
-        "EndPoint": "/HP.HSP.UA3.ProviderEnrollmentServices/R6.0/MCOQueryService.svc",
+        "EndPoint": "/HPP.ProviderEnrollment.BAS.EnrollmentServices/R6.0/?ListenerName=MCOQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Provider Enrollment",
         "ApplicationName": "FileManagement",
-        "EndPoint": "/HP.HSP.UA3.ProviderEnrollmentFileMgmtService/R6.0/FileMgmtQueryService.svc",
+        "EndPoint": "/HPP.ProviderEnrollment.BAS.FileMgmtService/R6.0/?ListenerName=FileMgmtServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Provider Management",
         "ApplicationName": "CLIA Process Services",
-        "EndPoint": "/HP.HSP.UA3.CLIAProcessServices/R6.0/CLIAProcessService.svc",
+        "EndPoint": "/HPP.ProviderManagement.BAS.CLIAProcess/R6.0/?ListenerName=CLIAProcessServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "ProviderManagement",
         "ApplicationName": "Provider Management Command Service",
-        "EndPoint": "/HP.HSP.UA3.ProviderMgmt/R6.0/ProviderService.svc",
+        "EndPoint": "/HPP.ProviderManagement.BAS.ProviderSvc/R6.0/?ListenerName=ProviderServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Provider Management",
         "ApplicationName": "PM Report Services",
-        "EndPoint": "/HP.HSP.UA3.ReportingSvc/R6.0/ReportingQueryService.svc",
+        "EndPoint": "/HPP.ProviderManagement.BAS.ReportingSvc/R6.0/?ListenerName=ReportingQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Screening",
         "ApplicationName": "CLIA Services",
-        "EndPoint": "/HP.HSP.UA3.CLIA/R6.0/CLIAQueryService.svc",
-        "Binding": "basicHttpsBinding",
-        "CheckHealthStatus": "true"
-      },
-      {
-        "ModuleName": "Screening",
-        "ApplicationName": "Credentials Services",
-        "EndPoint": "/HP.HSP.UA3.ValCrdntls/R6.0/ValCrdntlsQueryService.svc",
+        "EndPoint": "/HPP.Screening.BAS.CLIA/R6.0/?ListenerName=CLIAQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Screening",
         "ApplicationName": "DEA Services",
-        "EndPoint": "/HP.HSP.UA3.DEA/R6.0/DEAQueryService.svc",
+        "EndPoint": "/HPP.Screening.BAS.DEA/R6.0/?ListenerName=DEAQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Screening",
         "ApplicationName": "LEIESvc Services",
-        "EndPoint": "/HP.HSP.UA3.LEIESvc/R6.0/LEIESvcQueryService.svc",
+        "EndPoint": "/HPP.Screening.BAS.LEIESvc/R6.0/?ListenerName=LEIESvcQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Screening",
         "ApplicationName": "MCSIS Services",
-        "EndPoint": "/HP.HSP.UA3.MCSIS/R6.0/MCSISQueryService.svc",
+        "EndPoint": "/HPP.Screening.BAS.MCSIS/R6.0/?ListenerName=MCSISQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Screening",
         "ApplicationName": "NPPES Services",
-        "EndPoint": "/HP.HSP.UA3.NPPESServices/R6.0/NPPESQueryService.svc",
+        "EndPoint": "/HPP.Screening.BAS.NPPES/R6.0/?ListenerName=NPPESQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Screening",
         "ApplicationName": "PECOS Services",
-        "EndPoint": "/HP.HSP.UA3.PECOS/R6.0/PECOSQueryService.svc",
+        "EndPoint": "/HPP.Screening.BAS.PECOS/R6.0/?ListenerName=PECOSQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Screening",
         "ApplicationName": "SAM Check Services",
-        "EndPoint": "/HP.HSP.UA3.SAMCheck/R6.0/SAMCheckService.svc",
+        "EndPoint": "/HPP.Screening.BAS.SAMCheck/R6.0/?ListenerName=SAMCheckServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Screening",
         "ApplicationName": "SSNDMF Services",
-        "EndPoint": "/HP.HSP.UA3.SSNDeathMaster/R6.0/SSNDMFQueryService.svc",
+        "EndPoint": "/HPP.SSNDeathMaster.BAS.SSNDMF/R6.0/?ListenerName=SSNDMFQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Task Management",
         "ApplicationName": "Task Management Services",
-        "EndPoint": "/HP.HSP.UA3.TaskManagement/R6.0/TaskManagementService.svc",
+        "EndPoint": "/HPP.TaskManagement.BAS.TaskManagement/R6.0/?ListenerName=TaskManagementServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "TPL Case Tracking",
         "ApplicationName": "TPL Case Tracking Services",
-        "EndPoint": "/HP.HSP.UA3.TPLCaseTracking/R6.0/CaseTrackingService.svc",
+        "EndPoint": "/HPP.TPLCaseTracking.BAS.TPLCaseTracking/R6.0/?ListenerName=CaseTrackingServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "TPLPolicy",
         "ApplicationName": "TPL Policy Services",
-        "EndPoint": "/HP.HSP.UA3.TPLPolicyService/R6.0/PolicyQueryService.svc",
+        "EndPoint": "/HPP.TPLPolicy.BAS.TPLPolicy/R6.0/?ListenerName=PolicyQueryServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Auth Determination",
         "ApplicationName": "Auth Determination Services",
-        "EndPoint": "/HP.HSP.UA3.AuthDetermination/R6.0/AuthDeterminationService.svc",
+        "EndPoint": "/HPP.UA3.AuthDetermination.BAS.AuthDetermination/R6.0/?ListenerName=AuthDeterminationServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       },
       {
         "ModuleName": "Claims Management",
         "ApplicationName": "Claims Management Services",
-        "EndPoint": "/HP.HSP.UA3.ClaimsMgmt/R6.0/ClaimsManagementService.svc",
+        "EndPoint": "/HPP.ClaimsManagement.BAS.ClaimsManagement/R6.0/?ListenerName=ClaimsManagementServiceListener",
         "Binding": "basicHttpsBinding",
         "CheckHealthStatus": "true"
       }

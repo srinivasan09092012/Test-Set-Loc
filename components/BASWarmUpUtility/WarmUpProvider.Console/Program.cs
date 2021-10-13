@@ -18,10 +18,12 @@ namespace WarmUpProvider.Console
         {
             try
             {
+                System.Console.WriteLine("Starting warming up endpoints........");
                 BASUnityContainer.Initialize();
                 InitializeInstrumentationSettings();
-                WarmUpHelper warmUpHelper = new WarmUpHelper();
-                warmUpHelper.StartUp();
+                new WarmUpHelper().StartUp();
+                System.Console.WriteLine("Warming up endpoints completed. All logs are available under 'Logs\\Utility\\Warm Up Provider Console' folder.");
+                System.Console.ReadLine();
             }
             catch (Exception ex)
             {

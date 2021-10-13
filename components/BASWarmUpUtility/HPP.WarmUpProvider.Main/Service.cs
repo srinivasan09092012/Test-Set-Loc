@@ -48,10 +48,6 @@ namespace HPP.WarmUpProvider.Main
             {
                 cancellationToken.ThrowIfCancellationRequested();
                 double interval = Int32.Parse(ConfigurationManager.AppSettings["WarmUpEndpointIntervalSeconds"]);
-                //List<Task> tasks = new List<Task>();
-                //WarmUpHelper warmUpProvider = new WarmUpHelper();
-                //tasks.Add(Task.Run(() => warmUpProvider.StartUp()));
-                //Task.WaitAll(tasks.ToArray());
 
                 //Setting this so the service can access EndpointInformation.json file
                 Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
