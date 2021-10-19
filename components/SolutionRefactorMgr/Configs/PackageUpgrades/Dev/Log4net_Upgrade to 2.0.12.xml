@@ -68,7 +68,8 @@
   
   <!--=============================================HPE.HSP.UA3.Core.API.Logger (21.3.112) Pass 2 Level 1============================================-->
 
-  <!--Run a replacement string pass to reduce Core API Logger version no-->
+  <!--Run a replacement string pass to reduce Core API Logger version to 21.3.111 so that this pass will execute as 111 to 112 is an upgrade-->
+  <!--This pass will make sure Core API Logger's dependencies are installed in all the projects that has a reference to Core API Logger -->
   <References>
     <Reference Dependency ="false" Include = "HPE.HSP.UA3.Core.API.Logger" HintPath = "Packages\HPE.HSP.UA3.Core.API.Logger.21.3.112\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll" />
     <Reference Dependency ="true" Include = "Microsoft.Practices.Unity, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" HintPath = "Packages\Unity.3.5.1405-prerelease\lib\net45\Microsoft.Practices.Unity.dll" />
