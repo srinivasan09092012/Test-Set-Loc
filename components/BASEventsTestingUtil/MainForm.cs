@@ -370,12 +370,12 @@ namespace BASEventsTestingUtil
             }
             em.INGroupId = INGroupIdList == null ? Guid.Empty : INGroupIdList.Count == 0 ? Guid.Empty : INGroupIdList[0].InnerXml == string.Empty ? Guid.Empty : Guid.Parse(INGroupIdList[0].InnerXml);
 
-            XmlNodeList EventGroupId = this.payloadDocument.GetElementsByTagName("EventGroupId");
-            if (EventGroupId == null || EventGroupId.Count == 0)
+            XmlNodeList EventSequenceId = this.payloadDocument.GetElementsByTagName("EventSequenceId");
+            if (EventSequenceId == null || EventSequenceId.Count == 0)
             {
-                EventGroupId = this.payloadDocument.GetElementsByTagName("a:EventGroupId");
+                EventSequenceId = this.payloadDocument.GetElementsByTagName("a:EventGroupId");
             }
-            em.EventGroupId = EventGroupId == null ? null : EventGroupId.Count == 0 ? null : EventGroupId[0].InnerXml == string.Empty ? null : EventGroupId[0].InnerXml;
+            em.EventGroupId = EventSequenceId == null ? null : EventSequenceId.Count == 0 ? null : EventSequenceId[0].InnerXml == string.Empty ? null : EventSequenceId[0].InnerXml;
 
             XmlNodeList IsLastFromGroup = this.payloadDocument.GetElementsByTagName("IsLastFromGroup");
             if (IsLastFromGroup == null || IsLastFromGroup.Count == 0)
