@@ -5,17 +5,12 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4CC1E7AD-0A25-456E-AAD5-3B30A45D58BF}"
 	ProjectSection(SolutionItems) = preProject
-		BASWarmUpProvider.Install.cmd = BASWarmUpProvider.Install.cmd
 		nuget.config = nuget.config
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarmUpProvider.Console", "WarmUpProvider.Console\WarmUpProvider.Console.csproj", "{103F2FC5-0E0E-4F76-8F65-70A5BA5491B7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarmUpProvider", "WarmUpProvider\WarmUpProvider.csproj", "{2564A433-6EB4-4B76-8190-4F3E5809D097}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HPP.WarmUpProvider.Main", "HPP.WarmUpProvider.Main\HPP.WarmUpProvider.Main.csproj", "{986B1A51-D081-4F80-9D6F-BCC23F1AB13B}"
-EndProject
-Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "HPP.WarmUpProvider", "HPP.WarmUpProvider\HPP.WarmUpProvider.sfproj", "{EA511483-D146-47DE-AABD-71358CB38A09}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarmUpProvider.Service", "WarmUpProvider.Service\WarmUpProvider.Service.csproj", "{5A7BC511-D830-4651-A264-62CA9A820E59}"
 EndProject
@@ -35,34 +30,14 @@ Global
 		{103F2FC5-0E0E-4F76-8F65-70A5BA5491B7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{103F2FC5-0E0E-4F76-8F65-70A5BA5491B7}.Release|x64.ActiveCfg = Release|x64
 		{103F2FC5-0E0E-4F76-8F65-70A5BA5491B7}.Release|x64.Build.0 = Release|x64
-		{2564A433-6EB4-4B76-8190-4F3E5809D097}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{2564A433-6EB4-4B76-8190-4F3E5809D097}.Debug|Any CPU.Build.0 = Debug|x64
+		{2564A433-6EB4-4B76-8190-4F3E5809D097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2564A433-6EB4-4B76-8190-4F3E5809D097}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2564A433-6EB4-4B76-8190-4F3E5809D097}.Debug|x64.ActiveCfg = Debug|x64
 		{2564A433-6EB4-4B76-8190-4F3E5809D097}.Debug|x64.Build.0 = Debug|x64
-		{2564A433-6EB4-4B76-8190-4F3E5809D097}.Release|Any CPU.ActiveCfg = Release|x64
-		{2564A433-6EB4-4B76-8190-4F3E5809D097}.Release|Any CPU.Build.0 = Release|x64
+		{2564A433-6EB4-4B76-8190-4F3E5809D097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2564A433-6EB4-4B76-8190-4F3E5809D097}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2564A433-6EB4-4B76-8190-4F3E5809D097}.Release|x64.ActiveCfg = Release|x64
 		{2564A433-6EB4-4B76-8190-4F3E5809D097}.Release|x64.Build.0 = Release|x64
-		{986B1A51-D081-4F80-9D6F-BCC23F1AB13B}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{986B1A51-D081-4F80-9D6F-BCC23F1AB13B}.Debug|Any CPU.Build.0 = Debug|x64
-		{986B1A51-D081-4F80-9D6F-BCC23F1AB13B}.Debug|x64.ActiveCfg = Debug|x64
-		{986B1A51-D081-4F80-9D6F-BCC23F1AB13B}.Debug|x64.Build.0 = Debug|x64
-		{986B1A51-D081-4F80-9D6F-BCC23F1AB13B}.Release|Any CPU.ActiveCfg = Release|x64
-		{986B1A51-D081-4F80-9D6F-BCC23F1AB13B}.Release|Any CPU.Build.0 = Release|x64
-		{986B1A51-D081-4F80-9D6F-BCC23F1AB13B}.Release|x64.ActiveCfg = Release|x64
-		{986B1A51-D081-4F80-9D6F-BCC23F1AB13B}.Release|x64.Build.0 = Release|x64
-		{EA511483-D146-47DE-AABD-71358CB38A09}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{EA511483-D146-47DE-AABD-71358CB38A09}.Debug|Any CPU.Build.0 = Debug|x64
-		{EA511483-D146-47DE-AABD-71358CB38A09}.Debug|Any CPU.Deploy.0 = Debug|x64
-		{EA511483-D146-47DE-AABD-71358CB38A09}.Debug|x64.ActiveCfg = Debug|x64
-		{EA511483-D146-47DE-AABD-71358CB38A09}.Debug|x64.Build.0 = Debug|x64
-		{EA511483-D146-47DE-AABD-71358CB38A09}.Debug|x64.Deploy.0 = Debug|x64
-		{EA511483-D146-47DE-AABD-71358CB38A09}.Release|Any CPU.ActiveCfg = Release|x64
-		{EA511483-D146-47DE-AABD-71358CB38A09}.Release|Any CPU.Build.0 = Release|x64
-		{EA511483-D146-47DE-AABD-71358CB38A09}.Release|Any CPU.Deploy.0 = Release|x64
-		{EA511483-D146-47DE-AABD-71358CB38A09}.Release|x64.ActiveCfg = Release|x64
-		{EA511483-D146-47DE-AABD-71358CB38A09}.Release|x64.Build.0 = Release|x64
-		{EA511483-D146-47DE-AABD-71358CB38A09}.Release|x64.Deploy.0 = Release|x64
 		{5A7BC511-D830-4651-A264-62CA9A820E59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5A7BC511-D830-4651-A264-62CA9A820E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A7BC511-D830-4651-A264-62CA9A820E59}.Debug|x64.ActiveCfg = Debug|x64
@@ -79,7 +54,7 @@ Global
 		SolutionGuid = {D2ABE49B-9088-4701-B221-A3AB77BE20DF}
 	EndGlobalSection
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
+		SccNumberOfProjects = 4
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://payerportfolio.visualstudio.com/
 		SccLocalPath0 = .
@@ -89,14 +64,8 @@ Global
 		SccProjectUniqueName2 = WarmUpProvider\\WarmUpProvider.csproj
 		SccProjectName2 = WarmUpProvider
 		SccLocalPath2 = WarmUpProvider
-		SccProjectUniqueName3 = HPP.WarmUpProvider.Main\\HPP.WarmUpProvider.Main.csproj
-		SccProjectName3 = HPP.WarmUpProvider.Main
-		SccLocalPath3 = HPP.WarmUpProvider.Main
-		SccProjectUniqueName4 = HPP.WarmUpProvider\\HPP.WarmUpProvider.sfproj
-		SccProjectName4 = HPP.WarmUpProvider
-		SccLocalPath4 = HPP.WarmUpProvider
-		SccProjectUniqueName5 = WarmUpProvider.Service\\WarmUpProvider.Service.csproj
-		SccProjectName5 = WarmUpProvider.Service
-		SccLocalPath5 = WarmUpProvider.Service
+		SccProjectUniqueName3 = WarmUpProvider.Service\\WarmUpProvider.Service.csproj
+		SccProjectName3 = WarmUpProvider.Service
+		SccLocalPath3 = WarmUpProvider.Service
 	EndGlobalSection
 EndGlobal

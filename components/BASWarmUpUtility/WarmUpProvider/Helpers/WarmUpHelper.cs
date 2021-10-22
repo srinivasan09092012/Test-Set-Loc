@@ -67,9 +67,24 @@ namespace WarmUpProvider.Helpers
 
                     if (this.businessExceptionMessages.Count > 0)
                     {
-                        this.SendMail(tenant.TenantId);
+                        bool emailNotificationEnabled = Convert.ToBoolean(ConfigurationManager.AppSettings["EmailNotificationEnabled"]);
+                        if (emailNotificationEnabled)
+                        {
+
+                            string notificationEndpoint = string.Format
+                                (ConfigurationManager.AppSettings["NotificationEndpoint"],
+                                tenant.RootURL); 
+                            
+                            this.SendMail(tenant.TenantId, notificationEndpoint);
+                        }
+                        else
+                        {
+                            this.LoggerHelper("Exception Notifications has been disabled.", WarmUpEnums.LogType.Warning);
+                        }
+
                         this.businessExceptionMessages = null;
                     }
+
 
                     stopWatch.Stop();
                     this.LoggerHelper("Total Time Took To Warm Up Provider Endpoints of Tenant : " + tenant.TenantId + " " + stopWatch.Elapsed.Hours + "HH:" + stopWatch.Elapsed.Minutes + "mm:" + stopWatch.Elapsed.Seconds + "s");
@@ -183,11 +198,10 @@ namespace WarmUpProvider.Helpers
             }
         }
 
-        private void SendMail(string tenantID)
+        private void SendMail(string tenantID, string notificationEndpoint)
         {
             this.LoggerHelper("Sending Exception Notification Mail.....", WarmUpEnums.LogType.Information);
             string notificationBinding = ConfigurationManager.AppSettings["NotificationBinding"];
-            string notificationEndpoint = ConfigurationManager.AppSettings["NotificationEndpoint"];
             string fromEmailAddress = ConfigurationManager.AppSettings["FromEmailAddress"];
             string toEmailAddress = ConfigurationManager.AppSettings["ToEmailAddress"];
             string appName = ConfigurationManager.AppSettings["ApplicationName"];
