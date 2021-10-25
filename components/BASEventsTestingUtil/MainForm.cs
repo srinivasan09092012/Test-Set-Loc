@@ -373,7 +373,7 @@ namespace BASEventsTestingUtil
             XmlNodeList EventSequenceId = this.payloadDocument.GetElementsByTagName("EventSequenceId");
             if (EventSequenceId == null || EventSequenceId.Count == 0)
             {
-                EventSequenceId = this.payloadDocument.GetElementsByTagName("a:EventGroupId");
+                EventSequenceId = this.payloadDocument.GetElementsByTagName("a:EventSequenceId");
             }
             em.EventSequenceId = EventSequenceId == null ? null : EventSequenceId.Count == 0 ? null : EventSequenceId[0].InnerXml == string.Empty ? null : EventSequenceId[0].InnerXml;
 
