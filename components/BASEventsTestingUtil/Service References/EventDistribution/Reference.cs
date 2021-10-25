@@ -38,13 +38,13 @@ namespace BASEventsTestingUtil.EventDistribution {
         private string EventFilterMetadataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EventGroupIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EventNamespaceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private byte[] EventPayLoadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EventSequenceIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EventTypeField;
@@ -146,19 +146,6 @@ namespace BASEventsTestingUtil.EventDistribution {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string EventGroupId {
-            get {
-                return this.EventGroupIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EventGroupIdField, value) != true)) {
-                    this.EventGroupIdField = value;
-                    this.RaisePropertyChanged("EventGroupId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string EventNamespace {
             get {
                 return this.EventNamespaceField;
@@ -180,6 +167,19 @@ namespace BASEventsTestingUtil.EventDistribution {
                 if ((object.ReferenceEquals(this.EventPayLoadField, value) != true)) {
                     this.EventPayLoadField = value;
                     this.RaisePropertyChanged("EventPayLoad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EventSequenceId {
+            get {
+                return this.EventSequenceIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EventSequenceIdField, value) != true)) {
+                    this.EventSequenceIdField = value;
+                    this.RaisePropertyChanged("EventSequenceId");
                 }
             }
         }

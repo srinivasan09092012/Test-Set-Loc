@@ -375,7 +375,7 @@ namespace BASEventsTestingUtil
             {
                 EventSequenceId = this.payloadDocument.GetElementsByTagName("a:EventGroupId");
             }
-            em.EventGroupId = EventSequenceId == null ? null : EventSequenceId.Count == 0 ? null : EventSequenceId[0].InnerXml == string.Empty ? null : EventSequenceId[0].InnerXml;
+            em.EventSequenceId = EventSequenceId == null ? null : EventSequenceId.Count == 0 ? null : EventSequenceId[0].InnerXml == string.Empty ? null : EventSequenceId[0].InnerXml;
 
             XmlNodeList IsLastFromGroup = this.payloadDocument.GetElementsByTagName("IsLastFromGroup");
             if (IsLastFromGroup == null || IsLastFromGroup.Count == 0)
