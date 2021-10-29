@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4CC1E7AD-0A25-456E-AAD5-3B30A45D58BF}"
 	ProjectSection(SolutionItems) = preProject
 		nuget.config = nuget.config
+		processes.ico = processes.ico
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarmUpProvider.Console", "WarmUpProvider.Console\WarmUpProvider.Console.csproj", "{103F2FC5-0E0E-4F76-8F65-70A5BA5491B7}"

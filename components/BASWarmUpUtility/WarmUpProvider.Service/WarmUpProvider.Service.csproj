@@ -458,15 +458,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ProjectInstaller.resx">
-      <DependentUpon>ProjectInstaller.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\WarmUpProvider\WarmUpProvider.csproj">
       <Project>{2564a433-6eb4-4b76-8190-4f3e5809d097}</Project>
       <Name>WarmUpProvider</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ProjectInstaller.resx">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\..\Packages\Microsoft.Azure.DocumentDB.Core.2.10.0\build\Microsoft.Azure.DocumentDB.Core.targets" Condition="Exists('..\..\..\..\Packages\Microsoft.Azure.DocumentDB.Core.2.10.0\build\Microsoft.Azure.DocumentDB.Core.targets')" />

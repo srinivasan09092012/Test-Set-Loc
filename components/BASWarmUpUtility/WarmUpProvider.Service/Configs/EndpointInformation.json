@@ -2,7 +2,7 @@
 
   {
     "TenantId": "77B50320-5F06-5740-84F4-18D4A8CDA51D",
-    "RootURL": "https://bas.dev.mapshc.com",
+    "RootURL": "https://bas-stage6.stages.mapshc.com:8443",
     "Endpoints": [
       {
         "ModuleName": "Administration",

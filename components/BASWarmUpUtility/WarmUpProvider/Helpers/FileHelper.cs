@@ -30,7 +30,7 @@ namespace WarmUpProvider.Helpers
 
             try
             {
-                using (Stream stream = new FileStream("Configs/" + fileName, FileMode.Open))
+                using (Stream stream = new FileStream("Configs/" + fileName, FileMode.Open, FileAccess.Read))
                 {
                     using (StreamReader reader = new StreamReader(stream))
                     {
