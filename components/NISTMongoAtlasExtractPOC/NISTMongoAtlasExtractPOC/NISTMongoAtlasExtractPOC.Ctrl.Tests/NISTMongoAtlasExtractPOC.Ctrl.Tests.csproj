@@ -96,8 +96,8 @@
     <Reference Include="HPE.HSP.UA3.Core.API.BusinessRules.Providers, Version=21.1.100.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.1.100\lib\net48\HPE.HSP.UA3.Core.API.BusinessRules.Providers.dll</HintPath>
     </Reference>
-    <Reference Include="HPE.HSP.UA3.Core.API.Logger, Version=21.1.100.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.1.100\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
+    <Reference Include="HPE.HSP.UA3.Core.API.Logger">
+      <HintPath>..\..\..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.21.3.112\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
     </Reference>
     <Reference Include="InRule.Common, Version=5.0.25.101, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.1.100\lib\net48\InRule.Common.dll</HintPath>
@@ -108,8 +108,8 @@
     <Reference Include="InRule.Runtime, Version=5.0.25.101, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.1.100\lib\net48\InRule.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\Packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=3.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\Packages\Microsoft.Azure.KeyVault.Core.3.0.5\lib\net461\Microsoft.Azure.KeyVault.Core.dll</HintPath>
@@ -121,13 +121,13 @@
       <HintPath>..\..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.1.100\lib\net48\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.1.100\lib\net48\Microsoft.Practices.Unity.dll</HintPath>
+      <HintPath>..\..\..\..\..\Packages\Unity.3.5.1405-prerelease\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity.Configuration, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.1.100\lib\net48\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <HintPath>..\..\..\..\..\Packages\Unity.3.5.1405-prerelease\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.1.100\lib\net48\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <HintPath>..\..\..\..\..\Packages\Unity.3.5.1405-prerelease\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\Packages\Microsoft.Rest.ClientRuntime.2.3.20\lib\net461\Microsoft.Rest.ClientRuntime.dll</HintPath>
