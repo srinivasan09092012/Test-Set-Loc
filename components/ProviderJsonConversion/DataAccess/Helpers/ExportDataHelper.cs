@@ -51,8 +51,8 @@ namespace DataAccess
                     DateTimeFormat = "*@*@*@*@yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffZ*@*@*@*"
                 });
 
-            ////Then replace the replacement text by ISODate(" and ") to have in this way ISODate("2019-05-01T00:00:00.000Z")
-            json = json.Replace("\"*@*@*@*@", "ISODate(\"").Replace("*@*@*@*\"", "\")");
+            ////Then replace the replacement text by ISODate(" and ") to have in this way {"$date": "9999-12-31T00:00:00.000Z"}        
+            json = json.Replace("\"*@*@*@*@", "{\"$date\":\"").Replace("*@*@*@*\"", "\"}");
 
             LoggerManager.Logger.LogInformational("Writing JSON extract file " + fileName + " to " + outputFilePath);
 

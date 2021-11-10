@@ -118,6 +118,9 @@ namespace DataAccess.QueryHandlers
 
         private List<DRAddressModel> GetAddresses(IDbContextBase context, Guid practiceLocationId, Guid serviceLocationId)
         {
+            var replaceDate = DateTime.ParseExact("2299-12-31 00:00:00,000", "yyyy-MM-dd HH:mm:ss,fff", System.Globalization.CultureInfo.InvariantCulture);
+            var maxDate = DateTime.ParseExact("9999-12-30 00:00:00,000", "yyyy-MM-dd HH:mm:ss,fff", System.Globalization.CultureInfo.InvariantCulture);
+
             List<DRAddressModel> addresses = (from plaa in context.Set<PracticeLocationAddressAssociation>()
                                               join a in context.Set<ADDRESS>()
                                               on plaa.AddressId equals a.ADDRESS_ID
@@ -132,7 +135,7 @@ namespace DataAccess.QueryHandlers
                                                   Line1 = a.ADR_LINE_1,
                                                   Line2 = a.ADR_LINE_2,
                                                   OriginalEffectiveDate = plaa.EffectiveDate,
-                                                  OriginalEndDate = plaa.EndDate,
+                                                  OriginalEndDate = plaa.EndDate != replaceDate ? plaa.EndDate : maxDate,
                                                   ServiceLocationId = serviceLocationId
                                               }).ToList();
 
