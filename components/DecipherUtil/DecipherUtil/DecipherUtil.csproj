@@ -53,7 +53,7 @@
       <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.1.100\lib\net48\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="HP.HSP.UA3.Core.BAS.CQRS">
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.3.112\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.118\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
     </Reference>
     <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Interface, Version=21.1.100.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.1.100\lib\net48\HPE.HSP.UA3.Core.API.AuthManagement.Interface.dll</HintPath>
@@ -68,7 +68,7 @@
       <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.1.100\lib\net48\HPE.HSP.UA3.Core.API.BusinessRules.Providers.dll</HintPath>
     </Reference>
     <Reference Include="HPE.HSP.UA3.Core.API.Logger">
-      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.21.3.112\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.22.1.118\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
     </Reference>
     <Reference Include="InRule.Common, Version=5.5.0.216, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.1.100\lib\net48\InRule.Common.dll</HintPath>
