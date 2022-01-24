@@ -4,7 +4,7 @@
   <StorageDrive>J:</StorageDrive>
   <webSourcePath>J:\www\servicespecs\Modules\TPL\\HelpWeb_Latest</webSourcePath>
   <webTargetPath>J:\www\servicespecs\Modules\TPL\\HelpWeb_Latest</webTargetPath>
-  <WebRoutingTargetPath>J:\www\servicespecs\Modules\TPLCase\\HelpWeb</WebRoutingTargetPath>
+  <WebRoutingTargetPath>J:\www\servicespecs\Modules\TPL\\HelpWeb</WebRoutingTargetPath>
   <webPortalPath></webPortalPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
   <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>
@@ -26,4 +26,5 @@
    <ModuleHelpContentAvailable>true</ModuleHelpContentAvailable>
   <ModuleAPIAvailable>false</ModuleAPIAvailable>
   <EventsExtractFile>J:\UA3\SandCastleCustomizationTool\ModuleEventsExtracts\Test\PublishedModules.csv</EventsExtractFile>
+  <BuildingDate>01/12/2022</BuildingDate>
 </DocModuleSettingModel>

@@ -82,5 +82,8 @@ namespace Common.ModuleSettings
 
         [XmlElement(ElementName = "EventsExtractFile")]
         public string EventsExtractFile;
+
+        [XmlElement(ElementName = "BuildingDate")]
+        public string BuildingDate;
     }
 }

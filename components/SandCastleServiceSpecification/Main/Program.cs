@@ -14,6 +14,7 @@ using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
 using Common.ExtensionMethods;
+using System.Xml;
 
 namespace SandCastleSvcSpec
 {
@@ -35,14 +36,15 @@ namespace SandCastleSvcSpec
             string moduleSettingFilesStoragePath = ConfigurationManager.AppSettings["moduleSettingFilesStoragePath"];
             List<ModuleSettingModel> ActiveModules = new List<ModuleSettingModel>();
             ModuleSettingModel SingleModule = new ModuleSettingModel();
+            string moduleSettings = args[0];
 
-            if (args != null & args[0] != string.Empty)
+            if (args != null & moduleSettings != string.Empty)
             {
                 var singleModuleDirInfo = new FileInfo(args[0]);
 
                 if (!singleModuleDirInfo.Exists)
                 {
-                    loggerDetailEngine.writeEntry("Error to locate settings file: " + args[0] + " - Job run will exit now.", LogginSeetings.LevelType.ErrorApplication, 1013, 1);
+                    loggerDetailEngine.writeEntry("Error to locate settings file: " + moduleSettings + " - Job run will exit now.", LogginSeetings.LevelType.ErrorApplication, 1013, 1);
                 }
                 else
                 {
@@ -56,6 +58,8 @@ namespace SandCastleSvcSpec
             UpdateBuildVersion();
 
             CreateArchiveFolder(SingleModule);
+
+            UpdateBuildDateXmlConfiguration(moduleSettings);
 
             loggerDetailEngine.writeEntry("SandCastle Customization Tool execution completed", LogginSeetings.LevelType.InformationApplication, 1042, 1);
         }
@@ -73,6 +77,25 @@ namespace SandCastleSvcSpec
 
             archivefolder = null;
             latestfolder = null;
+        }
+
+        private static void UpdateBuildDateXmlConfiguration(string xmlPath)
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.Load(xmlPath);
+
+            if (xml.SelectSingleNode("DocModuleSettingModel/BuildingDate") is XmlElement buildingDate)
+            {
+                buildingDate.InnerText = DateTime.Today.ToString("MM/dd/yyyy");
+            }
+            else
+            {
+                XmlElement newBuildDate = xml.CreateElement("BuildDate");
+                newBuildDate.InnerText = DateTime.Today.ToString("MM/dd/yyyy");
+                xml.DocumentElement.AppendChild(newBuildDate.Clone());
+            }
+
+            xml.Save(xmlPath);
         }
 
         private static void ProcessModules(List<ModuleSettingModel> ActiveModules)

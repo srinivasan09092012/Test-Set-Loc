@@ -2,9 +2,9 @@
   <ModuleName>PI</ModuleName>
   <ModuleNameDisplay>Program Integrity</ModuleNameDisplay>
   <StorageDrive>J:</StorageDrive>
-  <webSourcePath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb\\PISvc_Latest</webSourcePath>
-  <webTargetPath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb\\PISvc_Latest</webTargetPath>
-  <WebRoutingTargetPath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb\\PISvc</WebRoutingTargetPath>
+  <webSourcePath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb\\PI_Latest</webSourcePath>
+  <webTargetPath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb\\PI_Latest</webTargetPath>
+  <WebRoutingTargetPath>J:\www\servicespecs\Modules\ProgramIntegrity\\HelpWeb\\PI</WebRoutingTargetPath>
   <webPortalPath></webPortalPath>
   <MainPageContent>R_Project_HPP-__BAS_and_Events_For_Third_Party_Integrators.htm</MainPageContent>
   <WebHost>http://servicespecs.shared.mapshc.com/</WebHost>
@@ -15,8 +15,7 @@
   <MainContractContent>G_HP_HSP_UA3_ProgramIntegrity_BAS_ProgramIntegritySvc_Contracts.htm</MainContractContent>
   <ContractListPages>
 	<ListPage>N_HP_HSP_UA3_ProgramIntegrity_BAS_ProgramIntegritySvc_Contracts_Events.htm</ListPage>
-  </ContractListPages>
-  
+  </ContractListPages>  
   <OtherResourcesFolder>ProgramIntegrity</OtherResourcesFolder>
   <ModuleAPISourcePath></ModuleAPISourcePath>
   <ModuleAPITargetPath></ModuleAPITargetPath>
@@ -27,4 +26,5 @@
    <ModuleHelpContentAvailable>true</ModuleHelpContentAvailable>
   <ModuleAPIAvailable>false</ModuleAPIAvailable>
   <EventsExtractFile>J:\UA3\SandCastleCustomizationTool\ModuleEventsExtracts\Test\PublishedModules.csv</EventsExtractFile>
+  <BuildingDate>01/12/2022</BuildingDate>
 </DocModuleSettingModel>
