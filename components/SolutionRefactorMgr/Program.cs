@@ -30,6 +30,7 @@ namespace SolutionRefactorMgr
         private static TfsTeamProjectCollection tpc = null;
         private static Workspace workspace = null;
         private static TextWriter tw = null;
+        private static PendingChange[] allPendingChangesinWorkspace = null;
 
         public static void Main(string[] args)
         {
@@ -114,6 +115,9 @@ namespace SolutionRefactorMgr
                 workspace = versionControl.QueryWorkspaces(refactorConfig.TfsWorkspace, versionControl.AuthorizedUser, Environment.MachineName)[0];
                 Workstation.Current.EnsureUpdateWorkspaceInfoCache(versionControl, versionControl.AuthorizedUser);
                 LogMessage(0, string.Format("Successfully connected to TFS"));
+
+                allPendingChangesinWorkspace = workspace.GetPendingChanges();
+
             }
         }
 
@@ -372,7 +376,11 @@ namespace SolutionRefactorMgr
 
                     if (contentsChanged)
                     {
-                        TfsPendEdit(newPath);
+                        //if (!PendEditExists(newPath))
+                        //{
+                            TfsPendEdit(newPath);
+                        //}
+                        //else { pendEditCount++; }
                         File.WriteAllText(newPath, newFileContents);
                         LogMessage(level, string.Format("Refactoring file '{0}'", file.Name));
                     }
@@ -399,9 +407,14 @@ namespace SolutionRefactorMgr
                         projectUpdated = UpdateProjectFile(projectFilePath, out projectFileContents);
                         if (projectUpdated)
                         {
-                            TfsPendEdit(projectFilePath);
+                            if (!PendEditExists(projectFilePath))
+                            {
+                                TfsPendEdit(projectFilePath);
+                            }
+                            else { pendEditCount++; }
                             File.WriteAllText(projectFilePath, projectFileContents);
                             LogMessage(level, string.Format("Refactoring file '{0}'", new FileInfo(projectFilePath).Name));
+                            
                         }
                         else
                         {
@@ -420,7 +433,11 @@ namespace SolutionRefactorMgr
                         string packagesConfigFileContents = File.ReadAllText(packageConfigFilePath);
                         if (UpdatePackagesConfigFile(packageConfigFilePath, out packagesConfigFileContents))
                         {
-                            TfsPendEdit(packageConfigFilePath);
+                            if (!PendEditExists(packageConfigFilePath))
+                            {
+                                TfsPendEdit(packageConfigFilePath);
+                            }
+                            else { pendEditCount++; }
                             File.WriteAllText(packageConfigFilePath, packagesConfigFileContents);
                             LogMessage(level, string.Format("Refactoring file '{0}'", new FileInfo(packageConfigFilePath).Name));
                         }
@@ -443,7 +460,11 @@ namespace SolutionRefactorMgr
                         string configFileContents = File.ReadAllText(configFilePath);
                         if (UpdateConfigFile(configFilePath, out configFileContents))
                         {
-                            TfsPendEdit(configFilePath);
+                            if (!PendEditExists(configFilePath))
+                            {
+                                TfsPendEdit(configFilePath);
+                            }
+                            else { pendEditCount++; }
                             File.WriteAllText(configFilePath, configFileContents);
                             LogMessage(level, string.Format("Refactoring file '{0}'", new FileInfo(configFilePath).Name));
                         }
@@ -615,7 +636,7 @@ namespace SolutionRefactorMgr
             foreach (Error error in target.ErrorList)
             {
                 var errorFound = existingErrorElement.Cast<XmlElement>().Where(n => n.Attributes["Condition"].Value == error.Condition.Replace("[SOURCEFOLDER]", folderLevels)).Select(mod => mod).ToList();
-                if(errorFound.Count == 0)
+                if (errorFound.Count == 0)
                 {
                     XmlElement errorElement = csprojFile.CreateElement("Error", xmlNs);
                     errorElement.SetAttribute("Condition", error.Condition.Replace("[SOURCEFOLDER]", folderLevels));
@@ -744,6 +765,14 @@ namespace SolutionRefactorMgr
             }
 
             return referenceUpdated;
+        }
+
+        private static bool PendEditExists(string path)
+        {
+            IEnumerable<PendingChange> pc = allPendingChangesinWorkspace.ToList<PendingChange>().Where(a => a.LocalItem.ToLower() == path.ToLower()).Where(a => a.ChangeType == ChangeType.Edit);
+
+            return pc.Count<PendingChange>() > 0;
+            
         }
 
         private static bool IsUpgrade(string fromHintPath, string toHintPath)

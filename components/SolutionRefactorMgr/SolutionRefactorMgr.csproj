@@ -38,73 +38,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HPE.HSP.UA3.Core.API.Logger, Version=21.2.106.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.21.2.106\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\..\Packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.21.2.106\lib\net48\Microsoft.Practices.Unity.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.21.2.106\lib\net48\Microsoft.Practices.Unity.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.21.2.106\lib\net48\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.TeamFoundation.Client, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Packages\Microsoft.TeamFoundation.14.0\lib\net45\Microsoft.TeamFoundation.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.TeamFoundation.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Packages\Microsoft.TeamFoundation.14.0\lib\net45\Microsoft.TeamFoundation.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.TeamFoundation.Diff, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Packages\Microsoft.TeamFoundation.14.0\lib\net45\Microsoft.TeamFoundation.Diff.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.TeamFoundation.VersionControl.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Packages\Microsoft.TeamFoundation.VersionControl.All.12.0.30723.2\lib\net45\Microsoft.TeamFoundation.VersionControl.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.TeamFoundation.VersionControl.Common">
-      <HintPath>..\..\..\Packages\Microsoft.TeamFoundation.VersionControl.All.12.0.30723.2\lib\net45\Microsoft.TeamFoundation.VersionControl.Common.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.TeamFoundation.VersionControl.Common.Integration">
-      <HintPath>..\..\..\Packages\Microsoft.TeamFoundation.VersionControl.All.12.0.30723.2\lib\net45\Microsoft.TeamFoundation.VersionControl.Common.Integration.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.TeamFoundation.VersionControl.ControlAdapter">
-      <HintPath>..\..\..\Packages\Microsoft.TeamFoundation.VersionControl.All.12.0.30723.2\lib\net45\Microsoft.TeamFoundation.VersionControl.ControlAdapter.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.TeamFoundation.VersionControl.Controls">
-      <HintPath>..\..\..\Packages\Microsoft.TeamFoundation.VersionControl.All.12.0.30723.2\lib\net45\Microsoft.TeamFoundation.VersionControl.Controls.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.TeamFoundation.VersionControl.Controls.Common">
-      <HintPath>..\..\..\Packages\Microsoft.TeamFoundation.VersionControl.All.12.0.30723.2\lib\net45\Microsoft.TeamFoundation.VersionControl.Controls.Common.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.TeamFoundation.VersionControl.UIFeatures">
-      <HintPath>..\..\..\Packages\Microsoft.TeamFoundation.VersionControl.All.12.0.30723.2\lib\net45\Microsoft.TeamFoundation.VersionControl.UIFeatures.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Web.XmlTransform">
-      <HintPath>..\..\..\Packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="NuGet.Core">
-      <HintPath>..\..\..\Packages\NuGet.Core.2.14.0\lib\net40-Client\NuGet.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -112,7 +45,6 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -140,9 +72,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="Configs\PackageUpgrades\DevF\InRule.Runtime.5.7.2.xml" />
     <Content Include="Configs\PackageUpgrades\DevF\Log4Net.2.0.5 to 2.0.8.xml" />
     <Content Include="Configs\PackageUpgrades\DevF\Log4net_Upgrade to 2.0.12.xml" />
     <Content Include="Configs\PackageUpgrades\DevF\Vertica.Data.x64.10.0.1.0.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\InRule.Runtime.5.7.2 and Vertica.Data 10.0.1.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\Log4net_Upgrade to 2.0.12.xml" />
     <Content Include="Configs\PackageUpgrades\Dev\MongoCSharpDriver_Upgrade to 2.13.1.xml" />
     <Content Include="Configs\PackageUpgrades\DevF\MongoCSharpDriver_Upgrade to 2.13.1.xml" />
     <Content Include="Configs\PackageUpgrades\DevF\Refactor_Package_Cleanup_Repoint_From_Deleted_dll.xml" />
@@ -163,6 +98,7 @@
     <Content Include="Configs\PackageUpgrades\Dev\Refactor_Web_App_Config_DOTNET_Upgrade.xml" />
     <Content Include="Configs\PackageUpgrades\Dev\StackExchange.Redis_Upgrade_to_2.1.58.xml" />
     <Content Include="Configs\PackageUpgrades\Dev\StackExchange.Redis_Upgrade_to_2.2.4.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\Vertica.Data.x64.10.0.1.0.xml" />
     <Content Include="Configs\PackageUpgrades\Upgrade_Package.xml" />
     <Content Include="Configs\RefactorAppSettings.xml" />
     <Content Include="Configs\RefactorBASThumbprints.xml" />
@@ -203,9 +139,6 @@
     <None Include="nuget.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
@@ -226,6 +159,26 @@
     <Content Include="RefactorConfig.xml">
       <SubType>Designer</SubType>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="HPE.HSP.UA3.Core.API.Logger">
+      <Version>21.3.112</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.TeamFoundation">
+      <Version>14.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.TeamFoundation.VersionControl.All">
+      <Version>12.0.30723.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Web.Xdt">
+      <Version>2.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="NuGet.Core">
+      <Version>2.14.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
