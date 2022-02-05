@@ -223,8 +223,8 @@
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\Packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Vertica.Data, Version=7.1.1.0, Culture=neutral, PublicKeyToken=725728a8837b3bd5, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.1.100\lib\net48\Vertica.Data.dll</HintPath>
+    <Reference Include="Vertica.Data, Version=10.0.1.0, Culture=neutral, PublicKeyToken=725728a8837b3bd5, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\Packages\Vertica.Data.x64.10.0.1\lib\net45\Vertica.Data.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\Packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>

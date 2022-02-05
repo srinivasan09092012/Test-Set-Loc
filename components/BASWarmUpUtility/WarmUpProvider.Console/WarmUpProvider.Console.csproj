@@ -368,8 +368,8 @@
     <Reference Include="System.Threading.Channels, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Packages\System.Threading.Channels.5.0.0\lib\net461\System.Threading.Channels.dll</HintPath>
     </Reference>
-    <Reference Include="Vertica.Data, Version=9.1.0.0, Culture=neutral, PublicKeyToken=725728a8837b3bd5, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.2.106\lib\net48\Vertica.Data.dll</HintPath>
+    <Reference Include="Vertica.Data, Version=10.0.1.0, Culture=neutral, PublicKeyToken=725728a8837b3bd5, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\Vertica.Data.x64.10.0.1\lib\net45\Vertica.Data.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
