@@ -391,6 +391,14 @@ namespace BASEventsTestingUtil
             }
             em.AggregateRootID = AggregateRootID == null ? null : AggregateRootID.Count == 0 ? null : AggregateRootID[0].InnerXml == string.Empty ? null : AggregateRootID[0].InnerXml;
 
+            XmlNodeList AggregateRootType = this.payloadDocument.GetElementsByTagName("AggregateRootType");
+            if (AggregateRootType == null || AggregateRootType.Count == 0)
+            {
+                AggregateRootType = this.payloadDocument.GetElementsByTagName("a:AggregateRootType");
+            }
+            em.AggregateRootType = AggregateRootType == null ? null : AggregateRootType.Count == 0 ? null : AggregateRootType[0].InnerXml == string.Empty ? null : AggregateRootType[0].InnerXml;
+
+
             StringBuilder sb = new StringBuilder();
             var settings = new XmlWriterSettings
             {

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -132,8 +132,25 @@
     <None Include="Service References\EventDistribution\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\EventDistribution\EventDistributionService.wsdl" />
+    <None Include="Service References\EventDistribution\EventDistributionService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\EventDistributionService1.wsdl" />
+    <None Include="Service References\EventDistribution\EventDistributionService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\EventDistribution\EventDistributionService2.wsdl" />
+    <None Include="Service References\EventDistribution\EventDistributionService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\EventDistribution\EventDistributionService3.wsdl" />
+    <None Include="Service References\EventDistribution\EventDistributionService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventDistribution\EventDistributionService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\EventDistribution\EventDistributionService5.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -216,6 +233,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\EventDistribution\EventDistributionService1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EventDistribution\EventDistributionService.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
