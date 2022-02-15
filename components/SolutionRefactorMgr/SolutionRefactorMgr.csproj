@@ -102,6 +102,7 @@
     <Content Include="Configs\PackageUpgrades\Upgrade_Package.xml" />
     <Content Include="Configs\RefactorAppSettings.xml" />
     <Content Include="Configs\RefactorBASThumbprints.xml" />
+    <Content Include="Configs\RefactorCfgDevR.xml" />
     <Content Include="Configs\RefactorConfigPackagesFrom451to48.xml">
       <SubType>Designer</SubType>
     </Content>
