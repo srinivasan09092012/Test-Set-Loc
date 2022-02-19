@@ -92,6 +92,7 @@
     </Content>
     <Content Include="Configs\PackageUpgrades\DevF\Fix Package Names.xml" />
     <Content Include="Configs\PackageUpgrades\Dev\Log4Net.2.0.5 to 2.0.8.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\Newtonsoft.Json 13.0.1.xml" />
     <Content Include="Configs\PackageUpgrades\Dev\Oracle.ManagedDataAccess.EntityFramework Upgrade to 19.7.0.xml" />
     <Content Include="Configs\PackageUpgrades\Dev\Refactor_Package_Cleanup_Repoint_From_Deleted_dll.xml" />
     <Content Include="Configs\PackageUpgrades\Dev\Refactor_Repoint_from_19_2_70_to_19_3_76.xml" />

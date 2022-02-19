@@ -376,11 +376,10 @@ namespace SolutionRefactorMgr
 
                     if (contentsChanged)
                     {
-                        //if (!PendEditExists(newPath))
-                        //{
+                        if (!PendEditExists(newPath))
+                        {
                             TfsPendEdit(newPath);
-                        //}
-                        //else { pendEditCount++; }
+                        }
                         File.WriteAllText(newPath, newFileContents);
                         LogMessage(level, string.Format("Refactoring file '{0}'", file.Name));
                     }
@@ -934,7 +933,7 @@ namespace SolutionRefactorMgr
                         {
                             if (dependentAssemblyChild.Name == "assemblyIdentity")
                             {
-                                if (dependentAssemblyChild.Attributes["publicKeyToken"].Value != dependentAssly.publicKeyToken || dependentAssemblyChild.Attributes["culture"].Value != dependentAssly.culture)
+                                if (dependentAssemblyChild.Attributes["publicKeyToken"].Value != dependentAssly.publicKeyToken || dependentAssemblyChild.HasAttribute("culture") ? dependentAssemblyChild.Attributes["culture"].Value != dependentAssly.culture:false)
                                 {
                                     dependentAssemblyChild.RemoveAttribute("publicKeyToken");
                                     dependentAssemblyChild.RemoveAttribute("culture");
