@@ -180,8 +180,8 @@
     <Reference Include="NEventStore.Persistence.MongoDB, Version=5.3.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.2.106\lib\net48\NEventStore.Persistence.MongoDB.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.2.106\lib\net48\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll </HintPath>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Packages\Oracle.ManagedDataAccess.19.7.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
