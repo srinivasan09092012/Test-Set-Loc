@@ -55,7 +55,7 @@ RefactorConfig - Base processing parameters:
     to: any string value, the string to replace the 'from' value.  Use [NEWLINE] to create a new line as part of the replacement string.
   -->
   <ReplacementStrings>
-    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.Core" from="Version=17.3.39.0" to="Version=17.4.43.0" />
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.Core" from="Version=21.3.112.0" to="Version=22.1.118.0" />
     <ReplacementString qualifier="&lt;httpRuntime targetFramework=&quot;4.5&quot; /&gt;" from="&lt;httpRuntime targetFramework=&quot;4.5&quot; /&gt;" to="&lt;httpRuntime targetFramework=&quot;4.5&quot; enableVersionHeader=&quot;false&quot; /&gt;[NEWLINE]    &lt;httpCookies httpOnlyCookies=&quot;true&quot; /&gt;" />
   </ReplacementStrings>
   <!--
