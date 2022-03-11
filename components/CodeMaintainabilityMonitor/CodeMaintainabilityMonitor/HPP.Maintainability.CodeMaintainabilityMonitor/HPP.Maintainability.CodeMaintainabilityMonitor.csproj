@@ -77,6 +77,10 @@
       <DependentUpon>CodeMaintainabilityMonitor.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="CodeMaintainabilityMonitorController.cs" />
+    <Compile Include="FilterAndSortXmlDataStep.cs" />
+    <Compile Include="MaintainabilityConstants.cs" />
+    <Compile Include="Method.cs" />
+    <Compile Include="Metric.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
