@@ -1,14 +1,16 @@
 ﻿//-----------------------------------------------------------------------------------------
-// This code is the property of Gainwell Technologies, Copyright (c) 2021. All rights reserved.
+// This code is the property of Gainwell Technologies, Copyright (c) 2022. All rights reserved.
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
 // Violators may be punished to the full extent of the law.
 //-----------------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace HPP.Maintainability.CodeMaintainabilityMonitor
 {
@@ -80,6 +82,18 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             }
 
             FilterAndSortXmlDataStep.Execute();
+            this.ShowDataInGridSecondTab();
+        }
+
+        public void ShowDataInGridSecondTab()
+        {
+            this.tabControl1.Controls.Add(this.tabPage2);
+            tabControl1.SelectedIndex = 1;
+            string[] files = Directory.GetFiles(string.Format(MaintainabilityConstants.Paths.OutputFolder, string.Empty));
+            foreach (string file in files)
+            {
+                comboBox1.Items.Add(file);
+            }
         }
 
         private void buttonLoad_Click(object sender, EventArgs e)
@@ -240,6 +254,109 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             }
 
             this.generateButton.Enabled = false;
+        }
+
+        protected void GetXMLData()
+        {
+            List<Method> methods = new List<Method>();
+            string filePath = comboBox1.Text;
+            XElement xml = XElement.Load(filePath);
+            IEnumerable<XElement> xmlMethods = xml.Descendants(MaintainabilityConstants.XmlDescendants.Method).ToList();
+
+            foreach (XElement method in xmlMethods)
+            {
+                string name, file, line, maintainabilityIndex;
+                GetMethodObjectInfo(method, out name, out file, out line, out maintainabilityIndex);
+
+                methods.Add(BuildMethodObject(name, file, line, maintainabilityIndex));
+            }
+
+            DataTable dt = BuildDataTable();
+
+            foreach (var method in methods)
+            {
+                FillDataTableRows(dt, method);
+            }
+
+            dataGridView1.DataSource = dt;
+        }
+
+        private static void FillDataTableRows(DataTable dt, Method method)
+        {
+            DataRow dtrow = dt.NewRow();
+            dtrow[MaintainabilityConstants.DataTableColumnsAndRows.Name] = method.Name;
+            dtrow[MaintainabilityConstants.DataTableColumnsAndRows.File] = method.File;
+            dtrow[MaintainabilityConstants.DataTableColumnsAndRows.Line] = method.Line;
+            dtrow[MaintainabilityConstants.DataTableColumnsAndRows.MaintainabilityIndex] = method.Metrics.First().Value;
+            dt.Rows.Add(dtrow);
+        }
+
+        private static DataTable BuildDataTable()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add(MaintainabilityConstants.DataTableColumnsAndRows.Name, typeof(string));
+            dt.Columns.Add(MaintainabilityConstants.DataTableColumnsAndRows.File, typeof(string));
+            dt.Columns.Add(MaintainabilityConstants.DataTableColumnsAndRows.Line, typeof(string));
+            dt.Columns.Add(MaintainabilityConstants.DataTableColumnsAndRows.MaintainabilityIndex, typeof(string));
+            return dt;
+        }
+
+        private static void GetMethodObjectInfo(XElement method, out string name, out string file, out string line, out string maintainabilityIndex)
+        {
+            XElement metrics = method.Descendants(MaintainabilityConstants.XmlDescendants.Metrics).First();
+            name = method.Attribute(MaintainabilityConstants.XmlAttributes.Name).Value;
+            file = method.Attribute(MaintainabilityConstants.XmlAttributes.File).Value;
+            line = method.Attribute(MaintainabilityConstants.XmlAttributes.Line).Value;
+            maintainabilityIndex = metrics.Element(MaintainabilityConstants.XmlElements.Metric).Attribute(MaintainabilityConstants.XmlAttributes.Value).Value;
+        }
+
+        private static Method BuildMethodObject(string name, string file, string line, string maintainabilityIndex)
+        {
+            return new Method
+            {
+                Name = name,
+                File = file,
+                Line = line,
+                Metrics = new List<Metric>
+                    {
+                        new Metric
+                        {
+                            Value = maintainabilityIndex
+                        }
+                    }
+            };
+        }
+
+        private void buttonExport_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+
+            app.Visible = true;
+
+            worksheet = workbook.Sheets["Sheet1"];
+            worksheet = workbook.ActiveSheet;
+
+            worksheet.Name = "Exported from gridView";
+
+            for (int i = 1; i < this.dataGridView1.Columns.Count + 1; i++)
+            {
+                worksheet.Cells[1, i] = this.dataGridView1.Columns[i - 1].HeaderText;
+            }
+
+            for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+            {
+                for (int j = 0; j < this.dataGridView1.Columns.Count; j++)
+                {
+                    worksheet.Cells[i + 2, j + 1] = this.dataGridView1.Rows[i].Cells[j].Value.ToString();
+                }
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.GetXMLData();
         }
     }
 }

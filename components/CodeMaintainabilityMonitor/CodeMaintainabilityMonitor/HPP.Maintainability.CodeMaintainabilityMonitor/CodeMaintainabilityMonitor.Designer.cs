@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------------------------
-// This code is the property of Gainwell Technologies, Copyright (c) 2021. All rights reserved.
+// This code is the property of Gainwell Technologies, Copyright (c) 2022. All rights reserved.
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
 // Violators may be punished to the full extent of the law.
 //-----------------------------------------------------------------------------------------
@@ -46,6 +46,17 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             this.buttonExit = new System.Windows.Forms.Button();
             this.buttonSelectAll = new System.Windows.Forms.Button();
             this.buttonUnselectAll = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.buttonExport = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,9 +65,9 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             this.comboBoxModule.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxModule.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.comboBoxModule.FormattingEnabled = true;
-            this.comboBoxModule.Location = new System.Drawing.Point(16, 40);
+            this.comboBoxModule.Location = new System.Drawing.Point(10, 33);
             this.comboBoxModule.Name = "comboBoxModule";
-            this.comboBoxModule.Size = new System.Drawing.Size(199, 31);
+            this.comboBoxModule.Size = new System.Drawing.Size(199, 25);
             this.comboBoxModule.TabIndex = 0;
             this.comboBoxModule.SelectedIndexChanged += new System.EventHandler(this.comboBoxModule_SelectedIndexChanged);
             // 
@@ -65,15 +76,15 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             this.comboBoxBranch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBranch.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.comboBoxBranch.FormattingEnabled = true;
-            this.comboBoxBranch.Location = new System.Drawing.Point(237, 40);
+            this.comboBoxBranch.Location = new System.Drawing.Point(231, 33);
             this.comboBoxBranch.Name = "comboBoxBranch";
-            this.comboBoxBranch.Size = new System.Drawing.Size(179, 31);
+            this.comboBoxBranch.Size = new System.Drawing.Size(179, 25);
             this.comboBoxBranch.TabIndex = 1;
             this.comboBoxBranch.SelectedIndexChanged += new System.EventHandler(this.comboBoxBranch_SelectedIndexChanged);
             // 
             // buttonLoad
             // 
-            this.buttonLoad.Location = new System.Drawing.Point(434, 38);
+            this.buttonLoad.Location = new System.Drawing.Point(428, 31);
             this.buttonLoad.Name = "buttonLoad";
             this.buttonLoad.Size = new System.Drawing.Size(101, 32);
             this.buttonLoad.TabIndex = 2;
@@ -85,18 +96,18 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 16);
+            this.label1.Location = new System.Drawing.Point(6, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 21);
+            this.label1.Size = new System.Drawing.Size(53, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "Module";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(233, 16);
+            this.label2.Location = new System.Drawing.Point(227, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 21);
+            this.label2.Size = new System.Drawing.Size(47, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "Branch";
             // 
@@ -104,9 +115,9 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             // 
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.HorizontalScrollbar = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(16, 77);
+            this.checkedListBox1.Location = new System.Drawing.Point(10, 70);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(773, 124);
+            this.checkedListBox1.Size = new System.Drawing.Size(773, 118);
             this.checkedListBox1.TabIndex = 5;
             this.checkedListBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.checkedListBox1_KeyPress);
             this.checkedListBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.checkedListBox1_MouseUp);
@@ -114,7 +125,7 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             // generateButton
             // 
             this.generateButton.Enabled = false;
-            this.generateButton.Location = new System.Drawing.Point(16, 256);
+            this.generateButton.Location = new System.Drawing.Point(10, 249);
             this.generateButton.Name = "generateButton";
             this.generateButton.Size = new System.Drawing.Size(99, 32);
             this.generateButton.TabIndex = 6;
@@ -125,9 +136,9 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             // ProcessingLabel
             // 
             this.ProcessingLabel.AutoSize = true;
-            this.ProcessingLabel.Location = new System.Drawing.Point(142, 262);
+            this.ProcessingLabel.Location = new System.Drawing.Point(116, 257);
             this.ProcessingLabel.Name = "ProcessingLabel";
-            this.ProcessingLabel.Size = new System.Drawing.Size(0, 21);
+            this.ProcessingLabel.Size = new System.Drawing.Size(102, 17);
             this.ProcessingLabel.TabIndex = 7;
             // 
             // buttonExit
@@ -143,7 +154,7 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             // buttonSelectAll
             // 
             this.buttonSelectAll.Enabled = false;
-            this.buttonSelectAll.Location = new System.Drawing.Point(16, 206);
+            this.buttonSelectAll.Location = new System.Drawing.Point(10, 199);
             this.buttonSelectAll.Name = "buttonSelectAll";
             this.buttonSelectAll.Size = new System.Drawing.Size(101, 31);
             this.buttonSelectAll.TabIndex = 9;
@@ -154,7 +165,7 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             // buttonUnselectAll
             // 
             this.buttonUnselectAll.Enabled = false;
-            this.buttonUnselectAll.Location = new System.Drawing.Point(123, 207);
+            this.buttonUnselectAll.Location = new System.Drawing.Point(117, 200);
             this.buttonUnselectAll.Name = "buttonUnselectAll";
             this.buttonUnselectAll.Size = new System.Drawing.Size(101, 30);
             this.buttonUnselectAll.TabIndex = 10;
@@ -162,22 +173,95 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             this.buttonUnselectAll.UseVisualStyleBackColor = true;
             this.buttonUnselectAll.Click += new System.EventHandler(this.buttonUnselectAll_Click);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Location = new System.Drawing.Point(-2, 3);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(804, 374);
+            this.tabControl1.TabIndex = 11;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.buttonUnselectAll);
+            this.tabPage1.Controls.Add(this.ProcessingLabel);
+            this.tabPage1.Controls.Add(this.comboBoxModule);
+            this.tabPage1.Controls.Add(this.buttonSelectAll);
+            this.tabPage1.Controls.Add(this.comboBoxBranch);
+            this.tabPage1.Controls.Add(this.buttonLoad);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.generateButton);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.checkedListBox1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(796, 348);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Load Solutions";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.buttonExport);
+            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.comboBox1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(796, 348);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "View and Export Data";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // buttonExport
+            // 
+            this.buttonExport.Location = new System.Drawing.Point(10, 308);
+            this.buttonExport.Name = "buttonExport";
+            this.buttonExport.Size = new System.Drawing.Size(107, 33);
+            this.buttonExport.TabIndex = 3;
+            this.buttonExport.Text = "Export to Excel";
+            this.buttonExport.UseVisualStyleBackColor = true;
+            this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 78);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(775, 224);
+            this.dataGridView1.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Select data:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(6, 38);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(776, 21);
+            this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // CodeMaintainabilityMonitor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(801, 378);
-            this.Controls.Add(this.buttonUnselectAll);
-            this.Controls.Add(this.buttonSelectAll);
             this.Controls.Add(this.buttonExit);
-            this.Controls.Add(this.ProcessingLabel);
-            this.Controls.Add(this.generateButton);
-            this.Controls.Add(this.checkedListBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.buttonLoad);
-            this.Controls.Add(this.comboBoxBranch);
-            this.Controls.Add(this.comboBoxModule);
+            this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CodeMaintainabilityMonitor";
             // 
@@ -186,9 +270,14 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             this.RootElement.ApplyShapeToControl = true;
             this.Text = "Maintainability Metrics";
             this.Load += new System.EventHandler(this.CodeMaintainabilityMonitor_Load);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
         #endregion
@@ -204,5 +293,12 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
         private Button buttonExit;
         private Button buttonSelectAll;
         private Button buttonUnselectAll;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
+        private Button buttonExport;
+        private DataGridView dataGridView1;
+        private Label label3;
+        private ComboBox comboBox1;
     }
 }
