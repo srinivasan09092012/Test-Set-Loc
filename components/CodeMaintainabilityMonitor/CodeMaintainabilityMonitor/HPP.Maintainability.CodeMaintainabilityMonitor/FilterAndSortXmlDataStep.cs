@@ -1,9 +1,12 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------------------------
+// This code is the property of Gainwell Technologies, Copyright (c) 2022. All rights reserved.
+// Any unauthorized use in whole or in part without written consent is strictly prohibited.
+// Violators may be punished to the full extent of the law.
+//-----------------------------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
@@ -53,8 +56,6 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
                     Console.WriteLine(string.Format(MaintainabilityConstants.Error, inputFile));
                     Console.WriteLine(ex.Message);
                 }
-
-
             }
         }
 
@@ -88,7 +89,7 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
         {
             XElement metrics = result.Descendants(MaintainabilityConstants.XmlDescendants.Metrics).FirstOrDefault();
             XNode maintainabilityNode = metrics.FirstNode;
-            int value = int.Parse((maintainabilityNode as XElement).Attribute(MaintainabilityConstants.XmlAttributeValue).Value);
+            int value = int.Parse((maintainabilityNode as XElement).Attribute(MaintainabilityConstants.XmlAttributes.Value).Value);
 
             if (value < MaintainabilityConstants.MaintainabilityThreshold)
             {
