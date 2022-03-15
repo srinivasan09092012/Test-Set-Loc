@@ -64,9 +64,9 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
         public static class Messages
         {
             public const string EmptyMessage = "";
-            public const string Processing = "now processing...";
+            public const string Processing = "Processing... please wait, next tab will reflect results ones it finish";
             public const string ProcessDone = "Done";
-            public const string ProcessLiading = "Loading...";
+            public const string ProcessLoading = "Loading...";
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
@@ -29,11 +30,25 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
         #endregion
 
         #region Private Methods
-        private void generateButton_Click(object sender, EventArgs e)
+        private async void generateButton_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
             this.ProcessingLabel.Text = MaintainabilityConstants.Messages.Processing;
             this.ProcessingLabel.Refresh();
+            
+            await Task.Run(() =>
+            {
+                this.GenerateFiles();
+
+            });
+
+            FilterAndSortXmlDataStep.Execute();
+            this.PupulateExportFiles();
+            this.ProcessingLabel.Text = MaintainabilityConstants.Messages.ProcessDone;
+            this.ShowDataInGridSecondTab();
+        }
+
+        private async Task GenerateFiles()
+        {
             List<string> strignList = new List<string>();
             foreach (var selected in this.checkedListBox1.CheckedItems)
             {
@@ -80,15 +95,20 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
                 this.ProcessingLabel.Text = MaintainabilityConstants.Messages.ProcessDone;
                 this.ProcessingLabel.Refresh();
             }
-
-            FilterAndSortXmlDataStep.Execute();
-            this.ShowDataInGridSecondTab();
         }
 
         public void ShowDataInGridSecondTab()
         {
-            this.tabControl1.Controls.Add(this.tabPage2);
-            tabControl1.SelectedIndex = 1;
+            if(this.tabControl1.Controls.Count == 1)
+            {
+                this.tabControl1.Controls.Add(this.tabPage2);
+                tabControl1.SelectedIndex = 1;
+            }
+        }
+
+        private void PupulateExportFiles()
+        {
+            comboBox1.Items.Clear();
             string[] files = Directory.GetFiles(string.Format(MaintainabilityConstants.Paths.OutputFolder, string.Empty));
             foreach (string file in files)
             {
@@ -96,21 +116,42 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             }
         }
 
-        private void buttonLoad_Click(object sender, EventArgs e)
+        private async void buttonLoad_Click(object sender, EventArgs e)
         {
-            this.ProcessingLabel.Text = MaintainabilityConstants.Messages.EmptyMessage;
-            System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
             this.checkedListBox1.Items.Clear();
             this.generateButton.Enabled = false;
-            string[] filePaths = this.GetModuleSolution();
+            string[] filePaths = await this.GetFileDirectory();
+            this.PopulateCheckedListBox(filePaths);
+            this.buttonSelectAll.Enabled = true;
+            this.buttonUnselectAll.Enabled = true;
+            this.ProcessingLabel.Text = MaintainabilityConstants.Messages.EmptyMessage;
 
+        }
+
+        private void PopulateCheckedListBox(string[] filePaths)
+        {
             foreach (string file in filePaths)
             {
                 this.checkedListBox1.Items.Add(file, false);
             }
+        }
 
-            this.buttonSelectAll.Enabled = true;
-            this.buttonUnselectAll.Enabled = true;
+        private async Task<string[]> GetFileDirectory()
+        {
+            if (this.comboBoxModule.SelectedIndex == -1 && this.comboBoxBranch.SelectedIndex == -1)
+            {
+                return await Task.Run(() => Directory.GetFiles(MaintainabilityConstants.Paths.SourceFolder, MaintainabilityConstants.SoluionExention, SearchOption.AllDirectories));
+            }
+            else if (this.comboBoxBranch.SelectedIndex == -1)
+            {
+                string path = string.Format("{0}{1}\\", MaintainabilityConstants.Paths.SourceFolder, this.comboBoxModule.SelectedItem.ToString());
+                return await Task.Run(() => Directory.GetFiles(path, MaintainabilityConstants.SoluionExention,SearchOption.AllDirectories));
+            }
+            else
+            {
+                string path = string.Format("{0}{1}\\{2}\\", MaintainabilityConstants.Paths.SourceFolder, this.comboBoxModule.SelectedItem, this.comboBoxBranch.SelectedItem);
+                return await Task.Run(() =>  Directory.GetFiles(path, MaintainabilityConstants.SoluionExention,SearchOption.AllDirectories));
+            }
         }
 
         private string[] GetModuleSolution()
@@ -233,6 +274,7 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
 
         private void buttonSelectAll_Click(object sender, EventArgs e)
         {
+            this.ProcessingLabel.Text = MaintainabilityConstants.Messages.EmptyMessage;
             for (int i = 0; i < this.checkedListBox1.Items.Count; i++)
             {
                 this.checkedListBox1.SetItemChecked(i, true);
@@ -241,13 +283,14 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             this.generateButton.Enabled = true;
         }
 
-        private void buttonLoad_MouseDown(object sender, MouseEventArgs e)
+        private async void buttonLoad_MouseDown(object sender, MouseEventArgs e)
         {
-            this.ProcessingLabel.Text = MaintainabilityConstants.Messages.ProcessLiading;
+            this.ProcessingLabel.Text = MaintainabilityConstants.Messages.ProcessLoading;
         }
 
         private void buttonUnselectAll_Click(object sender, EventArgs e)
         {
+            this.ProcessingLabel.Text = MaintainabilityConstants.Messages.EmptyMessage;
             for (int i = 0; i < this.checkedListBox1.Items.Count; i++)
             {
                 this.checkedListBox1.SetItemChecked(i, false);
