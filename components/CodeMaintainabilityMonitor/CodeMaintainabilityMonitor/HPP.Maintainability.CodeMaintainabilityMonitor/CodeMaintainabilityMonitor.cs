@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Newtonsoft.Json;
 
 namespace HPP.Maintainability.CodeMaintainabilityMonitor
 {
@@ -124,8 +125,8 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             this.PopulateCheckedListBox(filePaths);
             this.buttonSelectAll.Enabled = true;
             this.buttonUnselectAll.Enabled = true;
+            this.saveToolStripMenuItem.Enabled = false;
             this.ProcessingLabel.Text = MaintainabilityConstants.Messages.EmptyMessage;
-
         }
 
         private void PopulateCheckedListBox(string[] filePaths)
@@ -193,6 +194,26 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             }
 
             this.comboBoxModule.Items.AddRange(this.Modules.ToArray());
+
+            if (File.Exists(MaintainabilityConstants.Paths.SettingsPreferenceFile))
+            {
+                if (new FileInfo(MaintainabilityConstants.Paths.SettingsPreferenceFile).Length <= 0)
+                {
+                    this.deleteToolStripMenuItem.Enabled = false;
+                    this.loadToolStripMenuItem.Enabled = false;
+                }
+
+                if (this.comboBox1.Items.Count <= 0)
+                {
+                    this.saveToolStripMenuItem.Enabled = false;
+                }
+            }
+            else
+            {
+                this.deleteToolStripMenuItem.Enabled = false;
+                this.loadToolStripMenuItem.Enabled = false;
+                this.saveToolStripMenuItem.Enabled = false;
+            }
         }
 
         private void comboBoxModule_SelectedIndexChanged(object sender, EventArgs e)
@@ -247,10 +268,12 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
                 if (itemsCheckedCount > 0)
                 {
                     this.generateButton.Enabled = true;
+                    this.saveToolStripMenuItem.Enabled = true;
                 }
                 else
                 {
                     this.generateButton.Enabled = false;
+                    this.saveToolStripMenuItem.Enabled = false;
                 }
 
             }
@@ -281,6 +304,7 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             }
 
             this.generateButton.Enabled = true;
+            this.saveToolStripMenuItem.Enabled = true;
         }
 
         private async void buttonLoad_MouseDown(object sender, MouseEventArgs e)
@@ -297,6 +321,7 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             }
 
             this.generateButton.Enabled = false;
+            this.saveToolStripMenuItem.Enabled = false;
         }
 
         protected void GetXMLData()
@@ -400,6 +425,101 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.GetXMLData();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.SaveSelectedSettings();
+            this.loadToolStripMenuItem.Enabled = true;
+            this.deleteToolStripMenuItem.Enabled = true;
+        }
+
+        private void SaveSelectedSettings()
+        {
+            List<string> solutions = new List<string>();
+
+            foreach (object itemChecked in checkedListBox1.CheckedItems)
+            {
+                solutions.Add(itemChecked.ToString());
+            }
+
+            object moduleSettings = this.BuildModuleSettingPreferences(solutions);
+
+            using (StreamWriter file = File.CreateText(MaintainabilityConstants.Paths.SettingsPreferenceFile))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Serialize(file, moduleSettings);
+            }
+        }
+
+        private object BuildModuleSettingPreferences(List<string> solutions)
+        {
+            return new Module
+            {
+                ModuleName = this.comboBoxModule.Text,
+                ModulePreferences = new ModulePreferences
+                {
+                    BranchName = this.comboBoxBranch.Text,
+                    Solutions = solutions
+                }
+            };
+        }
+
+        private async void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.checkedListBox1.Items.Clear();
+            if (File.Exists(MaintainabilityConstants.Paths.SettingsPreferenceFile))
+            {
+                if (new FileInfo(MaintainabilityConstants.Paths.SettingsPreferenceFile).Length > 0)
+                {
+                    using (StreamReader read = new StreamReader(MaintainabilityConstants.Paths.SettingsPreferenceFile))
+                    {
+                        await this.LoadSavedPreferences(read);
+                    }
+                }
+
+                this.generateButton.Enabled = true;
+                this.buttonSelectAll.Enabled = true;
+                this.buttonUnselectAll.Enabled = true;
+            }
+        }
+
+        private async Task LoadSavedPreferences(StreamReader read)
+        {
+            string json = read.ReadToEnd();
+            Module moduleSettings = JsonConvert.DeserializeObject<Module>(json);
+            this.comboBoxModule.SelectedItem = moduleSettings.ModuleName.ToString();
+            this.comboBoxBranch.SelectedItem = moduleSettings.ModulePreferences.BranchName.ToString();
+            string[] filePaths = await this.GetFileDirectory();
+
+            foreach (string file in filePaths)
+            {
+                this.checkedListBox1.Items.Add(file, false);
+            }
+
+            for (int selected = 0; selected < filePaths.Length; selected++)
+            {
+                if (moduleSettings.ModulePreferences.Solutions.Contains(this.checkedListBox1.Items[selected].ToString()))
+                {
+                    this.checkedListBox1.SetItemChecked(selected, true);
+                }
+            }
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(MaintainabilityConstants.Paths.SettingsPreferenceFile))
+            {
+                FileStream fileStream = File.Open(MaintainabilityConstants.Paths.SettingsPreferenceFile, FileMode.Open);
+                fileStream.SetLength(0);
+                fileStream.Close();
+                this.loadToolStripMenuItem.Enabled = false;
+            }
+        }
+
+        private void exitAppToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -31,6 +31,7 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             public const string InputFolder = @"C:\UA3\Source\Integration\Dev\Utilities\MaintainabilityMetricsCalculator\OutputXmlFiles";
             public const string MaintainabilityMetricsCalculator = @"cd C:\UA3\Source\Integration\Dev\Utilities\MaintainabilityMetricsCalculator\Calculator";
             public const string OutputFolder = @"C:\UA3\Source\Integration\Dev\Utilities\MaintainabilityMetricsCalculator\MethodsWithIndexBelowMaintainabilityLimit\{0}";
+            public const string SettingsPreferenceFile = "C:\\UA3\\Source\\Integration\\Dev\\Utilities\\MaintainabilityMetricsCalculator\\Calculator\\config.json";
             public const string SourceFolder = @"c:\UA3\Source\";
             public const string OutputXmlFiles = "\"C:\\UA3\\Source\\Integration\\Dev\\Utilities\\MaintainabilityMetricsCalculator\\OutputXmlFiles\\Metrics_For_";
             public const string Underscore = "_";
