@@ -137,9 +137,6 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             p.StandardInput.Close();
             p.WaitForExit();
             p.Close();
-
-            FilterAndSortXmlDataStep.Execute(this.radioButtonGetMethodsUnderIndex.Checked, LimitIndex);
-            this.ShowDataInGridSecondTab();
         }
 
         private void DisableOrEnableButtons(bool toogle)
