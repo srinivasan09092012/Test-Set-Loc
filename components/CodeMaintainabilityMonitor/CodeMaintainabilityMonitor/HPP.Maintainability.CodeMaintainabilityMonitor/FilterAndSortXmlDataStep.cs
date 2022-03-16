@@ -14,13 +14,13 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
 {
     public static class FilterAndSortXmlDataStep
     {
-        public static void Execute()
+        public static void Execute(bool getMethodsUnderIndex, int limit)
         {
             Console.WriteLine("Hello World!");
-            GetMethodsUnderMaintainabilityIndexLimit();
+            GetMethodsUnderMaintainabilityIndexLimit(getMethodsUnderIndex, limit);
         }
 
-        public static void GetMethodsUnderMaintainabilityIndexLimit()
+        public static void GetMethodsUnderMaintainabilityIndexLimit(bool getMethodsUnderIndex, int limit)
         {
 
             string[] inputFiles = Directory.GetFiles(MaintainabilityConstants.Paths.InputFolder, MaintainabilityConstants.XmlSearchPatern);
@@ -33,23 +33,32 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
                     List<XElement> methodsUnderMaintainabilityIndex = new List<XElement>();
                     List<Method> metodos = new List<Method>();
                     string fileName = string.Empty;
-                    fileName = Path.GetFileName(inputFile);
+                    string extention = string.Empty;
+                    fileName = Path.GetFileNameWithoutExtension (inputFile);
+                    extention = Path.GetExtension(inputFile);
 
                     XElement xml = XElement.Load(inputFile);
                     List<XElement> results = xml.Descendants(MaintainabilityConstants.XmlDescendants.Method).ToList();
 
+                    
                     foreach (XElement result in results)
                     {
                         FilterOutServiceReferenceAndTestsMetrics(filteredResults, result);
                     }
 
-                    foreach (XElement result in filteredResults)
+                    metodos = DeserializeAndSortMethodList(filteredResults, metodos);
+
+                    if (getMethodsUnderIndex)
                     {
-                        FilterOutMaintainabilityIndexAboveThreshold(methodsUnderMaintainabilityIndex, result);
+                        metodos.Clear();
+                        foreach (XElement result in filteredResults)
+                        {
+                            FilterOutMaintainabilityIndexAboveThreshold(methodsUnderMaintainabilityIndex, result, limit);
+                        }
+                        metodos = DeserializeAndSortMethodList(methodsUnderMaintainabilityIndex, metodos);
                     }
 
-                    metodos = DeserializeAndSortMethodList(methodsUnderMaintainabilityIndex, metodos);
-                    SerializeListToXml(metodos, fileName);
+                    SerializeListToXml(metodos, fileName, extention);
                 }
                 catch (Exception ex)
                 {
@@ -65,12 +74,18 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             return (T)xmlSerializer.Deserialize(xElement.CreateReader());
         }
 
-        public static void SerializeListToXml(List<Method> objList, string fileName)
+        public static void SerializeListToXml(List<Method> objList, string fileName, string extention)
         {
+            fileName = BuildFileName(fileName, extention);
             XmlSerializer serializer = new XmlSerializer(typeof(List<Method>));
             TextWriter FileStream = new StreamWriter(string.Format(MaintainabilityConstants.Paths.OutputFolder, fileName));
             serializer.Serialize(FileStream, objList);
             FileStream.Close();
+        }
+
+        private static string BuildFileName (string fileName, string extention)
+        {
+            return string.Format(MaintainabilityConstants.FileName, fileName, DateTime.Now.ToString("MMddyyyy"), extention);
         }
 
         private static List<Method> DeserializeAndSortMethodList(List<XElement> methodsUnderMaintainabilityIndex, List<Method> metodos)
@@ -85,13 +100,13 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             return metodos;
         }
 
-        private static void FilterOutMaintainabilityIndexAboveThreshold(List<XElement> methodsUnderMaintainabilityIndex, XElement result)
+        private static void FilterOutMaintainabilityIndexAboveThreshold(List<XElement> methodsUnderMaintainabilityIndex, XElement result, int limit)
         {
             XElement metrics = result.Descendants(MaintainabilityConstants.XmlDescendants.Metrics).FirstOrDefault();
             XNode maintainabilityNode = metrics.FirstNode;
             int value = int.Parse((maintainabilityNode as XElement).Attribute(MaintainabilityConstants.XmlAttributes.Value).Value);
 
-            if (value < MaintainabilityConstants.MaintainabilityThreshold)
+            if (value < limit)
             {
                 methodsUnderMaintainabilityIndex.Add(result);
             }

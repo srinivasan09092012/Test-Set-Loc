@@ -10,6 +10,7 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
         public const string CommandLine = "cmd.exe";
         public const string HppName = "HP.HSP.UA3.";
         public const string Error = "Error while trying to calculate metrics for file {0}";
+        public const string FileName = "{0}_{1}{2}";
         public const int MaintainabilityThreshold = 60;
         public const string MetricsExe = "Metrics.exe /solution:";
         public const string MetricsOut = " /out:";
@@ -65,8 +66,9 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
         public static class Messages
         {
             public const string EmptyMessage = "";
-            public const string Processing = "Processing... please wait, next tab will reflect results ones it finish";
+            public const string GenerateForFilesCount = "Generate for files: ";
             public const string ProcessDone = "Done";
+            public const string Processing = "Processing...";
             public const string ProcessLoading = "Loading...";
         }
     }

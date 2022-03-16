@@ -48,22 +48,27 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             this.buttonUnselectAll = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.buttonExport = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.textBoxIndexLimit = new System.Windows.Forms.TextBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButtonGetMethodsUnderIndex = new System.Windows.Forms.RadioButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.preferenceSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitAppToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.buttonExport = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -132,7 +137,7 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             // generateButton
             // 
             this.generateButton.Enabled = false;
-            this.generateButton.Location = new System.Drawing.Point(10, 249);
+            this.generateButton.Location = new System.Drawing.Point(10, 237);
             this.generateButton.Name = "generateButton";
             this.generateButton.Size = new System.Drawing.Size(99, 32);
             this.generateButton.TabIndex = 6;
@@ -143,9 +148,9 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             // ProcessingLabel
             // 
             this.ProcessingLabel.AutoSize = true;
-            this.ProcessingLabel.Location = new System.Drawing.Point(116, 257);
+            this.ProcessingLabel.Location = new System.Drawing.Point(130, 248);
             this.ProcessingLabel.Name = "ProcessingLabel";
-            this.ProcessingLabel.Size = new System.Drawing.Size(0, 21);
+            this.ProcessingLabel.Size = new System.Drawing.Size(0, 17);
             this.ProcessingLabel.TabIndex = 7;
             // 
             // buttonExit
@@ -191,6 +196,11 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.textBoxIndexLimit);
+            this.tabPage1.Controls.Add(this.radioButton1);
+            this.tabPage1.Controls.Add(this.radioButtonGetMethodsUnderIndex);
+            this.tabPage1.Controls.Add(this.generateButton);
+            this.tabPage1.Controls.Add(this.progressBar1);
             this.tabPage1.Controls.Add(this.buttonUnselectAll);
             this.tabPage1.Controls.Add(this.ProcessingLabel);
             this.tabPage1.Controls.Add(this.comboBoxModule);
@@ -198,7 +208,6 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             this.tabPage1.Controls.Add(this.comboBoxBranch);
             this.tabPage1.Controls.Add(this.buttonLoad);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.generateButton);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.checkedListBox1);
             this.tabPage1.Controls.Add(this.menuStrip1);
@@ -209,6 +218,95 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Load Solutions";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(231, 199);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(179, 31);
+            this.progressBar1.TabIndex = 12;
+            this.progressBar1.Visible = false;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.preferenceSettingsToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(3, 3);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(790, 28);
+            this.menuStrip1.TabIndex = 11;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // preferenceSettingsToolStripMenuItem
+            // 
+            this.preferenceSettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadToolStripMenuItem,
+            this.saveToolStripMenuItem,
+            this.deleteToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.exitAppToolStripMenuItem});
+            this.preferenceSettingsToolStripMenuItem.Name = "preferenceSettingsToolStripMenuItem";
+            this.preferenceSettingsToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.preferenceSettingsToolStripMenuItem.Text = "File";
+            // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.loadToolStripMenuItem.Text = "Load Settings";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.saveToolStripMenuItem.Text = "Save Settings";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.deleteToolStripMenuItem.Text = "Delete Setings";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // exitAppToolStripMenuItem
+            // 
+            this.exitAppToolStripMenuItem.Name = "exitAppToolStripMenuItem";
+            this.exitAppToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.exitAppToolStripMenuItem.Text = "Exit App";
+            this.exitAppToolStripMenuItem.Click += new System.EventHandler(this.exitAppToolStripMenuItem_Click);
+            // 
+            // textBoxIndexLimit
+            // 
+            this.textBoxIndexLimit.Location = new System.Drawing.Point(299, 287);
+            this.textBoxIndexLimit.Name = "textBoxIndexLimit";
+            this.textBoxIndexLimit.Size = new System.Drawing.Size(35, 20);
+            this.textBoxIndexLimit.TabIndex = 13;
+            this.textBoxIndexLimit.Text = "60";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(12, 313);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(118, 21);
+            this.radioButton1.TabIndex = 12;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Get all methods";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonGetMethodsUnderIndex
+            // 
+            this.radioButtonGetMethodsUnderIndex.AutoSize = true;
+            this.radioButtonGetMethodsUnderIndex.Location = new System.Drawing.Point(12, 286);
+            this.radioButtonGetMethodsUnderIndex.Name = "radioButtonGetMethodsUnderIndex";
+            this.radioButtonGetMethodsUnderIndex.Size = new System.Drawing.Size(292, 21);
+            this.radioButtonGetMethodsUnderIndex.TabIndex = 11;
+            this.radioButtonGetMethodsUnderIndex.Text = "Get only methods under maintainability index:";
+            this.radioButtonGetMethodsUnderIndex.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -264,55 +362,10 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             this.comboBox1.TabIndex = 0;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // menuStrip1
+            // toolStripSeparator1
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.preferenceSettingsToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(3, 3);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(790, 28);
-            this.menuStrip1.TabIndex = 11;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // preferenceSettingsToolStripMenuItem
-            // 
-            this.preferenceSettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loadToolStripMenuItem,
-            this.saveToolStripMenuItem,
-            this.deleteToolStripMenuItem,
-            this.exitAppToolStripMenuItem});
-            this.preferenceSettingsToolStripMenuItem.Name = "preferenceSettingsToolStripMenuItem";
-            this.preferenceSettingsToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
-            this.preferenceSettingsToolStripMenuItem.Text = "File";
-            // 
-            // loadToolStripMenuItem
-            // 
-            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.loadToolStripMenuItem.Text = "Load Settings";
-            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.saveToolStripMenuItem.Text = "Save Settings";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.deleteToolStripMenuItem.Text = "Delete Setings";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
-            // exitAppToolStripMenuItem
-            // 
-            this.exitAppToolStripMenuItem.Name = "exitAppToolStripMenuItem";
-            this.exitAppToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.exitAppToolStripMenuItem.Text = "Exit App";
-            this.exitAppToolStripMenuItem.Click += new System.EventHandler(this.exitAppToolStripMenuItem_Click);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
             // 
             // CodeMaintainabilityMonitor
             // 
@@ -332,11 +385,11 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -367,5 +420,10 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
         private ToolStripMenuItem saveToolStripMenuItem;
         private ToolStripMenuItem deleteToolStripMenuItem;
         private ToolStripMenuItem exitAppToolStripMenuItem;
+        private ProgressBar progressBar1;
+        private ToolStripSeparator toolStripSeparator1;
+        private RadioButton radioButtonGetMethodsUnderIndex;
+        private RadioButton radioButton1;
+        private TextBox textBoxIndexLimit;
     }
 }

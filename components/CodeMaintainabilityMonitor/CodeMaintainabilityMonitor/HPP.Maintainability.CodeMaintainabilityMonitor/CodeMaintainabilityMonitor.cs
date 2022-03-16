@@ -30,27 +30,58 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
         }
         #endregion
 
+        public int LimitIndex
+        {
+            get
+            {
+                int limitIndex = MaintainabilityConstants.MaintainabilityThreshold;
+
+                if (int.TryParse(textBoxIndexLimit.Text, out limitIndex))
+                {
+                    return limitIndex;
+                }
+
+                return limitIndex;
+            }
+        }
+
         #region Private Methods
         private async void generateButton_Click(object sender, EventArgs e)
         {
+            this.progressBar1.Value = 0;
+            this.progressBar1.Visible = true;
             this.ProcessingLabel.Text = MaintainabilityConstants.Messages.Processing;
             this.ProcessingLabel.Refresh();
-            
+            var progressReport = new Progress<int>(ProgressStatus);
+
+
+            DisableOrEnableButtons(false);
+
             await Task.Run(() =>
             {
-                this.GenerateFiles();
-
+                this.GenerateFiles(progressReport);
             });
 
-            FilterAndSortXmlDataStep.Execute();
+            DisableOrEnableButtons(true);
+            FilterAndSortXmlDataStep.Execute(this.radioButtonGetMethodsUnderIndex.Checked, LimitIndex);
             this.PupulateExportFiles();
             this.ProcessingLabel.Text = MaintainabilityConstants.Messages.ProcessDone;
             this.ShowDataInGridSecondTab();
         }
 
-        private async Task GenerateFiles()
+        private void ProgressStatus(int indexCount)
+        {
+            var percentage = (double)indexCount / this.checkedListBox1.CheckedItems.Count;
+            percentage = percentage * 100;
+            var percentageInt = (int)Math.Round(percentage, 0);
+            progressBar1.Value = percentageInt;
+            this.ProcessingLabel.Text = string.Format("{0} Progress: {1}%, Files Selected: {2}, Files Processed: {3}", MaintainabilityConstants.Messages.Processing, percentageInt, this.checkedListBox1.CheckedItems.Count, indexCount);
+        }
+
+        private async Task GenerateFiles(IProgress<int> progress = null)
         {
             List<string> strignList = new List<string>();
+            int indexCount = 0;
             foreach (var selected in this.checkedListBox1.CheckedItems)
             {
                 string outputFile = selected.ToString().Split('\\').Last();
@@ -69,6 +100,29 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
                     MaintainabilityConstants.MetricsExtention));
             }
 
+            foreach (string selectedModules in strignList)
+            {
+                this.RunCommandLine(selectedModules);
+                indexCount = this.CalculateProgress(progress, indexCount);
+            }
+
+            this.ProcessingLabel.Text = MaintainabilityConstants.Messages.ProcessDone;
+            this.ProcessingLabel.Refresh();
+        }
+
+        private int CalculateProgress(IProgress<int> progress, int indexCount)
+        {
+            if (progress != null)
+            {
+                indexCount++;
+                progress.Report(indexCount);
+            }
+
+            return indexCount;
+        }
+
+        private void RunCommandLine(string strignList)
+        {           
             Process p = new Process();
             p.StartInfo.FileName = MaintainabilityConstants.CommandLine;
             p.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
@@ -78,24 +132,24 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             p.StartInfo.RedirectStandardInput = true;
             p.Start();
             p.StandardInput.WriteLine(MaintainabilityConstants.Paths.MaintainabilityMetricsCalculator);
-            foreach (string selectedModules in strignList)
-            {
-                p.StandardInput.WriteLine(selectedModules.ToString());
-            }
-
+            p.StandardInput.WriteLine(strignList);
             p.StandardInput.Flush();
             p.StandardInput.Close();
-
-            string output = p.StandardOutput.ReadToEnd();
-
             p.WaitForExit();
             p.Close();
 
-            if (!string.IsNullOrEmpty(output))
-            {
-                this.ProcessingLabel.Text = MaintainabilityConstants.Messages.ProcessDone;
-                this.ProcessingLabel.Refresh();
-            }
+            FilterAndSortXmlDataStep.Execute(this.radioButtonGetMethodsUnderIndex.Checked, LimitIndex);
+            this.ShowDataInGridSecondTab();
+        }
+
+        private void DisableOrEnableButtons(bool toogle)
+        {
+            buttonExit.Enabled = toogle;
+            buttonExport.Enabled = toogle;
+            buttonLoad.Enabled = toogle;
+            buttonSelectAll.Enabled = toogle;
+            buttonUnselectAll.Enabled = toogle;
+            generateButton.Enabled = toogle;
         }
 
         public void ShowDataInGridSecondTab()
@@ -111,14 +165,19 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
         {
             comboBox1.Items.Clear();
             string[] files = Directory.GetFiles(string.Format(MaintainabilityConstants.Paths.OutputFolder, string.Empty));
+            List<string> names = new List<string>();
+            string name;
             foreach (string file in files)
             {
-                comboBox1.Items.Add(file);
+                name = Path.GetFileName(file);
+                comboBox1.Items.Add(name);
             }
         }
 
         private async void buttonLoad_Click(object sender, EventArgs e)
         {
+            this.progressBar1.Value = 0;
+            this.progressBar1.Visible = false;
             this.checkedListBox1.Items.Clear();
             this.generateButton.Enabled = false;
             string[] filePaths = await this.GetFileDirectory();
@@ -182,6 +241,7 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
 
         private void CodeMaintainabilityMonitor_Load(object sender, EventArgs e)
         {
+            progressBar1.Maximum = 100;
             var directories = Directory.GetDirectories(MaintainabilityConstants.Paths.SourceFolder);
             foreach (var file in directories)
             {
@@ -221,6 +281,8 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
             this.generateButton.Enabled = false;
             this.buttonSelectAll.Enabled = false;
             this.buttonUnselectAll.Enabled = false;
+            this.progressBar1.Value = 0;
+            this.progressBar1.Visible = false;
             this.ProcessingLabel.Text = MaintainabilityConstants.Messages.EmptyMessage;
             this.comboBoxBranch.Items.Clear();
             this.comboBoxBranch.Refresh();
@@ -243,6 +305,8 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
 
         private void comboBoxBranch_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.progressBar1.Value = 0;
+            this.progressBar1.Visible = false;
             this.generateButton.Enabled = false;
             this.buttonSelectAll.Enabled = false;
             this.buttonUnselectAll.Enabled = false;
@@ -297,6 +361,8 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
 
         private void buttonSelectAll_Click(object sender, EventArgs e)
         {
+            this.progressBar1.Value = 0;
+            this.progressBar1.Visible = false;
             this.ProcessingLabel.Text = MaintainabilityConstants.Messages.EmptyMessage;
             for (int i = 0; i < this.checkedListBox1.Items.Count; i++)
             {
@@ -314,6 +380,8 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
 
         private void buttonUnselectAll_Click(object sender, EventArgs e)
         {
+            this.progressBar1.Value = 0;
+            this.progressBar1.Visible = false;
             this.ProcessingLabel.Text = MaintainabilityConstants.Messages.EmptyMessage;
             for (int i = 0; i < this.checkedListBox1.Items.Count; i++)
             {
@@ -327,7 +395,7 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
         protected void GetXMLData()
         {
             List<Method> methods = new List<Method>();
-            string filePath = comboBox1.Text;
+            string filePath = string.Format(MaintainabilityConstants.Paths.OutputFolder, comboBox1.Text);
             XElement xml = XElement.Load(filePath);
             IEnumerable<XElement> xmlMethods = xml.Descendants(MaintainabilityConstants.XmlDescendants.Method).ToList();
 
@@ -467,6 +535,8 @@ namespace HPP.Maintainability.CodeMaintainabilityMonitor
 
         private async void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.progressBar1.Value = 0;
+            this.progressBar1.Visible = false;
             this.checkedListBox1.Items.Clear();
             if (File.Exists(MaintainabilityConstants.Paths.SettingsPreferenceFile))
             {
