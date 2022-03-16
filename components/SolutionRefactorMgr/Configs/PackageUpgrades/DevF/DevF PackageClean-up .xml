@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" targetTFS="Azure">
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+    <ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />
+    <ModuleConfig name="Administration" branch="DevF" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="DevF" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="DevF" types="All" />
+    <ModuleConfig name="Core" branch="DevF" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="DevF" types="All" />
+    <ModuleConfig name="DrugRebate" branch="DevF" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="DevF" types="All" />
+    <ModuleConfig name="EDI" branch="DevF" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="DevF" types="All" />
+    <ModuleConfig name="FileTransfer" branch="DevF" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="DevF" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="DevF" types="All" />
+    <ModuleConfig name="Integration" branch="DevF" types="All" />
+    <ModuleConfig name="KansasOnly" branch="DevF" types="All" />
+    <ModuleConfig name="ManagedCare" branch="DevF" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="DevF" types="All" />
+    <ModuleConfig name="MemberManagement" branch="DevF" types="All" />
+    <ModuleConfig name="MemberPortal" branch="DevF" types="All" />
+    <ModuleConfig name="Notifications" branch="DevF" types="All" />
+    <ModuleConfig name="PlanManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="DevF" types="All" />
+    <ModuleConfig name="ProgramIntegrityCT" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="DevF" types="All" />
+    <ModuleConfig name="Screening" branch="DevF" types="All" />
+    <ModuleConfig name="TaskManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="DevF" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="DevF" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="DevF" types="All" />
+    <ModuleConfig name="Utilities" branch="DevF" types="NA" />
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes>
+    <!--<FileType ext=".bat" />
+    <FileType ext=".config" />
+    <FileType ext=".cs" />-->
+    <FileType ext=".csproj" />
+  </FileTypes>
+  <LineDeletes />
+  <ReplacementStrings>
+   <!--Core Packages   -->
+   <ReplacementString qualifier="\Packages\HPE.HSP.UA3.Core.API.BusinessRules.22.1.117\lib\net48\InRule.Common.dll" from="\Packages\HPE.HSP.UA3.Core.API.BusinessRules.22.1.117\lib\net48\InRule.Common.dll" to="\Packages\InRule.Common.5.7.2\lib\net472\InRule.Common.dll" />
+   <ReplacementString qualifier="\Packages\HPE.HSP.UA3.Core.API.BusinessRules.22.1.117\lib\net48\InRule.Repository.dll" from="\Packages\HPE.HSP.UA3.Core.API.BusinessRules.22.1.117\lib\net48\InRule.Repository.dll" to="\Packages\InRule.Repository.5.7.2\lib\net472\InRule.Repository.dll" />
+   <ReplacementString qualifier="\Packages\HPE.HSP.UA3.Core.API.BusinessRules.22.1.117\lib\net48\InRule.Runtime.dll" from="\Packages\HPE.HSP.UA3.Core.API.BusinessRules.22.1.117\lib\net48\InRule.Runtime.dll" to="\Packages\InRule.Runtime.5.7.2\lib\net472\InRule.Runtime.dll" />
+   <ReplacementString qualifier="Packages\HPE.HSP.UA3.Core.API.IdentityManagement.22.1.117\lib\net48\Newtonsoft.Json.dll" from="Packages\HPE.HSP.UA3.Core.API.IdentityManagement.22.1.117\lib\net48\Newtonsoft.Json.dll" to="Packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll" />
+   <ReplacementString qualifier="Packages\HPE.HSP.UA3.Core.API.SecureMessage.22.1.117\lib\net48\EntityFramework.dll" from="Packages\HPE.HSP.UA3.Core.API.SecureMessage.22.1.17\lib\net48\EntityFramework.dll" to="Packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll"/>  
+   <ReplacementString qualifier="Packages\HPE.HSP.UA3.Core.API.SecureMessage.22.1.117\lib\net48\EntityFramework.SqlServer.dll" from="Packages\HPE.HSP.UA3.Core.API.SecureMessage.22.1.117\lib\net48\EntityFramework.SqlServer.dll" to="Packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll"/>
+   <ReplacementString qualifier="Packages\HPE.HSP.UA3.Core.API.SecureMessage.22.1.117\lib\net48\NEventStore.dll" from="Packages\HPE.HSP.UA3.Core.API.SecureMessage.22.1.117\lib\net48\NEventStore.dll" to="Packages\NEventStore.5.2.0\lib\net40\NEventStore.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\AutoMapper.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\AutoMapper.dll" to="Packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\AutoMapper.Net4.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\AutoMapper.Net4.dll" to="Packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.17\lib\net48\EntityFramework.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\EntityFramework.dll" to="Packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\EntityFramework.SqlServer.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\EntityFramework.SqlServer.dll" to="Packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\HPE.HSP.UA3.Core.API.AuthManagement.Interface.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\HPE.HSP.UA3.Core.API.AuthManagement.Interface.dll" to="Packages\HPE.HSP.UA3.Core.API.AuthManagement.22.1.117\lib\net48\HPE.HSP.UA3.Core.API.AuthManagement.Interface.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\HPE.HSP.UA3.Core.API.AuthManagement.Providers.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\HPE.HSP.UA3.Core.API.AuthManagement.Providers.dll" to="Packages\HPE.HSP.UA3.Core.API.AuthManagement.22.1.117\lib\net48\HPE.HSP.UA3.Core.API.AuthManagement.Providers.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\HPE.HSP.UA3.Core.API.BusinessRules.Interface.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\HPE.HSP.UA3.Core.API.BusinessRules.Interface.dll" to="Packages\HPE.HSP.UA3.Core.API.BusinessRules.22.1.117\lib\net48\HPE.HSP.UA3.Core.API.BusinessRules.Interface.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\HPE.HSP.UA3.Core.API.BusinessRules.Providers.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\HPE.HSP.UA3.Core.API.BusinessRules.Providers.dll" to="Packages\HPE.HSP.UA3.Core.API.BusinessRules.22.1.117\lib\net48\HPE.HSP.UA3.Core.API.BusinessRules.Providers.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\InRule.Common.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\InRule.Common.dll" to="Packages\InRule.5.7.2\lib\net48\InRule.Common.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\InRule.Repository.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.221.117\lib\net48\InRule.Repository.dll" to="Packages\InRule.5.7.2\lib\net48\InRule.Repository.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\InRule.Runtime.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\InRule.Runtime.dll" to="Packages\InRule.5.7.2\lib\net48\InRule.Runtime.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\Microsoft.Practices.ServiceLocation.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\Microsoft.Practices.ServiceLocation.dll" to="Packages\Microsoft.Practices.ServiceLocation.1.3.0\lib\net48\Microsoft.Practices.ServiceLocation.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\NEventStore.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\NEventStore.dll" to="Packages\NEventStore.5.2.0\lib\net40\NEventStore.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\NEventStore.Persistence.MongoDB.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.2.1.117\lib\net48\NEventStore.Persistence.MongoDB.dll" to="Packages\NEventStore.Persistence.MongoDB.5.3.7\lib\net40\NEventStore.Persistence.MongoDB.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\Newtonsoft.Json.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\Newtonsoft.Json.dll" to="Packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\QueryInterceptor.Core.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\QueryInterceptor.Core.dll" to="Packages\QueryInterceptor.Core.1.0.3\lib\net451\QueryInterceptor.Core.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\Microsoft.Practices.Unity.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\Microsoft.Practices.Unity.dll" to="Packages\Unity.3.5.1405-prerelease\lib\net45\Microsoft.Practices.Unity.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\Microsoft.Practices.Unity.Configuration.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\Microsoft.Practices.Unity.Configuration.dll" to="Packages\Unity.3.5.1405-prerelease\lib\net45\Microsoft.Practices.Unity.Configuration.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\Microsoft.Practices.Unity.RegistrationByConvention.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\Microsoft.Practices.Unity.RegistrationByConvention.dll" to="Packages\Unity.3.5.1405-prerelease\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\Vertica.Data.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.117\lib\net48\Vertica.Data.dll" to="Packages\Vertica.Data.x64.10.0.1\lib\net451\Vertica.Data.dll"/>
+   <!-- Module Packages   -->
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Administration.BAS.DataLists.22.1.117\lib\net48\HP.HSP.UA3.Administration.BAS.DataLists.Contracts.dll" from="Packages\HP.HSP.UA3.Administration.BAS.DataLists.22.1.117\lib\net48\HP.HSP.UA3.Administration.BAS.DataLists.Contracts.dll" to="Packages\HP.HSP.UA3.Administration.BAS.DataLists.Contracts.22.1.117\lib\net48\HP.HSP.UA3.Administration.BAS.DataLists.Contracts.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.DrugRebate.BAS.DrugRebate.22.1.117\lib\net48\HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.dll" from="Packages\HP.HSP.UA3.DrugRebate.BAS.DrugRebate.22.1.117\lib\net48\HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.dll" to="Packages\HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.22.1.117\lib\net48\HP.HSP.UA3.DrugRebate.BAS.DrugRebate.Contracts.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Integration.BAS.DataAggregator.22.1.117\lib\net48\HP.HSP.UA3.Integration.BAS.DataAggregator.Contracts.dll" from="Packages\HP.HSP.UA3.Integration.BAS.DataAggregator.22.1.117\lib\net48\HP.HSP.UA3.Integration.BAS.DataAggregator.Contracts.dll" to="Packages\HP.HSP.UA3.Integration.BAS.DataAggregator.Contracts.22.1.117\lib\net48\HP.HSP.UA3.Integration.BAS.DataAggregator.Contracts.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Integration.BAS.EventToFile.22.1.117\lib\net48\HP.HSP.UA3.Integration.BAS.EventToFile.Contracts.dll" from="Packages\HP.HSP.UA3.Integration.BAS.EventToFile.22.1.117\lib\net48\HP.HSP.UA3.Integration.BAS.EventToFile.Contracts.dll" to="Packages\HP.HSP.UA3.Integration.BAS.EventToFile.Contracts.22.1.117\lib\net48\HP.HSP.UA3.Integration.BAS.EventToFile.Contracts.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.22.1.117\lib\net48\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.dll" from="Packages\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.22.1.117\lib\net48\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.dll" to="Packages\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.22.1.117\lib\net48\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.PlanManagement.BAS.RateSetting.22.1.117\lib\net48\HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.dll" from="Packages\HP.HSP.UA3.PlanManagement.BAS.RateSetting.22.1.117\lib\net48\HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.dll" to="Packages\HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.22.1.117\lib\net48\HP.HSP.UA3.PlanManagement.BAS.RateSetting.Contracts.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.22.1.117\lib\net48\HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.Contracts.dll" from="Packages\HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.22.1.117\lib\net48\HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.Contracts.dll" to="Packages\HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.Contracts.22.1.117\lib\net48\HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.Contracts.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.TaskManagement.BAS.TaskManagement.22.1.117\lib\net48\HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.dll" from="Packages\HP.HSP.UA3.TaskManagement.BAS.TaskManagement.22.1.117\lib\net48\HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.dll" to="Packages\HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.22.1.117\lib\net48\HP.HSP.UA3.TaskManagement.BAS.TaskManagement.Contracts.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.22.1.117\lib\net48\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.dll" from="Packages\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.22.1.117\lib\net48\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.dll" to="Packages\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.22.1.117\lib\net48\HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.Contracts.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.TPLPolicy.BAS.Policy.22.1.117\lib\net48\HP.HSP.UA3.TPLPolicy.BAS.Policy.Contracts.dll" from="Packages\HP.HSP.UA3.TPLPolicy.BAS.Policy.22.1.117\lib\net48\HP.HSP.UA3.TPLPolicy.BAS.Policy.Contracts.dll" to="Packages\HP.HSP.UA3.TPLPolicy.BAS.Policy.Contracts.22.1.117\lib\net48\HP.HSP.UA3.TPLPolicy.BAS.Policy.Contracts.dll"/>
+   <!-- Core UX   -->
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Business.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll" from="Packages\HP.HSP.UA3.Core.UX.Business.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll" to="Packages\HP.HSP.UA3.Core.UX.Common.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Business.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll" from="Packages\HP.HSP.UA3.Core.UX.Business.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll" to="Packages\HP.HSP.UA3.Core.UX.Data.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Business.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Interfaces.dll" from="Packages\HP.HSP.UA3.Core.UX.Business.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Interfaces.dll" to="Packages\HP.HSP.UA3.Core.UX.Interfaces.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Interfaces.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Data.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll" from="Packages\HP.HSP.UA3.Core.UX.Data.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll" to="Packages\HP.HSP.UA3.Core.UX.Common.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Interfaces.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll" from="Packages\HP.HSP.UA3.Core.UX.Interfaces.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll" to="Packages\HP.HSP.UA3.Core.UX.Common.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Interfaces.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll" from="Packages\HP.HSP.UA3.Core.UX.Interfaces.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll" to="Packages\HP.HSP.UA3.Core.UX.Data.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Presentation.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Business.dll" from="Packages\HP.HSP.UA3.Core.UX.Presentation.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Business.dll" to="Packages\HP.HSP.UA3.Core.UX.Business.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Business.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Presentation.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll" from="Packages\HP.HSP.UA3.Core.UX.Presentation.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll" to="Packages\HP.HSP.UA3.Core.UX.Common.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Presentation.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll" from="Packages\HP.HSP.UA3.Core.UX.Presentation.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll" to="Packages\HP.HSP.UA3.Core.UX.Data.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Presentation.22.1.1.117\lib\net48\HP.HSP.UA3.Core.UX.Interfaces.dll" from="Packages\HP.HSP.UA3.Core.UX.Presentation.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Interfaces.dll" to="Packages\HP.HSP.UA3.Core.UX.Interfaces.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Interfaces.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Presentation.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Providers.dll" from="Packages\HP.HSP.UA3.Core.UX.Presentation.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Providers.dll" to="Packages\HP.HSP.UA3.Core.UX.Presentation.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Providers.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Providers.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll" from="Packages\HP.HSP.UA3.Core.UX.Providers.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll" to="Packages\HP.HSP.UA3.Core.UX.Common.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Providers.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll" from="Packages\HP.HSP.UA3.Core.UX.Providers.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll" to="Packages\HP.HSP.UA3.Core.UX.Data.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Providers.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Interfaces.dll" from="Packages\HP.HSP.UA3.Core.UX.Providers.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Interfaces.dll" to="Packages\HP.HSP.UA3.Core.UX.Interfaces.22.117\lib\net48\HP.HSP.UA3.Core.UX.Interfaces.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Services.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Business.dll" from="Packages\HP.HSP.UA3.Core.UX.Services.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Business.dll" to="Packages\HP.HSP.UA3.Core.UX.Business.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Business.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Services.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll" from="Packages\HP.HSP.UA3.Core.UX.Services.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll" to="Packages\HP.HSP.UA3.Core.UX.Common.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Services.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll" from="Packages\HP.HSP.UA3.Core.UX.Services.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll" to="Packages\HP.HSP.UA3.Core.UX.Data.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Services.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Interfaces.dll" from="Packages\HP.HSP.UA3.Core.UX.Services.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Interfaces.dll" to="Packages\HP.HSP.UA3.Core.UX.Interfaces.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Interfaces.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.TestTools.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Business.dll" from="Packages\HP.HSP.UA3.Core.UX.TestTools.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Business.dll" to="Packages\HP.HSP.UA3.Core.UX.Business.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Business.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.TestTools.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll" from="Packages\HP.HSP.UA3.Core.UX.TestTools.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll" to="Packages\HP.HSP.UA3.Core.UX.Common.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.TestTools.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll" from="Packages\HP.HSP.UA3.Core.UX.TestTools.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll" to="Packages\HP.HSP.UA3.Core.UX.Data.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.TestTools.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Interfaces.dll" from="Packages\HP.HSP.UA3.Core.UX.TestTools.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Interfaces.dll" to="Packages\HP.HSP.UA3.Core.UX.Interfaces.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Interfaces.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Web.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Business.dll" from="Packages\HP.HSP.UA3.Core.UX.Web.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Business.dll" to="Packages\HP.HSP.UA3.Core.UX.Business.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Business.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Web.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll" from="Packages\HP.HSP.UA3.Core.UX.Web.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll" to="Packages\HP.HSP.UA3.Core.UX.Common.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Common.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Web.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll" from="Packages\HP.HSP.UA3.Core.UX.Web.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll" to="Packages\HP.HSP.UA3.Core.UX.Data.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Data.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Web.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Interfaces.dll" from="Packages\HP.HSP.UA3.Core.UX.Web.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Interfaces.dll" to="Packages\HP.HSP.UA3.Core.UX.Interfaces.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Interfaces.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Web.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Presentation.dll" from="Packages\HP.HSP.UA3.Core.UX.Web.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Presentation.dll" to="Packages\HP.HSP.UA3.Core.UX.Presentation.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Presentation.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Web.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Providers.dll" from="Packages\HP.HSP.UA3.Core.UX.Web.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Providers.dll" to="Packages\HP.HSP.UA3.Core.UX.Providers.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Providers.dll"/>
+   <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.UX.Web.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Services.dll" from="Packages\HP.HSP.UA3.Core.UX.Web.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Services.dll" to="Packages\HP.HSP.UA3.Core.UX.Services.22.1.117\lib\net48\HP.HSP.UA3.Core.UX.Services.dll"/>
+  </ReplacementStrings>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+  <TfsWorkspace></TfsWorkspace>
+  <TFSUserName></TFSUserName>
+  <TFSPassword></TFSPassword>
+</RefactorConfig>
