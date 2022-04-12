@@ -4,9 +4,12 @@
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
 // Violators may be punished to the full extent of the law.
 //--------------------------------------------------------------------------------------------------
+using HPE.HSP.UA3.Core.API.Logger.Loggers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Threading;
 using UserAccountMigration.Domain;
 using svc = UserAccountMigration.UserQueryService;
 
@@ -14,6 +17,8 @@ namespace UserAccountMigration.Providers
 {
     public class UserQueryServiceProvider : BaseServiceDataProvider
     {
+        private static CoreLogger logger = new CoreLogger();
+
         public UserQueryServiceProvider(Domain.Environment envConfig)
             : base(
                   envConfig.UserQueryService.BehaviorConfiguration,
@@ -99,16 +104,25 @@ namespace UserAccountMigration.Providers
                 var svcResponse = svcProxy.GetUserDelegates(query);
                 if (svcResponse.Results != null && svcResponse.Results.Count > 0)
                 {
+                    ////Association IDs are not returned, so only identical if before/after as DA
+                    /// Non DA handled in Update
                     if (svcResponse.Results[0].IsAssociationActive == xref.IsAssociationActive &&
-                        svcResponse.Results[0].IsAssociationAdministrator)
+                        svcResponse.Results[0].IsAssociationAdministrator &&
+                        xref.IsAssociationAdmin)
                     {
+                        LogReqResp(query, svcResponse, "IDENTICAL DA EXISTS");
                         identicalXrefExists = true;
                     }
                     else
                     {
+                        LogReqResp(query, svcResponse, "EXISTS - NOT DA OR DIFFERENT");
                         xrefId = svcResponse.Results[0].XREFId.ToString();
                         xrefAssocId = svcResponse.Results[0].XrefAssocId.ToString();
                     }
+                }
+                else
+                {
+                    LogReqResp(query, svcResponse, "DOES NOT EXIST");
                 }
             }
         }
@@ -125,6 +139,28 @@ namespace UserAccountMigration.Providers
                 RequestDate = DateTime.UtcNow,
                 TenantId = base.tenantId
             };
+        }
+
+        private static void LogReqResp(svc.UserDelegateQuery req, svc.UserDelegateQuery resp, string msg)
+        {
+            LogDebugMessage(1, string.Format("***** {0} *******", msg));
+            LogDebugMessage(2, string.Format("*** REQUEST OBJ:'{0}'", JsonConvert.SerializeObject(req)));
+            LogDebugMessage(2, string.Format("*** RESPONSE OBJ:'{0}'", JsonConvert.SerializeObject(resp)));
+            LogDebugMessage(1, string.Format("*****************"));
+        }
+
+        private static void LogDebugMessage(int level, string msg)
+        {
+            if (!string.IsNullOrWhiteSpace(msg))
+            {
+                string dateTimestampThreadName = DateTime.Now.ToString("hh:mm:ss:ff") + "|" + Thread.CurrentThread.Name + "|";
+                string tabs = new string(' ', level * 2);
+                logger.LogDebug(dateTimestampThreadName + tabs + msg);
+                ////if (logger.Logger.IsDebugEnabled)
+                ////{
+                ////    Console.WriteLine(dateTimestampThreadName + tabs + msg);
+                ////}
+            }
         }
     }
 }

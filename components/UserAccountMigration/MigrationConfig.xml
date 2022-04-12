@@ -5,6 +5,7 @@
     tenantId:      A unique identifer for the tenant (GUID).
     defaultLocale: The default lcoale used when creating a new user profile.
     
+    Note:        AD information only needed if AD entries are being created
     ADContainer: The Active Direectory container where the user accountsare to be stored.
     ADServer:    The Active Directory server name or IP address.
     ADUser:      The admin user name that has administrative privileges to add and modify user accounts in AD.
@@ -18,8 +19,10 @@
     <ADServer>ad.dev.mapshc.com</ADServer>
     <ADUser>adService</ADUser>
     <ADPassword>Password2017</ADPassword>
-    <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
-    <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://sf.dev.mapshc.com/HPP.Core.BAS.User/R6.0/?ListenerName=UserQueryServiceListener" />
+    <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://sf.dev.mapshc.com/HPP.Core.BAS.User/R6.0/?ListenerName=UserServiceListener" />
+    
+
   </Environment>
   <!--
   Processes - Defines 1 or more processes to be executed in the the current execution of the utility.
@@ -47,6 +50,6 @@
     <Process name="ImportUserXrefsWithDelegates" processType="ImportXref" filePath="Imports\" fileName="UserXrefs.csv" delegateFileName="Delegates.csv" fileFormat="CSV" maxThreads="10" />
   -->
   <Processes>
-    <Process name="ImportUserXrefsWithDelegates" processType="ImportXref" filePath="Imports\" fileName="UserXrefs.csv" delegateFileName="Delegates.csv" fileFormat="CSV" maxThreads="10" />
+    <Process name="ImportUserXrefsWithDelegates" processType="ImportXref" filePath="Imports\" fileName="UserXrefs.csv" delegateFileName="Delegates.csv" fileFormat="CSV" maxThreads="1" />
   </Processes>
 </MigrationConfig>

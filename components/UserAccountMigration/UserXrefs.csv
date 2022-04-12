@@ -1,4 +1,5 @@
-PrimaryUserName,SecondaryUserName,AssociationId,IsAssociationActive
-badix,ep01prvdel01,00000000-0000-0000-0000-000000000005,false
-badix,,00000000-0000-0000-0000-000000000004,false
-badix,ep01prvdel01,00000000-0000-0000-0000-000000000005,true
+PrimaryUserName,SecondaryUserName,AssociationId,IsAssociationActive,IsAssociationAdmin,Pipe-Delimited Function guids
+badix,ep01prvdel01,00000000-0000-0000-0000-000000000005,false,true,
+badix,,00000000-0000-0000-0000-000000000004,false,false,
+badix,ep01prvdel01,00000000-0000-0000-0000-000000000005,true,true,
+badix,ep01prvdel01,00000000-0000-0000-0000-000000000006,true,false,00000000-0000-0000-0000-000000000001|00000000-0000-0000-0000-000000000002

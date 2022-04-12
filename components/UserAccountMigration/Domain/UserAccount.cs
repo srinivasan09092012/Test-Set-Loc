@@ -91,6 +91,19 @@ namespace UserAccountMigration.Domain
             {
                 throw new ArgumentNullException("Password");
             }
+
+            if (!string.IsNullOrWhiteSpace(this.GeneralId))
+            {
+                Guid id;
+                if (!Guid.TryParse(this.GeneralId, out id))
+                {
+                    throw new ArgumentException("GeneralId invalid Guid");
+                }
+                else if (this.GeneralId != this.GeneralId.ToLower())
+                {
+                    throw new ArgumentException("GeneralId Guid must be lower case");
+                }
+            }
         }
     }
 }

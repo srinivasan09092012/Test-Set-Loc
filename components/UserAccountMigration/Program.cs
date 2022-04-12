@@ -396,17 +396,27 @@ namespace UserAccountMigration
                             }
                             catch (FaultException<UserService.BusinessValidationException> ex)
                             {
-                                string msg = ex.Detail.BusinessMessages.Count > 0 ? ex.Detail.BusinessMessages[0].MessageDefault : ex.Message;
-                                UserXrefError userXrefError = new UserXrefError(userXref, msg);
-                                LogMessage(1, string.Format("Error processing primary user '{0}' secondary user '{1}' association '{2}' with error: '{3}'", userXref.PrimaryUserName, del.UserName, userXref.AssociationId, msg));
-                                lock (userXrefErrors)
+                                if (ex.Detail.BusinessMessages.Count > 0 && ex.Detail.BusinessMessages[0].FieldName == "UserProfileRelationshipNoChange")
                                 {
-                                    userXrefErrors.Add(userXrefError);
+                                    lock (currentProcess)
+                                    {
+                                        currentProcess.DuplicateCount++;
+                                    }
                                 }
-
-                                lock (currentProcess)
+                                else 
                                 {
-                                    currentProcess.ErroredCount++;
+                                    string msg = ex.Detail.BusinessMessages.Count > 0 ? ex.Detail.BusinessMessages[0].MessageDefault : ex.Message;
+                                    UserXrefError userXrefError = new UserXrefError(userXref, msg);
+                                    LogMessage(1, string.Format("Error processing primary user '{0}' secondary user '{1}' association '{2}' with error: '{3}'", userXref.PrimaryUserName, del.UserName, userXref.AssociationId, msg));
+                                    lock (userXrefErrors)
+                                    {
+                                        userXrefErrors.Add(userXrefError);
+                                    }
+
+                                    lock (currentProcess)
+                                    {
+                                        currentProcess.ErroredCount++;
+                                    }
                                 }
                             }
                             catch (Exception ex)

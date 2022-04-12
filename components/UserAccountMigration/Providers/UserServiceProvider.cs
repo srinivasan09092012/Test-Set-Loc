@@ -6,8 +6,8 @@
 //--------------------------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
-using System.ServiceModel;
 using UserAccountMigration.Domain;
 using svc = UserAccountMigration.UserService;
 
@@ -139,11 +139,21 @@ namespace UserAccountMigration.Providers
                     {
                         AssociationId = userXref.AssociationId,
                         IsActive = userXref.IsAssociationActive,
-                        IsAssociationAdministrator = true
+                        IsAssociationAdministrator = userXref.IsAssociationAdmin
                     }
                 },
                 IsActive = true,  
             };
+
+            if (!userXref.IsAssociationAdmin)
+            {
+                cmd.DelegateAssociations[0].AssociatedFunctions = new List<string>();
+                if (!string.IsNullOrEmpty(userXref.AssociatedFunctions))
+                {
+                    List<string> assocFunctionList = userXref.AssociatedFunctions.Split('|').ToList();
+                    assocFunctionList.ForEach(sf => cmd.DelegateAssociations[0].AssociatedFunctions.Add(sf));
+                }
+            }
 
             using (var channelFactory = this.InitializeChannelFactory<svc.IUserService>())
             {
@@ -164,12 +174,21 @@ namespace UserAccountMigration.Providers
                     {
                         AssociationId = userXref.AssociationId,
                         IsActive = userXref.IsAssociationActive,
-                        IsAssociationAdministrator = true,
+                        IsAssociationAdministrator = userXref.IsAssociationAdmin,
                         UserProfileXrefAssocId = xrefAssocId
                     }
                 },
                 IsActive = true,
             };
+            if (!userXref.IsAssociationAdmin)
+            {
+                cmd.DelegateAssociations[0].AssociatedFunctions = new List<string>();
+                if (!string.IsNullOrEmpty(userXref.AssociatedFunctions))
+                {
+                    List<string> assocFunctionList = userXref.AssociatedFunctions.Split('|').ToList();
+                    assocFunctionList.ForEach(sf => cmd.DelegateAssociations[0].AssociatedFunctions.Add(sf));
+                }
+            }
 
             using (var channelFactory = this.InitializeChannelFactory<svc.IUserService>())
             {

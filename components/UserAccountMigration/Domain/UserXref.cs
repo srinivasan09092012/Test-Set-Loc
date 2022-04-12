@@ -6,6 +6,8 @@
 //--------------------------------------------------------------------------------------------------
 using FileHelpers;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace UserAccountMigration.Domain
 {
@@ -27,6 +29,12 @@ namespace UserAccountMigration.Domain
 
         [FieldOrder(4)]
         public bool IsAssociationActive { get; set; }
+
+        [FieldOrder(5)]
+        public bool IsAssociationAdmin { get; set; }
+
+        [FieldOrder(6)]
+        public string AssociatedFunctions { get; set; }
 
         public void Validate(int delegateCount)
         {
@@ -55,6 +63,44 @@ namespace UserAccountMigration.Domain
                 if (!Guid.TryParse(this.AssociationId, out id))
                 {
                     throw new ArgumentException("AssociationId invalid Guid");
+                }
+                else if (this.AssociationId != this.AssociationId.ToLower())
+                {
+                    throw new ArgumentException("AssociationId Guid must be lower case");
+                }
+            }
+
+            if (this.IsAssociationAdmin)
+            {
+                if (!string.IsNullOrEmpty(this.AssociatedFunctions))
+                {
+                    throw new ArgumentException("Admin has should not have Associated Functions");
+                }
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(this.AssociatedFunctions))
+                {
+                    if (this.IsAssociationActive)
+                    {
+                        throw new ArgumentException("Non-Admin has no Associated Functions");
+                    }
+                }
+                else
+                {
+                    List<string> assocFunctionList = this.AssociatedFunctions.Split('|').ToList();
+                    Guid id;
+                    foreach (string assoc in assocFunctionList)
+                    {
+                        if (!Guid.TryParse(assoc, out id))
+                        {
+                            throw new ArgumentException("Associated Functions have invalid Guid(s)");
+                        }
+                        else if (assoc != assoc.ToLower())
+                        {
+                            throw new ArgumentException("Associated Functions Guid(s) must be lower case");
+                        }
+                    }
                 }
             }
         }
