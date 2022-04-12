@@ -16,7 +16,7 @@ RefactorConfig - Base processing parameters:
   ModuleConfigs - List of ModuleConfig elements indicating modules to be reviewed for changes.  ModuleConfig parameters:
     name: name of module folder
     branch: Main/Dev/etc - name of branch (subfolder) under the module to be reviewed for changes
-    types: enum values All/API/BAS/Batch/EAI/NA/UX - specific module subfolder to process, NA indicates module does not have the standard subfolders (i.e. Utilities)
+    types: enum values All/API/BAS/Batch/EAI/NA/UX/ConfigTools - specific module subfolder to process, NA indicates module does not have the standard subfolders (i.e. Utilities)
   -->
   <ModuleConfigs>
     <ModuleConfig name="Administration" branch="DevX" types="All" />

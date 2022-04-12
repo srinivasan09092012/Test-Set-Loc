@@ -28,7 +28,8 @@ namespace SolutionRefactorMgr.Domain
             Test,
             BASEventsTestingUtil,
             X12OOPViewer,
-            ProviderManagement_EnrollmentTestClient
+            ProviderManagement_EnrollmentTestClient,
+            ConfigTools
         }
     }
 }

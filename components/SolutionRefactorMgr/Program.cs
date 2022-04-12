@@ -210,6 +210,7 @@ namespace SolutionRefactorMgr
                         RefactorModule(module, Enumerations.ProjectTypes.EAI);
                         RefactorModule(module, Enumerations.ProjectTypes.Reports);
                         RefactorModule(module, Enumerations.ProjectTypes.UX);
+                        RefactorModule(module, Enumerations.ProjectTypes.ConfigTools);
                         break;
 
                     default:

@@ -78,15 +78,15 @@
     <!-- Package Names in Packages.config Files -->
 
     <ReplacementString qualifier="id=&quot;HPP.ConfigManagement" from="22.1.118" to="22.1.117" />
+    
+    <!-- Package Names in the UX Setup project file -->
+    
+    <ReplacementString qualifier="8:HPP.ConfigManagement" from="22.1.118" to="22.1.117" />
 
 
     <!-- Package Version in Copy Assemblies Batch Files -->
 
     <ReplacementString qualifier="VERSION=22.1.118" from="22.1.118" to="22.1.117" />
-
-    <!-- Package Version in Copy Assemblies Batch Files -->
-
-    <ReplacementString qualifier="Version=22.1.118.0" from="22.1.118.0" to="22.1.117.0" />
 
     <!--Version in nuspec files-->
 
