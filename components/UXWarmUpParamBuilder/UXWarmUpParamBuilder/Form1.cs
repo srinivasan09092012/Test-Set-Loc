@@ -29,7 +29,7 @@ namespace UXWarmUpParamBuilder
 
         }
 
-        private void dataGridView1_buttonCol(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewModuleParam_buttonCol(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 8)
             {
@@ -98,57 +98,10 @@ namespace UXWarmUpParamBuilder
         {
             dataGridViewModuleParam.Rows.Clear();
             dataGridViewModuleParam.Refresh();
-           //// dataGridViewModuleParam.DataSource = data;
             foreach (var item in data)
             {
-                dataGridViewModuleParam.Rows.Add( new object[] { item.ParamType, item.RouteUrl, item.Param });
+                dataGridViewModuleParam.Rows.Add(new object[] { item.ParamType, item.RouteUrl, item.Param, UXWarmUpParamBuilder.Properties.Resources.Edit, UXWarmUpParamBuilder.Properties.Resources.Test, UXWarmUpParamBuilder.Properties.Resources.NotDone, false });
             }
-           //// dataGridViewModuleParam.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_buttonCol);
-
-            //var buttonColumnEdit = new DataGridViewButtonColumn()
-            //{
-            //    Name = "Edit",
-            //    HeaderText = "Edit",
-            //    UseColumnTextForButtonValue = false,
-            //    DefaultCellStyle = new DataGridViewCellStyle()
-            //    {
-            //        NullValue = "Edit"
-            //    }
-            //};
-            //if (dataGridViewModuleParam.Columns["Edit"] == null)
-            //{
-            //    this.dataGridViewModuleParam.Columns.Add(buttonColumnEdit);
-            //}
-
-            //var buttonColumn = new DataGridViewButtonColumn()
-            //{
-            //    Name = "StatusButton",
-            //    HeaderText = "Status",
-            //    UseColumnTextForButtonValue = false,
-            //    DefaultCellStyle = new DataGridViewCellStyle()
-            //    {
-            //        NullValue = "Active"
-            //    }
-            //};
-            //if (dataGridViewModuleParam.Columns["StatusButton"] == null)
-            //{
-            //    this.dataGridViewModuleParam.Columns.Add(buttonColumn);
-            //}
-
-            //var buttonColumnTest = new DataGridViewButtonColumn()
-            //{
-            //    Name = "Test",
-            //    HeaderText = "PerformTest",
-            //    UseColumnTextForButtonValue = false,
-            //    DefaultCellStyle = new DataGridViewCellStyle()
-            //    {
-            //        NullValue = "Test"
-            //    }
-            //};
-            //if (dataGridViewModuleParam.Columns["Test"] == null)
-            //{
-            //    this.dataGridViewModuleParam.Columns.Add(buttonColumnTest);
-            //}
         }
 
         public BindingList<WarmUpParam> LoadCsv(string csvFile)
@@ -301,15 +254,11 @@ namespace UXWarmUpParamBuilder
 
         }
 
-        private void dataGridViewModuleParam_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnActionBrw_Click(object sender, EventArgs e)
         {
             OpenFileDialog op = new OpenFileDialog();
             op.ShowDialog();
+            textBoxActionPath.Text = op.FileName;
             textBox1.Text = op.FileName;
             string extension = Path.GetExtension(textBox1.Text);
             if (extension.Equals(@".csv"))
