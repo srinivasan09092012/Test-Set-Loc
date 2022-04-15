@@ -38,19 +38,18 @@
             this.PerformTest = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnBrowse = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnAddNew = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnActionBrw = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewModuleParam)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
@@ -79,13 +78,14 @@
             this.Status,
             this.PerformTest});
             this.dataGridViewModuleParam.EnableHeadersVisualStyles = false;
-            this.dataGridViewModuleParam.Location = new System.Drawing.Point(3, 65);
+            this.dataGridViewModuleParam.Location = new System.Drawing.Point(12, 68);
             this.dataGridViewModuleParam.Name = "dataGridViewModuleParam";
             this.dataGridViewModuleParam.RowHeadersVisible = false;
             this.dataGridViewModuleParam.RowHeadersWidth = 62;
             this.dataGridViewModuleParam.RowTemplate.Height = 28;
-            this.dataGridViewModuleParam.Size = new System.Drawing.Size(1220, 248);
+            this.dataGridViewModuleParam.Size = new System.Drawing.Size(1156, 472);
             this.dataGridViewModuleParam.TabIndex = 0;
+            this.dataGridViewModuleParam.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewModuleParam_CellContentClick);
             // 
             // ParamType
             // 
@@ -141,26 +141,6 @@
             this.btnBrowse.UseVisualStyleBackColor = true;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(20, 847);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(139, 44);
-            this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "Add New";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(211, 847);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(97, 44);
-            this.btnSave.TabIndex = 5;
-            this.btnSave.Text = "Export To CSV";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // tabControl1
             // 
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -172,68 +152,95 @@
             this.tabControl1.Location = new System.Drawing.Point(31, 47);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1234, 443);
+            this.tabControl1.Size = new System.Drawing.Size(1225, 646);
             this.tabControl1.TabIndex = 6;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(210)))), ((int)(((byte)(245)))));
+            this.tabPage1.Controls.Add(this.btnExport);
+            this.tabPage1.Controls.Add(this.btnAddNew);
+            this.tabPage1.Controls.Add(this.textBox2);
+            this.tabPage1.Controls.Add(this.button2);
+            this.tabPage1.Controls.Add(this.btnActionBrw);
             this.tabPage1.Controls.Add(this.dataGridViewModuleParam);
-            this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Controls.Add(this.btnAdd);
-            this.tabPage1.Controls.Add(this.btnSave);
-            this.tabPage1.Font = new System.Drawing.Font("Century", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage1.Location = new System.Drawing.Point(4, 37);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1226, 402);
+            this.tabPage1.Size = new System.Drawing.Size(1217, 605);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Action Parameter";
             // 
-            // panel1
+            // btnExport
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(210)))), ((int)(((byte)(245)))));
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1226, 62);
-            this.panel1.TabIndex = 6;
+            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExport.AutoSize = true;
+            this.btnExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            this.btnExport.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnExport.Location = new System.Drawing.Point(997, 548);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(171, 50);
+            this.btnExport.TabIndex = 5;
+            this.btnExport.Text = "Export to CSV";
+            this.btnExport.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnAddNew
             // 
-            this.button1.AutoSize = true;
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(347, 13);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 38);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnAddNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAddNew.AutoSize = true;
+            this.btnAddNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            this.btnAddNew.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnAddNew.Location = new System.Drawing.Point(14, 548);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(171, 50);
+            this.btnAddNew.TabIndex = 4;
+            this.btnAddNew.Text = "Add New";
+            this.btnAddNew.UseVisualStyleBackColor = false;
             // 
             // textBox2
             // 
-            this.textBox2.AllowDrop = true;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Location = new System.Drawing.Point(20, 14);
+            this.textBox2.Location = new System.Drawing.Point(12, 16);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(288, 30);
-            this.textBox2.TabIndex = 0;
+            this.textBox2.Size = new System.Drawing.Size(358, 42);
+            this.textBox2.TabIndex = 3;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.AutoSize = true;
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button2.Location = new System.Drawing.Point(997, 8);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(171, 50);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // btnActionBrw
+            // 
+            this.btnActionBrw.AutoSize = true;
+            this.btnActionBrw.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            this.btnActionBrw.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnActionBrw.Location = new System.Drawing.Point(384, 12);
+            this.btnActionBrw.Name = "btnActionBrw";
+            this.btnActionBrw.Size = new System.Drawing.Size(171, 50);
+            this.btnActionBrw.TabIndex = 1;
+            this.btnActionBrw.Text = "Browse";
+            this.btnActionBrw.UseVisualStyleBackColor = false;
+            this.btnActionBrw.Click += new System.EventHandler(this.btnActionBrw_Click);
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.textBox1);
             this.tabPage2.Controls.Add(this.btnBrowse);
-            this.tabPage2.Location = new System.Drawing.Point(4, 30);
+            this.tabPage2.Location = new System.Drawing.Point(4, 37);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1226, 409);
+            this.tabPage2.Size = new System.Drawing.Size(1217, 605);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Replacement Values";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -246,7 +253,7 @@
             this.panel4.Controls.Add(this.tabControl1);
             this.panel4.Location = new System.Drawing.Point(-3, 1);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1706, 747);
+            this.panel4.Size = new System.Drawing.Size(1706, 725);
             this.panel4.TabIndex = 7;
             // 
             // Form1
@@ -261,8 +268,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewModuleParam)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -275,10 +281,7 @@
         private System.Windows.Forms.DataGridView dataGridViewModuleParam;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnBrowse;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ParamType;
         private System.Windows.Forms.DataGridViewTextBoxColumn RouteUrl;
@@ -286,10 +289,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Edit;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewTextBoxColumn PerformTest;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnActionBrw;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btnAddNew;
+        private System.Windows.Forms.Button btnExport;
     }
 }
 

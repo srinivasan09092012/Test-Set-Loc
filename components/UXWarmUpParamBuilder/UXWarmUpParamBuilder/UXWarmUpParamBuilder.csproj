@@ -69,10 +69,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ParamData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TokenizedValue.cs" />
     <Compile Include="WarmUpParam.cs" />
     <Compile Include="WarmUpPayloadModel.cs" />
     <Compile Include="WarmUpTesting.cs" />
