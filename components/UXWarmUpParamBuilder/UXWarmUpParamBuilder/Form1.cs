@@ -22,6 +22,9 @@ namespace UXWarmUpParamBuilder
         {
             InitializeComponent();
             mainList = new BindingList<WarmUpParam>();
+            //dataGridViewModuleParam.EnableHeadersVisualStyles = false;
+            //dataGridViewModuleParam.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(109, 122, 224);
+            //dataGridViewModuleParam.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -33,7 +36,7 @@ namespace UXWarmUpParamBuilder
         {
             if (e.ColumnIndex == 8)
             {
-                if (dataGridView1[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell cell)
+                if (dataGridViewModuleParam[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell cell)
                 {
                     if (cell.Value == null || cell.Value == cell.OwningColumn.DefaultCellStyle.NullValue)
                     {
@@ -48,7 +51,7 @@ namespace UXWarmUpParamBuilder
 
             if (e.ColumnIndex == 7)
             {
-                if (dataGridView1[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell cell)
+                if (dataGridViewModuleParam[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell cell)
                 {
                     currentrow = cell.DataGridView.CurrentRow;
                     var paramvalue = cell.DataGridView.CurrentRow.Cells["Param"].EditedFormattedValue;
@@ -58,7 +61,7 @@ namespace UXWarmUpParamBuilder
 
             if (e.ColumnIndex == 9)
             {
-                if (dataGridView1[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell cell)
+                if (dataGridViewModuleParam[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell cell)
                 {
                     DataGridViewRow row = cell.DataGridView.CurrentRow;
                     if (this.VerifyAction(row))
@@ -86,24 +89,24 @@ namespace UXWarmUpParamBuilder
             WarmUpPayloadModel.RouteUrl = row.Cells["RouteUrl"].Value.ToString();
             if (WarmUpPayloadModel.ParamType.Equals("ModelParam"))
             {
-                return warmUpTesting.RunWarmUpForPost(WarmUpPayloadModel);
+                return warmUpTesting.RunWarmUpForPost(WarmUpPayloadModel,"");
             }
             else
             {
-                return warmUpTesting.RunWarmUp(WarmUpPayloadModel);
+                return warmUpTesting.RunWarmUp(WarmUpPayloadModel,"");
             }
         }
 
         private void LoadGrid(BindingList<WarmUpParam> data)
         {
-            dataGridView1.Rows.Clear();
-            dataGridView1.Refresh();
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.DataSource = data;
-            dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_buttonCol);
-            dataGridView1.Columns["Status"].Visible = false;
-            dataGridView1.Columns["ParamType"].Visible = false;
-            dataGridView1.Columns["ControllerName"].Visible = false;
+            dataGridViewModuleParam.Rows.Clear();
+            dataGridViewModuleParam.Refresh();
+            dataGridViewModuleParam.RowHeadersVisible = false;
+            dataGridViewModuleParam.DataSource = data;
+            dataGridViewModuleParam.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_buttonCol);
+            dataGridViewModuleParam.Columns["Status"].Visible = false;
+            dataGridViewModuleParam.Columns["ParamType"].Visible = false;
+            dataGridViewModuleParam.Columns["ControllerName"].Visible = false;
 
             var buttonColumnEdit = new DataGridViewButtonColumn()
             {
@@ -115,9 +118,9 @@ namespace UXWarmUpParamBuilder
                     NullValue = "Edit"
                 }
             };
-            if (dataGridView1.Columns["Edit"] == null)
+            if (dataGridViewModuleParam.Columns["Edit"] == null)
             {
-                this.dataGridView1.Columns.Add(buttonColumnEdit);
+                this.dataGridViewModuleParam.Columns.Add(buttonColumnEdit);
             }
 
             var buttonColumn = new DataGridViewButtonColumn()
@@ -130,9 +133,9 @@ namespace UXWarmUpParamBuilder
                     NullValue = "Active"
                 }
             };
-            if (dataGridView1.Columns["StatusButton"] == null)
+            if (dataGridViewModuleParam.Columns["StatusButton"] == null)
             {
-                this.dataGridView1.Columns.Add(buttonColumn);
+                this.dataGridViewModuleParam.Columns.Add(buttonColumn);
             }
 
             var buttonColumnTest = new DataGridViewButtonColumn()
@@ -145,12 +148,12 @@ namespace UXWarmUpParamBuilder
                     NullValue = "Test"
                 }
             };
-            if (dataGridView1.Columns["Test"] == null)
+            if (dataGridViewModuleParam.Columns["Test"] == null)
             {
-                this.dataGridView1.Columns.Add(buttonColumnTest);
+                this.dataGridViewModuleParam.Columns.Add(buttonColumnTest);
             }
-            DataGridViewColumn column4 = dataGridView1.Columns["Param"];
-            DataGridViewColumn column3 = dataGridView1.Columns["RouteUrl"];
+            DataGridViewColumn column4 = dataGridViewModuleParam.Columns["Param"];
+            DataGridViewColumn column3 = dataGridViewModuleParam.Columns["RouteUrl"];
             if (column4.Width == 100 && column3.Width == 100)
             {
                 column4.Width = 430;
@@ -246,7 +249,7 @@ namespace UXWarmUpParamBuilder
             var engine = new FileHelperEngine<WarmUpParam>();
 
             var WarmUpParamList = new List<WarmUpParam>();
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            foreach (DataGridViewRow row in dataGridViewModuleParam.Rows)
             {
                 if (row.Cells["StatusButton"].EditedFormattedValue.ToString().Equals("Active"))
                 {
@@ -264,15 +267,6 @@ namespace UXWarmUpParamBuilder
             string message = "File Saved Successfully";
             string title = "Save";
             MessageBox.Show(message, title);
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            string searckKey = txtSearch.Text;
-            var result = mainList.Where(s => s.ControllerName.IndexOf(searckKey, StringComparison.OrdinalIgnoreCase) != -1 || s.ModuleName.IndexOf(searckKey, StringComparison.OrdinalIgnoreCase) != -1 ||
-            s.RouteUrl.IndexOf(searckKey, StringComparison.OrdinalIgnoreCase) != -1);
-            var bindingresult = this.ToBindingList(result);
-            this.LoadGrid(bindingresult);
         }
 
         private void DisplayErrorMessage(string message)
@@ -298,7 +292,7 @@ namespace UXWarmUpParamBuilder
         private List<WarmUpParam> GetData()
         {
             List<WarmUpParam> warmUpParamList = new List<WarmUpParam>();
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            foreach (DataGridViewRow row in dataGridViewModuleParam.Rows)
             {
                 WarmUpParam warmUpParam = new WarmUpParam();
                 warmUpParam.ModuleName = row.Cells["ModuleName"].EditedFormattedValue.ToString();
