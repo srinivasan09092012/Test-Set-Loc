@@ -29,148 +29,156 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.moduleName_txt = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.paramRequired_txt = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.controllerName_txt = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.routeUrl_txt = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.paramType_txt = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.jsonParam_txt = new System.Windows.Forms.TextBox();
             this.Add = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxAddRoute = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBoxAddParam = new System.Windows.Forms.TextBox();
+            this.checkBoxAddStatus = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBoxParamType = new System.Windows.Forms.ComboBox();
+            this.comboBoxModuleName = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(56, 47);
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(56, 23);
+            this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 20);
+            this.label1.Size = new System.Drawing.Size(142, 28);
             this.label1.TabIndex = 0;
-            this.label1.Text = "ModuleName";
+            this.label1.Text = "Module Name";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // moduleName_txt
+            // Add
             // 
-            this.moduleName_txt.Location = new System.Drawing.Point(214, 44);
-            this.moduleName_txt.Name = "moduleName_txt";
-            this.moduleName_txt.Size = new System.Drawing.Size(414, 26);
-            this.moduleName_txt.TabIndex = 1;
+            this.Add.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            this.Add.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Add.ForeColor = System.Drawing.Color.White;
+            this.Add.Location = new System.Drawing.Point(202, 626);
+            this.Add.Name = "Add";
+            this.Add.Size = new System.Drawing.Size(417, 50);
+            this.Add.TabIndex = 12;
+            this.Add.Text = "ADD";
+            this.Add.UseVisualStyleBackColor = false;
+            this.Add.Click += new System.EventHandler(this.Add_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(56, 96);
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(101, 74);
+            this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "ParamRequired";
+            this.label2.Size = new System.Drawing.Size(97, 28);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Route Url";
             // 
-            // paramRequired_txt
+            // textBoxAddRoute
             // 
-            this.paramRequired_txt.Location = new System.Drawing.Point(214, 93);
-            this.paramRequired_txt.Name = "paramRequired_txt";
-            this.paramRequired_txt.Size = new System.Drawing.Size(414, 26);
-            this.paramRequired_txt.TabIndex = 3;
+            this.textBoxAddRoute.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxAddRoute.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxAddRoute.Location = new System.Drawing.Point(204, 74);
+            this.textBoxAddRoute.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxAddRoute.Name = "textBoxAddRoute";
+            this.textBoxAddRoute.Size = new System.Drawing.Size(414, 34);
+            this.textBoxAddRoute.TabIndex = 14;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(56, 145);
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(38, 179);
+            this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 20);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "ControllerName";
+            this.label3.Size = new System.Drawing.Size(160, 28);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Json Parameters";
             // 
-            // controllerName_txt
+            // textBoxAddParam
             // 
-            this.controllerName_txt.Location = new System.Drawing.Point(214, 142);
-            this.controllerName_txt.Name = "controllerName_txt";
-            this.controllerName_txt.Size = new System.Drawing.Size(414, 26);
-            this.controllerName_txt.TabIndex = 5;
+            this.textBoxAddParam.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxAddParam.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxAddParam.Location = new System.Drawing.Point(204, 177);
+            this.textBoxAddParam.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxAddParam.Multiline = true;
+            this.textBoxAddParam.Name = "textBoxAddParam";
+            this.textBoxAddParam.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxAddParam.Size = new System.Drawing.Size(414, 380);
+            this.textBoxAddParam.TabIndex = 16;
+            // 
+            // checkBoxAddStatus
+            // 
+            this.checkBoxAddStatus.AutoSize = true;
+            this.checkBoxAddStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxAddStatus.Location = new System.Drawing.Point(204, 572);
+            this.checkBoxAddStatus.Name = "checkBoxAddStatus";
+            this.checkBoxAddStatus.Size = new System.Drawing.Size(93, 32);
+            this.checkBoxAddStatus.TabIndex = 18;
+            this.checkBoxAddStatus.Text = "Status";
+            this.checkBoxAddStatus.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(56, 195);
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(45, 124);
+            this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 20);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "RouteUrl";
+            this.label4.Size = new System.Drawing.Size(153, 28);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Parameter Type";
             // 
-            // routeUrl_txt
+            // comboBoxParamType
             // 
-            this.routeUrl_txt.Location = new System.Drawing.Point(214, 192);
-            this.routeUrl_txt.Name = "routeUrl_txt";
-            this.routeUrl_txt.Size = new System.Drawing.Size(414, 26);
-            this.routeUrl_txt.TabIndex = 7;
+            this.comboBoxParamType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxParamType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxParamType.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxParamType.FormattingEnabled = true;
+            this.comboBoxParamType.Location = new System.Drawing.Point(202, 124);
+            this.comboBoxParamType.Name = "comboBoxParamType";
+            this.comboBoxParamType.Size = new System.Drawing.Size(417, 36);
+            this.comboBoxParamType.TabIndex = 20;
             // 
-            // label5
+            // comboBoxModuleName
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(56, 240);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 20);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "ParamType";
-            // 
-            // paramType_txt
-            // 
-            this.paramType_txt.Location = new System.Drawing.Point(214, 240);
-            this.paramType_txt.Name = "paramType_txt";
-            this.paramType_txt.Size = new System.Drawing.Size(414, 26);
-            this.paramType_txt.TabIndex = 9;
-            this.paramType_txt.TextChanged += new System.EventHandler(this.paramType_txt_TextChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(56, 293);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 20);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "JsonParam";
-            // 
-            // jsonParam_txt
-            // 
-            this.jsonParam_txt.Location = new System.Drawing.Point(214, 293);
-            this.jsonParam_txt.Multiline = true;
-            this.jsonParam_txt.Name = "jsonParam_txt";
-            this.jsonParam_txt.Size = new System.Drawing.Size(414, 151);
-            this.jsonParam_txt.TabIndex = 11;
-            // 
-            // Add
-            // 
-            this.Add.Location = new System.Drawing.Point(214, 494);
-            this.Add.Name = "Add";
-            this.Add.Size = new System.Drawing.Size(428, 44);
-            this.Add.TabIndex = 12;
-            this.Add.Text = "Add";
-            this.Add.UseVisualStyleBackColor = true;
-            this.Add.Click += new System.EventHandler(this.Add_Click);
+            this.comboBoxModuleName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxModuleName.AutoCompleteCustomSource.AddRange(new string[] {
+            "Administration"});
+            this.comboBoxModuleName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxModuleName.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxModuleName.FormattingEnabled = true;
+            this.comboBoxModuleName.Location = new System.Drawing.Point(204, 23);
+            this.comboBoxModuleName.Name = "comboBoxModuleName";
+            this.comboBoxModuleName.Size = new System.Drawing.Size(417, 36);
+            this.comboBoxModuleName.TabIndex = 21;
             // 
             // AddInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(845, 594);
-            this.Controls.Add(this.Add);
-            this.Controls.Add(this.jsonParam_txt);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.paramType_txt);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.routeUrl_txt);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(210)))), ((int)(((byte)(245)))));
+            this.ClientSize = new System.Drawing.Size(729, 692);
+            this.Controls.Add(this.comboBoxModuleName);
+            this.Controls.Add(this.comboBoxParamType);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.controllerName_txt);
+            this.Controls.Add(this.checkBoxAddStatus);
+            this.Controls.Add(this.textBoxAddParam);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.paramRequired_txt);
+            this.Controls.Add(this.textBoxAddRoute);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.moduleName_txt);
+            this.Controls.Add(this.Add);
             this.Controls.Add(this.label1);
             this.Name = "AddInfo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddInfo";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -180,17 +188,14 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox moduleName_txt;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox paramRequired_txt;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox controllerName_txt;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox routeUrl_txt;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox paramType_txt;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox jsonParam_txt;
         private System.Windows.Forms.Button Add;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxAddRoute;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxAddParam;
+        private System.Windows.Forms.CheckBox checkBoxAddStatus;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBoxParamType;
+        private System.Windows.Forms.ComboBox comboBoxModuleName;
     }
 }

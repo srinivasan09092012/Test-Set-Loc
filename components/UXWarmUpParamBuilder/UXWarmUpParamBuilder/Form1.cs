@@ -22,6 +22,15 @@ namespace UXWarmUpParamBuilder
         {
             InitializeComponent();
             mainList = new BindingList<WarmUpParam>();
+            this.LoadEnvironment();
+        }
+
+        private void LoadEnvironment()
+        {
+            comboBoxEnv.Items.Add("Dev");
+            comboBoxEnv.Items.Add("Test");
+            comboBoxEnv.Items.Add("Local");
+            comboBoxEnv.SelectedIndex = 0;
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -46,14 +55,14 @@ namespace UXWarmUpParamBuilder
                 }
             }
 
-            if (e.ColumnIndex == 7)
+            if (e.ColumnIndex == 3 && e.RowIndex != -1)
             {
-                if (dataGridViewModuleParam[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell cell)
-                {
-                    currentrow = cell.DataGridView.CurrentRow;
-                    var paramvalue = cell.DataGridView.CurrentRow.Cells["Param"].EditedFormattedValue;
-                    this.ShowDialog("EditParam", "", paramvalue.ToString());
-                }
+                var cell = dataGridViewModuleParam[e.ColumnIndex, e.RowIndex];
+                DataGridViewRow currentrow = cell.DataGridView.CurrentRow;
+                var paramvalue = cell.DataGridView.CurrentRow.Cells["JsonParameters"].EditedFormattedValue;
+                EditParam param = new EditParam(paramvalue.ToString(), currentrow);
+                param.Show();
+                //this.ShowDialog("EditParam", "", paramvalue.ToString());
             }
 
             if (e.ColumnIndex == 9)
@@ -100,7 +109,7 @@ namespace UXWarmUpParamBuilder
             dataGridViewModuleParam.Refresh();
             foreach (var item in data)
             {
-                dataGridViewModuleParam.Rows.Add(new object[] { item.ParamType, item.RouteUrl, item.Param, UXWarmUpParamBuilder.Properties.Resources.Edit, UXWarmUpParamBuilder.Properties.Resources.Test, UXWarmUpParamBuilder.Properties.Resources.NotDone, false });
+                dataGridViewModuleParam.Rows.Add(new object[] { item.ModuleName, item.ParamType, item.RouteUrl, item.Param, UXWarmUpParamBuilder.Properties.Resources.Edit, UXWarmUpParamBuilder.Properties.Resources.Test, UXWarmUpParamBuilder.Properties.Resources.NotDone, false });
             }
         }
 
@@ -181,10 +190,18 @@ namespace UXWarmUpParamBuilder
             ((TextBox)prompt.Controls["paramText"]).Clear();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonAddNew_Click(object sender, EventArgs e)
         {
-            AddInfo info = new AddInfo();
-            info.Show();
+            if (this.dataGridViewModuleParam.Rows.Count > 1)
+            {
+                AddInfo info = new AddInfo(this.dataGridViewModuleParam);
+                info.Show();
+            }
+            else
+            {
+                string title = "Warning!!!";
+                MessageBox.Show("Browse the Module File and then add the new Rows", title);
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -261,13 +278,16 @@ namespace UXWarmUpParamBuilder
             textBoxActionPath.Text = op.FileName;
             textBox1.Text = op.FileName;
             string extension = Path.GetExtension(textBox1.Text);
-            if (extension.Equals(@".csv"))
+            if (!string.IsNullOrEmpty(extension))
             {
-                this.LoadGrid(this.LoadCsv(textBox1.Text));
-            }
-            else
-            {
-                this.DisplayErrorMessage("Invalid File Extension");
+                if (extension.Equals(@".csv"))
+                {
+                    this.LoadGrid(this.LoadCsv(textBox1.Text));
+                }
+                else
+                {
+                    this.DisplayErrorMessage("Invalid File Extension");
+                }
             }
         }
     }

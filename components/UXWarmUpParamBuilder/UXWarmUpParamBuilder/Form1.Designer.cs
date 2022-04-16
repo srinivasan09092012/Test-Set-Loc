@@ -38,11 +38,13 @@
             this.btnExport = new System.Windows.Forms.Button();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.textBoxActionPath = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.btnActionBrw = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxEnv = new System.Windows.Forms.ComboBox();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ModuleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ParamType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RouteUrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.JsonParameters = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,6 +77,7 @@
             this.dataGridViewModuleParam.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewModuleParam.ColumnHeadersHeight = 50;
             this.dataGridViewModuleParam.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ModuleName,
             this.ParamType,
             this.RouteUrl,
             this.JsonParameters,
@@ -82,6 +85,7 @@
             this.PerformTest,
             this.Result,
             this.Status});
+            this.dataGridViewModuleParam.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -135,10 +139,11 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(210)))), ((int)(((byte)(245)))));
+            this.tabPage1.Controls.Add(this.comboBoxEnv);
+            this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.btnExport);
             this.tabPage1.Controls.Add(this.btnAddNew);
             this.tabPage1.Controls.Add(this.textBoxActionPath);
-            this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.btnActionBrw);
             this.tabPage1.Controls.Add(this.dataGridViewModuleParam);
             this.tabPage1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -154,8 +159,11 @@
             this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExport.AutoSize = true;
             this.btnExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            this.btnExport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExport.FlatAppearance.BorderSize = 0;
             this.btnExport.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnExport.Location = new System.Drawing.Point(1462, 573);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(0);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(171, 50);
             this.btnExport.TabIndex = 5;
@@ -167,42 +175,33 @@
             this.btnAddNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAddNew.AutoSize = true;
             this.btnAddNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            this.btnAddNew.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddNew.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnAddNew.Location = new System.Drawing.Point(14, 573);
+            this.btnAddNew.Margin = new System.Windows.Forms.Padding(0);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(171, 50);
             this.btnAddNew.TabIndex = 4;
             this.btnAddNew.Text = "Add New";
             this.btnAddNew.UseVisualStyleBackColor = false;
+            this.btnAddNew.Click += new System.EventHandler(this.buttonAddNew_Click);
             // 
             // textBoxActionPath
             // 
             this.textBoxActionPath.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxActionPath.Location = new System.Drawing.Point(12, 16);
+            this.textBoxActionPath.Location = new System.Drawing.Point(12, 8);
             this.textBoxActionPath.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxActionPath.Multiline = true;
             this.textBoxActionPath.Name = "textBoxActionPath";
-            this.textBoxActionPath.Size = new System.Drawing.Size(436, 45);
+            this.textBoxActionPath.Size = new System.Drawing.Size(436, 52);
             this.textBoxActionPath.TabIndex = 3;
             this.textBoxActionPath.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.AutoSize = true;
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.Location = new System.Drawing.Point(1461, 8);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(171, 50);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = false;
             // 
             // btnActionBrw
             // 
             this.btnActionBrw.AutoSize = true;
             this.btnActionBrw.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            this.btnActionBrw.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnActionBrw.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnActionBrw.Location = new System.Drawing.Point(461, 12);
             this.btnActionBrw.Name = "btnActionBrw";
@@ -219,7 +218,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 37);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1217, 630);
+            this.tabPage2.Size = new System.Drawing.Size(1664, 630);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Replacement Values";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -235,6 +234,27 @@
             this.panel4.Size = new System.Drawing.Size(1706, 725);
             this.panel4.TabIndex = 7;
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1258, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 28);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Environment";
+            // 
+            // comboBoxEnv
+            // 
+            this.comboBoxEnv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxEnv.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBoxEnv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxEnv.FormattingEnabled = true;
+            this.comboBoxEnv.Location = new System.Drawing.Point(1390, 20);
+            this.comboBoxEnv.Name = "comboBoxEnv";
+            this.comboBoxEnv.Size = new System.Drawing.Size(243, 36);
+            this.comboBoxEnv.TabIndex = 7;
+            // 
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -245,6 +265,14 @@
             this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewImageColumn1.Width = 82;
+            // 
+            // ModuleName
+            // 
+            this.ModuleName.HeaderText = "ModuleName";
+            this.ModuleName.MinimumWidth = 8;
+            this.ModuleName.Name = "ModuleName";
+            this.ModuleName.Visible = false;
+            this.ModuleName.Width = 150;
             // 
             // ParamType
             // 
@@ -260,7 +288,7 @@
             this.RouteUrl.HeaderText = "Route Url";
             this.RouteUrl.MinimumWidth = 8;
             this.RouteUrl.Name = "RouteUrl";
-            this.RouteUrl.Width = 210;
+            this.RouteUrl.Width = 235;
             // 
             // JsonParameters
             // 
@@ -277,8 +305,7 @@
             this.Edit.MinimumWidth = 8;
             this.Edit.Name = "Edit";
             this.Edit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Edit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Edit.Width = 82;
+            this.Edit.Width = 52;
             // 
             // PerformTest
             // 
@@ -336,12 +363,14 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnActionBrw;
         private System.Windows.Forms.TextBox textBoxActionPath;
         private System.Windows.Forms.Button btnAddNew;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBoxEnv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ModuleName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ParamType;
         private System.Windows.Forms.DataGridViewTextBoxColumn RouteUrl;
         private System.Windows.Forms.DataGridViewTextBoxColumn JsonParameters;
