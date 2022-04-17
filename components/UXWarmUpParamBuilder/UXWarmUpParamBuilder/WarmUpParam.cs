@@ -22,7 +22,6 @@ namespace UXWarmUpParamBuilder
 
         public string ParamType { get; set; }
 
-        [FieldHidden]
         public string Status { get; set; }
     }
 }

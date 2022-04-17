@@ -19,7 +19,17 @@ namespace UXWarmUpParamBuilder
         {
             InitializeComponent();
             labelJsonMsg.Visible = false;
-            string value = JValue.Parse(jsonValue).ToString(Formatting.Indented);
+            string value = string.Empty;
+            string result = string.Concat(jsonValue.Where(c => !char.IsWhiteSpace(c)));
+            try
+            {
+                value = JValue.Parse(result).ToString(Formatting.Indented);
+
+            }
+            catch
+            {
+                value = result;
+            }
             richTextBoxJson.Text = value;
             _row = currentrow;
         }

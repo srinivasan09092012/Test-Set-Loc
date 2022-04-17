@@ -28,22 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewModuleParam = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnBrowse = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.btnAddNew = new System.Windows.Forms.Button();
-            this.textBoxActionPath = new System.Windows.Forms.TextBox();
-            this.btnActionBrw = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBoxEnv = new System.Windows.Forms.ComboBox();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.ModuleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ParamType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RouteUrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,10 +41,30 @@
             this.PerformTest = new System.Windows.Forms.DataGridViewImageColumn();
             this.Result = new System.Windows.Forms.DataGridViewImageColumn();
             this.Status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.comboBoxEnv = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnAddNew = new System.Windows.Forms.Button();
+            this.textBoxActionPath = new System.Windows.Forms.TextBox();
+            this.btnActionBrw = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.buttonAddToken = new System.Windows.Forms.Button();
+            this.dataGridViewToken = new System.Windows.Forms.DataGridView();
+            this.TokenKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TokenValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditToken = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Copy = new System.Windows.Forms.DataGridViewImageColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBoxRepBrw = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewModuleParam)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToken)).BeginInit();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,14 +76,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewModuleParam.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewModuleParam.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewModuleParam.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewModuleParam.ColumnHeadersHeight = 50;
             this.dataGridViewModuleParam.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ModuleName,
@@ -86,14 +95,14 @@
             this.Result,
             this.Status});
             this.dataGridViewModuleParam.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewModuleParam.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewModuleParam.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewModuleParam.EnableHeadersVisualStyles = false;
             this.dataGridViewModuleParam.Location = new System.Drawing.Point(12, 68);
             this.dataGridViewModuleParam.Name = "dataGridViewModuleParam";
@@ -104,23 +113,71 @@
             this.dataGridViewModuleParam.TabIndex = 0;
             this.dataGridViewModuleParam.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewModuleParam_buttonCol);
             // 
-            // textBox1
+            // ModuleName
             // 
-            this.textBox1.Location = new System.Drawing.Point(15, 33);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(353, 34);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.ModuleName.HeaderText = "ModuleName";
+            this.ModuleName.MinimumWidth = 8;
+            this.ModuleName.Name = "ModuleName";
+            this.ModuleName.Visible = false;
+            this.ModuleName.Width = 150;
             // 
-            // btnBrowse
+            // ParamType
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(388, 33);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(102, 41);
-            this.btnBrowse.TabIndex = 3;
-            this.btnBrowse.Text = "Browse";
-            this.btnBrowse.UseVisualStyleBackColor = true;
-            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            this.ParamType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ParamType.HeaderText = "Parameter Type";
+            this.ParamType.MinimumWidth = 8;
+            this.ParamType.Name = "ParamType";
+            this.ParamType.Width = 189;
+            // 
+            // RouteUrl
+            // 
+            this.RouteUrl.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.RouteUrl.HeaderText = "Route Url";
+            this.RouteUrl.MinimumWidth = 8;
+            this.RouteUrl.Name = "RouteUrl";
+            this.RouteUrl.Width = 235;
+            // 
+            // JsonParameters
+            // 
+            this.JsonParameters.HeaderText = "Json Parameters";
+            this.JsonParameters.MinimumWidth = 8;
+            this.JsonParameters.Name = "JsonParameters";
+            this.JsonParameters.Width = 700;
+            // 
+            // Edit
+            // 
+            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Edit.HeaderText = "Edit";
+            this.Edit.MinimumWidth = 8;
+            this.Edit.Name = "Edit";
+            this.Edit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Edit.Width = 52;
+            // 
+            // PerformTest
+            // 
+            this.PerformTest.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PerformTest.HeaderText = "Test";
+            this.PerformTest.MinimumWidth = 8;
+            this.PerformTest.Name = "PerformTest";
+            this.PerformTest.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PerformTest.Width = 54;
+            // 
+            // Result
+            // 
+            this.Result.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Result.HeaderText = "Result";
+            this.Result.MinimumWidth = 8;
+            this.Result.Name = "Result";
+            this.Result.Width = 73;
+            // 
+            // Status
+            // 
+            this.Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Status.HeaderText = "";
+            this.Status.MinimumWidth = 8;
+            this.Status.Name = "Status";
+            this.Status.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Status.Width = 8;
             // 
             // tabControl1
             // 
@@ -154,6 +211,27 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Action Parameter";
             // 
+            // comboBoxEnv
+            // 
+            this.comboBoxEnv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxEnv.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBoxEnv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxEnv.FormattingEnabled = true;
+            this.comboBoxEnv.Location = new System.Drawing.Point(1390, 20);
+            this.comboBoxEnv.Name = "comboBoxEnv";
+            this.comboBoxEnv.Size = new System.Drawing.Size(243, 36);
+            this.comboBoxEnv.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1258, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 28);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Environment";
+            // 
             // btnExport
             // 
             this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -169,6 +247,7 @@
             this.btnExport.TabIndex = 5;
             this.btnExport.Text = "Export to CSV";
             this.btnExport.UseVisualStyleBackColor = false;
+            this.btnExport.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnAddNew
             // 
@@ -213,15 +292,129 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.textBox1);
-            this.tabPage2.Controls.Add(this.btnBrowse);
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(210)))), ((int)(((byte)(245)))));
+            this.tabPage2.Controls.Add(this.buttonAddToken);
+            this.tabPage2.Controls.Add(this.dataGridViewToken);
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.textBoxRepBrw);
             this.tabPage2.Location = new System.Drawing.Point(4, 37);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1664, 630);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Replacement Values";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddToken
+            // 
+            this.buttonAddToken.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonAddToken.AutoSize = true;
+            this.buttonAddToken.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            this.buttonAddToken.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonAddToken.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonAddToken.Location = new System.Drawing.Point(14, 573);
+            this.buttonAddToken.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonAddToken.Name = "buttonAddToken";
+            this.buttonAddToken.Size = new System.Drawing.Size(171, 50);
+            this.buttonAddToken.TabIndex = 8;
+            this.buttonAddToken.Text = "Add New";
+            this.buttonAddToken.UseVisualStyleBackColor = false;
+            this.buttonAddToken.Click += new System.EventHandler(this.buttonAddToken_Click);
+            // 
+            // dataGridViewToken
+            // 
+            this.dataGridViewToken.AllowUserToAddRows = false;
+            this.dataGridViewToken.AllowUserToDeleteRows = false;
+            this.dataGridViewToken.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewToken.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewToken.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewToken.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewToken.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridViewToken.ColumnHeadersHeight = 50;
+            this.dataGridViewToken.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TokenKey,
+            this.TokenValue,
+            this.EditToken,
+            this.Copy});
+            this.dataGridViewToken.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewToken.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridViewToken.EnableHeadersVisualStyles = false;
+            this.dataGridViewToken.Location = new System.Drawing.Point(12, 68);
+            this.dataGridViewToken.Name = "dataGridViewToken";
+            this.dataGridViewToken.ReadOnly = true;
+            this.dataGridViewToken.RowHeadersVisible = false;
+            this.dataGridViewToken.RowHeadersWidth = 62;
+            this.dataGridViewToken.RowTemplate.Height = 28;
+            this.dataGridViewToken.Size = new System.Drawing.Size(1649, 497);
+            this.dataGridViewToken.TabIndex = 8;
+            this.dataGridViewToken.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewToken_buttonCol);
+            // 
+            // TokenKey
+            // 
+            this.TokenKey.HeaderText = "Token Key";
+            this.TokenKey.MinimumWidth = 8;
+            this.TokenKey.Name = "TokenKey";
+            this.TokenKey.ReadOnly = true;
+            // 
+            // TokenValue
+            // 
+            this.TokenValue.HeaderText = "Token Value";
+            this.TokenValue.MinimumWidth = 8;
+            this.TokenValue.Name = "TokenValue";
+            this.TokenValue.ReadOnly = true;
+            // 
+            // EditToken
+            // 
+            this.EditToken.HeaderText = "Edit";
+            this.EditToken.MinimumWidth = 8;
+            this.EditToken.Name = "EditToken";
+            this.EditToken.ReadOnly = true;
+            // 
+            // Copy
+            // 
+            this.Copy.HeaderText = "Copy Key";
+            this.Copy.MinimumWidth = 8;
+            this.Copy.Name = "Copy";
+            this.Copy.ReadOnly = true;
+            this.Copy.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // button1
+            // 
+            this.button1.AutoSize = true;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button1.Location = new System.Drawing.Point(461, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(171, 50);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Browse";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // textBoxRepBrw
+            // 
+            this.textBoxRepBrw.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxRepBrw.Location = new System.Drawing.Point(12, 8);
+            this.textBoxRepBrw.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxRepBrw.Multiline = true;
+            this.textBoxRepBrw.Name = "textBoxRepBrw";
+            this.textBoxRepBrw.Size = new System.Drawing.Size(436, 52);
+            this.textBoxRepBrw.TabIndex = 8;
             // 
             // panel4
             // 
@@ -234,27 +427,6 @@
             this.panel4.Size = new System.Drawing.Size(1706, 725);
             this.panel4.TabIndex = 7;
             // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1258, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 28);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Environment";
-            // 
-            // comboBoxEnv
-            // 
-            this.comboBoxEnv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxEnv.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBoxEnv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxEnv.FormattingEnabled = true;
-            this.comboBoxEnv.Location = new System.Drawing.Point(1390, 20);
-            this.comboBoxEnv.Name = "comboBoxEnv";
-            this.comboBoxEnv.Size = new System.Drawing.Size(243, 36);
-            this.comboBoxEnv.TabIndex = 7;
-            // 
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -264,74 +436,7 @@
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewImageColumn1.Width = 82;
-            // 
-            // ModuleName
-            // 
-            this.ModuleName.HeaderText = "ModuleName";
-            this.ModuleName.MinimumWidth = 8;
-            this.ModuleName.Name = "ModuleName";
-            this.ModuleName.Visible = false;
-            this.ModuleName.Width = 150;
-            // 
-            // ParamType
-            // 
-            this.ParamType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ParamType.HeaderText = "Parameter Type";
-            this.ParamType.MinimumWidth = 8;
-            this.ParamType.Name = "ParamType";
-            this.ParamType.Width = 189;
-            // 
-            // RouteUrl
-            // 
-            this.RouteUrl.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.RouteUrl.HeaderText = "Route Url";
-            this.RouteUrl.MinimumWidth = 8;
-            this.RouteUrl.Name = "RouteUrl";
-            this.RouteUrl.Width = 235;
-            // 
-            // JsonParameters
-            // 
-            this.JsonParameters.HeaderText = "Json Parameters";
-            this.JsonParameters.MinimumWidth = 8;
-            this.JsonParameters.Name = "JsonParameters";
-            this.JsonParameters.Width = 700;
-            // 
-            // Edit
-            // 
-            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Edit.HeaderText = "Edit";
-            this.Edit.Image = global::UXWarmUpParamBuilder.Properties.Resources.Edit;
-            this.Edit.MinimumWidth = 8;
-            this.Edit.Name = "Edit";
-            this.Edit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Edit.Width = 52;
-            // 
-            // PerformTest
-            // 
-            this.PerformTest.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.PerformTest.HeaderText = "Test";
-            this.PerformTest.MinimumWidth = 8;
-            this.PerformTest.Name = "PerformTest";
-            this.PerformTest.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.PerformTest.Width = 54;
-            // 
-            // Result
-            // 
-            this.Result.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Result.HeaderText = "Result";
-            this.Result.MinimumWidth = 8;
-            this.Result.Name = "Result";
-            this.Result.Width = 73;
-            // 
-            // Status
-            // 
-            this.Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Status.HeaderText = "";
-            this.Status.MinimumWidth = 8;
-            this.Status.Name = "Status";
-            this.Status.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Status.Width = 8;
+            this.dataGridViewImageColumn1.Width = 150;
             // 
             // Form1
             // 
@@ -349,6 +454,7 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToken)).EndInit();
             this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -357,8 +463,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewModuleParam;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel panel4;
@@ -370,6 +474,14 @@
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxEnv;
+        private System.Windows.Forms.TextBox textBoxRepBrw;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridViewToken;
+        private System.Windows.Forms.Button buttonAddToken;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TokenKey;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TokenValue;
+        private System.Windows.Forms.DataGridViewImageColumn EditToken;
+        private System.Windows.Forms.DataGridViewImageColumn Copy;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModuleName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ParamType;
         private System.Windows.Forms.DataGridViewTextBoxColumn RouteUrl;

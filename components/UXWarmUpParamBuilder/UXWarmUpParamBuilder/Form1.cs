@@ -18,6 +18,8 @@ namespace UXWarmUpParamBuilder
         string paramValue = string.Empty;
         DataGridViewRow currentrow;
         Form prompt = new Form();
+        Dictionary<string, string> envDomain = new Dictionary<string, string>();
+        Dictionary<string, string> replaceTokenValue = new Dictionary<string, string>();
         public Form1()
         {
             InitializeComponent();
@@ -31,6 +33,9 @@ namespace UXWarmUpParamBuilder
             comboBoxEnv.Items.Add("Test");
             comboBoxEnv.Items.Add("Local");
             comboBoxEnv.SelectedIndex = 0;
+            envDomain.Add("Dev", @"https://tenant1foraks.dev.mapshc.com/");
+            envDomain.Add("Test", @"https://tenant1foraks.test.mapshc.com/");
+            envDomain.Add("Local", @"https://localhost.dev.mapshc.com/");
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -40,22 +45,7 @@ namespace UXWarmUpParamBuilder
 
         private void dataGridViewModuleParam_buttonCol(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 8)
-            {
-                if (dataGridViewModuleParam[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell cell)
-                {
-                    if (cell.Value == null || cell.Value == cell.OwningColumn.DefaultCellStyle.NullValue)
-                    {
-                        cell.Value = "InActive";
-                    }
-                    else
-                    {
-                        cell.Value = cell.OwningColumn.DefaultCellStyle.NullValue;
-                    }
-                }
-            }
-
-            if (e.ColumnIndex == 3 && e.RowIndex != -1)
+            if (e.ColumnIndex == 4 && e.RowIndex != -1)
             {
                 var cell = dataGridViewModuleParam[e.ColumnIndex, e.RowIndex];
                 DataGridViewRow currentrow = cell.DataGridView.CurrentRow;
@@ -65,55 +55,94 @@ namespace UXWarmUpParamBuilder
                 //this.ShowDialog("EditParam", "", paramvalue.ToString());
             }
 
-            if (e.ColumnIndex == 9)
+            if (e.ColumnIndex == 5 && e.RowIndex != -1)
             {
-                if (dataGridViewModuleParam[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell cell)
+                object selectedValue = comboBoxEnv.SelectedItem;
+                if (selectedValue != null)
                 {
+                    string domain = envDomain[Convert.ToString(selectedValue)];
+                    var cell = dataGridViewModuleParam[e.ColumnIndex, e.RowIndex];
                     DataGridViewRow row = cell.DataGridView.CurrentRow;
-                    if (this.VerifyAction(row))
+                    if (this.VerifyAction(row, domain))
                     {
-                        cell.Value = "Passed";
-                        cell.Style.BackColor = Color.Green;
-                        cell.Style.ForeColor = Color.Green;
+                        row.Cells["Result"].Value = UXWarmUpParamBuilder.Properties.Resources.Accept;
                     }
                     else
                     {
-                        cell.Value = "Failed";
-                        cell.Style.BackColor = Color.Red;
+                        row.Cells["Result"].Value = UXWarmUpParamBuilder.Properties.Resources.Reject;
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Select the Environment",
+                    "window title",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
                 }
             }
         }
 
-        private bool VerifyAction(DataGridViewRow row)
+        private void dataGridViewToken_buttonCol(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 2 && e.RowIndex != -1)
+            {
+                var cell = dataGridViewToken[e.ColumnIndex, e.RowIndex];
+                DataGridViewRow currentrow = cell.DataGridView.CurrentRow;
+                EditReplacement edit = new EditReplacement(currentrow);
+                edit.Show();
+            }
+
+            if (e.ColumnIndex == 3 && e.RowIndex != -1)
+            {
+                var cell = dataGridViewToken[e.ColumnIndex, e.RowIndex];
+                DataGridViewRow currentrow = cell.DataGridView.CurrentRow;
+                string key = currentrow.Cells["TokenKey"].EditedFormattedValue.ToString();
+                Clipboard.Clear();
+                Clipboard.SetText(key);
+            }
+        }
+
+        private bool VerifyAction(DataGridViewRow row, string domain)
         {
             WarmUpTesting warmUpTesting = new WarmUpTesting();
             WarmUpPayloadModel WarmUpPayloadModel = new WarmUpPayloadModel();
             WarmUpPayloadModel.ModuleName = row.Cells["ModuleName"].Value.ToString();
-            WarmUpPayloadModel.Param = row.Cells["Param"].Value.ToString();
+            WarmUpPayloadModel.Param = this.ReplaceTokenValue( row.Cells["JsonParameters"].Value.ToString());
             WarmUpPayloadModel.ParamType = row.Cells["ParamType"].Value.ToString();
             WarmUpPayloadModel.RouteUrl = row.Cells["RouteUrl"].Value.ToString();
             if (WarmUpPayloadModel.ParamType.Equals("ModelParam"))
             {
-                return warmUpTesting.RunWarmUpForPost(WarmUpPayloadModel);
+                return warmUpTesting.RunWarmUpForPost(WarmUpPayloadModel, domain);
             }
             else
             {
-                return warmUpTesting.RunWarmUp(WarmUpPayloadModel);
+                return warmUpTesting.RunWarmUp(WarmUpPayloadModel, domain);
             }
         }
 
-        private void LoadGrid(BindingList<WarmUpParam> data)
+        private void LoadActionGrid(BindingList<WarmUpParam> data)
         {
             dataGridViewModuleParam.Rows.Clear();
             dataGridViewModuleParam.Refresh();
             foreach (var item in data)
             {
-                dataGridViewModuleParam.Rows.Add(new object[] { item.ModuleName, item.ParamType, item.RouteUrl, item.Param, UXWarmUpParamBuilder.Properties.Resources.Edit, UXWarmUpParamBuilder.Properties.Resources.Test, UXWarmUpParamBuilder.Properties.Resources.NotDone, false });
+                dataGridViewModuleParam.Rows.Add(new object[] { item.ModuleName, item.ParamType, item.RouteUrl, item.Param, UXWarmUpParamBuilder.Properties.Resources.Edit, UXWarmUpParamBuilder.Properties.Resources.Test, UXWarmUpParamBuilder.Properties.Resources.NotDone, Convert.ToBoolean(item.Status) });
             }
         }
 
-        public BindingList<WarmUpParam> LoadCsv(string csvFile)
+        private void LoadToeknGrid(BindingList<TokenizedValue> data)
+        {
+            dataGridViewToken.Rows.Clear();
+            dataGridViewToken.Refresh();
+            dataGridViewToken.Columns["EditToken"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewToken.Columns["Copy"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            foreach (var item in data)
+            {
+                dataGridViewToken.Rows.Add(new object[] { item.TokenKey, item.TokenValue, UXWarmUpParamBuilder.Properties.Resources.Edit, UXWarmUpParamBuilder.Properties.Resources.CopyNew });
+            }
+        }
+
+        public BindingList<WarmUpParam> LoadActionCsv(string csvFile)
         {
             BindingList<WarmUpParam> result = new BindingList<WarmUpParam>();
             try
@@ -127,11 +156,35 @@ namespace UXWarmUpParamBuilder
                                 ControllerName = data[2],
                                 RouteUrl = data[3],
                                 Param = data[4],
-                                ParamType = data[5]
+                                ParamType = data[5],
+                                Status = data[6]
                             };
 
-                result = this.ToBindingList(query);
+                result = this.ToBindingList(query.OrderBy(s=>s.RouteUrl));
                 mainList = result;
+            }
+            catch
+            {
+                this.DisplayErrorMessage("File data is Incorrect");
+            }
+
+            return result;
+        }
+
+        public BindingList<TokenizedValue> LoadToeknCsv(string csvFile)
+        {
+            BindingList<TokenizedValue> result = new BindingList<TokenizedValue>();
+            try
+            {
+                var query = from s in File.ReadAllLines(csvFile)
+                            let data = s.Split('|')
+                            select new TokenizedValue
+                            {
+                                TokenKey = data[0],
+                                TokenValue = data[1]
+                            };
+
+                result = this.ToBindingList(query.OrderBy(s=>s.TokenKey));
             }
             catch
             {
@@ -206,27 +259,45 @@ namespace UXWarmUpParamBuilder
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            var engine = new FileHelperEngine<WarmUpParam>();
-
-            var WarmUpParamList = new List<WarmUpParam>();
-            foreach (DataGridViewRow row in dataGridViewModuleParam.Rows)
+            if (dataGridViewModuleParam.Rows.Count > 0)
             {
-                if (row.Cells["StatusButton"].EditedFormattedValue.ToString().Equals("Active"))
+                var engine = new FileHelperEngine<WarmUpParam>();
+                var WarmUpParamList = new List<WarmUpParam>();
+
+                foreach (DataGridViewRow row in dataGridViewModuleParam.Rows)
                 {
                     WarmUpParam warmUpParam = new WarmUpParam();
                     warmUpParam.ModuleName = row.Cells["ModuleName"].EditedFormattedValue.ToString();
-                    warmUpParam.ParamRequired = row.Cells["ParamRequired"].EditedFormattedValue.ToString();
-                    warmUpParam.ControllerName = row.Cells["ControllerName"].EditedFormattedValue.ToString();
                     warmUpParam.RouteUrl = row.Cells["RouteUrl"].EditedFormattedValue.ToString();
-                    warmUpParam.Param = row.Cells["Param"].EditedFormattedValue.ToString();
+                    warmUpParam.Param = row.Cells["JsonParameters"].EditedFormattedValue.ToString();
+                    warmUpParam.Status = row.Cells["Status"].EditedFormattedValue.ToString();
+                    warmUpParam.ParamType = row.Cells["ParamType"].EditedFormattedValue.ToString();
                     WarmUpParamList.Add(warmUpParam);
                 }
+
+                SaveFileDialog saveFileDialogActions = new SaveFileDialog();
+                saveFileDialogActions.Filter = ".csv|*.csv";
+                saveFileDialogActions.Title = "Save File";
+                saveFileDialogActions.ShowDialog();
+
+                if (saveFileDialogActions.FileName != "")
+                {
+                    engine.WriteFile(saveFileDialogActions.FileName, WarmUpParamList);
+                    List<TokenizedValue> tokenizedValueList = this.ConvertTokenDataToModel();
+                    var engineForToken = new FileHelperEngine<TokenizedValue>();
+                    string tokenFileName = saveFileDialogActions.FileName.Remove(saveFileDialogActions.FileName.Length - 4) + "TokenizedData";
+                    tokenFileName = tokenFileName + ".csv";
+                    engineForToken.WriteFile(tokenFileName, tokenizedValueList);
+                    string message = "File Saved Successfully";
+                    string title = "Save";
+                    MessageBox.Show(message, title);
+                }
+            }
+            else
+            {
+                this.DisplayErrorMessage("No Data to Export");
             }
 
-            engine.WriteFile("Output.csv", WarmUpParamList);
-            string message = "File Saved Successfully";
-            string title = "Save";
-            MessageBox.Show(message, title);
         }
 
         private void DisplayErrorMessage(string message)
@@ -276,19 +347,93 @@ namespace UXWarmUpParamBuilder
             OpenFileDialog op = new OpenFileDialog();
             op.ShowDialog();
             textBoxActionPath.Text = op.FileName;
-            textBox1.Text = op.FileName;
-            string extension = Path.GetExtension(textBox1.Text);
+            // textBox1.Text = op.FileName;
+            string extension = Path.GetExtension(textBoxActionPath.Text);
             if (!string.IsNullOrEmpty(extension))
             {
                 if (extension.Equals(@".csv"))
                 {
-                    this.LoadGrid(this.LoadCsv(textBox1.Text));
+                    this.LoadBothGrid(textBoxActionPath.Text);
                 }
                 else
                 {
                     this.DisplayErrorMessage("Invalid File Extension");
                 }
             }
+        }
+
+        private void LoadBothGrid(string path)
+        {
+            string fullTokenPath = path.Split('.').First();
+            fullTokenPath = fullTokenPath + "TokenizedData" + ".csv";
+            bool existStatus = File.Exists(fullTokenPath);
+            if (existStatus)
+            {
+                textBoxRepBrw.Text = fullTokenPath;
+                this.LoadToeknGrid(this.LoadToeknCsv(fullTokenPath));
+                this.LoadActionGrid(this.LoadActionCsv(path));
+            }
+            else
+            {
+                this.DisplayErrorMessage("Tokenized Data File Not Found");
+            }
+
+        }
+
+        private void buttonAddToken_Click(object sender, EventArgs e)
+        {
+            AddReplacement add = new AddReplacement(this.dataGridViewToken);
+            add.Show();
+        }
+
+        private void LoadTokenValues()
+        {
+            foreach (DataGridViewRow row in dataGridViewToken.Rows)
+            {
+                if (!replaceTokenValue.ContainsKey(row.Cells["TokenKey"].EditedFormattedValue.ToString()))
+                {
+                    replaceTokenValue.Add(row.Cells["TokenKey"].EditedFormattedValue.ToString(), row.Cells["TokenValue"].EditedFormattedValue.ToString());
+                }
+            }
+        }
+
+        private string ReplaceTokenValue(string param)
+        {
+            string paramResult = string.Concat(param.Where(c => !char.IsWhiteSpace(c)));
+            foreach (DataGridViewRow row in dataGridViewToken.Rows)
+            {
+                if (!replaceTokenValue.ContainsKey(row.Cells["TokenKey"].EditedFormattedValue.ToString()))
+                {
+                    if (paramResult.Contains(row.Cells["TokenKey"].EditedFormattedValue.ToString()))
+                    {
+                        paramResult = paramResult.Replace(row.Cells["TokenKey"].EditedFormattedValue.ToString(), row.Cells["TokenValue"].EditedFormattedValue.ToString());
+                    }
+                    replaceTokenValue.Add(row.Cells["TokenKey"].EditedFormattedValue.ToString(), row.Cells["TokenValue"].EditedFormattedValue.ToString());
+                }
+                else
+                {
+                    if (paramResult.Contains(row.Cells["TokenKey"].EditedFormattedValue.ToString()))
+                    {
+                        paramResult = paramResult.Replace(row.Cells["TokenKey"].EditedFormattedValue.ToString(), row.Cells["TokenValue"].EditedFormattedValue.ToString());
+                    }
+                }
+            }
+            return paramResult;
+        }
+
+        private List<TokenizedValue> ConvertTokenDataToModel()
+        {
+            List<TokenizedValue> tokenizedValueList = new List<TokenizedValue>();
+
+            foreach (DataGridViewRow row in dataGridViewToken.Rows)
+            {
+                TokenizedValue tokenizedValue = new TokenizedValue();
+                tokenizedValue.TokenKey = row.Cells["TokenKey"].EditedFormattedValue.ToString();
+                tokenizedValue.TokenValue = row.Cells["TokenValue"].EditedFormattedValue.ToString();
+                tokenizedValueList.Add(tokenizedValue);
+            }
+
+            return tokenizedValueList;
         }
     }
 }
