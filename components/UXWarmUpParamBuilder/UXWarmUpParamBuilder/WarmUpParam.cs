@@ -10,6 +10,7 @@ namespace UXWarmUpParamBuilder
     [DelimitedRecord("|")]
     public class WarmUpParam
     {
+        public int Id { get; set; }
         public string ModuleName { get; set; }
 
         public string ParamRequired { get; set; }

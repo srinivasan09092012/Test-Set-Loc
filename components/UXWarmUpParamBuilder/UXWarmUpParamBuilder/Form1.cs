@@ -45,17 +45,16 @@ namespace UXWarmUpParamBuilder
 
         private void dataGridViewModuleParam_buttonCol(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 4 && e.RowIndex != -1)
+            if (e.ColumnIndex == 5 && e.RowIndex != -1)
             {
                 var cell = dataGridViewModuleParam[e.ColumnIndex, e.RowIndex];
                 DataGridViewRow currentrow = cell.DataGridView.CurrentRow;
                 var paramvalue = cell.DataGridView.CurrentRow.Cells["JsonParameters"].EditedFormattedValue;
                 EditParam param = new EditParam(paramvalue.ToString(), currentrow);
                 param.Show();
-                //this.ShowDialog("EditParam", "", paramvalue.ToString());
             }
 
-            if (e.ColumnIndex == 5 && e.RowIndex != -1)
+            if (e.ColumnIndex == 6 && e.RowIndex != -1)
             {
                 object selectedValue = comboBoxEnv.SelectedItem;
                 if (selectedValue != null)
@@ -126,7 +125,7 @@ namespace UXWarmUpParamBuilder
             dataGridViewModuleParam.Refresh();
             foreach (var item in data)
             {
-                dataGridViewModuleParam.Rows.Add(new object[] { item.ModuleName, item.ParamType, item.RouteUrl, item.Param, UXWarmUpParamBuilder.Properties.Resources.Edit, UXWarmUpParamBuilder.Properties.Resources.Test, UXWarmUpParamBuilder.Properties.Resources.NotDone, Convert.ToBoolean(item.Status) });
+                dataGridViewModuleParam.Rows.Add(new object[] {item.Id, item.ModuleName, item.ParamType, item.RouteUrl, item.Param, UXWarmUpParamBuilder.Properties.Resources.Edit, UXWarmUpParamBuilder.Properties.Resources.Test, UXWarmUpParamBuilder.Properties.Resources.NotDone, Convert.ToBoolean(item.Status) });
             }
         }
 
@@ -151,13 +150,14 @@ namespace UXWarmUpParamBuilder
                             let data = s.Split('|')
                             select new WarmUpParam
                             {
-                                ModuleName = data[0],
-                                ParamRequired = data[1],
-                                ControllerName = data[2],
-                                RouteUrl = data[3],
-                                Param = data[4],
-                                ParamType = data[5],
-                                Status = data[6]
+                                Id = Convert.ToInt32(data[0]),
+                                ModuleName = data[1],
+                                ParamRequired = data[2],
+                                ControllerName = data[3],
+                                RouteUrl = data[4],
+                                Param = data[5],
+                                ParamType = data[6],
+                                Status = data[7]
                             };
 
                 result = this.ToBindingList(query.OrderBy(s=>s.RouteUrl));
@@ -267,6 +267,7 @@ namespace UXWarmUpParamBuilder
                 foreach (DataGridViewRow row in dataGridViewModuleParam.Rows)
                 {
                     WarmUpParam warmUpParam = new WarmUpParam();
+                    warmUpParam.Id = Convert.ToInt32(row.Cells["Id"].EditedFormattedValue.ToString());
                     warmUpParam.ModuleName = row.Cells["ModuleName"].EditedFormattedValue.ToString();
                     warmUpParam.RouteUrl = row.Cells["RouteUrl"].EditedFormattedValue.ToString();
                     warmUpParam.Param = row.Cells["JsonParameters"].EditedFormattedValue.ToString();
