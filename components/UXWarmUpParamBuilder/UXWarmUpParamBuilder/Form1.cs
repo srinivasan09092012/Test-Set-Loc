@@ -62,6 +62,7 @@ namespace UXWarmUpParamBuilder
                     string domain = envDomain[Convert.ToString(selectedValue)];
                     var cell = dataGridViewModuleParam[e.ColumnIndex, e.RowIndex];
                     DataGridViewRow row = cell.DataGridView.CurrentRow;
+                    row.Cells["Result"].Value = UXWarmUpParamBuilder.Properties.Resources.Test;
                     if (this.VerifyAction(row, domain))
                     {
                         row.Cells["Result"].Value = UXWarmUpParamBuilder.Properties.Resources.Accept;
@@ -87,7 +88,8 @@ namespace UXWarmUpParamBuilder
             {
                 var cell = dataGridViewToken[e.ColumnIndex, e.RowIndex];
                 DataGridViewRow currentrow = cell.DataGridView.CurrentRow;
-                EditReplacement edit = new EditReplacement(currentrow);
+                this.LoadTokenValues();
+                EditReplacement edit = new EditReplacement(currentrow, replaceTokenValue);
                 edit.Show();
             }
 
@@ -111,11 +113,13 @@ namespace UXWarmUpParamBuilder
             WarmUpPayloadModel.RouteUrl = row.Cells["RouteUrl"].Value.ToString();
             if (WarmUpPayloadModel.ParamType.Equals("ModelParam"))
             {
-                return warmUpTesting.RunWarmUpForPost(WarmUpPayloadModel, domain);
+                bool result =  warmUpTesting.RunWarmUpForPost(WarmUpPayloadModel, domain);
+                return result;
             }
             else
             {
-                return warmUpTesting.RunWarmUp(WarmUpPayloadModel, domain);
+                bool result = warmUpTesting.RunWarmUp(WarmUpPayloadModel, domain);
+                return result;
             }
         }
 
@@ -371,6 +375,8 @@ namespace UXWarmUpParamBuilder
             if (existStatus)
             {
                 textBoxRepBrw.Text = fullTokenPath;
+                toolTip1.SetToolTip(textBoxRepBrw, fullTokenPath);
+                toolTip2.SetToolTip(textBoxActionPath, path);
                 this.LoadToeknGrid(this.LoadToeknCsv(fullTokenPath));
                 this.LoadActionGrid(this.LoadActionCsv(path));
             }
@@ -383,7 +389,8 @@ namespace UXWarmUpParamBuilder
 
         private void buttonAddToken_Click(object sender, EventArgs e)
         {
-            AddReplacement add = new AddReplacement(this.dataGridViewToken);
+            this.LoadTokenValues();
+            AddReplacement add = new AddReplacement(this.dataGridViewToken, this.replaceTokenValue);
             add.Show();
         }
 

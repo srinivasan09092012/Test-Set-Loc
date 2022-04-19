@@ -142,6 +142,7 @@
     <Content Include="Resources\Fail.png" />
     <Content Include="Resources\NotDone.png" />
     <Content Include="Resources\Pass.png" />
+    <None Include="Resources\Preloader.gif" />
     <Content Include="Resources\Reject.png" />
     <Content Include="Resources\Test.png" />
   </ItemGroup>

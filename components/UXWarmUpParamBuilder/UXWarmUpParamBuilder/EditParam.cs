@@ -39,8 +39,19 @@ namespace UXWarmUpParamBuilder
             string actualValue = richTextBoxJson.Text;
             if (!string.IsNullOrEmpty(richTextBoxJson.Text))
             {
+                string value = string.Empty;
                 string result = string.Concat(actualValue.Where(c => !char.IsWhiteSpace(c)));
-                var test = this.IsValidJson(result);
+                try
+                {
+                    value = JValue.Parse(result).ToString(Formatting.Indented);
+
+                }
+                catch
+                {
+                    value = result;
+                }
+                richTextBoxJson.Text = value;
+                var test = this.IsValidJson(value);
                 if (test)
                 {
                     labelJsonMsg.Text = "Valid JSON";

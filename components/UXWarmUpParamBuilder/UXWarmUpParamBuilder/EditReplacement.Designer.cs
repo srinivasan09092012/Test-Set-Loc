@@ -104,6 +104,7 @@
             this.Controls.Add(this.textBoxEditkey);
             this.Controls.Add(this.label1);
             this.Name = "EditReplacement";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit Replacement Values";
             this.ResumeLayout(false);
             this.PerformLayout();

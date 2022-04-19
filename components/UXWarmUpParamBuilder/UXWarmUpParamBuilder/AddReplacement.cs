@@ -13,9 +13,11 @@ namespace UXWarmUpParamBuilder
     public partial class AddReplacement : Form
     {
         DataGridView _dataGridView;
-        public AddReplacement(DataGridView dataGridView)
+        Dictionary<string, string> _tokenKeyValue = new Dictionary<string, string>();
+        public AddReplacement(DataGridView dataGridView, Dictionary<string, string> tokenKeyValue)
         {
             _dataGridView = dataGridView;
+            _tokenKeyValue = tokenKeyValue;
             InitializeComponent();
         }
 
@@ -23,8 +25,17 @@ namespace UXWarmUpParamBuilder
         {
             string key = textBoxRepKey.Text;
             string value = textBoxRepValue.Text;
-            _dataGridView.Rows.Insert(0, new object[] { key, value, UXWarmUpParamBuilder.Properties.Resources.Edit, UXWarmUpParamBuilder.Properties.Resources.CopyNew });
-            this.Close();
+            if (!_tokenKeyValue.ContainsKey(key))
+            {
+                _dataGridView.Rows.Insert(0, new object[] { key, value, UXWarmUpParamBuilder.Properties.Resources.Edit, UXWarmUpParamBuilder.Properties.Resources.CopyNew });
+                this.Close();
+            }
+            else
+            {
+                string title = "Error!!!";
+                MessageBox.Show("The key with same name already exists", title);
+            }
+           
         }
     }
 }

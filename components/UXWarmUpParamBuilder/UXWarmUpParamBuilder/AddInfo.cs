@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +19,7 @@ namespace UXWarmUpParamBuilder
         public AddInfo(DataGridView dataGridView)
         {
             InitializeComponent();
+            label5.Visible = false;
             _dataGridView = dataGridView;
             this.LoadModuleName();
             comboBoxParamType.Items.Add("NoParam");
@@ -74,7 +77,9 @@ namespace UXWarmUpParamBuilder
                 bool statusValue = checkBoxAddStatus.Checked;
                 string paramResult = string.Concat(param.Where(c => !char.IsWhiteSpace(c)));
 
-                this._dataGridView.Rows.Insert(0, new object[] { moduleName, paramType, routeUrl, paramResult, UXWarmUpParamBuilder.Properties.Resources.Edit, UXWarmUpParamBuilder.Properties.Resources.Test, UXWarmUpParamBuilder.Properties.Resources.NotDone, statusValue });
+                int newCount = this._dataGridView.Rows.Count + 1;
+
+                this._dataGridView.Rows.Insert(0, new object[] { newCount, moduleName, paramType, routeUrl, paramResult, UXWarmUpParamBuilder.Properties.Resources.Edit, UXWarmUpParamBuilder.Properties.Resources.Test, UXWarmUpParamBuilder.Properties.Resources.NotDone, statusValue });
                 this.Close();
             }
             else
@@ -82,7 +87,66 @@ namespace UXWarmUpParamBuilder
                 string title = "Warning!!!";
                 MessageBox.Show("Browse the Module File and then add the new Rows", title);
             }
-            
+
+        }
+
+        private void buttonValidAddParam_Click(object sender, EventArgs e)
+        {
+            string actualValue = this.textBoxAddParam.Text;
+            string value = string.Empty;
+            if (!string.IsNullOrEmpty(actualValue))
+            {
+                string result = string.Concat(actualValue.Where(c => !char.IsWhiteSpace(c)));
+                try
+                {
+                    value = JValue.Parse(result).ToString(Formatting.Indented);
+
+                }
+                catch
+                {
+                    value = result;
+                }
+                var test = this.IsValidJson(value);
+                if (test)
+                {
+                    label5.Text = "Valid JSON";
+                    label5.ForeColor = Color.Green;
+                    label5.Visible = true;
+                }
+                else
+                {
+                    label5.Text = "Invalid JSON";
+                    label5.ForeColor = Color.Red;
+                    label5.Visible = true;
+                }
+            }
+        }
+
+        private bool IsValidJson(string strInput)
+        {
+            if (string.IsNullOrWhiteSpace(strInput)) { return false; }
+            strInput = strInput.Trim();
+            if ((strInput.StartsWith("{") && strInput.EndsWith("}")) || //For object
+                (strInput.StartsWith("[") && strInput.EndsWith("]"))) //For array
+            {
+                try
+                {
+                    var obj = JToken.Parse(strInput);
+                    return true;
+                }
+                catch (JsonReaderException jex)
+                {
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

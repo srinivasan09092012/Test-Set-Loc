@@ -13,19 +13,22 @@ namespace UXWarmUpParamBuilder
     public partial class EditReplacement : Form
     {
         DataGridViewRow _dataGridViewRow;
-        public EditReplacement(DataGridViewRow dataGridViewRow)
+        Dictionary<string, string> _tokenKeyValue = new Dictionary<string, string>();
+        string sameKey = string.Empty;
+        public EditReplacement(DataGridViewRow dataGridViewRow, Dictionary<string, string> tokenKeyValue)
         {
             InitializeComponent();
+            _tokenKeyValue = tokenKeyValue;
             _dataGridViewRow = dataGridViewRow;
             this.UpdateEditForm();
         }
 
         private void UpdateEditForm()
         {
-            textBoxEditkey.Text.Clone();
             string key = _dataGridViewRow.Cells["TokenKey"].EditedFormattedValue.ToString();
             string value = _dataGridViewRow.Cells["TokenValue"].EditedFormattedValue.ToString();
             textBoxEditkey.Text = key;
+            sameKey = key;
             textBoxEditValue.Text = value;
         }
 
@@ -33,9 +36,27 @@ namespace UXWarmUpParamBuilder
         {
             string key = textBoxEditkey.Text;
             string value = textBoxEditValue.Text;
-            _dataGridViewRow.Cells["TokenKey"].Value = key;
-            _dataGridViewRow.Cells["TokenValue"].Value = value;
-            this.Close();
+
+            if (sameKey.Equals(key))
+            {
+                _dataGridViewRow.Cells["TokenKey"].Value = key;
+                _dataGridViewRow.Cells["TokenValue"].Value = value;
+                this.Close();
+            }
+            else
+            {
+                if (!_tokenKeyValue.ContainsKey(key))
+                {
+                    _dataGridViewRow.Cells["TokenKey"].Value = key;
+                    _dataGridViewRow.Cells["TokenValue"].Value = value;
+                    this.Close();
+                }
+                else
+                {
+                    string title = "Error!!!";
+                    MessageBox.Show("The key with same name already exists", title);
+                }
+            }
         }
     }
 }

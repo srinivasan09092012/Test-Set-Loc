@@ -38,6 +38,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxParamType = new System.Windows.Forms.ComboBox();
             this.comboBoxModuleName = new System.Windows.Forms.ComboBox();
+            this.buttonValidAddParam = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -59,7 +61,7 @@
             this.Add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
             this.Add.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Add.ForeColor = System.Drawing.Color.White;
-            this.Add.Location = new System.Drawing.Point(202, 626);
+            this.Add.Location = new System.Drawing.Point(204, 633);
             this.Add.Margin = new System.Windows.Forms.Padding(0);
             this.Add.Name = "Add";
             this.Add.Size = new System.Drawing.Size(503, 50);
@@ -164,12 +166,41 @@
             this.comboBoxModuleName.Size = new System.Drawing.Size(503, 36);
             this.comboBoxModuleName.TabIndex = 21;
             // 
+            // buttonValidAddParam
+            // 
+            this.buttonValidAddParam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonValidAddParam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            this.buttonValidAddParam.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonValidAddParam.ForeColor = System.Drawing.Color.White;
+            this.buttonValidAddParam.Location = new System.Drawing.Point(519, 559);
+            this.buttonValidAddParam.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonValidAddParam.Name = "buttonValidAddParam";
+            this.buttonValidAddParam.Size = new System.Drawing.Size(185, 50);
+            this.buttonValidAddParam.TabIndex = 22;
+            this.buttonValidAddParam.Text = "Validate Josn";
+            this.buttonValidAddParam.UseVisualStyleBackColor = false;
+            this.buttonValidAddParam.Click += new System.EventHandler(this.buttonValidAddParam_Click);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(22, 644);
+            this.label5.Margin = new System.Windows.Forms.Padding(0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(92, 28);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "Message";
+            // 
             // AddInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(210)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(815, 692);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.buttonValidAddParam);
             this.Controls.Add(this.comboBoxModuleName);
             this.Controls.Add(this.comboBoxParamType);
             this.Controls.Add(this.label4);
@@ -200,5 +231,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBoxParamType;
         private System.Windows.Forms.ComboBox comboBoxModuleName;
+        private System.Windows.Forms.Button buttonValidAddParam;
+        private System.Windows.Forms.Label label5;
     }
 }
