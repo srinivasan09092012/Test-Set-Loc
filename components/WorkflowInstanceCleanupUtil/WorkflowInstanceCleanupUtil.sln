@@ -1,7 +1,6 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32413.511
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowInstanceCleanupUtil", "WorkflowInstanceCleanupUtil\WorkflowInstanceCleanupUtil.csproj", "{CF3E2D50-98EC-43AB-9615-9381231C7872}"
 EndProject
@@ -28,9 +27,12 @@ Global
 		SolutionGuid = {E1ED29EB-297C-4752-BBAA-F3C527FAD6D2}
 	EndGlobalSection
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 1
+		SccNumberOfProjects = 2
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://PayerPortfolio.visualstudio.com/
+		SccTeamFoundationServer = https://payerportfolio.visualstudio.com/
 		SccLocalPath0 = .
+		SccProjectUniqueName1 = WorkflowInstanceCleanupUtil\\WorkflowInstanceCleanupUtil.csproj
+		SccProjectName1 = WorkflowInstanceCleanupUtil
+		SccLocalPath1 = WorkflowInstanceCleanupUtil
 	EndGlobalSection
 EndGlobal
