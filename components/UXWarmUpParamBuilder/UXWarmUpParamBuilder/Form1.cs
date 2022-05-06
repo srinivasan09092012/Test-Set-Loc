@@ -32,10 +32,12 @@ namespace UXWarmUpParamBuilder
             comboBoxEnv.Items.Add("Dev");
             comboBoxEnv.Items.Add("Test");
             comboBoxEnv.Items.Add("Local");
+            comboBoxEnv.Items.Add("STG6");
             comboBoxEnv.SelectedIndex = 0;
             envDomain.Add("Dev", @"https://tenant1foraks.dev.mapshc.com/");
             envDomain.Add("Test", @"https://tenant1foraks.test.mapshc.com/");
             envDomain.Add("Local", @"https://localhost.dev.mapshc.com/");
+            envDomain.Add("STG6", @"https://tenant1-stage6.stages.mapshc.com/");
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
