@@ -44,7 +44,7 @@
       <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.BusinessRules.21.1.100\lib\net48\HPE.HSP.UA3.Core.API.BusinessRules.Providers.dll</HintPath>
     </Reference>
     <Reference Include="HPE.HSP.UA3.Core.API.Logger">
-      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.22.1.118\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
+      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.22.2.124\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
     </Reference>
     <Reference Include="InRule.Common, Version=5.5.0.216, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">
       <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.BusinessRules.21.1.100\lib\net48\InRule.Common.dll</HintPath>
