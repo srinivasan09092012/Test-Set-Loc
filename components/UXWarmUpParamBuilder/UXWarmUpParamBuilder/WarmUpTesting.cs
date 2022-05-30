@@ -45,16 +45,22 @@ namespace UXWarmUpParamBuilder
             string url = "WarmUp/TestWarmUpForPost";
 
             var json = JsonConvert.SerializeObject(warmUpPayloadModel);
-            var data = new StringContent(json, Encoding.UTF8, "application/json");
+            var handler = new WinHttpHandler();
+            handler.SendTimeout = TimeSpan.FromSeconds(300);
+            handler.ReceiveDataTimeout = TimeSpan.FromSeconds(300);
+            handler.ReceiveHeadersTimeout = TimeSpan.FromSeconds(300);
             try
             {
-                using (var client = new HttpClient())
+                using (var client = new HttpClient(handler))
                 {
-                    client.BaseAddress = new Uri(domain);
                     client.Timeout = TimeSpan.FromSeconds(300);
-                    client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    using (HttpResponseMessage response = client.PostAsync(url, data).Result)
+                    var request = new HttpRequestMessage
+                    {
+                        RequestUri = new Uri(domain + url),
+                        Content = new StringContent(json, Encoding.UTF8, "application/json")
+                    };
+
+                    using (HttpResponseMessage response = client.SendAsync(request).Result)
                     {
 
                         using (HttpContent content = response.Content)
@@ -66,7 +72,7 @@ namespace UXWarmUpParamBuilder
                 }
                 return Convert.ToBoolean(res);
             }
-            catch
+            catch(Exception ex)
             {
                 return false;
             }
