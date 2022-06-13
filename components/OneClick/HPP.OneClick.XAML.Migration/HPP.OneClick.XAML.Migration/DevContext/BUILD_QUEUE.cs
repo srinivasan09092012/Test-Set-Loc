@@ -51,5 +51,8 @@ namespace HPP.OneClick.XAML.Migration.DevContext
 
         [Column(TypeName = "datetime2")]
         public DateTime? BUILD_END_TS { get; set; }
+
+        [NotMapped]
+        public double BuildTimeInSec { get; set; }
     }
 }

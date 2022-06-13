@@ -373,6 +373,7 @@ namespace HPP.OneClick.XAML.Migration
 
                                 jc.COMBINED_BUILD_ARGS = combbuildargs;
                                 jclist.Add(jc);
+                                this.log.Info(jc.SOLUTION_NAME_FULL_PATH);
                                 Console.WriteLine("Added :" + i + " Solution Name" + jc.SOLUTION_NAME_FULL_PATH);
                             }
                         }
@@ -680,6 +681,10 @@ namespace HPP.OneClick.XAML.Migration
                 if (!string.IsNullOrEmpty(msbuildArgs))
                 {
                     jc.MSBUILD_ARGS = bg.MSBuildArguments.Replace("\"", string.Empty);
+
+                    string[] msbuildarray = jc.MSBUILD_ARGS.Split('/');
+                    string matchedvalue = msbuildarray.Where(x => x.Contains("p:Interm")).FirstOrDefault();
+                    jc.MSBUILD_ARGS = jc.MSBUILD_ARGS.Replace("/" + matchedvalue, "");
                     //jc.MSBUILD_ARGS = msbuildArgs.Replace(@"\\", @"\");
                     msBuildArgs = jc.MSBUILD_ARGS;
                     if (!string.IsNullOrEmpty(bg.SFMSBuildArguments))
@@ -703,7 +708,10 @@ namespace HPP.OneClick.XAML.Migration
                     {
                         if (bg != null && bg.MSBuildArguments != null)
                         {
-                            jc.MSBUILD_ARGS = bg.MSBuildArguments.Replace("\"", string.Empty); ;
+                            jc.MSBUILD_ARGS = bg.MSBuildArguments.Replace("\"", string.Empty);
+                            string[] msbuildarray = jc.MSBUILD_ARGS.Split('/');
+                            string matchedvalue = msbuildarray.Where(x => x.Contains("p:Interm")).FirstOrDefault();
+                            jc.MSBUILD_ARGS = jc.MSBUILD_ARGS.Replace("/" + matchedvalue, "");
                             //jc.MSBUILD_ARGS = msbuildArgs.Replace(@"\\", @"\");
                             msBuildArgs = jc.MSBUILD_ARGS;
                             if (!string.IsNullOrEmpty(bg.SFMSBuildArguments))
@@ -926,6 +934,9 @@ namespace HPP.OneClick.XAML.Migration
                 else
                 {
                     jc.MSBUILD_ARGS = msBuildARGS;
+                    string[] msbuildarray = jc.MSBUILD_ARGS.Split('/');
+                    string matchedvalue = msbuildarray.Where(x => x.Contains("p:Interm")).FirstOrDefault();
+                    jc.MSBUILD_ARGS = jc.MSBUILD_ARGS.Replace("/" + matchedvalue, "");
                     msBuildArgs = jc.MSBUILD_ARGS;
                 }
 

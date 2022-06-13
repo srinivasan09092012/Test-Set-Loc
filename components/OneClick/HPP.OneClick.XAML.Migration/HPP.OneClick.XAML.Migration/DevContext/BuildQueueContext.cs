@@ -8,7 +8,7 @@ namespace HPP.OneClick.XAML.Migration.DevContext
     public partial class BuildQueueContext : DbContext
     {
         public BuildQueueContext()
-            : base("name=BuildQueueContext")
+            : base("name=OneClickDevContext")
         {
         }
 

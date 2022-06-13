@@ -14,7 +14,7 @@ namespace HPP.OneClick.XAML.Migration
     public static TfsTeamProjectCollection AuthenticateSourceControl()
     {
 
-      NetworkCredential networkCredential = new NetworkCredential("msrinivasan@dxc.com", "kyflt62qzz3wwg3hcntjr2ruw5efsy6xvtll3s3abkips336p7fa");
+      NetworkCredential networkCredential = new NetworkCredential("msrinivasan@dxc.com", "s6e67zyz5vwneb2tmaygmhcumzgqehc37aazkwosskkvxwdhkbgq");
       VssBasicCredential basicAuthCredential = new VssBasicCredential(networkCredential);
       VssCredentials tfsClientCredentials = new VssCredentials(basicAuthCredential);
       tfsClientCredentials.PromptType = CredentialPromptType.DoNotPrompt;

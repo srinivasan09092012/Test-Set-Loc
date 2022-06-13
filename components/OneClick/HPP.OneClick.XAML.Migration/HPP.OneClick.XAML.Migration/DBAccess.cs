@@ -55,15 +55,22 @@ namespace HPP.OneClick.XAML.Migration
                 List<JOB_CONFIG> currentList = m1.JOB_CONFIG.ToList();
                 List<MODULE> modl = m1.MODULEs.ToList();
                 List<BUILD_TYPE> buildtypelist = m1.BUILD_TYPE.ToList();
-                List<PRODUCT> productList = m1.PRODUCTs.ToList(); 
+                List<PRODUCT> productList = m1.PRODUCTs.ToList();
                 int i = 0;
                 List<Environment> erm = m1.ENVIRONMENT_RELEASE_MAP.ToList();
                 foreach (JOB_CONFIG jc in jobconfig)
                 {
                     Console.WriteLine(++i);
                     this.log.Info("SolutionName : " + jc.SOLUTION_NAME_FULL_PATH);
+
                     try
                     {
+
+                        if (jc.SOLUTION_NAME_FULL_PATH == "Source/Integration/094/API/IntegrationAPI/HPE.HSP.UA3.Integration.API.IntegrationAPI.sln")
+                        {
+                            this.log.Info("catch ");
+                        }
+
                         if (currentList.Where(aa => aa.SOLUTION_NAME_FULL_PATH == jc.SOLUTION_NAME_FULL_PATH).Count() == 0)
                         {
                             if (!string.IsNullOrEmpty(jc.SOLUTION_NAME_FULL_PATH))
@@ -72,7 +79,7 @@ namespace HPP.OneClick.XAML.Migration
                                 string[] slnarray = slnName.Split('/');
                                 string moduleName = slnarray[1];
                                 string buildName = slnarray[3].ToUpper();
-                                if (buildName == "PROVIDERJSONCONVERSION")
+                                if (buildName == "PROVIDERJSONCONVERSION" || slnName.Contains("HPE.HSP.UA3.Integration.API.IntegrationAPI.sln"))
                                 {
                                     buildName = "BATCH";
                                 }
@@ -82,7 +89,7 @@ namespace HPP.OneClick.XAML.Migration
                                 jc.PRODUCT_ID = productList.Where(aa => aa.PRODUCT_NAME == jc.PRODUCT_NAME).Select(aa => aa.PRODUCT_ID).FirstOrDefault();
                                 jc.TARGET_BUILD_ENVRMT = erm.Where(aa => aa.BUILD_RELEASE == jc.TARGET_BUILD_ENVRMT).Select(aa => aa.HPP_RELEASE).FirstOrDefault();
                                 jc.MODULE_ID = modl.Where(aa => aa.MODULE_NAME == moduleName).Select(aa => aa.MODULE_ID).FirstOrDefault();
-                               
+
                                 if (jc.BUILD_TYPE_ID == Guid.Empty)
                                 {
                                     this.log.Error("Empty build type " + jc.SOLUTION_NAME_FULL_PATH);
@@ -90,6 +97,7 @@ namespace HPP.OneClick.XAML.Migration
                                 else
                                 {
                                     m1.JOB_CONFIG.Add(jc);
+                                    Console.WriteLine("Added toDB " + i + " : " + jc.SOLUTION_NAME_FULL_PATH);
                                 }
                                 Console.WriteLine(i + jc.SOLUTION_NAME_FULL_PATH);
                             }
@@ -278,7 +286,7 @@ namespace HPP.OneClick.XAML.Migration
                                 CREATED_TS = DateTime.Now,
                                 LAST_MODIFIED_TS = DateTime.Now
                             });
-                        }                     
+                        }
 
                     }
                     // dependency
@@ -286,6 +294,84 @@ namespace HPP.OneClick.XAML.Migration
                 context.SaveChanges();
                 return false;
             }
+        }
+
+        public double Get_AverageTime(string solutionName)
+        {
+
+            string DefaultDateRangeinDays = System.Configuration.ConfigurationManager.AppSettings["DefaultDateRangeinDays"];
+            string DefaultMaxAvgTimeinMin = System.Configuration.ConfigurationManager.AppSettings["DefaultMaxAvgTimeinMin"];
+            DateTime dt = DateTime.UtcNow.AddDays(-Convert.ToInt32(DefaultDateRangeinDays));
+            double maxtimeforBuild;
+            using (BuildQueueContext context = new BuildQueueContext())
+            {
+                //for package checkin we can set max time is 120 min
+                if (solutionName.ToLower() == "package checkin")
+                {
+                    maxtimeforBuild = 120;
+                }
+                else
+                {
+                    List<BUILD_QUEUE> bqlist = context.BUILD_QUEUE.Where(a => a.BUILD_STATUS.ToLower() == "success"
+                   && a.SOLUTION_NAME_FULL_PATH.ToLower() == solutionName.ToLower() && a.CREATED_TS > dt).ToList();
+                    double hightbuildtimeinMinutes = 0;
+                    if (bqlist.Count == 0)
+                    {
+                        hightbuildtimeinMinutes = Convert.ToInt32(DefaultMaxAvgTimeinMin);
+                    }
+                    else
+                    {
+                        bqlist.ForEach(a =>
+                        {
+                            TimeSpan? ts = a.BUILD_END_TS - a.BUILD_START_TS;
+                            double buildMinutes = (ts.Value.Days * 1440) + (ts.Value.Hours * 60) + (ts.Value.Minutes) + (ts.Value.Seconds > 0 ? 1 : 0);
+                            a.BuildTimeInSec = buildMinutes;
+                        });
+
+                        double avgvalue = bqlist.Average(a => a.BuildTimeInSec);
+
+                        //hightbuildtimeinMinutes  = bqlist.OrderByDescending(a => a.BuildTimeInSec).Select(a => a.BuildTimeInSec).FirstOrDefault();
+                        hightbuildtimeinMinutes = avgvalue == 0 ? 1 : avgvalue;
+                    }
+                    //double the build time for execute.
+                    maxtimeforBuild = hightbuildtimeinMinutes * 1.5;
+                }
+
+            }
+            return maxtimeforBuild;
+        }
+
+        public List<BUILD_QUEUE> GetLongrunningSln(Dictionary<string, int> dicdata)
+        {
+
+            List<BUILD_QUEUE> finalsolutionList = new List<BUILD_QUEUE>();
+            using (BuildQueueContext context = new BuildQueueContext())
+            {
+
+                dicdata.ToList().ForEach(dic =>
+                {
+                    List<BUILD_QUEUE> solutionList;
+                    DateTime dt = DateTime.UtcNow.AddMinutes(-dic.Value);
+                    if (dic.Key.ToLower() == "inprogress")
+                    {
+                        solutionList = context.BUILD_QUEUE.Where(a => a.BUILD_STATUS.ToLower() == dic.Key
+                    && a.BUILD_START_TS < dt // && a.BUILD_END_TS != null
+                    ).ToList();
+                    }
+                    else
+                    {
+                        solutionList = context.BUILD_QUEUE.Where(a => a.BUILD_STATUS.ToLower() == dic.Key
+                    && a.CREATED_TS < dt // && a.BUILD_END_TS != null
+                    ).ToList();
+                    }
+
+                    finalsolutionList.AddRange(solutionList);
+                });
+
+
+
+            }
+            return finalsolutionList;
         }
     }
 }
