@@ -817,10 +817,12 @@ namespace SolutionRefactorMgr
                 {
                     if (toVersion > fromVersion)
                         return true;
+                    else if (toVersion < fromVersion)
+                        return false;
                 }
                 else if (fromPackageName[i] != toPackageName[i])
                 {
-                    if (fromPackageName[0] == "HP" || fromPackageName[0] == "HPE" || fromPackageName[0] == "HPP")
+                    if (fromPackageName[0] == "HP" || fromPackageName[0] == "HPE" || fromPackageName[0] == "HPP" || fromPackageName[0] == "MMS")
                         return true;
                 }
             }
