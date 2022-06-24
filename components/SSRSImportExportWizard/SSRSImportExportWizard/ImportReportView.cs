@@ -370,6 +370,12 @@ namespace SSRSImportExportWizard
                 }
             }
 
+            try
+            {
+                File.Delete(@"datasource.xml");
+            }
+            catch { }
+
             lblImportProgress.Text = "Data Sources created successfully";
             lblImportProgress.Refresh();
             Thread.Sleep(3000);

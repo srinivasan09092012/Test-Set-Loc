@@ -19,10 +19,15 @@ namespace SSRSImportExportConsole
 
         public UpdateDataSource(ReportingService2010 reportServer, string rootPath, string configFileName)
         {
+            LoggerManager.Logger.LogInformational("======================================================================================================");
+            LoggerManager.Logger.LogInformational("DataSource update process started");
+
             this.ReportServer = reportServer;
             this.RootPath = rootPath;
             this.ConfigFileName = configFileName;
             this.SetReportDataSources();
+
+            LoggerManager.Logger.LogInformational("DataSource update process ended");
         }
 
         private void SetReportDataSources()

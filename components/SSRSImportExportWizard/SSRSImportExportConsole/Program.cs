@@ -18,11 +18,14 @@ namespace SSRSImportExportConsole
 
         public static string ConfigFileName { get; set; }
 
+        public static string BackupPath { get; set; }
+
         public static ReportingService2010 ReportServer { get; set; }
 
         static void Main(string[] args)
         {
-            if(args.Length == 5)
+            if (args.Length == 5 ||
+                args.Length == 6)
             {
                 ReportURL = args[0].Trim();
                 UserName = args[1].Trim();
@@ -30,6 +33,11 @@ namespace SSRSImportExportConsole
                 UploadPath = args[3].Trim();
                 ConfigFileName = args[4].Trim();
                 ReportServer = new ReportingService2010();
+
+                if (args.Length == 6)
+                {
+                    BackupPath = args[5].Trim();
+                }
             }
             else
             {
@@ -45,16 +53,11 @@ namespace SSRSImportExportConsole
             {
                 if (ConnectReportServer())
                 {
-                    LoggerManager.Logger.LogInformational("Report Import process started");
-                    new ImportReportItems(ReportServer, UploadPath);
-                    LoggerManager.Logger.LogInformational("Report Import process ended");
-                    LoggerManager.Logger.LogInformational("Datasource update process started");
+                    new ImportReportItems(ReportServer, UploadPath, BackupPath);
                     new UpdateDataSource(ReportServer, string.Empty, ConfigFileName);
-                    LoggerManager.Logger.LogInformational("Datasource update process ended");
-                    LoggerManager.Logger.LogInformational("Report Import completed successfully");
                 }
             }
-        }
+        } 
 
         private static bool ConnectReportServer()
         {

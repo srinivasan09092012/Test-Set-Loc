@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using SSRSImportExportConsole.ReportServer2010;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 using HPE.HSP.UA3.Core.API.Logger;
+using System.Drawing;
 
 namespace SSRSImportExportConsole
 {
@@ -15,18 +15,163 @@ namespace SSRSImportExportConsole
     {
         private ReportingService2010 ReportServer;
         private string UploadPath;
+        private string BackupPath;
 
         public string ReportServerPath { get; set; }
 
-        public ImportReportItems(ReportingService2010 reportServer, string uploadPath)
+        public ImportReportItems(ReportingService2010 reportServer, string uploadPath, string backupPath)
         {
             this.ReportServer = reportServer;
             this.UploadPath = uploadPath;
+            this.BackupPath = backupPath;
             this.ReportServerPath = string.Empty;
 
             this.CreateFolders();
             this.CreateDataSource();
             this.CreateReports();
+        }
+
+        static void DownloadReports(ReportingService2010 ReportServer, CatalogItem item, string DownloadPath)
+        {
+            byte[] rpt_def;
+            XmlDocument doc = new XmlDocument();
+            string sOutFile;
+
+            try
+            {
+                rpt_def = ReportServer.GetItemDefinition(item.Path);
+                MemoryStream stream = new MemoryStream(rpt_def);
+                sOutFile = string.Format(@"{0}{1}.rdl", DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
+
+                if (!Directory.Exists(DownloadPath + item.Path.Replace(item.Name, string.Empty)))
+                    Directory.CreateDirectory(DownloadPath + item.Path.Replace(item.Name, string.Empty));
+
+                if (File.Exists(sOutFile))
+                    File.Delete(sOutFile);
+
+                doc.Load(stream);
+                doc.Save(sOutFile);
+            }
+            catch (Exception ex)
+            {
+                LoggerManager.Logger.LogWarning("Error while exporting report", ex);
+            }
+        }
+
+        static void DownloadDataSource(ReportingService2010 ReportServer, CatalogItem item, string DownloadPath)
+        {
+            byte[] rpt_def;
+            XmlDocument doc = new XmlDocument();
+            string sOutFile;
+
+            try
+            {
+                rpt_def = ReportServer.GetItemDefinition(item.Path);
+                MemoryStream stream = new MemoryStream(rpt_def);
+
+                sOutFile = string.Format(@"{0}{1}.rds", DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
+
+                if (!Directory.Exists(DownloadPath + item.Path.Replace(item.Name, string.Empty)))
+                    Directory.CreateDirectory(DownloadPath + item.Path.Replace(item.Name, string.Empty));
+
+                if (File.Exists(sOutFile))
+                    File.Delete(sOutFile);
+
+                doc.Load(stream);
+                doc.Save(sOutFile);
+            }
+            catch (Exception ex)
+            {
+                LoggerManager.Logger.LogWarning("Error while exporting datasource", ex);
+            }
+        }
+
+        static void DownloadDataSets(ReportingService2010 ReportServer, CatalogItem item, string DownloadPath)
+        {
+            byte[] rpt_def;
+            XmlDocument doc = new XmlDocument();
+            string sOutFile;
+
+            try
+            {
+                rpt_def = ReportServer.GetItemDefinition(item.Path);
+                MemoryStream stream = new MemoryStream(rpt_def);
+
+                sOutFile = string.Format(@"{0}{1}.rsd", DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
+
+                if (!Directory.Exists(DownloadPath + item.Path.Replace(item.Name, string.Empty)))
+                    Directory.CreateDirectory(DownloadPath + item.Path.Replace(item.Name, string.Empty));
+
+                if (File.Exists(sOutFile))
+                    File.Delete(sOutFile);
+
+                doc.Load(stream);
+                doc.Save(sOutFile);
+            }
+            catch (Exception ex)
+            {
+                LoggerManager.Logger.LogWarning("Error while exporting datasets", ex);
+            }
+        }
+
+        static void DownloadComponents(ReportingService2010 ReportServer, CatalogItem item, string DownloadPath)
+        {
+            byte[] rpt_def;
+            XmlDocument doc = new XmlDocument();
+            string sOutFile;
+
+            try
+            {
+                rpt_def = ReportServer.GetItemDefinition(item.Path);
+                MemoryStream stream = new MemoryStream(rpt_def);
+
+                sOutFile = string.Format(@"{0}{1}", DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
+
+                if (!Directory.Exists(DownloadPath + item.Path.Replace(item.Name, string.Empty)))
+                    Directory.CreateDirectory(DownloadPath + item.Path.Replace(item.Name, string.Empty));
+
+                if (File.Exists(sOutFile))
+                    File.Delete(sOutFile);
+
+                doc.Load(stream);
+                doc.Save(sOutFile);
+            }
+            catch (Exception ex)
+            {
+                LoggerManager.Logger.LogWarning("Error while exporting component", ex);
+            }
+        }
+
+        static void DownloadResources(ReportingService2010 ReportServer, CatalogItem item, string DownloadPath)
+        {
+            byte[] rpt_def;
+            string sOutFile;
+
+            try
+            {
+                rpt_def = ReportServer.GetItemDefinition(item.Path);
+                MemoryStream stream = new MemoryStream();
+
+                sOutFile = string.Format(@"{0}{1}", DownloadPath + item.Path.Replace(item.Name, string.Empty), item.Name);
+                sOutFile = sOutFile.Replace("\\", "/");
+
+                if (!Directory.Exists(DownloadPath + item.Path.Replace(item.Name, string.Empty)))
+                    Directory.CreateDirectory(DownloadPath + item.Path.Replace(item.Name, string.Empty));
+
+                if (File.Exists(sOutFile))
+                    File.Delete(sOutFile);
+
+                using (stream = new MemoryStream(rpt_def))
+                {
+                    Image img = Image.FromStream(stream);
+                    img.Save(sOutFile);
+                    img.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerManager.Logger.LogWarning("Error while exporting component", ex);
+            }
         }
 
         private void CreateReports()
@@ -42,6 +187,67 @@ namespace SSRSImportExportConsole
             string dataSourceFolder = @"/Data Sources/";
             string dataSetFolder = @"/Datasets/";
             StringBuilder sb = new StringBuilder();
+
+            if (!string.IsNullOrEmpty(BackupPath))
+            {
+                LoggerManager.Logger.LogInformational("======================================================================================================");
+                LoggerManager.Logger.LogInformational("Export process started");
+
+                BackupPath = BackupPath + @"\" + string.Format("{0:yyyyMMdd-HHmm}", DateTime.Now);
+
+                if (!Directory.Exists(BackupPath))
+                {
+                    Directory.CreateDirectory(BackupPath);
+                    LoggerManager.Logger.LogInformational("Export path " + BackupPath + " created");
+                }
+                else
+                {
+                    LoggerManager.Logger.LogInformational("Export path " + BackupPath + " exists");
+                }
+
+                CatalogItem[] items = ReportServer.ListChildren(@"/", true);
+                foreach (CatalogItem item in items.OrderBy(a => a.Path))
+                {
+                    if (item.TypeName == "Folder")
+                    {
+                        CatalogItem[] childItems = ReportServer.ListChildren((string.IsNullOrEmpty(item.Path) ? string.Format(@"/{0}", item.Path) : string.Format(@"{0}", item.Path)), false);
+
+                        foreach (CatalogItem childItem in childItems)
+                        {
+                            LoggerManager.Logger.LogInformational("Exporting " + childItem.Path + @"/" + childItem.Name);
+
+                            if (childItem.TypeName == "Report")
+                            {
+                                DownloadReports(ReportServer, childItem, BackupPath);
+                            }
+                            else if (childItem.TypeName == "DataSource")
+                            {
+                                DownloadDataSource(ReportServer, childItem, BackupPath);
+                            }
+                            else if (childItem.TypeName == "DataSet")
+                            {
+                                DownloadDataSets(ReportServer, childItem, BackupPath);
+                            }
+                            else if (childItem.TypeName == "Resource")
+                            {
+                                if (!childItem.Name.Contains("sln"))
+                                {
+                                    DownloadResources(ReportServer, childItem, BackupPath);
+                                }
+                            }
+                            else if (childItem.TypeName == "Component")
+                            {
+                                DownloadComponents(ReportServer, childItem, BackupPath);
+                            }
+                        }
+                    }
+                }
+
+                LoggerManager.Logger.LogInformational("Export process ended");
+            }
+
+            LoggerManager.Logger.LogInformational("======================================================================================================");
+            LoggerManager.Logger.LogInformational("Report Import process started");
 
             foreach (var di in reportDir.EnumerateDirectories("*", SearchOption.AllDirectories))
             {
@@ -62,9 +268,7 @@ namespace SSRSImportExportConsole
                             {
                                 this.ReportServer.DeleteItem(parent + "/" + fi.Name.Replace(".rdl", string.Empty));
                             }
-                            catch
-                            {
-                            }
+                            catch { }
 
                             this.ReportServer.CreateCatalogItem("Report", fi.Name.Replace(".rdl", string.Empty), parent, true, definition, null, out warnings);
                         }
@@ -190,10 +394,12 @@ namespace SSRSImportExportConsole
                             }
                         }
 
-                        LoggerManager.Logger.LogInformational("Report " + fi.Name.Replace(".rdl", string.Empty) + " created successfully");
+                        LoggerManager.Logger.LogInformational("Report " + fi.FullName.Replace(".rdl", string.Empty) + " created successfully");
                     }
                 }
             }
+
+            LoggerManager.Logger.LogInformational("Report Import process ended");
         }
 
         private void CreateDataSource()
@@ -206,6 +412,9 @@ namespace SSRSImportExportConsole
             XmlDocument xmlDoc = new XmlDocument();
             List<ItemReference> dataSourceReference = null;
             DataSourceDefinition dsDef = null;
+
+            LoggerManager.Logger.LogInformational("======================================================================================================");
+            LoggerManager.Logger.LogInformational("DataSource Import process started");
 
             foreach (var di in reportDir.EnumerateDirectories("*", SearchOption.AllDirectories))
             {
@@ -283,6 +492,14 @@ namespace SSRSImportExportConsole
                     }
                 }
             }
+
+            try
+            {
+                File.Delete(@"datasource.xml");
+            }
+            catch { }
+
+            LoggerManager.Logger.LogInformational("DataSource Import process ended");
         }
 
         private void CreateFolders()
@@ -290,6 +507,9 @@ namespace SSRSImportExportConsole
             string rootFolder = "\\";
             DirectoryInfo reportDir = new DirectoryInfo(this.UploadPath + rootFolder);
             string parent = string.Empty;
+
+            LoggerManager.Logger.LogInformational("======================================================================================================");
+            LoggerManager.Logger.LogInformational("Folder Import process started");
 
             if (this.ReportServerPath.Trim().Length > 0)
             {
@@ -322,6 +542,8 @@ namespace SSRSImportExportConsole
                     LoggerManager.Logger.LogWarning(di.Name + " folder already exist");
                 }
             }
+
+            LoggerManager.Logger.LogInformational("Folder Import process ended");
         }
     }
 }
