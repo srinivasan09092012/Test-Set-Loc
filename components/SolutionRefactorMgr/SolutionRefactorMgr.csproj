@@ -79,6 +79,7 @@
     <Content Include="Configs\PackageUpgrades\DevF\Log4net_Upgrade to 2.0.12.xml" />
     <Content Include="Configs\PackageUpgrades\DevF\System.Text.Encodings.Web_Upgrade to 5.0.1.xml" />
     <Content Include="Configs\PackageUpgrades\DevF\Vertica.Data.x64.10.0.1.0.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\InRule.5.7.3.xml" />
     <Content Include="Configs\PackageUpgrades\Dev\InRule.Runtime.5.7.2 and Vertica.Data 10.0.1.xml" />
     <Content Include="Configs\PackageUpgrades\Dev\Log4net_Upgrade to 2.0.12.xml" />
     <Content Include="Configs\PackageUpgrades\Dev\MongoCSharpDriver_Upgrade to 2.13.1.xml" />
