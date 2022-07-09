@@ -89,8 +89,8 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.118\lib\net48\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="HP.HSP.UA3.Core.BAS.CQRS, Version=22.2.124.0, Culture=neutral, processorArchitecture=AMD64">
-      <HintPath>..\packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.118\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
+    <Reference Include="HP.HSP.UA3.Core.BAS.CQRS">
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.22.2.124\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
     </Reference>
     <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Interface, Version=22.2.124.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.118\lib\net48\HPE.HSP.UA3.Core.API.AuthManagement.Interface.dll</HintPath>
@@ -111,14 +111,14 @@
     <Reference Include="HPP.Core.API.Logger.Extensions, Version=22.2.124.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HPP.Core.API.Logger.Extensions.22.1.118\lib\net48\HPP.Core.API.Logger.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="InRule.Common, Version=5.5.0.216, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">
-      <HintPath>..\packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.118\lib\net48\InRule.Common.dll</HintPath>
+    <Reference Include="InRule.Common, Version=5.7.3.244, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\InRule.Common.5.7.3\lib\net472\InRule.Common.dll</HintPath>
     </Reference>
-    <Reference Include="InRule.Repository, Version=5.5.0.216, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">
-      <HintPath>..\packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.118\lib\net48\InRule.Repository.dll</HintPath>
+    <Reference Include="InRule.Repository, Version=5.7.3.244, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\InRule.Repository.5.7.3\lib\net472\InRule.Repository.dll</HintPath>
     </Reference>
-    <Reference Include="InRule.Runtime, Version=5.5.0.216, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">
-      <HintPath>..\packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.118\lib\net48\InRule.Runtime.dll</HintPath>
+    <Reference Include="InRule.Runtime, Version=5.7.3.244, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\InRule.Runtime.5.7.3\lib\net472\InRule.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
@@ -414,6 +414,15 @@
     <Reference Include="Vertica.Data, Version=10.0.1.0, Culture=neutral, PublicKeyToken=725728a8837b3bd5, processorArchitecture=MSIL">
       <HintPath>..\packages\Vertica.Data.x64.10.0.1\lib\net45\Vertica.Data.dll</HintPath>
     </Reference>
+    <Reference Include="InRule.Repository.XmlSerializers, Version=5.7.3.244, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\InRule.Repository.5.7.3\lib\net472\InRule.Repository.XmlSerializers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite, Version=1.0.115.5, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ProjectInstaller.cs">
@@ -467,7 +476,9 @@
     <Error Condition="!Exists('..\packages\Microsoft.Azure.DocumentDB.Core.2.10.0\build\Microsoft.Azure.DocumentDB.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Azure.DocumentDB.Core.2.10.0\build\Microsoft.Azure.DocumentDB.Core.targets'))" />
     <Error Condition="!Exists('..\packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets'))" />
     <Error Condition="!Exists('..\packages\MongoDB.Driver.Core.2.13.1\build\MongoDB.Driver.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MongoDB.Driver.Core.2.13.1\build\MongoDB.Driver.Core.targets'))" />
+    <Error Condition="!Exists('..\..\..\..\Packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\Packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
   </Target>
   <Import Project="..\packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets" Condition="Exists('..\packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets')" />
   <Import Project="..\packages\MongoDB.Driver.Core.2.13.1\build\MongoDB.Driver.Core.targets" Condition="Exists('..\packages\MongoDB.Driver.Core.2.13.1\build\MongoDB.Driver.Core.targets')" />
+  <Import Project="..\..\..\..\Packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\..\..\..\Packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
 </Project>
