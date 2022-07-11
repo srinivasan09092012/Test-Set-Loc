@@ -2,36 +2,38 @@
 <RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true">
   <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs>
-    <ModuleConfig name="_ProjectTemplate" branch="Main" types="BAS" />
-    <ModuleConfig name="Administration" branch="Dev" types="BAS" />
-    <ModuleConfig name="AuthDetermination" branch="Dev" types="BAS" />
-    <ModuleConfig name="ClaimsManagement" branch="Dev" types="BAS" />
-    <ModuleConfig name="Core" branch="Dev" types="BAS" />
-    <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="BAS" />
-    <ModuleConfig name="DrugRebate" branch="Dev" types="BAS" />
-    <ModuleConfig name="DrugRebatePortal" branch="Dev" types="BAS" />
-    <ModuleConfig name="EDI" branch="Dev" types="BAS" />
-    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="BAS" />
-    <ModuleConfig name="FileTransfer" branch="Dev" types="BAS" />
-    <ModuleConfig name="FinancialManagement" branch="Dev" types="BAS" />
-    <ModuleConfig name="IdentityManagement" branch="Dev" types="BAS" />
-    <ModuleConfig name="Integration" branch="Dev" types="BAS" />
-    <ModuleConfig name="KansasOnly" branch="Dev" types="BAS" />
-    <ModuleConfig name="ManagedCare" branch="Dev" types="BAS" />
-    <ModuleConfig name="ManagedCarePortal" branch="Dev" types="BAS" />
-    <ModuleConfig name="MemberManagement" branch="Dev" types="BAS" />
-    <ModuleConfig name="MemberPortal" branch="Dev" types="BAS" />
-    <ModuleConfig name="Notifications" branch="Dev" types="BAS" />
-    <ModuleConfig name="PlanManagement" branch="Dev" types="BAS" />
-    <ModuleConfig name="ProgramIntegrity" branch="Dev" types="BAS" />
-    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="BAS" />
-    <ModuleConfig name="ProviderEnrollment" branch="Dev" types="BAS" />
-    <ModuleConfig name="ProviderManagement" branch="Dev" types="BAS" />
-    <ModuleConfig name="ProviderPortal" branch="Dev" types="BAS" />
-    <ModuleConfig name="TaskManagement" branch="Dev" types="BAS" />
-    <ModuleConfig name="ThirdPartySource" branch="Dev" types="BAS" />
-    <ModuleConfig name="TPLCaseTracking" branch="Dev" types="BAS" />
-    <ModuleConfig name="TPLPolicy" branch="Dev" types="BAS" />
+    <!--<ModuleConfig name="_ProjectTemplate" branch="Main" types="BAS" />
+    <ModuleConfig name="Administration" branch="106" types="BAS" />
+    <ModuleConfig name="AuthDetermination" branch="106" types="BAS" />
+    <ModuleConfig name="ClaimsManagement" branch="106" types="BAS" />
+    <ModuleConfig name="Core" branch="106" types="BAS" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="106" types="BAS" />
+    <ModuleConfig name="DrugRebate" branch="106" types="BAS" />
+    <ModuleConfig name="DrugRebatePortal" branch="106" types="BAS" />
+    <ModuleConfig name="EDI" branch="106" types="BAS" />
+    <ModuleConfig name="EmployeeMgmt" branch="106" types="BAS" />
+    <ModuleConfig name="FileTransfer" branch="106" types="BAS" />
+    <ModuleConfig name="FinancialManagement" branch="106" types="BAS" />
+    <ModuleConfig name="IdentityManagement" branch="106" types="BAS" />
+    <ModuleConfig name="Integration" branch="106" types="BAS" />
+    <ModuleConfig name="KansasOnly" branch="106" types="BAS" />
+    <ModuleConfig name="ManagedCare" branch="106" types="BAS" />
+    <ModuleConfig name="ManagedCarePortal" branch="106" types="BAS" />
+    <ModuleConfig name="MemberManagement" branch="106" types="BAS" />
+    <ModuleConfig name="MemberPortal" branch="106" types="BAS" />
+    <ModuleConfig name="Notifications" branch="106" types="BAS" />
+    <ModuleConfig name="PlanManagement" branch="106" types="BAS" />
+    <ModuleConfig name="ProgramIntegrity" branch="106" types="BAS" />-->
+    <ModuleConfig name="ProgramIntegrityCT" branch="106" types="BAS" />
+    <ModuleConfig name="ProviderCredentialing" branch="106" types="BAS" />
+    <!--<ModuleConfig name="ProviderEnrollment" branch="106" types="BAS" />
+    <ModuleConfig name="ProviderManagement" branch="106" types="BAS" />
+    <ModuleConfig name="ProviderPortal" branch="106" types="BAS" />-->
+    <ModuleConfig name="Screening" branch="106" types="BAS" />
+    <!--<ModuleConfig name="TaskManagement" branch="106" types="BAS" />
+    <ModuleConfig name="ThirdPartySource" branch="106" types="BAS" />
+    <ModuleConfig name="TPLCaseTracking" branch="106" types="BAS" />
+    <ModuleConfig name="TPLPolicy" branch="106" types="BAS" />-->
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes>
@@ -39,10 +41,10 @@
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
-    <ReplacementString qualifier="thumbprint=&quot;4c1bb7b90fdb123dcbe30efa38ccae44fcf355ad&quot; /&gt;" from="thumbprint=&quot;4c1bb7b90fdb123dcbe30efa38ccae44fcf355ad&quot; /&gt;" thumbprint="thumbprint=&quot;4c1bb7b90fdb123dcbe30efa38ccae44fcf355ad&quot; /&gt;" to="thumbprint=&quot;4c1bb7b90fdb123dcbe30efa38ccae44fcf355ad&quot; /&gt;[NEWLINE]              &lt;add name=&quot;DXC Technology HPP Assertion Signing Certificate&quot; thumbprint=&quot;aa2ab8f7dd5dc738a5bb8ddad64ecc4e4a80ac8d&quot; /&gt;" />
+    <ReplacementString qualifier="thumbprint=&quot;294e3c04803cf9d57c5f88dc41c4b2c096e1f590&quot; /&gt;" from="thumbprint=&quot;294e3c04803cf9d57c5f88dc41c4b2c096e1f590&quot; /&gt;" thumbprint="thumbprint=&quot;294e3c04803cf9d57c5f88dc41c4b2c096e1f590&quot; /&gt;" to="thumbprint=&quot;8d2d8d609cd1d43bc0119fb58c6b2b1a340722d5&quot; /&gt;" />
   </ReplacementStrings>
   <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace>USCND6195CFQ</TfsWorkspace>
-  <TFSUserName>AzureDevOpsPATKeyName</TFSUserName>
-  <TFSPassword>AzureDevOpsPATKeyValue</TFSPassword>  
+  <TFSUserName>Azure106OpsPATKeyName</TFSUserName>
+  <TFSPassword>Azure106OpsPATKeyValue</TFSPassword>  
 </RefactorConfig>
