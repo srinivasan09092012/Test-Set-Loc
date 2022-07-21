@@ -26,6 +26,7 @@ namespace SSRSImportExportConsole
             this.BackupPath = backupPath;
             this.ReportServerPath = string.Empty;
 
+            this.ExportReports();
             this.CreateFolders();
             this.CreateDataSource();
             this.CreateReports();
@@ -174,20 +175,8 @@ namespace SSRSImportExportConsole
             }
         }
 
-        private void CreateReports()
+        private void ExportReports()
         {
-            string rootFolder = "\\" + this.ReportServerPath;
-            DirectoryInfo reportDir = new DirectoryInfo(this.UploadPath + rootFolder);
-            byte[] definition = null;
-            Warning[] warnings = null;
-            List<DataSource> ds = null;
-            List<ItemReference> references = null;
-            XmlDocument xmlDoc = new XmlDocument();
-            DataSourceReference reference = null;
-            string dataSourceFolder = @"/Data Sources/";
-            string dataSetFolder = @"/Datasets/";
-            StringBuilder sb = new StringBuilder();
-
             if (!string.IsNullOrEmpty(BackupPath))
             {
                 LoggerManager.Logger.LogInformational("======================================================================================================");
@@ -245,6 +234,21 @@ namespace SSRSImportExportConsole
 
                 LoggerManager.Logger.LogInformational("Export process ended");
             }
+        }
+
+        private void CreateReports()
+        {
+            string rootFolder = "\\" + this.ReportServerPath;
+            DirectoryInfo reportDir = new DirectoryInfo(this.UploadPath + rootFolder);
+            byte[] definition = null;
+            Warning[] warnings = null;
+            List<DataSource> ds = null;
+            List<ItemReference> references = null;
+            XmlDocument xmlDoc = new XmlDocument();
+            DataSourceReference reference = null;
+            string dataSourceFolder = @"/Data Sources/";
+            string dataSetFolder = @"/Datasets/";
+            StringBuilder sb = new StringBuilder();
 
             LoggerManager.Logger.LogInformational("======================================================================================================");
             LoggerManager.Logger.LogInformational("Report Import process started");
