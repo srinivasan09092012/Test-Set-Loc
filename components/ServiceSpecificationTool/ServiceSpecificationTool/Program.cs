@@ -915,8 +915,6 @@ namespace ServiceSpecificationTool
                 throw ex;
             }
         }
-
-
         /// <summary>
         /// Getting All Main & Contratct projects path 
         /// </summary>
@@ -1215,8 +1213,11 @@ namespace ServiceSpecificationTool
                             {
                                 outPutDir = lineContent + @"\";
                             }
-                            rows[rowIndex] = rows[rowIndex].Replace("Dev", currentBranchName).Replace(lineContent + @"\", outPutDir);
-                            contentsChanged = true;
+                            if (!sandcastleConfiguration.currentBranch.EndsWith("0"))
+                            {
+                                rows[rowIndex] = rows[rowIndex].Replace("Dev", currentBranchName).Replace(lineContent + @"\", outPutDir);
+                                contentsChanged = true;
+                            }
                         }
                     File.SetAttributes(fileName, File.GetAttributes(fileName) & ~FileAttributes.ReadOnly);
                     File.WriteAllLines(fileName, rows);
@@ -1632,6 +1633,10 @@ namespace ServiceSpecificationTool
             if (currentBranch.Count() == 2)
             {
                 currentBranch = "0" + currentBranch;
+            }
+            if (sandcastleConfiguration.currentBranch.EndsWith("0"))
+            {
+                currentBranch = "Dev";
             }
             try
             {
