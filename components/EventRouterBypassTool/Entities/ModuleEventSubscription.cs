@@ -77,13 +77,13 @@ namespace EventRouterByPassTool.Entities
             /// If isActive set to true then the event is currently being used.  
             /// If false then the event is not being used.
             /// <uol>
-            /// <li><b>Column:</b>ISACTIVE</li> 
+            /// <li><b>Column:</b>IS_ACTIVE</li> 
             /// <li><b>Data Type:</b>bool</li> 
             /// <li><b>Required:</b>Yes</li> 
             /// <li><b>Unique Index:</b>None</li> 
             /// </uol>
             /// </summary>
-            [Column("ISACTIVE")]
+            [Column("IS_ACTIVE")]
             public bool IsActive { get; set; }
 
             /// <summary>
