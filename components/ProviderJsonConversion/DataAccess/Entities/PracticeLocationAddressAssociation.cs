@@ -1,4 +1,4 @@
-﻿//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
 // This code is the property of Gainwell Technologies, Copyright (c) 2021. All rights reserved. 
 //
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
@@ -102,7 +102,7 @@ namespace DataAccess.Entities
         /// </summary>
         [Column("OPERATOR_ID")]
         [Required]
-        [NonUnicode, StringLength(50)]
+        [NonUnicode, StringLength(200)]
         public string OperatorId { get; set; }
 
         /// <summary>

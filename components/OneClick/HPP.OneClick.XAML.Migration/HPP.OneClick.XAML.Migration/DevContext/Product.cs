@@ -1,4 +1,4 @@
-﻿//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 // This code is the property of DXC Technology, Copyright (c) 2020. All rights reserved.
 //
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
@@ -29,7 +29,7 @@ namespace HPP.OneClick.XAML.Migration.DevContext
         public string PRODUCT_NAME { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(200)]
         public string OPERATOR_ID { get; set; }
 
         [Column(TypeName = "datetime2")]

@@ -25,7 +25,7 @@ namespace HPP.OneClick.XAML.Migration.DevContext
         public string PACKAGE_NAME { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(200)]
         public string OPERATOR_ID { get; set; }
 
         [Column(TypeName = "datetime2")]

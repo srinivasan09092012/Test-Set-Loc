@@ -37,7 +37,7 @@ namespace HPP.OneClick.XAML.Migration.DevContext
         public string BUILD_PARAMS_JSON { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(200)]
         public string OPERATOR_ID { get; set; }
 
         [Column(TypeName = "datetime2")]

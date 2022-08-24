@@ -1,4 +1,4 @@
-﻿//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
 // This code is the property of Gainwell Technologies, Copyright (c) 2021. All rights reserved. 
 //
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
@@ -46,7 +46,7 @@ namespace DataAccess.Entities
         public string DOING_BUSINESS_AS_NAME { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(200)]
         [Column("OPERATOR_ID")]
         public string OPERATOR_ID { get; set; }
 

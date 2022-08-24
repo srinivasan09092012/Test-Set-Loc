@@ -1,4 +1,4 @@
-﻿//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
 // This code is the property of Gainwell Technologies, Copyright (c) 2021. All rights reserved. 
 //
 // Any unauthorized use in whole or in part without written consent is strictly prohibited.
@@ -243,12 +243,12 @@ namespace DataAccess.Entities
         /// The operator id which the provider managing employee asscociation record inserted or updated
         /// <uol>
         /// <li><b>Column:</b> OPERATOR_ID</li> 
-        /// <li><b>Data Type:</b> string, StringLength(50)</li>
+        /// <li><b>Data Type:</b> string, StringLength(200)</li>
         /// <li><b>Required:</b> Yes</li>
         /// </uol>
         /// </summary>   
         [Required]
-        [StringLength(50)]
+        [StringLength(200)]
         [Column("OPERATOR_ID")]
         public string OperatorId { get; set; }
 

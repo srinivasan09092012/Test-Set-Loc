@@ -56,7 +56,7 @@ namespace DatalistSyncUtil.Entities
 
         [Column("OPERATOR_ID")]
         [Required]
-        [StringLength(50)]
+        [StringLength(200)]
         public string OperatorID { get; set; }
 
         [Column("LAST_MODIFIED_TS")]

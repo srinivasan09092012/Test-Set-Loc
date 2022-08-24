@@ -34,7 +34,7 @@ namespace HP.HSP.UA3.Core.BAS.Help.DataAccess.DataAccess.Entities
         public bool IsActive { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(200)]
         [Column("OPERATOR_ID")]
         public string OperatorId { get; set; }
 

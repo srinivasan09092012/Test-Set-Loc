@@ -34,7 +34,7 @@ namespace DatalistSyncUtil.Entities
         public string NodeTxt { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(200)]
         [Column("OPERATOR_ID")]
         public string OperatorID { get; set; }
 
