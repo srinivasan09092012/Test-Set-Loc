@@ -50,6 +50,9 @@ namespace SolutionRefactorMgr.Domain
 
         public List<FileDetails> AddFiles { get; set; }
 
+        public List<ReplacementStringWithinRange> ReplacementStringWithinRanges { get; set; }
+
+
         public List<WebAppConfig.DependentAssembly> WebAppConfig { get; set; }
 
         public List<Package> Packages { get; set; }
@@ -118,6 +121,15 @@ namespace SolutionRefactorMgr.Domain
             if (this.ReplacementStrings != null && this.ReplacementStrings.Count > 0)
             {
                 foreach (ReplacementString replacement in this.ReplacementStrings)
+                {
+                    replacement.Validate();
+                    replacement.Initialize();
+                }
+            }
+
+            if (this.ReplacementStringWithinRanges != null && this.ReplacementStringWithinRanges.Count > 0)
+            {
+                foreach (ReplacementStringWithinRange replacement in this.ReplacementStringWithinRanges)
                 {
                     replacement.Validate();
                     replacement.Initialize();

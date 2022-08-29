@@ -18,6 +18,7 @@ namespace SolutionRefactorMgr
 {
     public class Program
     {
+        private static int linesEditedCount = 0;
         private static int pendAddCount = 0;
         private static int pendDeleteCount = 0;
         private static int pendEditCount = 0;
@@ -31,6 +32,7 @@ namespace SolutionRefactorMgr
         private static Workspace workspace = null;
         private static TextWriter tw = null;
         private static PendingChange[] allPendingChangesinWorkspace = null;
+        private static DateTime startTime = DateTime.Now;
 
         public static void Main(string[] args)
         {
@@ -542,6 +544,7 @@ namespace SolutionRefactorMgr
                     }
                     else if (UpdateReference(projectFile, existingReference[0], reference, folderLevels))
                     {
+                        linesEditedCount++;
                         referenceUpdated = true;
                     }
                 }
@@ -846,6 +849,7 @@ namespace SolutionRefactorMgr
                 if (existingPackageEntry.Count == 0)
                 {
                     AddPackageEntry(packagesConfigFile, packagesElement, package.id, package.version, package.targetFramework);
+                    linesEditedCount++;
                     fileUpdated = true;
                 }
                 else if (existingPackageEntry[0].Attributes["version"].Value != package.version || existingPackageEntry[0].Attributes["targetFramework"].Value != package.targetFramework)
@@ -879,6 +883,7 @@ namespace SolutionRefactorMgr
                         existingPackageEntry[0].RemoveAttribute("targetFramework");
                         existingPackageEntry[0].SetAttribute("version", package.version);
                         existingPackageEntry[0].SetAttribute("targetFramework", package.targetFramework);
+                        linesEditedCount++;
                         fileUpdated = true;
                     }
                 }
@@ -928,6 +933,7 @@ namespace SolutionRefactorMgr
                     if (dependentAssembly == null)
                     {
                         AddDependentAssembly(configFile, assemblyBinding, dependentAssly);
+                        linesEditedCount++;
                         fileUpdated = true;
                     }
                     else
@@ -942,6 +948,7 @@ namespace SolutionRefactorMgr
                                     dependentAssemblyChild.RemoveAttribute("culture");
                                     dependentAssemblyChild.SetAttribute("publicKeyToken", dependentAssly.publicKeyToken);
                                     dependentAssemblyChild.SetAttribute("culture", dependentAssly.culture);
+                                    linesEditedCount++;
                                     fileUpdated = true;
                                 }
                             }
@@ -953,6 +960,7 @@ namespace SolutionRefactorMgr
                                     dependentAssemblyChild.RemoveAttribute("newVersion");
                                     dependentAssemblyChild.SetAttribute("oldVersion", dependentAssly.oldVersion);
                                     dependentAssemblyChild.SetAttribute("newVersion", dependentAssly.newVersion);
+                                    linesEditedCount++;
                                     fileUpdated = true;
                                 }
                             }
@@ -1017,9 +1025,18 @@ namespace SolutionRefactorMgr
         {
             bool contentsChanged = false;
             refactoredFileContents = string.Empty;
+            List<string> fileContents = null;
+            int lineNumber = 0;
+
 
             using (StreamReader reader = new StreamReader(filePath))
             {
+                if(refactorConfig.ReplacementStringWithinRanges != null && refactorConfig.ReplacementStringWithinRanges.Count > 0)
+                {
+                    fileContents = File.ReadLines(filePath).ToList();
+                    reader.DiscardBufferedData();
+                }
+
                 using (MemoryStream ms = new MemoryStream())
                 {
                     using (StreamWriter writer = new StreamWriter(ms))
@@ -1040,6 +1057,7 @@ namespace SolutionRefactorMgr
 
                             if (!deleteLine)
                             {
+                                // String Replacements
                                 foreach (ReplacementString replacement in refactorConfig.ReplacementStrings)
                                 {
                                     if (refactorConfig.RefactorPartialContent)
@@ -1048,6 +1066,7 @@ namespace SolutionRefactorMgr
                                         {
                                             string newstring = replacement.connectionString + (line.Contains(replacement.providerName) ? replacement.providerName : "");
                                             line = System.Text.RegularExpressions.Regex.Replace(line, replacement.From, newstring);
+                                            linesEditedCount++;
                                             contentsChanged = true;
                                             break;
                                         }
@@ -1058,8 +1077,16 @@ namespace SolutionRefactorMgr
                                         contentsChanged |= RefactorLine(replacement, ref line);
                                     }
                                 }
+
+                                // String Range Replacements
+                                foreach (ReplacementStringWithinRange replacement in refactorConfig.ReplacementStringWithinRanges)
+                                {
+                                    contentsChanged |= RefactorLineWithinRange(replacement, fileContents, ref line, ref lineNumber);
+                                }
+
                                 writer.WriteLine(line);
                             }
+                            lineNumber++;
                         }
 
                         writer.Flush();
@@ -1083,6 +1110,7 @@ namespace SolutionRefactorMgr
                 if (line.Contains(replacement.Qualifier) && replacement.FromRegex.IsMatch(line))
                 {
                     line = replacement.FromRegex.Replace(line, replacement.To);
+                    linesEditedCount++;
                     return true;
                 }
             }
@@ -1091,11 +1119,106 @@ namespace SolutionRefactorMgr
                 if (line.Contains(replacement.Qualifier) && line.Contains(replacement.From))
                 {
                     line = line.Replace(replacement.From, replacement.To);
+                    linesEditedCount++;
                     return true;
                 }
             }
 
             return false;
+        }
+
+        private static bool RefactorLineWithinRange(ReplacementStringWithinRange replacement, List<string> fileContents, ref string line, ref int lineNumber)
+        {
+            int startLine = lineNumber - replacement.RangeLineCount;
+            int endLine = lineNumber + replacement.RangeLineCount;
+
+            if (startLine < 0)
+            {
+                startLine = 0;
+            }
+            if (endLine > fileContents.Count)
+            {
+                endLine = fileContents.Count;
+            }
+
+            if (replacement.RegexReplace)
+            {
+                if (line.Contains(replacement.Qualifier) && replacement.FromRegex.IsMatch(line))
+                {
+                    if (QualifierFoundWithinFileContentRange(fileContents, lineNumber, startLine, endLine, replacement.RangeQualifier))
+                    {
+                        line = replacement.FromRegex.Replace(line, replacement.To);
+                        linesEditedCount++;
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                if (line.Contains(replacement.Qualifier) && line.Contains(replacement.From))
+                {
+                    if (QualifierFoundWithinFileContentRange(fileContents, lineNumber, startLine, endLine, replacement.RangeQualifier))
+                    {
+                        line = line.Replace(replacement.From, replacement.To);
+                        linesEditedCount++;
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private static bool QualifierFoundWithinFileContentRange(List<string> fileContents, int lineNumber, int startLine, int endLine, string qualifier)
+        {
+            //int lineNumberx = 0;
+            bool qualifierFound = false;
+
+            for (int i = lineNumber; i < endLine; i++)
+            {
+                if (string.IsNullOrEmpty(fileContents[i]))
+                {
+                    break;
+                }
+
+                qualifierFound = fileContents[i].ToLower().Contains(qualifier.ToLower());
+                if (qualifierFound)
+                {
+                    break;
+                }
+            }
+
+            if (!qualifierFound)
+            {
+                for (int i = lineNumber; i >= startLine; i--)
+                {
+                    if (string.IsNullOrEmpty(fileContents[i]))
+                    {
+                        break;
+                    }
+
+                    qualifierFound = fileContents[i].ToLower().Contains(qualifier.ToLower());
+                    if (qualifierFound)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            ////foreach(string line in fileContents)
+            ////{
+            ////    if (lineNumberx >= startLine && lineNumberx <= endLine)
+            ////    {
+            ////        qualifierFound = line.ToLower().Contains(qualifier.ToLower());
+            ////        if (qualifierFound)
+            ////        {
+            ////            break;
+            ////        }
+            ////    }
+            ////    lineNumberx++;
+            ////}
+
+            return qualifierFound;
         }
 
         private static string RefactorFileName(string origValue)
@@ -1190,9 +1313,12 @@ namespace SolutionRefactorMgr
             LogMessage(0, "===========================================================================");
             LogMessage(0, string.Format("Pending Adds:       {0}", pendAddCount.ToString("#,##0")));
             LogMessage(0, string.Format("Pending Edits:      {0}", pendEditCount.ToString("#,##0")));
+            LogMessage(0, string.Format("Lines Edited:       {0}", linesEditedCount.ToString("###,##0")));
             LogMessage(0, string.Format("Pending Deletes:    {0}", pendDeleteCount.ToString("#,##0")));
             LogMessage(0, string.Format("Pending Renames:    {0}", pendRenameCount.ToString("#,##0")));
             LogMessage(0, string.Format("Exceptions Written: {0}", exceptionsWritten.ToString("#,##0")));
+            TimeSpan span = DateTime.Now - startTime;
+            LogMessage(0, string.Format("Time to Execute:    {0}:{1}:{2}", span.Hours.ToString("D2"), span.Minutes.ToString("D2"), span.Seconds.ToString("D2")));
             LogMessage(0, " ");
         }
 

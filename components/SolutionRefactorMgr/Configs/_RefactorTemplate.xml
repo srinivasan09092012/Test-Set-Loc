@@ -59,6 +59,19 @@ RefactorConfig - Base processing parameters:
     <ReplacementString qualifier="&lt;httpRuntime targetFramework=&quot;4.5&quot; /&gt;" from="&lt;httpRuntime targetFramework=&quot;4.5&quot; /&gt;" to="&lt;httpRuntime targetFramework=&quot;4.5&quot; enableVersionHeader=&quot;false&quot; /&gt;[NEWLINE]    &lt;httpCookies httpOnlyCookies=&quot;true&quot; /&gt;" />
   </ReplacementStrings>
   <!--
+  ReplacementStringWithinRanges - List of ReplacementStringWithinRange elements used to update file contents only.
+    ReplacementString parameters:
+      qualifier: any string value, if a line contains this string, the line will be updated based on from/to values.
+      from: any string value, the string to be replaced with the 'to' value.
+      to: any string value, the string to replace the 'from' value.  Use [NEWLINE] to create a new line as part of the replacement string.
+      rangeQualifier: any string value, if a line contains this string, the line will be updated based on from/to values.
+      rangeLineCount: the number of lines +- from the rangeQualifier to look for match.  The search in a particular direction will 
+        stop if a blank line is encountered.
+  -->
+  <ReplacementStringWithinRanges>
+    <ReplacementStringWithinRange qualifier="SomeValue" from="SomeValue" to="SomeNewValue" rangeQualifier="SomeValue" rangeLineCount="5" />
+  </ReplacementStringWithinRanges>
+  <!--
    TfsServer - Location of the TFS server used by these files.
   -->
   <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>

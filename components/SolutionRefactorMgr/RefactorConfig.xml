@@ -176,8 +176,9 @@
     <ReplacementString qualifier="version=&quot;20.3.94&quot;" from="20.3.94" to="21.1.100" />
 
   </ReplacementStrings>
+  <ReplacementStringWithinRanges/>
   <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
-  <TfsWorkspace>IN-5CG0356LP3</TfsWorkspace>
-  <TFSUserName>pradeep470</TFSUserName>
-  <TFSPassword>Pradeepyadav#@1</TFSPassword>
+  <TfsWorkspace>Workspace</TfsWorkspace>
+  <TFSUserName>user</TFSUserName>
+  <TFSPassword>Password</TFSPassword>
 </RefactorConfig>
