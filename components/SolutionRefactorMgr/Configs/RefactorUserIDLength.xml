@@ -60,6 +60,7 @@
     <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="DIRECTOR_ID" rangeLineCount="5" />
     <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="FIRST_MODULE_BACKUP_USERID" rangeLineCount="5" />
     <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="ID_USER" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="HasMaxLength(50)" from="HasMaxLength(50)" to="HasMaxLength(200)" rangeQualifier="ID_USER" rangeLineCount="5" />
     <!--<ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="LAST_MODIFIED_OPERATOR_ID" rangeLineCount="5" />-->
     <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="LAST_UPDATE_BY" rangeLineCount="5" />-->
     <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="LETTER_CREATED_BY" rangeLineCount="5" />
@@ -71,6 +72,7 @@
     <!--<ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="ORIG_OPERATOR_ID" rangeLineCount="5" />-->
     <ReplacementStringWithinRange qualifier="StringLength(20)" from="StringLength(20)" to="StringLength(200)" rangeQualifier="OPERATOR_ID" rangeLineCount="5" />
     <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="OPERATOR_ID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="HasMaxLength(50)" from="HasMaxLength(50)" to="HasMaxLength(200)" rangeQualifier="OPERATOR_ID" rangeLineCount="5" />
     <ReplacementStringWithinRange qualifier="VarChar(50)&lt;" from="VarChar(50)" to="VarChar(200)" rangeQualifier="OPERATOR_ID" rangeLineCount="5" />
     <!--<ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="OVERRIDE_OPERATOR_ID" rangeLineCount="5" />-->
     <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="REQUESTED_BY" rangeLineCount="5" />
@@ -87,6 +89,7 @@
     <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="SUPERVISOR_ID" rangeLineCount="5" />
     <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="UPLOAD_ID" rangeLineCount="5" />
     <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="USER_ID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="HasMaxLength(50)" from="HasMaxLength(50)" to="HasMaxLength(200)" rangeQualifier="USER_ID" rangeLineCount="5" />
     <ReplacementStringWithinRange qualifier="StringLength(100)" from="StringLength(100)" to="StringLength(200)" rangeQualifier="USER_ID" rangeLineCount="5" />
     <ReplacementStringWithinRange qualifier="StringLength(120)" from="StringLength(120)" to="StringLength(200)" rangeQualifier="USER_ID" rangeLineCount="5" />
     <ReplacementStringWithinRange qualifier="StringLength(150)" from="StringLength(150)" to="StringLength(200)" rangeQualifier="USER_ID" rangeLineCount="5" />
