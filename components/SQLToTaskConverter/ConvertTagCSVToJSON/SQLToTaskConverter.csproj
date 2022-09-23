@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -93,7 +93,7 @@
       <HintPath>..\..\..\..\Packages\Azure.Data.AppConfiguration.1.0.2\lib\netstandard2.0\Azure.Data.AppConfiguration.dll</HintPath>
     </Reference>
     <Reference Include="BarcodeStandard">
-      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.CorrespondenceManagement.22.2.124\lib\net48\BarcodeStandard.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.CorrespondenceManagement.22.3.130\lib\net48\BarcodeStandard.dll</HintPath>
     </Reference>
     <Reference Include="DnsClient, Version=1.4.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Packages\DnsClient.1.4.0\lib\net471\DnsClient.dll</HintPath>
@@ -108,55 +108,55 @@
       <HintPath>..\..\..\..\Packages\FileHelpers.3.4.1\lib\net45\FileHelpers.dll</HintPath>
     </Reference>
     <Reference Include="HP.HSP.UA3.Core.API.AddressValidation">
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.API.AddressValidation.22.2.124\lib\net48\HP.HSP.UA3.Core.API.AddressValidation.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.API.AddressValidation.22.3.130\lib\net48\HP.HSP.UA3.Core.API.AddressValidation.dll</HintPath>
     </Reference>
     <Reference Include="HP.HSP.UA3.Core.API.AddressValidation.Data">
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.API.AddressValidation.22.2.124\lib\net48\HP.HSP.UA3.Core.API.AddressValidation.Data.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.API.AddressValidation.22.3.130\lib\net48\HP.HSP.UA3.Core.API.AddressValidation.Data.dll</HintPath>
     </Reference>
     <Reference Include="HP.HSP.UA3.Core.API.AddressValidation.Interfaces">
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.API.AddressValidation.22.2.124\lib\net48\HP.HSP.UA3.Core.API.AddressValidation.Interfaces.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.API.AddressValidation.22.3.130\lib\net48\HP.HSP.UA3.Core.API.AddressValidation.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="HP.HSP.UA3.Core.API.FileManagement">
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.API.FileManagement.22.2.124\lib\net48\HP.HSP.UA3.Core.API.FileManagement.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.API.FileManagement.22.3.130\lib\net48\HP.HSP.UA3.Core.API.FileManagement.dll</HintPath>
     </Reference>
-    <Reference Include="HP.HSP.UA3.Core.BAS.CQRS, Version=22.2.124.0, Culture=neutral, processorArchitecture=AMD64">
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.22.2.124\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
+    <Reference Include="HP.HSP.UA3.Core.BAS.CQRS, Version=22.3.130.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.22.3.130\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
     </Reference>
     <Reference Include="HP.HSP.UA3.ManagedCare.BAS.ManagedCare">
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.22.2.124\lib\net48\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.22.3.130\lib\net48\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.dll</HintPath>
     </Reference>
     <Reference Include="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Business">
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.22.2.124\lib\net48\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Business.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.22.3.130\lib\net48\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Business.dll</HintPath>
     </Reference>
     <Reference Include="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts">
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.22.2.124\lib\net48\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.22.3.130\lib\net48\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="HP.HSP.UA3.ManagedCare.BAS.ManagedCare.DataAccess">
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.22.2.124\lib\net48\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.DataAccess.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.22.3.130\lib\net48\HP.HSP.UA3.ManagedCare.BAS.ManagedCare.DataAccess.dll</HintPath>
     </Reference>
-    <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Interface, Version=22.2.124.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.AuthManagement.22.2.124\lib\net48\HPE.HSP.UA3.Core.API.AuthManagement.Interface.dll</HintPath>
+    <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Interface, Version=22.3.130.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.AuthManagement.22.3.130\lib\net48\HPE.HSP.UA3.Core.API.AuthManagement.Interface.dll</HintPath>
     </Reference>
-    <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Providers, Version=22.2.124.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.AuthManagement.22.2.124\lib\net48\HPE.HSP.UA3.Core.API.AuthManagement.Providers.dll</HintPath>
+    <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Providers, Version=22.3.130.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.AuthManagement.22.3.130\lib\net48\HPE.HSP.UA3.Core.API.AuthManagement.Providers.dll</HintPath>
     </Reference>
-    <Reference Include="HPE.HSP.UA3.Core.API.BusinessRules.Interface, Version=22.2.124.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.BusinessRules.22.2.124\lib\net48\HPE.HSP.UA3.Core.API.BusinessRules.Interface.dll</HintPath>
+    <Reference Include="HPE.HSP.UA3.Core.API.BusinessRules.Interface, Version=22.3.130.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.BusinessRules.22.3.130\lib\net48\HPE.HSP.UA3.Core.API.BusinessRules.Interface.dll</HintPath>
     </Reference>
-    <Reference Include="HPE.HSP.UA3.Core.API.BusinessRules.Providers, Version=22.2.124.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.BusinessRules.22.2.124\lib\net48\HPE.HSP.UA3.Core.API.BusinessRules.Providers.dll</HintPath>
+    <Reference Include="HPE.HSP.UA3.Core.API.BusinessRules.Providers, Version=22.3.130.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.BusinessRules.22.3.130\lib\net48\HPE.HSP.UA3.Core.API.BusinessRules.Providers.dll</HintPath>
     </Reference>
     <Reference Include="HPE.HSP.UA3.Core.API.CorrespondenceManagement.Interface">
-      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.CorrespondenceManagement.22.2.124\lib\net48\HPE.HSP.UA3.Core.API.CorrespondenceManagement.Interface.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.CorrespondenceManagement.22.3.130\lib\net48\HPE.HSP.UA3.Core.API.CorrespondenceManagement.Interface.dll</HintPath>
     </Reference>
     <Reference Include="HPE.HSP.UA3.Core.API.CorrespondenceManagement.Providers">
-      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.CorrespondenceManagement.22.2.124\lib\net48\HPE.HSP.UA3.Core.API.CorrespondenceManagement.Providers.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.CorrespondenceManagement.22.3.130\lib\net48\HPE.HSP.UA3.Core.API.CorrespondenceManagement.Providers.dll</HintPath>
     </Reference>
-    <Reference Include="HPE.HSP.UA3.Core.API.Logger, Version=22.2.124.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.22.2.124\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
+    <Reference Include="HPE.HSP.UA3.Core.API.Logger, Version=22.3.130.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.22.3.130\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
     </Reference>
-    <Reference Include="HPP.Core.API.AppConfig, Version=22.2.124.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Packages\HPP.Core.API.AppConfig.22.2.124\lib\net48\HPP.Core.API.AppConfig.dll</HintPath>
+    <Reference Include="HPP.Core.API.AppConfig, Version=22.3.130.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Packages\HPP.Core.API.AppConfig.22.3.130\lib\net48\HPP.Core.API.AppConfig.dll</HintPath>
     </Reference>
     <Reference Include="IdentityModel, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Packages\IdentityModel.2.6.0\lib\net45\IdentityModel.dll</HintPath>
@@ -216,10 +216,10 @@
       <HintPath>..\..\..\..\Packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.DataAccess">
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.22.2.124\lib\net48\Oracle.DataAccess.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.22.3.130\lib\net48\Oracle.DataAccess.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.DataAccess.EntityFramework">
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.22.2.124\lib\net48\Oracle.DataAccess.EntityFramework.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.22.3.130\lib\net48\Oracle.DataAccess.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Packages\Oracle.ManagedDataAccess.19.7.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
@@ -257,7 +257,7 @@
       <HintPath>..\..\..\..\Packages\System.Diagnostics.PerformanceCounter.5.0.0\lib\net461\System.Diagnostics.PerformanceCounter.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing.Common">
-      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.CorrespondenceManagement.22.2.124\lib\net48\System.Drawing.Common.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.CorrespondenceManagement.22.3.130\lib\net48\System.Drawing.Common.dll</HintPath>
     </Reference>
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=4.0.40306.1554, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Packages\System.IdentityModel.Tokens.Jwt.4.0.4.403061554\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>

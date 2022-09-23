@@ -46,12 +46,12 @@
   </FileTypes>
   <LineDeletes />
   <ReplacementStrings>
-    <ReplacementString qualifier="&lt;version&gt;22.1.118&lt;/version&gt;" from="22.1.118" to="22.2.124" />
-    <ReplacementString qualifier="HP.HSP.UA3" from="22.1.118" to="22.2.124" />
-    <ReplacementString qualifier="HPE.HSP.UA3" from="22.1.118" to="22.2.124" />
-    <ReplacementString qualifier="HP." from="22.1.118" to="22.2.124" />
-    <ReplacementString qualifier="HPP." from="22.1.118" to="22.2.124" />
-    <ReplacementString qualifier="MMS." from="22.1.118" to="22.2.124" />
+    <ReplacementString qualifier="&lt;version&gt;22.1.118&lt;/version&gt;" from="22.1.118" to="22.3.130" />
+    <ReplacementString qualifier="HP.HSP.UA3" from="22.1.118" to="22.3.130" />
+    <ReplacementString qualifier="HPE.HSP.UA3" from="22.1.118" to="22.3.130" />
+    <ReplacementString qualifier="HP." from="22.1.118" to="22.3.130" />
+    <ReplacementString qualifier="HPP." from="22.1.118" to="22.3.130" />
+    <ReplacementString qualifier="MMS." from="22.1.118" to="22.3.130" />
   </ReplacementStrings>
   <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
   <TfsWorkspace>INC_5CG9151J18</TfsWorkspace>
