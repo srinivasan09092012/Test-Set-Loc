@@ -298,12 +298,19 @@ namespace UnityToAutoFac
 
         private void button4_Click(object sender, EventArgs e)
         {
-            string oldValue = richTextBox1.Text;
-            string oldNameSpaceValue = OldNameSpaceTxt.Text;
-            string newNameSpaceValue = NewNameSpaceTxt.Text;
+            try
+            {
+                string oldValue = richTextBox1.Text;
+                string oldNameSpaceValue = OldNameSpaceTxt.Text;
+                string newNameSpaceValue = NewNameSpaceTxt.Text;
 
-            string newValue = oldValue.Replace(oldNameSpaceValue, newNameSpaceValue);
-            richTextBox1.Text = JsonConvert.DeserializeObject(newValue).ToString();
+                string newValue = oldValue.Replace(oldNameSpaceValue, newNameSpaceValue);
+                richTextBox1.Text = JsonConvert.DeserializeObject(newValue).ToString();
+            }
+            catch(Exception e)
+            {
+                richTextBox1.Text = e.Message;
+            }
         }
     }
 }
