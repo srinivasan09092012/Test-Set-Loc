@@ -307,9 +307,9 @@ namespace UnityToAutoFac
                 string newValue = oldValue.Replace(oldNameSpaceValue, newNameSpaceValue);
                 richTextBox1.Text = JsonConvert.DeserializeObject(newValue).ToString();
             }
-            catch(Exception e)
+            catch(Exception ex)
             {
-                richTextBox1.Text = e.Message;
+                richTextBox1.Text = ex.Message;
             }
         }
     }
