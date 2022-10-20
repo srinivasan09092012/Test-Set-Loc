@@ -42,6 +42,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.OldNameSpaceTxt = new System.Windows.Forms.TextBox();
+            this.NewNameSpaceTxt = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -175,11 +183,76 @@
             this.label6.TabIndex = 15;
             this.label6.Text = "Application";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.NewNameSpaceTxt);
+            this.panel1.Controls.Add(this.OldNameSpaceTxt);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Location = new System.Drawing.Point(913, 15);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(369, 126);
+            this.panel1.TabIndex = 16;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(84, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(114, 15);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Replace NameSpace";
+            // 
+            // OldNameSpaceTxt
+            // 
+            this.OldNameSpaceTxt.Location = new System.Drawing.Point(131, 29);
+            this.OldNameSpaceTxt.Name = "OldNameSpaceTxt";
+            this.OldNameSpaceTxt.Size = new System.Drawing.Size(218, 23);
+            this.OldNameSpaceTxt.TabIndex = 1;
+            // 
+            // NewNameSpaceTxt
+            // 
+            this.NewNameSpaceTxt.Location = new System.Drawing.Point(131, 58);
+            this.NewNameSpaceTxt.Name = "NewNameSpaceTxt";
+            this.NewNameSpaceTxt.Size = new System.Drawing.Size(218, 23);
+            this.NewNameSpaceTxt.TabIndex = 2;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(27, 37);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(63, 15);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Old Value :";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(28, 63);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(71, 15);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "New Value : ";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(131, 87);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(88, 23);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "Replace";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1294, 775);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -200,6 +273,8 @@
             this.Name = "Form1";
             this.Text = "Unity To AutoFac";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,5 +296,12 @@
         private Label label4;
         private Label label5;
         private Label label6;
+        private Panel panel1;
+        private Button button4;
+        private Label label9;
+        private Label label8;
+        private TextBox NewNameSpaceTxt;
+        private TextBox OldNameSpaceTxt;
+        private Label label7;
     }
 }

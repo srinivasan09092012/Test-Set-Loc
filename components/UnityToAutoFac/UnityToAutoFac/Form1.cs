@@ -295,5 +295,15 @@ namespace UnityToAutoFac
             richTextBox2.Text = xmlDoc.OuterXml;
             return;
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string oldValue = richTextBox1.Text;
+            string oldNameSpaceValue = OldNameSpaceTxt.Text;
+            string newNameSpaceValue = NewNameSpaceTxt.Text;
+
+            string newValue = oldValue.Replace(oldNameSpaceValue, newNameSpaceValue);
+            richTextBox1.Text = JsonConvert.DeserializeObject(newValue).ToString();
+        }
     }
 }
