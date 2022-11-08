@@ -13,6 +13,7 @@ Administration:/HP.HSP.UA3.DataLists/R6.0/SecurityRoleService.svc
 Administration:/HP.HSP.UA3.DataLists/R6.0/BatchSecurityService.svc
 Administration:/HP.HSP.UA3.EventAdminServices/R6.0/EventAdminQueryService.svc
 Administration:/HP.HSP.UA3.EventAdminServices/R6.0/EventAdminService.svc
+Administration:/HP.HSP.UA3.EventAdminServices/R6.0/EventAdminEventService.svc
 Administration:/HP.HSP.UA3.EventAdminServices/R6.0/IntegrationSummaryQueryService.svc
 Administration:/HP.HSP.UA3.TenantConfiguration/R6.0/AppSettingService.svc
 Administration:/HP.HSP.UA3.TenantConfiguration/R6.0/HtmlBlockService.svc
@@ -238,6 +239,8 @@ ProviderEnrollment:/HP.HSP.UA3.ProviderEnrollmentServices/R6.0/EnrollmentService
 ProviderEnrollment:/HP.HSP.UA3.ProviderEnrollmentServices/R6.0/EnrollmentBusinessRuleService.svc
 ProviderEnrollment:/HP.HSP.UA3.ProviderEnrollmentServices/R6.0/ReportTemplateService.svc
 ProviderEnrollment:/HP.HSP.UA3.ProviderEnrollmentServices/R6.0/EnrollmentReportService.svc
+ProviderEnrollment:/HP.HSP.UA3.ProviderEnrollmentServices/R6.0/EnrollmentWorkflowQueryService.svc
+ProviderEnrollment:/HP.HSP.UA3.ProviderEnrollmentServices/R6.0/EnrollmentWorkflowService.svc
 ProviderManagement:/HP.HSP.UA3.ProviderMgmt/R6.0/BatchAuditQueryService.svc
 ProviderManagement:/HP.HSP.UA3.ProviderMgmt/R6.0/ProviderBatchQueryService.svc
 ProviderManagement:/HP.HSP.UA3.ProviderMgmt/R6.0/ProviderBatchService.svc
@@ -334,6 +337,8 @@ Integration:/HP.HSP.UA3.EventToFile/R6.0/ETFQueryService.svc
 Integration:/HP.HSP.UA3.EventToFile/R6.0/ETFService.svc
 Integration:/HP.HSP.UA3.EventToFile/R6.0/OutboundFieldQueryService.svc
 Integration:/HP.HSP.UA3.EventToFile/R6.0/ViewProjectionService.svc
+Integration:/HP.HSP.UA3.SystemProcessTracking/R6.0/ProcessTrackingEventService.svc
+Integration:/HP.HSP.UA3.SystemProcessTracking/R6.0/ProcessTrackingQueryService.svc
 Integration:/HP.HSP.UA3.EventsDistributor/R6.0/FTEEventService.svc
 TaskManagement:/HP.HSP.UA3.TaskManagement/R6.0/TaskManagementEventService.svc
 TaskManagement:/HP.HSP.UA3.TaskManagement/R6.0/TaskManagementQueryService.svc
