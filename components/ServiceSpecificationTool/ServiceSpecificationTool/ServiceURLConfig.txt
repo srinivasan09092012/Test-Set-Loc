@@ -340,6 +340,8 @@ Integration:/HP.HSP.UA3.EventToFile/R6.0/ViewProjectionService.svc
 Integration:/HP.HSP.UA3.SystemProcessTracking/R6.0/ProcessTrackingEventService.svc
 Integration:/HP.HSP.UA3.SystemProcessTracking/R6.0/ProcessTrackingQueryService.svc
 Integration:/HP.HSP.UA3.EventsDistributor/R6.0/FTEEventService.svc
+Integration:/HP.HSP.UA3.DataAggregateFix/R6.0/DataAggregateFixQueryService.svc
+Integration:/HP.HSP.UA3.DataAggregateFix/R6.0/DataAggregateFixService.svc
 TaskManagement:/HP.HSP.UA3.TaskManagement/R6.0/TaskManagementEventService.svc
 TaskManagement:/HP.HSP.UA3.TaskManagement/R6.0/TaskManagementQueryService.svc
 TaskManagement:/HP.HSP.UA3.TaskManagement/R6.0/TaskManagementService.svc
