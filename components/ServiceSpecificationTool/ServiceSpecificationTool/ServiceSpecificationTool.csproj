@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -187,7 +187,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /f /r /y "$(SolutionDir)ServiceSpecificationTool/SandcastleConfig.xml" "$(SolutionDir)ServiceSpecificationTool/$(OutDir)"
+    <PostBuildEvent>xcopy /f /r /y "$(SolutionDir)SeraviceSpecificationTool/SandcastleConfig.xml" "$(SolutionDir)ServiceSpecificationTool/$(OutDir)"
 </PostBuildEvent>
   </PropertyGroup>
 </Project>
