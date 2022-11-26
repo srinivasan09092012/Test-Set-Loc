@@ -1418,9 +1418,9 @@ namespace ServiceSpecificationTool
                     LogMessage(0, "Error:WSDLs Generation " + ex.Message);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                LogMessage(0, string.Format("-------Please Conncet to Pluse and Try again-------"));
+                LogMessage(0, string.Format("-------Error Please check Log file-------"));
                 return;
             }
         }
@@ -1640,27 +1640,27 @@ namespace ServiceSpecificationTool
             }
             try
             {
-                foreach (var moduleName in sandcastleConfiguration.DependencyModules)
-                {
-                    pathFormate = @"Core\" + currentBranch + @"\API\" + moduleName;
+                //foreach (var moduleName in sandcastleConfiguration.DependencyModules)
+                //{
+                //    pathFormate = @"Core\" + currentBranch + @"\API\" + moduleName;
 
-                    localWorkSpacePath = sandcastleConfiguration.SourceDir + pathFormate;
-                    serverPath = sandcastleConfiguration.ServerDir + "/Source/" + pathFormate;
-                    dllPath = string.Empty;
+                //    localWorkSpacePath = sandcastleConfiguration.SourceDir + pathFormate;
+                //    serverPath = sandcastleConfiguration.ServerDir + "/Source/" + pathFormate;
+                //    dllPath = string.Empty;
 
-                    if (moduleName != "Logger")
-                    {
-                        dllPath = Directory.GetDirectories(localWorkSpacePath).Where(x => x.EndsWith("Providers")).SingleOrDefault() + @"\bin\x64\Release";
-                    }
-                    else
-                    {
-                        dllPath = Directory.GetDirectories(localWorkSpacePath).Where(x => x.EndsWith(moduleName)).SingleOrDefault() + @"\bin\x64\Release";
-                    }
+                //    if (moduleName != "Logger")
+                //    {
+                //        dllPath = Directory.GetDirectories(localWorkSpacePath).Where(x => x.Contains("HPE") && x.EndsWith("Providers")).FirstOrDefault() + @"\bin\x64\Release";
+                //    }
+                //    else
+                //    {
+                //        dllPath = Directory.GetDirectories(localWorkSpacePath).Where(x => x.Contains("HPE") && x.EndsWith(moduleName)).FirstOrDefault() + @"\bin\x64\Release";
+                //    }
 
-                    getSolutionFile = Directory.GetFiles(localWorkSpacePath).Where(x => x.EndsWith(".sln")).SingleOrDefault();
-                    RunBatFiles(SandcastleConfig.BuildCoreAPISolutionBatFile, localWorkSpacePath);
-                    DependencyDlls(moduleName, dllPath);
-                }
+                //    getSolutionFile = Directory.GetFiles(localWorkSpacePath).Where(x => x.Contains("HPE") && x.EndsWith(".sln")).FirstOrDefault();
+                //    RunBatFiles(SandcastleConfig.BuildCoreAPISolutionBatFile, localWorkSpacePath);
+                //    DependencyDlls(moduleName, dllPath);
+                //}
 
                 GetLocalWorkSpacePath();
                 LogMessage(0, string.Format("-------XSDs Generation completed succefully-------"));
@@ -1731,7 +1731,7 @@ namespace ServiceSpecificationTool
 
                     if (!path.FullName.Contains("Test"))
                     {
-                        solutionFilePath = Directory.GetFiles(path.FullName.ToString()).Where(x => x.EndsWith(".sln")).SingleOrDefault();
+                        solutionFilePath = Directory.GetFiles(path.FullName.ToString()).Where(x => x.Contains("HP") && x.EndsWith(".sln")).FirstOrDefault();
 
                         if (solutionFilePath != null)
                         {
@@ -1745,11 +1745,11 @@ namespace ServiceSpecificationTool
 
                             if (!solutionFilePath.ToString().Contains(".BroadcastMessage") && !solutionFilePath.ToString().Contains(".Tests"))
                             {
-                                var getContractProjectPath = Directory.Exists(Directory.GetDirectories(path.FullName).Where(x => x.EndsWith(".Contracts")).SingleOrDefault());
+                                var getContractProjectPath = Directory.Exists(Directory.GetDirectories(path.FullName).Where(x =>x.Contains("HP") &&  x.EndsWith(".Contracts")).FirstOrDefault());
 
                                 if (getContractProjectPath == true)
                                 {
-                                    var projectFile = Directory.GetFiles(Directory.GetDirectories(path.FullName).Where(x => x.EndsWith(".Contracts")).FirstOrDefault().ToString()).Where(x => x.EndsWith(".Contracts.csproj")).FirstOrDefault();
+                                    var projectFile = Directory.GetFiles(Directory.GetDirectories(path.FullName).Where(x =>x.Contains("HP") &&  x.EndsWith(".Contracts")).FirstOrDefault().ToString()).Where(x => x.EndsWith(".Contracts.csproj")).FirstOrDefault();
 
                                     if (projectFile != null)
                                     {
@@ -1758,8 +1758,8 @@ namespace ServiceSpecificationTool
                                     }
                                     var dllPath = Directory.GetDirectories(Directory.GetDirectories
                                                              (Directory.GetDirectories(path.FullName)
-                                                            .Where(x => x.EndsWith(".Contracts")).SingleOrDefault())
-                                                            .Where(y => y.EndsWith("bin")).SingleOrDefault()).ToList();
+                                                            .Where(x => x.EndsWith(".Contracts")).FirstOrDefault())
+                                                            .Where(y => y.EndsWith("bin")).FirstOrDefault()).ToList();
 
                                     if (dllPath.Count > 0)
                                     {
