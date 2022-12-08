@@ -73,7 +73,8 @@ namespace BASEventsTestingUtil
 
             this.numericUpDownEventsNumbers.Value = int.Parse(ConfigurationManager.AppSettings["ThreadCount"].ToString());
 
-            var allowMultiple = bool.Parse(ConfigurationManager.AppSettings["AllowMultiple"]);
+            bool allowMultiple = false;
+            bool.TryParse(ConfigurationManager.AppSettings["AllowMultiple"], out allowMultiple);
 
             buttonPressureTest.Visible = allowMultiple;
             numericUpDownEventsNumbers.Visible = allowMultiple;
