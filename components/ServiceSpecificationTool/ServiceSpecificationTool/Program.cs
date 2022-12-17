@@ -931,7 +931,7 @@ namespace ServiceSpecificationTool
                 var sModuleName = workSpace.Split('\\');
                 LogMessage(0, string.Format("-------Compailing the Latest code for " + sModuleName[3] + " Module-------"));
                 foldersUnderBase = Directory.GetDirectories(workSpace);
-                var uxSolutionFile = Directory.GetFiles(workSpace).SingleOrDefault(a => a.EndsWith(".sln"));
+                var uxSolutionFile = Directory.GetFiles(workSpace).FirstOrDefault(x => x.Contains("HP") && x.EndsWith(".sln"));
                 if (uxSolutionFile != null)
                 {
                     if (uxSolutionFile.Contains("UX"))
