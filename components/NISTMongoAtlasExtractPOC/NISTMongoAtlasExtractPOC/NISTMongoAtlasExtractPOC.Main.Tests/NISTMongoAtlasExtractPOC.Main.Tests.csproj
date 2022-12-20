@@ -342,7 +342,7 @@
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <StyleCopTargetFilePath>..\..\..\..\..\Packages\_Source\StyleCop.4.7\Visual-StyleCop.MSBuild.targets</StyleCopTargetFilePath>
+    <StyleCopTargetFilePath>..\..\..\..\..\Packages\StyleCop.4.7\Visual-StyleCop.MSBuild.targets</StyleCopTargetFilePath>
     <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
   </PropertyGroup>
   <ItemGroup>

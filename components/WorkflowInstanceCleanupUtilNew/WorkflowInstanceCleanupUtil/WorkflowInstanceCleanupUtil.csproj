@@ -124,18 +124,9 @@
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <StyleCopTargetFilePath>..\..\..\..\Packages\_Source\StyleCop.4.7\Visual-StyleCop.MSBuild.targets</StyleCopTargetFilePath>
-    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
-  </PropertyGroup>
-  <ItemGroup>
-    <ExcludeFromStyleCop Include="$(IntermediateOutputPath)\**\*.cs">
-      <Visible>False</Visible>
-    </ExcludeFromStyleCop>
-  </ItemGroup>
   <!-- Additions for StyleCop -->
   <PropertyGroup>
-    <StyleCopTargetFilePath>..\..\..\..\Packages\_Source\StyleCop.4.7\Visual-StyleCop.MSBuild.targets</StyleCopTargetFilePath>
+    <StyleCopTargetFilePath>..\..\..\..\Packages\StyleCop.4.7\Visual-StyleCop.MSBuild.targets</StyleCopTargetFilePath>
     <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
   </PropertyGroup>
   <ItemGroup>
