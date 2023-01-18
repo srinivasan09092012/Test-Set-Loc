@@ -1,0 +1,56 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "Controller\Controller.csproj", "{FCDEDE44-7892-4BE8-944C-B6573312DD5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{0D36417A-31A8-4971-A2AC-A035BFF2154A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main", "Main\Main.csproj", "{6DE7EC32-482F-490B-AE5F-2BC9E6642001}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{769AC938-4F8F-4F1B-80BD-C4E76DDB03D3}"
+	ProjectSection(SolutionItems) = preProject
+		EventsExtract.sql = EventsExtract.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCDEDE44-7892-4BE8-944C-B6573312DD5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCDEDE44-7892-4BE8-944C-B6573312DD5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCDEDE44-7892-4BE8-944C-B6573312DD5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCDEDE44-7892-4BE8-944C-B6573312DD5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D36417A-31A8-4971-A2AC-A035BFF2154A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D36417A-31A8-4971-A2AC-A035BFF2154A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D36417A-31A8-4971-A2AC-A035BFF2154A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D36417A-31A8-4971-A2AC-A035BFF2154A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DE7EC32-482F-490B-AE5F-2BC9E6642001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DE7EC32-482F-490B-AE5F-2BC9E6642001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DE7EC32-482F-490B-AE5F-2BC9E6642001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DE7EC32-482F-490B-AE5F-2BC9E6642001}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9879F94A-4C65-4249-A390-6E2EF95CC9D9}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://payerportfolio.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Common\\Common.csproj
+		SccProjectName1 = Common
+		SccLocalPath1 = Common
+		SccProjectUniqueName2 = Controller\\Controller.csproj
+		SccProjectName2 = Controller
+		SccLocalPath2 = Controller
+		SccProjectUniqueName3 = Main\\Main.csproj
+		SccProjectName3 = Main
+		SccLocalPath3 = Main
+	EndGlobalSection
+EndGlobal

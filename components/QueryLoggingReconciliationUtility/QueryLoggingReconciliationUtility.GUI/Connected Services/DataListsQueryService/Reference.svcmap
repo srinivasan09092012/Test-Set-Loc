@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5c100b88-e126-434e-851e-1626581cce6a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://localhost:44311/DataListsQueryService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DataListsQueryService.xsd" MetadataType="Schema" ID="cef7a56e-f607-483c-a0f4-122bf04c1837" SourceId="1" SourceUrl="https://localhost:44311/DataListsQueryService.svc?xsd=xsd1" />
+    <MetadataFile FileName="DataListsQueryService1.xsd" MetadataType="Schema" ID="9cffe706-047d-4a3f-ac32-18640a1c1d3c" SourceId="1" SourceUrl="https://localhost:44311/DataListsQueryService.svc?xsd=xsd9" />
+    <MetadataFile FileName="DataListsQueryService2.xsd" MetadataType="Schema" ID="e54904bf-71c1-45d1-a6da-8244fb0ca0ed" SourceId="1" SourceUrl="https://localhost:44311/DataListsQueryService.svc?xsd=xsd6" />
+    <MetadataFile FileName="DataListsQueryService3.xsd" MetadataType="Schema" ID="580e0085-352f-4932-b53f-7de89c79d268" SourceId="1" SourceUrl="https://localhost:44311/DataListsQueryService.svc?xsd=xsd2" />
+    <MetadataFile FileName="DataListsQueryService.wsdl" MetadataType="Wsdl" ID="0657a5f7-00f4-4581-9b2c-c7372184b17c" SourceId="1" SourceUrl="https://localhost:44311/DataListsQueryService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="DataListsQueryService4.xsd" MetadataType="Schema" ID="ecfa326b-02a5-4a3c-8725-3de967a50820" SourceId="1" SourceUrl="https://localhost:44311/DataListsQueryService.svc?xsd=xsd13" />
+    <MetadataFile FileName="DataListsQueryService1.wsdl" MetadataType="Wsdl" ID="5f7de997-a2bb-4995-8ea3-edc6d9dd6db0" SourceId="1" SourceUrl="https://localhost:44311/DataListsQueryService.svc?wsdl" />
+    <MetadataFile FileName="DataListsQueryService5.xsd" MetadataType="Schema" ID="e71012c0-3818-4116-8897-4dabc1fe7a8c" SourceId="1" SourceUrl="https://localhost:44311/DataListsQueryService.svc?xsd=xsd7" />
+    <MetadataFile FileName="DataListsQueryService6.xsd" MetadataType="Schema" ID="e217ca8a-fb95-4e53-a903-017d0db84e02" SourceId="1" SourceUrl="https://localhost:44311/DataListsQueryService.svc?xsd=xsd3" />
+    <MetadataFile FileName="DataListsQueryService7.xsd" MetadataType="Schema" ID="7cb0b6c1-ab86-4185-b918-40a8c44d7730" SourceId="1" SourceUrl="https://localhost:44311/DataListsQueryService.svc?xsd=xsd10" />
+    <MetadataFile FileName="DataListsQueryService8.xsd" MetadataType="Schema" ID="3094c0ed-9024-4b96-ba37-0a5469264426" SourceId="1" SourceUrl="https://localhost:44311/DataListsQueryService.svc?xsd=xsd11" />
+    <MetadataFile FileName="DataListsQueryService9.xsd" MetadataType="Schema" ID="ed765e43-a402-4fea-82ba-e3c9a200cbcc" SourceId="1" SourceUrl="https://localhost:44311/DataListsQueryService.svc?xsd=xsd4" />
+    <MetadataFile FileName="DataListsQueryService10.xsd" MetadataType="Schema" ID="f3741746-f3b9-4485-a10e-9ba01f7a2120" SourceId="1" SourceUrl="https://localhost:44311/DataListsQueryService.svc?xsd=xsd0" />
+    <MetadataFile FileName="DataListsQueryService11.xsd" MetadataType="Schema" ID="8f9b84c4-c0a9-4539-afcc-483141c69995" SourceId="1" SourceUrl="https://localhost:44311/DataListsQueryService.svc?xsd=xsd8" />
+    <MetadataFile FileName="DataListsQueryService.disco" MetadataType="Disco" ID="5a16b2fb-e36c-457f-a16e-44e04a9d0df7" SourceId="1" SourceUrl="https://localhost:44311/DataListsQueryService.svc?disco" />
+    <MetadataFile FileName="DataListsQueryService12.xsd" MetadataType="Schema" ID="15f83a22-2208-42b6-8145-bd702de0d9bd" SourceId="1" SourceUrl="https://localhost:44311/DataListsQueryService.svc?xsd=xsd12" />
+    <MetadataFile FileName="DataListsQueryService13.xsd" MetadataType="Schema" ID="86d4cc6f-8e81-42b3-87d1-26c36aab26f6" SourceId="1" SourceUrl="https://localhost:44311/DataListsQueryService.svc?xsd=xsd5" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

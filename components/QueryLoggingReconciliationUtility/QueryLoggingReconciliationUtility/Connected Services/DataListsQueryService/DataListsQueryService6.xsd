@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta" />
+  <xs:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd9" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base.Audit" />
+  <xs:complexType name="Query">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ByPassCountQuery" type="xs:boolean" />
+      <xs:element name="CurrentPage" type="xs:int" />
+      <xs:element name="PageSize" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta" minOccurs="0" name="Requestor" nillable="true" type="q1:RequestorModel" />
+      <xs:element minOccurs="0" name="RowCount" type="xs:int" />
+      <xs:element minOccurs="0" name="ViewTimeStamp" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Query" nillable="true" type="tns:Query" />
+  <xs:complexType name="ServiceException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorCode" type="tns:ServiceException.StatusCodeType" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ErrorMessages" nillable="true" type="q2:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceException" nillable="true" type="tns:ServiceException" />
+  <xs:simpleType name="ServiceException.StatusCodeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OK" />
+      <xs:enumeration value="CorruptFile">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9000</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Unauthorized">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9010</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Duplicate">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9020</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NotFound">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9030</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Stale">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9040</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Error">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9999</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ServiceException.StatusCodeType" nillable="true" type="tns:ServiceException.StatusCodeType" />
+  <xs:complexType name="BusinessValidationException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BusinessMessages" nillable="true" type="tns:ArrayOfBusinessExceptionMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BusinessValidationException" nillable="true" type="tns:BusinessValidationException" />
+  <xs:complexType name="ArrayOfBusinessExceptionMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BusinessExceptionMessage" nillable="true" type="tns:BusinessExceptionMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBusinessExceptionMessage" nillable="true" type="tns:ArrayOfBusinessExceptionMessage" />
+  <xs:complexType name="BusinessExceptionMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FieldName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageDefault" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageType" type="tns:BusinessExceptionMessage.MessageTypes" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BusinessExceptionMessage" nillable="true" type="tns:BusinessExceptionMessage" />
+  <xs:simpleType name="BusinessExceptionMessage.MessageTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Informational" />
+      <xs:enumeration value="Warning" />
+      <xs:enumeration value="Error" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BusinessExceptionMessage.MessageTypes" nillable="true" type="tns:BusinessExceptionMessage.MessageTypes" />
+  <xs:complexType name="QueryAuditParams">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:QueryOfstring">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AuditWhere" nillable="true" type="tns:EventQueryParams" />
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta" minOccurs="0" name="SortDirection" type="q3:CoreEnumerations.Messaging.SortDirectionType" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta" minOccurs="0" name="SortField" type="q4:AuditEnumerations.EventAuditSortFieldType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryAuditParams" nillable="true" type="tns:QueryAuditParams" />
+  <xs:complexType name="QueryOfstring">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Query">
+        <xs:sequence>
+          <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Results" nillable="true" type="q5:ArrayOfstring" />
+          <xs:element minOccurs="0" name="SortCriteria" nillable="true" type="tns:ArrayOfSortCriteria" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryOfstring" nillable="true" type="tns:QueryOfstring" />
+  <xs:complexType name="ArrayOfSortCriteria">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SortCriteria" nillable="true" type="tns:SortCriteria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSortCriteria" nillable="true" type="tns:ArrayOfSortCriteria" />
+  <xs:complexType name="SortCriteria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FieldName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Order" type="tns:SortOrder" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SortCriteria" nillable="true" type="tns:SortCriteria" />
+  <xs:simpleType name="SortOrder">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Asc" />
+      <xs:enumeration value="Desc" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SortOrder" nillable="true" type="tns:SortOrder" />
+  <xs:complexType name="EventQueryParams">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EventStampDate" nillable="true" type="xs:dateTime" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta" minOccurs="0" name="EventStampDateSearchMode" type="q6:CoreEnumerations.Messaging.SearchModeType" />
+      <xs:element minOccurs="0" name="EventType" nillable="true" type="xs:string" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta" minOccurs="0" name="EventTypeSearchMode" type="q7:CoreEnumerations.Messaging.SearchModeType" />
+      <xs:element minOccurs="0" name="SourceOfChange" nillable="true" type="xs:string" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta" minOccurs="0" name="SourceOfChangeSearchMode" type="q8:CoreEnumerations.Messaging.SearchModeType" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta" minOccurs="0" name="UserIdSearchMode" type="q9:CoreEnumerations.Messaging.SearchModeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EventQueryParams" nillable="true" type="tns:EventQueryParams" />
+  <xs:complexType name="SerializableBase">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="SerializableBase" nillable="true" type="tns:SerializableBase" />
+  <xs:complexType name="QueryOfAuditObjectModelCIQAZifK">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="AuditObjectModel" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base.Audit" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Query">
+        <xs:sequence>
+          <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base.Audit" minOccurs="0" name="Results" nillable="true" type="q10:ArrayOfAuditObjectModel" />
+          <xs:element minOccurs="0" name="SortCriteria" nillable="true" type="tns:ArrayOfSortCriteria" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryOfAuditObjectModelCIQAZifK" nillable="true" type="tns:QueryOfAuditObjectModelCIQAZifK" />
+</xs:schema>

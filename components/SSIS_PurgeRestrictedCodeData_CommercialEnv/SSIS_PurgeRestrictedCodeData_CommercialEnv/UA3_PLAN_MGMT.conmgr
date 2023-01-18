@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="UA3_PLAN_MGMT"
+  DTS:DTSID="{6E659C62-D114-4D88-A9AF-39507BF28AB3}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=mapswrkt1sql001.database.windows.net;User ID=UA3_PLAN_MGMT;Initial Catalog=UA3_PLAN_MGMT;Provider=SQLNCLI11.1;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAtMUP3G1u9kuqPMjSLzhc0gAAAAACAAAAAAADZgAAwAAAABAAAABdMuYtsOFpHBwR+0OY3SonAAAAAASAAACgAAAAEAAAAFE0nzxeZsJnm71+WCfuWW54AAAAryhHhWBTM4cVx/BUZwjMndNmb5VmLBHyVdYWtzFCyrV+J3cPCQpVvZvOdZwfIyjgi1dsGI8q1Vvv8UCvyacfQg0WU5W6zYr/Sj6Ctr9ic41u1+1ZcZWvxufJNaH67tbH6RqgLUuhvCB7kjy9+sBmix1mzB6kPTR4FAAAALsOjnrTY8HJ6kPmtq/22cJDicjR</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

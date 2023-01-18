@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="UpgradePackage" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" targetTFS="Azure">
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+    <!--<ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />-->
+    <ModuleConfig name="Administration" branch="Dev" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ConfigurationManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Core" branch="Dev" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="Dev" types="All" />
+    <ModuleConfig name="EDI" branch="Dev" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="Dev" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Integration" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="Dev" types="All" />
+    <ModuleConfig name="MemberManagement" branch="Dev" types="All" />
+    <ModuleConfig name="MemberPortal" branch="Dev" types="All" />
+    <ModuleConfig name="Notifications" branch="Dev" types="All" />
+    <ModuleConfig name="PlanManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrityCT" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="Dev" types="All" />
+    <ModuleConfig name="Screening" branch="Dev" types="All" />
+    <ModuleConfig name="TaskManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
+    <ModuleConfig name="Utilities" branch="Dev" types="NA" />
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes />
+  <LineDeletes />
+  <!--Only the root package should have Dependency = "false"-->
+  <!-- These sections are to be run in sequence as per the pass Number. Only one pass to be run at a time. Comment out other passes-->
+
+  <!--=============================================HP.HSP.UA3.Core.BAS.CQRS (21.3.112) Pass 1 Level 0============================================-->
+  <!--Run a replacement string pass to reduce Core BAS CQRS version to 21.3.111 so that this pass will execute as 111 to 112 is an upgrade-->
+  <!--This pass will make sure "HPE.HSP.UA3.Core.API.Logger" is installed in all the projects that has a reference to Core BAS CQRS -->
+  <References>
+    <Reference Dependency ="false" Include = "HP.HSP.UA3.Core.BAS.CQRS" HintPath = "Packages\HP.HSP.UA3.Core.BAS.CQRS.21.3.112\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll" />
+    <Reference Dependency ="true" Include = "HPE.HSP.UA3.Core.API.Logger" HintPath = "Packages\HPE.HSP.UA3.Core.API.Logger.21.3.112\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll" />
+    <Reference Dependency ="true" Include = "Microsoft.Practices.Unity, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" HintPath = "Packages\Unity.3.5.1405-prerelease\lib\net45\Microsoft.Practices.Unity.dll" />
+    <Reference Dependency ="true" Include = "Microsoft.Practices.Unity.Configuration, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" HintPath = "Packages\Unity.3.5.1405-prerelease\lib\net45\Microsoft.Practices.Unity.Configuration.dll" />
+    <Reference Dependency ="true" Include = "Microsoft.Practices.Unity.RegistrationByConvention, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" HintPath = "Packages\Unity.3.5.1405-prerelease\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll" />
+    <Reference Dependency ="true" Include = "log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL" HintPath = "Packages\log4net.2.0.12\lib\net45\log4net.dll" />    
+  </References>
+  <Packages>
+    <Package id="HP.HSP.UA3.Core.BAS.CQRS" version="21.3.112" targetFramework="net48" />
+    <Package id="HPE.HSP.UA3.Core.API.Logger" version="21.3.112" targetFramework="net48" />
+    <Package id="Unity" version="3.5.1405-prerelease" targetFramework="net48" />
+    <Package id="log4net" version="2.0.12" targetFramework="net48" />
+  </Packages>
+  <WebAppConfig>
+    <DependentAssembly name = "log4net" publicKeyToken = "669e0ddf0bb1aa2a" culture = "neutral" oldVersion = "0.0.0.0-2.0.12.0" newVersion = "2.0.12.0"/>
+  </WebAppConfig>
+
+  <!--=========================================================================================================================================================-->
+  
+  
+  <!--=============================================HPE.HSP.UA3.Core.API.Logger (21.3.112) Pass 2 Level 1============================================-->
+
+  <!--Run a replacement string pass to reduce Core API Logger version to 21.3.111 so that this pass will execute as 111 to 112 is an upgrade-->
+  <!--This pass will make sure Core API Logger's dependencies are installed in all the projects that has a reference to Core API Logger -->
+  <References>
+    <Reference Dependency ="false" Include = "HPE.HSP.UA3.Core.API.Logger" HintPath = "Packages\HPE.HSP.UA3.Core.API.Logger.21.3.112\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll" />
+    <Reference Dependency ="true" Include = "Microsoft.Practices.Unity, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" HintPath = "Packages\Unity.3.5.1405-prerelease\lib\net45\Microsoft.Practices.Unity.dll" />
+    <Reference Dependency ="true" Include = "Microsoft.Practices.Unity.Configuration, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" HintPath = "Packages\Unity.3.5.1405-prerelease\lib\net45\Microsoft.Practices.Unity.Configuration.dll" />
+    <Reference Dependency ="true" Include = "Microsoft.Practices.Unity.RegistrationByConvention, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" HintPath = "Packages\Unity.3.5.1405-prerelease\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll" />
+    <Reference Dependency ="true" Include = "log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL" HintPath = "Packages\log4net.2.0.12\lib\net45\log4net.dll" />    
+  </References>
+  <Packages>
+    <Package id="HPE.HSP.UA3.Core.API.Logger" version="21.3.112" targetFramework="net48" />
+    <Package id="Unity" version="3.5.1405-prerelease" targetFramework="net48" />
+    <Package id="log4net" version="2.0.12" targetFramework="net48" />
+  </Packages>
+  <WebAppConfig>
+    <DependentAssembly name = "log4net" publicKeyToken = "669e0ddf0bb1aa2a" culture = "neutral" oldVersion = "0.0.0.0-2.0.12.0" newVersion = "2.0.12.0"/>
+  </WebAppConfig>
+
+  <!--=========================================================================================================================================================-->
+
+  <!--=============================================Unity (3.5.1405-prerelease) Pass 3 Level 3============================================-->
+
+  <References>
+    <Reference Dependency ="false" Include = "Microsoft.Practices.Unity, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" HintPath = "Packages\Unity.3.5.1405-prerelease\lib\net45\Microsoft.Practices.Unity.dll" />
+    <Reference Dependency ="true" Include = "Microsoft.Practices.Unity.Configuration, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" HintPath = "Packages\Unity.3.5.1405-prerelease\lib\net45\Microsoft.Practices.Unity.Configuration.dll" />
+    <Reference Dependency ="true" Include = "Microsoft.Practices.Unity.RegistrationByConvention, Version=3.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" HintPath = "Packages\Unity.3.5.1405-prerelease\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll" />
+  </References>
+  <Packages>
+    <Package id="Unity" version="3.5.1405-prerelease" targetFramework="net48" />
+  </Packages>
+
+  <!--=========================================================================================================================================================-->
+  
+  <!--=============================================log4net (2.0.12) Pass 4 Level 3============================================-->
+
+  <References>
+    <Reference Dependency ="false" Include = "log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL" HintPath = "Packages\log4net.2.0.12\lib\net45\log4net.dll" />
+  </References>
+  <Packages>
+    <Package id="log4net" version="2.0.12" targetFramework="net48" />
+  </Packages>
+  <WebAppConfig>
+    <DependentAssembly name = "log4net" publicKeyToken = "669e0ddf0bb1aa2a" culture = "neutral" oldVersion = "0.0.0.0-2.0.12.0" newVersion = "2.0.12.0"/>
+  </WebAppConfig>
+
+  <!--=========================================================================================================================================================-->
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+  <TfsWorkspace></TfsWorkspace>
+  <TFSUserName></TFSUserName>
+  <TFSPassword></TFSPassword>
+</RefactorConfig>

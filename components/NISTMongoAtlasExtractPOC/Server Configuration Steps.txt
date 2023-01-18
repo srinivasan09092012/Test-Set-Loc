@@ -1,0 +1,67 @@
+1. Identify a service account for running the batch process
+	- product:  check with DevOps team
+	- SaaS:  check with saas 24x7 team
+
+2. Create the following directories:
+	H:\UA3\Batch\Core\NIST_Mongo_Atlas_Extract_POC\
+	H:\MongoAtlasBatchFiles\
+	H:\UA3\Logs\Batch\NIStMongoAtlasExtractPOC\
+
+3. Copy the release source to existing folder:
+	H:\UA3\Batch\Core\NIST_Mongo_Atlas_Extract_POC\
+
+4. Configure the following two .config files in the source folder:
+	a. H:\UA3\Batch\Core\NIST_Mongo_Atlas_Extract_POC\bin\Configs\log4net.config
+		- Ensure that the following path is specified for the "log4net.Util.PatternString":
+			   <file type="log4net.Util.PatternString" value="H:\UA3\Logs\Batch\NISTMongoAtlasExtractPOC\" />
+
+	b. H:\UA3\Batch\Core\NIST_Mongo_Atlas_Extract_POC\NISTMongoAtlasExtractPOC.Main.exe.config:
+		- Set "evidenceVault" equal to the URL "key" path for the target vault, as obtained from the Azure portal
+
+5. Obtain the following values from the MongoDB Atlas portal:
+	- Create a Project API key with both "project" and "Org" ownership.   Retain the public and private key values
+		- IMPORTANT:  The IP address of the server must be set in the whitelist for the API Key
+		- Set the following config values:
+			<add key="atlasApiPublickey" value="<public key>" />
+			<add key="atlasApiPrivatekey" value="<private key>" />
+			<add key="projectApiPublickey" value="<public key (same as above)>" />
+			<add key="projectApiPrivatekey" value="<private key (same as above)>" />
+	- Obtain the Project ID from the project's settings in the Atlas portal and set the following config value:
+		<add key="atlasProjectID" value="<project ID>"/>
+	- Obtain the Project Name from the project's settings in the Atlas portal and set the following config value:
+		<add key="atlasProjectName" value="<project name>"/>
+	- Ensure that the "local root dir" config value is set as follows:
+		<add key="localRootDir" value="H:\MongoAtlasBatchFiles\" />
+
+6. Test the job by populating the 30 day backlog on the server and in evidence vault.  Assuming success, verify output in both destination paths.
+	- Uncomment the following keys and "comment out" the second two:
+		<!--    
+			<add key="startDate_YYYY-MM-DD" value="2020-04-10" />
+			<add key="endDate_YYYY-MM-DD" value="2020-04-19" />
+		--> 
+        <add key="startDate_YYYY-MM-DD" value="" />
+		<add key="endDate_YYYY-MM-DD" value="" />
+	- set start date/ end date equal to a several day range beginning 30 days prior.  
+	- Run the job; only TenantID is required for the "POC" placeholder app; example as follows:
+	
+		NISTMongoAtlasExtractPOC.Main.exe --TenantId 77b50320-5f06-5740-84f4-18d4a8cda51d
+		
+	- On success, evaluate runtime.  Depending on capacity the Atlas API has been found to nly safely handle several days/time.  
+		Continue to increment days until 1 day prior to current is reached.
+		
+	- IMPORTANT: When up to date, comment out the "Date" range and "uncomment" the versions with no dates specified.  
+		That way the job will always attempt to run for current date and any prior that have no results captured.
+		
+7. Create the batch job as follows:
+	- "General" tab:
+		- Name: varies
+		- Run with highest privileges, run whether user logged in or not
+		- Enabled
+	- "Triggers" tab:
+		- Daily, set a preferred time
+	- Actions:
+		- Start a program
+			- program script: H:\UA3\Batch\Core\NIST_Mongo_Atlas_Extract_POC\bin\NISTMongoAtlasExtractPOC.Main.exe
+			- add arguments: --TenantId 77b50320-5f06-5740-84f4-18d4a8cda51d
+	- enter password when prompted to finalize job configuration
+	- verify that job runs as expected

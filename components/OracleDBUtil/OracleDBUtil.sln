@@ -1,0 +1,62 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracleDBUtil", "OracleDBUtil\OracleDBUtil.csproj", "{A5DEE8ED-8FE9-48CD-A229-729E98D5E8F0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DA55617F-51B2-4710-AFAC-EA9D2FDF4819} = {DA55617F-51B2-4710-AFAC-EA9D2FDF4819}
+		{E8B718A6-AACE-4A2A-9861-53BF0B64F599} = {E8B718A6-AACE-4A2A-9861-53BF0B64F599}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracleDBUtil.Business", "OracleDBUtil.Business\OracleDBUtil.Business.csproj", "{3473A97B-8DCF-4736-9886-5DCABC4DD1E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracleDBUtil.DataAccess", "OracleDBUtil.DataAccess\OracleDBUtil.DataAccess.csproj", "{E8B718A6-AACE-4A2A-9861-53BF0B64F599}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracleDBUtil.Contracts", "OracleDBUtil.Contracts\OracleDBUtil.Contracts.csproj", "{DA55617F-51B2-4710-AFAC-EA9D2FDF4819}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5DEE8ED-8FE9-48CD-A229-729E98D5E8F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5DEE8ED-8FE9-48CD-A229-729E98D5E8F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5DEE8ED-8FE9-48CD-A229-729E98D5E8F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5DEE8ED-8FE9-48CD-A229-729E98D5E8F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3473A97B-8DCF-4736-9886-5DCABC4DD1E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3473A97B-8DCF-4736-9886-5DCABC4DD1E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3473A97B-8DCF-4736-9886-5DCABC4DD1E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3473A97B-8DCF-4736-9886-5DCABC4DD1E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8B718A6-AACE-4A2A-9861-53BF0B64F599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8B718A6-AACE-4A2A-9861-53BF0B64F599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8B718A6-AACE-4A2A-9861-53BF0B64F599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8B718A6-AACE-4A2A-9861-53BF0B64F599}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA55617F-51B2-4710-AFAC-EA9D2FDF4819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA55617F-51B2-4710-AFAC-EA9D2FDF4819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA55617F-51B2-4710-AFAC-EA9D2FDF4819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA55617F-51B2-4710-AFAC-EA9D2FDF4819}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://PayerPortfolio.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = OracleDBUtil\\OracleDBUtil.csproj
+		SccProjectName1 = OracleDBUtil
+		SccLocalPath1 = OracleDBUtil
+		SccProjectUniqueName2 = OracleDBUtil.Business\\OracleDBUtil.Business.csproj
+		SccProjectName2 = OracleDBUtil.Business
+		SccLocalPath2 = OracleDBUtil.Business
+		SccProjectUniqueName3 = OracleDBUtil.DataAccess\\OracleDBUtil.DataAccess.csproj
+		SccProjectName3 = OracleDBUtil.DataAccess
+		SccLocalPath3 = OracleDBUtil.DataAccess
+		SccProjectUniqueName4 = OracleDBUtil.Contracts\\OracleDBUtil.Contracts.csproj
+		SccProjectName4 = OracleDBUtil.Contracts
+		SccLocalPath4 = OracleDBUtil.Contracts
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Extensions" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Extensions" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfAuditKeyModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AuditKeyModel" nillable="true" type="tns:AuditKeyModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAuditKeyModel" nillable="true" type="tns:ArrayOfAuditKeyModel" />
+  <xs:complexType name="AuditKeyModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="KeyFullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="KeyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="KeyValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PropertyDisplayDataListName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PropertyDisplayName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuditKeyModel" nillable="true" type="tns:AuditKeyModel" />
+</xs:schema>

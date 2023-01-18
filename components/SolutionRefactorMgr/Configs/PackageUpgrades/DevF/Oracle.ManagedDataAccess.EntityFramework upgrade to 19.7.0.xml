@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" targetTFS ="Azure">
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+    <ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />
+    <ModuleConfig name="Administration" branch="DevF" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="DevF" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ConfigurationManagement" branch="DevF" types="All" />
+    <ModuleConfig name="Core" branch="DevF" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="DevF" types="All" />
+    <ModuleConfig name="DrugRebate" branch="DevF" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="DevF" types="All" />
+    <ModuleConfig name="EDI" branch="DevF" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="DevF" types="All" />
+    <ModuleConfig name="FileTransfer" branch="DevF" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="DevF" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="DevF" types="All" />
+    <ModuleConfig name="Integration" branch="DevF" types="All" />
+    <ModuleConfig name="ManagedCare" branch="DevF" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="DevF" types="All" />
+    <ModuleConfig name="MemberManagement" branch="DevF" types="All" />
+    <ModuleConfig name="MemberPortal" branch="DevF" types="All" />
+    <ModuleConfig name="Notifications" branch="DevF" types="All" />
+    <ModuleConfig name="PlanManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="DevF" types="All" />
+    <ModuleConfig name="ProgramIntegrityCT" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="DevF" types="All" />
+    <ModuleConfig name="Screening" branch="DevF" types="All" />
+    <ModuleConfig name="TaskManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="DevF" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="DevF" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="DevF" types="All" />
+    <ModuleConfig name="Utilities" branch="DevF" types="NA" />
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes>
+    <FileType ext=".csproj" />
+   <FileType ext=".config" />
+  </FileTypes>
+  <LineDeletes />
+  <ReplacementStrings>
+    <!--#############################################.csproj & web/app.config#############################################-->
+    <!--Reference Element in csproj-->
+    <!--Provider & DbProviderFactories element in app.config-->
+    <ReplacementString qualifier="Oracle.ManagedDataAccess" from="Version=4.122.1.0" to="Version=4.122.19.1" />
+    <ReplacementString qualifier="Oracle.ManagedDataAccess" from="Version=4.121.2.0" to="Version=4.122.19.1" />
+    <ReplacementString qualifier="Oracle.ManagedDataAccess.EntityFramework" from="Version=6.122.1.0" to="Version=6.122.19.1" />
+    <ReplacementString qualifier="Oracle.ManagedDataAccess.EntityFramework" from="Version=6.121.2.0" to="Version=6.122.19.1" />
+    <!--Binding Redirects in app/web.config files-->
+    <ReplacementString qualifier="bindingRedirect oldVersion=&quot;4.121.0.0 - 4.65535.65535.65535" from="bindingRedirect oldVersion=&quot;4.121.0.0 - 4.65535.65535.65535&quot; newVersion=&quot;4.122.19.1" to="bindingRedirect oldVersion=&quot;0.0.0.0-4.122.19.1&quot; newVersion=&quot;4.122.19.1" />
+    <ReplacementString qualifier="bindingRedirect oldVersion=&quot;4.121.0.0 - 4.65535.65535.65535" from="bindingRedirect oldVersion=&quot;4.121.0.0 - 4.65535.65535.65535&quot; newVersion=&quot;4.122.1.0" to="bindingRedirect oldVersion=&quot;0.0.0.0-4.122.19.1&quot; newVersion=&quot;4.122.19.1" />
+
+    <!--#############################################.csproj#############################################-->
+
+    <!--Oracle.ManagedDataAccess.EntityFramework-->
+    <ReplacementString qualifier="Packages\Oracle.ManagedDataAccess.EntityFramework.12.2.1100\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll" from="Packages\Oracle.ManagedDataAccess.EntityFramework.12.2.1100\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll" to="Packages\Oracle.ManagedDataAccess.EntityFramework.19.7.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll" />
+    <ReplacementString qualifier="packages\Oracle.ManagedDataAccess.EntityFramework.12.2.1100\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll" from="packages\Oracle.ManagedDataAccess.EntityFramework.12.2.1100\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll" to="Packages\Oracle.ManagedDataAccess.EntityFramework.19.7.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll" />
+    <ReplacementString qualifier="Packages\Oracle.ManagedDataAccess.EntityFramework.19.3.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll" from="Packages\Oracle.ManagedDataAccess.EntityFramework.19.3.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll" to="Packages\Oracle.ManagedDataAccess.EntityFramework.19.7.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll" />
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.19.3.76\lib\net48\Oracle.ManagedDataAccess.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.19.3.76\lib\net48\Oracle.ManagedDataAccess.dll" to="Packages\Oracle.ManagedDataAccess.EntityFramework.19.7.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll"/>
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.81\lib\net48\Oracle.ManagedDataAccess.EntityFramework.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.81\lib\net48\Oracle.ManagedDataAccess.EntityFramework.dll" to="Packages\Oracle.ManagedDataAccess.EntityFramework.19.7.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll"/>
+    <ReplacementString qualifier="Packages\HPP.Core.BatchConversion.20.1.81\lib\net48\Oracle.ManagedDataAccess.EntityFramework.dll "  from="Packages\HPP.Core.BatchConversion.20.1.81\lib\net48\Oracle.ManagedDataAccess.EntityFramework.dll " to="Packages\Oracle.ManagedDataAccess.EntityFramework.19.7.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll"/>
+
+    <!--Oracle.ManagedDataAccess-->
+    
+    <ReplacementString qualifier="Packages\Oracle.ManagedDataAccess.12.1.022\lib\net40\Oracle.ManagedDataAccess.dll" from="Packages\Oracle.ManagedDataAccess.12.1.022\lib\net40\Oracle.ManagedDataAccess.dll" to="Packages\Oracle.ManagedDataAccess.19.7.0\lib\net40\Oracle.ManagedDataAccess.dll" />
+    <ReplacementString qualifier="Packages\Oracle.ManagedDataAccess.12.2.1100\lib\net40\Oracle.ManagedDataAccess.dll" from="Packages\Oracle.ManagedDataAccess.12.2.1100\lib\net40\Oracle.ManagedDataAccess.dll" to="Packages\Oracle.ManagedDataAccess.19.7.0\lib\net40\Oracle.ManagedDataAccess.dll" />
+    <ReplacementString qualifier="packages\Oracle.ManagedDataAccess.12.2.1100\lib\net40\Oracle.ManagedDataAccess.dll" from="packages\Oracle.ManagedDataAccess.12.2.1100\lib\net40\Oracle.ManagedDataAccess.dll" to="Packages\Oracle.ManagedDataAccess.19.7.0\lib\net40\Oracle.ManagedDataAccess.dll" />
+    <ReplacementString qualifier="Packages\Oracle.ManagedDataAccess.19.5.0\lib\net40\Oracle.ManagedDataAccess.dll" from="Packages\Oracle.ManagedDataAccess.19.5.0\lib\net40\Oracle.ManagedDataAccess.dll" to="Packages\Oracle.ManagedDataAccess.19.7.0\lib\net40\Oracle.ManagedDataAccess.dll" />
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.19.3.76\lib\net48\Oracle.ManagedDataAccess.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.19.3.76\lib\net48\Oracle.ManagedDataAccess.dll" to="Packages\Oracle.ManagedDataAccess.19.7.0\lib\net40\Oracle.ManagedDataAccess.dll"/>
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.81\lib\net48\Oracle.ManagedDataAccess.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.81\lib\net48\Oracle.ManagedDataAccess.dll" to="Packages\Oracle.ManagedDataAccess.19.7.0\lib\net40\Oracle.ManagedDataAccess.dll"/>
+    <ReplacementString qualifier="Packages\HPP.Core.BatchConversion.20.1.81\lib\net48\Oracle.ManagedDataAccess.dll"  from="Packages\HPP.Core.BatchConversion.20.1.81\lib\net48\Oracle.ManagedDataAccess.dll" to="Packages\Oracle.ManagedDataAccess.19.7.0\lib\net40\Oracle.ManagedDataAccess.dll"/> 
+
+    <!--#############################################packages.config#############################################-->
+
+    <!--12.1.022-->
+
+    <!--Oracle.ManagedDataAccess-->
+
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;12.1.022&quot; targetFramework=&quot;net45&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;12.1.022&quot; targetFramework=&quot;net451&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;12.1.022&quot; targetFramework=&quot;net452&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;12.1.022&quot; targetFramework=&quot;net46&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;12.1.022&quot; targetFramework=&quot;net461&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;12.1.022&quot; targetFramework=&quot;net462&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;12.1.022&quot; targetFramework=&quot;net48&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    
+    <!--12.2.1100-->
+
+    <!--Oracle.ManagedDataAccess.EntityFramework-->
+
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;12.2.1100&quot; targetFramework=&quot;net45&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;12.2.1100&quot; targetFramework=&quot;net451&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;12.2.1100&quot; targetFramework=&quot;net452&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;12.2.1100&quot; targetFramework=&quot;net46&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;12.2.1100&quot; targetFramework=&quot;net461&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;12.2.1100&quot; targetFramework=&quot;net462&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;12.2.1100&quot; targetFramework=&quot;net48&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    
+    <!--Oracle.ManagedDataAccess-->
+
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;12.2.1100&quot; targetFramework=&quot;net45&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;12.2.1100&quot; targetFramework=&quot;net451&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;12.2.1100&quot; targetFramework=&quot;net452&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;12.2.1100&quot; targetFramework=&quot;net46&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;12.2.1100&quot; targetFramework=&quot;net461&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;12.2.1100&quot; targetFramework=&quot;net462&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;12.2.1100&quot; targetFramework=&quot;net48&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+
+    <!--19.5.0-->
+    
+    <!--Oracle.ManagedDataAccess.EntityFramework-->
+
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.5.0&quot; targetFramework=&quot;net45&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.5.0&quot; targetFramework=&quot;net451&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.5.0&quot; targetFramework=&quot;net452&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.5.0&quot; targetFramework=&quot;net46&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.5.0&quot; targetFramework=&quot;net461&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.5.0&quot; targetFramework=&quot;net462&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.5.0&quot; targetFramework=&quot;net48&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess.EntityFramework&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+
+    <!--19.3.0-->
+    
+    <!--Oracle.ManagedDataAccess-->
+    
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.3.0&quot; targetFramework=&quot;net45&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>  
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.3.0&quot; targetFramework=&quot;net451&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>  
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.3.0&quot; targetFramework=&quot;net452&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>       
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.3.0&quot; targetFramework=&quot;net46&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>  
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.3.0&quot; targetFramework=&quot;net461&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/> 
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.3.0&quot; targetFramework=&quot;net462&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>  
+    <ReplacementString qualifier="&lt;package id=&quot;Oracle.ManagedDataAccess&quot;" from="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.3.0&quot; targetFramework=&quot;net48&quot; /&gt;" to="&lt;package id=&quot;Oracle.ManagedDataAccess&quot; version=&quot;19.7.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>  
+    
+    </ReplacementStrings>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+  <TfsWorkspace></TfsWorkspace>
+  <TFSUserName></TFSUserName>
+  <TFSPassword></TFSPassword>
+</RefactorConfig>

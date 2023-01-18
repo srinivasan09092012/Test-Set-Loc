@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="90a9b77d-e9e1-4ac9-8dda-ba6be0601fa6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://localhost:44311/DataListsService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DataListsService.xsd" MetadataType="Schema" ID="986fd94e-b63e-49ba-bfea-5eeb0edd13b2" SourceId="1" SourceUrl="https://localhost:44311/DataListsService.svc?xsd=xsd2" />
+    <MetadataFile FileName="DataListsService1.xsd" MetadataType="Schema" ID="67aae4be-2b52-4040-901f-2d0b49ad212f" SourceId="1" SourceUrl="https://localhost:44311/DataListsService.svc?xsd=xsd1" />
+    <MetadataFile FileName="DataListsService2.xsd" MetadataType="Schema" ID="fda45ecf-6a89-4156-93c1-3c370a825b19" SourceId="1" SourceUrl="https://localhost:44311/DataListsService.svc?xsd=xsd0" />
+    <MetadataFile FileName="DataListsService.wsdl" MetadataType="Wsdl" ID="15a92864-2c72-4ea3-8f1c-b86ebb077b40" SourceId="1" SourceUrl="https://localhost:44311/DataListsService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="DataListsService.disco" MetadataType="Disco" ID="2608c706-d8bb-4d03-afb1-fa591e9534f7" SourceId="1" SourceUrl="https://localhost:44311/DataListsService.svc?disco" />
+    <MetadataFile FileName="DataListsService3.xsd" MetadataType="Schema" ID="ec6a7fda-2c49-47a6-873b-5473a42ad2c9" SourceId="1" SourceUrl="https://localhost:44311/DataListsService.svc?xsd=xsd7" />
+    <MetadataFile FileName="DataListsService4.xsd" MetadataType="Schema" ID="1d8ae51c-d9bf-4661-88f5-9d3d0ee57169" SourceId="1" SourceUrl="https://localhost:44311/DataListsService.svc?xsd=xsd4" />
+    <MetadataFile FileName="DataListsService5.xsd" MetadataType="Schema" ID="551475fa-21c0-4bc1-ad63-2fd6a5669520" SourceId="1" SourceUrl="https://localhost:44311/DataListsService.svc?xsd=xsd5" />
+    <MetadataFile FileName="DataListsService6.xsd" MetadataType="Schema" ID="890a7e15-959f-471a-9b59-1f35f0d43368" SourceId="1" SourceUrl="https://localhost:44311/DataListsService.svc?xsd=xsd3" />
+    <MetadataFile FileName="DataListsService1.wsdl" MetadataType="Wsdl" ID="ccdb2c32-8b7f-4627-8150-5608e098e143" SourceId="1" SourceUrl="https://localhost:44311/DataListsService.svc?wsdl" />
+    <MetadataFile FileName="DataListsService7.xsd" MetadataType="Schema" ID="dff87270-b87a-4b3a-851a-689aa3e8db1f" SourceId="1" SourceUrl="https://localhost:44311/DataListsService.svc?xsd=xsd8" />
+    <MetadataFile FileName="DataListsService8.xsd" MetadataType="Schema" ID="270fc1c1-df01-42b6-b3e4-fb51420db2b6" SourceId="1" SourceUrl="https://localhost:44311/DataListsService.svc?xsd=xsd6" />
+    <MetadataFile FileName="DataListsService9.xsd" MetadataType="Schema" ID="37c93814-8345-490a-ad33-9c2a8f7c2d84" SourceId="1" SourceUrl="https://localhost:44311/DataListsService.svc?xsd=xsd9" />
+    <MetadataFile FileName="DataListsService10.xsd" MetadataType="Schema" ID="1208a573-62d6-4c29-bd42-c1c93543a2f6" SourceId="1" SourceUrl="https://localhost:44311/DataListsService.svc?xsd=xsd10" />
+    <MetadataFile FileName="DataListsService11.xsd" MetadataType="Schema" ID="6977470a-a519-4c24-9e4a-8555883431a4" SourceId="1" SourceUrl="https://localhost:44311/DataListsService.svc?xsd=xsd11" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

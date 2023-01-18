@@ -1,0 +1,713 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="UpgradePackage" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" targetTFS="Azure">
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+    <!--<ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />-->
+    <ModuleConfig name="Administration" branch="Dev" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ConfigurationManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Core" branch="Dev" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="Dev" types="All" />
+    <ModuleConfig name="EDI" branch="Dev" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="Dev" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Integration" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="Dev" types="All" />
+    <ModuleConfig name="MemberManagement" branch="Dev" types="All" />
+    <ModuleConfig name="MemberPortal" branch="Dev" types="All" />
+    <ModuleConfig name="Notifications" branch="Dev" types="All" />
+    <ModuleConfig name="PlanManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrityCT" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="Dev" types="All" />
+    <ModuleConfig name="Screening" branch="Dev" types="All" />
+    <ModuleConfig name="TaskManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
+    <ModuleConfig name="Utilities" branch="Dev" types="NA" />
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes />
+  <LineDeletes />
+  <!--Only the root package should have Dependency = "false"-->
+  <!-- These sections are to be run in sequence as per the pass Number. Only one pass to be run at a time. Comment out other passes-->
+
+  <!--=================================================HP.HSP.UA3.Core.BAS.CQRS(21.3.112)  Pass 1 =================================================================-->
+  <!--Run a replacement string pass to reduce Core BAS CQRS version to 21.3.111 so that this pass will execute as 111 to 112 is an upgrade-->
+  <!--This pass will make sure MongoDBDriver is installed in all the projects that has a reference to Core BAS CQRS -->
+  <References>
+    <Reference Dependency ="false" Include = "HP.HSP.UA3.Core.BAS.CQRS" HintPath = "Packages\HP.HSP.UA3.Core.BAS.CQRS.21.3.112\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll" />
+    <Reference Dependency ="true" Include = "MongoDB.Driver.Legacy, Version=2.13.1.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\mongocsharpdriver.2.13.1\lib\net452\MongoDB.Driver.Legacy.dll" />
+    <Reference Dependency ="true" Include = "MongoDB.Bson, Version=2.13.1.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Bson.2.13.1\lib\net452\MongoDB.Bson.dll" />
+    <Reference Dependency ="true" Include = "MongoDB.Driver.Core, Version=2.13.1.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Driver.Core.2.13.1\lib\net452\MongoDB.Driver.Core.dll" />
+    <Reference Dependency ="true" Include = "MongoDB.Driver, Version=2.13.1.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Driver.2.13.1\lib\net452\MongoDB.Driver.dll" />
+    <Reference Dependency ="true" Include = "System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Reference Dependency ="true" Include = "DnsClient, Version=1.5.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL" HintPath = "Packages\DnsClient.1.5.0\lib\net471\DnsClient.dll" />
+    <Reference Dependency ="true" Include = "Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll" />
+    <Reference Dependency ="true" Include = "System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll" />
+    <Reference Dependency ="true" Include = "System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll" />
+    <Reference Dependency ="true" Include = "System.ComponentModel.Composition" HintPath = "" />
+    <Reference Dependency ="true" Include = "MongoDB.Libmongocrypt, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Libmongocrypt.1.2.2\lib\net452\MongoDB.Libmongocrypt.dll" />
+    <Reference Dependency ="true" Include = "SharpCompress, Version=0.28.3.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL" HintPath = "Packages\SharpCompress.0.28.3\lib\netstandard2.0\SharpCompress.dll" />
+    <Reference Dependency ="true" Include = "System.Text.Encoding.CodePages, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Text.Encoding.CodePages.5.0.0\lib\net461\System.Text.Encoding.CodePages.dll" />
+    <Reference Dependency ="true" Include = "System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Memory.4.5.4\lib\net461\System.Memory.dll" />
+    <Reference Dependency ="true" Include = "System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll" />
+    <Reference Dependency ="true" Include = "System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll" />
+    <Reference Dependency ="true" Include = "System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll" />
+    <Reference Dependency ="true" Include = "System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll" />
+    <Reference Dependency ="true" Include = "System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.IO.4.3.0\lib\net462\System.IO.dll" />
+    <Reference Dependency ="true" Include = "System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll" />
+  </References>
+  <Packages>
+    <Package id="HP.HSP.UA3.Core.BAS.CQRS" version="21.3.112" targetFramework="net48" />
+    <Package id="mongocsharpdriver" version="2.13.1" targetFramework="net48" />
+    <Package id="MongoDB.Bson" version="2.13.1" targetFramework="net48" />
+    <Package id="MongoDB.Driver.Core" version="2.13.1" targetFramework="net48" />
+    <Package id="MongoDB.Driver" version="2.13.1" targetFramework="net48" />
+    <Package id="System.Runtime.CompilerServices.Unsafe" version="5.0.0" targetFramework="net48" />
+    <Package id="DnsClient" version="1.5.0" targetFramework="net48" />
+    <Package id="Microsoft.Win32.Registry" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Buffers" version="4.5.1" targetFramework="net48" />
+    <Package id="System.Security.AccessControl" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Security.Principal.Windows" version="5.0.0" targetFramework="net48" />
+    <Package id="MongoDB.Libmongocrypt" version="1.2.2" targetFramework="net48" />
+    <Package id="SharpCompress" version="0.28.3" targetFramework="net48" />
+    <Package id="System.Text.Encoding.CodePages" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Memory" version="4.5.4" targetFramework="net48" />
+    <Package id="System.Numerics.Vectors" version="4.5.0" targetFramework="net48" />
+    <Package id="System.Runtime.InteropServices.RuntimeInformation" version="4.3.0" targetFramework="net48" />
+    <Package id="System.ValueTuple" version="4.5.0" targetFramework="net48" />
+    <Package id="System.Net.Http" version="4.3.4" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.X509Certificates" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.Encoding" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.Algorithms" version="4.3.0" targetFramework="net48" />
+    <Package id="System.IO" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Runtime" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.Primitives" version="4.3.0" targetFramework="net48" />
+  </Packages>
+  <WebAppConfig>
+    <DependentAssembly name = "DnsClient" publicKeyToken = "4574bb5573c51424" culture = "neutral" oldVersion = "0.0.0.0-1.5.0.0" newVersion = "1.5.0.0"/>
+    <DependentAssembly name = "System.Buffers" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.3.0" newVersion = "4.0.3.0"/>
+    <DependentAssembly name = "System.Runtime.CompilerServices.Unsafe" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-5.0.0.0" newVersion = "5.0.0.0"/>
+    <DependentAssembly name = "System.Memory" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.1.1" newVersion = "4.0.1.1"/>
+    <DependentAssembly name = "System.Numerics.Vectors" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-4.1.4.0" newVersion = "4.1.4.0"/>
+    <DependentAssembly name = "System.ValueTuple" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.3.0" newVersion = "4.0.3.0"/>
+  </WebAppConfig>
+  <!--<Imports>
+    <Import Project="[SOURCEFOLDER]Packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets" Condition="Exists('[SOURCEFOLDER]Packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets')"/>
+    <Import Project="[SOURCEFOLDER]Packages\MongoDB.Driver.Core.2.12.4\build\MongoDB.Driver.Core.targets" Condition="Exists('[SOURCEFOLDER]Packages\MongoDB.Driver.Core.2.12.4\build\MongoDB.Driver.Core.targets')"/>
+  </Imports>
+  <Targets>
+    <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+      <PropertyGroup>
+        <PropertyElement ElementName="ErrorText" ElementText="This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}."/>
+      </PropertyGroup>
+      <ErrorList>
+        <Error Condition="!Exists('[SOURCEFOLDER]Packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets')" Text="$([System.String]::Format('$(ErrorText)', '[SOURCEFOLDER]Packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets'))" />
+        <Error Condition="!Exists('[SOURCEFOLDER]Packages\MongoDB.Driver.Core.2.12.4\build\MongoDB.Driver.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '[SOURCEFOLDER]Packages\MongoDB.Driver.Core.2.12.4\build\MongoDB.Driver.Core.targets'))" />
+      </ErrorList>
+    </Target>
+  </Targets>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--================================================mongocsharpdriver(2.13.1)  Pass 2 Level 0=================================================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "MongoDB.Driver.Legacy, Version=2.13.1.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\mongocsharpdriver.2.13.1\lib\net452\MongoDB.Driver.Legacy.dll" />
+    <Reference Dependency ="true" Include = "MongoDB.Bson, Version=2.13.1.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Bson.2.13.1\lib\net452\MongoDB.Bson.dll" />
+    <Reference Dependency ="true" Include = "MongoDB.Driver.Core, Version=2.13.1.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Driver.Core.2.13.1\lib\net452\MongoDB.Driver.Core.dll" />
+    <Reference Dependency ="true" Include = "MongoDB.Driver, Version=2.13.1.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Driver.2.13.1\lib\net452\MongoDB.Driver.dll" />
+    <Reference Dependency ="true" Include = "System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Reference Dependency ="true" Include = "DnsClient, Version=1.5.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL" HintPath = "Packages\DnsClient.1.5.0\lib\net471\DnsClient.dll" />
+    <Reference Dependency ="true" Include = "Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll" />
+    <Reference Dependency ="true" Include = "System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll" />
+    <Reference Dependency ="true" Include = "System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll" />
+    <Reference Dependency ="true" Include = "System.ComponentModel.Composition" HintPath = "" />
+    <Reference Dependency ="true" Include = "MongoDB.Libmongocrypt, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Libmongocrypt.1.2.2\lib\net452\MongoDB.Libmongocrypt.dll" />
+    <Reference Dependency ="true" Include = "SharpCompress, Version=0.28.3.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL" HintPath = "Packages\SharpCompress.0.28.3\lib\netstandard2.0\SharpCompress.dll" />
+    <Reference Dependency ="true" Include = "System.Text.Encoding.CodePages, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Text.Encoding.CodePages.5.0.0\lib\net461\System.Text.Encoding.CodePages.dll" />
+    <Reference Dependency ="true" Include = "System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Memory.4.5.4\lib\net461\System.Memory.dll" />
+    <Reference Dependency ="true" Include = "System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll" />
+    <Reference Dependency ="true" Include = "System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll" />
+    <Reference Dependency ="true" Include = "System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll" />
+    <Reference Dependency ="true" Include = "System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll" />
+    <Reference Dependency ="true" Include = "System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.IO.4.3.0\lib\net462\System.IO.dll" />
+    <Reference Dependency ="true" Include = "System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll" />
+  </References>
+  <Packages>
+    <Package id="mongocsharpdriver" version="2.13.1" targetFramework="net48" />
+    <Package id="MongoDB.Bson" version="2.13.1" targetFramework="net48" />
+    <Package id="MongoDB.Driver.Core" version="2.13.1" targetFramework="net48" />
+    <Package id="MongoDB.Driver" version="2.13.1" targetFramework="net48" />
+    <Package id="System.Runtime.CompilerServices.Unsafe" version="5.0.0" targetFramework="net48" />
+    <Package id="DnsClient" version="1.5.0" targetFramework="net48" />
+    <Package id="Microsoft.Win32.Registry" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Buffers" version="4.5.1" targetFramework="net48" />
+    <Package id="System.Security.AccessControl" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Security.Principal.Windows" version="5.0.0" targetFramework="net48" />
+    <Package id="MongoDB.Libmongocrypt" version="1.2.2" targetFramework="net48" />
+    <Package id="SharpCompress" version="0.28.3" targetFramework="net48" />
+    <Package id="System.Text.Encoding.CodePages" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Memory" version="4.5.4" targetFramework="net48" />
+    <Package id="System.Numerics.Vectors" version="4.5.0" targetFramework="net48" />
+    <Package id="System.Runtime.InteropServices.RuntimeInformation" version="4.3.0" targetFramework="net48" />
+    <Package id="System.ValueTuple" version="4.5.0" targetFramework="net48" />
+    <Package id="System.Net.Http" version="4.3.4" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.X509Certificates" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.Encoding" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.Algorithms" version="4.3.0" targetFramework="net48" />
+    <Package id="System.IO" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Runtime" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.Primitives" version="4.3.0" targetFramework="net48" />
+  </Packages>
+  <WebAppConfig>
+    <DependentAssembly name = "DnsClient" publicKeyToken = "4574bb5573c51424" culture = "neutral" oldVersion = "0.0.0.0-1.5.0.0" newVersion = "1.5.0.0"/>
+    <DependentAssembly name = "System.Buffers" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.3.0" newVersion = "4.0.3.0"/>
+    <DependentAssembly name = "System.Runtime.CompilerServices.Unsafe" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-5.0.0.0" newVersion = "5.0.0.0"/>
+    <DependentAssembly name = "System.Memory" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.1.1" newVersion = "4.0.1.1"/>
+    <DependentAssembly name = "System.Numerics.Vectors" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-4.1.4.0" newVersion = "4.1.4.0"/>
+    <DependentAssembly name = "System.ValueTuple" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.3.0" newVersion = "4.0.3.0"/>
+  </WebAppConfig>-->
+  <!--<Imports>
+    <Import Project="[SOURCEFOLDER]Packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets" Condition="Exists('[SOURCEFOLDER]Packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets')"/>
+    <Import Project="[SOURCEFOLDER]Packages\MongoDB.Driver.Core.2.12.4\build\MongoDB.Driver.Core.targets" Condition="Exists('[SOURCEFOLDER]Packages\MongoDB.Driver.Core.2.12.4\build\MongoDB.Driver.Core.targets')"/>
+  </Imports>
+  <Targets>
+    <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+      <PropertyGroup>
+        <PropertyElement ElementName="ErrorText" ElementText="This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}."/>
+      </PropertyGroup>
+      <ErrorList>
+        <Error Condition="!Exists('[SOURCEFOLDER]Packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets')" Text="$([System.String]::Format('$(ErrorText)', '[SOURCEFOLDER]Packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets'))" />
+        <Error Condition="!Exists('[SOURCEFOLDER]Packages\MongoDB.Driver.Core.2.12.4\build\MongoDB.Driver.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '[SOURCEFOLDER]Packages\MongoDB.Driver.Core.2.12.4\build\MongoDB.Driver.Core.targets'))" />
+      </ErrorList>
+    </Target>
+  </Targets>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--============================================MongoDB.Driver(>= 2.12.4) Pass 3 Level 1 =============================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "MongoDB.Driver, Version=2.13.1.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Driver.2.13.1\lib\net452\MongoDB.Driver.dll" />
+    <Reference Dependency ="true" Include = "MongoDB.Bson, Version=2.13.1.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Bson.2.13.1\lib\net452\MongoDB.Bson.dll" />
+    <Reference Dependency ="true" Include = "System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Reference Dependency ="true" Include = "MongoDB.Driver.Core, Version=2.13.1.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Driver.Core.2.13.1\lib\net452\MongoDB.Driver.Core.dll" />
+    <Reference Dependency ="true" Include = "DnsClient, Version=1.5.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL" HintPath = "Packages\DnsClient.1.5.0\lib\net471\DnsClient.dll" />
+    <Reference Dependency ="true" Include = "Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll" />
+    <Reference Dependency ="true" Include = "System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll" />
+    <Reference Dependency ="true" Include = "System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll" />
+    <Reference Dependency ="true" Include = "System.ComponentModel.Composition" HintPath = "" />
+    <Reference Dependency ="true" Include = "MongoDB.Libmongocrypt, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Libmongocrypt.1.2.2\lib\net452\MongoDB.Libmongocrypt.dll" />
+    <Reference Dependency ="true" Include = "SharpCompress, Version=0.28.3.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL" HintPath = "Packages\SharpCompress.0.28.3\lib\netstandard2.0\SharpCompress.dll" />
+    <Reference Dependency ="true" Include = "System.Text.Encoding.CodePages, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Text.Encoding.CodePages.5.0.0\lib\net461\System.Text.Encoding.CodePages.dll" />
+    <Reference Dependency ="true" Include = "System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Memory.4.5.4\lib\net461\System.Memory.dll" />
+    <Reference Dependency ="true" Include = "System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll" />
+    <Reference Dependency ="true" Include = "System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll" />
+    <Reference Dependency ="true" Include = "System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll" />
+    <Reference Dependency ="true" Include = "System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll" />
+    <Reference Dependency ="true" Include = "System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.IO.4.3.0\lib\net462\System.IO.dll" />
+    <Reference Dependency ="true" Include = "System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll" />
+  </References>
+  <Packages>
+    <Package id="MongoDB.Driver" version="2.13.1" targetFramework="net48" />
+    <Package id="MongoDB.Bson" version="2.13.1" targetFramework="net48" />
+    <Package id="System.Runtime.CompilerServices.Unsafe" version="5.0.0" targetFramework="net48" />
+    <Package id="MongoDB.Driver.Core" version="2.13.1" targetFramework="net48" />
+    <Package id="DnsClient" version="1.5.0" targetFramework="net48" />
+    <Package id="Microsoft.Win32.Registry" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Buffers" version="4.5.1" targetFramework="net48" />
+    <Package id="System.Security.AccessControl" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Security.Principal.Windows" version="5.0.0" targetFramework="net48" />
+    <Package id="MongoDB.Libmongocrypt" version="1.2.2" targetFramework="net48" />
+    <Package id="SharpCompress" version="0.28.3" targetFramework="net48" />
+    <Package id="System.Text.Encoding.CodePages" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Memory" version="4.5.4" targetFramework="net48" />
+    <Package id="System.Numerics.Vectors" version="4.5.0" targetFramework="net48" />
+    <Package id="System.Runtime.InteropServices.RuntimeInformation" version="4.3.0" targetFramework="net48" />
+    <Package id="System.ValueTuple" version="4.5.0" targetFramework="net48" />
+    <Package id="System.Net.Http" version="4.3.4" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.X509Certificates" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.Encoding" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.Algorithms" version="4.3.0" targetFramework="net48" />
+    <Package id="System.IO" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Runtime" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.Primitives" version="4.3.0" targetFramework="net48" />
+  </Packages>
+  <WebAppConfig>
+    <DependentAssembly name = "DnsClient" publicKeyToken = "4574bb5573c51424" culture = "neutral" oldVersion = "0.0.0.0-1.5.0.0" newVersion = "1.5.0.0"/>
+    <DependentAssembly name = "System.Buffers" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.3.0" newVersion = "4.0.3.0"/>
+    <DependentAssembly name = "System.Runtime.CompilerServices.Unsafe" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-5.0.0.0" newVersion = "5.0.0.0"/>
+    <DependentAssembly name = "System.Memory" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.1.1" newVersion = "4.0.1.1"/>
+    <DependentAssembly name = "System.Numerics.Vectors" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-4.1.4.0" newVersion = "4.1.4.0"/>
+    <DependentAssembly name = "System.ValueTuple" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.3.0" newVersion = "4.0.3.0"/>
+  </WebAppConfig>-->
+  <!--<Imports>
+    <Import Project="[SOURCEFOLDER]Packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets" Condition="Exists('[SOURCEFOLDER]Packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets')"/>
+    <Import Project="[SOURCEFOLDER]Packages\MongoDB.Driver.Core.2.12.4\build\MongoDB.Driver.Core.targets" Condition="Exists('[SOURCEFOLDER]Packages\MongoDB.Driver.Core.2.12.4\build\MongoDB.Driver.Core.targets')"/>
+  </Imports>
+  <Targets>
+    <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+      <PropertyGroup>
+        <PropertyElement ElementName="ErrorText" ElementText="This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}."/>
+      </PropertyGroup>
+      <ErrorList>
+        <Error Condition="!Exists('[SOURCEFOLDER]Packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets')" Text="$([System.String]::Format('$(ErrorText)', '[SOURCEFOLDER]Packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets'))" />
+        <Error Condition="!Exists('[SOURCEFOLDER]Packages\MongoDB.Driver.Core.2.12.4\build\MongoDB.Driver.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '[SOURCEFOLDER]Packages\MongoDB.Driver.Core.2.12.4\build\MongoDB.Driver.Core.targets'))" />
+      </ErrorList>
+    </Target>
+  </Targets>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--============================================MongoDB.Driver.Core (>= 2.13.1) Pass 4 Level 1,2============================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "MongoDB.Driver.Core, Version=2.13.1.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Driver.Core.2.13.1\lib\net452\MongoDB.Driver.Core.dll" />
+    <Reference Dependency ="true" Include = "DnsClient, Version=1.5.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL" HintPath = "Packages\DnsClient.1.5.0\lib\net471\DnsClient.dll" />
+    <Reference Dependency ="true" Include = "Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll" />
+    <Reference Dependency ="true" Include = "System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll" />
+    <Reference Dependency ="true" Include = "System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll" />
+    <Reference Dependency ="true" Include = "MongoDB.Bson, Version=2.13.1.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Bson.2.13.1\lib\net452\MongoDB.Bson.dll" />
+    <Reference Dependency ="true" Include = "System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Reference Dependency ="true" Include = "System.ComponentModel.Composition" HintPath = "" />
+    <Reference Dependency ="true" Include = "MongoDB.Libmongocrypt, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Libmongocrypt.1.2.2\lib\net452\MongoDB.Libmongocrypt.dll" />
+    <Reference Dependency ="true" Include = "SharpCompress, Version=0.28.3.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL" HintPath = "Packages\SharpCompress.0.28.3\lib\netstandard2.0\SharpCompress.dll" />
+    <Reference Dependency ="true" Include = "System.Text.Encoding.CodePages, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Text.Encoding.CodePages.5.0.0\lib\net461\System.Text.Encoding.CodePages.dll" />
+    <Reference Dependency ="true" Include = "System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Memory.4.5.4\lib\net461\System.Memory.dll" />
+    <Reference Dependency ="true" Include = "System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll" />
+    <Reference Dependency ="true" Include = "System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll" />
+    <Reference Dependency ="true" Include = "System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll" />
+    <Reference Dependency ="true" Include = "System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll" />
+    <Reference Dependency ="true" Include = "System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.IO.4.3.0\lib\net462\System.IO.dll" />
+    <Reference Dependency ="true" Include = "System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll" />
+  </References>
+  <Packages>
+    <Package id="MongoDB.Driver.Core" version="2.13.1" targetFramework="net48" />
+    <Package id="DnsClient" version="1.5.0" targetFramework="net48" />
+    <Package id="Microsoft.Win32.Registry" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Buffers" version="4.5.1" targetFramework="net48" />
+    <Package id="System.Security.AccessControl" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Security.Principal.Windows" version="5.0.0" targetFramework="net48" />
+    <Package id="MongoDB.Bson" version="2.13.1" targetFramework="net48" />
+    <Package id="System.Runtime.CompilerServices.Unsafe" version="5.0.0" targetFramework="net48" />
+    <Package id="MongoDB.Libmongocrypt" version="1.2.2" targetFramework="net48" />
+    <Package id="SharpCompress" version="0.28.3" targetFramework="net48" />
+    <Package id="System.Text.Encoding.CodePages" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Memory" version="4.5.4" targetFramework="net48" />
+    <Package id="System.Numerics.Vectors" version="4.5.0" targetFramework="net48" />
+    <Package id="System.Runtime.InteropServices.RuntimeInformation" version="4.3.0" targetFramework="net48" />
+    <Package id="System.ValueTuple" version="4.5.0" targetFramework="net48" />
+    <Package id="System.Net.Http" version="4.3.4" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.X509Certificates" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.Encoding" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.Algorithms" version="4.3.0" targetFramework="net48" />
+    <Package id="System.IO" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Runtime" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.Primitives" version="4.3.0" targetFramework="net48" />
+  </Packages>
+  <WebAppConfig>
+    <DependentAssembly name = "DnsClient" publicKeyToken = "4574bb5573c51424" culture = "neutral" oldVersion = "0.0.0.0-1.5.0.0" newVersion = "1.5.0.0"/>
+    <DependentAssembly name = "System.Buffers" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.3.0" newVersion = "4.0.3.0"/>
+    <DependentAssembly name = "System.Runtime.CompilerServices.Unsafe" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-5.0.0.0" newVersion = "5.0.0.0"/>
+    <DependentAssembly name = "System.Memory" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.1.1" newVersion = "4.0.1.1"/>
+    <DependentAssembly name = "System.Numerics.Vectors" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-4.1.4.0" newVersion = "4.1.4.0"/>
+    <DependentAssembly name = "System.ValueTuple" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.3.0" newVersion = "4.0.3.0"/>
+  </WebAppConfig>-->
+  <!--<Imports>
+    <Import Project="[SOURCEFOLDER]Packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets" Condition="Exists('[SOURCEFOLDER]Packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets')"/>
+    <Import Project="[SOURCEFOLDER]Packages\MongoDB.Driver.Core.2.12.4\build\MongoDB.Driver.Core.targets" Condition="Exists('[SOURCEFOLDER]Packages\MongoDB.Driver.Core.2.12.4\build\MongoDB.Driver.Core.targets')"/>
+  </Imports>
+  <Targets>
+    <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+      <PropertyGroup>
+        <PropertyElement ElementName="ErrorText" ElementText="This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}."/>
+      </PropertyGroup>
+      <ErrorList>
+        <Error Condition="!Exists('[SOURCEFOLDER]Packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets')" Text="$([System.String]::Format('$(ErrorText)', '[SOURCEFOLDER]Packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets'))" />
+        <Error Condition="!Exists('[SOURCEFOLDER]Packages\MongoDB.Driver.Core.2.12.4\build\MongoDB.Driver.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '[SOURCEFOLDER]Packages\MongoDB.Driver.Core.2.12.4\build\MongoDB.Driver.Core.targets'))" />
+      </ErrorList>
+    </Target>
+  </Targets>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--=============================================MongoDB.Bson (>= 2.12.4) Pass 5 Level 1,2,3============================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "MongoDB.Bson, Version=2.13.1.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Bson.2.13.1\lib\net452\MongoDB.Bson.dll" />
+    <Reference Dependency ="true" Include = "System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll" />
+  </References>
+  <Packages>
+    <Package id="MongoDB.Bson" version="2.13.1" targetFramework="net48" />
+    <Package id="System.Runtime.CompilerServices.Unsafe" version="5.0.0" targetFramework="net48" />
+  </Packages>
+  <WebAppConfig>
+    <DependentAssembly name = "System.Runtime.CompilerServices.Unsafe" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-5.0.0.0" newVersion = "5.0.0.0"/>
+  </WebAppConfig>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--============================================System.Net.Http(>=4.1.1.3) Pass 6 Level 2,3==================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll" />
+    <Reference Dependency ="true" Include = "System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.IO.4.3.0\lib\net462\System.IO.dll" />
+    <Reference Dependency ="true" Include = "System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll" />
+  </References>
+  <Packages>
+    <Package id="System.Net.Http" version="4.3.4" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.X509Certificates" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.Encoding" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.Algorithms" version="4.3.0" targetFramework="net48" />
+    <Package id="System.IO" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Runtime" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.Primitives" version="4.3.0" targetFramework="net48" />
+  </Packages>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--============================================DnsClient (>= 1.5.0.0) Pass 7 Level 2,3============================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "DnsClient, Version=1.5.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL" HintPath = "Packages\DnsClient.1.5.0\lib\net471\DnsClient.dll" />
+    <Reference Dependency ="true" Include = "Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll" />
+    <Reference Dependency ="true" Include = "System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll" />
+    <Reference Dependency ="true" Include = "System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll" />
+  </References>
+  <Packages>
+    <Package id="DnsClient" version="1.5.0" targetFramework="net48" />
+    <Package id="Microsoft.Win32.Registry" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Buffers" version="4.5.1" targetFramework="net48" />
+    <Package id="System.Security.AccessControl" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Security.Principal.Windows" version="5.0.0" targetFramework="net48" />
+  </Packages>
+  <WebAppConfig>
+    <DependentAssembly name = "DnsClient" publicKeyToken = "4574bb5573c51424" culture = "neutral" oldVersion = "0.0.0.0-1.5.0.0" newVersion = "1.5.0.0"/>
+    <DependentAssembly name = "System.Buffers" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.3.0" newVersion = "4.0.3.0"/>
+  </WebAppConfig>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--============================================Microsoft.Win32.Registry(>= 5.0.0) Pass 8============================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll" />
+    <Reference Dependency ="true" Include = "System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll" />
+  </References>
+  <Packages>
+    <Package id="Microsoft.Win32.Registry" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Security.AccessControl" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Security.Principal.Windows" version="5.0.0" targetFramework="net48" />
+  </Packages>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--============================================System.Security.AccessControl(>= 5.0.0) Pass 9============================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll" />
+  </References>
+  <Packages>
+    <Package id="System.Security.AccessControl" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Security.Principal.Windows" version="5.0.0" targetFramework="net48" />
+  </Packages>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--============================================System.Security.Cryptography.X509Certificates (>= 4.3.0) Pass 10 Level 3,4============================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll" />
+    <Reference Dependency ="true" Include = "System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.IO.4.3.0\lib\net462\System.IO.dll" />
+    <Reference Dependency ="true" Include = "System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll" />
+  </References>
+  <Packages>
+    <Package id="System.Security.Cryptography.X509Certificates" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.Encoding" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.Algorithms" version="4.3.0" targetFramework="net48" />
+    <Package id="System.IO" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Runtime" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.Primitives" version="4.3.0" targetFramework="net48" />
+  </Packages>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--============================================System.Security.Cryptography.Algorithms (>= 4.3.0) Pass 11 Level 4,5============================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll" />
+    <Reference Dependency ="true" Include = "System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.IO.4.3.0\lib\net462\System.IO.dll" />
+    <Reference Dependency ="true" Include = "System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll" />
+    <Reference Dependency ="true" Include = "System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll" />
+  </References>
+  <Packages>
+    <Package id="System.Security.Cryptography.Algorithms" version="4.3.0" targetFramework="net48" />
+    <Package id="System.IO" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Runtime" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.Encoding" version="4.3.0" targetFramework="net48" />
+    <Package id="System.Security.Cryptography.Primitives" version="4.3.0" targetFramework="net48" />
+  </Packages>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--==================================================SharpCompress (>= 0.28.0) Pass 12 Level 2,3==================================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "SharpCompress, Version=0.28.3.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL" HintPath = "Packages\SharpCompress.0.28.3\lib\netstandard2.0\SharpCompress.dll" />
+    <Reference Dependency ="true" Include = "System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Reference Dependency ="true" Include = "System.Text.Encoding.CodePages, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Text.Encoding.CodePages.5.0.0\lib\net461\System.Text.Encoding.CodePages.dll" />
+    <Reference Dependency ="true" Include = "System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll" />
+    <Reference Dependency ="true" Include = "System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Memory.4.5.4\lib\net461\System.Memory.dll" />
+    <Reference Dependency ="true" Include = "System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll" />
+  </References>
+  <Packages>
+    <Package id="SharpCompress" version="0.28.3" targetFramework="net48" />
+    <Package id="System.Runtime.CompilerServices.Unsafe" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Text.Encoding.CodePages" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Buffers" version="4.5.1" targetFramework="net48" />
+    <Package id="System.Memory" version="4.5.4" targetFramework="net48" />
+    <Package id="System.Numerics.Vectors" version="4.5.0" targetFramework="net48" />
+  </Packages>
+  <WebAppConfig>
+    <DependentAssembly name = "System.Runtime.CompilerServices.Unsafe" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-5.0.0.0" newVersion = "5.0.0.0"/>
+    <DependentAssembly name = "System.Buffers" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.3.0" newVersion = "4.0.3.0"/>
+    <DependentAssembly name = "System.Memory" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.1.1" newVersion = "4.0.1.1"/>
+    <DependentAssembly name = "System.Numerics.Vectors" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-4.1.4.0" newVersion = "4.1.4.0"/>
+  </WebAppConfig>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--==================================================System.Memory (>= 4.5.3) Pass 13 ==================================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Memory.4.5.4\lib\net461\System.Memory.dll" />
+    <Reference Dependency ="true" Include = "System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Reference Dependency ="true" Include = "System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll" />
+    <Reference Dependency ="true" Include = "System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll" />
+  </References>
+  <Packages>
+    <Package id="System.Memory" version="4.5.4" targetFramework="net48" />
+    <Package id="System.Buffers" version="4.5.1" targetFramework="net48" />
+    <Package id="System.Runtime.CompilerServices.Unsafe" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Numerics.Vectors" version="4.5.0" targetFramework="net48" />
+  </Packages>
+  <WebAppConfig>
+    <DependentAssembly name = "System.Buffers" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.3.0" newVersion = "4.0.3.0"/>
+    <DependentAssembly name = "System.Runtime.CompilerServices.Unsafe" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-5.0.0.0" newVersion = "5.0.0.0"/>
+    <DependentAssembly name = "System.Numerics.Vectors" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-4.1.4.0" newVersion = "4.1.4.0"/>
+    <DependentAssembly name = "System.Memory" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.1.1" newVersion = "4.0.1.1"/>
+  </WebAppConfig>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--==============================================System.Text.Encoding.CodePages (>= 5.0.0) Pass 14==================================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "System.Text.Encoding.CodePages, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Text.Encoding.CodePages.5.0.0\lib\net461\System.Text.Encoding.CodePages.dll" />
+    <Reference Dependency ="true" Include = "System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll" />
+  </References>
+  <Packages>
+    <Package id="System.Runtime.CompilerServices.Unsafe" version="5.0.0" targetFramework="net48" />
+    <Package id="System.Text.Encoding.CodePages" version="5.0.0" targetFramework="net48" />
+  </Packages>
+  <WebAppConfig>
+    <DependentAssembly name = "System.Runtime.CompilerServices.Unsafe" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-5.0.0.0" newVersion = "5.0.0.0"/>
+  </WebAppConfig>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--============================================System.Security.Principal.Windows(>= 5.0.0) Pass 15 Leaf============================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll" />
+  </References>
+  <Packages>
+    <Package id="System.Security.Principal.Windows" version="5.0.0" targetFramework="net48" />
+  </Packages>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--========================================System.Security.Cryptography.Encoding (>= 4.3.0) Pass 16 Leaf@ Level4,5,6===========================================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll" />
+  </References>
+  <Packages>
+    <Package id="System.Security.Cryptography.Encoding" version="4.3.0" targetFramework="net48" />
+  </Packages>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--========================================System.Runtime.CompilerServices.Unsafe (>= 5.0.0) Pass 17 Leaf@Level 2,3,4========================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll" />
+  </References>
+  <Packages>
+    <Package id="System.Runtime.CompilerServices.Unsafe" version="5.0.0" targetFramework="net48" />
+  </Packages>
+  <WebAppConfig>
+    <DependentAssembly name = "System.Runtime.CompilerServices.Unsafe" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-5.0.0.0" newVersion = "5.0.0.0"/>
+  </WebAppConfig>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--===========================================MongoDB.Libmongocrypt (>= 1.2.2) Pass 18 Leaf@Level 2,3==================================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "MongoDB.Libmongocrypt, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Libmongocrypt.1.2.2\lib\net452\MongoDB.Libmongocrypt.dll" />
+  </References>
+  <Packages>
+    <Package id="MongoDB.Libmongocrypt" version="1.2.2" targetFramework="net48" />
+  </Packages>-->
+  <!--<Imports>
+  <Import Project="[SOURCEFOLDER]Packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets" Condition="Exists('[SOURCEFOLDER]Packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets')"/>
+</Imports>
+<Targets>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <PropertyElement ElementName="ErrorText" ElementText="This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}."/>
+    </PropertyGroup>
+    <ErrorList>
+      <Error Condition="!Exists('[SOURCEFOLDER]Packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets')" Text="$([System.String]::Format('$(ErrorText)', '[SOURCEFOLDER]Packages\MongoDB.Libmongocrypt.1.2.2\build\MongoDB.Libmongocrypt.targets'))" />
+    </ErrorList>
+  </Target>
+</Targets>-->
+
+  <!--=========================================================================================================================================================-->
+
+
+  <!--==============================================System.Numerics.Vectors (>= 4.5.0) Pass 19 Leaf ==================================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll" />
+  </References>
+  <Packages>
+    <Package id="System.Numerics.Vectors" version="4.5.0" targetFramework="net48" />
+  </Packages>
+  <WebAppConfig>
+    <DependentAssembly name = "System.Numerics.Vectors" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-4.1.4.0" newVersion = "4.1.4.0"/>
+  </WebAppConfig>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--=============================================System.Buffers(>= 4.5.1) Pass 20 Leaf@ Level2,3,4==================================================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll" />
+  </References>
+  <Packages>
+    <Package id="System.Buffers" version="4.5.1" targetFramework="net48" />
+  </Packages>
+  <WebAppConfig>
+    <DependentAssembly name = "System.Buffers" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.3.0" newVersion = "4.0.3.0"/>
+  </WebAppConfig>-->
+
+
+  <!--=========================================================================================================================================================-->
+
+  <!--=================================System.Runtime.InteropServices.RuntimeInformation(>=4.3.0) Pass 21 Leaf@ Level 2,3===========================================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll" />
+  </References>
+  <Packages>
+    <Package id="System.Runtime.InteropServices.RuntimeInformation" version="4.3.0" targetFramework="net48" />
+  </Packages>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--==============================================System.ValueTuple(>=4.5.0) Pass 22 Leaf@ Level 2,3===========================================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll" />
+  </References>
+  <Packages>
+    <Package id="System.ValueTuple" version="4.5.0" targetFramework="net48" />
+  </Packages>
+  <WebAppConfig>
+    <DependentAssembly name = "System.ValueTuple" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.3.0" newVersion = "4.0.3.0"/>
+  </WebAppConfig>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--======================================================System.IO (>= 4.3.0) Pass 23 Leaf@ Level5,6===========================================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.IO.4.3.0\lib\net462\System.IO.dll" />
+  </References>
+  <Packages>
+    <Package id="System.IO" version="4.3.0" targetFramework="net48" />
+  </Packages>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--==================================================System.Runtime (>= 4.3.0)Pass 24 Leaf@ Level5,6===========================================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll" />
+  </References>
+  <Packages>
+    <Package id="System.Runtime" version="4.3.0" targetFramework="net48" />
+  </Packages>-->
+
+  <!--=========================================================================================================================================================-->
+
+  <!--===============================================System.Security.Cryptography.Primitives (>= 4.3.0)Pass 25 Leaf@ Level5,6===========================================================-->
+
+  <!--<References>
+    <Reference Dependency ="false" Include = "System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll" />
+  </References>
+  <Packages>
+    <Package id="System.Security.Cryptography.Primitives" version="4.3.0" targetFramework="net48" />
+  </Packages>-->
+
+  <!--=========================================================================================================================================================-->
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+  <TfsWorkspace></TfsWorkspace>
+  <TFSUserName></TFSUserName>
+  <TFSPassword></TFSPassword>
+</RefactorConfig>

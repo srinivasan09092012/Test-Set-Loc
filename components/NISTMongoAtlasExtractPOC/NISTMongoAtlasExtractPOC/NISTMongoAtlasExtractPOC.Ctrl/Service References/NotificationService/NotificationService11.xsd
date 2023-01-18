@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.ViewDto" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.ViewDto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfPostedEventModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PostedEventModel" nillable="true" type="tns:PostedEventModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPostedEventModel" nillable="true" type="tns:ArrayOfPostedEventModel" />
+  <xs:complexType name="PostedEventModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EventId" type="ser:guid" />
+      <xs:element minOccurs="0" name="EventName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EventPostedTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EventTemplateMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsArchivedEvent" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsNotified" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MissedSLA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NotificationCreated" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="NotificationTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OccurredBefore" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OperatorId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PostedEventId" type="ser:guid" />
+      <xs:element minOccurs="0" name="PreviousEventID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="PreviousEventName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProcessRunTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Subsystem" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TenantId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PostedEventModel" nillable="true" type="tns:PostedEventModel" />
+  <xs:complexType name="ArrayOfEventModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EventModel" nillable="true" type="tns:EventModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEventModel" nillable="true" type="tns:ArrayOfEventModel" />
+  <xs:complexType name="EventModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CategoryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EventId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="EventName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExpectedRunTimeAs24HHMM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HasSLA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MessageTemplate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RunsOnFirstDayOfMonth" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RunsOnFriday" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RunsOnLastDayOfMonth" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RunsOnMonday" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RunsOnSaturday" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RunsOnSunday" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RunsOnThisDayOfMonth" type="xs:int" />
+      <xs:element minOccurs="0" name="RunsOnThursday" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RunsOnTuesday" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RunsOnWednesday" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Subsystem" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EventModel" nillable="true" type="tns:EventModel" />
+  <xs:complexType name="ArrayOfSubscriptionModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SubscriptionModel" nillable="true" type="tns:SubscriptionModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSubscriptionModel" nillable="true" type="tns:ArrayOfSubscriptionModel" />
+  <xs:complexType name="SubscriptionModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreationDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EventID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="EventName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SendSMS" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SubscriberID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="SubscriptionId" nillable="true" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SubscriptionModel" nillable="true" type="tns:SubscriptionModel" />
+  <xs:complexType name="ArrayOfSubscriberModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SubscriberModel" nillable="true" type="tns:SubscriberModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSubscriberModel" nillable="true" type="tns:ArrayOfSubscriberModel" />
+  <xs:complexType name="SubscriberModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreationDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EMail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SendSMSMessage" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SmsAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubscriberId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SubscriberModel" nillable="true" type="tns:SubscriberModel" />
+</xs:schema>

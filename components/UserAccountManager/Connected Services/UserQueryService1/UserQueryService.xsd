@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" />
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta" />
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd7" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.ViewDto" />
+  <xs:complexType name="QueryOfUserProfileModelcp1reAtb">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UserProfileModel" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Query">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="Results" nillable="true" type="q1:ArrayOfUserProfileModel" />
+          <xs:element minOccurs="0" name="SortCriteria" nillable="true" type="tns:ArrayOfSortCriteria" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryOfUserProfileModelcp1reAtb" nillable="true" type="tns:QueryOfUserProfileModelcp1reAtb" />
+  <xs:complexType name="Query">
+    <xs:sequence>
+      <xs:element name="CurrentPage" type="xs:int" />
+      <xs:element name="PageSize" type="xs:int" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta" minOccurs="0" name="Requestor" nillable="true" type="q2:RequestorModel" />
+      <xs:element minOccurs="0" name="RowCount" type="xs:int" />
+      <xs:element minOccurs="0" name="ViewTimeStamp" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Query" nillable="true" type="tns:Query" />
+  <xs:complexType name="ArrayOfSortCriteria">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SortCriteria" nillable="true" type="tns:SortCriteria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSortCriteria" nillable="true" type="tns:ArrayOfSortCriteria" />
+  <xs:complexType name="SortCriteria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FieldName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Order" type="tns:SortOrder" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SortCriteria" nillable="true" type="tns:SortCriteria" />
+  <xs:simpleType name="SortOrder">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Asc" />
+      <xs:enumeration value="Desc" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SortOrder" nillable="true" type="tns:SortOrder" />
+  <xs:complexType name="SerializableBase">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="SerializableBase" nillable="true" type="tns:SerializableBase" />
+  <xs:complexType name="ServiceException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorCode" type="tns:ServiceException.StatusCodeType" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ErrorMessages" nillable="true" type="q3:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceException" nillable="true" type="tns:ServiceException" />
+  <xs:simpleType name="ServiceException.StatusCodeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OK" />
+      <xs:enumeration value="CorruptFile">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9000</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Unauthorized">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9010</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Duplicate">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9020</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NotFound">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9030</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Stale">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9040</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Error">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9999</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ServiceException.StatusCodeType" nillable="true" type="tns:ServiceException.StatusCodeType" />
+  <xs:complexType name="BusinessValidationException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BusinessMessages" nillable="true" type="tns:ArrayOfBusinessExceptionMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BusinessValidationException" nillable="true" type="tns:BusinessValidationException" />
+  <xs:complexType name="ArrayOfBusinessExceptionMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BusinessExceptionMessage" nillable="true" type="tns:BusinessExceptionMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBusinessExceptionMessage" nillable="true" type="tns:ArrayOfBusinessExceptionMessage" />
+  <xs:complexType name="BusinessExceptionMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FieldName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageDefault" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageType" type="tns:BusinessExceptionMessage.MessageTypes" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BusinessExceptionMessage" nillable="true" type="tns:BusinessExceptionMessage" />
+  <xs:simpleType name="BusinessExceptionMessage.MessageTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Informational" />
+      <xs:enumeration value="Warning" />
+      <xs:enumeration value="Error" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BusinessExceptionMessage.MessageTypes" nillable="true" type="tns:BusinessExceptionMessage.MessageTypes" />
+  <xs:complexType name="QueryOfUserDelegateModelcp1reAtb">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UserDelegateModel" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Query">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="Results" nillable="true" type="q4:ArrayOfUserDelegateModel" />
+          <xs:element minOccurs="0" name="SortCriteria" nillable="true" type="tns:ArrayOfSortCriteria" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryOfUserDelegateModelcp1reAtb" nillable="true" type="tns:QueryOfUserDelegateModelcp1reAtb" />
+  <xs:complexType name="QueryOfUserDelegateDetailsModelcp1reAtb">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UserDelegateDetailsModel" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Query">
+        <xs:sequence>
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="Results" nillable="true" type="q5:ArrayOfUserDelegateDetailsModel" />
+          <xs:element minOccurs="0" name="SortCriteria" nillable="true" type="tns:ArrayOfSortCriteria" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryOfUserDelegateDetailsModelcp1reAtb" nillable="true" type="tns:QueryOfUserDelegateDetailsModelcp1reAtb" />
+  <xs:complexType name="QueryOfUserXRefAssociatedRelationshipModelcp1reAtb">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UserXRefAssociatedRelationshipModel" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Query">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="Results" nillable="true" type="q6:ArrayOfUserXRefAssociatedRelationshipModel" />
+          <xs:element minOccurs="0" name="SortCriteria" nillable="true" type="tns:ArrayOfSortCriteria" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryOfUserXRefAssociatedRelationshipModelcp1reAtb" nillable="true" type="tns:QueryOfUserXRefAssociatedRelationshipModelcp1reAtb" />
+  <xs:complexType name="QueryOfUserXRefRelationshipModelcp1reAtb">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UserXRefRelationshipModel" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Query">
+        <xs:sequence>
+          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="Results" nillable="true" type="q7:ArrayOfUserXRefRelationshipModel" />
+          <xs:element minOccurs="0" name="SortCriteria" nillable="true" type="tns:ArrayOfSortCriteria" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryOfUserXRefRelationshipModelcp1reAtb" nillable="true" type="tns:QueryOfUserXRefRelationshipModelcp1reAtb" />
+  <xs:complexType name="QueryOfUserProfileMemberFocusHistoryDetailcp1reAtb">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UserProfileMemberFocusHistoryDetail" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Query">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="Results" nillable="true" type="q8:ArrayOfUserProfileMemberFocusHistoryDetail" />
+          <xs:element minOccurs="0" name="SortCriteria" nillable="true" type="tns:ArrayOfSortCriteria" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryOfUserProfileMemberFocusHistoryDetailcp1reAtb" nillable="true" type="tns:QueryOfUserProfileMemberFocusHistoryDetailcp1reAtb" />
+  <xs:complexType name="QueryOfUserVOSProfileModelcp1reAtb">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UserVOSProfileModel" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Query">
+        <xs:sequence>
+          <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="Results" nillable="true" type="q9:ArrayOfUserVOSProfileModel" />
+          <xs:element minOccurs="0" name="SortCriteria" nillable="true" type="tns:ArrayOfSortCriteria" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryOfUserVOSProfileModelcp1reAtb" nillable="true" type="tns:QueryOfUserVOSProfileModelcp1reAtb" />
+  <xs:complexType name="QueryOfUserIdentitycp1reAtb">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UserIdentity" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Query">
+        <xs:sequence>
+          <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Domain" minOccurs="0" name="Results" nillable="true" type="q10:ArrayOfUserIdentity" />
+          <xs:element minOccurs="0" name="SortCriteria" nillable="true" type="tns:ArrayOfSortCriteria" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryOfUserIdentitycp1reAtb" nillable="true" type="tns:QueryOfUserIdentitycp1reAtb" />
+  <xs:complexType name="QueryOfUserExistsResults3DkRihYP">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="QueryOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UserExistsResults" Namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.ViewDto" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Query">
+        <xs:sequence>
+          <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.ViewDto" minOccurs="0" name="Results" nillable="true" type="q11:ArrayOfUserExistsResults" />
+          <xs:element minOccurs="0" name="SortCriteria" nillable="true" type="tns:ArrayOfSortCriteria" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryOfUserExistsResults3DkRihYP" nillable="true" type="tns:QueryOfUserExistsResults3DkRihYP" />
+</xs:schema>

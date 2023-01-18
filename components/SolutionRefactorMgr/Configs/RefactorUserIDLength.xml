@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true">
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+    <ModuleConfig name="Administration" branch="Dev" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ConfigurationManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Core" branch="Dev" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="Dev" types="All" />
+    <ModuleConfig name="EDI" branch="Dev" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="Dev" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Integration" branch="Dev" types="All" />
+    <ModuleConfig name="KansasOnly" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="Dev" types="All" />
+    <ModuleConfig name="MemberManagement" branch="Dev" types="All" />
+    <ModuleConfig name="MemberPortal" branch="Dev" types="All" />
+    <ModuleConfig name="Notifications" branch="Dev" types="All" />
+    <ModuleConfig name="PlanManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrityCT" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="Dev" types="All" />
+    <ModuleConfig name="Screening" branch="Dev" types="All" />
+    <ModuleConfig name="TaskManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
+    <ModuleConfig name="Utilities" branch="Dev" types="NA" />
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes>
+    <FileType ext=".cs" />
+  </FileTypes>
+  <LineDeletes />
+  <ReplacementStrings />
+  <ReplacementStringWithinRanges>
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="APPROVER_ID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="ASSIGNED_TO" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="ASSIGNMENT_USER_ID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="CANCELED_BY_ID" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="CANCELLED_BY_USER_ID" rangeLineCount="5" />-->
+    <!--<ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="CASE_REQUEST_REQUESTOR_ID" rangeLineCount="5" />-->
+    <!--<ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="CE_CREATED_BY_ID" rangeLineCount="5" />-->
+    <!--<ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="CE_MODIFIED_BY_ID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="CLERK_APPROVED_ID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="CREATED_BY" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="CREATED_BY_ID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="CREATED_ONBEHALF_OF" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="CREATED_OPERATOR_ID" rangeLineCount="5" />-->
+    <!--<ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="DELEGATING_USER_ID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="DIRECTOR_ID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="FIRST_MODULE_BACKUP_USERID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="ID_USER" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="HasMaxLength(50)" from="HasMaxLength(50)" to="HasMaxLength(200)" rangeQualifier="ID_USER" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="LAST_MODIFIED_OPERATOR_ID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="LAST_UPDATE_BY" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="LETTER_CREATED_BY" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="MANAGER_ID" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="MODI_OPERATOR_ID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="MODIFIED_BY" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="MODIFIED_BY_ID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="MODIFIED_ONBEHALF_OF" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="ORIG_OPERATOR_ID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="StringLength(20)" from="StringLength(20)" to="StringLength(200)" rangeQualifier="OPERATOR_ID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="OPERATOR_ID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="HasMaxLength(50)" from="HasMaxLength(50)" to="HasMaxLength(200)" rangeQualifier="OPERATOR_ID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="VarChar(50)&lt;" from="VarChar(50)" to="VarChar(200)" rangeQualifier="OPERATOR_ID" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="OVERRIDE_OPERATOR_ID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="REQUESTED_BY" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="REQUESTED_BY_ID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="REQUESTER_ID" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="REQUESTING_USER_ID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="REQUESTOR_ID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="StringLength(80)" from="StringLength(80)" to="StringLength(200)" rangeQualifier="REQUESTOR_ID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="StringLength(150)" from="StringLength(150)" to="StringLength(200)" rangeQualifier="REQUESTOR_ID" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="REQUESTOR_USER_ID" rangeLineCount="5" />-->
+    <!--<ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="RERUN_USER_ID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="REVERSE_ID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="SECOND_MODULE_BACKUP_USERID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="SUPERVISOR_ID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="UPLOAD_ID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="USER_ID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="HasMaxLength(50)" from="HasMaxLength(50)" to="HasMaxLength(200)" rangeQualifier="USER_ID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="StringLength(100)" from="StringLength(100)" to="StringLength(200)" rangeQualifier="USER_ID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="StringLength(120)" from="StringLength(120)" to="StringLength(200)" rangeQualifier="USER_ID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="StringLength(150)" from="StringLength(150)" to="StringLength(200)" rangeQualifier="USER_ID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="StringLength(50)" from="StringLength(50)" to="StringLength(200)" rangeQualifier="USER_LOGIN_ID" rangeLineCount="5" />
+
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="ASSIGNEDTO" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="APPROVERID" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="ASSIGNMENTUSERID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="CANCELEDBYID" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="CANCELLEDBYUSERID" rangeLineCount="5" />-->
+    <!--<ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="CASEREQUESTREQUESTORID" rangeLineCount="5" />-->
+    <!--<ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="CECREATEDBYID" rangeLineCount="5" />-->
+    <!--<ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="CEMODIFIEDBYID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="CLERKAPPROVEDID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="CREATEDBY" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="CREATEDBYID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="CREATEDONBEHALFOF" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="CREATEDOPERATORID" rangeLineCount="5" />-->
+    <!--<ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="DELEGATINGUSERID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="DIRECTORID" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="FIRSTMODULEBACKUPUSERID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="IDUSER" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="LASTMODIFIEDBY" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="LASTMODIFIEDOPERATORID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="LASTUPDATEBY" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="LETTERCREATEDBY" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="MANAGERID" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="MODIOPERATORID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="MODIFIEDBY" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="MODIFIEDBYID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="MODIFIEDONBEHALFOF" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="ORIGOPERATORID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;20&lt;" from="20" to="200" rangeQualifier="OPERATORID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="OPERATORID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="VarChar(50)&lt;" from="50" to="200" rangeQualifier="OPERATORID" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="OVERRIDEOPERATORID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="REQUESTEDBY" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="REQUESTEDBYID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="REQUESTERID" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="REQUESTINGUSERID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="REQUESTORID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;80&lt;" from="80" to="200" rangeQualifier="REQUESTORID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;150&lt;" from="150" to="200" rangeQualifier="REQUESTORID" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="REQUESTORUSERID" rangeLineCount="5" />-->
+    <!--<ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="RERUNUSERID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="REVERSEID" rangeLineCount="5" />
+    <!--<ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="SECONDMODULEBACKUPUSERID" rangeLineCount="5" />-->
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="SUPERVISORID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="UPLOADID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="USERID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;100&lt;" from="100" to="200" rangeQualifier="USERID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;120&lt;" from="120" to="200" rangeQualifier="USERID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;150&lt;" from="150" to="200" rangeQualifier="USERID" rangeLineCount="5" />
+    <ReplacementStringWithinRange qualifier="MaxLength&lt;/term&gt;&lt;description&gt;50&lt;" from="50" to="200" rangeQualifier="USERLOGINID" rangeLineCount="5" />
+  </ReplacementStringWithinRanges>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+  <TfsWorkspace>Workspace</TfsWorkspace>
+  <TFSUserName>user</TFSUserName>
+  <TFSPassword>Password</TFSPassword>
+</RefactorConfig>

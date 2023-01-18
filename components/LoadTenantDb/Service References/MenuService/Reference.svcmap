@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a4eaa21c-6962-4493-b1cb-ddd8dc6d24dd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/MenuService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MenuService8.xsd" MetadataType="Schema" ID="9b345976-4498-418a-9513-83036f97151c" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/MenuService.svc?xsd=xsd3" />
+    <MetadataFile FileName="MenuService81.xsd" MetadataType="Schema" ID="bdf030b2-4457-4be6-b8a1-7fc812c70166" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/MenuService.svc?xsd=xsd5" />
+    <MetadataFile FileName="MenuService1.wsdl" MetadataType="Wsdl" ID="f6a95026-1c16-460d-bb0b-0d056888b2f7" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/MenuService.svc?wsdl" />
+    <MetadataFile FileName="MenuService82.xsd" MetadataType="Schema" ID="058d6fe3-abb7-4578-bb6a-9f3e888a4ff2" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/MenuService.svc?xsd=xsd4" />
+    <MetadataFile FileName="MenuService1.disco" MetadataType="Disco" ID="516d9e6a-5c46-421a-a604-1000f6cb2822" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/MenuService.svc?disco" />
+    <MetadataFile FileName="MenuService83.xsd" MetadataType="Schema" ID="1e6c893d-32f1-438a-b311-cde1026c37f2" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/MenuService.svc?xsd=xsd1" />
+    <MetadataFile FileName="MenuService84.xsd" MetadataType="Schema" ID="0eead27b-6786-4d16-b87e-c9d82a70b4a0" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/MenuService.svc?xsd=xsd6" />
+    <MetadataFile FileName="MenuService85.xsd" MetadataType="Schema" ID="3a5977b1-568b-445b-b56b-1135fd233624" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/MenuService.svc?xsd=xsd0" />
+    <MetadataFile FileName="MenuService86.xsd" MetadataType="Schema" ID="0efb6d2f-bbb9-4f80-b820-c76450eb3f37" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/MenuService.svc?xsd=xsd2" />
+    <MetadataFile FileName="MenuService87.xsd" MetadataType="Schema" ID="319d82af-368b-44d7-b598-3430370610f9" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/MenuService.svc?xsd=xsd7" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

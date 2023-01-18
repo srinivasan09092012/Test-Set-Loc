@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+RefactorConfig - Base processing parameters:
+  editmode: enum values Inline (make changes directly to each file found) / Copy (copy changes to a new version of the folder/file)
+  includeFolderNames: true/false - change folder names based on replacement strings
+  includeFileNames: true/false - change file names based on replacement strings
+  includeFileContents: true/false - change folder names based on replacement strings
+  useSourceControl: true/false - checkout or add changes to TFS.  Note, this process does NOT check anything in, that must be done manually
+-->
+<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true">
+  <!-- 
+  SourceDir - local location of the source code
+  -->
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <!--
+  ModuleConfigs - List of ModuleConfig elements indicating modules to be reviewed for changes.  ModuleConfig parameters:
+    name: name of module folder
+    branch: Main/Dev/etc - name of branch (subfolder) under the module to be reviewed for changes
+    types: enum values All/API/BAS/Batch/EAI/NA/UX/ConfigTools - specific module subfolder to process, NA indicates module does not have the standard subfolders (i.e. Utilities)
+  -->
+  <ModuleConfigs>
+    <ModuleConfig name="Administration" branch="DevX" types="All" />
+  </ModuleConfigs>
+  <!--
+  PackageConfigs - List of PackageConfig elements indicating the packages to be reviewed for changes.  PackageConfig parameters:
+    qualifierPrefix: prefix of package folder to be reviewed
+    qualifierVersion: version number found in package folder name to be reviewed.  A blank value indicates all package versions are to be reviewed
+    rebuildPackage: true/false - rebuilds the nupkg file based on the updated nuspec.
+    reformatSource: true/false - updates the nuspec file by setting the src value equal to the target value, as well as any ReplacementString changes.
+  -->
+  <PackageConfigs>
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.Core" qualifierVersion="17.3.39" rebuildPackage="true" reformatSource="true" />
+  </PackageConfigs>
+  <!--
+  FileTypes - List of FileTypes elements indicating what file types are to be reviewed for changes.  
+    See existing XML configuration files for sample file types used for the various types of updates.
+    ext: File will be modified if it matches the specific extension string value.
+    qualifyIfPathContains: (optional) File will only be modified if the path of the file contains the specified string value.
+    ignoreIfPathContains: (optional) File will NOT be modified if the path of the file contains the specified string value.
+  -->
+  <FileTypes>
+    <FileType ext=".cs" qualifyIfPathContains="" ignoreIfPathContains="" />
+  </FileTypes>
+  <!--
+  LineDeletes - List of LineDelete elements used to delete lines of a file.  LineDelete parameters:
+    contains: any string value, if a line contains this string, the line will be removed.
+  -->
+  <LineDeletes>
+    <LineDelete contains="xyz"/>
+  </LineDeletes>
+  <!--
+  ReplacementStrings - List of ReplacementString elements used to update files and folders.  ReplacementString parameters:
+    qualifier: any string value, if a line contains this string, the line will be updated based on from/to values.
+    from: any string value, the string to be replaced with the 'to' value.
+    to: any string value, the string to replace the 'from' value.  Use [NEWLINE] to create a new line as part of the replacement string.
+  -->
+  <ReplacementStrings>
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3.Core" from="Version=21.3.112.0" to="Version=22.1.118.0" />
+    <ReplacementString qualifier="&lt;httpRuntime targetFramework=&quot;4.5&quot; /&gt;" from="&lt;httpRuntime targetFramework=&quot;4.5&quot; /&gt;" to="&lt;httpRuntime targetFramework=&quot;4.5&quot; enableVersionHeader=&quot;false&quot; /&gt;[NEWLINE]    &lt;httpCookies httpOnlyCookies=&quot;true&quot; /&gt;" />
+  </ReplacementStrings>
+  <!--
+  ReplacementStringWithinRanges - List of ReplacementStringWithinRange elements used to update file contents only.
+    ReplacementString parameters:
+      qualifier: any string value, if a line contains this string, the line will be updated based on from/to values.
+      from: any string value, the string to be replaced with the 'to' value.
+      to: any string value, the string to replace the 'from' value.  Use [NEWLINE] to create a new line as part of the replacement string.
+      rangeQualifier: any string value, if a line contains this string, the line will be updated based on from/to values.
+      rangeLineCount: the number of lines +- from the rangeQualifier to look for match.  The search in a particular direction will 
+        stop if a blank line is encountered.
+  -->
+  <ReplacementStringWithinRanges>
+    <ReplacementStringWithinRange qualifier="SomeValue" from="SomeValue" to="SomeNewValue" rangeQualifier="SomeValue" rangeLineCount="5" />
+  </ReplacementStringWithinRanges>
+  <!--
+   TfsServer - Location of the TFS server used by these files.
+  -->
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+  <!--
+   TfsWorkspace - local TFS workspace of person running this solution.  Value optional, but might be needed if checkout not allowed without it.
+  -->
+  <TfsWorkspace></TfsWorkspace>
+  <!--
+   TFSUserName - Security key to connect to AzureDevOps. This should be PAT key. Alternative credentials are depricated. Value is mandatory.
+  -->
+  <TFSUserName>AzureDevOpsPATKeyName</TFSUserName>
+  <!--
+   TFSPassword - Security password to connect to AzureDevOps. TThis should be PAT key value. Alternative credentials are depricated. Value is mandatory.
+  -->
+  <TFSPassword>AzureDevOpsPATKeyValue</TFSPassword>  
+</RefactorConfig>

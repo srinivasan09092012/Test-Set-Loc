@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SandcastleConfig editMode="Copy" includeFolderNames="true" includeFileNames="false" includeFileContents="true" useSourceControl="true" targetTFS ="Azure">
+
+	<SourceDir>C:\UA3\Source</SourceDir>
+	<ServerDir>$/USHC_AMER_US_ADU_HSP_Ua3</ServerDir>
+	<currentBranch></currentBranch>
+	<PrevBranch></PrevBranch>
+	<BuildOutputDirectory>C:\Temp</BuildOutputDirectory>
+
+	<ModuleConfigs>
+		<ModuleConfig moduleName="Administration" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/Administration" />
+		<ModuleConfig moduleName="AuthDetermination" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/AuthDetermination" />
+		<ModuleConfig moduleName="ClaimsManagement" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/ClaimsManagement" />
+		<ModuleConfig moduleName="Core" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/Core" />
+		<ModuleConfig moduleName="CorrespondenceMgmt" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/CorrespondenceMgmt" />
+		<ModuleConfig moduleName="DrugRebate" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/DrugRebate" />
+		<ModuleConfig moduleName="DrugRebatePortal" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/DrugRebatePortal" />
+		<ModuleConfig moduleName="EDI" status="active" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/EDI" />
+		<ModuleConfig moduleName="EmployeeMgmt" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/EmployeeMgmt" />
+		<ModuleConfig moduleName="Eventing" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/Administration"/>
+		<ModuleConfig moduleName="FileTransfer" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/FileTransfer" />
+		<ModuleConfig moduleName="FinancialManagement" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/FinancialManagement" />
+		<ModuleConfig moduleName="IdentityManagement" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/IdentityManagement" />
+		<ModuleConfig moduleName="Integration" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/Integration" />
+		<ModuleConfig moduleName="ManagedCare" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/ManagedCare" />
+		<ModuleConfig moduleName="ManagedCarePortal"  serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/ManagedCarePortal" />
+		<ModuleConfig moduleName="MemberManagement" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/MemberManagement"/>
+		<ModuleConfig moduleName="MemberPortal" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/MemberPortal" />
+		<ModuleConfig moduleName="Notifications" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/Notifications" />
+		<ModuleConfig moduleName="PlanManagement"  serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/PlanManagement" />
+		<ModuleConfig moduleName="ProgramIntegrity" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProgramIntegrity" />
+		<ModuleConfig moduleName="ProgramIntegrityCT" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProgramIntegrityCT" />
+		<ModuleConfig moduleName="ProviderCredentialing" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderCredentialing" />
+		<ModuleConfig moduleName="ProviderEnrollment" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderEnrollment" />
+		<ModuleConfig moduleName="ProviderManagement" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderManagement" />
+		<ModuleConfig moduleName="ProviderPortal"  serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderPortal" />
+		<ModuleConfig moduleName="Screening" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/Screening" />
+		<ModuleConfig moduleName="TaskManagement" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/TaskManagement" />
+		<ModuleConfig moduleName="TPLCaseTracking" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/TPLCaseTracking" />
+		<ModuleConfig moduleName="TPLPolicy" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Source/TPLPolicy" />
+	</ModuleConfigs>
+
+	<Documentation>
+		<Documentation docModuleName="Administration" moduleName="Administration" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/Administration" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\Administration" />
+		<Documentation docModuleName="AuthDetermination" moduleName="AuthDetermination" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/AuthDetermination" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\AuthDetermination" />
+		<Documentation docModuleName="ClaimsManagement" moduleName="ClaimsManagement" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/ClaimsManagement" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\ClaimsManagement"/>
+		<Documentation docModuleName="Core" moduleName="Core"  serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/Core" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\Core"/>
+		<Documentation docModuleName="CorrespondenceMgmt" moduleName="CorrespondenceMgmt" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/CorrespondenceMgmt" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\CorrespondenceMgmt"/>
+		<Documentation docModuleName="DrugRebate" moduleName="DrugRebate" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/DrugRebate" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\DrugRebate"/>
+		<Documentation docModuleName="DrugRebatePortal" moduleName="DrugRebatePortal" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/DrugRebatePortal" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\DrugRebatePortal"/>
+		<Documentation docModuleName="EDI" moduleName="EDI" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/EDI" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\EDI"/>
+		<Documentation docModuleName="EmployeeMgmt" moduleName="EmployeeMgmt" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/EmployeeMgmt" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\EmployeeMgmt"/>
+		<Documentation docModuleName="Eventing" moduleName="Administration" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/Administration" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\Eventing"/>
+		<Documentation docModuleName="FileTransfer" moduleName="FileTransfer"  serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/FileTransfer" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\FileTransfer"/>
+		<Documentation docModuleName="FinancialManagement" moduleName="FinancialManagement" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/FinancialManagement" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\FinancialManagement"/>
+		<Documentation docModuleName="IdentityMgmt" moduleName="IdentityManagement" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/IdentityMgmt" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\IdentityMgmt"/>
+		<Documentation docModuleName="Integration" moduleName="Integration"  serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/Integration" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\Integration"/>
+		<Documentation docModuleName="ManagedCare" moduleName="ManagedCare" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/ManagedCare" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\ManagedCare"/>
+		<Documentation docModuleName="ManagedCarePortal" moduleName="ManagedCarePortal" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/ManagedCarePortal" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\ManagedCarePortal"/>
+		<Documentation docModuleName="MemberMgmt" moduleName="MemberManagement" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/MemberMgmt" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\MemberMgmt"/>
+		<Documentation docModuleName="MemberPortal" moduleName="MemberPortal"  serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/MemberPortal" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\MemberPortal"/>
+		<Documentation docModuleName="Notification" moduleName="Notifications" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/Notification" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\Notification"/>
+		<Documentation docModuleName="PlanMgmt" moduleName="PlanManagement" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/PlanMgmt" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\PlanMgmt"/>
+		<Documentation docModuleName="ProgramIntegrity" moduleName="ProgramIntegrity" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/ProgramIntegrity" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\ProgramIntegrity"/>
+		<Documentation docModuleName="ProgramIntegrityCT" moduleName="ProgramIntegrityCT"  serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/ProgramIntegrityCT" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\ProgramIntegrityCT"/>
+		<Documentation docModuleName="ProviderCredentialing" moduleName="ProviderCredentialing" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/ProviderCredentialing" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\ProviderCredentialing"/>
+		<Documentation docModuleName="ProviderCredentialing" moduleName="Screening" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/Screening" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\ProviderCredentialing"/>
+		<Documentation docModuleName="ProviderEnrollment" moduleName="ProviderEnrollment" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/ProviderEnrollment" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\ProviderEnrollment"/>
+		<Documentation docModuleName="ProviderMgmt"  moduleName="ProviderManagement"  serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/ProviderMgmt" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\ProviderMgmt"/>
+		<Documentation docModuleName="ProviderPortal"  moduleName="ProviderPortal" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/ProviderPortal" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\ProviderPortal"/>
+		<Documentation docModuleName="TaskMgmt" moduleName="TaskManagement"  serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/TaskMgmt" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\TaskMgmt"/>
+		<Documentation docModuleName="TPLCase" moduleName="TPLCaseTracking" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/TPLCase" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\TPLCase"/>
+		<Documentation docModuleName="TPL" moduleName="TPLPolicy" serverpath="$/USHC_AMER_US_ADU_HSP_Ua3/Documentation/ServiceSpecifications/Modules/TPL" workspacepath="C:\UA3\Documentation\ServiceSpecifications\Modules\TPL"/>
+	</Documentation>
+
+	<ServiceEnvironments>
+		<ServiceEnvironments environmentName="test" active="False" serverpath="https://bas.test.mapshc.com" />
+		<ServiceEnvironments environmentName="stage1" active="False" serverpath="http://bas-stage1.mapshc.com:8010" />
+		<ServiceEnvironments environmentName="stage5" active="False" serverpath="http://bas-stage5.stages.mapshc.com:8010"/>
+		<ServiceEnvironments environmentName="stage6" active="False" serverpath="http://bas-stage6.stages.mapshc.com:8010"/>
+		<ServiceEnvironments environmentName="Dev" active="False" serverpath="http://bas.dev.mapshc.com:8010"/>
+		<ServiceEnvironments environmentName="stage3" active="False" serverpath="http://bas-stage3.stages.mapshc.com:8010"/>
+	</ServiceEnvironments>
+
+	<XSDSConfig>
+		<XSDSConfig name="AuthManagement" />
+		<XSDSConfig name="BusinessRules"  />
+		<XSDSConfig name="Logger"  />
+	</XSDSConfig>
+
+	<FileTypes>
+		<FileType ext=".chm" />
+		<FileType ext=".wsdl" />
+		<FileType ext=".xsd" />
+		<FileType ext=".css" />
+		<FileType ext=".js" />
+		<FileType ext=".png" />
+		<FileType ext=".gif" />
+		<FileType ext=".xml" />
+		<FileType ext=".html" />
+	</FileTypes>
+
+	<TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+	<TfsWorkspace></TfsWorkspace>
+	<TFSUserName></TFSUserName>
+	<TFSPassword></TFSPassword>
+	<PublishServerURL>https://servicespecs.shared.mapshc.com:8010</PublishServerURL>
+	<SiteName>ServiceSpecs</SiteName>
+	<ServerDestination>J:\www\servicespecs\Modules</ServerDestination>
+	<ServerUserName>mapsshrweb01\Localadmin</ServerUserName>
+	<ServerPassword>XXXXXXX</ServerPassword>
+</SandcastleConfig>

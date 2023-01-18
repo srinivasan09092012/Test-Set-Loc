@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" refactorPartialContent="true">
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+    <ModuleConfig name="Administration" branch="064" types="All" />
+    <!--<ModuleConfig name="AuthDetermination" branch="060" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="060" types="All" />
+    <ModuleConfig name="Core" branch="060" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="060" types="All" />
+    <ModuleConfig name="DrugRebate" branch="060" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="060" types="All" />
+    <ModuleConfig name="EDI" branch="060" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="060" types="All" />
+    <ModuleConfig name="FileTransfer" branch="060" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="060" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="060" types="All" />
+    <ModuleConfig name="Integration" branch="060" types="All" />
+    <ModuleConfig name="KansasOnly" branch="060" types="All" />
+    <ModuleConfig name="ManagedCare" branch="060" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="060" types="All" />
+    <ModuleConfig name="MemberManagement" branch="060" types="All" />
+    <ModuleConfig name="MemberPortal" branch="060" types="All" />
+    <ModuleConfig name="Notifications" branch="060" types="All" />
+    <ModuleConfig name="PlanManagement" branch="060" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="060" types="All" />
+    <ModuleConfig name="ProgramIntegrityCT" branch="060" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="060" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="060" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="060" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="060" types="All" />
+    <ModuleConfig name="Screening" branch="060" types="All" />
+    <ModuleConfig name="TaskManagement" branch="060" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="060" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="060" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="060" types="All" />
+    <ModuleConfig name="Utilities" branch="060" types="NA" />-->
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes>
+    <FileType ext=".config"  />
+  </FileTypes>
+  <ReplacementStrings>
+    <!--CONNECTION STRING UA3_TENANT-->
+    <ReplacementString filename="web.debug.config" qualifier="connectionString=" from ="connectionString=(.*)" to="TenantConfig"
+                     connectionString=  "connectionString=&quot;Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = mapsstgshrdbo01.mapshc.com)(PORT = 1521))(CONNECT_DATA = (SERVER = SHARED)(SERVICE_NAME = WRK4_PDBA)));User ID=UA3_TENANT;Password=UA3_TENANT;Self Tuning=false;PERSIST SECURITY INFO=True&quot; " providerName="providerName=&quot;Oracle.ManagedDataAccess.Client&quot;" />              
+    <ReplacementString filename="web.release.config" qualifier="connectionString=" from ="connectionString=(.*)" to="TenantConfig"
+                     connectionString=  "connectionString=&quot;Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = mapsstgshrdbo01.mapshc.com)(PORT = 1521))(CONNECT_DATA = (SERVER = SHARED)(SERVICE_NAME = STG4_PDBA)));User ID=RW_TENANT;Password=TEN_BOiYI18;Self Tuning=false;PERSIST SECURITY INFO=True&quot; " providerName="providerName=&quot;Oracle.ManagedDataAccess.Client&quot;" />
+    <ReplacementString filename="app.debug.config" qualifier="connectionString=" from ="connectionString=(.*)" to="TenantConfig"
+                     connectionString=  "connectionString=&quot;Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = mapsstgshrdbo01.mapshc.com)(PORT = 1521))(CONNECT_DATA = (SERVER = SHARED)(SERVICE_NAME = WRK4_PDBA)));User ID=UA3_TENANT;Password=UA3_TENANT;Self Tuning=false;PERSIST SECURITY INFO=True&quot;" providerName="providerName=&quot;Oracle.ManagedDataAccess.Client&quot;"/>
+    <ReplacementString filename="app.release.config" qualifier="connectionString=" from ="connectionString=(.*)" to="TenantConfig"
+                     connectionString=  "connectionString=&quot;Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = mapsstgshrdbo01.mapshc.com)(PORT = 1521))(CONNECT_DATA = (SERVER = SHARED)(SERVICE_NAME = STG4_PDBA)));User ID=RW_TENANT;Password=TEN_BOiYI18;Self Tuning=false;PERSIST SECURITY INFO=True&quot;" providerName="providerName=&quot;Oracle.ManagedDataAccess.Client&quot;"/>
+  </ReplacementStrings>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+  <!--NOTE: YOU MUST PUT YOUR WORKSPACE NAME IN HERE IF ITS NOT UA3-->
+  <TfsWorkspace>BUSANELL1</TfsWorkspace>
+  <TFSUserName>AzureDevOpsPATKeyName</TFSUserName>
+  <TFSPassword>AzureDevOpsPATKeyValue</TFSPassword>
+</RefactorConfig>

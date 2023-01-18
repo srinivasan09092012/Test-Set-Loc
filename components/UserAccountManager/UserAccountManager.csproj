@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{73F0F9A3-C0D5-4344-8C4B-DCB9911D1BAE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>UserAccountManager</RootNamespace>
+    <AssemblyName>UserAccountManager</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces, Version=21.1.100.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.IdentityManagement.21.1.100\lib\net48\HPE.HSP.UA3.Core.API.IdentityManagement.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="HPE.HSP.UA3.Core.API.IdentityManagement.Providers, Version=21.1.100.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Packages\HPE.HSP.UA3.Core.API.IdentityManagement.21.1.100\lib\net48\HPE.HSP.UA3.Core.API.IdentityManagement.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Services" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connected Services\UserQueryService1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\UserQueryService2\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\UserService1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\UserService2\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\BaseService.cs" />
+    <Compile Include="Domain\RegistrationQualifier.cs" />
+    <Compile Include="Domain\UserProfile.cs" />
+    <Compile Include="Domain\UserQueryService.cs" />
+    <Compile Include="Domain\Constants.cs" />
+    <Compile Include="Domain\Enumerations.cs" />
+    <Compile Include="Domain\Environment.cs" />
+    <Compile Include="Domain\EnvironmentsConfig.cs" />
+    <Compile Include="Domain\UserService.cs" />
+    <Compile Include="Domain\UserVOSTag.cs" />
+    <Compile Include="Forms\CloneToEnvironment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CloneToEnvironment.Designer.cs">
+      <DependentUpon>CloneToEnvironment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormHelper.cs" />
+    <Compile Include="Forms\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ResetPassword.Designer.cs">
+      <DependentUpon>ResetPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserAccount.Designer.cs">
+      <DependentUpon>UserAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\BaseServiceDataProvider.cs" />
+    <Compile Include="Providers\IUserQueryServiceProvider.cs" />
+    <Compile Include="Providers\IUserServiceProvider.cs" />
+    <Compile Include="Providers\UserQueryServiceProvider1.cs" />
+    <Compile Include="Providers\UserQueryServiceProvider2.cs" />
+    <Compile Include="Providers\UserServiceProvider1.cs" />
+    <Compile Include="Providers\UserServiceProvider2.cs" />
+    <Compile Include="Utilities\Serializer.cs" />
+    <EmbeddedResource Include="Forms\CloneToEnvironment.resx">
+      <DependentUpon>CloneToEnvironment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ResetPassword.resx">
+      <DependentUpon>ResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserAccount.resx">
+      <DependentUpon>UserAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.InvitationQualifiersQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.QualifierVerificationQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.RegisteredUserXrefQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.SearchUserProfilesQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.SearchVOSUserQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UserDelegateDetailsQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UserDelegateQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UserGroupQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UserIdAvailabilityQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UserIdExistsQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UserProfileMembeFocusHistoryQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UserProfileQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UsersQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UserXRefAssociatedRelationshipQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserAccountManager.UserQueryService1.UserXRefRelationshipQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserQueryService.wsdl" />
+    <None Include="Connected Services\UserQueryService1\UserQueryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserQueryService1.wsdl" />
+    <None Include="Connected Services\UserQueryService1\UserQueryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserQueryService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserQueryService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserQueryService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserQueryService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserQueryService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserQueryService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserQueryService8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService1\UserQueryService9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.InvitationQualifiersQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.QualifierVerificationQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.RegisteredUserXrefQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.SearchUserProfilesQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.SearchVOSUserQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UserDelegateDetailsQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UserDelegateQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UserGroupQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UserIdAvailabilityQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UserIdExistsQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UserProfileMembeFocusHistoryQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UserProfileQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UsersQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UserXRefAssociatedRelationshipQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserAccountManager.UserQueryService2.UserXRefRelationshipQuery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserQueryService.wsdl" />
+    <None Include="Connected Services\UserQueryService2\UserQueryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserQueryService1.wsdl" />
+    <None Include="Connected Services\UserQueryService2\UserQueryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserQueryService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserQueryService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserQueryService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserQueryService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserQueryService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserQueryService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserQueryService8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserQueryService2\UserQueryService9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.ProfileActivated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.ProfileAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.ProfileInactivated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.ProfileUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.RegisteredUserXrefAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.RegisteredUserXrefUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserPreferencesAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserPreferencesRemoved.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserProfileMemberFocusHistoryAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserVOSTagInvalidated2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserVOSTagsAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserAccountManager.UserService1.UserVOSTagUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService1\UserService.wsdl" />
+    <None Include="Connected Services\UserService1\UserService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService1\UserService1.wsdl" />
+    <None Include="Connected Services\UserService1\UserService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService1\UserService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService1\UserService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService1\UserService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService1\UserService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService1\UserService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService1\UserService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.ProfileActivated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.ProfileAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.ProfileInactivated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.ProfileUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.RegisteredUserXrefAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.RegisteredUserXrefUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.UserAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.UserPreferencesAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.UserPreferencesRemoved.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.UserProfileMemberFocusHistoryAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.UserVOSTagInvalidated2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.UserVOSTagsAdded.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserAccountManager.UserService2.UserVOSTagUpdated.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserService2\UserService.wsdl" />
+    <None Include="Connected Services\UserService2\UserService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService2\UserService1.wsdl" />
+    <None Include="Connected Services\UserService2\UserService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService2\UserService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService2\UserService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService2\UserService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService2\UserService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService2\UserService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserService2\UserService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="nuget.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserService2\configuration91.svcinfo" />
+    <None Include="Connected Services\UserService2\configuration.svcinfo" />
+    <None Include="Connected Services\UserService2\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\UserQueryService1\configuration91.svcinfo" />
+    <None Include="Connected Services\UserQueryService1\configuration.svcinfo" />
+    <None Include="Connected Services\UserQueryService1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\UserService1\configuration91.svcinfo" />
+    <None Include="Connected Services\UserService1\configuration.svcinfo" />
+    <None Include="Connected Services\UserService1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="EnvironmentsConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\UserQueryService1\" />
+    <WCFMetadataStorage Include="Connected Services\UserQueryService2\" />
+    <WCFMetadataStorage Include="Connected Services\UserService1\" />
+    <WCFMetadataStorage Include="Connected Services\UserService2\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserQueryService2\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserQueryService2\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserQueryService2\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /f /r /y "$(SolutionDir)EnvironmentsConfig.xml" "$(SolutionDir)$(OutDir)"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

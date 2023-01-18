@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" targetTFS="Azure">
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+    <ModuleConfig name="Core" branch="Dev" types="UX" />
+    <!--
+    <ModuleConfig name="Administration" branch="Dev" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="Dev" types="All" />
+    <ModuleConfig name="EDI" branch="Dev" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="Dev" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Integration" branch="Dev" types="All" />
+    <ModuleConfig name="KansasOnly" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="Dev" types="All" />
+    <ModuleConfig name="MemberManagement" branch="Dev" types="All" />
+    <ModuleConfig name="MemberPortal" branch="Dev" types="All" />
+    <ModuleConfig name="Notifications" branch="Dev" types="All" />
+    <ModuleConfig name="PlanManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrityCT" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="Dev" types="All" />
+    <ModuleConfig name="Screening" branch="Dev" types="All" />
+    <ModuleConfig name="TaskManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
+    -->  
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes>
+    <FileType ext=".cs" />
+  </FileTypes>
+  <LineDeletes />
+  <ReplacementStrings>
+    <!-- Namespaces -->
+    <ReplacementString qualifier="using HP.HSP.UA3.Core.BAS.TestTools.Helpers;" from="Helpers;" to="Helpers.Moq;" />
+    <ReplacementString qualifier="using HP.HSP.UA3.Core.UX.TestTools;" from="TestTools;" to="TestTools.Moq;" />
+    <ReplacementString qualifier="using HP.HSP.UA3.Core.UX.TestTools.Helpers;" from="Helpers;" to="Helpers.Moq;" />
+    <ReplacementString qualifier="using Rhino.Mocks;" from="Rhino.Mocks;" to="Moq;" />
+
+    <!-- Methods -->
+    <ReplacementString qualifier="MockRepository.GenerateStrictMock" from="(" to="(MockBehavior.Strict" />
+    <ReplacementString qualifier="MockRepository.GeneratePartialMock" from=";" to=" { CallBase = true };" />
+    <ReplacementString qualifier="MockRepository.Generate" from="^(\s+)(?!var)(\w+) (\w+) = MockRepository" to="$1Mock&lt;$2&gt; $3 = MockRepository" regexReplace="true"/>
+    <ReplacementString qualifier="MockRepository.Generate" from="MockRepository\.(GenerateStub|GenerateMock|GenerateStrictMock|GeneratePartialMock)" to="new Mock" regexReplace="true"/>
+    <ReplacementString qualifier=".Return(" from=".Return(" to=".Returns(" />
+    <ReplacementString qualifier=".Expect(" from=".Throw(" to=".Throws(" />
+    <ReplacementString qualifier=".Expect(" from=";" to=".Verifiable();" />
+    <ReplacementString qualifier=".Expect" from="Arg\&lt;(.*?)\&gt;.Is.Anything(,|\))" to="It.IsAny&lt;$1&gt;()$2" regexReplace="true"/>
+    <ReplacementString qualifier=".Stub(" from="Arg\&lt;(.*?)\&gt;.Is.Anything(,|\))" to="It.IsAny&lt;$1&gt;()$2" regexReplace="true"/>
+    <ReplacementString qualifier=".Stub(" from=".Stub(" to=".Setup(" />
+    <ReplacementString qualifier=".Expect(" from=".Expect(" to=".Setup(" />
+    <ReplacementString qualifier="AssertWasCalled" from=", options => options.Repeat.Times" to=", Times.Exactly" />
+    <ReplacementString qualifier="AssertWasCalled" from="AssertWasCalled" to="Verify" />
+    <ReplacementString qualifier="AssertWasNotCalled" from="));" to="), Times.Never);" />
+    <ReplacementString qualifier="AssertWasNotCalled" from="AssertWasNotCalled" to="Verify" />
+    <ReplacementString qualifier="VerifyAllExpectations" from="VerifyAllExpectations" to="VerifyAll" />
+    <ReplacementString qualifier=".IgnoreArguments()" from=".IgnoreArguments()" to="" />
+    <ReplacementString qualifier=".Repeat.Any()" from=".Repeat.Any()" to="" />
+  </ReplacementStrings>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+  <TfsWorkspace>Workspace</TfsWorkspace>
+  <TFSUserName>user</TFSUserName>
+  <TFSPassword>Password</TFSPassword>
+</RefactorConfig>

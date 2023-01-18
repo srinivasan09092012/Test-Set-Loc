@@ -1,0 +1,1 @@
+To run this utility, please copy the AccountManagementGUI.EXE and AccountManagementGUI.EXE.config files under bin\debug folder to any server which is under AD domain controller. 

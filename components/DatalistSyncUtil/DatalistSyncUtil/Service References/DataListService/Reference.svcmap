@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2e68dddd-6e79-4aa1-801e-a6c39514d9b0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://bas.dev.mapshc.com/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DataListsService.xsd" MetadataType="Schema" ID="d862b1e1-ec1e-4ee1-b828-7345f336062a" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?xsd=xsd7" />
+    <MetadataFile FileName="DataListsService1.xsd" MetadataType="Schema" ID="d0e80cdc-074c-4f67-a75b-ea372ce93cda" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?xsd=xsd6" />
+    <MetadataFile FileName="DataListsService.wsdl" MetadataType="Wsdl" ID="1512d39d-2e9e-4593-8561-53df3c3edcea" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="DataListsService.disco" MetadataType="Disco" ID="abe08cfd-ff30-4a92-9a52-3202c749f7c1" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?disco" />
+    <MetadataFile FileName="DataListsService2.xsd" MetadataType="Schema" ID="53300dce-62f2-4fda-a03b-4b5e0cd7ce08" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?xsd=xsd3" />
+    <MetadataFile FileName="DataListsService3.xsd" MetadataType="Schema" ID="4517a18e-b39e-48e1-ae46-ab11938a8f7b" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?xsd=xsd2" />
+    <MetadataFile FileName="DataListsService4.xsd" MetadataType="Schema" ID="770aa2c9-2a28-4706-b491-26cbb477862b" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?xsd=xsd1" />
+    <MetadataFile FileName="DataListsService5.xsd" MetadataType="Schema" ID="57fa589a-0847-44e0-9941-d0da0053931b" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?xsd=xsd0" />
+    <MetadataFile FileName="DataListsService6.xsd" MetadataType="Schema" ID="a23f32d9-efd6-4853-9b9d-1895800b29fe" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?xsd=xsd8" />
+    <MetadataFile FileName="DataListsService7.xsd" MetadataType="Schema" ID="bff973f3-7280-4c42-bd80-72fc07bff684" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?xsd=xsd5" />
+    <MetadataFile FileName="DataListsService1.wsdl" MetadataType="Wsdl" ID="101840a5-8af0-451b-bc0b-bd4e74153a5b" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?wsdl" />
+    <MetadataFile FileName="DataListsService8.xsd" MetadataType="Schema" ID="0e64ec59-e0f3-41e8-bdb5-44abc97f7d09" SourceId="1" SourceUrl="https://bas.dev.mapshc.com/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

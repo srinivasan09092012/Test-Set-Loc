@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="UpgradePackage" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" targetTFS="Azure">
+	<SourceDir>C:\UA3\Source</SourceDir>
+	<ModuleConfigs>
+		<!--<ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />-->
+		<ModuleConfig name="Administration" branch="Dev" types="All" />
+		<ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
+		<ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
+		<ModuleConfig name="ConfigurationManagement" branch="Dev" types="All" />
+		<ModuleConfig name="Core" branch="Dev" types="All" />
+		<ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
+		<ModuleConfig name="DrugRebate" branch="Dev" types="All" />
+		<ModuleConfig name="DrugRebatePortal" branch="Dev" types="All" />
+		<ModuleConfig name="EDI" branch="Dev" types="All" />
+		<ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
+		<ModuleConfig name="FileTransfer" branch="Dev" types="All" />
+		<ModuleConfig name="FinancialManagement" branch="Dev" types="All" />
+		<ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
+		<ModuleConfig name="Integration" branch="Dev" types="All" />
+		<ModuleConfig name="ManagedCare" branch="Dev" types="All" />
+		<ModuleConfig name="ManagedCarePortal" branch="Dev" types="All" />
+		<ModuleConfig name="MemberManagement" branch="Dev" types="All" />
+		<ModuleConfig name="MemberPortal" branch="Dev" types="All" />
+		<ModuleConfig name="Notifications" branch="Dev" types="All" />
+		<ModuleConfig name="PlanManagement" branch="Dev" types="All" />
+		<ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
+		<ModuleConfig name="ProgramIntegrityCT" branch="Dev" types="All" />
+		<ModuleConfig name="ProviderCredentialing" branch="Dev" types="All" />
+		<ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
+		<ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
+		<ModuleConfig name="ProviderPortal" branch="Dev" types="All" />
+		<ModuleConfig name="Screening" branch="Dev" types="All" />
+		<ModuleConfig name="TaskManagement" branch="Dev" types="All" />
+		<ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
+		<ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
+		<ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
+		<ModuleConfig name="Utilities" branch="Dev" types="NA" />
+	</ModuleConfigs>
+	<PackageConfigs />
+	<FileTypes />
+	<LineDeletes />
+	<!--Only the root package should have Dependency = "false"-->
+	<!-- These sections are to be run in sequence as per the pass Number. Only one pass to be run at a time. Comment out other passes-->
+
+	<!--=================================================HP.HSP.UA3.Core.BAS.CQRS(22.3.130)  Pass 1 =================================================================-->
+	<!--Run a replacement string pass to reduce Core BAS CQRS version to 22.2.123 so that this pass will execute as 123 to 124 is an upgrade-->
+	<!--This pass will make sure InRule.Runtime is installed in all the projects that has a reference to Core BAS CQRS -->
+	<References>
+		<Reference Dependency ="false" Include = "HP.HSP.UA3.Core.BAS.CQRS" HintPath = "Packages\HP.HSP.UA3.Core.BAS.CQRS.22.3.130\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll" />
+		<Reference Dependency="true"   Include="InRule.Runtime, Version=5.7.3.244, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL" HintPath="Packages\InRule.Runtime.5.7.3\lib\net472\InRule.Runtime.dll"/>
+		<Reference Dependency="true"   Include="InRule.Repository, Version=5.7.3.244, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL" HintPath ="Packages\InRule.Repository.5.7.3\lib\net472\InRule.Repository.dll"/>
+	<Reference Dependency="true"   Include="InRule.Repository.XmlSerializers, Version=5.7.3.244, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL" HintPath ="Packages\InRule.Repository.5.7.3\lib\net472\InRule.Repository.XmlSerializers.dll" />
+		<Reference Dependency="true"   Include="InRule.Common, Version=5.7.3.244, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL" HintPath ="Packages\InRule.Common.5.7.3\lib\net472\InRule.Common.dll"/>
+		<Reference Dependency="true"   Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" HintPath="Packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll "/>
+		<Reference Dependency="true"   Include="System.Data.SQLite, Version=1.0.115.5, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL" HintPath="Packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\lib\net46\System.Data.SQLite.dll"/>
+		<Reference Dependency="true"   Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" HintPath="Packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll"/>
+	</References>
+	<Packages>
+		<Package id="HP.HSP.UA3.Core.BAS.CQRS" version="22.3.130" targetFramework="net48" />
+		<Package id="InRule.Runtime" version="5.7.3" targetFramework="net48" />
+		<Package id="InRule.Common" version="5.7.3" targetFramework="net48" />
+		<Package id="InRule.Repository" version="5.7.3" targetFramework="net48" />
+		<Package id="Newtonsoft.Json" version="13.0.1" targetFramework="net48" />
+		<Package id="Microsoft.AspNet.WebApi.Client" version="5.2.7" targetFramework="net48" />
+		<Package id="System.Data.SQLite.Core" version="1.0.115.5" targetFramework="net48" />
+		<Package id="Stub.System.Data.SQLite.Core.NetFramework" version="1.0.115.5" targetFramework="net48" />
+	</Packages>
+	<WebAppConfig>
+		<DependentAssembly name="InRule.Runtime" publicKeyToken="1feb8dd25b1ceb6b" culture="neutral"  oldVersion="0.0.0.0-5.7.3.244" newVersion="5.7.3.244"/>
+		<DependentAssembly name="InRule.Common" publicKeyToken="1feb8dd25b1ceb6b" culture="neutral" oldVersion="0.0.0.0-5.7.3.244" newVersion="5.7.3.244" />
+		<DependentAssembly name="InRule.Repository" publicKeyToken="1feb8dd25b1ceb6b" culture="neutral" oldVersion="0.0.0.0-5.7.3.244" newVersion="5.7.3.244" />
+		<DependentAssembly name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral" oldVersion="0.0.0.0-13.0.0.0" newVersion="13.0.0.0" />
+		<DependentAssembly name="System.Data.SQLite" publicKeyToken="db937bc2d44ff139" culture="neutral" oldVersion="0.0.0.0-1.0.115.5" newVersion="1.0.115.5" />
+		<DependentAssembly name="System.Net.Http.Formatting" publicKeyToken="31bf3856ad364e35" culture="neutral" oldVersion="0.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
+	</WebAppConfig>
+	<Imports>
+		<Import Project="[SOURCEFOLDER]Packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('[SOURCEFOLDER]Packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+	</Imports>
+	<Targets>
+		<Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+			<PropertyGroup>
+				<PropertyElement ElementName="ErrorText" ElementText="This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}."/>
+			</PropertyGroup>
+			<ErrorList>
+				<Error Condition="!Exists('[SOURCEFOLDER]Packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '[SOURCEFOLDER]Packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+			</ErrorList>
+		</Target>
+	</Targets>
+	<!--=================================================InRule.Runtime(5.7.3)  Pass 2 Level 0 =================================================================-->
+	<References>
+		<Reference Dependency="false"  Include="InRule.Runtime, Version=5.7.3.244, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL" HintPath="Packages\InRule.Runtime.5.7.3\lib\net472\InRule.Runtime.dll"/>
+		<Reference Dependency="true"   Include="InRule.Repository, Version=5.7.3.244, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL" HintPath ="Packages\InRule.Repository.5.7.3\lib\net472\InRule.Repository.dll"/>
+	<Reference Dependency="true"   Include="InRule.Repository.XmlSerializers, Version=5.7.3.244, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL" HintPath ="Packages\InRule.Repository.5.7.3\lib\net472\InRule.Repository.XmlSerializers.dll" />
+		<Reference Dependency="true"   Include="InRule.Common, Version=5.7.3.244, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL" HintPath ="Packages\InRule.Common.5.7.3\lib\net472\InRule.Common.dll"/>
+		<Reference Dependency="true"   Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" HintPath="Packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll "/>
+		<Reference Dependency="true"   Include="System.Data.SQLite, Version=1.0.115.5, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL" HintPath="Packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\lib\net46\System.Data.SQLite.dll"/>
+		<Reference Dependency="true"   Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" HintPath="Packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll"/>
+	</References>
+	<Packages>
+		<Package id="InRule.Runtime" version="5.7.3" targetFramework="net48" />
+		<Package id="InRule.Common" version="5.7.3" targetFramework="net48" />
+		<Package id="InRule.Repository" version="5.7.3" targetFramework="net48" />
+		<Package id="Newtonsoft.Json" version="13.0.1" targetFramework="net48" />
+		<Package id="Microsoft.AspNet.WebApi.Client" version="5.2.7" targetFramework="net48" />
+		<Package id="System.Data.SQLite.Core" version="1.0.115.5" targetFramework="net48" />
+		<Package id="Stub.System.Data.SQLite.Core.NetFramework" version="1.0.115.5" targetFramework="net48" />
+	</Packages>
+	<WebAppConfig>
+		<DependentAssembly name="InRule.Runtime" publicKeyToken="1feb8dd25b1ceb6b" culture="neutral"  oldVersion="0.0.0.0-5.7.3.244" newVersion="5.7.3.244"/>
+		<DependentAssembly name="InRule.Common" publicKeyToken="1feb8dd25b1ceb6b" culture="neutral" oldVersion="0.0.0.0-5.7.3.244" newVersion="5.7.3.244" />
+		<DependentAssembly name="InRule.Repository" publicKeyToken="1feb8dd25b1ceb6b" culture="neutral" oldVersion="0.0.0.0-5.7.3.244" newVersion="5.7.3.244" />
+		<DependentAssembly name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral" oldVersion="0.0.0.0-13.0.0.0" newVersion="13.0.0.0" />
+		<DependentAssembly name="System.Data.SQLite" publicKeyToken="db937bc2d44ff139" culture="neutral" oldVersion="0.0.0.0-1.0.115.5" newVersion="1.0.115.5" />
+		<DependentAssembly name="System.Net.Http.Formatting" publicKeyToken="31bf3856ad364e35" culture="neutral" oldVersion="0.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
+	</WebAppConfig>
+	<Imports>
+		<Import Project="[SOURCEFOLDER]Packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('[SOURCEFOLDER]Packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+	</Imports>
+	<Targets>
+		<Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+			<PropertyGroup>
+				<PropertyElement ElementName="ErrorText" ElementText="This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}."/>
+			</PropertyGroup>
+			<ErrorList>
+				<Error Condition="!Exists('[SOURCEFOLDER]Packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '[SOURCEFOLDER]Packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+			</ErrorList>
+		</Target>
+	</Targets>
+	<!--=================================================InRule.Repository(5.7.3)  Pass 3 Level 1 =================================================================-->
+	<References>
+		<Reference Dependency="false"   Include="InRule.Repository, Version=5.7.3.244, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL" HintPath ="Packages\InRule.Repository.5.7.3\lib\net472\InRule.Repository.dll"/>
+	<Reference Dependency="true"   Include="InRule.Repository.XmlSerializers, Version=5.7.3.244, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL" HintPath ="Packages\InRule.Repository.5.7.3\lib\net472\InRule.Repository.XmlSerializers.dll" />
+		<Reference Dependency="true"   Include="InRule.Common, Version=5.7.3.244, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL" HintPath ="Packages\InRule.Common.5.7.3\lib\net472\InRule.Common.dll"/>
+		<Reference Dependency="true"   Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" HintPath="Packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll "/>
+	</References>
+	<Packages>
+		<Package id="InRule.Repository" version="5.7.3" targetFramework="net48" />
+		<Package id="InRule.Common" version="5.7.3" targetFramework="net48" />
+		<Package id="Newtonsoft.Json" version="13.0.1" targetFramework="net48" />
+	</Packages>
+	<WebAppConfig>
+		<DependentAssembly name="InRule.Repository" publicKeyToken="1feb8dd25b1ceb6b" culture="neutral" oldVersion="0.0.0.0-5.7.3.244" newVersion="5.7.3.244" />
+		<DependentAssembly name="InRule.Common" publicKeyToken="1feb8dd25b1ceb6b" culture="neutral" oldVersion="0.0.0.0-5.7.3.244" newVersion="5.7.3.244" />
+		<DependentAssembly name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral" oldVersion="0.0.0.0-13.0.0.0" newVersion="13.0.0.0" />
+	</WebAppConfig>
+	<!--=================================================InRule.Common(5.7.3)  Pass 4 Level 1,2 =================================================================-->
+	<References>
+		<Reference Dependency="false"   Include="InRule.Common, Version=5.7.3.244, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL" HintPath ="Packages\InRule.Common.5.7.3\lib\net472\InRule.Common.dll"/>
+	</References>
+	<Packages>
+		<Package id="InRule.Common" version="5.7.3" targetFramework="net48" />
+	</Packages>
+	<WebAppConfig>
+		<DependentAssembly name="InRule.Common" publicKeyToken="1feb8dd25b1ceb6b" culture="neutral" oldVersion="0.0.0.0-5.7.3.244" newVersion="5.7.3.244" />
+	</WebAppConfig>
+	<!--=================================================Newtonsoft.Json(13.0.1)  Pass 5 Level 1,2 =================================================================-->
+	<References>
+		<Reference Dependency="false"   Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" HintPath="Packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll "/>
+	</References>
+	<Packages>
+		<Package id="Newtonsoft.Json" version="13.0.1" targetFramework="net48" />
+	</Packages>
+	<WebAppConfig>
+		<DependentAssembly name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral" oldVersion="0.0.0.0-13.0.0.0" newVersion="13.0.0.0" />
+	</WebAppConfig>
+	<!--================================================= Microsoft.AspNet.WebApi.Client(5.2.7) Pass 6 Level 1 =================================================================-->
+	<References>
+		<Reference Dependency="false" Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" HintPath="Packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll"/>
+	</References>
+	<Packages>
+		<Package id="Microsoft.AspNet.WebApi.Client" version="5.2.7" targetFramework="net48" />
+	</Packages>
+	<WebAppConfig>
+		<DependentAssembly name="System.Net.Http.Formatting" publicKeyToken="31bf3856ad364e35" culture="neutral" oldVersion="0.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
+	</WebAppConfig>
+	<!--====================================================================== System.Data.SQLite.Core(1.0.115.5) pass7 Level 1,2==============================================================================-->
+	<References>
+		<Reference Dependency="false"   Include="System.Data.SQLite, Version=1.0.115.5, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL" HintPath="Packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\lib\net46\System.Data.SQLite.dll"/>
+	</References>
+	<Packages>
+		<Package id="System.Data.SQLite.Core" version="1.0.115.5" targetFramework="net48" />
+		<Package id="Stub.System.Data.SQLite.Core.NetFramework" version="1.0.115.5" targetFramework="net48" />
+	</Packages>
+	<WebAppConfig>
+		<DependentAssembly name="System.Data.SQLite" publicKeyToken="db937bc2d44ff139" culture="neutral" oldVersion="0.0.0.0-1.0.115.5" newVersion="1.0.115.5" />
+	</WebAppConfig>
+	<Imports>
+		<Import Project="[SOURCEFOLDER]Packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('[SOURCEFOLDER]Packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+	</Imports>
+	<Targets>
+		<Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+			<PropertyGroup>
+				<PropertyElement ElementName="ErrorText" ElementText="This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}."/>
+			</PropertyGroup>
+			<ErrorList>
+				<Error Condition="!Exists('[SOURCEFOLDER]Packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '[SOURCEFOLDER]Packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+			</ErrorList>
+		</Target>
+	</Targets>
+	<TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+	<TfsWorkspace></TfsWorkspace>
+	<TFSUserName></TFSUserName>
+	<TFSPassword></TFSPassword>
+</RefactorConfig>

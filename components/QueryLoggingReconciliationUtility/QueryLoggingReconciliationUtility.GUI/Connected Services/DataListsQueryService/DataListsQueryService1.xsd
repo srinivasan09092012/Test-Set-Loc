@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries.Conditions" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries.Conditions" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="WhereOperatorEnumerations.SearchModeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EqualTo" />
+      <xs:enumeration value="Contains" />
+      <xs:enumeration value="StartsWith" />
+      <xs:enumeration value="EndsWith" />
+      <xs:enumeration value="GreaterThanOrEqualTo" />
+      <xs:enumeration value="LessThanOrEqualTo" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="WhereOperatorEnumerations.SearchModeType" nillable="true" type="tns:WhereOperatorEnumerations.SearchModeType" />
+</xs:schema>

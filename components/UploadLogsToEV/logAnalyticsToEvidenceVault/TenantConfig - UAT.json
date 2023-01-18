@@ -1,0 +1,22 @@
+﻿{
+  "EnvironmentName": "StageSaaS",
+  "SharedResourceGroupName": "hpp_uat_rgp_app_001",
+  "sharedStorageconnectionstring": "DefaultEndpointsProtocol=https;AccountName=hppprdevvt;AccountKey=lkGX0or4H0dMR0Xover7G31+hXvTiwjPm3ddXh4fhGkORZiJRc1slyeZVe4OMJ5cTLzx3U0sopjB1UYTnT8KFg==;EndpointSuffix=core.windows.net",
+  "sharedBlobContainerName": "logs",
+  "hppTenants": [
+    {
+      "hppTenantID": "ece8ada4-4e27-8947-8f05-45604a887820",
+      "hppTenantName": "Vermont",
+      "resourceGroupName": "hpp_uat_rgp_vt_001",
+      "storageconnectionstring": "DefaultEndpointsProtocol=https;AccountName=hppuatevvt;AccountKey=+ByOojNUup+kvW9E2H/nBhEQGemwT+W/5019jg8QBvua2QBfEqBaeZqFSSXA53QnQ5LQGWXXGs1QJEBDF41k8Q==;EndpointSuffix=core.windows.net",
+      "blobContainerName": "logs"
+    },
+    {
+      "hppTenantID": "ece8ada4-4e27-8947-8f05-45604a887820",
+      "hppTenantName": "Virginia",
+      "resourceGroupName": "hpp_uat_rgp_va_001",
+      "storageconnectionstring": "DefaultEndpointsProtocol=https;AccountName=hppuatevva;AccountKey=pY6EOJRx7kWDIxyWf59xFM0es6sh5M3nIpzewzDKt+RQbW4MSEe1eh1Nrq+k5+P/Eaf1eMJF9Ve99rdnG/j5EA==;EndpointSuffix=core.windows.net",
+      "blobContainerName": "logs"
+    }
+  ]
+}

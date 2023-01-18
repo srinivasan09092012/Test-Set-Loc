@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries.Parameters" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries.Parameters" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries.Conditions" />
+  <xs:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
+  <xs:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="DataListItemsQueryParms">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ContentID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FilterCode" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries.Conditions" minOccurs="0" name="FilterCodeSearchMode" nillable="true" type="q1:WhereOperatorEnumerations.SearchModeType" />
+      <xs:element minOccurs="0" name="FilterDescription" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries.Conditions" minOccurs="0" name="FilterDescriptionSearchMode" nillable="true" type="q2:WhereOperatorEnumerations.SearchModeType" />
+      <xs:element minOccurs="0" name="IncludeIsValid" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataListItemsQueryParms" nillable="true" type="tns:DataListItemsQueryParms" />
+  <xs:complexType name="DataListItemAttributeQueryParms">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttributeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContentID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemKey" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataListItemAttributeQueryParms" nillable="true" type="tns:DataListItemAttributeQueryParms" />
+  <xs:complexType name="DataListEventQueryParams">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q3:SerializableBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DataListsId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataListEventQueryParams" nillable="true" type="tns:DataListEventQueryParams" />
+  <xs:complexType name="DataListAggregateDeltaQueryParms">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CommitId" type="ser:guid" />
+      <xs:element minOccurs="0" name="DataListsId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataListAggregateDeltaQueryParms" nillable="true" type="tns:DataListAggregateDeltaQueryParms" />
+  <xs:complexType name="DataListItemEventQueryParms">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q4:SerializableBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DataListItemId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataListItemEventQueryParms" nillable="true" type="tns:DataListItemEventQueryParms" />
+  <xs:complexType name="DataListItemAggregateDeltaQueryParms">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CommitId" type="ser:guid" />
+      <xs:element minOccurs="0" name="DataListItemId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataListItemAggregateDeltaQueryParms" nillable="true" type="tns:DataListItemAggregateDeltaQueryParms" />
+</xs:schema>

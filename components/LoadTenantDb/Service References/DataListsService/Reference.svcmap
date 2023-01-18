@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="292b4a4a-2bd9-4205-9314-5ad47c7fd8d3" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DataListsService2.wsdl" MetadataType="Wsdl" ID="e8b3c98d-ced8-4389-83a1-83af5eb683f1" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?wsdl" />
+    <MetadataFile FileName="DataListsService8.xsd" MetadataType="Schema" ID="43a66b25-c71f-48ba-bdb7-e9577f578b11" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?xsd=xsd6" />
+    <MetadataFile FileName="DataListsService1.disco" MetadataType="Disco" ID="74ad4395-6653-44a8-9f86-54d4830d75bd" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?disco" />
+    <MetadataFile FileName="DataListsService81.xsd" MetadataType="Schema" ID="a059f289-4a31-409e-b2ea-b8b19416eac2" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?xsd=xsd7" />
+    <MetadataFile FileName="DataListsService82.xsd" MetadataType="Schema" ID="9826b4bc-f22d-478b-9d80-ff1de2044ecf" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?xsd=xsd5" />
+    <MetadataFile FileName="DataListsService21.wsdl" MetadataType="Wsdl" ID="a8822b2a-fee1-47f1-90ad-3035a062c026" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="DataListsService83.xsd" MetadataType="Schema" ID="607cf964-499c-4ddc-9de9-8961e14f2266" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?xsd=xsd4" />
+    <MetadataFile FileName="DataListsService84.xsd" MetadataType="Schema" ID="eabcbed1-6fd5-4b52-8806-e372a035bd48" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?xsd=xsd3" />
+    <MetadataFile FileName="DataListsService85.xsd" MetadataType="Schema" ID="60d742e9-807d-4a38-817e-0a393050f58c" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?xsd=xsd2" />
+    <MetadataFile FileName="DataListsService86.xsd" MetadataType="Schema" ID="8aa163c3-fc67-450f-87b3-728a3ec8ad1a" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?xsd=xsd1" />
+    <MetadataFile FileName="DataListsService87.xsd" MetadataType="Schema" ID="602a6959-1518-4fed-bcdc-b0e35b496e45" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

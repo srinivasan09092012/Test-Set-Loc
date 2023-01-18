@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" targetTFS ="Azure">
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+    <ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />
+    <ModuleConfig name="Administration" branch="DevF" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="DevF" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ConfigurationManagement" branch="DevF" types="All" />
+    <ModuleConfig name="Core" branch="DevF" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="DevF" types="All" />
+    <ModuleConfig name="DrugRebate" branch="DevF" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="DevF" types="All" />
+    <ModuleConfig name="EDI" branch="DevF" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="DevF" types="All" />
+    <ModuleConfig name="FileTransfer" branch="DevF" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="DevF" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="DevF" types="All" />
+    <ModuleConfig name="Integration" branch="DevF" types="All" />
+    <ModuleConfig name="KansasOnly" branch="DevF" types="All" />
+    <ModuleConfig name="ManagedCare" branch="DevF" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="DevF" types="All" />
+    <ModuleConfig name="MemberManagement" branch="DevF" types="All" />
+    <ModuleConfig name="MemberPortal" branch="DevF" types="All" />
+    <ModuleConfig name="Notifications" branch="DevF" types="All" />
+    <ModuleConfig name="PlanManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="DevF" types="All" />
+    <ModuleConfig name="ProgramIntegrityCT" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="DevF" types="All" />
+    <ModuleConfig name="Screening" branch="DevF" types="All" />
+    <ModuleConfig name="TaskManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="DevF" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="DevF" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="DevF" types="All" />
+    <ModuleConfig name="Utilities" branch="DevF" types="NA" />-->
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes>
+    <FileType ext=".csproj" />
+    <FileType ext=".config" />
+  </FileTypes>
+  <LineDeletes />
+  <ReplacementStrings>
+    
+    <!--DevF only start-->
+    
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.81\lib\net48\NEventStore.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.81\lib\net48\NEventStore.dll" to="Packages\NEventStore.7.0.0\lib\net45\NEventStore.dll" />
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.81\lib\net48\NEventStore.Persistence.MongoDB.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.81\lib\net48\NEventStore.Persistence.MongoDB.dll" to="Packages\NEventStore.Persistence.MongoDB.7.0.0\lib\net45\NEventStore.Persistence.MongoDB.dll" />
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.81\lib\net48\DnsClient.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.81\lib\net48\DnsClient.dll" to="Packages\DnsClient.1.0.7\lib\net45\DnsClient.dll" />
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.81\lib\net48\MongoDB.Bson.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.81\lib\net48\MongoDB.Bson.dll" to="Packages\MongoDB.Bson.2.11.0\lib\net452\MongoDB.Bson.dll" />
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.81\lib\net48\MongoDB.Driver.Core.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.81\lib\net48\MongoDB.Driver.Core.dll" to="Packages\MongoDB.Driver.Core.2.11.0\lib\net452\MongoDB.Driver.Core.dll" />
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.81\lib\net48\MongoDB.Driver.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.81\lib\net48\MongoDB.Driver.dll" to="Packages\MongoDB.Driver.2.11.0\lib\net452\MongoDB.Driver.dll" />
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.81\lib\net48\System.Buffers.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.81\lib\net48\System.Buffers.dll" to="Packages\System.Buffers.4.3.0\lib\netstandard1.1\System.Buffers.dll" />
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.81\lib\net48\System.Runtime.InteropServices.RuntimeInformation.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.81\lib\net48\System.Runtime.InteropServices.RuntimeInformation.dll" to="Packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll" />
+    
+    <!--DevF only end-->
+    
+    <!-- ========================.csproj======================== -->
+
+    <!-- ========================Updating Hintpaths in all cs.proj======================== -->
+
+    <!-- ========================NEventStore.dll======================== -->
+    <!--19.2.70- to 7.0.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.19.2.70\lib\net48\NEventStore.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.19.2.70\lib\net48\NEventStore.dll" to="Packages\NEventStore.7.0.0\lib\net45\NEventStore.dll" />
+    <!--20.1.81 to 7.0.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.82\lib\net48\NEventStore.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.82\lib\net48\NEventStore.dll" to="Packages\NEventStore.7.0.0\lib\net45\NEventStore.dll" />
+    <!--20.2.89 to 7.0.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.2.89\lib\net48\NEventStore.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.2.89\lib\net48\NEventStore.dll" to="Packages\NEventStore.7.0.0\lib\net45\NEventStore.dll" />
+    <!--5.2.0-to 7.0.0-->
+    <ReplacementString qualifier="Packages\NEventStore.5.2.0\lib\net40\NEventStore.dll" from="Packages\NEventStore.5.2.0\lib\net40\NEventStore.dll" to="Packages\NEventStore.7.0.0\lib\net45\NEventStore.dll" />
+
+
+    <!-- ========================-NEventStore.Persistence.MongoDB.dll======================== -->
+    
+    <!--19.2.70 to 7.0.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.19.2.70\lib\net48\NEventStore.Persistence.MongoDB.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.19.2.70\lib\net48\NEventStore.Persistence.MongoDB.dll" to="Packages\NEventStore.Persistence.MongoDB.7.0.0\lib\net45\NEventStore.Persistence.MongoDB.dll" />
+    <!--20.1.81 to 7.0.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.82\lib\net48\NEventStore.Persistence.MongoDB.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.82\lib\net48\NEventStore.Persistence.MongoDB.dll" to="Packages\NEventStore.Persistence.MongoDB.7.0.0\lib\net45\NEventStore.Persistence.MongoDB.dll" />
+    <!--20.2.89 to 7.0.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.2.89\lib\net48\NEventStore.Persistence.MongoDB.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.2.89\lib\net48\NEventStore.Persistence.MongoDB.dll" to="Packages\NEventStore.Persistence.MongoDB.7.0.0\lib\net45\NEventStore.Persistence.MongoDB.dll" />
+    <!--5.3.7 to 7.0.0-->
+    <ReplacementString qualifier="Packages\NEventStore.Persistence.MongoDB.5.3.7\lib\net40\NEventStore.Persistence.MongoDB.dll" from="Packages\NEventStore.Persistence.MongoDB.5.3.7\lib\net40\NEventStore.Persistence.MongoDB.dll" to="Packages\NEventStore.Persistence.MongoDB.7.0.0\lib\net45\NEventStore.Persistence.MongoDB.dll" />
+
+    <!-- ========================DnsClient.dll======================== -->
+
+    <!--19.2.70 to 1.0.7-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.19.2.70\lib\net48\DnsClient.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.19.2.70\lib\net48\DnsClient.dll" to="Packages\DnsClient.1.0.7\lib\net45\DnsClient.dll" />
+    <!--20.1.82 to 1.0.7-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.82\lib\net48\DnsClient.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.82\lib\net48\DnsClient.dll" to="Packages\DnsClient.1.0.7\lib\net45\DnsClient.dll" />
+    <!--20.2.89 to 1.0.7-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.2.89\lib\net48\DnsClient.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.2.89\lib\net48\DnsClient.dll" to="Packages\DnsClient.1.0.7\lib\net45\DnsClient.dll" />
+
+    <!-- ========================MongoDB.Bson.dll======================== -->
+
+    <!--19.2.70 to 2.11.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.19.2.70\lib\net48\MongoDB.Bson.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.19.2.70\lib\net48\MongoDB.Bson.dll" to="Packages\MongoDB.Bson.2.11.0\lib\net452\MongoDB.Bson.dll" />
+    <!--20.1.82 to 2.11.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.82\lib\net48\MongoDB.Bson.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.82\lib\net48\MongoDB.Bson.dll" to="Packages\MongoDB.Bson.2.11.0\lib\net452\MongoDB.Bson.dll" />
+    <!--20.2.89 to 2.11.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.2.89\lib\net48\MongoDB.Bson.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.2.89\lib\net48\MongoDB.Bson.dll" to="Packages\MongoDB.Bson.2.11.0\lib\net452\MongoDB.Bson.dll" />
+    <!--2.4.2 to 2.11.0-->
+    <ReplacementString qualifier="Packages\MongoDB.Bson.2.4.2\lib\net45\MongoDB.Bson.dll" from="Packages\MongoDB.Bson.2.4.2\lib\net45\MongoDB.Bson.dll" to="Packages\MongoDB.Bson.2.11.0\lib\net452\MongoDB.Bson.dll" />
+    <!--2.5.0 to 2.11.0-->
+    <ReplacementString qualifier="Packages\MongoDB.Bson.2.5.0\lib\net45\MongoDB.Bson.dll" from="Packages\MongoDB.Bson.2.5.0\lib\net45\MongoDB.Bson.dll" to="Packages\MongoDB.Bson.2.11.0\lib\net452\MongoDB.Bson.dll" />
+    <!--2.8.0 to 2.11.0-->
+    <ReplacementString qualifier="Packages\MongoDB.Bson.2.8.0\lib\net45\MongoDB.Bson.dll" from="Packages\MongoDB.Bson.2.8.0\lib\net45\MongoDB.Bson.dll" to="Packages\MongoDB.Bson.2.11.0\lib\net452\MongoDB.Bson.dll" />
+    <!--2.9.3 to 2.11.0-->
+    <ReplacementString qualifier="Packages\MongoDB.Bson.2.9.3\lib\net45\MongoDB.Bson.dll" from="Packages\MongoDB.Bson.2.9.3\lib\net45\MongoDB.Bson.dll" to="Packages\MongoDB.Bson.2.11.0\lib\net452\MongoDB.Bson.dll" />
+
+    <!-- ========================MongoDB.Driver.Core.dll======================== -->
+
+    <!--19.2.70 to 2.11.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.19.2.70\lib\net48\MongoDB.Driver.Core.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.19.2.70\lib\net48\MongoDB.Driver.Core.dll" to="Packages\MongoDB.Driver.Core.2.11.0\lib\net452\MongoDB.Driver.Core.dll" />
+    <!--20.1.82 to 2.11.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.82\lib\net48\MongoDB.Driver.Core.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.82\lib\net48\MongoDB.Driver.Core.dll" to="Packages\MongoDB.Driver.Core.2.11.0\lib\net452\MongoDB.Driver.Core.dll" />
+    <!--20.2.89 to 2.11.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.2.89\lib\net48\MongoDB.Driver.Core.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.2.89\lib\net48\MongoDB.Driver.Core.dll" to="Packages\MongoDB.Driver.Core.2.11.0\lib\net452\MongoDB.Driver.Core.dll" />
+    <!--HPP.Core.BatchConversion.20.2.89 to 2.11.0-->
+    <ReplacementString qualifier="Packages\HPP.Core.BatchConversion.20.2.89\lib\net48\MongoDB.Driver.Core.dll" from="Packages\HPP.Core.BatchConversion.20.2.89\lib\net48\MongoDB.Driver.Core.dll" to="Packages\MongoDB.Driver.Core.2.11.0\lib\net452\MongoDB.Driver.Core.dll" />
+    <!--2.4.2 to 2.11.0-->
+    <ReplacementString qualifier="Packages\MongoDB.Driver.Core.2.4.2\lib\net45\MongoDB.Driver.Core.dll" from="Packages\MongoDB.Driver.Core.2.4.2\lib\net45\MongoDB.Driver.Core.dll" to="Packages\MongoDB.Driver.Core.2.11.0\lib\net452\MongoDB.Driver.Core.dll" />
+    <!--2.5.0 to 2.11.0-->
+    <ReplacementString qualifier="Packages\MongoDB.Driver.Core.2.5.0\lib\net45\MongoDB.Driver.Core.dll" from="Packages\MongoDB.Driver.Core.2.5.0\lib\net45\MongoDB.Driver.Core.dll" to="Packages\MongoDB.Driver.Core.2.11.0\lib\net452\MongoDB.Driver.Core.dll" />
+    <!--2.8.0 to 2.11.0-->
+    <ReplacementString qualifier="Packages\MongoDB.Driver.Core.2.8.0\lib\net452\MongoDB.Driver.Core.dll" from="Packages\MongoDB.Driver.Core.2.8.0\lib\net452\MongoDB.Driver.Core.dll" to="Packages\MongoDB.Driver.Core.2.11.0\lib\net452\MongoDB.Driver.Core.dll" />
+    <!--2.9.3 to 2.11.0-->
+    <ReplacementString qualifier="Packages\MongoDB.Driver.Core.2.9.3\lib\net452\MongoDB.Driver.Core.dll" from="Packages\MongoDB.Driver.Core.2.9.3\lib\net452\MongoDB.Driver.Core.dll" to="Packages\MongoDB.Driver.Core.2.11.0\lib\net452\MongoDB.Driver.Core.dll" />
+
+    <!-- ========================MongoDB.Driver.dll======================== -->
+
+    <!--19.2.70 to 2.11.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.19.2.70\lib\net48\MongoDB.Driver.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.19.2.70\lib\net48\MongoDB.Driver.dll" to="Packages\MongoDB.Driver.2.11.0\lib\net452\MongoDB.Driver.dll" />
+    <!--20.1.82 to 2.11.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.82\lib\net48\MongoDB.Driver.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.82\lib\net48\MongoDB.Driver.dll" to="Packages\MongoDB.Driver.2.11.0\lib\net452\MongoDB.Driver.dll" />
+    <!--20.2.89 to 2.11.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.2.89\lib\net48\MongoDB.Driver.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.2.89\lib\net48\MongoDB.Driver.dll" to="Packages\MongoDB.Driver.2.11.0\lib\net452\MongoDB.Driver.dll" />
+    <!--HPP.Core.BatchConversion.20.2.89 to 2.11.0-->
+    <ReplacementString qualifier="Packages\HPP.Core.BatchConversion.20.2.89\lib\net48\MongoDB.Driver.dll" from="Packages\HPP.Core.BatchConversion.20.2.89\lib\net48\MongoDB.Driver.dll" to="Packages\MongoDB.Driver.2.11.0\lib\net452\MongoDB.Driver.dll" />
+    <!--2.4.2 to 2.11.0-->
+    <ReplacementString qualifier="Packages\MongoDB.Driver.2.4.2\lib\net45\MongoDB.Driver.dll"  from="Packages\MongoDB.Driver.2.4.2\lib\net45\MongoDB.Driver.dll" to="Packages\MongoDB.Driver.2.11.0\lib\net452\MongoDB.Driver.dll" />
+    <!--2.5.0 to 2.11.0-->
+    <ReplacementString qualifier="Packages\MongoDB.Driver.2.5.0\lib\net45\MongoDB.Driver.dll" from="Packages\MongoDB.Driver.2.5.0\lib\net45\MongoDB.Driver.dll" to="Packages\MongoDB.Driver.2.11.0\lib\net452\MongoDB.Driver.dll" />
+    <!--2.8.0 to 2.11.0-->
+    <ReplacementString qualifier="Packages\MongoDB.Driver.2.8.0\lib\net452\MongoDB.Driver.dll" from="Packages\MongoDB.Driver.2.8.0\lib\net452\MongoDB.Driver.dll" to="Packages\MongoDB.Driver.2.11.0\lib\net452\MongoDB.Driver.dll" />
+    <!--2.9.3 to 2.11.0-->
+    <ReplacementString qualifier="Packages\MongoDB.Driver.2.9.3\lib\net452\MongoDB.Driver.dll" from="Packages\MongoDB.Driver.2.9.3\lib\net452\MongoDB.Driver.dll" to="Packages\MongoDB.Driver.2.11.0\lib\net452\MongoDB.Driver.dll" />
+
+    <!-- ========================System.Buffers.dll======================== -->
+
+    <!--19.2.70 to 4.3.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.19.2.70\lib\net48\System.Buffers.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.19.2.70\lib\net48\System.Buffers.dll" to="Packages\System.Buffers.4.3.0\lib\netstandard1.1\System.Buffers.dll" />
+    <!--20.1.82 to 4.3.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.82\lib\net48\System.Buffers.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.82\lib\net48\System.Buffers.dll" to="Packages\System.Buffers.4.3.0\lib\netstandard1.1\System.Buffers.dll" />
+    <!--20.2.89 to 4.3.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.2.89\lib\net48\System.Buffers.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.2.89\lib\net48\System.Buffers.dll" to="Packages\System.Buffers.4.3.0\lib\netstandard1.1\System.Buffers.dll" />
+    <!--HPP.Core.BatchConversion.20.2.89 to 4.3.0-->
+    <ReplacementString qualifier="Packages\HPP.Core.BatchConversion.20.2.89\lib\net48\System.Buffers.dll" from="Packages\HPP.Core.BatchConversion.20.2.89\lib\net48\System.Buffers.dll" to="Packages\System.Buffers.4.3.0\lib\netstandard1.1\System.Buffers.dll" />
+
+    <!-- ========================System.Runtime.InteropServices.RuntimeInformation.dll======================== -->
+
+    <!--19.2.70 to 4.0.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.19.2.70\lib\net48\System.Runtime.InteropServices.RuntimeInformation.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.19.2.70\lib\net48\System.Runtime.InteropServices.RuntimeInformation.dll" to="Packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll" />
+    <!--20.1.82 to 4.0.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.82\lib\net48\System.Runtime.InteropServices.RuntimeInformation.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.1.82\lib\net48\System.Runtime.InteropServices.RuntimeInformation.dll" to="Packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll" />
+
+    <!--20.2.89 to 4.0.0-->
+    <ReplacementString qualifier="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.2.89\lib\net48\System.Runtime.InteropServices.RuntimeInformation.dll" from="Packages\HP.HSP.UA3.Core.BAS.CQRS.20.2.89\lib\net48\System.Runtime.InteropServices.RuntimeInformation.dll" to="Packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll" />
+
+    
+    <!-- ================================version changes in "Reference" elements in all cs.proj================================ -->
+    
+    <!-- ========================NEventStore.dll======================== -->
+    
+    <!--5.2.0.0 to 7.0.0.0-->
+    <ReplacementString qualifier="Include=&quot;NEventStore" from="Version=5.2.0.0" to="Version=7.0.0.0"/>
+    <!--without version-->
+    <ReplacementString qualifier="&lt;Reference Include=&quot;NEventStore&quot;&gt;" from ="&lt;Reference Include=&quot;NEventStore&quot;&gt;" to = "&lt;Reference Include=&quot;NEventStore, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL&quot;&gt;"/>
+    
+    <!-- ========================NEventStore.Persistence.MongoDB.dll======================== -->
+    
+    <!--5.3.7.0 to 7.0.0.0-->
+    <ReplacementString qualifier="Include=&quot;NEventStore.Persistence.MongoDB" from="Version=5.3.7.0" to="Version=7.0.0.0" />
+    <!--without version-->
+    <ReplacementString qualifier="&lt;Reference Include=&quot;NEventStore.Persistence.MongoDB&quot;&gt;" from ="&lt;Reference Include=&quot;NEventStore.Persistence.MongoDB&quot;&gt;" to = "&lt;Reference Include=&quot;NEventStore.Persistence.MongoDB, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL&quot;&gt;"/>
+    
+    <!-- ========================MongoDB.Bson.dll======================== -->
+    
+    <!--2.4.2.27 to 2.11.0.0-->
+    <ReplacementString qualifier="Include=&quot;MongoDB.Bson" from="Version=2.4.2.27" to="Version=2.11.0.0" />
+    <!--2.5.0.0 to 2.11.0.0-->
+    <ReplacementString qualifier="Include=&quot;MongoDB.Bson" from="Version=2.5.0.0" to="Version=2.11.0.0" />
+    <!--2.8.0.0 to 2.11.0.0-->
+    <ReplacementString qualifier="Include=&quot;MongoDB.Bson" from="Version=2.8.0.0" to="Version=2.11.0.0" />
+    <!--2.9.3.0 to 2.11.0.0-->
+    <ReplacementString qualifier="Include=&quot;MongoDB.Bson" from="Version=2.9.3.0" to="Version=2.11.0.0" />
+    <!--without version-->
+    <ReplacementString qualifier="&lt;Reference Include=&quot;MongoDB.Bson&quot;&gt;" from="&lt;Reference Include=&quot;MongoDB.Bson&quot;&gt;" to=" &lt;Reference Include=&quot;MongoDB.Bson, Version=2.11.0.0, Culture=neutral, processorArchitecture=MSIL&quot;&gt;" />
+
+
+    <!-- ========================MongoDB.Driver.Core.dll======================== -->
+    
+    <!--2.4.2.27 to 2.11.0.0-->
+    <ReplacementString qualifier="Include=&quot;MongoDB.Driver.Core" from="Version=2.4.2.27" to="Version=2.11.0.0" />
+    <!--2.5.0.0 to 2.11.0.0-->
+    <ReplacementString qualifier="Include=&quot;MongoDB.Driver.Core" from="Version=2.5.0.0" to="Version=2.11.0.0" />
+    <!--2.8.0.0 to 2.11.0.0-->
+    <ReplacementString qualifier="Include=&quot;MongoDB.Driver.Core" from="Version=2.8.0.0" to="Version=2.11.0.0" />
+    <!--2.9.3.0 to 2.11.0.0-->
+    <ReplacementString qualifier="Include=&quot;MongoDB.Driver.Core" from="Version=2.9.3.0" to="Version=2.11.0.0" />
+    <!--without version-->
+    <ReplacementString qualifier="&lt;Reference Include=&quot;MongoDB.Driver.Core&quot;&gt;" from="&lt;Reference Include=&quot;MongoDB.Driver.Core&quot;&gt;" to=" &lt;Reference Include=&quot;MongoDB.Driver.Core, Version=2.11.0.0, Culture=neutral, processorArchitecture=MSIL&quot;&gt;" />
+    
+    <!-- ========================MongoDB.Driver.dll======================== -->
+    
+    <!--2.4.2.27 to 2.11.0.0-->
+    <ReplacementString qualifier="Include=&quot;MongoDB.Driver," from="Version=2.4.2.27" to="Version=2.11.0.0" />
+    <!--2.5.0.0 to 2.11.0.0-->
+    <ReplacementString qualifier="Include=&quot;MongoDB.Driver," from="Version=2.5.0.0" to="Version=2.11.0.0" />
+    <!--2.8.0.0 to 2.11.0.0-->
+    <ReplacementString qualifier="Include=&quot;MongoDB.Driver," from="Version=2.8.0.0" to="Version=2.11.0.0" />
+    <!--2.9.3.0 to 2.11.0.0-->
+    <ReplacementString qualifier="Include=&quot;MongoDB.Driver," from="Version=2.9.3.0" to="Version=2.11.0.0" />
+    <!--without version-->
+    <ReplacementString qualifier="&lt;Reference Include=&quot;MongoDB.Driver&quot;&gt;" from="&lt;Reference Include=&quot;MongoDB.Driver&quot;&gt;" to=" &lt;Reference Include=&quot;MongoDB.Driver, Version=2.11.0.0, Culture=neutral, processorArchitecture=MSIL&quot;&gt;" />
+
+    <!-- =====================================package.config===================================== -->
+    
+    <!-- ========================NEventStore======================== -->
+    
+    <!--5.2.0 to 7.0.0-->
+    <ReplacementString qualifier="&lt;package id=&quot;NEventStore&quot;" from="&lt;package id=&quot;NEventStore&quot; version=&quot;5.2.0&quot; targetFramework=&quot;net451&quot; /&gt;" to="&lt;package id=&quot;NEventStore&quot; version=&quot;7.0.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;NEventStore&quot;" from="&lt;package id=&quot;NEventStore&quot; version=&quot;5.2.0&quot; targetFramework=&quot;net452&quot; /&gt;" to="&lt;package id=&quot;NEventStore&quot; version=&quot;7.0.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;NEventStore&quot;" from="&lt;package id=&quot;NEventStore&quot; version=&quot;5.2.0&quot; targetFramework=&quot;net461&quot; /&gt;" to="&lt;package id=&quot;NEventStore&quot; version=&quot;7.0.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;NEventStore&quot;" from="&lt;package id=&quot;NEventStore&quot; version=&quot;5.2.0&quot; targetFramework=&quot;net48&quot; /&gt;" to="&lt;package id=&quot;NEventStore&quot; version=&quot;7.0.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+
+
+    <!-- ========================NEventStore.Persistence.MongoDB======================== -->
+    
+    <!--5.3.7 to 7.0.0-->
+    <ReplacementString qualifier="&lt;package id=&quot;NEventStore.Persistence.MongoDB&quot;" from="&lt;package id=&quot;NEventStore.Persistence.MongoDB&quot; version=&quot;5.3.7&quot; targetFramework=&quot;net451&quot; /&gt;" to="&lt;package id=&quot;NEventStore.Persistence.MongoDB&quot; version=&quot;7.0.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;NEventStore.Persistence.MongoDB&quot;" from="&lt;package id=&quot;NEventStore.Persistence.MongoDB&quot; version=&quot;5.3.7&quot; targetFramework=&quot;net452&quot; /&gt;" to="&lt;package id=&quot;NEventStore.Persistence.MongoDB&quot; version=&quot;7.0.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;NEventStore.Persistence.MongoDB&quot;" from="&lt;package id=&quot;NEventStore.Persistence.MongoDB&quot; version=&quot;5.3.7&quot; targetFramework=&quot;net461&quot; /&gt;" to="&lt;package id=&quot;NEventStore.Persistence.MongoDB&quot; version=&quot;7.0.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;NEventStore.Persistence.MongoDB&quot;" from="&lt;package id=&quot;NEventStore.Persistence.MongoDB&quot; version=&quot;5.3.7&quot; targetFramework=&quot;net48&quot; /&gt;" to="&lt;package id=&quot;NEventStore.Persistence.MongoDB&quot; version=&quot;7.0.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+
+
+    <!-- ========================DnsClient======================== -->
+    
+    <!--1.0.7-->
+    <ReplacementString qualifier="&lt;package id=&quot;DnsClient&quot;" from="&lt;package id=&quot;DnsClient&quot; version=&quot;1.0.7&quot; targetFramework=&quot;net451&quot; /&gt;" to="&lt;package id=&quot;DnsClient&quot; version=&quot;1.0.7&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;DnsClient&quot;" from="&lt;package id=&quot;DnsClient&quot; version=&quot;1.0.7&quot; targetFramework=&quot;net452&quot; /&gt;" to="&lt;package id=&quot;DnsClient&quot; version=&quot;1.0.7&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;DnsClient&quot;" from="&lt;package id=&quot;DnsClient&quot; version=&quot;1.0.7&quot; targetFramework=&quot;net461&quot; /&gt;" to="&lt;package id=&quot;DnsClient&quot; version=&quot;1.0.7&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+
+    <!-- ========================MongoDB.Bson========================-->
+    
+    <!--2.11.0-->
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Bson&quot;" from="&lt;package id=&quot;MongoDB.Bson&quot; version=&quot;2.5.0&quot; targetFramework=&quot;net451&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Bson&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Bson&quot;" from="&lt;package id=&quot;MongoDB.Bson&quot; version=&quot;2.5.0&quot; targetFramework=&quot;net452&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Bson&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Bson&quot;" from="&lt;package id=&quot;MongoDB.Bson&quot; version=&quot;2.5.0&quot; targetFramework=&quot;net461&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Bson&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Bson&quot;" from="&lt;package id=&quot;MongoDB.Bson&quot; version=&quot;2.5.0&quot; targetFramework=&quot;net48&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Bson&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Bson&quot;" from="&lt;package id=&quot;MongoDB.Bson&quot; version=&quot;2.8.0&quot; targetFramework=&quot;net452&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Bson&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Bson&quot;" from="&lt;package id=&quot;MongoDB.Bson&quot; version=&quot;2.8.0&quot; targetFramework=&quot;net461&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Bson&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Bson&quot;" from="&lt;package id=&quot;MongoDB.Bson&quot; version=&quot;2.8.0&quot; targetFramework=&quot;net48&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Bson&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Bson&quot;" from="&lt;package id=&quot;MongoDB.Bson&quot; version=&quot;2.9.3&quot; targetFramework=&quot;net48&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Bson&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+
+    <!-- ========================MongoDB.Driver========================-->
+    
+    <!--2.11.0-->
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Driver&quot;" from="&lt;package id=&quot;MongoDB.Driver&quot; version=&quot;2.5.0&quot; targetFramework=&quot;net451&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Driver&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Driver&quot;" from="&lt;package id=&quot;MongoDB.Driver&quot; version=&quot;2.5.0&quot; targetFramework=&quot;net452&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Driver&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Driver&quot;" from="&lt;package id=&quot;MongoDB.Driver&quot; version=&quot;2.5.0&quot; targetFramework=&quot;net461&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Driver&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Driver&quot;" from="&lt;package id=&quot;MongoDB.Driver&quot; version=&quot;2.5.0&quot; targetFramework=&quot;net48&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Driver&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Driver&quot;" from="&lt;package id=&quot;MongoDB.Driver&quot; version=&quot;2.8.0&quot; targetFramework=&quot;net452&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Driver&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Driver&quot;" from="&lt;package id=&quot;MongoDB.Driver&quot; version=&quot;2.8.0&quot; targetFramework=&quot;net461&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Driver&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Driver&quot;" from="&lt;package id=&quot;MongoDB.Driver&quot; version=&quot;2.8.0&quot; targetFramework=&quot;net48&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Driver&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Driver&quot;" from="&lt;package id=&quot;MongoDB.Driver&quot; version=&quot;2.9.3&quot; targetFramework=&quot;net48&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Driver&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+
+    <!-- ========================MongoDB.Driver.Core========================-->
+    
+    <!--2.11.0-->
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Driver.Core&quot;" from="&lt;package id=&quot;MongoDB.Driver.Core&quot; version=&quot;2.5.0&quot; targetFramework=&quot;net451&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Driver.Core&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Driver.Core&quot;" from="&lt;package id=&quot;MongoDB.Driver.Core&quot; version=&quot;2.5.0&quot; targetFramework=&quot;net452&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Driver.Core&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Driver.Core&quot;" from="&lt;package id=&quot;MongoDB.Driver.Core&quot; version=&quot;2.5.0&quot; targetFramework=&quot;net461&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Driver.Core&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Driver.Core&quot;" from="&lt;package id=&quot;MongoDB.Driver.Core&quot; version=&quot;2.5.0&quot; targetFramework=&quot;net48&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Driver.Core&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Driver.Core&quot;" from="&lt;package id=&quot;MongoDB.Driver.Core&quot; version=&quot;2.8.0&quot; targetFramework=&quot;net452&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Driver.Core&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Driver.Core&quot;" from="&lt;package id=&quot;MongoDB.Driver.Core&quot; version=&quot;2.8.0&quot; targetFramework=&quot;net461&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Driver.Core&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Driver.Core&quot;" from="&lt;package id=&quot;MongoDB.Driver.Core&quot; version=&quot;2.8.0&quot; targetFramework=&quot;net48&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Driver.Core&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;MongoDB.Driver.Core&quot;" from="&lt;package id=&quot;MongoDB.Driver.Core&quot; version=&quot;2.9.3&quot; targetFramework=&quot;net48&quot; /&gt;" to="&lt;package id=&quot;MongoDB.Driver.Core&quot; version=&quot;2.11.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+
+    <!-- ========================System.Buffers========================-->
+    
+    <ReplacementString qualifier="&lt;package id=&quot;System.Buffers&quot;" from="&lt;package id=&quot;System.Buffers&quot; version=&quot;4.3.0&quot; targetFramework=&quot;net451&quot; /&gt;" to="&lt;package id=&quot;System.Buffers&quot; version=&quot;4.3.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;System.Buffers&quot;" from="&lt;package id=&quot;System.Buffers&quot; version=&quot;4.3.0&quot; targetFramework=&quot;net452&quot; /&gt;" to="&lt;package id=&quot;System.Buffers&quot; version=&quot;4.3.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+
+    <!-- ========================System.Runtime.InteropServices.RuntimeInformation========================-->
+    
+    <ReplacementString qualifier="&lt;package id=&quot;System.Runtime.InteropServices.RuntimeInformation&quot;" from="&lt;package id=&quot;System.Runtime.InteropServices.RuntimeInformation&quot; version=&quot;4.0.0&quot; targetFramework=&quot;net451&quot; /&gt;" to="&lt;package id=&quot;System.Runtime.InteropServices.RuntimeInformation&quot; version=&quot;4.0.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;System.Runtime.InteropServices.RuntimeInformation&quot;" from="&lt;package id=&quot;System.Runtime.InteropServices.RuntimeInformation&quot; version=&quot;4.0.0&quot; targetFramework=&quot;net452&quot; /&gt;" to="&lt;package id=&quot;System.Runtime.InteropServices.RuntimeInformation&quot; version=&quot;4.0.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+    <ReplacementString qualifier="&lt;package id=&quot;System.Runtime.InteropServices.RuntimeInformation&quot;" from="&lt;package id=&quot;System.Runtime.InteropServices.RuntimeInformation&quot; version=&quot;4.0.0&quot; targetFramework=&quot;net461&quot; /&gt;" to="&lt;package id=&quot;System.Runtime.InteropServices.RuntimeInformation&quot; version=&quot;4.0.0&quot; targetFramework=&quot;net48&quot; /&gt;"/>
+  </ReplacementStrings>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+  <TfsWorkspace></TfsWorkspace>
+  <TFSUserName></TFSUserName>
+  <TFSPassword></TFSPassword>
+</RefactorConfig>

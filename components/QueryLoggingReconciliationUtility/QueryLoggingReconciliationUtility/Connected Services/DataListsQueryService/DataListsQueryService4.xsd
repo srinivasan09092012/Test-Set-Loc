@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base.Audit" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base.Audit" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost:44311/DataListsQueryService.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Extensions" />
+  <xs:complexType name="ArrayOfAuditObjectModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AuditObjectModel" nillable="true" type="tns:AuditObjectModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAuditObjectModel" nillable="true" type="tns:ArrayOfAuditObjectModel" />
+  <xs:complexType name="AuditObjectModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AggregatePath" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Extensions" minOccurs="0" name="AuditKeys" nillable="true" type="q1:ArrayOfAuditKeyModel" />
+      <xs:element minOccurs="0" name="Differences" nillable="true" type="tns:ArrayOfAuditObjectDifferenceModel" />
+      <xs:element minOccurs="0" name="ObjectFullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ObjectName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuditObjectModel" nillable="true" type="tns:AuditObjectModel" />
+  <xs:complexType name="ArrayOfAuditObjectDifferenceModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AuditObjectDifferenceModel" nillable="true" type="tns:AuditObjectDifferenceModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAuditObjectDifferenceModel" nillable="true" type="tns:ArrayOfAuditObjectDifferenceModel" />
+  <xs:complexType name="AuditObjectDifferenceModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DisplayAfterValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisplayBeforeValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsAuditKey" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PropertyDisplayDatalistName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PropertyDisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PropertyFullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PropertyName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuditObjectDifferenceModel" nillable="true" type="tns:AuditObjectDifferenceModel" />
+</xs:schema>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="Category">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CategoryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CategoryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Category" nillable="true" type="tns:Category" />
+  <xs:complexType name="PostEvent">
+    <xs:sequence>
+      <xs:element name="CustomMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EventId" type="ser:guid" />
+      <xs:element minOccurs="0" name="EventPostedTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EventTemplateMessage" nillable="true" type="xs:string" />
+      <xs:element name="IsArchivedEvent" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MissedSLA" nillable="true" type="xs:string" />
+      <xs:element name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NotificationTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="OperatorId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PostedEventId" type="ser:guid" />
+      <xs:element minOccurs="0" name="PreviousEventID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="PreviousEventName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProcessRunTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="Subsystem" nillable="true" type="xs:string" />
+      <xs:element name="TenantId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PostEvent" nillable="true" type="tns:PostEvent" />
+  <xs:complexType name="PostedEventSearchCriteria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsNotified" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OccurredAfter" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OccurredBefore" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PostedEventId" type="ser:guid" />
+      <xs:element minOccurs="0" name="Subsystem" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TenantId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PostedEventSearchCriteria" nillable="true" type="tns:PostedEventSearchCriteria" />
+  <xs:complexType name="ArrayOfPostEvent">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PostEvent" nillable="true" type="tns:PostEvent" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPostEvent" nillable="true" type="tns:ArrayOfPostEvent" />
+  <xs:complexType name="EventSearchCriteria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EventID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="HasSLA" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LocaleCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Subsystem" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TenantId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EventSearchCriteria" nillable="true" type="tns:EventSearchCriteria" />
+  <xs:complexType name="Subscription">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreationDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EMail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EventID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="EventName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EventNameContains" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastUpdatedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SendSMSMessage" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SmsAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubscriberID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="SubscriptionId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Subsystem" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TenantId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Subscription" nillable="true" type="tns:Subscription" />
+  <xs:complexType name="SubscriptionSearchCriteria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EventName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SubscriberEmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubscriptionId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="TenantId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SubscriptionSearchCriteria" nillable="true" type="tns:SubscriptionSearchCriteria" />
+  <xs:complexType name="ArrayOfSubscription">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Subscription" nillable="true" type="tns:Subscription" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSubscription" nillable="true" type="tns:ArrayOfSubscription" />
+  <xs:complexType name="SubscriberSearchCriteria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SmsAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubscriberID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="TenantId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SubscriberSearchCriteria" nillable="true" type="tns:SubscriberSearchCriteria" />
+  <xs:complexType name="ArrayOfEventNameDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EventNameDetails" nillable="true" type="tns:EventNameDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEventNameDetails" nillable="true" type="tns:ArrayOfEventNameDetails" />
+  <xs:complexType name="EventNameDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EventId" type="ser:guid" />
+      <xs:element minOccurs="0" name="EventName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EventNameDetails" nillable="true" type="tns:EventNameDetails" />
+  <xs:complexType name="ArrayOfSubscriberEmailDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SubscriberEmailDetails" nillable="true" type="tns:SubscriberEmailDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSubscriberEmailDetails" nillable="true" type="tns:ArrayOfSubscriberEmailDetails" />
+  <xs:complexType name="SubscriberEmailDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SMSAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubscriberId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SubscriberEmailDetails" nillable="true" type="tns:SubscriberEmailDetails" />
+  <xs:complexType name="ArrayOfSubscriberSMSDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SubscriberSMSDetails" nillable="true" type="tns:SubscriberSMSDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSubscriberSMSDetails" nillable="true" type="tns:ArrayOfSubscriberSMSDetails" />
+  <xs:complexType name="SubscriberSMSDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SMSAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubscriberId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SubscriberSMSDetails" nillable="true" type="tns:SubscriberSMSDetails" />
+  <xs:complexType name="ArrayOfAddress">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Address" nillable="true" type="tns:Address" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAddress" nillable="true" type="tns:ArrayOfAddress" />
+  <xs:complexType name="Address">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MailType" type="tns:Address.MailTypeEnum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Address" nillable="true" type="tns:Address" />
+  <xs:simpleType name="Address.MailTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="To" />
+      <xs:enumeration value="CC" />
+      <xs:enumeration value="Bcc" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Address.MailTypeEnum" nillable="true" type="tns:Address.MailTypeEnum" />
+  <xs:complexType name="ArrayOfAttachments">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Attachments" nillable="true" type="tns:Attachments" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAttachments" nillable="true" type="tns:ArrayOfAttachments" />
+  <xs:complexType name="Attachments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttachmentType" type="tns:Attachments.MediaTypes" />
+      <xs:element minOccurs="0" name="ContentId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contents" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Attachments" nillable="true" type="tns:Attachments" />
+  <xs:simpleType name="Attachments.MediaTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PlainText" />
+      <xs:enumeration value="RichText" />
+      <xs:enumeration value="HTML" />
+      <xs:enumeration value="Xml" />
+      <xs:enumeration value="Gif" />
+      <xs:enumeration value="Jpeg" />
+      <xs:enumeration value="Tiff" />
+      <xs:enumeration value="Pdf" />
+      <xs:enumeration value="Rtf" />
+      <xs:enumeration value="Soap" />
+      <xs:enumeration value="Zip" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Attachments.MediaTypes" nillable="true" type="tns:Attachments.MediaTypes" />
+  <xs:complexType name="SendAndPostSubscribedEventCriteria">
+    <xs:sequence>
+      <xs:element name="EventName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromAddress" nillable="true" type="xs:string" />
+      <xs:element name="MessageBody" nillable="true" type="xs:string" />
+      <xs:element name="OperatorId" nillable="true" type="xs:string" />
+      <xs:element name="Subject" nillable="true" type="xs:string" />
+      <xs:element name="Subsystem" nillable="true" type="xs:string" />
+      <xs:element name="TenantId" nillable="true" type="xs:string" />
+      <xs:element name="ToAddress" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SendAndPostSubscribedEventCriteria" nillable="true" type="tns:SendAndPostSubscribedEventCriteria" />
+</xs:schema>

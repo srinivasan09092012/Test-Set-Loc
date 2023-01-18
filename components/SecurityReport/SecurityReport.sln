@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RightsUX", "RightsUX\RightsUX.csproj", "{1F019806-FD15-4570-9919-7B6CDBACE74D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RightsDAL", "RightsDAL\RightsDAL.csproj", "{F80DF412-4CA7-486D-8355-4349138A6446}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RightsExcel", "RIghtsExcel\RightsExcel.csproj", "{AA108040-7E8D-4A40-84F6-4EF5195D4A11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RightsModels", "RightsModels\RightsModels.csproj", "{22DFF96B-942D-4588-8F45-A13087A375D6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F019806-FD15-4570-9919-7B6CDBACE74D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F019806-FD15-4570-9919-7B6CDBACE74D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F019806-FD15-4570-9919-7B6CDBACE74D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F019806-FD15-4570-9919-7B6CDBACE74D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F80DF412-4CA7-486D-8355-4349138A6446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F80DF412-4CA7-486D-8355-4349138A6446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F80DF412-4CA7-486D-8355-4349138A6446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F80DF412-4CA7-486D-8355-4349138A6446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA108040-7E8D-4A40-84F6-4EF5195D4A11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA108040-7E8D-4A40-84F6-4EF5195D4A11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA108040-7E8D-4A40-84F6-4EF5195D4A11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA108040-7E8D-4A40-84F6-4EF5195D4A11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22DFF96B-942D-4588-8F45-A13087A375D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22DFF96B-942D-4588-8F45-A13087A375D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22DFF96B-942D-4588-8F45-A13087A375D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22DFF96B-942D-4588-8F45-A13087A375D6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9CC4C647-8DFC-430B-A75F-39D19E787ED2}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://payerportfolio.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = RightsDAL\\RightsDAL.csproj
+		SccProjectName1 = RightsDAL
+		SccLocalPath1 = RightsDAL
+		SccProjectUniqueName2 = RIghtsExcel\\RightsExcel.csproj
+		SccProjectName2 = RIghtsExcel
+		SccLocalPath2 = RIghtsExcel
+		SccProjectUniqueName3 = RightsModels\\RightsModels.csproj
+		SccProjectName3 = RightsModels
+		SccLocalPath3 = RightsModels
+		SccProjectUniqueName4 = RightsUX\\RightsUX.csproj
+		SccProjectName4 = RightsUX
+		SccLocalPath4 = RightsUX
+	EndGlobalSection
+EndGlobal

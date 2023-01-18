@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<EnvironmentsConfig>
+  <Environments>
+    <Environment name="ConvPerf - DXC Commercial" adGroupFilterPrefix="Maps" tenantId="b37b1cec-6603-2d4f-ac37-74e0724774a1" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=tenant2-conperf,DC=mapshc,DC=com</ADContainer>
+      <ADServer>ad.tenant2-conperf.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas-conperf.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas-conperf.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="Demo" adGroupFilterPrefix="Maps" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=demo,DC=mapshc,DC=com</ADContainer>
+      <ADServer>ad.demo.mapshc.com</ADServer>
+      <ADUser>demo\adService</ADUser>
+      <ADPassword>Password2017</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas.demo.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.demo.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="Dev- DXC Medicaid" adGroupFilterPrefix="Maps" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=dev,DC=mapshc,DC=com</ADContainer>
+      <ADServer>mapsdevdmc01.dev.mapshc.com</ADServer>
+      <ADUser>adService</ADUser>
+      <ADPassword>Password2017</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://sf.dev.mapshc.com/HPP.Core.BAS.User/R6.0/?ListenerName=UserQueryServiceListener" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://sf.dev.mapshc.com/HPP.Core.BAS.User/R6.0/?ListenerName=UserServiceListener" />
+    </Environment>
+    <Environment name="Dev - DXC Commercial" adGroupFilterPrefix="Maps" tenantId="b37b1cec-6603-2d4f-ac37-74e0724774a1" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=dev2,DC=mapshc,DC=com</ADContainer>
+      <ADServer>mapsdev2ad01.dev2.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://sf.dev.mapshc.com/HPP.Core.BAS.User/R6.0/?ListenerName=UserQueryServiceListener" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://sf.dev.mapshc.com/HPP.Core.BAS.User/R6.0/?ListenerName=UserServiceListener" />
+    </Environment>
+    <Environment name="Finaltest - DXC Medicaid" adGroupFilterPrefix="Maps" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=tenant1-fltest,DC=mapshc,DC=com</ADContainer>
+      <ADServer>ad.tenant1-fltest.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://sf.fltest-perf.mapshc.com/HPP.Core.BAS.User/R6.0/?ListenerName=UserQueryServiceListener" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://sf.fltest-perf.mapshc.com/HPP.Core.BAS.User/R6.0/?ListenerName=UserServiceListener" />
+    </Environment>
+    <Environment name="Finaltest - DXC Commercial" adGroupFilterPrefix="Maps" tenantId="b37b1cec-6603-2d4f-ac37-74e0724774a1" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=tenant2-fltest,DC=mapshc,DC=com</ADContainer>
+      <ADServer>ad.tenant2-fltest.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://sf.fltest-perf.mapshc.com/HPP.IdentityManagement.BAS.User/R6.0/?ListenerName=SecureUserQueryServiceListener" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://sf.fltest-perf.mapshc.com/HPP.IdentityManagement.BAS.User/R6.0/?ListenerName=SecureUserServiceListener" />
+    </Environment>
+    <Environment name="Performance" adGroupFilterPrefix="Maps" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=performance,DC=mapshc,DC=com</ADContainer>
+      <ADServer>ad.performance.mapshc.com</ADServer>
+      <ADUser>adService</ADUser>
+      <ADPassword>Password2017</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas.performance.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.performance.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="Perf2" adGroupFilterPrefix="Maps" tenantId="b37b1cec-6603-2d4f-ac37-74e0724774a1" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=tnt1,DC=perf2,DC=mapshc,DC=com</ADContainer>
+      <ADServer>ad.tnt1.perf2.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://sf.perf2.mapshc.com/HPP.IdentityManagement.BAS.User/R6.0/?ListenerName=SecureUserQueryServiceListener" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://sf.perf2.mapshc.com/HPP.IdentityManagement.BAS.User/R6.0/?ListenerName=SecureUserServiceListener" />
+    </Environment>
+    <Environment name="Saas - DXC Medicaid" adGroupFilterPrefix="Maps" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=med-stage,DC=mapshc,DC=com</ADContainer>
+      <ADServer>ad.med-stage.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="Saas - DXC Commercial" adGroupFilterPrefix="Maps" tenantId="b37b1cec-6603-2d4f-ac37-74e0724774a1" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=com-stage,DC=mapshc,DC=com</ADContainer>
+      <ADServer>ad.com-stage.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="Sandbox" adGroupFilterPrefix="Maps" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=sandbox,DC=mapshc,DC=com</ADContainer>
+      <ADServer>ad.sandbox.mapshc.com</ADServer>
+      <ADUser>adService</ADUser>
+      <ADPassword>Password2017</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas.sandbox.mapshc.com/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas.sandbox.mapshc.com/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="SandBoxPOC - DXC Commercial" adGroupFilterPrefix="Maps" tenantId="b37b1cec-6603-2d4f-ac37-74e0724774a1" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=t1sb2,DC=sb2,DC=mapshc,DC=com</ADContainer>
+      <ADServer>mapssb2t1ad01.t1sb2.sb2.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://sf.sb2.mapshc.com/HPP.IdentityManagement.BAS.User/R6.0/?ListenerName=SecureUserQueryServiceListener" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://sf.sb2.mapshc.com/HPP.IdentityManagement.BAS.User/R6.0/?ListenerName=SecureUserServiceListener" />
+    </Environment>
+    <Environment name="Stage1 - DXC Medicaid" adGroupFilterPrefix="Maps" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="1" isDeleteAllowed="true">
+      <ADContainer>CN=users,DC=tenant1-stage1,DC=mapshc,DC=com </ADContainer>
+      <ADServer>ad.tenant1-stage1.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas-stage1.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas-stage1.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="Stage1 - DXC Commercial" adGroupFilterPrefix="Maps" tenantId="b37b1cec-6603-2d4f-ac37-74e0724774a1" serviceVersion="1" isDeleteAllowed="true">
+      <ADContainer>CN=users,DC=tenant2-stage1,DC=mapshc,DC=com </ADContainer>
+      <ADServer>ad.tenant2-stage1.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas-stage1.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas-stage1.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="Stage2 - DXC Medicaid" adGroupFilterPrefix="Maps" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="1" isDeleteAllowed="true">
+      <ADContainer>CN=users,DC=t1s2,DC=stages,DC=mapshc,DC=com </ADContainer>
+      <ADServer>ad.t1s2.stages.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas-stage2.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas-stage2.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="Stage2 - DXC Commercial" adGroupFilterPrefix="Maps" tenantId="b37b1cec-6603-2d4f-ac37-74e0724774a1" serviceVersion="1" isDeleteAllowed="true">
+      <ADContainer>CN=users,DC=t2s2,DC=stages,DC=mapshc,DC=com </ADContainer>
+      <ADServer>ad.t2s2.stages.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas-stage2.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas-stage2.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="Stage3 - DXC Medicaid" adGroupFilterPrefix="Maps" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="1" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=t1s3,DC=stages,DC=mapshc,DC=com</ADContainer>
+      <ADServer>ad.t1s3.stages.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas-stage3.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas-stage3.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="Stage3 - DXC Commercial" adGroupFilterPrefix="Maps" tenantId="b37b1cec-6603-2d4f-ac37-74e0724774a1" serviceVersion="1" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=t2s3,DC=stages,DC=mapshc,DC=com</ADContainer>
+      <ADServer>ad.t2s3.stages.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas-stage3.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas-stage3.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="Stage4 - DXC Medicaid" adGroupFilterPrefix="Maps" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="1" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=t1s4,DC=stages,DC=mapshc,DC=com</ADContainer>
+      <ADServer>ad.t1s4.stages.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas-stage4.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas-stage4.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="Stage4 - DXC Commercial" adGroupFilterPrefix="Maps" tenantId="b37b1cec-6603-2d4f-ac37-74e0724774a1" serviceVersion="1" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=t2s4,DC=stages,DC=mapshc,DC=com</ADContainer>
+      <ADServer>ad.t2s4.stages.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas-stage4.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas-stage4.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="Stage5 - DXC Medicaid" adGroupFilterPrefix="Maps" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=t1s5,DC=stages,DC=mapshc,DC=com </ADContainer>
+      <ADServer>ad.t1s5.stages.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas-stage5.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas-stage5.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="stage5 - DXC Commercial" adGroupFilterPrefix="Maps" tenantId="b37b1cec-6603-2d4f-ac37-74e0724774a1" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=t2s5,DC=stages,DC=mapshc,DC=com</ADContainer>
+      <ADServer>ad.t2s5.stages.mapshc.com</ADServer>
+      <!--<ADServer>mapstst2ad01.test2.mapshc.com</ADServer>-->
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas-stage5.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas-stage5.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="Stage6 - DXC Medicaid" adGroupFilterPrefix="Maps" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=t1s6,DC=stages,DC=mapshc,DC=com </ADContainer>
+      <ADServer>ad.t1s6.stages.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas-stage6.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas-stage6.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="Stage6 - DXC Commercial" adGroupFilterPrefix="Maps" tenantId="b37b1cec-6603-2d4f-ac37-74e0724774a1" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=t2s6,DC=stages,DC=mapshc,DC=com</ADContainer>
+      <ADServer>ad.t2s6.stages.mapshc.com</ADServer>
+      <!--<ADServer>mapstst2ad01.test2.mapshc.com</ADServer>-->
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas-stage6.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas-stage6.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="Stage7 - DXC Medicaid" adGroupFilterPrefix="Maps" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=t1s7,DC=stages,DC=mapshc,DC=com </ADContainer>
+      <ADServer>ad.t1s7.stages.mapshc.com</ADServer>
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://bas-stage7.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserQueryService.svc" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://bas-stage7.stages.mapshc.com:8443/HP.HSP.UA3.User/R6.0/UserService.svc" />
+    </Environment>
+    <Environment name="Test - DXC Medicaid" adGroupFilterPrefix="Maps" tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=test,DC=mapshc,DC=com</ADContainer>
+      <ADServer>mapststdmc01.test.mapshc.com</ADServer>
+      <ADUser>adService</ADUser>
+      <ADPassword>Password2017</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://sf.test.mapshc.com/HPP.Core.BAS.User/R6.0/?ListenerName=UserQueryServiceListener" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://sf.test.mapshc.com/HPP.Core.BAS.User/R6.0/?ListenerName=UserServiceListener" />
+    </Environment>
+    <Environment name="Test - DXC Commercial" adGroupFilterPrefix="Maps" tenantId="b37b1cec-6603-2d4f-ac37-74e0724774a1" serviceVersion="2" isDeleteAllowed="true">
+      <ADContainer>CN=Users,DC=test2,DC=mapshc,DC=com</ADContainer>
+      <ADServer>10.143.60.138</ADServer>
+      <!--<ADServer>mapstst2ad01.test2.mapshc.com</ADServer>-->
+      <ADUser>adSvc001</ADUser>
+      <ADPassword>Password12345</ADPassword>
+      <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://sf.test.mapshc.com/HPP.Core.BAS.User/R6.0/?ListenerName=UserQueryServiceListener" />
+      <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://sf.test.mapshc.com/HPP.Core.BAS.User/R6.0/?ListenerName=UserServiceListener" />
+    </Environment>
+  </Environments>
+</EnvironmentsConfig>

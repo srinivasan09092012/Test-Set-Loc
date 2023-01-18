@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries.Sorting" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Queries.Sorting" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="SortEnumerations.SortDirectionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ASC" />
+      <xs:enumeration value="DESC" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SortEnumerations.SortDirectionType" nillable="true" type="tns:SortEnumerations.SortDirectionType" />
+  <xs:simpleType name="SortEnumerations.ItemSortFieldType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Default" />
+      <xs:enumeration value="Code" />
+      <xs:enumeration value="Description" />
+      <xs:enumeration value="EffectiveDate" />
+      <xs:enumeration value="EndDate" />
+      <xs:enumeration value="OrderIndex" />
+      <xs:enumeration value="Valid" />
+      <xs:enumeration value="IsEditable" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SortEnumerations.ItemSortFieldType" nillable="true" type="tns:SortEnumerations.ItemSortFieldType" />
+</xs:schema>

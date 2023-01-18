@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f20fc1ca-3fad-4b58-92fc-61b00bc4a1d7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/HtmlBlockService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="HtmlBlockService.xsd" MetadataType="Schema" ID="2244ec52-9e2b-4627-9b5c-a64f5bfbed75" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/HtmlBlockService.svc?xsd=xsd0" />
+    <MetadataFile FileName="HtmlBlockService1.xsd" MetadataType="Schema" ID="ba91bc8d-d0c0-438f-a270-8d189cedf8ed" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/HtmlBlockService.svc?xsd=xsd2" />
+    <MetadataFile FileName="HtmlBlockService2.xsd" MetadataType="Schema" ID="3250c85f-69fd-4def-8975-8c91cf9b3b87" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/HtmlBlockService.svc?xsd=xsd1" />
+    <MetadataFile FileName="HtmlBlockService.disco" MetadataType="Disco" ID="a0176983-f9f9-4a93-9c30-e23ed1d23254" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/HtmlBlockService.svc?disco" />
+    <MetadataFile FileName="HtmlBlockService3.xsd" MetadataType="Schema" ID="ad78123c-c75d-45e8-9e96-18cca95cc90c" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/HtmlBlockService.svc?xsd=xsd3" />
+    <MetadataFile FileName="HtmlBlockService4.xsd" MetadataType="Schema" ID="6ba5fbc7-0b96-4b41-9865-1c13351d26ba" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/HtmlBlockService.svc?xsd=xsd6" />
+    <MetadataFile FileName="HtmlBlockService5.xsd" MetadataType="Schema" ID="224a45f9-a0f5-4329-be09-c2a2f03df72b" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/HtmlBlockService.svc?xsd=xsd5" />
+    <MetadataFile FileName="HtmlBlockService.wsdl" MetadataType="Wsdl" ID="80f55e6a-f5ba-4d3a-bc3f-e3d24fae53d8" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/HtmlBlockService.svc?wsdl" />
+    <MetadataFile FileName="HtmlBlockService6.xsd" MetadataType="Schema" ID="ceefd56e-beb6-434c-851a-caa532bb4e39" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/HtmlBlockService.svc?xsd=xsd7" />
+    <MetadataFile FileName="HtmlBlockService7.xsd" MetadataType="Schema" ID="9a08b9d1-03f6-4519-be1a-4a77607131dc" SourceId="1" SourceUrl="http://bas.dev.mapshc.com:8010/HP.HSP.UA3.TenantConfiguration/R6.0/HtmlBlockService.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

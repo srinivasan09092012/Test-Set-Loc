@@ -1,0 +1,58 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewProjectionLoader", "ViewProjectionLoader\ViewProjectionLoader.csproj", "{A520F5B4-AD7F-47EC-BB24-A949E282B206}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewProjectionLoader.Tests", "ViewProjectionLoader.Tests\ViewProjectionLoader.Tests.csproj", "{C2087E55-52F9-4405-8345-C1AA07660152}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B4C92965-8DF9-4CD6-852C-67AB00796EA7}"
+	ProjectSection(SolutionItems) = preProject
+		nuget.config = nuget.config
+		ViewProjectionLoader.runsettings = ViewProjectionLoader.runsettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A520F5B4-AD7F-47EC-BB24-A949E282B206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A520F5B4-AD7F-47EC-BB24-A949E282B206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A520F5B4-AD7F-47EC-BB24-A949E282B206}.Debug|x64.ActiveCfg = Debug|x64
+		{A520F5B4-AD7F-47EC-BB24-A949E282B206}.Debug|x64.Build.0 = Debug|x64
+		{A520F5B4-AD7F-47EC-BB24-A949E282B206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A520F5B4-AD7F-47EC-BB24-A949E282B206}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A520F5B4-AD7F-47EC-BB24-A949E282B206}.Release|x64.ActiveCfg = Release|x64
+		{A520F5B4-AD7F-47EC-BB24-A949E282B206}.Release|x64.Build.0 = Release|x64
+		{C2087E55-52F9-4405-8345-C1AA07660152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2087E55-52F9-4405-8345-C1AA07660152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2087E55-52F9-4405-8345-C1AA07660152}.Debug|x64.ActiveCfg = Debug|x64
+		{C2087E55-52F9-4405-8345-C1AA07660152}.Debug|x64.Build.0 = Debug|x64
+		{C2087E55-52F9-4405-8345-C1AA07660152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2087E55-52F9-4405-8345-C1AA07660152}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2087E55-52F9-4405-8345-C1AA07660152}.Release|x64.ActiveCfg = Release|x64
+		{C2087E55-52F9-4405-8345-C1AA07660152}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {871F131A-7726-414A-B822-5EE369881DE9}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://payerportfolio.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ViewProjectionLoader\\ViewProjectionLoader.csproj
+		SccProjectName1 = ViewProjectionLoader
+		SccLocalPath1 = ViewProjectionLoader
+		SccProjectUniqueName2 = ViewProjectionLoader.Tests\\ViewProjectionLoader.Tests.csproj
+		SccProjectName2 = ViewProjectionLoader.Tests
+		SccLocalPath2 = ViewProjectionLoader.Tests
+	EndGlobalSection
+EndGlobal

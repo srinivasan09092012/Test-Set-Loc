@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4cf3acb2-2b22-4199-9866-0db75a6f857e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:40520/UserQueryService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="UserQueryService9.xsd" MetadataType="Schema" ID="6267eb61-1a28-4950-ae75-7035d0e646e0" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?xsd=xsd6" />
+    <MetadataFile FileName="UserQueryService91.xsd" MetadataType="Schema" ID="da75d3df-5ca8-4968-b9a7-1f95b2c7def6" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?xsd=xsd0" />
+    <MetadataFile FileName="UserQueryService92.xsd" MetadataType="Schema" ID="6efdb406-43a4-4178-855f-dec10873eb77" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?xsd=xsd2" />
+    <MetadataFile FileName="UserQueryService93.xsd" MetadataType="Schema" ID="a20cebe0-8533-45a1-833e-ae4afe74706d" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?xsd=xsd8" />
+    <MetadataFile FileName="UserQueryService1.disco" MetadataType="Disco" ID="8b989377-602f-444c-ba10-b4a55e753a85" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?disco" />
+    <MetadataFile FileName="UserQueryService94.xsd" MetadataType="Schema" ID="3d54aca2-ece6-413c-a074-17701daa5ffd" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?xsd=xsd5" />
+    <MetadataFile FileName="UserQueryService95.xsd" MetadataType="Schema" ID="fc9e8363-1823-4692-bf59-bef978088c22" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?xsd=xsd7" />
+    <MetadataFile FileName="UserQueryService2.wsdl" MetadataType="Wsdl" ID="b1fc1a77-4c9d-4bb4-85c5-2156b43c04c0" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?wsdl" />
+    <MetadataFile FileName="UserQueryService96.xsd" MetadataType="Schema" ID="86c87124-7c3c-4677-ada0-26e3d2740b67" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?xsd=xsd1" />
+    <MetadataFile FileName="UserQueryService21.wsdl" MetadataType="Wsdl" ID="44efc66c-c09b-408d-b748-2bffc25bd032" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="UserQueryService97.xsd" MetadataType="Schema" ID="fe4373e6-fadf-43f9-ae0c-c514849f018a" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?xsd=xsd3" />
+    <MetadataFile FileName="UserQueryService98.xsd" MetadataType="Schema" ID="df2ed166-9716-426c-9a32-fc06a389f683" SourceId="1" SourceUrl="http://localhost:40520/UserQueryService.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

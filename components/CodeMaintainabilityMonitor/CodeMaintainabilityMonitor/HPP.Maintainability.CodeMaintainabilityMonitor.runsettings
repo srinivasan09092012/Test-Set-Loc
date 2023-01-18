@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Configure unit tests with a .runsettings file: http://msdn.microsoft.com/en-us/library/vstudio/jj635153.aspx
+
+A .runsettings file has the following elements:
+- RunConfiguration: Test run configuration.
+- DataCollectors: These specifies settings of diagnostic data adapters. Diagnostic data adapters are used to gather additional information about the environment and the application under test. Each adapter has default settings, and you only have to provide settings if you don�t want to use the defaults.
+- MSTest: These settings are specific to the test adapter that runs test methods that have the [TestMethod] attribute.
+-->
+<RunSettings>
+
+  <!-- RunConfiguration -->
+  <RunConfiguration>
+    <!--
+		<ResultsDirectory></ResultsDirectory>
+		<TargetPlatform></TargetPlatform>
+		<TargetFrameworkVersion></TargetFrameworkVersion>
+		-->
+    <TargetPlatform>x64</TargetPlatform>
+  </RunConfiguration>
+
+  <!-- DataCollectors -->
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="Code Coverage" uri="datacollector://Microsoft/CodeCoverage/2.0" assemblyQualifiedName="Microsoft.VisualStudio.Coverage.DynamicCoverageDataCollector, Microsoft.VisualStudio.TraceCollector, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+        <Configuration>
+
+          <!-- Customizing code coverage analysis: http://msdn.microsoft.com/en-us/library/vstudio/jj159530.aspx -->
+          <CodeCoverage>
+
+            <!-- by path of assembly file -->
+            <ModulePaths>
+              <!--
+							If Include is empty (i.e. not used) then code coverage processing includes all
+							assemblies (.dll and .exe files) that are loaded and for which .pdb files can be found.
+							-->
+              <!--
+							<Include>
+								<ModulePath>.*\.dll$</ModulePath>
+								<ModulePath>.*\.exe$</ModulePath>
+							</Include>
+							-->
+
+              <Exclude>
+                <ModulePath>.*Rhino\.Mocks.*</ModulePath>
+                <ModulePath>.*\.tests\.dll</ModulePath>
+                <ModulePath>.*\.HSP\.UA3\.CORE\.*</ModulePath>
+                <ModulePath>.*BatchProcessingFactory.*</ModulePath>
+                <ModulePath>.*AutoMapper.*</ModulePath>
+                <ModulePath>.*NEventStore.*</ModulePath>
+              </Exclude>
+            </ModulePaths>
+
+            <!-- by attribute on any code element -->
+            <Attributes>
+              <Exclude>
+                <Attribute>^System\.Diagnostics\.DebuggerHiddenAttribute$</Attribute>
+                <Attribute>^System\.Diagnostics\.DebuggerNonUserCodeAttribute$</Attribute>
+                <Attribute>^System\.Runtime\.CompilerServices\.CompilerGeneratedAttribute$</Attribute>
+                <Attribute>^System\.CodeDom\.Compiler\.GeneratedCodeAttribute$</Attribute>
+                <Attribute>^System\.Diagnostics\.CodeAnalysis\.ExcludeFromCodeCoverageAttribute$</Attribute>
+              </Exclude>
+            </Attributes>
+
+            <!-- by fully qualified function name -->
+            <Functions />
+
+            <!-- by path of source file -->
+            <Sources />
+
+            <!-- by company name property in assembly -->
+            <CompanyNames />
+
+            <!-- by public key token of a signed assembly -->
+            <PublicKeyTokens />
+
+            <!-- Additional paths to search for .pdb (symbol) files. If .pdb files are in the same folder as the .dll or .exe files, they are automatically found. -->
+            <SymbolSearchPaths />
+
+            <!-- recommonded to use following values -->
+            <UseVerifiableInstrumentation>True</UseVerifiableInstrumentation>
+            <AllowLowIntegrityProcesses>True</AllowLowIntegrityProcesses>
+            <CollectFromChildProcesses>True</CollectFromChildProcesses>
+            <CollectAspDotNet>False</CollectAspDotNet>
+
+          </CodeCoverage>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+
+  <!-- MSTest -->
+  <MSTest>
+    <!--
+		<ForcedLegacyMode></ForcedLegacyMode>
+		<IgnoreTestImpact></IgnoreTestImpact>
+		<SettingsFile></SettingsFile>
+		<KeepExecutorAliveAfterLegacyRun></KeepExecutorAliveAfterLegacyRun>
+		<DeploymentEnabled></DeploymentEnabled>
+		<CaptureTraceOutput></CaptureTraceOutput>
+		<DeleteDeploymentDirectoryAfterTestRunIsComplete></DeleteDeploymentDirectoryAfterTestRunIsComplete>
+		<MapInconclusiveToFailed></MapInconclusiveToFailed>
+		<InProcMode></InProcMode>
+		-->
+  </MSTest>
+
+</RunSettings>

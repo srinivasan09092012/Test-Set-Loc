@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Common" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.User.Contracts.Common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="FilterModeCriteria.FilterFields">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EmailAddress" />
+      <xs:enumeration value="FullName" />
+      <xs:enumeration value="DelegateUserId" />
+      <xs:enumeration value="RelationshipCode" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FilterModeCriteria.FilterFields" nillable="true" type="tns:FilterModeCriteria.FilterFields" />
+  <xs:simpleType name="FilterModeCriteria.FilterModeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EqualTo" />
+      <xs:enumeration value="Contains" />
+      <xs:enumeration value="EndsWith" />
+      <xs:enumeration value="StartsWith" />
+      <xs:enumeration value="GreaterThanOrEqualTo" />
+      <xs:enumeration value="LessThanOrEqualTo" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FilterModeCriteria.FilterModeType" nillable="true" type="tns:FilterModeCriteria.FilterModeType" />
+</xs:schema>

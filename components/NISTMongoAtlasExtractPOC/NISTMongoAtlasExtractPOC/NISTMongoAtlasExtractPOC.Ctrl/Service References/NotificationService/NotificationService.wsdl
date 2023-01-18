@@ -1,0 +1,1030 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="NotificationService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_INotificationService1_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd2" namespace="HP.NotificationServices.Library.DataTransferObjects" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HP.NotificationServices.DataTransferObjects" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Queries" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.UserMeta" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.ViewDto" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Queries.Parameters" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Shared" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Library.DataTransferObjects" />
+      <xsd:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/System.Net.Mail" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="INotificationService_IsServiceAvailable_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsServiceAvailable" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_IsServiceAvailable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsServiceAvailableResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_IsServiceHealthy_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsServiceHealthy" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_IsServiceHealthy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsServiceHealthyResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_CreateEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateEvent" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_CreateEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_CreateEvent_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q1:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_PostEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:PostEvent" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_PostEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PostEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_PostEvent_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q2:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_DeleteEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEvent" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_DeleteEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_DeleteEvent_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q3:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_DeleteSubscriber_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSubscriber" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_DeleteSubscriber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSubscriberResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_DeleteSubscriber_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q4:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetPostedEvents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostedEvents" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetPostedEvents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostedEventsResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetPostedEvents_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q5:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_SearchPostedEvents_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchPostedEvents" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_SearchPostedEvents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchPostedEventsResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_SearchPostedEvents_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q6:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_UpdateEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEvent" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_UpdateEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_UpdateEvent_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q7:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetEvents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEvents" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetEvents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEventsResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetEvents_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q8:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_SearchEvents_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchEvents" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_SearchEvents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchEventsResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_SearchEvents_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q9:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_CreateSubscriber_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSubscriber" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_CreateSubscriber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSubscriberResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_CreateSubscriber_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q10:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_UpdateSubscriber_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSubscriber" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_UpdateSubscriber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSubscriberResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_UpdateSubscriber_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q11:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_SearchEventSubscriptions_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchEventSubscriptions" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_SearchEventSubscriptions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchEventSubscriptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_SearchEventSubscriptions_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q12:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetSubscriptions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubscriptions" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetSubscriptions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubscriptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetSubscriptions_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q13:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetSubscribers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubscribers" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetSubscribers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubscribersResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetSubscribers_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q14:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetSubscriberDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubscriberDetails" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetSubscriberDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubscriberDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetSubscriberDetails_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q15:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_SearchSubscriberDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchSubscriberDetails" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_SearchSubscriberDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchSubscriberDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_SearchSubscriberDetails_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q16:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetEventNameDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEventNameDetails" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetEventNameDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEventNameDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetEventNameDetails_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q17:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetSubscriberEmailDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubscriberEmailDetails" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetSubscriberEmailDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubscriberEmailDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetSubscriberEmailDetails_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q18:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetSubscriberSMSDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubscriberSMSDetails" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetSubscriberSMSDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubscriberSMSDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetSubscriberSMSDetails_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q19:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_CreateGenericSubscription_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateGenericSubscription" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_CreateGenericSubscription_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateGenericSubscriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_CreateGenericSubscription_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q20:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_DeleteSubscription_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSubscription" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_DeleteSubscription_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSubscriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_DeleteSubscription_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q21:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_SendEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendEmail" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_SendEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_SendEmail_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q22:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_UpdateSubscription_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSubscription" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_UpdateSubscription_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSubscriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_UpdateSubscription_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q23="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q23:ServiceException" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_SendAndPostSubscribedEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendAndPostSubscribedEvent" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_SendAndPostSubscribedEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendAndPostSubscribedEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_SendAndPostSubscribedEvent_ServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q24="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" name="detail" element="q24:ServiceException" />
+  </wsdl:message>
+  <wsdl:portType name="INotificationService">
+    <wsdl:operation name="IsServiceAvailable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceAvailability/IsServiceAvailable" message="tns:INotificationService_IsServiceAvailable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceAvailability/IsServiceAvailableResponse" message="tns:INotificationService_IsServiceAvailable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsServiceHealthy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceAvailability/IsServiceHealthy" message="tns:INotificationService_IsServiceHealthy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceAvailability/IsServiceHealthyResponse" message="tns:INotificationService_IsServiceHealthy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/CreateEvent" message="tns:INotificationService_CreateEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/CreateEventResponse" message="tns:INotificationService_CreateEvent_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/CreateEventServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_CreateEvent_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PostEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/PostEvent" message="tns:INotificationService_PostEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/PostEventResponse" message="tns:INotificationService_PostEvent_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/PostEventServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_PostEvent_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/DeleteEvent" message="tns:INotificationService_DeleteEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/DeleteEventResponse" message="tns:INotificationService_DeleteEvent_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/DeleteEventServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_DeleteEvent_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSubscriber">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/DeleteSubscriber" message="tns:INotificationService_DeleteSubscriber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/DeleteSubscriberResponse" message="tns:INotificationService_DeleteSubscriber_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/DeleteSubscriberServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_DeleteSubscriber_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostedEvents">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/GetPostedEvents" message="tns:INotificationService_GetPostedEvents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/GetPostedEventsResponse" message="tns:INotificationService_GetPostedEvents_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/GetPostedEventsServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_GetPostedEvents_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchPostedEvents">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/SearchPostedEvents" message="tns:INotificationService_SearchPostedEvents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/SearchPostedEventsResponse" message="tns:INotificationService_SearchPostedEvents_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/SearchPostedEventsServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_SearchPostedEvents_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/UpdateEvent" message="tns:INotificationService_UpdateEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/UpdateEventResponse" message="tns:INotificationService_UpdateEvent_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/UpdateEventServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_UpdateEvent_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEvents">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/GetEvents" message="tns:INotificationService_GetEvents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/GetEventsResponse" message="tns:INotificationService_GetEvents_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/GetEventsServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_GetEvents_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchEvents">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/SearchEvents" message="tns:INotificationService_SearchEvents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/SearchEventsResponse" message="tns:INotificationService_SearchEvents_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/SearchEventsServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_SearchEvents_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateSubscriber">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/CreateSubscriber" message="tns:INotificationService_CreateSubscriber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/CreateSubscriberResponse" message="tns:INotificationService_CreateSubscriber_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/CreateSubscriberServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_CreateSubscriber_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSubscriber">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/UpdateSubscriber" message="tns:INotificationService_UpdateSubscriber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/UpdateSubscriberResponse" message="tns:INotificationService_UpdateSubscriber_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/UpdateSubscriberServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_UpdateSubscriber_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchEventSubscriptions">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/SearchEventSubscriptions" message="tns:INotificationService_SearchEventSubscriptions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/SearchEventSubscriptionsResponse" message="tns:INotificationService_SearchEventSubscriptions_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/SearchEventSubscriptionsServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_SearchEventSubscriptions_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriptions">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/GetSubscriptions" message="tns:INotificationService_GetSubscriptions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/GetSubscriptionsResponse" message="tns:INotificationService_GetSubscriptions_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/GetSubscriptionsServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_GetSubscriptions_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscribers">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/GetSubscribers" message="tns:INotificationService_GetSubscribers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/GetSubscribersResponse" message="tns:INotificationService_GetSubscribers_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/GetSubscribersServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_GetSubscribers_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriberDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/GetSubscriberDetails" message="tns:INotificationService_GetSubscriberDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/GetSubscriberDetailsResponse" message="tns:INotificationService_GetSubscriberDetails_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/GetSubscriberDetailsServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_GetSubscriberDetails_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchSubscriberDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/SearchSubscriberDetails" message="tns:INotificationService_SearchSubscriberDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/SearchSubscriberDetailsResponse" message="tns:INotificationService_SearchSubscriberDetails_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/SearchSubscriberDetailsServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_SearchSubscriberDetails_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEventNameDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/GetEventNameDetails" message="tns:INotificationService_GetEventNameDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/GetEventNameDetailsResponse" message="tns:INotificationService_GetEventNameDetails_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/GetEventNameDetailsServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_GetEventNameDetails_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriberEmailDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/GetSubscriberEmailDetails" message="tns:INotificationService_GetSubscriberEmailDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/GetSubscriberEmailDetailsResponse" message="tns:INotificationService_GetSubscriberEmailDetails_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/GetSubscriberEmailDetailsServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_GetSubscriberEmailDetails_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriberSMSDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/GetSubscriberSMSDetails" message="tns:INotificationService_GetSubscriberSMSDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/GetSubscriberSMSDetailsResponse" message="tns:INotificationService_GetSubscriberSMSDetails_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/GetSubscriberSMSDetailsServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_GetSubscriberSMSDetails_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateGenericSubscription">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/CreateGenericSubscription" message="tns:INotificationService_CreateGenericSubscription_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/CreateGenericSubscriptionResponse" message="tns:INotificationService_CreateGenericSubscription_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/CreateGenericSubscriptionServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_CreateGenericSubscription_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSubscription">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/DeleteSubscription" message="tns:INotificationService_DeleteSubscription_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/DeleteSubscriptionResponse" message="tns:INotificationService_DeleteSubscription_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/DeleteSubscriptionServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_DeleteSubscription_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/SendEmail" message="tns:INotificationService_SendEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/SendEmailResponse" message="tns:INotificationService_SendEmail_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/SendEmailServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_SendEmail_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSubscription">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/UpdateSubscription" message="tns:INotificationService_UpdateSubscription_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/UpdateSubscriptionResponse" message="tns:INotificationService_UpdateSubscription_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/UpdateSubscriptionServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_UpdateSubscription_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendAndPostSubscribedEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotificationService/SendAndPostSubscribedEvent" message="tns:INotificationService_SendAndPostSubscribedEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotificationService/SendAndPostSubscribedEventResponse" message="tns:INotificationService_SendAndPostSubscribedEvent_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/INotificationService/SendAndPostSubscribedEventServiceExceptionFault" name="ServiceExceptionFault" message="tns:INotificationService_SendAndPostSubscribedEvent_ServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_INotificationService" type="tns:INotificationService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IsServiceAvailable">
+      <soap:operation soapAction="http://tempuri.org/IServiceAvailability/IsServiceAvailable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsServiceHealthy">
+      <soap:operation soapAction="http://tempuri.org/IServiceAvailability/IsServiceHealthy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEvent">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/CreateEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="PostEvent">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/PostEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEvent">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/DeleteEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSubscriber">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/DeleteSubscriber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostedEvents">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/GetPostedEvents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchPostedEvents">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/SearchPostedEvents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEvent">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/UpdateEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetEvents">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/GetEvents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchEvents">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/SearchEvents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateSubscriber">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/CreateSubscriber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSubscriber">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/UpdateSubscriber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchEventSubscriptions">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/SearchEventSubscriptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriptions">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/GetSubscriptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscribers">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/GetSubscribers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriberDetails">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/GetSubscriberDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchSubscriberDetails">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/SearchSubscriberDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventNameDetails">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/GetEventNameDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriberEmailDetails">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/GetSubscriberEmailDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriberSMSDetails">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/GetSubscriberSMSDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateGenericSubscription">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/CreateGenericSubscription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSubscription">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/DeleteSubscription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SendEmail">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/SendEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSubscription">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/UpdateSubscription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SendAndPostSubscribedEvent">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/SendAndPostSubscribedEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_INotificationService1" type="tns:INotificationService">
+    <wsp:PolicyReference URI="#BasicHttpBinding_INotificationService1_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IsServiceAvailable">
+      <soap:operation soapAction="http://tempuri.org/IServiceAvailability/IsServiceAvailable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsServiceHealthy">
+      <soap:operation soapAction="http://tempuri.org/IServiceAvailability/IsServiceHealthy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEvent">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/CreateEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="PostEvent">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/PostEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEvent">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/DeleteEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSubscriber">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/DeleteSubscriber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostedEvents">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/GetPostedEvents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchPostedEvents">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/SearchPostedEvents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEvent">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/UpdateEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetEvents">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/GetEvents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchEvents">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/SearchEvents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateSubscriber">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/CreateSubscriber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSubscriber">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/UpdateSubscriber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchEventSubscriptions">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/SearchEventSubscriptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriptions">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/GetSubscriptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscribers">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/GetSubscribers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriberDetails">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/GetSubscriberDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchSubscriberDetails">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/SearchSubscriberDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventNameDetails">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/GetEventNameDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriberEmailDetails">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/GetSubscriberEmailDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriberSMSDetails">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/GetSubscriberSMSDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateGenericSubscription">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/CreateGenericSubscription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSubscription">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/DeleteSubscription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SendEmail">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/SendEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSubscription">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/UpdateSubscription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SendAndPostSubscribedEvent">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/SendAndPostSubscribedEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceExceptionFault">
+        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NotificationService">
+    <wsdl:port name="BasicHttpBinding_INotificationService" binding="tns:BasicHttpBinding_INotificationService">
+      <soap:address location="http://mapsdevapp01.dev.mapshc.com:8010/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_INotificationService1" binding="tns:BasicHttpBinding_INotificationService1">
+      <soap:address location="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

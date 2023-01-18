@@ -1,0 +1,44 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DocModuleSettingModel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="ModuleName"/>
+        <xs:element type="xs:string" name="ModuleNameDisplay"/>
+        <xs:element type="xs:string" name="StorageDrive"/>
+        <xs:element type="xs:string" name="webSourcePath"/>
+        <xs:element type="xs:string" name="webTargetPath"/>
+        <xs:element type="xs:string" name="MainPageContent"/>
+        <xs:element type="xs:anyURI" name="WebHost"/>
+        <xs:element type="xs:string" name="WebHostPhysicalPath"/>
+        <xs:element name="ServiceListPages">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="ListPage"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="MainContractContent"/>
+        <xs:element name="ContractListPages">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="ListPage"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="OtherResourcesFolder"/>
+        <xs:element type="xs:string" name="ModuleAPISourcePath"/>
+        <xs:element type="xs:string" name="ModuleAPITargetPath"/>
+        <xs:element name="ModuleAPIPages">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="ListPage"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="MainAPIContent"/>
+        <xs:element type="xs:string" name="ModuleHelpContentAvailable"/>
+        <xs:element type="xs:string" name="ModuleAPIAvailable"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

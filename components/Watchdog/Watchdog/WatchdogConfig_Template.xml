@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WatchdogConfig environment="Local">
+  <!-- If the application is down then what action needs to be taken apart from sending alert, Restart or nothing  -->
+  <!--  Restart, None  -->
+  <ApplicationDownAction>Restart</ApplicationDownAction>
+  <!-- Number of attempts in case if service is unavailable  -->
+  <MaxRetryCount>3</MaxRetryCount>
+  <!-- Number of sample collected for performance -->
+  <PerformanceSampleCount>3</PerformanceSampleCount>
+  <!-- WorkspaceId we can take from the LogAnalytics which we will create in the AzurePortal -->
+  <LogAnalyticsWorkspaceId>29174b56-2a5e-400f-86a4-488e756bb036</LogAnalyticsWorkspaceId>
+  <!-- Common URl for logging into the LogAnalytics -->
+  <LogAnalyticsApiURL>https://LogAnalyticsWorkspaceId.ods.opinsights.azure.com/api/logs?api-version=2016-04-01</LogAnalyticsApiURL>
+  <!-- Based on the respective Workspace we will take the shared key from the LogAnalytics  -->
+  <SharedKey>aDMEZQi2z5P7T/ORe5htl7TpTnU4ySkn/WgmUaUvPUJM6nj9VdqyXKxZWqROF4sTRuebSXR5Q18eSSI3Q/FsQQ==</SharedKey>
+  <!--
+  List of the Tenants we have for monitoring
+  name: name of the tenant
+  Id: tenant id
+  -->
+  <Tenants>
+    <Tenant name ="DXC Medicaid" Id="77b50320-5f06-5740-84f4-18d4a8cda51d"/>
+  </Tenants>
+  <!--
+  List of Windows services we will be monitoring
+  name: name of the service taken from services.msc
+  -->
+  <WindowsServices>
+    <!--default monitoring will be on, in case if it needs to be turned off for a particular service then we can make use of the 'monitor' attribute and set it to "false"--> 
+    <Service name="W3SVC"/>
+  </WindowsServices>
+  <!--
+  List of the ApplicationPool to be monitored
+  baseAddress: base url for respective environment to monitor
+  servername: VM name where Watchdog will be deployed
+  sitename: sitename of the BAS application hosted in IIS
+  -->
+  <BusinessApplicationServices baseAddress="https://bas.test.mapshc.com/" serverName ="MAPSDEVAPP01" sitename ="HP.DataServices">
+    <!--
+    servername: VM Name where watchdog will be deployed
+    time: by default timeout will be 1000
+    -->
+    <ApplicationPool  serverName ="MAPSDEVAPP01" time="1000"/>
+  </BusinessApplicationServices>
+  <!-- UXMonitoring- Monitoring of the UX application  -->
+  <UXMonitoring>
+    <!-- 
+      serverName: VM name where Watchdog will be deployed
+    -->
+    <WebServer serverName="IN5CG6430RHX">
+      <!--
+      SleepTime: by default sleep time will be 1000
+      sitename: sitename of the UX application hosted in IIS
+      ApplicationPool: ApplicationPool name of the ux hosted in IIS
+      -->
+      <Application  SleepTime="1000" sitename ="UA3" ApplicationPool ="UX AppPool">
+        <!--
+        value: respective application url which we need to monitor
+        name: tenant name
+        Healthurl: respective application healthurl which we need to monitor
+        username: username for the respective environment which will be used to login to application
+        Password: Password for the respective environment which will be used to login to application
+        LoggedInUsername: LoggedInUsername of the respective username which will be used to validate the successfull user login.
+        -->
+        <URL value ="https://localhost.dev.mapshc.com/" name ="Medicaid"  Healthurl ="https://localhost.dev.mapshc.com/healthcheck.htm" Username="hppadmin" Password="Password1234" LoggedInUsername="hpp admin"/>
+      </Application>
+    </WebServer>
+  </UXMonitoring>
+      <!--AddressDoctorServices has two types of services interactive and noninteractive-->
+      <!--
+          Type: Type of the AddressDoctor interface, by default value will be API
+        -->
+      <AddressDoctorServices  type ="API">
+        <!--Details of the AddressDoctor service,interactive or non interactive
+       name: Name of AddressDoctor service, Address Doctor Interactive / Address Doctor Non Interactive
+       applicationDownAction: If the application is down then what action needs to be taken apart from sending alert, Restart or nothing
+                              Values are Restart, None. Default value is None 
+       MaxRetryCount: Number of attempts in case if service is unavailable. Default value is 0
+      -->
+        <Service name ="Address Doctor Interactive" applicationDownAction ="NONE" maxRetryCount ="0"></Service>
+      <Service name ="Address Doctor Non Interactive" applicationDownAction ="NONE" maxRetryCount ="0"></Service>
+    </AddressDoctorServices>
+  <!--K2Services: Monitoring of K2 Services-->
+  <K2Services baseAddress="https://k2.dev.mapshc.com" type ="WCF" serverName ="IN5CG9214XLD" sitename ="K2">
+    <!--baseAddress: Base url of respective environment to monitor K2
+        type: Type of the service being monitored, defualt value is WCF.
+        serverName: VM name where Watchdog will be deployed.
+        sitename: Sitename of the K2 application hosted in IIS-->
+    <Service name ="K2" endpoint ="K2Services/WCF.svc" applicationPoolName ="K2 blackpearl"></Service>
+    <!--name: Name of the K2 service being monitored
+        endpoint: Endpoint address of respective K2 service to monitor
+        applicationPoolName: ApplicationPool name of K2 hosted in IIS-->
+  </K2Services>
+  <!--InRuleServices: Monitoring of InRule Services-->
+  <InRuleServices baseAddress="https://bre.test.mapshc.com" type="WCF" serverName="IN5CG9214XLD" sitename="Default Web Site">
+    <!--baseAddress: Base url of respective environment to monitor Inrule
+        type: Type of the service being monitored, defualt value is WCF.
+        serverName: VM name where Watchdog will be deployed.
+        sitename: Sitename of the Inrule application hosted in IIS-->
+    <Service name="InRuleCatalogService" endpoint="InRuleCatalogService/Service.svc" applicationPoolName="DefaultAppPool"></Service>
+    <!--name: Name of the Inrule service being monitored
+        endpoint: Endpoint address of respective Inrule service to monitor
+        applicationPoolName: ApplicationPool name of Inrule hosted in IIS-->
+  </InRuleServices>
+</WatchdogConfig>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Events" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Events" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?xsd=xsd7" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Domain" />
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.DataLists/R6.0/DataListsService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
+  <xs:complexType name="DataListItemAdded">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DataListItemEvents">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DataListAttributeValues" nillable="true" type="q1:ArrayOfstring" />
+          <xs:element minOccurs="0" name="DataListContentID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataListId" nillable="true" type="xs:string" />
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Domain" minOccurs="0" name="DataListItemAttribute" nillable="true" type="q2:ArrayOfDataListAttributeValue" />
+          <xs:element minOccurs="0" name="DataListItemId" nillable="true" type="xs:string" />
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Domain" minOccurs="0" name="DataListItemLanguages" nillable="true" type="q3:ArrayOfDataListItemLanguage" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Domain" minOccurs="0" name="DataListItemLinks" nillable="true" type="q4:ArrayOfDataListItemLink" />
+          <xs:element minOccurs="0" name="EffectiveDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ItemIsActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ItemIsEditable" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrderIndex" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataListItemAdded" nillable="true" type="tns:DataListItemAdded" />
+  <xs:complexType name="DataListItemEvents">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q5:Event">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataListItemEvents" nillable="true" type="tns:DataListItemEvents" />
+  <xs:complexType name="DataListItemUpdated">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DataListItemEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DataListContentID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataListId" nillable="true" type="xs:string" />
+          <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Domain" minOccurs="0" name="DataListItemAttribute" nillable="true" type="q6:ArrayOfDataListAttributeValue" />
+          <xs:element minOccurs="0" name="DataListItemId" nillable="true" type="xs:string" />
+          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Domain" minOccurs="0" name="DataListItemLanguages" nillable="true" type="q7:ArrayOfDataListItemLanguage" />
+          <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Domain" minOccurs="0" name="DataListItemLinks" nillable="true" type="q8:ArrayOfDataListItemLink" />
+          <xs:element minOccurs="0" name="EffectiveDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ItemIsActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ItemIsEditable" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrderIndex" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataListItemUpdated" nillable="true" type="tns:DataListItemUpdated" />
+  <xs:complexType name="DataListsAdded">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DataListsEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContentId" nillable="true" type="xs:string" />
+          <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DataListAttributeIds" nillable="true" type="q9:ArrayOfstring" />
+          <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Domain" minOccurs="0" name="DataListAttributes" nillable="true" type="q10:ArrayOfDataListAttribute" />
+          <xs:element minOccurs="0" name="DataListId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataListsName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsEditable" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsGroupable" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ReleaseStatus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SortOrder" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TenantModuleId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataListsAdded" nillable="true" type="tns:DataListsAdded" />
+  <xs:complexType name="DataListsEvents">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q11="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q11:Event">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataListsEvents" nillable="true" type="tns:DataListsEvents" />
+  <xs:complexType name="DataListsUpdated">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DataListsEvents">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContentId" nillable="true" type="xs:string" />
+          <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.DataLists.Contracts.Domain" minOccurs="0" name="DataListAttributes" nillable="true" type="q12:ArrayOfDataListAttribute" />
+          <xs:element minOccurs="0" name="DataListId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataListsName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsEditable" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsGroupable" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ReleaseStatus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SortOrder" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TenantModuleId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataListsUpdated" nillable="true" type="tns:DataListsUpdated" />
+</xs:schema>

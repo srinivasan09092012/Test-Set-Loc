@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MigrationConfig>
+  <!--
+  Environment - Contains environment specific configuration settings.  Environment parameters:
+    tenantId:      A unique identifer for the tenant (GUID).
+    defaultLocale: The default lcoale used when creating a new user profile.
+    
+    Note:        AD information only needed if AD entries are being created
+    ADContainer: The Active Direectory container where the user accountsare to be stored.
+    ADServer:    The Active Directory server name or IP address.
+    ADUser:      The admin user name that has administrative privileges to add and modify user accounts in AD.
+    ADPassword:  The admin user password that has administrative privileges to add and modify user accounts in AD.
+    
+    UserQueryService: The binding and endpoint configuration to be used for querying user profiles. Must match the service configuration.
+    UserService:      The binding and endpoint configuration to be used for updating user profiles. Must match the service configuration.
+  -->
+  <Environment tenantId="77b50320-5f06-5740-84f4-18d4a8cda51d" defaultLocale="en-US">
+    <ADContainer>CN=Users,DC=dev,DC=mapshc,DC=com</ADContainer>
+    <ADServer>ad.dev.mapshc.com</ADServer>
+    <ADUser>adService</ADUser>
+    <ADPassword>Password2017</ADPassword>
+    <UserQueryService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserQueryService" binding="basicHttpBinding" endpointAddress="https://sf.dev.mapshc.com/HPP.Core.BAS.User/R6.0/?ListenerName=UserQueryServiceListener" />
+    <UserService behaviorConfiguration="" bindingConfiguration="BasicHttpsBinding_IUserService" binding="basicHttpBinding" endpointAddress="https://sf.dev.mapshc.com/HPP.Core.BAS.User/R6.0/?ListenerName=UserServiceListener" />
+    
+
+  </Environment>
+  <!--
+  Processes - Defines 1 or more processes to be executed in the the current execution of the utility.
+    ExportProviders
+    ImportProviders - import list of providers, creating Active Directory and user profile entries
+    ImportUserXrefs - import list of primary and seconday users and a single service location, creating a Xref association for the combination of the three fields
+    ImportUserXrefsWithDelegates - same as ImportUserXrefs, except that a second delegate file can be added with a list of delegates.  Any user in the Xref file that does not have a secondary user will be assigned to all delegates in the delegate file.
+
+  Each process has the following properties:
+    name:             A unique name for the process (i.e. ExportProviders).
+    processType:      The types of process (Valid values: Export, Import, ImoprtXref).
+    userGroupFilter:  The AD groups to export. Only used for exports.
+    filePath:         A physical file path where the input or output file is located. This can be relative (Imports\) or a full path (C:\temp\ or \\server\share).
+    fileName:         The name of the input or output file.
+    delegateFileName: The name of the input delegate file for the list of delegates to be assigned to each imported userxref that does not have a secondary username specified. Only used for ImportXref.
+    fileFormat:       The format of the input or output file (supported types include: CSV)
+    processAD:        Boolean value that determines if a active directory account should also be processed on the import. Only used for Import.
+    processUserProfile: Boolean value that determines if a user profile should also be processed on teh import. Only used for Import.
+    maxThreads:       The maximum number of threads to use while processing. Only used for imports.
+    Examples:
+    ==========================================================
+    <Process name="ExportProviders" processType="Export" userGroupFilter="MapsProviders" filePath="Exports\" fileName="Providers.csv" fileFormat="CSV" />
+    <Process name="ImportProviders" processType="Import" filePath="Imports\" fileName="Providers.csv" fileFormat="CSV" processAD="true" processUserProfile="true" maxThreads="10" />
+    <Process name="ImportUserXrefs" processType="ImportXref" filePath="Imports\" fileName="UserXrefs.csv" fileFormat="CSV" maxThreads="10" />
+    <Process name="ImportUserXrefsWithDelegates" processType="ImportXref" filePath="Imports\" fileName="UserXrefs.csv" delegateFileName="Delegates.csv" fileFormat="CSV" maxThreads="10" />
+  -->
+  <Processes>
+    <Process name="ImportUserXrefsWithDelegates" processType="ImportXref" filePath="Imports\" fileName="UserXrefs.csv" delegateFileName="Delegates.csv" fileFormat="CSV" maxThreads="1" />
+  </Processes>
+</MigrationConfig>

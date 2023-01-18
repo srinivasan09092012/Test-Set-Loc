@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" targetTFS="Azure">
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+    <!--<ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />-->
+    <!--<ModuleConfig name="Administration" branch="DevF" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="DevF" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ConfigurationManagement" branch="DevF" types="All" />
+    <ModuleConfig name="Core" branch="DevF" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="DevF" types="All" />-->
+    <ModuleConfig name="DrugRebate" branch="DevF" types="All" />
+    <!--<ModuleConfig name="DrugRebatePortal" branch="DevF" types="All" />
+    <ModuleConfig name="EDI" branch="DevF" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="DevF" types="All" />
+    <ModuleConfig name="FileTransfer" branch="DevF" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="DevF" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="DevF" types="All" />
+    <ModuleConfig name="Integration" branch="DevF" types="All" />
+    <ModuleConfig name="ManagedCare" branch="DevF" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="DevF" types="All" />
+    <ModuleConfig name="MemberManagement" branch="DevF" types="All" />
+    <ModuleConfig name="MemberPortal" branch="DevF" types="All" />
+    <ModuleConfig name="Notifications" branch="DevF" types="All" />
+    <ModuleConfig name="PlanManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="DevF" types="All" />
+    <ModuleConfig name="ProgramIntegrityCT" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="DevF" types="All" />
+    <ModuleConfig name="Screening" branch="DevF" types="All" />
+    <ModuleConfig name="TaskManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="DevF" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="DevF" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="DevF" types="All" />
+    <ModuleConfig name="Utilities" branch="DevF" types="NA" />-->
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes>
+    <FileType ext=".bat" />
+    <FileType ext=".config" />
+    <FileType ext=".cs" />
+    <FileType ext=".csproj" />
+  </FileTypes>
+  <LineDeletes />
+  <ReplacementStrings>
+    <!-- UX application settings version -->
+    <!--<ReplacementString qualifier="add key=&quot;AppVersion&quot; value=&quot;19.3.75.0&quot;" from="19.3.75.0" to="19.3.75.1" />-->
+
+    <!-- Assembly Versions in Assembly Info file -->
+    <ReplacementString qualifier="AssemblyVersion(" from="19.3.75.0" to="19.3.75.1" />
+    <ReplacementString qualifier="AssemblyFileVersion(" from="19.3.75.0" to="19.3.75.1" />
+
+    <!-- Assembly Versions in .csproj Files -->
+    <ReplacementString qualifier="Include=&quot;HP.HSP.UA3" from="19.3.75" to="19.3.75.*" />
+    <ReplacementString qualifier="Include=&quot;HPE.HSP.UA3" from="19.3.75" to="19.3.75.*" />
+    <ReplacementString qualifier="Include=&quot;HPP.HSP.UA3" from="19.3.75" to="19.3.75.*" />
+    <ReplacementString qualifier="Include=&quot;HP.NotificationServices" from="19.3.75" to="19.3.75.*" />
+    
+    <!-- Package Names in Copy Assemblies Batch Files -->
+    <ReplacementString qualifier="xcopy /f /r /y" from="19.3.75\lib" to="19.3.75.1\lib" />
+    <ReplacementString qualifier="del /f" from="19.3.75" to="19.3.75.1" />
+    <ReplacementString qualifier="start C:\UA3\Tools\NuGet\Nuget.exe pack" from="19.3.75" to="19.3.75.1" />
+    <ReplacementString qualifier="cd &quot;..\" from="19.3.75" to="19.3.75.1" />
+    <ReplacementString qualifier="if exist &quot;..\" from="19.3.75" to="19.3.75.1" />
+    <ReplacementString qualifier="echo You must have the entire 'PACKAGE\_SOURCE" from="19.3.75" to="19.3.75.1" />
+    <ReplacementString qualifier="xcopy /e /f /r /y" from="19.3.75" to="19.3.75.1" />
+  </ReplacementStrings>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+  <TfsWorkspace>TFSWorkspaceName</TfsWorkspace>
+  <TFSUserName>AzureTFSUserName</TFSUserName>
+  <TFSPassword>Password</TFSPassword>
+</RefactorConfig>

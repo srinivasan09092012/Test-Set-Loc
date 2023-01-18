@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B774C83B-5D40-43EF-8C92-7B92C2D2DC38}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SolutionRefactorMgr</RootNamespace>
+    <AssemblyName>SolutionRefactorMgr</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configs\RefactorUserIDLength.xml" />
+    <Compile Include="Domain\Constants.cs" />
+    <Compile Include="Domain\CsProj\Content.cs" />
+    <Compile Include="Domain\CsProj\FileDetails.cs" />
+    <Compile Include="Domain\CsProj\PropertyElement.cs" />
+    <Compile Include="Domain\CsProj\Error.cs" />
+    <Compile Include="Domain\CsProj\Import.cs" />
+    <Compile Include="Domain\CsProj\Target.cs" />
+    <Compile Include="Domain\Enumerations.cs" />
+    <Compile Include="Domain\WebAppConfig\ConfigSection.cs" />
+    <Compile Include="Domain\WebAppConfig\DependentAssembly.cs" />
+    <Compile Include="Domain\Package.cs" />
+    <Compile Include="Domain\CsProj\Reference.cs" />
+    <Compile Include="Domain\FileType.cs" />
+    <Compile Include="Domain\LineDelete.cs" />
+    <Compile Include="Domain\ModuleConfig.cs" />
+    <Compile Include="Domain\PackageConfig.cs" />
+    <Compile Include="Domain\RefactorConfig.cs" />
+    <Compile Include="Domain\ReplacementString.cs" />
+    <Compile Include="Domain\ReplacmentStringWithinRange.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Serializer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <Content Include="Configs\PackageUpgrades\106\Log4net_Upgrade to 2.0.12.xml" />
+    <Content Include="Configs\PackageUpgrades\106\System.Text.Encodings.Web_Upgrade to 5.0.1.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\InRule.5.7.3.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\InRule.Runtime.5.7.2.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\Log4Net.2.0.5 to 2.0.8.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\Log4net_Upgrade to 2.0.12.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\System.Text.Encodings.Web_Upgrade to 5.0.1.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\Vertica.Data.x64.10.0.1.0.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\InRule.5.7.3.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\InRule.Runtime.5.7.2 and Vertica.Data 10.0.1.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\Log4net_Upgrade to 2.0.12.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\MongoCSharpDriver_Upgrade to 2.13.1.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\MongoCSharpDriver_Upgrade to 2.13.1.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\Refactor_Package_Cleanup_Repoint_From_Deleted_dll.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\Refactor_Repoint_from_19_2_70_to_19_3_76.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\Refactor_Web_App_Config_DOTNET_Upgrade.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\RemoveCredential.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\UpdateNugetConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\PackageUpgrades\DevF\Four Part versioning plus floating version.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\PackageUpgrades\DevF\Fix Package Names.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\Log4Net.2.0.5 to 2.0.8.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\Newtonsoft.Json 13.0.1.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\Oracle.ManagedDataAccess.EntityFramework Upgrade to 19.7.0.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\Refactor_Package_Cleanup_Repoint_From_Deleted_dll.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\Refactor_Repoint_from_19_2_70_to_19_3_76.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\Refactor_Web_App_Config_DOTNET_Upgrade.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\StackExchange.Redis_Upgrade_to_2.1.58.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\StackExchange.Redis_Upgrade_to_2.2.4.xml" />
+    <Content Include="Configs\PackageUpgrades\Dev\Vertica.Data.x64.10.0.1.0.xml" />
+    <Content Include="Configs\PackageUpgrades\Upgrade_Package.xml" />
+    <Content Include="Configs\RefactorAppSettings.xml" />
+    <Content Include="Configs\RefactorBASThumbprints.xml" />
+    <Content Include="Configs\RefactorCfgDevR.xml" />
+    <Content Include="Configs\RefactorConfigPackagesFrom451to48.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\RefactorDotNet48InDev.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\RefactorConnectionString.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\RefactorDXCtoGWT.xml" />
+    <Content Include="Configs\RefactorInRule-Version.xml" />
+    <Content Include="Configs\RefactorAspNetMvc-Version.xml" />
+    <Content Include="Configs\RefactorKendo-Version.xml" />
+    <Content Include="Configs\RefactorCopyright.xml" />
+    <Content Include="Configs\RefactorDev_MigrateToAzure.xml" />
+    <Content Include="Configs\RefactorNamespaces.xml" />
+    <Content Include="Configs\RefactorNetFramework.xml" />
+    <Content Include="Configs\RefactorPrepForMoq.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\RefactorRelease-VersionPackagesNetFramework.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\RefactorRelease-VersionPackages.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\RefactorRelease-VersionModules.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\RefactorHotfix-IncrementFileVersion.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\Oracle.ManagedDataAccess.EntityFramework upgrade to 19.7.0.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\NEventStore Upgrade to 7.0.0.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\StackExchange.Redis_Upgrade_to_2.2.4.xml" />
+    <Content Include="Configs\PackageUpgrades\DevF\StackExchange.Redis_Upgrade_to_2.1.58.xml" />
+    <None Include="nuget.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configs\RefactorStyleCop.MSBuild-Version.xml" />
+    <Content Include="Configs\RefactorSupportForMoq.xml" />
+    <Content Include="Configs\RefactorTenantID.xml" />
+    <Content Include="Configs\RefactorTenantIntegrationConfigs.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configs\RefactorTFSURLConfig.xml" />
+    <Content Include="Configs\RefactorURLs.xml" />
+    <Content Include="Configs\Refactor_HotFixDBConnections.xml" />
+    <Content Include="Configs\RemoveAppSettings.xml" />
+    <Content Include="Configs\_ReadMe.txt" />
+    <Content Include="Configs\_RefactorTemplate.xml" />
+    <Content Include="RefactorConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="HPE.HSP.UA3.Core.API.Logger">
+      <Version>21.3.112</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.TeamFoundation">
+      <Version>14.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.TeamFoundation.VersionControl.All">
+      <Version>12.0.30723.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Web.Xdt">
+      <Version>2.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="NuGet.Core">
+      <Version>2.14.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /f /r /y "$(SolutionDir)NuGet.exe" "$(SolutionDir)$(OutDir)"
+xcopy /f /r /y "$(SolutionDir)RefactorConfig.xml" "$(SolutionDir)$(OutDir)"
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

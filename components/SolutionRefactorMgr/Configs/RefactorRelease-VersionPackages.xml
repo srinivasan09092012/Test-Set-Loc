@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Copy" includeFolderNames="true" includeFileNames="true" includeFileContents="true" useSourceControl="true" >
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs />
+  <PackageConfigs>
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.Administration" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.AuthDetermination" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.BatchProcessingFactory" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ClaimsManagement" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.Core" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.CorrespondenceMgmt" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.DrugRebate" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.FinancialManagement" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.IdentityManagement" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.Integration" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ManagedCare" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.MemberManagement" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.PlanManagement" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProgramIntegrity" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProgramIntegrityCT" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProviderEnrollment" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProviderManagement" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.ProviderPortal" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.TaskManagement" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.TPLCaseTracking" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.HSP.UA3.TPLPolicy" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HP.NotificationServices" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.ClaimsManagement" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.Core" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.EDI" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.Integration" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.NCPDP" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.TestAutomation" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X12" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPE.HSP.UA3.X212" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPP.ConfigManagement" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPP.EDIGateway" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPP.Core" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="HPP.HSP.UA3.ManagedCare" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="MMS.Core" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+    <PackageConfig qualifierPrefix="MMS.ProgramIntegrity" qualifierVersion="22.1.118" rebuildPackage="false" reformatSource="false" />
+  </PackageConfigs>
+  <FileTypes>
+    <FileType ext=".dll" />
+    <FileType ext=".nupkg" />
+  </FileTypes>
+  <LineDeletes />
+  <ReplacementStrings>
+    <ReplacementString qualifier="&lt;version&gt;22.1.118&lt;/version&gt;" from="22.1.118" to="22.3.130" />
+    <ReplacementString qualifier="HP.HSP.UA3" from="22.1.118" to="22.3.130" />
+    <ReplacementString qualifier="HPE.HSP.UA3" from="22.1.118" to="22.3.130" />
+    <ReplacementString qualifier="HP." from="22.1.118" to="22.3.130" />
+    <ReplacementString qualifier="HPP." from="22.1.118" to="22.3.130" />
+    <ReplacementString qualifier="MMS." from="22.1.118" to="22.3.130" />
+  </ReplacementStrings>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+  <TfsWorkspace>INC_5CG9151J18</TfsWorkspace>
+  <TFSUserName>manojarcad</TFSUserName>
+  <TFSPassword>Manoj%44</TFSPassword>
+</RefactorConfig>

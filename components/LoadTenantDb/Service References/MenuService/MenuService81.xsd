@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Domain" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Administration.BAS.TenantConfiguration.Contracts.Domain" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="AddMenu">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DisplaySize" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MenuId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperatorID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecurityRightItemId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TenantModuleId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddMenu" nillable="true" type="tns:AddMenu" />
+  <xs:complexType name="UpdateMenu">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DisplaySize" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MenuId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperatorID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecurityRightItemId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TenantModuleId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdateMenu" nillable="true" type="tns:UpdateMenu" />
+  <xs:complexType name="AddMenuItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BaseUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CssClass" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DefaultText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IocContainter" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsVisible" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ItemLastModified" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LabelItemKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MenuId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MenuItemId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MitaHelpHtmlContentId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModuleSectionItemKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperatorId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="PageHelpHtmlContentId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentMenuItemId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrintPreviewContentUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReportsContentUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecurityRightItemId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddMenuItem" nillable="true" type="tns:AddMenuItem" />
+  <xs:complexType name="UpdateMenuItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BaseUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CssClass" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DefaultText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IocContainter" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsVisible" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ItemLastModified" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LabelItemKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MenuId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MenuItemId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MitaHelpHtmlContentId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModuleSectionItemKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperatorId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="PageHelpHtmlContentId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentMenuItemId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrintPreviewContentUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReportsContentUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecurityRightItemId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdateMenuItem" nillable="true" type="tns:UpdateMenuItem" />
+</xs:schema>

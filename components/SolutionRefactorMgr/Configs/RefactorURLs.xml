@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="true" includeFileContents="true" useSourceControl="true">
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+    <ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />
+    <ModuleConfig name="Administration" branch="Dev" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Core" branch="Dev" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="Dev" types="All" />
+    <ModuleConfig name="EDI" branch="Dev" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
+    <ModuleConfig name="KansasOnly" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="Dev" types="All" />
+    <ModuleConfig name="MemberManagement" branch="Dev" types="All" />
+    <ModuleConfig name="MemberPortal" branch="Dev" types="All" />
+    <ModuleConfig name="Notifications" branch="Dev" types="All" />
+    <ModuleConfig name="PlanManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="Dev" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
+    <ModuleConfig name="Utilities" branch="Dev" types="NA" />
+    <ModuleConfig name="WorkflowManagement" branch="Dev" types="All" />
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes>
+    <FileType ext=".config" />
+    <FileType ext=".debug.config" />
+    <FileType ext=".release.config" />
+    <FileType ext=".cs" />
+    <FileType ext=".disco" />
+    <FileType ext=".map" />
+    <FileType ext=".pubxml" />
+    <!--<FileType ext=".rdl" />-->
+    <!--<FileType ext=".rptproj" />-->
+    <FileType ext=".settings" />
+    <FileType ext=".svcinfo" />
+    <FileType ext=".svcmap" />
+    <FileType ext=".wsdl" />
+    <FileType ext=".xsd" />
+  </FileTypes>
+  <LineDeletes />
+  <ReplacementStrings>
+    <ReplacementString qualifier="/R1.0" from="/R1.0" to="/R6.0" />
+    <ReplacementString qualifier="\R1.0" from="\R1.0" to="\R6.0" />
+    <ReplacementString qualifier="/r1.0" from="/r1.0" to="/R6.0" />
+    <ReplacementString qualifier="\r1.0" from="\r1.0" to="\R6.0" />
+    <ReplacementString qualifier="206.122.21.171" from="206.122.21.171" to="bas.dev.mapshc.com" />
+    <ReplacementString qualifier="206.122.21.177" from="206.122.21.177" to="bas.dev.mapshc.com" />
+    <ReplacementString qualifier="15.56.18.178" from="15.56.18.178" to="bas.dev.mapshc.com" />
+    <ReplacementString qualifier="130.175.189.231" from="130.175.189.231" to="bas.dev.mapshc.com" />
+    <ReplacementString qualifier="uspnsvulm432.ua3dev.local" from="uspnsvulm432.ua3dev.local" to="bas.dev.mapshc.com" />
+    <ReplacementString qualifier="bas.dev.ua3.eslabs.ssn.hp.com" from="bas.dev.ua3.eslabs.ssn.hp.com" to="bas.dev.mapshc.com" />
+    <ReplacementString qualifier="bas.test.ua3.eslabs.ssn.hp.com" from="bas.test.ua3.eslabs.ssn.hp.com" to="bas.test.mapshc.com" />
+    <!-- tests fail with new url. -->
+    <!-- <ReplacementString qualifier="bre1.dev.ua3.elabs.svcs.hpe.com" from="bre1.dev.ua3.elabs.svcs.hpe.com" to="bre.dev.mapshc.com" />-->
+    <!-- no longer used, but Core/API/CM tests fail with invalid tests with old and new url. -->
+    <!-- <ReplacementString qualifier="cm1.dev.ua3.elabs.svcs.hpe.com" from="cm1.dev.ua3.elabs.svcs.hpe.com" to="cm1.dev.mapshc.com" />-->
+    <!-- Rename report server - needed to change domain/id/pwd too -->
+    <!-- <ReplacementString qualifier="reports.dev.ua3.eslabs.ssn.hp.com" from="reports.dev.ua3.eslabs.ssn.hp.com" to="report.dev.mapshc.com" /> -->
+    <!-- Rename k2 workflow server - needed to change domain/id/pwd/report folders too -->
+    <!-- <ReplacementString qualifier="k2.dev.ua3.elabs.svcs.hpe.com" from="k2.dev.ua3.elabs.svcs.hpe.com" to="k2.dev.mapshc.com" /> -->
+    <!-- Rename elabs pubxml file to Azure pubxml file with Azure url  Note RefactorConfig parameter is includeFileNames="true" -->
+    <ReplacementString qualifier="ELabs.pubxml" from="ELabs.pubxml" to="Azure.pubxml" />
+    <ReplacementString qualifier="DevELabsApp.config" from="DevELabsApp.config" to="DevAzureApp.config" />
+  </ReplacementStrings>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+  <TfsWorkspace>ADIX1</TfsWorkspace>
+  <TFSUserName>AzureDevOpsPATKeyName</TFSUserName>
+  <TFSPassword>AzureDevOpsPATKeyValue</TFSPassword>
+</RefactorConfig>

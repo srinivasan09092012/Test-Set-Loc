@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Queries" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Queries" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Queries.Parameters" />
+  <xs:import schemaLocation="https://bas.dev.mapshc.com/HP.HSP.UA3.NotificationServices/R6.0/NotificationService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
+  <xs:complexType name="PostedEventQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q1:QueryOfPostedEventModelBGjXgxJq">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Queries.Parameters" minOccurs="0" name="Where" nillable="true" type="q2:PostedEventQueryParms" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PostedEventQuery" nillable="true" type="tns:PostedEventQuery" />
+  <xs:complexType name="EventQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q3:QueryOfEventModelBGjXgxJq">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Queries.Parameters" minOccurs="0" name="Where" nillable="true" type="q4:EventQueryParms" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EventQuery" nillable="true" type="tns:EventQuery" />
+  <xs:complexType name="SubscriptionQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q5:QueryOfSubscriptionModelBGjXgxJq">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Queries.Parameters" minOccurs="0" name="Where" nillable="true" type="q6:SubscriptionQueryParms" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SubscriptionQuery" nillable="true" type="tns:SubscriptionQuery" />
+  <xs:complexType name="SubscriberQuery">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q7:QueryOfSubscriberModelBGjXgxJq">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/HP.NotificationServices.Contracts.Queries.Parameters" minOccurs="0" name="Where" nillable="true" type="q8:SubscriberQueryParms" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SubscriberQuery" nillable="true" type="tns:SubscriberQuery" />
+</xs:schema>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="UA3_INTEGRATION"
+  DTS:DTSID="{3F17DE53-0C45-40E7-AB0F-ED7E7EE578BB}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=mapswrkt1sql001.database.windows.net;User ID=UA3_INTEGRATION;Initial Catalog=UA3_INTEGRATION;Provider=SQLNCLI11.1;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAtMUP3G1u9kuqPMjSLzhc0gAAAAACAAAAAAADZgAAwAAAABAAAAAlQE7uOiKXzW0raYw3U8yRAAAAAASAAACgAAAAEAAAANTX77HISQh2zcG6ckcvnxF4AAAAXhWBfyLsQBkwaisrq5UIqdxU0AFHPMDakWVPkDvUH5WbsmaSbBjQt0aTFKA96JDHw1ds1SVSH4ZGk9zbIe9uMrqZ7CXxrP8sitUoDs73sA4zs5ppB/H7xBDX1ECk0S23nzq+yrTRDzpiJE9MIwm28y4QiwRk6SFEFAAAAArS8BViTbhW58346ohtFexRwb66</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

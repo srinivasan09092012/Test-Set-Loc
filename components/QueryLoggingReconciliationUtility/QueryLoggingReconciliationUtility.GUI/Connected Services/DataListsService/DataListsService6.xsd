@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base.Administration.Commands" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base.Administration.Commands" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost:44311/DataListsService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base.Administration.Shared" />
+  <xs:import schemaLocation="https://localhost:44311/DataListsService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" />
+  <xs:complexType name="AddDataListItemCommand">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q1:Command">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DataListContentId" nillable="true" type="xs:string" />
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base.Administration.Shared" minOccurs="0" name="DataListItem" nillable="true" type="q2:DataListItem" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddDataListItemCommand" nillable="true" type="tns:AddDataListItemCommand" />
+  <xs:complexType name="UpdateDataListItemCommand">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q3:Command">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DataListContentId" nillable="true" type="xs:string" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base.Administration.Shared" minOccurs="0" name="DataListItem" nillable="true" type="q4:DataListItem" />
+          <xs:element minOccurs="0" name="DataListItemId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateDataListItemCommand" nillable="true" type="tns:UpdateDataListItemCommand" />
+  <xs:complexType name="RevalidateDatalistItemAttributeCommand">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q5:Command">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DataListContentId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataListItemId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RevalidateDatalistItemAttributeCommand" nillable="true" type="tns:RevalidateDatalistItemAttributeCommand" />
+  <xs:complexType name="DeleteDataListItemAttributeCommand">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/HP.HSP.UA3.Core.BAS.CQRS.Base" base="q6:Command">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContentId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataListItemAttributeValueId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataListItemKey" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeleteDataListItemAttributeCommand" nillable="true" type="tns:DeleteDataListItemAttributeCommand" />
+</xs:schema>

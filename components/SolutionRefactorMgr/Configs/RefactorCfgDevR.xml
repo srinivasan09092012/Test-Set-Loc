@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Inline" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" >
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+    <!--<ModuleConfig name="_ProjectTemplate" branch="Main" types="All" />
+    <ModuleConfig name="Administration" branch="Dev" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="Dev" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="Dev" types="All" />-->
+    <ModuleConfig name="ConfigurationManagement" branch="DevR" types="All" />
+    <!--<ModuleConfig name="Core" branch="Dev" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebate" branch="Dev" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="Dev" types="All" />
+    <ModuleConfig name="EDI" branch="Dev" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="Dev" types="All" />
+    <ModuleConfig name="FileTransfer" branch="Dev" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="Dev" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="Dev" types="All" />
+    <ModuleConfig name="Integration" branch="Dev" types="All" />
+    <ModuleConfig name="KansasOnly" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCare" branch="Dev" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="Dev" types="All" />
+    <ModuleConfig name="MemberManagement" branch="Dev" types="All" />
+    <ModuleConfig name="MemberPortal" branch="Dev" types="All" />
+    <ModuleConfig name="Notifications" branch="Dev" types="All" />
+    <ModuleConfig name="PlanManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="Dev" types="All" />
+    <ModuleConfig name="ProgramIntegrityCT" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="Dev" types="All" />
+    <ModuleConfig name="Screening" branch="Dev" types="All" />
+    <ModuleConfig name="TaskManagement" branch="Dev" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="Dev" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="Dev" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="Dev" types="All" />
+    <ModuleConfig name="Utilities" branch="Dev" types="NA" />
+    <ModuleConfig name="Test" branch="Dev" types="NA" />-->
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes>
+    <FileType ext=".bat" />
+    <FileType ext=".config" />
+    <FileType ext=".cs" />
+    <FileType ext=".csproj" />
+    <FileType ext=".vdproj" />
+    <FileType ext=".nuspec" />
+  </FileTypes>
+  <LineDeletes />
+  <ReplacementStrings>
+    <!-- UX application settings version -->
+
+    <ReplacementString qualifier="add key=&quot;AppVersion&quot; value=&quot;22.1.118.0&quot;" from="22.1.118.0" to="22.1.117.0" />
+
+    <!-- Assembly Versions in Assembly Info file -->
+
+    <ReplacementString qualifier="AssemblyVersion(" from="1.0.0.0" to="22.1.117.0" />
+    <ReplacementString qualifier="AssemblyVersion(" from="1.0.451.818" to="22.1.117.0" />
+    <ReplacementString qualifier="AssemblyVersion(" from="19.1.70.0" to="22.1.117.0" />
+    <ReplacementString qualifier="AssemblyVersion(" from="22.1.118.0" to="22.1.117.0" />
+    <ReplacementString qualifier="AssemblyVersion(" from="1.0.&lt;#= this.build #&gt;.&lt;#= this.revision #&gt;" to="22.1.117.0" />
+    <ReplacementString qualifier="AssemblyFileVersion(" from="1.0.0.0" to="22.1.117.0" />
+    <ReplacementString qualifier="AssemblyFileVersion(" from="1.0.451.818" to="22.1.117.0" />
+    <ReplacementString qualifier="AssemblyFileVersion(" from="19.1.70.0" to="22.1.117.0" />
+    <ReplacementString qualifier="AssemblyFileVersion(" from="22.1.118.0" to="22.1.117.0" />
+    <ReplacementString qualifier="AssemblyFileVersion(" from="1.0.&lt;#= this.build #&gt;.&lt;#= this.revision #&gt;" to="22.1.117.0" />
+
+
+    <!-- Version in Reference element's Include attribute in Project Files -->
+
+    <ReplacementString qualifier="Include=&quot;HPP.ConfigManagement" from="Version=22.1.118.0" to="Version=22.1.117.0" />
+
+    <!-- Package Folders in hintpaths in project files -->
+
+    <ReplacementString qualifier="\Packages\HPP.ConfigManagement" from="22.1.118\" to="22.1.117\" />
+
+    <!-- Package Names in Packages.config Files -->
+
+    <ReplacementString qualifier="id=&quot;HPP.ConfigManagement" from="22.1.118" to="22.1.117" />
+    
+    <!-- Package Names in the UX Setup project file -->
+    
+    <ReplacementString qualifier="8:HPP.ConfigManagement" from="22.1.118" to="22.1.117" />
+
+
+    <!-- Package Version in Copy Assemblies Batch Files -->
+
+    <ReplacementString qualifier="VERSION=22.1.118" from="22.1.118" to="22.1.117" />
+
+    <!--Version in nuspec files-->
+
+    <ReplacementString qualifier="&lt;version&gt;22.1.118&lt;/version&gt;" from="22.1.118" to="22.1.117" />
+    <ReplacementString qualifier="&lt;Version&gt;22.1.118&lt;/Version&gt;" from="22.1.118" to="22.1.117" />
+    <ReplacementString qualifier="Version=&quot;22.1.118&quot;" from="22.1.118" to="22.1.117" />
+
+  </ReplacementStrings>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+  <TfsWorkspace>Workspace</TfsWorkspace>
+  <TFSUserName>user</TFSUserName>
+  <TFSPassword>Password</TFSPassword>
+</RefactorConfig>

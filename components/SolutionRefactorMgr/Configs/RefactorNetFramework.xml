@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RefactorConfig editMode="Inline" includeFolderNames="true" includeFileNames="true" includeFileContents="true" useSourceControl="true">
+  <SourceDir>C:\UA3\Source</SourceDir>
+  <ModuleConfigs>
+    <ModuleConfig name="_ProjectTemplate" branch="DevF" types="All" />
+    <ModuleConfig name="Administration" branch="DevF" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="DevF" types="All" />
+    <ModuleConfig name="ClaimsManagement" branch="DevF" types="All" />
+    <ModuleConfig name="Core" branch="DevF" types="All" />
+    <ModuleConfig name="CorrespondenceMgmt" branch="DevF" types="All" />
+    <ModuleConfig name="DrugRebate" branch="DevF" types="All" />
+    <ModuleConfig name="DrugRebatePortal" branch="DevF" types="All" />
+    <ModuleConfig name="EDI" branch="DevF" types="All" />
+    <ModuleConfig name="eID" branch="DevF" types="All" />
+    <ModuleConfig name="EmployeeMgmt" branch="DevF" types="All" />
+    <ModuleConfig name="FileTransfer" branch="DevF" types="All" />
+    <ModuleConfig name="FinancialManagement" branch="DevF" types="All" />
+    <ModuleConfig name="IdentityManagement" branch="DevF" types="All" />
+    <ModuleConfig name="Integration" branch="DevF" types="All" />
+    <ModuleConfig name="ManagedCare" branch="DevF" types="All" />
+    <ModuleConfig name="ManagedCarePortal" branch="DevF" types="All" />
+    <ModuleConfig name="MemberManagement" branch="DevF" types="All" />
+    <ModuleConfig name="MemberPortal" branch="DevF" types="All" />
+    <ModuleConfig name="Notifications" branch="DevF" types="All" />
+    <ModuleConfig name="PlanManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ProgramIntegrity" branch="DevF" types="All" />
+    <ModuleConfig name="ProgramIntegrityCT" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderCredentialing" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderEnrollment" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ProviderPortal" branch="DevF" types="All" />
+    <ModuleConfig name="Screening" branch="DevF" types="All" />
+    <ModuleConfig name="TaskManagement" branch="DevF" types="All" />
+    <ModuleConfig name="ThirdPartySource" branch="DevF" types="All" />
+    <ModuleConfig name="TPLCaseTracking" branch="DevF" types="All" />
+    <ModuleConfig name="TPLPolicy" branch="DevF" types="All" />
+    <ModuleConfig name="Utilities" branch="DevF" types="NA" />
+  </ModuleConfigs>
+  <PackageConfigs />
+  <FileTypes>
+    <FileType ext=".csproj" />
+    <FileType ext=".bat" />
+    <FileType ext=".config" />
+  </FileTypes>
+  <LineDeletes />
+  <ReplacementStrings>
+
+    <!-- Framework Version in Project Files -->
+    <ReplacementString qualifier="&lt;TargetFrameworkVersion&gt;v4.5.2&lt;/TargetFrameworkVersion&gt;" from="&lt;TargetFrameworkVersion&gt;v4.5.2&lt;/TargetFrameworkVersion&gt;" to="&lt;TargetFrameworkVersion&gt;v4.8&lt;/TargetFrameworkVersion&gt;" />
+    <ReplacementString qualifier="&lt;TargetFrameworkVersion&gt;v4.5.1&lt;/TargetFrameworkVersion&gt;" from="&lt;TargetFrameworkVersion&gt;v4.5.1&lt;/TargetFrameworkVersion&gt;" to="&lt;TargetFrameworkVersion&gt;v4.8&lt;/TargetFrameworkVersion&gt;" />
+    <ReplacementString qualifier="&lt;TargetFrameworkVersion&gt;v4.5&lt;/TargetFrameworkVersion&gt;" from="&lt;TargetFrameworkVersion&gt;v4.5&lt;/TargetFrameworkVersion&gt;" to="&lt;TargetFrameworkVersion&gt;v4.8&lt;/TargetFrameworkVersion&gt;" />
+
+    <!-- Folder Names in Copy Assemblies Batch and Project Files -->
+    <ReplacementString qualifier="19.2.70.99\lib\net451" from="\lib\net451" to="\lib\net48" />
+    <ReplacementString qualifier="19.2.70.99\lib\net452" from="\lib\net452" to="\lib\net48" />
+    <ReplacementString qualifier="19.2.70.99\lib\net45" from="\lib\net45" to="\lib\net48" />
+
+    <!-- Package Names in Packages.config Files -->
+    <ReplacementString qualifier="targetFramework=&quot;net451&quot;" from="net451" to="net48" />
+    <ReplacementString qualifier="targetFramework=&quot;net452&quot;" from="net452" to="net48" />
+    <ReplacementString qualifier="targetFramework=&quot;net45&quot;" from="net45" to="net48" />
+
+    <!-- Folder Names in Nuspec Files -->
+    <ReplacementString qualifier="&lt;file src=&quot;lib\net451\HP" from="net451" to="net48" />
+    <ReplacementString qualifier="&lt;file src=&quot;lib\net452\HP" from="net452" to="net48" />
+    <ReplacementString qualifier="&lt;file src=&quot;lib\net45\HP" from="net45" to="net48" />
+
+  </ReplacementStrings>
+  <TfsServer>https://PayerPortfolio.visualstudio.com</TfsServer>
+  <TfsWorkspace>UA3</TfsWorkspace>
+  <TFSUserName>AzureDevOpsPATKeyName</TFSUserName>
+  <TFSPassword>AzureDevOpsPATKeyValue</TFSPassword>
+</RefactorConfig>
