@@ -1,0 +1,7 @@
+# CODEOWNERS - This file controls code owners for specific file types. This ensure proper governance over PRs.
+#
+# DO NOT MODIFY THIS FILE WITHOUT ARCHITECTURE INPUT.
+#
+# Reference format and options here: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+*.sql @mygainwell/db-reviewers

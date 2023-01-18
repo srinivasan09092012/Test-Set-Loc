@@ -1,0 +1,1 @@
+- [Reference Architecture Repo](https://github.com/mygainwell/ets-architecture/blob/main/initiatives/platform-gainwell/component-lists/TEMPLATE.md)
