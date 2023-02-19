@@ -258,10 +258,27 @@ Function CloneRepo()
 # In-line code
 #*******************************************************************
 
+# Ask about clearing the nuget packages folder
+Write-Output ""
+Write-Output "CLEAR your local user Nuget cache?"
+Write-Output "    LOCATION: $env:USERPROFILE\.nuget\packages\"
+Write-Output "    1 = Yes    Force latest HPP packages to be picked up."
+Write-Output "               NOTE: The folder will repopulate as you recompile projects."
+Write-Output "    2 = No     Select if you are currently testing packages not yet uploaded."
+$clearUserNugetFolder = Read-Host
+
+if ($clearUserNugetFolder -eq 1)
+{
+	Set-Location $env:USERPROFILE\.nuget\packages\
+	Remove-Item -Recurse -Force -Path "hpp.*"
+	Write-Output "PACKAGES CLEARED"
+}
+
 # Get option for when to prompt the user
 $askUser = $true
 for (;$askUser;)	
 {
+	Write-Output ""
 	Write-Output "SELECT OPTION:"
 	Write-Output "    $constPromptNonePullOrClone = Process ALL repos (Pull or Clone. No additional prompts)."
 	Write-Output "    $constPromptNonePullOnly = Process ALL LOCAL repos (NO CLONING. No additional prompts)."
