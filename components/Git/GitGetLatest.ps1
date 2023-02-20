@@ -24,7 +24,8 @@ $mPromptOption = $constPromptNonePullOrClone;
 #-------------------------------------------------------------------
 # Primary method that processes all repos.
 # This is called from in-line code at the bottom of this script.
-# Comment out any repos/lines you don't want
+# Comment out any repos/lines you don't want, or when running select
+# options that skip over repos.
 #-------------------------------------------------------------------
 Function Main()
 {
@@ -62,6 +63,7 @@ Function Main()
 	ProcessRepo "mms-hp-mbr"         #MemberPortal
 	ProcessRepo "mms-cms-note"       #Notifications
 	ProcessRepo "mms-cms-oc"         #OneClickDeploy
+	ProcessRepo "mms-cms-paae"       #Prior Auth Automation
 	ProcessRepo "mms-cms-pc"         #ProviderCredentialing
 	ProcessRepo "mms-cms-pe"         #ProviderEnrollment
 	ProcessRepo "mms-cms-pl"         #PlanManagement
@@ -106,8 +108,10 @@ Function ProcessRepo()
 	# Separate output for each repo with a blank line 
 	Write-Output ""
 	Write-Output "-------------------------------------------------------------------"
-		
-	 Set-Location -Path $mRootFolder -ErrorAction Stop
+	Write-Output "REPO NAME:      $inRepoName"
+	Write-Output "FOLDER:         $fullRepoFolderName"
+
+	Set-Location -Path $mRootFolder -ErrorAction Stop
 	if (Test-Path -Path $inRepoFolder) 
     {	
 		Set-Location $inRepoFolder
@@ -116,14 +120,14 @@ Function ProcessRepo()
         {
 			$currentBranch = &git rev-parse --abbrev-ref HEAD
 			
-			PullRepo $inRepoName $fullRepoFolderName $currentBranch
+			PullRepo $currentBranch
 		}
 
 		Set-Location $mRootFolder
 	}
 	else
     {
-		CloneRepo $inRepoName $inRepoFolder $fullRepoFolderName
+		CloneRepo $inRepoName $inRepoFolder
 	}
 }
 
@@ -142,12 +146,8 @@ Function ProcessRepo()
 #-------------------------------------------------------------------
 Function PullRepo()
 {
-	$inRepoName = $args[0]
-	$inFullFolderName = $args[1]
-	$inCurrentBranch = $args[2]
+	$inCurrentBranch = $args[0]
 
-	Write-Output "REPO NAME:      $inRepoName"
-	Write-Output "FOLDER:         $inFullFolderName"
 	Write-Output "CURRENT BRANCH: $inCurrentBranch"
 
 	# Constants
@@ -206,18 +206,12 @@ Function PullRepo()
 #    inRepoFolder
 #        Name of the local folder where the repo will be
 #        downloaded to.
-#    inFullFolderName
-#        Fully qualified name of the local folder where the repo 
-#        will be downloaded to.
 #-------------------------------------------------------------------
 Function CloneRepo() 
 {
-	$inRepoName = $args[0]
+	$inRepoName = $args[0]      
 	$inRepoFolder = $args[1]
-	$inFullFolderName = $args[2]
 
-	Write-Output "REPO NAME:      $inRepoName"
-	Write-Output "FOLDER:         $inFullFolderName"
 	Write-Output "COMMAND:        git clone https://github.com/mygainwell/$inRepoName $inRepoFolder"
 
 	# Determine if this repo should be cloned
