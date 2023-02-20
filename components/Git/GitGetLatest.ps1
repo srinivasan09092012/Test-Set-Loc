@@ -7,8 +7,15 @@
 # How to use
 #     1) In Visual Studio
 #     2) Select View -> Terminal
-#     3) Specify a full path to this script.
-#     4) Press Enter
+#     3) Specify a full path to this script along with the 
+#        name of the script that controls which repos to
+#        process.
+#        Example Powershell command line:
+#        The following assumes both scripts are in the same folder.
+#            GitGetLatest.ps1 MMS.ps1
+#        OR you can fully qualify the path.
+#            GitGetLatest.ps1 c:\somefolder\MMS.ps1
+#     4) Press Enter and follow prompts.
 #*******************************************************************
 
 # Constants for user prompt options
@@ -25,12 +32,16 @@ $mPromptOption = $constPromptNonePullOrClone;
 # folder name.
 #
 # Parameters    
+#    inRepoRootFolder
+#        Fully qualified root folder where the local repository 
+#        will reside.
 #    inRepoName
 #        Name of the repository in GitHub
 #    inRepoFolder (Optional)
 #        Optional name of the local folder where the repo will be
-#        downloaded to.  Usually, but not always, it is recommended
-#        to use the same name as the inRepoName.
+#        downloaded to.  This will be a subfolder of inRepoRootFolder.
+#        Usually, but not always, it is recommended to use the same 
+#        name as the inRepoName.
 #-------------------------------------------------------------------
 Function ProcessRepo() 
 {
@@ -76,14 +87,8 @@ Function ProcessRepo()
 # Pull the specified Git repo
 #
 # Parameters    
-#    inRepoName
-#        Name of the repository in GitHub
-#    inRepoFolder
-#        Name of the local folder where the repo will be
-#        downloaded to.
-#    inFullFolderName
-#        Fully qualified name of the local folder where the repo 
-#        will be downloaded to.
+#    inCurrentBranch
+#        Name of the current branch of the repo being processed.
 #-------------------------------------------------------------------
 Function PullRepo()
 {
@@ -142,11 +147,15 @@ Function PullRepo()
 # Clone the specific Git repo.
 #
 # Parameters:    
+#    inRepoRootFolder
+#        Fully qualified root folder where the local repository 
+#        will reside.
 #    inRepoName
 #        Name of the repository in GitHub
 #    inRepoFolder
 #        Name of the local folder where the repo will be
-#        downloaded to.
+#        downloaded to.  This will be a subfolder of 
+#        inRepoRootFolder.
 #-------------------------------------------------------------------
 Function CloneRepo() 
 {

@@ -8,8 +8,10 @@
 #     a "get latest" on multiple repositories all at once.
 #
 #     Example Powershell command line:
+#     The following assumes both scripts are in the same folder.
 #         GitGetLatest.ps1 MMS.ps1
-#     This assumes both scripts are in the same folder.
+#     OR you can fully qualify the path.
+#         GitGetLatest.ps1 c:\somefolder\MMS.ps1
 #
 # How to use
 #     See notes in:  GitGetLatest.ps1
@@ -19,10 +21,10 @@
 #
 #  Syntax for following instructions:
 #      // The following uses the inRepoName for the localFolderName
-#      ProcessRepo "inRepoName"
+#      ProcessRepo "C:\UA3\Source" "inRepoName"
 #      OR
 #      // The following maps the repo to a specified localFolderName
-#      ProcessRepo "inRepoName" "localFolderName"
+#      ProcessRepo "C:\UA3\Source" "inRepoName" "localFolderName"
 #
 
 # Common repos
