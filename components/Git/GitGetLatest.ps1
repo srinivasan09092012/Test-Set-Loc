@@ -11,73 +11,13 @@
 #     4) Press Enter
 #*******************************************************************
 
-# Common parent folder where all repos will reside
-$mRootFolder = 'C:\UA3\Source'
-
+# Constants for user prompt options
 $constPromptNonePullOrClone = 1
 $constPromptNonePullOnly = 2
 $constPromptIfNotCloned = 3
 $constPromptAll = 4
 $constPromptExit = 9
 $mPromptOption = $constPromptNonePullOrClone;
-
-#-------------------------------------------------------------------
-# Primary method that processes all repos.
-# This is called from in-line code at the bottom of this script.
-# Comment out any repos/lines you don't want, or when running select
-# options that skip over repos.
-#-------------------------------------------------------------------
-Function Main()
-{
-	#
-	#  Syntax for following instructions:
-	#      // The following uses the inRepoName for the localFolderName
-	#      ProcessRepo "inRepoName"
-	#      OR
-	#      // The following maps the repo to a specified localFolderName
-	#      ProcessRepo "inRepoName" "localFolderName"
-	#
-
-	# Common repos
-	ProcessRepo "mms-cms-pkgs" "Packages"
-	ProcessRepo "mms-cms-util"       #Utilities
-	ProcessRepo "mms-cms-core"       #Core
-
-	# Module repos
-	ProcessRepo "mms-cms-adm"        #Administration
-	ProcessRepo "mms-cms-authdeter"  #AuthDetermination
-	ProcessRepo "mms-cms-clm"        #ClaimsManagement
-	ProcessRepo "mms-cms-cfg"        #ConfigurationManagement
-	ProcessRepo "mms-cms-cm"         #CorrespondenceMgmt
-	ProcessRepo "mms-cms-dr"         #DrugRebate
-	ProcessRepo "mms-hp-dr"          #DrugRebatePortal
-	ProcessRepo "mms-cms-edi"        #EDI
-	ProcessRepo "mms-cms-empmgmt"    #EmployeeMgmt
-	ProcessRepo "mms-cms-fxfer"      #FileTransfer
-	ProcessRepo "mms-cms-fm"         #FinancialManagement
-	ProcessRepo "mms-cms-im"         #IdentityManagement
-	ProcessRepo "mms-cms-inx"        #Integration
-	ProcessRepo "mms-cms-mc"         #ManagedCare
-	ProcessRepo "mms-hp-mco"         #ManagedCarePortal
-	ProcessRepo "mms-cms-mbr"        #MemberManagement
-	ProcessRepo "mms-hp-mbr"         #MemberPortal
-	ProcessRepo "mms-cms-note"       #Notifications
-	ProcessRepo "mms-cms-oc"         #OneClickDeploy
-	ProcessRepo "mms-cms-paae"       #Prior Auth Automation
-	ProcessRepo "mms-cms-pc"         #ProviderCredentialing
-	ProcessRepo "mms-cms-pe"         #ProviderEnrollment
-	ProcessRepo "mms-cms-pl"         #PlanManagement
-	ProcessRepo "mms-cms-pi"         #ProgramIntegrity
-	ProcessRepo "mms-cms-pict"       #ProgramIntegrityCT
-	ProcessRepo "mms-cms-pm"         #ProviderManagement
-	ProcessRepo "mms-hp-prov"        #ProviderPortal
-	ProcessRepo "mms-cms-ss"         #Screening
-	ProcessRepo "mms-cms-tm"         #TaskManagement
-	ProcessRepo "mms-cms-tplct"      #TPLCaseTracking
-	ProcessRepo "mms-cms-tplp"       #TPLPolicy
-	ProcessRepo "mms-cms-tps"        #ThirdPartySource
-	ProcessRepo "mms-cms-tst"        #Test	
-}
 
 #-------------------------------------------------------------------
 # This function will either "clone" or "pull" the specified 
@@ -94,8 +34,9 @@ Function Main()
 #-------------------------------------------------------------------
 Function ProcessRepo() 
 {
-	$inRepoName = $args[0]
-	$inRepoFolder = $args[1]
+	$inRepoRootFolder = $args[0]
+	$inRepoName = $args[1]
+	$inRepoFolder = $args[2]
 
 	# Use the repoName as the repoFolder if a folder name was not provided. 
     if (($null -eq $inRepoFolder) -or ($inRepoFolder -eq ""))
@@ -103,7 +44,7 @@ Function ProcessRepo()
 		$inRepoFolder = $inRepoName;
 	}
 	
-	$fullRepoFolderName = -join($mRootFolder, "\", $inRepoFolder)
+	$fullRepoFolderName = -join($inRepoRootFolder, "\", $inRepoFolder)
 	
 	# Separate output for each repo with a blank line 
 	Write-Output ""
@@ -111,7 +52,7 @@ Function ProcessRepo()
 	Write-Output "REPO NAME:      $inRepoName"
 	Write-Output "FOLDER:         $fullRepoFolderName"
 
-	Set-Location -Path $mRootFolder -ErrorAction Stop
+	Set-Location -Path $inRepoRootFolder -ErrorAction Stop
 	if (Test-Path -Path $inRepoFolder) 
     {	
 		Set-Location $inRepoFolder
@@ -123,7 +64,7 @@ Function ProcessRepo()
 			PullRepo $currentBranch
 		}
 
-		Set-Location $mRootFolder
+		Set-Location $inRepoRootFolder
 	}
 	else
     {
@@ -209,8 +150,9 @@ Function PullRepo()
 #-------------------------------------------------------------------
 Function CloneRepo() 
 {
-	$inRepoName = $args[0]      
-	$inRepoFolder = $args[1]
+	$inRepoRootFolder = $args[0]
+	$inRepoName = $args[1]      
+	$inRepoFolder = $args[2]
 
 	Write-Output "COMMAND:        git clone https://github.com/mygainwell/$inRepoName $inRepoFolder"
 
@@ -239,7 +181,7 @@ Function CloneRepo()
 	
 	if ($cloneThisRepo -eq $true)
 	{
-		Set-Location $mRootFolder
+		Set-Location $inRepoRootFolder
 	 	git clone https://github.com/mygainwell/$inRepoName $inRepoFolder
 	}
 	else
@@ -252,7 +194,35 @@ Function CloneRepo()
 # In-line code
 #*******************************************************************
 
+#
+# Get name of script containing all repos to process.
+# Should be passed in as a parameter.
+#
+$m_inRepoListScript = $args[0]
+$mRepoListScriptFullPath = $m_inRepoListScript
+
+if ((Test-Path -Path $mRepoListScriptFullPath -PathType leaf) -eq $false)
+{
+	# This is the path where this script is running
+	$myPath = Split-Path -parent $MyInvocation.MyCommand.Definition
+	$mRepoListScriptFullPath = "$myPath\$m_inRepoListScript"
+	if ((Test-Path -Path $mRepoListScriptFullPath -PathType leaf) -eq $false)
+	{
+		Write-Output ""
+		Write-Output "Parameter invalid.  Must specify a script file containing the Git repositories to process."
+		Write-Output "Example if the script file is in the same folder with this script:"
+		Write-Output "    GitGetLatest.ps1 MMS.ps1"
+		Write-Output "Example with fully qualified script name:"
+		Write-Output "    GitGetLatest.ps1 c:\ua3\source\mms-cms-util\components\git\MMS.ps1"
+		Write-Output ""
+
+		Exit
+	}
+}
+
+#
 # Ask about clearing the nuget packages folder
+#
 Write-Output ""
 Write-Output "CLEAR your local user Nuget cache?"
 Write-Output "    LOCATION: $env:USERPROFILE\.nuget\packages\"
@@ -301,7 +271,9 @@ if ($mPromptOption -eq $constPromptExit)
 }
 else
 {
-	Main
+	# Run the script that contains all the repos to process.	
+	Invoke-Expression "$mRepoListScriptFullPath"
+
 	Write-Output ""
 	Write-Output "-------------------------------------------------------------------"
 	Write-Output "COMPLETED"
