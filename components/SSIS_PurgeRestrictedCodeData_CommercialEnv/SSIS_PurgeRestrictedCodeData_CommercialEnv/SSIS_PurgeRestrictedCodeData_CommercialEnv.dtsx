@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SSIS_PurgeRestrictedCodeData_CommercialEnv"
   DTS:PackageType="5"
-  DTS:VersionBuild="412"
-  DTS:VersionGUID="{8B2D09C0-29CA-44C6-AF86-40BDFCEBC2CF}">
+  DTS:VersionBuild="413"
+  DTS:VersionGUID="{B7230C29-1E23-467A-8CF8-341C6C635BFE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -161,7 +161,8 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">PlanManagement.DataList.TestAssociation2</DTS:Property>
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -171,7 +172,8 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">b37b1cec-6603-2d4f-ac37-74e0724774a1</DTS:Property>
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
@@ -195,7 +197,7 @@
       DTS:ObjectName="Datalist_Count_Exp">
       <DTS:VariableValue
         DTS:DataType="8">SELECT count(B.content_id) as dlCount from UA3_TENANT.TM_DATA_LISTS B 
-WHERE B.content_id  = 'PlanManagement.DataList.TestAssociation2' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:VariableValue>
+WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
