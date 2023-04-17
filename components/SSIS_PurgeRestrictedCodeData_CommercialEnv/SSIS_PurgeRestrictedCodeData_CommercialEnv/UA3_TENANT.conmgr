@@ -5,10 +5,12 @@
   DTS:CreationName="OLEDB">
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=AWRK_PDBA;User ID=UA3_TENANT;Provider=OraOLEDB.Oracle.1;">
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=mapsdevdbo02.dev.mapshc.com)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=AWRK_PDBA)));User ID=UA3_TENANT;Provider=OraOLEDB.Oracle.1;">
       <DTS:Password
         DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAtMUP3G1u9kuqPMjSLzhc0gAAAAACAAAAAAADZgAAwAAAABAAAABKeyjLPBE2jBGb8cw30bcbAAAAAASAAACgAAAAEAAAANpMa9mQGsl/cx7YkGjDY0N4AAAAwVTyq6RyL7y6fI8cuCczxWOHn7awpXlMA4pDxiPE7lMqmGZbLHi2WfyQ7Dp/ikCuQyO97IcxxP/fC4HBCW3xIRYxdE1i/42FjkLQTkhXyVNI/M9chpVUnDPy+wylZNRy94R4XH+1nGgUx7PxmyeSmhIE2JtiODjmFAAAANhBDxjxEbzHD2p01KETIWy7YXLy</DTS:Password>
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAE197vQjjJUWSHs99iMZp6gAAAAACAAAAAAAQZgAAAAEAACAAAABLsxrFItD2TnGykGY0Ql0ocE6f2la9F4AxlUQqM3gqhQAAAAAOgAAAAAIAACAAAAA4rTmmYFZkEvKKuhpi51nNp7JdgoMc6ffEn5ZU6QBUiYAAAACfvZ/xZvIkXIyGN4pWaH4v0B5uGTwyWXBL2DxUKfIyEqv3SzFF9gLH69hgwdP+/iITHF77OrH9UYp2oN9Dfss2nRTJUR4O2L2W+SKxZI+rMWk6XVvvDlrTkaKcxZ1u8cOp50or+asXTUQ7MBq8uCN0uBPM5SEJrsbqBEkWubevhkAAAAB9zcfCM3Dq2BNtGe7EEJhQ+HS3iczFkCfMffSlmN4keoOIabmwMMBJM7od46plkpcsPSaitvtKz7tcdPogUsiT</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>

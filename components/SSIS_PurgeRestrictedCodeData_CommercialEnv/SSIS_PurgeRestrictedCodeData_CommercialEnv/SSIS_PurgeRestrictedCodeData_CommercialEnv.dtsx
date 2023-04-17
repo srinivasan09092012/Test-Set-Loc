@@ -1,47 +1,25 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="6/30/2020 3:00:11 PM"
+  DTS:CreationDate="4/13/2019 10:45:11 AM"
   DTS:CreationName="Microsoft.Package"
-  DTS:CreatorComputerName="INCNU4289WP6"
-  DTS:CreatorName="EAD\ppadhi"
-  DTS:DTSID="{FC497AE0-59D3-4AD6-9410-639C4628894D}"
+  DTS:CreatorComputerName="USCND4265VB3"
+  DTS:CreatorName="EAD\skafati"
+  DTS:DTSID="{07B58FB2-ECA1-4F72-9E55-4EC5CB383E11}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.3002.113"
+  DTS:LastModifiedProductVersion="16.0.948.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="SSIS_PurgeRestrictedCodeData_CommercialEnv"
   DTS:PackageType="5"
-  DTS:VersionBuild="45"
-  DTS:VersionGUID="{505CABAE-BAF0-4E99-92B1-4CE5A068693C}">
+  DTS:VersionBuild="413"
+  DTS:VersionGUID="{B7230C29-1E23-467A-8CF8-341C6C635BFE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[AttUnit TENANT DB  Connector]"
-      DTS:CreationName="MSORA"
-      DTS:DTSID="{9E1AE5F3-E7C8-4793-AC2F-C9D11308013B}"
-      DTS:ObjectName="AttUnit TENANT DB  Connector">
-      <DTS:ObjectData>
-        <OracleXMLPackage>
-          <OraConnectionString>SERVER=AWRK_PDBA;USERNAME=UA3_TENANT;ORACLEHOME=;ORACLEHOME64=;WINAUTH=0</OraConnectionString>
-          <OraRetain>False</OraRetain>
-          <OraInitialCatalog></OraInitialCatalog>
-          <OraServerName>AWRK_PDBA</OraServerName>
-          <OraUserName>UA3_TENANT</OraUserName>
-          <OraOracleHome></OraOracleHome>
-          <OraOracleHome64></OraOracleHome64>
-          <OraWinAuthentication>False</OraWinAuthentication>
-          <OraEnableDetailedTracing>False</OraEnableDetailedTracing>
-          <OraPassword
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4Xz1YlNmrk2+Z7msIbdhcgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADo+LS4T9cM6T7fi0wATaH6AAAAAASAAACgAAAAEAAAAF2qAsTo0kmaQUT1hG52D9kYAAAAJ1GrSXPoshacu1aFvmpP0x0znzOZMvEFFAAAAJFBdv4Yk8qGYbr8hVmENmFiwg8Z</OraPassword>
-        </OracleXMLPackage>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[INT ERROR Report File Connection Manager]"
       DTS:CreationName="FLATFILE"
-      DTS:DTSID="{086EE97B-FD99-4DC9-9AB0-FCF0EFCAA62D}"
+      DTS:DTSID="{7704696C-8588-4F6D-99DF-A652FB537327}"
       DTS:ObjectName="INT ERROR Report File Connection Manager">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -60,7 +38,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="DATABASE_NAME"
-              DTS:DTSID="{71329C02-2533-4EAB-A860-9F1F07D94025}"
+              DTS:DTSID="{20AF0D28-1301-4378-83B1-246555956EE1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -69,7 +47,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ERR_MSG"
-              DTS:DTSID="{4607EEB1-BC61-41B9-A50A-69764D4A3C5B}"
+              DTS:DTSID="{A9F1D1EC-8994-4641-A54E-DE63CD07D041}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -77,7 +55,7 @@
               DTS:DataType="304"
               DTS:TextQualified="True"
               DTS:ObjectName="RESULT_DT"
-              DTS:DTSID="{2B86AD9C-C91A-44FA-A273-18DCA046C9EB}"
+              DTS:DTSID="{7B179954-150F-4790-8124-08F80BC4AEC2}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -86,7 +64,7 @@
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Plan Mgmt Error Report File Connection Manager]"
       DTS:CreationName="FLATFILE"
-      DTS:DTSID="{F69C9D98-F62E-4723-93FF-61D60B533BC5}"
+      DTS:DTSID="{45D19861-FC23-4ED0-B289-1D0EADB79641}"
       DTS:ObjectName="Plan Mgmt Error Report File Connection Manager">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -105,7 +83,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="DATABASE_NAME"
-              DTS:DTSID="{3F52BE81-8248-42DE-8072-C1844A19D4F6}"
+              DTS:DTSID="{D4639EFC-A690-4DAA-859E-B2F38D4C039C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -114,7 +92,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ERR_MSG"
-              DTS:DTSID="{71581EFF-EAB4-4371-A55F-78B047179BE6}"
+              DTS:DTSID="{80BCADE5-495E-41C3-9086-34C079131E13}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -122,7 +100,7 @@
               DTS:DataType="304"
               DTS:TextQualified="True"
               DTS:ObjectName="RESULT_DT"
-              DTS:DTSID="{DA4CF199-F804-4F93-9C5D-3A42431D3B42}"
+              DTS:DTSID="{B1CFAD5A-C9B5-4D41-8FD0-BE96383D5EC0}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -131,7 +109,7 @@
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[TENANT ERROR Report File Connection Manager]"
       DTS:CreationName="FLATFILE"
-      DTS:DTSID="{0758A7B7-2848-4D7E-ABA3-96D3FD179208}"
+      DTS:DTSID="{3F1C2A3F-7C79-43E4-AB48-4EC87DA4E56C}"
       DTS:ObjectName="TENANT ERROR Report File Connection Manager">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -150,7 +128,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="DATABASE_NAME"
-              DTS:DTSID="{C3344074-E562-45ED-9C2D-F635BFD14FAD}"
+              DTS:DTSID="{88D12AF6-8819-4E6C-BC76-94ED9AF24806}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -159,15 +137,15 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ERR_MSG"
-              DTS:DTSID="{945C50BD-9623-4033-BFA4-8752E331C83B}"
+              DTS:DTSID="{B241E33C-A49E-4D17-A6CE-9A24905EF33F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:DataType="135"
+              DTS:DataType="304"
               DTS:TextQualified="True"
               DTS:ObjectName="RESULT_DT"
-              DTS:DTSID="{911A714B-7050-417D-B3C1-3480BA4EC992}"
+              DTS:DTSID="{EFB068CA-AE26-4FF8-8E53-58649EEA5CBA}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -178,7 +156,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{DFD64DBB-B0A3-4C8E-9B87-18E72A769F28}"
+      DTS:DTSID="{D0B6C705-0511-41CF-B7AB-672932B65CD6}"
       DTS:ObjectName="ContenID"
       DTS:Required="True">
       <DTS:Property
@@ -189,7 +167,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{CE72A01F-CC84-477D-B36D-DCE15D503407}"
+      DTS:DTSID="{C0A9051E-7F27-46AA-98CA-D34DF680343A}"
       DTS:ObjectName="TenantID"
       DTS:Required="True">
       <DTS:Property
@@ -201,7 +179,7 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{21A7A6A3-0C3B-4284-81D2-B3CDFB7A2E7A}"
+      DTS:DTSID="{594C59F3-C572-4368-A635-9998DD8C641E}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Datalist_Count">
@@ -211,7 +189,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{03B69D91-25B7-4329-9DAE-2745AB1AD526}"
+      DTS:DTSID="{1642C9D6-1092-42F5-8849-1DEC78AF7BD1}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="&quot;SELECT count(B.content_id) as dlCount from UA3_TENANT.TM_DATA_LISTS B &#xA;WHERE B.content_id  = '&quot;+ @[$Package::ContenID] + &quot;' and INSTR(B.content_id, '.DataList.')&gt;0&quot;"
       DTS:IncludeInDebugDump="2345"
@@ -223,7 +201,16 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{AB8C01E6-EF52-41C0-9A04-9615911FF430}"
+      DTS:DTSID="{1C712F10-0B51-4497-AD13-B950FEB7502B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="HPP_TENANT_Count">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8A90485B-65F3-4B2B-941C-248A4866758B}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="IsErroedInINTDB">
@@ -232,7 +219,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{F18D0D17-F9C2-4B65-A6F4-48FEFF874C6D}"
+      DTS:DTSID="{527E4093-990A-437F-8AB6-0223D035B838}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="IsErroedInTenantDB">
@@ -241,7 +228,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{138CEDAC-CB6A-48F3-880E-5ADAB5211469}"
+      DTS:DTSID="{49278017-07AF-46C4-99D7-EF96F213375C}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="IsErroredInPlanDB">
@@ -250,7 +237,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{AD850281-4CCA-4857-B60E-9AFCD50F5DF0}"
+      DTS:DTSID="{774719E7-83AC-413E-B2FA-B6830D64EC34}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="IsValid_For_Purge">
@@ -263,7 +250,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       DTS:refId="Package\Check For datalist existance"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{99F9E421-ED7C-403F-A91E-5A1D406E5762}"
+      DTS:DTSID="{42E11E6D-E8FA-4E73-89A7-EFF0062AC685}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Check For datalist existance"
@@ -286,7 +273,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       DTS:refId="Package\Clear PURGE_RESULT Table"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{36F30826-EC30-4F6D-B378-63CD21312A09}"
+      DTS:DTSID="{F6C7F370-60E0-4E71-9568-09FBE3DD716B}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Clear PURGE_RESULT Table"
@@ -303,7 +290,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       DTS:refId="Package\Generate INT Error Report"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{8842C9D8-601C-4E53-AF8F-0423170F46DC}"
+      DTS:DTSID="{DEF65643-337B-4F85-AAA9-839E2AF399E0}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Generate INT Error Report"
@@ -330,6 +317,10 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
                   description="Specifies the text to write to the destination file before any data is written."
                   expressionType="Notify"
                   name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
               </properties>
               <connections>
                 <connection
@@ -405,7 +396,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[UA3_INTEGRATION].[PURGE_RESULT]</property>
+                  name="OpenRowset"></property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -414,7 +405,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from PURGE_RESULT</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -431,7 +422,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -508,6 +499,18 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
+                      refId="Package\Generate INT Error Report\INT OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Generate INT Error Report\INT OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Generate INT Error Report\INT OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Generate INT Error Report\INT OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
                       refId="Package\Generate INT Error Report\INT OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DATABASE_NAME]"
                       codePage="1252"
                       dataType="str"
@@ -526,18 +529,6 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
                       dataType="dbTimeStamp2"
                       lineageId="Package\Generate INT Error Report\INT OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RESULT_DT]"
                       name="RESULT_DT" />
-                    <outputColumn
-                      refId="Package\Generate INT Error Report\INT OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Generate INT Error Report\INT OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Generate INT Error Report\INT OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Generate INT Error Report\INT OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -555,13 +546,13 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Generate PLAN Error Report"
+      DTS:refId="Package\Generate PL Error Report"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{C44BF5AC-C749-435A-891B-05C394EDD821}"
+      DTS:DTSID="{1BD6C12D-A85E-43EF-931D-F148F5EB2D77}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Generate PLAN Error Report"
+      DTS:ObjectName="Generate PL Error Report"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -569,7 +560,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
           version="1">
           <components>
             <component
-              refId="Package\Generate PLAN Error Report\Flat File Destination"
+              refId="Package\Generate PL Error Report\Flat File Destination"
               componentClassID="Microsoft.FlatFileDestination"
               contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Flat File Destination"
@@ -585,59 +576,63 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
                   description="Specifies the text to write to the destination file before any data is written."
                   expressionType="Notify"
                   name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Generate PLAN Error Report\Flat File Destination.Connections[FlatFileConnection]"
+                  refId="Package\Generate PL Error Report\Flat File Destination.Connections[FlatFileConnection]"
                   connectionManagerID="Package.ConnectionManagers[Plan Mgmt Error Report File Connection Manager]"
                   connectionManagerRefId="Package.ConnectionManagers[Plan Mgmt Error Report File Connection Manager]"
                   name="FlatFileConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\Generate PLAN Error Report\Flat File Destination.Inputs[Flat File Destination Input]"
+                  refId="Package\Generate PL Error Report\Flat File Destination.Inputs[Flat File Destination Input]"
                   hasSideEffects="true"
                   name="Flat File Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Generate PLAN Error Report\Flat File Destination.Inputs[Flat File Destination Input].Columns[DATABASE_NAME]"
+                      refId="Package\Generate PL Error Report\Flat File Destination.Inputs[Flat File Destination Input].Columns[DATABASE_NAME]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="30"
                       cachedName="DATABASE_NAME"
-                      externalMetadataColumnId="Package\Generate PLAN Error Report\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[DATABASE_NAME]"
-                      lineageId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].Columns[DATABASE_NAME]" />
+                      externalMetadataColumnId="Package\Generate PL Error Report\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[DATABASE_NAME]"
+                      lineageId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].Columns[DATABASE_NAME]" />
                     <inputColumn
-                      refId="Package\Generate PLAN Error Report\Flat File Destination.Inputs[Flat File Destination Input].Columns[ERR_MSG]"
+                      refId="Package\Generate PL Error Report\Flat File Destination.Inputs[Flat File Destination Input].Columns[ERR_MSG]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="1000"
                       cachedName="ERR_MSG"
-                      externalMetadataColumnId="Package\Generate PLAN Error Report\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ERR_MSG]"
-                      lineageId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].Columns[ERR_MSG]" />
+                      externalMetadataColumnId="Package\Generate PL Error Report\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ERR_MSG]"
+                      lineageId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].Columns[ERR_MSG]" />
                     <inputColumn
-                      refId="Package\Generate PLAN Error Report\Flat File Destination.Inputs[Flat File Destination Input].Columns[RESULT_DT]"
+                      refId="Package\Generate PL Error Report\Flat File Destination.Inputs[Flat File Destination Input].Columns[RESULT_DT]"
                       cachedDataType="dbTimeStamp2"
                       cachedName="RESULT_DT"
-                      externalMetadataColumnId="Package\Generate PLAN Error Report\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[RESULT_DT]"
-                      lineageId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].Columns[RESULT_DT]" />
+                      externalMetadataColumnId="Package\Generate PL Error Report\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[RESULT_DT]"
+                      lineageId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].Columns[RESULT_DT]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Generate PLAN Error Report\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[DATABASE_NAME]"
+                      refId="Package\Generate PL Error Report\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[DATABASE_NAME]"
                       codePage="1252"
                       dataType="str"
                       length="30"
                       name="DATABASE_NAME" />
                     <externalMetadataColumn
-                      refId="Package\Generate PLAN Error Report\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ERR_MSG]"
+                      refId="Package\Generate PL Error Report\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ERR_MSG]"
                       codePage="1252"
                       dataType="str"
                       length="1000"
                       name="ERR_MSG" />
                     <externalMetadataColumn
-                      refId="Package\Generate PLAN Error Report\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[RESULT_DT]"
+                      refId="Package\Generate PL Error Report\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[RESULT_DT]"
                       dataType="dbTimeStamp2"
                       name="RESULT_DT" />
                   </externalMetadataColumns>
@@ -645,7 +640,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
               </inputs>
             </component>
             <component
-              refId="Package\Generate PLAN Error Report\PLAN OLE DB Source"
+              refId="Package\Generate PL Error Report\PLAN OLE DB Source"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
@@ -660,7 +655,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[UA3_PLAN_MGMT].[PURGE_RESULT]</property>
+                  name="OpenRowset"></property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -669,7 +664,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from PURGE_RESULT</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -686,7 +681,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -694,7 +689,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
               </properties>
               <connections>
                 <connection
-                  refId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Connections[OleDbConnection]"
+                  refId="Package\Generate PL Error Report\PLAN OLE DB Source.Connections[OleDbConnection]"
                   connectionManagerID="{6E659C62-D114-4D88-A9AF-39507BF28AB3}:external"
                   connectionManagerRefId="Project.ConnectionManagers[UA3_PLAN_MGMT]"
                   description="The OLE DB runtime connection used to access the database."
@@ -702,97 +697,97 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
               </connections>
               <outputs>
                 <output
-                  refId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output]"
+                  refId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].Columns[DATABASE_NAME]"
+                      refId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].Columns[DATABASE_NAME]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DATABASE_NAME]"
+                      externalMetadataColumnId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DATABASE_NAME]"
                       length="30"
-                      lineageId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].Columns[DATABASE_NAME]"
+                      lineageId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].Columns[DATABASE_NAME]"
                       name="DATABASE_NAME"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].Columns[ERR_MSG]"
+                      refId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].Columns[ERR_MSG]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ERR_MSG]"
+                      externalMetadataColumnId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ERR_MSG]"
                       length="1000"
-                      lineageId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].Columns[ERR_MSG]"
+                      lineageId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].Columns[ERR_MSG]"
                       name="ERR_MSG"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].Columns[RESULT_DT]"
+                      refId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].Columns[RESULT_DT]"
                       dataType="dbTimeStamp2"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RESULT_DT]"
-                      lineageId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].Columns[RESULT_DT]"
+                      externalMetadataColumnId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RESULT_DT]"
+                      lineageId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].Columns[RESULT_DT]"
                       name="RESULT_DT"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DATABASE_NAME]"
+                      refId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DATABASE_NAME]"
                       codePage="1252"
                       dataType="str"
                       length="30"
                       name="DATABASE_NAME" />
                     <externalMetadataColumn
-                      refId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ERR_MSG]"
+                      refId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ERR_MSG]"
                       codePage="1252"
                       dataType="str"
                       length="1000"
                       name="ERR_MSG" />
                     <externalMetadataColumn
-                      refId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RESULT_DT]"
+                      refId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RESULT_DT]"
                       dataType="dbTimeStamp2"
                       name="RESULT_DT" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DATABASE_NAME]"
-                      codePage="1252"
-                      dataType="str"
-                      length="30"
-                      lineageId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DATABASE_NAME]"
-                      name="DATABASE_NAME" />
-                    <outputColumn
-                      refId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ERR_MSG]"
-                      codePage="1252"
-                      dataType="str"
-                      length="1000"
-                      lineageId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ERR_MSG]"
-                      name="ERR_MSG" />
-                    <outputColumn
-                      refId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RESULT_DT]"
-                      dataType="dbTimeStamp2"
-                      lineageId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RESULT_DT]"
-                      name="RESULT_DT" />
-                    <outputColumn
-                      refId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DATABASE_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DATABASE_NAME]"
+                      name="DATABASE_NAME" />
+                    <outputColumn
+                      refId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ERR_MSG]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1000"
+                      lineageId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ERR_MSG]"
+                      name="ERR_MSG" />
+                    <outputColumn
+                      refId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RESULT_DT]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RESULT_DT]"
+                      name="RESULT_DT" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -801,10 +796,10 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
           </components>
           <paths>
             <path
-              refId="Package\Generate PLAN Error Report.Paths[OLE DB Source Output]"
-              endId="Package\Generate PLAN Error Report\Flat File Destination.Inputs[Flat File Destination Input]"
+              refId="Package\Generate PL Error Report.Paths[OLE DB Source Output]"
+              endId="Package\Generate PL Error Report\Flat File Destination.Inputs[Flat File Destination Input]"
               name="OLE DB Source Output"
-              startId="Package\Generate PLAN Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output]" />
+              startId="Package\Generate PL Error Report\PLAN OLE DB Source.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -813,7 +808,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       DTS:refId="Package\Generate Report"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{45ECF6F1-7CAF-410A-AEA9-46F8ACBF9D80}"
+      DTS:DTSID="{65E62DF2-FEF0-4064-9644-4CCAF733D863}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Generate Report"
@@ -840,6 +835,10 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
                   description="Specifies the text to write to the destination file before any data is written."
                   expressionType="Notify"
                   name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
               </properties>
               <connections>
                 <connection
@@ -856,26 +855,24 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
                   <inputColumns>
                     <inputColumn
                       refId="Package\Generate Report\Flat File Destination.Inputs[Flat File Destination Input].Columns[DATABASE_NAME]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="30"
+                      cachedDataType="wstr"
+                      cachedLength="50"
                       cachedName="DATABASE_NAME"
                       externalMetadataColumnId="Package\Generate Report\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[DATABASE_NAME]"
-                      lineageId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Output].Columns[DATABASE_NAME]" />
+                      lineageId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Output].Columns[DATABASE_NAME]" />
                     <inputColumn
                       refId="Package\Generate Report\Flat File Destination.Inputs[Flat File Destination Input].Columns[ERR_MSG]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="1000"
+                      cachedDataType="wstr"
+                      cachedLength="50"
                       cachedName="ERR_MSG"
                       externalMetadataColumnId="Package\Generate Report\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ERR_MSG]"
-                      lineageId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Output].Columns[ERR_MSG]" />
+                      lineageId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Output].Columns[ERR_MSG]" />
                     <inputColumn
                       refId="Package\Generate Report\Flat File Destination.Inputs[Flat File Destination Input].Columns[RESULT_DT]"
-                      cachedDataType="dbTimeStamp"
+                      cachedDataType="dbTimeStamp2"
                       cachedName="RESULT_DT"
                       externalMetadataColumnId="Package\Generate Report\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[RESULT_DT]"
-                      lineageId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Output].Columns[RESULT_DT]" />
+                      lineageId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Output].Columns[RESULT_DT]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -893,152 +890,153 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
                       name="ERR_MSG" />
                     <externalMetadataColumn
                       refId="Package\Generate Report\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[RESULT_DT]"
-                      dataType="dbTimeStamp"
+                      dataType="dbTimeStamp2"
                       name="RESULT_DT" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
             </component>
             <component
-              refId="Package\Generate Report\TENANT Oracle Source"
-              componentClassID="Attunity.SSISOraSrc"
-              contactInfo="Oracle Source;Microsoft Connector for Oracle by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
-              description="Microsoft Oracle Source Component by Attunity"
-              name="TENANT Oracle Source"
+              refId="Package\Generate Report\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
               usesDispositions="true"
-              version="6">
+              version="7">
               <properties>
                 <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
                   dataType="System.String"
-                  description="The name of the table to be fetched."
-                  expressionType="Notify"
-                  name="TableName">"UA3_TENANT"."PURGE_RESULT"</property>
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[UA3_TENANT].[PURGE_RESULT]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
                 <property
                   dataType="System.String"
                   description="The SQL command to be executed."
-                  expressionType="Notify"
-                  name="SqlCommand"></property>
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from UA3_TENANT.PURGE_RESULT</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
                 <property
                   dataType="System.Int32"
-                  description="The number of rows fetched in a batch."
-                  expressionType="Notify"
-                  name="BatchSize">100</property>
-                <property
-                  dataType="System.Int32"
-                  description="Number of pre-fetched rows."
-                  expressionType="Notify"
-                  name="PrefetchCount">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Determines the chunk size allocation for LOB columns"
-                  expressionType="Notify"
-                  name="LobChunkSize">32768</property>
-                <property
-                  dataType="System.Int32"
-                  description="The code page to use when code page information is unavailable from the data source."
-                  expressionType="Notify"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
                   name="DefaultCodePage">1252</property>
                 <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
                   dataType="System.Int32"
-                  description="The mode used to access the database."
+                  description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Generate Report\TENANT Oracle Source.Connections[MSOraConnection]"
-                  connectionManagerID="Package.ConnectionManagers[AttUnit TENANT DB  Connector]"
-                  connectionManagerRefId="Package.ConnectionManagers[AttUnit TENANT DB  Connector]"
-                  description="The Oracle runtime connection"
-                  name="MSOraConnection" />
+                  refId="Package\Generate Report\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{39CC5542-E5A6-4FC4-997B-FDF5C97833AC}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[UA3_TENANT]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Output]"
-                  errorRowDisposition="FailComponent"
-                  name="Oracle Source Output"
-                  truncationRowDisposition="FailComponent">
+                  refId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Output].Columns[DATABASE_NAME]"
-                      codePage="1252"
-                      dataType="str"
-                      externalMetadataColumnId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Output].ExternalColumns[DATABASE_NAME]"
-                      length="30"
-                      lineageId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Output].Columns[DATABASE_NAME]"
-                      name="DATABASE_NAME" />
+                      refId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Output].Columns[DATABASE_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DATABASE_NAME]"
+                      length="50"
+                      lineageId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Output].Columns[DATABASE_NAME]"
+                      name="DATABASE_NAME"
+                      truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Output].Columns[ERR_MSG]"
-                      codePage="1252"
-                      dataType="str"
-                      externalMetadataColumnId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Output].ExternalColumns[ERR_MSG]"
-                      length="1000"
-                      lineageId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Output].Columns[ERR_MSG]"
-                      name="ERR_MSG" />
+                      refId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Output].Columns[ERR_MSG]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ERR_MSG]"
+                      length="50"
+                      lineageId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Output].Columns[ERR_MSG]"
+                      name="ERR_MSG"
+                      truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Output].Columns[RESULT_DT]"
-                      dataType="dbTimeStamp"
-                      externalMetadataColumnId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Output].ExternalColumns[RESULT_DT]"
-                      lineageId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Output].Columns[RESULT_DT]"
-                      name="RESULT_DT" />
+                      refId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Output].Columns[RESULT_DT]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RESULT_DT]"
+                      lineageId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Output].Columns[RESULT_DT]"
+                      name="RESULT_DT"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Output].ExternalColumns[DATABASE_NAME]"
-                      codePage="1252"
-                      dataType="str"
+                      refId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DATABASE_NAME]"
+                      dataType="wstr"
                       length="30"
                       name="DATABASE_NAME" />
                     <externalMetadataColumn
-                      refId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Output].ExternalColumns[ERR_MSG]"
-                      codePage="1252"
-                      dataType="str"
+                      refId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ERR_MSG]"
+                      dataType="wstr"
                       length="1000"
                       name="ERR_MSG" />
                     <externalMetadataColumn
-                      refId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Output].ExternalColumns[RESULT_DT]"
+                      refId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RESULT_DT]"
                       dataType="dbTimeStamp"
                       name="RESULT_DT" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Error Output]"
+                  refId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
-                  name="Oracle Source Error Output">
+                  name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Error Output].Columns[DATABASE_NAME]"
-                      codePage="1252"
-                      dataType="str"
-                      externalMetadataColumnId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Output].ExternalColumns[DATABASE_NAME]"
+                      refId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DATABASE_NAME]"
+                      dataType="wstr"
                       length="30"
-                      lineageId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Error Output].Columns[DATABASE_NAME]"
+                      lineageId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DATABASE_NAME]"
                       name="DATABASE_NAME" />
                     <outputColumn
-                      refId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Error Output].Columns[ERR_MSG]"
-                      codePage="1252"
-                      dataType="str"
-                      externalMetadataColumnId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Output].ExternalColumns[ERR_MSG]"
+                      refId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ERR_MSG]"
+                      dataType="wstr"
                       length="1000"
-                      lineageId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Error Output].Columns[ERR_MSG]"
+                      lineageId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ERR_MSG]"
                       name="ERR_MSG" />
                     <outputColumn
-                      refId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Error Output].Columns[RESULT_DT]"
+                      refId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RESULT_DT]"
                       dataType="dbTimeStamp"
-                      externalMetadataColumnId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Output].ExternalColumns[RESULT_DT]"
-                      lineageId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Error Output].Columns[RESULT_DT]"
+                      lineageId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RESULT_DT]"
                       name="RESULT_DT" />
                     <outputColumn
-                      refId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1049,10 +1047,10 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
           </components>
           <paths>
             <path
-              refId="Package\Generate Report.Paths[Oracle Source Output]"
+              refId="Package\Generate Report.Paths[OLE DB Source Output]"
               endId="Package\Generate Report\Flat File Destination.Inputs[Flat File Destination Input]"
-              name="Oracle Source Output"
-              startId="Package\Generate Report\TENANT Oracle Source.Outputs[Oracle Source Output]" />
+              name="OLE DB Source Output"
+              startId="Package\Generate Report\OLE DB Source.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1061,7 +1059,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       DTS:refId="Package\Generate TENANT Error Report"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{1865F0A1-2E48-49B2-881E-F60E5DEF8206}"
+      DTS:DTSID="{71DE30FA-C665-4235-888F-1949A26DF415}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Generate TENANT Error Report"
@@ -1088,6 +1086,10 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
                   description="Specifies the text to write to the destination file before any data is written."
                   expressionType="Notify"
                   name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
               </properties>
               <connections>
                 <connection
@@ -1104,26 +1106,24 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
                   <inputColumns>
                     <inputColumn
                       refId="Package\Generate TENANT Error Report\Flat File Destination.Inputs[Flat File Destination Input].Columns[DATABASE_NAME]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="30"
+                      cachedDataType="wstr"
+                      cachedLength="50"
                       cachedName="DATABASE_NAME"
                       externalMetadataColumnId="Package\Generate TENANT Error Report\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[DATABASE_NAME]"
-                      lineageId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Output].Columns[DATABASE_NAME]" />
+                      lineageId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Output].Columns[DATABASE_NAME]" />
                     <inputColumn
                       refId="Package\Generate TENANT Error Report\Flat File Destination.Inputs[Flat File Destination Input].Columns[ERR_MSG]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="1000"
+                      cachedDataType="wstr"
+                      cachedLength="50"
                       cachedName="ERR_MSG"
                       externalMetadataColumnId="Package\Generate TENANT Error Report\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ERR_MSG]"
-                      lineageId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Output].Columns[ERR_MSG]" />
+                      lineageId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Output].Columns[ERR_MSG]" />
                     <inputColumn
                       refId="Package\Generate TENANT Error Report\Flat File Destination.Inputs[Flat File Destination Input].Columns[RESULT_DT]"
-                      cachedDataType="dbTimeStamp"
+                      cachedDataType="dbTimeStamp2"
                       cachedName="RESULT_DT"
                       externalMetadataColumnId="Package\Generate TENANT Error Report\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[RESULT_DT]"
-                      lineageId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Output].Columns[RESULT_DT]" />
+                      lineageId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Output].Columns[RESULT_DT]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1141,154 +1141,155 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
                       name="ERR_MSG" />
                     <externalMetadataColumn
                       refId="Package\Generate TENANT Error Report\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[RESULT_DT]"
-                      dataType="dbTimeStamp"
+                      dataType="dbTimeStamp2"
                       name="RESULT_DT" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
             </component>
             <component
-              refId="Package\Generate TENANT Error Report\Tenant Oracle Source"
-              componentClassID="Attunity.SSISOraSrc"
-              contactInfo="Oracle Source;Microsoft Connector for Oracle by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
-              description="Microsoft Oracle Source Component by Attunity"
-              name="Tenant Oracle Source"
+              refId="Package\Generate TENANT Error Report\TENANT OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="TENANT OLE DB Source"
               usesDispositions="true"
-              version="6">
+              version="7">
               <properties>
                 <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
                   dataType="System.String"
-                  description="The name of the table to be fetched."
-                  expressionType="Notify"
-                  name="TableName">"UA3_TENANT"."PURGE_RESULT"</property>
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">"UA3_TENANT"."PURGE_RESULT"</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
                 <property
                   dataType="System.String"
                   description="The SQL command to be executed."
-                  expressionType="Notify"
-                  name="SqlCommand"></property>
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from UA3_TENANT.PURGE_RESULT</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
                 <property
                   dataType="System.Int32"
-                  description="The number of rows fetched in a batch."
-                  expressionType="Notify"
-                  name="BatchSize">100</property>
-                <property
-                  dataType="System.Int32"
-                  description="Number of pre-fetched rows."
-                  expressionType="Notify"
-                  name="PrefetchCount">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Determines the chunk size allocation for LOB columns"
-                  expressionType="Notify"
-                  name="LobChunkSize">32768</property>
-                <property
-                  dataType="System.Int32"
-                  description="The code page to use when code page information is unavailable from the data source."
-                  expressionType="Notify"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
                   name="DefaultCodePage">1252</property>
                 <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
                   dataType="System.Int32"
-                  description="The mode used to access the database."
+                  description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Generate TENANT Error Report\Tenant Oracle Source.Connections[MSOraConnection]"
-                  connectionManagerID="Package.ConnectionManagers[AttUnit TENANT DB  Connector]"
-                  connectionManagerRefId="Package.ConnectionManagers[AttUnit TENANT DB  Connector]"
-                  description="The Oracle runtime connection"
-                  name="MSOraConnection" />
+                  refId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{39CC5542-E5A6-4FC4-997B-FDF5C97833AC}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[UA3_TENANT]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Output]"
-                  errorRowDisposition="FailComponent"
-                  name="Oracle Source Output"
-                  truncationRowDisposition="FailComponent">
+                  refId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Output].Columns[DATABASE_NAME]"
-                      codePage="1252"
-                      dataType="str"
-                      externalMetadataColumnId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Output].ExternalColumns[DATABASE_NAME]"
-                      length="30"
-                      lineageId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Output].Columns[DATABASE_NAME]"
-                      name="DATABASE_NAME" />
+                      refId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Output].Columns[DATABASE_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DATABASE_NAME]"
+                      length="50"
+                      lineageId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Output].Columns[DATABASE_NAME]"
+                      name="DATABASE_NAME"
+                      truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Output].Columns[ERR_MSG]"
-                      codePage="1252"
-                      dataType="str"
-                      externalMetadataColumnId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Output].ExternalColumns[ERR_MSG]"
-                      length="1000"
-                      lineageId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Output].Columns[ERR_MSG]"
-                      name="ERR_MSG" />
+                      refId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Output].Columns[ERR_MSG]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ERR_MSG]"
+                      length="50"
+                      lineageId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Output].Columns[ERR_MSG]"
+                      name="ERR_MSG"
+                      truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Output].Columns[RESULT_DT]"
-                      dataType="dbTimeStamp"
-                      externalMetadataColumnId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Output].ExternalColumns[RESULT_DT]"
-                      lineageId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Output].Columns[RESULT_DT]"
-                      name="RESULT_DT" />
+                      refId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Output].Columns[RESULT_DT]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RESULT_DT]"
+                      lineageId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Output].Columns[RESULT_DT]"
+                      name="RESULT_DT"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Output].ExternalColumns[DATABASE_NAME]"
-                      codePage="1252"
-                      dataType="str"
+                      refId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DATABASE_NAME]"
+                      dataType="wstr"
                       length="30"
                       name="DATABASE_NAME" />
                     <externalMetadataColumn
-                      refId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Output].ExternalColumns[ERR_MSG]"
-                      codePage="1252"
-                      dataType="str"
+                      refId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ERR_MSG]"
+                      dataType="wstr"
                       length="1000"
                       name="ERR_MSG" />
                     <externalMetadataColumn
-                      refId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Output].ExternalColumns[RESULT_DT]"
+                      refId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RESULT_DT]"
                       dataType="dbTimeStamp"
                       name="RESULT_DT" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Error Output]"
+                  refId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
-                  name="Oracle Source Error Output">
+                  name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Error Output].Columns[DATABASE_NAME]"
-                      codePage="1252"
-                      dataType="str"
-                      externalMetadataColumnId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Output].ExternalColumns[DATABASE_NAME]"
-                      length="30"
-                      lineageId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Error Output].Columns[DATABASE_NAME]"
-                      name="DATABASE_NAME" />
-                    <outputColumn
-                      refId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Error Output].Columns[ERR_MSG]"
-                      codePage="1252"
-                      dataType="str"
-                      externalMetadataColumnId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Output].ExternalColumns[ERR_MSG]"
-                      length="1000"
-                      lineageId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Error Output].Columns[ERR_MSG]"
-                      name="ERR_MSG" />
-                    <outputColumn
-                      refId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Error Output].Columns[RESULT_DT]"
-                      dataType="dbTimeStamp"
-                      externalMetadataColumnId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Output].ExternalColumns[RESULT_DT]"
-                      lineageId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Error Output].Columns[RESULT_DT]"
-                      name="RESULT_DT" />
-                    <outputColumn
-                      refId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DATABASE_NAME]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DATABASE_NAME]"
+                      name="DATABASE_NAME" />
+                    <outputColumn
+                      refId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ERR_MSG]"
+                      dataType="wstr"
+                      length="1000"
+                      lineageId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ERR_MSG]"
+                      name="ERR_MSG" />
+                    <outputColumn
+                      refId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RESULT_DT]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RESULT_DT]"
+                      name="RESULT_DT" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1297,10 +1298,10 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
           </components>
           <paths>
             <path
-              refId="Package\Generate TENANT Error Report.Paths[Oracle Source Output]"
+              refId="Package\Generate TENANT Error Report.Paths[OLE DB Source Output]"
               endId="Package\Generate TENANT Error Report\Flat File Destination.Inputs[Flat File Destination Input]"
-              name="Oracle Source Output"
-              startId="Package\Generate TENANT Error Report\Tenant Oracle Source.Outputs[Oracle Source Output]" />
+              name="OLE DB Source Output"
+              startId="Package\Generate TENANT Error Report\TENANT OLE DB Source.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1309,7 +1310,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       DTS:refId="Package\Is Errored In INT?"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{ea06f0f0-b466-4f7d-b190-da7a7f96c7c0}"
+      DTS:DTSID="{305CAE29-961E-41AD-8EF2-B31CB40658A4}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Is Errored In INT?"
@@ -1331,7 +1332,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       DTS:refId="Package\Is Errored In PLAN DB"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{68057F05-F262-4C94-B3F4-1D3D8F064B8C}"
+      DTS:DTSID="{13D0EFFE-FE6C-48D4-B44C-B98066E641B5}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Is Errored In PLAN DB"
@@ -1350,10 +1351,32 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Is Errored in Tenant DB"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{FF6C127F-BE8F-4A4B-9498-40D105214951}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Is Errored in Tenant DB"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{39CC5542-E5A6-4FC4-997B-FDF5C97833AC}"
+          SQLTask:SqlStatementSource="select count(*) as tenantErrorCount from UA3_TENANT.PURGE_RESULT"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="tenantErrorCount"
+            SQLTask:DtsVariableName="User::IsErroedInTenantDB" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Is Errored in Tenant?"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{1E4A1270-A8F4-4978-B84D-A2FD5EBB7992}"
+      DTS:DTSID="{3BED9010-3328-4508-9931-8F52F3827EEB}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Is Errored in Tenant?"
@@ -1375,7 +1398,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       DTS:refId="Package\Log Invalid Datalist Error"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{8A9C2EE5-5EEA-4B56-81D0-501D86BBB6FD}"
+      DTS:DTSID="{FE32AA9D-0E3C-40FF-8534-AC320CF20D7A}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Log Invalid Datalist Error"
@@ -1392,7 +1415,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       DTS:refId="Package\PURGE INT DB DATA"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{B22DA868-6860-4C6D-BC81-1A45949A5FED}"
+      DTS:DTSID="{AAD4B97C-FF87-426F-B457-40AAE74517C8}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="PURGE INT DB DATA"
@@ -1422,7 +1445,7 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       DTS:refId="Package\PURGE PLAN DB DATA"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{D8126930-B906-482C-9507-05CBE0C20BE7}"
+      DTS:DTSID="{20653C5C-B1A8-4B42-A58F-9D665AD6B97C}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="PURGE PLAN DB DATA"
@@ -1449,13 +1472,13 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\PURGE TENANT DB DATA IN ORACLE DB"
+      DTS:refId="Package\PURGE TENANT DB DATA"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{E4CE100D-3C16-4638-A51D-91B4F4DF7B67}"
+      DTS:DTSID="{BAFD6768-1317-44BF-8477-2FC4DFFD6860}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="PURGE TENANT DB DATA IN ORACLE DB"
+      DTS:ObjectName="PURGE TENANT DB DATA"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="1">
       <DTS:Variables />
@@ -1478,118 +1501,172 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\PURGE TENANT DB DLI DATA"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{BB4F33CA-4F78-4497-94CF-034F89550F78}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="PURGE TENANT DB DLI DATA"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{39CC5542-E5A6-4FC4-997B-FDF5C97833AC}"
+          SQLTask:SqlStatementSource="call Delete_RestrCode_TENANTData_DLI_Proc(?,?)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::ContenID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="2000" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="$Package::TenantID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="100" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{0EEDAE6D-3C1D-4C23-8AB0-2F4603D6A32F}"
-      DTS:EvalOp="1"
-      DTS:Expression="@[User::IsValid_For_Purge] &gt; 0"
-      DTS:From="Package\Check For datalist existance"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint"
-      DTS:To="Package\PURGE PLAN DB DATA" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
-      DTS:CreationName=""
-      DTS:DTSID="{F37B6EA8-89C0-4D8C-8798-16830D429CD5}"
+      DTS:DTSID="{F2E5A12E-0E54-4412-AF24-5564573B77A4}"
       DTS:EvalOp="1"
       DTS:Expression="@[User::IsValid_For_Purge] == 0"
       DTS:From="Package\Check For datalist existance"
       DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 1"
+      DTS:ObjectName="Constraint"
       DTS:To="Package\Clear PURGE_RESULT Table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{01E07CDD-AD02-46DD-94E7-76BAE427684D}"
+      DTS:From="Package\Clear PURGE_RESULT Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Log Invalid Datalist Error" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
       DTS:CreationName=""
-      DTS:DTSID="{3C579ED1-5E20-4896-BE7A-57A5B040424F}"
-      DTS:From="Package\Clear PURGE_RESULT Table"
+      DTS:DTSID="{135B8897-FFCD-4EDA-B35F-3183D91DDEC1}"
+      DTS:EvalOp="1"
+      DTS:Expression="@[User::IsErroedInTenantDB] == 0"
+      DTS:From="Package\Is Errored in Tenant?"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 10"
-      DTS:To="Package\Log Invalid Datalist Error" />
+      DTS:To="Package\PURGE INT DB DATA" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 11]"
       DTS:CreationName=""
-      DTS:DTSID="{08920688-AC78-476E-AD54-C0AD7E0CF12B}"
-      DTS:From="Package\Log Invalid Datalist Error"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 11"
-      DTS:To="Package\Generate Report" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
-      DTS:CreationName=""
-      DTS:DTSID="{C8931320-1122-4D7B-8AF5-3F829E3D14BC}"
-      DTS:EvalOp="1"
-      DTS:Expression="@[User::IsErroredInPlanDB] == 0"
-      DTS:From="Package\Is Errored In PLAN DB"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 2"
-      DTS:To="Package\PURGE TENANT DB DATA IN ORACLE DB" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
-      DTS:CreationName=""
-      DTS:DTSID="{83FDF599-0438-4304-B761-ABCD20DADD2B}"
-      DTS:From="Package\PURGE TENANT DB DATA IN ORACLE DB"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 3"
-      DTS:To="Package\Is Errored in Tenant?" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
-      DTS:CreationName=""
-      DTS:DTSID="{F0558312-837A-4523-987B-6E8E0FF700C9}"
-      DTS:EvalOp="1"
-      DTS:Expression="@[User::IsErroedInTenantDB] &gt;0"
-      DTS:From="Package\Is Errored in Tenant?"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 4"
-      DTS:To="Package\Generate TENANT Error Report" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
-      DTS:CreationName=""
-      DTS:DTSID="{DD4FF16F-78F4-4FC3-82D8-8C885ED47263}"
-      DTS:From="Package\PURGE INT DB DATA"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 5"
-      DTS:To="Package\Is Errored In INT?" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
-      DTS:CreationName=""
-      DTS:DTSID="{FE5705A6-0BC5-411F-B7B6-435F0185553A}"
-      DTS:EvalOp="1"
-      DTS:Expression="@[User::IsErroedInINTDB] &gt; 0"
-      DTS:From="Package\Is Errored In INT?"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 6"
-      DTS:To="Package\Generate INT Error Report" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
-      DTS:CreationName=""
-      DTS:DTSID="{3368E7A7-9118-4742-80C5-B27D171A101A}"
-      DTS:EvalOp="1"
-      DTS:Expression="@[User::IsErroedInTenantDB] ==0"
-      DTS:From="Package\Is Errored in Tenant?"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 7"
-      DTS:To="Package\PURGE INT DB DATA" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
-      DTS:CreationName=""
-      DTS:DTSID="{8A24B070-0DCE-4329-BEE3-EB0865C8A99C}"
-      DTS:From="Package\PURGE PLAN DB DATA"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 8"
-      DTS:To="Package\Is Errored In PLAN DB" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
-      DTS:CreationName=""
-      DTS:DTSID="{D8A76964-6C64-4569-A9F7-83540BB52310}"
+      DTS:DTSID="{D0FC7578-5EDD-4EA6-8BAA-62E6F58C7F01}"
       DTS:EvalOp="1"
       DTS:Expression="@[User::IsErroredInPlanDB] &gt;0"
       DTS:From="Package\Is Errored In PLAN DB"
       DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 11"
+      DTS:To="Package\Generate PL Error Report" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 13]"
+      DTS:CreationName=""
+      DTS:DTSID="{BE8C1824-15F1-4C44-8607-01DCDF7836FD}"
+      DTS:From="Package\PURGE TENANT DB DLI DATA"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 13"
+      DTS:To="Package\Is Errored in Tenant DB" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 14]"
+      DTS:CreationName=""
+      DTS:DTSID="{4B4DDD74-1577-434B-ACD1-6C3482E948C4}"
+      DTS:EvalOp="1"
+      DTS:Expression="@[User::IsErroedInTenantDB] == 0"
+      DTS:From="Package\Is Errored in Tenant DB"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 14"
+      DTS:To="Package\PURGE TENANT DB DATA" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 15]"
+      DTS:CreationName=""
+      DTS:DTSID="{BCE0B0EF-D0B3-4968-A6EA-F68D8B730D80}"
+      DTS:EvalOp="1"
+      DTS:Expression="@[User::IsErroedInTenantDB] &gt; 0"
+      DTS:From="Package\Is Errored in Tenant DB"
+      DTS:ObjectName="Constraint 15"
+      DTS:To="Package\Generate TENANT Error Report" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{94061ED7-DEA7-4AC7-A1BB-67EA39642616}"
+      DTS:From="Package\Log Invalid Datalist Error"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Generate Report" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{C83430DA-B213-42CB-89D1-DC0B65D1B7B4}"
+      DTS:EvalOp="1"
+      DTS:Expression="@[User::IsValid_For_Purge] &gt; 0"
+      DTS:From="Package\Check For datalist existance"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\PURGE PLAN DB DATA" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{0D96F124-2865-4F4E-B3D9-87C97BEDDF03}"
+      DTS:From="Package\PURGE TENANT DB DATA"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Is Errored in Tenant?" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{7B495F7A-DC45-43D5-9DA5-248D85DD5E98}"
+      DTS:EvalOp="1"
+      DTS:Expression="@[User::IsErroedInTenantDB] &gt; 0"
+      DTS:From="Package\Is Errored in Tenant?"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Generate TENANT Error Report" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{A0DAE41A-7E5C-4D4C-BCEC-EA7549F2D877}"
+      DTS:From="Package\PURGE INT DB DATA"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Is Errored In INT?" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{BDC5AE8C-1868-459D-9095-0B387B737659}"
+      DTS:From="Package\PURGE PLAN DB DATA"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\Is Errored In PLAN DB" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{1B7F2459-1063-4ECB-9023-314E42F2CD15}"
+      DTS:From="Package\Is Errored In PLAN DB"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\PURGE TENANT DB DLI DATA" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
+      DTS:CreationName=""
+      DTS:DTSID="{0734C78C-BFB7-4BAD-A412-AF219B08DC04}"
+      DTS:EvalOp="1"
+      DTS:Expression="@[User::IsErroedInINTDB] &gt; 0"
+      DTS:From="Package\Is Errored In INT?"
+      DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 9"
-      DTS:To="Package\Generate PLAN Error Report" />
+      DTS:To="Package\Generate INT Error Report" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1606,231 +1683,323 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
         <NodeLayout
           Size="210,42"
           Id="Package\Check For datalist existance"
-          TopLeft="382,49" />
+          TopLeft="428,37" />
         <NodeLayout
-          Size="211,42"
+          Size="210.666666666667,42"
           Id="Package\Clear PURGE_RESULT Table"
-          TopLeft="685,53" />
+          TopLeft="767,135" />
         <NodeLayout
-          Size="204,45"
+          Size="213.333333333334,42"
           Id="Package\Generate INT Error Report"
-          TopLeft="380,477" />
+          TopLeft="400.249999757856,687.789477444752" />
         <NodeLayout
-          Size="208,42"
-          Id="Package\Generate PLAN Error Report"
-          TopLeft="375,133" />
+          Size="198,42"
+          Id="Package\Generate PL Error Report"
+          TopLeft="428.124999431893,139.105262745781" />
         <NodeLayout
-          Size="157,42"
+          Size="157.333333333334,42"
           Id="Package\Generate Report"
-          TopLeft="708,320" />
+          TopLeft="792,305" />
         <NodeLayout
           Size="226,42"
           Id="Package\Generate TENANT Error Report"
-          TopLeft="373,291" />
+          TopLeft="383.874999748543,546.263162247692" />
         <NodeLayout
-          Size="165,42"
+          Size="161.333333333334,52.6666666666667"
           Id="Package\Is Errored In INT?"
-          TopLeft="99,472" />
+          TopLeft="90.8750000465661,687.824564455729" />
         <NodeLayout
-          Size="184,42"
+          Size="180,42"
           Id="Package\Is Errored In PLAN DB"
-          TopLeft="95,131" />
+          TopLeft="86.8750000465661,137.631578432226" />
         <NodeLayout
-          Size="179,44"
+          Size="190.666666666667,42.6666666666667"
+          Id="Package\Is Errored in Tenant DB"
+          TopLeft="73.1249989103526,324.45614606896" />
+        <NodeLayout
+          Size="174.666666666667,42"
           Id="Package\Is Errored in Tenant?"
-          TopLeft="92,293" />
+          TopLeft="85.250000204891,543.000004159777" />
         <NodeLayout
           Size="196,42"
           Id="Package\Log Invalid Datalist Error"
-          TopLeft="692,190" />
+          TopLeft="773,223" />
         <NodeLayout
-          Size="179,42"
+          Size="178.666666666667,42"
           Id="Package\PURGE INT DB DATA"
-          TopLeft="92,380" />
+          TopLeft="82.5000001117588,620.157898767833" />
         <NodeLayout
           Size="186,42"
           Id="Package\PURGE PLAN DB DATA"
-          TopLeft="94,50" />
+          TopLeft="78.7500000931323,37.7894730402822" />
         <NodeLayout
-          Size="273,42"
-          Id="Package\PURGE TENANT DB DATA IN ORACLE DB"
-          TopLeft="47,216" />
+          Size="200,42"
+          Id="Package\PURGE TENANT DB DATA"
+          TopLeft="76.6250000651925,429.789477200059" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\PURGE TENANT DB DLI DATA"
+          TopLeft="71.874998928979,231.947372786887" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="382,70.5">
+          TopLeft="533,79">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-102,0"
+              EndConnector="339.5,56"
               Start="0,0"
-              End="-94.5,0">
+              End="339.5,48.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-94.5,0" />
+                    End="0,24" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24"
+                    Point2="0,28"
+                    Point3="4,28" />
+                  <mssgle:LineSegment
+                    End="335.5,28" />
+                  <mssgle:CubicBezierSegment
+                    Point1="335.5,28"
+                    Point2="339.5,28"
+                    Point3="339.5,32" />
+                  <mssgle:LineSegment
+                    End="339.5,48.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-55.25,5,16,16"
+              BoundingBox="161.75,33,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="592,72">
+          TopLeft="871.75,177">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="93,0"
+              EndConnector="0,46"
               Start="0,0"
-              End="85.5,0">
+              End="0,38.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="85.5,0" />
+                    End="0,38.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="34.75,5,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 10]"
-          TopLeft="790.25,95">
+          TopLeft="172.208333491658,585.000004159777">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,95"
+              EndConnector="0,35.1578946080566"
               Start="0,0"
-              End="0,87.5">
+              End="0,27.6578946080566">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,87.5" />
+                    End="0,27.6578946080566" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-8,5.8289473040283,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 11]"
-          TopLeft="788.25,232">
+          TopLeft="266.875000046566,159.368420589003">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,88"
+              EndConnector="161.249999385327,0"
               Start="0,0"
-              End="0,80.5">
+              End="153.749999385327,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,80.5" />
+                    End="153.749999385327,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="68.8749996926636,5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 13]"
+          TopLeft="170.166665586332,273.947372786887">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.5087732820738"
+              Start="0,0"
+              End="0,43.0087732820738">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.0087732820738" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 14]"
+          TopLeft="138.013887799241,367.122812735627">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="38.6111122659511,62.6666644644322"
+              Start="0,0"
+              End="38.6111122659511,55.1666644644322">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.3795645265107" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.3795645265107"
+                    Point2="0,25.3795645265107"
+                    Point3="4,25.3795645265107" />
+                  <mssgle:LineSegment
+                    End="34.6111122659511,25.3795645265107" />
+                  <mssgle:CubicBezierSegment
+                    Point1="34.6111122659511,25.3795645265107"
+                    Point2="38.6111122659511,25.3795645265107"
+                    Point3="38.6111122659511,29.3795645265107" />
+                  <mssgle:LineSegment
+                    End="38.6111122659511,55.1666644644322" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="11.3055561329755,30.3795645265107,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 15]"
+          TopLeft="198.90277668813,367.122812735627">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="297.972223060413,179.140349512065"
+              Start="0,0"
+              End="297.972223060413,171.640349512065">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.5505992476047" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,68.5505992476047"
+                    Point2="0,72.5505992476047"
+                    Point3="4,72.5505992476047" />
+                  <mssgle:LineSegment
+                    End="293.972223060413,72.5505992476047" />
+                  <mssgle:CubicBezierSegment
+                    Point1="293.972223060413,72.5505992476047"
+                    Point2="297.972223060413,72.5505992476047"
+                    Point3="297.972223060413,76.5505992476047" />
+                  <mssgle:LineSegment
+                    End="297.972223060413,171.640349512065" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="140.986111530206,77.5505992476047,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="185.25,173">
+          TopLeft="870.75,265">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,43"
+              EndConnector="0,40"
               Start="0,0"
-              End="0,35.5">
+              End="0,32.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.5" />
+                    End="0,32.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,9.75,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="182.5,258">
+          TopLeft="428,58.3947365201411">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,35"
+              EndConnector="-163.249999906868,0"
               Start="0,0"
-              End="0,27.5">
+              End="-155.749999906868,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.5" />
+                    End="-155.749999906868,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-85.8749999534339,5,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="271,313.5">
+          TopLeft="174.604166801708,471.789477200059">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="102,0"
+              EndConnector="0,71.2105269597174"
               Start="0,0"
-              End="94.5,0">
+              End="0,63.7105269597174">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="94.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="39.25,5,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="181.5,422">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,50"
-              Start="0,0"
-              End="0,42.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,42.5" />
+                    End="0,63.7105269597174" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1840,67 +2009,87 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="264,496.25">
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="259.916666871558,565.631583203734">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="116,0"
+              EndConnector="123.958332876985,0"
               Start="0,0"
-              End="108.5,0">
+              End="116.458332876985,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="108.5,0" />
+                    End="116.458332876985,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="46.25,5,16,16"
+              BoundingBox="50.2291664384926,5,16,16"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="171.687500079162,662.157898767833">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.6666656878956"
+              Start="0,0"
+              End="0,18.1666656878956">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.1666656878956" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="181.5,337">
+          TopLeft="174.312500069849,79.7894730402822">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,43"
+              EndConnector="0,57.842105391944"
               Start="0,0"
-              End="0,35.5">
+              End="0,50.342105391944">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.5" />
+                    End="0,50.342105391944" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,9.75,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 8]"
-          TopLeft="187,92">
+          TopLeft="174.374999487773,179.631578432226">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,39"
+              EndConnector="0,52.3157943546604"
               Start="0,0"
-              End="0,31.5">
+              End="0,44.8157943546604">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5" />
+                    End="0,44.8157943546604" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1911,25 +2100,25 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 9]"
-          TopLeft="279,153">
+          TopLeft="252.2083333799,711.473687616907">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="96,0"
+              EndConnector="148.041666377957,0"
               Start="0,0"
-              End="88.5,0">
+              End="140.541666377957,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="88.5,0" />
+                    End="140.541666377957,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="36.25,5,16,16"
+              BoundingBox="62.2708331889784,5,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1942,27 +2131,27 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="171,42"
-          Id="Package\Generate INT Error Report\INT OLE DB Source"
-          TopLeft="338,26" />
-        <NodeLayout
           Size="172,42"
           Id="Package\Generate INT Error Report\Flat File Destination"
-          TopLeft="336,131" />
+          TopLeft="527,181" />
+        <NodeLayout
+          Size="170.666666666667,42"
+          Id="Package\Generate INT Error Report\INT OLE DB Source"
+          TopLeft="533,52" />
         <EdgeLayout
           Id="Package\Generate INT Error Report.Paths[OLE DB Source Output]"
-          TopLeft="422.75,68">
+          TopLeft="615.75,94">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,63"
+              EndConnector="0,87"
               Start="0,0"
-              End="0,55.5">
+              End="0,79.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,55.5" />
+                    End="0,79.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1980,40 +2169,35 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Generate PLAN Error Report">
+    design-time-name="Package\Generate PL Error Report">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="178,42"
-          Id="Package\Generate PLAN Error Report\PLAN OLE DB Source"
-          TopLeft="547,39" />
-        <NodeLayout
           Size="172,42"
-          Id="Package\Generate PLAN Error Report\Flat File Destination"
-          TopLeft="549,173" />
+          Id="Package\Generate PL Error Report\Flat File Destination"
+          TopLeft="535,181" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\Generate PL Error Report\PLAN OLE DB Source"
+          TopLeft="534,54" />
         <EdgeLayout
-          Id="Package\Generate PLAN Error Report.Paths[OLE DB Source Output]"
-          TopLeft="635.5,81">
+          Id="Package\Generate PL Error Report.Paths[OLE DB Source Output]"
+          TopLeft="622,96">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,92"
+              EndConnector="0,85"
               Start="0,0"
-              End="0,84.5">
+              End="0,77.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,84.5" />
+                    End="0,77.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2026,7 +2210,65 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Generate PLAN Error Report\PLAN OLE DB Source">
+    design-time-name="Package\Generate PL Error Report\PLAN OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Generate Report">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Generate Report\Flat File Destination"
+          TopLeft="527,181" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Generate Report\OLE DB Source"
+          TopLeft="529,36" />
+        <EdgeLayout
+          Id="Package\Generate Report.Paths[OLE DB Source Output]"
+          TopLeft="604,78">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9,103"
+              Start="0,0"
+              End="9,95.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,47.5"
+                    Point2="0,51.5"
+                    Point3="4,51.5" />
+                  <mssgle:LineSegment
+                    End="5,51.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5,51.5"
+                    Point2="9,51.5"
+                    Point3="9,55.5" />
+                  <mssgle:LineSegment
+                    End="9,95.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Generate Report\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2039,44 +2281,44 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Generate Report">
+    design-time-name="Package\Generate TENANT Error Report">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="187,42"
-          Id="Package\Generate Report\TENANT Oracle Source"
-          TopLeft="512,38" />
-        <NodeLayout
           Size="172,42"
-          Id="Package\Generate Report\Flat File Destination"
-          TopLeft="573,163" />
+          Id="Package\Generate TENANT Error Report\Flat File Destination"
+          TopLeft="527,181" />
+        <NodeLayout
+          Size="193.333333333334,42"
+          Id="Package\Generate TENANT Error Report\TENANT OLE DB Source"
+          TopLeft="533,52" />
         <EdgeLayout
-          Id="Package\Generate Report.Paths[Oracle Source Output]"
-          TopLeft="605.5,80">
+          Id="Package\Generate TENANT Error Report.Paths[OLE DB Source Output]"
+          TopLeft="629.5,94">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="53.5,83"
+              EndConnector="-16.5,87"
               Start="0,0"
-              End="53.5,75.5">
+              End="-16.5,79.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.5" />
+                    End="0,39.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,37.5"
-                    Point2="0,41.5"
-                    Point3="4,41.5" />
+                    Point1="0,39.5"
+                    Point2="0,43.5"
+                    Point3="-4,43.5" />
                   <mssgle:LineSegment
-                    End="49.5,41.5" />
+                    End="-12.5,43.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="49.5,41.5"
-                    Point2="53.5,41.5"
-                    Point3="53.5,45.5" />
+                    Point1="-12.5,43.5"
+                    Point2="-16.5,43.5"
+                    Point3="-16.5,47.5" />
                   <mssgle:LineSegment
-                    End="53.5,75.5" />
+                    End="-16.5,79.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2089,70 +2331,11 @@ WHERE B.content_id  = '' and INSTR(B.content_id, '.DataList.')&gt;0</DTS:Variabl
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Generate Report\TENANT Oracle Source">
+    design-time-name="Package\Generate TENANT Error Report\TENANT OLE DB Source">
     <Properties>
       <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
+        <Name>DataSourceViewID</Name>
       </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Generate TENANT Error Report">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="181,42"
-          Id="Package\Generate TENANT Error Report\Tenant Oracle Source"
-          TopLeft="250,47" />
-        <NodeLayout
-          Size="172,42"
-          Id="Package\Generate TENANT Error Report\Flat File Destination"
-          TopLeft="322,149" />
-        <EdgeLayout
-          Id="Package\Generate TENANT Error Report.Paths[Oracle Source Output]"
-          TopLeft="340.5,89">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="67.5,60"
-              Start="0,0"
-              End="67.5,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="4,30" />
-                  <mssgle:LineSegment
-                    End="63.5,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="63.5,30"
-                    Point2="67.5,30"
-                    Point3="67.5,34" />
-                  <mssgle:LineSegment
-                    End="67.5,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Generate TENANT Error Report\Tenant Oracle Source">
-    <Properties>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
