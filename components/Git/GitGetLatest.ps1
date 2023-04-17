@@ -50,7 +50,7 @@ Function ProcessRepo()
 	$inRepoFolder = $args[2]
 
 	# Use the repoName as the repoFolder if a folder name was not provided. 
-    if (($null -eq $inRepoFolder) -or ($inRepoFolder -eq ""))
+	if (($null -eq $inRepoFolder) -or ($inRepoFolder -eq ""))
 	{
 		$inRepoFolder = $inRepoName;
 	}
@@ -65,11 +65,11 @@ Function ProcessRepo()
 
 	Set-Location -Path $inRepoRootFolder -ErrorAction Stop
 	if (Test-Path -Path $inRepoFolder) 
-    {	
+	{	
 		Set-Location $inRepoFolder
 
 		if (git rev-parse --is-inside-work-tree) 
-        {
+		{
 			$currentBranch = &git rev-parse --abbrev-ref HEAD
 			
 			PullRepo $currentBranch
@@ -78,7 +78,7 @@ Function ProcessRepo()
 		Set-Location $inRepoRootFolder
 	}
 	else
-    {
+	{
 		CloneRepo $inRepoName $inRepoFolder
 	}
 }
@@ -131,7 +131,7 @@ Function PullRepo()
 				{ 
 					Write-Output ""
 					Write-Output "-------------------------------------------------------------------"
-				    Write-Output "EXIT PROCESSING"
+					Write-Output "EXIT PROCESSING"
 					Write-Output ""
 					Exit 
 				}
@@ -139,8 +139,8 @@ Function PullRepo()
 		}	
 	}
 	
-	Write-Output "COMMAND:        git pull --all --rebase"
-	git pull --all --rebase	
+	Write-Output "COMMAND:        git pull --all"
+	git pull --all
 }
 
 #-------------------------------------------------------------------
@@ -191,7 +191,7 @@ Function CloneRepo()
 	if ($cloneThisRepo -eq $true)
 	{
 		Set-Location $inRepoRootFolder
-	 	git clone https://github.com/mygainwell/$inRepoName $inRepoFolder
+		git clone https://github.com/mygainwell/$inRepoName $inRepoFolder
 	}
 	else
 	{
