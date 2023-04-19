@@ -199,6 +199,25 @@ Function CloneRepo()
 	}
 }
 
+#-------------------------------------------------------------------
+# Display error for the bad parameter
+#
+# Parameters:    
+#   None
+#-------------------------------------------------------------------
+Function ShowBadParameterError()
+{
+		Write-Output ""
+		Write-Output "Parameter invalid.  Must specify a script file containing the Git repositories to process."
+		Write-Output "Example if the script file is in the same folder with this script:"
+		Write-Output "    GitGetLatest.ps1 MMS.ps1"
+		Write-Output "Example with fully qualified script name:"
+		Write-Output "    GitGetLatest.ps1 c:\ua3\source\mms-cms-util\components\git\MMS.ps1"
+		Write-Output ""
+
+		Exit
+}
+
 #*******************************************************************
 # In-line code
 #*******************************************************************
@@ -210,24 +229,23 @@ Function CloneRepo()
 $m_inRepoListScript = $args[0]
 $mRepoListScriptFullPath = $m_inRepoListScript
 
-if ((Test-Path -Path $mRepoListScriptFullPath -PathType leaf) -eq $false)
+if ([string]::IsNullOrEmpty($mRepoListScriptFullPath))
+{
+	ShowBadParameterError
+}
+
+if ((Test-Path -Path $m_inRepoListScript -PathType leaf) -eq $false)
 {
 	# This is the path where this script is running
-	$myPath = Split-Path -parent $MyInvocation.MyCommand.Definition
-	$mRepoListScriptFullPath = "$myPath\$m_inRepoListScript"
-	if ((Test-Path -Path $mRepoListScriptFullPath -PathType leaf) -eq $false)
+	$myPath = $PSScriptRoot
+	$m_inRepoListScript = "$myPath\$m_inRepoListScript"
+	if ((Test-Path -Path $m_inRepoListScript -PathType leaf) -eq $false)
 	{
-		Write-Output ""
-		Write-Output "Parameter invalid.  Must specify a script file containing the Git repositories to process."
-		Write-Output "Example if the script file is in the same folder with this script:"
-		Write-Output "    GitGetLatest.ps1 MMS.ps1"
-		Write-Output "Example with fully qualified script name:"
-		Write-Output "    GitGetLatest.ps1 c:\ua3\source\mms-cms-util\components\git\MMS.ps1"
-		Write-Output ""
-
-		Exit
+		ShowBadParameterError
 	}
 }
+
+$mRepoListScriptFullPath = Resolve-Path -LiteralPath $m_inRepoListScript
 
 #
 # Ask about clearing the nuget packages folder
@@ -245,6 +263,7 @@ if ($clearUserNugetFolder -eq 1)
 	Set-Location $env:USERPROFILE\.nuget\packages\
 	Remove-Item -Recurse -Force -Path "hpp.*"
 	Write-Output "PACKAGES CLEARED"
+    Set-Location $PSScriptRoot
 }
 
 # Get option for when to prompt the user
