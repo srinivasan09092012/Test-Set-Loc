@@ -8,6 +8,7 @@ using HP.HSP.UA3.Core.BAS.CQRS.Base;
 using HPE.HSP.UA3.Core.API.Logger;
 using System;
 using System.Configuration;
+using System.IO;
 using WarmUpProvider.Helpers;
 
 namespace WarmUpProvider.Console
@@ -18,12 +19,13 @@ namespace WarmUpProvider.Console
         {
             try
             {
+                //Setting this so the service can access EndpointInformation.json file
+                Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
                 System.Console.WriteLine("Starting warming up endpoints........");
                 BASUnityContainer.Initialize();
                 InitializeInstrumentationSettings();
                 new WarmUpHelper().StartUp();
                 System.Console.WriteLine("Warming up endpoints completed. All logs are available under 'Logs\\Utility\\Warm Up Provider Console' folder.");
-                System.Console.ReadLine();
             }
             catch (Exception ex)
             {
