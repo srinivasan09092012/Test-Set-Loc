@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4CC1E7AD-0A25-456E-AAD5-3B30A45D58BF}"
 	ProjectSection(SolutionItems) = preProject
@@ -27,8 +27,8 @@ Global
 		{103F2FC5-0E0E-4F76-8F65-70A5BA5491B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{103F2FC5-0E0E-4F76-8F65-70A5BA5491B7}.Debug|x64.ActiveCfg = Debug|x64
 		{103F2FC5-0E0E-4F76-8F65-70A5BA5491B7}.Debug|x64.Build.0 = Debug|x64
-		{103F2FC5-0E0E-4F76-8F65-70A5BA5491B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{103F2FC5-0E0E-4F76-8F65-70A5BA5491B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{103F2FC5-0E0E-4F76-8F65-70A5BA5491B7}.Release|Any CPU.ActiveCfg = Release|x64
+		{103F2FC5-0E0E-4F76-8F65-70A5BA5491B7}.Release|Any CPU.Build.0 = Release|x64
 		{103F2FC5-0E0E-4F76-8F65-70A5BA5491B7}.Release|x64.ActiveCfg = Release|x64
 		{103F2FC5-0E0E-4F76-8F65-70A5BA5491B7}.Release|x64.Build.0 = Release|x64
 		{2564A433-6EB4-4B76-8190-4F3E5809D097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -43,8 +43,8 @@ Global
 		{5A7BC511-D830-4651-A264-62CA9A820E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A7BC511-D830-4651-A264-62CA9A820E59}.Debug|x64.ActiveCfg = Debug|x64
 		{5A7BC511-D830-4651-A264-62CA9A820E59}.Debug|x64.Build.0 = Debug|x64
-		{5A7BC511-D830-4651-A264-62CA9A820E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5A7BC511-D830-4651-A264-62CA9A820E59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A7BC511-D830-4651-A264-62CA9A820E59}.Release|Any CPU.ActiveCfg = Release|x64
+		{5A7BC511-D830-4651-A264-62CA9A820E59}.Release|Any CPU.Build.0 = Release|x64
 		{5A7BC511-D830-4651-A264-62CA9A820E59}.Release|x64.ActiveCfg = Release|x64
 		{5A7BC511-D830-4651-A264-62CA9A820E59}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
@@ -53,20 +53,5 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D2ABE49B-9088-4701-B221-A3AB77BE20DF}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://payerportfolio.visualstudio.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = WarmUpProvider.Console\\WarmUpProvider.Console.csproj
-		SccProjectName1 = WarmUpProvider.Console
-		SccLocalPath1 = WarmUpProvider.Console
-		SccProjectUniqueName2 = WarmUpProvider\\WarmUpProvider.csproj
-		SccProjectName2 = WarmUpProvider
-		SccLocalPath2 = WarmUpProvider
-		SccProjectUniqueName3 = WarmUpProvider.Service\\WarmUpProvider.Service.csproj
-		SccProjectName3 = WarmUpProvider.Service
-		SccLocalPath3 = WarmUpProvider.Service
 	EndGlobalSection
 EndGlobal
