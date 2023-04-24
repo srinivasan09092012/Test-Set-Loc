@@ -1,0 +1,210 @@
+@echo off
+:kill
+taskkill /im ZSA* /f >NUL
+goto kill
+
+
+C:\UA3\Source\Core\Dev\API\Logger\CopyPackageToUserProfile.bat
+C:\UA3\Source\Core\Dev\API\Logger\Test.bat
+
+
+if exists %LocalPackageProjectFolder%
+(
+	echo found %LocalPackageProjectFolder%
+	goto :EnterOption
+)
+if exists %LocalPackagesFolder%
+(
+	echo found %LocalPackagesFolder%
+	goto :EnterOption
+)
+
+ActiveConfiguration.
+Configuration name: Debug
+Configuration property: DebugSymbols       throws exception
+Configuration property: LanguageVersion    10.0
+Configuration property: DocumentationFile  throws exception
+Configuration property: OutputPath         "bin\\Debug\\net6.0\\"
+
+NoStdLib
+Configuration property: RunCodeAnalysis
+Configuration property: CodeAnalysisUseTypeNameInSuppression
+Configuration property: CodeAnalysisInputAssembly
+Configuration property: ErrorReport
+Configuration property: CodeAnalysisDictionaries
+Configuration property: GenerateSerializationAssemblies
+Configuration property: CodeAnalysisModuleSuppressionsFile
+Configuration property: ExtenderCATID
+Configuration property: StartWorkingDirectory
+Configuration property: Optimize
+Configuration property: DocumentationFile
+Configuration property: StartPage
+Configuration property: OutputPath
+Configuration property: TreatWarningsAsErrors
+Configuration property: EnableASPDebugging
+Configuration property: IncrementalBuild
+Configuration property: CodeAnalysisFailOnMissingRules
+Configuration property: CodeAnalysisLogFile
+Configuration property: DefineConstants
+Configuration property: UseVSHostingProcess
+Configuration property: StartProgram
+Configuration property: DefineDebug
+Configuration property: CodeAnalysisIgnoreBuiltInRules
+Configuration property: CodeAnalysisRuleSetDirectories
+Configuration property: CodeAnalysisCulture
+Configuration property: CodeAnalysisOverrideRuleVisibilities
+Configuration property: CodeAnalysisRuleAssemblies
+Configuration property: DefineTrace
+Configuration property: DebugSymbols
+Configuration property: CodeAnalysisIgnoreBuiltInRuleSets
+Configuration property: NoWarn
+Configuration property: ExtenderNames
+Configuration property: CodeAnalysisRuleSet
+Configuration property: CodeAnalysisIgnoreGeneratedCode
+Configuration property: EnableSQLServerDebugging
+Configuration property: BaseAddress
+Configuration property: RemoteDebugEnabled
+Configuration property: StartURL
+Configuration property: AllowUnsafeBlocks
+Configuration property: TreatSpecificWarningsAsErrors
+Configuration property: EnableUnmanagedDebugging
+Configuration property: StartWithIE
+Configuration property: PlatformTarget
+Configuration property: StartArguments
+Configuration property: __id
+Configuration property: IntermediatePath
+Configuration property: CodeAnalysisRuleDirectories
+Configuration property: DebugInfo
+Configuration property: CheckForOverflowUnderflow
+Configuration property: RemoteDebugMachine
+Configuration property: Prefer32Bit
+Configuration property: CodeAnalysisSpellCheckLanguages
+Configuration property: CodeAnalysisRules
+Configuration property: RegisterForComInterop
+Configuration property: FileAlignment
+Configuration property: StartAction
+Configuration property: EnableASPXDebugging
+Configuration property: ConfigurationOverrideFile
+Configuration property: WarningLevel
+Configuration property: RemoveIntegerChecks
+
+
+"C:\\UA3\\Source\\Core\\Dev\\API\\Logger\\HPP.Core.API.Logger\\bin\\Debug\\net6.0\\HPP.Core.API.Logger.deps.json"
+C:\Users\lcasey2\.nuget\packages\HPP.Core.API.Logger\22.2.124\HPP.Core.API.Logger.deps.json
+
+
+
+LocalPath: C:\UA3\Source\Core\Dev\API\Logger\HPP.Core.API.Logger
+FullPath: C:\UA3\Source\Core\Dev\API\Logger\HPP.Core.API.Logger\
+PackageId: HPP.Core.API.Logger
+GeneratePackageOnBuild: False
+RootNamespace: HPP.Core.API.Logger
+OutputFileName: HPP.Core.API.Logger.dll
+Version: 22.2.124
+FileVersion: 22.2.124.0
+GenerateAssemblyInfo: True
+FileName: HPP.Core.API.Logger.csproj
+DefaultNamespace: HPP.Core.API.Logger
+AssemblyName: HPP.Core.API.Logger
+FullProjectFileName: C:\UA3\Source\Core\Dev\API\Logger\HPP.Core.API.Logger\HPP.Core.API.Logger.csproj
+TargetFrameworks: net6.0
+FriendlyTargetFramework: net6.0
+AssemblyVersion: 22.2.124.0
+
+TargetFrameworkMonikers: .NETCoreApp,Version=v6.0
+TargetFrameworkMoniker: .NETCoreApp,Version=v6.0
+PackageTags: Core logger, log4net
+OutputType: 2
+OutputTypeEx: 2
+
+Project property: GeneratePackageOnBuild: False
+
+
+Project property: PackageTags: Core logger, log4net
+Project property: PackageIcon: 
+Project property: OutputType: 2
+Project property: OutputName: 
+Project property: Product: HPP.Core.API.Logger
+Project property: LocalPath: C:\UA3\Source\Core\Dev\API\Logger\HPP.Core.API.Logger
+Project property: SupportedTargetFrameworks: 
+Project property: StartupObject: 
+Project property: FullPath: C:\UA3\Source\Core\Dev\API\Logger\HPP.Core.API.Logger\
+Project property: RunAnalyzersDuringBuild: True
+Project property: Description: 
+		Used to log debug, info, warning, error and fatal details. Supports multiple appenders like rolling file, console, etc.,
+
+		***IMPORTANT***
+		USE THIS PACKAGE ONLY WHEN YOU ARE USING .NET 6.0 AND HIGHER
+	
+Project property: DelaySign: 
+Project property: IISExpressLaunchUrl: 
+Project property: Copyright: Gainwell Technologies, Copyright (c) 2022
+Project property: MyType: 
+The thread 0x4030 has exited with code 0 (0x0).
+Project property: PackageId: HPP.Core.API.Logger
+Project property: RepositoryType: 
+Project property: AssemblyOriginatorKeyFile: 
+Project property: ProjectUrl: https://localhost:8838
+The thread 0x6e9c has exited with code 0 (0x0).
+Project property: TargetFSharpCoreVersion: 
+
+The thread 0x53ec has exited with code 0 (0x0).
+The thread 0x3994 has exited with code 0 (0x0).
+Project property: ActiveDebugProfile: 
+The thread 0x3618 has exited with code 0 (0x0).
+The thread 0x4e54 has exited with code 0 (0x0).
+The thread 0xa1a8 has exited with code 0 (0x0).
+The thread 0x7cd4 has exited with code 0 (0x0).
+Project property: TargetFrameworkMonikers: .NETCoreApp,Version=v6.0
+Project property: SSLUrl: 
+Project property: AuthenticationMode: 
+Project property: SSLEnabled: False
+Project property: RootNamespace: HPP.Core.API.Logger
+Project property: PackageReleaseNotes: 
+Project property: RepositoryUrl: 
+Project property: OutputFileName: HPP.Core.API.Logger.dll
+Project property: Version: 22.2.124
+Project property: PackageLicenseUrl: 
+Project property: GenerateAssemblyInfo: True
+The thread 0x2118 has exited with code 0 (0x0).
+Project property: EnableNETAnalyzers: True
+The thread 0x33e8 has exited with code 0 (0x0).
+Project property: FileName: HPP.Core.API.Logger.csproj
+Project property: DefaultNamespace: HPP.Core.API.Logger
+Project property: ReferencePath: 
+Project property: TargetFrameworkMoniker: .NETCoreApp,Version=v6.0
+Project property: PackageLicenseFile: 
+Project property: PackageProjectUrl: 
+Project property: PackageRequireLicenseAcceptance: False
+Project property: AssemblyName: HPP.Core.API.Logger
+Project property: URL: C:\UA3\Source\Core\Dev\API\Logger\HPP.Core.API.Logger\HPP.Core.API.Logger.csproj
+Project property: OutputTypeEx: 2
+Project property: Win32ResourceFile: 
+The thread 0x51fc has exited with code 0 (0x0).
+Project property: AnalysisLevel: latest
+Project property: ApplicationIcon: 
+Project property: SignAssembly: False
+Project property: FileVersion: 22.2.124.0
+Project property: TargetFramework: 393216
+Project property: CanUseTargetFSharpCoreVersion: 
+Project property: NeutralLanguage: (none)
+Project property: AutoGenerateBindingRedirects: 
+Project property: RunPostBuildEvent: 
+Project property: RunAnalyzersDuringLiveAnalysis: True
+The thread 0x87e4 has exited with code 0 (0x0).
+Project property: Company: Gainwell Technologies
+Project property: FullProjectFileName: C:\UA3\Source\Core\Dev\API\Logger\HPP.Core.API.Logger\HPP.Core.API.Logger.csproj
+Project property: EnforceCodeStyleInBuild: False
+Project property: PostBuildEvent: 
+Project property: AnonymousAuthentication: False
+Project property: PackageIconUrl: 
+Project property: TargetFrameworks: net6.0
+Project property: WindowsAuthentication: False
+Project property: FriendlyTargetFramework: net6.0
+Project property: UserSecretsId: 
+Project property: PackageLicenseExpression: 
+Project property: ApplicationManifest: DefaultManifest
+Project property: PreBuildEvent: 
+Project property: AssemblyVersion: 22.2.124.0
+Project property: Authors: Gainwell Product Engineering Team
+Project property: Name: 
