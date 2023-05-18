@@ -1,0 +1,7 @@
+H:\ASQC\codebase\hpa-vue360-cs\112\Source\VUE360.QWCFHIPAAService\VUE360.QWCFHIPAAService.sln
+H:\ASQC\codebase\hpa-vue360-cs\112\Source\UserAccessSecurity\UserAccessSecurityService.sln
+H:\ASQC\codebase\hpa-vue360-cs\112\Source\Tools\VUE360RolesGenerator\VUE360RolesGenerator.sln
+H:\ASQC\codebase\hpa-vue360-cs\112\Source\VUE360.sln
+H:\ASQC\codebase\hpa-vue360-cs\112\Source\web application\Molina.VUE360.sln
+H:\ASQC\codebase\hpa-vue360-cs\112\Source\WCF Web Services\Molina.VUE360.WCFServices\Molina.VUE360.WCFServices.sln
+H:\ASQC\codebase\hpa-vue360-cs\112\Source\VUE360.QWCFService\VUE360.QWCFService.sln

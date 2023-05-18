@@ -1,0 +1,11 @@
+/src/main-sc/components/BAS/CLIA/HP.HSP.UA3.Screening.BAS.CLIA.sln
+/src/main-sc/components/BAS/Credentials/HP.HSP.UA3.Screening.BAS.Credentials.sln
+/src/main-sc/components/BAS/DEA/HP.HSP.UA3.Screening.BAS.DEA.sln
+/src/main-sc/components/BAS/LEIESvc/HP.HSP.UA3.Screening.BAS.LEIESvc.sln
+/src/main-sc/components/BAS/MCSIS/HP.HSP.UA3.Screening.BAS.MCSIS.sln
+/src/main-sc/components/BAS/NPPES/HP.HSP.UA3.Screening.BAS.NPPES.sln
+/src/main-sc/components/BAS/PECOS/HP.HSP.UA3.Screening.BAS.PECOS.sln
+/src/main-sc/components/BAS/SAMCheck/HP.HSP.UA3.Screening.BAS.SAMCheck.sln
+/src/main-sc/components/BAS/SSNDeathMaster/HP.HSP.UA3.SSNDeathMaster.BAS.SSDMF.sln
+#Excluded Solutions
+#/src/main-sc/Test/PC01_CodedUI_Regression_Suite.sln

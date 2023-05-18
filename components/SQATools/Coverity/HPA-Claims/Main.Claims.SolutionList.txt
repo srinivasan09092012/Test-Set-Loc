@@ -1,0 +1,237 @@
+main-mms-cms-cef\components\QNXT\DataServices\AccountsReceivable\Src\QCSI Access AccountsReceivable\QCSI Access AccountsReceivable.sln
+main-mms-cms-cef\components\QNXT\DataServices\AccountsReceivable\Src\QCSI DAL AccountsReceivable\QCSI AccountsReceivable LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\Authorization\Src\QCSI Access Authorization\QCSI Access Authorization.sln
+main-mms-cms-cef\components\QNXT\DataServices\Authorization\Src\QCSI DAL Authorization\QCSI Authorization LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\Benefit\Src\QCSI Access Benefit\QCSI Access Benefit.sln
+main-mms-cms-cef\components\QNXT\DataServices\Benefit\Src\QCSI DAL Benefit\QCSI Benefit LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\CallTracking\Src\QCSI Access CallTracking\QCSI Access CallTracking.sln
+main-mms-cms-cef\components\QNXT\DataServices\CallTracking\Src\QCSI DAL CallTracking\QCSI CallTracking LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\CarrierProgram\Src\QCSI Access CarrierProgram\QCSI Access CarrierProgram.sln
+main-mms-cms-cef\components\QNXT\DataServices\CarrierProgram\Src\QCSI DAL CarrierProgram\QCSI CarrierProgram LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\CaseManagement\Src\QCSI Access CaseManagement\QCSI Access CaseManagement.sln
+main-mms-cms-cef\components\QNXT\DataServices\CaseManagement\Src\QCSI DAL CaseManagement\QCSI CaseManagement LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\Claim\Src\QCSI Access Claim\QCSI Access Claim.sln
+main-mms-cms-cef\components\QNXT\DataServices\Claim\Src\QCSI DAL Claim\QCSI Claim LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\ClaimEstimate\Src\QCSI Access ClaimEstimate\QCSI Access ClaimEstimate.sln
+main-mms-cms-cef\components\QNXT\DataServices\ClaimEstimate\Src\QCSI DAL ClaimEstimate\QCSI ClaimEstimate LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\ClaimFinanceCodes\Src\QCSI Access ClaimFinanceCodes\QCSI Access ClaimFinanceCodes.sln
+main-mms-cms-cef\components\QNXT\DataServices\ClaimFinanceCodes\Src\QCSI DAL ClaimFinanceCodes\QCSI ClaimFinanceCodes LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\Configuration\Src\QCSI Access Configuration\QCSI Access Configuration.sln
+main-mms-cms-cef\components\QNXT\DataServices\Configuration\Src\QCSI DAL Configuration\QCSI Configuration LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\Contract\Src\QCSI Access Contract\QCSI Access Contract.sln
+main-mms-cms-cef\components\QNXT\DataServices\Contract\Src\QCSI DAL Contract\QCSI Contract LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\DBTuner\Src\QCSI Access DBTuner\QCSI Access DBTuner.sln
+main-mms-cms-cef\components\QNXT\DataServices\DBTuner\Src\QCSI DAL DBTuner\QCSI DBTuner LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\EDI\Src\QCSI Access EDI\QCSI Access EDI.sln
+main-mms-cms-cef\components\QNXT\DataServices\EDI\Src\QCSI DAL EDI\QCSI EDI LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\Eligibility\Src\QCSI Access Eligibility\QCSI Access Eligibility.sln
+main-mms-cms-cef\components\QNXT\DataServices\Eligibility\Src\QCSI DAL Eligibility\QCSI Eligibility LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\Entity\Src\QCSI Access Entity\QCSI Access Entity.sln
+main-mms-cms-cef\components\QNXT\DataServices\Entity\Src\QCSI DAL Entity\QCSI Entity LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\FeeTable\Src\QCSI Access FeeTable\QCSI Access FeeTable.sln
+main-mms-cms-cef\components\QNXT\DataServices\FeeTable\Src\QCSI DAL FeeTable\QCSI FeeTable LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\ITS\Src\QCSI Access ITS\QCSI Access ITS.sln
+main-mms-cms-cef\components\QNXT\DataServices\ITS\Src\QCSI DAL ITS\QCSI ITS LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\MedicalCodes\Src\QCSI Access MedicalCodes\QCSI Access MedicalCodes.sln
+main-mms-cms-cef\components\QNXT\DataServices\MedicalCodes\Src\QCSI DAL MedicalCodes\QCSI MedicalCodes LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\MedicalPolicy\Src\QCSI Access MedicalPolicy\QCSI Access MedicalPolicy.sln
+main-mms-cms-cef\components\QNXT\DataServices\MedicalPolicy\Src\QCSI DAL MedicalPolicy\QCSI MedicalPolicy LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\MyHealthView\Src\QCSI Access MyHealthView\QCSI Access MyHealthView.sln
+main-mms-cms-cef\components\QNXT\DataServices\MyHealthView\Src\QCSI DAL MyHealthView\QCSI MyHealthView LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\Payment\Src\QCSI Access Payment\QCSI Access Payment.sln
+main-mms-cms-cef\components\QNXT\DataServices\Payment\Src\QCSI DAL Payment\QCSI Payment LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\PBA\Src\QCSI Access PBA\QCSI Access PBA.sln
+main-mms-cms-cef\components\QNXT\DataServices\PBA\Src\QCSI DAL PBA\QCSI PBA LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\PlanEvent\Src\QCSI Access PlanEvent\QCSI Access PlanEvent.sln
+main-mms-cms-cef\components\QNXT\DataServices\PlanEvent\Src\QCSI DAL PlanEvent\QCSI PlanEvent LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\PremiumBilling\Src\QCSI Access PremiumBilling\QCSI Access PremiumBilling.sln
+main-mms-cms-cef\components\QNXT\DataServices\PremiumBilling\Src\QCSI DAL PremiumBilling\QCSI PremiumBilling LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\ProcessLog\Src\QCSI Access ProcessLog\QCSI Access ProcessLog.sln
+main-mms-cms-cef\components\QNXT\DataServices\ProcessLog\Src\QCSI DAL ProcessLog\QCSI ProcessLog LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\Provider\Src\QCSI Access Provider\QCSI Access Provider.sln
+main-mms-cms-cef\components\QNXT\DataServices\Provider\Src\QCSI DAL Provider\QCSI Provider LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\Reference\Src\QCSI Access Reference\QCSI Access Reference.sln
+main-mms-cms-cef\components\QNXT\DataServices\Reference\Src\QCSI DAL Reference\QCSI Reference LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\Reporting\Src\QCSI Access Reporting\QCSI Access Reporting.sln
+main-mms-cms-cef\components\QNXT\DataServices\Reporting\Src\QCSI DAL Reporting\QCSI Reporting LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\RestrictionGroups\Src\QCSI Access RestrictionGroups\QCSI Access RestrictionGroups.sln
+main-mms-cms-cef\components\QNXT\DataServices\RestrictionGroups\Src\QCSI DAL RestrictionGroups\QCSI RestrictionGroups LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\Scheduler\Src\QCSI Access Scheduler\QCSI Access Scheduler.sln
+main-mms-cms-cef\components\QNXT\DataServices\Scheduler\Src\QCSI DAL Scheduler\QCSI Scheduler LDL.sln
+main-mms-cms-cef\components\QNXT\DataServices\Sponsor\Src\QCSI Access Sponsor\QCSI Access Sponsor.sln
+main-mms-cms-cef\components\QNXT\DataServices\Sponsor\Src\QCSI DAL Sponsor\QCSI Sponsor LDL.sln
+main-mms-cms-cef\components\QNXT\Messages\Accounts Receivable\Src\QCSI Messages Accounts Receivable\QCSI Messages Accounts Receivable.sln
+main-mms-cms-cef\components\QNXT\Messages\Authorization\Src\QCSI Messages Authorization\QCSI Messages Authorization.sln
+main-mms-cms-cef\components\QNXT\Messages\Claim\Src\QCSI Messages Claim\QCSI Messages Claim.sln
+main-mms-cms-cef\components\QNXT\Messages\Common\Src\QCSI Messages CommonTypes\QCSI Messages CommonTypes.sln
+main-mms-cms-cef\components\QNXT\Messages\EDI\Src\QCSI Messages EDI\QCSI Messages EDI.sln
+main-mms-cms-cef\components\QNXT\Messages\IHMF Translation Manager\QNXT Messages Translation Manager\QNXT Messages Translation Manager.sln
+main-mms-cms-cef\components\QNXT\Messages\ITS SF Extract\Src\QCSI Messages ITS SF Extract\QCSI Messages ITS SF Extract.sln
+main-mms-cms-cef\components\QNXT\Messages\Member\Src\QCSI Messages Member\QCSI Messages Member.sln
+main-mms-cms-cef\components\QNXT\Messages\MyHealthView\Src\QCSI Messages MyHealthView\QCSI Messages myHealthView.sln
+main-mms-cms-cef\components\QNXT\Messages\Partner Interfaces\ClaimCheck\Src\QCSI Messages ClaimCheck\QCSI Messages ClaimCheck.sln
+main-mms-cms-cef\components\QNXT\Messages\Partner Interfaces\ICES\Src\QCSI ICESConfiguration Message\QCSI ICESConfiguration Message.sln
+main-mms-cms-cef\components\QNXT\Messages\Partner Interfaces\ICES\Src\QCSI Messages iCES Data\QCSI Messages iCES Data.sln
+main-mms-cms-cef\components\QNXT\Messages\Partner Interfaces\MyHB\Src\QCSI Messages MyHB\QCSI Messages MyHB.sln
+main-mms-cms-cef\components\QNXT\Messages\Payment\Src\QCSI Messages Payment\QCSI Messages Payment.sln
+main-mms-cms-cef\components\QNXT\Messages\Pre-Determination\Src\QCSI Messages PreDetermination\QCSI Messages PreDetermination.sln
+main-mms-cms-cef\components\QNXT\Messages\Premium Billing\Src\QCSI Messages Premium Billing\QCSI Messages Premium Billing.sln
+main-mms-cms-cef\components\QNXT\Messages\Provider\Src\QCSI Messages Provider\QCSI Messages Provider.sln
+main-mms-cms-cef\components\QNXT\Messages\Sponsor\Src\QCSI Messages Sponsor\QCSI Messages Sponsor.sln
+main-mms-cms-cef\components\QNXT\Messages\STS\QCSI Messages STS\QCSI Messages STS.sln
+main-mms-cms-cef\components\QNXT\Proxies\Accounts Receivable\Src\QCSI Proxy Accounts Receivable\QCSI Proxy Accounts Receivable.sln
+main-mms-cms-cef\components\QNXT\Proxies\Authorization\Src\QCSI Proxy Authorization\QCSI Proxy Authorization.sln
+main-mms-cms-cef\components\QNXT\Proxies\Claim\Src\QCSI Proxy Claim\QCSI Proxy Claim.sln
+main-mms-cms-cef\components\QNXT\Proxies\EDI\Src\QCSI Proxy EDI\QCSI Proxy EDI.sln
+main-mms-cms-cef\components\QNXT\Proxies\IHMF Translation Manager\QNXT Proxy Translation Manager\QNXT Proxy Translation Manager.sln
+main-mms-cms-cef\components\QNXT\Proxies\ITS SF Extract\Src\QCSI Proxy ITS SF Extract\QCSI Proxy ITS SF Extract.sln
+main-mms-cms-cef\components\QNXT\Proxies\Member\Src\QCSI Member Proxy\QCSI Proxy Member.sln
+main-mms-cms-cef\components\QNXT\Proxies\MyHealthView\Src\QCSI Proxy MyHealthView\QCSI Proxy myHealthView.sln
+main-mms-cms-cef\components\QNXT\Proxies\Payment\Src\QCSI Payment Proxy\QCSI Proxy Payment.sln
+main-mms-cms-cef\components\QNXT\Proxies\Pre-Determination\Src\QCSI Proxy PreDetermination\QCSI Proxy PreDetermination.sln
+main-mms-cms-cef\components\QNXT\Proxies\Premium Billing\Src\QCSI Proxy Premium Billing\QCSI Proxy Premium Billing.sln
+main-mms-cms-cef\components\QNXT\Proxies\Provider\Src\QCSI Proxy Provider\QCSI Proxy Provider.sln
+main-mms-cms-cef\components\QNXT\Proxies\Sponsor\Src\QCSI Proxy Sponsor\QCSI Proxy Sponsor.sln
+main-mms-cms-cef\components\QNXT\Services\Src\Tools\TriZetto.Qnxt.Aggregation.Service.Configuration\TriZetto.Qnxt.Aggregation.Service.Configuration.sln
+main-mms-cms-cef\components\QNXT\Services\Src\TriZetto.Qnxt.Aggregation.TMSFileLoad.DataAccess\TriZetto.Qnxt.Aggregation.TMSFileLoad.DataAccess.sln
+main-mms-cms-cef\components\QNXT\Services\Src\TriZetto.Qnxt.Aggregation.WindowsService\TriZetto.Qnxt.Aggregation.WindowsService.sln
+main-mms-cms-cef\components\QNXT\Services\Src\TriZetto.Qnxt.ClaimCheckServices\TriZetto.Qnxt.ClaimCheckServices.sln
+main-mms-cms-cef\components\QNXT\Services\Src\TriZetto.Qnxt.ClaimCheckHostServices\TriZetto.Qnxt.ClaimCheckHostServices.sln
+main-mms-cms-cef\components\QNXT\Services\Src\TriZetto.Qnxt.DRGAPR_Services\TriZetto.Qnxt.DRGAPR_Services.sln
+main-mms-cms-cef\components\QNXT\Services\Src\TriZetto.Qnxt.iCES_IM_Services\TriZetto.Qnxt.iCES_IM_Services.sln
+main-mms-cms-cef\components\QNXT\Services\Src\TriZetto.Qnxt.OfficeServices\TriZetto.Qnxt.OfficeServices.sln
+main-mms-cms-cef\components\QNXT\Services\Src\Trizetto.QNXT.RulesProcessor\Trizetto.QNXT.RulesProcessor.sln
+main-mms-cms-cef\components\QNXT\Web Services\Src\Extension\QCSI Soap Extensions\QCSI Soap Extensions.sln
+main-mms-cms-cef\components\QNXT\Messages\Partner Interfaces\3MGPCS\Src\QCSI Messages 3MGPCS\QCSI Messages 3MGPCS.sln
+main-mms-cms-cef\components\QNXT\Messages\Partner Interfaces\ClaimsXten\Src\QCSI Messages ClaimsXten\QCSI Messages ClaimsXten.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Tools\Src\LinqToXSD Class Generator\Trizetto Xml Schema Linq\Trizetto Xml Schema Linq.sln
+main-mms-cms-cef\components\QNXT Connect\Trizetto.Connect.Utilities\Trizetto.Connect.Utilities.sln
+main-mms-cms-cef\components\QNXT Connect\5010\ASCs\HIPAA 278\QNXT HIPAA 278.sln
+main-mms-cms-cef\components\QNXT Connect\5010\ASCs\HIPAA Export 820\QNXT HIPAA 820 Export.sln
+main-mms-cms-cef\components\QNXT Connect\5010\ASCs\HIPAA Export 834\QNXT HIPAA 834 Export.sln
+main-mms-cms-cef\components\QNXT Connect\5010\ASCs\HIPAA Export 835\QNXT HIPAA 835 Export.sln
+main-mms-cms-cef\components\QNXT Connect\5010\ASCs\HIPAA Export 837\QNXT HIPAA 837 Export.sln
+main-mms-cms-cef\components\QNXT Connect\5010\ASCs\HIPAA Import 270\QNXT HIPAA 270 Import.sln
+main-mms-cms-cef\components\QNXT Connect\5010\ASCs\HIPAA Import 276\QNXT HIPAA 276 Import.sln
+main-mms-cms-cef\components\QNXT Connect\5010\ASCs\HIPAA Import 820\QNXT HIPAA 820 Import.sln
+main-mms-cms-cef\components\QNXT Connect\5010\ASCs\HIPAA Import 834\QNXT HIPAA 834 Import.sln
+main-mms-cms-cef\components\QNXT Connect\5010\ASCs\HIPAA Import 837\QNXT HIPAA 837 Import.sln
+main-mms-cms-cef\components\QNXT Connect\5010\Messages\HIPAA Messages\QNXT HIPAA 5010 Messages.sln
+main-mms-cms-cef\components\QNXT Connect\5010\Proxies\HIPAA Proxy\QNXT HIPAA 5010 Proxies.sln
+main-mms-cms-cef\components\QNXT Connect\AddInPortal\Src\Extensibility\QNXTConnectExtensibility.sln
+main-mms-cms-cef\components\QNXT Connect\Agent Configuration\Src\QCSI Connect Agent Config\QCSI Connect Agent Config.sln
+main-mms-cms-cef\components\QNXT Connect\BizTalk 2009\Src\Qcsi.Connect.Common\Src\Library\Qcsi.Connect.Common.sln
+main-mms-cms-cef\components\QNXT Connect\BizTalk 2009\Src\QNXT Connect Interfaces\QNXT Connect Interfaces.sln
+main-mms-cms-cef\components\QNXT Connect\BizTalk 2009\Src\QNXT HIPAA Inbound Postprocessor\QNXT HIPAA Inbound Postprocessor.sln
+main-mms-cms-cef\components\QNXT Connect\BizTalk 2009\Src\QNXT HIPAA Inbound Preprocessor\QNXT HIPAA Inbound Preprocessor.sln
+main-mms-cms-cef\components\QNXT Connect\BizTalk 2009\Src\Tools\BTSExplorer\BTSExplorer.sln
+main-mms-cms-cef\components\QNXT Connect\BizTalk 2009\Src\Tools\ConnectPartyManager\ConnectPartyManager.sln
+main-mms-cms-cef\components\QNXT Connect\BizTalk 2009\Src\TriZetto.Qnxt.Connect.Orchestration\TriZetto.Qnxt.Connect.Orchestration.sln
+main-mms-cms-cef\components\QNXT Connect\BizTalk 2009\Src\TriZetto.Qnxt.Connect.OrchestrationMessages\TriZetto.Qnxt.Connect.OrchestrationMessages.sln
+main-mms-cms-cef\components\QNXT Connect\BizTalk 2009\Src\TriZetto.Qnxt.Connect.Pipeline\TriZetto.Qnxt.Connect.Pipeline.sln
+main-mms-cms-cef\components\QNXT Connect\BizTalk 2009\Src\TriZetto.Qnxt.Connect.PipelineComponents\TriZetto.Qnxt.Connect.PipelineComponents.sln
+main-mms-cms-cef\components\QNXT Connect\BizTalk 2009\Src\TriZetto.Qnxt.Connect.PostProcessor\TriZetto.Qnxt.Connect.PostProcessor.sln
+main-mms-cms-cef\components\QNXT Connect\BizTalk 2009\Src\TriZetto.Qnxt.Connect.PreProcessor\TriZetto.Qnxt.Connect.PreProcessor.sln
+main-mms-cms-cef\components\QNXT Connect\BizTalk 2009\Src\TriZetto.Qnxt.Connect.Schemas.4010\TriZetto.Qnxt.Connect.Schemas.4010.sln
+main-mms-cms-cef\components\QNXT Connect\BizTalk 2009\Src\TriZetto.Qnxt.Connect.Schemas.5010\TriZetto.Qnxt.Connect.Schemas.5010.sln
+main-mms-cms-cef\components\QNXT Connect\BizTalk 2009\Src\TriZetto.Qnxt.Connect.Schemas.5010_835\TriZetto.Qnxt.Connect.Schemas.5010_835.sln
+main-mms-cms-cef\components\QNXT Connect\BizTalk 2009\Src\TriZetto.Qnxt.Connect.Schemas.5010_837_D\TriZetto.Qnxt.Connect.Schemas.5010_837_D.sln
+main-mms-cms-cef\components\QNXT Connect\BizTalk 2009\Src\TriZetto.Qnxt.Connect.Schemas.5010_837_I\TriZetto.Qnxt.Connect.Schemas.5010_837_I.sln
+main-mms-cms-cef\components\QNXT Connect\BizTalk 2009\Src\TriZetto.Qnxt.Connect.Schemas.5010_837_P\TriZetto.Qnxt.Connect.Schemas.5010_837_P.sln
+main-mms-cms-cef\components\QNXT Connect\BizTalk 2009\Src\TriZetto.Qnxt.Connect.Schemas.5010_999\TriZetto.Qnxt.Connect.Schemas.5010_999.sln
+main-mms-cms-cef\components\QNXT Connect\Custom820FileSplitter\Src\UI\Custom820FileSplitter.sln
+main-mms-cms-cef\components\QNXT Connect\HIPAA 278\SRC\ASC\Export278\MedManage278Export.sln
+main-mms-cms-cef\components\QNXT Connect\HIPAA 278\SRC\ASC\Import278\MedicalManagementHIPAAImport.sln
+main-mms-cms-cef\components\QNXT Connect\HIPAA 278\SRC\Common\Process278\Process278.sln
+main-mms-cms-cef\components\QNXT Connect\HIPAA Export 820\Src\ASC\820Export.sln
+main-mms-cms-cef\components\QNXT Connect\HIPAA Export 834\Src\ASC\EligibilityExport.sln
+main-mms-cms-cef\components\QNXT Connect\HIPAA Export 835\Src\ASC\QCSI HIPAA 835 Export.sln
+main-mms-cms-cef\components\QNXT Connect\HIPAA Export 837\Src\ASC\QCSI HIPAA 837 Export.sln
+main-mms-cms-cef\components\QNXT Connect\HIPAA Import 270\Src\ASC\EligibilityXlat270.sln
+main-mms-cms-cef\components\QNXT Connect\HIPAA Import 276\Src\ASC\276Xlat.sln
+main-mms-cms-cef\components\QNXT Connect\HIPAA Import 820\Src\ASC\820Xlat Import.sln
+main-mms-cms-cef\components\QNXT Connect\HIPAA Import 834\Src\ASC\EligibilityXlat.sln
+main-mms-cms-cef\components\QNXT Connect\HIPAA Import 837\Src\ASC\ClaimImport.sln
+main-mms-cms-cef\components\QNXT Connect\HIPAA Transform\QCSI HIPAA Transform.sln
+main-mms-cms-cef\components\QNXT Connect\Messages\Src\QCSI HIPAA Messages\QCSI HIPAA Messages.sln
+main-mms-cms-cef\components\QNXT Connect\Messages\Src\QCSI NCPDP Messages\QCSI NCPDP Messages.sln
+main-mms-cms-cef\components\QNXT Connect\NCPDP Export\Src\ASC\NCPDPClaimExport.sln
+main-mms-cms-cef\components\QNXT Connect\OrphanRetry\Src\Common\QCSI Orphan Retry Config\QCSI Orphan Retry Config.sln
+main-mms-cms-cef\components\QNXT Connect\OrphanRetry\Src\QService\Windows\QCSI Orphan Retry.sln
+main-mms-cms-cef\components\QNXT Connect\OrphanRetry\Src\UI\QCSI Orphan Retry GUI\QCSI Orphan Retry GUI.sln
+main-mms-cms-cef\components\QNXT Connect\Proxies\Src\QCSI HIPAA Proxy\QCSI HIPAA Proxy.sln
+main-mms-cms-cef\components\QNXT Connect\Proxies\Src\QCSI NCPDP Proxy\QCSI NCPDP Proxy.sln
+main-mms-cms-cef\components\QNXT Connect\QNXT Connect Explorer\Src\UI\Connect Explorer.sln
+main-mms-cms-cef\components\QNXT Connect\X12 File Merger\Src\UI\Mergerator.sln
+main-mms-cms-cef\components\QNXT Connect\X12 File Merger - 834\Src\UI\Mergerator.sln
+main-mms-cms-cef\components\QNXT\ASCs\Capitation\Src\QCSI ASC CapitationSetup\QCSI ASC CapitationSetup.sln
+main-mms-cms-cef\components\QNXT\ASCs\Carrier\Src\QCSI ASC Carrier\QCSI ASC CarrierProgram.sln
+main-mms-cms-cef\components\QNXT\ASCs\EDI\Src\QCSI ASC Client Custom EDI\QCSI ASC Client Custom EDI.sln
+main-mms-cms-cef\components\QNXT\ASCs\IHMF Translation Manager\QNXT ASC Translation Manager\QNXT ASC Translation Manager.sln
+main-mms-cms-cef\components\QNXT\ASCs\Partner Interfaces\ICES\Src\QCSI ICES TS\QCSI ICES TS.sln
+main-mms-cms-cef\components\QNXT\ASCs\Partner Interfaces\MyHB\Src\QCSI ASC FromMyHB\QCSI ASC FromMyHB.sln
+main-mms-cms-cef\components\QNXT\ASCs\Partner Interfaces\MyHB\Src\QCSI MyHB Services\QCSI MyHB Services.sln
+main-mms-cms-cef\components\QNXT\ASCs\Partner Interfaces\MyHB\Src\QCSI Security Token Helper\QCSI Security Token Helper.sln
+main-mms-cms-cef\components\QNXT\ASCs\Payment\Src\QCSI ASC CheckPrint\QCSI ASC CheckPrint.sln
+main-mms-cms-cef\components\QNXT\ASCs\Payment\Src\QCSI ASC PaymentSetup\QCSI ASC PaymentSetup.sln
+main-mms-cms-cef\components\QNXT\ASCs\Premium Billing\Src\QCSI ASC Premium Billing\QCSI ASC Premium Billing.sln
+main-mms-cms-cef\components\QNXT\ASCs\Provider\Src\QCSI ASC AutoAssignPCP\QCSI ASC AutoAssignPCP.sln
+main-mms-cms-cef\components\QNXT\ASCs\ResubmitProcess\Src\QCSI ASC ResubmitProcess\QCSI ASC ResubmitProcess.sln
+main-mms-cms-cef\components\QNXT\ASCs\Adjudication\Src\QCSI ASC Adjudication\ QCSI ASC Adjudication.sln
+main-mms-cms-cef\components\QNXT\ASCs\Partner Interfaces\3MGPCS\Src\HPA ASC 3MGPCS\HPA ASC 3MGPCS.sln
+main-mms-cms-cef\components\QNXT\ASCs\Partner Interfaces\ClaimsXten\src\HPA ASC ClaimsXten\HPA ASC ClaimsXten.sln
+main-mms-cms-cef\components\QNXT API\APIServices\Connect\HPP.ClaimAD.WebApi.Connect.sln
+main-mms-cms-cef\components\QNXT API\APIServices\Partner\HPP.ClaimAD.WebApi.Partner.sln
+main-mms-cms-cef\components\QNXT API\APIServices\ProcessLog\HPP.ClaimAD.WebApi.ProcessLog.sln
+main-mms-cms-cef\components\QNXT API\Core\HPP.ClaimAD.ApiServices.Core.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Authentication\Src\QService\QCSI Authentication Service.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Authentication\Src\QService\ClientHelper\QCSI Authentication.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\Extensibility\QFrameExtensibility.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\Globals\QCSI Globals.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\MsgRouter\MsgRouter.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\Process Log Wrapper\QCSI Process Log Wrapper.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\QCSI Activity Service Comps\QCSI Activity Service Comps.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\QCSI Activity Service Comps ES\QCSI Activity Service Comps ES.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\QCSI AdodbWrapper\QCSI AdodbWrapper.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\QCSI Internal Proxy\QCSI Internal Proxy.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\QCSI Message Service\Message Service.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\QCSI Message Store\QCSI Message Store.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\QCSI Process Execution\QCSI Process Execution.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\QCSI Service Enums\QCSI Service Enums.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\QFrame Common Messages\QFrame Common Messages.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\QFrame Internal Messages\QFrame Internal Messages.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\QIS Server Common\QIS Server Common.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\QIS XML Interfaces\QIS XML Interfaces.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\QIS XML Wrappers\QIS XML Wrappers.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\ServiceTransactionWrapper\QCSI Access Infrastructure\QCSI Access Infrastructure.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\ServiceTransactionWrapper\QCSI DAL Infrastructure\QCSI DAL Infrastructure.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\ServiceTransactionWrapper\ServiceTransactionWrapper\ServiceTransactionWrapper.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\UI\QCSI Globals Client\QCSI Globals Client.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\UI\QCSI Login\Login.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\UI\QCSI Wizard\QCSI Wizard.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\WindowsService\Distribution Hub\Distribution Hub.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\WindowsService\Execution Unit\Execution Unit.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Common\Src\WindowsService\QCSI Master Service\QCSI Master Service.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\CryptoProvider\Src\QService\QCSI Crypto Provider.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\DAL\Src\Data Locator\QCSI Data Locator.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\DAL\Src\Physical Data\QCSI Physical Data.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\IDSequence\Src\LDL\QCSI IDSequence LDL.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\IDSequence\Src\QService\QCSI IDSequence.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Performance Checkpoints\Src\LDL\QCSI Performance Checkpoints LDL.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Performance Checkpoints\Src\QService\QCSI Performance Checkpoints.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\ProcessLocator\src\LDL\QCSI Process Locator LDL.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\ProcessLocator\src\Service\ProcessLocator.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\ProcessLog\Src\Access\QCSI Process Access.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\ProcessLog\Src\LDL\QCSI Process Log DAL.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\ProcessLog\Src\QService\QCSI Process Log.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Qcsi.Diagnostics\Qcsi.Diagnostics.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\ThreadController\Src\QCSI Thread Pool\QCSI Thread Pool.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Tools\Src\LinqToXSD Class Generator\Trizetto Xml Schema Linq\Trizetto Xml Schema Linq.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Tools\Src\MessageStoreTest\MessageStoreTest.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Tools\Src\PackageQueries\PackageQueries.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\Tools\Src\WSGen\WSGen.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\TriZetto.Qnxt.Security\TriZetto.Qnxt.Security.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\TriZetto.Qnxt.Security.Auditing\Auditor\TriZetto.Qnxt.Security.Auditing.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\TriZetto.Qnxt.Security.Auditing\DAL.Access\TriZetto.Qnxt.Security.Dal.Access.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\TriZetto.Qnxt.Security.Auditing\DAL.LDL\TriZetto.Qnxt.Security.Dal.Ldl.sln
+main-mms-cms-cef\components\QFrame\Infrastructure\TriZetto.Qnxt.Security.Auditing\DAL.QService\TriZetto.Qnxt.Security.Dal.QService.sln

@@ -1,0 +1,7 @@
+/src/sis-inx-dms/components/api/DMSUtilityAPI/DMSUtilityApi.sln
+/src/sis-inx-dms/components/api/WorkflowInitiatorAPI/WorkflowInitiator.sln
+/src/sis-inx-dms/components/bas/DMSCommit/MMSDMCS.sln
+/src/sis-inx-dms/components/bas/DMSUpdateRetrieval/MMSDocumentWcfServiceP8.sln
+/src/sis-inx-workflow/components/bas/WorkflowAutomatedMatching/WorkflowAutomatedMatching.sln
+#Excluded from Scanning
+#path to excluded solution

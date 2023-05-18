@@ -1,0 +1,6 @@
+/src/main-tm/components/BAS/TaskManagement/HP.HSP.UA3.TaskManagement.BAS.TaskManagement.sln
+/src/main-tm/components/Batch/HPP.TM.Batch.BulkTaskRecall/HPP.TM.Batch.BulkTaskRecall.sln
+/src/main-tm/components/Batch/HPP.TM.Batch.TaskBulkLoad/HPP.TM.Batch.TaskBulkLoad.sln
+/src/main-tm/components/UX/HP.HSP.UA3.TaskManagement.UX.sln
+#Exclude Solutions
+#/src/main-tm/Reports/HPE.HSP.UA3.TaskManagement.Reports/HPE.HSP.UA3.TaskManagement.Reports.sln

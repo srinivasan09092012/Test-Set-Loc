@@ -1,0 +1,3 @@
+/src/main-mms-cms-mp/components/UX/HP.HSP.UA3.MemberPortal.UX.sln
+#Exclude from Scanning
+#/src/main-mms-cms-mp/Reports/HP.HSP.UA3.MemberPortal.Reports/HP.HSP.UA3.MemberPortal.Reports.sln

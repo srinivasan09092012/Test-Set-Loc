@@ -1,0 +1,3 @@
+/src/main-mms-cms-mcp/components/UX/HP.HSP.UA3.ManagedCarePortal.UX.sln
+#Excluded from Scanning
+#/src/main-mms-cms-mcp/Reports/HP.HSP.UA3.ManagedCarePortal.Reports/HP.HSP.UA3.ManagedCarePortal.Reports.sln

@@ -1,0 +1,6 @@
+/src/main-mms-cms-im/components/BAS/User/HP.HSP.UA3.IdentityManagement.BAS.User.sln
+/src/main-mms-cms-im/components/Batch/NISTActivityExtract/NISTADUserActivityExtract.sln
+/src/main-mms-cms-im/components/Batch/NISTADUserExtract/NISTADUserExtract.sln
+/src/main-mms-cms-im/components/UX/HP.HSP.UA3.IdentityManagement.UX.sln
+#Excluded from scans
+#/src/main-mms-cms-im/Reports/HP.HSP.UA3.IdentityManagement.Reports/HP.HSP.UA3.IdentityManagement.Reports.sln

@@ -1,0 +1,21 @@
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/Core/112/UX/HP.HSP.UA3.Core.UX.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/PlanManagement/112/BAS/Grouping/HP.HSP.UA3.PlanManagement.BAS.Grouping.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProgramIntegrity/112/BAS/PIBatchSvc/HP.HSP.UA3.ProgramIntegrity.BAS.PIBatchSvc.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProgramIntegrity/112/Batch/PMResultsProcess/HPE.UA3.PI.Batch.PMResults.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProgramIntegrity/112/Batch/SRProcess/HPE.HSP.UA3.ProgramIntegrity.Batch.SRProcess.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProgramIntegrity/112/Batch/TQResultProcess/HP.HSP.UA3.ProgramIntegrity.Batch.TQResultsProcess.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProgramIntegrity/112/BAS/PFEGrouper/MMS.ProgramIntegrity.BAS.PFEGrouper.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProgramIntegrityCT/112/BAS/CaseTracking/HP.HSP.UA3.ProgramIntegrityCT.BAS.CaseTracking.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderEnrollment/112/UX/HP.HSP.UA3.ProviderEnrollment.UX.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderManagement/112/BAS/CLIAProcess/HP.HSP.UA3.ProviderManagement.BAS.CLIAProcess.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderManagement/112/BAS/ProviderSvc/HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderManagement/112/Batch/MonthlyCredentials/MonthlyCredentials.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderManagement/112/Batch/NPPRImport/HPP.PM.Batch.NPPRImport.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderManagement/112/Batch/ProduceProviderScreeningExtract/ProduceProviderScreeningExtract.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderManagement/112/Batch/RevalidationNotify/HPE.UA3.PM.Batch.RevalidNotify/HPE.UA3.PM.Batch.RevalidNotify.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderManagement/112/K2 Workflow/NegativeProviderFindings/NegativeProviderFindings.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderManagement/112/K2 Workflow/OwnerCredentialing/OwnerCredentialingWorkflow.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderManagement/112/K2 Workflow/ProviderManagement/ProviderManagement.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderManagement/112/K2 Workflow/ProviderManagingEmployeeAssociation/ProviderManagingEmployeeAssociation.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderManagement/112/K2 Workflow/ProviderNetworkMaintenance/ProviderNetworkMaintenance.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderManagement/112/K2 Workflow/SubContractorCredentialing/SubContractorWorkFlow/SubContractorWorkFlow.sln

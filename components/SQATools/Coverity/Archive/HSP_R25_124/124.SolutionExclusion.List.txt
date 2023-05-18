@@ -1,0 +1,102 @@
+/Source/Administration/124/Batch/PIURExtract/PIURExtract.sln
+/Source/AuthDetermination/124/BAS/AuthDetermination/HP.HSP.UA3.AuthDetermination.BAS.AuthDetermination.sln
+/Source/AuthDetermination/124/BAS/X12.X5010_278/HPE.HSP.UA3.X12.X5010_278.sln
+/Source/AuthDetermination/124/UX/HP.HSP.UA3.AuthDetermination.UX.sln
+/Source/ClaimsManagement/124/BAS/ClaimsEDI/HP.HSP.UA3.ClaimsManagement.BAS.ClaimsEDI.sln
+/Source/ClaimsManagement/124/BAS/ClaimsManagement/HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.sln
+/Source/ClaimsManagement/124/BAS/NCPDP_D.0/HPE.HSP.UA3.NCPDP_D.0.sln
+/Source/ClaimsManagement/124/BAS/ServiceTest/HP.HSP.UA3.ClaimsManagement.BAS.ServiceTest.sln
+/Source/ClaimsManagement/124/BAS/X12.X5010_837/HPE.HSP.UA3.X12.X5010_837.sln
+/Source/ClaimsManagement/124/BAS/X212.X5010_276_277/HPE.HSP.UA3.X212.X5010_276_277.sln
+/Source/ClaimsManagement/124/UX/HP.HSP.UA3.ClaimsManagement.UX.sln
+/Source/ConfigurationManagement/124/Persistence/Persistence.sln
+/Source/Core/124/Batch/HPP.Core.Batch.TestJob/HPP.Core.Batch.TestJob.sln
+/Source/Core/124/Reports/HP.HSP.UA3.Core.Reports/HP.HSP.UA3.Core.Reports.sln
+/Source/DrugRebate/124/BAS/ServiceTest/HP.HSP.UA3.DrugRebate.BAS.ServiceTest.sln
+/Source/DrugRebate/124/Reports/HP.HSP.UA3.DrugRebate.Reports/HP.HSP.UA3.DrugRebate.Reports.sln
+/Source/DrugRebate/124/Tool/BatchDirectoryCheck/BatchDirectoryCheck.sln
+/Source/DrugRebatePortal/124/Reports/HP.HSP.UA3.DrugRebatePortal.Reports/HP.HSP.UA3.DrugRebatePortal.Reports.sln
+/Source/EmployeeMgmt/124/BAS/Employee/HP.HSP.UA3.EmployeeMgmt.BAS.Employee.sln
+/Source/EmployeeMgmt/124/UX/HP.HSP.UA3.EmployeeMgmt.UX.sln
+/Source/FinancialManagement/124/BAS/FinancialManagementSvc/HP.HSP.UA3.FinancialManagement.BAS.FinancialManagementSvc.sln
+/Source/IdentityManagement/124/Reports/HP.HSP.UA3.IdentityManagement.Reports/HP.HSP.UA3.IdentityManagement.Reports.sln
+/Source/Integration/124/Reports/HP.HSP.UA3.Integration.Reports/HP.HSP.UA3.Integration.Reports.sln
+/Source/KansasOnly/124/UX/HP.HSP.UA3.KansasOnly.UX.sln
+/Source/ManagedCare/124/BAS/ServiceTest/HP.HSP.UA3.ManagedCare.BAS.ServiceTest.sln
+/Source/ManagedCare/124/Batch/SSIS/SSIS.sln
+/Source/ManagedCare/124/Batch/SSIS_SQLServer/SSIS_SQLServer.sln
+/Source/ManagedCare/124/DB/SQLServer/SQL Scripts/Reporting/HP.HSP.ManagedCare.DWReports/HP.HSP.UA3.ManagedCare.DWReports.sln
+/Source/ManagedCare/124/DB/SQLServer/SQL Scripts/Reporting/HP.HSP.ManagedCare.SSIS/HP.HSP.UA3.ManagedCare.SSIS.sln
+/Source/ManagedCare/124/Reports/HP.HSP.UA3.ManagedCare.Reports/HP.HSP.ManagedCare.Reports/HP.HSP.UA3.ManagedCare.Reports.sln
+/Source/ManagedCarePortal/124/Reports/HP.HSP.UA3.ManagedCarePortal.Reports/HP.HSP.UA3.ManagedCarePortal.Reports.sln
+/Source/MemberManagement/124/BAS/Eligibility/HP.HSP.UA3.MemberManagement.BAS.Eligibility.sln
+/Source/MemberManagement/124/BAS/MemberInformation/HP.HSP.UA3.MemberManagement.BAS.MemberInformation.sln
+/Source/MemberManagement/124/BAS/MemberManagement/HP.HSP.UA3.MemberManagement.BAS.MemberManagement.sln
+/Source/MemberManagement/124/Batch/HPE.HSP.UA3.MemberInfoLoader/HPE.HSP.UA3.MemberInfoLoader.sln
+/Source/MemberManagement/124/UX/HP.HSP.UA3.MemberManagement.UX.sln
+/Source/MemberPortal/124/Reports/HP.HSP.UA3.MemberPortal.Reports/HP.HSP.UA3.MemberPortal.Reports.sln
+/Source/PlanManagement/124/BAS/ServiceTest/HP.HSP.UA3.PlanManagement.BAS.ServiceTest.sln
+/Source/PlanManagement/124/Batch/SSIS_Oracle/SSIS_Oracle_Load_Provider.sln
+/Source/PlanManagement/124/Batch/SSIS_SQL/SSIS_SQLServer_Load_Provider.sln
+/Source/PlanManagement/124/Reports/HPE.HSP.UA3.PlanManagement.Reports/HPE.HSP.UA3.PlanManagement.Reports.sln
+/Source/ProgramIntegrity/124/BAS/ServiceTest/HP.HSP.UA3.ProgramIntegrity.BAS.ServiceTest.sln
+/Source/ProgramIntegrity/124/Batch/ETLFileHelper/ETLFileHelper/FileHelpers.sln
+/Source/ProgramIntegrity/124/Reports/HPE.HSP.UA3.ProgramIntegrity.Reports/HPE.HSP.UA3.ProgramIntegrity.Reports.sln
+/Source/ProviderCredentialing/124/BAS/ServiceTest/HP.HSP.UA3.ProviderCredentialing.BAS.ServiceTest.sln
+/Source/ProviderCredentialing/124/Test/PC01_CodedUI_Regression_Suite.sln
+/Source/ProviderEnrollment/124/BAS/ServiceTest/HP.HSP.UA3.ProviderEnrollment.BAS.ServiceTest.sln
+/Source/ProviderEnrollment/124/Reports/HP.HSP.UA3.ProviderEnrollment.Reports/HP.HSP.UA3.ProviderEnrollment.Reports.sln
+/Source/ProviderManagement/124/BAS/ServiceTest/HP.HSP.UA3.ProviderManagement.BAS.ServiceTest.sln
+/Source/ProviderManagement/124/Batch/RevalidationApprovedProvider/RevalidApprPrvdr/RevalidApprPrvdr.sln
+/Source/ProviderManagement/124/EAI/CLIALoader/CLIALoader.sln
+/Source/ProviderManagement/124/K2 Workflow/NegativeProviderFindings/NegativeProviderFindings.sln
+/Source/ProviderManagement/124/K2 Workflow/OwnerCredentialing/OwnerCredentialingWorkflow.sln
+/Source/ProviderManagement/124/K2 Workflow/ProviderManagement/ProviderManagement.sln
+/Source/ProviderManagement/124/K2 Workflow/ProviderManagingEmployeeAssociation/ProviderManagingEmployeeAssociation.sln
+/Source/ProviderManagement/124/K2 Workflow/ProviderNetworkMaintenance/ProviderNetworkMaintenance.sln
+/Source/ProviderManagement/124/K2 Workflow/SubContractorCredentialing/SubContractorWorkFlow/SubContractorWorkFlow.sln
+/Source/ProviderManagement/124/K2 Workflow/Terminate Providers/Terminate Providers.sln
+/Source/ProviderManagement/124/Reports/HP.HSP.UA3.ProviderManagement.Reports/HP.HSP.UA3.ProviderManagement.Reports.sln
+/Source/ProviderPortal/124/Reports/HPE.HSP.UA3.ProviderPortal.Reports/HPE.HSP.UA3.ProviderPortal.Reports.sln
+/Source/Screening/124/Test/PC01_CodedUI_Regression_Suite.sln
+/Source/TaskManagement/124/Reports/HPE.HSP.UA3.TaskManagement.Reports/HPE.HSP.UA3.TaskManagement.Reports.sln
+/Source/Test/124/HPE.HSP.UA3.TestAutomation/HPE.HSP.UA3.TestAutomation.sln
+/Source/Test/124/HPE.HSP.UA3.TestAutomation.Core/HPE.HSP.UA3.TestAutomation.Core.sln
+/Source/ThirdPartySource/124/OopFactory/x12parser-43513/trunk/OopFactory.X12.sln
+/Source/TPLCaseTracking/124/BAS/ServiceTest/HP.HSP.UA3.TPLCaseTracking.BAS.ServiceTest.sln
+/Source/TPLCaseTracking/124/Batch/EstateRecoveryReport/EstateRecoveryReport.sln
+/Source/TPLCaseTracking/124/Batch/SSIS_Oracle/SSIS_Oracle.sln
+/Source/TPLCaseTracking/124/Reports/HP.HSP.UA3.TPLCaseTracking.Reports/HP.HSP.UA3.TPLCaseTracking.Reports.sln
+/Source/TPLPolicy/124/BAS/ServiceTest/HP.HSP.UA3.TPLPolicy.BAS.ServiceTest.sln
+/Source/TPLPolicy/124/Batch/SSIS_Oracle/SSIS_Oracle.sln
+/Source/TPLPolicy/124/Reports/HP.HSP.UA3.TPLPolicy.Reports/HP.HSP.UA3.TPLPolicy.Reports.sln
+/Source/Utilities/124/AccountManagementGUI/AccountManagementGUI.sln
+/Source/Utilities/124/ADFSAuthenticationTester/ADFSAuthenticationTester.sln
+/Source/Utilities/124/ADIdentityManagementTester/ADIdentityManagementTester.sln
+/Source/Utilities/124/BASEventsTestingUtil/BASEventsTestingUtil.sln
+/Source/Utilities/124/BatchDirectoryCheck/BatchDirectoryCheck.sln
+/Source/Utilities/124/CodeMaintainabilityMonitor/CodeMaintainabilityMonitor.sln
+/Source/Utilities/124/DatalistSyncUtil/DatalistSyncUtil.sln
+/Source/Utilities/124/InRuleConnectivityTester/InRuleConnectivityTester.sln
+/Source/Utilities/124/LoadReferenceData/LoadReferenceData.sln
+/Source/Utilities/124/LoadTenantDb/HP.HSP.UA3.Utilities.LoadTenantDb.sln
+/Source/Utilities/124/Log4NetTester/Log4NetTester.sln
+/Source/Utilities/124/OracleDBUtil/OracleDBUtil.sln
+/Source/Utilities/124/ProjectSetupWizard/HP.HSP.UA3.Utilities.ProjectSetupWizard.sln
+/Source/Utilities/124/ProviderJsonConversion/HPE.HSP.UA3.DrugRebate.Batch.ProviderJsonConversion.sln
+/Source/Utilities/124/SandCastleServiceSpecification/SandCastleSvcSpec/SandCastleSvcSpec.sln
+/Source/Utilities/124/SandCastleServiceSpecification/SandCastleSvcSpec.sln
+/Source/Utilities/124/SendGridTester/SendGridTester.sln
+/Source/Utilities/124/ServiceAvailabilityMonitor/ServiceAvailabilityMonitor.sln
+/Source/Utilities/124/SolutionRefactorMgr/SolutionRefactorMgr.sln
+/Source/Utilities/124/SSRSImportExportWizard/SSRSImportExportWizard.sln
+/Source/Utilities/124/Start-Stop-VMS/Start-Stop-VMS.sln
+/Source/Utilities/124/TenantConfigManager/HP.HSP.UA3.Utilities.TenantConfigManager.sln
+/Source/Utilities/124/UA3.CodeFactory/UA3.CodeFactory.sln
+/Source/Utilities/124/UA3.MainEvent/UA3.MainEvent.sln
+/Source/Utilities/124/UserAccountManager/UserAccountManager.sln
+/Source/Utilities/124/UserAccountMigration/UserAccountMigration.sln
+/Source/Utilities/124/Watchdog/Watchdog.sln
+/Source/Utilities/124/WorkflowInstanceCleanupUtil/WorkflowInstanceCleanupUtil.sln
+/Source/Utilities/124/X12OOPViewer/HP.HSP.UA3.Utilities.X12OOPViewer.sln
+/Source/Utilities/124/SandCastleServiceSpecification/SandCastleSvcSpec.sln

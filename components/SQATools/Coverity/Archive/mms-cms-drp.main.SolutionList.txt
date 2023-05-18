@@ -1,0 +1,3 @@
+/src/main-mms-cms-drp/components/UX/HP.HSP.UA3.DrugRebatePortal.UX.sln
+#Excluded from scans
+#/src/main-mms-cms-drp/Reports/HP.HSP.UA3.DrugRebatePortal.Reports/HP.HSP.UA3.DrugRebatePortal.Reports.sln

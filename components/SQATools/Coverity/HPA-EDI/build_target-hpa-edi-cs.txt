@@ -1,0 +1,8 @@
+H:\src\main-sis-inx-edigw\components\Batch\EDIGW Directory Polling Service\EDIGW_DirPollingServiceProject.sln
+H:\src\main-sis-inx-edigw\components\Batch\EDIGW Common Components\EDIGW_CommonComponents.sln
+H:\src\main-sis-inx-edigw\components\Batch\EDIGW Common Utilities\EDIGW_CommonUtilities.sln
+H:\src\main-sis-inx-edigw\components\Batch\EDIGW DataExtract\HPP.EDIGateway.DataExtract.sln
+H:\src\main-sis-inx-edigw\components\Batch\MEVS\5010MEVSProcessor\MEVSProcessor.sln
+H:\src\main-sis-inx-edigw\components\Batch\MEVS\mevsauditprocessor\mevsauditprocessor.sln
+H:\src\main-sis-inx-edigw\components\Batch\MEVS\MEVSTransaction\MEVSTransaction.sln
+H:\src\main-sis-inx-edigw\components\Batch\MEVS\5010MEVSProcessor\MEVSProcessor.sln

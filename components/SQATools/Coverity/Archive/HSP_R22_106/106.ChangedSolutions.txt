@@ -1,0 +1,19 @@
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/Administration/106/UX/HP.HSP.UA3.Administration.UX.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ConfigurationManagement/106/API/HPP.ConfigManagement.API.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/Core/106/BAS/HP.HSP.UA3.Core.BAS.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/Core/106/EAI/HP.HSP.UA3.EAI.EventRouter/HP.HSP.UA3.EAI.EventRouter.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/Core/106/UX/HP.HSP.UA3.Core.UX.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/DrugRebate/106/BAS/ReportingSvc/HP.HSP.UA3.DrugRebate.BAS.ReportingSvc.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/DrugRebate/106/Batch/ClaimsImport/ClaimsImport.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/Integration/106/API/IntegrationAPI/HPE.HSP.UA3.Integration.API.IntegrationAPI.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProgramIntegrity/106/Batch/ETL/HP.HSP.UA3.ProgramIntegrity.BAS.ETL.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProgramIntegrity/106/BAS/PFEGrouper/MMS.ProgramIntegrity.BAS.PFEGrouper.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProgramIntegrityCT/106/UX/HP.HSP.UA3.ProgramIntegrityCT.UX.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderEnrollment/106/BAS/EnrollmentSvc/HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderManagement/106/BAS/ProviderSvc/HP.HSP.UA3.ProviderManagement.BAS.ProviderSvc.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderManagement/106/Batch/DisclosedEntitiesScreeningResults/DisclosedEntitiesScreeningResults.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderManagement/106/Batch/NPPRImport/HPP.PM.Batch.NPPRImport.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderManagement/106/Batch/ProcessProviderScreeningResults/ProcessProviderScreeningResults.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderManagement/106/Batch/RevalidationNotify/HPE.UA3.PM.Batch.RevalidNotify/HPE.UA3.PM.Batch.RevalidNotify.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderManagement/106/K2 Workflow/ProviderManagement/ProviderManagement.sln
+$/USHC_AMER_US_ADU_HSP_Ua3/Source/ProviderPortal/106/UX/HP.HSP.UA3.ProviderPortal.UX.sln

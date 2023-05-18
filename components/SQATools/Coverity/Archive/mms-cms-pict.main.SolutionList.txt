@@ -1,0 +1,6 @@
+/src/main-mms-cms-pict/components/Batch/CaseListRefresh/CaseListRefresh.sln
+/src/main-mms-cms--pict/components/Batch/CaseProcessLoad/CaseProcessLoad.sln
+/src/main-mms-cms--pict/components/Batch/CasesDueDateNotification/CasesDueDateNotification.sln
+/src/main-mms-cms--pict/components/Batch/InactiveCaseNotification/InactiveCaseNotification.sln
+/src/main-mms-cms--pict/components/Batch/PICTDataExtraction/PICTDataExtraction.sln
+/src/main-mms-cms--pict/components/UX/HP.HSP.UA3.ProgramIntegrityCT.UX.sln

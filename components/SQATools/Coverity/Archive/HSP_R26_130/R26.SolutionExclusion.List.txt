@@ -1,0 +1,102 @@
+/src/r26-adm/Batch/PIURExtract/PIURExtract.sln
+/src/r26-authdeter/BAS/AuthDetermination/HP.HSP.UA3.AuthDetermination.BAS.AuthDetermination.sln
+/src/r26-authdeter/BAS/X12.X5010_278/HPE.HSP.UA3.X12.X5010_278.sln
+/src/r26-authdeter/UX/HP.HSP.UA3.AuthDetermination.UX.sln
+/src/r26-cm/BAS/ClaimsEDI/HP.HSP.UA3.ClaimsManagement.BAS.ClaimsEDI.sln
+/src/r26-cm/BAS/ClaimsManagement/HP.HSP.UA3.ClaimsManagement.BAS.ClaimsManagement.sln
+/src/r26-cm/BAS/NCPDP_D.0/HPE.HSP.UA3.NCPDP_D.0.sln
+/src/r26-cm/BAS/ServiceTest/HP.HSP.UA3.ClaimsManagement.BAS.ServiceTest.sln
+/src/r26-cm/BAS/X12.X5010_837/HPE.HSP.UA3.X12.X5010_837.sln
+/src/r26-cm/BAS/X212.X5010_276_277/HPE.HSP.UA3.X212.X5010_276_277.sln
+/src/r26-cm/UX/HP.HSP.UA3.ClaimsManagement.UX.sln
+/src/r26-cfg/Persistence/Persistence.sln
+/src/r26-core/Batch/HPP.Core.Batch.TestJob/HPP.Core.Batch.TestJob.sln
+/src/r26-core/Reports/HP.HSP.UA3.Core.Reports/HP.HSP.UA3.Core.Reports.sln
+/src/r26-dr/BAS/ServiceTest/HP.HSP.UA3.DrugRebate.BAS.ServiceTest.sln
+/src/r26-dr/Reports/HP.HSP.UA3.DrugRebate.Reports/HP.HSP.UA3.DrugRebate.Reports.sln
+/src/r26-dr/Tool/BatchDirectoryCheck/BatchDirectoryCheck.sln
+/src/r26-drp/Reports/HP.HSP.UA3.DrugRebatePortal.Reports/HP.HSP.UA3.DrugRebatePortal.Reports.sln
+/src/r26-em/BAS/Employee/HP.HSP.UA3.EmployeeMgmt.BAS.Employee.sln
+/src/r26-em/UX/HP.HSP.UA3.EmployeeMgmt.UX.sln
+/src/r26-fm/BAS/FinancialManagementSvc/HP.HSP.UA3.FinancialManagement.BAS.FinancialManagementSvc.sln
+/src/r26-im/Reports/HP.HSP.UA3.IdentityManagement.Reports/HP.HSP.UA3.IdentityManagement.Reports.sln
+/src/r26-inx/Reports/HP.HSP.UA3.Integration.Reports/HP.HSP.UA3.Integration.Reports.sln
+/src/r26-KansasOnly/UX/HP.HSP.UA3.KansasOnly.UX.sln
+/src/r26-mc/BAS/ServiceTest/HP.HSP.UA3.ManagedCare.BAS.ServiceTest.sln
+/src/r26-mc/Batch/SSIS/SSIS.sln
+/src/r26-mc/Batch/SSIS_SQLServer/SSIS_SQLServer.sln
+/src/r26-mc/DB/SQLServer/SQL Scripts/Reporting/HP.HSP.ManagedCare.DWReports/HP.HSP.UA3.ManagedCare.DWReports.sln
+/src/r26-mc/DB/SQLServer/SQL Scripts/Reporting/HP.HSP.ManagedCare.SSIS/HP.HSP.UA3.ManagedCare.SSIS.sln
+/src/r26-mc/Reports/HP.HSP.UA3.ManagedCare.Reports/HP.HSP.ManagedCare.Reports/HP.HSP.UA3.ManagedCare.Reports.sln
+/src/r26-mcp/Reports/HP.HSP.UA3.ManagedCarePortal.Reports/HP.HSP.UA3.ManagedCarePortal.Reports.sln
+/src/r26-mm/BAS/Eligibility/HP.HSP.UA3.MemberManagement.BAS.Eligibility.sln
+/src/r26-mm/BAS/MemberInformation/HP.HSP.UA3.MemberManagement.BAS.MemberInformation.sln
+/src/r26-mm/BAS/MemberManagement/HP.HSP.UA3.MemberManagement.BAS.MemberManagement.sln
+/src/r26-mm/Batch/HPE.HSP.UA3.MemberInfoLoader/HPE.HSP.UA3.MemberInfoLoader.sln
+/src/r26-mm/UX/HP.HSP.UA3.MemberManagement.UX.sln
+/src/r26-mp/Reports/HP.HSP.UA3.MemberPortal.Reports/HP.HSP.UA3.MemberPortal.Reports.sln
+/src/r26-pl/BAS/ServiceTest/HP.HSP.UA3.PlanManagement.BAS.ServiceTest.sln
+/src/r26-pl/Batch/SSIS_Oracle/SSIS_Oracle_Load_Provider.sln
+/src/r26-pl/Batch/SSIS_SQL/SSIS_SQLServer_Load_Provider.sln
+/src/r26-pl/Reports/HPE.HSP.UA3.PlanManagement.Reports/HPE.HSP.UA3.PlanManagement.Reports.sln
+/src/r26-pi/BAS/ServiceTest/HP.HSP.UA3.ProgramIntegrity.BAS.ServiceTest.sln
+/src/r26-pi/Batch/ETLFileHelper/ETLFileHelper/FileHelpers.sln
+/src/r26-pi/Reports/HPE.HSP.UA3.ProgramIntegrity.Reports/HPE.HSP.UA3.ProgramIntegrity.Reports.sln
+/src/r26-pc/BAS/ServiceTest/HP.HSP.UA3.ProviderCredentialing.BAS.ServiceTest.sln
+/src/r26-pc/Test/PC01_CodedUI_Regression_Suite.sln
+/src/r26-pe/BAS/ServiceTest/HP.HSP.UA3.ProviderEnrollment.BAS.ServiceTest.sln
+/src/r26-pe/Reports/HP.HSP.UA3.ProviderEnrollment.Reports/HP.HSP.UA3.ProviderEnrollment.Reports.sln
+/src/r26-pm/BAS/ServiceTest/HP.HSP.UA3.ProviderManagement.BAS.ServiceTest.sln
+/src/r26-pm/Batch/RevalidationApprovedProvider/RevalidApprPrvdr/RevalidApprPrvdr.sln
+/src/r26-pm/EAI/CLIALoader/CLIALoader.sln
+/src/r26-pm/K2 Workflow/NegativeProviderFindings/NegativeProviderFindings.sln
+/src/r26-pm/K2 Workflow/OwnerCredentialing/OwnerCredentialingWorkflow.sln
+/src/r26-pm/K2 Workflow/ProviderManagement/ProviderManagement.sln
+/src/r26-pm/K2 Workflow/ProviderManagingEmployeeAssociation/ProviderManagingEmployeeAssociation.sln
+/src/r26-pm/K2 Workflow/ProviderNetworkMaintenance/ProviderNetworkMaintenance.sln
+/src/r26-pm/K2 Workflow/SubContractorCredentialing/SubContractorWorkFlow/SubContractorWorkFlow.sln
+/src/r26-pm/K2 Workflow/Terminate Providers/Terminate Providers.sln
+/src/r26-pm/Reports/HP.HSP.UA3.ProviderManagement.Reports/HP.HSP.UA3.ProviderManagement.Reports.sln
+/src/r26-pp/Reports/HPE.HSP.UA3.ProviderPortal.Reports/HPE.HSP.UA3.ProviderPortal.Reports.sln
+/src/r26-ss/Test/PC01_CodedUI_Regression_Suite.sln
+/src/r26-tm/Reports/HPE.HSP.UA3.TaskManagement.Reports/HPE.HSP.UA3.TaskManagement.Reports.sln
+/src/r26-tst/HPE.HSP.UA3.TestAutomation/HPE.HSP.UA3.TestAutomation.sln
+/src/r26-tst/HPE.HSP.UA3.TestAutomation.Core/HPE.HSP.UA3.TestAutomation.Core.sln
+/src/r26-tps/124/OopFactory/x12parser-43513/trunk/OopFactory.X12.sln
+/src/r26-tplc/BAS/ServiceTest/HP.HSP.UA3.TPLCaseTracking.BAS.ServiceTest.sln
+/src/r26-tplc/Batch/EstateRecoveryReport/EstateRecoveryReport.sln
+/src/r26-tplc/Batch/SSIS_Oracle/SSIS_Oracle.sln
+/src/r26-tplc/Reports/HP.HSP.UA3.TPLCaseTracking.Reports/HP.HSP.UA3.TPLCaseTracking.Reports.sln
+/src/r26-tplp/BAS/ServiceTest/HP.HSP.UA3.TPLPolicy.BAS.ServiceTest.sln
+/src/r26-tplp/Batch/SSIS_Oracle/SSIS_Oracle.sln
+/src/r26-tplp/Reports/HP.HSP.UA3.TPLPolicy.Reports/HP.HSP.UA3.TPLPolicy.Reports.sln
+/src/r26-util/AccountManagementGUI/AccountManagementGUI.sln
+/src/r26-util/ADFSAuthenticationTester/ADFSAuthenticationTester.sln
+/src/r26-util/ADIdentityManagementTester/ADIdentityManagementTester.sln
+/src/r26-util/BASEventsTestingUtil/BASEventsTestingUtil.sln
+/src/r26-util/BatchDirectoryCheck/BatchDirectoryCheck.sln
+/src/r26-util/CodeMaintainabilityMonitor/CodeMaintainabilityMonitor.sln
+/src/r26-util/DatalistSyncUtil/DatalistSyncUtil.sln
+/src/r26-util/InRuleConnectivityTester/InRuleConnectivityTester.sln
+/src/r26-util/LoadReferenceData/LoadReferenceData.sln
+/src/r26-util/LoadTenantDb/HP.HSP.UA3.Utilities.LoadTenantDb.sln
+/src/r26-util/Log4NetTester/Log4NetTester.sln
+/src/r26-util/OracleDBUtil/OracleDBUtil.sln
+/src/r26-util/ProjectSetupWizard/HP.HSP.UA3.Utilities.ProjectSetupWizard.sln
+/src/r26-util/ProviderJsonConversion/HPE.HSP.UA3.DrugRebate.Batch.ProviderJsonConversion.sln
+/src/r26-util/SandCastleServiceSpecification/SandCastleSvcSpec/SandCastleSvcSpec.sln
+/src/r26-util/SandCastleServiceSpecification/SandCastleSvcSpec.sln
+/src/r26-util/SendGridTester/SendGridTester.sln
+/src/r26-util/ServiceAvailabilityMonitor/ServiceAvailabilityMonitor.sln
+/src/r26-util/SolutionRefactorMgr/SolutionRefactorMgr.sln
+/src/r26-util/SSRSImportExportWizard/SSRSImportExportWizard.sln
+/src/r26-util/Start-Stop-VMS/Start-Stop-VMS.sln
+/src/r26-util/TenantConfigManager/HP.HSP.UA3.Utilities.TenantConfigManager.sln
+/src/r26-util/UA3.CodeFactory/UA3.CodeFactory.sln
+/src/r26-util/UA3.MainEvent/UA3.MainEvent.sln
+/src/r26-util/UserAccountManager/UserAccountManager.sln
+/src/r26-util/UserAccountMigration/UserAccountMigration.sln
+/src/r26-util/Watchdog/Watchdog.sln
+/src/r26-util/WorkflowInstanceCleanupUtil/WorkflowInstanceCleanupUtil.sln
+/src/r26-util/X12OOPViewer/HP.HSP.UA3.Utilities.X12OOPViewer.sln
+/src/r26-util/SandCastleServiceSpecification/SandCastleSvcSpec.sln

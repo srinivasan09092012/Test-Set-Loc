@@ -1,0 +1,10 @@
+/src/main-mms-cms-pc/components/BAS/Audit/HP.HSP.UA3.ProviderCredentialing.BAS.Audit.sln
+/src/main-mms-cms-pc/components/BAS/FileMgmt/HP.HSP.UA3.ProviderCredentialing.BAS.FileMgmt.sln
+/src/main-mms-cms-pc/components/BAS/ValidateCredentials/HP.HSP.UA3.ProviderCredentialing.BAS.ValCrdntls.sln
+/src/main-mms-cms-pc/components/BAS/Credentialing/HPP.ProviderCredentialing.BAS.Credentialing.sln
+/src/main-mms-cms-pc/components/Batch/FileDownloads/HPP.PC.Credentialing.FileDownloads.sln
+/src/main-mms-cms-pc/components/Batch/VerifyCredentials/HPP.PC.Batch.VerifyCredentials.sln
+/src/main-mms-cms-pc/components/UX/HP.HSP.UA3.ProviderCredentialing.UX.sln
+#Exclude from Scanning
+#/src/main-mms-cms-pc/BAS/ServiceTest/HP.HSP.UA3.ProviderCredentialing.BAS.ServiceTest.sln
+#/src/main-mms-cms-pc/Test/PC01_CodedUI_Regression_Suite.sln

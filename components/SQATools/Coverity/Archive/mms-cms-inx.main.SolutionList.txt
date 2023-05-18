@@ -1,0 +1,24 @@
+/src/main-inx/components/BAS/DataAggregateFix/HPP.Integration.BAS.DataAggregateFix.sln
+/src/main-inx/components/BAS/DataAggregator/HP.HSP.UA3.Integration.BAS.DataAggregator.sln
+/src/main-inx/components/BAS/EventGroupWatcher/HP.HSP.UA3.Integration.BAS.EventGroupWatcher.sln
+/src/main-inx/components/BAS/EventsDistributor/HP.HSP.UA3.Integration.BAS.EventsDistributor.sln
+/src/main-inx/components/BAS/EventSplitter/HP.HSP.UA3.Integration.BAS.EventSplitter.sln
+/src/main-inx/components/BAS/EventToFile/HP.HSP.UA3.Integration.BAS.EventToFile.sln
+/src/main-inx/components/BAS/inx/HP.HSP.UA3.Integration.BAS.Integration.sln
+/src/main-inx/components/BAS/SystemProcessTracking/HPP.Integration.BAS.SystemProcessTracking.sln
+/src/main-inx/components/Batch/BDLPreloadUtilities/BDLPreloadUtilities.sln
+/src/main-inx/components/Batch/ErrorReportGenerator/ErrorReportGenerator.sln
+/src/main-inx/components/Batch/ETFOutboundProcessor/ETFOutboundProcessor.sln
+/src/main-inx/components/Batch/ETFReStage/ETFReStage.sln
+/src/main-inx/components/Batch/ETFStgDataProcess/ETFStgDataProcess.sln
+/src/main-inx/components/Batch/EventGroupProcessor/EventGroupProcessor.sln
+/src/main-inx/components/Batch/EventReplayer/EventReplayer.sln
+/src/main-inx/components/Batch/FileTransformationUtility/FileTransformationUtility.sln
+/src/main-inx/components/Batch/InboundDataProcessor/InboundDataProcessor.sln
+/src/main-inx/components/Batch/PreloadCommitsConversion/PreloadCommitsConversion.sln
+/src/main-inx/components/Batch/PRNExtract/PRNExtract.sln
+/src/main-inx/components/Batch/PRNUpdate/PRNUpdate.sln
+/src/main-inx/components/Batch/RetryNotification/RetryNotification.sln
+/src/main-inx/components/UX/HP.HSP.UA3.Integration.UX.sln
+#Excluded from scans
+#/src/r26-inx/Reports/HP.HSP.UA3.Integration.Reports/HP.HSP.UA3.Integration.Reports.sln

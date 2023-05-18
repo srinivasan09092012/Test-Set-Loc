@@ -1,0 +1,8 @@
+/src/main-mms-hp-prov/components/bas/PES/MMS.ProviderPortal.BAS.PES.sln
+/src/main-mms-hp-prov/components/bas/PES/HPP.ProviderPortal.BAS.PES.sln
+/src/main-mms-hp-prov/components/ux/HP.HSP.UA3.ProviderPortal.UX.sln
+/src/main-mms-hp-prov/components/reports/HPE.HSP.UA3.ProviderPortal.Reports/HPE.HSP.UA3.ProviderPortal.Reports.sln
+/src/main-mms-hp-prov/components/bas/Template/HPP.ProviderPortal.BAS.Template.sln
+/src/main-mms-hp-prov/components/bas/Template/HP.HSP.UA3.ProviderPortal.BAS.Template.sln
+#Excluded Solutions
+#/src/main-mms-hp-prov/Reports/HPE.HSP.UA3.ProviderPortal.Reports/HPE.HSP.UA3.ProviderPortal.Reports.sln

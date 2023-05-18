@@ -1,0 +1,2 @@
+/src/main-note/components/BAS/HP.NotificationServices/HP.NotificationServices.sln
+/src/main-note/components/UX/HP.HSP.UA3.Notifications.UX.sln

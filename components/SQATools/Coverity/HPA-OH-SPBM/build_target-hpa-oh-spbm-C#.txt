@@ -1,0 +1,10 @@
+H:\ASQC\codebase\source-ohspbm\RxPOS\ProcessWatcher\ProcessWatcherService.sln
+H:\ASQC\codebase\source-ohspbm\RxPOS\PBMIP\PBMIP.sln
+H:\ASQC\codebase\source-ohspbm\RxPOS\PBMCORERx\NewRx\NewRx.sln
+H:\ASQC\codebase\source-ohspbm\RxPOS\PackageLoader\BenefitPkgLoader\BenefitPkgLoader.sln
+H:\ASQC\codebase\source-ohspbm\RxPOS\HRXControl\HRXControl.sln
+H:\ASQC\codebase\source-ohspbm\RxPOS\HrxSysInfoService\SystemInfo.sln
+H:\ASQC\codebase\source-ohspbm\RxPOS\TrOOP\TrOOP.sln
+H:\ASQC\codebase\source-ohspbm\RxPOS\TCN_Generator\TCN_Generator.sln
+H:\ASQC\codebase\source-ohspbm\RxPOS\RxEnc_Service\RxEnc_Service.sln
+H:\ASQC\codebase\source-ohspbm\RxPOS\ProcessWatcher2\ProcessWatcher2.sln

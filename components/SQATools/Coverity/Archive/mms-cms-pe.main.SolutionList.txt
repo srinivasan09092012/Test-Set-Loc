@@ -1,0 +1,14 @@
+/src/main-mms-cms-pe/components/BAS/EnrollmentSvc/HP.HSP.UA3.ProviderEnrollment.BAS.EnrollmentSvc.sln
+/src/main-mms-cms-pe/components/BAS/FileMgmtService/HP.HSP.UA3.ProviderEnrollment.BAS.FileMgmtService.sln
+/src/main-mms-cms-pe/components/BAS/PEReportSvc/HPP.ProviderEnrollment.BAS.PEReportSvc.sln
+/src/main-mms-cms-pe/components/Batch/AdjudicationEngine/HPP.PE.Batch.AdjudicationEngine.sln
+/src/main-mms-cms-pe/components/Batch/EnrollDetails/HPP.PE.Batch.EnrollDetails.sln
+/src/main-mms-cms-pe/components/Batch/EnrollmentUpgrade/HPP.PE.Utility.EnrollmentUpgrade.sln
+/src/main-mms-cms-pe/components/Batch/EnrollRetryNotification/HPP.PE.Batch.EnrollRetryNotification.sln
+/src/main-mms-cms-pe/components/Batch/InitiateEnrollCancel/HPP.PE.Batch.InitiateEnrollCancel.sln
+/src/main-mms-cms-pe/components/Batch/InsightReport/HPP.PE.Batch.InsightReport.sln
+/src/main-mms-cms-pe/components/Batch/ProcessCredentialingResults/HPP.PE.Batch.ProcessCredentialingResults.sln
+/src/main-mms-cms-pe/components/UX/HP.HSP.UA3.ProviderEnrollment.UX.sln
+#Excluded from Scanning
+#/src/main-mms-cms-pe/BAS/ServiceTest/HP.HSP.UA3.ProviderEnrollment.BAS.ServiceTest.sln
+#/src/main-mms-cms-pe/Reports/HP.HSP.UA3.ProviderEnrollment.Reports/HP.HSP.UA3.ProviderEnrollment.Reports.sln

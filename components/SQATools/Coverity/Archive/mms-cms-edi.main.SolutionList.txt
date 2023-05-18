@@ -1,0 +1,2 @@
+/src/main-mms-cms-edi/components/BAS/EDI/HP.HSP.UA3.EDI.BAS.EDI.sln
+/src/main-mms-cms-edi/components/BAS/X12Contract/HPE.HSP.UA3.EDI.BAS.X12Contract.sln

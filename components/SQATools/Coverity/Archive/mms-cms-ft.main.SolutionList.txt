@@ -1,0 +1,3 @@
+/src/main-ft/components/BAS/FileTransferSvc/HP.HSP.UA3.FileTransfer.BAS.FileTransferSvc.sln
+/src/main-ft/components/Batch/FileTransferManagement/FileTransferManagement.sln
+/src/main-ft/components/UX/HP.HSP.UA3.FileTransfer.UX.sln

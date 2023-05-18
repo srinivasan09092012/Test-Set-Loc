@@ -1,0 +1,6 @@
+ccm /s:$/USHC_AMER_US_ADU_HSP_Ua3/Source /u:eeekhunopu46igzdbzkp3gxhyi3sxomubklsdn47koqtg7vf6cka /p:password /b:106 /fd:10202022 /td:03012022 /o:C:\Ua3\source\Coverity\106.ChangedSolutions.txt
+
+TFS comments
+Coverity Powershell run on 02/11/2021 3:25PM
+
+note: using the supporting solutions to be only the core solutions indicated by Brian and Simon.

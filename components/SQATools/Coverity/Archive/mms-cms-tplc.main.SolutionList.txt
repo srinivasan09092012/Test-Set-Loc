@@ -1,0 +1,15 @@
+/src/main-tplc/components/BAS/CaseTracking/HP.HSP.UA3.TPLCaseTracking.BAS.CaseTracking.sln
+/src/main-tplc/components/Batch/CaseDataExtraction/CaseDataExtraction.sln
+/src/main-tplc/components/Batch/CaseTrackingMemberConversion/CaseTrackingMemberConversion.sln
+/src/main-tplc/components/Batch/ClaimsAdjustmentProcess/ClaimsAdjustmentProcess.sln
+/src/main-tplc/components/Batch/Conversions/Conversions.sln
+/src/main-tplc/components/Batch/EstateRecoveryReport/EstateRecoveryReport.sln
+/src/main-tplc/components/Batch/TPLCTAccTraumaRpt/TPLCTAccTraumaRpt.sln
+/src/main-tplc/components/Batch/WorkersCompensation/WorkersCompensation.sln
+/src/main-tplc/components/Batch/WorkersCompMatchRpt/WorkersCompMatchRpt.sln
+/src/main-tplc/components/UX/HP.HSP.UA3.TPLCaseTracking.UX.sln
+#Excluded Solutions
+#/src/main-tplc/BAS/ServiceTest/HP.HSP.UA3.TPLCaseTracking.BAS.ServiceTest.sln
+#/src/main-tplc/Batch/EstateRecoveryReport/EstateRecoveryReport.sln
+#/src/main-tplc/Batch/SSIS_Oracle/SSIS_Oracle.sln
+#/src/main-tplc/Reports/HP.HSP.UA3.TPLCaseTracking.Reports/HP.HSP.UA3.TPLCaseTracking.Reports.sln

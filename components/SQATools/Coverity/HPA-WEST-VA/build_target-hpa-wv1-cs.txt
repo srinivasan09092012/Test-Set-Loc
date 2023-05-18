@@ -1,0 +1,23 @@
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxQNXT\HealthPAS RxQNXT-ddi-dev Rel4\QCSI ASC Adjudication Rx\QCSI ASC Adjudication Rx.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxQNXT\HealthPAS RxQNXT-ddi-dev Rel4\QCSI ASC ClaimActivity Rx\QCSI ASC ClaimActivity Rx.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxQNXT\HealthPAS RxQNXT-ddi-dev Rel4\QCSI Globals Client Rx\QCSI Globals Client Rx.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxQNXT\HealthPAS RxQNXT-ddi-dev Rel4\QCSI Core Shared Rx\QCSI Core Shared Rx.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxCommon\HealthPAS_Rx_Common\HealthPAS_Rx_Common.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxSSListener\HRx_SS_Listener\SS_Service.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxEPresc\HRx_E_Prescribing\E_Prescribing.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxRPT\WV_DRGS Reports\DRGS Reports.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxRPT\WV_DRGS Reports\Backup\DRGS Reports.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxWeb\Health_PAS_Rx_Web.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxTRListener\Ebatch\Ebatch.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxTRListener\Batch_NCPDP\Batch_NCPDP.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxTRListener\TRlisten\TRlisten.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxPOS\HealthPAS_Rx\HealthPAS_Rx.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxPOS\TCN_Generator\TCN_Generator.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxInterParse\InterParse\InterParse\InterParse.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxPOS\HrxSysInfoService\SystemInfo.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxPOS\ProcessWatcher\ProcessWatcherService.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxPA\HealthPAS_RxPA\HealthPAS_RxPA.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxEPA\HealthPAS_RxEPA.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxDUR\UniDUR\UDURSetup\Unidur Setup.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxDUR\UniDUR\UDURRemote\UDURRemote.sln
+H:\ASQC\codebase\HPA-WEST-VA\Dev\RxDUR\UniDUR\UDURWindowService.sln
