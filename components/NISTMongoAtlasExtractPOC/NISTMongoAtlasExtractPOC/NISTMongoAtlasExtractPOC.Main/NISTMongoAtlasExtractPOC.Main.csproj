@@ -97,7 +97,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="HP.HSP.UA3.Core.BAS.CQRS">
-      <HintPath>..\..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.23.1.136\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
+      <HintPath>..\..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.23.2.142\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
     </Reference>
     <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Interface, Version=21.1.100.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.1.100\lib\net48\HPE.HSP.UA3.Core.API.AuthManagement.Interface.dll</HintPath>
@@ -112,7 +112,7 @@
       <HintPath>..\..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.21.1.100\lib\net48\HPE.HSP.UA3.Core.API.BusinessRules.Providers.dll</HintPath>
     </Reference>
     <Reference Include="HPE.HSP.UA3.Core.API.Logger">
-      <HintPath>..\..\..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.23.1.136\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
+      <HintPath>..\..\..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.23.2.142\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\Packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
