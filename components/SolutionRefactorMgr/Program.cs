@@ -13,6 +13,8 @@ using System.Net;
 using System.Linq;
 using System.Text;
 using System.Collections.Generic;
+using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace SolutionRefactorMgr
 {
@@ -413,7 +415,10 @@ namespace SolutionRefactorMgr
                             {
                                 TfsPendEdit(projectFilePath);
                             }
-                            else { pendEditCount++; }
+                            else
+                            {
+                                pendEditCount++;
+                            }
                             File.WriteAllText(projectFilePath, projectFileContents);
                             LogMessage(level, string.Format("Refactoring file '{0}'", new FileInfo(projectFilePath).Name));
                             
@@ -439,7 +444,10 @@ namespace SolutionRefactorMgr
                             {
                                 TfsPendEdit(packageConfigFilePath);
                             }
-                            else { pendEditCount++; }
+                            else
+                            {
+                                pendEditCount++;
+                            }
                             File.WriteAllText(packageConfigFilePath, packagesConfigFileContents);
                             LogMessage(level, string.Format("Refactoring file '{0}'", new FileInfo(packageConfigFilePath).Name));
                         }
@@ -466,7 +474,10 @@ namespace SolutionRefactorMgr
                             {
                                 TfsPendEdit(configFilePath);
                             }
-                            else { pendEditCount++; }
+                            else
+                            {
+                                pendEditCount++;
+                            }
                             File.WriteAllText(configFilePath, configFileContents);
                             LogMessage(level, string.Format("Refactoring file '{0}'", new FileInfo(configFilePath).Name));
                         }
@@ -502,7 +513,10 @@ namespace SolutionRefactorMgr
             string folderLevels = string.Empty;
             for (int i = pathParts.Count - 1; i >= 0; i--)
             {
-                if (pathParts[i] != "Source")
+                List<string> sourceParts = refactorConfig.SourceDir.Split('\\').ToList();
+                sourceParts.Remove(String.Empty);
+                string sourceFolder = sourceParts.Last();
+                if (pathParts[i] != sourceFolder)
                     folderLevels += "..\\";
                 else
                 {
@@ -557,7 +571,7 @@ namespace SolutionRefactorMgr
                 XmlElement contentsItemGroup = contents.Count != 0 ? (XmlElement)contents[0].ParentNode : projectFile.CreateElement("ItemGroup", xmlNs);
                 if (refactorConfig.Contents.Count > 0)
                 {
-                    foreach (Content content in refactorConfig.Contents)
+                    foreach (Domain.CsProj.Content content in refactorConfig.Contents)
                     {
                         AddContent(projectFile, contentsItemGroup, content);
                     }
@@ -578,6 +592,20 @@ namespace SolutionRefactorMgr
                             projectFile.DocumentElement.InsertAfter(contentsItemGroup, compileItemGroup);
                         }
                     }
+                }
+                #endregion
+
+                #region "Analyzer" Element
+                XmlNodeList existingAnzlyzers = projectFile.SelectNodes("//MsBuild:Analyzer", nsmgr);
+
+                foreach (Analyzer analyzer in refactorConfig.Analyzers)
+                {
+                    string strinclude = analyzer.Include.Replace("[SOURCEFOLDER]", folderLevels);
+
+                    var analyzerFound = existingAnzlyzers.Cast<XmlElement>().Where(n => n.Attributes["Include"].Value == strinclude).Select(mod => mod).ToList();
+
+                    if (analyzerFound.Count == 0)
+                        AddAnalyzer(projectFile, strinclude);
                 }
                 #endregion
 
@@ -695,7 +723,17 @@ namespace SolutionRefactorMgr
             csprojFile.DocumentElement.AppendChild(importElement);
         }
 
-        private static void AddContent(XmlDocument csprojFile, XmlElement contentsItemGroup, Content content)
+        private static void AddAnalyzer(XmlDocument csprojFile, string strInclude)
+        {
+            string xmlNs = "http://schemas.microsoft.com/developer/msbuild/2003";
+            XmlElement itemGroupElement = csprojFile.CreateElement("ItemGroup", xmlNs);
+            XmlElement analyzeElement = csprojFile.CreateElement("Analyzer", xmlNs);
+            analyzeElement.SetAttribute("Include", strInclude);
+            itemGroupElement.AppendChild(analyzeElement);
+            csprojFile.DocumentElement.AppendChild(itemGroupElement);
+        }
+
+        private static void AddContent(XmlDocument csprojFile, XmlElement contentsItemGroup, Domain.CsProj.Content content)
         {
             string xmlNs = "http://schemas.microsoft.com/developer/msbuild/2003";
             XmlElement contentElement = csprojFile.CreateElement("Content", xmlNs);

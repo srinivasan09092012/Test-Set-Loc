@@ -46,6 +46,8 @@ namespace SolutionRefactorMgr.Domain
 
         public List<CsProj.Import> Imports { get; set; }
 
+        public List<CsProj.Analyzer> Analyzers { get; set; }
+
         public List<CsProj.Target> Targets { get; set; }
 
         public List<FileDetails> AddFiles { get; set; }

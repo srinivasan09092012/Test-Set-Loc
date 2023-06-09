@@ -48,10 +48,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Configs\PackageUpgrades\r20\MongoCSharpDriver_Upgrade to 2.19.1.xml" />
+    <Content Include="Configs\PackageUpgrades\r20\MongoCSharpDriver_Upgrade to 2.19.1_With_all_dependencies_to_latest.xml" />
     <Content Include="Configs\RefactorUserIDLength.xml" />
     <Compile Include="Domain\Constants.cs" />
     <Compile Include="Domain\CsProj\Content.cs" />
     <Compile Include="Domain\CsProj\FileDetails.cs" />
+    <Compile Include="Domain\CsProj\Analyzer.cs" />
     <Compile Include="Domain\CsProj\PropertyElement.cs" />
     <Compile Include="Domain\CsProj\Error.cs" />
     <Compile Include="Domain\CsProj\Import.cs" />
