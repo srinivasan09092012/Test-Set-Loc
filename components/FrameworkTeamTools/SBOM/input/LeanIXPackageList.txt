@@ -1,0 +1,57 @@
+ApplicationInsights.OwinExtensions 0.9.0|Application inseights extension for OWIN|
+AutoMapper 3.3.1|Automapper is a convention-based object-object mapper.  It is used to convert data from an object in one layer of the architecture to an object of a different type in another, such as service response objects into local business objects|00d56ef5-943a-495c-8298-2b2f4a44939b
+AutoMapper 4.2.1|Automapper is a convention-based object-object mapper.  It is used to convert data from an object in one layer of the architecture to an object of a different type in another, such as service response objects into local business objects|
+barcodelib 2.2.2|Barcodelib is a library designed to give an easy class for developers to use when they need to generate barcode images from a string of data. It is used in reports and letters to produce the barcodes used by print venders.|
+bootstrap 3.0.0|A popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.  Much of this functionality is being phased out in favor of Kendo tools from Telerik.|
+CommandLine 2.3.0|Terse syntax C# command line parser for .NET.  The Command Line Parser Library offers to CLR applications a clean and concise API for manipulating command line arguments and related tasks|
+EntityFramework 6.1.3|Open source object–relational mapping framework for ADO.NET.|
+EntityFramework 6.2.0|Open source object–relational mapping framework for ADO.NET.|
+EntityFramework 6.4.0|Open source object–relational mapping framework for ADO.NET.|a37df25a-995a-4eeb-a624-5ddcaff55ca8
+EntityFramework 6.0.0|Open source object–relational mapping framework for ADO.NET.|
+FileHelpers 3.1.5|Open Source library for automatic formatted file read/write operations|
+FileHelpers 3.2.7|Open Source library for automatic formatted file read/write operations|
+FileHelpers 3.3.0|Open Source library for automatic formatted file read/write operations|45a313a7-7a7c-4de3-b4c0-c41eb4861fa6
+FileHelpers 3.4.1|Open Source library for automatic formatted file read/write operations|
+FileHelpers 3.4.2|Open Source library for automatic formatted file read/write operations|
+InRule.Common 5.5.0.216|Common irSDK® assembly used for integration with InRule|
+InRule.Repository 5.5.0.216|Common Repository irSDK® assemblies used for authoring and/or runtime integration with InRule.  Dependency to RunTime|
+InRule.Runtime 5.5.0.216|Runtime integration with the InRule® Rule Engine.   Dependency to RunTime|
+jQuery 1.10.2|JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.|
+jQuery 2.1.4|JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.|
+jQuery.UI.Combined 1.11.4|library of interface components — interactions, full-featured widgets, and animation effects — based on the stellar jQuery javascript library . Each component is built according to jQuery's event-driven architecture (find something, manipulate it) and is themeable, making it easy for developers of any skill level to integrate and extend into their own code.|
+jQuery.Validation 1.11.1|A useful set of validation methods, including URL and email validation, while providing an API to write your own methods. All bundled methods come with default error messages in english and translations into 32 languages.|
+K2.SmartObject.Client 4.7.0|K2 Client Drivers|
+Kendo 2018.2.620.440|Telerik UX components|
+Kendo 2020.1.114.545|Telerik UX components|
+Kendo 2021.1.330.545|Telerik UX components|
+KendoSpreadSheets 2017.3.913|Telerik UX components|
+KendoSpreadSheets 2018.2.620.545|Telerik UX components|
+KendoWinforms 2020.1.218|Telerik UX components|
+KendoWinforms 2020.1.218|Telerik UX components|
+log4net 2.0.12|An application logger abstraction to help the programmer output log statements to a variety of output targets (i.e. appenders). In case of problems with an application, it is helpful to enable logging so that the problem can be located. With log4net it is possible to enable logging at runtime without modifying the application binary. The log4net package is designed so that log statements can remain in shipped code without incurring a high performance cost. It follows that the speed of logging (or rather not logging) is crucial. Full product documentation and configuration can be found at the following Log4Net supports the following logging levels: Fatal, Error, Warn, Info, Debug, All.  The product has been configured by default to use the log level and appenders shown in Table 5.  EventLogAppender Logs only Error messages to the configured windows application event log. Each component will log to a unique application name.  RollingFileAppender Logs all messages to the file system. The files are typically located under the executing component installation folder, but can be configured to log anywhere on the network file system given security permissions have been properly configured. These files roll based on size and keep a specified number of files.|21fc41de-7df9-414f-851b-ed70792abb2b
+log4net 2.0.8|An application logger abstraction to help the programmer output log statements to a variety of output targets (i.e. appenders). In case of problems with an application, it is helpful to enable logging so that the problem can be located. With log4net it is possible to enable logging at runtime without modifying the application binary. The log4net package is designed so that log statements can remain in shipped code without incurring a high performance cost. It follows that the speed of logging (or rather not logging) is crucial. Full product documentation and configuration can be found at the following Log4Net supports the following logging levels: Fatal, Error, Warn, Info, Debug, All.  The product has been configured by default to use the log level and appenders shown in Table 5.  EventLogAppender Logs only Error messages to the configured windows application event log. Each component will log to a unique application name.  RollingFileAppender Logs all messages to the file system. The files are typically located under the executing component installation folder, but can be configured to log anywhere on the network file system given security permissions have been properly configured. These files roll based on size and keep a specified number of files.|9211547a-7b81-4e05-938e-0bba66e4e270
+MongoDB.Bson 2.13.1|MoingoDB Client Mappers|
+MongoDB.Driver 2.13.1|MoingoDB Client Drivers|
+MongoDB.Driver.Core 2.13.1|MoingoDB Client Drivers|
+MongoDB.Libmongocrypt 1.2.2|MoingoDB Client Crypt Drivers|
+Moq 4.13|Moq is a popular  mocking framework unit testing for .NET.  This package is only used in ?Unit Test projects which are not delivered to customers|
+Moq 4.13.1|Moq is a popular  mocking framework unit testing for .NET.  This package is only used in ?Unit Test projects which are not delivered to customers|
+NEventStore 5.2.0|The purpose of the EventStore is to represent a series of events as a stream. NEventStore is a persistence agnostic event sourcing library for .NET used in the architectures CQRS design.  It is a dependency of NEventStore.Persistence.MongoDB|
+NEventStore  7.0.0|The purpose of the EventStore is to represent a series of events as a stream. NEventStore is a persistence agnostic event sourcing library for .NET used in the architectures CQRS design.  It is a dependency of NEventStore.Persistence.MongoDB|
+NEventStore.Persistence.MongoDB 5.3.7|Additional persistence provider for NEventStore using MongoDB.|
+NEventStore.Persistence.MongoDB 7.0.0|Additional persistence provider for NEventStore using MongoDB.|
+Newtonsoft.Json 13.0.1|A popular high-performance JSON framework for .NET.  Serializing/Deserializing data to/from objects/Json formats.|
+Newtonsoft.Json.Schema 2.0.8|Json.NET Schema is a complete and easy-to-use JSON Schema framework for .NET.|
+Newtonsoft.Json.Schema 3.0.1|Json.NET Schema is a complete and easy-to-use JSON Schema framework for .NET.|
+OopFactory.X12 3.0.10.0|This is an open source .NET C# implementation of an X12 Parser.  The parser allows for a specification of any X12 transaction set to create a generic X12 xml representation of the hierarchical data contained within the X12 document.|
+Oracle.DataAccess.EntityFramework 19.7.0|Oracle client EntityFramework extensions|
+Oracle.DataAccess.x64 19.7.0|Oracle client Drivers|
+Oracle.ManagedDataAccess 19.7.0|Oracle client Drivers|
+Oracle.ManagedDataAccess.EntityFramework 19.7.0|Oracle client EntityFramework extensions|
+StackExchange.Redis 2.2.4|High performance Redis client, incorporating both synchronous and asynchronous usage.  Redis is the distributed cache solution in the architecture|
+StackExchange.Redis  2.2.62|High performance Redis client, incorporating both synchronous and asynchronous usage.  Redis is the distributed cache solution in the architecture|
+StackExchange.Redis.StrongName 1.0.488|High performance Redis client, incorporating both synchronous and asynchronous usage.  Redis is the distributed cache solution in the architecture. This has been deprecated with newer versions of StackExchange.Redis|
+Unity 3.5.1405-prerelease|IOC Framework|
+Vertica.Data.x64 7.1.1.0|Vertica client drivers|
+Vertica.Data.x64 9.1.1.0|Vertica client drivers|
+Vertica.Data.x64 10.0.1|Vertica client drivers|
