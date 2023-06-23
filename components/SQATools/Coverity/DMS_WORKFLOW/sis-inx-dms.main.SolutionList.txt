@@ -1,3 +1,4 @@
+/src/sis-inx-dms/components/api/DMSManagementAPI/DMSManagement.sln
 /src/sis-inx-dms/components/api/DMSUtilityAPI/DMSUtilityApi.sln
 /src/sis-inx-dms/components/api/WorkflowInitiatorAPI/WorkflowInitiator.sln
 /src/sis-inx-dms/components/bas/DMSCommit/MMSDMCS.sln
