@@ -255,6 +255,7 @@
 /src/r20-pm/components/Batch/MonthlyExpiringLicenseReport/MonthlyExpiringLicenseReport.sln
 /src/r20-pm/components/Batch/MonthlyOngoingRevalidation/MonthlyOngoingRevalidation.sln
 /src/r20-pm/components/Batch/NoridianLoader/NoridianLoader.sln
+/src/r20-pm/components/Batch/NotificationGenerator/HPP.PM.Batch.NotificationGenerator.sln
 /src/r20-pm/components/Batch/NPPRImport/HPP.PM.Batch.NPPRImport.sln
 /src/r20-pm/components/Batch/NPPRReport/HPP.PM.Batch.NPPRReport.sln
 /src/r20-pm/components/Batch/PLIProviderConversion/PLIProviderConversion.sln
