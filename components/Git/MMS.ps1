@@ -28,7 +28,7 @@
 #
 
 # Common repos
-ProcessRepo "C:\UA3\Source" "mms-cms-pkgs" "Packages"
+ProcessRepo "C:\UA3\Source" "mms-cms-pkgs" "Packages" -deleteExisting
 ProcessRepo "C:\UA3\Source" "mms-cms-util"       #Utilities
 ProcessRepo "C:\UA3\Source" "mms-cms-core"       #Core
 

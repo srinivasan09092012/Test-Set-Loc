@@ -43,7 +43,7 @@ $mPromptOption = $constPromptNonePullOrClone;
 #        Usually, but not always, it is recommended to use the same 
 #        name as the inRepoName.
 #-------------------------------------------------------------------
-Function ProcessRepo() 
+Function ProcessRepo([switch] $deleteExisting = $false) 
 {
 	$inRepoRootFolder = $args[0]
 	$inRepoName = $args[1]
@@ -66,20 +66,71 @@ Function ProcessRepo()
 	Set-Location -Path $inRepoRootFolder -ErrorAction Stop
 	if (Test-Path -Path $inRepoFolder) 
 	{	
+		$isEmptyDir = (Get-ChildItem $inRepoFolder).Count -lt 1
 		Set-Location $inRepoFolder
-
-		if (git rev-parse --is-inside-work-tree) 
+		if (Test-Path '.git' -pathType Container)
 		{
 			$currentBranch = &git rev-parse --abbrev-ref HEAD
 			
 			PullRepo $currentBranch
+		}
+		elseif ($deleteExisting -or $isEmptyDir)
+		{
+			Set-Location $inRepoRootFolder
+			if (!$isEmptyDir)
+			{
+				$constDeleteCloneRepo = 1
+				$constSkipRepo = 8
+				$constExit = 9
+				$askUser = $true
+				for (;$askUser;)	
+				{
+					Write-Output "Folder $fullRepoFolderName already exists and is not a git repo."
+					Write-Output "Do you want to delete it and clone?"
+					Write-Output "SELECT OPTION:"
+					Write-Output "    $constDeleteCloneRepo = Delete folder and clone repo"
+					Write-Output "    $constSkipRepo = Skip this repo"
+					Write-Output "    $constExit = Cancel and exit processing"
+					$pullOption = Read-Host
+					
+					switch ($pullOption)
+					{
+						$constDeleteCloneRepo 
+						{
+							# exit the loop
+							$askUser = $false
+						}
+						
+						$constSkipRepo 
+						{
+							Write-Output "SKIPPING REPO"
+							return 
+						}
+						
+						$constExit 
+						{ 
+							Write-Output ""
+							Write-Output "-------------------------------------------------------------------"
+							Write-Output "EXIT PROCESSING"
+							Write-Output ""
+							Exit 
+						}
+					}		
+				}
+				Remove-Item -Force -Recurse $inRepoFolder
+			}
+			CloneRepo $inRepoRootFolder $inRepoName $inRepoFolder
+		}
+		else
+		{
+			Write-Host "Couldn't clone repo because '$fullRepoFolderName' is a non empty folder and not a git repository"
 		}
 
 		Set-Location $inRepoRootFolder
 	}
 	else
 	{
-		CloneRepo $inRepoName $inRepoFolder
+		CloneRepo $inRepoRootFolder $inRepoName $inRepoFolder
 	}
 }
 
@@ -139,8 +190,8 @@ Function PullRepo()
 		}	
 	}
 	
-	Write-Output "COMMAND:        git pull --all"
-	git pull --all
+	Write-Output "COMMAND:        git pull --all --autostash"
+	git pull --all --autostash
 }
 
 #-------------------------------------------------------------------
@@ -272,7 +323,7 @@ for (;$askUser;)
 {
 	Write-Output ""
 	Write-Output "SELECT OPTION:"
-	Write-Output "    $constPromptNonePullOrClone = Process ALL repos (Pull or Clone. No additional prompts)."
+	Write-Output "    $constPromptNonePullOrClone = Process ALL repos (Pull or Clone. No additional prompts except when unable to clone)."
 	Write-Output "    $constPromptNonePullOnly = Process ALL LOCAL repos (NO CLONING. No additional prompts)."
 	Write-Output "    $constPromptIfNotCloned = Process ALL LOCAL repos (Prompt if NOT CLONED)."
 	Write-Output "    $constPromptAll = Prompt for EACH repo."
