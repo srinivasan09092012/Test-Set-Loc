@@ -17,10 +17,9 @@ param(
     [string] $rootFolder = "C:\UA3", 
     [string] $sourceFolder = "$rootFolder\Source", 
     [string] $buildType = "Release",
-    [string] $branchName = "main",
     [Parameter(Mandatory)]
     [string] $moduleName,
-    [string] $solutionList = "$sourceFolder\$moduleName\architecture\component-lists\$branchName.$moduleName.SolutionList.txt",
+    [string] $solutionList = "$sourceFolder\$moduleName\architecture\component-lists\$moduleName.SolutionList.txt",
     [switch] $cleanInstead = $false,
     [switch] $cleanDuring = $false,
     [string] $MsBuildExe = "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe"
@@ -69,11 +68,7 @@ function BuildSolutions {
         if($line -eq "" -or $line.StartsWith("#")) {
             continue
         }
-        $null, $null, $module, $file = $line.Split("/", 4)
-        $branch, $module = $module.Split("-", 2)
-        $baseFolder = "$sourceFolder\$module"
-        $file = $file.Replace("/", "\")
-        $solution = "$baseFolder\$file"
+        $solution = Join-Path $sourceFolder $line
         if(!(Test-Path $solution -PathType Leaf)) {
             $msg = "Solution '$solution' does not exist"
             Write-Error $msg

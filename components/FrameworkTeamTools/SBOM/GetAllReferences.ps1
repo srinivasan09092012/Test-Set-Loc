@@ -3,7 +3,6 @@
     [string] $sourceFolder   = "$rootFolder\Source",
     [string] $outputFolder   = "$sourceFolder\mms-cms-util\components\FrameworkTeamTools\SBOM\output",
     [string] $inputFolder    = "$sourceFolder\mms-cms-util\components\FrameworkTeamTools\SBOM\input",
-    [string] $branchName     = "main",
     [string] $moduleName     = "",
     [string] $moduleListPath = "$inputFolder\modules.txt"
 )
@@ -27,7 +26,7 @@ function FindAllReferences() {
 
 function FindReferences([string] $moduleName) {
     Write-Host "Checking $moduleName"
-    $solutionList = "$sourceFolder\$moduleName\architecture\component-lists\$branchName.$moduleName.SolutionList.txt"
+    $solutionList = "$sourceFolder\$moduleName\architecture\component-lists\$moduleName.SolutionList.txt"
     if(!(Test-Path $solutionList -PathType Leaf)) {
         Write-Error "$solutionList does not exist"
         return
@@ -38,11 +37,7 @@ function FindReferences([string] $moduleName) {
         if($line -eq "" -or $line -eq "Exclude from scanning") {
             continue
         }
-        $null, $null, $module, $file = $line.Split("/", 4)
-        $branch, $module = $module.Split("-", 2)
-        $baseFolder = "$sourceFolder\$module"
-        $file = $file.Replace("/", "\")
-        $solution = "$baseFolder\$file"
+        $solution = Join-Path $sourceFolder $line
         if(!(Test-Path $solutionList -PathType Leaf)) {
             Write-Error "$solutionList does not exist"
             continue
