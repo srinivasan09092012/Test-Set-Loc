@@ -4,7 +4,8 @@
     [string] $outputFolder   = "$sourceFolder\mms-cms-util\components\FrameworkTeamTools\SBOM\output",
     [string] $inputFolder    = "$sourceFolder\mms-cms-util\components\FrameworkTeamTools\SBOM\input",
     [string] $moduleName     = "",
-    [string] $moduleListPath = "$inputFolder\modules.txt"
+    [string] $moduleListPath = "$inputFolder\modules.txt",
+    [switch] $noSolutionList
 )
 
 $allReferencesFile = "$outputFolder\AllReferences-$(get-date -f yyyy.MM.dd.HHmm).csv"
@@ -26,7 +27,22 @@ function FindAllReferences() {
 
 function FindReferences([string] $moduleName) {
     Write-Host "Checking $moduleName"
-    $solutionList = "$sourceFolder\$moduleName\architecture\component-lists\$moduleName.SolutionList.txt"
+    if($noSolutionList) {
+        FindReferencesWithoutSolutionList $moduleName
+    } else {
+        $solutionList = "$sourceFolder\$moduleName\architecture\component-lists\$moduleName.SolutionList.txt"
+        FindReferencesWithSolutionList $solutionList
+    }
+}
+
+function FindReferencesWithoutSolutionList([string] $moduleName) {
+    $modulePath = Join-Path $sourceFolder "$moduleName\components"
+    $projList = ls "$modulePath\*" -Include "*.csproj" -Recurse |
+        ForEach-Object { $_.FullName }
+    ProcessProjectList $projList
+}
+
+function FindReferencesWithSolutionList([string] $solutionList) {
     if(!(Test-Path $solutionList -PathType Leaf)) {
         Write-Error "$solutionList does not exist"
         return
@@ -44,16 +60,20 @@ function FindReferences([string] $moduleName) {
         }
         Write-Host "`tChecking $solution"
         $projList = GetProjectList -solution $solution
-        $references = ProcessSolutionProjects -projects $projList
-        if ($references -ne $null) {
-            foreach ($reference in $references) {
-                if ($reference.project -ne $null) {
-                    $projectName = $reference.project
-                    $ref = $reference.reference.Replace("<HintPath>", "")
-                    $ref = $ref.Replace("</HintPath>", "")
-                    $moduleName = $projectName.Split("\\")[3]
-                    Add-Content -Path  $allReferencesFile -Value "$moduleName,$projectName,$ref"
-                }
+        ProcessProjectList $projList
+    }
+}
+
+function ProcessProjectList($projList) {
+    $references = ProcessSolutionProjects -projects $projList
+    if ($references -ne $null) {
+        foreach ($reference in $references) {
+            if ($reference.project -ne $null) {
+                $projectName = $reference.project
+                $ref = $reference.reference.Replace("<HintPath>", "")
+                $ref = $ref.Replace("</HintPath>", "")
+                $moduleName = $projectName.Split("\\")[3]
+                Add-Content -Path  $allReferencesFile -Value "$moduleName,$projectName,$ref"
             }
         }
     }
