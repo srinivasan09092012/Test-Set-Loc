@@ -451,14 +451,14 @@
     <Package id="AWSSDK.SecurityToken" version="3.7.100.14" targetFramework="net48" />
     <Package id="AWSSDK.SimpleSystemsManagement" version="3.7.0" targetFramework="net48" />
   </Packages>-->
-  
+
 
   <!--=========================================================================================================================================================-->
-   
+
   <!--===========================================================DnsClient (>= 1.6.1) Pass 8 Level 2===========================================================-->
 
   <!--<References>
-    <Reference Dependency = "true" Include = "DnsClient, Version=1.6.1.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL" HintPath = "Packages\DnsClient.1.6.1\lib\net471\DnsClient.dll" />
+    <Reference Dependency = "false" Include = "DnsClient, Version=1.6.1.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL" HintPath = "Packages\DnsClient.1.6.1\lib\net471\DnsClient.dll" />
     <Reference Dependency = "true" Include = "Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll" />
     <Reference Dependency = "true" Include = "System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll" />
     <Reference Dependency = "true" Include = "System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll" />
@@ -498,13 +498,13 @@
       </ErrorList>
     </Target>
   </Targets>-->
-  
+
   <!--=========================================================================================================================================================-->
-  
+
   <!--===========================================================SharpCompress 0.30.1 Pass 10 Level 2===========================================================-->
 
   <!--<References>
-    <Reference Dependency = "true" Include = "SharpCompress, Version=0.30.1.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL" HintPath = "Packages\SharpCompress.0.30.1\lib\net461\SharpCompress.dll" />
+    <Reference Dependency = "false" Include = "SharpCompress, Version=0.30.1.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL" HintPath = "Packages\SharpCompress.0.30.1\lib\net461\SharpCompress.dll" />
     <Reference Dependency = "true" Include = "System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll" />
     <Reference Dependency = "true" Include = "System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Memory.4.5.4\lib\net461\System.Memory.dll" />
     <Reference Dependency = "true" Include = "System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll" />
@@ -523,11 +523,11 @@
   </WebAppConfig>-->
 
   <!--=========================================================================================================================================================-->
-  
+
   <!--================================================================Snappier 1.0.0 Pass 11 Level 2================================================================-->
 
   <!--<References>
-    <Reference Dependency = "true" Include = "Snappier, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a1b25124e6e13a3a, processorArchitecture=MSIL" HintPath = "Packages\Snappier.1.0.0\lib\netstandard2.0\Snappier.dll" />
+    <Reference Dependency = "false" Include = "Snappier, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a1b25124e6e13a3a, processorArchitecture=MSIL" HintPath = "Packages\Snappier.1.0.0\lib\netstandard2.0\Snappier.dll" />
   </References>
   <Packages>
     <Package id="Snappier" version="1.0.0" targetFramework="net48" />
@@ -586,7 +586,7 @@
   <!--============================================================ZstdSharp.Port 0.6.2 Pass 15 Level 2============================================================-->
 
   <!--<References>
-    <Reference Dependency = "true" Include = "ZstdSharp, Version=0.6.2.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL" HintPath = "Packages\ZstdSharp.Port.0.6.2\lib\net461\ZstdSharp.dll" />
+    <Reference Dependency = "false" Include = "ZstdSharp, Version=0.6.2.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL" HintPath = "Packages\ZstdSharp.Port.0.6.2\lib\net461\ZstdSharp.dll" />
     <Reference Dependency = "true" Include = "Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll" />
     <Reference Dependency = "true" Include = "System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll" />
     <Reference Dependency = "true" Include = "System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll" />
@@ -604,7 +604,9 @@
     <Package id="System.Numerics.Vectors" version="4.5.0" targetFramework="net48" />
   </Packages>
   <WebAppConfig>
+    <DependentAssembly name = "Microsoft.Bcl.AsyncInterfaces" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-5.0.0.0" newVersion = "5.0.0.0"/>
     <DependentAssembly name = "System.Runtime.CompilerServices.Unsafe" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-5.0.0.0" newVersion = "5.0.0.0"/>
+	  <DependentAssembly name = "System.Threading.Tasks.Extensions" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.2.0.1" newVersion = "4.2.0.1"/>
     <DependentAssembly name = "System.Buffers" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.0.3.0" newVersion = "4.0.3.0"/>
   </WebAppConfig>-->
 
@@ -613,7 +615,7 @@
   <!--============================================================System.Memory (>= 4.5.4) Pass 16 Level 3 =======================================================-->
 
   <!--<References>
-    <Reference Dependency = "true" Include = "System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Memory.4.5.4\lib\net461\System.Memory.dll" />
+    <Reference Dependency = "false" Include = "System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Memory.4.5.4\lib\net461\System.Memory.dll" />
     <Reference Dependency = "true" Include = "System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll" />
     <Reference Dependency = "true" Include = "System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll" />    
     <Reference Dependency = "true" Include = "System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll" />
@@ -660,7 +662,7 @@
   <!--========================================System.Text.Encoding.CodePages 5.0.0 Pass 19 Level 3===========================================================-->
 
   <!--<References>
-    <Reference Dependency = "true" Include = "System.Text.Encoding.CodePages, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Text.Encoding.CodePages.5.0.0\lib\net461\System.Text.Encoding.CodePages.dll" />
+    <Reference Dependency = "false" Include = "System.Text.Encoding.CodePages, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Text.Encoding.CodePages.5.0.0\lib\net461\System.Text.Encoding.CodePages.dll" />
     <Reference Dependency = "true" Include = "System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll" />
   </References>
   <Packages>
@@ -676,7 +678,7 @@
   <!--========================================System.Security.Cryptography.X509Certificates 4.3.0 Pass 20 Level 3========================================-->
 
   <!--<References>
-    <Reference Dependency = "true" Include = "System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll" />
+    <Reference Dependency = "false" Include = "System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll" />
     <Reference Dependency = "true" Include = "System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll" />
     <Reference Dependency = "true" Include = "System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.IO.4.3.0\lib\net462\System.IO.dll" />
     <Reference Dependency = "true" Include = "System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll" />
@@ -697,7 +699,7 @@
   <!--===========================================Microsoft.Bcl.AsyncInterfaces 5.0.0 Pass 21 Level 3==================================================-->
 
   <!--<References>
-    <Reference Dependency = "true" Include = "Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll" />
+    <Reference Dependency = "false" Include = "Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll" />
     <Reference Dependency = "true" Include = "System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" HintPath = "Packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll" />
     <Reference Dependency = "true" Include = "System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll" />
   </References>
@@ -707,7 +709,9 @@
     <Package id="System.Runtime.CompilerServices.Unsafe" version="5.0.0" targetFramework="net48" />
   </Packages>
   <WebAppConfig>
+    <DependentAssembly name = "Microsoft.Bcl.AsyncInterfaces" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-5.0.0.0" newVersion = "5.0.0.0"/>
     <DependentAssembly name = "System.Runtime.CompilerServices.Unsafe" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-5.0.0.0" newVersion = "5.0.0.0"/>
+	  <DependentAssembly name = "System.Threading.Tasks.Extensions" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.2.0.1" newVersion = "4.2.0.1"/>
   </WebAppConfig>-->
 
   <!--=========================================================================================================================================================-->
@@ -716,7 +720,7 @@
   <!--==============================================System.Numerics.Vectors (>= 4.5.0) Pass 22 Level 4==================================================-->
 
   <!--<References>
-    <Reference Dependency = "true" Include = "System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll" />
+    <Reference Dependency = "false" Include = "System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll" />
   </References>
   <Packages>
     <Package id="System.Numerics.Vectors" version="4.5.0" targetFramework="net48" />
@@ -730,7 +734,7 @@
   <!--=============================================System.Runtime.CompilerServices.Unsafe 5.0.0 Pass 23 Level 4==================================================================-->
 
   <!--<References>
-    <Reference Dependency = "true" Include = "System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Reference Dependency = "false" Include = "System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll" />
   </References>
   <Packages>
     <Package id="System.Runtime.CompilerServices.Unsafe" version="5.0.0" targetFramework="net48" />
@@ -745,7 +749,7 @@
   <!--=================================System.Security.AccessControl 5.0.0 Pass 24 Level 4===========================================================-->
 
   <!--<References>
-    <Reference Dependency = "true" Include = "System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll" />
+    <Reference Dependency = "false" Include = "System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll" />
     <Reference Dependency = "true" Include = "System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll" />
   </References>
   <Packages>
@@ -769,7 +773,7 @@
   <!--========================================System.Security.Cryptography.Algorithms 4.3.0 Pass 26 Level 4========================================-->
 
   <!--<References>
-    <Reference Dependency = "true" Include = "System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll" />
+    <Reference Dependency = "false" Include = "System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll" />
     <Reference Dependency = "true" Include = "System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.IO.4.3.0\lib\net462\System.IO.dll" />
     <Reference Dependency = "true" Include = "System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll" />
     <Reference Dependency = "true" Include = "System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll" />
@@ -785,7 +789,7 @@
 
   <!--=========================================================================================================================================================-->
 
- <!--========================================System.Security.Cryptography.Encoding (>= 4.3.0) Pass 27 Level 5========================================-->
+  <!--========================================System.Security.Cryptography.Encoding (>= 4.3.0) Pass 27 Level 5========================================-->
 
   <!--<References>
     <Reference Dependency = "false" Include = "System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll" />
@@ -818,6 +822,7 @@
     <Package id="System.Runtime.CompilerServices.Unsafe" version="5.0.0" targetFramework="net48" />
   </Packages>
   <WebAppConfig>
+	<DependentAssembly name = "System.Threading.Tasks.Extensions" publicKeyToken = "cc7b13ffcd2ddd51" culture = "neutral" oldVersion = "0.0.0.0-4.2.0.1" newVersion = "4.2.0.1"/>
     <DependentAssembly name = "System.Runtime.CompilerServices.Unsafe" publicKeyToken = "b03f5f7f11d50a3a" culture = "neutral" oldVersion = "0.0.0.0-5.0.0.0" newVersion = "5.0.0.0"/>
   </WebAppConfig>-->
 
@@ -837,7 +842,7 @@
   <!--=========================================================System.Runtime 4.3.0 Pass 31 Level 5=========================================================-->
 
   <!--<References>
-    <Reference Dependency = "true" Include = "System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll" />
+    <Reference Dependency = "false" Include = "System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll" />
   </References>
   <Packages>
     <Package id="System.Runtime" version="4.3.0" targetFramework="net48" />
@@ -848,7 +853,7 @@
   <!--=========================================================AWSSDK.SimpleSystemsManagement 3.7.0 Pass 32 (Dependent on AWSSDK.Core)=========================================================-->
 
   <!--<References>
-    <Reference Dependency = "true" Include = "AWSSDK.SimpleSystemsManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL" HintPath = "Packages\AWSSDK.SimpleSystemsManagement.3.7.0\lib\net45\AWSSDK.SimpleSystemsManagement.dll" />
+    <Reference Dependency = "false" Include = "AWSSDK.SimpleSystemsManagement, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL" HintPath = "Packages\AWSSDK.SimpleSystemsManagement.3.7.0\lib\net45\AWSSDK.SimpleSystemsManagement.dll" />
   </References>
   <Packages>
     <Package id="AWSSDK.SimpleSystemsManagement" version="3.7.0" targetFramework="net48" />
