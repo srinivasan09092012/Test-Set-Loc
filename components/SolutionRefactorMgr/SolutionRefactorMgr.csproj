@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Configs\PackageUpgrades\main\MongoCSharpDriver_Upgrade to 2.19.1.xml" />
     <Content Include="Configs\PackageUpgrades\r20\MongoCSharpDriver_Upgrade to 2.19.1.xml" />
     <Content Include="Configs\PackageUpgrades\r20\MongoCSharpDriver_Upgrade to 2.19.1_With_all_dependencies_to_latest.xml" />
     <Content Include="Configs\RefactorUserIDLength.xml" />

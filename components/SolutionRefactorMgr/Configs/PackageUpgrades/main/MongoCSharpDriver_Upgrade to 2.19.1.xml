@@ -3,7 +3,7 @@
   <SourceDir>C:\UA3\SourceGIT</SourceDir>
   <ModuleConfigs>
     <ModuleConfig name="Administration" branch="components" types="All" />
-    <!--<ModuleConfig name="AuthDetermination" branch="components" types="All" />
+    <ModuleConfig name="AuthDetermination" branch="components" types="All" />
     <ModuleConfig name="ClaimsManagement" branch="components" types="All" />
     <ModuleConfig name="ConfigurationManagement" branch="components" types="All" />
     <ModuleConfig name="Core" branch="components" types="All" />
@@ -32,7 +32,7 @@
     <ModuleConfig name="TaskManagement" branch="components" types="All" />
     <ModuleConfig name="ThirdPartySource" branch="components" types="All" />
     <ModuleConfig name="TPLCaseTracking" branch="components" types="All" />
-    <ModuleConfig name="TPLPolicy" branch="components" types="All" />-->
+    <ModuleConfig name="TPLPolicy" branch="components" types="All" />
   </ModuleConfigs>
   <PackageConfigs />
   <FileTypes />
@@ -40,11 +40,11 @@
   <!--Only the root package should have Dependency = "false"-->
   <!-- These sections are to be run in sequence as per the pass Number. Only one pass to be run at a time. Comment out other passes-->
 
-  <!--=================================================HP.HSP.UA3.Core.BAS.CQRS(20.3.94)  Pass 1 =================================================================-->
-  <!--Run a replacement string pass to update Core BAS CQRS version to 20.3.93 so that this pass will execute as 93 to 94 is an upgrade-->
+  <!--=================================================HP.HSP.UA3.Core.BAS.CQRS(23.2.142)  Pass 1 =================================================================-->
+  <!--Run a replacement string pass to update Core BAS CQRS version to 23.2.141 so that this pass will execute as 141 to 142 is an upgrade-->
   <!--This pass will make sure MongoDBDriver is installed in all the projects that has a reference to Core BAS CQRS -->
   <References>
-    <Reference Dependency ="false" Include = "HP.HSP.UA3.Core.BAS.CQRS" HintPath = "Packages\HP.HSP.UA3.Core.BAS.CQRS.20.3.94\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll" />
+    <Reference Dependency ="false" Include = "HP.HSP.UA3.Core.BAS.CQRS" HintPath = "Packages\HP.HSP.UA3.Core.BAS.CQRS.23.2.142\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll" />
     <Reference Dependency = "true" Include = "MongoDB.Driver.Legacy, Version=2.19.1.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\mongocsharpdriver.2.19.1\lib\net472\MongoDB.Driver.Legacy.dll" />
     <Reference Dependency = "true" Include = "MongoDB.Bson, Version=2.19.1.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Bson.2.19.1\lib\net472\MongoDB.Bson.dll" />
     <Reference Dependency = "true" Include = "MongoDB.Driver, Version=2.19.1.0, Culture=neutral, processorArchitecture=MSIL" HintPath = "Packages\MongoDB.Driver.2.19.1\lib\net472\MongoDB.Driver.dll" />
@@ -78,7 +78,7 @@
     <Reference Dependency = "true" Include = "System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" HintPath = "Packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll" />
   </References>
   <Packages>
-    <Package id="HP.HSP.UA3.Core.BAS.CQRS" version="20.3.94" targetFramework="net48" />
+    <Package id="HP.HSP.UA3.Core.BAS.CQRS" version="23.2.142" targetFramework="net48" />
     <Package id="mongocsharpdriver" version="2.19.1" targetFramework="net48" />
     <Package id="MongoDB.Bson" version="2.19.1" targetFramework="net48" />
     <Package id="MongoDB.Driver" version="2.19.1" targetFramework="net48" />
@@ -373,7 +373,7 @@
   <Analyzers>
     <Analyzer Include="[SOURCEFOLDER]Packages\AWSSDK.SecurityToken.3.7.100.14\analyzers\dotnet\cs\AWSSDK.SecurityToken.CodeAnalysis.dll" />
     <Analyzer Include="[SOURCEFOLDER]Packages\AWSSDK.SimpleSystemsManagement.3.7.0\analyzers\dotnet\cs\AWSSDK.SimpleSystemsManagement.CodeAnalysis.dll" />
-  </Analyzers>-->
+  </Analyzers>  -->
 
   <!--=========================================================================================================================================================-->
 
@@ -571,7 +571,7 @@
   <!--========================================================AWSSDK.Core 3.7.100.14 Pass 17 Level 3============================================================-->
 
   <!--<References>
-    <Reference Dependency = "true" Include = "AWSSDK.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL" HintPath = "Packages\AWSSDK.Core.3.7.100.14\lib\net45\AWSSDK.Core.dll" />
+    <Reference Dependency = "false" Include = "AWSSDK.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL" HintPath = "Packages\AWSSDK.Core.3.7.100.14\lib\net45\AWSSDK.Core.dll" />
   </References>
   <Packages>
     <Package id="AWSSDK.Core" version="3.7.100.14" targetFramework="net48" />
