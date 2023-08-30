@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <RefactorConfig editMode="UpgradePackage" includeFolderNames="false" includeFileNames="false" includeFileContents="true" useSourceControl="true" targetTFS="Azure">
-  <SourceDir>C:\UA3\SourceGIT</SourceDir>
+  <SourceDir>C:\UA3\Source</SourceDir>
   <ModuleConfigs>
     <ModuleConfig name="Administration" branch="components" types="All" />
     <ModuleConfig name="AuthDetermination" branch="components" types="All" />
