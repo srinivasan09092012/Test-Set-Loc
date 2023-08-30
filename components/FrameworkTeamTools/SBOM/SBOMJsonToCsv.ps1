@@ -15,13 +15,15 @@
 param(
     [string] $inputFolder = 'input',
     [string] $packageList   = $inputFolder + "\LeanIXPackageList.txt",
-    [string] $outFile1 = "output/mms-cms-$(get-date -f yyyy.MM.dd.HHmm).csv",
-    [string] $outFile2 = "output/mms-cms-internal-$(get-date -f yyyy.MM.dd.HHmm).csv",
+    [string] $outFileLeanix = "output/mms-cms-leanix-loadfile-$(get-date -f yyyy.MM.dd.HHmm).csv",
+    [string] $outFileInternal = "output/mms-cms-internal-$(get-date -f yyyy.MM.dd.HHmm).csv",
+    [string] $outFileSimple = "output/mms-cms-simple-$(get-date -f yyyy.MM.dd.HHmm).csv",
     [string] $productType = "ITComponent",
     [string] $productSubType = "Software",
     [string] $productEOL = "",
     [string] $packageFilter = "",
-    [string[]] $excludeFilters = @('^System', '^Microsoft'),
+    [string[]] $excludeFiltersLeanix = @('^System', '^Microsoft'),
+    [string[]] $excludeFiltersSimple = @(),
     [string[]] $internalIncludeFilters = @(
         '^HP\.HSP\.UA3\.',
         '^HPE\.HSP\.UA3\.',
@@ -34,7 +36,8 @@ param(
         '^Telerik',
         '^Vertica',
         '^Molina',
-        '^Kendo'
+        '^Kendo',
+        '^npm:'
     ),
     [parameter(Mandatory)]
     [string] $token = ""
@@ -44,7 +47,8 @@ $packageModuleTable = @{};
 $repoModuleTable = @{
     "mms-cms-adm"       = "MMS Administration Module";
     "mms-cms-core"      = "MMS Core Module";
-    "mms-cms-cfg"       = "MMS CorrespondenceMgmt Module";
+    "mms-cms-cfg"       = "MMS Configuration Module";
+    "mms-cms-cm"        = "MMS CorrespondenceMgmt Module";
     "mms-cms-dr"        = "MMS DrugRebate Module";
     "mms-cms-edi"       = "MMS EDI Module";
     "mms-cms-fxfer"     = "MMS FileTransfer Module";
@@ -73,7 +77,10 @@ $repoModuleTable = @{
     "mms-cms-cef"       = "MMS Claims Administrator Module";
     "mms-cms-meddent"   = "MMS Medical Dental Portal";
     "mms-cms-paae"      = "MMS EDI Gateway";
-    "mms-cms-v360"           = "MMS Vue360 Module";
+    "mms-cms-v360"      = "MMS Vue360 Module";
+    "pharm-pdl-ecoi"     = "MMS Pharmacy ECOI";
+    "pharm-pbm-rx"       = "MMS Pharmacy Module";
+    "mms-hp-op"           = "MMS Pharmacy Portal";
 };
 
 #-------------------------------------------------------------------
@@ -108,7 +115,7 @@ function checkPackage([string] $id, [string] $version)
         $packageSuperDetails = Invoke-RestMethod $packageDetails.catalogEntry
         return $latestVersion, $packageSuperDetails.vulnerabilities
     }
-    echo "$id not found" >> error\log.txt
+    echo "$id $version not found" >> error\log.txt
     return $null;
 }
 
@@ -171,7 +178,10 @@ function addToTable($data) {
     }
     $data.packages | ForEach-Object {
         if($_.versionInfo) {
-            $name = $_.name.Split(':')[1];
+            $name = $_.name
+            if($name.startsWith("nuget:")) {
+                $name = $name -replace "^nuget:", ""
+            }
             $fullName = "$name $($_.versionInfo)";
             if($packageModuleTable.ContainsKey($fullName)) {
                 $packageModuleTable[$fullName].modules += ";$module";
@@ -260,10 +270,8 @@ function main {
         }
     };
 
+    "Package,Modules,Latest Version,Vulnerability" > $outFileSimple
     ForEach($key in ($packageModuleTable.keys | Sort-Object)) {
-        if(isInFilters $key $excludeFilters) {
-            continue;
-        }
         $id, $version = $key.Split(' ');
         if(!(isInFilters $id $ignoreCheckPackageFilters)) {
             Write-Output "Checking Package $key"
@@ -277,11 +285,14 @@ function main {
             $maxSeverity = ""
         }
         $val = $packageModuleTable[$key];
+        if(!(isInFilters $simpleExcludeFilters)) {
+            "$key,$($val.modules),$latestVersion,$maxSeverity" >> $outFileSimple
+        }
         $row = "$($val.id)|$productType|$key|$productSubType|$($val.description)|$productEOL|$($val.modules)|||||$latestVersion|$maxSeverity";
         if(isInFilters $key $internalIncludeFilters) {
-            $row >> $outfile2;
-        } else {
-            $row >> $outfile1;
+            $row >> $outFileInternal;
+        } elseif (!(isInFilters $key $excludeFiltersLeanix)) {
+            $row >> $outfileLeanix;
         }
     };
 }
