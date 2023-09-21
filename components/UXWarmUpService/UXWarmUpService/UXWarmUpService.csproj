@@ -90,25 +90,25 @@
       <HintPath>..\packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.118\lib\net48\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="HP.HSP.UA3.Core.BAS.CQRS">
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.23.2.142\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.28.1.0\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
     </Reference>
-    <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Interface, Version=23.2.142.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Interface, Version=28.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.118\lib\net48\HPE.HSP.UA3.Core.API.AuthManagement.Interface.dll</HintPath>
     </Reference>
-    <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Providers, Version=23.2.142.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="HPE.HSP.UA3.Core.API.AuthManagement.Providers, Version=28.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.118\lib\net48\HPE.HSP.UA3.Core.API.AuthManagement.Providers.dll</HintPath>
     </Reference>
-    <Reference Include="HPE.HSP.UA3.Core.API.BusinessRules.Interface, Version=23.2.142.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="HPE.HSP.UA3.Core.API.BusinessRules.Interface, Version=28.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.118\lib\net48\HPE.HSP.UA3.Core.API.BusinessRules.Interface.dll</HintPath>
     </Reference>
-    <Reference Include="HPE.HSP.UA3.Core.API.BusinessRules.Providers, Version=23.2.142.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="HPE.HSP.UA3.Core.API.BusinessRules.Providers, Version=28.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HP.HSP.UA3.Core.BAS.CQRS.22.1.118\lib\net48\HPE.HSP.UA3.Core.API.BusinessRules.Providers.dll</HintPath>
     </Reference>
-    <Reference Include="HPE.HSP.UA3.Core.API.Logger, Version=23.2.142.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="HPE.HSP.UA3.Core.API.Logger, Version=28.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\UA3\Source\Packages\HPE.HSP.UA3.Core.API.Logger.23.2.142\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
+      <HintPath>..\..\..\..\UA3\Source\Packages\HPE.HSP.UA3.Core.API.Logger.28.1.0\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
     </Reference>
-    <Reference Include="HPP.Core.API.Logger.Extensions, Version=23.2.142.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="HPP.Core.API.Logger.Extensions, Version=28.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HPP.Core.API.Logger.Extensions.22.1.118\lib\net48\HPP.Core.API.Logger.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="InRule.Common, Version=5.7.3.244, Culture=neutral, PublicKeyToken=1feb8dd25b1ceb6b, processorArchitecture=MSIL">

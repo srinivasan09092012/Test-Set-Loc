@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HPP.Core.API.AddressValidation" Version="23.2.142" />
+    <PackageReference Include="HPP.Core.API.AddressValidation" Version="28.1.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
 	  <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
 	  <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />

@@ -84,7 +84,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="HP.HSP.UA3.Core.BAS.CQRS">
-      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.23.2.142\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HP.HSP.UA3.Core.BAS.CQRS.28.1.0\lib\net48\HP.HSP.UA3.Core.BAS.CQRS.dll</HintPath>
     </Reference>
     <Reference Include="HP.HSP.UA3.EmployeeMgmt.BAS.Employee.Contracts">
       <HintPath>..\..\..\..\EmployeeMgmt\Dev\BAS\Employee\HP.HSP.UA3.EmployeeMgmt.BAS.Employee.Contracts\obj\x64\Debug\HP.HSP.UA3.EmployeeMgmt.BAS.Employee.Contracts.dll</HintPath>
@@ -221,7 +221,7 @@
       <HintPath>..\..\..\..\Packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="HPE.HSP.UA3.Core.API.Logger">
-      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.23.2.142\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
+      <HintPath>..\..\..\..\Packages\HPE.HSP.UA3.Core.API.Logger.28.1.0\lib\net48\HPE.HSP.UA3.Core.API.Logger.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
